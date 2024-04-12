@@ -12,8 +12,8 @@ I am a Research Scientist at NYU Abu Dhabi interested in the applications of Mac
 
 My earlier research focused on the origins of the gas giants and their chemical composition, both for the solar system and exoplanets. 
 
-I then became interested in using deep learning to map craters and boulders on the Moon and other objects, which eventually led to many other projects. 
+I then became interested in using deep learning to map craters and boulders on the Moon and other objects, which eventually led to many other computer vision projects. 
 
-Find out more about my research and experiences through the links above.
+Find out more about my work and experiences through the links above.
 
 
