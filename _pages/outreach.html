@@ -1,0 +1,48 @@
+---
+layout: archive
+permalink: /outreach/
+title: "Outreach"
+author_profile: true
+
+---
+
+
+Scientific facts are the common ground that all parts of society can agree on. In the last 10 years, I
+was very active in outreach, delivering more than 100 hours of public talks, and organizing a large
+number of diverse events in both France and Canada.<br><br>
+<b>Universite de Franche-Comte &amp; Fabrika sciences (2014-2015):</b><br>
+&bull; Weekly general public astronomy talks, both as co-organizer and speaker. These were fea-
+tured in many local newspapers, an example is shown in Fig. 4.<br>
+&bull; Many talks at local schools I visited (example in Fig. 5).<br>
+&bull; European Researchers&rsquo; Night. I was in charge of giving visitors guided tour of the local
+observatory.<br>
+&bull; European Heritage Days. Same as above.<br>
+&bull; Solar eclipse event of March 2015. I helped setting up the telescopes, distributing solar
+eclipse glasses, and most importantly giving multiple public talks on the science of eclipses.<br>
+&bull; Special event for the lunch of Gaia. Multiple public talks on the significance and goals of
+this space mission.<br>
+&bull; Special event for the arrival of Rosetta. Same as above, in addition to discussing early science
+results.<br><br>
+<b>University of Toronto (2015-2018):</b><br>
+&bull; 70 hours of planetarium shows as the speaker. These consisted of creating and then presenting solar system focused shows to the general public and school tours.<br>
+&bull; Speaker at &ldquo;Explore the mystical universe&rdquo; event at the Art Gallery of Ontario.<br>
+&bull; Speaker and volunteer at &ldquo;Astronomy On Tap&rdquo;, Toronto (Fig. 6).<br>
+&bull; Solar eclipse event of August 2017.<br>
+&bull; Meteorites exposition for &ldquo;National Star Party&rdquo; and Earth hour (multiple events), Toronto.<br>
+&bull; My research on identifying craters on the Moon using artificial intelligence inspired art
+projects.<br><br>
+<b>University of Montreal (2018-present):</b><br>
+&bull; Speaker and volunteer at &ldquo;Astronomy On Tap&rdquo;, Montreal.<br>
+&bull; Volunteer at &ldquo;Plan&acute;etarium Rio Tinto Alcan&rdquo;, multiple events.
+<div><br></div>
+
+{% include base_path %}
+{% capture written_year %}'None'{% endcapture %}
+{% for post in site.posts %}
+  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+  {% if year != written_year %}
+    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
+    {% capture written_year %}{{ year }}{% endcapture %}
+  {% endif %}
+  {% include archive-single.html %}
+{% endfor %}
