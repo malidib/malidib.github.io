@@ -5,7 +5,17 @@ permalink: /publications/
 author_profile: false
 ---
 
+<head>
+<style>
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
+</head>
 
+<html>
+<body>
   <div style="text-align: center;">
     <img src="/images/gif10.gif" alt="GIF 1" style="max-width: 100%; margin: 10px;">
     <img src="/images/gif90.gif" alt="GIF 2" style="max-width: 100%; margin: 10px;">
@@ -28,3 +38,4 @@ author_profile: false
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
 {% endfor %}
+</body>
