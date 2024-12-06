@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Sumit Soman وَ Sujoy Roychowdhury">
+  <title>مُلاحَظاتٍ حَوْلَ بِناءَ أَنْظِمَةِ RAG لِلوَثائِق الفَنِّيَّةِ</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">مُلاحَظاتٍ حَوْلَ بِناءَ أَنْظِمَةِ <span class="nodecor">RAG</span> لِلوَثائِق الفَنِّيَّةِ</h1>
+<p class="author"><span class="nodecor">Sumit Soman</span> وَ <span class="nodecor">Sujoy Roychowdhury</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّصُ</h1>
+<p>تَخْلُق عَمَلِيَّةِ تَوْلِيدِ الاِسْتِرْجاع المُعَزِّز (<span class="nodecor">RAG</span>) لِلوَثائِق الفَنِّيَّةِ تَحَدِّياتٍ حَيْثُ أَنَّ التَضْمِينات لا تَلْتَقِط غالِباً المَعْلُوماتِ المُتَعَلِّقَةِ بِالمَجال. نُراجِع الفُنُونِ السابِقَةِ لِلعَوامِل المُهِمَّةِ الَّتِي تُؤَثِّر عَلَى <span class="nodecor">RAG</span> وَنُجْرَى تَجارِبِ لَتَسْلِيط الضَوْء عَلَى أَفْضَلَ المُمارَساتِ وَالتَحَدِّياتِ المُحْتَمَلَةِ لِبِناءِ أَنْظِمَةِ <span class="nodecor">RAG</span> لِلوَثائِق الفَنِّيَّةِ.</p>
+<h1 id="مقدمة">مُقَدِّمَةِ</h1>
+<p>تَتَضَمَّن الإِجابَةَ عَلَى الأَسْئِلَةِ طَوِيلَةٍ الشَكْلِ تَوْلِيدِ اِسْتِجابات بِحَجْمِ الفَقْرَةِ مِن نَماذِجَ اللُغَةِ الكَبِيرَةِ. تَحَدِّياتٍ الاِسْتِرْجاع المُوَجَّهِ لِلوَثائِق الفَنِّيَّةِ لَها عِدَّةٍ تَحَدِّياتٍ (<span class="nodecor">xu2023retrieval</span>, <span class="nodecor">toro2023dynamic</span>). تَمَّ تَقْيِيمِ العَوامِلُ الَّتِي تُؤَثِّر عَلَى أَداءِ الاِسْتِرْجاع، بِما فِي ذٰلِكَ الوَثائِقِ فِي السِياقِ، نَماذِجَ اللُغَةِ الكَبِيرَةِ وَالمَقايِيس (<span class="nodecor">chen2023understanding</span>). لِمَزِيدٍ مِن البِناءِ عَلَى هٰذا العَمَلِ، نُجْرِي تَجارِبِ عَلَى الوَثائِقِ الفَنِّيَّةِ مَعَ مُصْطَلَحاتٍ الاِتِّصالاتِ وَالبَطّارِيّات لِفَحْصٍ تَأْثِيرِ طُولِ القِطْعَةَ، البَحْثِ المَبْنِيَّ عَلَى الكَلِماتُ الرَئِيسِيَّةِ وَالرُتَب (التَسَلْسُل) لِلنَتائِجِ المسترجعه فِي خَطِّ أَنابِيبِ الاِسْتِرْجاع المُوَجَّهِ.</p>
+<h1 id="الإعداد-التجريبي">الإِعْدادُ التَجْرِيبِيُّ</h1>
+<p>تَعْتَمِد تَجارِبنا عَلَى مُواصَفاتِ الطَبَقَةِ المُتَوَسِّطَةِ لِلتَحَكُّمِ فِي الوُصُولِ إِلَى الوَسائِط (Medium Access Control) وَالطَبَقَة الفِيزيائِيَّة (Physical Layer) لِشَبَكَةِ IEEE اللاسِلْكِيَّة (<span class="nodecor">9363693</span>) وَمُعْجَم مُصْطَلَحاتٍ البَطّارِيّات الثابِتَةِ القِياسِيَّ لِ IEEE (<span class="nodecor">7552407</span>). نَقُوم بِمُعالَجَةِ مُعْجَم التَعْرِيفات وَالوَثِيقَة كامِلَةٍ بِشَكْلٍ مُنْفَصِل، حَيْثُ أَنَّ العَدِيدَ مِن الأَسْئِلَةِ المُتَوَقَّعَةِ تَعْتَمِد عَلَى التَعْرِيفات. نَحْنُ نَسْتَخْرِج الأَسْئِلَةِ بِناءَ عَلَى المَعْرِفَةِ المجاليه وَنَقْدَم تَقارِيرَ عَن النَتائِجِ التَجْرِيبِيَّة لِ <span class="nodecor">42</span> اِسْتِفْساراً تَمْثِيلِيّا عَبْرَ الوَثائِقِ. يُمْكِن اِسْتِخْدامِ نَماذِجَ تَضْمِينِ مُتَعَدِّدَةِ، (<span class="nodecor">reimers2019sentence</span>)، نَسْتَخْدِم نَمُوذَجَ MPNET (<span class="nodecor">song2020mpnet</span>) لِلوَثِيقَة بِأَكْمَلِها - بِاِسْتِثْناءِ الجَداوِل وَالتَعْلِيقات التوضيحيه. بِالنِسْبَةِ لِلمُعْجَم، نُقَسِّم المُصْطَلَحِ وَالتَعْرِيف وَنُولَد تَضْمِينات مُنْفَصِلَةٍ لَهُما، فَضْلاً عَن الفَقْرَةِ الكامِلَةِ الَّتِي تَحْتَوِي عَلَى المُصْطَلَحِ المعرف وَالتَعْرِيف. لَقَد قامَ (<span class="nodecor">soman2023observations</span>) بِمُراجَعَةِ نَماذِجَ اللُغَةِ الكَبِيرَةِ الأُخْرَى لِقِطاعِ الاِتِّصالاتِ، وَلٰكِنَّنا اِخْتَرْنا نَمُوذَجَ llama2-7b-chat (<span class="nodecor">touvron2023llama</span>) لِأَنَّهُ مَجّانِيّ وَيَمْتَلِك تَرْخِيصا يَتَوافَق مَعَ الاِسْتِخْدامِ التِجارِيِّ. نَقُوم بِتَقْيِيم عِدَّةٍ أَسْئِلَةٍ وَنَقْدَم تَقارِيرَ عَن الأَسْئِلَةِ المُخْتارَة لِتَأْكِيدِ مُلاحَظاتنا. لِلرُجُوع إِلَيها، يَتِمّ تَوْفِيرِ الأَوامِرَ المُسْتَخْدَمَةِ لَنَمُوذَج اللُغَةِ الكَبِيرَةِ فِي المُلْحَقِ [app:appA].</p>
+<h1 id="الملاحظات">المُلاحَظاتِ</h1>
+<p>لَقَد لاحَظْنا أَوَّلاً أَنَّ تَضْمِينِ الجَمَل يُصْبِح غَيْرِ مَوْثُوقٌ بِهِ مَعَ زِيادَةِ حَجْمِ القِطْعَةَ. يُظْهِر الرَسْمُ البَيانِيّ لَتَقْدِير الكَثافَةِ النَوَوِيَّةِ (KDE) لَدَرَجات التَشابُه الجَيْبِيّ التمامي لَأَطْوال الجَمَل المُخْتَلِفَةِ فِي المُلْحَقِ [app:appB]. لَقَد قُمْنا بِأَخْذِ <span class="nodecor">10,970</span> جُمْلَةِ وَنَظَرنا فِي التَشابُه الزَوْجِيِّ لِجَمِيعِ الجَمَل. يُلاحِظ تُشابِه عالِي عِنْدَما يَكُون طُولِ الجَمَل طَوِيلاً نِسْبِيّاً. تُشِير تَوْزِيعات التَشابُه الأَعْلَى لِلأَطْوال الأَكْبَرُ إِلَى تَشابُهات زائِفه الَّتِي قُمْنا بِالتَحَقُّق مِنها يَدَوِيّاً لِبَعْضِ العَيْنات. وَجَدْنا أَنَّهُ عِنْدَما تَكُون كُلِّ مِن الاِسْتِعْلام وَالوَثِيقَة المستعلم عَنها تَحْتَوِي عَلَى أَكْثَرَ مِن <span class="nodecor">200</span> كَلِمَةً، يَكُون تَوْزِيعِ التَشابُه ثُنائِيٍّ الوَضْعِ. عِنْدَما تَكُون أَحَدّاهُما تَحْتَوِي عَلَى أَكْثَرَ مِن <span class="nodecor">200</span> كَلِمَةً، هُناكَ اِرْتِفاعِ صَغِيرٍ وَلٰكِن أَقَلَّ وُضُوحاً عِنْدَ التَشابُهات العُلْيا.</p>
+<h1 id="ملخص-الملاحظات">مُلَخَّصُ المُلاحَظاتِ</h1>
+<p>يُوجَز الجَدْوَلُ [tab:observations] فَرَضِيّاتنا وَالمُلاحَظاتِ الرَئِيسِيَّةِ - يَتِمّ تَوْفِيرِ اِسْتِعْلامات العَيِّنَةُ وَنَتائِجِها فِي المُلْحَقِ [app:appC]. نَفْتَرِض أَنَّ التَقْسِيم عَلَى التَعْرِيفِ وَالمُصْطَلَحات يُمْكِن أَنَّ يُساعِد فِي تَحْسِينِ النَتائِجِ (H1)، وَأَنَّ دَرَجاتٍ التَشابُه تُعْتَبَر مِقْياسا جَيِّداً (H2)، وَأَنَّ مَوْقِعِ الكَلِماتُ الرَئِيسِيَّةِ يُؤَثِّر عَلَى النَتائِجِ (H3)، وَأَنَّ التَشابُه بِناءَ عَلَى الجَمَل يُؤَدِّي إِلَى اِسْتِرْجاعِ أَفْضَلَ (H4) وَمَوْلِد (H5)، وَالإِجابات لِلتَعْرِيفات المَبْنِيَّةُ عَلَى الاِخْتِصارات (H6) وَتَأْثِيرِ تَرْتِيبَ النَتائِجِ المسترجعه عَلَى أَداءِ المُوَلِّدِ (H7). مِن بَيِّنَ هٰذِهِ، H2 هِيَ نَتِيجَةَ تَجارِبنا مَعَ تَوْزِيعات دَرَجاتٍ التَشابُه المُشارِ إِلَيها سابِقاً وH7 مَبْنِيَّةٌ عَلَى (<span class="nodecor">chen2023understanding</span>). الآخَرُونَ مُشْتَقُّونَ مِن تَجارِبنا لِتَحْسِينِ النَتائِجِ. لِكُلِّ فَرْضِيَّةَ، نُقَدِّم عَدَدٍ التَجارِبِ الَّتِي تَدْعَم الاِدِّعاءِ وَتِلْكَ الَّتِي صالِحَةٌ لَنَفْس الشَيْء فِي العَمُودِ الأَخِيرِ، جَنْباً إِلَى جَنْبٍ مَعَ اِسْتِعْلامات العَيِّنَةُ.</p>
+<p>وَجَدْنا أَنَّ الاِسْتِرْجاع بِواسِطَةِ التَحْدِيدِ عَلَى دَرَجاتٍ التَشابُه لَيِسَ مُفِيداً. بِالنِسْبَةِ لِلاِسْتِعْلامات <span class="nodecor">1</span>، <span class="nodecor">2</span> وَ <span class="nodecor">5</span>، عِنْدَما تَكُون عِبارَةٌ الاِسْتِعْلام مَوْجُودَةٌ فِي المُصْطَلَحِ أَو التَعْرِيفِ، تَكُون الدَرَجَةِ المسترجعه الأَعْلَى أَعْلَى. بِالنِسْبَةِ لِلاِسْتِعْلام <span class="nodecor">3</span>، يَتِمّ اِسْتِرْجاعِ النَتِيجَةُ الصَحِيحَةِ فِي المَرْكَزِ الثانِي بِاِسْتِخْدامِ تَضْمِينِ التَعْرِيفِ، وَلٰكِن فِي الحالاتِ الأُخْرَى، لا يَتِمّ اِسْتِرْجاعِ النَتِيجَةُ وَتَكُون دَرَجاتٍ التَشابُه قَرِيبَةٌ. بِالنِسْبَةِ لِلاِسْتِعْلامات <span class="nodecor">4</span> وَ <span class="nodecor">6</span>، لا نَسْتَطِيع اِسْتِرْجاعِ النَتِيجَةُ الصَحِيحَةِ، عَلَى الرَغْمِ مِن أَنَّ الدَرَجاتِ تُشِير إِلَى خِلافٍ ذٰلِكَ. وَبِالتالِي، يُمْكِن أَنَّ يُؤَدِّي التَحْدِيدِ عَلَى نَتائِجِ الاِسْتِرْجاع بِناءَ عَلَى دَرَجاتٍ التَشابُه إِلَى تَعْزِيزِ المُوَلِّدِ الفَرْعِيِّ الأَمْثَلُ. نَقُوم بِتَقْيِيم أَداءِ المُوَلِّدِ عَلَى اِسْتِعْلاماتنا بِناءَ عَلَى النَتائِجِ المسترجعه. يَتِمّ ذٰلِكَ بِاِسْتِخْدامِ أَعْلَى <span class="math inline">\(k\)</span> تَعْرِيفات مسترجعه، وَالمُصْطَلَحات وَالتَعْرِيفات. يُعْطِي السِياقِ الأَفْضَلِ اِسْتِجابات مَوْلِده أَفْضَلَ. بِالنِسْبَةِ لِلاِخْتِصارات وَتَوْسِيعاتها، لا يُضِيف المُوَلِّدِ أَيّ قِيمَةَ إِضافِيَّةً.</p>
+<p>لِلاِسْتِرْجاع عَلَى الوَثِيقَةِ الكامِلَةِ، نَسْتَكْشِف البَحْثِ عَن التَشابُه بِواسِطَةِ الجَمَل وَالفَقَرات بِشَكْلٍ مُنْفَصِل. فِي السابِقِ، نَسْتَرْجِع الفَقْرَةِ الَّتِي تَنْتَمِي إِلَيها الجُمْلَةُ وَنَأْخُذ أَعْلَى <span class="math inline">\(k\)</span> فَقَراتٌ مُتَمَيِّزَةٍ مِن الجَمَل المُتَشابِهَةَ الأَعْلَى. نُلاحِظ أَنَّ النَتائِجِ بِواسِطَةِ البَحْثِ عَن التَشابُه بِناءَ عَلَى الجَمَل وَاِسْتِخْدامِ الفَقَرات لِلمَوْلِد يُوَفِّر أَداءِ اِسْتِرْجاعِ وَمَوْلِد أَفْضَلَ. يُذْكَر المُؤَلِّفُونَ فِي (<span class="nodecor">chen2023understanding</span>) أَنَّ تَرْتِيبَ المَعْلُوماتِ المُقَدَّمَةِ مُهِمٌّ، وَلٰكِنَّنا لَم نُلاحِظ نَتائِجِ مُخْتَلِفَةٍ عِنْدَ تَبْدِيلَ الفَقَرات المسترجعه. نُلاحِظ أَنَّ اِسْتِجابات المُوَلِّدِ تَفْشَل أَحْياناً بِسَبَبِ الاِسْتِرْجاع الخاطِئِ، الحَقائِقِ المتوهمه أَو التوليف الخاطِئِ كَما هُوَ مُوَضِّح فِي (<span class="nodecor">chen2023understanding</span>).</p>
+<p>نُوصَى بِمِثْلِ هٰذِهِ الطُرُقِ لَتَعْرِيف الأَسْئِلَةِ وَالأَجْوِبَة وَالأَسْئِلَة وَالأَجْوِبَة طَوِيلَةٍ الشَكْلِ.</p>
+<h1 id="الاستنتاجات-والأعمال-المستقبلية">الاِسْتِنْتاجاتِ وَالأَعْمال المُسْتَقْبَلِيَّةِ</h1>
+<p>لَقَد أَظْهَرَنا أَنَّ طُولِ القِطْعَةَ يُؤَثِّر عَلَى تَضْمِينات أَداةٌ الاِسْتِرْجاع، وَأَنَّ تَعْزِيزِ المُوَلِّدِ بِتَحْدِيدِ نَتائِجِ أَداةٌ الاِسْتِرْجاع بِناءَ عَلَى دَرَجاتٍ التَشابُه قَد يَكُون غَيْرِ مَوْثُوقٌ. وَمَعَ ذٰلِكَ، فَإِنَّ اِسْتِخْدامِ الاِخْتِصارات وَعَدَدٌ كَبِيرٍ مِن الفَقَرات المُتَعَلِّقَةِ بِمَوْضُوعِ ما يَجْعَل مُلاحَظاتنا ذاتِ صِلَةٍ خاصَّةٍ بِالأَسْئِلَة وَالأَجْوِبَة طَوِيلَةٍ الشَكْلِ عَلَى الوَثائِقِ الفَنِّيَّةِ. كَأَعْمال مُسْتَقْبَلِيَّةٍ، نَوَدّ اِسْتِخْدامِ مَقايِيسِ (<span class="nodecor">es2023ragas, chen2023benchmarking</span>) لِاِخْتِيارِ إِسْتراتِيجِيّاتِ الاِسْتِرْجاع. كَما سَتَكُون الطُرُقِ وَمَقايِيس التَقْيِيم لِلإِجابَة عَلَى الأَسْئِلَةِ التالِيَةِ مَوْضُوعاً يَسْتَحِقّ الاِهْتِمامِ.</p>
+<h2 id="الأسلوب">الأُسْلُوبِ</h2>
+<h2 id="استرجاع-ملفات-النمط">اِسْتِرْجاعِ مِلَفّاتِ النَمَطِ</h2>
+<h1 id="تعليمات-التنسيق-العامة">تَعْلِيماتٍ التَنْسِيقِ العامَّةِ</h1>
+<h1 id="العناوين-المستوى-الأول">العَناوِينُ: المُسْتَوَى الأَوَّلِ</h1>
+<h2 id="العناوين-المستوى-الثاني">العَناوِينُ: المُسْتَوَى الثانِي</h2>
+<h3 id="العناوين-المستوى-الثالث">العَناوِينُ: المُسْتَوَى الثالِثِ</h3>
+<h1 id="الاقتباسات-الأشكال-الجداول-المراجع">الاِقْتِباسات، الأَشْكال، الجَداوِل، المَراجِعِ</h1>
+<h2 id="الاستشهادات-داخل-النص">الاِسْتِشْهادات داخِلَ النَصِّ</h2>
+<p>يَجِب أَنَّ تَسْتَنِد الاِسْتِشْهادات داخِلَ النَصِّ إِلَى حَزْمه <code>natbib</code> وَتَتَضَمَّن أَسْماءَ عائِلاتِ المُؤَلِّفِينَ وَالسُنَّةِ (مَعَ اِسْتِخْدامِ بِناءَ الجُمْلَةُ “وَآخَرُونَ” لِأَكْثَرِ مِن مُؤَلِّفِينَ اِثْنَيْنِ). عِنْدَما يَتِمّ ذَكَرَ المُؤَلِّفِينَ أَو النَشْرِ داخِلَ الجُمْلَةُ، يَجِب أَلّا يَكُون الاِسْتِشْهادِ بَيِّنَ قَوْسَيْنِ بِاِسْتِخْدامِ <code>\citet{}</code> (كَما فِي “أَنْظُر (<span class="nodecor">Hinton06</span>) لِمَزِيدٍ مِن المَعْلُوماتِ.”). وَإِلّا، يَجِب أَنَّ يَكُون الاِسْتِشْهادِ بَيِّنَ قَوْسَيْنِ بِاِسْتِخْدامِ <code>\citep{}</code> (كَما فِي “تُظْهِر التَعَلُّمِ العَمِيقِ وَعْداً لِتَحْقِيقِ تَقَدَّمَ نَحْوَ الذَكاء الاِصْطِناعِيِّ (<span class="nodecor">Bengio+chapter2007</span>).”).</p>
+<p>يَجِب أَنَّ تُدْرِج المَراجِعِ المُقابَلَةِ بِتَرْتِيب أَبْجَدَيَّ لَأَسْماء المُؤَلِّفِينَ، فِي قِسْمِ <span style="font-variant: small-caps;">المَراجِعِ</span>. بِالنِسْبَةِ لِتَنْسِيقِ المَراجِعِ نَفْسِها، أَيّ أُسْلُوبِ مَقْبُولٍ طالَما أَنَّهُ مُسْتَخْدَمٌ بِشَكْلٍ مُتَّسِق.</p>
+<h2 id="الحواشي-السفلية">الحَواشِي السُفْلِيَّة</h2>
+<h2 id="الأشكال">الأَشْكال</h2>
+<h2 id="الجداول">الجَداوِل</h2>
+<p>جَمِيعِ الجَداوِل يَجِب أَنَّ تَكُون مُرَكَّزَةً، نَظِيفَةٍ، وَواضِحَةٍ. لا تُسْتَخْدَم جَداوِلِ مَرْسُومَةً بِاليَدِ. يَجِب أَنَّ يُظْهِر رَقْمِ الجَدْوَلُ وَعُنْوانُهُ قِبَلَ الجَدْوَلُ. أَنْظُر الجَدْوَلُ <span class="nodecor"> [sample-table]</span>.</p>
+<p>ضع مَسافَةِ سَطَّرَ واحِدٍ قِبَلَ عُنْوانِ الجَدْوَلُ، مَسافَةِ سَطَّرَ واحِدٍ بُعْدَ عُنْوانِ الجَدْوَلُ، وَمَسافَة سَطَّرَ واحِدٍ بُعْدَ الجَدْوَلُ. يَجِب أَنَّ يَكُون عُنْوانِ الجَدْوَلُ بِأَحْرُفٍ صَغِيرَةٌ (ما عَدا الكَلِمَةِ الأُولَى وَالأَسْماءَ الخاصَّةِ)؛ وَيَتِمّ تَرْقِيم الجَداوِل بِشَكْلٍ مُتَتالِي.</p>
+<h1 id="التدوين-الافتراضي">التَدْوِين الاِفْتِراضِيّ</h1>
+<p>فِي مُحاوَلَةٍ لِتَشْجِيعِ التَدْوِين المُوَحَّدَ، قُمْنا بِتَضْمِينِ مِلَفِّ التَدْوِين مِن الكِتابِ المَدْرَسِيِّ، <em>التَعَلُّمِ العَمِيقِ</em> (<span class="nodecor">goodfellow2016deep</span>) المُتاحِ عَلَى <a href="https://github.com/goodfeli/dlbook_notation/" class="uri">https://github.com/goodfeli/dlbook_notation/</a>. اِسْتِخْدامِ هٰذا الأُسْلُوبِ لَيِسَ إِلْزامِيّا وَيُمْكِن تَعْطِيله بِتَعْلِيقِ <code>math_commands.tex</code>.</p>
+<p><strong>الأَعْدادُ وَالمَصْفُوفات</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle a\)</span></td>
+<td style="text-align: left;">عَدَدٍ نِسْبِيٍّ (صَحِيحٌ أَو حَقِيقِيٍّ)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \va\)</span></td>
+<td style="text-align: left;">مُتَّجِه</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mA\)</span></td>
+<td style="text-align: left;">مَصْفُوفه</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \tA\)</span></td>
+<td style="text-align: left;">تنسور</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mI_n\)</span></td>
+<td style="text-align: left;">مَصْفُوفه الهُوِيَّةِ ب <span class="nodecor">n</span> صُفُوفِ وَ <span class="nodecor">n</span> أَعْمِدَةٍ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mI\)</span></td>
+<td style="text-align: left;">مَصْفُوفه الهُوِيَّةِ بِأَبْعاد يُفْتَرَض مِن السِياقِ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \ve^{(i)}\)</span></td>
+<td style="text-align: left;">مُتَّجِه الأَساسِ القِياسِيَّ <span class="math inline">\([0,\dots,0,1,0,\dots,0]\)</span> ب 1 فِي المَوْضِعَ <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \text{diag}(\va)\)</span></td>
+<td style="text-align: left;">مَصْفُوفه مُرَبَّعَةٍ، قُطْرِيَّةٍ بمدخلات قُطْرِيَّةٍ مُعْطاة بِواسِطَةِ <span class="math inline">\(\va\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \ra\)</span></td>
+<td style="text-align: left;">مُتَغَيِّر عَشْوائِيٍّ نِسْبِيٍّ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \rva\)</span></td>
+<td style="text-align: left;">مُتَغَيِّر عَشْوائِيٍّ مُتَّجِهَيَّ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \rmA\)</span></td>
+<td style="text-align: left;">مُتَغَيِّر عَشْوائِيٍّ مَصْفُوفَيَّ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>المَجْمُوعاتِ وَالرُسُومات</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sA\)</span></td>
+<td style="text-align: left;">مَجْمُوعَةِ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \R\)</span></td>
+<td style="text-align: left;">مَجْمُوعَةِ الأَعْدادُ الحَقِيقِيَّةِ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \{0, 1\}\)</span></td>
+<td style="text-align: left;">المَجْمُوعَةِ الَّتِي تَحْتَوِي عَلَى 0 وَ 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \{0, 1, \dots, n \}\)</span></td>
+<td style="text-align: left;">مَجْمُوعَةِ جَمِيعِ الأَعْدادُ الصَحِيحَةِ بَيِّنَ <span class="math inline">\(0\)</span> وَ <span class="math inline">\(n\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle [a, b]\)</span></td>
+<td style="text-align: left;">الفَتْرَةِ الحَقِيقِيَّةِ الَّتِي تَشْمَل <span class="math inline">\(a\)</span> وَ <span class="math inline">\(b\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle (a, b]\)</span></td>
+<td style="text-align: left;">الفَتْرَةِ الحَقِيقِيَّةِ الَّتِي تَسْتَثْنِي <span class="math inline">\(a\)</span> لٰكِنَّ تَشْمَل <span class="math inline">\(b\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sA \backslash \sB\)</span></td>
+<td style="text-align: left;">طَرْحِ المَجْمُوعاتِ، أَيّ المَجْمُوعَةِ الَّتِي تَحْتَوِي عَلَى عَناصِرِ <span class="math inline">\(\sA\)</span> الَّتِي لَيِسَت فِي <span class="math inline">\(\sB\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \gG\)</span></td>
+<td style="text-align: left;">رَسْمِ بَيانَيَّ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \parents_\gG(\ervx_i)\)</span></td>
+<td style="text-align: left;">الآباءُ لِ <span class="math inline">\(\ervx_i\)</span> فِي <span class="math inline">\(\gG\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>الفِهْرِسَة</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \eva_i\)</span></td>
+<td style="text-align: left;">العُنْصُرُ <span class="math inline">\(i\)</span> مِن المُتَّجِه <span class="math inline">\(\va\)</span>، حَيْثُ يَبْدَأ الفِهْرِسَة مِن 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \eva_{-i}\)</span></td>
+<td style="text-align: left;">جَمِيعِ عَناصِرِ المُتَّجِه <span class="math inline">\(\va\)</span> بِاِسْتِثْناءِ العُنْصُرُ <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \emA_{i,j}\)</span></td>
+<td style="text-align: left;">العُنْصُرُ <span class="math inline">\(i, j\)</span> مِن المَصْفُوفَة <span class="math inline">\(\mA\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mA_{i, :}\)</span></td>
+<td style="text-align: left;">الصَفِّ <span class="math inline">\(i\)</span> مِن المَصْفُوفَة <span class="math inline">\(\mA\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mA_{:, i}\)</span></td>
+<td style="text-align: left;">العَمُودِ <span class="math inline">\(i\)</span> مِن المَصْفُوفَة <span class="math inline">\(\mA\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \etA_{i, j, k}\)</span></td>
+<td style="text-align: left;">العُنْصُرُ <span class="math inline">\((i, j, k)\)</span> مِن تنسور ثُلاثِيّ الأَبْعاد <span class="math inline">\(\tA\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \tA_{:, :, i}\)</span></td>
+<td style="text-align: left;">شَرِيحَةٍ ثُنائِيَّةٍ الأَبْعاد مِن تنسور ثُلاثِيّ الأَبْعاد</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \erva_i\)</span></td>
+<td style="text-align: left;">العُنْصُرُ <span class="math inline">\(i\)</span> مِن المُتَّجِه العَشْوائِيِّ <span class="math inline">\(\rva\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>التَفاضُل وَالتَكامُلِ</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle\frac{d y} {d x}\)</span></td>
+<td style="text-align: left;">مُشْتَقّه <span class="math inline">\(y\)</span> بِالنِسْبَةِ لِ <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[2ex] <span class="math inline">\(\displaystyle \frac{\partial y} {\partial x} \)</span></td>
+<td style="text-align: left;">المُشْتَقَّة الجُزْئِيَّةِ لِ <span class="math inline">\(y\)</span> بِالنِسْبَةِ لِ <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\vx y \)</span></td>
+<td style="text-align: left;">التَدَرُّج لِ <span class="math inline">\(y\)</span> بِالنِسْبَةِ لِ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\mX y \)</span></td>
+<td style="text-align: left;">مُشْتَقّات المَصْفُوفَة لِ <span class="math inline">\(y\)</span> بِالنِسْبَةِ لِ <span class="math inline">\(\mX\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\tX y \)</span></td>
+<td style="text-align: left;">تنسور يَحْتَوِي عَلَى مُشْتَقّات <span class="math inline">\(y\)</span> بِالنِسْبَةِ لِ <span class="math inline">\(\tX\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \frac{\partial f}{\partial \vx} \)</span></td>
+<td style="text-align: left;">مَصْفُوفه جاكوبي <span class="math inline">\(\mJ \in \R^{m\times n}\)</span> لِ <span class="math inline">\(f: \R^n \rightarrow \R^m\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\vx^2 f(\vx)\text{ or }\mH( f)(\vx)\)</span></td>
+<td style="text-align: left;">مَصْفُوفه هيسيان لِ <span class="math inline">\(f\)</span> فِي نُقْطَةً الإِدْخال <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \int f(\vx) d\vx \)</span></td>
+<td style="text-align: left;">التَكامُلِ المُحَدَّدِ عَلَى كامِلٍ نِطاقِ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \int_\sS f(\vx) d\vx\)</span></td>
+<td style="text-align: left;">التَكامُلِ المُحَدَّدِ بِالنِسْبَةِ لِ <span class="math inline">\(\vx\)</span> عَلَى المَجْمُوعَةِ <span class="math inline">\(\sS\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>نَظَرِيَّةَ الاِحْتِمالاتِ وَالمَعْلُوماتِ</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle P(\ra)\)</span></td>
+<td style="text-align: left;">تَوْزِيعِ اِحْتِمالَيَّ عَلَى مُتَغَيِّر مُتَقَطِّع</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle p(\ra)\)</span></td>
+<td style="text-align: left;">تَوْزِيعِ اِحْتِمالَيَّ عَلَى مُتَغَيِّر مُسْتَمِرٍّ، أَو عَلَى مُتَغَيِّر لَم يَتِمّ تَحْدِيدِ نَوْعِهِ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \ra \sim P\)</span></td>
+<td style="text-align: left;">المُتَغَيِّر العَشْوائِيِّ <span class="math inline">\(\ra\)</span> لَهُ التَوْزِيعِ <span class="math inline">\(P\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle  \E_{\rx\sim P} [ f(x) ]\text{ or } \E f(x)\)</span></td>
+<td style="text-align: left;">تَوَقَّعَ <span class="math inline">\(f(x)\)</span> بِالنِسْبَةِ لِ <span class="math inline">\(P(\rx)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \Var(f(x)) \)</span></td>
+<td style="text-align: left;">التَبايُنِ لِ <span class="math inline">\(f(x)\)</span> تَحْتَ <span class="math inline">\(P(\rx)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \Cov(f(x),g(x)) \)</span></td>
+<td style="text-align: left;">التَغايُر بَيِّنَ <span class="math inline">\(f(x)\)</span> وَ <span class="math inline">\(g(x)\)</span> تَحْتَ <span class="math inline">\(P(\rx)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle H(\rx) \)</span></td>
+<td style="text-align: left;">انتروبيا شانون لِلمُتَغَيِّر العَشْوائِيِّ <span class="math inline">\(\rx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \KL ( P \Vert Q ) \)</span></td>
+<td style="text-align: left;">تَباعُد كولباك-لايبلر بَيِّنَ P وَ Q</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathcal{N} ( \vx ; \vmu , \mSigma)\)</span></td>
+<td style="text-align: left;">التَوْزِيعِ الطَبِيعِيِّ عَلَى <span class="math inline">\(\vx\)</span> بِمُتَوَسِّطِ <span class="math inline">\(\vmu\)</span> وَتَبايُنٍ <span class="math inline">\(\mSigma\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>الوَظائِفِ</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle f: \sA \rightarrow \sB\)</span></td>
+<td style="text-align: left;">الدالَّةِ <span class="math inline">\(f\)</span> بِمَجال <span class="math inline">\(\sA\)</span> وَمَدَى <span class="math inline">\(\sB\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle f \circ g \)</span></td>
+<td style="text-align: left;">تَرْكِيبِ الدالَّتَيْنِ <span class="math inline">\(f\)</span> وَ <span class="math inline">\(g\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle f(\vx ; \vtheta) \)</span></td>
+<td style="text-align: left;">دالَّةٍ فِي <span class="math inline">\(\vx\)</span> مُعَلِّمَةُ ب <span class="math inline">\(\vtheta\)</span>. (أَحْياناً نَكْتُب <span class="math inline">\(f(\vx)\)</span> وَنَحْذِف الوَسِيطِ <span class="math inline">\(\vtheta\)</span> لِتَخْفِيفِ التَدْوِين)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \log x\)</span></td>
+<td style="text-align: left;">اللُوغارِيتْم الطَبِيعِيِّ لِ <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sigma(x)\)</span></td>
+<td style="text-align: left;">السيجمويد اللُوجِسْتِيِّ، <span class="math inline">\(\displaystyle \frac{1} {1 + \exp(-x)}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \zeta(x)\)</span></td>
+<td style="text-align: left;">السوفت بلس، <span class="math inline">\(\log(1 + \exp(x))\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle || \vx ||_p \)</span></td>
+<td style="text-align: left;">القاعِدَةِ <span class="math inline">\(\normlp\)</span> لِ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle || \vx || \)</span></td>
+<td style="text-align: left;">القاعِدَةِ <span class="math inline">\(\normltwo\)</span> لِ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle x^+\)</span></td>
+<td style="text-align: left;">الجُزْء المُوجِب مِن <span class="math inline">\(x\)</span>، أَيّ <span class="math inline">\(\max(0,x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \1_\mathrm{condition}\)</span></td>
+<td style="text-align: left;">هُوَ 1 إِذا كانَت الشَرْطُ صَحِيحَةٍ، 0 خِلافٍ ذٰلِكَ</td>
+</tr>
+</tbody>
+</table>
+<h1 id="التعليمات-النهائية">التَعْلِيماتِ النِهائِيَّةِ</h1>
+<h1 id="إعداد-ملفات-بوست-سكريبت-أو-بي-دي-إف">إِعْدادِ مِلَفّاتِ بُوسْت سكريبت أَو بِي دِي إِف</h1>
+<h2 id="هوامش-في-latex">هَوامِش فِي LaTeX</h2>
+<h3 id="بيان-urm" class="unnumbered">بَيانٍ URM</h3>
+<p>يُقِرّ الكِتابِ بِأَنَّ عَلَى الأَقَلِّ مُؤَلَّفٌ رَئِيسِيٍّ واحِدٍ فِي هٰذا العَمَلِ يُلَبِّي مَعايِيرِ URM لَمَسار الأَوْراقِ الصَغِيرَةِ فِي ICLR <span class="nodecor">2024</span>.</p>
+<h1 id="app:appA">المُلْحَقِ أَ</h1>
+<p>الأَوامِرَ المُسْتَخْدَمَةِ لَنَمُوذَج اللُغَةِ الكَبِيرِ فِي تَجارِبنا هِيَ كَما يَلِي:</p>
+<ul>
+<li><p>أَمْرٌ النِظامِ: أَجِب عَن الأَسْئِلَةِ اِسْتِناداً إِلَى الفَقَرات المُقَدَّمَةِ هُنا. لا تُسْتَخْدَم أَيّ مَعْلُوماتٍ أُخْرَى بِاِسْتِثْناءِ تِلْكَ المَوْجُودَةِ فِي الفَقَرات. أَجْعَل الإِجاباتِ قَصِيرَةٍ قَدْرَ الإِمْكانِ. فَقَط قَدَّمَ الإِجابَةَ. لا مُقَدِّمَةِ مَطْلُوبَةٌ.</p></li>
+<li><p>أَمْرٌ المُسْتَخْدِمُ: “الفَقَرات: ”+context + “الأَسْئِلَةِ: ”+ query</p></li>
+</ul>
+<h1 id="الملحق-ب">المُلْحَقِ ب</h1>
+<h1 id="app:appC">المُلْحَقِ C - المَوادِّ التَكْمِيلِيَّةُ</h1>
+<p>نُوَفِّر <a href="https://anonymous.4open.science/r/RAG_ICLR-55CB/README.md">مُسْتَوْدَع Git مَجْهُولٌ</a> يَحْتَوِي عَلَى:</p>
+<ul>
+<li><p>شَفْره مَصْدَرٌ مَجْهُولَةِ</p></li>
+<li><p>جَدْوَلَةِ التَجْرِبَةِ مُقابِلَ الفَرْضِيَّة (لِلنَتائِجِ الكَمِّيَّةِ المُوَحَّدَةِ)</p></li>
+<li><p>تَفاصِيلَ التَجارِبِ عَبْرَ <span class="nodecor">42</span> اِسْتِفْسار وَ <span class="nodecor">7</span> فَرَضِيّات</p></li>
+</ul>
+<p>بِالإِضافَةِ إِلَى ذٰلِكَ، نُقَدِّم تَفاصِيلَ بِالنِسْبَةِ للفرضيات فِي الجَدْوَلُ [tab:observations] مِن خِلالَ تَقْدِيمِ اِسْتِفْسارات نَمُوذَجِيَّةٍ وَالنَتائِجِ المسترجعه وَالمُوَلِّدَة.</p>
+</body>
+</html>

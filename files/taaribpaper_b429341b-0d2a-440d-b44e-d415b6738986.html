@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Earl Schulz">
+  <title>أَزْواج الكَثافَةِ-الجُهْدِ الكَهْرَبائِيِّ لِعائِلَةٍ مِن الأَقْراص المَحْدُودَةَ</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">أَزْواج الكَثافَةِ-الجُهْدِ الكَهْرَبائِيِّ لِعائِلَةٍ مِن الأَقْراص المَحْدُودَةَ</h1>
+<p class="author"><span class="nodecor">Earl Schulz</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّصُ</h1>
+<p>تُعْطِي الحُلُولِ التَحْلِيلِيَّة الدَقِيقَةِ لِثَلاثَةِ أَقْراص مَحْدُودَةٍ بِكَثافَةٍ سَطْحِيَّةٍ <span class="math inline">\(\Sigma_n = \sigma_0 (1-R^2/\alpha^2)^{n-1/2}\)</span> مَعَ <span class="math inline">\(n=0, 1, 2\)</span>. تَقَدَّمَ الحُلُولِ المُغْلَقَةِ بِالإِحْداثِيّات الأُسْطُوانِيَّة بِاِسْتِخْدامِ الدوال الأَوَّلِيَّةِ فَقَط لِلجَهْد الكَهْرَبائِيِّ وَلِلمَجال الجاذبي لِكُلِّ مِن الأَقْراص.</p>
+<p>القُرْصِ <span class="math inline">\(n=0\)</span> هُوَ الهومويد المُسَطَّحِ الَّذِي لَهُ <span class="math inline">\(\Sigma_{hom} = \sigma_0/\sqrt{1-R^2/\alpha^2}\)</span>. تَقَدَّمَ نَتائِجِ مُحَسِّنه لِهٰذا القُرْصِ. القُرْصِ <span class="math inline">\(n=1\)</span> هُوَ قُرْص <span class="nodecor">Maclaurin</span> الَّذِي لَهُ <span class="math inline">\(\Sigma_{Mac} = \sigma_0 \sqrt{1-R^2/\alpha^2}\)</span>. قُرْص <span class="nodecor">Maclaurin</span> هُوَ حالَةِ حَدِيَهُ لِلجِسْم الكُرَوِيِّ <span class="nodecor">Maclaurin</span>. يُوجَد جُهْدٍ قُرْص <span class="nodecor">Maclaurin</span> هُنا مِن خِلالَ دَمْجِ جُهْدٍ القُرْصِ <span class="math inline">\(n=0\)</span> عَلَى مَدَى <span class="math inline">\(\alpha\)</span>، مُسْتَغَلّاً خَطَّيْهِ مُعادَلَةِ <span class="nodecor">Poisson</span>. القُرْصِ <span class="math inline">\(n=2\)</span> لَهُ كَثافَةُ سَطْحِيَّةٍ <span class="math inline">\(\Sigma_{D2} = \sigma_0 (1-R^2/\alpha^2)^{3/2}\)</span>. يُوجَد الجُهْدِ مِن خِلالَ دَمْجِ جُهْدٍ القُرْصِ <span class="math inline">\(n=1\)</span>.</p>
+<h1 id="sec:intro">مُقَدِّمَةِ</h1>
+<p>تُوَفِّر مُلاحَظاتٍ المَجَرّات المَنْظُورَة مِن الجانِبِ مَعْلُوماتٍ هَيْكَلِيَّةِ وَحَرَكِيّه ثُلاثِيَّةٌ الأَبْعاد بِالتَفْصِيلِ. وَمَعَ ذٰلِكَ، لَم تَكُن المُحاوَلاتِ لِاِسْتِخْدامِ هٰذِهِ البَياناتِ لَتَوْلِيد تَوْزِيعِ الكُتْلَةِ ناجِحَةً تَماماً. إِحْدَى المُشْكِلاتِ هِيَ أَنَّهُ مِن الصَعْبِ حِسابِ الجُهْدِ وَمُتَّجِهات القُوَّةِ لِلأَقْراص المَحْدُودَةَ. هُناكَ حاجَةٍ إِلَى أَقْراص مَحْدُودَةٍ مَحْلُوله بِالكامِلِ يُمْكِن اِسْتِخْدامُها لِلدِراساتِ النَظَرِيَّةِ، وَلِمَعايِره بَرامِجِ الكَمْبيُوتِر، وَكَدَوال أَساسِيَّةٍ لنمذجه المُلاحَظاتِ ثُلاثِيَّةٌ الأَبْعاد مُباشَرَةً.</p>
+<p>يُفْتَرَض نمذجه الكُتْلَةِ عادَةً أَنَّ كُتْلَةِ القُرْصِ مَوْجُودَةٌ فِي قُرْص لا نِهائِيِّ. تَشْمَل هٰذِهِ الأَقْراص القُرْصِ الأَسَى (<span class="nodecor">fre70</span>)، وَقُرْص ميستل (<span class="nodecor">mes63</span>)، وَقُرْص كوزمين-تومري (<span class="nodecor">too63, bin08, eva92, con00::1</span>)، وَقُرْص ريبيكي (<span class="nodecor">eva93</span>).</p>
+<p>تَمَّ حَلٍّ عَدَدٍ قَلِيلٍ مِن الأَقْراص المَحْدُودَةَ تَحْلِيلِيّا لِجَمِيعِ <span class="math inline">\((R,z)\)</span>. يُقَدِّم (<span class="nodecor">las83</span>) وَ (<span class="nodecor">vok98</span>) حَلّاً لِجَمِيعِ <span class="math inline">\((R,z)\)</span> لَقُرْص رَقِيق مَحْدُودٍ بِكَثافَةٍ ثابِتَةٍ. تَقْتَرِب الجاذِبِيَّة مِن اللانِهايَة عِنْدَ حافَةِ هٰذا القُرْصِ. جاذِبِيَّةً قُرْص ميستل المَحْدُودِ (<span class="nodecor">mes63, lyn78, hun84</span>) وَالقُرْص الأَسَى المَقْطُوع (<span class="nodecor">cas83</span>) مَحْدُودَةٍ عِنْدَ حافَةِ القُرْصِ وَلٰكِن لَم يَتِمّ حَلٍّ هٰذِهِ الأَقْراص بِشَكْلٍ مُغْلَقٍ لِلنِقاط خارِجَ القُرْصِ. يَصِف (<span class="nodecor">hur08, hur05::1</span>) طَرِيقَةِ لِتَقْرِيبِ الجُهْدِ لَقُرْص قانُونِ القُوَّةِ لِلنِقاط عَلَى القُرْصِ وَخارِجَهُ.</p>
+<p>تَرْتَبِط عائِلَةِ الأَقْراص المَحْدُودَةَ ذاتِ الكَثافَةِ السَطْحِيَّةُ <span class="math inline">\( \Sigma_n(R;\alpha) = \left(1- {R^2}/{\alpha^2}\right)^{n-1/2}\)</span> بِالكُرَوِيّ ماكلورين الَّذِي تَمَّت دِراسَتَهُ مُنْذُ زَمَنٍ نِيُوتُن. تَمَّت دِراسَةٌ هٰذِهِ العائِلَةِ مُؤَخَّراً بِواسِطَةِ (<span class="nodecor">gon06</span>) وَ (<span class="nodecor">ped08</span>). يَسْتَخْدِم (<span class="nodecor">gon06</span>) طَرِيقَةِ (<span class="nodecor">hun63</span>) لِلحُصُولِ عَلَى الحَلِّ العامِّ كَمَجْمُوع لَمُتَعَدِّدات الحُدُودِ لِيُجَنْدِر فِي الإِحْداثِيّات البَيْضَوِيَّة وَيُعْطِي تَعْبِيرات مُقِيمه لِلجُهُودِ لِلأَقْراص 1، 2، و3. هُنا نَشْتَقّ حُلُولاً مُغْلَقَةً الشَكْلِ كامِلَةٍ بِإِحْداثِيّات أُسْطُوانِيّه لِلجَهْد وَالمَجالات الجاذِبِيَّة لِلأَقْراص n=0، 1، و2. نَبْسُط التَكامُلِ بِالاِنْتِقال إِلَى المَجالِ التَخَيُّلِيّ بِطَرِيقَةٍ مُشابِهَةٍ لِطَرِيقَةِ الإِزاحَة المَرْكَبَةِ الَّتِي قَدَّمَها أُبِيل. أَنْظُر (<span class="nodecor">cio08, cio07</span>) وَالمَراجِعِ المَذْكُورَةِ فِيها</p>
+<p>يَتْبَع الجُهْدِ الجاذبي مُعادَلَةِ بواسون <span class="math inline">\(\nabla^2\Phi = 4\pi\G\rho\)</span>. مُعادَلَةِ بواسون خَطَّيْهِ بِحَيْثُ يُمْكِن إِضافَةً الحُلُولِ. أَيّ، إِذا كانَ <span class="math inline">\(\nabla^2\Phi_1=4\pi\G\rho_1\)</span> وَ <span class="math inline">\(\nabla^2\Phi_2=4\pi\G\rho_2\)</span> ثُمَّ <span class="math inline">\(\nabla^2(\Phi_1+\Phi_2)=4\pi\G(\rho_1+\rho_2)\)</span>. بِالمِثْلِ، يُمْكِن تَمْيِيزٍ الحُلُولِ بِالنِسْبَةِ لَمُعَلِّمه لِلحُصُولِ عَلَى حَلٍّ جَدِيدٍ. اِسْتَغَلَّ (<span class="nodecor">too63</span>) وَ (<span class="nodecor">lyn89</span>) هٰذِهِ الخَطِيَّة لِإِيجادِ عائِلَةِ مِن أَزْواج السُرْعَةِ-الكَثافَةِ عَن طَرِيقِ تَمْيِيزٍ نَمُوذَجَ (<span class="nodecor">kuz56</span>). بِنَفْسِ الطَرِيقَةِ، أَسْتَمِدّ (<span class="nodecor">sat80</span>) نَماذِجَ جَدِيدَةٍ مِن مَجْمُوعَةِ أَزْواج الجُهْدِ-الكَثافَةِ (<span class="nodecor">miy75</span>) عَن طَرِيقِ التَمْيِيزِ بِالنِسْبَةِ لَمُعَلِّمه. هُنا نَسْتَخْدِم نَهْجاً مُماثِلا عَن طَرِيقِ دَمْجِ حَلٍّ مَعْرُوفٌ بِالنِسْبَةِ لَمُعَلِّمه. إِذا كانَ التَكامُلِ قابِلٌ لِلتَنْفِيذِ، فَالنَتِيجَةُ هِيَ زَوْج جُهْدٍ-كَثافَةُ جَدِيدٍ.</p>
+<p>تَمَّ اِسْتِخْدامِ Maple 11 فِي هٰذا العَمَلِ. كانَ Maple لا غِنَى عَنهُ فِي تَبْسِيطِ النَتائِجِ الوَسِيطَة الثَقِيلَةِ وَلٰكِنَّهُ اِحْتاجَ إِلَى الكَثِيرَ مِن التحفيز لِلتَعامُلِ مَعَ المُعادَلات الأَكْثَرَ فَوْضَوِيَّةٌ. تَمَّ التَحَقُّقِ مِن نَتائِجِ Maple بِعِدَةِ طُرُقٍ.</p>
+<p>يَتِمّ اِسْتِخْدامِ تَدْوِينُ مُشْتَرَكٍ فِي جَمِيعِ أَنْحاءِ النَصِّ. تُسْتَخْدَم الإِحْداثِيّات الأُسْطُوانِيَّة <span class="math inline">\((R,z)\)</span>؛ <span class="math inline">\(\Sigma\)</span> هِيَ الكَثافَةِ السَطْحِيَّةُ لِلقُرْص؛ <span class="math inline">\(\sigma_0\)</span> هِيَ الكَثافَةِ السَطْحِيَّةُ عِنْدَ <span class="math inline">\(R=0\)</span>؛ وَ<span class="math inline">\(\alpha\)</span> هُوَ نِصْفِ قَطَرِ القُرْصِ. <span class="math inline">\(\Phi\)</span> هُوَ الجُهْدِ حَيْثُ <span class="math inline">\(\Phi\)</span> دائِماً سَأَلُبّ وَ<span class="math inline">\(\Phi(\infty) =0\)</span>؛ <span class="math inline">\(F_R\)</span> وَ<span class="math inline">\(F_z\)</span> هِيَ مُتَّجِهات المَجالِ الجاذبي مَعَ اِتِّفاقِيَّةِ العَلّامَةُ القِياسِيَّةِ، أَيّ: <span class="math inline">\(\vec{F} = - \vec{\nabla} \Phi\)</span> .</p>
+<p>تُسْتَخْدَم القِيَمِ الرَئِيسِيَّةِ لِلوَظائِف الأَوَّلِيَّةِ بِحَيْثُ، عَلَى سَبِيلِ المِثالِ، لِ <span class="math inline">\(z=x+\I y=r \cos(\theta) + \I  r  \sin(\theta)\)</span>؛   <span class="math inline">\(\sqrt{z}=\sqrt{r}\cos(\theta/2) +\I \sqrt{r}\sin(\theta/2)\)</span>، صالِح لِ <span class="math inline">\(-\pi&lt;\theta&lt;\pi\)</span>. بِهٰذِهِ الطَرِيقَةِ، تَكُون الوَظِيفَةِ <span class="math inline">\(\sqrt{z}\)</span> غَيْرِ غامِضَةٍ مَعَ مُشْتَقّات مُسْتَمِرَّةٌ بِاِسْتِثْناءِ المِحْوَرُ الحَقِيقِيِّ السالِب حَيْثُ تَكُون غَيْرِ مُسْتَمِرَّةٌ.</p>
+<h1 id="القرص-n0-القشرة-المنبسطة-المتجانسة">القُرْصِ <span class="nodecor">n=0</span>: القِشْرَة المُنْبَسَطَة المُتَجانِسَة</h1>
+<p>القِشْرَة المُتَجانِسَة هِيَ قِشْرَةً ذاتِ كَثافَةُ مُوَحَّدَةٍ مَحْدُودَةٍ بِواسِطَةِ السفيرويدات المُتَشابِهَةَ. كانَ نِيُوتُن أَوَّلِ مِن أَثْبَت أَنَّ القُوَّةِ الصافِيَةِ تُساوَى <span class="nodecor">0</span> (أَيّ أَنَّ الجُهْدِ ثابِتٌ) داخِلَ هٰذِهِ القشرات. أَنْظُر (<span class="nodecor">cha87</span>) لِلخَلْفِيَّة التارِيخِيَّةِ. القِشْرَة المُتَجانِسَة رَقِيقَةٌ لا نِهائِيّاً هِيَ عُنْصُرٍ تَفاضُلِيّ مِن سفيرويد. القُرْصِ المُتَجانِس هُوَ الحالَةِ الحديه الَّتِي يَقْتَرِب فِيها المِحْوَرُ الصَغِيرِ مِن <span class="nodecor">0</span>. كَثافَةُ الاِنْهِيارِ لِلقِشْرَة المُتَجانِسَة الرَقِيقَةِ هِيَ:</p>
+<p><span class="math display">\[\label{eq:HomSurfDens}
+ \Sigma_{hom}(R;\alpha)  =   \begin{cases} {\sigma_0} /{\sqrt{1-R^2/\alpha^2}}  &amp; \textrm{لِ } R&lt;\alpha \\
+                             0                                        &amp; \textrm{لِ } R&gt;\alpha
+\end{cases}\]</span></p>
+<p>(<span class="nodecor">lyn89</span>) يُعْطِي صِيغَةِ لِلجَهْد الخارِجِيِّ لِلقِشْرَة المُتَجانِسَة الرَقِيقَةِ. أَخَذَ الحَدِّ <span class="math inline">\(c=(1-e^2)^{1/2} \alpha\rightarrow0\)</span> يُعْطِي حَلّاً لِلقُرْص صالِحاً فِي جَمِيعِ <span class="math inline">\(R\)</span> وَ <span class="math inline">\(z\)</span>.</p>
+<p>(<span class="nodecor">cud93</span>) يُعْطِي تَعْبِيراً عَن جُهْدٍ هٰذا القُرْصِ وَهُوَ أَبْسَطِ مِن الحُلُولِ السابِقَةِ: <span class="math display">\[\label{eq:CudPhi}
+  \Phi_{hom}(R,z;\alpha) =
+  -2\pi\alpha\sigma_0\G\arcsin\left[\frac{2\alpha}{\sqrt{z^2+(R+\alpha)^2} +  \sqrt{z^2+(R-\alpha)^2} }\right]\]</span> يُمْكِن تَبْسِيطِ المُعادَلَةَ [eq:CudPhi] أَكْثَرَ. أَوَّلاً قَمَّ بِالتَحْوِيل البَسِيطِ: <span class="math display">\[\label{eq:CudPhi1}
+   \Phi_{hom}(R,z;\alpha) =
+   -2\pi\alpha\sigma_0\G\arcsin\left[\frac{\sqrt{z^2+(R+\alpha)^2} -  \sqrt{z^2+(R-\alpha)^2}}{2R} \right]\]</span> الآنَ اِسْتَخْدَمَ الهُوِيَّةِ [eq:IdentA1] لِلحُصُولِ عَلَى <span class="math display">\[\label{eq:HomPhi}
+ \Phi_{hom}(R,z;\alpha) =
+   -\pi\alpha\sigma_0\G~\left[\arcsin\left(\frac{ \alpha-\I z}{R}\right)+\arcsin\left(\frac{\alpha+\I z}{R}\right) \right]\]</span></p>
+<p>يُمْكِن دَمْجِ المُعادَلَةَ [eq:HomPhi] عَلَى <span class="math inline">\(\alpha\)</span> بَيْنَما تُؤَدِّي المُعادَلَةَ [eq:CudPhi1] إِلَى تَكامُلٍ مُسْتَحِيلٌ. يَجِب أَنَّ تَكُون المُعادَلَةَ [eq:HomPhi] ذاتِ قِيمَةَ حَقِيقِيَّةٍ بِناءَ عَلَى الأُسُسِ الفِيزيائِيَّة. مِن السَهْلِ إِثْباتِ ذٰلِكَ بِمُلاحَظَة أَنَّ (x) هِيَ دالَّةٍ فَرْدِيَّةٍ لِ x وَبِالتالِي تُلْغِي القُوَى الفَرْدِيَّةِ لِ <span class="math inline">\(\I z\)</span> فِي تَوَسُّع المُتَسَلْسِلَة لِلمُعادَلَة [eq:HomPhi]، مِمّا يَتْرُك نَتِيجَةَ ذاتِ قِيمَةَ حَقِيقِيَّةٍ.</p>
+<p>يَتِمّ الحُصُولِ عَلَى المَجالِ الجاذبي لِلقِشْرَة المُتَجانِسَة المُنْهارَة مِن الجُهْدِ. تُعْطِي المُعادَلَةَ [eq:HomPhi] تَعْبِيرات بَسِيطَةً بِشَكْلٍ خاصٍّ لِ مُتَّجِهات الحَقْل <span class="math inline">\( F_{R,hom}\)</span> وَ <span class="math inline">\( F_{z,hom}\)</span>: <span class="math display">\[\begin{aligned}
+ F_{R,hom}(R,z;\alpha)  &amp;= -\frac{\pi\alpha\sigma_0\G}{R} \left[   \frac{\alpha-\I z}{\sqrt{R^2 - (\alpha- \I z)^2} }  +  \frac{\alpha+\I z}{\sqrt{R^2 + (\alpha -\I z)^2}
+ }\right]\\
+ F_{z,hom}(R,z;\alpha)  &amp;= -{\pi\alpha\sigma_0\G} \left[   \frac{\I}{\sqrt{R^2-(\alpha-\I z)^2}}  -  \frac{\I}{\sqrt{R^2 - (\alpha+\I z)^2} }\right]\end{aligned}\]</span></p>
+<p>يُمْكِن التَعْبِيرِ عَن هٰذِهِ مُتَّجِهات القُوَّةِ كَدَوال حَقِيقِيَّةٍ بِالكامِلِ بِاِسْتِخْدامِ الهُوِيّاتِ [eq:IdentA8] وَ [eq:IdentA9]: <span class="math display">\[\begin{aligned}
+ F_{R,hom}(R,z;\alpha) &amp;= -{\sqrt{2}\pi\alpha\sigma_0\G}~\frac{\alpha\sqrt{f_1 f_2 -f_3} - \abs{z}\sqrt{f_1 f_2 +f_3}}{ R f_1 f_2}\\
+ F_{z,hom}(R,z;\alpha) &amp;= -{\sqrt{2}\pi\alpha\sigma_0\G}~\frac{\sgn(z)\sqrt{f_1 f_2 +f_3}                            } {f_1 f_2 }\end{aligned}\]</span> حَيْثُ <span class="math display">\[\begin{aligned}
+\label{eq:Define-f1-f2-f3}
+   f_1 &amp;= \sqrt{z^2+(R +\alpha)^2}  \nonumber  \\
+   f_2 &amp;= \sqrt{z^2+(R -\alpha)^2}             \\
+   f_3 &amp;= \alpha^2 -R^2 -z^2        \nonumber \end{aligned}\]</span></p>
+<h1 id="sec:MaclaurinDisk">القُرْصِ n=1: قُرْص ماكلورين</h1>
+<p>بَدَأَ كُولِين ماكلورين، بِالإِضافَةِ إِلَى جيمس ايفوري وَالعَدِيد مِن الآخَرِينَ، فِي دِراسَةٌ خَصائِصِ الأَجْسام البَيْضاوِيَّةِ فِي أَوائِلِ القَرْنِ الثامِنِ عَشَرَ (<span class="nodecor">cha87</span>). أَنْظُر أَيْضاً (<span class="nodecor">bin08, ber00, sch56, mih68, kal71, kal72</span>).</p>
+<p>الكُرَوِيِّ المُسَطَّحِ المُتَجانِس هُوَ أَبْسَطِ حالَةِ لِجِسْمِ دُوارٌ يَتَوازَن فِيهِ الجَذْبِ الجاذِبِيَّة مَعَ القُوَّةِ الطارِدَة المَرْكَزِيَّةِ. قُرْص ماكلورين، المَعْرُوفُ أَيْضاً بِاِسْمِ قُرْص كالنايس (<span class="nodecor">kal72</span>)، هُوَ حالَةِ حَدِيَهُ يَكُون فِيها المِحْوَرُ الصَغِيرِ صِفْر. يَعْرِف قُرْص ماكلورين بِالكَثافَة السَطْحِيَّةُ: <span class="math display">\[\label{eq:MacSurfDens}
+ \Sigma_{Mac}(R;\alpha)  =   \begin{cases}  \sigma_0 \sqrt{1-R^2/\alpha^2}  &amp; \textrm{لِ} R&lt;\alpha \\
+                             0                                                          &amp; \textrm{لِ} R&gt;\alpha
+\end{cases}\]</span></p>
+<p>هُناكَ بِعَضِّ الحُلُولِ لَإِمْكانِيَّة قُرْص ماكلورين فِي الأَدَبِيّاتِ. يُقَدِّم (<span class="nodecor">mih68</span>) تَعْبِيراً عَن إِمْكانِيَّةَ الكُرَوِيِّ المُتَجانِس المُسَطَّحِ اِسْتِناداً إِلَى الاِشْتِقاق فِي (<span class="nodecor">sch56</span>). يُمْكِن العُثُورِ عَلَى إِمْكانِيَّةَ قُرْص ماكلورين عَن طَرِيقِ السَماحِ لِلشُذُوذ <span class="math inline">\( e \rightarrow 1\)</span> مَعَ الحِفاظِ عَلَى الكُتْلَةِ ثابِتَةٍ. يُقَدِّم (<span class="nodecor">hun63</span>) الحَلِّ لَقُرْص ماكلورين كَسِلْسِلَة مِن مُتَعَدِّدات الحُدُودِ لِيُجَنْدِر فِي الإِحْداثِيّات البَيْضاوِيَّةِ. يُقَدِّم (<span class="nodecor">neu95, mei01, gon06</span>) حَلّاً مُغْلَقاً لَإِمْكانِيَّة قُرْص ماكلورين فِي الإِحْداثِيّات البَيْضاوِيَّةِ.</p>
+<p>نُقْطَةً البِدايَةِ هُنا هِيَ زَوْج الكَثافَةِ-الإِمْكانِيَّة لِلقُرْص n=0، الهومويد المُسَطَّحِ الَّذِي <span class="math inline">\(\Sigma_{hom}(R;\alpha)=\sigma_0/\sqrt{1-R^2/\alpha^2}\)</span>. يَتِمّ العُثُورِ عَلَى كَثافَةُ الكُتْلَةِ السَطْحِيَّةُ لَقُرْص ماكلورين مِن التَحْوِيلِ: <span class="math display">\[\Sigma_{Mac}(R;\alpha) = \frac{1}{\alpha}  \int^\alpha_0{ \Sigma_{hom}(R; \hat{\alpha} )   ~d\hat{\alpha}}
+ =   \frac{1}{\alpha}  \int^\alpha_0{\frac{\sigma_0}{\sqrt{1-R^2/\hat{\alpha}^2} } ~d\hat{\alpha}}= \sigma_0\sqrt{1-R^2/\alpha^2}\]</span></p>
+<p>الإِمْكانِيَّة المُقابَلَةِ هِيَ: <span class="math display">\[\Phi_{Mac}(R,z;\alpha) = \frac{1}{\alpha} \int^{\alpha}_0{ \Phi_{hom}(R;\hat{\alpha}) ~d\hat{\alpha}}
+                           = \frac{-\pi \sigma_0 \G }{\alpha} \int^{\alpha}_0 {   \hat{\alpha} \left[\arcsin\left(\frac{\hat{\alpha}- \I z }{R}\right)+\arcsin\left(\frac{\hat{\alpha}+ \I z }{R}\right) \right]   d\hat{\alpha}}\]</span> حَيْثُ يَتِمّ إِعْطاءِ التَعْبِيرِ عَن <span class="math inline">\(\Phi_{hom}\)</span> بِواسِطَةِ المُعادَلَةَ [eq:HomPhi]  أَعْلاه. اِسْتَخْدَمَ التَكامُلِ <span class="nodecor">2.813</span> وَ <span class="nodecor">2.833</span> مِن (<span class="nodecor">gra94</span>) لِلحُصُولِ عَلَى:</p>
+<p><span class="math display">\[\label{eq:MacPhi-Im}
+     \begin{split}
+       \Phi_{Mac}(R,z;\alpha)&amp;= -\frac{\pi\sigma_0 \G}{4\alpha}\bigg[
+                               ( 2\alpha^2  -R^2 +2z^2  )\left(\arcsin\left(\frac{\alpha+\I z}{R}\right)+\arcsin\left(\frac{\alpha-\I z}{R}\right)\right)\\
+                               &amp;+\alpha      \left( \sqrt{R^2-(\alpha-\I z)^2} +\sqrt{R^2-(\alpha+\I z)^2} \right)\\
+                               &amp;-3\ z      \left( \I\sqrt{R^2-(\alpha-\I z)^2} -\I\sqrt{R^2-(\alpha+\I z)^2} \right)\bigg]
+     \end{split}\]</span></p>
+<p>يُمْكِن تَحْوِيلِ المُعادَلَةَ [eq:MacPhi-Im] إِلَى تَعْبِيرِ كامِلٍ الواقِعِيَّةِ بِاِسْتِخْدامِ الهُوِيّاتِ [eq:IdentA1], [eq:IdentA6] وَ [eq:IdentA7]: <span class="math display">\[\label{eq:MacPhi-Re}
+     \begin{split}
+        \Phi_{Mac}(R,z;\alpha) =-\frac{\pi\sigma_0 \G}{4\alpha}\bigg[&amp;
+                                2( 2\alpha^2 -R^2 +2z^2)\arcsin\left( \frac{f_1-f_2}{2 R} \right)\\
+                                &amp;+\sqrt{2}\alpha     \sqrt{f_1 f_2 -f_3}
+                                -3\sqrt{2}\abs{z}  \sqrt{f_1 f_2 +f_3}  \bigg]
+    \end{split}\]</span> حَيْثُ يَتِمّ إِعْطاءِ <span class="math inline">\(f_1, f_2, f_3\)</span> بِواسِطَةِ المُعادَلَةَ [eq:Define-f1-f2-f3] أَعْلاه.</p>
+<p>يَتِمّ العُثُورِ عَلَى المَجالِ الجاذبي لَقُرْص ماكلورين مِن الإِمْكانِيَّة بِاِسْتِخْدامِ <span class="math inline">\(\Phi\)</span> كَما هُوَ مُعْطَى بِواسِطَةِ المُعادَلَةَ [eq:MacPhi-Im]. تَمَّ التَعْبِيرِ عَن العِباراتِ الناتِجَةِ كَوَظائِف واقِعِيَّةٍ بِالكامِلِ بِاِسْتِخْدامِ الهُوِيّاتِ [eq:IdentA1], [eq:IdentA8]، وَ [eq:IdentA9]: <span class="math display">\[\label{eq:MacFR-Re}\begin{split}
+F_{R,Mac}(R,z;\alpha)=&amp; -\frac{\pi\sigma_0\G}{2 R \alpha} \Bigg[
+   2 R^2\arcsin\left( \frac{f_1-f_2}{2 R} \right)\\
+    &amp; +\sqrt{2}\alpha  ( \alpha^2 -R^2 +z^2)   \frac{\sqrt{f_1 f_2 -f_3}}{f_1 f_2}\\
+    &amp; -\sqrt{2}\abs{z} ( \alpha^2 +R^2 +z^2)   \frac{\sqrt{f_1 f_2 +f_3}}{f_1 f_2}
+  \Bigg]   \end{split}\]</span> <span class="math display">\[\label{eq:MacFz-Re}\begin{split}
+  F_{z,Mac}(R,z;\alpha)  = &amp; -\frac{\pi\sigma_0 \G}{ \alpha} \Bigg[
+     -2z\arcsin\left( \frac{f_1-f_2}{2 R} \right) \\
+    &amp; + 2 \sqrt{2} \alpha z \frac{  \sqrt{f_1 f_2 -f_3}}{f_1 f_2} \\
+    &amp; +\sqrt{2}~\sgn(z)~( \alpha^2 -R^2 -z^2) \frac{ \sqrt{f_1 f_2 +f_3}}{f_1 f_2}
+ \Bigg]   \end{split}\]</span> حَيْثُ يَتِمّ إِعْطاءِ <span class="math inline">\(f_1, f_2, f_3\)</span> بِواسِطَةِ المُعادَلَةَ [eq:Define-f1-f2-f3] أَعْلاه.</p>
+<p>يُمْكِن العُثُورِ عَلَى الإِمْكانِيَّة عَلَى مِحْوَرِ <span class="math inline">\(z\)</span> وَعَلَى مُسْتَوَى <span class="math inline">\(z=0\)</span> عَن طَرِيقِ أَخَذَ حُدُودِ المُعادَلَةَ [eq:MacPhi-Re]: <span class="math display">\[\label{eq:MacPhizaxis}
+     \Phi_{Mac}( 0,z;\alpha) =  - \frac{\pi\sigma_0\G}{\alpha}\left[ \left( \alpha^2+ z^2  \right)\arcsin\left( \frac{\alpha}{\sqrt{\alpha^2+z^2}}   \right)
+     -\alpha \abs{z} ~\right]\]</span></p>
+<p><span class="math display">\[\label{eq:MacPhiOnDisk}
+    \Phi_{Mac}(R, 0;\alpha) =    \begin{cases}-\frac{\pi^2\sigma_0\G}{4\alpha} \left( 2\alpha^2-R^2\right) &amp; \textrm{لِ} R \leq \alpha       \\
+                                              -\frac{\pi  \sigma_0\G}{2\alpha} \left[ (2\alpha^2-R^2)\arcsin(\frac{\alpha}{R})  +\alpha\sqrt{R^2-\alpha^2}\right]    &amp;\textrm{لِ} R \geq \alpha
+  \end{cases}\]</span></p>
+<p>يَتِمّ العُثُورِ عَلَى مُتَّجِه القُوَّةِ الشُعاعِيَّة فِي مُسْتَوَى <span class="math inline">\(z=0\)</span> عَن طَرِيقِ أَخَذَ حَدٍّ المُعادَلَةَ [eq:MacFR-Re] أَو عَن طَرِيقِ التَفاضُل فِي المُعادَلَةَ [eq:MacPhiOnDisk] بِالنِسْبَةِ لِ <span class="math inline">\(R\)</span>.</p>
+<p><span class="math display">\[\label{FRMac_in_plane}
+   F_{R,Mac}(R, 0;\alpha) =
+         \begin{cases}  - \frac{\pi^2 R\sigma_0\G} {2 \alpha}&amp; \textrm{لِ} R\leq\alpha\\
+                        - \frac{\pi\sigma_0\G} {\alpha}\left[  {R\arcsin({\alpha}/{R}} )-\alpha\sqrt{1-\alpha^2/R^2}\right] &amp; \textrm{لِ} R\geq\alpha
+         \end{cases}\]</span></p>
+<p>يَتِمّ العُثُورِ عَلَى مُتَّجِه القُوَّةِ المِحْوَرِيَّة عَلَى مِحْوَرِ <span class="math inline">\(z\)</span> عَن طَرِيقِ أَخَذَ حَدٍّ المُعادَلَةَ [eq:MacFR-Re] أَو التَفاضُل فِي المُعادَلَةَ [eq:MacPhizaxis] بِالنِسْبَةِ لِ <span class="math inline">\(z\)</span>.</p>
+<p><span class="math display">\[\label{FzMac_in_plane}
+   F_{z,Mac}( 0,z ;\alpha) =     -\frac{2\pi\sigma_0\G} {\alpha}\left[z\arcsin\left( \frac{\alpha}{\sqrt{\alpha^2+z^2}}\right) -\alpha~\sgn(z)\right]\]</span></p>
+<h1 id="sec:NewDisk">القُرْصِ n=2</h1>
+<p>(<span class="nodecor">gon06</span>) يُقَدِّمُونَ حَلّاً مُغْلَقاً لَإِمْكانِيَّة القُرْصِ n=2 فِي الإِحْداثِيّات الإِهْلَيْلَجِيَّة.</p>
+<p>كَثافَةُ سَطْحِ القُرْصِ لِلقُرْص n=2 هِيَ <span class="math display">\[\label{eq:D2SurfDens}
+ \Sigma_{D2}(R;\alpha)  =   \begin{cases}  {\sigma_0} { (1-R^2/\alpha^2)^{3/2}}  &amp; \textrm{لِ} R&lt;\alpha \\
+                                                               0                                         &amp; \textrm{لِ} R&gt;\alpha
+\end{cases}\]</span></p>
+<p>يُمْكِن الحُصُولِ عَلَى تَوْزِيعِ الكُتْلَةِ هٰذا مِن المُعادَلَةَ [eq:MacSurfDens]، كَثافَةُ سَطْحِ القُرْصِ لِلقُرْص n=1، بِالتَحْوِيل: <span class="math display">\[\Sigma_{D2}(R;\alpha) =
+    \frac{3}{\alpha^3}  \int^\alpha_0{ \hat{\alpha}^2  \Sigma_{Mac}(R; \hat{\alpha} )   d\hat{\alpha}}\]</span></p>
+<p>الإِمْكانِيَّة المُقابَلَةِ هِيَ: <span class="math display">\[\label{eq:D2PhiTransform}
+    \Phi_{D2}(R,z;\alpha) = \frac{3}{\alpha^3}  \int^{\alpha}_0{ \hat{\alpha}^2 \Phi_{Mac}(R,z;\hat{\alpha}) ~d\hat{\alpha}}\]</span> حَيْثُ يَتِمّ إِعْطاءِ التَعْبِيرِ عَن <span class="math inline">\(\Phi_{Mac}\)</span> بِواسِطَةِ المُعادَلَةَ [eq:MacPhi-Im] أَعْلاه. تَحْتَوِي المُعادَلَةَ [eq:D2PhiTransform] عَلَى مُصْطَلَحاتٍ يُمْكِن حَلِّها بِاِسْتِخْدامِ (<span class="nodecor">gra94</span>) 2.262، 2.813، وَ 2.833 بُعْدَ جَمْعِ المُصْطَلَحاتِ، النَتِيجَةُ مَضْغُوطه بِشَكْلٍ مَعْقُولٍ:</p>
+<p><span class="math display">\[\label{eq:D2Phi-Im} \begin{split}
+    \Phi_{D2}(R,z;\alpha) &amp;= -\frac{\pi\sigma_0\G}{64\alpha^3}\Bigg[
+                            3( 8{\alpha}^4 -8{\alpha}^2{R}^2 +16\alpha^2{z}^2 +3{R}^4 -24{R}^2{z}^2 +8{z}^4 ) \left(\arcsin\left(\frac{\alpha+\I z}{R}\right)+\arcsin\left(\frac{\alpha-\I z}{R}\right)\right) \\
+                          &amp;+\alpha ( 18\alpha^2 -9{R}^2 +26{z}^2 )    \left(  {\sqrt{R^2-(\alpha+\I z)^2}}  + {\sqrt{R^2-(\alpha-\I z)^2}}\right) \\
+                          &amp;-z(58\alpha^2 -55{R}^2 +50{z}^2 )     \left( {\I}{\sqrt{R^2-(\alpha+\I z)^2}}  - {\I}{\sqrt{R^2-(\alpha-\I z)^2}}\right)
+    \bigg]
+\end{split}\]</span></p>
+<p>يُمْكِن تَحْوِيلِ المُعادَلَةَ [eq:D2Phi-Im] إِلَى تَعْبِيرِ كامِلٍ حَقِيقِيٍّ بِاِسْتِخْدامِ الهُوِيّاتِ [eq:IdentA1], [eq:IdentA6] وَ [eq:IdentA7]: <span class="math display">\[\label{eq:D2Phi-Re}\begin{split}
+  \Phi_{D2}(R,z;\alpha) =&amp;-\frac{\pi\sigma_0\G}{64\alpha^3}\Bigg[
+       6( 8{\alpha}^4 -8{\alpha}^2{R}^2 +16\alpha^2{z}^2 +3{R}^4 -24{R}^2{z}^2 +8{z}^4 )\arcsin\left( \frac{f_1-f_2}{2 R}   \right)\\
+      &amp;+\sqrt{2}\alpha  ( 18\alpha^2 -9{R}^2 +26{z}^2 )   \sqrt{f_1 f_2 -f_3}\\
+      &amp;-\sqrt{2}\abs{z} (58\alpha^2 -55{R}^2 +50{z}^2 )            \sqrt{f_1 f_2 +f_3}
+  \Bigg]
+\end{split}\]</span> حَيْثُ <span class="math inline">\(f_1, f_2, f_3\)</span> مُعْطاة بِواسِطَةِ المُعادَلَةَ [eq:Define-f1-f2-f3] أَعْلاه.</p>
+<p>مَجالِ الجاذِبِيَّة لِلقُرْص n=2 هُوَ التَدَرُّج لِلإِمْكانِيَّة بِاِسْتِخْدامِ <span class="math inline">\(\Phi\)</span> كَما هُوَ مُعْطَى بِواسِطَةِ المُعادَلَةَ [eq:D2Phi-Im]. تَمَّ التَعْبِيرِ عَن الصِيَغِ الناتِجَةِ كَدَوال حَقِيقِيَّةٍ بِالكامِلِ بِاِسْتِخْدامِ الهُوِيّاتِ بِاِسْتِخْدامِ الهُوِيّاتِ [eq:IdentA1], [eq:IdentA8]، وَ [eq:IdentA9] :</p>
+<p><span class="math display">\[\label{eq:D2FR-Re} \begin{split}
+   F_{R,D2}(R,z;\alpha)  &amp;= - \frac{3\pi\sigma_0\G}{16 R \alpha^3}  \Bigg[
+         2R^2 (4\alpha^2R^2 -3R^4  +12 R^2z^2 )\arcsin\left( \frac{f_1-f_2}{2 R}   \right) \\
+      &amp;+ \sqrt{2}\alpha(  2\alpha^4 -5\alpha^2R^2 +4\alpha^2z^2 +3R^4 -25R^2z^2 +2z^4 )  \frac{ \sqrt{f_1 f_2 -f_3}}{f_1 f_2} \\
+      &amp;+ \sqrt{2}\abs{z}( 2\alpha^4 +9\alpha^2R^2 +4\alpha^2z^2 -13R^4 -11R^2z^2 +2z^4 )    \frac{ \sqrt{f_1 f_2 +f_3}}{f_1 f_2}
+                \Bigg]
+\end{split}\]</span></p>
+<p><span class="math display">\[\label{eq:D2Fz-Re} \begin{split}
+   F_{z,D2}(R,z;\alpha)   &amp; = - \frac{\pi\sigma_0\G}{4 \alpha^3}  \Bigg[
+        -6z( 2\alpha^2  -3R^2 +2z^2 )\arcsin\left( \frac{f_1-f_2}{2 R} \right) \\
+      &amp; + \sqrt{2} \alpha z ( 13\alpha^2 -13R^2 +17z^2  )          \frac{ \sqrt{f_1 f_2 -f_3}}{f_1 f_2} \\
+      &amp; + \sqrt{2} ~\sgn(z) (( 4\alpha^4 -8\alpha^2R^2 -3\alpha^2z^2 +4R^4 -7R^2z^2 -11z^4 )   \frac{ \sqrt{f_1 f_2 +f_3} } {f_1 f_2}
+                \Bigg]
+ \end{split}\]</span></p>
+<p>حَيْثُ <span class="math inline">\(f_1, f_2, f_3\)</span> مُعْطاة بِواسِطَةِ المُعادَلَةَ [eq:Define-f1-f2-f3] أَعْلاه.</p>
+<p>الإِمْكانِيَّة عَلَى مِحْوَرِ <span class="math inline">\(z\)</span> وَعَلَى مُسْتَوَى <span class="math inline">\(z=0\)</span> يُمْكِن العُثُورِ عَلَيها بِأَخْذِ الحَدِّ مِن المُعادَلَةَ [eq:D2Phi-Re]: <span class="math display">\[\label{eq:D2Phizaxis}
+     \Phi_{D2}( 0,z;\alpha) =  - \frac{\pi\sigma_0\G}{4\alpha^3}\left[ 3\left( \alpha^4+2\alpha^2 z^2 + z^4  \right)\arcsin\left(\frac{\alpha}{\sqrt{\alpha^2+z^2}}\right)
+     -\alpha \abs{z}(5\alpha^2+3z^2) ~\right]\]</span></p>
+<p><span class="math display">\[\label{eq:D2PhiOnDisk}
+    \Phi_{D2}(R,0;\alpha) =    \begin{cases}-\frac{3\pi^2\sigma_0\G}{64\alpha^3} \left( 8\alpha^4 -8\alpha^2R^2+3R^4\right) &amp; \textrm{لِ} R \leq \alpha       \\
+                                              -\frac{3\pi\sigma_0\G}{32\alpha} \left[ ( 8\alpha^4 -8\alpha^2R^2+3R^4)\arcsin(\frac{\alpha}{R})
++3\alpha(2\alpha^2-R^2)\sqrt{R^2-\alpha^2}\right]    &amp;\textrm{لِ} R \geq \alpha
+  \end{cases}\]</span></p>
+<p>مُتَّجِه القُوَّةِ الشُعاعِيَّة فِي مُسْتَوَى <span class="math inline">\(z=0\)</span> يَتِمّ العُثُورِ عَلَيهِ بِأَخْذِ الحَدِّ مِن المُعادَلَةَ [eq:D2FR-Re] أَو بِالتَفاضُل مِن المُعادَلَةَ [eq:D2PhiOnDisk] بِالنِسْبَةِ لِ <span class="math inline">\(R\)</span>.</p>
+<p><span class="math display">\[\label{FRD2_in_plane}
+   F_{R,D2}(R, 0;\alpha) =
+         \begin{cases}  -\frac{3\pi^2 R\sigma_0\G} {16\alpha^3}(4\alpha^2-3R^2)&amp; \textrm{لِ} R\leq\alpha\\
+                        -\frac{3\pi\sigma_0\G} {8\alpha^3}\left[ R(4\alpha^2-3R^2)\arcsin({\alpha}/{R} )
+                                           -\alpha(2\alpha^2-3R^2)\sqrt{1-\alpha^2/R^2}\right] &amp; \textrm{لِ} R\geq\alpha
+         \end{cases}\]</span></p>
+<p>مُتَّجِه القُوَّةِ المِحْوَرِيَّة عَلَى مِحْوَرِ <span class="math inline">\(z\)</span> يَتِمّ العُثُورِ عَلَيهِ بِأَخْذِ الحَدِّ مِن المُعادَلَةَ [eq:D2Fz-Re] أَو بِالتَفاضُل مِن المُعادَلَةَ [eq:D2Phizaxis] بِالنِسْبَةِ لِ <span class="math inline">\(z\)</span>.</p>
+<p><span class="math display">\[\begin{split}\label{eq:FzD2_OnZaxis}
+   F_{z,D2}( 0,z ;\alpha) = - \frac{\pi\sigma_0\G}{2 \alpha^3( \alpha^{2}+{z}^{2}) } \bigg[
+  &amp; -6(\alpha^2+z^2)^2 z \arcsin\left(\frac{\alpha}{\sqrt{\alpha^2+z^2}}\right)\\
+  &amp; +\alpha z^2(13\alpha^2+17z^2)
+  &amp; +\alpha\,\sgn(z)(4\alpha^4-3\alpha^2z^2-11z^4)
+  \bigg]  \end{split}\]</span></p>
+<h2 id="مقارنة-قرص-ماكلورين-والقرص-n2">مُقارَنَةً قُرْص ماكلورين وَالقُرْص <span class="nodecor">n=2</span></h2>
+<p>يُقارِن الجَدْوَلُ <span class="nodecor">1</span> الخَصائِص المُهِمَّةِ لِلقُرْصَيْنِ. يُقارِن القُرْصِ <span class="nodecor">n=2</span> بِأَنَّهُ أَكْثَرَ تَرْكِيزا فِي المَرْكَزِ مِن قُرْص ماكلورين. تَزْداد السُرْعَةِ الدَوَرانِيَّة بِشَكْلٍ أَسْرَعِ فِي القُرْصِ الداخِلِيِّ وَتَبْدَأ فِي الاِنْخِفاضِ قِبَلَ الوُصُولِ إِلَى حافَةِ القُرْصِ. كَما هُوَ واضِحٍ، مُشْتَقّه السُرْعَةِ الدائِرِيَّةِ لَقُرْص ماكلورين غَيْرِ مُسْتَمِرَّةٌ عِنْدَ حافَةِ القُرْصِ بَيْنَما القُرْصِ <span class="nodecor">n=2</span> يَتَصَرَّف بِشَكْلٍ أَفْضَلَ.</p>
+<p><span> l r l l</span><br />
+<br />
+<strong>  الخاصِّيَّة&amp;&amp;<strong>  قُرْص ماكلورين   &amp;<strong>  القُرْصِ <span class="nodecor">n=2</span><br />
+الكَثافَةِ السَطْحِيَّةُ &amp;<span class="math inline">\( \Sigma(R)         =\)</span>&amp;<span class="math inline">\( \sigma_0\sqrt{1 - {R^2}/{\alpha^2}}    \)</span>&amp;<span class="math inline">\(= \sigma_0 (1 - {R^2}/{\alpha^2})^{3/2}                         \)</span><br />
+الكُتْلَةِ الكُلِّيَّةِ &amp;<span class="math inline">\( M                 =\)</span>&amp;<span class="math inline">\( \frac23 \pi\alpha^2\sigma_0            \)</span>&amp;<span class="math inline">\(= \frac25\pi \alpha^2\sigma_0                                  \)</span><br />
+السُرْعَةِ الدائِرِيَّةِ &amp;<span class="math inline">\( V_c^2(R,0)        =\)</span>&amp;<span class="math inline">\( \dfrac{\pi^2 R^2\sigma_0\G} {2\alpha}  \)</span>&amp;<span class="math inline">\(= \dfrac{3\pi^2 R^2\sigma_0\G (4\alpha^2 -3 R^2) } {16\alpha^3} \)</span><br />
+&amp;= &amp;<span class="math inline">\( \dfrac{3\pi R^2 M\G}{4\alpha^3}        \)</span>&amp;<span class="math inline">\(= \dfrac{15\pi R^2 M \G(4\alpha^2 -3 R^2)}{32\alpha^3}          \)</span><br />
+سُرْعَةٍ حافَةِ القُرْصِ &amp;<span class="math inline">\( V_c^2(\alpha,0)   =\)</span>&amp;<span class="math inline">\( \dfrac{\pi^2 \alpha \sigma_0\G} {2}    \)</span>&amp;<span class="math inline">\(= \dfrac{3\pi^2 \alpha \sigma_0\G} {16}                         \)</span><br />
+&amp;= &amp;<span class="math inline">\( \dfrac{3 \pi M\G}{4\alpha}             \)</span>&amp;<span class="math inline">\(= \dfrac{15\pi M\G}{32\alpha}                              \)</span><br />
+</strong></strong></strong></p>
+<h1 id="sec:apps">مِثالٌ: مَجالِ القُوَّةِ لَنَمُوذَج مَجَره بَسِيطٍ</h1>
+<p>مَشاكِلَ ثُلاثِيَّةٌ الأَبْعاد مِثْلَ تِلْكَ المُتَعَلِّقَةِ بِبُنْيَة وَحَرَكِيّات الغازِ خارِجَ القُرْصِ سَتَسْتَفِيد مِن اِسْتِخْدامِ أَزْواج الكَثافَةِ-الجُهْدِ الجَدِيدَةِ. تَمَّ بِناءَ نَمُوذَجَ مَجَره بَسِيطٍ لِلتَوْضِيح. يَتَكَوَّن النَمُوذَجِ مِن قُرْص بِمَعامِل <span class="nodecor">n=2</span> وَمِنْطَقَةٍ لُبِّ/اِنْتِفاخ منمذجه كَكُتْلَةٍ نقطيه. يَعْرِف هٰذا النَمُوذَجِ بِثَلاثَةِ مُعامَلاتِ: كُتْلَةِ القُرْصِ، وَكُتَله مِنْطَقَةِ اللُبّ/الاِنْتِفاخ، وَقَطَرِ القُرْصِ. كَما هُوَ مُوَضِّح فِي الشَكْلِ، فَإِنَّ السُرْعَةِ الدائِرِيَّةِ، المَحْسُوبَة ك <span class="math inline">\(V_c=\sqrt{(-V F_R(R,z)}\)</span>، تَظَلّ ثابِتَةٍ تَقْرِيباً عَلَى مُعْظَمَ القُرْصِ. أَيْضاً، مُشْتَقّ السُرْعَةِ الدائِرِيَّةِ مَعَ <span class="math inline">\(z\)</span> تَقْرِيباً خُطَى عَلَى نِطاقِ واسِعٍ مِن كُلِّ مِن <span class="math inline">\(R\)</span> وَ<span class="math inline">\(z\)</span>.</p>
+<p>يَتَوافَق الشَكْلِ بِشَكْلٍ مُدْهِش مَعَ الشَكْلِ <span class="nodecor">5</span> مِن (<span class="nodecor">fra05::1</span>) الَّذِي يُظْهِر أَنَّ السُرْعَةِ المقاسه لِ HI لِ NGC891 تُقِلّ خَطِّيّا مَعَ الاِرْتِفاعِ فَوْقَ القُرْصِ. أَنْظُر أَيْضاً (<span class="nodecor">ran97, swa97, kam07, oos07, fra06::3, bar06</span>). مِن المُخَطَّطِ القِيامِ بِمَزِيدٍ مِن العَمَلِ حَوْلَ هٰذا المَوْضُوعِ.</p>
+<h1 id="الملخص-والخاتمة">المُلَخَّص وَالخاتِمَة</h1>
+<p>لَقَد قَدَّمْنا حُلُولاً جَدِيدَةٍ لِعائِلَةٍ مِن الأَقْراص المُنْتَهِيَةُ. يَتِمّ إِعْطاءِ التَعْبِيرات الصَرِيحَةِ بِالإِحْداثِيّات الأُسْطُوانِيَّة بِاِسْتِخْدامِ الدوال الأَوَّلِيَّةِ لِلجَهْد وَالقُوَّةِ الجاذِبِيَّة لِلأَقْراص ذاتِ الكَثافَةِ السَطْحِيَّةُ <span class="math inline">\(\Sigma_n=\sigma_0 (1-R^2/\alpha^2)^{n-1/2} \textrm{ مَعَ } n=0, 1, 2\)</span>. كَما يَتِمّ إِعْطاءِ التَعْبِيرات لِلحالات الحديه عِنْدَ <span class="math inline">\(R=0\)</span> وَ <span class="math inline">\(z=0\)</span>.</p>
+<p>تَمْلَأ هٰذِهِ الحُلُولِ حاجَةٍ وَيَنْبَغِي أَنَّ تُسَهِّل نمذجه ظاهِرَةِ الجاذِبِيَّة ثُلاثِيَّةٌ الأَبْعاد الَّتِي تَشْمَل مَجَرّات الأَقْراص. هٰذا مُهِمٌّ بِشَكْلٍ خاصٍّ بِسَبَبِ تُوَفِّر بَياناتٍ حَرَكِيَّةِ مُفَصَّلَةٌ مُؤَخَّراً فَوْقَ مُسْتَوَى القُرْصِ.</p>
+<p>أَنا ممتن لِلمَراجِع المَجْهُولِ لَاِقْتِراحاته وَتَعْلِيقاته المُفِيدَةَ الَّتِي ساهَمَت فِي تَحْسِينِ العَرْضِ.</p>
+<h1 id="app-identities">بِعَضِّ الهُوِيّاتِ البَسِيطَةِ</h1>
+<p>تَمَّ جَمْعِ عَدَدٍ مِن الهُوِيّاتِ هُنا. فِي جَمِيعِ الحالاتِ <span class="math inline">\( x, y \in \Re\)</span> يَجِب تَجَنُّبِ نطاقات الصَلاحِيَّة الَّتِي تَحْتَوِي عَلَى عَدَمِ اِسْتِمْرارِيَّة القِيمَةِ الرَئِيسِيَّةِ لَدالّه الجَذْر التَرْبِيعِيّ عَلَى المِحْوَرُ الحَقِيقِيِّ السالِب.</p>
+<p>يُمْكِن إِثْباتِ المُعادَلَةَ [eq:IdentA1] بِأَخْذِ جَيْب الزاوِيَةِ لَكَلَآ الجانِبَيْنِ؛ تَقْلِيلِ الحُدُودِ بِاِسْتِخْدامِ الهُوِيّاتِ <span class="math inline">\(\sin(a+b) =
+\sin(a)\cos(b)+\cos(a)\sin(b)\)</span> وَ <span class="math inline">\(\sin(2a) = 2\sin(a)\cos(b)\)</span>؛ وَاِسْتِبْدال <span class="math inline">\(\cos = \sqrt{1-\sin^2}\)</span>. يُمْكِن العُثُورِ عَلَى الهُوِيّاتِ الأُخْرَى بِالاِسْتِبْدال فِي العَلاقَةِ <span class="math display">\[\sqrt{x+\I y}=\frac{  \sqrt{ \sqrt{x^2+y^2} + x} +  \sgn(y) \I \sqrt{ \sqrt{x^2+y^2} - x}} {\sqrt{2}}\]</span> وَفِي التَعْبِيرِ المَوْجُودِ بِأَخْذِ المَعْكُوس لَكَلَآ الجانِبَيْنِ.</p>
+<p><span class="math display">\[\begin{aligned}
+   \label{eq:IdentA1}\arcsin(x-\I y) +\arcsin\left(x+\I y\right)           &amp;~=~  2\arcsin\left[ \onehalf\sqrt{(x+1)^2+y^2} - \onehalf\sqrt{(x-1)^2+y^2}\right]\\
+   \label{eq:IdentA2}  \sqrt{x-\I y}+\sqrt{x+\I y}                          &amp;~=~  \sqrt{2}\sqrt{ \sqrt{x^2+ y^2} +x}\\
+   \label{eq:IdentA3}  \I\sqrt{x-\I y} -  \I\sqrt{x+\I y}                   &amp;~=~  \sgn(y) \sqrt{2} \sqrt{ \sqrt{x^2+ y^2} -x}\\
+   \label{eq:IdentA4}  \frac{1}{\sqrt{x+\I y}}+ \frac{1}{\sqrt{x-\I y}}     &amp;~=~  \sqrt{2}\frac{ \sqrt{\sqrt{x^2+ y^2}+x}}{\sqrt{x^2+ y^2}  }\\
+   \label{eq:IdentA5}  \frac{\I}{\sqrt{x+\I y}} -\frac{\I}{\sqrt{x-\I y}}   &amp;~=~
+                \sgn(y)\sqrt{2} \frac{\sqrt{ \sqrt{x^2+ y^2} -x} } {\sqrt{x^2+ y^2}}\\
+   \label{eq:IdentA6}  {\sqrt{1- \left( x+\I y \right) ^2}}+ {\sqrt{1-\left( x-\I y \right) ^2}}&amp;~=~
+                 \sqrt{2} {\sqrt{  \sqrt{1 -2x^2 +2y^2+x^4+2x^2y^2 +y^4} +1 -x^2 +y^2}} \\
+   \label{eq:IdentA7}   \I  {\sqrt{1- \left( x+\I y \right) ^2}}-  {\I }{\sqrt{1-\left( x-\I y \right) ^2}} &amp;~=
+                  \sgn(xy)\sqrt{2} {\sqrt{ \sqrt{1 -2x^2 +2y^2+x^4+2x^2y^2 +y^4} -1 +x^2 -y^2}} \\
+   \label{eq:IdentA8}  \frac{1}{\sqrt{1- \left( x-\I y \right) ^2}}+\frac {1}{\sqrt{1-\left( x+\I y \right) ^2}}&amp;~=~
+                \sqrt{2}\frac{\sqrt{  \sqrt{1 -2x^2 +2y^2+x^4+2x^2y^2 +y^4} +1 -x^2 +y^2}}
+                {\sqrt{1 -2x^2 +2y^2+x^4+2x^2y^2 +y^4}}\\
+   \label{eq:IdentA9}  \frac{\I }{\sqrt{1- \left( x-\I y \right) ^2}}- \frac {\I }{\sqrt{1-\left( x+\I y \right) ^2}} &amp;~=
+                \sgn(xy)\sqrt{2}\frac{\sqrt{  \sqrt{1 -2x^2 +2y^2+x^4+2x^2y^2 +y^4} -1 +x^2 -y^2}}
+                {\sqrt{1 -2x^2 +2y^2+x^4+2x^2y^2 +y^4}}
+ \end{aligned}\]</span></p>
+</body>
+</html>
