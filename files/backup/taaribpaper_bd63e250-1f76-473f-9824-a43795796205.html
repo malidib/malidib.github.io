@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Peter M. Hines">
+  <title>مِن تَخْمَيْنِ كولاتز إِلَى مَجْمُوعَةِ Thompson \mathcal F، عَبْرَ تُقاطِع جيرارد</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">مِن تَخْمَيْنِ كولاتز إِلَى مَجْمُوعَةِ <span class="nodecor">Thompson</span> <span class="math inline">\(\mathcal F\)</span>، عَبْرَ تُقاطِع جيرارد</h1>
+<p class="author"><span class="nodecor">Peter M. Hines</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّصُ</h1>
+<p>مُشْكِلَةِ <span class="math inline">\(3x+1\)</span> الشَهِيرَةِ لِ <span class="nodecor">L. Collatz</span> لا تَحْتاج إِلَى مُقَدِّمَةِ؛ وَمَعَ ذٰلِكَ، يَتَناوَل هٰذا البَحْثِ مُشْكِلَةِ سابِقَةٍ أَقَلَّ شُهْرَةً وَلَم تُحِلّ بُعْدَ: التَخْمَيْنِ الأَصْلِيُّ لكولاتز، أَو <span class="nodecor">OCC</span> (<span class="nodecor">Lag85</span>).</p>
+<p>نُوَضِّح أَنَّ المَشْغَل الحِسابِيّ الأَساسِيُّ مِن <span class="nodecor">OCC</span>، عِنْدَ دَمْجه مَعَ تُقاطِع <span class="nodecor">J.-Y. Girard</span> مِن نِظامِهِ لِلهَنْدَسَةِ التَفاعُلِيَّة (<span class="nodecor">GOI1</span>, <span class="nodecor">GOI2</span>)، يُؤَدِّي إِلَى تَحْقِيقِ مَجْمُوعَةِ <span class="nodecor">R. Thompson</span> <span class="math inline">\(\mathcal F\)</span> كَوَظائِف تُطابِقِيهِ، بِمَعْنَى <span class="nodecor">J. Conway</span> (<span class="nodecor">JC72</span>).</p>
+<p>نُقَدِّم أَيْضاً النَظَرِيَّةِ الفِئَوِيَّةِ الكامِنَةِ الَّتِي تُفَسِّر ذٰلِكَ، وَنِصْفِ المَشْغَل الأَساسِيُّ مِن <span class="nodecor">OCC</span> كَتَطابُق تَماسُكِي قِياسِيٌّ.</p>
+<h1 id="تعريفات-أساسية-فرضية-كولاتز-الأصلية-وتقاطع-جيرارد">تَعْرِيفات أَساسِيَّةٍ: فَرْضِيَّةَ كولاتز الأَصْلِيَّةِ وَتُقاطَع جيرارد</h1>
+<p>نَبْدَأ بِفَرْضِيَّة كولاتز الأَصْلِيَّةِ، كَما وَصَفَت فِي (<span class="nodecor">Lag85</span>).</p>
+<p>نَرْمُز لِلمَجْمُوعَةِ المُتَماثِلَة عَلَى <span class="math inline">\(\mathbb N\)</span> ب <span class="math inline">\(\SN\)</span>، وَنَعْرِف <strong>تَبايُنٍ كولاتز الأَصْلِيُّ</strong> <span class="math inline">\(\rho\in \SN\)</span> ب <span class="math inline">\(\rho (n) = \ \left\{ \begin{array}{lcr}
+    \vspace{0.3em}
+    \frac{2n}{3} &amp; &amp; n\ (mod\ 3) = 0, \\ 
+    \vspace{0.3em}
+    \frac{4n-1}{3} &amp; &amp; n \ (mod \ 3) = 1, \\ 
+    \vspace{0.3em}
+    \frac{4n+1}{3} &amp; &amp; n \ (mod \ 3) = 2. 
+    \end{array}\right.\)</span></p>
+<p>النِقاطِ الثابِتَةِ الوَحِيدَةُ لِ <span class="math inline">\(\rho\)</span> هِيَ <span class="math inline">\(\{ 0,1\}\subseteq \mathbb N\)</span>، وَمَدارات جَمِيعِ <span class="math inline">\(\{ 0,\ldots , 9 \} \setminus \{ 8\}\)</span> مَحْدُودَةٍ.</p>
+<p>الجَبْر الأُولَى يُعْطِي <span class="math inline">\(\{0,1\}\)</span> كَحُلُول فَرِيدَةٍ لِ <span class="math inline">\(\rho(n)=n\)</span>. بِالحِساب المُباشِرِ، <span class="math inline">\(2\rightarrow 3 \rightarrow 2\)</span> وَ <span class="math inline">\(4\rightarrow 5\rightarrow 7\rightarrow 9\rightarrow 6\rightarrow 4\)</span> هِيَ مَداراتِ مَحْدُودَةٍ.</p>
+<p>كَما وَصَفَ فِي (<span class="nodecor">Lag85</span>)، ظُهْرِ التَبايُنِ أَعْلاه فِي دَفاتِر غَيْرِ مَنْشُورَةٍ لكولاتز، بِتارِيخِ <span class="math inline">\(1^{st}\)</span> مايُو، 1932، كَجَوْهَر الفَرْضِيَّة التالِيَةِ (غَيْرِ المَحْلُولَة حالِيّاً):</p>
+<p>مَدارِ العَدَدَ <span class="math inline">\(8\)</span> تَحْتَ <span class="math inline">\(\rho\)</span> لا نِهائِيِّ.</p>
+<p>نَجْمَع بَيِّنَ المَشْغَل الأَساسِيُّ لَفَرْضِيَّة كولاتز الأَصْلِيَّةِ مَعَ نَمُوذَجَ التَقاطُعِ المَنْطِقِيِّ الَّذِي أَسْتَخْدِمه جان-إِيف جيرارد (<span class="nodecor">GOI1, GOI2</span>). كَما أُشِير فِي (<span class="nodecor">PHD, HA, AHS</span>)، كانَ نِظامِ جيرارد يَعْتَمِد عَلَى الزُمْرَة الجُزْئِيَّةِ <span class="math inline">\(\mathcal I(\mathbb N)\)</span> لَلَحِقْنَ الجُزْئِيَّةِ عَلَى <span class="math inline">\(\mathbb N\)</span>؛ نَحْنُ نَقْتَصِر عَلَى الزُمْرَة الفَرْعِيَّةِ <span class="math inline">\(\SN\subseteq \mathcal I(\mathbb N)\)</span>.</p>
+<p><strong>تُقاطِع جيرارد</strong> هُوَ الدالَّةِ <span class="math inline">\(\_\star \_ : \SN\times \SN\rightarrow \SN\)</span> مُعْطاة ب <span class="math inline">\((a\star b)(n) = \left\{ \begin{array}{lcr}
+    \vspace{0.3em}
+    2.a\left( \frac{n}{2}\right) &amp; \ \ &amp; n \ \mbox{even,} \\
+    2.b\left( \frac{n-1}{2}\right)+1 &amp; \ \ &amp; n \ \mbox{odd.} \\
+    \end{array} \right.\)</span><br />
+مِن المَعْرُوفُ (مَثَلاً <span class="nodecor">PHD, HA, AHS</span>) أَنَّ هٰذِهِ دالَّةٍ تُشابِه حقنيه.</p>
+<h2 id="تبسيط-طفيف">تَبْسِيطِ طَفِيفٍ</h2>
+<p>يَنْظُر مَفْهُومِ OCC إِلَى مَداراتِ الأَعْدادُ الطَبِيعِيَّةِ تَحْتَ التَبايُنِ <span class="math inline">\(\rho\)</span>. نَقُوم بترافق <span class="math inline">\(\rho\)</span> بِوَظِيفَة الخَلْفِ / عَكَسَها (المعرف جُزْئِيّاً) لِلتَخَلُّصِ مِن التَفاهَة <span class="math inline">\(\rho(0)=0\)</span>، وَلٰكِن لِلحِفاظِ عَلَى سُلُوكِ جَمِيعِ المَدارات الأُخْرَى:</p>
+<p>[rcb-def] نَعْرِف <span><strong>التَبايُنِ المُخَفَّض لكولاتز</strong></span> <span class="math inline">\(\lambda\in \SN\)</span> بِأَنَّ <span class="math inline">\(\lambda(n)=\rho(n+1)-1\)</span>. هٰذا تَبايُنٍ مُحَدَّدٍ جَيِّداً عَلَى <span class="math inline">\(\mathbb N\)</span>، نَظَراً لِأَنَّ <span class="math inline">\(\rho(0)=0\)</span>. تَوْسِيعِ التَعْرِيفِ يُعْطِي صِيغَةِ صَرِيحَةٌ: <span class="math display">\[\lambda (n) = \ \left\{ \begin{array}{lcr}
+    \vspace{0.3em}
+    \frac{4n}{3} &amp; &amp; n\ (\text{mod}\ 3) = 0, \\ \vspace{0.3em}
+    \frac{4n+2}{3} &amp; &amp; n \ (\text{mod} \ 3) = 1, \\ \vspace{0.3em}
+    \frac{2n-1}{3} &amp; &amp; n \ (\text{mod} \ 3) = 2. 
+    \end{array}\right.\]</span> بِناءَ عَلَى التَصْمِيمِ، <span class="math inline">\( \lambda^K(n)=\rho^K(n+1)-1\)</span>، لُذّاً فَإِنَّ الأَسْئِلَةِ حَوْلَ المَدارات غَيْرِ التافِهَة لِ <span class="math inline">\(\rho\)</span> وَتِلْكَ الخاصَّةِ ب <span class="math inline">\(\lambda\)</span> قابِلَةٍ لِلتَبادُلِ؛ يُصْبِح مَفْهُومِ OCC بُعْدَ ذٰلِكَ الفَرْضِيَّة الَّتِي تَقُول بِأَنَّ مَدارِ العَدَدَ <span class="nodecor">7</span> تَحْتَ <span class="math inline">\(\lambda\)</span> لِإِنْهائِي.</p>
+<p>[noCoincidence-lem] <span class="math inline">\(\lambda\neq\rho\)</span>، وَ<span class="math inline">\(\lambda(n)=\rho(n) \ \Leftrightarrow \ n=0\)</span>، لِجَمِيعِ <span class="math inline">\(n\in \mathbb N\)</span>.</p>
+<p>بِشَكْلٍ تافِه، <span class="math inline">\(\lambda\neq\rho\)</span>. كِتابَةِ الحالاتِ الثَلاثِ بِشَكْلٍ مُنْفَصِل تُعْطِي <span class="math display">\[\lambda(n)\ = \ \left\{ 
+    \begin{array}{lcr} 
+    4n/3 &amp; \ \ \ \ n=3M \ \ \ \ &amp; 2n/3  \\
+    %   &amp; &amp; \\
+    (4n+2)/3 &amp; \ \ \ \ n=3M+1 \ \ \ \ &amp; (4n-1)/3\\
+    %   &amp; &amp; \\
+    (2n-1)/3 &amp; \ \ \ \ n=3M+2 \ \ \ \  &amp; (4n+1)/3 \\
+    \end{array}\right\} \ = \ \rho(n)\]</span> مِمّا يُعْطِي، عَلَى التَوالِي، <span class="math inline">\(n=0\)</span>، تُناقِض، وَ <span class="math inline">\(n=-1\notin \N\)</span>.</p>
+<h2 id="دمج-التباينات-الأصلية-والمخفضة-لكولاتز">دَمْجِ التَبايُنات الأَصْلِيَّةِ وَالمُخَفَّضَة لكولاتز</h2>
+<p>يُمْكِن إِعْطاءِ معكوسات <span class="math inline">\(\lambda,\rho\in \SN\)</span> بِشَكْلٍ صَرِيحٍ كَما يَلِي: <span class="math display">\[\lambda ^{-1}(n) \ = \  
+\left\{ 
+\begin{array}{lr}  
+\vspace{0.3em}
+\frac{3n}{4} &amp; n \ (mod \ 4) = 0, \\ \vspace{0.3em}
+\frac{3n-2}{4} &amp; n \ (mod \ 4)=2, \\ 
+\frac{3n+1}{2} &amp;  n \ \mbox{ فَرْدِيٌّ,}
+\end{array} 
+\right. 
+\  \mbox{ وَ }  \ 
+\rho^{-1} (n) = \ \left\{ \begin{array}{lcr}
+\vspace{0.3em}
+\frac{3n}{2} &amp; &amp; n\ (mod\ 2) =0, \\ \vspace{0.3em}
+\frac{3n+1}{4} &amp; &amp; n \ (mod \ 4) = 1, \\ 
+\frac{3n-1}{4} &amp; &amp; n \ (mod \ 4) = 3. 
+\end{array}\right.\]</span> تَرْكِيبِ التَبايُنِ المُخَفَّض لكولاتز مَعَ مَعْكُوس التَبايُنِ الأَصْلِيُّ لكولاتز يُنْتِج تَبايُناً سَبَقَ رُؤْيَتِهِ فِي نَظَرِيَّةَ الفِئاتِ وَالمَنْطِقَ:</p>
+<p>[assoc-def] نَعْرِف <span><strong>المُقْتَرِن</strong></span> <span class="math inline">\(\alpha\in \SN\)</span> بِأَنَّهُ <span class="math inline">\(\alpha=\lambda\rho^{-1}\in \SN\)</span>؛ بِمَعْنَى آخَرِ، <span class="math inline">\(\alpha(n) = \rho(\rho^{-1}(n) +1)-1\)</span>. تَوْسِيعِ التَعْرِيفِ يُعْطِي: <span class="math display">\[\alpha (n) \ = \ 
+    \left\{ \begin{array}{lr} \vspace{0.3em} 
+    2n              &amp;  n\ (mod \ 2)=0, \\ \vspace{0.3em}
+    n+1             &amp; n \ (mod \ 4) =1, \\  
+    \frac{n-1}{2}   &amp; n \ (mod \ 4) =3, \end{array} \right. 
+    \ \ \mbox{ وَ } \ \  
+    \alpha^{-1}(n) \ = \ \left\{ \begin{array}{lr}
+    \vspace{0.3em}
+    \frac{n}{2}   &amp; n \ (mod \ 4) = 0, \\  \vspace{0.3em}
+    n-1  &amp; n \ (mod \ 4) = 2, \\  
+    2n+1   &amp; n \ (mod \ 2) = 1. 
+    \end{array}\right.\]</span></p>
+<p>يُمْكِننا التَفْكِيرِ فِي المُقْتَرِن عَلَى أَنَّهُ، “التَبايُنِ المَنْقُولِ لكولاتز، مَرْكَبٍ مَعَ مَعْكُوس التَبايُنِ الأَصْلِيُّ”. بِالمُقارَنَةِ مَعَ أَيّ مِن تَبايُناتٌ كولاتز، فَإِنَّ مَداراتِ الأَعْدادُ الطَبِيعِيَّةِ تَحْتَ المُقْتَرِن سَهْلَةً التَوْصِيفِ لِلغايَةِ.</p>
+<p>[assocOrbits-lem] لِلمُقْتَرِن نُقْطَةً ثابِتَةٍ فَرِيدَةٍ، <span class="math inline">\(\alpha(0)=0\)</span>. مَدارِ كُلِّ <span class="math inline">\(n&gt;0\in\mathbb N\)</span> لَهُ حَدٍّ أَدَّنِي مَحَلِّيٍّ واحِدٍ إِذا وَفَقَط إِذا كانَ <span class="math inline">\(n&gt;0\)</span> زَوْجِيّا؛ لا يُوجَد مَدارِ لَهُ حَدٍّ أَقْصَى مَحَلِّيٍّ، وَبِالتالِي فَإِنَّ مَدارِ كُلِّ <span class="math inline">\(n&gt;0\)</span> لا نِهائِيِّ.</p>
+<p><span><em>مِن الأَسْهَل (لٰكِنَّهُ مُكافِئ) إِثْباتِ ذٰلِكَ لِلمَعْكُوس، <span class="math inline">\(\alpha^{-1}=\rho\lambda^{-1}\)</span>.</em></span></p>
+<p>بَدِيهِيّا، <span class="math inline">\(\alpha^{-1}(0)=0\)</span>؛ هٰذِهِ فَرِيدَةٍ، حَيْثُ أَنَّ <span class="math inline">\(\alpha^{-1}(n)=n \ \Leftrightarrow \ r(n)=l(n)\)</span>، مِمّا يَتَناقَض مَعَ الليما [noCoincidence-lem] لِجَمِيعِ <span class="math inline">\(n\neq 0\)</span>. عِنْدَما يَكُون <span class="math inline">\(n\in \mathbb N\)</span> فَرْدِيّاً، <span class="math inline">\(\alpha^{-1}(n)= 2n+1&gt;n\)</span>؛ وَالَّذِي هُوَ بِدَوْرِهِ فَرْدِيٌّ. وَبِالتالِي، <span class="math inline">\(n&lt; \alpha^{-1}(n)\)</span> لِأَيّ <span class="math inline">\(n\)</span> فَرْدِيٌّ. عِنْدَما يَكُون <span class="math inline">\(n&gt;0\)</span> زَوْجِيّا، <span class="math inline">\(\alpha^{-1}(n)&lt;n\)</span> قَد يَكُون زَوْجِيّا أَو فَرْدِيّاً، وَلٰكِن لا يُمْكِن أَنَّ يَكُون صِفْرا لِأَنَّ <span class="math inline">\(\alpha^{-1}\)</span> هُوَ تَبايُنٍ. وَبِالتالِي، أَيّ مَسارِ يَبْدَأ بِعَدَدٍ زَوْجِي غَيْرِ صِفْرَيَّ يَنْخَفِض حَتَّى يَصِل إِلَى عَدَدٍ فَرْدِيٌّ (الحَدِّ الأَدْنَى المَحَلِّيِّ)، وَمِن ثُمَّ يَزْداد بِلا حُدُودِ.</p>
+<p>كُلِّ مَدارِ مَحْدُودٍ يَصِل إِلَى حَدٍّ أَقْصَى وَأَدْنَى؛ وَبِالتالِي فَإِنَّ المَدارِ الوَحِيدُ المَحْدُودِ تَحْتَ <span class="math inline">\(\alpha^{-1}\)</span> (وَبِالتالِي تَحْتَ <span class="math inline">\(\alpha\)</span>) هُوَ النُقْطَةِ الثابِتَةِ <span class="math inline">\(\alpha^{-1}(0)=0=\alpha(0)\)</span>.</p>
+<p>تُقاطِع جيرار وَالمُقْتَرِن (وَبِالتالِي التَبايُنِ الأَصْلِيُّ لكولاتز) مُرْتَبِطانِ بِخاصَّيْهِ أَكْثَرَ شُيُوعاً مِن نَظَرِيَّةَ الفِئاتِ:</p>
+<p>[nat-lemma] <span class="math inline">\(\alpha (f\star (g\star h)) \ = \ ((f\star g)\star h) \alpha\)</span>, لِجَمِيعِ <span class="math inline">\(f,g,h\in\SN\)</span>.</p>
+<p>الحِسابِ المُباشِرِ يُعْطِي، لِجَمِيعِ <span class="math inline">\(n\in \N\)</span>, <span class="math display">\[\alpha (f\star (g\star h)) (n) \ = \ ((f\star g)\star h) \alpha (n) \ = \ \left\{ \begin{array}{lcr}
+    4f\left(\frac{n}{2}\right) &amp; \ \ &amp; n\ (mod \ 2) =0 \\
+    4g\left(\frac{n-1}{4}\right)+2 &amp; \ \ &amp; n\ (mod \ 4) =1 \\
+    2h\left(\frac{n-3}{4}\right)-1 &amp; \ \ &amp; n\ (mod \ 4) =3 \\
+    \end{array}\right.\]</span></p>
+<h1 id="مجموعة-تومسون-mathcal-f-من-كولاتز-وجيرارد">مَجْمُوعَةِ تومسون <span class="math inline">\(\mathcal F\)</span> مِن كولاتز وجيرارد</h1>
+<p>مَوْضُوعِ دِراسَةٌ هامٍّ فِي نَظَرِيَّةَ المَجْمُوعاتِ التوافقيه هُوَ مَجْمُوعَةِ تومسون <span class="math inline">\(\mathcal F\)</span>؛ نُشِير إِلَى (<span class="nodecor">CFP,MB96</span>) لِلحُصُولِ عَلَى نَظْرَةٌ عامَّةٍ. تَعْرِف العَدِيدَ مِن التَحْقِيقاتِ العَمَلِيَّةِ؛ نَبْدَأ بِتَعْرِيف مُجَرَّدَ كَمُوَلِّدات وَعَلاقاتِ.</p>
+<p>[F-def] مَجْمُوعَةِ تومسون <span class="math inline">\(\mathcal F\)</span> يَتِمّ تَوْلِيدها بِواسِطَةِ المَجْمُوعَةِ <span class="math inline">\(\{ x_j \}_{j\in \mathbb N}\)</span> مَعَ العَلاقاتِ <span class="math inline">\(x_i^{-1} x_j x_i = x_{j+1}\)</span>، لِكُلِّ <span class="math inline">\(i&lt;j\)</span>. مِن المَعْرُوفُ (مَثَلاً (<span class="nodecor">CFP</span>)) أَنَّ هٰذِهِ لَيِسَت مَجْمُوعَةِ مَوْلِده دُنْيا؛ المَجْمُوعَةِ الفَرْعِيَّةِ <span class="math inline">\(\{x_0,x_1\}\)</span> تُولَد كامِلٍ <span class="math inline">\(\mathcal F\)</span>، لٰكِنَّ العَلاقاتِ المَطْلُوبَةِ أَقَلَّ بَدِيهِيّه.</p>
+<p>المَجْمُوعَةِ الَّتِي يَتِمّ تَوْلِيدها بِواسِطَةِ <span class="math inline">\(\{ \alpha \ ,\ Id\star \alpha \}\)</span> مُتَماثِله مَعَ <span class="math inline">\(\mathcal F\)</span>.</p>
+<p>نَعْرِف <span class="math inline">\(\{ X_k \}_{k\in \mathbb N}\subseteq \SN\)</span> بِواسِطَةِ <span class="math inline">\(X_0=\alpha\)</span> وَ<span class="math inline">\(X_{j+1}=Id \star X_j\)</span>، لِكُلِّ <span class="math inline">\(j&gt;0\)</span>. بِما أَنَّ <span class="math inline">\((\_ \star \_)\)</span> هُوَ تَماثُلِ جَماعِيٍّ، القاعِدَةِ [nat-lemma] (الطَبِيعِيَّةِ) تُوحِي <span class="math display">\[\alpha (Id\star (Id\star f)) \alpha^{-1} \ =\ (Id\star Id) \star f \ = \ Id \star f \ \ \ \ \forall f\in \SN\]</span> عِنْدَ تَطْبِيقِ هٰذا عَلَى التَعْرِيفِ الاِسْتِقْرائِيّ لِ<span class="math inline">\(X_j\)</span> يُعْطِي <span class="math inline">\(X_j = X_i X_{j+1}X_i^{-1}\)</span>، لِكُلِّ <span class="math inline">\(i&lt;j\)</span>، وَبِالتالِي المَجْمُوعَةِ الفَرْعِيَّةِ مِن <span class="math inline">\(\SN\)</span> الَّتِي يَتِمّ تَوْلِيدها بِواسِطَةِ <span class="math inline">\(\{ X_j\}_{j\in \mathbb N}\)</span> هِيَ صُورَةِ تُماثِلِيهِ لِ<span class="math inline">\(\mathcal F\)</span>، مُعْطاة بِواسِطَةِ <span class="math inline">\(x_j\mapsto X_j\)</span>، لِكُلِّ <span class="math inline">\(j\in \mathbb N\)</span>. ثُمَّ نَسْتَنْتِج مِن الخاصِّيَّة المَعْرُوفَةِ (مَثَلاً (<span class="nodecor">CFP</span>)) أَنَّ كُلِّ صُورَةِ تُماثِلِيهِ كَهٰذِهِ إِمّا أَنَّ تَكُون جَماعِيَّةٍ أَو مُتَماثِله مَعَ <span class="math inline">\(\mathcal F\)</span> نَفْسِها، لِنَسْتَنْتِج أَنَّ هٰذِهِ المَجْمُوعَةِ الفَرْعِيَّةِ مُتَماثِله مَعَ <span class="math inline">\(\mathcal F\)</span>.</p>
+<p>أَخِيراً، عَرَضَ القاعِدَةِ [F-def] لَيِسَ دُنْيا وَ<span class="math inline">\(\{ x_0,x_1 \}\)</span> يَكْفِي لَتَوْلِيد كُلِّ <span class="math inline">\(\mathcal F\)</span>؛ يَتْبَع نَتِيجَتنا.</p>
+<p>نُشِير إِلَى المَجْمُوعَةِ الفَرْعِيَّةِ مِن <span class="math inline">\(\SN\)</span> الَّتِي يَتِمّ تَوْلِيدها بِواسِطَةِ <span class="math display">\[\alpha (n) \ = \ \left\{ \begin{array}{lr} \vspace{0.3em} {2n} &amp; { n} \ (mod \ 2) = 0 \\ \vspace{0.3em}
+    n+1 &amp; n \ (mod \ 4) =1 \\  
+    \frac{n-1}{2} &amp; n \ (mod \ 4) =3 \end{array} \right.  \ \  \ \ (Id\star \alpha)
+    (n) \ = \  \left\{ \begin{array}{lr}  \vspace{0.3em}
+    n &amp; n \ (mod \ 2) = 0 \\ \vspace{0.3em}
+    2n-1 &amp; n \ (mod \ 4)=1 \\ \vspace{0.3em}
+    n+2 &amp; n \ (mod \ 8) =3 \\
+    \frac{n-1}{2} &amp; n \ (mod \ 8) =7 \end{array} \right.\]</span> بِاِعْتِبارِها <span><strong>تَحْقِيقِ تَوافُقِي لِ<span class="math inline">\(\mathcal F\)</span></strong></span>.</p>
+<p>يُمْكِننا التَفْكِيرِ فِي <span class="math inline">\((Id\star \alpha)\)</span> ك، ’تَكْرارِ <span class="math inline">\(\alpha=\rho \left( \rho^{-1}(n)+1\right)-1\)</span> عَلَى الأَعْدادُ الفَرْدِيَّةِ فَقَط’. مِن خِلالَ البِناءِ، يُمْكِننا كِتابَةِ مُوَلِّداتٍ هٰذا التَحْقِيقِ لِ<span class="math inline">\(\mathcal F\)</span> بِناءَ عَلَى التَبادُلِ الأَصْلِيُّ لكولاتز، كَما يَلِي: <span class="math display">\[n\ \mapsto \   \rho \left( \rho^{-1}(n)+1\right)-1 \ \ \mbox{وَ} \ \ n \mapsto \   \left\{ \begin{array}{lcr} \vspace{0.3em} n &amp; &amp; n \ \mbox{even,} \\ 2 . \rho \left( \rho^{-1} \left( \frac{n-1}{2} \right) +1 \right) -1 &amp; \ \ &amp; n \ \mbox{ odd.} \end{array} \right.\]</span></p>
+<p>نُلاحِظ أَنَّ هٰذا التَحْقِيقِ لِ<span class="math inline">\(\mathcal F\)</span> يُمْكِن أَيْضاً أَنَّ يَسْتَنْتِج مِن التَحْقِيقِ الَّذِي قَدَّمَهُ إِم.فِي. لوسون فِي (<span class="nodecor">MVL06</span>) مِن حَيْثُ الأُحادِيّات الدَوْرِيَّةَ لِنَظَرِيَّةِ النِصْفِ مَجْمُوعاتٍ العَكْسِيَّة (<span class="nodecor">MVL</span>)، بِالاِعْتِمادِ عَلَى تَمْثِيلِ حِسابَيَّ مُشْتَرَكٍ وَمَعْرُوفٌ لِهٰذِهِ النِصْفِ مَجْمُوعاتٍ العَكْسِيَّة (<span class="nodecor">NP</span>).</p>
+<p>فِي (<span class="nodecor">KB</span>)، يَصِف ك. براون تَماثُلِ جَماعِيٍّ حَقْنِي <span class="math inline">\(\mu : \mathcal F \times \mathcal F \rightarrow \mathcal F\)</span> وَهُوَ &quot;متجمع حَتَّى التَقارُن بِواسِطَةِ <span><em>[المُوَلِّدِ]</em></span> <span class="math inline">\(x_0\)</span>”، لُذّاً <span class="math display">\[\mu(\mu(a,b),c) \ = \ x_0 \mu(a , \mu(b,c)) x_0^{-1} \ \ \ \ \forall \ a,b,c\in \mathcal F\]</span> هٰذِهِ بِالطَبْعِ خاصَّيْهِ الطَبِيعِيَّةِ لِلقاعِدَةِ [nat-lemma]، وَالمَوْلِد <span class="math inline">\(x_0\)</span> فِي التَحْقِيقِ التوافقي هُوَ بِالضَبْطِ المُقْتَرِن، المُشْتَقَّ مِن التَبادُلِ الأَصْلِيُّ لكولاتز. بِالتالِي، يُمْكِننا تَحْدِيدِ تُقاطِع جيرارد (عِنْدَ تَقْيِيده بِهٰذا التَحْقِيقِ لِ<span class="math inline">\(\mathcal F\)</span>) مَعَ تَماثُلِ براون، وَنَسْتَنْتِج أَنَّ التَحْقِيقِ التوافقي لِ<span class="math inline">\(\mathcal F\)</span> مُغْلَقٍ تَحْتَ تُقاطِع جيرارد.</p>
+<h2 id="الدوال-mathcal-f-كدوال-تطابقيه">الدوال <span class="math inline">\(\mathcal F\)</span> كَدَوال تُطابِقِيهِ</h2>
+<p>المُصْطَلَحاتِ المَذْكُورَةِ أَعْلاه تَعْتَمِد عَلَى التَعْرِيفِ التالِي لِ جُون كونواي:</p>
+<p>[cf-def] دالَّةٍ <span class="math inline">\(f:\mathbb N \rightarrow \mathbb N\)</span> تُعْتَبَر <span><strong>تُطابِقِيهِ</strong></span> عِنْدَما يُوجَد مَجْمُوعَةِ مُفَهْرَسه <span class="math inline">\(\{ (x_j,y_j) :x_j,y_j&lt;K \}_{j=0,\ldots,K-1}\)</span> بِحَيْثُ أَنَّ <span class="math inline">\(f(Km+i) \ = \ x_jm+y_j\)</span>.</p>
+<p>النَتِيجَةُ الرَئِيسِيَّةِ لكونواي (<span class="nodecor">JC72</span>) (أَنْظُر أَيْضاً (<span class="nodecor">SM</span>)) – وَالَّتِي تَقُول بِأَنَّ الحِسابِ العامِّ يُمْكِن التَعْبِيرِ عَنهُ مِن خِلالَ مَشاكِلَ تَكْرارِيّه بَسِيطَةً عَلَى الدوال التطابقيه – تَمَّ تَنْقِيحها وَتَبْسِيطها لاحِقاً بِواسِطَةِ إِس. بوركل (<span class="nodecor">SB</span>)، الَّذِي اِسْتَخْدَمَ مَجْمُوعَةِ فَرْعِيَّةٍ صارِمَةٍ مِن دَوال كونواي.</p>
+<p>يُمْكِن التَحَقُّقِ بِسُهُولَةٍ مِن أَنَّ التباديل <span class="math inline">\(\rho, \lambda\)</span>, وَ <span class="math inline">\(\alpha\)</span> هِيَ تُطابِقِيهِ، وَهٰذِهِ الخاصِّيَّة مَحْفُوظه تَحْتَ التَرْكِيبُ، العَكْسِ، وَتُقاطَع جيرارد. إِن تَحْقِيقِ <span class="math inline">\(\mathcal F\)</span> المَذْكُورِ أَعْلاه كَدَوال تُطابِقِيهِ هُوَ بِالفِعْلِ تَحْقِيقِ كَذٰلِكَ.</p>
+<p>يَبْقَى وَصَفَ بِنْيَةَ مَجْمُوعَةِ التباديل التطابقيه الَّتِي يَتِمّ تَوْلِيدها بِواسِطَةِ <span class="math inline">\(\{ \lambda,\rho,(Id\star \lambda),(Id\star\rho)\}\)</span>. هٰذا يُفْتَرَض أَنَّهُ غَيْرِ تافِه، لٰكِنَّهُ يَسْتَحِقّ الدِراسَةُ؛ يَنْشَأ مُباشَرَةً مِن النِظامِ المَرْكَزِيِّ المَفْتُوحِ وَيَحْتَوِي عَلَى <span class="math inline">\(\mathcal F\)</span> لتومسون بِطَرِيقَةٍ طَبِيعِيَّةٍ. قَد تَسْتَنْتِج بِعَضِّ الهُوِيّاتِ الَّتِي تُلَبِّيها هٰذِهِ المَجْمُوعَةِ بِطَرِيقَةٍ تَصْنِيفِيّه، مِن الشَكْلِ [pentagram-fig].</p>
+<h2 id="شرح">شَرْحِ</h2>
+<p>السَبَبِ فِي أَنَّ المَواضِيعِ الَّتِي تَبْدُو مُخْتَلِفَةٍ بِشَكْلٍ واضِحٍ (تَخْمِينات كولاتز، مَنْطِقُ جيرارد الخَطِّيِّ، <span class="math inline">\(\mathcal F\)</span> لتومسون) مُرْتَبِطَةً هُوَ تَصْنِيفِي. جَمِيعِ العَمَلِيّاتِ الحِسابِيَّة الرَئِيسِيَّةِ (تَبايُنٍ كولاتز، تَبايُنٍ كولاتز المُخَفَّض، وَالمُرْتَبِط) هِيَ <span class="nodecor">isomorphisms</span> <span class="nodecor">canonical</span>، فِي مَعْنَى التَماسُكِ التَصْنِيفِيّ. عِلاوَةً عَلَى ذٰلِكَ، تُقاطِع جيرارد (أَو تَجانُس براون) هُوَ <span class="nodecor">tensor</span> تَصْنِيفِي، وَقَد عُرِفَ <span class="math inline">\(\mathcal F\)</span> لتومسون مُنْذُ تَقْدِيمُهُ بِأَنَّ لَهُ عَلاقاتٍ وَثِيقَةٍ مَعَ نَظَرِيَّةَ التَماسُكِ المَشْهُورَةِ لِمَأْكَلَيْنِ لِلاِرْتِباط (<span class="nodecor">PD96</span>).</p>
+<p>نِصْفِ الآنَ وَنُناقِش الهَياكِل الَّتِي تَتَوَسَّط التَبايُنات الَّتِي دَرَسْناها فِي التَماسُكِ.</p>
+<h1 id="cats-sect">تَفْسِيرٍ كَتَماسُك تَصْنِيفِي</h1>
+<p><span><em>(نَفْتَرِض الإِلْمام بِأَساسِيّات نَظَرِيَّةَ التَصْنِيفِ، نَظَرِيَّةَ تَماسُكِ مَأْكَلَيْنِ للارتباطيه (<span class="nodecor">MCL, GMK</span>)، وَالعَلاقَةِ بَيِّنَ التَماسُكِ وَمُتَعَدِّدٍ السُطُوحَ الارتباطي لستاشيف (<span class="nodecor">JLL</span>).)</em></span><br />
+مِن المَعْرُوفُ، عَلَى الأَقَلِّ فِي بِعَضِّ مَجالاتِ نَظَرِيَّةَ التَصْنِيفِ، أَنَّ مَجْمُوعَةِ تومسون <span class="math inline">\(\mathcal F\)</span> تَصِف التَماسُكِ للارتباطيه فِي السِياقِ التالِي:</p>
+<p>تَطْلُب مِن الفِئَةِ شِبْهِ التجميعيه <span class="math inline">\((\mathcal C,\otimes)\)</span> أَنَّ تُلَبِّي جَمِيعِ مُسْلِماتٍ مَأْكَلَيْنِ / كِيلِي لِفِئَةِ تَجْمِيعَيْهِ بِاِسْتِثْناءِ وُجُودِ عُنْصُرٍ وَحْدَةِ، لُذّاً يُوجَد تَطابُقِ طَبِيعِيٍّ بَيِّنَ المُرافِقُ <span class="math display">\[(\_ \otimes (\_ \otimes \_)) \ \ , \ \ ((\_ \otimes \_ ) \otimes \_ ) \ : \ \mathcal C \times \mathcal C \times \mathcal C \rightarrow \mathcal C\]</span> وَمُكَوِّناتِها <span class="math inline">\(\{ \tau_{A,B,C} : A\otimes (B \otimes C) \rightarrow (A\otimes B) \otimes C \}_{A,B,C\in Ob(\mathcal C)}\)</span> (المُرْتَبِطات المُفَهْرَسَة بِالكائِنات) تُلَبِّي شَرْطَ مَأْكَلَيْنِ الخُماسِيُّ <span class="math display">\[( \  \tau_{A,B,C}\otimes Id_D)  \  \tau_{A,B\otimes C,D} \  (Id_A \otimes    \tau_{B,C,D}) \ = \    \tau_{A\otimes B,C,D}  \  \tau_{A,B,C\otimes D}\]</span> يُمْكِن أَنَّ تَكُون الفِئَةِ ذاتِ الكائِنِ الوَحِيدُ (أَيّ الزُمْرَة) <span class="math inline">\(\mathcal M\)</span> شِبْهِ تَجْمِيعَيْهِ، دُونِ أَنَّ يَطْلُب مِن كائِنها الفَرِيدِ أَنَّ يَكُون كائِن وَحْدَةِ. فِي هٰذا السِياقِ، سَيَكُون لِلتَحْوِيلِ الطَبِيعِيِّ المَطْلُوبِ مُكَوِّن فَرِيد (مُرْتَبِطه) <span class="math inline">\(\tau\in \mathcal M\)</span>، وَيُصْبِح شَرْطَ مَأْكَلَيْنِ الخُماسِيُّ <span class="math inline">\(\tau^2=(\tau\otimes Id)\tau(Id\otimes \tau)\)</span>.</p>
+<p>نُشِير إِلَى (<span class="nodecor">K, JK</span>) لِنَظَرِيَّةِ الفِئاتِ شِبْهِ التجميعيه، وَإِلَى (<span class="nodecor">TAC, JHRS</span>) لِلأَعْداد النَظَرِيّ لِلزُمْرَة. التالِي مَعْرُوفٌ جَيِّداً:</p>
+<p>[noSS-thm] لِتَكُن <span class="math inline">\((M,\star)\)</span> زَمَرَهُ شِبْهِ تَجْمِيعَيْهِ حَيْثُ المُرافِقُ (التَجانُسات) <span class="math inline">\((Id_M\star \_),(\_ \star Id_M):M\rightarrow M\)</span> مُخْلِصه. إِمّا أَنَّ</p>
+<ol>
+<li><p>المُرْتَبِطُ لِ <span class="math inline">\(\_\star\_\)</span> هُوَ الهُوِيَّةِ <span class="math inline">\(Id\in M\)</span>، وَفِي هٰذِهِ الحالَةِ يَكُون الكائِنِ الفَرِيدِ لِ <span class="math inline">\(M\)</span> (اِسْتِرْجاعِ لِ) كائِن الوَحْدَةِ لِ <span class="math inline">\(\_\star\_\)</span>، أَو</p></li>
+<li><p>مَجْمُوعَةِ جَمِيعِ التَطابُقات الارتباطيه القِياسِيَّةِ هِيَ مَجْمُوعَةِ مُتَماثِله مَعَ مَجْمُوعَةِ تومسون <span class="math inline">\(\mathcal F\)</span>.</p></li>
+</ol>
+<p>الجُزْء الأَوَّلِ قَدَّمَ فِي (<span class="nodecor">JHRS</span>). لُوحِظَ الجُزْء الثانِي بِشَكْلٍ مُسْتَقِلٍّ مِن قِبَلَ العَدِيدَ مِن الباحِثِينَ. يُعْطَى سَرْدٌ تارِيخِيٍّ مَعَ بُرْهان (دُونِ المُطالَبَةِ بِالأَصالَة) فِي (<span class="nodecor">OCL</span>). تَشْمَل المُساهَماتِ الرَئِيسِيَّةِ، وَلٰكِن لا تَقْتَصِر عَلَى، (<span class="nodecor">MVL06, JHRS, FL, MB96, PD96</span>)؛ لَم تصاغ جَمِيعِ هٰذِهِ المَراجِعِ تَصْنِيفِيّا.</p>
+<p>تُقاطِع جيرارد <span class="math inline">\(\_ \star \_\)</span> هُوَ تنسور عَلَى <span class="math inline">\(\SN\)</span>، وَتَطابُق ارتباطيته الفَرِيدِ هُوَ المُرْتَبِطُ <span class="math inline">\(\alpha\in\SN\)</span> مِن التَعْرِيفِ [assoc-def].</p>
+<p>هٰذا مَعْرُوفٌ جَيِّداً (أَنْظُر (<span class="nodecor">PHD, AHS</span>)) مَعَ صِيَغٍ جَبْرِيّه / حِسابِيَّةً وَحَدِيَهُ مُعْطاة فِي (<span class="nodecor">RC</span>). لاحَظَ أَنَّ أَيّاً مِن هٰذِهِ المَراجِعِ لَم يُلاحِظ التَحَلُّلُ إِلَى التَطابُقِ مِن فَرْضِيَّةَ كولاتز الأَصْلِيَّةِ.</p>
+<p>كَنَتِيجَةٍ لِذٰلِكَ، قَد نُعْطِي العَلاقَةِ بَيِّنَ تُقاطِع جيرارد وَالمُرْتَبِط كَمُخَطَّط خُماسِيّ متداخل (خُماسِيّ مَأْكَلَيْنِ) – المُخَطَّطِ الفَرْعِيِّ المَعْرُوضِ فِي <span> الأَحْمَرِ</span>؛ تَشْتَق الهُوِيّاتِ المَطْلُوبَةِ لِهٰذا المُخَطَّطِ الفَرْعِيِّ جَبْرِيّا أَيْضاً فِي (<span class="nodecor">RC</span>).</p>
+<p>نُلاحِظ أَنَّ الليما [noCoincidence-lem] قَد تَسْتَنْتِج تَصْنِيفِيّا مِن النَظَرِيَّةِ [noSS-thm]؛ سَتَعْنِي الهُوِيَّةِ <span class="math inline">\(\lambda=\rho\)</span> أَنَّ تُقاطِع جيرارد كانَ تنسورا صارِما ارتباطيا عَلَى <span class="math inline">\(\SN\)</span>، وَبِالتالِي أَنَّ <span class="math inline">\(\SN\)</span> كانَ زَمَرَهُ تَبادُلَيْهِ – تُناقِض!</p>
+<p>بَدَلاً مِن ذٰلِكَ، قَد نَسْتَخْدِم تَحْلِيلِ هٰذا المُرْتَبِطُ مِن حَيْثُ التَطابُقِ البيجكتيفي لكولاتز، <span class="math inline">\(\alpha=\lambda\rho^{-1}\)</span>، لِتَحْلِيلِ كُلِّ حافَةِ مِن خُماسِيّ مَأْكَلَيْنِ؛ بِالاِعْتِمادِ عَلَى الدالِيَة للتنسور، يُعْطِي هٰذا الحَوافّ الإِضافِيَّة المَعْرُوضَةِ فِي <span> الأَخْضَرِ</span>. بِناءَ عَلَى التَصْمِيمِ، يَتَداخَل المُخَطَّطِ الفَرْعِيِّ مَعَ الحَوافّ <span> الحَمْراءِ</span> وَ<span> الخَضْراءِ</span>.</p>
+<p>نُقَدِّم حِساباً تَصْنِيفِيّا لِهٰذا التَحْلِيلِ:</p>
+<p>[star3-def] نَعْرِف التَجانُس <span class="math inline">\((\_ \star \_ \star \_):\SN^{\times 3}\rightarrow \SN\)</span> ب <span class="math display">\[(f\star g\star h)(n) \ = \ \left\{\begin{array}{lcr} 
+    \vspace{0.3em}
+    3f\left( \frac{n}{3} \right) &amp; \ \ &amp; n \ (mod \ 3) = 0 \\
+    \vspace{0.3em}
+    3g\left( \frac{n-1}{3} \right)+1 &amp; \ \ &amp; n \ (mod \ 3) = 1 \\
+    %\vspace{0.3em}
+    3h\left( \frac{n-2}{3} \right)+2 &amp; \ \ &amp; n \ (mod \ 3) = 2 \\
+    \end{array}\right.\]</span></p>
+<p>تُوجَد تَطابُقات طَبِيعِيَّةٍ</p>
+<ol>
+<li><p><span class="math inline">\((\_ \star \_ \star \_ ) \Rightarrow ( (\_ \star \_) \star\_ )\)</span></p></li>
+<li><p><span class="math inline">\((\_ \star \_ \star \_ ) \Rightarrow ( \_ \star (\_ \star\_ ))\)</span></p></li>
+</ol>
+<p>وَمُكَوِّناتِها الفَرِيدَة هِيَ</p>
+<ol>
+<li><p>التَطابُقِ البيجكتيفي المُخَفَّض لكولاتز <span class="math inline">\(\lambda\in \SN\)</span></p></li>
+<li><p>التَطابُقِ البيجكتيفي الأَصْلِيُّ لكولاتز <span class="math inline">\(\rho\in \SN\)</span></p></li>
+</ol>
+<p>عَلَى التَوالِي.</p>
+<p>يَتْبَع هٰذا بِحِساب مُباشِرٍ؛ نُلاحِظ أَنَّ <span class="math display">\[\rho(f\star g\star h)(n) = (f\star(g\star h))\rho^{-1}(n) = \left\{\begin{array}{lcr} 
+    \vspace{0.3em}
+    2f\left( \frac{n}{3} \right) &amp; \ \ &amp; n \ (mod \ 3) = 0 \\
+    \vspace{0.3em
+    4g\left( \frac{n-1}{3} \right)+1 &amp; \ \ &amp; n \ (mod \ 3) = 1 \\
+    %\vspace{0.3em
+    4h\left( \frac{n-2}{3} \right)+3 &amp; \ \ &amp; n \ (mod \ 3) = 2 \\
+    \end{array}\right.\]</span> وَبِالمِثْل <span class="math display">\[\lambda(f\star g\star h)(n) = ((f\star g)\star h)\lambda^{-1}(n) = \left\{\begin{array}{lcr} 
+    \vspace{0.3em
+    4f\left( \frac{n}{3} \right) &amp; \ \ &amp; n \ (mod \ 3) = 0 \\
+    \vspace{0.3em
+    4g\left( \frac{n-1}{3} \right)+2 &amp; \ \ &amp; n \ (mod \ 3) = 1 \\
+    %\vspace{0.3em
+    2h\left( \frac{n-2}{3} \right)+1 &amp; \ \ &amp; n \ (mod \ 3) = 2 \\
+    \end{array}\right.\]</span></p>
+<p>نُشِير ب <span class="math inline">\(({\bf Grp},\times )\)</span> إِلَى الفِئَةِ التجميعيه (الارتباطيه الصارِمَةِ) لِلمَجْمُوعات وَالتَجانُسات مَعَ الجِداء الديكارتي، وَنُشِير إِلَى الاوبراد النِهائِيِّ لِ <span class="math inline">\(\SN\)</span> ب <span class="math inline">\(Endo(\SN)\)</span>.</p>
+<p>[freeOperad-lem] كُلّاً مِن <span class="math inline">\((\_\star \_):\SN^{\times 2}\rightarrow \SN\)</span> وَ<span class="math inline">\((\_\star \_\star\_):\SN^{\times 3}\rightarrow \SN\)</span> هُما عَمَلِيّاتِ فِي <span class="math inline">\(Endo(\SN)\)</span>، والاوبراد الفَرْعِيِّ الَّذِي يُوَلِّدُونَهُ يَتَوَلَّد بِحُرِّيَّةٍ.</p>
+<p>يُمْكِن التَحَقُّقِ مِن العَمَلِيّاتِ حَتَّى الرُتْبَة 5 بِحِساب مُباشِرٍ. أَلْحَقْنَ وَالاِسْتِدْلالُ الطَبِيعِيِّ يُعْطَيانِ الحالَةِ العامَّةِ.</p>
+<p>مُكَوِّن التَطابُقِ الطَبِيعِيِّ مِن <span class="math inline">\((\_ \star (\_ \star \_ ))\)</span> إِلَى <span class="math inline">\(((\_ \star \_ )\star \_ )\)</span> يُعْطَى بِتَرْكِيب مُكَوِّناتِ:</p>
+<ul>
+<li><p>التَطابُقِ الطَبِيعِيِّ مِن <span class="math inline">\((\_ \star (\_ \star \_ ))\)</span> إِلَى <span class="math inline">\((\_ \star \_ \star \_ )\)</span></p></li>
+<li><p>التَطابُقِ الطَبِيعِيِّ مِن <span class="math inline">\((\_ \star \_ \star \_ )\)</span> إِلَى <span class="math inline">\(((\_ \star \_) \star \_ )\)</span></p></li>
+</ul>
+<p>وَبِالتالِي <span class="math inline">\(\alpha = \lambda\rho^{-1}\)</span>.</p>
+<p>يُمْكِننا أَيْضاً إِضافَةً حَوافّ بَيِّنَ “المُثَلَّثات الداخِلِيَّةِ” لِلشَكْل [pentagram-fig]، بِبَساطَة عَن طَرِيقِ أَخَذَ المَرْكَباتِ عَلَى طُولِ المَساراتِ بِاللَوْن الأَخْضَرِ، لِنُعْطَى الخُماسِيُّ المتداخل المُوَضِّح بِاللَوْن الأَزْرَق. إِمّا عَن طَرِيقِ البِناءِ، أَو الحِسابِ المُباشِرِ، أَو كَنَتِيجَةٍ لِلقَضِيَّةِ [freeOperad-lem]، يَتِمّ تُواصِل الرَسْمُ البَيانِيّ بِأَكْمَلِهِ، بِحَوافّ بِاللَوْن الأَحْمَرِ، وَالأَخْضَر، وَالأَزْرَق بِشَكْلٍ مُتَناسِق.</p>
+<h2 id="تفسير-الخماسي">تَفْسِيرٍ الخُماسِيُّ</h2>
+<p>تَفْسِيرٍ خُماسِيّ مَأْكَلَيْنِ (المَساراتِ <span class="nodecor"><span> الحَمْراءِ</span></span>) كَهَيْكَل عَظْمِي أَوَّلِ لَرُباعِيّ الاوجه الرابِعِ لستاشيف مَعْرُوفٌ جَيِّداً؛ حَيْثُ تَتَوافَق العَقْدِ مَعَ الرُؤُوسِ (أَيّ التقويس الثُنائِيِّ الجَيِّدِ لِأَرْبَعَةِ رُمُوزِ)، وَالحَوافّ تَتَوافَق مَعَ التَعْيِيناتِ بَيِّنَها. فِي الشَكْلِ <span class="nodecor">[pentagram-fig]</span>، تَكُون التَسْمِيات عَلَى المَساراتِ الزَرْقاءَ (أَيّ الخُماسِيُّ الداخِلِيِّ) هِيَ المُكَوِّناتِ الفَرِيدَة لِلتَحْوِيلاتِ الطَبِيعِيَّةِ بَيِّنَ التَطْبِيقات الحقنيه التالِيَةِ مِن <span class="math inline">\(\SN^{\times 4}\)</span> إِلَى <span class="math inline">\(\SN\)</span>: <span class="math display">\[\{ \ \  (\_ \star (\_ \star \_ \star \_ )) \ , \ 
+((\_ \star \_ \star \_ ) \star \_ ) \ , \ 
+((\_ \star \_ ) \star \_ \star \_ ) \ , \ 
+(\_ \star (\_ \star \_ ) \star \_ ) \ , \ 
+(\_ \star \_ \star (\_  \star \_ )) \ \ \}\]</span> بِالطَبْعِ، يُمْكِننا تَفْسِيرٍ هٰذِهِ التَطْبِيقات كَحَوافّ لِ <span class="math inline">\(\mathcal K_4\)</span>، وَالمَسارات الزَرْقاءَ كَتَعْيِينات بَيِّنَ حَوافّ الرُباعِيِّ الاوجه الرابِعِ.</p>
+<p>أَخِيراً، نَحْتاج إِلَى تَقْدِيمِ تَفْسِيرٍ لِلمَسارات <span class="nodecor"><span> الخَضْراءِ</span></span>. مَرَّةً أُخْرَى، مِن خِلالَ تَفْسِيرُها عَبْرَ الرُباعِيِّ الاوجه الرابِعِ <span class="math inline">\(\mathcal K_4\)</span>، يَجِب أَنَّ نَفْهَم هٰذِهِ ك، <span><em>تَعْيِيناتِ بَيِّنَ الحَوافّ وَالرُؤُوس</em></span>؛ فَهِيَ مُكَوِّناتِ التَحْوِيلاتِ الطَبِيعِيَّةِ مِثْلَ <span class="math display">\[(\_ \star (\_ \star (\_ \star \_ ))) \ \Rightarrow (\_ \star (\_ \star \_ \star \_ )) \ \ \ \ \mbox{مَعَ مُكَوِّن فَرِيد} \ \   Id \star \rho^{-1}\]</span> بِالمِثْلِ، فَإِنَّها تَتَوافَق مَعَ حَذْفَ/إِدْراجِ زَوْج مُتَطابِقٌ مِن الأَقْواس فِي سِلْسِلَةٍ مِن أَرْبَعَةِ رُمُوزِ. هٰذا يُوَفِّر لَنا بِالتالِي تَفْسِيرٍ تَبادُلَيْهِ كولاتز: فَهِيَ تُدْرِج زَوْجا مُتَطابِقا (مُرْتَبِطاً بِاليَمِين) مِن الأَقْواس فِي مِثْلَ هٰذِهِ السِلْسِلَة؛ تَبادُلَيْهِ كولاتز المُخَفَّضَةِ تُؤَدِّي نَفْسِ المُهِمَّةِ لَزَوْج مُرْتَبِطٌ بِاليَسار. تَقُوم عكسياتها بِحَذْف مِثْلَ هٰذِهِ الأَزْواج المُتَطابِقَة مِن الأَقْواس.</p>
+<h2 id="الفرضية-الأصلية-لكولاتز-والتحويلات-الطبيعية-بين-التقويسات">الفَرْضِيَّة الأَصْلِيَّةِ لكولاتز وَالتَحْوِيلات الطَبِيعِيَّةِ بَيِّنَ التقويسات</h2>
+<p>تَتَعَلَّق فَرْضِيَّةَ كولاتز الأَصْلِيَّةِ بِنِقاط الثَباتِ لِقُوَى <span class="math inline">\(\rho\)</span> — بِشَكْلٍ ضِمْنِيٍّ، هِيَ مَبْنِيَّةٌ عَلَى التَشابُه مِن <span class="math inline">\((\mathbb N , +)\)</span> إِلَى <span class="math inline">\(\SN\)</span> وَالَّذِي يُعْطَى بِواسِطَةِ <span class="math inline">\(n\mapsto \rho^n\)</span>. نَعْتَبِر <span class="math inline">\(\SN\)</span> كَمَجْمُوعَةٍ فَرْعِيَّةٍ مُمَيَّزَةٍ بِبَساطَة مِن المونويد المُتَماثِل العَكْسِيّ <span class="math inline">\(\IN\)</span> وَنَقْدَم التَعْرِيفِ التالِي:</p>
+<p>نَعْرِف <span><strong>تَشابُهات كولاتز اليُسْرَى</strong></span> وَ<span><strong>اليُمْنَى</strong></span> لِتَكُون تَشابُهات المونويد مِن <span class="math inline">\((\N,+)\)</span> إِلَى <span class="math inline">\(\IN\)</span> وَالَّتِي تُعْطِي بِواسِطَةِ <span class="math display">\[\Cz_L(n)=\lambda^n \ \ \mbox{ وَ } \ \ \Cz_R(n)= \rho^n\]</span></p>
+<p>تُوجَد تَحْوِيله طَبِيعِيَّةٍ <span class="math inline">\(\Cz_L\Rightarrow \Cz_R\)</span> وَالَّتِي يَكُون مُكَوِّنها الفَرِيدِ هُوَ دالَّةٍ الخَلْفِ <span class="math inline">\(succ\in \IN\)</span>.</p>
+<p>لِنُعِيد كِتابَةِ الهُوِيَّةِ الرَئِيسِيَّةِ لِلتَعْرِيف [rcb-def] كَالتالِي <span class="math inline">\(1+\left(\lambda\right)(n)=\rho(n+1)\)</span>، لِكُلِّ <span class="math inline">\(n\in \N\)</span>. ثُمَّ <span class="math inline">\(1+\left(\lambda^K\right)(n)=\rho^K(n+1)\)</span> لِكُلِّ <span class="math inline">\(k\in \N\)</span>, مِمّا يُعْطِي، لِكُلِّ <span class="math inline">\(k\in \N\)</span>, <span class="math display">\[succ .\Cz_R(k )  \ = \ \Cz_L(k ). succ \ \ \ \forall n\in (\mathbb N,+)\]</span> كَما هُوَ مَطْلُوبٌ.</p>
+<p>وَبِالتالِي، تُوجَد تَحْوِيله طَبِيعِيَّةٍ بَيِّنَ تَشابُهات كولاتز اليُسْرَى وَاليَمَنِيّ، وَالَّتِي يَكُون مُكَوِّنها الفَرِيدِ هُوَ بِبَساطَة دالَّةٍ الخَلْفِ.</p>
+<h2 id="إعداد-عام-واتجاهات-مستقبلية">إِعْدادِ عامَ وَاِتِّجاهات مُسْتَقْبَلِيَّةٍ</h2>
+<p>لَم يَفُت القارِئَ أَنَّ يُلاحِظ أَنَّ التَطابُقِ الايزومورفي، وَتُقاطَع جيرارد، وَالتَعْرِيف [star3-def] يُعَمِّمانِ إِلَى عائِلَةِ لا نِهائِيَّةٍ قابِلَةٍ لِلعَدّ مِن تَحْوِيلاتِ الزَمْر المُفَهْرَسَة ب <span class="math inline">\(\N^+\)</span>.</p>
+<p>[stark-def] لِكُلِّ <span class="math inline">\(k&gt;0\)</span>، نَعْرِف <span class="math inline">\(\mu_{(k)}:\SN^{\times k}\rightarrow \SN\)</span> لِيَكُون تَحْوِيلِ الزَمْر أَلْحَقَنِي المُعْطَى ب، لِكُلِّ <span class="math inline">\(F=(f_0,f_1,\ldots , f_{k-1})\in \SN^{\times k}\)</span>, <span class="math display">\[\mu_{(k)}\left(F\right) (n) \ = \ k.f_{n \ (mod \ k)} \left( \frac{n - (n \ (mod \ k))}{k}\right)+ (n \ (mod \ k))\]</span> مُعْطَيا التَطابُقِ ك <span class="math inline">\(Id_N=\mu_{(1)} : \SN\rightarrow \SN\)</span>، وَتُقاطَع جيرارد ك <span class="math inline">\((\_ \star \_) =\mu_{(2)}:\SN\times \SN\rightarrow \SN\)</span>، وَ<span class="math inline">\((\_ \star \_ \star \_) = \mu_{(3)}:\SN^{\times 3}\rightarrow \SN\)</span>، …</p>
+<p>بِشَكْلٍ غَيْرِ رَسْمِيٌّ، <span class="math inline">\(\mu_{(k)}\left(F\right)\)</span> يُكَرِّر عَمَلٍ كُلِّ عُضْوُ مِن <span class="math inline">\(\{ f_0 , f_1,\ldots ,f_{k-1} \}\)</span> عَلَى العُضْوُ المُقابِلِ مِن نِظامِ التَغْطِيَةِ الدَقِيقِ <span class="math inline">\(\{ k\mathbb N + j \}_{j=0 .. k-1}\)</span>.</p>
+<p>اِدِّعاؤنا – الَّذِي سَيَتِمّ تَبْرِيرُهُ فِي (<span class="nodecor">PH22,PH22c</span>) – هُوَ أَنَّ هٰذِهِ العائِلَةِ المُفَهْرَسَة مِن العَمَلِيّاتِ تُولَد عَمَلِيَّةِ فَرْعِيَّةٍ مِن <span class="math inline">\(Endo(\SN)\)</span> مُتَطابِقَةٌ مَعَ العَمَلِيَّةِ (الحُرَّةِ، الرَسْمِيَّةِ) <span class="math inline">\(RPT\)</span> لِ ’الأَشْجارِ المُسْتَوِيَة المتجذره’، وَهٰذِهِ المُلاحَظَةُ تُتِيح لَنا تَقْدِيمِ مُخَطَّطاتٌ تَبادُلَيْهِ لِلوَظائِف التكافؤيه بَيِّنَ جَوانِبَ مُتَعَدِّدَةِ الأَبْعاد مِن الاسوشيهدرا.</p>
+<p>فِي هٰذا الإِعْدادُ، تُعْتَبَر التباديل الأَصْلِيَّةِ وَالمُخَفَّضَة لكولاتز <span class="math inline">\(\rho,\lambda\in \SN\)</span> خاصَّةٍ، حَيْثُ تَعْلَم الاسوشيهدرون الثالِثِ – الَّذِي يَتَكَوَّن بِبَساطَة مِن رَأْسَيْنِ وَحافَة – كَما يَلِي: <span class="math display">\[\begin{tikzcd}
+( ( \bullet  \bullet ) \bullet) &amp;  &amp; (  \bullet  \bullet   \bullet ) \ar{ll}[swap]{\lambda} \ar{rr}{\rho} &amp;  &amp; ( \bullet(  \bullet  \bullet  )  ) 
+\end{tikzcd}\]</span> كَما نَحْنُ قادِرُونَ أَيْضاً عَلَى إِنْشاءِ تَضْمِينات تُحافِظ عَلَى التَسْمِيَة <span class="math inline">\(\mathcal K_a\hookrightarrow \mathcal K_{a+b}\)</span>، لِكُلِّ <span class="math inline">\(a,b\in \mathbb N\)</span>، وَبِالتالِي قَد تُوجَد فِي مُخَطَّطاتٌ تَبادُلَيْهِ عَلَى <span class="math inline">\(\SN\)</span> مُشْتَقّه مِن اسوشيهدرا ذاتِ أَبْعادَ مُتَعَدِّدَةِ.</p>
+<p>وَصَفَ أَكْثَرَ تَفْصِيلاً لِهٰذا مَوْجُودٌ فِي (<span class="nodecor">PH22,PH22c</span>)، اِسْتِناداً إِلَى الجَبْر الأَساسِيُّ المَوْصُوف فِي (<span class="nodecor">PH22b</span>).</p>
+<h1 id="الشكر-والتقدير" class="unnumbered">الشُكْرِ وَالتَقْدِيرِ</h1>
+<p>عَلَى الرَغْمِ مِن أَنَّهُ لا يُوجَد إِنْسان هُوَ جَزِيرَةِ بِمُفْرَدِهِ، أَفْضَلَ أَنَّ أُضِيفَ الشُكْرِ – وَالَّذِي سَيَكُون كَثِيراً – إِلَى النُسَخِ النِهائِيَّةِ المَنْشُورَةُ مِن الأَوْراقِ.</p>
+</body>
+</html>

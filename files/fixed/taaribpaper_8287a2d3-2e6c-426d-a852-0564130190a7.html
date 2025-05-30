@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Rui Xie, Zhengran Zeng, Zhuohao Yu, Chang Gao, Shikun Zhang, Wei Ye National Engineering Research Center for Software Engineering, Peking University, China {ruixie, wye}@pku.edu.cn https://github.com/WisdomShell/codeshell">
+  <title>تقرير فني CodeShell</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">تقرير فني <span class="nodecor">CodeShell</span></h1>
+<p class="author"><span class="nodecor">Rui Xie</span>, <span class="nodecor">Zhengran Zeng</span>, <span class="nodecor">Zhuohao Yu</span>, <span class="nodecor">Chang Gao</span>, <span class="nodecor">Shikun Zhang</span>, <span class="nodecor">Wei Ye</span><br />
+<span class="nodecor">National Engineering Research Center for Software Engineering, Peking University, China</span><br />
+<span class="nodecor">{ruixie, wye}@pku.edu.cn</span><br />
+<span class="nodecor">https://github.com/WisdomShell/codeshell</span></p>
+</header>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تُمَثِّل نماذج اللغة الكبيرة للبرمجة نقطة تحول رئيسية في الذكاء الاصطناعي. تم تصميمها خصيصًا لفهم وتوليد لغات البرمجة، مما يعزز بشكل كبير كفاءة سير عمل تطوير البرمجيات. في هذا التقرير الفني، نقدم <span class="nodecor">CodeShell-Base</span>، نموذجًا أساسيًا بسبعة مليارات معلمة وطول سياق <span class="nodecor">8K</span>، والذي يُظهر كفاءة استثنائية في فهم الكود. من خلال دمج انتباه الاستعلام المجمع وترميز الموضع الدوار في <span class="nodecor">GPT-2</span>، يجمع <span class="nodecor">CodeShell-Base</span> بين المزايا الهيكلية لـ <span class="nodecor">Starcoder</span> و <span class="nodecor">CodeLlama</span> ويتميز بتصميم معماري فريد. بعد ذلك، أنشأنا عملية معالجة بيانات شاملة بعناية، تشمل إزالة التكرار للبيانات المتشابهة، وتصفية البيانات بناءً على الحيرة، وتصفية البيانات بناءً على النموذج. من خلال هذه العملية، جمعنا <span class="nodecor">100</span> مليار رمز تدريب مسبق عالية الجودة من <span class="nodecor">GitHub</span>. وبفضل البيانات عالية الجودة، يتفوق <span class="nodecor">CodeShell-Base</span> على <span class="nodecor">CodeLlama</span> في <span class="nodecor">Humaneval</span> بعد التدريب على <span class="nodecor">500</span> مليار رمز فقط (<span class="nodecor">5</span> حقب). أجرينا تجارب واسعة النطاق عبر مجموعات بيانات متعددة اللغات، بما في ذلك <span class="nodecor">Python</span>، <span class="nodecor">Java</span>، و <span class="nodecor">C++</span>، وتشير النتائج إلى أن نموذجنا يمتلك قدرات أساسية قوية في فهم وتوليد الكود.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>نماذج اللغة الكبيرة للبرمجة مثل CodeGen (<span class="nodecor">codegen</span>)، CodeLlama (<span class="nodecor">codellama</span>)، وStarCoder (<span class="nodecor">starcoder</span>) أحدثت ثورة في تطوير البرمجيات من خلال أتمتة المهام، تقليل الأخطاء، وتحسين الكفاءة (<span class="nodecor">gpt4report</span>). بالاستفادة من التعلم العميق ومجموعات البيانات الضخمة للكود (<span class="nodecor">codegen,thestack</span>)، تعزز هذه النماذج إنتاجية المطورين وتجعل تطوير البرمجيات أكثر سهولة لجمهور أوسع.</p>
+<p>يمكن تقسيم نماذج اللغة الكبيرة للبرمجة الحالية إلى ثلاث فئات رئيسية: التدريب المسبق من الصفر (<span class="nodecor">starcoder</span>)، التدريب المسبق من نموذج لغة كبير موجود (<span class="nodecor">codex,codellama</span>)، والتعديل التوجيهي (<span class="nodecor">wizardcoder</span>). النماذج التي يتم تدريبها مسبقًا من الصفر تتطلب حجمًا كبيرًا من البيانات ووقتًا طويلاً (<span class="nodecor">starcoder,llama2</span>). من ناحية أخرى، يستفيد التدريب المسبق من نموذج لغة كبير موجود كأساس له، مما يوفر مزايا تقليل أوقات التدريب وتحسين الكفاءة مع بيانات أقل (<span class="nodecor">codex,codellama</span>). التعديل التوجيهي، من ناحية أخرى، يتضمن تعديل نموذج كبير موجود باستخدام بيانات توجيهية بهدف تحسين أداء النموذج بشكل كبير (<span class="nodecor">codellama,wizardcoder</span>). ومع ذلك، يبقى التحدي الأكبر في هذا المجال هو أن النماذج الكبيرة الموجودة تم تدريبها على مجموعات بيانات ضخمة من الكود دون حوكمة دقيقة للبيانات، مما قد يؤدي إلى إنتاج كود منخفض الجودة. على الرغم من وجود بعض استراتيجيات اختيار الكود (<span class="nodecor">phi1</span>) من منظور نموذج التدريب، لا يزال خطر إنتاج كود منخفض الجودة مصدر قلق.</p>
+<p>في هذا التقرير الفني، نقدم نموذج كود كبير يُسمى CodeShell. يدمج CodeShell ترميز الموضع الدوار (<span class="nodecor">rope</span>) وانتباه الاستعلام المجمع (<span class="nodecor">gqa</span>) في GPT-2 (<span class="nodecor">gpt2</span>)، لبناء بنية فعالة وملائمة لتوسيع السياق. ثم طورنا خط أنابيب لاختيار الكود عالي الجودة، مما أدى إلى الحصول على <span class="nodecor">100</span> مليار رمز من الكود عالي الجودة. استنادًا إلى هذا الأساس من <span class="nodecor">100</span> مليار رمز، تم تدريب CodeShell على مدى خمس فترات. تظهر تجاربنا أن التدريب فقط على <span class="nodecor">100</span> مليار رمز فريد من الكود يمكّن CodeShell من تحقيق أداء يعادل، إن لم يكن أفضل من، النماذج الكبيرة الموجودة. للمقارنة، تم تدريب كل من StarCoder (<span class="nodecor">starcoder</span>) وCodeLlama (<span class="nodecor">codellama</span>) على <span class="nodecor">250</span> مليار رمز فريد. كما هو معروف، الكود عالي الجودة محدود ضمن المستودعات المفتوحة المصدر الحالية، مما يجعل اختيار الكود عالي الجودة أمرًا بالغ الأهمية لتطوير نموذج كود عالي الجودة. إليكم مساهماتنا الرئيسية:</p>
+<ul>
+<li><p>أصدرنا CodeShell-7B، نموذجًا أساسيًا جديدًا للكود الكبير تم تدريبه مسبقًا من الصفر ويتميز بتصميم بنية جديد وفريد. من خلال الاختبارات على مجموعة متنوعة من المعايير العامة المتعلقة بالكود، أظهر أداءً تنافسيًا عبر لغات برمجة متعددة.</p></li>
+<li><p>من أجل تقليل تكاليف تدريب نماذج الكود الكبيرة، أنشأنا خط أنابيب فعال لمعالجة البيانات قادر على تحديد مقاطع الكود عالية الجودة من مجموعات الكود الضخمة. تشير النتائج التجريبية إلى أن نموذجنا، المدرب على <span class="nodecor">500</span>B رمز فقط، يتجاوز أداء StarCoder المدرب على <span class="nodecor">1</span> تريليون رمز.</p></li>
+<li><p>لمعالجة مهام البرمجة الأكثر تعقيدًا وشمولاً (<span class="nodecor">codereval,defects4j</span>)، قمنا بزيادة طول سياق النموذج إلى <span class="nodecor">8K</span>، مما يعزز قدرته على معالجة مقاطع الكود الأطول. تشير الأدلة التجريبية إلى أن تمديد مراحل التدريب المسبق مع زيادة أطوال الكود يحسن بشكل كبير كفاءة النموذج في إدارة تسلسلات الكود الطويلة، دون التأثير سلبًا على فعاليته في التعامل مع مقاطع الكود الأقصر.</p></li>
+</ul>
+<h1 id="قشرة-الكود">قِشْرَة الكود</h1>
+<h2 id="البيانات">البَيانات</h2>
+<p>لمزيد من التفاصيل حول المعلومات المقدمة في سياق بناء مجموعة بيانات تدريب CodeShell وعملية التصفية والتحسين اللاحقة، دعونا نستعرض كل خطوة بمعلومات أكثر تحديدًا:</p>
+<p><strong>جمع البيانات:</strong> كان مصدرنا الأساسي، GitHub (<span class="nodecor">gharchive</span>)، قد تم فحصه بعناية لجمع مجموعة شاملة من المستودعات. وشمل ذلك الزحف المباشر لـ 15TB من مستودعات GitHub لضمان الحصول على مجموعة بيانات واسعة ومتنوعة. كما ساهم تضمين مجموعات بيانات Stack (<span class="nodecor">thestack</span>) وStarCoder في إثراء تنوع المواد التدريبية بمجموعة غنية من أمثلة الأكواد والمناقشات البرمجية.</p>
+<p><strong>تصفية اللغات:</strong> كان قرار استبعاد اللغات التي يقل حجم مجموعة بياناتها عن 100 ميغابايت استراتيجيًا، مع التركيز على اللغات التي لها استخدام كافٍ وأمثلة تساهم في أنماط التعلم المهمة. وهدف إدراج 7 مجموعات بيانات متعلقة بالأكواد، مثل markdown للتوثيق، وgit-commits لممارسات التطوير، وGitHub-issues لمناقشات حل المشكلات، إلى توسيع فهم النموذج لأنظمة البرمجة.</p>
+<p><strong>قواعد التصفية الأولية:</strong> صممنا قاعدة لاستبعاد الأكواد ذات الأطوال الزائدة للأسطر والمحتوى المنخفض من الأحرف الأبجدية للقضاء على البيانات غير النمطية، والتي قد لا تكون ممثلة، مع التركيز على تدريب النموذج على أمثلة أكواد أكثر معيارية وقابلة للقراءة.</p>
+<p><strong>إزالة التكرار:</strong> سمح استخدام تجزئة MD5 بتحديد وإزالة النصوص المكررة بدقة، بينما تم استخدام تقنيات MinHash (<span class="nodecor">minihash</span>) للكشف عن المحتويات المتشابهة جدًا ولكن غير المتطابقة وتصفيةها. كانت هذه الخطوة حاسمة لتعزيز تنوع وجودة مجموعة البيانات.</p>
+<p><strong>التصفية بناءً على الحيرة:</strong> تم استخدام درجات الحيرة (<span class="nodecor">pplf</span>) كمقياس لقدرة التنبؤ وجودة نصوص الأكواد. من خلال تصفية الأكواد ذات درجات الحيرة العالية، هدفنا إلى استبعاد أمثلة الأكواد ذات الجودة المنخفضة أو المربكة، مما يعزز جودة مجموعة البيانات أكثر.</p>
+<p><strong>التصفية بناءً على القواعد:</strong> مكّن نظام التحليل والتصفية القائم على القواعد من التعرف الفعال واختيار أمثلة الأكواد عالية الجودة من خلال عملية فحص مخصصة. على وجه التحديد، نبدأ بتعريف وحساب سلسلة من المقاييس لملفات الأكواد، بما في ذلك عدد الأسطر، ووجود ومدى التعليقات، ومتوسط عدد الأحرف لكل سطر. ثم نحدد عتبة لعزل أمثلة الأكواد النموذجية التي تلبي معاييرنا. علاوة على ذلك، يقدم النظام تحيزًا تفضيليًا نحو الأكواد التي تستخدم مكتبات الطرف الثالث المعروفة، وهو مؤشر على ممارسات تطوير قوية. بالإضافة إلى ذلك، نؤكد على اختيار الأكواد التي تظهر مستوى مناسبًا من التعقيد المنطقي. يتم تحديد ذلك من خلال التحليل المتعمق لشجرة البناء المجردة وتدفق التحكم داخل الأكواد، بهدف ضمان أن الأمثلة التي نختارها ليست فقط وظيفية ولكن أيضًا متطورة. جانب حاسم آخر هو التزام الأكواد بمعايير البرمجة المعتمدة. يُعتبر الالتزام بهذه المعايير انعكاسًا لأفضل الممارسات في الصناعة.</p>
+<table>
+<caption>نظرة عامة على البيانات</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">css</span></td>
+<td style="text-align: center;"><span class="nodecor">30.09</span></td>
+<td style="text-align: center;"><span class="nodecor">5292.28</span></td>
+<td style="text-align: center;"><span class="nodecor">2.38</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.13</span></td>
+<td style="text-align: center;"><span class="nodecor">23.58</span></td>
+<td style="text-align: center;"><span class="nodecor">0.28</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">assembly</span></td>
+<td style="text-align: center;"><span class="nodecor">4.21</span></td>
+<td style="text-align: center;"><span class="nodecor">553.85</span></td>
+<td style="text-align: center;"><span class="nodecor">0.33</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.13</span></td>
+<td style="text-align: center;"><span class="nodecor">17.02</span></td>
+<td style="text-align: center;"><span class="nodecor">0.27</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">powershell</span></td>
+<td style="text-align: center;"><span class="nodecor">2.84</span></td>
+<td style="text-align: center;"><span class="nodecor">586.14</span></td>
+<td style="text-align: center;"><span class="nodecor">0.22</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.10</span></td>
+<td style="text-align: center;"><span class="nodecor">19.76</span></td>
+<td style="text-align: center;"><span class="nodecor">0.20</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">json</span></td>
+<td style="text-align: center;"><span class="nodecor">15.91</span></td>
+<td style="text-align: center;"><span class="nodecor">8939.52</span></td>
+<td style="text-align: center;"><span class="nodecor">1.26</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.07</span></td>
+<td style="text-align: center;"><span class="nodecor">39.84</span></td>
+<td style="text-align: center;"><span class="nodecor">0.15</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">r</span></td>
+<td style="text-align: center;"><span class="nodecor">0.59</span></td>
+<td style="text-align: center;"><span class="nodecor">77.32</span></td>
+<td style="text-align: center;"><span class="nodecor">0.05</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.06</span></td>
+<td style="text-align: center;"><span class="nodecor">8.38</span></td>
+<td style="text-align: center;"><span class="nodecor">0.13</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">sql</span></td>
+<td style="text-align: center;"><span class="nodecor">12.69</span></td>
+<td style="text-align: center;"><span class="nodecor">784.41</span></td>
+<td style="text-align: center;"><span class="nodecor">1.01</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.06</span></td>
+<td style="text-align: center;"><span class="nodecor">3.50</span></td>
+<td style="text-align: center;"><span class="nodecor">0.12</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">dart</span></td>
+<td style="text-align: center;"><span class="nodecor">9.85</span></td>
+<td style="text-align: center;"><span class="nodecor">2210.66</span></td>
+<td style="text-align: center;"><span class="nodecor">0.78</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.04</span></td>
+<td style="text-align: center;"><span class="nodecor">9.85</span></td>
+<td style="text-align: center;"><span class="nodecor">0.09</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">jupyter-scripts-dedup-filtered</span></td>
+<td style="text-align: center;"><span class="nodecor">7.03</span></td>
+<td style="text-align: center;"><span class="nodecor">910.54</span></td>
+<td style="text-align: center;"><span class="nodecor">0.56</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.03</span></td>
+<td style="text-align: center;"><span class="nodecor">4.06</span></td>
+<td style="text-align: center;"><span class="nodecor">0.06</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">jupyter-structured-clean-dedup</span></td>
+<td style="text-align: center;"><span class="nodecor">5.72</span></td>
+<td style="text-align: center;"><span class="nodecor">652.90</span></td>
+<td style="text-align: center;"><span class="nodecor">0.45</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.03</span></td>
+<td style="text-align: center;"><span class="nodecor">2.91</span></td>
+<td style="text-align: center;"><span class="nodecor">0.05</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">tex</span></td>
+<td style="text-align: center;"><span class="nodecor">5.70</span></td>
+<td style="text-align: center;"><span class="nodecor">493.84</span></td>
+<td style="text-align: center;"><span class="nodecor">0.45</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.03</span></td>
+<td style="text-align: center;"><span class="nodecor">2.20</span></td>
+<td style="text-align: center;"><span class="nodecor">0.05</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">restructuredtext</span></td>
+<td style="text-align: center;"><span class="nodecor">5.43</span></td>
+<td style="text-align: center;"><span class="nodecor">1036.81</span></td>
+<td style="text-align: center;"><span class="nodecor">0.43</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.02</span></td>
+<td style="text-align: center;"><span class="nodecor">4.62</span></td>
+<td style="text-align: center;"><span class="nodecor">0.05</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">haskell</span></td>
+<td style="text-align: center;"><span class="nodecor">5.41</span></td>
+<td style="text-align: center;"><span class="nodecor">1120.82</span></td>
+<td style="text-align: center;"><span class="nodecor">0.43</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.02</span></td>
+<td style="text-align: center;"><span class="nodecor">4.99</span></td>
+<td style="text-align: center;"><span class="nodecor">0.05</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">ada</span></td>
+<td style="text-align: center;"><span class="nodecor">0.53</span></td>
+<td style="text-align: center;"><span class="nodecor">56.26</span></td>
+<td style="text-align: center;"><span class="nodecor">0.04</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.02</span></td>
+<td style="text-align: center;"><span class="nodecor">2.35</span></td>
+<td style="text-align: center;"><span class="nodecor">0.05</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">yaml</span></td>
+<td style="text-align: center;"><span class="nodecor">3.25</span></td>
+<td style="text-align: center;"><span class="nodecor">2295.73</span></td>
+<td style="text-align: center;"><span class="nodecor">0.26</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">10.23</span></td>
+<td style="text-align: center;"><span class="nodecor">0.03</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">common-lisp</span></td>
+<td style="text-align: center;"><span class="nodecor">3.25</span></td>
+<td style="text-align: center;"><span class="nodecor">202.43</span></td>
+<td style="text-align: center;"><span class="nodecor">0.26</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">0.90</span></td>
+<td style="text-align: center;"><span class="nodecor">0.03</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">pascal</span></td>
+<td style="text-align: center;"><span class="nodecor">3.18</span></td>
+<td style="text-align: center;"><span class="nodecor">202.85</span></td>
+<td style="text-align: center;"><span class="nodecor">0.25</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">0.90</span></td>
+<td style="text-align: center;"><span class="nodecor">0.03</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">makefile</span></td>
+<td style="text-align: center;"><span class="nodecor">2.86</span></td>
+<td style="text-align: center;"><span class="nodecor">914.46</span></td>
+<td style="text-align: center;"><span class="nodecor">0.23</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">4.08</span></td>
+<td style="text-align: center;"><span class="nodecor">0.03</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">java-server-pages</span></td>
+<td style="text-align: center;"><span class="nodecor">2.79</span></td>
+<td style="text-align: center;"><span class="nodecor">519.49</span></td>
+<td style="text-align: center;"><span class="nodecor">0.22</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">2.32</span></td>
+<td style="text-align: center;"><span class="nodecor">0.03</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">ocaml</span></td>
+<td style="text-align: center;"><span class="nodecor">2.27</span></td>
+<td style="text-align: center;"><span class="nodecor">289.99</span></td>
+<td style="text-align: center;"><span class="nodecor">0.18</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">1.29</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">fortran</span></td>
+<td style="text-align: center;"><span class="nodecor">2.26</span></td>
+<td style="text-align: center;"><span class="nodecor">184.09</span></td>
+<td style="text-align: center;"><span class="nodecor">0.18</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">0.82</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">visual-basic</span></td>
+<td style="text-align: center;"><span class="nodecor">2.24</span></td>
+<td style="text-align: center;"><span class="nodecor">231.06</span></td>
+<td style="text-align: center;"><span class="nodecor">0.18</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">1.03</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">mathematica</span></td>
+<td style="text-align: center;"><span class="nodecor">2.10</span></td>
+<td style="text-align: center;"><span class="nodecor">46.81</span></td>
+<td style="text-align: center;"><span class="nodecor">0.17</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">0.21</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">erlang</span></td>
+<td style="text-align: center;"><span class="nodecor">1.99</span></td>
+<td style="text-align: center;"><span class="nodecor">253.50</span></td>
+<td style="text-align: center;"><span class="nodecor">0.16</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">1.13</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">vhdl</span></td>
+<td style="text-align: center;"><span class="nodecor">1.82</span></td>
+<td style="text-align: center;"><span class="nodecor">124.92</span></td>
+<td style="text-align: center;"><span class="nodecor">0.14</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">0.56</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">elixir</span></td>
+<td style="text-align: center;"><span class="nodecor">1.70</span></td>
+<td style="text-align: center;"><span class="nodecor">511.67</span></td>
+<td style="text-align: center;"><span class="nodecor">0.13</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">2.28</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="nodecor">groovy</span></td>
+<td style="text-align: center;"><span class="nodecor">1.69</span></td>
+<td style="text-align: center;"><span class="nodecor">401.75</span></td>
+<td style="text-align: center;"><span class="nodecor">0.13</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">1.79</span></td>
+<td style="text-align: center;"><span class="nodecor">0.02</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">smalltalk</span></td>
+<td style="text-align: center;"><span class="nodecor">1.48</span></td>
+<td style="text-align: center;"><span class="nodecor">482.43</span></td>
+<td style="text-align: center;"><span class="nodecor">0.12</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.01</span></td>
+<td style="text-align: center;"><span class="nodecor">2.15</span></td>
+<td style="text-align: center;"><span class="nodecor">0.01</span>%</td>
+</tr>
+</tbody>
+</table>
+<p>[tab:data_overview_1]</p>
+<h2 id="النموذج">النموذج</h2>
+<h3 id="محلل-الرموز">مُحلل الرموز</h3>
+<p>لتعزيز القدرة على التكيف مع سياق البرمجة الصينية، قمنا بإثراء مفردات StarCoder بإضافة كبيرة من المفردات الصينية. على وجه التحديد، جمعنا مليون ملف برمجة صيني وبيانات الأسئلة والأجوبة البرمجية باللغة الصينية. باستخدام مكتبة Tokenizer من Hugging Face، حددنا (<span class="nodecor">40,000</span>) مفردة صينية عالية التكرار. تم دمج هذه مع (<span class="nodecor">30,000</span>) مفردة إنجليزية عالية التكرار من مفردات StarCoder، مما أسفر عن مفردات CodeShell الشاملة. تشير النتائج التجريبية إلى أن مفردات CodeShell تظهر ميزة كبيرة في كفاءة تحليل الأسئلة والأجوبة البرمجية الصينية مقارنة بمفردات StarCoder.</p>
+<h3 id="الهندسة-المعمارية">الهندسة المعمارية</h3>
+<p>يستفيد CodeShell من GPT-2 (<span class="nodecor">gpt2</span>) كمعمارية أساسية له، مستخدمًا تقنيات متقدمة مثل انتباه الاستعلام المجمع (<span class="nodecor">gqa</span>) وترميز المواقع الدوار (<span class="nodecor">rope</span>). تعمل آلية انتباه الاستعلام المجمع على تحسين عمليات الانتباه من خلال تجميع الاستعلامات المتشابهة، مما يحسن الكفاءة الحسابية ويقلل من التكرار. في الوقت نفسه، يقدم ترميز المواقع الدوار طريقة أكثر ديناميكية لتمثيل مواقع العناصر في التسلسلات، مما يوفر للنموذج فهمًا أفضل للترتيب والبنية داخل الشيفرات البرمجية.</p>
+<h2 id="التدريب">التدريب</h2>
+<h3 id="التحسين">التحسين</h3>
+<p>في إعداد التدريب الخاص بنا، اخترنا AdamW كمحسن لنا، مع تهيئته بمعاملات <span class="math inline">\(\beta 1\)</span> و <span class="math inline">\(\beta 2\)</span> المضبوطة على <span class="nodecor">0.9</span> و <span class="nodecor">0.95</span> على التوالي. تتضمن عملية التدريب لدينا جدولًا زمنيًا لتبريد التعلم يبدأ بـ <span class="nodecor">1000</span> خطوة تسخين، بعدها ينخفض معدل التعلم من <span class="nodecor">3e-4</span> إلى <span class="nodecor">3e-5</span> في <span class="nodecor">127k</span> تكرار. بالنسبة لدفعات التدريب الخاصة بنا، نعالج <span class="nodecor">4</span> ملايين رمز في دفعة واحدة، مقسمين إياها إلى تسلسلات من <span class="nodecor">2048</span> أو <span class="nodecor">8192</span> رمزًا لكل منها.</p>
+<h3 id="مرحلة-التدريب-المسبق">مرحلة التدريب المسبق</h3>
+<p>لتحقيق التوازن بين الكفاءة والحاجة إلى سياق أطول، اخترنا في البداية طول سياق يبلغ <span class="nodecor">2048</span> للمراحل الأولى من التدريب المسبق، وبعد التدريب على ما يقرب من <span class="nodecor">450</span> مليار رمز، قمنا بزيادة طول السياق إلى <span class="nodecor">8192</span>. عقب هذا التعديل، انخفض معدل معالجة الوحدة الرسومية من <span class="nodecor">3200</span> رمز لكل وحدة رسومية في الثانية إلى <span class="nodecor">2600</span> رمز لكل وحدة رسومية في الثانية. في الوقت نفسه، أجرينا تجارب لمقارنة أداء النموذج قبل وبعد تغيير طول السياق. أظهرت النتائج أن أداء النموذج ظل ثابتًا إلى حد كبير، إن لم يتحسن. لوحظ انخفاض ملحوظ في الخسارة عندما تم توسيع طول السياق من <span class="nodecor">2048</span> إلى <span class="nodecor">8192</span>. قد ينبع هذا الانخفاض من كون السياق الأطول يوفر معلومات أكثر، مما يبسط عملية التنبؤ. ومع ذلك، من الضروري التأكيد على أنه على الرغم من انخفاض الخسارة، لم تظهر مقاييس تقييم النموذج أي تحسن.</p>
+<h1 id="النتائج">النتائج</h1>
+<p>تستكشف هذه الفقرة أداء CodeShell. يتم تقييم CodeShell مقابل أحدث النماذج اللغوية الكبيرة المتقدمة:</p>
+<ul>
+<li><p><strong>StarCoder-7B وStarCoder-15B</strong> (<span class="nodecor">starcoder</span>)، نموذج بحجم معلمات ضخم يصل إلى <span class="nodecor">7</span> مليار و <span class="nodecor">15</span> مليار معلمة، متاح بشكل علني ويتفوق في مجموعة متنوعة من مهام البرمجة. يستفيد من جزء مختار بعناية من مجموعة بيانات Stack، التي تغطي <span class="nodecor">86</span> لغة برمجة.</p></li>
+<li><p><strong>CodeLlama</strong> (<span class="nodecor">codellama</span>)، يشمل مجموعة من نماذج اللغات الكبيرة المركزة على الكود (LLMs)، التي تطورت من نماذج LLaMA2 (<span class="nodecor">llama2</span>). تم تحسين نماذج CodeLlama من خلال التدريب المستمر على مجموعة كبيرة من الرموز تصل إلى <span class="nodecor">500</span> مليار رمز، مستفيدة من هندسة LLaMA2 الأساسية.</p></li>
+</ul>
+<h2 id="توليد-الشيفره">توليد الشيفرة</h2>
+<h2 id="توليد-كود-بايثون">توليد كود بايثون</h2>
+<p>في هذا القسم، نقوم بتقييم أداء CodeShell على بايثون، مقارنة بالنماذج المفتوحة والمغلقة المصدر. نبدأ بالإبلاغ عن النتائج لتوليد كود بايثون باستخدام معياري HumanEval (<span class="nodecor">codex</span>) وMBPP (<span class="nodecor">mbpp</span>). تُلخص النتائج في الجداول [table:humaneval_mbpp]. تتألف مجموعة بيانات HumanEval من 164 مهمة بايثون مصممة يدويًا، تم التحقق منها من خلال حالات اختبار لتقييم أداء نموذج تعلم الآلة للكود في توليد الحلول دون أمثلة سابقة (إعداد الصفر). بالمقابل، يشمل معيار MBPP 500 تحدي بايثون مصمم لاختبار قدرة النموذج في سياق يتم فيه توفير عدد صغير من الأمثلة مسبقًا (إعداد القليل من الأمثلة).</p>
+<p>تكشف النتائج التجريبية أن CodeShell-7B قد وضع معيارًا جديدًا في الأداء بين مجموعته، مسجلًا دقة متوسطة مثيرة للإعجاب بنسبة 34.3% على مجموعة بيانات HumanEval و38.7% على معيار MBPP. هذا الأداء لا يؤسس فقط CodeShell-7B كالرائد في فئته، بل يؤكد أيضًا تفوقه على Code-LLaMA-7B وStarCoder-Base 7B، وهما نموذجان مفتوحا المصدر مماثلا الحجم. على وجه التحديد، يُظهر CodeShell-7B ميزة تنافسية قوية، حتى عند مقارنته بنماذج الترميز الأكبر والأكثر تعقيدًا التي تتميز بزيادة كبيرة في عدد المعلمات.</p>
+<p>يرجى ملاحظة أنه، من خلال تطبيق معايير صارمة لاختيار البيانات عالية الجودة وإجراء التدريب المتكرر على مدى عدة عصور، حقق CodeShell أداءً استثنائيًا في المهام الأساسية مثل HumanEval. ومع ذلك، قد تكون استراتيجية اختيار البيانات الحالية واستراتيجية التدريب غير كافية للتحديات الأكثر تعقيدًا مثل CoderUJB بسبب تعقيدها الهيكلي والمنطقي المتزايد. على الرغم من ذلك، من خلال تحسين عملية اختيار البيانات لدينا لتتماشى بشكل أفضل مع متطلبات مثل هذه المهام المعقدة، يمكننا تحسين أداء CodeShell على المهام الصعبة مثل CoderUJB.</p>
+<h2 id="توليد-الكود-متعدد-اللغات">توليد الكود متعدد اللغات</h2>
+<p>بعد ذلك، نجري تقييمات لنماذجنا عبر طيف أوسع من لغات البرمجة، باستخدام معيار (<span class="nodecor">multiple</span>) الذي طوره كاسانو وآخرون في عام <span class="nodecor">2022</span> لهذا الغرض. تفاصيل النتائج لمجموعة متنوعة من اللغات، بما في ذلك جافا سكريبت، جافا، سويفت، بي إتش بي، وغيرها موضحة في الجدول [tb:results_multiple].</p>
+<p>لقد لاحظنا أن كودشيل حقق نتائج أفضل في عدة لغات رئيسية، بما في ذلك جافا سكريبت، جافا، وسي بّي بّي، مقارنة بكودلاما-7ب، ستاركودر-7ب وستاركودر-15ب. ومع ذلك، كان أداؤه أدنى في لغات أصغر مثل دي، جوليا، ولووا. نعتقد أن هذا يرجع إلى سهولة الوصول إلى مجموعات بيانات عالية الجودة للغات الرئيسية، مما يسمح للنموذج بتحقيق نتائج أفضل مع تدريب بيانات كافٍ. بالإضافة إلى ذلك، من الجدير بالذكر أن نموذجنا أظهر أداءً تنافسيًا مع ستاركودر-15ب، مما يشير إلى أن التدريب المسبق لنماذج الكود الكبيرة على نماذج أصغر يحمل إمكانات كبيرة.</p>
+<h2 id="اكتمال-الكود">اكتمال الكود</h2>
+<p>خلال مرحلة التدريب المسبق، تم تدريب نماذج CodeShell-7B بمعدل 0.5 لتقنية Fill-In-the-Middle (<span class="nodecor">fim</span>)، وهي تقنية تعزز قدرتها على توليد الكود من خلال ملء الفجوات بناءً على السياق المحيط بجزء الكود. تظهر هذه الطريقة فائدتها بشكل خاص لتطبيقات اكتمال الكود. تظهر قدرات مماثلة في النماذج مفتوحة المصدر مثل StarCoder-15B وCodeLlama-7B. وفقًا لـ (<span class="nodecor">santacoder</span>)، نقوم بإخفاء سطر نصي واحد من جسم الدالة، ونطلب من النموذج ملء ذلك السطر من الكود. نقوم بالتقييم على معيار MultiPLE (<span class="nodecor">multiple</span>) عبر ثلاث لغات برمجة، ونستخدم مطابقة السطر الواحد بالضبط (<span class="nodecor">incoder</span>) كمقياس.</p>
+<p>النتائج، المفصلة بعناية في الجدول [tab:results_code_completion]، توضح أن CodeShell-7B يتفوق على كل من StarCoder وCodeLlama في هذه المعايير، مما يبرز الدور الحاسم لبيانات التدريب المسبق عالية الجودة. مشابهًا لـ CodeLlama، يستخدم CodeShell طول سياق يبلغ 2048 خلال المراحل الأولية من التدريب المسبق لتعزيز كفاءة التدريب. في المراحل النهائية من التدريب، وتحديدًا خلال آخر 50 مليار رمز، يمدد CodeShell طول السياق من 2048 إلى 8192. تكشف النتائج التجريبية أن القدرة على التعامل مع تسلسلات الكود الأطول يمكن تحقيقها بكمية ضئيلة فقط من بيانات التدريب. وبالتالي، خلال عملية التدريب المسبق، يمكننا استخدام طول سياق أصغر في البداية لتعزيز الكفاءة دون التضحية بكفاءة النموذج النهائية في التعامل مع تسلسلات الكود الواسعة.</p>
+<h2 id="الانتباه-المتعدد-الاستعلامات-مقابل-الانتباه-المجمع-للاستعلامات">الانتباه متعدد الاستعلامات مقابل الانتباه المجمع للاستعلامات</h2>
+<p>لتقييم تأثير الانتباه متعدد الاستعلامات والانتباه المجمع للاستعلامات على أداء النموذج، أجرينا تجارب ضمن إطاري العمل للانتباه متعدد الاستعلامات والانتباه المجمع للاستعلامات. على وجه التحديد، لتسريع التحقق من صحة الهياكل المختلفة على أداء النموذج، طورنا نسخة “codeshell-small” بـ <span class="nodecor">24</span> طبقة، حجم خفي <span class="nodecor">2048</span>، ومجموع <span class="nodecor">1</span> مليار معلمة. في هذه النسخة، نفذنا الانتباه متعدد الاستعلامات والانتباه المجمع للاستعلامات كوحدات انتباه لها، وأطلق عليهما على التوالي codeshell-small-mqa وcodeshell-small-gqa. تشير النتائج التجريبية إلى أنه، في ظل ظروف أقل من رموز التدريب، يظهر كل من codeshell-small-mqa وcodeshell-small-gqa أداءً متشابهًا. ومع ذلك، مع زيادة عدد رموز التدريب تدريجيًا، يتفوق codeshell-small-gqa على codeshell-small-mqa في أداء الاختبار@1.</p>
+<h2 id="استبعادات-البيانات">استبعادات البيانات</h2>
+<p>للتحقق من فعالية آلية تصفية بيانات الشيفرة عالية الجودة، قمنا بتكوين مجموعتين من البيانات: مجموعة عشوائية، تم إنشاؤها عن طريق أخذ عينات عشوائية من <span class="nodecor">2</span> مليار رمز من مجموعة البيانات الأصلية غير المكررة، ومجموعة مصفاة، تم تجميعها بأخذ عينات من <span class="nodecor">2</span> مليار رمز من الأعلى إلى الأدنى بناءً على درجات من مقيم عالي الجودة. على وجه التحديد، لتسريع التحقق من فعالية الهياكل المختلفة على أداء النموذج، طورنا نسخة “صغيرة من قشرة الشيفرة” بـ <span class="nodecor">24</span> طبقة، وحجم خفي <span class="nodecor">2048</span>، وإجمالي <span class="nodecor">1</span> مليار معلمة. أجرينا تجارب على هاتين المجموعتين باستخدام نموذج “صغير من قشرة الشيفرة”، وتظهر النتائج في الشكل أدناه. تظهر النتائج أن النموذج المدرب على المجموعة المصفاة يتفوق باستمرار على النموذج المدرب على المجموعة العشوائية من حيث الأداء. علاوة على ذلك، أظهر الأداء النهائي للنموذج المصفى تحسنًا بنسبة تقارب <span class="nodecor">100%</span> مقارنة بالنموذج العشوائي. تؤكد هذه النتائج أيضًا الدور الحاسم لجودة البيانات في تدريب النماذج الكبيرة وتثبت أيضًا فعالية نهج تصفية البيانات لدينا.</p>
+<h1 id="الخلاصة">الخلاصة</h1>
+<p>لقد قدمنا نموذج الشيفرة كبير الحجم CodeShell. في هذه الورقة، استكشفنا تأثير هياكل النماذج المختلفة واستراتيجيات تصفية البيانات على أداء النموذج. تشير النتائج التجريبية إلى أن البيانات عالية الجودة تظل العامل الأكثر أهمية الذي يؤثر على أداء النماذج الكبيرة. من خلال اختيار البيانات عالية الجودة، حقق CodeShell أداءً مثاليًا عبر مجموعة متنوعة من لغات البرمجة بمقياس مماثل. علاوة على ذلك، في التجارب التي تمت باستخدام بيانات عالية الجودة، حققت طريقة تصفية البيانات التي اقترحناها تحسينًا في الأداء بنسبة <span class="nodecor">100%</span> مقارنة بالاختيار العشوائي للبيانات.</p>
+</body>
+</html>

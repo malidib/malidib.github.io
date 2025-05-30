@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Oliver Kim, Mohan Sridharan">
+  <title>دَرَجَةِ الأَهَمِّيَّةِ: مِعْيار شَبِيهٌ بِالمَعالِم لِلتَخْطِيطِ</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">دَرَجَةِ الأَهَمِّيَّةِ: مِعْيار شَبِيهٌ بِالمَعالِم لِلتَخْطِيطِ</h1>
+<p class="author"><span class="nodecor">Oliver Kim</span>, <span class="nodecor">Mohan Sridharan</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>المَعالِم هي حقائق أو أفعال تظهر في جميع الحلول الصالحة لمشكلة التخطيط. لقد تم استخدامها بنجاح لحساب المعايير الإرشادية التي توجه البحث عن خطة. نستكشف في هذا العمل توسيعاً لهذا المفهوم من خلال تعريف جديد لـ"درجة الأهمية" التي تساعد في تحديد الحقائق أو الأفعال التي تظهر في معظم الخطط ولكن ليس في جميع الخطط لتحقيق أي هدف معين. نصف طريقة لحساب هذه الدرجة واستخدامها كمعيار إرشادي في البحث عن خطة. نقارن أداء نهجنا تجريبياً مع أداء نهج تخطيطي قائم على المعالم والذي يُعتبر الأحدث باستخدام مشكلات التخطيط القياسية. بينما يؤدي المعيار القائم على المعالم الأصلي إلى أداء أفضل في المشكلات التي تحتوي على معالم محددة جيداً، فإن نهجنا يحسن الأداء بشكل كبير في المشكلات التي تفتقر إلى المعالم غير التافهة.</p>
+<h1 id="sec:intro">مُقَدِّمَة</h1>
+<p>إن استخدام الاستدلالات لتوجيه البحث وتحديد مساحة البحث هو مكون مهم في أنظمة التخطيط الحديثة. هناك أدبيات راسخة حول الطرق التي تُستخدم فيها الاستدلالات لتحسين الكفاءة الحسابية في إيجاد الخطط. وجود استدلال سليم يمكن حسابه بسرعة يجعل التخطيط المساري في الفضاء الإقليدي أكثر كفاءة بكثير من مساحات البحث المجردة المستخدمة لتخطيط المهام. أحد الاستدلالات الناجحة المستخدمة لتخطيط المهام هو عدد "المعالم البارزة" التي لا تزال بحاجة للوصول إليها من حالة معينة (<span class="nodecor">Zhu2003</span>, <span class="nodecor">Hoffmann2004</span>, <span class="nodecor">Richter2010</span>, <span class="nodecor">Keyder2010</span>)، حيث تكون المعلمة البارزة حقيقة أو فعل أو صيغة منطقية على الحقائق و/أو الأفعال، والتي توجد في جميع الحلول الصالحة (أي تسلسل الأفعال) لمشكلة التخطيط. هذا يؤدي إلى تفضيل الأفعال (في الخطط) التي تكون معلمة بارزة أو تحقق واحدة منها. ومع ذلك، فإن مهمة حساب جميع المعالم البارزة لمشكلة التخطيط مكلفة؛ ومن المعروف أنها كاملة الفضاء الكلي (<span class="nodecor">Porteous2001a</span>). الأنظمة التي تحسب المعالم البارزة تحدد بالتالي مجموعة فرعية من المعالم البارزة الرئيسية، غالباً باستخدام نسخة مبسطة من مشكلة التخطيط (<span class="nodecor">Keyder2010</span>)، ولكن تكلفة حساب المعالم البارزة لا تزال كبيرة.</p>
+<p>أحد القيود الشائعة لمعظم النهج التي تحسب وتستخدم المعالم البارزة لتوجيه التخطيط هو أن هذه المعالم يجب أن تكون موجودة لمشكلات التخطيط قيد النظر. في العديد من المجالات المعقدة حيث توجد طرق متعددة ممكنة للوصول إلى الهدف، قد تكون المعالم البارزة البسيطة (حقيقة واحدة) الموجودة تافهة، أي تلك الموجودة في مواصفات الهدف أو التي تكون صحيحة بالفعل في الحالة الأولية. بينما قد تكون الصيغ المنطقية المعقدة بمثابة معالم بارزة، يمكن أن يكون من الصعب حساب واستخدام هذه الصيغ المنطقية في الاستدلال. النهج الموصوف في هذه الورقة يتجنب هذا القيد من خلال حساب "درجة الصلة"، والتي تأخذ أيضاً في الاعتبار قيمة تحقيق الحقائق (أو الأفعال) التي تظهر في العديد ولكن ليس جميع الخطط الصالحة. الفرضية الأساسية هي أن هذه المعلومات الإضافية ستؤدي إلى بحث أكثر كفاءة عن حل صالح لمشكلة التخطيط المعطاة. كمخطط أساسي، نستخدم مخطط لاما (<span class="nodecor">Richter2010</span>)، الذي يستخدم مزيجاً من عد المعالم البارزة ونظام السرعة الأمامية (<span class="nodecor">Hoffmann2001</span>)، مع أقصر خطة موجودة باستخدام بحث <span class="math inline">\(A^*\)</span> الموزون تحت شروط الاسترخاء الحذفي. وقد اعتُبر هذا هو الفن الحالي في مسابقات التخطيط لأكثر من عقد من الزمان.</p>
+<p>المساهمة الرئيسية لهذه الورقة هي تعريف ووصف نهج لحساب استدلال جديد "درجة الصلة" (<span class="math inline">\(h_{\Xi})\)</span>. هذا الاستدلال يعمم مفهوم المعلمة البارزة، التي يجب أن تكون صحيحة في نقطة ما في <em>جميع</em> الخطط (تحت الاسترخاء الحذفي)، إلى الصلة، التي تقيم الحقائق أو الأفعال وفقاً لمدى ظهورها في الخطط (أيضاً تحت الاسترخاء الحذفي). يوضح الشكل [fig:illustration] المعلومات التي نهدف إلى التقاطها مع درجة الصلة، وكيف ترتبط بالمعالم البارزة. لتسهيل المقارنة مع مخطط لاما الأساسي، نحدد تركيزنا على الحقائق ككيانات شبيهة بالمعالم البارزة. ثم نوضح من خلال التقييم التجريبي الذي يشمل أفراداً ومجموعات من مشكلات التخطيط القياسية أنه بينما يؤدي الاستدلال القائم على المعالم البارزة الأصلية إلى أداء أفضل في المشكلات التي تحتوي على معالم بارزة محددة جيداً، فإن نهجنا القائم على درجات الصلة يحسن الأداء بشكل كبير في المشكلات التي تفتقر إلى المعالم البارزة غير التافهة.</p>
+<p>تنظم بقية هذه الورقة على النحو التالي. القسم [sec:rel-work] يحفز نهجنا المقترح من خلال مناقشة الأعمال ذات الصلة. القسم [sec:definitions] يصف صياغة مشكلتنا والاستدلال المقترح، بينما القسم [sec:methods] يصف حساب هذا الاستدلال واستخدامه لحساب الخطط. النتائج التجريبية الموصوفة في القسم [sec:results] تشكل أساس النقاش حول الخطوات التالية في القسم [sec:discuss].</p>
+<h1 id="sec:rel-work">الأَعْمال ذات الصلة</h1>
+<p>تم وصف المعالم كوسيلة للتوجيه البدائي في (<span class="nodecor">Porteous2001a</span>) وتم تطويرها أكثر في (<span class="nodecor">Hoffmann2004</span>)، كامتداد لترتيب الأهداف. سعوا لإيجاد وترتيب الحقائق التي يجب تحقيقها في أي خطة صالحة. تم التعامل مع هذا الترتيب الجزئي للمعالم كسلسلة من الأهداف الفرعية لتقسيم مشكلة التخطيط إلى مشكلات فرعية. عادة ما يتم العثور على المعالم باستخدام رسم بياني للتخطيط المرن (<span class="nodecor">RPG</span>) (<span class="nodecor">Hoffmann2001</span>)، الذي يؤدي تحليل الوصول تحت شروط الاسترخاء الحذفي ويتطلب خطوات متعددة للتحقق من أن المعالم وترتيبها سليم.</p>
+<p>استخدم العديد من الباحثين المعالم لتوجيه المخططين البحثيين القائمين على البيانات الإرشادية (<span class="nodecor">Zhu2003,Helmert2006,Richter2008</span>). وقد قام آخرون بتوسيع هذه الفكرة لإيجاد خطط مثلى من حيث التكلفة وبدأوا باستخدام الأفعال والصيغ الاقتراحية للحقائق كمعالم محتملة (<span class="nodecor">Keyder2008,Karpas2009,Richter2010</span>). يستخدم معظمهم عداد المعالم البياني، الذي يُفترض أن كل معلم لم يتم الوصول إليه بعد سيكلف فعلاً واحداً. ثم يُعطى تقدير المسافة إلى الهدف بعدد المعالم المتبقية للعثور عليها. كان هناك بعض العمل على البيانات الإرشادية التي تحافظ على تكاليف الأفعال، وتأخذ في الاعتبار الأفعال التي يمكن أن تحقق عدة معالم في آن واحد (<span class="nodecor">Helmert2009,Karpas2009</span>). وقد استكشفت هذه الأوراق وغيرها طرقاً أكثر كفاءة لتحديد العديد من المعالم (<span class="nodecor">Keyder2010</span>).</p>
+<p>استكشف الباحثون طرقاً مختلفة لحساب واستخدام المعالم. مثال على ذلك هو ترجمة الرسوم البيانية للتخطيط المرن إلى رسوم بيانية AND/OR حيث تعتبر المعالم حلولاً فريدة وقصوى يتم حسابها باستخدام طرق بيلمان-فورد (<span class="nodecor">Keyder2010</span>). ينطوي تطبيق الاسترخاء الحذفي على مشكلة تخطيط على فقدان المعلومات، ويمكن أن يؤدي إلى أفعال أو تسلسلات أفعال مستحيلة في المشكلة الأصلية. إحدى الطرق تتمثل في التخلص من الشروط السلبية والآثار مع الحفاظ على المعلومات التي احتوتها (<span class="nodecor">Haslum2009</span>). من خلال النظر في أزواج (<span class="math inline">\(m=2\)</span>)، أو ثلاثيات (<span class="math inline">\(m=3\)</span>) أو تراكيب أكبر من الحقائق، يتم الحفاظ على متطلب تحقيقها في وقت واحد، مما يؤدي إلى مشكلة أكبر <span class="math inline">\( \Pi^m \)</span> خالية من الشروط السلبية أو الآثار. قام آخرون بالبناء على هذه الفكرة (<span class="nodecor">Keyder2010</span>). نظراً لأن حجم المشكلة ينمو بشكل أسي مع <span class="math inline">\(m\)</span>، وإدخال حقائق مركبة جديدة في المجال يطرح تحديات أخرى، فإن الطرق التي تستخدم المعالم غالباً ما تفضل قبول القيود المفروضة بواسطة الاسترخاء الحذفي.</p>
+<p>لا يزال هناك عمل جارٍ على حساب واستخدام المعالم. يشمل ذلك حساب المعالم باستخدام تعريفات مجال التخطيط غير المؤسسة أو "المرفوعة"، مما يسمح بتمثيل بعض تعقيدات المعالم المنفصلة في نطاق التأسيسات الممكنة (<span class="nodecor">Wichlacz2022</span>). كما يشمل استخدام المعلومات الترتيبية لحساب بيانات إرشادية جديدة، مما يحسن دقتها (<span class="nodecor">Buchner2021</span>). كما يتم استخدام البيانات الإرشادية المستندة إلى المعالم في العديد من المجالات ذات الصلة مثل التعرف على الأهداف (<span class="nodecor">Pereira2017,Vered2018</span>) والتخطيط المشروط (<span class="nodecor">Maliah2018,Segovia-Aguas2022</span>).</p>
+<h1 id="sec:definitions">التعريفات والمعرفة الأساسية</h1>
+<p>نبدأ بتعريف الرموز وبعض المفاهيم المستخدمة في هذه الورقة، يليه تعريف لمقياس الاستدلال للأهمية الذي اقترحناه.</p>
+<h2 id="مشكلة-التخطيط-الكلاسيكية">مشكلة التخطيط الكلاسيكية</h2>
+<p>تُعرّف مشكلة التخطيط الكلاسيكية بالثنائي (<span class="nodecor">GNT2</span>): <span class="math display">\[\Pi = \langle F, A, I, G\rangle\]</span> حيث <span class="math inline">\(F\)</span> هي مجموعة محدودة من المقولات الأرضية التي تمثل الحقائق؛ <span class="math inline">\(A\)</span> هي مجموعة محدودة من الأفعال؛ <span class="math inline">\(I\subseteq F\)</span> هي مجموعة الحقائق الصحيحة في الحالة الابتدائية؛ و<span class="math inline">\(G \subseteq F\)</span> هي مجموعة الحقائق التي تمثل الأهداف. <em>الحالة</em> <span class="math inline">\(\sigma\)</span> هي مجموعة من الحقائق التي تكون صحيحة في وقت معين. لكل فعل <span class="math inline">\(a \in A\)</span> هناك شروط مسبقة <span class="math inline">\(pre(a)\)</span> وتأثيرات <span class="math inline">\(ef\!f(a)\)</span>، وكل منهما مقسم إلى مجموعات من الحقائق الإيجابية والسلبية: <span class="math inline">\( pre^+(a), pre^-(a), ef\!f^+(a),  ef\!f^-(a) \)</span>. إذا كانت الشروط المسبقة الإيجابية (السلبية) لفعل ما صحيحة (خاطئة) في حالة معينة، فإنه يمكن تطبيقه في تلك الحالة: <span class="math display">\[Applicable(a, \sigma) \iff \sigma \models pre^+(a)\cap\neg pre^-(a)\]</span> عند تطبيق فعل على حالة يمكن تطبيقه فيها، فإن الحالة الناتجة تُعطى بواسطة: <span class="math display">\[Result(a, \sigma)  \models \sigma \cup ef\!f^+(a) \setminus ef\!f^-(a)\]</span> تكون سلسلة الأفعال <span class="math inline">\([a_1 ... a_n]\)</span> قابلة للتطبيق في حالة إذا كان كل فعل قابل للتطبيق في الحالة الناتجة عن السلسلة السابقة من الأفعال، أي <span class="math inline">\( Applicable(a_1, \sigma), Applicable(a_2, Result(a_1, \sigma))\)</span> وهكذا. نتيجة تطبيق سلسلة الأفعال على حالة يمكن تطبيقها هي نتيجة تطبيق كل فعل في تلك السلسلة، أي <span class="math inline">\( Result([a_1 ... a_n], \sigma)  = Result(a_n, Result(a_{n-1}, ...Result(a_1, \sigma))\)</span>.</p>
+<p>خطة <span class="math inline">\( \pi^\Pi\)</span> لمشكلة <span class="math inline">\( \Pi = \langle F, A, I, G\rangle\)</span> هي سلسلة من الأفعال <span class="math inline">\([a_1 ... a_n]\)</span> التي تكون قابلة للتطبيق في <span class="math inline">\(I\)</span> وتؤدي إلى حالة تكون فيها جميع الحقائق في <span class="math inline">\(G\)</span> صحيحة، أي <span class="math inline">\(Result(\pi^\Pi, I) \models G\)</span>.</p>
+<h2 id="المعالم">المعالم</h2>
+<p>المعلم هو تعريف لصيغة اقتراحية من الحقائق التي تكون صحيحة في نقطة ما خلال تنفيذ جميع الخطط الصالحة. بسبب صعوبة تحديد المعالم الاختيارية، تستخدم العديد من أنظمة التخطيط، بما في ذلك LAMA (<span class="nodecor">Richter2010</span>)، المعالم الحقيقية فقط. هذه هي الحقائق الفردية التي يجب أن تكون صحيحة في نقطة ما خلال تنفيذ جميع الخطط الصالحة. كل حقيقة في الهدف والحالة الأولية هي معلم، لكنها ذات فائدة قليلة للمخطط؛ وتعرف هذه بالمعالم السطحية. الحقائق التي يجب أن تكون صحيحة في نقطة ما غير البداية أو نهاية تنفيذ الخطة تعتبر غير سطحية.</p>
+<p>نقترح في هذه الورقة درجة أهمية تنطبق على كل من البناء على الحقائق والإجراءات المشابهة للمعالم. ومع ذلك، لتسهيل الاستخدام والمقارنة مع LAMA، نحد من مناقشتنا في هذه الورقة على الحقائق.</p>
+<h2 id="تبسيط-التقريبات">تبسيط التقريبات</h2>
+<p>يمكن تبسيط مشكلة التخطيط الكلاسيكية لحساب الإرشادات التي ستساعد في حل المشكلة الأصلية (<span class="nodecor">Bonet2001</span>, <span class="nodecor">Hoffmann2001</span>). إحدى هذه التبسيطات هي <em>استرخاء الحذف</em>، الذي يزيل جميع الشروط السلبية والآثار السلبية من جميع الأفعال. تُستخدم تبسيطة أخرى غالباً لمجالات التخطيط التي تحتوي على أهداف متعددة. على وجه التحديد، يتم تعديل المجال بإضافة فعل <span class="math inline">\(achieveGoal\)</span> الذي له تأثير إيجابي واحد <span class="math inline">\(ef\!f^+(achieveGoal) = \{success\}\)</span>، وأهداف المشكلة كشروط مسبقة <span class="math inline">\(pre^+(achieveGoal) = G\)</span>. ثم يُستخدم <span class="math inline">\(success\)</span> كهدف لحساب الإرشادات، مما يسمح بالنظر في جميع الأهداف معاً.</p>
+<h2 id="شجرة-التتبع-الخلفي">شجرة التتبع الخلفي</h2>
+<p>الشجرة هي تمثيل قياسي لمجال (وتغيرات في المجال) لمشكلة تخطيط. تتكون الشجرة من عقد <span class="math inline">\(\underline{n}\)</span> وحواف <span class="math inline">\(e\)</span>. عقدة <span class="math inline">\(\underline{n} = \langle l, E \rangle\)</span> تتكون من تسمية <span class="math inline">\( label(\underline{n}) = l \in F\cup A\)</span>، والتي تشير إلى حقيقة <span class="math inline">\(f\)</span> أو فعل <span class="math inline">\(a\)</span>، ومجموعة من الحواف <span class="math inline">\(E\)</span>. حافة <span class="math inline">\( e = (\underline{n} \rightarrow \underline{c})\)</span> تربط عقدة أصل <span class="math inline">\(\underline{n}\)</span> بعقدة فرع <span class="math inline">\(\underline{c}\)</span>.</p>
+<p>بالنظر إلى حافة <span class="math inline">\(e = (\underline{n} \rightarrow \underline{c})\)</span>، فإن الدالة <span class="math inline">\(parent(\underline{c})\)</span> تعطي <span class="math inline">\(\underline{n}\)</span>. الدالة <span class="math inline">\(children(\underline{n})\)</span> تعطي مجموعة من العقد بحيث لكل عقدة <span class="math inline">\(c\)</span>، <span class="math inline">\( parent(\underline{c}) = \underline{n}\)</span>. جذر الشجرة هو العقدة الوحيدة بدون أصل، أي <span class="math inline">\(parent(\underline{r}) = None\)</span>.</p>
+<p>مشكلة التخطيط المرتخية للحذف <span class="math inline">\(\Pi = \langle F, A, I, G\rangle\)</span> تحدد شجرة <span class="math inline">\(T_\Pi\)</span>. عقدة <span class="math inline">\(\underline{r}\)</span> هي جذر <span class="math inline">\(T_\Pi\)</span> ولها <span class="math inline">\(label (\underline{r}) = achieveGoal\)</span>. عقدة فعل <span class="math inline">\(\underline{a}\)</span>، أي عقدة تسميتها فعل، لها أطفال تسمياتهم هي شروطها المسبقة <span class="math inline">\(f \in pre(label(\underline{a}))\)</span>. عقدة حقيقة <span class="math inline">\(\underline{f}\)</span> لها أطفال تسمياتهم هي أفعال <span class="math inline">\(a\)</span> بحيث <span class="math inline">\(label(\underline{f}) \in ef\!f(a)\)</span>.</p>
+<p>الدالة <span class="math inline">\(L(l)\)</span> تربط تسمية <span class="math inline">\(l\)</span> بعقد الشجرة التي لها هذه التسمية: <span class="math display">\[\begin{aligned}
+ \nonumber
+    L(l) &amp;= 
+        \{ \forall \underline{n} : label(\underline{n}) = l\}
+    \\
+\intertext{%
+    مسار عقدة هو تسلسل بديل من عقد الحقائق والأفعال الذي يتم إنشاؤه بإضافة أصل العقدة الحالية حتى يتم الوصول إلى الجذر:
+}
+\nonumber
+    T_{\Pi}^{path}(\underline{n}) &amp;= 
+        [\underline{n}, parent(\underline{n}), ..., \underline{r}] 
+    \\
+\intertext{%
+    النسل لعقدة $ \underline{n} $ هم جميع العقد التي لها $ \underline{n} $ في مسارها:
+}
+\nonumber
+    T_{\Pi}^{desc}(\underline{n}) &amp;= 
+        \{\forall \underline{d}: \underline{n} \in T_{\Pi}^{path}(\underline{d}) \}\end{aligned}\]</span> يتم استثناء الأفعال من أطفال عقدة حقيقة <span class="math inline">\( \underline{f} \)</span> إذا ظهرت أي شروط مسبقة لذلك الفعل كتسميات على أي عقدة في <span class="math inline">\( path(\underline{f}) \)</span>. هذا يمنع الدورات، التي من شأنها أن تمثل متطلبات غير قابلة للتحقيق.</p>
+<h2 id="الوكيل-غير-الحتمي">الوكيل غير الحتمي</h2>
+<p>الهدف من المقياس الاستدلالي <em>درجة الأهمية</em> هو تقدير مدى تكرار حقيقة ما يجب أن تصبح صحيحة في توزيع معين للخطط الجزئية. نستخدم سلوك وكيل غير حتمي (NDA) لتعريف هذا التوزيع. شجرة فرعية <span class="math inline">\( S_{\Pi} \)</span> من <span class="math inline">\( T_{\Pi} \)</span>، تتكون من مجموعة فرعية من العقد في <span class="math inline">\( T_{\Pi} \)</span> ومساراتها، مختارة وفقاً للخوارزمية [alg:subtree]. تطبيق تسلسل الإجراءات الممثلة بمسار كل عقدة ورقية داخل <span class="math inline">\( S_{\Pi} \)</span> سيؤدي إلى تحقيق الهدف. وبالتالي، قد يُعتبر <span class="math inline">\( S_{\Pi} \)</span> خطة جزئية تحت شروط الاسترخاء الحذفي.</p>
+<p>تفسيرنا، الذي نتابعه في هذه الورقة، هو أن احتمالية عالية لالتقاطها من قبل مثل هذا الوكيل غير الحتمي تشير إلى أن حقيقة ما لها أهمية كبيرة لتحقيق الهدف. الحقائق التي تظهر في جميع الخطط الجزئية التي يمكن أن يلتقطها يجب أن تكون في جميع الخطط، وبالتالي هي معالم بارزة.</p>
+<h2 id="درجة-الصلة">درجة الصلة</h2>
+<p>لتمثيل <em>درجة الصلة</em> <span class="math inline">\( \Xi(l) \)</span> احتمال أن يتم أخذ عينة من عقدة بتسمية <span class="math inline">\( l \)</span> بواسطة NDA: <span class="math display">\[\begin{aligned}
+\nonumber
+    \Xi(l) &amp;= 
+        P \left( \exists \underline{l} \in S_{\Pi} | label(\underline{l}) = l \right)\end{aligned}\]</span> لتمثيل <em>درجة الصلة المحلية</em> <span class="math inline">\( \Xi(l, \underline{n}) \)</span> احتمال أن يتم أخذ عينة من عقدة بتسمية <span class="math inline">\( l \)</span> بواسطة NDA، بناءً على أن العقدة <span class="math inline">\( \underline{n} \)</span> (وبالتالي <span class="math inline">\( S_{\Pi}^{path}(\underline{n}) \)</span>) قد تم أخذ عينة منها. <span class="math display">\[\begin{aligned}
+\label{eqn:localrel}
+    \Xi(l, \underline{n}) &amp;=                                           
+        P \left( \exists \underline{l} \in S_{\Pi}^{desc}(\underline{n}) | label(\underline{l}) = l \right) \end{aligned}\]</span> إذا كانت <span class="math inline">\( label(\underline{n}) \)</span> حقيقة، فإن أي من أطفالها قد يتم أخذ عينة منه، وقد يكون لديهم عقدة بتسمية <span class="math inline">\( l \)</span> بين نسلهم: <span class="math display">\[\begin{aligned}
+\nonumber
+    \shortintertext{$ \texttt{if } label(n) \in F: $ }
+\nonumber
+    \Xi(l, \underline{n}) &amp;=                                            
+        \sum_{\underline{c} \in children(\underline{n})} 
+        P \left( \underline{c} \in S_{\Pi}^{desc}(\underline{n}) \right) 
+        \times 
+        \Xi(l, \underline{c}) \end{aligned}\]</span> يختار NDA طفلاً واحداً من عقدة حقيقة بالتساوي، وهذا يعني: <span class="math display">\[\begin{aligned}
+\label{eqn:XiFactBasic}
+    \Xi(l, \underline{n}) &amp;=
+        \sum_{\underline{c} \in children(\underline{n})} 
+        \frac
+        {
+            \Xi(l, \underline{c})
+        }
+        {
+            \left| children(\underline{n}) \right|
+        }\end{aligned}\]</span> إذا كانت <span class="math inline">\( label(\underline{n}) \)</span> فعلاً، فسيتم أخذ عينة من جميع أطفالها. وبالتالي فإن <span class="math inline">\(\Xi(l, \underline{n})\)</span> هي 1 ناقص احتمال ألا يكون لأي من نسلهم المأخوذ عينة منه تسمية <span class="math inline">\(l\)</span>: <span class="math display">\[\begin{aligned}
+\nonumber
+    \shortintertext{$ \texttt{if } label(n) \in A:   $ }
+\label{eqn:XiActBasic}
+    \Xi(l, \underline{n}) &amp;= 
+        1 - \prod_{\underline{c} \in children(\underline{n})} 
+        \left( 
+            1 - \Xi(l, \underline{c})
+        \right)\end{aligned}\]</span></p>
+<h2 id="عداد-الخيارات">عداد الخيارات</h2>
+<p>احتمال أن يتم اختيار العقدة <span class="math inline">\(\underline{n}\)</span> بواسطة NDA، <span class="math inline">\(\xi(\underline{n}) = P(\underline{n} \in S_{\Pi})\)</span> يعتمد على عدد الخيارات البديلة التي كان يمكن اتخاذها بدلاً من تلك التي تصل إلى تلك العقدة. سيتم دائماً اختيار جذر الشجرة: <span class="math display">\[\begin{aligned}
+\nonumber
+    \xi(\underline{r}) &amp;= \textnormal{1}\end{aligned}\]</span> بين الفعل وشروطه المسبقة، لا يوجد لدى NDA خيارات لاتخاذها، لذا يتم نقل <span class="math inline">\( \xi \)</span> دون تغيير: <span class="math display">\[\begin{aligned}
+\nonumber
+    \xi(\underline{f}) &amp;= \xi(parent(\underline{f}))\end{aligned}\]</span> يختار NDA فعلاً واحداً يمكن أن يوفر حقيقة من مجموعة الأفعال التي تشكل <span class="math inline">\(children(f)\)</span>: <span class="math display">\[\begin{aligned}
+\label{eqn:CCAct}
+    \xi(\underline{a}) &amp;= \frac{\xi(parent(\underline{a}))}{\left| children(parent(\underline{a})) \right|}\end{aligned}\]</span> حيث <span class="math inline">\(\underline{r}\)</span>، <span class="math inline">\(\underline{f}\)</span>، <span class="math inline">\(\underline{a}\)</span> هي عقد الجذر، الحقيقة، والفعل على التوالي.</p>
+<h2 id="أدني-سلف-مشترك">أدنى سلف مشترك</h2>
+<p>أدنى سلف مشترك (LCA) لعقدتين <span class="math inline">\(\underline{n}\)</span> و <span class="math inline">\(\underline{m}\)</span> هو أدنى عقدة في الشجرة التي تكون سلفاً لكلتا العقدتين: <span class="math display">\[% \label{eqn:LCAdef}
+\nonumber
+    LCA(\underline{n},\underline{m}) = \underset{\underline{i} \in T^{path}_{\Pi}(\underline{n}) \cap T^{path}_{\Pi}(\underline{m})}{argmax}(|T^{path}_{\Pi}(\underline{i})|)\]</span> هذه العملية تجميعية ويمكن تعميمها على أي عدد من العقد.</p>
+<h1 id="sec:methods">حساب درجة الأهمية</h1>
+<h2 id="المنهج">المنهج</h2>
+<p>بعد ذلك، نصف منهجنا لحساب مقياس الأهمية المقترح. نبدأ ببعض الأساسيات. سيتم توفير الكود المستخدم لتنفيذ واختبار هذا على الرابط التالي <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>تسمح لنا المعادلة [eqn:localrel] بأن نعتبر الأحفاد لعقدة معينة بشكل مستقل عن الفروع الأخرى الناشئة من أسلافها. يمكن تطبيق هذا بشكل تكراري لحساب مقياس الأهمية المحلي لجذر الشجرة: <span class="math inline">\(\Xi(l, \underline{r}) = \Xi(l)\)</span>.</p>
+<p>العبارات التالية صحيحة بوضوح، وتسمح لنا بتجاهل مقياس الأهمية المحلي <span class="math inline">\(\Xi(l, \underline{n})\)</span> لأي عقدة بدون أحفاد لهم <span class="math inline">\(label(\underline{n}) = l\)</span>: <span class="math display">\[\begin{aligned}
+\shortintertext{ $\texttt{إذا } label(\underline{n}) = l $ }
+\nonumber
+    &amp;\implies
+        &amp;\Xi(l, \underline{n}) =&amp; 1
+\shortintertext{ $ \texttt{إذا } T^{desc}_{\Pi}(\underline{n}) \cap L(l)  = \emptyset $ }
+\nonumber
+    &amp;\implies
+        &amp;\Xi(l, \underline{n}) =&amp; 0\end{aligned}\]</span> نظراً لعقدة <span class="math inline">\( \underline{n} \)</span> وأحد أحفادها بحيث أن جميع العقد التي تحمل العلامة <span class="math inline">\(l\)</span> وهي حفيدة لإحداها هي أيضاً حفيدة للأخرى: <span class="math display">\[\begin{aligned}
+\shortintertext{$     \texttt{إذا } T^{desc}_{\Pi}(\underline{n}) \cap L(l)  = T^{desc}_{\Pi}(\underline{d}) \cap L(l)  $ }
+\nonumber
+    &amp;\implies
+        &amp;\Xi(l, \underline{n}) =&amp;
+            P\left( \underline{d} \in S_{\Pi}^{desc}(\underline{n}) \right) 
+                &amp;\times \Xi(l, \underline{d})
+\\
+\nonumber
+        &amp;&amp;  =&amp;
+            P\left( \underline{d} \in S_{\Pi} | \underline{n} \in S_{\Pi} \right)
+                &amp;\times \Xi(l, \underline{d})
+\\
+\label{eqn:NodeToDesc}
+        &amp;&amp;  =&amp;
+            \frac{\xi(\underline{d})}{\xi(\underline{n})}
+                &amp;\times \Xi(l, \underline{d})\end{aligned}\]</span></p>
+<h2 id="الاشتقاق">الاشتقاق</h2>
+<p>الآن، لنفكر في المعادلة [eqn:XiFactBasic] عندما يكون لكل طفل <span class="math inline">\(\underline{c}\)</span> لعقدة حقيقة <span class="math inline">\(\underline{f}\)</span> سليل واحد <span class="math inline">\(\underline{d}\)</span> بتسمية <span class="math inline">\(label(\underline{d}) = l\)</span>: <span class="math display">\[\begin{aligned}
+\nonumber
+    \Xi(l, \underline{f}) =&amp;
+        \sum_{ \underline{c} \in children(\underline{f}) }
+            \frac
+                { \Xi(l, \underline{c}) }
+                { \left| children(\underline{f}) \right| }\end{aligned}\]</span> باستخدام المعادلة [eqn:CCAct]، يمكن كتابتها كالتالي: <span class="math display">\[\begin{aligned}
+\nonumber
+    =&amp;
+        \sum_{ \underline{c} \in children(\underline{f}) }
+            \frac
+                { \Xi(l, \underline{c}) } 
+                {
+                    \frac
+                        { \xi(\underline{f}) }
+                        { \xi(\underline{c}) }
+                }
+\\
+\nonumber
+    =&amp;
+        \sum_{\underline{c} \in children(\underline{f})}   
+        \frac
+            {\Xi(l, \underline{c}) \times \xi(\underline{c})} 
+            {\xi(\underline{f})}\end{aligned}\]</span> بعد ذلك، باستخدام المعادلة [eqn:NodeToDesc]، يمكن إعادة كتابتها كالتالي: <span class="math display">\[\begin{aligned}
+\nonumber
+    =&amp;
+        \sum_{
+            \substack
+            {
+                \underline{c} \in children(\underline{f})
+                \\
+                \underline{l}~\models T_{\Pi}^{desc}(\underline{c})~\cap~L(l) 
+            }
+        }
+        \frac
+            {
+                \frac
+                    { \xi(\underline{l}) }
+                    { \xi(\underline{c}) }
+                \times \Xi(l, \underline{l}) 
+                \times \xi(\underline{c}) 
+            } 
+            {
+                \xi(\underline{f})
+            }
+\\
+\nonumber
+    =&amp;
+        \sum_{ \underline{l}~\in~T_{\Pi}^{desc}(\underline{f})~\cap~L(l) }   
+        \frac
+            { \xi(\underline{l}) }
+            { \xi(\underline{f}) }
+\\
+\label{eqn:XiFact}
+    =&amp;
+        \frac
+            { 1 }
+            { \xi(\underline{f}) }
+        \sum_{ \underline{l}~\in~T_{\Pi}^{desc}(\underline{f})~\cap~L(l) }
+            \xi(\underline{l})\end{aligned}\]</span> إذا كان جميع السلالة لعقدة <span class="math inline">\( \underline{d} \in  T_{\Pi}^{desc}(\underline{n}) \)</span> إما بتسمية <span class="math inline">\(label(\underline{d}) = l\)</span>، أو هي عقد حقائق التي تنطبق عليها المعادلة [eqn:XiFact]، يمكن تكرار هذه العملية، مما يؤدي إلى إلغاء مزيد من الحدود <span class="math inline">\( \frac{1}{\xi(\underline{c})} \)</span>. إذا كان بعض العقد بتسمية <span class="math inline">\(label(\underline{d_i}) = l\)</span> لها <span class="math inline">\( LCA(\underline{d_1},\underline{d_2}) = \underline{a} \)</span> التي هي فعل (أي، aLCA؛ انظر أدناه)، فإن المعادلة [eqn:NodeToDesc] لا تنطبق بين <span class="math inline">\( \underline{c_i} \)</span> و <span class="math inline">\( \underline{d_i}\)</span>. ستنطبق بين <span class="math inline">\( \underline{a_i} \)</span> و <span class="math inline">\( \underline{c_i} \)</span>، ولكن يجب حساب <span class="math inline">\( \Xi(l,~\underline{a}) \)</span> وفقاً للمعادلة [eqn:XiActBasic]: <span class="math display">\[\begin{aligned}
+\nonumber
+    \Xi(l, \underline{f}) =&amp;
+        \frac 
+            { 1 } 
+            { \xi(\underline{f}) }
+        \sum_{ \underline{l} \in fLCAs }               
+            \xi(\underline{l}) +
+            \sum_{ \underline{a} \in aLCAs }
+                \frac 
+                    { \xi(\underline{a}) }
+                    { \xi(\underline{f}) }
+                \times
+                \Xi(l, \underline{a})
+\\
+\label{eqn:XiAnyFact}
+    =&amp;
+        \frac 
+            { 1 } 
+            { \xi(\underline{f}) }
+        \left(
+            \sum_{ \underline{l} \in fLCAs }
+                \xi(\underline{l})
+        \right.
+        +
+        \left.
+        \sum_{ \underline{a} \in aLCAs }
+            \xi(\underline{a}) \times \Xi(l, \underline{a})
+        \right)\end{aligned}\]</span> حيث:</p>
+<ul>
+<li><p>aLCAs - <strong>أدنى جد مشترك للأفعال:</strong> أي عقدة فعل هي الجد المشترك الأدنى لأي مجموعة من <span class="math inline">\( L(l) \cap T_{\Pi}^{desc}(\underline{f})\)</span></p></li>
+<li><p>fLCAs - <strong>أدنى جد مشترك للحقائق:</strong> أي عقدة بتسمية <span class="math inline">\( l \)</span> التي تتفرع مساراتها عند عقد الحقائق:<br />
+<span class="math inline">\( 
+    fLCAs =
+        \left\{ 
+            \forall \underline{l} \in L(l) :
+                LCA(\underline{l}_i,\underline{l}_j) \in F \cap T_{\Pi}^{desc}(\underline{f})
+        \right\}
+    \)</span></p></li>
+</ul>
+<p>يمكن حساب <span class="math inline">\(\Xi(l)\)</span> من <span class="math inline">\(L(l)\)</span> بتحديد aLCAs، حساب <span class="math inline">\(\Xi(l,\underline{c})\)</span> لأطفالهم المباشرين بالمعادلة [eqn:XiAnyFact]، ودمجهم وفقاً للمعادلة [eqn:XiActBasic].</p>
+<h2 id="المتطلبات-الدنيا-لحساب-xil">المتطلبات الدنيا لحساب <span class="math inline">\( \Xi(l) \)</span> </h2>
+<h2 id="الاستكشاف">الاستكشاف</h2>
+<p>للمشكلات العملية، <span class="math inline">\( T_{\Pi} \)</span> قد تكون كبيرة جداً، مما يحول دون تمثيلها بالكامل. يمكن العثور على حد أدنى لـ <span class="math inline">\( \Xi(l) \)</span> باستخدام شجرة مستكشفة جزئياً <span class="math inline">\( \overline{T_{\Pi}} \)</span>. العقد التي لـ <span class="math inline">\( \xi(\underline{n}) \)</span> قيمة صغيرة تساهم بأقل في <span class="math inline">\( \Xi(l) \)</span>، وتوجد بعيداً عن الجذر، مما يؤدي إلى تقارب هذا الحد الأدنى بسرعة نحو الأعلى كلما تم استكشاف المنطقة القريبة من الجذر. نستخدم الخوارزمية [alg:exploration] لأخذ عينات من <span class="math inline">\( \overline{T_{\Pi}} \)</span> من <span class="math inline">\( T_{\Pi} \)</span>. عتبة الاستكشاف <span class="math inline">\( \rho \)</span> هي تقدير لنسبة كمية المعلومات الموجودة في الحدود مقارنة بالشجرة المستكشفة. وجدنا أن أداء <span class="math inline">\( h_{\Xi} \)</span> كمعيار ليس حساساً للتغييرات الصغيرة في قيمة <span class="math inline">\( \rho \)</span>. ما لم يذكر خلاف ذلك، نستخدم <span class="math inline">\( \rho = 0.2 \)</span> في بقية هذه الورقة. يضمن الشرط الأول في الحلقة الخارجية أثناء الخوارزمية [alg:exploration] أن أخذ العينات لا ينتهي مبكراً بسبب تقلب مصطلحاته عندما تكون صغيرة.</p>
+<p>لاحظ أن هذا الإجراء في أخذ العينات يختلف عن أخذ العينات الذي يؤديه NDA الافتراضي. كلا إجراءي أخذ العينات يختاران الإجراءات التي تلبي حقيقة حدودية عشوائياً، لكن NDA يستكشف جميع الحقائق التي هي شروط مسبقة لهذه الإجراءات، بينما يختار إجراء أخذ العينات في الخوارزمية [alg:exploration] شرطاً مسبقاً واحداً. هذا يضمن أن <span class="math inline">\( T_{\Pi} \)</span> يتم أخذ عينات منها بتنوع أكبر دون التركيز كثيراً على عدد قليل من العينات القريبة من الجذر التي تتفرع على نطاق واسع، مما يؤدي إلى تجاهل أشقائها.</p>
+<h2 id="إيجاد-أقل-سلف-مشترك">إيجاد أقل سلف مشترك</h2>
+<p>لقد تم إجراء الكثير من الأبحاث لإيجاد أقل سلف مشترك لزوج من العقد في شجرة. تمت ترجمة هذه المشكلة إلى مشكلة حساب استعلام الحد الأدنى للمدى (<span class="nodecor">Fischer2006</span>). تعقيد هذه العملية هو <span class="math inline">\( O(h) \)</span> لمعالجة الشجرة مسبقاً، حيث <span class="math inline">\(h\)</span> هو ارتفاع الشجرة، ثم <span class="math inline">\( O(1) \)</span> لكل استعلام عن زوج من العقد. وبالتالي، ستكلف هذه الطريقة <span class="math inline">\( O(h + n^2) \)</span> لإيجاد أقل سلف مشترك لكل زوج من العقد، حيث <span class="math inline">\(n\)</span> هو عدد العقد التي نريد إيجاد أقل سلف مشترك لها.</p>
+<p>بدلاً من هذا الإجراء المعتمد، يمكننا الاستفادة من حقيقة أن العديد من أقل الأسلاف المشتركة سيتم مشاركتها بين أزواج متعددة؛ حيث يوجد في أقصى الحالات <span class="math inline">\(hn\)</span> أقل سلف مشترك فريد. نقوم أولاً بفرز العقد حسب مساراتها (بتعقيد <span class="math inline">\(O(hn\log(n)) \)</span> ). لا يهم الترتيب، المهم فقط أن العقد التي لها نفس المسار حتى مسافة معينة من الهدف تكون في مجموعة متجاورة، لذا يتم معاملة العقد كرُموز في تسلسل (أي المسار الذي يبدأ عند الهدف) ويتم فرزها أبجدياً حسب تسمياتها. يتم التنقل على طول المسارات المفروزة (بأسوأ تعقيد حالة <span class="math inline">\( O(hn) \)</span>)، والتحقق من الاختلافات بين العقد في المسارات (وما إذا كانت عقد فعلية أم لا) المتجاورة في ترتيب الفرز ينتج قائمة مرتبة من أقل الأسلاف المشتركة الفعلية (aLCAs). يتم حساب مجموعات من aLCAs مرة واحدة لكل حقيقة، ثم يتم تصفيتها بواسطة <span class="math inline">\(\sigma\)</span> عندما يحتاج إلى حساب <span class="math inline">\(h_{\Xi}(\sigma)\)</span>.</p>
+<h2 id="استخدام-كمنهجيه">استخدام كمنهجية</h2>
+<p>في أي حالة معينة  <span class="math inline">\( \sigma \)</span>، جميع الحقائق في الحالة <span class="math inline">\( f \in \sigma \)</span> صحيحة ولا تحتاج إلى تحقيق من قبل المخطط. يجب ألا يأخذ مقياس الصلة المعتمد على الحالة لتسمية معينة، <span class="math inline">\( \Xi_{\sigma}(l) \)</span>، في الاعتبار أجزاء من <span class="math inline">\( \overline{T_{\Pi}} \)</span> التي تحقق هذه الحقائق على أنها ذات صلة. يمثل مقياس الصلة المطبق على حالة <span class="math inline">\( \Xi_{\sigma}(l) \)</span> احتمال أن يتم اختيار عقدة بتسمية <span class="math inline">\( l \)</span> بواسطة NDA، إذا توقفت عند العقد التي هي صحيحة في الحالة <span class="math inline">\( \sigma \)</span> (لأنها لا تحتاج إلى إجراء لتزويدها). يتم حسابه وفقاً للمعادلات [eqn:XiAnyFact] و [eqn:XiActBasic] المطبقة على الشجرة المقطوعة عند العقد بتسميات في <span class="math inline">\( \sigma \)</span>: <span class="math display">\[\nonumber
+    \overline{T_{\Pi}/\sigma} = \overline{T_{\Pi}} \left/ \bigcup_{\substack{
+        \forall \underline{f} \in L(f) \\
+        \forall f \in \sigma
+    }} 
+    T^{desc}_{\Pi}(\underline{f})
+    \right.\]</span> يتم العثور على هذا لجميع الحقائق، ويتم حساب المنهجية لحالة كما يلي: <span class="math display">\[\nonumber
+h_{\Xi}(\sigma) = \sum_{l \in F} \Xi_{\sigma}(l)\]</span> بما أن منهجية مقياس الصلة هي مجموع الاحتمالات، <span class="math inline">\(h_{\Xi}(\sigma) \in \mathbf{R}\)</span>. من ناحية أخرى، يتطلب نظام التخطيط LAMA أن تعود المنهجيات بقيمة صحيحة. للسماح باستخدام ومقارنة مع LAMA، يتم تقريب <span class="math inline">\(h_{\Xi}(\sigma)\)</span> إلى العدد الصحيح الأقرب، مع فقدان بعض المعلومات في العملية.</p>
+<h1 id="الإعداد-التجريبي-والنتائج">الإعداد التجريبي والنتائج</h1>
+<p>لقد قمنا بتقييم التجارب التالية:</p>
+<ul>
+<li><p>يُعتبر مقياس درجة الصلة <strong>S1</strong> أبطأ من مقياس عد المعالم البارزة <strong>S2</strong> في حل مشكلات التخطيط القياسية، ولكنه قادر على إيجاد خطة في معظم الأوقات؛ و</p></li>
+<li><p>يحسن مقياس درجة الصلة <strong>S1</strong> بشكل كبير القدرة على إيجاد الخطط مقارنة بمقياس عد المعالم البارزة <strong>S2</strong> في المجالات التي لا تحتوي على معالم بارزة غير تافهة.</p></li>
+</ul>
+<p>تستند الفرضية <strong>H1</strong> إلى الفهم القائل بأنه عندما يتم استكشاف الشجرة بالكامل (أي <span class="math inline">\( \overline{T_{\Pi}} = T_{\Pi} \)</span>)، ستحصل المعالم البارزة على درجة صلة <span class="math inline">\( \Xi(l) = 1 \)</span> والحقائق التي لا تظهر في أي خطط صالحة ستحصل على درجة صلة <span class="math inline">\( \Xi(l) = 0 \)</span>. بمعنى آخر، يوفر استخدام مقياس درجة الصلة الوصول إلى جميع المعلومات المتاحة لخوارزمية التخطيط باستخدام مقياس عد المعالم البارزة، مع الأخذ في الاعتبار أيضاً معلومات إضافية حول الحقائق ذات الصلة ولكن غير الأساسية، مما سيؤدي إلى حساب إضافي. الفرضية <strong>H2</strong> صحيحة لأنه، بينما لن يكون لدى مقياس عد المعالم البارزة <strong>S2</strong> أي معالم بارزة غير تافهة لتوجيه بحثه، فإن مقياس درجة الصلة <strong>S1</strong> سيظل يمتلك تدرجاً إرشادياً معلوماتياً للمتابعة، مع إمكانية قيادته إلى حلول (أفضل) لمشكلات التخطيط.</p>
+<p>تم تقييم هذه الفرضيات باستخدام بنية مخطط لاما (<span class="nodecor">Richter2010</span>)، باستخدام إما مقياس درجة الصلة <strong>S1</strong> أو مقياس عد المعالم البارزة الحالي <strong>S2</strong>؛ استخدام <strong>S2</strong> كان معيارنا الأساسي. يستخدم لاما إجراء بحث <span class="math inline">\(A^*\)</span> الموزون (باستخدام الوزن الافتراضي = 10) مع أحد المقياسين (<strong>S1</strong> أو <strong>S2</strong>). تم تقييد جميع البحوث بحد أقصى للذاكرة العشوائية يبلغ 8GB. تمت مقارنة أدائهم في حل جميع المشكلات الـ 674 المحددة في مجلد الأمثلة لمستودع <strong>HSP2</strong> (<span class="nodecor">Bonet2001</span>) وفقاً للمقاييس الأدائية التالية:</p>
+<ol>
+<li><p>نسبة المشكلات التي تم حلها/لم يتم حلها؛</p></li>
+<li><p>الوقت المستغرق في البحث عن خطة قبل العثور على واحدة؛</p></li>
+<li><p>عدد الحالات الموسعة قبل العثور على خطة؛ و</p></li>
+<li><p>طول الخطة الموجودة.</p></li>
+</ol>
+<p>هذه مقاييس معترف بها جيداً لتقييم أداء هذه المشكلات التخطيطية.</p>
+<h2 id="sec:lmfgeneration">المشكلات التي لا تحتوي على معالم غير تافهة</h2>
+<p>لتقييم <span class="nodecor">H2</span>، قمنا بإنشاء مواصفات <span class="nodecor">PDDL</span> جديدة للمجالات التي لا تحتوي على معالم باستثناء الحقائق الموجودة في الهدف والحالة الأولية. تم تحقيق ذلك من خلال دمج زوج من المشكلات، <span class="math inline">\( \pi_1 \)</span>، <span class="math inline">\( \pi_2 \)</span> التي تم حلها باستمرار باستخدام كلتا الخطتين بطريقة تمنع تفاعلهما. هذا يضمن أن كل مشكلة جديدة يمكن حلها بواسطة <span class="nodecor"><span class="nodecor">2</span></span> خطتين على الأقل لا تتداخل فيها الحقائق أو الأفعال المعنية.</p>
+<p>لتوليد <span class="math inline">\( merged(\Pi_1, \Pi_2) \)</span>، تم إضافة تسمية فريدة لكل مشكلة إلى جميع العناصر المحددة بالمجال أو المشكلة (الأنواع، الثوابت، المفاهيم، الأفعال، الأشياء) في كل مشكلة. هذا يضمن عدم مشاركة أي عنصر اسماً مع العناصر في المشكلة التي يتم دمجها معها. إذا لم تُستخدم مشكلة الأنواع، يتم تطبيق نوع جديد يتكون فقط من تسميتها الفريدة على جميع الثوابت والأشياء داخلها. ثم تتألف المشكلة <em>المُدمجة</em> الجديدة من جميع العناصر المسماة من مشكلتي المصدر، مع التعديلات التالية:</p>
+<ul>
+<li><p>يتم تعريف فعلين جديدين:<br />
+<span class="math inline">\( a_1: pre(a_1) = G_1; ef\!f(a_1) = \{winning\}\)</span><br />
+<span class="math inline">\( a_2: pre(a_2) = G_2; ef\!f(a_2) = \{winning\}\)</span>.</p></li>
+<li><p>تحتوي المشكلة المدمجة على هدف واحد:<br />
+<span class="math inline">\( G_{merged} = \{winning\}\)</span></p></li>
+</ul>
+<p>تم إنشاء ما مجموعه <span class="nodecor">500</span> مشكلة بهذا الإجراء من خلال اختيار زوج عشوائي من المشكلات من مجموعة تلك التي تم حلها بشكل فردي بواسطة <span class="nodecor">S1</span> و <span class="nodecor">S2</span>. البرنامج المستخدم لهذا غير قادر على التعامل مع <span class="nodecor">PDDL</span> الذي، على الرغم من أنه صالح، لا يتبع بعض الاتفاقيات. كلما حدث ذلك، تم اختيار زوج جديد عشوائياً للتقييم التجريبي.</p>
+<h2 id="sec:results">النتائج: المشكلات القياسية</h2>
+<p>من بين <span class="nodecor">674</span> مشكلة تخطيط في مستودع أمثلة HSP2، يُظهر الجدول [tab:standardsolvefail] عدد المشكلات التي تم حلها باستخدام كل من الاستراتيجيات (أي، <strong>S1</strong>، <strong>S2</strong>) مع مخطط LAMA. لاحظ أن <strong>S2</strong> قدم أداء أفضل ولكن <strong>S1</strong> تمكن من إيجاد خطط لمعظم المشكلات التي حلها <strong>S2</strong>.</p>
+<table>
+<caption>عدد المشكلات القياسية التي تم حلها باستخدام <strong>S1</strong> و <strong>S2</strong> بشكل فردي. <strong>S2</strong> قدم أداء أفضل ولكن <strong>S1</strong> تمكن من إيجاد خطط معظم الوقت.<span data-label="tab:standardsolvefail"></span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">تم حلها بواسطة</th>
+<th style="text-align: center;"><strong>S1</strong></th>
+<th style="text-align: center;"><strong>S2</strong></th>
+<th style="text-align: center;">كلاهما</th>
+<th style="text-align: center;">لا أحد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">عدد المشكلات</td>
+<td style="text-align: center;"><span class="nodecor">273</span></td>
+<td style="text-align: center;"><span class="nodecor">370</span></td>
+<td style="text-align: center;"><span class="nodecor">261</span></td>
+<td style="text-align: center;"><span class="nodecor">147</span></td>
+</tr>
+</tbody>
+</table>
+<p>للمشكلات التي تم حلها بواسطة كلتا الاستراتيجيتين:</p>
+<ul>
+<li><p>المتوسط النسبي بين أوقات البحث (ث) لـ <span class="math inline">\(\textbf{S1}/\textbf{S2} = 951.34 \pm 3303.31\)</span>؛</p></li>
+<li><p>المتوسط النسبي بين عدد الحالات الموسعة لـ <span class="math inline">\(\textbf{S1}/\textbf{S2} = 6.86 \pm 29.53\)</span>؛ و</p></li>
+<li><p>المتوسط النسبي بين طول الخطة الموجودة لـ <span class="math inline">\(\textbf{S1}/\textbf{S2} = 1.13 \pm 0.29\)</span>.</p></li>
+</ul>
+<p>هذه النتائج كانت ضمن التوقعات وتدعم بقوة الفرضية <strong>H1</strong>.</p>
+<h2 id="المشكلات-القياسية">المشكلات القياسية</h2>
+<h2 id="النتائج-المشكلات-الخالية-من-المعالم">النتائج: المشكلات الخالية من المعالم</h2>
+<p>من بين <span class="nodecor">500</span> مشكلة تم توليدها وفقاً للإجراء الموضح في القسم [sec:lmfgeneration]، يلخص الجدول [tab:mergedsolvefail] عدد المشكلات التي تم حلها باستخدام كل من الاستراتيجيات (<strong>S1</strong>, <strong>S2</strong>) باستخدام مخطط LAMA. لاحظ أن الأداء كان أفضل باستخدام <strong>S1</strong> مقارنة بـ <strong>S2</strong>.</p>
+<table>
+<caption>عدد المشكلات المدمجة التي تم حلها باستخدام <strong>S1</strong> و <strong>S2</strong> بشكل فردي. <strong>S1</strong> أدى أداء أفضل بكثير من <strong>S2</strong>، مما يحسن بشكل كبير القدرة على حل المشكلات وإيجاد خطط أفضل.<span data-label="tab:mergedsolvefail"></span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">تم الحل بواسطة</th>
+<th style="text-align: center;"><strong>S1</strong></th>
+<th style="text-align: center;"><strong>S2</strong></th>
+<th style="text-align: center;">كلاهما</th>
+<th style="text-align: center;">لا أحد</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">عدد المشكلات</td>
+<td style="text-align: center;"><span class="nodecor">335</span></td>
+<td style="text-align: center;"><span class="nodecor">122</span></td>
+<td style="text-align: center;"><span class="nodecor">108</span></td>
+<td style="text-align: center;"><span class="nodecor">151</span></td>
+</tr>
+</tbody>
+</table>
+<p>تُظهر النتائج أن <strong>S1</strong> قد تم قياسه على أنه أفضل بكثير من <strong>S2</strong> وفقاً لمقاييس الأداء <strong>M2</strong>، <strong>M3</strong>، و <strong>M4</strong> لغالبية هذه المشكلات المدمجة. <strong>S2</strong> فشل في حل معظم هذه الفئة من المشكلات. بالنسبة للمشكلات التي تم حلها بواسطة كلتا الاستراتيجيتين:</p>
+<ul>
+<li><p>المتوسط النسبي بين أوقات البحث (ث) لـ <span class="math inline">\(\textbf{S1}/\textbf{S2} = 123.08 \pm 295.25\)</span>؛</p></li>
+<li><p>المتوسط النسبي بين عدد الحالات الموسعة لـ <span class="math inline">\(\textbf{S1}/\textbf{S2} = 0.64 \pm 1.77\)</span>؛ و</p></li>
+<li><p>المتوسط النسبي بين طول الخطة الموجودة لـ <span class="math inline">\(\textbf{S1}/\textbf{S2} = 2.17 \pm 2.40\)</span>.</p></li>
+</ul>
+<p>هذه النتائج تدعم بقوة فرضية <strong>H2</strong>.</p>
+<h2 id="اختبار-عتبة-الاستكشاف-rho">اختبار عتبة الاستكشاف، <span class="math inline">\(\rho\)</span></h2>
+<p>المخطط لا يتأثر بالتغييرات الصغيرة في <span class="math inline">\(\rho\)</span>. يظهر أن استكشاف المزيد من الشجرة (أي التوقف عندما يتم الوصول إلى نسبة أقل بين المعلومات في الحدود و<span class="math inline">\( \overline{T_{\Pi}} \)</span>) لا يحسن من قدرة <span class="math inline">\( h_{\Xi} \)</span> على حل المشكلات. استخدام ذاكرة الوصول العشوائي الإضافية، يجعل من الصعب على المخطط حل المشكلات ضمن حدود ذاكرة الوصول العشوائي الخاصة بهم.</p>
+<h1 id="sec:discuss">المناقشة</h1>
+<p>توفر النتائج التجريبية بعض الرؤى المثيرة للاهتمام. حساب درجة الصلة لشجرة مستكشفة بالكامل (<span class="math inline">\( \overline{T_{\Pi}} = T_{\Pi} \)</span>) على أنها عدد الحقائق التي تعتبر معالم للخطط المنطلقة من <span class="math inline">\( \sigma \)</span> (حيث <span class="math inline">\( \Xi_\sigma(l) = 1\)</span>)، مضافاً إليها الصلة المحسوبة لحقائق أخرى. في حالة مشكلات التخطيط القياسية، بالإضافة إلى استغراق وقت أطول لحساب واستخدام هذه المعلومات الإضافية، يبدو أن استخدام الإرشاد المقترح من قبلنا يعيق قدرة المخطط على إيجاد خطة ضمن حدود الموارد المفروضة. تفسيرنا لذلك هو أن الحقائق ذات الصلة ولكن ليست ضرورية، التي يكون لها <span class="math inline">\( \Xi_\sigma(l) \)</span> عالياً ولكن أقل من 1، توجه المخطط نحو خطط متنافسة محتملة. هذا "التشتت" يؤدي إلى إيجاد خطط تتضمن عناصر من خطط جزئية أخرى كان من الممكن أن يجدها، مما يؤدي إلى خطط أطول. في المشكلات التي يكون فيها تداخل أقل بين الخطط المحتملة، تكون النسبة بين طول الخطط (عندما يجد كل من <span class="nodecor">S1</span> و <span class="nodecor">S2</span> خطة) أكبر. الخطط التي وجدها <span class="nodecor">S1</span> في المشكلات الخالية من المعالم تحتوي على أفعال من كلتا المشكلتين المصدر، بينما الخطط التي وجدها <span class="nodecor">S2</span> لا تفعل ذلك. المعلومات المشتتة تزيد أيضاً من تكلفة الاستكشاف (<span class="nodecor">M2</span> و <span class="nodecor">M3</span>)، مما يؤدي إلى زيادة عدد المشكلات التي لا يمكن حلها ضمن حدود الموارد (RAM).</p>
+<p>بالنسبة للمشكلات الخالية من المعالم، يمكن لـ <span class="nodecor">S2</span> فقط أن يخبر أن خطة جزئية قد تكون جيدة عندما يجد أحد حقائق الهدف. حتى ذلك الحين، يبحث على سطح مسطح، مما يزيد المسافة من الحالة الأولية في جميع الاتجاهات. بالمقابل، <span class="nodecor">S1</span>، أي الإرشاد المقترح لدرجة الصلة، قادر على تسلق سطح معلوماتي يوجهه نحو الخطط المحتملة. نظراً لأن <span class="nodecor">S1</span> يكافئ المخطط لإيجاد حقائق ذات صلة بخطط بديلة، ولكن قد تكون منفصلة، فإنه يميل إلى تضمين بعض الأفعال في الخطة النهائية التي لم تسهم في تحقيق الهدف. نعتقد أن هذا يفسر سبب إيجاده لخطط أطول من <span class="nodecor">S2</span>، خاصة في المشكلات المعروفة بأنها قابلة للحل بخطط منفصلة. هذا هو منتج غير مقصود من الطريقة التي تم بها إنشاء هذه المجالات وقد لا يكون الحال في المشكلات التي تم إنشاؤها بطرق أخرى.</p>
+<p>بشكل عام، الملاحظة الرئيسية هي أن إرشاد درجة الصلة الخاص بنا قادر على توجيه مخطط <span class="nodecor">LAMA</span> نحو حل فئة من مشكلات التخطيط التي يكون فيها عد المعالم غير فعال. يأتي ذلك على حساب كونه أكثر تكلفة للحساب، وأداء أسوأ في المشكلات القياسية. لذلك، يمكن التوصية به فقط لفئة المشكلات التي يتفوق فيها؛ تلك التي لديها عدد قليل أو لا توجد معالم غير تافهة. لاحظ، مع ذلك، أن المعالم يتم تحديدها قبل أن تبدأ إجراءات بحث الخطة، مما يعني أن هناك طريقة سهلة وطبيعية للاستفادة من كلا الإرشادين: <em>اختر عد المعالم في المشكلات التي تحتوي على معالم محددة جيداً، واستخدم إرشاد درجة الصلة الخاص بنا للمشكلات التي تحتوي فقط على معالم تافهة</em>. في الأعمال المستقبلية، نأمل في استكشاف هذه الرؤى بشكل أكبر مع مشكلات تخطيط إضافية (وأكثر تعقيداً).</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://github.com/relevancescoreplanning/relevance_score.git" class="uri">https://github.com/relevancescoreplanning/relevance_score.git</a><a href="#fnref1">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>
