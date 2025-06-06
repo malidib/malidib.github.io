@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Peter M. Hines">
-  <title>مِن تَخْمِين كولاتز إِلَى مَجْمُوعَة Thompson \mathcal F، عَبْرَ تَقَاطُع جيرارد</title>
+  <title>من تخمين كولاتز إلى مجموعة Thompson <span class="math inline">\(\mathcal F\)</span>، عبر تقاطع جيرارد</title>
   <style type="text/css">code{white-space: pre;}</style>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
@@ -15,75 +15,78 @@
 </head>
 <body>
 <header>
-<h1 class="title">مِن تَخْمِين كولاتز إِلَى مَجْمُوعَة <span class="nodecor">Thompson</span> <span class="math inline">\(\mathcal F\)</span>، عَبْرَ تَقَاطُع جيرارد</h1>
+<h1 class="title">من تخمين كولاتز إلى مجموعة <span class="nodecor">Thompson</span> <span class="math inline">\(\mathcal F\)</span>، عبر تقاطع جيرارد</h1>
 <p class="author"><span class="nodecor">Peter M. Hines</span></p>
 </header>
 <p>latex</p>
-<h1 id="ملخص">مُلَخَّص</h1>
-<p>مُشْكِلَة <span class="math inline">\(3x+1\)</span> الشهيرة لِ<span class="nodecor">L. Collatz</span> لا تَحْتاج إِلَى مُقَدِّمَة؛ إِلَّا أَنَّ هذا البَحْث يَتَنَاوَل مُشْكِلَةً أَقَلَّ شُهْرَةً وَلَم تُحَلَّ بَعْدُ: التَّخْمِينُ الأَصْلِيُّ لِكولاتز، أَو <span class="nodecor">OCC</span> (<span class="nodecor">Lag85</span>).</p>
-<p>نُوضِّحُ أَنَّ المُشَغِّلَ الحِسابِيَّ الأَساسِيَّ الهامَّ في <span class="nodecor">OCC</span>، عند دمجه مع تقاطع <span class="nodecor">J.-Y. Girard</span> من نِظامِهِ للهَنْدَسَةِ التَّفاعُلِيَّة (<span class="nodecor">GOI1</span>, <span class="nodecor">GOI2</span>)، يُؤَدِّي إِلَى تَحْقِيق مَجْمُوعَة <span class="nodecor">R. Thompson</span> <span class="math inline">\(\mathcal F\)</span> كَدَوالٍّ تَطابُقِيَّة، بِمَعْنَى <span class="nodecor">J. Conway</span> (<span class="nodecor">JC72</span>).</p>
-<p>نُقَدِّمُ أَيْضاً النَّظَرِيَّةَ الفِئَوِيَّةَ الكامِنَةَ الَّتِي تُفَسِّرُ ذلك، وَنَصِفُ المُشَغِّلَ الأَساسِيَّ المَتَعَلِّقَةَ في <span class="nodecor">OCC</span> كَتَطابُقٍ تَماسُكِيٍّ قِياسِيٍّ.</p>
-<h1 id="تعريفات-أساسية-فرضية-كولاتز-الأصلية-وتقاطع-جيرارد">تَعْرِيفَات أَساسِيَّة: فَرْضِيَّة كولاتز الأَصْلِيَّة وَتَقَاطُع جيرارد</h1>
-<p>نَبْدَأُ بِفَرْضِيَّةِ كولاتز الأَصْلِيَّة، كَمَا وَرَدَت في (<span class="nodecor">Lag85</span>).</p>
-<p>نُرْمِزُ للمَجْمُوعَةِ المُتَنَاظِرَةِ عَلَى <span class="math inline">\(\mathbb N\)</span> بـ<span class="math inline">\(\SN\)</span>، ونُعَرِّفُ <strong>تَحْوِيلَ كولاتز الأَصْلِيِّ</strong> <span class="math inline">\(\rho\in \SN\)</span> على النحو التالي: <span class="math inline">\(\rho(n) = \ \left\{ \begin{array}{lcr}
-    \vspace{0.3em}
-    \frac{2n}{3} & & n\equiv 0\pmod 3, \\ 
-    \vspace{0.3em}
-    \frac{4n-1}{3} & & n\equiv 1\pmod 3, \\ 
-    \vspace{0.3em}
-    \frac{4n+1}{3} & & n\equiv 2\pmod 3. 
-    \end{array}\right.\)</span></p>
-<p>النِّقاطُ الثابتَةُ الوَحِيدَةُ لِ<span class="math inline">\(\rho\)</span> هِيَ <span class="math inline">\(\{0,1\}\subseteq \mathbb N\)</span>، كما أنَّ مدارات جميع الأعداد في <span class="math inline">\(\{0,\ldots ,9\}\setminus\{8\}\)</span> محدودة.</p>
-<p>يُبرِزُ الجَبْرُ الأَوَّلُ أنّ <span class="math inline">\(\{0,1\}\)</span> هي الحلول الوحيدة لمعادلة <span class="math inline">\(\rho(n)=n\)</span>. وبالحساب المباشر، <span class="math inline">\(2\rightarrow 3 \rightarrow 2\)</span> و <span class="math inline">\(4\rightarrow 5\rightarrow 7\rightarrow 9\rightarrow 6\rightarrow 4\)</span> مداراتٌ محدودة.</p>
-<p>كما ورد في (<span class="nodecor">Lag85</span>)، ظهر هذا التحويل في دفاتر ملاحظات غير منشورة لكولاتز بتاريخ <span class="math inline">\(1^{\mathrm{st}}\) مايُو 1932</span> كأساسٍ للفرضية التالية (غير المحلولة حتى الآن):</p>
-<p>مدارُ العدد <span class="math inline">\(8\)</span> تحت <span class="math inline">\(\rho\)</span> غير منتهٍ.</p>
-<p>نَجْمَعُ بَيْنَ المُشَغِّلِ الأَساسِيِّ لِفَرْضِيَّةِ كولاتز الأَصْلِيَّةِ ومفهوّمِ التَّقَاطُعِ المنطقيِّ في نموذج جان-إيف جيرارد (<span class="nodecor">GOI1, GOI2</span>). كما أُشيرَ إليه في (<span class="nodecor">PHD, HA, AHS</span>)، اعتمد نظام جيرارد على الزمرة الجزئية <span class="math inline">\(\mathcal I(\mathbb N)\)</span> للتحويلات الجزئية على <span class="math inline">\(\mathbb N\)</span>؛ ونحن نقتصر على الزمرة الفرعية <span class="math inline">\(\SN\subseteq \mathcal I(\mathbb N)\)</span>.</p>
-<p><strong>تَقَاطُع جيرارد</strong> هو الدالة <span class="math inline">\(\star : \SN\times \SN\rightarrow \SN\)</span> المعطاة بـ<span class="math inline">\((a\star b)(n) = \left\{ \begin{array}{lcr}
-    2\,a\!\bigl(\tfrac{n}{2}\bigr) & & n\text{ زوجي}, \\
-    2\,b\!\bigl(\tfrac{n-1}{2}\bigr)+1 & & n\text{ فردي}.
-    \end{array}\right.\)</span><br />
-ومن المعروف (مثلاً <span class="nodecor">PHD, HA, AHS</span>) أنّ هذه الدالة تشبه الحقنية.</p>
-<h2 id="تبسيط-طفيف">تَبْسِيطٌ طَفِيف</h2>
-<p>يركز مفهوم OCC على مدارات الأعداد الطبيعية تحت التحويل <span class="math inline">\(\rho\)</span>. نقوم بتعديل <span class="math inline">\(\rho\)</span> عبر دالة الإزاحة وعكسها (المعرفة جزئيًّا) للتخلّص من التفاهة <span class="math inline">\(\rho(0)=0\)</span>، مع الحفاظ على سلوك المدارات الأخرى:</p>
-<p>[rcb-def] نُعَرِّفُ <strong>التَحْوِيلَ المُخَفَّضَ لكولاتز</strong> <span class="math inline">\(\lambda\in \SN\)</span> بأنّ <span class="math inline">\(\lambda(n)=\rho(n+1)-1\)</span>. هذا تحويلٌ محدّدٌ جيّدًا على <span class="math inline">\(\mathbb N\)</span>، نظرًا لأنّ <span class="math inline">\(\rho(0)=0\)</span>. وعند توسيع التعريف نحصل على الصيغة الصريحة:</p>
-<p><span class="math display">\[\lambda (n) = \ \left\{ \begin{array}{lcr}
-    \frac{4n}{3} & & n\equiv 0\pmod 3, \\ 
-    \frac{4n+2}{3} & & n\equiv 1\pmod 3, \\ 
-    \frac{2n-1}{3} & & n\equiv 2\pmod 3. 
-    \end{array}\right.\]</span></p>
-<p>بناءً على التعريف، <span class="math inline">\(\lambda^K(n)=\rho^K(n+1)-1\)</span>، لذلك فإنّ الأسئلة حول المَدارَات غير التافهة لـ<span class="math inline">\(\rho\)</span> وتلك الخاصة بـ<span class="math inline">\(\lambda\)</span> قابلة للتبادل؛ ويصبح مفهوم OCC بعدها الفرضية القائلة بأن مدار العدد <span class="nodecor">7</span> تحت <span class="math inline">\(\lambda\)</span> لا نهائي.</p>
-<p>[noCoincidence-lem] <span class="math inline">\(\lambda\neq\rho\)</span>، و<span class="math inline">\(\lambda(n)=\rho(n)\iff n=0\)</span>، لكل \(n\in\mathbb N\).</p>
-<p>بديهيًّا، <span class="math inline">\(\lambda\neq\rho\)</span>. كتابة الحالات الثلاث بشكل منفصل تؤدي إلى ظهور الحاجة إلى \(n=0\) ثم \(n=-1\notin\N\)، وهو تناقض.</p>
-<h2 id="دمج-التباينات-الأصلية-والمخفضة-لكولاتز">دَمْجُ التَحْوِيلَيْنِ الأَصْلِيِّ وَالمُخَفَّضِ لكولاتز</h2>
-<p>يمكن إعطاء معكوسات <span class="math inline">\(\lambda,\rho\in \SN\)</span> بشكل صريح كما يلي:
-<span class="math display">\[\lambda^{-1}(n) = \begin{cases}
-\frac{3n}{4} & n\equiv 0\pmod 4, \\  
-\frac{3n-2}{4} & n\equiv 2\pmod 4, \\ 
-\frac{3n+1}{2} & n\text{ فردي},
+<h1 id="ملخص">مُلخّص</h1>
+<p>المسألة الشهيرة <span class="math inline">\(3x+1\)</span> لكولاتز لا تحتاج إلى مقدمة، لكن هذا البحث يتناول مسألة أقل شهرة ولم تُحَلّ بعد؛ وهي التخمين الأصلي لكولاتز، أو <span class="nodecor">OCC</span> (<span class="nodecor">Lag85</span>).</p>
+<p>نبيّن أنَّ المشغل الحسابي الأساسي في <span class="nodecor">OCC</span>، عند دمجه مع تقاطع <span class="nodecor">J.-Y. Girard</span> من نظامه للهندسة التفاعلية (<span class="nodecor">GOI1</span>, <span class="nodecor">GOI2</span>), ينتج عنه تحقيق مجموعة <span class="nodecor">R. Thompson</span> <span class="math inline">\(\mathcal F\)</span> كدوال تطابقية، وفق تعريف <span class="nodecor">J. Conway</span> (<span class="nodecor">JC72</span>).</p>
+<p>نقدّم أيضًا النظرية الفئوية الكامنة التي تفسر ذلك، ونصف المشغل الأساسي في <span class="nodecor">OCC</span> كتطابق تماسك قياسي.</p>
+<h1 id="تعريفات-أساسية-فرضية-كولاتز-الأصلية-وتقاطع-جيرارد">تعريفات أساسية: فرضية كولاتز الأصلية وتقاطع جيرارد</h1>
+<p>نبدأ بفرضية كولاتز الأصلية كما وردت في (<span class="nodecor">Lag85</span>).</p>
+<p>نرمز إلى المجموعة المتماثلة على <span class="math inline">\(\mathbb N\)</span> بـ<span class="math inline">\(\SN\)</span>، ونعرّف <strong>تحويل كولاتز الأصلي</strong> <span class="math inline">\(\rho\in \SN\)</span> كما يلي: <span class="math inline">\(\rho(n) = \begin{cases}
+    \frac{2n}{3}, & n\equiv 0\pmod 3, \\ 
+    \frac{4n-1}{3}, & n\equiv 1\pmod 3, \\ 
+    \frac{4n+1}{3}, & n\equiv 2\pmod 3.
+\end{cases}\)</span></p>
+<p>النقاط الثابتة الوحيدة لـ<span class="math inline">\(\rho\)</span> هي <span class="math inline">\(\{0,1\}\subseteq\mathbb N\)</span>، كما أنَّ مدارات جميع الأعداد في <span class="math inline">\(\{0,\dots,9\}\setminus\{8\}\)</span> محدودة.</p>
+<p>يبين الجبر الأولي أنَّ <span class="math inline">\(\{0,1\}\)</span> هي الحلول الوحيدة لمعادلة <span class="math inline">\(\rho(n)=n\)</span>. وبالحساب المباشر، <span class="math inline">\(2\to3\to2\)</span> و <span class="math inline">\(4\to5\to7\to9\to6\to4\)</span> مدارات محدودة.</p>
+<p>كما ورد في (<span class="nodecor">Lag85</span>)، ظهر هذا التحويل في دفاتر ملاحظات غير منشورة لكولاتز بتاريخ <span class="math inline">\(1^{\mathrm{st}}\) مايو 1932</span> كأساس للفرضية التالية (غير المحلولة حتى الآن):</p>
+<p>مدار العدد <span class="math inline">\(8\)</span> تحت <span class="math inline">\(\rho\)</span> غير منتهٍ.</p>
+<p>نربط المشغل الأساسي لفرضية كولاتز الأصلية بمفهوم التقاطع المنطقي في نموذج جان-إيف جيرارد (<span class="nodecor">GOI1, GOI2</span>). كما أُشير إليه في (<span class="nodecor">PHD, HA, AHS</span>)، اعتمد نظام جيرارد على الزمرة الجزئية <span class="math inline">\(\mathcal I(\mathbb N)\)</span> للتحويلات الجزئية على <span class="math inline">\(\mathbb N\)</span>؛ ونحن نكتفي بالزمرة الفرعية <span class="math inline">\(\SN\subseteq \mathcal I(\mathbb N)\)</span>.</p>
+<p><strong>تقاطع جيرارد</strong> هو الدالة <span class="math inline">\(\star:\SN\times\SN\to\SN\)</span> المعطاة بـ<span class="math inline">\((a\star b)(n) = \begin{cases}
+    2\,a\!\bigl(\tfrac n2\bigr), & n\text{ زوجي}, \\
+    2\,b\!\bigl(\tfrac{n-1}2\bigr)+1, & n\text{ فردي}.
+\end{cases}\)</span><br/>
+ومن المعروف (مثلاً في <span class="nodecor">PHD, HA, AHS</span>) أن هذه الدالة تشبه الحقن.</p>
+<h2 id="تبسيط-طفيف">تبسيط طفيف</h2>
+<p>يركز مفهوم <span class="nodecor">OCC</span> على مدارات الأعداد الطبيعية تحت التحويل <span class="math inline">\(\rho\)</span>. نقوم بتعديل <span class="math inline">\(\rho\)</span> عبر دالة الإزاحة وعكسها (المعرفة جزئيًا) للتخلّص من الحالة التافهة <span class="math inline">\(\rho(0)=0\)</span>، مع الحفاظ على سلوك المدارات الأخرى:</p>
+<p>[rcb-def] نعرّف <strong>التحويل المخفّض لكولاتز</strong> <span class="math inline">\(\lambda\in \SN\)</span> بحيث <span class="math inline">\(\lambda(n)=\rho(n+1)-1\)</span>. هذا تحويل محدد جيدًا على <span class="math inline">\(\mathbb N\)</span> بما أن <span class="math inline">\(\rho(0)=0\)</span>. وعند التوسيع نحصل على الصيغة الصريحة:</p>
+<p><span class="math display">\[
+\lambda(n)=\begin{cases}
+    \frac{4n}{3}, & n\equiv 0\pmod 3, \\ 
+    \frac{4n+2}{3}, & n\equiv 1\pmod 3, \\ 
+    \frac{2n-1}{3}, & n\equiv 2\pmod 3.
 \end{cases}
-\quad\text{و}\quad
-\rho^{-1}(n) = \begin{cases}
-\frac{3n}{2} & n\equiv 0\pmod 2, \\ 
-\frac{3n+1}{4} & n\equiv 1\pmod 4, \\ 
-\frac{3n-1}{4} & n\equiv 3\pmod 4.
-\end{cases}\]</span>
-تركيب التحويل المخفَّض مع معكوس التحويل الأَصْلِي ينتج تحويلًا سبق أن ظهر في نظرية الفئات والمنطق:</p>
-<p>[assoc-def] نُعَرِّفُ <strong>المُقْتَرِن</strong> <span class="math inline">\(\alpha\in \SN\)</span> بأنّ <span class="math inline">\(\alpha=\lambda\,\rho^{-1}\)</span>؛ بمعنى آخر، <span class="math inline">\(\alpha(n)=\rho\bigl(\rho^{-1}(n)+1\bigr)-1\)</span>. وعند التوسيع نحصل على:</p>
-<p><span class="math display">\[\alpha(n)=\begin{cases}
-2n & n\equiv 0\pmod 2, \\ 
-n+1 & n\equiv 1\pmod 4, \\  
-\frac{n-1}{2} & n\equiv 3\pmod 4,
+\]</span></p>
+<p>بناءً على التعريف، <span class="math inline">\(\lambda^K(n)=\rho^K(n+1)-1\)</span>، لذا فإن الأسئلة حول المدارات غير التافهة لـ<span class="math inline">\(\rho\)</span> وتلك الخاصة بـ<span class="math inline">\(\lambda\)</span> قابلة للتبادل؛ ويصبح مفهوم <span class="nodecor">OCC</span> الفرضية القائلة بأن مدار العدد <span class="nodecor">7</span> تحت <span class="math inline">\(\lambda\)</span> لا نهائي.</p>
+<p>[noCoincidence-lem] <span class="math inline">\(\lambda\neq\rho\)</span>، و<span class="math inline">\(\lambda(n)=\rho(n)\iff n=0\)</span> لكل \(n\in\mathbb N\).</p>
+<p>بديهيًا، <span class="math inline">\(\lambda\neq\rho\)</span>. عند تقسيم الحالات الثلاث بشكل منفصل تظهر الحاجة إلى \(n=-1\notin\mathbb N\)، وهو تناقض.</p>
+<h2 id="دمج-التباينات-الأصلية-والمخفضة-لكولاتز">دمج التحويلين الأصلي والمخفَّض لكولاتز</h2>
+<p>يمكن كتابة معكوسات <span class="math inline">\(\lambda,\rho\in \SN\)</span> صراحة كما يلي:
+<span class="math display">\[
+\lambda^{-1}(n)=\begin{cases}
+\frac{3n}{4}, & n\equiv 0\pmod 4, \\  
+\frac{3n-2}{4}, & n\equiv 2\pmod 4, \\ 
+\frac{3n+1}{2}, & n\text{ فردي},
 \end{cases}
-\quad\text{و}\quad
+\quad
+\rho^{-1}(n)=\begin{cases}
+\frac{3n}{2}, & n\equiv 0\pmod 2, \\ 
+\frac{3n+1}{4}, & n\equiv 1\pmod 4, \\ 
+\frac{3n-1}{4}, & n\equiv 3\pmod 4.
+\end{cases}
+\]</span>
+تركيب التحويل المخفَّض مع معكوس التحويل الأصلي ينتج تحويلًا سبق أن ظهر في نظرية الفئات والمنطق:</p>
+<p>[assoc-def] نعرّف <strong>المقتَرِن</strong> <span class="math inline">\(\alpha\in \SN\)</span> بأنّ <span class="math inline">\(\alpha=\lambda\circ\rho^{-1}\)</span>؛ أي <span class="math inline">\(\alpha(n)=\rho\bigl(\rho^{-1}(n)+1\bigr)-1\)</span>. وعند التوسيع نحصل على:</p>
+<p><span class="math display">\[
+\alpha(n)=\begin{cases}
+2n, & n\equiv 0\pmod 2, \\ 
+n+1, & n\equiv 1\pmod 4, \\  
+\frac{n-1}{2}, & n\equiv 3\pmod 4,
+\end{cases}
+\quad
 \alpha^{-1}(n)=\begin{cases}
-\frac{n}{2} & n\equiv 0\pmod 4, \\  
-n-1 & n\equiv 2\pmod 4, \\  
-2n+1 & n\text{ فردي}.
-\end{cases}\]</span></p>
-<p>يمكن اعتبار المُقتَرِنَ «التحويل المخفَّض لكولاتز المركب مع معكوس التحويل الأَصْلِي». بالمقارنة مع أي من تحويلات كولاتز، فإن مدارات الأعداد تحت المُقتَرِن سهلة الوصف للغاية.</p>
-<p>[assocOrbits-lem] للمُقْتَرِنِ نقطة ثابتة وحيدة، <span class="math inline">\(\alpha(0)=0\)</span>. مدار كل <span class="math inline">\(n>0\in\mathbb N\)</span> له حدٌّ أدنى موضعي إذا وفقط إذا كان \(n\) زوجيًا؛ لا يُوجد حدٌّ أقصى موضعي، ولذلك فإن مدار كل \(n>0\) لا نهائي.</p>
+\frac{n}{2}, & n\equiv 0\pmod 4, \\  
+n-1, & n\equiv 2\pmod 4, \\  
+2n+1, & n\text{ فردي}.
+\end{cases}
+\]\</span></p>
+<p>يمكن اعتبار المقتَرِن "التحويل المخفَّض لكولاتز المركب مع معكوس التحويل الأصلي". بالمقارنة مع أي من تحويلات كولاتز، فإن مدارات الأعداد تحت المقتَرِن سهلة الوصف للغاية.</p>
+<p>[assocOrbits-lem] للمقتَرِن نقطة ثابتة وحيدة، <span class="math inline">\(\alpha(0)=0\)</span>. مدار أي <span class="math inline">\(n>0\in\mathbb N\)</span> له حد أدنى موضعي إذا وفقط إذا كان \(n\) زوجيًّا؛ ولا وجود لحد أقصى موضعي، ولذلك فإن مدار كل \(n>0\) لا نهائي.</p>
 <p><em>من الأسهل (لكنّه مكافئ) إثبات ذلك للمعكوس، <span class="math inline">\(\alpha^{-1}=\rho\,\lambda^{-1}\)</span>.</em></p>
-<p>بديهيًّا، <span class="math inline">\(\alpha^{-1}(0)=0\)</span>؛ وهذه وحيدة، حيث إنّ <span class="math inline">\(\alpha^{-1}(n)=n\iff \rho(n)=\lambda(n)\)</span>، ممّا يتناقض مع البيان [noCoincidence-lem] لأي \(n\neq0\). عندما يكون \(n\) فرديًّا، <span class="math inline">\(\alpha^{-1}(n)=2n+1>n\)</span>؛ وهو أيضًا فردي. ولذلك \(n<\alpha^{-1}(n)\) لكل \(n\) فردي. عندما يكون \(n>0\) زوجيًّا، <span class="math inline">\(\alpha^{-1}(n)<n\)</span> قد يكون زوجيًّا أو فرديًّا، ولكن لا يمكن أن يكون صفرًا لأنّ \(\alpha^{-1}\) تحويل. ولذلك، أي مدار يبدأ بعددٍ زوجيٍّ غير صفري ينخفض حتى يصل إلى عددٍ فردي (الحدّ الأدنى الموضعي)، ومن ثمّ يزداد بلا حدود.</p>
+<p>بديهيًا، <span class="math inline">\(\alpha^{-1}(0)=0\)</span>؛ وهذه هي الوحيدة، لأنّ <span class="math inline">\(\alpha^{-1}(n)=n\iff \rho(n)=\lambda(n)\)</span>، مما يتناقض مع [noCoincidence-lem] لأي \(n\neq0\). عندما يكون \(n\) فرديًّا، <span class="math inline">\(\alpha^{-1}(n)=2n+1>n\)</span> وهو أيضًا فردي؛ لذا \(n<\alpha^{-1}(n)\) لكل \(n\) فردي. وعندما يكون \(n>0\) زوجيًّا، <span class="math inline">\(\alpha^{-1}(n)<n\)</span> قد يكون زوجيًّا أو فرديًّا، ولكن لا يمكن أن يكون صفرًا لأنّ \(\alpha^{-1}\) تحويل. ولذلك، أي مدار يبدأ بعددٍ زوجيٍّ غير صفري ينخفض حتى يصل إلى عددٍ فردي (الحدّ الأدنى الموضعي)، ثم يزداد بلا حدود.</p>
 <p>كل مدار محدود يصل إلى حدٍّ أقصى وأدنى؛ ولذلك فإن المدار الوحيد المحدود تحت <span class="math inline">\(\alpha^{-1}\)</span> (وبالتالي تحت <span class="math inline">\(\alpha\)</span>) هو النقطة الثابتة <span class="math inline">\(\alpha^{-1}(0)=0=\alpha(0)\)</span>.</p>
 <!-- باقي المحتوى يستمر بلا تغيير جوهري -->
 </body>
