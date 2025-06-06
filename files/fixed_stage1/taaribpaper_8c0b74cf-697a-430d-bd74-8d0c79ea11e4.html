@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Mukul Gagrani">
+  <meta name="author" content="Raghavv Goel">
+  <meta name="author" content="Wonseok Jeon">
+  <meta name="author" content="Junyoung Park">
+  <meta name="author" content="Mingu Lee">
+  <meta name="author" content="Christopher Lott">
+  <title>في الترميز التخميني لنماذج اللغة الكبيرة متعددة الوسائط</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">في الترميز التخميني لنماذج اللغة الكبيرة متعددة الوسائط</h1>
+<p class="author"><span class="nodecor">Mukul Gagrani</span></p>
+<p class="author"><span class="nodecor">Raghavv Goel</span></p>
+<p class="author"><span class="nodecor">Wonseok Jeon</span></p>
+<p class="author"><span class="nodecor">Junyoung Park</span></p>
+<p class="author"><span class="nodecor">Mingu Lee</span></p>
+<p class="author"><span class="nodecor">Christopher Lott</span></p>
+</header>
+<h1 id="ملخص">مُلخَّص</h1>
+<p>الاستدلال باستخدام نماذج اللغة الكبيرة متعددة الوسائط (<span class="nodecor">MLLMs</span>) بطيء بسبب العمود الفقري لنموذج اللغة الكبير الذي يعاني من عنق الزجاجة في عرض النطاق الترددي للذاكرة ويولد الرموز بشكل تلقائي تصاعدي. في هذه الورقة، نستكشف تطبيق الترميز التخميني لتعزيز كفاءة الاستدلال لنماذج <span class="nodecor">MLLMs</span>، وتحديداً نموذج <span class="nodecor">LLaVA 7B</span>. نظهر أن نموذج اللغة فقط يمكن أن يكون نموذجاً أولياً جيداً للترميز التخميني مع <span class="nodecor">LLaVA 7B</span>، متجاوزاً الحاجة لرموز الصور ومكونات المعالجة المرتبطة بها من النموذج الأولي. تظهر تجاربنا عبر ثلاث مهام مختلفة أن الترميز التخميني يمكن أن يحقق تسريعاً محدوداً بالذاكرة يصل إلى <span class="nodecor">2.37<span class="math inline">\(\times\)</span></span> باستخدام نموذج لغة بعدد معاملات <span class="nodecor">115M</span> قمنا بتدريبه من الصفر. بالإضافة إلى ذلك، نقدم نموذج <span class="nodecor">LLaVA</span> أولي مدمج يتضمن محول صور، والذي يظهر مكاسب أداء طفيفة في وصف الصور مع الحفاظ على نتائج مماثلة في المهام الأخرى.</p>
+<h1 id="مقدمة">مقدمة</h1>
+<p>أصبحت نماذج اللغة الكبيرة (Large Language Models) شائعة الاستخدام في مختلف المجالات بفضل أدائها المميز. ومع ذلك، تقتصر نماذج اللغة الكبيرة على استقبال استفسارات نصية فقط، بينما تأتي البيانات في العالم الحقيقي على شكل وسائط متعددة تشمل البيانات البصرية. توفر نماذج اللغة الكبيرة متعددة الوسائط (<span class="nodecor">MLLMs</span>) (<span class="nodecor">awadalla2023openflamingo</span>, <span class="nodecor">liu2024visual</span>, <span class="nodecor">tsimpoukelli2021multimodal</span>, <span class="nodecor">zhu2023minigpt</span>) لنماذج اللغة الكبيرة قدرات فهم الصور، وتعزز دمج الرموز البصرية والنصية لتفاعل النموذج مع المستخدمين، مما يؤدي إلى استجابات أكثر فائدة. تتكون نماذج اللغة الكبيرة متعددة الوسائط من مشفر صور لمعالجة معلومات الصورة ومحول يحول ترميزات الصور إلى فضاء تضمين نموذج اللغة. بالإضافة إلى ذلك، تمتلك نماذج اللغة الكبيرة متعددة الوسائط عموداً فقرياً على شكل نموذج لغة كبير وبالتالي ترث التوليد التلقائي العكسي وعنق الزجاجة في عرض النطاق الترددي للذاكرة الذي يؤدي إلى بطء الاستدلال (<span class="nodecor">shazeer2019fast</span>).</p>
+<p>تم اقتراح الترميز التخميني (<span class="nodecor">speculative decoding</span>) (<span class="nodecor">leviathan2023fast</span>, <span class="nodecor">chen2023accelerating</span>, <span class="nodecor">sun2023spectr</span>, <span class="nodecor">miao2023specinfer</span>, <span class="nodecor">jeon2024recursive</span>) كحل لتسريع استدلال نماذج اللغة الكبيرة دون فقدان في الدقة، حيث يتنبأ نموذج مسودة أصغر بعدة رموز مستقبلية يتم التحقق منها في استدعاء واحد لنموذج اللغة الكبير. نظراً لأن نماذج اللغة الكبيرة متعددة الوسائط لها عمود فقري على شكل نموذج لغة كبير، يمكن استخدام الترميز التخميني لجعل الاستدلال مع نماذج اللغة الكبيرة متعددة الوسائط أكثر كفاءة. لقد درست العديد من الأعمال الحديثة تطبيق الترميز التخميني ومتغيراته (<span class="nodecor">kim2023big</span>, <span class="nodecor">fu2023lookahead</span>, <span class="nodecor">medusa</span>, <span class="nodecor">santilli2023accelerating</span>, <span class="nodecor">sun2023spectr</span>, <span class="nodecor">jeon2024recursive</span>) لنماذج اللغة الكبيرة، ولكن لا توجد أعمال سابقة في سياق نماذج اللغة الكبيرة متعددة الوسائط حسب علمنا.</p>
+<p>في هذه الورقة، نطبق الترميز التخميني على نموذج LLaVA 7B (مع نموذج LLaMA 7B كعمود فقري لنموذج اللغة) لجعل الاستدلال أكثر كفاءة. نظراً لعدم توفر نماذج عامة من عائلتي LLaVA وLLaMA أصغر من 7B معاملات، نقوم بتدريب نموذج لغة بحجم 115M من الصفر للترميز التخميني. نظهر أن نموذج اللغة الذي لا يأخذ في الاعتبار الرموز الصورية (وبالتالي لا يتطلب مشفر الصور والمحول) يمكن أن يكون نموذج مسودة جيداً لـ LLaVA 7B. نجري تجارب على ثلاث مهام مختلفة تشمل الأسئلة والأجوبة على الصور في مجموعة بيانات LLaVA Instruct 150K (<span class="nodecor">liu2024visual</span>)، ووضع العناوين على صور من مجموعة بيانات Coco (<span class="nodecor">lin2014microsoft</span>) ومجموعة بيانات ScienceQA (<span class="nodecor">lu2022learn</span>)، باستخدام مرشحين لنموذج المسودة قد مروا بمراحل مختلفة من التدريب والتحسين الدقيق. تظهر نتائجنا أننا يمكن أن نحقق تسريعاً مقيداً بالذاكرة يصل إلى 2.37<span class="math inline">\(\times\)</span> باستخدام نموذج اللغة فقط كنموذج مسودة. نقوم أيضاً بإنشاء نموذج مسودة LLaVA صغير يتكون من محول صورة إلى جانب نموذج اللغة المدرب لدينا ونظهر أنه يحسن الأداء قليلاً في مهمة وضع العناوين على COCO ومهمة ScienceQA بينما يؤدي بشكل مماثل لنماذج المسودة التي تعتمد على اللغة فقط في المهام الأخرى.</p>
+<h1 id="الطريقة">الطريقة</h1>
+<h1 id="الخلفية">الخلفية</h1>
+<h2 id="التفكيك-التخميني">التفكيك التخميني</h2>
+<p>يتضمن التفكيك التخميني (<span class="nodecor">Speculative Decoding</span>) (<span class="nodecor">chen2023accelerating</span>, <span class="nodecor">leviathan2023fast</span>) استخدام نموذج مسودة أصغر لتوليد عدة رموز يتم التحقق منها بالتوازي بواسطة النموذج اللغوي الكبير المستهدف. بناءً على سياق الإدخال <span class="math inline">\(X_{1:n}:=[X_{1}, \dots, X_{n}]\)</span>، يولد النموذج المسودة تسلسلاً من الرموز <span class="math inline">\(\hat{X}_{n+1:n+L}\)</span> بطريقة تلقائية للاستجابة، <span class="math inline">\(\hat{X}_{n+j} \sim p(\cdot | X_{1:n}, \hat{X}_{n+1:n+j-1})\)</span>. ثم يتم التحقق من الرموز المسودة عبر استدعاء واحد للنموذج اللغوي الكبير المستهدف (<span class="math inline">\(q\)</span>) باستخدام معايير أخذ العينات بالرفض التي تضمن نفس توزيع الرموز الناتجة كما هو الحال في النموذج اللغوي الكبير المستهدف. على وجه التحديد، يتم قبول الرمز <span class="math inline">\(\hat{X}_{n+j}\)</span> بالاحتمالية <span class="math display">\[\begin{aligned}
+    \min\left\{1, \frac{q(\hat{X}_{j}|X_{1:n}, \hat{X}_{n+1:n+j-1})}{p(\hat{X}_{j}|X_{1:n}, \hat{X}_{n+1:n+j-1})}\right\}.   \end{aligned}\]</span> إذا تم رفض رمز مسودة <span class="math inline">\(\hat{X}_{n+j}\)</span>، يتم أخذ عينة جديدة من التوزيع المتبقي المعرف بـ <span class="math inline">\(p_{res}(x)=\max(0, q(x) - p(x) )\)</span>.</p>
+<h2 id="نماذج-اللغة-الكبيرة-متعددة-الوسائط">نماذج اللغة الكبيرة متعددة الوسائط</h2>
+<p>يتكون نموذج اللغة الكبير متعدد الوسائط المعتمد على الصور من <em>1) مشفر الرؤية</em> لتشفير الصورة المدخلة، <em>2) محول</em> لتحويل تشفيرات الصور إلى تضمينات نموذج اللغة، و <em>3) عمود فقري لنموذج اللغة</em>. نصف إطار عمل نموذج LLaVA بمزيد من التفصيل كما يلي؛ بالنظر إلى صورة مدخلة <span class="math inline">\(I\)</span> واستعلام نصي <span class="math inline">\(Q\)</span>، يتم تحويل الصورة <span class="math inline">\(I\)</span> إلى تسلسل <span class="math inline">\(H_1, H_2, \ldots, H_m\)</span> من <span class="math inline">\(m\)</span> تشفيرات صورة، ويتم تحويل الاستعلام النصي إلى تسلسل من تضمينات الرموز <span class="math inline">\(X_1, X_2, \ldots X_n\)</span>. يتم تحويل تشفيرات الصورة إلى تضمينات الصورة، <span class="math inline">\(V_i = g_\theta(H_i)\)</span>، عبر محول <span class="math inline">\(g_\theta\)</span> (وهو عبارة عن شبكة متعددة الطبقات صغيرة). يتم ذلك لتحويل التشفيرات <span class="math inline">\(H_i\)</span> إلى فضاء تضمين نموذج اللغة. ثم يتم توليد الرموز بواسطة نموذج اللغة بناءً على تضمينات الصورة وتضمينات الرموز كما يلي: <span class="math display">\[X_{n+1} \sim q(\cdot | V_{1:m}, X_{1:n})\]</span></p>
+<h1 id="تحليل-spd-لنماذج-mllm">تحليل SPD لنماذج MLLM</h1>
+<p>لتحقيق مكاسب أعلى مع الترميز التخميني، نحتاج إلى نموذج مسودة أصغر بكثير ومتوافق جيداً مع نموذجنا الهدف (LLaVA-7B). الخيار الأكثر شيوعاً لنماذج المسودات في الأعمال السابقة على نماذج اللغة الكبيرة هو استخدام نموذج مدرب مسبقاً صغير من نفس عائلة النماذج كنموذج الهدف أو تدريب نموذج أصغر يمتلك نفس هندسة النموذج الهدف (<span class="nodecor">miao2023specinfer</span>). نظراً لعدم توفر نموذج أصغر علنياً في عائلة LLaVA، نحتاج إلى تدريب نموذج مسودة من الصفر. الخيار الطبيعي لهندسة نموذج المسودة هو اتباع هندسة LLaVA حيث يتكون نموذج المسودة من محول وعمود فقري لنموذج اللغة بعدد أقل من المعاملات من LLaVA 7B. في نهجنا، نستخدم كلاً من، <em>1) نموذج مسودة LLaVA أصغر</em> الذي يتكون من محول صورة أصغر ونموذج لغة مسودة، و<em>2) نموذج المسودة الخاص باللغة فقط</em> الذي يولد رموز المسودة بالاعتماد فقط على رموز النص المدخل. بالنظر إلى صورة مدخلة مع تضمينات الصورة <span class="math inline">\(V_{1:m}\)</span>، وتضمينات الرموز <span class="math inline">\(X_{1:n}\)</span> يولد نموذج المسودة رموز المسودة <span class="math inline">\(\hat{X}_{n+1:n+L}\)</span> حيث يتم توليد رمز المسودة <span class="math display">\[\begin{aligned}
+\hat{X}_{n+j} \sim p (\cdot | X_{1:n}, \hat{X}_{n+1:n+j-1})    \end{aligned}\]</span> بالاعتماد فقط على رموز النص. يتحقق نموذج LLaVA الهدف من رموز المسودة بحساب التوزيع الهدف الذي يعتمد على تضمينات الصورة <span class="math inline">\(V_{1:m}\)</span> وتضمينات رموز النص <span class="math inline">\(X_{1:n}\)</span>، أي يتم قبول رمز المسودة <span class="math inline">\(\hat{X}_{n+j}\)</span> بالاحتمال <span class="math display">\[\begin{aligned}
+    \min\left\{1, \frac{q(\hat{X}_{n+j}|V_{1:m}, X_{1:n}, \hat{X}_{n+1:n+j-1})}{p(\hat{X}_{n+j}|X_{1:n}, \hat{X}_{n+1:n+j-1})}\right\}.\end{aligned}\]</span> استخدام نموذج المسودة الخاص باللغة فقط أكثر كفاءة من نموذج المسودة بهندسة LLaVA لأن <em>1) لا يحتاج إلى محول إضافي</em> حيث لا يعتمد على تضمينات الصورة لتوليد رموز المسودة، و<em>2) لا يتطلب تدريب المحول</em>.</p>
+<h1 id="التجارب">التجارب</h1>
+<p>نقوم بتشغيل التجارب على ثلاث مهام تعليمية بصرية باستخدام SPD مع نموذج LLaVA-7B (<span class="nodecor">liu2023improved</span>) كنموذجنا المستهدف الذي يستخدم نموذج LLaMA-7B كعمود فقري لنموذج اللغة. نستخدم نماذج مسودة خضعت لمراحل مختلفة من التدريب بحجم ثابت لجزء اللغة من كل نموذج مسودة يبلغ <span class="math inline">\(115M\)</span>.</p>
+<h4 id="مرشحو-نموذج-المسودة.">مرشحو نموذج المسودة.</h4>
+<p>نقوم بتدريب نموذج مسودة بحجم <span class="math inline">\(115M\)</span> يتبع هيكلية LLaMA-2. نتبع خط أنابيب التدريب (<span class="nodecor">goel2024direct</span>) لتدريب نموذج مسودة من الصفر وصقل النموذج المسودة على مجموعات بيانات صقل التعليمات باستخدام خسارة TVD++ (<span class="nodecor">goel2024direct</span>). نقوم أيضاً بصقل نموذجنا المسودة على مجموعة فرعية من مجموعة بيانات LLaVA Instruct 150K (<span class="nodecor">liu2024visual</span>). بالنسبة لتجاربنا، نعتبر النماذج المسودة التالية بعد كل مرحلة من التدريب والصقل: <em>1) LLaMA الأساسي</em>، نموذج LLaMA مسودة بعد التدريب المسبق باستخدام خسارة التنبؤ بالرمز التالي على <span class="math inline">\(600B\)</span> رمز إنجليزي، <em>2) LLaMA الدردشة</em>، نموذج LLaMA مسودة مصقول للتعليمات يتبع (<span class="nodecor">goel2024direct</span>) مع تهيئة من نموذج LLaMA الأساسي المسودة، و <em>3) LLaVA المصقول</em> (ft-llava)، نموذج LLaVA مسودة مصقول حيث تم تهيئة محول الصور باستخدام التقسيم الفرعي (<span class="nodecor">samragh2023weight</span>) لمحول صور LLaVA-7B وتم تهيئة نموذج اللغة من نموذج LLaMA الدردشة المسودة (ثم تم صقل النموذج على مجموعة بيانات LLaVA). نشمل أيضاً نموذج مسودة آخر <em>4) LLaVA المصقول نصياً</em> (ft-llava-text)، الذي يستخدم ببساطة جزء نموذج اللغة من <em>3)</em>. لاحظ أن نموذج LLaVA المصقول فقط يستخدم معلومات الصورة بينما جميع النماذج المسودة الأخرى تستهلك فقط جزء النص من المطالبة الإدخالية؛ عندما يستخدم النموذج المسودة معلومات الصورة، يتم مشاركة مشفر الرؤية (المبني على CLIP (<span class="nodecor">radford2021learning</span>)) مع النموذج المستهدف لتجنب إعادة حساب تضمينات الصورة. يتم إعطاء تفاصيل المعلمات في الملحق [app:model_config]</p>
+<h4 id="مهام-التقييم.">مهام التقييم.</h4>
+<p>نركز على توليد النص المفتوح والإجابة على الأسئلة متعددة الخيارات مع التفكير لتشجيع عدد أكبر من توليد الرموز، وهو مفيد عند استخدام SPD. من أجل ذلك، نقوم بالتقييم على 1) <strong>مجموعة بيانات LLaVA Instruct 150K</strong> (<span class="nodecor">liu2024visual</span>), 2) مهمة التعليق التوضيحي للصور على الصور من <strong>مجموعة بيانات COCO</strong> (<span class="nodecor">lin2014microsoft</span>), و 3) <strong>الأسئلة العلمية (SQA)</strong> مع التفكير بسلسلة الأفكار (CoT) (<span class="nodecor">lu2022learn</span>). يتم وصف إعدادات مطالبات النظام لجميع المهام في الملحق [app:sys_prompts]</p>
+<h4 id="المقاييس.">المقاييس.</h4>
+<p>يتم تقييم فعالية SPD بالمقاييس التالية؛ 1) <strong>كفاءة الكتلة</strong> (<span class="math inline">\(\tau\)</span>)، متوسط عدد الرموز المولدة لكل كتلة (أو تشغيل النموذج المستهدف)، لكتلة بحجم <span class="math inline">\(\gamma\)</span> وإدخال <span class="math inline">\(x\)</span>، يمكن أن يكون الحد الأقصى لقيمة <span class="math inline">\(\tau(x)\)</span> هو <span class="math inline">\(\gamma + 1\)</span>، حجم الكتلة (<span class="math inline">\(\gamma\)</span>) يعرف أيضاً باسم طول المسودة (DL) في بعض الأعمال؛ 2) تسريع محدود بالذاكرة (<strong>MBSU</strong>)، التسريع الافتراضي الذي يتم تحقيقه بواسطة SPD لكفاءة كتلة معينة <span class="math inline">\(\tau(x)\)</span> وتأخير نسبي <span class="math inline">\(c\)</span> معرف كنسبة بين عدد المعاملات من النموذج المسودة إلى النموذج المستهدف، أي، <span class="math inline">\(\mathrm{MBSU}(x)=\frac{c\tau(x)}{c\gamma + 1}\)</span>؛ 3) <strong>معدل الرموز</strong>، إجمالي عدد الرموز المولدة مقسوماً على الوقت الإجمالي للتوليد، مما يعطي تقديراً للرموز المولدة لكل ثانية. نقيس هذه المقاييس في مهام مختلفة باستخدام حجم كتلة مختلف <span class="math inline">\(\gamma\)</span> في <span class="math inline">\(\{3, 5\}\)</span></p>
+<h4 id="فك-التشفير.">فك التشفير.</h4>
+<p>نستخدم فك التشفير الجشع لجميع التجارب بحيث يكون توليد SPD مطابقاً لتوليد النموذج المستهدف التلقائي التراكمي. نتركه كعمل مستقبلي لاستكشاف فك التشفير القائم على العينات (تغيير درجة الحرارة، تغيير top-<span class="math inline">\(p\)</span>، top-<span class="math inline">\(k\)</span>) في سياق SPD لـ MLLMs.</p>
+<h4 id="النتائج.">النتائج.</h4>
+<p>نتائجنا تظهر أن استخدام SPD مع نموذج الهدف LLaVA <span class="nodecor">7B</span> يعطي تسريعاً كبيراً في توليد الناتج، ونؤكد أنه عند استخدام نموذج مسودة بدون أي معلومات صورة، يمكن لـ SPD أن يقدم تسريعاً تنافسياً مقارنة بنموذج مسودة يستخدم معلومات الصورة.</p>
+<p>من الشكل [fig:result] (الرسومات العلوية والوسطى)، نلاحظ أن استخدام SPD يعطي مكاسب تزيد عن <span class="nodecor">2<span class="math inline">\(\times\)</span></span> من حيث كفاءة الكتلة وMBSU. يظهر اتجاه الأداء عند زيادة حجم الكتلة من <span class="nodecor">3</span> إلى <span class="nodecor">5</span> لكل مهمة بشكل مماثل باستثناء مهمة SQA حيث يؤدي نموذج المسودة base-llama بشكل أفضل من نماذج المسودة الأخرى للنصوص فقط لحجم الكتلة <span class="nodecor">=5</span>. بالنسبة لمهمة تقييم LLaVA على كلا حجمي الكتلة (<span class="nodecor">3</span> أو <span class="nodecor">5</span>)، يؤدي نموذج المسودة ft-llava-text بشكل أفضل يليه عن كثب ft-llava. بالنسبة لمهمة تعليق COCO، يؤدي ft-llava بشكل أفضل، يليه ft-llava-text لكلا حجمي الكتلة. أخيراً، بالنسبة لمهمة SQA، لحجم الكتلة <span class="nodecor">=3</span>، يؤدي نموذج المسودة ft-llava بشكل أفضل يليه ft-llava-text بينما لحجم الكتلة <span class="nodecor">=5</span>، يؤدي نموذج المسودة ft-llava بشكل أفضل يليه base-llama. بالإضافة إلى ذلك، تظهر جميع نماذج المسودة لدينا معدل توكنات محسناً مقارنة بالتوليد التلقائي العكسي في الشكل [fig:result] (الأسفل) مع تقديم حجم الكتلة <span class="nodecor">3</span> معدل توكنات أفضل من حجم الكتلة <span class="nodecor">5</span>، وبالتالي، يولد SPD توكنات أكثر في الثانية من الترميز التلقائي العكسي. يتوافق معدل التوكنات المعروض مع نسبة معدل التوكنات لـ SPD باستخدام نموذج مسودة معين إلى معدل التوكنات للتوليد التلقائي العكسي باستخدام نموذج الهدف.</p>
+<p>نقدم أيضاً نتائج نوعية على مهمة التعليق على COCO لإظهار التوكنات المقبولة خلال عملية التوليد عند استخدام نموذج المسودة fine-tune-LLaVA-text حيث لا تُستخدم معلومات الصورة بواسطة نموذج المسودة في الشكل [fig:qualitative_example]. استناداً إلى الأجيال الخارجة في الشكل، حيث تكون التوكنات باللون الأزرق وتحتها خط هي التوكنات المقبولة، نلاحظ أن نموذج المسودة يمكنه التنبؤ بالكلمات الشائعة والاقتراحات، إلى جانب إنصاف الكلمات. على سبيل المثال، يمكن لنموذج المسودة التنبؤ بـ “tables” بناءً على “vege”. وبالمثل في المثال الثاني، بالنظر إلى السياق والتوكن الإضافي “app”، كان نموذج المسودة قادراً على التنبؤ بـ “liances”. نعتقد بشكل عام أن توليد النصوص المفتوحة يحتوي على العديد من التوكنات التي تتألف من كلمات شائعة، واقتراحات، وإكمالات كلمات لا تتطلب معرفة بتوكنات الصورة، وبالتالي، حتى نموذج المسودة بدون استخدام معلومات الصورة يقدم أداءً تنافسياً. علاوة على ذلك، يمكن لنموذج المسودة أيضاً التنبؤ بتكرار بعض التوكنات بمجرد توليدها. على سبيل المثال، في الصورة الثانية يمكن التنبؤ بكلمة “counter” و “bowls” عدة مرات بمجرد توليدها بواسطة نموذج الهدف. أخيراً، يتم ترك إجراء تدريب أكثر صرامة على نموذج لغة متعدد الوسائط صغير كعملنا المستقبلي.</p>
+<p>استناداً إلى نوع الرموز المقبولة خلال SPD، افترضنا أنه من الممكن ألا يستخدم نموذج LLaVA المبدئي معلومات من رموز الرؤية (وبالتالي لا يحسن كفاءة الكتلة)، والذي يمكن تفسيره بأن رموز الرؤية لا يتم ترميزها بشكل صحيح بواسطة محول الصور المبدئي. لهذا السبب، قمنا بتجربة SPD مع نماذج مبدئية لا تستخدم رموز الصور لمراقبة ما إذا كان محول الصور المدرب خلال تحسين LLaVA المبدئي يساعد في تحسين كفاءة الكتلة (أو MBSU) أم لا. من الشكل <span class="nodecor">fig:avg_token_all</span> والشكل <span class="nodecor">fig:mbsu_all</span> نلاحظ أن نموذج LLaVA المحسن للنصوص ونموذج LLaVA المحسن يؤديان بشكل مماثل، وبالتالي يدعمان فرضيتنا تجريبياً.</p>
+<p>علاوة على ذلك، أضفنا المزيد من نماذج المسودات التي تعتمد على النصوص فقط لمراقبة ما إذا كان هناك أي تسريع عند استخدام معلومات النصوص فقط. لمفاجأتنا من الشكل <span class="nodecor">fig:mbsu_all</span> حتى استخدام نماذج LLaMA الأساسية ونماذج دردشة LLaMA يعطي تسريعاً يزيد عن <span class="nodecor">2</span> مرات في المتوسط.</p>
+<p>أداء SPD مع نموذج المسودة القائم على اللغة فقط قريب نسبياً من نموذج LLaVA وحتى يتفوق على نموذج LLaVA لـ ScienceQA. استناداً إلى هذا، قمنا بتحليل اتجاه قبول النماذج المختلفة (متوسط القبول لأول K تكرار مقابل متوسط القبول لآخر K تكرار) والاهتمام المعطى لرموز الصورة بواسطة نموذج LLaVA الهدف (انظر الملحق).</p>
+<h1 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h1>
+<h1 id="الخلاصة">الخلاصة</h1>
+<p>في هذه الورقة، نقدم الجهد الأول نحو استخدام الترميز التخميني لتسريع الاستدلال عند استخدام النماذج اللغوية الكبيرة متعددة الوسائط، وخصوصاً لمجال الصور والنصوص. نظهر أن استخدام نموذج المسودة النصي فقط يحقق أداءً تنافسياً مقارنة باستخدام نموذج مسودة يستفيد من ميزات الصورة. نقوم بإجراء تجارب متنوعة على مهام مختلفة للإجابة على الأسئلة البصرية مع التركيز على توليد عدد أعلى من الرموز الناتجة: توليد نص مفتوح النهاية وتوليد نص مع التفكير باستخدام نماذج مسودة مختلفة (نص فقط ونص-صورة). لقد حققنا تسريعاً كبيراً يصل إلى <span class="nodecor"><span class="math inline">\(2.37\times\)</span></span> لنموذج المسودة النصي فقط وتسريعاً أفضل بشكل طفيف لنموذج المسودة النص-صورة، مما يظهر تجريبياً إمكانية استخدام الترميز التخميني للنماذج اللغوية الكبيرة متعددة الوسائط.</p>
+<p>تفتح أعمالنا عدة مسارات مستقبلية بفضل الإطار العام المقدم. يمكن توسيع عملنا ليشمل نماذج أخرى مستهدفة مثل (<span class="nodecor">li2023blip</span>)، (<span class="nodecor">zhu2023minigpt</span>) و(<span class="nodecor">awadalla2023openflamingo</span>)، ووسائط أخرى مثل الصوت (<span class="nodecor">chu2023qwen</span>) التي تعاني أيضاً من القيود بسبب التوليد التلقائي التراجعي. علاوة على ذلك، يمكن استخدام التقدم الأخير في خوارزميات الترميز التخميني للترميز القائم على الشجرة أيضاً باتباع (<span class="nodecor">sun2023spectr</span>)، (<span class="nodecor">miao2023specinfer</span>)، (<span class="nodecor">medusa</span>)، (<span class="nodecor">jeon2024recursive</span>) لزيادة سرعة التوليد أكثر.</p>
+<h1 id="الملحق">الملحق</h1>
+<h2 id="app:model_config">تكوينات النموذج</h2>
+<p>يستخدم نموذج LLaVA-7B: (i) مشفر الرؤية، (ii) محول/مشروع الصورة المبني على الشبكة العصبية متعددة الطبقات، و (iii) نموذج اللغة LLaMA 7B. المشفر البصري هو CLIP ViT-L/14 مع تفاصيل موجودة في (<span class="nodecor">radford2021learning</span>)، ومحول الصورة المبني على الشبكة العصبية متعددة الطبقات يحتوي على طبقتين خطيتين بالأحجام التالية: <span class="math inline">\(1024\times4096\)</span> و <span class="math inline">\(4096\times 4096\)</span>. بالنسبة للسيناريو الذي يحتوي فيه النموذج المبدئي أيضاً على محول للصور، فإن الأحجام هي <span class="math inline">\(1024 \times 1024\)</span> و <span class="math inline">\(1024 \times 1024\)</span>.</p>
+<p>تستخدم التكوينات التالية لجزء نموذج اللغة الهدف والمسودة الذي يتبع هندسة LLaMA:</p>
+<table>
+<caption>تكوينات النموذج المسودة والهدف</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">الهدف (7B)</th>
+<th style="text-align: right;">المسودة (115M)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">الطبقات</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">رؤوس الانتباه</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">البعد الوسيط</td>
+<td style="text-align: right;"><span class="nodecor">11,008</span></td>
+<td style="text-align: right;"><span class="nodecor">2,816</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">البعد الخفي</td>
+<td style="text-align: right;"><span class="nodecor">2,048</span></td>
+<td style="text-align: right;"><span class="nodecor">1,024</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">التنشيط</td>
+<td style="text-align: right;">SiLU</td>
+<td style="text-align: right;">SiLU</td>
+</tr>
+</tbody>
+</table>
+<p>[tab:model_config]</p>
+<h2 id="app:sys_prompts">مطالبات النظام</h2>
+<p>نستخدم مطالبات النظام التالية للمهمة المحددة. يستخدم الرمز الخاص بالصورة لتضمين بيانات الصورة (<em><span class="math inline">\(&lt;\)</span>image<span class="math inline">\(&gt;\)</span></em>)</p>
+<p><strong>تقييم LLaVA.</strong> نتبع أسلوب المطالبة المعطى في (<span class="nodecor">liu2024visual</span>)، حيث يحتوي LLaVA على عدة أسئلة وأجوبة نقسمها إلى عينات مختلفة.</p>
+<p><em><span class="math inline">\(&lt;\)</span>s<span class="math inline">\(&gt;\)</span> دردشة بين مستخدم فضولي ومساعد ذكاء اصطناعي. يقدم المساعد إجابات مفيدة ومفصلة ومهذبة على أسئلة المستخدم. المستخدم: <span class="math inline">\(&lt;\)</span>image<span class="math inline">\(&gt;\)</span> <span class="math inline">\(\\\)</span>السؤال <span class="math inline">\(Q_{1}\)</span> المساعد: الرد <span class="math inline">\(R_{1}\)</span>. المستخدم: السؤال <span class="math inline">\(Q_{2}\)</span> <span class="math inline">\(\dots\)</span></em>.</p>
+<p><strong>وصف COCO.</strong> بما أن مجموعة بيانات COCO لا تحتوي على أي مطالبات بالأسئلة، قمنا بمطالبة النموذج بمطالبة مشابهة لما سبق.</p>
+<p><em><span class="math inline">\(&lt;\)</span>s<span class="math inline">\(&gt;\)</span> دردشة بين مستخدم فضولي ومساعد ذكاء اصطناعي. يقدم المساعد إجابات مفيدة ومفصلة ومهذبة على أسئلة المستخدم. المستخدم: <span class="math inline">\(&lt;\)</span>image<span class="math inline">\(&gt;\)</span> <span class="math inline">\(\\\)</span>قدم وصفاً مفصلاً للصورة المعطاة المساعد:</em></p>
+<p><strong>أسئلة العلوم.</strong> نتبع أسلوب المطالبة المقدم في (<span class="nodecor">lu2022learn</span>) مع مثال واحد في السياق للسؤال، الخيارات، الإجابة والتعليل لتمكين التفكير المتسلسل (CoT). بالإضافة إلى ذلك، نعتبر فقط العينات الاختبارية التي لها صورة مرتبطة.</p>
+<p><span class="math display">\[\begin{aligned}
+    &amp; \text{السؤال: } I_{i}^{ques} \\
+    &amp; \text{الخيارات: (0) خيار: } I_{i1}^{opt} \text{ (1) خيار: } I_{i2}^{opt} \text{ (2) خيار: } I_{i3}^{opt} \\
+    &amp; \text{السياق: } I_{i}^{cont} \\
+    &amp; \text{الإجابة: الإجابة هي } I_{i}^{ans} \text{. لأن: محاضرة } I_{i}^{lect} \text{ التفسير: } I_{i}^{exp} \\
+    \\
+    &amp; &lt;image&gt;
+    \\
+    &amp; \text{السؤال: } I_{test}^{ques} \\
+    &amp; \text{الخيارات: (0) خيار: } I_{test,1}^{opt} \text{ (1) خيار: } I_{test,2}^{opt} \text{ (2) خيار: } I_{test,3}^{opt} \\
+    &amp; \text{السياق: } I_{test}^{cont} \\
+    &amp; \text{الإجابة: الإجابة هي}     \end{aligned}\]</span></p>
+<p>حيث يشير الرمز الفرعي <span class="math inline">\(i\)</span> إلى مثال في السياق.</p>
+<p>في ورقة SQA، يتم توفير حقل السياق من خلال إنشاء تسمية توضيحية للصورة المرتبطة باستخدام نموذج تسمية الصور، ومع ذلك، كانت هذه التسميات غالباً بسيطة ولم توفر وصفاً مفصلاً للصورة الذي يلزم للإجابة على السؤال. لهذا السبب، يتم ملء حقل السياق بحقل “التلميح” المقدم في مجموعة بيانات SQA. بالنسبة للعينة في السياق، نختار عينة بدون صورة مرتبطة حيث لا يمكن لهدف LLaVA 7B استهلاك صور متعددة. نتركها كعمل مستقبلي لتجربة SPD مع أكثر من مثال واحد في السياق.</p>
+<h2 id="درجة-الانتباه-لرموز-الصورة">درجة الانتباه لرموز الصورة</h2>
+</body>
+</html>

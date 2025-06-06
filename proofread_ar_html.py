@@ -9,7 +9,7 @@ if not os.getenv("OPENAI_API_KEY"):
     print("Error: OPENAI_API_KEY environment variable not set.")
     sys.exit(1)
 
-MODEL = "gpt-4.1"
+MODEL = "o4-mini"
 MAX_CHARS_PER_CHUNK = 127000  # conservative size; model supports ~128k tokens but we stay small
 
 FILES_DIR = Path("files")
@@ -24,12 +24,11 @@ SYSTEM_PROMPT = textwrap.dedent(
     """
     You are a professional Arabic language editor. 
     You will receive an HTML snippet that contains Arabic text translated from English.  
-    Your job is to proof-read and correct the Arabic:  
-    – Ensure sentences are coherent, context makes sense and meaning is reasonable even without the English source.  
-    – Fix any grammatical, spelling or punctuation errors.  
-    – Preserve the original meaning as much as possible, but you can correct the meaning if necessary. 
-    - Make sure the text sounds natural, and not a literal translation.
-    - Fix any latex or html errors, incoherences, or inconsistencies. 
+    Your job is to improve the text:  
+    - Fill in the contextual blanks to your best knowledge.
+      This should be used in moderation. Add few words or individual sentences
+      that make the text feels more natural to follow and read. Do not add unnecessary fluff 
+      that do not help the text flow. Do not add unnecessary context, just where needed.
     – VERY IMPORTANT: Preserve the HTML tags, attributes, 
     entities and inline styles exactly as they are (except when you need to fix text inside tags).  
     – Do NOT add new tags or remove existing ones, just change the Arabic words inside.  
@@ -42,7 +41,7 @@ client = AsyncOpenAI()
 async def fix_chunk(chunk: str) -> str:
     response = await client.chat.completions.create(
         model=MODEL,
-        temperature=0,
+        temperature=1,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": chunk},
@@ -87,7 +86,7 @@ async def process_file(path: Path):
     # Only run on first N files for demo
 #    to_process = html_files[:50]
 #    await asyncio.gather(*[process_file(p) for p in to_process])
-MAX_PARALLEL = 5  # only 10 tasks in parallel
+MAX_PARALLEL = 10  # only 10 tasks in parallel
 
 async def process_file_limited(path, sem):
     async with sem:

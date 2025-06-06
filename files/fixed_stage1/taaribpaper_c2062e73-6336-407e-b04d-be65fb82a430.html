@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Shijing Hu">
+  <meta name="author" content="Ruijun Deng">
+  <meta name="author" content="Xin Du">
+  <meta name="author" content="Zhihui Lu">
+  <meta name="author" content="Qiang Duan">
+  <meta name="author" content="Yi He">
+  <meta name="author" content="Shih-Chia Huang">
+  <meta name="author" content="Jie Wu">
+  <title>نموذج LAECIPS: التعاون التكيفي بين الحافة والسحابة مدعوماً بنموذج الرؤية الكبير لنظام الإدراك المبني على IoT</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">نموذج <span class="nodecor">LAECIPS</span>: التعاون التكيفي بين الحافة والسحابة مدعوماً بنموذج الرؤية الكبير لنظام الإدراك المبني على <span class="nodecor">IoT</span></h1>
+<p class="author"><span class="nodecor">Shijing Hu</span></p>
+<p class="author"><span class="nodecor">Ruijun Deng</span></p>
+<p class="author"><span class="nodecor">Xin Du</span></p>
+<p class="author"><span class="nodecor">Zhihui Lu</span></p>
+<p class="author"><span class="nodecor">Qiang Duan</span></p>
+<p class="author"><span class="nodecor">Yi He</span></p>
+<p class="author"><span class="nodecor">Shih-Chia Huang</span></p>
+<p class="author"><span class="nodecor">Jie Wu</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تتمتع النماذج الكبيرة للرؤية الحديثة (مثل <span class="nodecor">SAM</span>) بإمكانات كبيرة لتسهيل الإدراك الذكي بدقة عالية. ومع ذلك، فإن القيود المتعلقة بالموارد في بيئة <span class="nodecor">IoT</span> غالباً ما تحد من إمكانية نشر هذه النماذج الكبيرة محلياً، مما يؤدي إلى تأخير كبير في الاستدلال ويصعب دعم التطبيقات الفورية مثل القيادة الذاتية والروبوتات. يوفر التعاون بين الحافة والسحابة مع الاستفادة المشتركة من النموذج الكبير والصغير نهجاً واعداً لتحقيق دقة استدلال عالية مع تأخير منخفض. ومع ذلك، فإن طرق التعاون الحالية بين الحافة والسحابة مرتبطة ارتباطاً وثيقاً ببنية النموذج وغير قادرة على التكيف مع التحولات الديناميكية للبيانات في بيئات <span class="nodecor">IoT</span> المتنوعة. لمعالجة هذه القضايا، نقترح <span class="nodecor">LAECIPS</span>، وهو إطار عمل جديد للتعاون بين الحافة والسحابة. في <span class="nodecor">LAECIPS</span>، كل من نموذج الرؤية الكبير على السحابة والنموذج الخفيف على الحافة قابلان للتوصيل والتشغيل. نصمم استراتيجية التعاون بين الحافة والسحابة استناداً إلى تصنيف المدخلات الصعبة، محققة لكل من الدقة العالية والتأخير المنخفض. نقترح تحديث النموذج على الحافة واستراتيجية التعاون الخاصة به مع السحابة تحت إشراف نموذج الرؤية الكبير، بحيث يتكيف مع تدفقات البيانات الديناميكية في <span class="nodecor">IoT</span>. تثبت التحليلات النظرية لـ <span class="nodecor">LAECIPS</span> جدواها. الاختبارات التي أُجريت في نظام تجزئة الدلالات الروبوتية باستخدام مجموعات بيانات حقيقية تظهر أن <span class="nodecor">LAECIPS</span> يتفوق على منافسيه الأحدث في الدقة والتأخير وتكاليف الاتصال مع تحسين التكيف مع البيئات الديناميكية.</p>
+<h1 id="introdcution">مُقَدِّمَة</h1>
+<p>تم تطبيق التعلم الآلي بشكل واسع لدعم الإدراك الذكي في إنترنت الأشياء لتطبيقات متنوعة تشمل المراقبة الروبوتية والقيادة الذاتية (<span class="nodecor">prakash2021multi, zhou2019anomalynet</span>). غالباً ما يتطلب الإدراك المبني على إنترنت الأشياء دقة عالية وزمن استجابة منخفض لوظائف التعلم الآلي لتلبية متطلبات التطبيق (<span class="nodecor">zhou2019edge</span>). عادةً ما يتم نشر وظائف التعلم الآلي في إنترنت الأشياء على أجهزة الحافة بالقرب من المستخدمين لتقليل زمن الاستجابة. ومع ذلك، من ناحية، تحد الموارد المحدودة على أجهزة الحافة من قدرتها على دعم النماذج المعقدة للتعلم الآلي (<span class="nodecor">shuvo2022efficient</span>)؛ ومن ناحية أخرى، قد تعاني النماذج الخفيفة على أجهزة الحافة من دقة استدلال منخفضة، خاصة في الحالات الحرجة (<span class="nodecor">zhang2022advancing</span>). بالإضافة إلى ذلك، قد تحدث تحولات في توزيع البيانات في بعض سيناريوهات الإدراك (كما يحدث عندما ينتقل روبوت إلى بيئة غير متوقعة أو عندما تسافر مركبة ذاتية القيادة إلى منطقة غير مستكشفة) (<span class="nodecor">de2021continual</span>)، مما يجعل النموذج المدرب مسبقاً على الحافة أقل دقة للمهمة الجديدة.</p>
+<p>مؤخراً، تم إحراز تقدم كبير في تطوير نماذج الرؤية الكبيرة، على سبيل المثال، نموذج “Segment Anything Model” من Meta (<span class="nodecor">kirillov2023segment</span>). بفضل قدرتها العامة القوية، تحقق هذه النماذج الكبيرة دقة عالية جداً في التعامل مع الحالات الحرجة وتكون مقاومة لتحولات توزيع البيانات في الإدراك الذكي (<span class="nodecor">wssam</span>). ومع ذلك، يمكن نشر نموذج الرؤية الكبير فقط في مركز بيانات سحابي غني بالموارد، مما قد يسبب تأخيراً طويلاً بسبب نقل البيانات بين أجهزة المستخدمين والخادم السحابي. لذلك، كيفية الاستفادة الكاملة من مزايا نموذج الرؤية الكبير لتحقيق استدلال دقيق مع تقليل زمن الإدراك في إنترنت الأشياء المقيد بالموارد تصبح مشكلة بحثية مهمة.</p>
+<p>للإجابة عن ذلك، قد يفكر المرء في استخدام التعاون بين الحافة والسحابة للاستدلال المشترك بين النموذج الكبير والصغير (<span class="nodecor">wang2020convergence, duan2022distributed</span>). بشكل خاص، مع استضافة نموذج الرؤية الكبير على السحابة ونشر نموذج صغير على الحافة، تحدد استراتيجية التعاون بين الحافة والسحابة لكل إدخال مستلم إذا كان يمكن أداء الاستدلال بواسطة النموذج الصغير على الحافة أو يحتاج إلى معالجة بواسطة نموذج الرؤية الكبير على السحابة، كما هو موضح بالشكل. ومع ذلك، تعاني طرق التعاون الحالية بين الحافة والسحابة بشكل رئيسي من ثلاثة قيود تحتاج إلى التغلب عليها لدعم الإدراك الذكي المبني على إنترنت الأشياء. أولاً، الارتباط الوثيق بين النماذج الكبيرة والصغيرة يقيد مرونة النظام</p>
+<ol>
+<li><p>نقوم بتنفيذ إطار عمل <span class="nodecor">Large Area Edge-Cloud Inference and Processing System</span> من خلال نظام تجزئة دلالية روبوتية في بيئة حافة-سحابة واقعية لإظهار قابليته للتطبيق. تؤكد النتائج التجريبية الواسعة أن <span class="nodecor">Large Area Edge-Cloud Inference and Processing System</span> يحقق دقة أعلى بشكل ملحوظ، وأقل زمن معالجة للمهام وتكاليف اتصال مقارنة بمنافسيه الأفضل في مجالهم.</p></li>
+</ol>
+<p>يتم تنظيم بقية الورقة على النحو التالي. القسم [sec: related work] يشرح الأعمال ذات الصلة. يتم تقديم التفاصيل التقنية لـ <span class="nodecor">Large Area Edge-Cloud Inference and Processing System</span> في القسم [sec:method]. القسم [sec:theory] يقدم البرهان النظري على قدرة التعميم لـ <span class="nodecor">Large Area Edge-Cloud Inference and Processing System</span>. تعرض النتائج التجريبية في القسم [sec:evaluation]. وأخيراً، نختتم الورقة في القسم [sec: conclusion].</p>
+<h1 id="sec: related work">الأعمال ذات الصلة</h1>
+<p>تنقسم الأبحاث ذات الصلة بالاستدلال التعاوني بين السحابة والحافة إلى فئتين: تقسيم النموذج وتعاون النموذج الكبير/الصغير.</p>
+<h4 id="تقسيم-النموذج">تقسيم النموذج</h4>
+<p>يقوم تقسيم النموذج بتجزئة نموذج (كبير) إلى عدة نماذج فرعية يتم نشرها على مضيفين مختلفين بما في ذلك خادم السحابة وجهاز (أجهزة) الحافة بناءً على توافر الموارد لديهم. خلال عملية الاستدلال، يتم حساب النموذج بالتعاون بين جميع النماذج الفرعية للحصول على نتيجة الإخراج. على سبيل المثال، يستخدم جراح الأعصاب (<span class="nodecor">kang2017neurosurgeon</span>) نموذج تنبؤ الأداء لاختيار نقطة الانقسام المثلى لنموذج. يصوغ JoinDNN (<span class="nodecor">eshratifar2019jointdnn</span>) جدولة طبقات النموذج المثلى كمشكلة المسار الأقصر ويحلها باستخدام البرمجة الخطية الصحيحة. يصوغ DADS (<span class="nodecor">hu2019dynamic</span>) مشاكل تحسين تقسيم النموذج المختلفة للظروف المحملة بخفة وبشدة. يقوم IONN (<span class="nodecor">jeong2018ionn</span>) ببناء النموذج تدريجياً على الخادم باستخدام أقسام النموذج الواردة لتمكين التدريب المبكر. يدمج DeepThings (<span class="nodecor">zhao2018deepthings</span>) الشبكات عبر طبقات الشبكة العصبية العميقة لبناء تقسيم نموذج دقيق.</p>
+<p>على الرغم من أن تقسيم نموذج معقد عبر السحابة وجهاز (أجهزة) الحافة يقلل من التكاليف الحسابية ويحسن الدقة، إلا أنه قد يقدم تكاليف اتصال كبيرة لنقل النتائج المتوسطة للنموذج المقسم، والتي غالباً ما تكون ضخمة بالنسبة لبيئات إنترنت الأشياء المقيدة بالموارد. كما أن النماذج الفرعية المنشورة على السحابة وجهاز (أجهزة) الحافة مرتبطة ارتباطاً وثيقاً مما يحد من المرونة والقدرة على التكيف لتقسيم النموذج لمواجهة بيئات إنترنت الأشياء الديناميكية. بالإضافة إلى ذلك، من الصعب تطبيق طرق تقسيم النموذج الحالية مباشرة على النماذج البصرية الكبيرة المطورة حديثاً بسبب هياكل النموذج المعقدة للغاية.</p>
+<h4 id="تعاون-النموذج-الكبيرالصغير">تعاون النموذج الكبير/الصغير</h4>
+<p>تتمثل فكرة تعاون النموذج الكبير/الصغير في نشر نموذج خفيف على جهاز الحافة لاستدلال البيانات البسيطة واستخدام نموذج كبير على السحابة للتعامل مع البيانات الصعبة. مع استراتيجية مناسبة لاختيار النموذج، قد يحقق تعاون النموذج الكبير/الصغير دقة عالية وزمن استجابة منخفض مع تقليل تكاليف الاتصال. كما يسمح هذا النهج بنشر نماذج غير مرتبطة بشكل وثيق على الحافة والسحابة لمزيد من المرونة والقدرة على التكيف. وبالتالي، يقدم تعاون النموذج الكبير/الصغير نهجاً واعداً للإدراك الذكي في بيئة إنترنت الأشياء.</p>
+<p>تم اقتراح الاستدلال التعاوني بناءً على تعاون النموذج الكبير/الصغير لأول مرة في SM (<span class="nodecor">CODES15</span>)، حيث تم تحديد العينات الصعبة باستخدام هامش النتيجة وتم تحميلها إلى السحابة للاستدلال. في Cachier (<span class="nodecor">ICDCS17</span>)، تم نمذجة التفاعل بين الحافة والسحابة كنظام تخزين مؤقت لتقليل زمن الاستجابة للاستدلال. طبق CeDLD (<span class="nodecor">FGCS19</span>) الاستدلال التعاوني للنموذج الكبير/الصغير على التعرف على الصور الطبية وحدد العينات الصعبة بناءً على تشابه الصور. حولت AppealNet (<span class="nodecor">DAC21</span>) النموذج الموجود على الحافة إلى هيكل متعدد الرؤوس لتحديد العينات الصعبة في نفس الوقت الذي يتم فيه إخراج نتيجة الاستدلال. اقترح EdgeCNN (<span class="nodecor">TCC22</span>) طريقة تدريب تعاونية لتعاون النموذج الكبير/الصغير تُستخدم نتائج النموذج البصري الكبير للإشراف على تدريب النموذج الصغير على جهاز الحافة. العمل الجديد المبلغ عنه SOTA هو DCSB (<span class="nodecor">cao2023edge</span>)، الذي طبق الاستدلال التعاوني للنموذج الكبير/الصغير على كشف الأجسام وخفض تكلفة النطاق الترددي عن طريق تقليل حجم بعض المناطق في الحالة الصعبة. بالإضافة إلى ذلك، يمكن أن توفر الأعمال التي ركزت على كشف البيانات الصعبة أيضاً رؤى لتعاون النموذج الكبير/الصغير. اقترح MESS (<span class="nodecor">ECCV22</span>) طريقة خروج مبكرة لمهام التجزئة الدلالية، والتي يمكن استخدامها أيضاً في كشف البيانات الصعبة. اقترح SPP (<span class="nodecor">ICLR18</span>) طريقة تستند إلى درجة الثقة لكشف الأمثلة خارج التوزيع التي يمكن اعتبارها أيضاً عينات صعبة.</p>
+<p>على الرغم من التقدم المشجع الذي تم إحرازه في هذا المجال، فإن تقنيات الحالة الفنية للتعاون بين النماذج الكبيرة/الصغيرة لا تزال تعاني من بعض القيود التي يجب التغلب عليها لدعم الإدراك الذكي في شبكات الأشياء بفعالية. على وجه الخصوص، تفتقر الطرق الحالية إلى قدرة التحديث المباشر لنموذج الحافة والتعديل التكيفي لاستراتيجية التعاون استجابة للبيئات المتغيرة لشبكات الأشياء. كما أنه، مع ارتفاع نماذج الرؤية الكبيرة، تحتاج الطرق الحالية إلى مزيد من التحسين لتطبيقها على نماذج الرؤية الكبيرة.</p>
+<h1 id="sec:method">الطريقة المقترحة</h1>
+<h2 id="نظرة-عامة-على-النظام">نظرة عامة على النظام</h2>
+<p>ندرس سيناريو يتم فيه نشر روبوت أو مركبة ذاتية التحكم مزودة بكاميرا على الحافة. تُكلف عقدة الحافة بتنفيذ مهام تجزئة دلالية في الوقت الفعلي، بينما تعمل عقدة السحابة كمركز حوسبة غني بالموارد، وتقدم الدعم لعقدة الحافة. رداً على التحديات المتعلقة بأداء النماذج الهامشية الضعيف عند مواجهة الحالات النادرة، إلى جانب مخاوف من تحول البيانات وتباينها داخل بيئة الحافة، قمنا بتصميم هندسة LAECIPS، كما هو موضح في الشكل.</p>
+<p>في هذه الهندسة، يتم نشر نموذج تجزئة دلالية صغير على جهاز الحافة. في الخطوتين <span class="math inline">\(\normalsize{\textcircled{\scriptsize{1}}}\)</span> و <span class="math inline">\(\normalsize{\textcircled{\scriptsize{2}}}\)</span>، يقوم النموذج الصغير بإجراء استدلال على البيانات المجمعة لإنتاج نتائج استدلال النموذج الصغير. بعد ذلك، في الخطوتين <span class="math inline">\(\normalsize{\textcircled{\scriptsize{3}}}\)</span> و <span class="math inline">\(\normalsize{\textcircled{\scriptsize{4}}}\)</span>، تعالج وحدة استخراج الأمثلة الصعبة هذه النتائج لتصنيف البيانات المجمعة إلى مجموعتين: مدخلات صعبة ومدخلات سهلة. في الخطوة <span class="math inline">\(\normalsize{\textcircled{\scriptsize{5}}}\)</span>، يتم إخراج نتائج استدلال النموذج الصغير للمدخلات السهلة، التي حققت مستوى مقبولاً من الدقة، مباشرة لتقليل زمن معالجة المهمة. على النقيض من ذلك، يتم رفع المدخلات الصعبة التي تسببت في دقة منخفضة في استدلال الحافة إلى السحابة لمزيد من المعالجة لتحسين دقة الاستدلال.</p>
+<p>في الخطوة <span class="math inline">\(\normalsize{\textcircled{\scriptsize{6}}}\)</span>، يقوم كل من النموذج الصغير ونموذج الرؤية الكبير SAM المنشور في السحابة بإجراء استدلالهما على المدخلات الصعبة المرفوعة. في الخطوة <span class="math inline">\(\normalsize{\textcircled{\scriptsize{7}}}\)</span>، يتم الحصول على نتائج الاستدلال المشترك من خلال دمج أقنعة استدلال السحابة مع نتائج استدلال النموذج الصغير. في الخطوتين <span class="math inline">\(\normalsize{\textcircled{\scriptsize{8}}}\)</span> و <span class="math inline">\(\normalsize{\textcircled{\scriptsize{9}}}\)</span>، ترسل عقدة السحابة نتائج الاستدلال المشترك إلى عقدة الحافة، التي بدورها تخرج نتائج الاستدلال المشترك كنتائج الاستدلال للمدخلات الصعبة. بالإضافة إلى ذلك، يتم تخزين المدخلات الصعبة ونتائج الاستدلال المشترك في مخزن إعادة التشغيل الخاص بعقدة السحابة. في الخطوة <span class="math inline">\(\normalsize{\textcircled{\scriptsize{9}}}\)</span>، عندما يتجاوز عدد العينات في مخزن إعادة التشغيل عتبة محددة مسبقاً أو يمر وقت محدد، تقوم عقدة السحابة بتدريب النموذج الصغير بشكل مستمر، باستخدام المدخلات الصعبة ونتائج الاستدلال المشترك كحقيقة أرضية. أخيراً، في الخطوة <span class="math inline">\(\normalsize{\textcircled{\scriptsize{10}}}\)</span>، يتم تحديث النموذج الصغير المنشور في عقدة الحافة بواسطة النموذج الصغير المدرب في عقدة السحابة.</p>
+<h2 id="3.2">الاستدلال المساعد بنموذج الرؤية الكبير</h2>
+<p>Segment Anything Model هو أحد أكثر النماذج تمثيلاً لأنظمة إدراك إنترنت الأشياء التي تم تطويرها في السنوات الأخيرة. تكمن قوته في فعاليته الملحوظة في مهام تجزئة الصور، والتي تعزى إلى قدرته العامة القوية. ومع ذلك، كما هو موضح في الشكل (<span class="nodecor">wssam</span>)، فإن نموذج Segment Anything Model، على الرغم من براعته في إنتاج محيطات محددة جيداً تحدد الأجسام المجزأة، يقصر في توفير تسميات دلالية لهذه الصور المجزأة. وبالتالي، لا يمكن تطبيقه مباشرة على مهام التجزئة الدلالية. يمكن لنماذج الحافة، خلال الاستدلال، توفير نتائج مجزأة مصحوبة بتسميات دلالية. ومع ذلك، غالباً ما تحمل هذه النتائج عيوباً، والتي يتم توضيحها بشكل بارز من خلال حواف الأجسام الخشنة كما هو موضح في الشكل (<span class="nodecor">CVPR_ss</span>). في مهام التجزئة الدلالية، غالباً ما تكون عملية تجزئة الصور أكثر تحدياً من التسمية اللاحقة للنتائج المجزأة. وبالتالي، فإن فكرة طبيعية هي دمج نتائج التجزئة من نموذج Segment Anything Model مع تسميات التصنيف من نموذج الحافة للحصول على نتيجة تجزئة أكثر تحسيناً مع تسميات التصنيف، كما هو موضح في الشكل.</p>
+<p>نفترض أن الصورة المجمعة هي <span class="math inline">\(x \in [0,255]^{3 \times H \times W}\)</span> حيث <span class="math inline">\(H\)</span> هو ارتفاع الصورة و<span class="math inline">\(W\)</span> هو عرض الصورة. التسمية المقابلة للصورة المجمعة هي <span class="math inline">\(y \in \{0,...M-1\}^{H \times W}\)</span>، حيث <span class="math inline">\(M\)</span> تمثل عدد الفئات. تتبع الصورة التوزيع الاحتمالي <span class="math inline">\(P(x,y)\)</span>. علاوة على ذلك، نعرف نموذج الحافة بأنه <span class="math inline">\(f\)</span>: <span class="math inline">\(f(x) = y^* \in [0,1]^{M \times H \times W}\)</span>، ونموذج الرؤية الكبير في السحابة بأنه <span class="math inline">\(SAM\)</span>: <span class="math inline">\(SAM(x) = mask \in \{valid\_mask\}^{ann}\)</span>. يُلاحظ أن الناتج الذي ينتجه نموذج <span class="math inline">\(SAM\)</span> هو قناع تجزئة الصورة. خلال عملية الاستدلال الدلالي المساعد بنموذج Segment Anything Model، يتم استدلال عينة بواسطة نموذج الحافة، مما يؤدي إلى نتيجة تجزئة موسومة ولكن غير دقيقة. في الوقت نفسه، يتم نقل العينة نفسها إلى السحابة ويتم استدلالها بواسطة نموذج <span class="math inline">\(SAM\)</span>، مما ينتج عنه نتيجة تجزئة غير موسومة ولكن دقيقة. يتم تشكيل نتيجة الاستدلال المساعد بنموذج <span class="math inline">\(SAM\)</span> من خلال دمج نتيجة استدلال نموذج <span class="math inline">\(SAM\)</span> ونتيجة استدلال نموذج الحافة، كما هو محدد في المعادلة ([joint]) والخوارزمية ([Joint-Inference]).</p>
+<p><span class="math display">\[\label{joint}
+    F(x) = Assisted\_Inference(f(x), SAM(x))\]</span></p>
+<p><strong>المدخلات</strong>: نتيجة استدلال الحافة: <span class="math inline">\(pred\)</span>, قناع استدلال نموذج الرؤية الكبير: <span class="math inline">\(mask\)</span>, عدد الفئات: <span class="math inline">\(M\)</span><br />
+<strong>المخرجات</strong>: نتيجة الاستدلال المساعد بنموذج الرؤية الكبير: <span class="math inline">\(semantic\_mask\)</span></p>
+<p><span class="math inline">\(semantic\_mask \gets pred\)</span> <span class="math inline">\(scores \gets [0,...,0]\)</span> <span class="math inline">\(scores[i] \gets \sum_{i=1}^{M}(pred[i][valid\_mask])\)</span> <span class="math inline">\(Top\_1\_class \gets \underset{i\in [1,...,M]}{\arg\max} \ scores[i]\)</span> <span class="math inline">\(semantic\_mask[valid\_mask] \gets Top\_1\_class\)</span> <strong>return</strong> <span class="math inline">\(semantic\_mask\)</span></p>
+<p>يمكن لطريقة الاستدلال المساعدة بنموذج الرؤية الكبير تحسين دقة التجزئة الدلالية بشكل كبير من خلال تحسين نتائج نموذج الحافة. ومع ذلك، فإنه يواجه تحديين: من ناحية، يتطلب رفع العينات إلى السحابة، مما قد يؤدي إلى زيادة الوقت اللازم للاستجابة. لذلك، فإن استراتيجية التعاون بين الحافة والسحابة أساسية لحل هذه المشكلة، كما سيتم شرحه في القسم (<span class="nodecor">3.3</span>).</p>
+<h1 id="من-ناحية-أخرى">من ناحية أخرى</h1>
+<p>من ناحية أخرى، نظراً لأن فعالية الاستدلال المشترك بين الحافة والسحابة تعتمد على التسميات التي ينتجها نموذج الحافة، فإذا واجه نموذج الحافة صعوبات تتعلق بتغير البيئة، مما يؤدي إلى تغير البيانات وتباينها، فإن دقة الاستدلال المشترك المساعد بواسطة نموذج الرؤية الكبير ستنخفض أيضاً. لذلك، نحتاج إلى تحديث نموذج الحافة واستراتيجية التعاون بين الحافة والسحابة بشكل تكيفي، والتي سيتم توضيحها في القسم [3.4].</p>
+<h2 id="3.3">استراتيجية تصنيف المدخلات الصعبة</h2>
+<p>استراتيجية تصنيف المدخلات الصعبة تعتبر حاسمة في بنية <span class="nodecor">LAECIPS</span>. تحديد العديد من المدخلات الصعبة سيؤدي إلى زيادة زمن الاستنتاج، بينما تحديد القليل منها سيؤدي إلى انخفاض في دقة التعامل مع الحالات الحرجة. تعتمد الطرق الحالية على قيم الخسارة (<span class="nodecor">cvpr16</span>) أو درجات الثقة (<span class="nodecor">ICLR18</span>) لتحديد المدخلات الصعبة. ومع ذلك، فإن حساب قيم الخسارة أثناء الاستنتاج يعتبر تحدياً بسبب عدم معرفة العلامات الحقيقية، وطرق درجات الثقة تفتقر إلى القدرة على التكيف مع البيئات المتغيرة. لمعالجة هذا، نقترح نموذج تصنيف المدخلات الصعبة المبني على الشبكات العصبية، المشار إليه بـ <span class="math inline">\(h\)</span>. يحدد هذا النموذج ما إذا كانت مدخلات البيانات لاستنتاج الحافة هي مدخلات صعبة أو سهلة، ممثلة كـ <span class="math inline">\(h(f(x)) \in [0,1]\)</span>. بناءً على هذا النموذج لتصنيف المدخلات الصعبة، فإن نتيجة الاستنتاج التعاوني بين السحابة والحافة هي: <span class="math display">\[(F, f, h)(x)=\left\{
+\begin{aligned}
+f(x) &amp; \ \ \ \text{إذا} \ h(f(x)) &gt; \delta\\
+F(x) &amp; \ \ \ \text{خلاف ذلك}.
+\end{aligned}
+\right.\]</span> نعرف خسارة مخرجات النموذج كما يلي <span class="math display">\[L(F, f, h, x, y)=\left\{
+\begin{aligned}
+l(f(x),y) &amp; \ \ \ \text{إذا} \ h(f(x)) &gt; \delta\\
+l(F(x),y) &amp; \ \ \ \text{خلاف ذلك}.
+\end{aligned}
+\right.\]</span> وزمن الاستنتاج للنموذج كما يلي <span class="math display">\[delay(F, f, h, x)=\left\{
+\begin{aligned}
+d(f(x)) &amp; \ \ \ \text{إذا} \ h(f(x)) &gt; \delta\\
+d(F(x)) &amp; \ \ \ \text{خلاف ذلك}.
+\end{aligned}
+\right.\]</span> ثم، خسارة الاستنتاج التعاوني بين السحابة والحافة هي: <span class="math display">\[\begin{aligned}
+        &amp; \mathbb{E}_{P(x,y)}\mathbb{E}_{h(f(x))}[L(F, f, h, x, y)] = \\
+         \mathbb{E}_{P(x,y)}[h(f(x)) &amp; *l(f(x),y)  + (1-h(f(x)))*l(F(x),y)], 
+    \end{aligned}\]</span> وزمن الاستنتاج التعاوني بين السحابة والحافة هو: <span class="math display">\[\begin{aligned}
+        &amp; \mathbb{E}_{P(x,y)}\mathbb{E}_{h(f(x))}[delay(F, f, h, x)] = \\
+\mathbb{E}_{P(x,y)}[h(f(x)) &amp; *d(f(x)) + (1-h(f(x)))*d(F(x))].
+    \end{aligned}\]</span> نهدف إلى تحسين دقة الاستنتاج مع تلبية متطلبات زمن معالجة المهمة. لذلك، الهدف العام للتحسين هو: <span class="math display">\[\begin{aligned}
+        \min_{F,f\in \mathbb{F}, h \in \mathbb{H}}{\mathbb{E}_{P(x,y)}\mathbb{E}_{h(f(x))}[L(F, f, h, x, y)]} \\
+        \text{شرط} \ \ \mathbb{E}_{P(x,y)}\mathbb{E}_{h(f(x))}[delay(F, f, h, x)] &lt; delay_{max}\ .
+    \end{aligned}\]</span> بما أن زمن الاستنتاج مستقل عن مدخلات الاستنتاج، يمكننا تبسيط زمن الاستنتاج كما يلي: <span class="math display">\[\begin{aligned}
+        d(f(x)) = d(f) = d_1 \\
+        d(F(x)) = d(F) = d_0\ .
+    \end{aligned}\]</span> وبالتالي، يمكن تبسيط زمن الاستنتاج التعاوني بين السحابة والحافة في ([latency]) كما يلي: <span class="math display">\[\begin{aligned}
+        \mathbb{E}_{P(x,y)}\mathbb{E}_{h(f(x))}[delay(F, f, h, x)] = \\
+        (d_1-d_0)*\mathbb{E}_{P(x,y)}[h(f(x))] + d_0\ .
+    \end{aligned}\]</span> وبالتالي، يمكن تبسيط القيد في ([optimization-objective-1]) كما يلي: <span class="math display">\[\begin{aligned}
+        \mathbb{E}_{P(x,y)}[h(f(x))] &gt; \frac{d_0 -delay_{max}}{delay_{max} - d_1}\ .
+    \end{aligned}\]</span> وبالتالي، يمكن إعادة كتابة الهدف العام للتحسين في ([optimization-objective-1])، الذي يلبي شروط <span class="nodecor">KKT</span> (<span class="nodecor">kkt</span>)، كما يلي: <span class="math display">\[\begin{aligned}
+    \min_{F,f\in \mathbb{F}, h \in \mathbb{H}}{\mathbb{E}_{P(x,y)}\mathbb{E}_{h(f(x))}[L(F, f, h, x, y)] + \beta * \mathbb{E}_{P(x,y)}[-log(h(f(x)))].}
+    \end{aligned}\]</span></p>
+<h2 id="3.4">عملية التحديث التكيفي</h2>
+<p>بما أن <span class="math inline">\(F\)</span> تمثل وظيفة الاستدلال المساعد بنموذج الرؤية الكبير، فلا حاجة لتحسين <span class="math inline">\(F\)</span>. لذلك، الأهداف التحسينية هي <span class="math inline">\(f\)</span> و<span class="math inline">\(h\)</span>. بالإضافة إلى ذلك، نظراً لصعوبة الحصول على التسمية الحقيقية <span class="math inline">\(y\)</span> لعينة <span class="math inline">\(x\)</span> في بيئة حقيقية، نقوم بتحسين <span class="math inline">\(f\)</span> و<span class="math inline">\(h\)</span> باستخدام نتيجة الاستدلال المساعد بنموذج الرؤية الكبير <span class="math inline">\(F(x)\)</span>. يمكن إعادة كتابة الهدف التحسيني في ([optimization-objective-2]) على النحو التالي: <span class="math display">\[\label{optimization-objective-3}
+\min_{f\in \mathbb{F}, h \in \mathbb{H}}{\mathbb{E}_{P(x,y)}[h(f(x))*l(f(x),F(x))] + \beta * \mathbb{E}_{P(x,y)}[-log(h(f(x)))].}\]</span> يمكن تقسيم عملية تحديث النموذج إلى خطوتين: في الخطوة الأولى، نجمد <span class="math inline">\(h\)</span> ونحدث <span class="math inline">\(f\)</span>: <span class="math display">\[\label{f1loss}
+    \begin{aligned}
+        L_{f} = l(f(x),F(x)) \\
+        \theta_{f} = \theta_{f} - \eta \bigtriangledown L_{f}\ .
+    \end{aligned}\]</span> ثم، نجمد <span class="math inline">\(f\)</span> ونحدث <span class="math inline">\(h\)</span>: <span class="math display">\[\label{hloss}
+    \begin{aligned}
+        L_h  &amp; = h(f(x))*l(f(x),F(x)) + \beta * -log(h(f(x))) \\
+        \theta_{h} &amp; = \theta_h - \eta \bigtriangledown L_{h}\ .
+    \end{aligned}\]</span></p>
+<p>يجمع سير العمل العام لـ LAECIPS بين الاستدلال المساعد بنموذج الرؤية الكبير، وتصنيف المدخلات الصعبة، وعملية التحديث التكيفي، كما هو موضح في الخوارزمية [adaptive].</p>
+<h1 id="sec:theory">التحليل النظري لنظام LAECIPS</h1>
+<p>ستؤثر قدرة النظام على التعميم بشكل كبير على فعاليته الفعلية عند النشر في بيئة إنترنت الأشياء الديناميكية الواقعية. في هذا القسم، نقوم بتحليل نظري لحدود التعميم للنظام المقترح LAECIPS لإثبات جدواه.</p>
+<p>استناداً إلى الهدف التحسيني من المعادلة ([optimization-objective-3])، يعرف الخسارة المتوقعة لوظيفة التجزئة الدلالية <span class="math inline">\(f\)</span> واستراتيجية استخراج الإدخالات الصعبة <span class="math inline">\(h\)</span> على النحو التالي: <span class="math display">\[\begin{aligned}
+    R(f,h) &amp; = \mathbb{E}_{P(x,y)}[h(f(x))*l(f(x),F(x))] \\
+    &amp; + \beta * \mathbb{E}_{P(x,y)}[-log(h(f(x)))] \ .
+\end{aligned}\]</span></p>
+<p>[generalization-bound] لتكن <span class="math inline">\(f\)</span> عائلة من وظائف التجزئة الدلالية التي تأخذ قيماً في <span class="math inline">\([0,1]^{M \times H \times W}\)</span>، ولتكن <span class="math inline">\(h\)</span> عائلة من وظائف استخراج الإدخالات الصعبة التي تأخذ قيماً في <span class="math inline">\([0,1]\)</span>. نرمز بـ <span class="math inline">\(\widehat{R}_S(f,h)\)</span> إلى الخسارة التجريبية للوظيفة <span class="math inline">\((f,h)\)</span> على العينة <span class="math inline">\(S\)</span>. ثم، لأي <span class="math inline">\(\delta &gt; 0\)</span>، باحتمال لا يقل عن <span class="math inline">\(1 - \delta\)</span> على سحب عينة <span class="math inline">\(S\)</span> بحجم <span class="math inline">\(m\)</span>، يصح ما يلي لجميع <span class="math inline">\((f, h) \in \mathbb{F} \times \mathbb{H}\)</span>، حيث <span class="math inline">\(\mathcal{R}_m\)</span> يمثل تعقيد راديماخر (<span class="nodecor">Rm</span>):</p>
+<p><span class="math display">\[R(f,h) \le \widehat{R}_S(f,h) + (1 + \beta)\mathcal{R}_m(\mathbb{H}) + \mathcal{R}_m(\mathbb{F}) + \sqrt{\frac{log\frac{1}{\delta}}{2m}} \ .\]</span></p>
+<p>لتكن <span class="math inline">\(l_{\mathbb{F},\mathbb{H}}\)</span> عائلة الوظائف <span class="math inline">\(l_{\mathbb{F},\mathbb{H}} = \{(x,y) \rightarrow L(f, h, x, y), f \in \mathbb{F}, h \in \mathbb{H}\}\)</span>. بناءً على الحد العام لتعقيد راديماخر (<span class="nodecor">Rademacher</span>)، باحتمال لا يقل عن <span class="math inline">\(1 - \delta\)</span>، يصح ما يلي لجميع <span class="math inline">\((f, h) \in \mathbb{F} \times \mathbb{H}\)</span>:</p>
+<p><span class="math display">\[R(f, h) \le \widehat{R}_S(f, h) + 2\mathcal{R}_m(l_{\mathbb{F},\mathbb{H}}) + \sqrt{\frac{log\frac{1}{\delta}}{2m}}\ .\]</span></p>
+<p>الآن، يمكن تحديد تعقيد راديماخر كما يلي:</p>
+<p><span class="math display">\[\begin{aligned}
+    &amp; \mathcal{R}_m(l_{\mathbb{F},\mathbb{H}}) = \mathbb{E}_{\sigma}[\sup_{(f, h) \in \mathbb{F}  \times \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * h(f(x_i)) \\
+ &amp; *l(f(x_i),F(x_i)) + \sigma_i * \beta * (-log(h(f(x_i))))] \\
+    &amp; \le \mathbb{E}_{\sigma}[\sup_{(f, h) \in \mathbb{F} \times \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * h(f(x_i))*l(f(x_i),F(x_i))] \\
+ &amp; + \beta * \mathbb{E}_{\sigma}[\sup_{(f, h) \in \mathbb{F} \times \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * (-log(h(f(x_i))))].
+\end{aligned}\]</span></p>
+<p>[sec:lemma] لتكن <span class="math inline">\(\mathbb{F}_1\)</span> و <span class="math inline">\(\mathbb{F}_2\)</span> عائلتين من الوظائف التي ترسم <span class="math inline">\(X\)</span> إلى <span class="math inline">\([0, 1]\)</span>. لتكن <span class="math inline">\(\mathbb{F} = \{f_1*f_2: f_1 \in \mathbb{F}_1, f_2 \in \mathbb{F_2}\}\)</span>. ثم، تعقيدات راديماخر التجريبية لـ <span class="math inline">\(\mathbb{F}\)</span> لأي عينة <span class="math inline">\(S\)</span> بحجم <span class="math inline">\(m\)</span> محدودة: <span class="math display">\[\widehat{\mathcal{R}_S}(\mathbb{F}) \le 2(\widehat{\mathcal{R}_S}(\mathbb{F}_1) + \widehat{\mathcal{R}_S}(\mathbb{F}_2))\]</span> يمكن العثور على برهان الليما [sec:lemma] في (<span class="nodecor">lemma1</span>)</p>
+<p>بناءً على الليما [sec:lemma]، يمكن تحديد تعقيد راديماخر لمنتجات وظائف المؤشر بمجموع تعقيدات راديماخر لكل فئة وظيفة مؤشر، وبالتالي:</p>
+<p><span class="math display">\[\begin{aligned}
+    &amp; \mathbb{E}_{\sigma}[\sup_{(f, h) \in \mathbb{F} \times \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * h(f(x_i))*l(f(x_i),F(x_i))] \\
+    &amp; \le \mathbb{E}_{\sigma}[\sup_{(f, h) \in \mathbb{F} \times \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * h(f(x_i))] \\
+ &amp; + \mathbb{E}_{\sigma}[\sup_{f \in \mathbb{F} }\frac{1}{m}\sum_{i=1}^{m}\sigma_i * l(f(x_i),F(x_i))] \ .
+\end{aligned}\]</span></p>
+<p>لذا، يمكن تحديد تعقيد راديماخر كما يلي:</p>
+<p><span class="math display">\[\begin{aligned}
+     \mathcal{R}_m(l_{\mathbb{F},\mathbb{H}}) &amp; \le (1 + \beta) * \mathbb{E}_{\sigma}[\sup_{(f, h) \in \mathbb{F} \times \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * h(f(x_i))] \\
+  &amp; + \mathbb{E}_{\sigma}[\sup_{f \in \mathbb{F} }\frac{1}{m}\sum_{i=1}^{m}\sigma_i * l(f(x_i),F(x_i))] \\
+     &amp; \le (1 + \beta) * \mathbb{E}_{\sigma}[\sup_{h \in \mathbb{H}}\frac{1}{m}\sum_{i=1}^{m}\sigma_i * h(f(x_i))] \\
+  &amp; + \mathbb{E}_{\sigma}[\sup_{f \in \mathbb{F} }\frac{1}{m}\sum_{i=1}^{m}\sigma_i * l(f(x_i),F(x_i))] \\
+     &amp; \le (1 + \beta)\mathcal{R}_m(\mathbb{H}) + \mathcal{R}_m(\mathbb{F}) .
+\end{aligned}\]</span></p>
+<p>توفر هذه النظرية ضمانات تعميم لتعلم وظيفة التجزئة الدلالية <span class="math inline">\(f\)</span> ووظيفة استخراج الإدخالات الصعبة <span class="math inline">\(h\)</span> التي تقبل تعقيدات راديماخر في <span class="math inline">\(O(\frac{1}{\sqrt{m}})\)</span>.</p>
+<p>تشير النظرية [generalization-bound] إلى أن الخطأ الأقصى في التعميم لـ LAECIPS محدود بشرط أن يكون الخطأ الأقصى في التعميم لنماذج التجزئة الدلالية واستراتيجيات استخراج الإدخالات الصعبة المستخدمة في LAECIPS قابلاً للتحكم. لذلك، من الناحية النظرية، من الممكن نشر نماذج بصرية كبيرة، ونماذج صغيرة، واستراتيجيات استخراج الإدخالات الصعبة في إطار عمل LAECIPS للتأثير المشترك بطريقة سهلة الاستخدام.</p>
+<h1 id="sec:evaluation">التجارب</h1>
+<h2 id="إعداد-التجربة">إعداد التجربة</h2>
+<h4 id="أنظمة-الأجهزة-والبرمجيات">أنظمة الأجهزة والبرمجيات</h4>
+<p>لقد قمنا بتنفيذ نموذج أولي للنظام المقترح في إطار عمل LAECIPS لتجزئة الدلالية الروبوتية في العالم الحقيقي وأجرينا تجارب عليه لتقييم الأداء. في إعداد الأجهزة، نستخدم Nvidia Jetson Nano (<span class="nodecor">nano</span>)، والذي يُستخدم عادة في أجهزة الروبوتات الواقعية، كعقدة الحافة. بالنسبة لعقدة السحابة، لدينا خادم Dell R750 مع معالج Intel Xeon Silver 4310 بـ <span class="nodecor">48</span> نواة بتردد <span class="nodecor">2.10GHz</span>، وذاكرة <span class="nodecor">256GB</span>، و <span class="nodecor">2</span> وحدات معالجة رسومات Nvidia GeForce 3090. تتصل عقدة السحابة وعقدة الحافة عبر WLAN بعرض نطاق شبكي <span class="nodecor">4Mbps</span>. لقد نفذنا LAECIPS باستخدام إطار عمل اختبار الذكاء الاصطناعي الموزع Ianvs (<span class="nodecor">kubeedge</span>) استناداً إلى Kubeedge، حيث يتم نشر النماذج الصغيرة على Jetson Nano ونموذج الرؤية الكبير على خادم Dell R750.</p>
+<h4 id="مجموعات-البيانات">مجموعات البيانات</h4>
+<p>التجزئة الدلالية هي مهمة نموذجية في نظام إدراك إنترنت الأشياء وأيضاً مهمة أساسية في مجالات الروبوتات والقيادة الذاتية. للتحقق من فعالية LAECIPS المقترح في بيئة إدراك إنترنت الأشياء الواقعية، اخترنا أربع مجموعات بيانات نموذجية للتجزئة الدلالية في العالم الحقيقي:</p>
+<ul>
+<li><p>مجموعة بيانات الروبوتات السحابية (<span class="nodecor">cloud-robotics</span>) تحتوي على <span class="nodecor">2600</span> صورة للتجزئة الدلالية تم جمعها بواسطة كلاب روبوتية ذكية في المنطقة الصناعية بشنتشن، وهي تنطبق بشكل رئيسي على مشاهد الروبوتات في المناطق شبه المغلقة.</p></li>
+<li><p>مجموعة بيانات Cityscapes (<span class="nodecor">cityscapes</span>) تحتوي على <span class="nodecor">5000</span> صورة للتجزئة الدلالية تم جمعها بواسطة سيارات ذكية في عدة مدن في ألمانيا، وهي تنطبق بشكل رئيسي على مشاهد القيادة الذاتية في بيئات العالم المفتوح.</p></li>
+<li><p>مجموعة بيانات ADE20K (<span class="nodecor">zhou2017scene</span>) تحتوي على <span class="nodecor">20000</span> صورة للتجزئة الدلالية، تغطي مشاهد متنوعة من الداخل إلى الخارج، والطبيعية إلى الحضرية، ويمكن استخدامها لمهام مثل فهم المشهد وتجزئة الصور في الروبوتات والقيادة الذاتية.</p></li>
+<li><p>مجموعة بيانات SYNTHIA (<span class="nodecor">Ros_2016_CVPR</span>) تحتوي على <span class="nodecor">9000</span> صورة للتجزئة الدلالية، تتكون من إطارات واقعية تم إنشاؤها من مدينة افتراضية وتشمل تعليقات دلالية دقيقة على مستوى البكسل.</p></li>
+</ul>
+<h4 id="الطرق-المقارنة">الطرق المقارنة</h4>
+<p>لقد قارنا أولاً ثلاثة أطر أساسية مختلفة:</p>
+<ul>
+<li><p>CLOUD: تحميل جميع المدخلات إلى عقدة السحابة للمعالجة بواسطة النموذج البصري الكبير.</p></li>
+<li><p>EDGE: معالجة جميع المدخلات على عقدة الحافة باستخدام النموذج الصغير.</p></li>
+<li><p>DCSB (<span class="nodecor">cao2023edge</span>) هو الطريقة الحالية الأفضل لتعاون النموذج الكبير/الصغير. الفرق بين هذا الإطار وإطار عمل LAECIPS المقترح هو أن DCSB لا يقوم بتحديث النموذج الصغير بشكل ديناميكي.</p></li>
+</ul>
+<p>بالإضافة إلى ذلك، استخدمنا أيضاً ثلاث استراتيجيات نموذجية لاستخراج المدخلات الصعبة، MESS (<span class="nodecor">ECCV22</span>), SM (<span class="nodecor">CODES15</span>), و SPP (<span class="nodecor">ICLR18</span>)، لتقييم فعالية وعمومية طريقة LAECIPS.</p>
+<ul>
+<li><p>MESS هي الطريقة الحالية الأفضل المقترحة للتجزئة الدلالية المبكرة، والتي يمكن استخدامها أيضاً في استخراج المدخلات الصعبة. تحسب درجة الثقة لنتيجة الاستدلال من خلال حساب نسبة البكسلات التي تحتوي على توزيع احتمالي أقصى أكبر من عتبة معينة:</p>
+<p><span class="math display">\[Confidence = \frac{1}{HW}\sum_{h=1}^{H}\sum_{w=1}^{W}\mathds{1}(c_{h,w}^{top1}(f(x)) \ge thre^{pix})\]</span></p></li>
+<li><p>SM هي الطريقة الكلاسيكية المستخدمة في التعاون بين الحافة والسحابة. تحسب درجة الثقة استناداً إلى الفرق بين توزيع الاحتمال الأقصى وتوزيع الاحتمال الثاني الأقصى في نتيجة الاستدلال:</p>
+<p><span class="math display">\[Confidence = \frac{1}{HW}\sum_{h=1}^{H}\sum_{w=1}^{W}(c_{h,w}^{top1}(f(x)) - c_{h,w}^{top2}(f(x)))\]</span></p></li>
+<li><p>SPP هي الطريقة الأساسية لاستخراج المدخلات الصعبة. تحسب درجة الثقة استناداً إلى توزيع الاحتمال الأقصى في نتيجة الاستدلال:</p>
+<p><span class="math display">\[Confidence = \frac{1}{HW}\sum_{h=1}^{H}\sum_{w=1}^{W}c_{h,w}^{top1}(f(x))\]</span></p></li>
+</ul>
+<p>لمقارنة عادلة، سيتم تطبيق الخوارزميات الثلاثة المذكورة أعلاه لاستخراج المدخلات الصعبة في الإطار المقترح بطريقة مباشرة خلال عملية التجربة.</p>
+<h4 id="مقاييس-التقييم">مقاييس التقييم</h4>
+<p>المقاييس التي نختبرها في التجربة تشمل mIoU، نسبة التحميل إلى السحابة (CUR)، والتأخير. mIoU تقيس دقة استدلال النموذج في مهام التجزئة الدلالية. CUR تمثل نسبة الصور المحملة إلى السحابة، مما يعكس النفقات العامة للاتصالات في التأثير المشترك بين الحافة والسحابة. التأخير هو الوقت المتوسط لإكمال عملية التأثير المشترك لمدخلات الصور.</p>
+<p>حساب دقة استدلال mIoU كالتالي: <span class="math display">\[\begin{aligned}
+    mIoU(F,f,h) &amp; = \frac{1}{N}\sum_{i=1}^N[\mathds{1}(h(f(x_i))\ge \delta)*IoU(f(x_i), y) \\
+    &amp; + \mathds{1}(h(f(x)) &lt; \delta) * IoU(F(x_i), y)].
+\end{aligned}\]</span></p>
+<p>حساب نسبة التحميل إلى السحابة (CUR) كالتالي: <span class="math display">\[CUR = \frac{1}{N}\sum_{i=1}^N\mathds{1}(h(f(x_i)) &lt; \delta).\]</span></p>
+<p>حساب التأخير كالتالي: <span class="math display">\[latency = \frac{1}{N}\sum_{i=1}^N(delay(x_i)).\]</span></p>
+<p>لتقييم أداء الخوارزمية في بيئات متغيرة ديناميكياً خلال عملية التجربة، نقسم مجموعات البيانات إلى <span class="nodecor">5</span> مهام بترتيب زمني.</p>
+<h2 id="نتيجة-تجريبية">نتيجة تجريبية</h2>
+<p>الجداول <span class="nodecor">[table1]</span> و <span class="nodecor">[table2]</span>، تظهر النتائج التجريبية لإطار عمل <span class="nodecor">LAECIPS</span> وأطر عمل وخوارزميات أخرى في مجموعات بيانات مختلفة. من خلال هذه النتائج التجريبية، نهدف إلى الإجابة على الأسئلة البحثية التالية.</p>
+<dl>
+<dt>Q1.</dt>
+<dd><p><span><em>ما مدى فعالية التعاون بين الحافة والسحابة في إطار عمل <span class="nodecor">LAECIPS</span> المقترح لدينا؟</em></span></p>
+</dd>
+</dl>
+<p>للإجابة على هذا السؤال، نقوم بملاحظتين من الشكل <span class="nodecor">[ablation]</span> والجدول <span class="nodecor">[table1]</span> استناداً إلى الدقة والتأخير. أولاً، يظهر الشكل <span class="nodecor">[ablation]</span> نتائج التدريب والاستدلال باستخدام إطار عمل <span class="nodecor">LAECIPS</span> على مجموعات بيانات مختلفة. بالجمع بين دقة <span class="nodecor">mIoU</span> المتوسطة المعروضة في الجدول <span class="nodecor">[table1]</span>، يمكن ملاحظة أنه في مجموعة بيانات <span class="nodecor">Cloud-Robotics</span>، يحسن أسلوب <span class="nodecor">LAECIPS</span> دقة استدلال <span class="nodecor">mIoU</span> بنسبة <span class="nodecor">22.1%</span> و <span class="nodecor">5.9%</span> مقارنة بالاستدلال على الحافة وإطار عمل <span class="nodecor">DCSB</span>، مع فرق بنسبة <span class="nodecor">5.1%</span> فقط مقارنة بالاستدلال على السحابة. في مجموعة بيانات <span class="nodecor">Cityscapes</span>، يحسن أسلوب <span class="nodecor">LAECIPS</span> دقة استدلال <span class="nodecor">mIoU</span> بنسبة <span class="nodecor">20.1%</span> و <span class="nodecor">6.0%</span> مقارنة بالاستدلال على الحافة وإطار عمل <span class="nodecor">DCSB</span>، مع فرق بنسبة <span class="nodecor">5.0%</span> فقط مقارنة بالاستدلال على السحابة. في مجموعة بيانات <span class="nodecor">ADE20K</span>، يحسن أسلوب <span class="nodecor">LAECIPS</span> دقة استدلال <span class="nodecor">mIoU</span> بنسبة <span class="nodecor">12.5%</span> و <span class="nodecor">2.6%</span> مقارنة بالاستدلال على الحافة وإطار عمل <span class="nodecor">DCSB</span>، مع فرق بنسبة <span class="nodecor">3.7%</span> فقط مقارنة بالاستدلال على السحابة. في مجموعة بيانات <span class="nodecor">SYNTHIA</span>، يحسن أسلوب <span class="nodecor">LAECIPS</span> دقة استدلال <span class="nodecor">mIoU</span> بنسبة <span class="nodecor">15.3%</span> و <span class="nodecor">4.4%</span> مقارنة بالاستدلال على الحافة وإطار عمل <span class="nodecor">DCSB</span>، مع فرق بنسبة <span class="nodecor">3.6%</span> فقط مقارنة بالاستدلال على السحابة. تظهر هذه النتائج أن أسلوب <span class="nodecor">LAECIPS</span> يمكن أن يحسن بفعالية دقة استدلال النموذج.</p>
+<p>ثانياً، يظهر الجدول <span class="nodecor">[table1]</span> متوسط تأخير الاستدلال و<span class="nodecor">CURs</span>. مقارنة بالأساليب التي تؤدي كل الاستدلال في السحابة، يوفر <span class="nodecor">LAECIPS</span> أكثر من <span class="nodecor">60%</span> من وقت الاستدلال وتكاليف الاتصال. مقارنة بإطار عمل <span class="nodecor">DCSB</span> الحالي، يمتلك <span class="nodecor">LAECIPS</span> تأخير استدلال وتكاليف اتصال مماثلة جداً. هذا يثبت أن <span class="nodecor">LAECIPS</span> يمكن أن يقلل بفعالية من تأخير الاستدلال وتكاليف الاتصال.</p>
+<dl>
+<dt>Q2.</dt>
+<dd><p><span><em>هل طريقتنا في التعاون بين السحابة والحافة أكثر فعالية في تحديد المدخلات الصعبة مقارنة بخوارزميات استخراج المدخلات الصعبة الأخرى؟</em></span></p>
+</dd>
+</dl>
+<p>نجيب على هذا السؤال من خلال ملاحظتين من الشكل <span class="nodecor">hard-example-result</span> والشكل <span class="nodecor">Comparision of Different Cloud Update Rate</span>. أولاً، نصنف العينات <span class="math inline">\(x\)</span> التي تلبي الشرط <span class="math inline">\(mIoU(F(x)) - mIoU(f(x)) \ge 0.1\)</span> كمدخلات صعبة. يظهر الشكل <span class="nodecor">hard-example-result</span> التمييز بين المدخلات الصعبة والسهلة بناءً على درجات الثقة للخوارزميات المختلفة. يمكن ملاحظة أن طرق <span class="nodecor">MESS</span>، <span class="nodecor">SM</span>، و<span class="nodecor">SPP</span> غير قادرة على التمييز بوضوح بين المدخلات الصعبة والسهلة بناءً على درجة الثقة، بينما يمكن لطريقة <span class="nodecor">LAECIPS</span> تحديد معظم المدخلات بدرجة ثقة أكبر من 0.75 كمدخلات سهلة ومعظم المدخلات بدرجة ثقة أقل من 0.75 كمدخلات صعبة، مما يدل على أن طريقة <span class="nodecor">LAECIPS</span> أكثر فعالية في التمييز بين المدخلات الصعبة والسهلة.</p>
+<p>ثانياً، كما هو موضح في الشكل <span class="nodecor">Comparision of Different Cloud Update Rate</span>، قمنا بتجربة دقة الاستدلال <span class="nodecor">mIoU</span> تحت معدلات تحديث سحابية مختلفة من خلال تعديل العتبة <span class="math inline">\(\delta\)</span> مع نفس النموذج الحافي. يمكن ملاحظة أن دقة الاستدلال لطريقة <span class="nodecor">LAECIPS</span> أعلى من الطرق الأخرى تحت معدلات تحديث سحابية مختلفة. تشير النتائج إلى أن <span class="nodecor">LAECIPS</span> يقدم كمية أقل من النفقات الاتصالية مقارنة بالطرق الأخرى لتحقيق نفس مستوى دقة الاستدلال، مما يؤكد مجدداً فعالية طريقة <span class="nodecor">LAECIPS</span> في تحديد المدخلات الصعبة.</p>
+<dl>
+<dt>Q3.</dt>
+<dd><p><span><em>هل خوارزمية <span class="nodecor">LAECIPS</span> أكثر قدرة على التكيف مع التغيرات البيئية الديناميكية؟</em></span></p>
+</dd>
+</dl>
+<p>نقوم بملاحظتين من الشكل <span class="nodecor">Comparison of Different Algorithms</span> والجدول <span class="nodecor">table2</span> للإجابة على هذا السؤال. أولاً، يظهر الشكل <span class="nodecor">Comparison of Different Algorithms</span> دقة الاستدلال <span class="nodecor">mIoU</span> ومعدلات التحديث السحابية لخوارزميات مختلفة في مهام مختلفة. توزيعات البيانات لمهام مختلفة من نفس مجموعة البيانات مختلفة بشكل كبير كما هو موضح في الشكل <span class="nodecor">freq</span>، والتي لها تأثيرات معينة على فعالية نماذج التجزئة الدلالية وخوارزميات استخراج المدخلات الصعبة، مما يؤدي إلى تقلبات في دقة الاستدلال للنموذج ومعدلات التحديث السحابية عبر مهام مختلفة. لذلك، تعكس تقلبات الأداء للطرق المقيمة في التعامل مع مهام مختلفة قدرتها على التكيف مع البيئات الديناميكية.</p>
+<p>تشير النتائج المتحصلة إلى أن طرق <span class="nodecor">DCSB</span>، <span class="nodecor">MESS</span>، <span class="nodecor">SM</span>، و<span class="nodecor">SPP</span> تتأثر بشكل كبير بالتغيرات البيئية من حيث دقة الاستدلال ومعدل التحديث السحابي، بينما تظل <span class="nodecor">LAECIPS</span> نسبياً مستقرة في مهام مختلفة. يمكن ملاحظة أن <span class="nodecor">LAECIPS</span> تتفوق على خوارزميات أخرى في مهام مختلفة عبر 4 مجموعات بيانات في التجربة. <span class="nodecor">LAECIPS</span> لديها دقة استدلال <span class="nodecor">mIoU</span> متوسطة أعلى بأكثر من 5% من الخوارزميات الأخرى. يظهر الجدول <span class="nodecor">table2</span> الدقة ومعدل التحديث السحابي تحت مهام مختلفة. عبر مهام مختلفة، تظهر <span class="nodecor">LAECIPS</span> تقلبات معدل التحديث السحابي نسبياً مستقرة، بينما تظهر طرق <span class="nodecor">MESS</span>، <span class="nodecor">SM</span>، و<span class="nodecor">SPP</span> تقلبات كبيرة في الأداء. <span class="nodecor">DCSB</span> تظهر أيضاً أداء مستقراً من حيث معدل التحديث السحابي، ولكن بسبب عدم تحديثاتها التكيفية للنماذج الصغيرة، لا يزال هناك فجوة معينة في الدقة مقارنة بـ <span class="nodecor">LAECIPS</span>، مما يبرز أهمية عملية التحديث التكيفي المستخدمة في إطار عمل <span class="nodecor">LAECIPS</span>.</p>
+<h1 id="sec: conclusion">الخلاصة</h1>
+<p>تتناول هذه الورقة المشكلة الجديدة المتعلقة بالتدريب والاستدلال التعاوني بين السحابة والحافة عبر الإنترنت في البيئات الديناميكية، مع التركيز على نماذج الرؤية الكبيرة في منظور إدراك إنترنت الأشياء. يكمن جوهر هذه المشكلة في تحديد استراتيجيات التعاون المثلى التي تلبي متطلبات الاستشعار والحوسبة الفورية على الحافة مع تعزيز دقة الاستدلال. يفصل حلنا، إطار عمل LAECIPS، مكوناته الأساسية - نموذج رؤية كبير مستضاف على السحابة ونموذج صغير موزع على الحافة - ويستخدم استراتيجية الاستدلال المشترك المبنية على تصنيف المدخلات الصعبة لتحسين تعاونهما. مع LAECIPS، يتم إرسال المدخلات الصعبة فقط إلى السحابة، ويتم تحديث نموذج الحافة بشكل تكيفي، مستفيداً من مخرجات نموذج الرؤية الكبير المدرب مسبقاً لضمان الصمود أمام التغيرات البيئية الديناميكية. تم اشتقاق حد الخطأ العام لـ LAECIPS، وأُجريت تقييمات شاملة على معايير تقسيم الأداء الدلالي الروبوتي في العالم الحقيقي. تدعم النتائج النظرية والتجريبية جدوى وفعالية الإطار المقترح. نعتقد أن عملنا يضع أساساً متيناً للتعاون بين نموذج الرؤية الكبير والسحابة على الحافة ويسهل تطوير أنظمة إدراك إنترنت الأشياء. في البحوث المستقبلية، سنوسع تطبيق LAECIPS من أنظمة إدراك إنترنت الأشياء إلى سيناريوهات متعددة الوسائط الأخرى.</p>
+</body>
+</html>
