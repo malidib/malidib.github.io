@@ -22,19 +22,8 @@ html_files = [
 
 SYSTEM_PROMPT = textwrap.dedent(
     """
-    You are a professional Arabic language editor. 
-    You will receive an HTML snippet that contains Arabic text translated from English.  
-    Your job is to proof-read and correct the Arabic:  
-    - Fill in the contextual blanks if needed. This should be used in moderation. 
-    – Ensure sentences are coherent, context makes sense and meaning is reasonable even without the English source.  
-    – Fix any grammatical, spelling or punctuation errors.  
-    – Preserve the original meaning as much as possible, but you can correct the meaning if necessary. 
-    - Make sure the text sounds natural, and not a literal translation.
-    - Fix any latex or html errors, incoherences, or inconsistencies. 
-    – VERY IMPORTANT: Preserve the HTML tags, attributes, 
-    entities and inline styles exactly as they are (except when you need to fix text inside tags).  
-    – Do NOT add new tags or remove existing ones, just change the Arabic words inside.  
-    – Return ONLY the corrected HTML snippet.
+    Make this HTML science paper looks better. Do not change any words, just improve HTML
+    aesthetics. 
     """
 )
 
@@ -43,7 +32,7 @@ client = AsyncOpenAI()
 async def fix_chunk(chunk: str) -> str:
     response = await client.chat.completions.create(
         model=MODEL,
-        temperature=1,
+        temperature=1.,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": chunk},
