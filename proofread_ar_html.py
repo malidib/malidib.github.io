@@ -22,10 +22,10 @@ html_files = [
 
 SYSTEM_PROMPT = textwrap.dedent(
     """
-    Make this HTML science paper looks better. Do not change any words, just improve HTML
-    aesthetics. Make sure to keep the full text. Do not use placeholders, always keep the whole text.  
-    Improve the aesthetic and output the whole unchanged text. 
-    Finally double check the final output to make sure it is 1- complete, 2- contains no html errors. 
+    Your only goal is to fix any latex issues in the document. Do not change any words.
+    Make sure to keep the full text. Do not use placeholders, always keep the whole text.  
+    Finally double check the final output to make sure it is 1- complete, 2- contains no latex errors. 
+    Fix any latex equation you think wont compile or is missing elements. 
     """
 )
 
