@@ -169,7 +169,7 @@
   </ul>
   <h1 id="sec:background">الخَلْفِيَّة</h1>
   <h2 id="تعلم-التعزيز-المتعدد-العوامل">تَعَلُّم التَّعْزِيز المُتَعَدِّد العَوامِل</h2>
-  <p>تُعَرَّف لعبة ماركوف متعددة العوامل بالرمز <span class="math inline">\(\bm{(} N, \mathcal{S},\left\{\mathcal{A}^i\right\}_{i=1}^N, \mathbb{P},\left\{r^i\right\}_{i = 1}^N, \gamma \bm{)}\)</span>. هنا، <span class="math inline">\(N\)</span> تمثل عدد العوامل، <span class="math inline">\(\mathcal{S}\)</span> فضاء الحالات، و<span class="math inline">\(\mathcal{A}:=\mathcal{A}^1 \times \cdots \times \mathcal{A}^N\)</span> مجموعة الأفعال لكل عامل. احتمالات انتقال الحالة ممثلة بـ <span class="math inline">\(\mathbb{P}: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})\)</span> والمكافأة بـ <span class="math inline">\(r^i: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}\)</span>. أخيرًا، <span class="math inline">\(\gamma \in [0,1]\)</span> هو عامل الخصم. يحاول كل عامل تعظيم عائده <span class="math inline">\(R^i = \sum_{t=0}^\infty \gamma^t r^i_t\)</span>. تمثل سياسة العامل <span class="math inline">\(i\)</span> بـ <span class="math inline">\(\pi^{i}_{\theta_{i}}\)</span> حيث <span class="math inline">\(\theta_i\)</span> معاملات الشبكة العصبية. يتم تدريب هذه السياسات باستخدام مقدرات التدرج مثل REINFORCE (<span class="nodecor">reinforce</span>).</p>
+  <p>تُعَرَّف لعبة ماركوف متعددة العوامل بالرمز <span class="math inline">\(\left( N, \mathcal{S},\left\{\mathcal{A}^i\right\}_{i=1}^N, \mathbb{P},\left\{r^i\right\}_{i = 1}^N, \gamma \right)\)</span>. هنا، <span class="math inline">\(N\)</span> تمثل عدد العوامل، <span class="math inline">\(\mathcal{S}\)</span> فضاء الحالات، و<span class="math inline">\(\mathcal{A}:=\mathcal{A}^1 \times \cdots \times \mathcal{A}^N\)</span> مجموعة الأفعال لكل عامل. احتمالات انتقال الحالة ممثلة بـ <span class="math inline">\(\mathbb{P}: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})\)</span> والمكافأة بـ <span class="math inline">\(r^i: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}\)</span>. أخيرًا، <span class="math inline">\(\gamma \in [0,1]\)</span> هو عامل الخصم. يحاول كل عامل تعظيم عائده <span class="math inline">\(R^i = \sum_{t=0}^\infty \gamma^t r^i_t\)</span>. تمثل سياسة العامل <span class="math inline">\(i\)</span> بـ <span class="math inline">\(\pi^{i}_{\theta_{i}}\)</span> حيث <span class="math inline">\(\theta_i\)</span> معاملات الشبكة العصبية. يتم تدريب هذه السياسات باستخدام مقدرات التدرج مثل REINFORCE (<span class="nodecor">reinforce</span>).</p>
   <h2 id="المعضلات-الاجتماعية-ومعضلة-السجين-المتكررة">المُعْضِلات الاِجْتِمَاعِيَّة ومُعْضِلَة السَّجِين المُتَكَرِّرَة</h2>
   <p>في الألعاب ذات المنفعة الجماعية تظهر معضلات اجتماعية عندما يسعى كل وكيل لتعظيم مكافأته الشخصية فيقوّض الناتج الجماعي أو الرفاهية الاجتماعية. يصبح هذا جليًا حين تكون النتيجة الجماعية أدنى من تلك التي يمكن تحقيقها بالتعاون الكامل. توضح نماذج نظرية مثل معضلة السجين كيف أن كل مشارك، رغم أنه أفضل حالًا حين يعترف، يؤدي اعترافه إلى مكافأة جماعية أقل مما لو بقي صامتًا.</p>
   <p>في معضلة السجين المتكررة (<span class="nodecor">IPD</span>)، لا يعود الانسحاب المطلق الاستراتيجية المثلى. فعند مواجهة خصم يتبع استراتيجية الرد بالمثل (<span class="nodecor">TFT</span>)، يؤدي التعاون المستمر إلى عوائد أعلى. قد نتوقع أن يكتشف وكلاء MARL—المصممون لتعظيم عائدهم الفردي—استراتيجية <span class="nodecor">TFT</span> باعتبارها توازن ناش الذي يعزز كلاً من العوائد الفردية والجماعية، ولا يضفي حافزًا لتغيير السياسة. ومع ذلك، أظهرت الملاحظات التجريبية أن الوكلاء المدربين لتعظيم عائدهم الخاص يميلون عادة إلى الانسحاب المطلق.</p>
@@ -181,11 +181,10 @@
 </body>
 </html>
 ```
-**ملاحظات:**
-- تم تحسين الخطوط والألوان والخلفيات والهوامش لجعل الورقة أكثر أناقة واحترافية.
-- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو الحذف.
-- تم التأكد من عدم وجود أخطاء HTML، وجميع العناصر مغلقة بشكل صحيح.
-- تم استخدام وسم `<main>` للفصل بين رأس الصفحة والمحتوى الرئيسي.
-- تم تحسين مظهر العناوين، القوائم، الكود، والاقتباسات.
-- تم التأكد من أن جميع النصوص الأصلية موجودة بالكامل.
-- إذا كان هناك المزيد من النص بعد "تهدف (", أضفه بنفس الأسلوب داخل `<main>`.
+
+**ملاحظات حول LaTeX:**
+- تم تصحيح جميع المعادلات لتكون بين `\(` و`\)` أو `\[ ... \]` حسب الحاجة.
+- تم تصحيح قوس البداية في تعريف لعبة ماركوف من `\bm{(}` إلى `\left(` وقوس النهاية من `\bm{)}` إلى `\right)`، لأن `\bm{(}` ليس قوسًا رياضيًا صحيحًا في LaTeX.
+- جميع المعادلات الأخرى سليمة ولن تسبب أخطاء في MathJax/LaTeX.
+- لم يتم تغيير أي كلمة من النص الأصلي.
+- تم التأكد من أن جميع المعادلات ستُعرض بشكل صحيح في MathJax/LaTeX.

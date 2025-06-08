@@ -210,13 +210,17 @@
 <p>في نهج التكميم، نحصل على مصفوفة الإشارة <span class="math inline">\(S\)</span> من مصفوفة الوزن المدربة <span class="math inline">\(W\)</span>: <span class="math inline">\( S = \mathit{sign}(W) \)</span>. ومصفوفة القوة <span class="math inline">\(P\)</span> هي لوغاريتم الأساس الثنائي للقيم المطلقة لـ<span class="math inline">\(W\)</span>، أي <span class="math inline">\( P = \log_{2}(|W|) \)</span>. بعد تقريب <span class="math inline">\(P\)</span> إلى أقرب قوة اثنين (<span class="math inline">\( P_{\mathit{r}} = \mathit{round}(P) \)</span>)، تُحسب الأوزان المكممة <span class="math inline">\(\tilde{W}_q\)</span> بتطبيق الإشارة: <span class="math inline">\(\tilde{W}_q = \mathit{flip}(2^{P_{\mathit{r}}}, S)\)</span>. في تقنية القوى الثنائية والإشارة، تُعدل قيم التحويل (<span class="math inline">\( \tilde{P} \)</span>) وقلب الإشارة (<span class="math inline">\( \tilde{S} \)</span>) مباشرة، حيث <span class="math inline">\( \tilde{P} = \mathit{round}(P) \)</span> و<span class="math inline">\( \tilde{S} = \mathit{sign}(\mathit{round}(S)) \)</span>، ثم تُحسب الأوزان <span class="math inline">\(\tilde{W}_{\mathit{ps}} = \mathit{flip}(2^{\tilde{P}}, \tilde{S})\)</span>.</p>
 <h2 id="hpo">تحسين المعلمات الفائقة</h2>
 <p>تزيد تعقيدات خوارزميات التعلم العميق من الحاجة إلى التحسين المؤتمت للمعلمات الفائقة (<span class="nodecor">HPO</span>) لتعزيز أداء النماذج (<span class="nodecor">DBLP:journals/widm/BischlBLPRCTUBBDL23</span>). لنفترض أننا نملك مجموعة بيانات <span class="math inline">\( \mathcal{D} = \{(x_i,y_i)\}_{i=1}^{N} \in \mathbb{D} \subset \mathcal{X} \times \mathcal{Y} \)</span>، حيث <span class="math inline">\( \mathcal{X} \)</span> هو فضاء المتغيرات و<span class="math inline">\( \mathcal{Y} \)</span> هو فضاء الأهداف، وفضاء تكوين المعلمات الفائقة <span class="math inline">\( \Lambda = \{\lambda_1, \ldots, \lambda_L\} \)</span>. في دراستنا، <span class="math inline">\( \mathcal{M} \)</span> يمثل فضاء النماذج الممكنة لـ <span class="nodecor">DSNN</span>. الخوارزمية <span class="math inline">\( \mathcal{A} : \mathbb{D} \times \Lambda \rightarrow \mathcal{M} \)</span> تُدرّب نموذجاً <span class="math inline">\( M \)</span> استناداً إلى تكوين من <span class="math inline">\( L \)</span> معلمات فائقة مأخوذة من <span class="math inline">\( \Lambda \)</span> على مجموعة التدريب <span class="math inline">\( \mathcal{D}_{\textit{train}} \)</span>. تُقسم البيانات إلى مجموعات التدريب والاختبار والتحقق <span class="math inline">\( \mathcal{D}_{\textit{train}}, \mathcal{D}_{\textit{val}}, \mathcal{D}_{\textit{test}} \)</span>. يُقيَّم أداء النموذج بدالة خسارة <span class="math inline">\( \mathcal{L} : \mathcal{M} \times \mathbb{D} \rightarrow \mathbb{R} \)</span>. هدف الـ <span class="nodecor">HPO</span> هو إيجاد التكوين <span class="math inline">\( \lambda^* \in \Lambda \)</span> الذي يقلل هذه الخسارة:</p>
-<pre class="math display">\[\lambda^* \in \argmin_{\lambda \in \Lambda} \mathcal{L}\big(\mathcal{A}(\mathcal{D}_{\textit{train}},\lambda), \mathcal{D}_{\textit{val}}\big).\]</pre>
+<div class="math display">\[
+\lambda^* \in \arg\min_{\lambda \in \Lambda} \mathcal{L}\big(\mathcal{A}(\mathcal{D}_{\textit{train}},\lambda), \mathcal{D}_{\textit{val}}\big).
+\]</div>
 <p>بذلك يتم تعديل المعلمات الفائقة بناءً على أداء مجموعة التحقق، ثم يُختبر النموذج النهائي على <span class="math inline">\(\mathcal{D}_{\textit{test}}\)</span>.</p>
 <h2 id="bo">التحسين البايزي</h2>
 <p>التحسين البايزي استراتيجية عالمية لتحسين دوال الخسارة الصندوق الأسود <span class="math inline">\(\mathcal{L}:\mathcal{M}\times\mathbb{D}\to\mathbb{R}\)</span> المكلفة في التقييم (<span class="nodecor">DBLP:journals/jgo/JonesSW98</span>). يستخدم نموذجاً بديلاً احتماليًا <span class="math inline">\(\mathcal{S}\)</span>—عادةً عملية غاوسية أو غابة عشوائية—لتمثيل دالة الخسارة (<span class="nodecor">DBLP:books/lib/RasmussenW06</span>, <span class="nodecor">DBLP:conf/lion/HutterHL11</span>). توجه دالة الاستحواذ <span class="math inline">\(\mathcal{C}:\Lambda\to\mathbb{R}\)</span> البحث عن النقاط التالية الموازنة بين الاستكشاف والاستغلال بناءً على النقاط المُستعلم عنها سابقاً <span class="math inline">\(\{(\lambda_i,\mathcal{L}_i)\}_{i=1}^{m-1}\)</span>. ثم يحدث تحديث النموذج البديل عند تقييم <span class="math inline">\(\mathcal{L}\)</span> في تلك النقاط.</p>
 <h2 id="multi-fidelity">تحسين متعدد الدقة</h2>
 <p>لتجنب الكلفة العالية في تدريب جميع التكوينات حتى النهاية، نستخدم نهجاً متعدد الدقة (<span class="nodecor">MF</span>) (<span class="nodecor">DBLP:journals/jmlr/LiJDRT17</span>), الذي يوازن بين الأداء وخطأ التقريب (<span class="nodecor">DBLP:books/sp/HKV2019</span>). يخصص هذا النهج عددًا قليلًا من العصور لعدد كبير من التكوينات أولاً، ثم يوجه الميزانية للأفضل منها تدريجياً. رسمياً، نحدد مجموعة دقات <span class="math inline">\(\mathcal{F}\)</span> ونهدف إلى تقليل الوظيفة عالية الدقة <span class="math inline">\(F\in\mathcal{F}\)</span>:</p>
-<pre class="math display">\[\min_{\lambda\in\Lambda} F(\lambda)\, .\]</pre>
+<div class="math display">\[
+\min_{\lambda\in\Lambda} F(\lambda)\, .
+\]</div>
 <p>ثم نقرب <span class="math inline">\(F\)</span> بسلسلة من التقريبات الأقل دقة والأقل تكلفة <span class="math inline">\(\{f_1(\lambda),\ldots,f_j(\lambda)\}\)</span> عبر مستويات متعددة <span class="math inline">\(j\)</span>، حيث يُخصص لكل تقييم ميزانية بناءً على المستوى.</p>
 <h2 id="التحسين-متعدد-الأهداف">التحسين متعدد الأهداف</h2>
 <p>يعالج التحسين متعدد الأهداف مشكلات تتضمّن أهدافاً متعارضة، مثل تحسين الدقة وتقليل استهلاك الطاقة في شبكات العصبونات العميقة المتغيرة. يهدف إلى إيجاد حلول باريتو مثلى (<span class="nodecor">Deb2014</span>) عبر إضافة نقاط جديدة بناءً على الملاحظات الحالية <span class="math inline">\( \mathcal{D}_\mathit{obs} = \{(\lambda_i,\mathcal{L}(\lambda_i))\}_{i=1}^{n}\)</span>. تشكّل هذه النقاط السطح غير المهيمن <span class="math inline">\( D^\star_n \)</span>، بحيث لا يُمكن تحسين أي هدف دون الإضرار بآخر.</p>
@@ -224,9 +228,13 @@
 <p>لتعزيز كفاءة شبكات العصبونات العميقة المتغيرة حسابياً عبر التعلم الآلي المؤتمت، نستخدم تحسين متعدد الدقة. نقدم مستويات دقة مختلفة لعملية التدريب بزيادة عدد طبقات التحويل في النموذج تدريجياً. تبدأ العملية بنماذج تحتوي على عدد محدود من طبقات التحويل، ثم يُسمح لها بالزيادة خلال التحسين. نفترض أن هذا يُوجه البحث نحو التكوينات الأعلى أداءً، حيث يوازن عدد أقل من الطبقات بين دقة التمثيل وخطأ التقريب. نحقق ذلك عبر توسيع خوارزمية HyperBand (<span class="nodecor">DBLP:journals/jmlr/LiJDRT17</span>)—التي تعتمد على الإنقاص التدريجي (<span class="nodecor">jamieson-aistats16a</span>)—في إطار متعدد الأهداف.</p>
 <p>في قسم الخلفية، شرحنا الإنقاص التدريجي حيث يُدرَّب <span class="math inline">\(n_c\)</span> تكوينات على ميزانية أولية <span class="math inline">\(b_I\)</span>، ثم يُختار أفضل <span class="math inline">\(\nu/(\nu+1)\)</span> منها لميزانية جديدة <span class="math inline">\(\nu b_I/(\nu+1)\)</span>، وهكذا حتى نصل للتكوين الأفضل. تجمع HyperBand عدة أقواس من هذه العملية مع توزيع الميزانية الإجمالية عبرها.</p>
 <p>نوسع ذلك ليشمل أيضاً تحسين متعدد الأهداف. نعالج هدفين معاً: دقة النموذج واستهلاك الطاقة. نعرف دالة هدف ثنائية الأبعاد:</p>
-<p><span class="math display">\[f_{MO}:\Lambda\to\mathbb{R}^2,\quad f_{MO}(\lambda) = \big(f_{\text{loss}}(\lambda), f_{\text{emission}}(\lambda)\big),\]</span></p>
+<div class="math display">\[
+f_{MO}:\Lambda\to\mathbb{R}^2,\quad f_{MO}(\lambda) = \big(f_{\text{loss}}(\lambda), f_{\text{emission}}(\lambda)\big),
+\]</div>
 <p>حيث <span class="math inline">\(f_{\text{loss}}(\lambda)\)</span> تهدف إلى تقليل الخسارة لزيادة الدقة و<span class="math inline">\(f_{\text{emission}}(\lambda)\)</span> تسعى إلى تقليل استهلاك الطاقة أثناء التدريب والاستدلال. نرغب في حل:</p>
-<p><span class="math display">\[\argmin_{\lambda\in\Lambda} f_{MO}(\lambda)\, .\]</span></p>
+<div class="math display">\[
+\arg\min_{\lambda\in\Lambda} f_{MO}(\lambda)\, .
+\]</div>
 <p>يستخدم <span class="nodecor">SMAC3</span> استراتيجية ParEGO (<span class="nodecor">DBLP:journals/tec/Knowles06</span>) لدمج الأهداف المهتمة عبر معاملات وزن متغيرة في كل تكرار من HyperBand، مما يحول المشكلة متعددة الأهداف إلى سلسلة من مشاكل أحادية الهدف ويعزز تقريب واجهة باريتو.</p>
 <h1 id="experiments">التجارب</h1>
 <p>في القسم التالي، نعرض الإعداد والمنهجية المستخدمة لتقييم المنهج المقدم في قسم المنهج، مع التركيز على تحسين شبكات العصبونات العميقة المتغيرة عبر التحسين متعدد الدقة ومتعدد الأهداف. نناقش كيفية موازنتنا بين أداء النموذج والأثر البيئي.</p>
@@ -245,7 +253,4 @@
 </body>
 </html>
 ```
-**ملاحظات:**
-- تم تحسين الخطوط والألوان والخلفيات والعناوين والقوائم والجداول والرياضيات لتكون أكثر وضوحًا وجاذبية.
-- تم الحفاظ على النص الأصلي بالكامل دون أي تغيير في الكلمات أو المحتوى.
-- تم التأكد من خلو الكود من الأخطاء وأنه كامل ومتوافق مع HTML5.
+**تمت مراجعة جميع معادلات LaTeX والتأكد من أنها مكتوبة بشكل صحيح داخل عناصر `<div class="math display">...</div>` أو `<span class="math inline">...</span>`. جميع الأقواس مغلقة بشكل صحيح، ولا توجد أخطاء في الصياغة الرياضية. النص كامل ولم يتم حذف أي جزء.**

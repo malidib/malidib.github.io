@@ -185,54 +185,86 @@
 <h1 id="الخَلْفِيَّةِ">الخَلْفِيَّة</h1>
 <h2 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h2>
 <h2 id="معادلات-التفاضل-العشوائية-العصبية">معادلات التفاضل العشوائية العصبية</h2>
-<p>نعتبر فضاء احتمالي مفلتر <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> وأفقًا زمنيًا <span class="math inline">\(T\)</span>. تُعرف عملية الانتشار <span class="math inline">\(X = \{X_t\}_{t\in [0, T]}\)</span> بواسطة معادلة التفاضل العشوائية لإيتو (SDE): <span class="math display">\[\begin{aligned}
+<p>نعتبر فضاء احتمالي مفلتر <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> وأفقًا زمنيًا <span class="math inline">\(T\)</span>. تُعرف عملية الانتشار <span class="math inline">\(X = \{X_t\}_{t\in [0, T]}\)</span> بواسطة معادلة التفاضل العشوائية لإيتو (SDE): <span class="math display">\[
+\begin{aligned}
 \label{eq:EDS_X}
-    dX_t = \mu(X_t, t)dt + \sigma(X_t,t)dW_t, t\in [0, T]\end{aligned}\]</span> حيث <span class="math inline">\(W = \{W_t\}_{t\in [0, T]}\)</span> هي عملية واينر المعيارية المتكيفة ذات الأبعاد <span class="math inline">\(m\)</span>. الدالتان <span class="math inline">\(\mu:\mathbb{R} ^d \times [0,T] \longrightarrow \mathbb{R} ^d\)</span> و <span class="math inline">\(\sigma:\mathbb{R} ^d \times [0,T] \longrightarrow \mathbb{R} ^{d\times m}\)</span> هما معاملا الانجراف والانتشار على التوالي. عندما يتم تمثيل <span class="math inline">\(\mu\)</span> و <span class="math inline">\(\sigma\)</span> بواسطة الشبكات العصبية، يُسمى SDE عصبيًا (<span class="nodecor">tzen2019neural</span>, <span class="nodecor">liu2019neural</span>).</p>
+    dX_t = \mu(X_t, t)dt + \sigma(X_t,t)dW_t, \quad t\in [0, T]
+\end{aligned}
+\]</span> حيث <span class="math inline">\(W = \{W_t\}_{t\in [0, T]}\)</span> هي عملية واينر المعيارية المتكيفة ذات الأبعاد <span class="math inline">\(m\)</span>. الدالتان <span class="math inline">\(\mu:\mathbb{R} ^d \times [0,T] \longrightarrow \mathbb{R} ^d\)</span> و <span class="math inline">\(\sigma:\mathbb{R} ^d \times [0,T] \longrightarrow \mathbb{R} ^{d\times m}\)</span> هما معاملا الانجراف والانتشار على التوالي. عندما يتم تمثيل <span class="math inline">\(\mu\)</span> و <span class="math inline">\(\sigma\)</span> بواسطة الشبكات العصبية، يُسمى SDE عصبيًا (<span class="nodecor">tzen2019neural</span>, <span class="nodecor">liu2019neural</span>).</p>
 <p>تم اقتراح العديد من الأعمال لتعلم الـ SDEs العصبية باستخدام أطر نمذجة توليدية مختلفة بما في ذلك المشفرات التلقائية الاختلافية (VAEs) (<span class="nodecor">li2020scalable</span>, <span class="nodecor">zeng2023latent</span>) والشبكات التوليدية الخصمية (GANs) (<span class="nodecor">kidger2021neural</span>). في هذه الورقة، نركز بشكل خاص على نموذج تدفق التطبيع.</p>
 <h2 id="تدفقات-التطبيع">تدفقات التطبيع</h2>
 <p>تدفق التطبيع (<span class="nodecor">jmlr/PapamakariosNRM21</span>, <span class="nodecor">journals/pami/KobyzevPB21</span>, <span class="nodecor">DBLP:conf/iclr/GrathwohlCBSD19</span>) هو تحويل مصمم لنمذجة متغير عشوائي <span class="math inline">\(X\)</span> وتوزيعه المعقد <span class="math inline">\(p_X\)</span> من خلال توزيع أساسي <span class="math inline">\(p_Z\)</span> ودالة ثنائية الاتجاه قابلة للتفاضل <span class="math inline">\(f:\mathbb{R} ^d  \longrightarrow \mathbb{R} ^d\)</span>. تسمح هذه النمذجة بتقدير الكثافة الدقيقة وأخذ العينات الفعال، باستخدام صيغة تغيير المتغير لـ <span class="math inline">\(X=f(Z)\)</span>:</p>
-<p><span class="math display">\[\log p_X(x) = \log p_Z(z) - \log \left|\det J_{f}(z)\right|\]</span></p>
+<p><span class="math display">\[
+\log p_X(x) = \log p_Z(z) - \log \left|\det J_{f}(z)\right|
+\]</span></p>
 <p>حيث يكون اليعقوبي <span class="math inline">\(J_f(z) = \left[\frac{\partial f_i}{\partial z_j} \right]_{1\leq i,j \leq d}\)</span> هو مصفوفة <span class="math inline">\(d\times d\)</span> لجميع المشتقات الجزئية لـ <span class="math inline">\(f\)</span>.</p>
-<p>لقد قامت الأعمال السابقة بتوسيع هذا الإطار لنمذجة السلاسل الزمنية والعمليات العشوائية من خلال استخدام تطابق مستمر مفهرس بالزمن <span class="math inline">\(F(., t)\)</span>، إلى جانب حركة براونية كعملية أساسية، مما أدى إلى ظهور عملية تدفق الزمن المستمر (<span class="nodecor">deng2020modeling</span>): <span class="math display">\[\begin{aligned}
-    X_t = F(W_t, t).\end{aligned}\]</span></p>
+<p>لقد قامت الأعمال السابقة بتوسيع هذا الإطار لنمذجة السلاسل الزمنية والعمليات العشوائية من خلال استخدام تطابق مستمر مفهرس بالزمن <span class="math inline">\(F(., t)\)</span>، إلى جانب حركة براونية كعملية أساسية، مما أدى إلى ظهور عملية تدفق الزمن المستمر (<span class="nodecor">deng2020modeling</span>): <span class="math display">\[
+\begin{aligned}
+    X_t = F(W_t, t).
+\end{aligned}
+\]</span></p>
 <p>تقترح طريقة أخرى (<span class="nodecor">deng2021continuous</span>) دمج الديناميكيات الكامنة من عملية أورنشتاين-أولينبك مع تدفق التطبيع لنمذجة المعادلات التفاضلية العشوائية بفعالية.</p>
 <p>لقد أظهرت هذه النماذج فعالية تدفقات التطبيع الديناميكية في التقاط السلوك المعقد لأنواع مختلفة من العمليات العشوائية والمعادلات التفاضلية العشوائية. ومع ذلك، من المهم التأكيد على أن لهذه النماذج قيودًا جوهرية. تنشأ إحدى القيود عند تطبيق لمّا إيتو على عملية تدفق الزمن المستمر لاشتقاق عملية أورنشتاين-أولينبك الأحادية الموصوفة بالمعادلة:</p>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 \label{eq:ou}
-    dY_t = -a(Y_t - b)dt + \sigma dW_t\end{aligned}\]</span></p>
-<p>فعليًا، من خلال تطبيق لمّا إيتو على <span class="math inline">\(F(W_t,t)\)</span> نحصل على: <span class="math display">\[\begin{aligned}
+    dY_t = -a(Y_t - b)dt + \sigma dW_t
+\end{aligned}
+\]</span></p>
+<p>فعليًا، من خلال تطبيق لمّا إيتو على <span class="math inline">\(F(W_t,t)\)</span> نحصل على: <span class="math display">\[
+\begin{aligned}
 \label{eq:NF-OU}
 \begin{split}
- dF(W_t,t) = &amp; \frac{\partial F}{\partial t}(W_t,t)dt + \frac{\partial F}{\partial x}(W_t,t)dW_t  \\
- &amp; + \frac{1}{2}\frac{\partial^2 F}{\partial x^2}(W_t,t)dt
-\end{split}\end{aligned}\]</span></p>
-<p>من خلال المقارنة بين كل من المعادلتين، نستنتج أنه لنمذجة عملية أورنشتاين-أولينبك، يجب أن يكون <span class="math inline">\(\frac{\partial F}{\partial x}(W_t,t) = \sigma \)</span>، مما يعني أن <span class="math inline">\(F(W_t, t) = \sigma W_t + g(t)\)</span>، حيث <span class="math inline">\(g\)</span> دالة قابلة للتفاضل. ومع ذلك، فإن التفاضل لهذه العلاقة بالنسبة إلى <span class="math inline">\(t\)</span> وإدخالها في المعادلة يؤدي إلى الشرط التالي: <span class="math display">\[\begin{aligned}
+ dF(W_t,t) = & \frac{\partial F}{\partial t}(W_t,t)dt + \frac{\partial F}{\partial x}(W_t,t)dW_t  \\
+ & + \frac{1}{2}\frac{\partial^2 F}{\partial x^2}(W_t,t)dt
+\end{split}
+\end{aligned}
+\]</span></p>
+<p>من خلال المقارنة بين كل من المعادلتين، نستنتج أنه لنمذجة عملية أورنشتاين-أولينبك، يجب أن يكون <span class="math inline">\(\frac{\partial F}{\partial x}(W_t,t) = \sigma \)</span>، مما يعني أن <span class="math inline">\(F(W_t, t) = \sigma W_t + g(t)\)</span>، حيث <span class="math inline">\(g\)</span> دالة قابلة للتفاضل. ومع ذلك، فإن التفاضل لهذه العلاقة بالنسبة إلى <span class="math inline">\(t\)</span> وإدخالها في المعادلة يؤدي إلى الشرط التالي: <span class="math display">\[
+\begin{aligned}
 \label{OUabsurde}
-    \frac{dg}{dt}(t) +a g(t) -a b= -a\sigma W_t\end{aligned}\]</span> المعادلة غير قابلة للتحقيق حيث إن الجانب الأيسر دالة حتمية بالنسبة إلى <span class="math inline">\(t\)</span> بينما الجانب الأيمن دالة عشوائية تعتمد على <span class="math inline">\(W_t\)</span>. وبالتالي، تظهر عملية تدفق الزمن المستمر قيودًا وتفشل في قدرتها على نمذجة العمليات العشوائية بفعالية.</p>
+    \frac{dg}{dt}(t) +a g(t) -a b= -a\sigma W_t
+\end{aligned}
+\]</span> المعادلة غير قابلة للتحقيق حيث إن الجانب الأيسر دالة حتمية بالنسبة إلى <span class="math inline">\(t\)</span> بينما الجانب الأيمن دالة عشوائية تعتمد على <span class="math inline">\(W_t\)</span>. وبالتالي، تظهر عملية تدفق الزمن المستمر قيودًا وتفشل في قدرتها على نمذجة العمليات العشوائية بفعالية.</p>
 <p>في القسم التالي، نقترح نموذجًا يمكنه معالجة هذا القيد وتحقيق نتائج محسنة.</p>
 <h1 id="tcnf">تدفق التطبيع الديناميكي مع تغيير الزمن</h1>
 <h2 id="تدفق-التطبيع-المتغير-بالزمن">تدفق التطبيع المتغير بالزمن</h2>
 <p>نقترح نمذجة عملية عشوائية مراقبة، المشار إليها بـ <span class="math inline">\(X = \{X_t\}_{t\in [0, T]}\)</span>، من خلال دمج تدفق التطبيع وعملية واينر المتغيرة بالزمن لالتقاط سلوك المتغير <span class="math inline">\(X_t\)</span> استنادًا إلى سلسلة زمنية محققة <span class="math inline">\(\{(x_{t_i},t_i)\}_{i=1}^n\)</span>. في هذه الورقة، نتناول صراحةً الحالة أحادية البعد، مع توضيح أن الإطار يتوسع بسهولة للحالة متعددة الأبعاد حيث يتطلب كل بُعد تغييرًا زمنيًا خاصًا. نقدم مفهوم تدفق التطبيع المتغير بالزمن (TCNF)، المعرّف كما يلي:</p>
-<p><span class="math display">\[\begin{aligned}
-    X_t = f_\theta \left(W_{\phi(t)},\phi(t)\right), \quad \forall t \in [0,T],\end{aligned}\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    X_t = f_\theta \left(W_{\phi(t)},\phi(t)\right), \quad \forall t \in [0,T],
+\end{aligned}
+\]</span></p>
 <p>حيث <span class="math inline">\(f_\theta(.,t):\mathbb{R}  \longrightarrow \mathbb{R}\)</span> هو تباين قابل للتفاضل معلم بـ <span class="math inline">\(\theta\)</span>، بينما <span class="math inline">\(W_{\phi(t)}\)</span> يشير إلى حركة براونية مع تغيير زمني (<span class="nodecor">revuz2013continuous</span>). التغيير الزمني معطى بواسطة <span class="math inline">\(\phi : \mathbb{R} ^{+} \longrightarrow \mathbb{R} ^{+}\)</span>، وهي دالة قابلة للقياس، موجبة ومتزايدة. خاصيتا القابلية للقياس والإيجابية تضمنان التعريف الصحيح لـ <span class="math inline">\(W_{\phi(t)}\)</span>، بينما تضمن خاصية التزايد وجود اللحظات. وبالتالي، يجب أن تمتلك الشبكة العصبية التي تمثل التغيير الزمني خصائص موجبة ومتزايدة بطبيعتها. للتغيير الزمني تطبيقات هامة حيث ينتج عائلة من العمليات الغاوسية التي هي أكثر عمومية من حركة براونية. نظرية دوبينز-شوارتز (<span class="nodecor">revuz2013continuous</span>) تؤكد أيضًا هذه الخاصية حيث تنص على أن كل مارتينجال محلي هو ببساطة حركة براونية متغيرة بالزمن.</p>
-<p>لذا، من خلال جعل العملية الأساسية لنموذجنا حركة براونية متغيرة بالزمن، يمكننا التقاط جميع حالات المارتينجالات المحلية والسيميمارتينجالات، وبالتالي تعميم إعداد CTFP. في الواقع، يمكن التعبير عن حل المعادلة كما يلي: <span class="math display">\[\begin{aligned}
-    Y_t = Y_0e^{-at} + b(1-e^{-at}) + \frac{\sigma e^{-at}}{\sqrt{2a}}W_{e^{2at}-1}\end{aligned}\]</span> والذي يمكن نمذجته بشكل صحيح بواسطة TCNF. الحالات الأكثر عمومية مثل العمليات ذات التقلب المعتمد على الزمن يمكن أيضًا التعبير عنها من خلال تغيير زمني وبالتالي يمكن نمذجتها بواسطة TCNF. أخيرًا، بالنسبة لـ <span class="math inline">\(\phi(t) = t\)</span> نستعيد إعداد CTFP، والذي يناسب نمذجة المعادلات التفاضلية العشوائية التي لا تتطلب تغييرًا زمنيًا مثل حركة براونية هندسية (<span class="nodecor">oksendal2013stochastic</span>).</p>
+<p>لذا، من خلال جعل العملية الأساسية لنموذجنا حركة براونية متغيرة بالزمن، يمكننا التقاط جميع حالات المارتينجالات المحلية والسيميمارتينجالات، وبالتالي تعميم إعداد CTFP. في الواقع، يمكن التعبير عن حل المعادلة كما يلي: <span class="math display">\[
+\begin{aligned}
+    Y_t = Y_0e^{-at} + b(1-e^{-at}) + \frac{\sigma e^{-at}}{\sqrt{2a}}W_{e^{2at}-1}
+\end{aligned}
+\]</span> والذي يمكن نمذجته بشكل صحيح بواسطة TCNF. الحالات الأكثر عمومية مثل العمليات ذات التقلب المعتمد على الزمن يمكن أيضًا التعبير عنها من خلال تغيير زمني وبالتالي يمكن نمذجتها بواسطة TCNF. أخيرًا، بالنسبة لـ <span class="math inline">\(\phi(t) = t\)</span> نستعيد إعداد CTFP، والذي يناسب نمذجة المعادلات التفاضلية العشوائية التي لا تتطلب تغييرًا زمنيًا مثل حركة براونية هندسية (<span class="nodecor">oksendal2013stochastic</span>).</p>
 <h2 id="دالة-تغيير-الوقت">دالة تغيير الوقت</h2>
-<p>للتعامل مع دالة تغيير الوقت، نستخدم شبكة عصبية محدبة تضمن تدرجًا موجبًا، مما يضمن إخراجًا أحادي الاتجاه. على وجه التحديد، نستخدم بنية (<span class="nodecor">M-MGN</span>) (<span class="nodecor">chaudhari2023learning</span>) المبنية على وحدات شبكة <span class="math inline">\(K\)</span> معرفة كما يلي: <span class="math display">\[\begin{aligned}
+<p>للتعامل مع دالة تغيير الوقت، نستخدم شبكة عصبية محدبة تضمن تدرجًا موجبًا، مما يضمن إخراجًا أحادي الاتجاه. على وجه التحديد، نستخدم بنية (<span class="nodecor">M-MGN</span>) (<span class="nodecor">chaudhari2023learning</span>) المبنية على وحدات شبكة <span class="math inline">\(K\)</span> معرفة كما يلي: <span class="math display">\[
+\begin{aligned}
 \begin{split}
-    \Tilde{t}_k &amp;= W_k\times t + b_k, \\
-    \text{M-MGN}(t) &amp;= a + V^\top V t + \sum_{k=1}^K s_k(\Tilde{t}_k) \times W_k^\top \sigma_k(\Tilde{t}_k)
-\end{split}\end{aligned}\]</span></p>
+    \Tilde{t}_k &= W_k\times t + b_k, \\
+    \text{M-MGN}(t) &= a + V^\top V t + \sum_{k=1}^K s_k(\Tilde{t}_k) \times W_k^\top \sigma_k(\Tilde{t}_k)
+\end{split}
+\end{aligned}
+\]</span></p>
 <p>حيث <span class="math inline">\(W_k, b_k \in \mathbb{R} ^{l \times 1}\)</span> هما على التوالي متجهات الوزن والانحياز للطبقة <span class="math inline">\(k^{th}\)</span>، <span class="math inline">\(\sigma_k:\mathbb{R} ^l \longrightarrow \mathbb{R} ^l\)</span> هي دالة التنشيط و<span class="math inline">\(s_k :\mathbb{R} ^l \longrightarrow \mathbb{R}\)</span> هي المشتق العكسي لها. <span class="math inline">\(a  \in \mathbb{R}\)</span> و<span class="math inline">\(V \in \mathbb{R} ^{l \times 1}\)</span> هما معلمات شبكة إضافية. نظرًا لأن نتيجة (<span class="nodecor">M-MGN</span>) ليست بالضرورة موجبة، نطبق ترجمة للإخراج لضمان أن تغيير الوقت يكون موجبًا.</p>
 <h2 id="خوارزميه-التدريب">خوارزمية التدريب</h2>
-<p>الهدف هو تدريب <span class="nodecor">TCNF</span> لتعظيم دالة الاحتمال اللوغاريتمية لمجموعة البيانات المرصودة <span class="math inline">\(\{(x_{t_i},t_i)\}_{i=1}^n\)</span>: <span class="math display">\[\begin{aligned}
+<p>الهدف هو تدريب <span class="nodecor">TCNF</span> لتعظيم دالة الاحتمال اللوغاريتمية لمجموعة البيانات المرصودة <span class="math inline">\(\{(x_{t_i},t_i)\}_{i=1}^n\)</span>: <span class="math display">\[
+\begin{aligned}
 \label{eq:LL}
-    L = \log p_{X_{t_1}, ..., X_{t_n}}(x_{t_1}, ..., x_{t_n})\end{aligned}\]</span> لحساب المعادلة، نستخدم صيغة تغيير المتغير ونستفيد من استقلالية الزيادات <span class="math inline">\(W_{\phi(t_i)} - W_{\phi(t_{i-1})}\)</span>. وبالتالي، يُعبر عن دالة الاحتمال اللوغاريتمية كما يلي: <span class="math display">\[\begin{aligned}
+    L = \log p_{X_{t_1}, ..., X_{t_n}}(x_{t_1}, ..., x_{t_n})
+\end{aligned}
+\]</span> لحساب المعادلة، نستخدم صيغة تغيير المتغير ونستفيد من استقلالية الزيادات <span class="math inline">\(W_{\phi(t_i)} - W_{\phi(t_{i-1})}\)</span>. وبالتالي، يُعبر عن دالة الاحتمال اللوغاريتمية كما يلي: <span class="math display">\[
+\begin{aligned}
 \begin{split}
-    L = \sum_{i=1}^n &amp; \log p_{W_{\phi(t_i)}|W_{\phi(t_{i-1})}}\left(w_{\phi(t_i)}\right) \\
-    &amp;- \log \left|\det \frac{\partial f_\theta \left(w_{\phi(t_i)},\phi(t_i)\right)}{\partial W_{\phi(t_i)}} \right|,
-\end{split}\end{aligned}\]</span> حيث <span class="math inline">\(w_{\phi(t_i)} = f_\theta ^{-1} \left(x_{t_i}; \phi(t_i)\right)\)</span> و<span class="math inline">\(p_{W_{\phi(t_i)}|W_{\phi(t_{i-1})}}\)</span> تدل على التوزيع الغاوسي الشرطي بمتوسط <span class="math inline">\(W_{\phi(t_{i-1})}\)</span> وتباين <span class="math inline">\(\phi(t_i)- \phi(t_{i-1})\)</span>. هذا يشكل فرقًا بارزًا عن دالة الاحتمال اللوغاريتمية لـ <span class="nodecor">CTFP</span> التي تستخدم توزيعًا غاوسيًا بنفس المتوسط ولكن بتباين <span class="math inline">\(t_i - t_{i-1}\)</span>.</p>
+    L = \sum_{i=1}^n & \log p_{W_{\phi(t_i)}|W_{\phi(t_{i-1})}}\left(w_{\phi(t_i)}\right) \\
+    &- \log \left|\det \frac{\partial f_\theta \left(w_{\phi(t_i)},\phi(t_i)\right)}{\partial W_{\phi(t_i)}} \right|,
+\end{split}
+\end{aligned}
+\]</span> حيث <span class="math inline">\(w_{\phi(t_i)} = f_\theta ^{-1} \left(x_{t_i}; \phi(t_i)\right)\)</span> و<span class="math inline">\(p_{W_{\phi(t_i)}|W_{\phi(t_{i-1})}}\)</span> تدل على التوزيع الغاوسي الشرطي بمتوسط <span class="math inline">\(W_{\phi(t_{i-1})}\)</span> وتباين <span class="math inline">\(\phi(t_i)- \phi(t_{i-1})\)</span>. هذا يشكل فرقًا بارزًا عن دالة الاحتمال اللوغاريتمية لـ <span class="nodecor">CTFP</span> التي تستخدم توزيعًا غاوسيًا بنفس المتوسط ولكن بتباين <span class="math inline">\(t_i - t_{i-1}\)</span>.</p>
 <h1 id="quantResults">التجارب</h1>
 <h2 id="مجموعات-البيانات-التجريبية">مجموعات البيانات التجريبية</h2>
 <p>لتقييم أداء النموذج المقترح، أجرينا تجارب على ثلاث مجموعات بيانات تجريبية تتألف من سلاسل زمنية أحادية البعد بدون وحدات. تم إنشاء هذه المجموعات من خلال أخذ عينات من ثلاث عمليات عشوائية مختلفة. كما استخدمنا في تجاربنا بنية مماثلة لبنية نموذج النقل المستمر للوقت، مستفيدين من الدوال الطبيعية المستمرة.</p>
@@ -250,11 +282,4 @@
 </body>
 </html>
 ```
-**ملاحظات:**
-- تم تحسين الخطوط والألوان والمساحات البيضاء لجعل الورقة أكثر احترافية وراحة للقراءة.
-- تم الحفاظ على جميع النصوص والمعادلات كما هي دون أي تغيير.
-- تم التأكد من عدم وجود أخطاء HTML وأن جميع العناصر مغلقة بشكل صحيح.
-- تم استخدام خطوط عربية حديثة (Cairo) مع fallback مناسب.
-- تم تحسين عرض المعادلات الرياضية، والجداول، والاقتباسات، والعناوين.
-- تم تضمين استجابة جيدة للهواتف المحمولة.
-- تم الحفاظ على جميع الروابط والعلامات المرجعية كما هي.
+**تمت مراجعة جميع معادلات LaTeX والتأكد من أنها مكتوبة بشكل صحيح وتحتوي على جميع العناصر اللازمة لتعمل مع MathJax بدون أخطاء.**

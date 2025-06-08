@@ -230,57 +230,73 @@
 <h1 id="sec:gradients">تدرجات السرعة</h1>
 <p>
 نوضح أولاً أن البيانات الحركية المتاحة تظهر تدرجات سرعة ملحوظة. لكل من الأقزام الكروية، يقدم الورق الثاني سرعات النجوم المقاسة على طول خط البصر، <span class="math inline">\(V\)</span>، في إطار الراحة الشمسي. بالسماح بتدرج سرعة إطار الراحة الشمسي <span class="math inline">\(k\equiv dV/dR'\)</span>، حيث <span class="math inline">\(R'\)</span> هو المسافة الزاوية من مركز القزم الكروي في اتجاه التدرج، فإن البيانات لها احتمالية
-<span class="math display">\[\begin{aligned}
+<span class="math display">\[
+\begin{aligned}
   L(\langle V\rangle,\sigma_{V_0},k)\propto \displaystyle\prod_{i=1}^N
-  \biggl (\frac{1}{\sqrt{(\sigma_{V_0}^2+\sigma_{V_i}^2)}}\hspace{1in}\\
-  \times \exp\biggl [-\frac{1}{2}\frac{(V_i-\langle V \rangle -kR_i\cos(\theta_i-\theta_{0}))^2}{\sigma_{V_0}^2+\sigma_{V_i}^2} \biggr ]\biggr )\nonumber,
-  \label{eq:protation}\end{aligned}\]</span>
+  \biggl (\frac{1}{\sqrt{(\sigma_{V_0}^2+\sigma_{V_i}^2)}}\\
+  \times \exp\biggl [-\frac{1}{2}\frac{(V_i-\langle V \rangle -kR_i\cos(\theta_i-\theta_{0}))^2}{\sigma_{V_0}^2+\sigma_{V_i}^2} \biggr ]\biggr ),
+\end{aligned}
+\]
+</span>
 حيث <span class="math inline">\(\sigma_{V_i}\)</span> هو خطأ القياس، <span class="math inline">\(\sigma_{V_0}\)</span> هو تشتت السرعة الداخلي، و <span class="math inline">\(\theta_i\)</span> و <span class="math inline">\(\theta_{0}\)</span> هما زاويتا موقع النجم واتجاه التدرج على التوالي. (<span class="nodecor">walker08b</span>) يقدمون خوارزمية تقيّم احتمالية العضوية، <span class="math inline">\(P_{M}\)</span>، لكل نجم وفقًا لسرعته ومؤشر المغنيسيوم وموقعه. بتعيين أوزان لنقاط البيانات وفقًا لاحتمالات العضوية الخاصة بها، يكون الاحتمال المتوقع
-<span class="math display">\[\begin{aligned}
-  E(\ln L)=-\frac{1}{2}\sum_{i=1}^N P_{M_i}\ln (\sigma_{V_0}^2+\sigma_{V_i}^2)\hspace{1.2in}\\
+<span class="math display">\[
+\begin{aligned}
+  E(\ln L)=-\frac{1}{2}\sum_{i=1}^N P_{M_i}\ln (\sigma_{V_0}^2+\sigma_{V_i}^2)\\
 -\frac{1}{2}\sum_{i=1}^N P_{M_i} \biggl [\frac{(V_i-\langle V \rangle -kR_i\cos(\theta_i-\theta_{0}))^2}{\sigma_{V_0}^2+\sigma_{V_i}^2} \biggr ]
-+\mathrm{const}.\nonumber
-  \label{eq:explogprotation}\end{aligned}\]</span>
++\mathrm{const}.
+\end{aligned}
+\]
+</span>
 </p>
 <p>
-لزوايا موقع معينة <span class="math inline">\(\theta_{0}\)</span> تأخذ التقديرات <span class="math inline">\(\langle \hat{V}\rangle\)</span> و <span class="math inline">\(\hat{\sigma}_{V_0}\)</span> و <span class="math inline">\hat{k}\)</span> القيم التي تعظم <span class="math inline">\(E(\ln L)\)</span>. باتباع (<span class="nodecor">walker08b</span>)، نحصل على هذه التقديرات بجعل المشتقات الجزئية لـ <span class="math inline">\(E(\ln L)\)</span> بالنسبة إلى كل معامل تساوي صفرًا، ثم نحللها تكراريًا. على سبيل المثال، يُحسب <span class="math inline">\(\hat{k}\)</span> في كل تكرار عبر المعادلة
-<span class="math display">\[\hat{k}=\frac{\sum_{i=1}^N\frac{\hat{P}_{M_i}[V_i-\langle \hat{V} \rangle]R_i\cos(\theta_i-\theta_0)}{1+\sigma_{V_i}^2/\hat{\sigma}_{V_0}^2}}{\sum_{i=1}^N\frac{\hat{P}_{M_i}[R_i\cos(\theta_i-\theta_0)]^2}{1+\sigma_{V_i}^2/\hat{\sigma}_{V_0}^2}}.
-  \label{eq:k}\]</span>
+لزوايا موقع معينة <span class="math inline">\(\theta_{0}\)</span> تأخذ التقديرات <span class="math inline">\(\langle \hat{V}\rangle\)</span> و <span class="math inline">\(\hat{\sigma}_{V_0}\)</span> و <span class="math inline">\(\hat{k}\)</span> القيم التي تعظم <span class="math inline">\(E(\ln L)\)</span>. باتباع (<span class="nodecor">walker08b</span>)، نحصل على هذه التقديرات بجعل المشتقات الجزئية لـ <span class="math inline">\(E(\ln L)\)</span> بالنسبة إلى كل معامل تساوي صفرًا، ثم نحللها تكراريًا. على سبيل المثال، يُحسب <span class="math inline">\(\hat{k}\)</span> في كل تكرار عبر المعادلة
+<span class="math display">\[
+\hat{k}=\frac{\sum_{i=1}^N\frac{\hat{P}_{M_i}[V_i-\langle \hat{V} \rangle]R_i\cos(\theta_i-\theta_0)}{1+\sigma_{V_i}^2/\hat{\sigma}_{V_0}^2}}{\sum_{i=1}^N\frac{\hat{P}_{M_i}[R_i\cos(\theta_i-\theta_0)]^2}{1+\sigma_{V_i}^2/\hat{\sigma}_{V_0}^2}}.
+\]
+</span>
 </p>
 <p>
-لكل قزم كروي نفحص زوايا محتملة لتدرج السرعة <span class="math inline">\(\theta_{0}=\{0^{\circ},3^{\circ},6^{\circ},...,180^{\circ}\}\)</span>. نقيم أهمية التدرج الأقصى، <span class="math inline">\(\hat{k}_{max}\)</span>، عبر محاكاة مونت كارلو بإعادة تعيين البيانات الحقيقية <span class="math inline">\((V_i,\sigma_{V_i},R_i,\theta_i)\)</span>. في كل من <span class="math inline">\(1000\)</span> تحقيق نُبدِّل ثلاثيات <span class="math inline">\((V_i,\sigma_{V_i},\hat{P}_{M_i})\)</span> عشوائيًا بين أزواج <span class="math inline">\((R_i,\theta_i)\)</span>، فتحتفظ المحاكاة بنفس التوزيع المكاني والسرعات الإجمالية للبيانات الحقيقية، لكنها تزيل أي علاقة قائمة بين السرعة والموقع. نُعرِّف أهمية، <span class="math inline">\(p_{\hat{k}_{max}}\)</span>، كت fraction من المحاكاة التي تحدث، عند أي زاوية موقع، تدرجًا أعظم من التدرج الأقصى الملاحظ في البيانات الحقيقية.
+لكل قزم كروي نفحص زوايا محتملة لتدرج السرعة <span class="math inline">\(\theta_{0}=\{0^{\circ},3^{\circ},6^{\circ},...,180^{\circ}\}\)</span>. نقيم أهمية التدرج الأقصى، <span class="math inline">\(\hat{k}_{max}\)</span>، عبر محاكاة مونت كارلو بإعادة تعيين البيانات الحقيقية <span class="math inline">\((V_i,\sigma_{V_i},R_i,\theta_i)\)</span>. في كل من <span class="math inline">\(1000\)</span> تحقيق نُبدِّل ثلاثيات <span class="math inline">\((V_i,\sigma_{V_i},\hat{P}_{M_i})\)</span> عشوائيًا بين أزواج <span class="math inline">\((R_i,\theta_i)\)</span>، فتحتفظ المحاكاة بنفس التوزيع المكاني والسرعات الإجمالية للبيانات الحقيقية، لكنها تزيل أي علاقة قائمة بين السرعة والموقع. نُعرِّف أهمية، <span class="math inline">\(p_{\hat{k}_{max}}\)</span>، كـ fraction من المحاكاة التي تحدث، عند أي زاوية موقع، تدرجًا أعظم من التدرج الأقصى الملاحظ في البيانات الحقيقية.
 </p>
 <p>
-الجدول [tab:global] يسرد لكل قزم كروي قيم <span class="math inline">\(\hat{k}_{max}\)</span> و <span class="math inline">\(p_{\hat{k}_{max}}\)</span> عند الزاوية <span class="math inline">\(\theta_{0_{max}}\)</span> التي تعطي أكبر تدرج سرعة. تظهر Carina و Fornax و Sculptor تدرجات سرعتية مهمة في إطار الراحة الشمسي عند مستويات <span class="math inline">\(p_{\hat{k}_{max}}>0.973\)</span>، بينما لا يظهر Sextans تدرجًا مهمًا مع <span class="math inline">\(p_{\hat{k}_{max}}=0.753\)</span>. وعلى الرغم من أهمية هذه التدرجات، فإنها لا تؤثر على تقديرات الانحراف المعياري لسرعة المجموعة؛ فتكون ⟨\hat{V}⟩ و \hat{\sigma}_{V_0} مطابقة تقريبًا لما ورد في تحليل الورقة الثالثة بافتراض عدم وجود تدرج سرعة.
+الجدول [tab:global] يسرد لكل قزم كروي قيم <span class="math inline">\(\hat{k}_{max}\)</span> و <span class="math inline">\(p_{\hat{k}_{max}}\)</span> عند الزاوية <span class="math inline">\(\theta_{0_{max}}\)</span> التي تعطي أكبر تدرج سرعة. تظهر Carina و Fornax و Sculptor تدرجات سرعتية مهمة في إطار الراحة الشمسي عند مستويات <span class="math inline">\(p_{\hat{k}_{max}}>0.973\)</span>، بينما لا يظهر Sextans تدرجًا مهمًا مع <span class="math inline">\(p_{\hat{k}_{max}}=0.753\)</span>. وعلى الرغم من أهمية هذه التدرجات، فإنها لا تؤثر على تقديرات الانحراف المعياري لسرعة المجموعة؛ فتكون <span class="math inline">\(\langle\hat{V}\rangle\)</span> و <span class="math inline">\(\hat{\sigma}_{V_0}\)</span> مطابقة تقريبًا لما ورد في تحليل الورقة الثالثة بافتراض عدم وجود تدرج سرعة.
 </p>
 
 <h1 id="sec:propermotion">الحركة العرضية للأقزام الكروية</h1>
 <p>
-يمكن أن تنشأ التدرجات الملحوظة في سرعة خط البصر من تأثير المنظور و/أو من وجود دوران جوهري أو حركات تدفق داخلية. نفترض هنا أن التداول والدوران الداخلي ضئيلا، ففي هذه الحالة يعكس التدرج بالكامل الحركة العرضية للقزم الكروي. لتكن <span class="math inline">\(v_{rel}(\alpha,\delta)\)</span> إسقاط الحركة النسبية بين الشمس والقزم الكروي على طول خط البصر عند الإحداثيات الاستوائية <span class="math inline">(\alpha,\delta)</span>. حينما يتحرك المراقب مع القزم الكروي (في إطار الراحة القزمية DRF)، تكون سرعة النجم في هذا الإطار <span class="math display">\[V_{DRF}=V - v_{rel}(\alpha,\delta),
-  \label{eq:dsphframe}\]</span> حيث <span class="math inline">\(V\)</span> هي سرعة HRF للنجم. في الملحق [app:drfgrf] نشتق التعبير عن <span class="math inline">\(v_{rel}(\alpha,\delta)\)</span> بدلالة مركبات <span class="math inline">(\mu_{\alpha},\mu_{\delta})</span> للحركة العرضية النظامية للقزم الكروي.
+يمكن أن تنشأ التدرجات الملحوظة في سرعة خط البصر من تأثير المنظور و/أو من وجود دوران جوهري أو حركات تدفق داخلية. نفترض هنا أن التداول والدوران الداخلي ضئيلا، ففي هذه الحالة يعكس التدرج بالكامل الحركة العرضية للقزم الكروي. لتكن <span class="math inline">\(v_{rel}(\alpha,\delta)\)</span> إسقاط الحركة النسبية بين الشمس والقزم الكروي على طول خط البصر عند الإحداثيات الاستوائية <span class="math inline">\((\alpha,\delta)\)</span>. حينما يتحرك المراقب مع القزم الكروي (في إطار الراحة القزمية DRF)، تكون سرعة النجم في هذا الإطار <span class="math display">\[
+V_{DRF}=V - v_{rel}(\alpha,\delta),
+\]
+</span> حيث <span class="math inline">\(V\)</span> هي سرعة HRF للنجم. في الملحق [app:drfgrf] نشتق التعبير عن <span class="math inline">\(v_{rel}(\alpha,\delta)\)</span> بدلالة مركبات <span class="math inline">\((\mu_{\alpha},\mu_{\delta})\)</span> للحركة العرضية النظامية للقزم الكروي.
 </p>
 <p>
-نفترض توزيعًا غاوسيًا لسرعات القزم الكروي في DRF بمتوسط <span class="math inline">⟨V⟩_{DRF}=0</span> وتباين <span class="math inline">σ_{V_0}^2</span> بلا تدرج داخلي. يعكس تدرج HRF (القسم [sec:gradients]) التغير البسيط في <span class="math inline">v_{rel}</span> عبر جسم القزم، فتكون دالة الاحتمال
-<span class="math display">\[\begin{aligned}
+نفترض توزيعًا غاوسيًا لسرعات القزم الكروي في DRF بمتوسط <span class="math inline">\(\langle V\rangle_{DRF}=0\)</span> وتباين <span class="math inline">\(\sigma_{V_0}^2\)</span> بلا تدرج داخلي. يعكس تدرج HRF (القسم [sec:gradients]) التغير البسيط في <span class="math inline">\(v_{rel}\)</span> عبر جسم القزم، فتكون دالة الاحتمال
+<span class="math display">\[
+\begin{aligned}
   L(\mu_{\alpha},\mu_{\delta})\propto 
-  \prod_{i=1}^N \biggl(\frac{1}{\sigma_{V_0}^2+\sigma_{V_i}^2}\hspace{1.5in}\\
-  \times \exp\biggl[-\frac{1}{2}\frac{[V_i - v_{rel}(\alpha_i,\delta_i)]^2}{\sigma_{V_0}^2+\sigma_{V_i}^2}\biggr]\biggr).\nonumber
-  \label{eq:pmlikelihood}\end{aligned}\]</span>
-مجدّدًا نستخدم أوزان الاحتمالية لكل نجم <span class="math inline">P_{M_i}</span>، فيكون الاحتمال اللوغاريتمي المتوقع
-<span class="math display">\[\begin{aligned}
-  E(\ln L)= -\frac{1}{2}\sum_{i=1}^N P_{M_i}\ln(\sigma_{V_0}^2+\sigma_{V_i}^2)\hspace{1in}\\
+  \prod_{i=1}^N \biggl(\frac{1}{\sigma_{V_0}^2+\sigma_{V_i}^2}\\
+  \times \exp\biggl[-\frac{1}{2}\frac{[V_i - v_{rel}(\alpha_i,\delta_i)]^2}{\sigma_{V_0}^2+\sigma_{V_i}^2}\biggr]\biggr).
+\end{aligned}
+\]
+</span>
+مجدّدًا نستخدم أوزان الاحتمالية لكل نجم <span class="math inline">\(P_{M_i}\)</span>، فيكون الاحتمال اللوغاريتمي المتوقع
+<span class="math display">\[
+\begin{aligned}
+  E(\ln L)= -\frac{1}{2}\sum_{i=1}^N P_{M_i}\ln(\sigma_{V_0}^2+\sigma_{V_i}^2)\\
   -\frac{1}{2}\sum_{i=1}^N P_{M_i}\frac{[V_i - v_{rel}(\alpha_i,\delta_i)]^2}{\sigma_{V_0}^2+\sigma_{V_i}^2}
-  +\mathrm{const}.\nonumber
-  \label{eq:pmloglikelihood}\end{aligned}\]</span>
+  +\mathrm{const}.
+\end{aligned}
+\]
+</span>
 </p>
 <p>
-نقيس الحركة العرضية عبر تعظيم <span class="math inline">E(\ln L)</span> بالنسبة إلى الزوج <span class="math inline">(\mu_{\alpha},\mu_{\delta})</span>، محددين بذلك <span class="math inline">v_{rel}(\alpha_i,\delta_i)</span> وفق المعادلات [eq:axayaz1]–[eq:vrelagain]. أثناء هذه العملية نثبت قيمة <span class="math inline">σ_{V_0}</span> عند قيمتها التي قيدت <span class="math inline">E(\ln L)</span> في القسم [sec:gradients]، وهي <span class="math inline">6.6</span> كم/ث (<span class="nodecor">Carina</span>)، <span class="math inline">11.6</span> كم/ث (<span class="nodecor">Fornax</span>)، <span class="math inline">9.2</span> كم/ث (<span class="nodecor">Sculptor</span>)، و <span class="math inline">7.9</span> كم/ث (<span class="nodecor">Sextans</span>).
+نقيس الحركة العرضية عبر تعظيم <span class="math inline">\(E(\ln L)\)</span> بالنسبة إلى الزوج <span class="math inline">\((\mu_{\alpha},\mu_{\delta})\)</span>، محددين بذلك <span class="math inline">\(v_{rel}(\alpha_i,\delta_i)\)</span> وفق المعادلات [eq:axayaz1]–[eq:vrelagain]. أثناء هذه العملية نثبت قيمة <span class="math inline">\(\sigma_{V_0}\)</span> عند قيمتها التي قيدت <span class="math inline">\(E(\ln L)\)</span> في القسم [sec:gradients]، وهي <span class="math inline">6.6</span> كم/ث (<span class="nodecor">Carina</span>)، <span class="math inline">11.6</span> كم/ث (<span class="nodecor">Fornax</span>)، <span class="math inline">9.2</span> كم/ث (<span class="nodecor">Sculptor</span>)، و <span class="math inline">7.9</span> كم/ث (<span class="nodecor">Sextans</span>).
 </p>
 <p>
-حصلنا على قيد أكثر ضيقًا للحركة العرضية لـ <span class="nodecor">Fornax</span>، حيث بلغنا <span class="math inline">(\mu_{\alpha}^{HRF},\mu_{\delta}^{HRF})=(+48\pm15,-25\pm14)</span> مللي ثانية قوسية في القرن. تتقاطع منطقة الثقة 1σ في الشكل [fig:propermotion] مع قياسات <span class="nodecor">dinescu04</span> و <span class="nodecor">piatek07</span>. من المشجع أن قياسنا يتفق مع <span class="nodecor">piatek07</span> ويماثل دقّة قياسات هابل للأقزام الأخرى.
+حصلنا على قيد أكثر ضيقًا للحركة العرضية لـ <span class="nodecor">Fornax</span>، حيث بلغنا <span class="math inline">\((\mu_{\alpha}^{HRF},\mu_{\delta}^{HRF})=(+48\pm15,-25\pm14)\)</span> مللي ثانية قوسية في القرن. تتقاطع منطقة الثقة 1σ في الشكل [fig:propermotion] مع قياسات <span class="nodecor">dinescu04</span> و <span class="nodecor">piatek07</span>. من المشجع أن قياسنا يتفق مع <span class="nodecor">piatek07</span> ويماثل دقّة قياسات هابل للأقزام الأخرى.
 </p>
 <p>
-لا يتوافق قياسنا لـ <span class="nodecor">Sculptor</span> مع الحركات الفلكية المنشورة <span class="nodecor">schweitzer95</span> و <span class="nodecor">piatek06</span>، وهي أيضًا غير متوافقة فيما بينها. ومع ذلك، يُتوقع عدم التوافق إذا صحّت هذه القياسات؛ فعند إزالة تأثير المنظور باستخدام أي منها تظهر تدرجات قوية في DRF (<span class="math inline">\hat{k}\ge6.0</span> كم/ث/درجة؛ <span class="math inline">\hat{p}_{\hat{k}_{max}}\ge0.994</span>). لذا، إذا كان أي من الحركات الفلكية صحيحًا، فتشير سرعاتنا إلى تدرج داخلي قوي قد يعود إلى دوران أو تدفق (انظر <span class="nodecor">battaglia08</span>)، وهو ما ينقض فرضيات قياسنا.
+لا يتوافق قياسنا لـ <span class="nodecor">Sculptor</span> مع الحركات الفلكية المنشورة <span class="nodecor">schweitzer95</span> و <span class="nodecor">piatek06</span>، وهي أيضًا غير متوافقة فيما بينها. ومع ذلك، يُتوقع عدم التوافق إذا صحّت هذه القياسات؛ فعند إزالة تأثير المنظور باستخدام أي منها تظهر تدرجات قوية في DRF (<span class="math inline">\(\hat{k}\ge6.0\)</span> كم/ث/درجة؛ <span class="math inline">\(\hat{p}_{\hat{k}_{max}}\ge0.994\)</span>). لذا، إذا كان أي من الحركات الفلكية صحيحًا، فتشير سرعاتنا إلى تدرج داخلي قوي قد يعود إلى دوران أو تدفق (انظر <span class="nodecor">battaglia08</span>)، وهو ما ينقض فرضيات قياسنا.
 </p>
 
 <h1 id="sec:discussion">المناقشة</h1>
@@ -303,19 +319,25 @@
 <h1 id="app:drfgrf">الإطار المرجعي للأقزام (DRF)</h1>
 <p>
 لنفترض أن <span class="math inline">\(\mathbf{A}_{D}\)</span> و <span class="math inline">\(\mathbf{A}_{*}\)</span> هما متجها الموضع الثلاثي الأبعاد لقزم كروي ونجم منه على التوالي، مقيّدان بنظام إحداثيات مركزه الشمس. الإسقاط الموازي للحركة النسبية بين الشمس والقزم الكروي على طول خط الرؤية إلى النجم ذي الإحداثيات الاستوائية <span class="math inline">\((\alpha_*,\delta_*)\)</span> يُعطى بالعلاقة
-<span class="math display">\[v_{rel}(\alpha_*,\delta_*)=\frac{\mathbf{A}_*}{A_*}\cdot(\dot{\mathbf{A}}_{D}),
-  \label{eq:vrel}\]</span>
+<span class="math display">\[
+v_{rel}(\alpha_*,\delta_*)=\frac{\mathbf{A}_*}{A_*}\cdot(\dot{\mathbf{A}}_{D}),
+\]
+</span>
 حيث <span class="math inline">\(\dot{\mathbf{A}} = d\mathbf{A}/dt\)</span>.
 </p>
 <p>
 لتطبيق المعادلة [eq:vrel] نختار النظام الديكارتي بحيث تشير المحاور <span class="math inline">+x</span>، <span class="math inline">-y</span> و <span class="math inline">+z</span> نحو <span class="math inline">\((\alpha,\delta)=(6^h,0^\circ)\)</span> (أول الربيع)، نحو الاعتدال الربيعي، ونحو القطب الشمالي على التوالي. يعبّر موضع النجم بالمتجه <span class="math inline">\(\mathbf{A}_* = A_{*_x}\hat{x} + A_{*_y}\hat{y} + A_{*_z}\hat{z}\)</span>، ويكون المتجه الوحدوي <span class="math inline">\(\mathbf{B}_*=\mathbf{A}_*/A_*\)</span> مكوّناته
-<span class="math display">\[\begin{aligned}
+<span class="math display">\[
+\begin{aligned}
   B_{*_x}=\cos\delta_*\,\sin\alpha_*;\\
   B_{*_y}=-\cos\delta_*\,\cos\alpha_*;\\
   B_{*_z}=\sin\delta_*.
-  \label{eq:axayaz1}\end{aligned}\]</span>
-حركية القزم الكروي (ثلاثية الأبعاد) على بعد <span class="math inline">\(A_D\)</span>، مع سرعة خط البصر HRF <span class="math inline">\(V_D=\dot{A}_D\)</span> وحركة عرضية <span class="math inline">(\mu_\alpha,\mu_\delta)</span> تُعطى مركباتها بـ
-<span class="math display">\[\begin{aligned}
+\end{aligned}
+\]
+</span>
+حركية القزم الكروي (ثلاثية الأبعاد) على بعد <span class="math inline">\(A_D\)</span>، مع سرعة خط البصر HRF <span class="math inline">\(V_D=\dot{A}_D\)</span> وحركة عرضية <span class="math inline">\((\mu_\alpha,\mu_\delta)\)</span> تُعطى مركباتها بـ
+<span class="math display">\[
+\begin{aligned}
   \dot{A}_{D_x}=V_{D}\cos\delta_{D}\sin\alpha_{D}
   +A_{D}\mu_{\alpha}\cos\delta_{D}\cos\alpha_{D}
   -A_{D}\mu_{\delta}\sin\delta_{D}\sin\alpha_{D};\\
@@ -323,21 +345,19 @@
   +A_{D}\mu_{\delta}\sin\delta_{D}\cos\alpha_{D}
   +A_{D}\mu_{\alpha}\cos\delta_{D}\sin\alpha_{D};\\
   \dot{A}_{D_z}=V_{D}\sin\delta_{D}+A_{D}\mu_{\delta}\cos\delta_{D}.
-  \label{eq:vxvyvz}\end{aligned}\]</span>
+\end{aligned}
+\]
+</span>
 وإسقاط الحركة النسبية على خط الرؤية للنجم يكتب
-<span class="math display">\[v_{rel}(\alpha_*,\delta_*)=\mathbf{B}_*\cdot\dot{\mathbf{A}}_{D}
+<span class="math display">\[
+v_{rel}(\alpha_*,\delta_*)=\mathbf{B}_*\cdot\dot{\mathbf{A}}_{D}
   =B_{*_x}\dot{A}_{D_x}+B_{*_y}\dot{A}_{D_y}+B_{*_z}\dot{A}_{D_z}.
-  \label{eq:vrelagain}\]</span>
+\]
+</span>
 </p>
 
 </main>
 </body>
 </html>
 ```
-**ملاحظات:**
-- تم تحسين الخطوط والألوان والخلفيات والهوامش والتباعد لجعل الورقة أكثر وضوحًا واحترافية.
-- تم الحفاظ على النص الأصلي بالكامل دون أي تغيير في الكلمات أو المعادلات.
-- تم التأكد من عدم وجود أخطاء HTML، وجميع العناصر مغلقة بشكل صحيح.
-- تم إبراز الكلمات المفتاحية، والعناوين، والمعادلات، والأسماء العلمية.
-- تم تحسين التوافق مع الأجهزة المحمولة.
-- تم الحفاظ على اتجاه النص من اليمين لليسار (rtl) للغة العربية.
+**تمت مراجعة جميع معادلات LaTeX وتصحيحها لتكون صالحة للعرض عبر MathJax. جميع الأقواس مغلقة بشكل صحيح، وتم تصحيح أي معادلات ناقصة أو بها أخطاء. النص كامل ولم يتم تغيير أي كلمة.**
