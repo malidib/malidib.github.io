@@ -1,124 +1,136 @@
+```html
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Uri Keshet">
-  <title>الكشف عن الانبعاث المستقطب من فقاعات فيرمي السنكروترونية والغبار</title>
-
-  <!-- Google Fonts for Arabic typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- MathJax -->
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-
+  <title>كشف الانبعاث المستقطب لفقاعات فيرمي السنكروترونية والغبار</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
   <style>
-    :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #2980b9;
-      --bg-color: #fcfcfc;
-      --text-color: #333;
-      --border-color: #ddd;
-    }
-
-    /* Global Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
     body {
       direction: rtl;
-      font-family: 'Tajawal', sans-serif;
-      font-size: 20px;
-      line-height: 1.6;
-      color: var(--text-color);
-      background: var(--bg-color);
-      padding: 1em;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
     }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: white;
-      padding: 2em;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border-radius: 6px;
-    }
-
     header {
+      background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+      color: #fff;
+      padding: 40px 0 30px 0;
       text-align: center;
-      margin-bottom: 2em;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0.5em;
+      box-shadow: 0 2px 8px rgba(78,84,200,0.08);
+      margin-bottom: 40px;
     }
-
     h1.title {
-      font-size: 2.2em;
-      color: var(--primary-color);
-      margin-bottom: 0.2em;
+      font-size: 2.5em;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
     }
-
     .author {
-      font-size: 1em;
-      color: var(--secondary-color);
+      font-size: 1.2em;
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.85;
     }
-
-    main > h1 {
-      font-size: 1.8em;
-      color: var(--primary-color);
+    h1, h2, h3 {
+      color: #4e54c8;
+      font-weight: 700;
       margin-top: 1.5em;
-      margin-bottom: 0.6em;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.3em;
+      margin-bottom: 0.7em;
+      line-height: 1.2;
     }
-
-    p {
+    h1#ملخص {
+      font-size: 2em;
+      border-bottom: 2px solid #8f94fb;
+      padding-bottom: 0.2em;
       margin-bottom: 1em;
-      text-align: justify;
+      margin-top: 0;
     }
-
-    .nodecor {
-      font-style: normal;
+    p {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(78,84,200,0.06);
+      padding: 22px 28px;
+      margin: 0 0 24px 0;
+      font-size: 1.05em;
+      transition: box-shadow 0.2s;
+    }
+    p:hover {
+      box-shadow: 0 4px 16px rgba(78,84,200,0.10);
+    }
+    span.nodecor {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+    em {
+      font-style: italic;
+      color: #4e54c8;
       font-weight: 500;
-      color: var(--secondary-color);
     }
-
-    .math.inline {
-      font-family: 'Latin Modern Math', serif;
-      background: #f5f5f5;
-      padding: 0 4px;
-      border-radius: 3px;
+    code, .math.inline {
+      background: #f3f3f3;
+      color: #c7254e;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      font-family: 'Cairo', 'Consolas', 'monospace';
     }
-
-    @media (max-width: 600px) {
-      body { font-size: 18px; padding: 0.8em; }
-      .container { padding: 1em; }
-      h1.title { font-size: 1.8em; }
-      main > h1 { font-size: 1.5em; }
+    @media (max-width: 700px) {
+      header {
+        padding: 25px 0 18px 0;
+      }
+      h1.title {
+        font-size: 1.5em;
+      }
+      h1#ملخص {
+        font-size: 1.2em;
+      }
+      p {
+        padding: 14px 10px;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <h1 class="title">الكشف عن الانبعاث المستقطب من فقاعات فيرمي السنكروترونية والغبار</h1>
-      <p class="author">Uri Keshet</p>
-    </header>
-
-    <main>
-      <h1 id="ملخص">ملخص</h1>
-      <p>تم التفريق بين الإشارة الميكروويفية المستقطبة الخفية المنبعثة من فقاعات فيرمي والفصوص المستقطبة الممتدة التي تصدر بشكل مشابه من المستوى المجري لكنها تمتد أبعد غرباً من الفقاعات. تكشف درجات استقطاب السنكروترون التي تقارب <span class="nodecor">20%</span> عن توزيع الحقول المغناطيسية موازياً بشكل تفضيلي لحواف الفقاعات، كما هو متوقع عقب صدمة قوية. وقد رُصدت أيضاً درجة استقطاب انبعاث الغبار الحراري التي تقارب <span class="nodecor">20%</span> باتجاه مماثل، مما يقيّد محاذاة الجسيمات في بيئة قصوى. نجادل بأن الفصوص الأكبر نشأت نتيجة انفجار أقدم في مركز المجرة، على الأرجح بفعل نشاط ثقب أسود فائق الكتلة.</p>
-
-      <p>تنبعث فقاعات فيرمي الثنائية القطب (<span class="nodecor">FBs</span>) من مركز مجرة درب التبانة <span class="nodecor">(Baganoff et al. 03, Blandhawthorn & Cohen 03)</span> وتمتد إلى خطوط العرض <span class="math inline">|b|≳50°</span>، حيث يظهر كل منهما كهيكل دموعي شبه موحد في أشعة <span class="nodecor">γ</span> <span class="nodecor">(Dobler et al. 10, Su et al. 10)</span>، محددٌ بقشرة أشعة <span class="nodecor">X</span> <span class="nodecor">(Keshet & Gurwich 18)</span>، ومتزامن مع مكون الغبار الحراري <span class="nodecor">(Keshet et al. 23)</span> وانبعاث السنكروترون الراديوي منخفض التردد وحتى مدى الميكروويف <span class="nodecor">(Dobler 12, Planck Haze 13)</span> الذي يتزايد سطوعه مكوّناً ضباباً <span class="nodecor">(Finkbeiner 04)</span> بالقرب من المركز المجري (<span class="nodecor">GC</span>). تشير مورفولوجيا هذه الهياكل وقشور أشعة <span class="nodecor">X</span> والطيف الطاقي المتكامل <span class="nodecor">(Su et al. 10, Dobler 12, Huang et al. 13, Hooper & Slatyer 13, Fermi Bubbles 14)</span> وطيف الحافة <span class="nodecor">(Keshet & Gurwich 17)</span>، المميز بفواصل تبريد في أشعة <span class="nodecor">γ</span> والميكروويف <span class="nodecor">(Keshet et al. 23)</span>، إلى أن <span class="nodecor">FBs</span> نشأت قبل عدة ملايين من السنين كتدفقات ناتجة عن الثقب الأسود فائق الكتلة (<span class="nodecor">SMBH</span>)، والتي يُعتقد أنها كانت موجهة <span class="nodecor">(Mondal et al. 22)</span> بشكل شبه عمودي على المستوى المجري <span class="nodecor">(Sarkar et al. 23)</span>، مع تأكيد حواف <span class="nodecor">FB</span> كصدَمات أمامية قوية بسرعة ماخ <span class="math inline">≳5</span> <span class="nodecor">(Keshet & Gurwich 17, Keshet et al. 23)</span>.</p>
-
-      <p>أثارت الإشارة المستقطبة المتوقعة من <span class="nodecor">FBs</span> اهتماماً كبيراً، ليس فقط كوسيلة لاستقصاء حقولها المغناطيسية والعمليات الفيزيائية المرتبطة بها، بل أيضاً لعلاقتها المزعومة بالفصوص المستقطبة الممتدة <span class="nodecor">(Jones et al. 12, Carretti et al. 13)</span> التي تصدر بشكل مماثل من المستوى المجري، كما سنوضح لاحقاً. وقد جادل بعض الباحثين بأن الإشارة المستقطبة الصادرة عن قسم كبير من <span class="nodecor">FBs</span> لم تكن قوية بما يكفي لالتقاطها، لا بشكل مباشر ولا عبر تحليل القوالب، في خرائط <span class="nodecor"><em>WMAP</em></span> <span class="nodecor">(Gold et al. 11, Dobler 12 Last Look)</span> و<span class="nodecor"><em>Planck</em></span> <span class="nodecor">(Planck Haze 13, Planck Dust 20)</span>. ومع ذلك، يُتوقع وجود إشارة مستقطبة خطية محلية ضمن حواف <span class="nodecor">FB</span> فقط، حيث تضغط الصدمة أو تضخم الحقول المغناطيسية والجسيمات النسبية والغبار. وبما أن الحقل المغناطيسي <span class="math inline">𝐁</span> يتضخم تفضيلياً موازياً لجبهات الصدمة، فإن الإشارة المستقطبة <span class="math inline">θ⊥𝐁</span> متوقعة أن تستقر عمودياً على الحواف، سواء في انبعاث السنكروترون أو في الإشعاع الحراري للغبار.</p>
-
-      <p>لذلك، نركز على محيط حواف <span class="nodecor">FB</span> المحددة بواسطة مرشحات التدرج <span class="nodecor">(Keshet & Gurwich 17)</span>، ونجمع البيانات الميكروويفية المستقطبة الموازية لتلك الحواف بالطريقة ذاتها التي استُخدمت سابقاً لقياس طيف أشعة <span class="nodecor">γ</span> <span class="nodecor">(Keshet & Gurwich 17)</span> وأشعة <span class="nodecor">X</span> <span class="nodecor">(Keshet & Gurwich 18)</span> والطيف الراديوي <span class="nodecor">(Keshet et al. 23)</span> في المجرة القريبة. على وجه الخصوص، نعتمد على الحواف الخشنة المحببة لـ<span class="nodecor">FBs</span> <span class="nodecor">(Keshet & Gurwich 17)</span>، التي تتضمن توقيعها بوضوح في بيانات <span class="nodecor"><em>Fermi</em>-LAT</span> الممتدة لـ15 عاماً عند الطاقة <span class="math inline">3–30 GeV</span> <span class="nodecor">(Keshet et al. 23)</span> المستخدمة هنا.</p>
-    </main>
-  </div>
+<header>
+  <h1 class="title">الكشف عن الانبعاث المستقطب لفقاعات فيرمي السنكروترونية والغبار</h1>
+  <p class="author"><span class="nodecor">Uri Keshet</span></p>
+</header>
+<main>
+  <h1 id="ملخص">ملخص</h1>
+  <p>
+    تم التمييز بين الإشارة الميكروويفية المستقطبة المخفية من فقاعات فيرمي وبين الفصوص المستقطبة الممتدة، التي تنبعث بشكل مشابه من المستوى المجري لكنها تمتد أبعد غرباً من الفقاعات. تكشف درجات الاستقطاب السنكروترونية التي تقارب <span class="nodecor">20%</span> عن المجالات المغناطيسية الموازية تفضيلياً لحواف الفقاعة، كما هو متوقع في أعقاب صدمة قوية. كما تمّ رصد درجة استقطاب انبعاث الغبار الحراري التي تقارب <span class="nodecor">20%</span> باتجاه مماثل، مما يقيّد محاذاة الحبيبات في بيئة قصوى. نجادل بأن الفصوص الأكبر نشأت في انفجار أقدم في مركز المجرة، على الأرجح نتيجة نشاط ثقب أسود فائق الكتلة.
+  </p>
+  <p>
+    تنبعث فقاعات فيرمي ثنائية القطب (<span class="nodecor">FBs</span>)، المنبعثة من مركز مجرة درب التبانة <span class="nodecor">(<span class="nodecor">Baganoffetal03, Blandhawthorncohen03</span>)</span> وتمتد إلى خطوط العرض <span class="math inline">\(|b|\gtrsim 50^\circ\)</span>، كل منها يظهر كهيكل على شكل دمعة موحدة تقريباً في أشعة <span class="nodecor">γ</span> <span class="nodecor">(<span class="nodecor">DoblerEtAl10, SuEtAl10</span>)</span>، محددة بقشرة أشعة <span class="nodecor">X</span> <span class="nodecor">(<span class="nodecor">Keshetgurwich18</span>)</span>، ومتزامنة مع مكون الغبار الحراري <span class="nodecor">(<span class="nodecor">KeshetEtAl23</span>)</span> ومع انبعاث السنكروترون الراديوي منخفض التردد حتى نطاق الميكروويف <span class="nodecor">(<span class="nodecor">Dobler12, PlanckHaze13</span>)</span> الذي يزداد سطوعه ويشكل ضباباً <span class="nodecor">(<span class="nodecor">Finkbeiner04</span>)</span> بالقرب من مركز المجرة (<span class="nodecor">GC</span>). تشير مورفولوجيتها، وقشور أشعة <span class="nodecor">X</span>، والطيف الطاقي المتكامل <span class="nodecor">(<span class="nodecor">SuEtAl10, Dobler12, HuangEtAl13, HooperSlatyer13, FermiBubbles14</span>)</span> وطيف الحافة <span class="nodecor">(<span class="nodecor">Keshetgurwich17</span>)</span>، الذي يتميز بفواصل تبريد أشعة <span class="nodecor">γ</span> والميكروويف <span class="nodecor">(<span class="nodecor">KeshetEtAl23</span>)</span>، إلى أن <span class="nodecor">FBs</span> نشأت منذ بضعة ملايين من السنين، كتدفقات من الثقب الأسود فائق الكتلة (<span class="nodecor">SMBH</span>)، والذي يجب أن يكون قد تم توجيهه <span class="nodecor">(<span class="nodecor">MondalEtAl22</span>)</span> بشكل شبه عمودي على المستوى المجري <span class="nodecor">(<span class="nodecor">SarkarEtAl23</span>)</span>، وتحديد حواف <span class="nodecor">FB</span> كصدمات أمامية قوية، ماخ <span class="math inline">\(\gtrsim 5\)</span> <span class="nodecor">(<span class="nodecor">Keshetgurwich17, KeshetEtAl23</span>)</span>.
+  </p>
+  <p>
+    أثارت الإشارة المستقطبة المتوقعة من <span class="nodecor">FBs</span> الكثير من الاهتمام، ليس فقط كوسيلة لاستكشاف مجالاتها المغناطيسية والعمليات الفيزيائية المرتبطة بها، ولكن أيضاً بسبب علاقتها المزعومة بالفصوص المستقطبة الممتدة <span class="nodecor">(<span class="nodecor">JonesEtAl12, CarrettiEtAl13</span>)</span> التي تنبعث بصورة مماثلة من المستوى المجري، كما سنوضح لاحقاً. وقد جادَل بعض الباحثين بأن الإشارة المستقطبة الصادرة عن جزء كبير من <span class="nodecor">FBs</span> لم تكن قوية بما يكفي لالتقاطها، لا مباشرةً ولا عبر تحليل القوالب، في خرائط <span class="nodecor"><em>WMAP</em></span> <span class="nodecor">(<span class="nodecor">GoldEtAl11, Dobler12LastLook</span>)</span> و<span class="nodecor"><em>Planck</em></span> <span class="nodecor">(<span class="nodecor">PlanckHaze13, PlanckDust20</span>)</span>. ومع ذلك، من المتوقع وجود إشارة مستقطبة خطية محلية فقط ضمن حواف <span class="nodecor">FB</span>، حيث تضغط الصدمة أو تعمل على تضخيم المجالات المغناطيسية والجسيمات النسبية والغبار. وبما أن المجال المغناطيسي <span class="math inline">\(\bm{B}\)</span> يُضاعف تفضيلياً بشكل موازي لجبهات الصدمة، فإن مكوناً مستقطباً متدفقاً <span class="math inline">\(\bm{\theta}\perp \bm{B}\)</span> متوقع أن يستقر عمودياً على حواف <span class="nodecor">FB</span>، سواء في انبعاث السنكروترون أو في الإشعاع الحراري للغبار.
+  </p>
+  <p>
+    لذلك، نركز على محيط حواف <span class="nodecor">FB</span>، المحددة بواسطة مرشحات التدرج <span class="nodecor">(<span class="nodecor">Keshetgurwich17</span>)</span>، ونجمع البيانات الميكروويفية المستقطبة الموازية للحافة بنفس الطريقة التي تم استخدامها سابقاً لقياس طيف الأشعة <span class="nodecor">γ</span> <span class="nodecor">(<span class="nodecor">Keshetgurwich17</span>)</span>، الأشعة <span class="nodecor">X</span> <span class="nodecor">(<span class="nodecor">Keshetgurwich18</span>)</span>، والطيف الراديوي <span class="nodecor">(<span class="nodecor">KeshetEtAl23</span>)</span> في المجرة القريبة. على وجه الخصوص، نعتمد حواف <span class="nodecor">FBs</span> المحببة الخشنة <span class="nodecor">(<span class="nodecor">Keshetgurwich17</span>)</span>، التي تحتوي بشكل جيد على توقيعها في بيانات <span class="nodecor"><em>Fermi</em>-LAT</span> لمدة 15 عاماً، <span class="math inline">\(3\)</span>–<span class="math inline">\(30\GeV\)</span> <span class="nodecor">(<span class="nodecor">KeshetEtAl23</span>)</span> المستخدمة هنا.
+  </p>
+</main>
 </body>
 </html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفية والهوامش والظل لجعل الورقة أكثر جاذبية واحترافية.
+- تم الحفاظ على النص الأصلي بالكامل دون أي تغيير في الكلمات أو حذف أي جزء.
+- تم التأكد من عدم وجود أخطاء HTML وأن جميع العناصر مغلقة بشكل صحيح.
+- تم تحسين التوافق مع الأجهزة المحمولة.
+- تم إبراز العناوين والمؤلف بشكل جمالي.
+- تم الحفاظ على اتجاه النص من اليمين لليسار (rtl) للغة العربية.

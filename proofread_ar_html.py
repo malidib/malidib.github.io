@@ -9,7 +9,7 @@ if not os.getenv("OPENAI_API_KEY"):
     print("Error: OPENAI_API_KEY environment variable not set.")
     sys.exit(1)
 
-MODEL = "o4-mini"
+MODEL = "gpt-4.1"
 MAX_CHARS_PER_CHUNK = 127000  # conservative size; model supports ~128k tokens but we stay small
 
 FILES_DIR = Path("files")
@@ -23,7 +23,9 @@ html_files = [
 SYSTEM_PROMPT = textwrap.dedent(
     """
     Make this HTML science paper looks better. Do not change any words, just improve HTML
-    aesthetics. 
+    aesthetics. Make sure to keep the full text. Do not use placeholders, always keep the whole text.  
+    Improve the aesthetic and output the whole unchanged text. 
+    Finally double check the final output to make sure it is 1- complete, 2- contains no html errors. 
     """
 )
 
@@ -32,7 +34,7 @@ client = AsyncOpenAI()
 async def fix_chunk(chunk: str) -> str:
     response = await client.chat.completions.create(
         model=MODEL,
-        temperature=1.,
+        temperature=0.,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": chunk},
