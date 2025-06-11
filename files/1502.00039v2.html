@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="A.J. Tetarenko, G.R. Sivakoff, J.C.A. Miller-Jones, P.A. Curran, T.D. Russell, I.M. Coulson, S. Heinz, D. Maitra, S.B. Markoff, S. Migliari, G.R. Petitpas, M.P. Rupen, A.P. Rushton, D.M. Russell, C.L. Sarazin" />
+  <title>خصائص النفاثة تحت المليمترية للثنائية السينية Swift J1745-26</title>
+  <style>
+    html {
+      line-height: 1.7;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+      font-size: 21px;
+      color: #222;
+      background-color: #f7f7fa;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 40em;
+      padding: 60px 40px 60px 40px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+      border-radius: 18px;
+      background: #fff;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 1em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1.2em 0;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    a {
+      color: #1a1a1a;
+      text-decoration: underline dotted;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.6em;
+      margin-bottom: 0.7em;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+      font-weight: bold;
+      color: #2a2a2a;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    h1 {
+      font-size: 2.1em;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.3em;
+      margin-bottom: 1.2em;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.2em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1.5em 0 1.5em 1.7em;
+      padding-right: 1em;
+      border-right: 3px solid #e6e6e6;
+      color: #606060;
+      background: #f3f3f7;
+      border-radius: 8px;
+    }
+    div.abstract {
+      margin: 2.5em 1.5em 2.5em 1.5em;
+      text-align: right;
+      font-size: 95%;
+      background: #f5f7fa;
+      border-radius: 12px;
+      padding: 1.5em 1.5em 1.2em 1.5em;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+      border: 1px solid #e0e0e0;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1em;
+      color: #1a4a7a;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.02em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 90%;
+      margin: 0;
+      background: #f3f3f7;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+      background: #f3f3f7;
+      border-radius: 6px;
+      padding: 1em;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1.5em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      direction: rtl;
+      background: #f9f9fb;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.03);
+    }
+    table caption {
+      margin-bottom: 0.75em;
+      font-weight: bold;
+      color: #1a4a7a;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.4em 0.7em 0.4em 0.7em;
+      background: #e9e9f3;
+    }
+    td {
+      padding: 0.2em 0.7em 0.4em 0.7em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax fixes */
+    mjx-container[jax="CHTML"] {
+      direction: rtl !important;
+      unicode-bidi: embed;
+      font-size: 1.05em;
+    }
+    mjx-container[jax="CHTML"] > svg {
+      direction: ltr !important;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">خصائص النفاثة تحت المليمترية للثنائية السينية Swift J1745&#8209;26</h1>
+<p class="author">A.J. Tetarenko، G.R. Sivakoff، J.C.A. Miller-Jones، P.A. Curran، T.D. Russell، I.M. Coulson،<br />
+S. Heinz، D. Maitra، S.B. Markoff، S. Migliari، G.R. Petitpas، M.P. Rupen،<br />
+A.P. Rushton، D.M. Russell، C.L. Sarazin</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>
+نقدم في هذا العمل نتائج رصدنا للمراحل المبكرة من انفجار 2012–2013 لمصدر الثنائية السينية ذات الثقب الأسود المتغير Swift J1745&#8209;26، باستخدام كل من VLA وSMA وJCMT (SCUBA–2). تمثل بياناتنا أول رصد متعدد الحزم في نطاق المليمتر وتحت المليمتر لمصدر ثنائي سيني ذو ثقب أسود. خلال الرصدات، كان النظام في حالة تراكم صلبة (hard state) منتجًا نفاثة مدمجة وثابتة. أتاح لنا الجمع الفريد بين بيانات الراديو والمليمتر/تحت المليمتر قياس مؤشرات الطيف مباشرة في وبين نطاقي الراديو والمليمتر/تحت المليمتر، بما في ذلك أول قياس لمؤشر طيفي في نطاق المليمتر/تحت المليمتر لمصدر ثنائي سيني ذو ثقب أسود. أظهرت ملاءمة الطيف أن القياسات في نطاقي المليمتر (230 جيجاهرتز) وتحت المليمتر (350 جيجاهرتز) تتفق مع استقراء قانون أسّي مقلوب (inverted power-law) من بيانات الراديو المعاصرة (1–30 جيجاهرتز). يشير ذلك إلى أن نموذج النفاثة القياسي، الذي يتوقع امتداد قانون أسّي حتى ترددات المليمتر/تحت المليمتر، يصف الطيف بشكل كافٍ، ويقترح أن الآلية التي تقود انقلاب الطيف قد تكون مسؤولة عن التدفقات العالية في نطاق المليمتر/تحت المليمتر (مقارنة بتدفقات الراديو) التي لوحظت في مصادر BHXRB خلال الانفجارات. وبينما يتفق هذا القانون الأسّي أيضًا مع البيانات البصرية المعاصرة، إلا أن هذه البيانات قد تنشأ إما من انبعاث النفاثة مع تردد انكسار طيفي للنفاثة <span style="direction:ltr; unicode-bidi:embed;">\(\nu_{\rm break} \gtrsim 1\times10^{14}\,{\rm Hz}\)</span> أو من مزيج من انبعاث النفاثة مع تردد انكسار طيفي أقل <span style="direction:ltr; unicode-bidi:embed;">\(\nu_{\rm break} \gtrsim 2\times10^{11}\,{\rm Hz}\)</span> وانبعاث قرص التراكم. تؤكد تحليلاتنا على أهمية نطاق المليمتر/تحت المليمتر في سد الفجوة الحرجة بين ترددات الراديو وترددات الأشعة تحت الحمراء في طيف النفاثة، وتبرر الحاجة إلى استكشاف هذا النطاق بشكل أعمق.
+</p>
+</div>
+</header>
+</body>
+</html>

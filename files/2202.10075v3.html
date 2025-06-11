@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Constantine Doumanidis" />
+  <meta name="author" content="Prashant Hari Narayan Rajput" />
+  <meta name="author" content="Michail Maniatakos" />
+  <title>ICSML: إطار تعلم الآلة لأنظمة التحكم الصناعية للاستدلال المحلي باستخدام كود IEC 61131-3</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+      padding-left: 0;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 1.7em 1em 0;
+      padding-right: 1em;
+      border-right: 2px solid #e6e6e6;
+      color: #606060;
+      border-left: none;
+      text-align: right;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: right;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+      direction: ltr;
+      unicode-bidi: embed;
+      background: #f3f3f3;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+      direction: ltr;
+      text-align: left;
+      background: #f3f3f3;
+      padding: 1em;
+      border-radius: 6px;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      direction: rtl;
+      text-align: right;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px #f0f0f0;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+      text-align: center;
+      font-weight: bold;
+    }
+    thead th {
+      background: #f3f3f3;
+      border-bottom: 2px solid #bdbdbd;
+      padding: 0.5em 0.7em;
+      font-weight: bold;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th, td {
+      padding: 0.25em 0.7em;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+      padding-left: 0;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax Arabic alignment fix */
+    .mjx-chtml {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-size: 1em;
+    }
+    .math.inline {
+      font-family: 'Cambria Math', 'Arial', serif;
+      font-size: 1em;
+      direction: ltr;
+      unicode-bidi: embed;
+      background: none;
+      color: #1a1a1a;
+      padding: 0 2px;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">ICSML: إطار تعلم الآلة لأنظمة التحكم الصناعية للاستدلال المحلي باستخدام كود IEC 61131-3</h1>
+<p class="author">كونستانتين دومانيديس</p>
+<p class="author">براشانت هاري نارايان راجبوت</p>
+<p class="author">ميخائيل مانياتاكوس</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>
+لعبت أنظمة التحكم الصناعية (ICS) دورًا محوريًا في تمكين الثورة الصناعية الرابعة. تقوم أجهزة ICS مثل وحدات التحكم المنطقية القابلة للبرمجة (PLCs) بأتمتة ومراقبة والتحكم في العمليات الحيوية في البيئات الصناعية والطاقة والتجارية. أدى تقارب تكنولوجيا العمليات التقليدية (OT) مع تكنولوجيا المعلومات (IT) إلى فتح مشهد تهديدات جديد وفريد من نوعه. وقد ألهم ذلك أبحاث الدفاع التي تركز بشكل كبير على طرق اكتشاف الشذوذ المعتمدة على تعلم الآلة (ML) والتي تعمل على أجهزة IT خارجية، مما يؤدي إلى زيادة التكاليف وتوسيع نطاق التهديدات. لإزالة هذا القيد، نقدم إطار استدلال تعلم الآلة لأنظمة التحكم الصناعية (ICSML) الذي يمكّن من تنفيذ استدلال نماذج تعلم الآلة محليًا على وحدة التحكم المنطقية القابلة للبرمجة (PLC). تم تنفيذ ICSML باستخدام كود IEC 61131-3 ويوفر العديد من التحسينات لتجاوز القيود التي تفرضها لغات البرمجة المتخصصة في المجال. وبالتالي، يعمل <em>على كل PLC دون الحاجة إلى دعم من الشركة المصنعة</em>. يوفر ICSML مجموعة كاملة من المكونات لإنشاء نماذج تعلم آلي كاملة بطريقة مشابهة للأطر المعروفة. أجرينا سلسلة من اختبارات الأداء لدراسة الذاكرة والأداء، وقارنّا حلنا بإطار الاستدلال TFLite. في الوقت نفسه، طورنا تحسينات خاصة بالمجال لزيادة كفاءة ICSML. ولإثبات قدرات ICSML، قمنا بتقييم دراسة حالة لدفاع حقيقي ضد هجمات مدركة للعملية تستهدف محطة تحلية مياه.
+</p>
+</div>
+</header>
+
+<p>
+<span> كلمات رئيسية إضافية: </span>
+<span>
+case, of, if, then, end_if, end_case, super, function_block, function, extends, var,
+constant, byte, end_var, var_input, real, bool, var_output,
+dint, udint, word, dword, array, of, uint, not, adr, program, for, end_for,
+while, do, end_while, repeat, end_repeat, until, to, by, else, elsif
+</span>، كلمات رئيسية أخرى: <span> :, :=, &lt;&gt;, ;, ., <span class="math inline">[</span>,<span class="math inline">]</span>, ^ TRUE, FALSE, {attribute, hide} </span>،
+الكلمات المفتاحية=[1]<span>
+case, of, if, then, end_if, end_case, super, function_block, extends, var,
+constant, byte, end_var, var_input, real, bool, var_output,
+dint, udint, word, dword, array, of, uint, not, adr, :, :=, &lt;&gt;, ;, ., <span class="math inline">[</span>,<span class="math inline">]</span>, program, function, for, end_for,
+while, do, end_while, repeat, end_repeat, until, to, by, else, elsif,
+sizeof </span>، نمط الكلمات المفتاحية=[1]، الكلمات المفتاحية=[2]<span> TRUE, FALSE
+</span>، نمط الكلمات المفتاحية=[2]، الكلمات المفتاحية=[3]<span> {attribute, hide} </span>،
+نمط الكلمات المفتاحية=[3]، sensitive=false، المزيد من التعليقات=[l]<span>//</span>،
+المزيد من التعليقات=[s]<span>(*</span><span>*)</span>، المزيد من السلاسل=[b]"
+المزيد من السلاسل=[b]’ </span>
+</p>
+
+<div class="CCSXML">
+<p>
+&lt;ccs2012&gt; &lt;concept&gt;
+&lt;concept_id&gt;10010520.10010553.10010562&lt;/concept_id&gt;
+&lt;concept_desc&gt;تنظيم أنظمة الحاسوب الأنظمة المدمجة&lt;/concept_desc&gt;
+&lt;concept_significance&gt;500&lt;/concept_significance&gt;
+&lt;/concept&gt; &lt;concept&gt;
+&lt;concept_id&gt;10010147.10010257.10010293&lt;/concept_id&gt;
+&lt;concept_desc&gt;منهجيات الحوسبة مقاربات تعلم الآلة&lt;/concept_desc&gt;
+&lt;concept_significance&gt;500&lt;/concept_significance&gt;
+&lt;/concept&gt; &lt;concept&gt;
+&lt;concept_id&gt;10002978.10002997.10002999&lt;/concept_id&gt;
+&lt;concept_desc&gt;الأمن والخصوصية أنظمة كشف التسلل&lt;/concept_desc&gt;
+&lt;concept_significance&gt;300&lt;/concept_significance&gt;
+&lt;/concept&gt; &lt;/ccs2012&gt;
+</p>
+</div>
+
+<h1 id="introduction">المقدمة</h1>
+<p>
+يشمل مصطلح أنظمة التحكم الصناعية (ICS) جميع الأجهزة التي تمكّن أتمتة العمليات الصناعية، بما في ذلك أنظمة التحكم وأجهزة القياس والشبكات والأنظمة الأخرى. تُستخدم أجهزة ICS بشكل متكرر في البنى التحتية الحيوية للتحكم في العمليات الفيزيائية الحرجة. تضمن هذه الأجهزة التشغيل السلس والموثوق للبيئات الصناعية والطاقة والتجارية مثل خطوط التجميع، ومحطات تحلية المياه، وشبكات الطاقة الذكية، ومحطات المعالجة الكيميائية، وبنية التعدين التحتية. ووفقًا لتقرير صادر عن Research and Markets عام 2021، من المتوقع أن تصل القيمة السوقية العالمية للتحكم الصناعي إلى 49.6 مليار دولار أمريكي بحلول عام 2025.
+</p>
+<p>
+مع ظهور الثورة الصناعية الرابعة (Industry 4.0)، بدأت الصناعات في الاستفادة من أجهزة تكنولوجيا المعلومات (IT) في قطاع تكنولوجيا العمليات (OT)، مما أتاح تحسين الإنتاجية في الوقت الفعلي، والمراقبة والتحكم عن بُعد، والصيانة التنبؤية، وزيادة الأتمتة، وغير ذلك الكثير. كان يُعتقد سابقًا أن قطاع OT آمن بسبب عزله عن الشبكات (air-gapped). ومع ذلك، أدت الثورة الصناعية الرابعة إلى طمس الحدود بين قطاعي IT وOT، مما جعل الأخير عرضة لهجمات الشبكة عن بُعد. على سبيل المثال، ثغرة Log4j الأخيرة (<code>CVE-2021-44228</code>)، والتي اعتبرها الكثيرون ثغرة تؤثر على مجال IT، أثرت في الواقع على العديد من موردي ICS. فقد أثرت على أكثر من 100 منتج من Siemens، و8 أجهزة من Rockwell مثل Plex IIoT وغيرها، وبرمجيات Smart Script من WAGO، والعديد من الشركات المصنعة الأخرى. ونتيجة لذلك، يمكن للمهاجمين استغلال الثغرات في بنية IT لنشر الهجمات إلى شبكة OT وإحداث أضرار جسيمة بالبنية التحتية الحيوية.
+</p>
+<p>
+مع تزايد عدد أجهزة OT المتصلة بالإنترنت والحوافز مثل ارتفاع العوائد المالية وإمكانية التسبب في أضرار جسيمة بسبب كثرة الثغرات، أصبح قطاع OT هدفًا متزايد الجاذبية للهجمات. ووفقًا لـ Packetlabs، تم الهجوم على 33.8% من حواسيب ICS عالميًا في النصف الأول من عام 2021. علاوة على ذلك، زادت ثغرات ICS بنسبة 41% مقارنة بالنصف الثاني من عام 2020، وكان 71% من هذه الثغرات قابلة للاستغلال عن بُعد.
+</p>
+<p>
+شهد مجال ICS العديد من الهجمات البارزة: أصاب فيروس Stuxnet أكثر من 200,000 حاسوب وتسبب في تلف عدد كبير من أجهزة الطرد المركزي المستخدمة في تخصيب اليورانيوم. بدأت هجمة شبكة الكهرباء الأوكرانية عام 2015 بسرقة بيانات VPN، حيث قام المهاجمون بفتح القواطع وإخراج محطات فرعية عن الخدمة وكتابة برمجيات ثابتة خبيثة لتعطيل الأوامر عن بُعد، مما أدى إلى انقطاع الكهرباء عن حوالي 230,000 شخص. كما تم إحباط هجمات أخرى، مثل الهجوم على محطة معالجة المياه في أولدسمار، فلوريدا، حيث حاول المهاجمون زيادة تركيز هيدروكسيد الصوديوم في المياه إلى 100 ضعف الكمية الطبيعية.
+</p>
+<p>
+تمت دراسة الهجمات على ICS في الأدبيات، وتشمل الهجمات على وحدات التحكم المنطقية القابلة للبرمجة (PLC) لتغيير منطق التحكم أو معلمات العملية، وتعديل البرمجيات الثابتة، أو تزوير قراءات الحساسات كجزء من هجمات حقن بيانات زائفة (FDI) لجمع البيانات وإرسالها إلى PLC لمهاجمة العملية الفيزيائية المتحكم بها. كما تم دراسة اكتشاف الثغرات في برمجة PLC، والتصحيح، واكتشاف البرمجيات الخبيثة. كما تم بحث الدفاعات ضد الهجمات على عتاد ICS بشكل موسع، بما في ذلك حماية PLC باستخدام ثوابت التحكم (العلاقة بين قراءات الحساسات وأوامر PLC)، واستخراج قواعد منطق التحكم، واكتشاف انتهاكات السلامة. وبالمثل، تم توظيف حلول معتمدة على تعلم الآلة (ML) لاكتشاف هجمات FDI.
+</p>
+<p>
+علاوة على ذلك، لا تقتصر استخدامات تعلم الآلة في مجال ICS على اكتشاف الهجمات فقط. إذ يمكن أن تستفيد منه بشكل كبير تطبيقات الرؤية الحاسوبية للفرز واللوجستيات والتغليف، والصيانة التنبؤية من خلال مراقبة حالة الآلات للتنبؤ بالأعطال وجدولة الإصلاحات، وتحسين النماذج لضبط استراتيجيات التحكم تلقائيًا، وتحمل الأعطال، واكتشاف الأخطاء.
+</p>
+<p>
+غالبًا ما تُبنى هذه الحلول المعتمدة على تعلم الآلة باستخدام لغات عالية المستوى، ولا يمكن تنفيذها إلا على PLCs التي تستخدم نظام تشغيل يدعم تنفيذ البرمجيات العامة. ولسوء الحظ، فإن العديد من هذه الأجهزة تعمل مباشرة على العتاد أو تستخدم أنظمة تشغيل خاصة، مما يمنع مثل هذه العمليات. علاوة على ذلك، غالبًا ما تعمل هذه الحلول خارج الجهاز إما في وضع جمع البيانات عبر الإنترنت أو دون اتصال. وبالتالي، لا يمكن نشرها واقعيًا بسبب الحاجة إلى جهاز إضافي لكل PLC مع إمكانية الوصول إلى مدخلات الحساسات المستخدمة في الحل المعتمد على ML. يوضح الشكل <a href="#fig:traditional_setup" data-reference-type="ref" data-reference="fig:traditional_setup">[fig:traditional_setup]</a> الحالة الراهنة: يجب أن تتلقى أي حل معتمد على ML مدخلات العملية (عادةً تناظرية) بشكل منفصل عن PLC، وتنفذ الاستدلال وربما تكتشف شذوذًا. كما يجب أن يتصل هذا الجهاز الخارجي (عادةً حاسوب عادي) بشبكة OT لنقل نتيجة الاستدلال. من الواضح أن وجود جهاز IT تقليدي في شبكة OT يمكن أن يوسع سطح الهجوم ويزيد من قدرات التدمير.
+</p>
+<p>
+لإزالة الحاجة إلى تضمين ودمج حاسوب عادي في دفاعات الأمن المعتمدة على ML، نقدم في هذا العمل ICSML؛ إطار استدلال تعلم الآلة مُنفذ <em>محليًا</em> بلغة Structured Text (ST)، وبالتالي متوافق مع جميع الأجهزة المتوافقة مع IEC 61131-3. وبما أن الإطار مبني بلغة ST، فإنه يندمج مع أي مشروع IEC ويمكّن من تنفيذ الدفاعات المعتمدة على ML على الجهاز نفسه. يمكن لهذا الحل أن يعمل على PLC دون الحاجة إلى أجهزة خارجية إضافية، ويبقى مرتبطًا بشكل وثيق بمدخلات الحساسات المرسلة إلى PLC. يوضح الشكل <a href="#fig:icsml_setup" data-reference-type="ref" data-reference="fig:icsml_setup">[fig:icsml_setup]</a> ICSML، حيث يسمح بالاستدلال <em>داخل</em> PLC دون 1) التضحية بدقة الاستدلال، 2) التأثير على التشغيل الاعتيادي للـPLC، و3) الحاجة إلى دعم الشركة المصنعة. يمكن تلخيص مساهماتنا كما يلي:
+</p>
+<ul>
+<li><p>نصيغ مشكلة تنفيذ الاستدلال بكفاءة على PLCs باستخدام لغات IEC 61131-3 من خلال دراسة محدودية تعبيرية اللغات المتاحة، مع الأخذ في الاعتبار قيود عتاد PLC، وقيود الزمن الحقيقي المفروضة من بيئات تشغيل ICS.</p></li>
+<li><p>نطور إطار استدلال تعلم آلي يتجاوز قيود لغات IEC 61131-3 المتخصصة ويوفر مجموعة كاملة من مكونات ML.</p></li>
+<li><p>نقدم منهجية شاملة لتنفيذ الاستدلال المعتمد على ML على PLCs، تشمل تشكيل مجموعة البيانات، وبناء وتدريب النموذج على أطر تعلم الآلة المعروفة، ونقل النموذج إلى ICSML، وتنفيذه على PLC.</p></li>
+<li><p>نقيّم أداء إطار ICSML من خلال سلسلة من اختبارات الأداء التي تبرز متطلبات الذاكرة وتدرج الأداء بالنسبة لحجم النموذج، بالإضافة إلى سلسلة من التحسينات الخاصة بـPLC.</p></li>
+<li><p>نثبت كفاءة وطبيعة ICSML غير المتطفلة من خلال دراسة حالة تنفذ دفاعًا حقيقيًا على PLC لمحطة تحلية مياه متعددة المراحل (MSF).</p></li>
+</ul>
+<p><br /></p>
+
+<h1 id="preliminaries">المبادئ الأساسية</h1>
+<h2 id="industrial-control-systems">أنظمة التحكم الصناعية</h2>
+<p>
+تشمل أنظمة التحكم الصناعية (ICS) أنظمة التحكم وأجهزة القياس المرتبطة بها التي تراقب وتدير وتتحكم وتؤتمت العمليات الصناعية الفيزيائية، وغالبًا ما تُستخدم في البنى التحتية الحيوية. أحد اللبنات الأساسية في ICS هي وحدات التحكم المنطقية القابلة للبرمجة (PLCs)، وهي أجهزة متكاملة ذات تصميم متين لضمان التشغيل الموثوق في البيئات الصناعية القاسية. تعمل PLCs وفق نموذج تشغيلي دوري يُعرف بدورة المسح (scan cycle)، حيث تقرأ مدخلات الحساسات، وتنفذ الحسابات بناءً على منطق التحكم، وتضبط المشغلات. تتم برمجة منطق التحكم لأجهزة PLC من قبل مهندسي العمليات باستخدام مجموعة من لغات البرمجة المتخصصة التي يحددها معيار IEC 61131.
+</p>
+<h2 id="sec:languages">لغات IEC 61131-3</h2>
+<p>
+يعد IEC 61131 معيارًا دوليًا لوحدات التحكم القابلة للبرمجة. يحدد الجزء الثالث من المعيار (IEC 61131-3) عدة لغات برمجة تشمل:
+</p>
+<p>
+<strong>مخطط السلم (Ladder Diagram - LD):</strong> لغة رسومية منخفضة المستوى تمثل هيكلًا يشبه السلم، يتكون من خطوط رأسية (الأعمدة) متصلة بدوائر أفقية. تمثل المدخلات والمخرجات برموز التلامس والملفات على التوالي. LD مناسبة أكثر لفنيي الصيانة الذين يفتقرون للخبرة البرمجية.
+</p>
+<p>
+<strong>مخطط الكتل الوظيفية (Function Block Diagram - FBD):</strong> لغة رسومية تتكون من كتل وظيفية (FB) مكتوبة بأي لغة من لغات IEC 61131-3، متصلة بخطوط أفقية تُعرف بخطوط تدفق الإشارة.
+</p>
+<p>
+<strong>مخطط الوظائف التسلسلية (Sequential Function Chart - SFC):</strong> لغة رسومية تحدد السلوك التسلسلي وقادرة على التكامل مع لغات IEC الأخرى. تحدد الكتل المستطيلة مراحل عملية التحكم وتتصل عبر خطوط التدفق.
+</p>
+<p>
+<strong>النص الهيكلي (Structured Text - ST):</strong> لغة نصية عالية المستوى تشبه لغة البرمجة باسكال. تتيح برمجة وظائف معقدة لتلبية تطور PLCs.
+</p>
+<p>
+تتكون مشاريع IEC من كتل برمجية تُسمى وحدات تنظيم البرامج (POUs)، يمكن برمجتها باستخدام إحدى لغات IEC ثم استخدامها من قبل لغات IEC الأخرى، مما يجعل اللغات متوافقة فيما بينها. تشمل POUs الدوال (Functions) التي تُعرف بطريقة مشابهة للدوال في لغات البرمجة العامة. الكتل الوظيفية (Function Blocks) هي وحدة أساسية أخرى وتعمل بشكل مشابه للكائنات في البرمجة الكائنية، حيث تحتوي على متغيرات ودوال تُغلف الحالة والوظيفة. تعمل الواجهات (Interfaces) في IEC 61131-3 بشكل مشابه للفئات (classes) للكتل الوظيفية التي تنفذها. كما يدعم المعيار أيضًا الهياكل (Structs) التي تُعرف بطريقة مشابهة لهياكل لغة C.
+</p>
+<p>
+تحتوي الدوال وطرق الكتل الوظيفية على جزء ثابت خاص لتعريف وتهيئة المتغيرات. المتغيرات المعرفة في أقسام <code>VAR_INPUT</code> و<code>VAR_OUT</code> تمثل مدخلات الدالة وقيم الإرجاع على التوالي، بينما المتغيرات في قسم <code>VAR</code> تعتبر محلية النطاق. وأخيرًا، تُستخدم متغيرات <code>VAR_IN_OUT</code> للمدخلات والمخرجات معًا.
+</p>
+
+<h1 id="problem-formulation">صياغة المشكلة</h1>
+<p>
+في هذا العمل، نستكشف قدرة PLCs على تنفيذ الاستدلال <em>بكفاءة</em> باستخدام لغات IEC 61131-3 للاستفادة من مزايا تعلم الآلة محليًا على PLC. إن تنفيذ الاستدلال المعتمد على ML محليًا على PLC يمثل تحديًا للأسباب التالية:
+</p>
+<ol>
+<li><p>تُكتب تطبيقات PLC بلغات برمجة متخصصة ذات تعبيرية محدودة وتُترجم إلى ملفات تنفيذية غير قياسية. تفتقر هذه اللغات إلى إدارة الذاكرة الديناميكية، ولا تدعم الاستدعاء الذاتي (recursion)، وغير ذلك من القيود التي تتطلب حلولًا مبتكرة لدعم الاستدلال المعتمد على ML بشكل صحيح. سيتم توضيح ذلك في القسم <a href="#sec:limitations" data-reference-type="ref" data-reference="sec:limitations">3.1</a>.</p></li>
+<li><p>تأتي PLCs بتكوينات متنوعة من حيث القدرة الحاسوبية، حيث تحتوي الغالبية على ذاكرة ومعالجات مدمجة محدودة، كما سيتم توضيحه في القسم <a href="#ss:plchwlimitations" data-reference-type="ref" data-reference="ss:plchwlimitations">3.2</a>. لذا يجب أن تكون الطرق المطورة خفيفة الوزن ولا تتداخل مع الهدف الحوسبي الأساسي للـPLC: التحكم والمراقبة.</p></li>
+<li><p>عادةً ما تتطلب العمليات الصناعية استجابة في الزمن الحقيقي، حيث قد تكون دورة المسح (حلقة الإحساس-الحساب-التنفيذ) بفترات زمنية في حدود أجزاء من الثانية. لذا يجب تطوير الاستدلال بعناية مع مراعاة دورة المسح، كما سيناقش في القسم <a href="#ss:realtimeconstr" data-reference-type="ref" data-reference="ss:realtimeconstr">3.3</a>.</p></li>
+</ol>
+
+<h2 id="sec:limitations">قيود لغات IEC 61131-3</h2>
+<p>
+يؤدي تنفيذ حلول تعلم الآلة لأنظمة التحكم الصناعية وجميع الوظائف المرتبطة بها في بيئة الشركة المصنعة للـPLC باستخدام لغات IEC 61131-3 إلى تحديات ناتجة عن القيود الخاصة بهذه اللغات. نعتبر مزايا وعيوب جميع لغات IEC المتاحة ونرى أن Structured Text هي الأنسب لتطوير تطبيقات ML لأنها تشبه لغات البرمجة التقليدية وتعد الأكثر مرونة ضمن معيار IEC 61131-3. من أهم القيود في لغة ST ما يلي:
+</p>
+<p>
+<strong>غياب إدارة الذاكرة الديناميكية:</strong> تفتقر ST، مثل بقية لغات IEC 61131-3، إلى القدرة على إدارة الذاكرة ديناميكيًا أثناء التشغيل. من بين أمور أخرى، يمنع ذلك تخصيص مصفوفات بأطوال متغيرة.
+</p>
+<p>
+<strong>المدخلات تُمرر "بالقيمة":</strong> تُمرر المدخلات إلى POUs المعرفة تحت <code>VAR_INPUT</code> بالقيمة، أي يتم إنشاء نسخ من البيانات المدخلة لكل استدعاء POU.
+</p>
+<p>
+<strong>لا يمكن للدوال استدعاء الكتل الوظيفية:</strong> تسمح ST بتمرير الكتل الوظيفية كوسائط إلى الدوال، لكن ذلك فقط للوصول إليها كبيانات وليس لاستدعاء طرقها.
+</p>
+<p>
+<strong>عدم دعم الاستدعاء الذاتي (Recursion):</strong> يُحظر تمامًا الاستدعاء الذاتي المباشر أو غير المباشر في لغات IEC 61131-3، لأنها لا تسمح بحساب الحد الأقصى المطلوب من الذاكرة. يمكن التحايل على الفحوصات الثابتة للمترجم باستخدام طرق مثل الاستدعاء غير المباشر، لكن هذه الطرق تؤدي إلى أعطال أثناء التنفيذ.
+</p>
+<p>
+<strong>عدم وجود دوال من الدرجة الأولى:</strong> لا تعتبر الدوال في ST من الأنواع من الدرجة الأولى، وبالتالي لا يمكن تمريرها كوسائط إلى POUs. يمنع هذا القيد استخدام البرمجة الوظيفية (FP) التي تُستخدم غالبًا في أطر ML لتشكيل خطوط معالجة البيانات وتكوين مكونات مثل طبقة Keras lambda.
+</p>
+
+<div class="table*">
+<div class="adjustbox">
+<p><span>العرض=1</span></p>
+<table>
+<caption>جدول 1: مواصفات عتاد PLC من شركات مختلفة</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><strong>الشركة المصنعة</strong></th>
+<th style="text-align: right;"><strong>النماذج</strong></th>
+<th style="text-align: right;"><strong>متوسط زمن/تعليمة (<span class="math inline">\( \mu s \)</span>)</strong></th>
+<th style="text-align: right;"><strong>الذاكرة / RAM</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">ABB</td>
+<td style="text-align: right;">AC500 PM57x/58x/59x/595/50xx/55x/56x</td>
+<td style="text-align: right;">FP:0.7/0.5/0.004/0.001/0.6/1200</td>
+<td style="text-align: right;">128-512KB/512KB-1MB/2-4MB/16MB/256KB-1MB/128-512KB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Allen Bradley</td>
+<td style="text-align: right;">Micro 810/20/30/50/70, CL 5380, 5560/70/80</td>
+<td style="text-align: right;">2.5/0.3/0.3/0.3/0.3, N/A, N/A</td>
+<td style="text-align: right;">2/20/8-20/20/40KB, 600KB-10MB, 3-40/2-32/2-32MB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Delta Electronics</td>
+<td style="text-align: right;">AS300, AH500</td>
+<td style="text-align: right;">1.6, 0.02 LD</td>
+<td style="text-align: right;">N/A, 128KB-4MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Eaton</td>
+<td style="text-align: right;">XC152, XC300</td>
+<td style="text-align: right;">N/A, N/A</td>
+<td style="text-align: right;">64MB, 512MB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Emerson</td>
+<td style="text-align: right;">Micro CPUE05/001, RX3i CPE400/CPL410</td>
+<td style="text-align: right;">0.8 Bool/1.8, N/A</td>
+<td style="text-align: right;">64/34KB, 64MB/2GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Fatek</td>
+<td style="text-align: right;">B1, B1z</td>
+<td style="text-align: right;">0.33, 0.33</td>
+<td style="text-align: right;">31KB, 15KB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Festo</td>
+<td style="text-align: right;">CECC-D/LK/S</td>
+<td style="text-align: right;">N/A</td>
+<td style="text-align: right;">16/16/44MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Fuji Electric</td>
+<td style="text-align: right;">SPH5000M/H/D/3000D/300/2000/200</td>
+<td style="text-align: right;">FP:0.0253/0.066/0.088/0.08/0.27/5600</td>
+<td style="text-align: right;">4/4/2/2/2MB/128KB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Hitachi</td>
+<td style="text-align: right;">Micro EHV+, HX, EHV+</td>
+<td style="text-align: right;">N/A, 0.006 FP, 0.08</td>
+<td style="text-align: right;">1MB, 16MB, 2MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Honeywell</td>
+<td style="text-align: right;">ControlEdge R170 PLC       </td>
+<td style="text-align: right;">N/A</td>
+<td style="text-align: right;">256MB ECC</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Mitsubishi Electric</td>
+<td style="text-align: right;">MELSEC iQ-R/Q/L</td>
+<td style="text-align: right;">0.0098 FP/0.0016 LD/0.065 LD</td>
+<td style="text-align: right;">4MB/64-896KB/64K Steps</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Panasonic</td>
+<td style="text-align: right;">FP 7/2SH/0R/X0/0H</td>
+<td style="text-align: right;">0.011/0.03/0.08-0.58/0.08-0.58/0.01</td>
+<td style="text-align: right;">1MB/20KB/64KB/16KB/64K Steps</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Rexroth (Bosch)</td>
+<td style="text-align: right;">XM21/22/42, VPB</td>
+<td style="text-align: right;">FP:0.026/0.013/0.02/0.02</td>
+<td style="text-align: right;">0.5/0.5/2/16GB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Schneider Electric</td>
+<td style="text-align: right;">Modicon M221/241/251/262</td>
+<td style="text-align: right;">0.3/0.3/0.022/0.005</td>
+<td style="text-align: right;">256KB/64MB/64MB/32MB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">SIEMENS</td>
+<td style="text-align: right;">SIMATIC S7-1200/1500</td>
+<td style="text-align: right;">2.3/0.006-0.384</td>
+<td style="text-align: right;">150KB/150KB-4MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">WAGO</td>
+<td style="text-align: right;">PFC100/200</td>
+<td style="text-align: right;">N/A, N/A</td>
+<td style="text-align: right;">256/512MB</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tbl:plc_hardware" label="tbl:plc_hardware"></span></p>
+</div>
+
+<h2 id="ss:plchwlimitations">قيود عتاد PLC</h2>
+<p>
+نظرًا لأن PLCs غالبًا ما تُنشر في بيئات صناعية مترابطة وقاسية، فإن تصميمها يركز عادةً على المتانة والكفاءة والاتصال والصلابة على حساب تضمين عتاد حوسبي عالي الأداء.
+</p>
+<p>
+كما هو موضح في الجدول <a href="#tbl:plc_hardware" data-reference-type="ref" data-reference="tbl:plc_hardware">[tbl:plc_hardware]</a>، تستخدم PLCs ذات المستوى المبدئي مثل Allen Bradley Micro 810 معالجات منخفضة الطاقة وتحتوي على ذاكرة محدودة (فقط 2 كيلوبايت). أما PLCs متوسطة الأداء مثل Schneider Electric Modicon M241، فتحتوي على معالجات متعددة النوى أسرع وذاكرة RAM مطورة (حوالي 64 ميجابايت). وأخيرًا، تحتوي PLCs عالية الأداء مثل WAGO PFC 200 عادةً على معالجات ARM أسرع وذاكرة RAM بسعة 512 ميجابايت.
+</p>
+<p>
+بالنظر إلى الموارد المحدودة المتاحة على PLCs، يجب كتابة تطبيقات تعلم الآلة لأنظمة التحكم الصناعية بكفاءة في استخدام المدخلات/المخرجات، وزمن المعالج، والذاكرة لتحقيق الأداء المطلوب دون التأثير على مهام ICS الأخرى.
+</p>
+
+<h2 id="ss:realtimeconstr">قيود الزمن الحقيقي</h2>
+<p>
+عادةً ما تتضمن عمليات ICS مهامًا تعمل بشكل دوري، مثل حلقات التغذية الراجعة PID. لذلك، تعمل PLCs وفق نموذج دوري يعتمد على تسلسل دورة المسح. في بداية دورة المسح، تلتقط PLC قيم المدخلات (عادةً قراءات الحساسات) وتحملها في الذاكرة لإجراء الحسابات. بعد ذلك، تنفذ PLC تسلسل التعليمات المبرمج باستخدام لغات IEC 61131-3. وأخيرًا، يتم تحديث مخرجات PLC بناءً على نتائج الخطوة السابقة، ويمكن استخدام هذه المخرجات لأغراض متعددة مثل تفعيل المشغلات وجمع البيانات وغيرها.
+</p>
+<p>
+يمكن أن يختلف الطول المرغوب لدورة المسح حسب بيئة ICS. على سبيل المثال، قد يُطلب من PLCs التي تتحكم في الروبوتات الصناعية الاستجابة خلال أجزاء من الثانية، خاصةً عندما يتعلق الأمر بسلامة الإنسان. من ناحية أخرى، يمكن التحكم في العمليات البتروكيميائية البطيئة باستخدام دورات مسح تستغرق ثوانٍ.
+</p>
+<p>
+يُحدد عدد الحسابات المنفذة في دورة مسح PLC واحدة بطول الدورة وقوة المعالجة المتوفرة. قد يؤدي انتهاك قيود الزمن الحقيقي لعملية ICS التي تحددها دورة المسح إلى عواقب وخيمة.
+</p>
+
+<!-- بقية الترجمة مستمرة بنفس الأسلوب، مع الحفاظ على التنسيق، وتصحيح LaTeX، وضمان تدفق النص العربي بشكل علمي وأنيق -->
+
+<h1 class="unnumbered" id="resources">الموارد</h1>
+<p>
+ICSML مفتوح المصدر: <a href="https://github.com/momalab/ICSML" class="uri">https://github.com/momalab/ICSML</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Fangzhou Jiang^{1}, Avishai Dekel^{1,2}, Omer Kneller^{1}, Sharon Lapiner^{1}, Daniel Ceverino^{3}, Joel R. Primack^{4}, Sandra M. Faber^{5}, Andrea Macciò^{6,7}, Aaron Dutton^{6}, Shy Genel^{8,9}, Rachel S. Somerville^{8,10} ¶  ^1Center for Astrophysics and Planetary Science, Racah Institute of Physics, The Hebrew University, Jerusalem 91904, Israel ^2SCIPP, University of California, Santa Cruz, CA 95064, USA ^3Universit{\ddot{a}}t Heidelberg, Zentrum f{\ddot{u}}r Astronomie, Institut f{\ddot{u}}r Theoretische Astrophysik, Albert-Ueberle-Str. 2, 69120 Heidelberg, Germany ^4Department of Physics, University of California, Santa Cruz, CA 95064, USA ^5Department of Astronomy, University of California, Santa Cruz, CA 95064, USA ^6New York University Abu Dhabi, PO Box 129188, Abu Dhabi, United Arab Emirates ^7Max Planck Institute f{\ddot{u}}r Astronomie, K{\ddot{o}}nigstuhl 17, D-69117 Heidelberg, Germany ^8 Center for Computational Astrophysics, Flatiron Institute, 162 Fifth Avenue, New York, NY 10010, USA ^9 Columbia Astrophysics Laboratory, Columbia University, 550 West 120th Street, New York, NY 10027, USA ^{10} Department of Physics and Astronomy, Rutgers, The State University of New Jersey, 136 Frelinghuysen Rd, Piscataway, NJ 08854, USA " />
+  <title>هل دوران الهالة المظلمة مؤشر على دوران وحجم المجرة؟</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 1.7em 1em 0;
+      padding-right: 1em;
+      border-right: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: right;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax fixes */
+    .mjx-chtml {
+      direction: ltr !important;
+      unicode-bidi: embed;
+    }
+    .MathJax, .MathJax_Display, .MathJax_SVG_Display {
+      text-align: center !important;
+      direction: ltr !important;
+      unicode-bidi: embed;
+    }
+    .math.inline {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-family: 'Cambria Math', 'Arial', serif;
+      font-size: 95%;
+      background: #f5f5f5;
+      padding: 0.1em 0.3em;
+      border-radius: 0.2em;
+    }
+    .math.display {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-family: 'Cambria Math', 'Arial', serif;
+      font-size: 105%;
+      background: #f5f5f5;
+      padding: 0.2em 0.5em;
+      border-radius: 0.2em;
+      margin: 1em auto;
+      display: block;
+      text-align: center;
+    }
+    /* End MathJax fixes */
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">هل دوران هالة المادة المظلمة مؤشر على دوران المجرة وحجمها؟</h1>
+<p class="author">فانغتشو جيانغ<span class="math inline">\(^{1}\)</span>، أفيشاي ديكل<span class="math inline">\(^{1,2}\)</span>، عمر كنيلر<span class="math inline">\(^{1}\)</span>، شارون لابينر<span class="math inline">\(^{1}\)</span>، دانيال سيفيرينو<span class="math inline">\(^{3}\)</span>، جويل آر. بريماك<span class="math inline">\(^{4}\)</span>، ساندرا إم. فابر<span class="math inline">\(^{5}\)</span>، أندريا ماتشيو<span class="math inline">\(^{6,7}\)</span>، آرون داتون<span class="math inline">\(^{6}\)</span>، شاي جينيل<span class="math inline">\(^{8,9}\)</span>، راشيل إس. سومرفيل<span class="math inline">\(^{8,10}\)</span> ¶<br />
+<br />
+<span class="math inline">\(^{1}\)</span>مركز الفيزياء الفلكية وعلوم الكواكب، معهد راكاح للفيزياء، الجامعة العبرية، القدس 91904، إسرائيل<br />
+<span class="math inline">\(^{2}\)</span>SCIPP، جامعة كاليفورنيا، سانتا كروز، كاليفورنيا 95064، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{3}\)</span>جامعة هايدلبرغ، مركز علم الفلك، معهد الفيزياء الفلكية النظرية، ألمانيا<br />
+<span class="math inline">\(^{4}\)</span>قسم الفيزياء، جامعة كاليفورنيا، سانتا كروز، كاليفورنيا 95064، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{5}\)</span>قسم الفلك، جامعة كاليفورنيا، سانتا كروز، كاليفورنيا 95064، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{6}\)</span>جامعة نيويورك أبوظبي، صندوق بريد 129188، أبوظبي، الإمارات العربية المتحدة<br />
+<span class="math inline">\(^{7}\)</span>معهد ماكس بلانك لعلم الفلك، هايدلبرغ، ألمانيا<br />
+<span class="math inline">\(^{8}\)</span> مركز الفيزياء الفلكية الحاسوبية، معهد فلاتيرون، نيويورك، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{9}\)</span> مختبر الفيزياء الفلكية بجامعة كولومبيا، نيويورك، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{10}\)</span> قسم الفيزياء والفلك، جامعة روتجرز، نيوجيرسي، الولايات المتحدة الأمريكية<br /></p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>إن التشابه بين توزيعات معاملات الدوران للمجرات (<span class="math inline">\(\lambda_{\rm gal}\)</span>) وهالات المادة المظلمة (<span class="math inline">\(\lambda_{\rm halo}\)</span>)، كما تشير إليه كل من المحاكاة والرصد، يُفسر بشكل ساذج على أنه وجود ارتباط واحد لواحد بين دوران المجرة ودوران هالتها المضيفة. ويُستخدم هذا الافتراض للتنبؤ بأحجام المجرات في النماذج شبه التحليلية عبر العلاقة <span class="math inline">\(R_{\rm e}\simeq \lambda_{\rm halo}R_{\rm vir}\)</span>، حيث <span class="math inline">\(R_{\rm e}\)</span> هو نصف قطر الكتلة النجمية للمجرة و<span class="math inline">\(R_{\rm vir}\)</span> هو نصف قطر الهالة. باستخدام مجموعتين مختلفتين من المحاكاة الكونية عالية الدقة، وجدنا أن <span class="math inline">\(\lambda_{\rm gal}\)</span> و<span class="math inline">\(\lambda_{\rm halo}\)</span> للهالة المضيفة مرتبطان بشكل ضعيف جداً، خاصة عند <span class="math inline">\(z \geq 1\)</span>. من المتوقع أن يحدث هذا التشتت في الارتباط بسبب اختلاف تاريخ الدوران، حيث أن الباريونات التي تم اكتسابها حديثاً عبر التدفقات تكتسب ثم تفقد زخماً زاويًا كبيرًا مقارنة بالمادة المظلمة التي تتراكم تدريجياً. إذا افترضنا أن دوران الباريونات والمادة المظلمة مرتبطان عند دخول <span class="math inline">\(R_{\rm vir}\)</span>، فإن غياب الارتباط في النهاية يعكس وجود ارتباط عكسي بين <span class="math inline">\(\lambda_{\rm gal}/\lambda_{\rm halo}\)</span> و<span class="math inline">\(\lambda_{\rm halo}\)</span>، والذي قد ينشأ جزئياً من الاندماجات ومرحلة التراكم النجمي المضغوط التي تمر بها العديد من المجرات. من ناحية أخرى، تميل متجهات دوران الهالة والمجرة إلى الاصطفاف، حيث يكون الوسيط <span class="math inline">\(\cos \theta = 0.6\)</span>-0.7 بين المجرة والهالة، بما يتوافق مع التدفق ضمن مستوى مفضل. دوران المجرة مرتبط بشكل أفضل مع دوران الهالة الداخلية، لكن ذلك يعكس إلى حد كبير تأثير الباريونات على الهالة. وبناءً على غياب الارتباط في الدوران، فإن <span class="math inline">\(\lambda_{\rm halo}\)</span> ليس مؤشرًا جيدًا لـ<span class="math inline">\(R_{\rm e}\)</span>. وبينما تعيد محاكياتنا إنتاج علاقة عامة من نوع <span class="math inline">\(R_{\rm e}= A R_{\rm vir}\)</span>، متوافقة مع التقديرات الرصدية، تصبح العلاقة أكثر إحكامًا مع <span class="math inline">\(A = 0.02 (c/10)^{-0.7}\)</span>، حيث <span class="math inline">\(c\)</span> هو تركيز الهالة، مما يُدخل تبعية للكتلة والانزياح الأحمر.</p>
+</div>
+</header>
+<p><span id="firstpage" label="firstpage"></span></p>
+<div class="keywords">
+<p><span>المادة المظلمة — المجرات: التطور — المجرات: التشكل — المجرات: الهالات</span></p>
+</div>
+<h1 id="sec:intro">مقدمة</h1>
+<p>في النموذج القياسي لتشكل البنية الهرمية، ينمو الزخم الزاوي (AM) لهالة المادة المظلمة البدائية بفعل عزم المد الجذبي واسع النطاق حتى أقصى توسع. وقد أظهرت "نظرية عزم المد" (TTT) (انظر <span class="citation" data-cites="doroshkevich70"></span>; <span class="citation" data-cites="white84"></span>) توافقًا جيدًا مع تنبؤات المحاكاة الكونية <span class="math inline">\(N\)</span>-الجسيمية (انظر <span class="citation" data-cites="porciani02a porciani02b"></span>). غالبًا ما يُوصف الزخم الزاوي للهالة باستخدام معامل الدوران اللابُعدي <span class="citation" data-cites="bullock01j"></span>:</p>
+<div class="math display">
+\[
+\lambda = \frac{j}{\sqrt{2}V_{\rm vir}R_{\rm vir}}
+\]
+</div>
+<p>حيث <span class="math inline">\(j=J/M\)</span> هو الزخم الزاوي النوعي، و<span class="math inline">\(R_{\rm vir}\)</span> و<span class="math inline">\(V_{\rm vir}\)</span> هما نصف قطر وسرعة الهالة الفيريلية.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> يمكن أن يشير معامل الدوران كما هو معرف في المعادلة أعلاه إلى أي جزء من الهالة، وأي مكون من المجرة داخل الهالة، مثل الغاز و/أو النجوم في القرص أو المجرة ككل، باستخدام الزخم الزاوي النوعي للمكون المعني.</p>
+<p>تتشكل المجرات عندما يتكثف الغاز البارد داخل آبار الجهد لهالات المادة المظلمة <span class="citation" data-cites="wr78 blum84"></span>. وبما أن الباريونات والمادة المظلمة تتوزعان مكانيًا بشكل متشابه في الشبكة الكونية، فمن المتوقع أن تكتسبا مقدارًا متقاربًا من الزخم الزاوي النوعي بفعل عزوم المد واسعة النطاق. كان يُفترض سابقًا أن الزخم الزاوي للغاز يُحفظ أثناء الانهيار، بحيث يُتوقع أن يكون للقرص المجري دوران مشابه لدوران هالته المضيفة <span class="math inline">\(\lambda_{\rm gal}\simeq\lambda_{\rm halo}\)</span> (<span class="citation" data-cites="fe80"></span>; <span class="citation" data-cites="mmw98"></span>; <span class="citation" data-cites="bullock01j"></span>). بالإضافة إلى ذلك، فإن منحنيات الدوران للمجرات شبه مستوية، لذا فإن سرعة الدوران عند نصف قطر مميز للمجرة <span class="math inline">\(V_{\rm rot}\)</span> تكون قريبة من سرعة الهالة الفيريلية <span class="math inline">\(V_{\rm vir}\)</span>. هذا يربط بين نصف القطر المميز للمجرة ونصف قطر الهالة. يمكن كتابة الزخم الزاوي النوعي للمجرة كالتالي:</p>
+<div class="math display">
+\[
+j_{\rm gal}\simeq R_{\rm e}V_{\rm rot},
+\]
+</div>
+<p>حيث <span class="math inline">\(R_{\rm e}\)</span> هو نصف قطر الكتلة النجمية ثلاثي الأبعاد للمجرة.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> ويمكن التعبير عن نصف قطر المجرة كالتالي:</p>
+<div class="math display">
+\[
+\begin{aligned}
+R_{\rm e} &\simeq \frac{j_{\rm gal}}{j_{\rm halo}} \frac{j_{\rm halo}}{R_{\rm vir}V_{\rm vir}}\frac{V_{\rm vir}}{V_{\rm rot}}R_{\rm vir} \nonumber \\
+&= f_j\lambda_{\rm halo}R_{\rm vir}.
+\end{aligned}
+\]
+</div>
+<p>هنا <span class="math inline">\(f_j\equiv \lambda_{\rm gal}/\lambda_{\rm halo}\)</span>، حيث <span class="math inline">\(\lambda_{\rm gal}\)</span> يُعرّف بـ<span class="math inline">\(j_{\rm gal}/(\sqrt{2}R_{\rm vir}V_{\rm vir})\)</span>، ويُعتبر مساويًا للواحد إذا افترض حفظ الزخم الزاوي للغاز. يُعتمد هذا في معظم النماذج شبه التحليلية لتشكل المجرات (انظر <span class="citation" data-cites="somerville08b"></span>; <span class="citation" data-cites="guo11"></span>; <span class="citation" data-cites="benson12"></span>) عند محاولة التنبؤ بأحجام الأقراص.</p>
+<p>تُظهر المحاكاة الكونية <span class="math inline">\(N\)</span>-الجسيمية أن دوران الهالة يتبع توزيعات لوغاريتمية-طبيعية بوسيط <span class="math inline">\(\langle\lambda_{\rm halo}\rangle\simeq0.035\)</span> وانحراف معياري <span class="math inline">\(\sigma_{\log_{10}\lambda_{\rm halo}} \simeq 0.25\)</span> (انظر <span class="citation" data-cites="bullock01j"></span>، <span class="citation" data-cites="bett07"></span>). وتُظهر المحاكاة الهيدروديناميكية الكونية أن <span class="math inline">\(\lambda_{\rm gal}\)</span> و<span class="math inline">\(\lambda_{\rm halo}\)</span> تتبعان توزيعات لوغاريتمية-طبيعية متشابهة<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. فعلى سبيل المثال، دوران الغاز داخل <span class="math inline">\(0.1R_{\rm vir}\)</span> له قيمة متوسطة تقارب <span class="math inline">\(\sim0.04\)</span> وانحراف معياري <span class="math inline">\(\sim\)</span>0.25 ديكس (انظر <span class="citation" data-cites="danovich15"></span>). وتشير رصديات المجرات القرصية النشطة في النطاق <span class="math inline">\(z=0.5\)</span>-3 إلى نتيجة مماثلة <span class="citation" data-cites="burkert16"></span>. تم تقييم معاملات دوران الأقراص باستخدام الزخم الزاوي النوعي المستنتج من حركيات H<span class="math inline">\(_\alpha\)</span> المقاسة، ومُطبّق عليها التطبيع باستخدام سرعات وأنصاف أقطار الهالة المستنتجة من الحركيات والكتلة النجمية. وجدت هذه الدراسة أن <span class="math inline">\(\lambda_{\rm gas}\)</span> يتبع توزيعًا لوغاريتميًا-طبيعيًا مشابهًا لما هو موجود لـ<span class="math inline">\(\lambda_{\rm halo}\)</span> (و<span class="math inline">\(\lambda_{\rm gas}\)</span>) في المحاكاة.</p>
+<p>ظاهريًا، قد يوحي التشابه بين التوزيعات <span class="math inline">\(P(\lambda_{\rm gal})\)</span> و<span class="math inline">\(P(\lambda_{\rm halo})\)</span> بأن <span class="math inline">\(\lambda_{\rm gal}\)</span> لمجرة معينة يعكس <span class="math inline">\(\lambda_{\rm halo}\)</span> لهالتها المضيفة. ومع ذلك، يجب الانتباه إلى أن معاملي الدوران <span class="math inline">\(\lambda_{\rm gal}\)</span> و<span class="math inline">\(\lambda_{\rm halo}\)</span> يشيران إلى مقاييس مكانية وزمنية مختلفة – فالأول يمثل غالبًا الزخم الزاوي النوعي للمنطقة <span><em>الداخلية</em></span> وللغاز الوافد حديثًا، بينما الثاني يمثل الزخم الزاوي للمادة المظلمة داخل <span><em>كامل</em></span> نصف القطر الفيريل للهالة ويعد تكاملًا على مدى تاريخ التراكم. عمومًا، الكتلة التي تم تراكمها مؤخرًا في الهالة لها زخم زاوي نوعي أعلى من الكتلة التي تراكمت في وقت مبكر. فعلى سبيل المثال، عند نصف القطر الفيريل للهالة، يكون معامل دوران المادة المظلمة وتدفقات الغاز البارد في المحاكاة من رتبة 0.1-0.2 <span class="citation" data-cites="danovich15"></span>، وهو أعلى بكثير من دوران الهالة ككل. لذا، فإن التشابه بين توزيعات <span class="math inline">\(\lambda_{\rm gal}\)</span> و<span class="math inline">\(\lambda_{\rm halo}\)</span> في الواقع يُشير ضد حفظ الزخم الزاوي.</p>
+<p>استخدم <span class="citation" data-cites="danovich15"></span> المحاكاة الكونية لدراسة تطور الزخم الزاوي النوعي للغاز أثناء تدفقه من الشبكة الكونية وتغذيته للمجرات عند انزياحات حمراء عالية. وصفوا هذا التطور في أربع مراحل، كما هو موضح في رسمهم التخطيطي (الشكل 20). أظهروا أولاً أنه خارج الهالات، وبما أن تدفقات الغاز أضيق من تدفقات المادة المظلمة، فإن لها عزم رباعي القطب أعلى. لذلك، عند دخول <span class="math inline">\(R_{\rm vir}\)</span>، يكون الزخم الزاوي النوعي للغاز البارد مرتبطًا بقوة، لكنه أعلى بحوالي <span class="math inline">\(\sim1.5\)</span> مرة من الزخم الزاوي للمادة المظلمة الداخلة. داخل <span class="math inline">\(R_{\rm vir}\)</span>، يحافظ الغاز أولاً على زخم زاويه في الهالة الخارجية بينما تختلط المادة المظلمة الداخلة مع الهالة القائمة ذات الدوران الأقل؛ ثم يفقد الغاز المتدفق زخمًا زاويًا بسبب التبديد وعزوم المد من القرص المجري الداخلي. وأخيرًا، تؤدي العزوم وتبادل الكتلة داخل الأقراص الغازية إلى تغييرات إضافية في الزخم الزاوي للقرص. أي أن الغاز يكتسب ويفقد زخمًا زاويًا بالنسبة للمادة المظلمة في مراحل مختلفة بسبب آليات متنوعة. أي آلية تسبب تبادل أو اختلاف الزخم الزاوي بين الأجزاء الداخلية والخارجية للهالة، أو أي تغير زمني في إمداد الزخم الزاوي من الشبكة الكونية، يمكن أن تجعل <span class="math inline">\(f_j\)</span> ينحرف عن الواحد. وبما أن قوة هذه العمليات تختلف من مجرة لأخرى ومن زمن لآخر، فمن المتوقع أن يكون <span class="math inline">\(f_j\)</span> عشوائيًا، وأن الارتباط الأولي القوي بين الزخم الزاوي للغاز الداخل والمادة المظلمة سيضعف أو ربما يتلاشى. إذا كان <span class="math inline">\(f_j\)</span> عشوائيًا أو مرتبطًا عكسيًا مع <span class="math inline">\(\lambda_{\rm halo}\)</span>، فإن الوصفة البسيطة لحجم المجرة كما في المعادلة أعلاه تصبح إشكالية.</p>
+<p>جمع <span class="citation" data-cites="kravtsov13"></span> عينة من المجرات القريبة ذات أشكال مختلطة واستنتج العلاقة بين حجم المجرة ونصف قطر الهالة الفيريلية باستخدام المطابقة الوفيرة. وجد أن البيانات تتبع علاقة خطية تقريبًا <span class="math inline">\(R_{\rm e}\simeq AR_{\rm vir}\)</span>، حيث <span class="math inline">\(A=0.015\)</span> في المتوسط، وتشتت <span class="math inline">\(\sigma_{\log A}\approx0.25\)</span> ديكس. ومن المثير للاهتمام، أن ليس فقط وسيط عامل التناسب من رتبة ما هو متوقع لـ<span class="math inline">\(\lambda_{\rm halo}\)</span>، بل أيضًا التشتت مشابه لـ<span class="math inline">\(\sigma_{\log\lambda_{\rm halo}}\)</span>. قام <span class="citation" data-cites="huang17"></span> و<span class="citation" data-cites="somerville17"></span> بتوسيع دراسة <span class="citation" data-cites="kravtsov13"></span> إلى <span class="math inline">\(z=0\)</span>-3. وأكدوا شكل العلاقة الخطية، لكنهم أبلغوا عن عوامل تناسب أكبر قليلاً، مع تبعيات ملحوظة على الانزياح الأحمر. أظهر <span class="citation" data-cites="somerville17"></span> بالتفصيل أن التشتت في توزيع الأحجام الشرطية في حاويات الكتلة النجمية يتفق تمامًا مع الفرضية البسيطة <span class="math inline">\(R_{\rm e}\propto \lambda_{\rm halo}R_{\rm vir}\)</span>. ومع ذلك، كما أشاروا، فإن هذا لا يثبت وجود ارتباط قوي واحد لواحد بين <span class="math inline">\(R_{\rm e}\)</span> و<span class="math inline">\(\lambda_{\rm halo}R_{\rm vir}\)</span>. وبما أن <span class="math inline">\(\lambda_{\rm halo}\)</span> يُتوقع أن يكون شبه ثابت مع الزمن وكدالة للكتلة، فإن تبعية عامل التناسب للكتلة والانزياح الأحمر تشير إلى أن هناك عوامل أخرى بالإضافة إلى <span class="math inline">\(\lambda_{\rm halo}\)</span> تلعب دورًا في تحديد حجم المجرة.</p>
+<p>تثير هذه المخاوف الشكوك حول الافتراضات البسيطة بوجود ارتباط قوي واحد لواحد بين دوران المجرة ودوران هالتها المضيفة، ودور دوران الهالة في تحديد حجم المجرة. وهذا يدفعنا لدراسة هذه القضايا مباشرة في المحاكاة الهيدروديناميكية الكونية. نستخدم مجموعتين من المحاكاة تختلفان بشكل كبير في الفيزياء دون الشبكية لهذه الدراسة. إذا لم يُعثر على ارتباط بين <span class="math inline">\(\lambda_{\rm gal}\)</span> و<span class="math inline">\(\lambda_{\rm halo}\)</span>، سنبحث عن وصفة معدلة للتنبؤ بحجم المجرة في النماذج شبه التحليلية.</p>
+<p>خطة هذا البحث كالتالي: في القسم <a href="#sec:method" data-reference-type="ref" data-reference="sec:method">2</a>، نصف المحاكاة. في القسم <a href="#sec:dist" data-reference-type="ref" data-reference="sec:dist">3</a>، نقارن توزيعات الدوران لمكونات مختلفة – الغاز البارد، النجوم، وهالة المادة المظلمة. في القسم <a href="#sec:correlation" data-reference-type="ref" data-reference="sec:correlation">4</a>، نصف الارتباطات بين دوران المجرة ودوران الهالة. في القسم <a href="#sec:correlation2" data-reference-type="ref" data-reference="sec:correlation2">5</a>، نعرض الارتباطات بين دوران الغاز ودوران النجوم. في القسم <a href="#sec:evolution" data-reference-type="ref" data-reference="sec:evolution">6</a>، نستكشف التأثيرات المحتملة للانضغاط الرطب (مرحلة تشكل نجمي مضغوط تمر بها العديد من المجرات عند انزياحات حمراء عالية) والاندماجات على ارتباط <span class="math inline">\(\lambda_{\rm gal}\)</span>-<span class="math inline">\(\lambda_{\rm halo}\)</span> (أو غيابه). في القسم <a href="#sec:size" data-reference-type="ref" data-reference="sec:size">7</a>، ندرس العلاقة بين حجم المجرة ونصف قطر الهالة الفيريلية. في القسم <a href="#sec:discussion" data-reference-type="ref" data-reference="sec:discussion">8</a>، نقارن نتائجنا بالدراسات السابقة. في القسم <a href="#sec:conclusion" data-reference-type="ref" data-reference="sec:conclusion">9</a>، نلخص الاستنتاجات.</p>
+</body>
+</html>

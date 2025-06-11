@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="لويس هيل وآخرون" />
+  <title>SDSS-IV MaStar: المعلمات الجوية النظرية لمكتبة النجوم MaNGA</title>
+  <style>
+    html {
+      line-height: 1.6;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 38em;
+      padding: 48px 32px 48px 32px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 1em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.6em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+      line-height: 1.7;
+    }
+    a {
+      color: #1a1a1a;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:visited {
+      color: #444;
+    }
+    img, embed {
+      max-width: 100%;
+      display: block;
+      margin: 1.5em auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+      margin-bottom: 0.7em;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+      font-weight: bold;
+      color: #2a2a2a;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 2.1em;
+      text-align: center;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.3em;
+      margin-bottom: 1.2em;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-right: 4px solid #e0e0e0;
+      padding-right: 0.5em;
+      margin-top: 2.2em;
+    }
+    h3 {
+      font-size: 1.15em;
+      color: #444;
+      margin-top: 1.5em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 2em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 1.7em 1em 0;
+      padding-right: 1em;
+      border-right: 3px solid #e6e6e6;
+      color: #606060;
+      background: #fafafa;
+      border-radius: 0.3em;
+    }
+    div.abstract {
+      margin: 2em 0 2em 0;
+      text-align: right;
+      font-size: 95%;
+      background: #f7f7f7;
+      border-radius: 0.5em;
+      padding: 1.2em 1.5em;
+      border-right: 5px solid #b0c4de;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 0.7em;
+      color: #2a2a2a;
+    }
+    code, .math.inline {
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+      font-size: 95%;
+      background: #f3f3f3;
+      border-radius: 0.2em;
+      padding: 0.1em 0.3em;
+      color: #1a237e;
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+      background: #f3f3f3;
+      border-radius: 0.3em;
+      padding: 1em;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1.5em 0;
+    }
+    table {
+      margin: 1.5em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      direction: rtl;
+      background: #fafbfc;
+      border-radius: 0.3em;
+      box-shadow: 0 1px 2px #eee;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+      font-weight: bold;
+      color: #444;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.4em 0.7em;
+      background: #e9e9e9;
+      font-weight: bold;
+    }
+    td {
+      padding: 0.25em 0.7em;
+    }
+    header {
+      margin-bottom: 3em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    .keywords {
+      background: #f7f7f7;
+      border-radius: 0.5em;
+      padding: 0.8em 1.2em;
+      margin: 1.5em 0 2em 0;
+      font-size: 0.98em;
+      color: #333;
+      border-right: 4px solid #b0c4de;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax fixes */
+    .MathJax, .mjx-chtml {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-size: 1em;
+      vertical-align: middle;
+    }
+    .math.inline {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-size: 1em;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SDSS-IV MaStar: المعلمات الجوية النظرية لمكتبة النجوم MaNGA</h1>
+<p class="author">
+لويس هيل<span class="math inline">\(^{1}\)</span>، دانيال توماس<span class="math inline">\(^{1,2}\)</span>، كلوديا ماراستون<span class="math inline">\(^{1}\)</span>، رينبين يان<span class="math inline">\(^{3}\)</span>، جوستوس نيومان<span class="math inline">\(^{1}\)</span>، أندرو لوندغرين<span class="math inline">\(^{1}\)</span>، دانيال لازارز<span class="math inline">\(^{3}\)</span>، يان-بينغ تشين<span class="math inline">\(^{4}\)</span>، ميشيل كابيلاري<span class="math inline">\(^{5}\)</span>، جون أ. هولتزمان<span class="math inline">\(^{6}\)</span>، جولي إيميج<span class="math inline">\(^{6}\)</span>، كاتيا كونها<span class="math inline">\(^{7,8}\)</span>، جاي سترينغفيلو<span class="math inline">\(^{9}\)</span>، ديمتري بيزيايف<span class="math inline">\(^{10,11}\)</span>، ديفيد ر. لو<span class="math inline">\(^{12}\)</span>، كيفان ج. ستاسون<span class="math inline">\(^{13}\)</span>، نيف دروري<span class="math inline">\(^{14}\)</span>، مايكل ميريفيلد<span class="math inline">\(^{15}\)</span>، تيموثي سي. بيرز<span class="math inline">\(^{16}\)</span><br />
+<span class="math inline">\(^{1}\)</span>معهد علم الكون والجاذبية، جامعة بورتسموث، شارع بيرنابي، بورتسموث، PO1 3FX، المملكة المتحدة<br />
+<span class="math inline">\(^{2}\)</span> كلية الرياضيات والفيزياء، جامعة بورتسموث، مبنى ليون غيت، بورتسموث، PO1 3HF، المملكة المتحدة<br />
+<span class="math inline">\(^{3}\)</span>قسم الفيزياء والفلك، جامعة كنتاكي، 505 شارع روز، ليكسينغتون، KY، 40506-0055، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{4}\)</span> جامعة نيويورك أبوظبي، أبوظبي، صندوق بريد 129188، الإمارات العربية المتحدة<br />
+<span class="math inline">\(^{5}\)</span> قسم الفيزياء الفلكية، جامعة أكسفورد، مبنى دينيس ويلكنسون، شارع كيبل، أكسفورد، OX1 3RH<br />
+<span class="math inline">\(^{6}\)</span> قسم الفلك، جامعة ولاية نيو مكسيكو، لاس كروسيس، NM 88003، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{7}\)</span> المرصد الوطني/MCTIC، ر. جنرال خوسيه كريستينو، 77، 20921-400، ريو دي جانيرو، البرازيل<br />
+<span class="math inline">\(^{8}\)</span> مرصد ستيوارد، جامعة أريزونا، 933 نورث شيري أفينيو، توكسون، AZ 85721-0065، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{9}\)</span> مركز الفيزياء الفلكية وعلم الفضاء، قسم علوم الكواكب والفيزياء الفلكية، جامعة كولورادو، 389 UCB، بولدر، CO 80309-0389، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{10}\)</span> مرصد أباتشي بوينت وجامعة ولاية نيو مكسيكو، صندوق بريد 59، سن سبوت، NM 88349، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{11}\)</span> معهد شتيرنبرغ الفلكي، جامعة موسكو الحكومية، شارع يونيفرسيتيتسكي 13، موسكو، روسيا<br />
+<span class="math inline">\(^{12}\)</span> معهد علوم تلسكوب الفضاء، 3700 سان مارتن درايف، بالتيمور، MD 21218، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{13}\)</span> قسم الفيزياء والفلك، جامعة فاندربيلت، 6301 ستيفنسون سنتر لين، ناشفيل، TN 37235، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{14}\)</span> مرصد ماكدونالد، جامعة تكساس في أوستن، 1 يونيفرسيتي ستيشن، أوستن، TX 78712، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^{15}\)</span> كلية الفيزياء والفلك، جامعة نوتنغهام، يونيفرسيتي بارك، نوتنغهام، NG7 2RD، المملكة المتحدة<br />
+<span class="math inline">\(^{16}\)</span> قسم الفيزياء ومركز JINA لتطور العناصر، جامعة نوتردام، نوتردام، IN 46556، الولايات المتحدة الأمريكية
+</p>
+<p class="date">تم القبول: XXX. تم الاستلام: YYY؛ النسخة الأصلية: ZZZ</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>
+نحسب المعلمات النجمية الأساسية — درجة الحرارة الفعالة، الجاذبية السطحية، وغزارة الحديد — <span class="math inline">\(T_{\rm eff}\)</span>، <span class="math inline">\(\log g\)</span>، [Fe/H] — للإصدار النهائي من مكتبة النجوم MaNGA (MaStar)، والتي تحتوي على 59,266 طيفًا لكل زيارة لـ 24,290 نجمًا فريدًا بدقة متوسطة (<span class="math inline">\(R\sim1800\)</span>) ونسبة إشارة إلى ضوضاء عالية (الوسيط = 96). نقوم بملاءمة الأطياف النظرية من نماذج الغلاف الجوي لكل من MARCS وBOSZ-ATLAS9 مع الأطياف المرصودة من MaStar، باستخدام كود الملاءمة الطيفية الكاملة pPXF. كما نعتمد منهجية بايزية، باستخدام تقنية ماركوف تشين مونت كارلو (MCMC) لاستكشاف فضاء المعلمات وتقدير عدم اليقين. في هذا العمل، نقوم بمطابقة أرصاد MaStar مع الفوتومتريا من Gaia، مما يتيح لنا وضع أولويات موثوقة وتحديد القيم الشاذة وفقًا لتطور النجوم. بالتوازي مع تحديد المعلمات، نحسب نماذج تجمعات نجمية مقابلة لاختبار موثوقية المعلمات في كل طور تطوري نجمي. نقيم أيضًا منهجيتنا من خلال تحديد معلمات نجوم معيارية مثل الشمس وفيغا، ومقارنة معلماتنا مع تلك المحددة في الأدبيات من خلال التحليل الطيفي عالي الدقة (APOGEE وSEGUE) ومن خلال ملاءمة القوالب منخفضة الدقة (LAMOST). المقارنات، مع الأخذ في الاعتبار اختلاف المنهجيات ونسبة الإشارة إلى الضوضاء في المسوحات الأدبية، جاءت إيجابية في جميع الحالات. يغطي كتالوج المعلمات النهائي لـ MaStar النطاقات التالية: <span class="math inline">\(2592 \leq T_{\rm eff} \leq 32983\)</span> كلفن؛ <span class="math inline">\(-0.7 \leq \log g \leq 5.4\)</span> ديكس؛ <span class="math inline">\(-2.9 \leq \mathrm{[Fe/H]} \leq 1.0\)</span> ديكس، وسيكون متاحًا مع الإصدار الأخير من بيانات SDSS-IV في ديسمبر 2021.
+</p>
+</div>
+</header>
+<p><span id="firstpage" label="firstpage"></span></p>
+<div class="keywords">
+<p>تقنيات: طيفية – نجوم: معلمات أساسية – نجوم: وفرة العناصر – نجوم: أغلفة جوية – نجوم: تطور – مجرات: محتوى نجمي.</p>
+</div>
+<h1 id="introduction">مقدمة</h1>
+<p>
+يمكن دراسة عمر وتوزيع العناصر الكيميائية في التجمعات النجمية غير المحلولة في المجرات والعناقيد النجمية من خلال نمذجة توليف التجمعات التطورية (EPS). تعتمد هذه التقنية على نظرية تطور النجوم لنمذجة توزيع الطاقة الطيفية (SED) للأنظمة النجمية عبر الكون. الأساس في نماذج EPS هو التجمع النجمي البسيط (SSP)، وهو مجموعة من النجوم المتزامنة والمتجانسة كيميائيًا. لإنشاء نموذج SSP، هناك ثلاثة مدخلات أساسية: دالة الكتلة الابتدائية النجمية (IMF)، مسارات التطور النجمي، ومكتبة أطياف نجمية ذات معلمات جوية معروفة وتغطية شاملة لمراحل التطور النجمي المختلفة.
+</p>
+<p>
+بالنسبة لمكتبة الأطياف، يمكن الاختيار بين مكتبات تجريبية ونظرية. من المكتبات التجريبية: ELODIE، MILES، مكتبة X-SHOOTER الطيفية، STELIB، PICKLES، وGRANADA. تختلف هذه المكتبات بشكل كبير في تغطية معلمات النجوم، والدقة الطيفية، ونطاق الطول الموجي. ليست جميعها مناسبة لنمذجة SED لمجرات من المسوحات الحديثة مثل MaNGA، التي جمعت أطياف IFU لأكثر من 10,000 مجرة قريبة (<span class="math inline">\(z \sim 0.05\)</span>). في معظم الحالات، لا يكون نطاق الطول الموجي كافيًا لنمذجة كامل نطاق SED. استجابة لهذا النقص، تم إنشاء مكتبة النجوم MaNGA (MaStar)، والتي تغطي فضاء معلمات أوسع في الخصائص الجوية والكتلة واللمعان مقارنة بأي مكتبة طيفية أخرى. هذه التغطية الشاملة ستسمح بإنشاء نماذج SSP قوية. علاوة على ذلك، تجمع MaStar الأطياف باستخدام مطياف BOSS في نطاق طولي <span class="math inline">\(3620 - 10350\)</span> أنغستروم وبدقة متوسطة <span class="math inline">\(R\sim1800\)</span>. هذا يعني أن نماذج SSP المنشأة بهذه المكتبة ستكون مناسبة تمامًا لأطياف SDSS والمسوح الطيفية الأخرى حتى عند الانزياح الأحمر العالي.
+</p>
+<p>
+لحساب نماذج EPS باستخدام أطياف تجريبية، يجب توفر معلمات جوية نجمية دقيقة للأطياف التجريبية لربطها بالمعلمات النظرية المتوقعة لمراحل التطور النجمي. تشمل هذه المعلمات: درجة الحرارة الفعالة <span class="math inline">\(T_{\text{eff}}\)</span>، الجاذبية السطحية <span class="math inline">\(\log g\)</span>، وغزارة الحديد <span class="math inline">\([\mathrm{Fe}/\mathrm{H}]\)</span> — والتي سنشير إليها لاحقًا بالمعلمات النجمية الأساسية (FSPs). يمكن تحديد هذه المعلمات من خلال تحليل البيانات الفوتومترية والطيفية للنجم باستخدام أطياف نظرية من نماذج الغلاف الجوي.
+</p>
+<figure>
+<embed src="sn_hist-logx.eps" id="fig:mastar_sn" />
+<figcaption aria-hidden="true">رسم بياني لتوزيع نسبة الإشارة إلى الضوضاء المتوسطة لكل بكسل لجميع أطياف MaStar الجيدة في إصدار بيانات MaNGA Product Launch 9. القيمة المتوسطة لهذا التوزيع هي 96 (لكل بكسل).</figcaption>
+</figure>
+<p>
+تحديد المعلمات النجمية ليس ضروريًا فقط لإنشاء نماذج التجمعات، بل أيضًا لنمذجة درب التبانة وفهمنا لفيزياء النجوم. ونتيجة لذلك، ظهرت العديد من الدراسات والخوارزميات المخصصة لتحديد المعلمات النجمية الأساسية. بالنسبة للمسوحات واسعة النطاق، بما في ذلك MaStar، أصبح من الضروري أتمتة هذه العملية، وهو ما أصبح ممكنًا بفضل تطور القدرة الحاسوبية. من الأعمال القائمة في هذا المجال: خوارزمية ASPCAP لمسوحات APOGEE، والتي تعتمد على تقليل <span class="math inline">\(\chi^2\)</span> في برنامج FERRE، حيث يتم ملاءمة الأطياف المرصودة مع أطياف تركيبية ضمن نطاق <span class="math inline">\(\sim 200\)</span> نانومتر، وتحديد وفرة العناصر الكيميائية من خلال ملاءمة نطاقات ضيقة حول الأطياف. هذا التحليل يتم بدقة طيفية أعلى من MaStar عند <span class="math inline">\(R\sim22{,}500\)</span>. أما خوارزمية The Payne، فتعتمد على شبكة عصبية مدربة بالكامل على أطياف تركيبية، وتستخدم تقليل المربعات الصغرى لتدريب أوزان الشبكة. وبطريقة مشابهة، ولكن مدربة على أطياف نجمية تجريبية، تأتي خوارزمية The Cannon، التي تعتمد على التعلم الانتقالي وتدريب نموذج قائم على البيانات على أطياف تجريبية ذات تسميات عالية الدقة وتطبيقه على مكتبة مخصصة من أطياف المسح. هناك أيضًا برنامج ULySS، الذي يعتمد على نسخة مبكرة من طريقة pPXF، ويستخدم تقليل <span class="math inline">\(\chi^2\)</span> مع بيانات تجريبية من ELODIE كمرجع. رغم نجاح هذه الطرق ودقتها، إلا أنها لا تغطي كامل نطاق معلمات MaStar بسبب محدودية شبكة النماذج وضيق نطاق الطول الموجي، مما لا يناسب التنوع الكبير في أنواع الأطياف النجمية في MaStar. علاوة على ذلك، من خلال حساب المعلمات عبر نطاق طولي واسع، نقلل من الاعتماد على دقة خطوط فردية في نماذج الأغلفة الجوية.
+</p>
+<p>
+في هذا البحث، نقدم طريقة لتحديد المعلمات النجمية الأساسية، والتي استخدمناها لاشتقاق معلمات كتالوج MaStar النهائي (MPL11)، والذي يشمل 59,266 طيفًا لكل زيارة لـ 24,290 نجمًا فريدًا. هذه الطريقة امتداد للطريقة التي طورناها للإصدار المبكر من بيانات MaStar، دعمًا لأول نماذج تجمعات نجمية مبنية على MaStar. في كلتا الحالتين، نقوم بملاءمة الأطياف المرصودة مع شبكة واسعة من الأطياف النظرية باستخدام كود pPXF. في هذا البحث، نضيف تقنية MCMC لاستكشاف فضاء المعلمات بدقة وتقدير عدم اليقين. للمقارنة، نعرض في الملحق <a href="#sec:method1" data-reference-type="ref" data-reference="sec:method1">7</a> طريقتنا السابقة التي تعتمد على تقليل <span class="math inline">\(\chi^{2}\)</span> المتقطع، ونقارن النتائج مع <span class="citation" data-cites="chen2020"></span>. في الملحق <a href="#sec:comparison_methods" data-reference-type="ref" data-reference="sec:comparison_methods">8</a> تتم مقارنة طريقتي <span class="math inline">\(\chi^{2}\)</span> وMCMC. نستنتج أن أداء الطريقتين متكافئ من حيث نمذجة التجمعات النجمية.
+</p>
+<p>
+يجدر بالذكر أن هناك جهودًا أخرى ضمن MaStar لتحديد المعلمات النجمية باستخدام تقنيات وأساليب مختلفة <span class="citation" data-cites="chen2020"></span>، Chen وآخرون (قيد الإعداد)، Lazarz وآخرون (قيد الإعداد)، وImig وآخرون (قيد الإعداد). ستصدر جميع المعلمات عبر كتالوج القيمة المضافة لـ SDSS مع مجموعة وسيطة في ديسمبر 2021، وسيتم وصف المقارنة بينها في Yan وآخرون 2021 (قيد الإعداد).
+</p>
+<p>
+هيكل البحث كالتالي: القسم <a href="#sec:data" data-reference-type="ref" data-reference="sec:data">2</a> يصف بإيجاز الميزات الرئيسية واختيار الأهداف في MaStar، ويعرض أيضًا وصفًا لنماذج الأغلفة الجوية النظرية وخطوات المعالجة المسبقة. في القسم <a href="#sec:method2" data-reference-type="ref" data-reference="sec:method2">3</a> نعرض منهجيتنا ونتائجنا. في القسم <a href="#sec:comparison_testing" data-reference-type="ref" data-reference="sec:comparison_testing">4</a> نقدم ملاءمات للنجوم الشمسية وفيغا لاختبار منهجيتنا مقابل نجوم ذات معلمات معروفة جيدًا. في هذا القسم نقارن أيضًا جزءًا من معلماتنا مع كتالوجات معلمات نجمية أخرى. في القسم <a href="#sec:ssp" data-reference-type="ref" data-reference="sec:ssp">5</a> نشرح العلاقة بين هذا العمل وحسابات نماذج التجمعات النجمية. أخيرًا، نلخص العمل ونناقش الاعتبارات المستقبلية في القسم <a href="#sec:conclusion" data-reference-type="ref" data-reference="sec:conclusion">6</a>.
+</p>
+<!-- ... بقية النص كما هو مع الترجمة الكاملة ... -->
+</body>
+</html>

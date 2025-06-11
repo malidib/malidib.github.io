@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="David M. Russell" />
+  <meta name="author" content="Ahlam Al Qasim" />
+  <meta name="author" content="Federico Bernardini" />
+  <meta name="author" content="Richard M. Plotkin" />
+  <meta name="author" content="Fraser Lewis" />
+  <meta name="author" content="Karri I. I. Koljonen" />
+  <meta name="author" content="Yi-Jung Yang" />
+  <title>المقدمات البصرية لانفجارات ثنائيات الأشعة السينية ذات الثقوب السوداء: تطور طيف النفاثة السنكروترونية في Swift J1357.2–0933</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 38em;
+      padding: 50px 50px 50px 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.95em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img, embed {
+      max-width: 100%;
+      display: block;
+      margin: 1.5em auto;
+      box-shadow: 0 2px 8px #e0e0e0;
+      border-radius: 6px;
+      background: #fff;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+      font-weight: bold;
+      color: #2a2a2a;
+    }
+    h1.title {
+      font-size: 2.1em;
+      margin-bottom: 0.2em;
+      color: #1a3a5d;
+      letter-spacing: 0.01em;
+    }
+    h1#sec\:intro {
+      font-size: 1.5em;
+      color: #1a3a5d;
+    }
+    h2 {
+      font-size: 1.25em;
+      color: #1a3a5d;
+      border-right: 4px solid #e0e0e0;
+      padding-right: 0.5em;
+      margin-top: 2em;
+    }
+    h3 {
+      font-size: 1.1em;
+      color: #1a3a5d;
+      margin-top: 1.5em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-right: 1em;
+      border-right: 2px solid #e6e6e6;
+      color: #606060;
+      background: #f7f7f7;
+      border-radius: 4px;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: right;
+      font-size: 90%;
+      background: #f5f8fa;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      padding: 1.2em 1.5em;
+      box-shadow: 0 1px 6px #e0e0e0;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+      color: #1a3a5d;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 90%;
+      margin: 0;
+      background: #f7f7f7;
+      border-radius: 3px;
+      padding: 0.1em 0.3em;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+      background: #f7f7f7;
+      border-radius: 4px;
+      padding: 1em;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1.5em auto;
+      border-collapse: collapse;
+      width: 98%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      background: #fafbfc;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px #e0e0e0;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+      font-weight: bold;
+      color: #1a3a5d;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.4em 0.7em 0.4em 0.7em;
+      background: #eaf1f7;
+      color: #1a3a5d;
+      font-weight: bold;
+      text-align: center;
+    }
+    td {
+      padding: 0.25em 0.7em 0.4em 0.7em;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    td:first-child, th:first-child {
+      text-align: right;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .math.inline {
+      font-family: 'Latin Modern Math', 'Cambria Math', 'Noto Sans Math', serif;
+      font-size: 1em;
+      direction: ltr;
+      unicode-bidi: embed;
+      background: none;
+      color: #1a1a1a;
+    }
+    .thebibliography {
+      font-size: 0.95em;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 1.2em 1.5em;
+      margin: 2em 0;
+      direction: ltr;
+      text-align: left;
+      color: #222;
+      font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+    }
+    .thebibliography p {
+      margin: 0.2em 0;
+      line-height: 1.6;
+    }
+    .center {
+      text-align: center;
+    }
+    .footnotes {
+      font-size: 0.9em;
+      color: #444;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 1em 1.5em;
+      margin: 2em 0 0 0;
+    }
+    .footnotes hr {
+      margin: 0.5em 0 1em 0;
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      background: none;
+      height: 1px;
+    }
+    .footnotes ol {
+      padding-right: 1.5em;
+    }
+    .footnote-ref {
+      font-size: 0.8em;
+      vertical-align: super;
+    }
+    .footnote-back {
+      text-decoration: none;
+    }
+    figure, .figure* {
+      margin: 2em auto;
+      text-align: center;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 1em 0.5em;
+      box-shadow: 0 1px 6px #e0e0e0;
+      max-width: 98%;
+    }
+    figcaption {
+      font-size: 0.95em;
+      color: #444;
+      margin-top: 0.7em;
+      text-align: center;
+    }
+    /* MathJax override for better Arabic rendering */
+    .mjx-chtml {
+      direction: ltr !important;
+      unicode-bidi: embed !important;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">المقدمات البصرية لانفجارات ثنائيات الأشعة السينية ذات الثقوب السوداء: تطور طيف النفاثة السنكروترونية في Swift J1357.2–0933</h1>
+<p class="author">ديفيد إم. راسل</p>
+<p class="author">أحلام القاسم</p>
+<p class="author">فيديريكو برنارديني</p>
+<p class="author">ريتشارد إم. بلوتكين</p>
+<p class="author">فريزر لويس</p>
+<p class="author">كاري آي. آي. كوليونين</p>
+<p class="author">يي-جونغ يانغ</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>نقدم هنا ست سنوات من الرصد البصري لنظام ثنائي الأشعة السينية المرشح لاحتواء ثقب أسود Swift J1357.2–0933، وذلك خلال فترة انفجاره المكتشف عام 2011 وما بعدها. على هذه المقاييس الزمنية الطويلة، يهيمن على منحنى الضوء في حالة السكون تغيرات عالية السعة وسريعة (من ثوانٍ إلى أيام) تمتد على مدى <span class="math inline">\( \sim 2 \)</span> قدر، مع اتجاه تصاعدي في متوسط التدفق الضوئي من 2012 إلى 2017، وهو أكثر انحدارًا من أي نظام ثنائي أشعة سينية آخر تم رصده حتى الآن (0.17 قدر في السنة<span class="math inline">\(^{-1}\)</span>). لقد رصدنا بداية الارتفاع البصري لانفجار 2017 في Swift J1357.2–0933، ونشير إلى أن الانفجار بدأ بين 1 و6 أبريل 2017. مثل هذا الارتفاع الحاد في التدفق البصري قبل الانفجار متوقع وفقًا لنماذج عدم استقرار القرص، إلا أن التغيرات عالية السعة في حالة السكون ليست كذلك. أظهرت دراسات سابقة أن الخصائص الطيفية والاستقطابية وسرعة التغير في Swift J1357.2–0933 في حالة السكون تتوافق مع انبعاث سنكروتروني من نفاثة مدمجة وضعيفة. وجدنا أن الطيف البصري/تحت الأحمر المتغير مسؤول عن زيادة السطوع: حيث يتطور الطيف الأحمر الحاد قبل وبعد انفجار 2011 مباشرة إلى طيف أكثر سطوعًا واستواءً منذ 2013. ويبدو أن هذا التطور الطيفي ناتج عن انتقال نقطة الانكسار الطيفي للنفاثة من تحت الأحمر في 2012 إلى البصري في 2013، ثم عودتها إلى تحت الأحمر بحلول 2016–2017 مع بقاء البصري ساطعًا نسبيًا. يعد Swift J1357.2–0933 مصدرًا ذا قيمة لدراسة فيزياء نفاثات الثقوب السوداء عند معدلات تراكم منخفضة جدًا، وربما يكون المصدر الوحيد في حالة السكون الذي يمكن فيه رصد خصائص النفاثة البصرية بشكل منتظم.</p>
+</div>
+</header>
+<h1 id="sec:intro">مقدمة</h1>
+<p>من المعروف منذ أكثر من عقد أن الثقوب السوداء المتراكمة (BHs) يمكنها إطلاق نفاثات عند معدلات تراكم منخفضة جدًا، عندما تكون لمعان الأشعة السينية أقل من <span class="math inline">\( \sim 10^{-5} \)</span> من لمعان إدينغتون. وقد تم رصد انبعاثات راديوية من نفاثات أطلقتها ثنائيات الأشعة السينية منخفضة الكتلة (LMXBs) في حالة السكون (بلمعان أشعة سينية <span class="math inline">\( \sim 10^{30} \)</span>–<span class="math inline">\( 10^{33.5} \)</span> إرج ثانية<span class="math inline">\(^{-1}\)</span>) في عدد متزايد من الأنظمة، جميعها تحتوي على مرشحين لثقوب سوداء <span class="citation" data-cites="hjelet00 gallet05 gallet06 gallet14 millet11 dzibet15 market15"></span>. تقضي ثنائيات الأشعة السينية منخفضة الكتلة معظم وقتها في حالة السكون بين الانفجارات، وبالتالي يُفترض أنها (على الأقل في الأنظمة التي تحتوي على ثقوب سوداء) تطلق نفاثات لمعظم أعمارها. ومع ذلك، لا توجد حتى الآن دراسات راديوية طويلة الأمد لنفاثات LMXB في حالة السكون، لأنها غالبًا ما تكون خافتة جدًا بحيث لا يمكن رصدها بانتظام باستخدام المراصد الراديوية الحالية. معظم أنظمة الثقوب السوداء تمتلك كثافات تدفق عند مستوى <span class="math inline">\( \mu \)</span>Jy، مع وجود بضع رصدات فقط لمصدر ما على مدى عقود <span class="citation" data-cites="gallet06 gallet14 riboet17"></span>. ونتيجة لذلك، لا تزال سلوكيات وخصائص النفاثات في حالة السكون من الثقوب السوداء في مجرتنا غير معروفة بشكل جيد.</p>
+<p>عند الأطوال الموجية البصرية، كشفت دراسات الرصد الطويلة الأمد للثنائيات الساكنة عن التغير الإهليلجي لنجم الرفيق في بعض الأنظمة، مما أدى إلى قياسات للمعاملات الأساسية للنظام مثل الكتل وزوايا الميل المداري <span class="citation" data-cites="casajo14"></span>. في أنظمة أخرى، تظهر وميض بصري أو توهجات و/أو تغيرات ناتجة عن تدفق التراكم <span class="citation" data-cites="yanget12 koljet16 wuet16"></span>، وبعضها يظهر مزيجًا من هذه المساهمات <span class="citation" data-cites="zuriet03 shahet05 cantet10 macdet14 bernet16"></span>. نظريًا، يتنبأ نموذج عدم استقرار القرص <span class="citation" data-cites="dubuet01 laso01 hameet17"></span> بأنه بين الانفجارات، تزداد درجة حرارة وكثافة سطح قرص التراكم مع تراكم المادة فيه، مما يؤدي إلى زيادة التدفق البصري. لم يُرصد هذا السلوك إلا مؤخرًا في بعض ثنائيات الأشعة السينية منخفضة الكتلة من خلال رصد بصري طويل الأمد (لسنوات) في حالة السكون <span class="citation" data-cites="yanget12 bernet16 koljet16 wuet16"></span>.</p>
+<p>في أحد أنظمة الثقوب السوداء، Swift J1357.2–0933، أظهر رصد راديوي عميق حدًا أعلى بمقدار <span class="math inline">\( 3\sigma_{\rm rms} \)</span> قدره 3.9 <span class="math inline">\( \mu \)</span>Jy خلال السكون، بينما تم رصد انبعاث سنكروتروني، يُحتمل أن يكون من النفاثة، عند الأطوال الموجية البصرية وتحت الحمراء <span class="citation" data-cites="plotet16"></span>. وبينما تم رصد انبعاث سنكروتروني بصري/تحت الأحمر في عدد من ثنائيات الثقوب السوداء في حالة السكون <span class="citation" data-cites="gallet07 geliet10 russet13"></span> وفي نظام واحد لنجم نيوتروني <span class="citation" data-cites="baglet13"></span>، إلا أن Swift J1357.2–0933 هو الوحيد الذي يبدو أن هذا الانبعاث يهيمن فيه على الطيف البصري/تحت الأحمر في حالة السكون. التغيرات البصرية عالية السعة على مدى ثوانٍ إلى ساعات، وتوزيع طاقة طيفي أحمر أو مستوٍ، ودلائل على استقطاب ذاتي <span class="citation" data-cites="shahet13 plotet16 russet16"></span> كلها خصائص فريدة لهذا النظام. لا يمكن أن تنتج هذه الخصائص عن تدفق التراكم الأساسي أو نجم الرفيق، بينما يمكن للانبعاث من النفاثة تفسيرها جميعًا. وقد أدى ذلك إلى الاستنتاج بأن النفاثات تُطلق باستمرار خلال السكون. بالفعل، وجد <span class="citation" data-cites="plotet16"></span> أن توزيع الطاقة الطيفي البصري/تحت الأحمر كان مستويًا (<span class="math inline">\( \alpha \approx 0 \)</span>، حيث <span class="math inline">\( F_{\nu} \propto \nu^{\alpha} \)</span>)، ويتحول إلى ميل أكثر حدة عند الأطوال الموجية الأقصر في النطاق البصري–فوق البنفسجي، بما يتوافق مع نقطة الانكسار الطيفي في طيف النفاثة بين الانبعاث السنكروتروني الرقيق بصريًا والسميك جزئيًا والممتص ذاتيًا. وقد تم تحديد هذا الانكسار في عدد من ثنائيات الأشعة السينية منخفضة الكتلة خلال الانفجارات (انظر <span class="citation" data-cites="russet13"></span> والمراجع الواردة فيه، وأيضًا <span class="citation" data-cites="russet14 koljet15 diazet17"></span>). ويعد Swift J1357.2–0933 النظام الوحيد الذي تم فيه قياس "انكسار النفاثة" بشكل موثوق في نظام ثنائي أشعة سينية ساكن.</p>
+<p>نقدم هنا ست سنوات من الرصد البصري لـ Swift J1357.2–0933، وصولاً إلى الانفجار المكتشف حديثًا عام 2017 <span class="citation" data-cites="dincet17 draket17 sivaet17"></span>. لقد رصدنا بداية ارتفاع الانفجار في مرحلة أبكر مما أوردته <span class="citation" data-cites="draket17"></span>. كما جمعنا جميع البيانات البصرية/تحت الحمراء المتوفرة لدراسة سلوك التدفق الطيفي البصري/تحت الأحمر في حالة السكون قبل وبعد انفجار 2011 <span class="citation" data-cites="krimet11a"></span>.</p>
+<div class="figure*">
+<embed src="Swift-J1357-lc.eps" style="height:11cm" />
+</div>
+<h1 id="data-collection">جمع البيانات</h1>
+<h2 id="faulkes-telescope-monitoring">رصد تلسكوب فولكس</h2>
+<p>قمنا بحملة رصد طويلة الأمد لـ Swift J1357.2–0933 باستخدام تلسكوبي فولكس الروبوتيين (شمالًا في هاليكالا، ماوي، هاواي، الولايات المتحدة، وجنوبًا في سيدينغ سبرينغ، أستراليا) منذ انفجاره عام 2011. وتندرج هذه الرصودات ضمن حملة رصد مستمرة لحوالي <span class="math inline">\( \sim 40 \)</span> من ثنائيات الأشعة السينية منخفضة الكتلة <span class="citation" data-cites="lewiet08"></span>. أُجريت معظم الرصودات باستخدام مرشح بيسل <span class="math inline">\( I \)</span>، وبعضها بمرشح بيسل <span class="math inline">\( R \)</span> في 2011–2012، وبعضها بمرشحات مسح سلون الرقمي <span class="math inline">\( g' \)</span>، <span class="math inline">\( r' \)</span>، <span class="math inline">\( i' \)</span>، <span class="math inline">\( z' \)</span> في 2016–2017. وقد أُجريت الأخيرة خصيصًا لدراسة توزيع الطاقة الطيفي البصري وقياس دليل الطيف. كلا التلسكوبين مزودان بكاميرات بدقة 0.30 ثانية قوسية لكل بكسل ومجال رؤية <span class="math inline">\( 10 \times 10 \)</span> دقيقة قوسية، باستثناء فبراير 2011 حيث كانت الكاميرات بدقة 0.28 ثانية قوسية لكل بكسل ومجال رؤية 4.8 دقيقة قوسية. رُصد المصدر في 103 صورة بين فبراير 2011 ومارس 2017، 79 منها بمرشح بيسل <span class="math inline">\( I \)</span>.</p>
+<p>كما نقدم رصدًا لارتفاع انفجار 2017. أُخذت البيانات في أبريل 2017 باستخدام تلسكوبي فولكس 2 متر وبعض تلسكوبات شبكة لاس كومبريس (LCO) 1 متر: في سيرو تولولو (تشيلي) ومرصد جنوب أفريقيا الفلكي (SAAO؛ ساذرلاند، جنوب أفريقيا). استُخدمت المرشحات <span class="math inline">\( u' \)</span>، <span class="math inline">\( g' \)</span>، <span class="math inline">\( r' \)</span>، <span class="math inline">\( i' \)</span>، <span class="math inline">\( z' \)</span>، و<span class="math inline">\( I \)</span>، وكانت كاميرات التلسكوبات 1 متر بدقة 0.39 ثانية قوسية لكل بكسل ومجال رؤية <span class="math inline">\( \sim 26.5 \times 26.5 \)</span> دقيقة قوسية.</p>
+<p>تم إجراء الفوتومتريا باستخدام <span class="smallcaps">PHOT</span> في <span class="smallcaps">IRAF</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> وتمت معايرة التدفق باستخدام مقادير SDSS لعدة نجوم في الحقل، من الإصدار الثاني عشر لبيانات SDSS <span class="citation" data-cites="alamet15"></span>. استُخرجت مقادير بيسل <span class="math inline">\( I \)</span> و<span class="math inline">\( R \)</span> لنجوم الحقل من مقادير SDSS الخاصة بها، معتمدين على تحويلات الألوان لـ <span class="citation" data-cites="jordet06"></span>. أوردنا أحد مقادير <span class="math inline">\( I \)</span> في <span class="citation" data-cites="russet16"></span> والذي كان متزامنًا تقريبًا مع رصدات استقطابية تحت الحمراء القريبة؛ أما بقية بيانات فولكس فهي جديدة في هذا البحث.</p>
+<h2 id="archival-data-from-transient-surveys">بيانات أرشيفية من مسوحات المتغيرات</h2>
+<p>لدى Swift J1357.2–0933 عدد 52 رصدًا بصريًا في نطاق <span class="math inline">\( V \)</span> من مسح كاتالينا للمتغيرات في الزمن الحقيقي <span class="citation" data-cites="draket09"></span> من يناير 2008 حتى يونيو 2013 (بما في ذلك بعض رصدات الانفجار عام 2011). رقم تعريف المصدر في CRTS هو MLS110301:135717-093239 <span class="citation" data-cites="draket17"></span>. كما رُصد Swift J1357.2–0933 بواسطة كتالوج iPTF <span class="citation" data-cites="ofeket12"></span> في 23 فبراير 2014 (خلال السكون). أُجريت رصدتان باستخدام مرشح PTF <em>Mould-R</em>، وهو مشابه في شكله لمرشح SDSS <span class="math inline">\( r' \)</span>، لكنه منحرف بمقدار 27 <span class="math inline">\( \unicode{x212B} \)</span> نحو الأحمر. هذا فرق صغير، واعتبرنا هذه المقادير كمقادير <span class="math inline">\( r' \)</span> لـ SDSS. أجرينا الفوتومتريا الفتوحية على صور PTF باستخدام نصف قطر فتحة 3 بكسل (3 ثوان قوسية). تم رصد المصدر في كلتا الصورتين.</p>
+<h2 id="archival-data-from-the-literature">بيانات أرشيفية من الأدبيات</h2>
+<p>أُجري بحث في الأدبيات لجمع قياسات الفوتومتريا البصرية/تحت الحمراء خلال السكون (وبعضها خلال الانفجار). تمتد البيانات <span class="citation" data-cites="rauet11 krimet11b corret13 shahet13 armset14 mataet15 wengzh15 plotet16 russet16"></span> على نطاق طولي موجي من 193 نانومتر في فوق البنفسجي القريب إلى 4.6 <span class="math inline">\( \mu \)</span>م في تحت الأحمر. من بين الأجهزة والتلسكوبات الأخرى التي رصدت Swift J1357.2–0933: تلسكوب SDSS 2.5 متر في مرصد أباتشي بوينت (الولايات المتحدة)، تلسكوب MPI/ESO 2.2 متر في مرصد لا سيلا (تشيلي) المزود بجهاز GROND، تلسكوب IAC80 0.82 متر في مرصد تيد (تنريفي، إسبانيا)، وعدة تلسكوبات في مرصد روكي دي لوس موتشاتشوس، لا بالما (إسبانيا): تلسكوب جران كناريا 10.4 متر، تلسكوب ويليام هيرشل 4.2 متر، تلسكوب الشمال البصري 2.6 متر، تلسكوب إسحاق نيوتن 2.5 متر، تلسكوب ليفربول 2.0 متر، وتلسكوب ميركاتور 1.2 متر. كما أدرجنا أول رصد للانفجار عام 2017 بواسطة CRTS-II في نطاق <span class="math inline">\( V \)</span> <span class="citation" data-cites="draket17"></span>. جميع المقادير من الأدبيات، ومسوح المتغيرات، ورصدنا بتلسكوب فولكس موضحة في الشكل 1.</p>
+<h1 id="results-and-analysis">النتائج والتحليل</h1>
+<p>معظم ثنائيات الأشعة السينية منخفضة الكتلة تتغير في حالة السكون ببضعة أعشار من القدر، بسبب التغير الإهليلجي لنجم الرفيق و/أو نشاط تراكم ضعيف. في الشكل 1، نلاحظ أن Swift J1357.2–0933 يظهر تغيرات طويلة الأمد وعالية السعة في التدفق البصري/تحت الأحمر خلال السكون. تتراوح مقادير <span class="math inline">\( I \)</span> بين <span class="math inline">\( I \sim 21.1 \)</span> و<span class="math inline">\( I \sim 19.0 \)</span> خلال السكون (أي تغير بمقدار سبعة أضعاف في التدفق)، وهو أكبر بكثير مما يُتوقع من التغيرات الإهليلجية لنجم الرفيق. لذا، يجب أن يكون معظم الانبعاث ناتجًا عن تدفق التراكم أو النفاثة أو إعادة معالجة الأشعة السينية. بينما بدأ رصدنا بتلسكوب فولكس خلال انفجار 2011، فإن العديد من رصدات CRTS سبقت ذلك، وتظهر تغيرات في نطاق <span class="math inline">\( V \)</span> تقارب 2 قدر في تلك الفترات المبكرة. ما زلنا نعتبر المصدر في حالة سكون رغم التغيرات القوية، لأن لمعان الأشعة السينية منخفض جدًا؛ <span class="math inline">\( L_{\rm X} \)</span> (0.5-10 keV) <span class="math inline">\( \sim 8 \times 10^{29} \)</span> – <span class="math inline">\( 1 \times 10^{31} \)</span> إرج ثانية<span class="math inline">\(^{-1}\)</span> في يوليو 2013، حسب المسافة إلى المصدر <span class="citation" data-cites="armset14"></span>.</p>
+<figure>
+<embed src="flux-freq-all.eps" style="height:7.05cm" />
+<figcaption aria-hidden="true">توزيعات الطاقة الطيفية البصرية/تحت الحمراء (OIR SEDs) مبنية من فترات زمنية مختلفة كما هو موضح في المفتاح. جميع التوزيعات من فترات السكون باستثناء MJD 55580–55581 وMJD 55593، حيث كانتا خلال المراحل المبكرة من انفجار 2011.</figcaption>
+</figure>
+<div class="figure*">
+<embed src="flux-freq-1.eps" style="height:4.2cm" /> <embed src="flux-freq-2.eps" style="height:4.2cm" /> <embed src="flux-freq-3.eps" style="height:4.2cm" /><br />
+<embed src="flux-freq-4.eps" style="height:4.2cm" /> <embed src="flux-freq-6.eps" style="height:4.2cm" /> <embed src="flux-freq-7.eps" style="height:4.2cm" /><br />
+<embed src="flux-freq-8.eps" style="height:4.2cm" /> <embed src="flux-freq-9.eps" style="height:4.2cm" /> <embed src="flux-freq-10.eps" style="height:4.2cm" /><br />
+<embed src="flux-freq-12.eps" style="height:4.2cm" /> <embed src="flux-freq-13.eps" style="height:4.2cm" /> <embed src="flux-freq-14.eps" style="height:4.2cm" /><br />
+<embed src="flux-freq-15.eps" style="height:4.2cm" /> <embed src="flux-freq-16.eps" style="height:4.2cm" /> <embed src="flux-freq-17.eps" style="height:4.2cm" />
+</div>
+<p>في عدة تواريخ (حيث أُخذت البيانات في نفس اليوم الفلكي المعدل MJD)، تتوفر مقادير في مرشحات متعددة، لذا نبني أدناه توزيعات الطاقة الطيفية البصرية/تحت الحمراء (OIR SEDs) لاستكشاف تطور الطيف. في بعض التواريخ استُخدم مرشح واحد أو عدد قليل فقط، لكن هناك رصدات أخرى بمرشحات مختلفة أُخذت ضمن فترات زمنية معينة. في هذه الحالات، نبني توزيعات الطاقة الطيفية على مدى فترات زمنية تتراوح بين 2 إلى 176 يومًا. يسمح لنا تطور هذه التوزيعات بدراسة تغير شكل الطيف على مقاييس زمنية أطول من تلك الفترات. شكل الطيف وسرعة تغيره يعطيان مؤشرات حول أصل الانبعاث والتغيرات عالية السعة. التغيرات السريعة <span class="citation" data-cites="shahet13"></span> ستسبب بعض التشتت في التوزيعات لأي بيانات ليست متزامنة تمامًا. ومع ذلك، يبدو أن التطور طويل الأمد للطيف واضح وذو سعة أعلى (يمتد على مرتبة واحدة في التدفق) من التغيرات السريعة <span class="citation" data-cites="shahet13"></span>.</p>
+<p>تم تصحيح البيانات من أثر الامتصاص بين النجمي بنفس الطريقة الواردة في <span class="citation" data-cites="russet16"></span>. تم اعتماد قيمة الامتصاص <span class="math inline">\( A_v = 0.124 \)</span> <span class="citation" data-cites="armaet13 corret16"></span>، وأُخذت معاملات الامتصاص المعتمدة على الطول الموجي من <span class="citation" data-cites="cardet89"></span>. لحساب التوزيعات، حسبنا لوغاريتم كثافة التدفق <span class="math inline">\( \log_{10}(F_{\nu}) \)</span> (بالملي يانسكتروم). خطأ اللوغاريتم هو <span class="math inline">\( \Delta (\log_{10}(F_{\nu})) = 0.4 ~\Delta m \)</span>، حيث <span class="math inline">\( \Delta m \)</span> هو خطأ المقدار.</p>
+<p><embed src="lc-alpha.eps" style="height:8.7cm" /> <embed src="lc-2017.eps" style="height:8.7cm" /></p>
+<p>تُعرض التوزيعات الطيفية البصرية/تحت الحمراء في الشكلين 2 و3. يظهر طيف المصدر أكثر زرقة (<span class="math inline">\( \alpha &gt; 0 \)</span>) أثناء الانفجار وأكثر احمرارًا (<span class="math inline">\( \alpha &lt; 0 \)</span>) في السكون، كما أورد <span class="citation" data-cites="shahet13"></span> أولاً. خلال السكون، تمتد بيانات تحت الأحمر القريب (عند <span class="math inline">\( \log (\nu/\mathrm{Hz}) &lt; 14.4 \)</span>) على نطاق أصغر من كثافات التدفق مقارنة بالبيانات البصرية وفوق البنفسجية (<span class="math inline">\( \log (\nu/\mathrm{Hz}) &gt; 14.4 \)</span>؛ انظر الشكل 2). كما تبدو بيانات تحت الأحمر القريب أكثر استواءً (<span class="math inline">\( \alpha \sim 0 \)</span>) من البيانات البصرية (<span class="math inline">\( \alpha &lt; 0 \)</span>). يمكن دراسة تطور الطيف في الشكل 3، حيث يُعرض كل توزيع في لوحة منفصلة، مع توزيعَين ممثلَين مرسومَين بخط متصل للمقارنة. هذان التوزيعان من MJD 53881 (أول بيانات في 2006 حيث كان المصدر خافتًا وأحمر <span class="citation" data-cites="shahet13"></span>)، ومن MJD 56737–56738 (توزيع طيفي واسع النطاق ومتزامن تقريبًا أُورد في <span class="citation" data-cites="plotet16"></span> عندما كان المصدر أكثر سطوعًا ومتوافقًا مع طيف نفاثة مع انكسار عند <span class="math inline">\( \nu_{\rm b} \sim (2\text{--}5) \times 10^{14} \)</span> هرتز).</p>
+<p>يظهر توزيعان (MJD 55580–55581 وMJD 55593) بيانات من صعود وقمة انفجار 2011. قبل وبعد الانفجار مباشرة، يبدو التوزيع الطيفي البصري/تحت الأحمر أحمر وحاد. على وجه الخصوص، التوزيعات بين MJD 55810 و56093 (سبتمبر 2011–يونيو 2012) تتوافق مع التوزيع الذي حصل عليه SDSS عام 2006 (MJD 53881). ثم، بين MJD 56093 وMJD 56362 (يونيو 2012–مارس 2013) يتطور الطيف، تزداد التدفقات البصرية، ويصبح الطيف أكثر استواءً. لبقية التوزيعات (2013–2017)، يكون الطيف قريبًا من طيف النفاثة مع الانكسار كما في <span class="citation" data-cites="plotet16"></span> من MJD 56737–56738 (مارس 2014)، مع ميل طفيف نحو الاحمرار في 2016–2017. آخر توزيع طيفي في السكون أُخذ في 8 فبراير 2017 (MJD 57792)، قبل شهرين فقط من صعود انفجار 2017.</p>
+<p>تمت معايرة زيادة التدفق البصري في السكون بين 2011 و2017 في الشكل 4 (اللوحات العليا). بالنسبة للبيانات الساكنة بعد انفجار 2011، قمنا بملاءمة منحنى الضوء (log(كثافة التدفق) في نطاق <span class="math inline">\( I,i' \)</span>) بدالة خطية ووجدنا زيادة ملحوظة في التدفق على مدى 5.1 سنوات من البيانات. قسنا معدل زيادة قدره <span class="math inline">\( 0.17 \pm 0.03 \)</span> قدر في السنة<span class="math inline">\(^{-1}\)</span> (زيادة أسية في التدفق، وزيادة خطية في المقدار). كل توزيع طيفي في الشكل 3 تم ملاءمته بقانون قوة واحد، ودليل الطيف الناتج موضح في اللوحة التالية من الشكل 4. بالنسبة لتوزيع MJD 56737–56738، تم ملاءمة البيانات من <span class="math inline">\( i' \)</span> إلى <span class="math inline">\( K_{\rm s} \)</span> فقط، لأن التدفقات انخفضت عند ترددات أعلى من انكسار النفاثة <span class="citation" data-cites="plotet16"></span>. في بقية التواريخ، يمكن ملاءمة التوزيع بقانون قوة واحد؛ أما القانون المكسور فسيؤدي غالبًا إلى أخطاء كبيرة في المعاملات بسبب قلة النقاط. بالنسبة لتوزيعات MJD 56086–56093 و56834–56841، كانت أخطاء البيانات كبيرة، مما أدى إلى تقديرات ضعيفة لـ <span class="math inline">\( \alpha \)</span>، وتم استبعادها من الشكل 4. وجدنا أن <span class="math inline">\( \alpha \)</span> يتغير بين <span class="math inline">\( \sim -2.5 \)</span> و0 في السكون، مع دليل أكثر احمرارًا عندما كان المصدر أكثر خفوتًا، كما بعد انفجار 2011 مباشرة. قبل انفجار 2017 مباشرة، كان دليل الطيف <span class="math inline">\( \alpha \sim -1 \)</span>، متوافقًا مع السنكروترون الرقيق بصريًا، وتم قياس دليل مشابه قبل انفجار 2011.</p>
+<p>في اللوحة السفلية من الشكل 4 نعرض رصدات 2017، مع صعود انفجار 2017. أول رصد واضح للانفجار كان في 6 أبريل، حيث كان المقدار <span class="math inline">\( I = 17.6 \pm 0.2 \)</span>؛ أي أكثر سطوعًا بأكثر من 2 قدر من جميع رصدات 2016 السابقة. في 1 أبريل، كان المقدار <span class="math inline">\( I &gt; 19.49 \)</span> (حد أعلى <span class="math inline">\( 3\sigma \)</span>)، وهو أخفت من أسطع رصد في السكون، لذا كان المصدر لا يزال في السكون في 1 أبريل. بدأ الانفجار إذًا بين 1 و6 أبريل، ويجب أن يكون قد ازداد سطوعه بمعدل <span class="math inline">\( \geq 0.34 \)</span> قدر/يوم في نطاق <span class="math inline">\( I \)</span>.</p>
+<div class="table*">
+<div class="center">
+<table>
+<tbody>
+<tr class="odd">
+<th style="text-align: right;">المصدر</th>
+<th colspan="3" style="text-align: center;">——– معدلات الارتفاع (قدر في السنة<span class="math inline">\(^{-1}\)</span>) ——–</th>
+<th style="text-align: center;">سنوات البيانات</th>
+<th style="text-align: right;">المراجع</th>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: center;"><span class="math inline">\( V \)</span></td>
+<td style="text-align: center;"><span class="math inline">\( R \)</span></td>
+<td style="text-align: center;"><span class="math inline">\( I \)</span> أو <span class="math inline">\( i' \)</span></td>
+<td style="text-align: center;">المدة<span class="math inline">\(^{a}\)</span></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">H1705–250</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\( 0.083 \pm 0.022 \)</span></td>
+<td style="text-align: center;">6.3</td>
+<td style="text-align: right;"><span class="citation" data-cites="yanget12"></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">V404 Cyg</td>
+<td style="text-align: center;"><span class="math inline">\( 0.048 \pm 0.009 \)</span></td>
+<td style="text-align: center;"><span class="math inline">\( 0.035 \pm 0.003 \)</span></td>
+<td style="text-align: center;"><span class="math inline">\( 0.022 \pm 0.002 \)</span></td>
+<td style="text-align: center;">2.9</td>
+<td style="text-align: right;"><span class="citation" data-cites="bernet16"></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">GRS 1124–68</td>
+<td style="text-align: center;"><span class="math inline">\( 0.036 \pm 0.001 \)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\( 0.020 \pm 0.000 \)</span></td>
+<td style="text-align: center;">11.2</td>
+<td style="text-align: right;"><span class="citation" data-cites="wuet16"></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">GS 1354–64</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\( 0.088 \pm 0.006 \)</span></td>
+<td style="text-align: center;"><span class="math inline">\( 0.058 \pm 0.004 \)</span></td>
+<td style="text-align: center;">6.8</td>
+<td style="text-align: right;"><span class="citation" data-cites="koljet16"></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Swift J1357.2–0933</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\( 0.169 \pm 0.027 \)</span></td>
+<td style="text-align: center;">5.2</td>
+<td style="text-align: right;">هذا البحث</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="text-align:right; font-size:0.95em; margin-top:0.7em;"><span class="math inline">\(^{a}\)</span> بالنسبة لـ V404 Cyg وGS 1354–64 وSwift J1357.2–0933، يسبق الارتفاع البصري انفجارًا جديدًا للمصدر، بينما في H1705–250 وGRS 1124–68 لم يُرصد انفجار جديد بعد. حدث الارتفاع في V404 Cyg بعد انخفاض بطيء طويل الأمد.</p>
+</div>
+<h1 id="discussion-and-conclusions">المناقشة والاستنتاجات</h1>
+<p>تُوصف التوزيعات الطيفية البصرية/تحت الحمراء عمومًا بقانون قوة يتطور من ميل أحمر خافت (<span class="math inline">\( \alpha &lt; -1 \)</span>) قبل وبعد انفجار 2011 مباشرة، إلى ميل ساطع ومستوي (<span class="math inline">\( \alpha \sim 0 \)</span>) أو رقيق بصريًا (<span class="math inline">\( \alpha \sim -1 \)</span>) منذ 2013. يحدث هذا الانتقال مع ارتفاع التدفق البصري بشكل حاد. في التواريخ التي يكون فيها <span class="math inline">\( \alpha &lt; -0.5 \)</span>، يجب أن يكون انكسار النفاثة عند ترددات أقل من تلك التي يغطيها الطيف (أي في تحت الأحمر)، بينما عندما <span class="math inline">\( \alpha \sim 0 \)</span> ينتقل الانكسار إلى الترددات البصرية. وجدنا أن تطور الطيف هو المسؤول عن زيادة السطوع طويلة الأمد، وحددنا انتقالًا بين يونيو 2012 ومارس 2013 انتقل فيه انكسار النفاثة من تحت الأحمر إلى البصري وازداد التدفق البصري. ثم عاد الانكسار إلى تحت الأحمر بحلول 2016–2017.</p>
+<p>كملحوظة، لا يمكننا استبعاد انتقال انكسار النفاثة على مقاييس زمنية أقصر من رصدنا، مثل الساعات، كما لوحظ في GX 339–4 خلال الانفجار <span class="citation" data-cites="gandet11"></span>. ومع ذلك، نلاحظ طيفًا بصريًا/تحت أحمر مستقرًا على مدى أشهر إلى سنوات، وهو ما لا يتوافق مع تغيرات دراماتيكية في الطيف على مدى ساعات. بالإضافة إلى ذلك، لا يمكن أن تفسر تغيرات الامتصاص الذاتي للمصدر التغيرات عالية السعة. على المقاييس الزمنية القصيرة، يكون التغير النسبي rms أقوى في تحت الأحمر القريب منه في البصري <span class="citation" data-cites="shahet13"></span>، بينما يُتوقع العكس إذا كان الامتصاص هو السبب. رغم وجود بعض الانخفاضات في منحنى الضوء السريع كما في <span class="citation" data-cites="shahet13"></span> والتي تشبه الانخفاضات شبه الدورية خلال الانفجار <span class="citation" data-cites="corret13"></span> الناتجة عن الحجب، إلا أن معظم التغيرات لا توصف بانخفاضات، ويُتوقع طيف كثافة قدرة مختلف <span class="citation" data-cites="shahet13"></span>. كذلك، إذا كانت هذه الانخفاضات تهيمن على التغيرات طويلة الأمد، لكان معظم المقادير في السكون متقاربة مع وجود بعض القيم الأخفت فقط، وهو ما لا ينطبق على منحنى الضوء الساكن. علاوة على ذلك، فإن الامتصاص بين النجمي منخفض جدًا؛ <span class="math inline">\( A_v = 0.124 \)</span> <span class="citation" data-cites="armaet13 corret16"></span>، وأي امتصاص غباري ذاتي يجب أن يكون محليًا للمصدر، وهو أمر غير مرجح نظرًا لارتفاعه عن مستوى المجرة.</p>
+<p>قليل من الدراسات أبلغت عن تغيرات طويلة الأمد في التدفق البصري في السكون في ثنائيات الأشعة السينية منخفضة الكتلة. في A0620–00، حدد <span class="citation" data-cites="cantet08 cantet10"></span> ثلاث حالات بصرية: سلبية، حلقيّة، وساطعة، ومنذ انفجار 1975 انتقل المصدر بين هذه الحالات عدة مرات. كان التغير في المقدار أكبر في النطاقات الزرقاء منه في الحمراء. كما أُبلغ عن حالات نشطة وساكنة في رصدات V4641 Sgr في السكون <span class="citation" data-cites="macdet14"></span>. في كلا المصدرين، لم يُرصد ارتفاع أو انخفاض بصري طويل الأمد.</p>
+<p>أُبلغ مؤخرًا عن ارتفاع طويل الأمد في أربعة من ثنائيات الثقوب السوداء منخفضة الكتلة. نقارن معدل الارتفاع الذي قدرناه لـ Swift J1357.2–0933 مع هذه الأنظمة الأخرى في الجدول 1. معدلات الارتفاع في نطاق <span class="math inline">\( I \)</span> أو <span class="math inline">\( i' \)</span> تتراوح بين 0.02 و<span class="math inline">\( \sim 0.08 \)</span> قدر في السنة<span class="math inline">\(^{-1}\)</span> لجميع المصادر باستثناء Swift J1357.2–0933، الذي لديه معدل أعلى بكثير <span class="math inline">\( \sim 0.17 \)</span> قدر في السنة<span class="math inline">\(^{-1}\)</span>. بالنسبة للأنظمة التي لديها قياسات في أكثر من مرشح، يكون الارتفاع أكبر في المرشحات الزرقاء (الأطوال الموجية الأقصر)، كما لوحظ في الحالة النشطة لـ A0620–00 <span class="citation" data-cites="cantet08"></span>، وكما يُتوقع مع زيادة درجة حرارة قرص التراكم، مما يجعل الطيف البصري/تحت الأحمر أكثر زرقة. لا نملك منحنيات ضوء جيدة التغطية لـ Swift J1357.2–0933 في مرشحات أخرى؛ ومع ذلك، خلال السنوات الخمس بين الانفجارات، هناك زيادة في التدفق في نطاق <span class="math inline">\( u \)</span> بمقدار <span class="math inline">\( \sim 14 \)</span> ضعفًا، وزيادة في <span class="math inline">\( I \)</span> بمقدار <span class="math inline">\( \sim 4 \)</span>–6 أضعاف، مع عدم تغير يُذكر في تحت الأحمر. لذا، يكون الارتفاع أكبر عند الأطوال الموجية الأقصر. ومع ذلك، تشير تطورات الطيف في الشكلين 2 و3 إلى أن سلوك "الأزرق عند السطوع" في Swift J1357.2–0933 ناتج عن تطور طيف نفاثة سنكروترونية (وليس قرص تراكم مسخن أو تغيرات امتصاص محلية).</p>
+<p>يعد Swift J1357.2–0933 نظامًا قصير الفترة المدارية (2.8 ساعة)، عالي الميل، لثقب أسود في ثنائي أشعة سينية منخفض الكتلة، أظهر انخفاضات بصرية خلال انفجار 2011 بسبب حجب شبه دوري لتدفق التراكم <span class="citation" data-cites="corret13"></span>. نظرًا لصغر قرص التراكم ورؤيته تقريبًا من الحافة، يجب أن يكون الانبعاث القرصي الواصل إلى الراصد أقل بكثير مقارنة بأنظمة أقل ميلًا وأطول فترة. مساحة سطح القرص المسقطة على خط البصر لدينا أصغر بكثير من معظم ثنائيات الثقوب السوداء الأخرى. قد يفسر ذلك لماذا تهيمن النفاثة (إذا لم يكن لتأثيرات التوجيه النسبي دور كبير)، وليس القرص، على الانبعاث البصري/تحت الأحمر في السكون <span class="citation" data-cites="mataet15"></span>. إذا كان الأمر كذلك، فقد نتوقع تغيرات عالية السعة وطيفًا أحمر واستقطابًا في أنظمة أخرى عالية الميل وقصيرة الفترة. يجب أن يكون نجم الرفيق أيضًا أخفت من النفاثة وبمقدار <span class="math inline">\( V \gtrsim 22 \)</span> لتفسير التغيرات عالية السعة والتوزيعات الطيفية. من الجدير بالذكر أن جميع ثنائيات الأشعة السينية منخفضة الكتلة التي رُصدت راديويًا في السكون هي مصادر قريبة، بينما Swift J1357.2–0933 يُحتمل أن يكون أبعد، مما يجعل رصد النفاثة البصرية/تحت الحمراء أكثر أهمية لهذا النظام. بالإضافة إلى ذلك، سمح ارتفاع المصدر عن مستوى المجرة برصدات فوق بنفسجية حساسة، مما ساعد في تحديد دليل الطيف الحاد غير المعتاد. هذه الرصدات فوق البنفسجية في السكون مستحيلة لمعظم ثنائيات الثقوب السوداء بسبب امتصاصها الأعلى عادة.</p>
+<p>معدل الارتفاع في Swift J1357.2–0933 هو الأقرب لما يتنبأ به نموذج عدم استقرار القرص (DIM) <span class="citation" data-cites="dubuet01 laso01"></span>، رغم أن النموذج يفترض أن القرص هو مصدر الانبعاث البصري وليس النفاثة. من المرجح أن يكون لمعان النفاثة مدفوعًا بمعدل التراكم في المناطق الداخلية من تدفق التراكم. تمتد علاقة الراديو–أشعة سينية في ثنائيات الثقوب السوداء إلى السكون <span class="citation" data-cites="gallet14 plotet17"></span>، لذا من المحتمل أن تكون العمليتان مرتبطتين، ونفترض أن الارتفاع السريع نسبيًا في Swift J1357.2–0933 ناتج عن زيادة معدل التراكم على الثقب الأسود قبل الانفجار (وخاصة خلال الانتقال في 2012–2013). بالفعل، يتنبأ نموذج عدم استقرار القرص بزيادة بصرية بين الانفجارات بسبب زيادة معدل التراكم عند الحافة الداخلية للقرص، والذي، ليحافظ على فترات تكرار طويلة، يجب أن يكون مقطوعًا بين الانفجارات. في الأنظمة منخفضة الميل، قد لا يكون القرص الخارجي الذي يصدر في البصري مؤشرًا جيدًا لهذا الارتفاع، لأن القرص الخارجي لا يُستنزف بين الانفجارات، بينما تُستنزف المناطق الداخلية. لذا، في معظم الأنظمة، قد يحدث الارتفاع التدريجي في درجة حرارة القرص المتوقع من النموذج عند نصف قطر أصغر من الجزء الأكبر من الانبعاث البصري، مما ينتج ارتفاعًا بصريًا متواضعًا فقط بين الانفجارات. بالنسبة لمثل هذه المصادر منخفضة الميل، يشير الجدول 1 إلى أن ارتفاعًا بصريًا طويل الأمد يسبق الانفجارات، لذا قد يُتوقع انفجارات H1705–250 وGRS 1124–68 في السنوات القادمة. يبرز هذا أهمية رصد ثنائيات الأشعة السينية منخفضة الكتلة في السكون بصريًا/تحت الحمراء، خاصة لرصد زيادات التدفق طويلة الأمد التي قد تكون مؤشرًا على انفجار وشيك. يعد Swift J1357.2–0933، الذي يُرصد من الحافة، أفضل مثال معروف بسبب ارتفاعه الحاد الواضح، ويُحتمل أيضًا أنه المصدر الساكن الوحيد الذي يمكن فيه رصد خصائص النفاثة البصرية بانتظام، حتى تصبح المصادر الأخفت مرئية بانتظام، وهو ما سيحدث عند تشغيل تلسكوب المسح الشامل الكبير <span class="citation" data-cites="lsst09"></span>.</p>
+<p>نشكر بوشاك غاندي على اقتراحاته الممتازة التي حسنت المناقشة. ويشكر ر.م.ب. جامعة كيرتن على دعمها من خلال زمالة بيتر كوران التذكارية. وقد تلقى هذا المشروع تمويلاً من برنامج الاتحاد الأوروبي "أفق 2020" للبحث والابتكار بموجب اتفاقية منحة ماري سكلودوفسكا-كوري رقم 664931. تدار تلسكوبات فولكس وتُشغّل بواسطة مرصد لاس كومبريس (LCO).</p>
+<div class="thebibliography">
+<p>Alam, S., Albareti, F. D., Allende Prieto, C., وآخرون 2015، 219، 12. Armas Padilla, M., Degenaar, N., Russell, D. M., وآخرون 2013، 428، 3083. Armas Padilla, M., Wijnands, R., Degenaar, N., وآخرون 2014، 444، 902. Baglio, M. C., D’Avanzo, P., Muñoz-Darias, T., وآخرون 2013، 559، A42. Bernardini, F., Russell, D. M., Shaw, A. W., وآخرون 2016، 818، L5. Cantrell, A. G., Bailyn, C. D., McClintock, J. E., وآخرون 2008، 673، L159. Cantrell, A. G., Bailyn, C. D., Orosz, J. A., وآخرون 2010، 710، 1127. Cardelli, J. A., Clayton, G. C., &amp; Mathis, J. S. 1989، 345، 245. Casares, J., &amp; Jonker, P. G. 2014، 183، 223. Corral-Santana, J. M., Casares, J., Muñoz-Darias, T., وآخرون 2013، Science، 339، 1048. Corral-Santana, J. M., Casares, J., Muñoz-Darias, T., وآخرون 2016، 587، A61. Diaz Trigo, M., Migliari, S., Miller-Jones, J. C. A., وآخرون 2017، 600، A8. Dincer, T., Bailyn, C., Cruz, B. 2017، ATel، 10329. Drake, A. J., Djorgovski, S. G., Mahabal, A., وآخرون 2009، 696، 870. Drake, A. J., Djorgovski, S. G., Mahabal, A. A., وآخرون 2017، Astronomer’s Telegram، 10297. Dubus, G., Hameury, J.-M., &amp; Lasota, J.-P. 2001، 373، 251. Dzib, S. A., Massi, M., &amp; Jaron, F. 2015، 580، L6. Gallo, E., Fender, R. P., &amp; Hynes, R. I. 2005، 356، 1017. Gallo, E., Fender, R. P., Miller-Jones, J. C. A., وآخرون 2006، 370، 1351. Gallo, E., Migliari, S., Markoff, S., وآخرون 2007، 670، 600. Gallo, E., Miller-Jones, J. C. A., Russell, D. M., وآخرون 2014، 445، 290. Gandhi, P., Blain, A. W., Russell, D. M., وآخرون 2011، 740، L13. Gelino, D. M., Gelino, C. R., &amp; Harrison, T. E. 2010، 718، 1. Hameury, J.-M., Lasota, J.-P., Knigge, C., وآخرون 2017، 600، A95. Hjellming, R. M., Rupen, M. P., Mioduszewski, A. J., وآخرون 2000، ATel، 54. Janert, P. K., 2016، Gnuplot in Action، الطبعة الثانية، Manning Publications (نيويورك، الولايات المتحدة)، ISBN-13: 9781633430181. Jordi, K., Grebel, E. K., &amp; Ammon, K. 2006، 460، 339. Koljonen, K. I. I., Russell, D. M., Fernández-Ontiveros, J. A., وآخرون 2015، 814، 139. Koljonen, K. I. I., Russell, D. M., Corral-Santana, J. M., وآخرون 2016، 460، 942. Krimm, H. A., Barthelmy, S. D., Baumgartner, W., وآخرون 2011a، ATel، 3138. Krimm, H. A., Kennea, J. A., &amp; Holland, S. T. 2011b، ATel، 3142. Lasota, J.-P. 2001، 45، 449. Lewis, F., Russell, D. M., Fender, R. P., وآخرون 2008، Proceedings of Science، VII Microquasar Workshop: Microquasars and Beyond، المحررون SISSA (ترييستي، إيطاليا)، PoS(MQW7)069. LSST Science Collaboration وآخرون 2009، arXiv:0912.0201. MacDonald, R. K. D., Bailyn, C. D., Buxton, M., وآخرون 2014، 784، 2. Markoff, S., Nowak, M. A., Gallo, E., وآخرون 2015، 812، L25. Mata Sánchez, D., Muñoz-Darias, T., Casares, J., وآخرون 2015، 454، 2199. Miller-Jones, J. C. A., Jonker, P. G., Maccarone, T. J., وآخرون 2011، 739، L18. Ofek, E. O., Laher, R., Surace, J., وآخرون 2012، 124، 854. Plotkin, R. M., Gallo, E., Jonker, P. G., وآخرون 2016، 456، 2707. Plotkin, R. M., Miller-Jones, J. C. A., Gallo, E., وآخرون 2017، 834، 104. Rau, A., Greiner, J., &amp; Filgas, R. 2011، ATel، 3140. Ribó, M., Munar-Adrover, P., Paredes, J. M., وآخرون 2017، 835، L33. Russell, D. M., Markoff, S., Casella, P., وآخرون 2013، 429، 815. Russell, T. D., Soria, R., Miller-Jones, J. C. A., وآخرون 2014، 439، 1390. Russell, D. M., Shahbaz, T., Lewis, F., وآخرون 2016، 463، 2680. Shahbaz, T., Dhillon, V. S., Marsh, T. R., وآخرون 2005، 362، 975. Shahbaz, T., Russell, D. M., Zurita, C., وآخرون 2013، 434، 2696. Sivakoff, G. R., Tetarenko, B. E., Shaw, A. W., وآخرون 2017، ATel، 10314. Tody, D., 1986، 627، 733. Tody, D., 1993، في ASP Conf. Ser. 52، Astronomical Data Analysis Software and Systems II، المحررون R. J. Hanisch, R. J. V. Brissenden, &amp; J. Barnes (سان فرانسيسكو، الولايات المتحدة)، 173. Weng, S.-S., &amp; Zhang, S.-N.، 2015، 447، 486. Wu, J., Orosz, J. A., McClintock, J. E., وآخرون 2016، 825، 46. Yang, Y. J., Kong, A. K. H., Russell, D. M., وآخرون 2012، 427، 2876. Zurita, C., Casares, J., &amp; Shahbaz, T. 2003، 582، 369.</p>
+</div>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>يتم توزيع IRAF من قبل المرصد الوطني البصري الفلكي، الذي تديره رابطة الجامعات لأبحاث الفلك، بموجب اتفاقية تعاونية مع المؤسسة الوطنية للعلوم.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
