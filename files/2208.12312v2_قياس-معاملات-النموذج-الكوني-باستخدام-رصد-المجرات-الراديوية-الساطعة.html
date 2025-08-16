@@ -3,90 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إمكانات الكشف الصوتي لجسيمات التأين الدنيا المفردة في السوائل اللزجة</title>
+    <title>إمكانات الكشف الصوتي لجسيمات التأيُّن الدنيا المفردة في السوائل اللزجة</title>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
+            direction: rtl;
             font-family: 'Times New Roman', serif;
-            line-height: 1.6;
+            line-height: 1.75;
             color: #333;
             background-color: #fafafa;
         }
         .container {
-            max-width: 900px;
+            max-width: 980px;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 40px;
-            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+            padding: 40px 46px;
+            margin: 24px auto;
+            border-radius: 6px;
         }
         h1 {
             text-align: center;
-            font-size: 2.2em;
-            margin-bottom: 30px;
+            font-size: 2.15em;
+            margin-bottom: 28px;
             color: #2c3e50;
             border-bottom: 2px solid #3498db;
-            padding-bottom: 15px;
+            padding-bottom: 14px;
         }
         h2 {
             color: #34495e;
-            font-size: 1.5em;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3498db;
-            padding-left: 10px;
+            font-size: 1.45em;
+            margin-top: 34px;
+            margin-bottom: 14px;
+            border-right: 4px solid #3498db;
+            padding-right: 10px;
         }
         h3 {
             color: #5d6d7e;
-            font-size: 1.3em;
-            margin-top: 25px;
-            margin-bottom: 12px;
+            font-size: 1.22em;
+            margin-top: 24px;
+            margin-bottom: 10px;
         }
         p {
             text-align: justify;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
         .abstract {
             background-color: #f8f9fa;
-            border-left: 4px solid #007bff;
-            padding: 20px;
-            margin: 30px 0;
+            border-right: 4px solid #007bff;
+            padding: 18px 20px;
+            margin: 26px 0;
             font-style: italic;
+            border-radius: 4px;
         }
-        .keywords {
-            background-color: #e9ecef;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
+        .keywords, .meta-info {
+            background-color: #e7f3ff;
+            padding: 12px 14px;
+            margin-bottom: 28px;
+            border-radius: 6px;
+            font-size: 0.92em;
         }
         .equation {
             text-align: center;
-            margin: 20px 0;
-            padding: 15px;
+            margin: 18px 0;
+            padding: 12px 14px;
             background-color: #f8f9fa;
             border-radius: 5px;
         }
         .figure {
             text-align: center;
-            margin: 30px 0;
-            padding: 20px;
+            margin: 26px 0;
+            padding: 16px;
             background-color: #f8f9fa;
             border-radius: 5px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #e5e7eb;
         }
         .table {
-            margin: 25px 0;
+            margin: 22px 0;
+        }
+        .table caption {
+            caption-side: top;
+            text-align: right;
+            font-weight: bold;
+            padding-bottom: 8px;
+            color: #34495e;
         }
         .reference {
-            font-size: 0.9em;
+            font-size: 0.92em;
             margin-bottom: 8px;
-        }
-        .meta-info {
-            background-color: #e7f3ff;
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            font-size: 0.9em;
         }
         code {
             background-color: #f8f9fa;
@@ -95,28 +99,43 @@
         }
         pre {
             background-color: #f8f9fa;
-            padding: 15px;
+            padding: 14px;
             border-radius: 5px;
             overflow-x: auto;
         }
         blockquote {
-            border-left: 4px solid #6c757d;
-            padding-left: 20px;
+            border-right: 4px solid #6c757d;
+            padding-right: 16px;
             font-style: italic;
             color: #6c757d;
         }
         .theorem, .lemma, .proposition, .corollary {
             background-color: #fff3cd;
             border: 1px solid #ffeaa7;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 14px;
+            margin: 18px 0;
             border-radius: 5px;
         }
         .proof {
-            border-left: 2px solid #28a745;
-            padding-left: 15px;
-            margin: 15px 0;
+            border-right: 2px solid #28a745;
+            padding-right: 12px;
+            margin: 12px 0;
         }
+        nav#TOC ul { list-style: none; padding-right: 0; }
+        nav#TOC li { margin: 6px 0; }
+        nav#TOC a { text-decoration: none; color: #2c3e50; }
+        nav#TOC a:hover { color: #0d6efd; }
+        figure img { max-width: 100%; height: auto; }
+        .text-muted { color: #6c757d !important; }
+        .acknowledgments {
+            background: #f6f8ff;
+            border: 1px solid #e1e7ff;
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 24px;
+        }
+        table.table { direction: rtl; }
+        th, td { vertical-align: middle; }
     </style>
 </head>
 <body>
@@ -124,161 +143,150 @@
         <div class="meta-info">
             <strong>معرّف ArXiv:</strong> 2208.12312v2<br>
             <strong>LaTeX الأصلي:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2208.12312v2_extracted/main.tex</code><br>
-            <strong>تم التحويل:</strong> 2025-06-06 13:13:49
+            <strong>تمّ التحويل:</strong> 2025-06-06 13:13:49
         </div>
         <header id="title-block-header">
-<h1 class="title">إمكانات الكشف الصوتي لجسيمات التأين الدنيا المفردة في السوائل اللزجة</h1>
-<p class="author">باناجيوتيس إيكونومو</p>
-<p class="author">لورا مانينتي</p>
-<p class="author">إسحاق سارنوف</p>
-<p class="author">فرانشيسكو أرنيودو</p>
-<div class="abstract">
-<div class="abstract-title">الملخص</div>
-<p>عند مرور جسيم مؤين عبر سائل، فإنه يولد إشارات صوتية نتيجة لترسيب الحرارة محليًا. في هذا العمل، نقوم بنمذجة هذه الإشارات الصوتية في حالة جسيم مفرد يتفاعل مع السائل بطريقة كهرومغناطيسية عامة. نقدم منهجية منهجية لإدخال التصحيحات الناتجة عن اللزوجة باستخدام أسلوب اضطرابي، بحيث تكون حلولنا صالحة عند المسافات البعيدة عن نقطة التفاعل. كما نوفر إطارًا حسابيًا لمحاكاة العمليات الموصوفة. بعد ذلك، نطبق المنهجية المطورة للتنبؤ بالإشارة الصوتية الناتجة عن الميونات النسبية في سوائل مختلفة كنموذج توضيحي.</p>
-</div>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#introduction">المقدمة<span id="sec:introduction"
-label="sec:introduction"></span></a></li>
-<li><a href="#strongly-damped-acoustic-wave-equation">معادلة الموجة الصوتية المخمدة بشدة<span id="sec:derivations"
-label="sec:derivations"></span></a>
-<ul>
-<li><a href="#damping-term-derivation">اشتقاق حد التخميد <span
-id="subsec:damping-term-derivation"
-label="subsec:damping-term-derivation"></span></a>
-<ul>
-<li><a href="#derivation-from-navier-stokes">الاشتقاق من معادلات نافير-ستوكس</a></li>
-<li><a href="#damping-characteristic">خاصية التخميد</a></li>
-</ul></li>
-<li><a href="#source-term-derivation">اشتقاق حد المصدر <span
-id="subsec:source-term-derivation"
-label="subsec:source-term-derivation"></span></a>
-<ul>
-<li><a href="#derivation-from-navier-stokes-1">الاشتقاق من معادلات نافير-ستوكس</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#sec:solutions">الحلول التحليلية لمعادلة الموجة</a>
-<ul>
-<li><a href="#approximations-using-perturbation-theory">التقريبات باستخدام نظرية الاضطراب<span id="subsec:perturbation-theory"
-label="subsec:perturbation-theory"></span></a></li>
-<li><a href="#subsec:greens-functions">دوال جرين</a>
-<ul>
-<li><a href="#using-potentials-and-residues">استخدام الكمونات والبواقي</a></li>
-<li><a href="#properties-of-residues">خصائص البواقي</a></li>
-<li><a href="#calculation-of-residues-and-greens-functions">حساب البواقي ودوال جرين</a></li>
-</ul></li>
-<li><a href="#causality">السببية<span id="subsec:causality-proof"
-label="subsec:causality-proof"></span></a></li>
-<li><a href="#subsec:closed-form-solution">حل مغلق الشكل لمصدر دالي</a></li>
-<li><a href="#subsec:roots-for-different-speeds">مصادر الصوت لسرعات الجسيمات المختلفة</a>
-<ul>
-<li><a href="#slow-particles">الجسيمات البطيئة</a></li>
-<li><a href="#fast-particles">الجسيمات السريعة</a></li>
-</ul></li>
-<li><a href="#subsec:leading-order-solution">الحل التحليلي للمرتبة الأولى</a></li>
-</ul></li>
-<li><a href="#sec:applications">تطبيق على جسيمات التأين الدنيا</a>
-<ul>
-<li><a href="#subsec:energy-deposition">تقدير ترسيب الطاقة</a></li>
-<li><a href="#subsec:tables">تقديرات عددية لإشارة الميون في أوساط مختلفة</a></li>
-</ul></li>
-<li><a href="#conclusion">الخلاصة<span id="sec:conclusion"
-label="sec:conclusion"></span></a></li>
-</ul>
-</nav>
-<section id="introduction" class="level1">
-<h1>المقدمة<span id="sec:introduction"
-label="sec:introduction"></span></h1>
-<p>حظيت الأبحاث المتعلقة بإنتاج الإشارات الصوتية بواسطة الجسيمات المشحونة في السوائل باهتمام متزايد منذ توصيف الموجات الصوتية الناتجة عن "التسخين الموضعي" عام 1957 <span class="citation" data-cites="Askaryan1957"></span>. فعند مرور الجسيمات المشحونة عبر السوائل، تنشأ إشعاعات صوتية أساسًا نتيجة التسخين الموضعي <span class="citation" data-cites="Lahman2015"></span>، وإذا كانت الطاقة المترسبة كافية، تصبح الموجة الصوتية قابلة للكشف. ولهذا السبب، جرى بحث الإشارات الصوتية الناتجة عن حزم الأيونات الثقيلة، وتدفقات الجسيمات ذات الطاقة العالية (PeV)، والنيوترينوهات عالية الطاقة بشكل مكثف بين ستينيات القرن الماضي وبداية التسعينيات <span class="citation" data-cites="Roberts1992 Karle2003 Askaryan1979 Sulak1979 Jiang1985 Bowen1979 Albul2001"></span>.</p>
-<p>تقليديًا، استُخدم الكشف الصوتي كأداة لرصد الجسيمات الكونية عالية الطاقة <span class="citation" data-cites="Budnev2017 Ishihara2019 Nosengo2009"></span>. إلا أن هذه التقنية وجدت مؤخرًا تطبيقات في الطاقات المنخفضة ضمن أبحاث المادة المظلمة الباردة باستخدام السوائل المحمّاة فوق التشبع <span class="citation" data-cites="Baxter2017 Barnabe2005 Behnke2008 Amole2019"></span>، حيث تولد الجسيمات المؤينة موجة صدمية أثناء التحول الطوري اللحظي للسائل <span class="citation" data-cites="Amole2015"></span>.</p>
-<p>تتطلب هذه التقنية إجراء التجربة في حالة حرارية ديناميكية خاصة بحيث تظهر التأثيرات غير الخطية مثل تفكك الجزيئات وتكوّن الفقاعات الدقيقة والصدمات وغيرها <span class="citation" data-cites="Hunter1981"></span>.</p>
-<p>أما في السوائل التي لا تكون في حالة حرارية ديناميكية مضبوطة بدقة، فإن الحساب النظري للإشارة الصوتية الناتجة عن الجسيمات منخفضة الطاقة (<span class="math inline">\(\mathcal{O}(\rm keV)\)</span>) يصبح معقدًا. حتى في السوائل الساكنة المثالية، تنهار الحلول النظرية الحالية عند المسافات البعيدة عن نقطة التفاعل (على سبيل المثال، بسبب إهمال لزوجة السائل <span class="citation" data-cites="Learned1979"></span>).</p>
-<p>في هذا البحث، نوضح كيفية تقدير الإشارات الصوتية الناتجة في السوائل عن تفاعل جسيم مؤين مفرد بأكثر الطرق عمومية ودقة حتى الآن.</p>
-<p>بدلاً من التركيز على التسخين الموضعي فقط، ندرس الحالة العامة لترسيب حراري متحرك ذو دعم محدود وشكل اعتباطي. كما نقدم طريقة لأخذ لزوجة السائل في الحسبان بحيث يمكن حساب التصحيحات من المرتبة الثانية بسهولة، مما يسمح بحل أكثر واقعية للموجة الصوتية عند المسافات البعيدة عن مسار الجسيم، حيث يكون التوهين كبيرًا. ولتسهيل الأمر على القارئ، نشتق جميع المعادلات بشكل صريح مع توضيح الفرضيات الفيزيائية وراء كل خطوة رياضية. وأخيرًا، نقدم كمثال حساب الإشارة الصوتية للميونات النسبية باستخدام المنهجية المطورة.</p>
-<p>يمكن أيضًا استخدام هذه الدراسة كمرجع للفيزيائيين التجريبيين الراغبين في خوض تجربة رصد الإشارات الصوتية للجسيمات في السوائل اللزجة.</p>
-</section>
-<section id="strongly-damped-acoustic-wave-equation" class="level1">
-<h1>معادلة الموجة الصوتية المخمدة بشدة<span id="sec:derivations"
-label="sec:derivations"></span></h1>
-<p>نستعرض هنا آلية توليد الإشارة الصوتية نتيجة تفاعل جسيم مفرد في سائل. لنبدأ بدراسة تأثير ترسيب حراري اعتباطي في وسط السائل. لهذا الغرض، نضيف حد مصدر وحد تخميد إلى معادلة الموجة الصوتية المعروفة في مائع متساوي الحرارة:</p>
-<p><span class="math display">\[\Delta p(\bm{x},t) = \rho_0 \kappa
+            <h1 class="title">إمكانات الكشف الصوتي لجسيمات التأيُّن الدنيا المفردة في السوائل اللزجة</h1>
+            <p class="author">باناجيوتيس إيكونومو</p>
+            <p class="author">لورا مانِّينتي</p>
+            <p class="author">إسحاق سارنوف</p>
+            <p class="author">فرانشيسكو أرنيوْدو</p>
+            <div class="abstract">
+                <div class="abstract-title">الملخّص</div>
+                <p>عند مرور جسيم مُؤيِّن عبر سائل، يُولِّد إشارات صوتية نتيجة ترسيب الحرارة محليًّا. في هذا العمل نُنمذج هذه الإشارات الصوتية في حالة جسيمٍ مفردٍ يتفاعل مع السائل كهرومغناطيسيًّا على نحوٍ عام. نُقدِّم منهجية مُمنهجة لإدخال التصحيحات الناتجة عن اللُّزوجة باستخدام أسلوبٍ اضطرابي، بحيث تبقى حلولنا صالحة على مسافاتٍ بعيدة من نقطة التفاعل. كما نوفِّر إطارًا حسابيًّا لمحاكاة العمليات الموصوفة. وبعد ذلك، نُطبِّق المنهجية المطوَّرة للتنبؤ بالإشارة الصوتية الناتجة عن الميونات النسبية في سوائل مختلفة كنموذجٍ توضيحي.</p>
+            </div>
+        </header>
+        <nav id="TOC" role="doc-toc">
+            <ul>
+                <li><a href="#introduction">المقدّمة<span id="sec:introduction" label="sec:introduction"></span></a></li>
+                <li><a href="#strongly-damped-acoustic-wave-equation">معادلة الموجة الصوتية المُخمَّدة بشدّة<span id="sec:derivations" label="sec:derivations"></span></a>
+                    <ul>
+                        <li><a href="#damping-term-derivation">اشتقاق حدّ التخميد <span id="subsec:damping-term-derivation" label="subsec:damping-term-derivation"></span></a>
+                            <ul>
+                                <li><a href="#derivation-from-navier-stokes">الاشتقاق من معادلات نافير–ستوكس</a></li>
+                                <li><a href="#damping-characteristic">خاصيّة التخميد</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#source-term-derivation">اشتقاق حدّ المصدر <span id="subsec:source-term-derivation" label="subsec:source-term-derivation"></span></a>
+                            <ul>
+                                <li><a href="#derivation-from-navier-stokes-1">الاشتقاق من معادلات نافير–ستوكس</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#sec:solutions">الحلول التحليلية لمعادلة الموجة</a>
+                    <ul>
+                        <li><a href="#approximations-using-perturbation-theory">التقريبات باستخدام نظريّة الاضطراب<span id="subsec:perturbation-theory" label="subsec:perturbation-theory"></span></a></li>
+                        <li><a href="#subsec:greens-functions">دوالّ غرين</a>
+                            <ul>
+                                <li><a href="#using-potentials-and-residues">استخدام الكمونات والبواقي</a></li>
+                                <li><a href="#properties-of-residues">خصائص البواقي</a></li>
+                                <li><a href="#calculation-of-residues-and-greens-functions">حساب البواقي ودوالّ غرين</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#causality">السببيّة<span id="subsec:causality-proof" label="subsec:causality-proof"></span></a></li>
+                        <li><a href="#subsec:closed-form-solution">حلّ مغلق الشكل لمصدر دالي</a></li>
+                        <li><a href="#subsec:roots-for-different-speeds">الجذور لسرعات الجسيمات المختلفة</a>
+                            <ul>
+                                <li><a href="#slow-particles">الجسيمات البطيئة</a></li>
+                                <li><a href="#fast-particles">الجسيمات السريعة</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#subsec:leading-order-solution">الحلّ التحليلي للمرتبة الأولى</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec:applications">تطبيق على جسيمات التأيُّن الدنيا</a>
+                    <ul>
+                        <li><a href="#subsec:energy-deposition">تقدير ترسيب الطاقة</a></li>
+                        <li><a href="#subsec:tables">تقديرات عددية لإشارة الميون في أوساط مختلفة</a></li>
+                    </ul>
+                </li>
+                <li><a href="#conclusion">الخلاصة<span id="sec:conclusion" label="sec:conclusion"></span></a></li>
+            </ul>
+        </nav>
+
+        <section id="introduction" class="level1">
+            <h1>المقدّمة<span id="sec:introduction" label="sec:introduction"></span></h1>
+            <p>حظيت الأبحاث المتعلِّقة بإنتاج الإشارات الصوتية بواسطة الجسيمات المشحونة في السوائل باهتمامٍ متزايد منذ توصيف الموجات الصوتية الناتجة عن «التسخين المُوضعي» عام 1957 <span class="citation" data-cites="Askaryan1957"></span>. فعند مرور الجسيمات المشحونة عبر السوائل، تنشأ إشعاعات صوتية أساسًا نتيجة التسخين المُوضعي <span class="citation" data-cites="Lahman2015"></span>، وإذا كانت الطاقة المُترسَّبة كافية، تصبح الموجة الصوتية قابلةً للرصد. ولهذا السبب، جرى بحث الإشارات الصوتية الناتجة عن حِزَم الأيونات الثقيلة، وتدفُّقات الجسيمات ذات الطاقة العالية (PeV)، والنيوترينوهات عالية الطاقة على نحوٍ مكثّف بين ستينيات القرن الماضي وبداية التسعينيات <span class="citation" data-cites="Roberts1992 Karle2003 Askaryan1979 Sulak1979 Jiang1985 Bowen1979 Albul2001"></span>.</p>
+            <p>تقليديًّا، استُخدم الكشف الصوتي كأداةٍ لرصد الجسيمات الكونية عالية الطاقة <span class="citation" data-cites="Budnev2017 Ishihara2019 Nosengo2009"></span>. إلّا أنّ هذه التقنية وجدت حديثًا تطبيقاتٍ عند طاقاتٍ منخفضة ضمن أبحاث المادة المظلمة الباردة باستخدام السوائل فوق المُسخَّنة <span class="citation" data-cites="Baxter2017 Barnabe2005 Behnke2008 Amole2019"></span>، حيث تُولِّد الجسيمات المُؤيِّنة موجةً صدمية أثناء التحوّل الطوري شبه اللحظي للسائل <span class="citation" data-cites="Amole2015"></span>.</p>
+            <p>تتطلّب هذه التقنية ضبطًا حراريًّا–ديناميكيًّا خاصًّا للتجربة بحيث تظهر التأثيرات غير الخطية مثل تفكُّك الروابط وتكوُّن الفُقاعات الدقيقة والصدمات وغيرها <span class="citation" data-cites="Hunter1981"></span>.</p>
+            <p>أمّا في السوائل التي لا تكون في حالةٍ حرارية–ديناميكية مُحكَمة، فإنّ الحساب النظري للإشارة الصوتية الناتجة عن الجسيمات منخفضة الطاقة (<span class="math inline">\(\mathcal{O}(\rm keV)\)</span>) يغدو مُعقَّدًا. حتى في السوائل الساكنة المثالية، قد تنكسر صلاحيّة بعض الحلول النظرية الحالية على مسافاتٍ بعيدة من نقطة التفاعل (مثلًا بسبب إهمال لُزوجة السائل <span class="citation" data-cites="Learned1979"></span>).</p>
+            <p>في هذا البحث نُبيِّن كيفية تقدير الإشارات الصوتية المتولِّدة في السوائل عن تفاعل جسيم مُؤيِّن مُفرد بأعمّ صورةٍ ممكنة وبأعلى دقّةٍ متاحة حتى الآن.</p>
+            <p>وبدلًا من التركيز على التسخين المُوضعي فحسب، ندرس الحالة العامة لترسيبٍ حراريٍّ متحرِّك ذي دعمٍ محدود وشكلٍ اعتباطي. كما نُقدِّم طريقةً لأخذ لُزوجة السائل بالحسبان بحيث يمكن حساب التصحيحات من المرتبة الثانية بسهولة، ما يسمح بحلٍّ أكثر واقعية للموجة الصوتية على مسافاتٍ بعيدة من مسار الجسيم، حيث يكون التوهين كبيرًا. ولتيسير الأمر على القارئ، نشتقّ جميع المعادلات صراحةً مع توضيح الفرضيات الفيزيائية وراء كل خطوةٍ رياضية. وأخيرًا نُقدِّم كمثالٍ حساب الإشارة الصوتية لميوناتٍ نسبية باستخدام المنهجية المطوَّرة.</p>
+            <p>يمكن أيضًا استخدام هذه الدراسة كمرجعٍ للفيزيائيين التجريبيين الراغبين في خوض تجربة رصد الإشارات الصوتية للجسيمات في السوائل اللزجة.</p>
+        </section>
+
+        <section id="strongly-damped-acoustic-wave-equation" class="level1">
+            <h1>معادلة الموجة الصوتية المُخمَّدة بشدّة<span id="sec:derivations" label="sec:derivations"></span></h1>
+            <p>نستعرض هنا آلية توليد الإشارة الصوتية نتيجة تفاعل جسيمٍ مُفردٍ في سائل. لنبدأ بدراسة أثر ترسيبٍ حراريٍّ اعتباطي في وسط السائل. لهذا الغرض، نضيف حدّ مصدر وحدّ تخميد إلى معادلة الموجة الصوتية المعروفة في مائع (عند اهتزازات صغيرة) مع قابلية انضغاط فعّالة:</p>
+            <p class="equation"><span class="math display">\[\Delta p(\bm{x},t) = \rho_0 \kappa
 \frac{\partial^2 }{\partial t^2} p(\bm{x},t),
     \label{eq:wave-eq}\]</span></p>
-<p>حيث <span class="math inline">\(p(\bm{x},t)\)</span> هو فرق الضغط عند الموقع <span class="math inline">\(\bm{x}\)</span> في السائل عند الزمن <span class="math inline">\(t\)</span>، و<span class="math inline">\(\rho_0\)</span> هي الكثافة الساكنة (تؤخذ ثابتة)، و<span class="math inline">\(\kappa\)</span> هي قابلية الانضغاط للسائل.</p>
-<section id="damping-term-derivation" class="level2">
-<h2>اشتقاق حد التخميد <span id="subsec:damping-term-derivation"
-label="subsec:damping-term-derivation"></span></h2>
-<section id="derivation-from-navier-stokes" class="level3">
-<h3>الاشتقاق من معادلات نافير-ستوكس</h3>
-<p>نظرًا لصغر الطاقة المترسبة من جسيم مفرد في السائل، من المعقول افتراض أن تأثير التخميد الناتج عن لزوجة السائل سيؤثر بشكل كبير على زمن اضمحلال الموجة الصوتية. لاشتقاق معادلة الموجة اللزجة (المعروفة أيضًا بمعادلة الموجة المخمدة بشدة <span class="citation" data-cites="Bortolan2015 Viggen2011"></span>)، نستفيد من مبدأ حفظ الكتلة والزخم كما هو معبر عنه في المعادلتين <a href="#eq:mass-conservation" data-reference-type="eqref" data-reference="eq:mass-conservation">[eq:mass-conservation]</a> و<a href="#eq:momentum-conservation" data-reference-type="eqref" data-reference="eq:momentum-conservation">[eq:momentum-conservation]</a>، ونضيف حد التخميد <span class="math inline">\(\mu \Delta \bm{v}\)</span> في الثانية:</p>
-<p><span class="math display">\[\begin{aligned}
+            <p>حيث <span class="math inline">\(p(\bm{x},t)\)</span> هو فرق الضغط عند الموضع <span class="math inline">\(\bm{x}\)</span> في السائل عند الزمن <span class="math inline">\(t\)</span>، و<span class="math inline">\(\rho_0\)</span> هي الكثافة عند التوازن (تُؤخَذ ثابتة)، و<span class="math inline">\(\kappa\)</span> هي قابليّة الانضغاط المناسبة للحالة (سنستخدم لاحقًا <span class="math inline">\(\kappa_T\)</span> للحالة متساوية الحرارة عند إدخال المصدر الحراري).</p>
+
+            <section id="damping-term-derivation" class="level2">
+                <h2>اشتقاق حدّ التخميد <span id="subsec:damping-term-derivation" label="subsec:damping-term-derivation"></span></h2>
+
+                <section id="derivation-from-navier-stokes" class="level3">
+                    <h3>الاشتقاق من معادلات نافير–ستوكس</h3>
+                    <p>نظرًا لصِغَر الطاقة المُترسَّبة من جسيمٍ مُفردٍ في السائل، فمن المعقول افتراض أنّ أثر التخميد الناتج عن لُزوجة السائل سيؤثّر على زمن اضمحلال الموجة الصوتية بصورةٍ مهمّة. لاشتقاق معادلة الموجة اللزجة (المعروفة أيضًا بمعادلة الموجة المُخمَّدة بشدّة <span class="citation" data-cites="Bortolan2015 Viggen2011"></span>)، نستفيد من حفظ الكتلة والزخم كما في المعادلتين <a href="#eq:mass-conservation" data-reference-type="eqref" data-reference="eq:mass-conservation">[eq:mass-conservation]</a> و<a href="#eq:momentum-conservation" data-reference-type="eqref" data-reference="eq:momentum-conservation">[eq:momentum-conservation]</a>، ونضيف حدّ اللُّزوجة <span class="math inline">\(\mu \,\Delta \bm{v}\)</span> في الثانية:</p>
+                    <p class="equation"><span class="math display">\[\begin{aligned}
     \frac{\partial \rho}{\partial t} + \bm{\nabla} \cdot (\rho \bm{v})
 &amp;= 0 \label{eq:mass-conservation}\\
     \rho \frac{\partial \bm{v}}{\partial t} + \rho (\bm{v}\cdot
-\bm{\nabla}) \bm{v} &amp;= -\bm{\nabla} P + \mu \Delta \bm{v},
+\bm{\nabla}) \bm{v} &amp;= -\bm{\nabla} P + \mu \,\Delta \bm{v},
 \label{eq:momentum-conservation}\end{aligned}\]</span></p>
-<p>حيث <span class="math inline">\(\rho(\bm{x},t)\)</span> و<span class="math inline">\(P(\bm{x},t)\)</span> و<span class="math inline">\(\bm{v}(\bm{x},t)\)</span> هي الكثافة والضغط والسرعة على التوالي، و<span class="math inline">\(\mu\)</span> هو معامل اللزوجة الحجمية. وباتباع الأدبيات <span class="citation" data-cites="Learned1979 Viggen2011 Settnes2012"></span>، نفترض أن المائع عديم الدوامة (<span class="math inline">\(\bm{\nabla} \times \bm{v} = \bm{0}\)</span>). بذلك، تصبح معادلة نافير-ستوكس:</p>
-<p><span class="math display">\[\rho \frac{\partial
-\bm{v}}{\partial t} + \rho \bm{v}\, \left(\bm{\nabla} \cdot
-\bm{v}\right) = -\bm{\nabla} P + \mu \Delta \bm{v}.
-    \label{eq:navier-stokes}\]</span></p>
-<p>نعتبر الآن اضطرابًا صغيرًا لكل من المتغيرات:</p>
-<p><span class="math display">\[\begin{aligned}
-    \rho &amp;= \rho_0 + \delta \rho\\
-    P &amp;= p_0 + \delta p\\
-    \bm{v} &amp;= \bm{v}_0 + \delta \bm{v} = \delta
-\bm{v},\end{aligned}\]</span></p>
-<p>حيث <span class="math inline">\(\rho_0\)</span> و<span class="math inline">\(p_0\)</span> و<span class="math inline">\(\bm{v}_0\)</span> هي القيم عند التوازن، ويفترض أن السائل ساكن في البداية. وبما أننا سنتعامل فقط مع <span class="math inline">\(\delta p, \delta \rho\)</span> و<span class="math inline">\(\delta \bm{v}\)</span>، سنحذف إشارة الدلتا للتبسيط. بإدخال المتغيرات المضطربة في المعادلتين السابقتين وإهمال الحدود من الرتبة الأعلى، نحصل على:</p>
-<p><span class="math display">\[\begin{aligned}
-    \frac{\partial \rho}{\partial t} + \rho_0 \bm{\nabla} \cdot \bm{v}
+                    <p>حيث <span class="math inline">\(\rho(\bm{x},t)\)</span> و<span class="math inline">\(P(\bm{x},t)\)</span> و<span class="math inline">\(\bm{v}(\bm{x},t)\)</span> هي الكثافة والضغط والسرعة على التوالي، و<span class="math inline">\(\mu\)</span> هو معامل اللُّزوجة الديناميكية. وباتباع الأدبيات <span class="citation" data-cites="Learned1979 Viggen2011 Settnes2012"></span>، نفترض أنّ الجريان عديم الدوّامة (<span class="math inline">\(\bm{\nabla} \times \bm{v} = \bm{0}\)</span>). بعد خطيّة الاضطرابات الصغيرة تسقط الحدود غير الخطية، فنحصل على:</p>
+                    <p class="equation"><span class="math display">\[\begin{aligned}
+    \frac{\partial \rho}{\partial t} + \rho_0 \,\bm{\nabla} \cdot \bm{v}
 &amp;= 0 \label{eq:mass-conservation-linear}\\
     \rho_0 \frac{\partial \bm{v}}{\partial t} + \bm{\nabla} p &amp;= \mu
-\Delta \bm{v}.
+\,\Delta \bm{v}.
     \label{eq:navier-stokes-linear}\end{aligned}\]</span></p>
-<p>بأخذ التباعد للمعادلة الثانية، نحصل على:</p>
-<p><span class="math display">\[\rho_0 \frac{\partial}{\partial t}
-\bm{\nabla} \cdot \bm{v} + \Delta p = \mu \Delta \left(\bm{\nabla} \cdot
+                    <p>بأخذ التباعد للمعادلة الثانية، نحصل على:</p>
+                    <p class="equation"><span class="math display">\[\rho_0 \frac{\partial}{\partial t}
+\bm{\nabla} \cdot \bm{v} + \Delta p = \mu \,\Delta \left(\bm{\nabla} \cdot
 \bm{v}\right),
     \label{eq:navier-stokes-linear-II}\]</span></p>
-<p>وباستخدام العلاقة السابقة، نستبدل <span class="math inline">\(\bm{\nabla} \cdot \bm{v}\)</span> لنحصل على:</p>
-<p><span class="math display">\[\frac{\partial^2 \rho}{\partial
+                    <p>وباستخدام معادلة حفظ الكتلة الخطية نستبدل <span class="math inline">\(\bm{\nabla} \cdot \bm{v}\)</span> لنحصل على:</p>
+                    <p class="equation"><span class="math display">\[\frac{\partial^2 \rho}{\partial
 t^2} = \Delta \left(p + \frac{\mu}{\rho_0} \frac{\partial \rho}{\partial
 t}\right).
     \label{eq:navier-stokes-linear-III}\]</span></p>
-<p>بكتابة الكثافة بدلالة قابلية الانضغاط: <span class="math inline">\(\rho = \rho_0 \kappa p\)</span>، تصبح المعادلة بدلالة الضغط فقط:</p>
-<p><span class="math display">\[\Delta \left(p + \mu\, \kappa \frac{\partial
+                    <p>وبكتابة الاضطراب في الكثافة بدلالة قابلية الانضغاط <span class="math inline">\(\kappa\)</span> عبر العلاقة التقريبية <span class="math inline">\(\delta\rho \approx \rho_0 \kappa\, p\)</span>، تصبح المعادلة بدلالة الضغط فقط:</p>
+                    <p class="equation"><span class="math display">\[\Delta \left(p + \mu\, \kappa \frac{\partial
 p}{\partial t}\right) = \rho_0\, \kappa\, \frac{\partial^2 p}{\partial
 t^2}.
     \label{eq:wave-specific}\]</span></p>
-<p>نعرف سرعة الموجة <span class="math inline">\(c\)</span> بأنها <span class="math inline">\(c = 1/\sqrt{\rho_0 \kappa}\)</span> وتردد التوهين <span class="math inline">\(\omega_0\)</span> بأنه <span class="math inline">\(\omega_0 = 1/\mu \kappa\)</span>. بذلك، تصبح المعادلة:</p>
-<p><span class="math display">\[\Delta \left(p +
+                    <p>نُعرِّف سرعة الموجة <span class="math inline">\(c\)</span> بأنّها <span class="math inline">\(c = 1/\sqrt{\rho_0 \kappa}\)</span> وتردّد التوهين <span class="math inline">\(\omega_0\)</span> بأنّه <span class="math inline">\(\omega_0 = 1/(\mu \kappa)\)</span>. بذلك، تصبح المعادلة:</p>
+                    <p class="equation"><span class="math display">\[\Delta \left(p +
 \frac{1}{\omega_0} \frac{\partial p}{\partial t}\right) = \frac{1}{c^2}
 \frac{\partial^2 p}{\partial t^2}.
     \label{eq:wave}\]</span></p>
-</section>
-<section id="damping-characteristic" class="level3">
-<h3>خاصية التخميد</h3>
-<p>نحصل على علاقة التشتت لحلول الموجة المستوية للمعادلة السابقة بأخذ تحويل فورييه للضغط في المكان والزمان. بذلك، نجد أن علاقة التشتت بين التردد <span class="math inline">\(\omega\)</span> وعدد الموجة <span class="math inline">\(k = ||\vec{k}||\)</span> هي:</p>
-<p><span class="math display">\[\label{eq:dispersion}
+                </section>
+
+                <section id="damping-characteristic" class="level3">
+                    <h3>خاصيّة التخميد</h3>
+                    <p>نحصل على علاقة التشتّت لحلول الموجة المستوية بأخذ تحويل فورييه للضغط في المكان والزمان. بذلك نجد أنّ علاقة التشتّت بين التردّد <span class="math inline">\(\omega\)</span> وعدد الموجة <span class="math inline">\(k = \|\vec{k}\|\)</span> هي:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:dispersion}
     k^2 = \frac{\omega^2}{c^2}
 \left(1-i\frac{\omega}{\omega_0}\right)^{-1}.\]</span></p>
-<p>في حالة غياب التخميد (<span class="math inline">\(\omega_0 \to \infty\)</span>)، تصبح العلاقة <span class="math inline">\(kc = \omega\)</span> كما هو متوقع.</p>
-<p>توضح هذه المعادلة كيف يؤثر حد التخميد على الموجة الصوتية المتولدة. عند الترددات المنخفضة، تكون العلاقة مشابهة للحالة غير المخمدة. أما عند الترددات العالية، يزداد الجزء التخيلي لعدد الموجة، مما يؤدي إلى اضمحلال أسرع للمكونات عالية التردد من الموجة الصوتية، بينما تنتشر المكونات منخفضة التردد لمسافات أبعد، مما يسهل رصدها.</p>
-</section>
-</section>
-<section id="source-term-derivation" class="level2">
-<h2>اشتقاق حد المصدر <span id="subsec:source-term-derivation"
-label="subsec:source-term-derivation"></span></h2>
-<p>من المعروف أن الجسيمات المؤينة المارة عبر السائل تترسب طاقة تؤدي إلى ارتفاع حاد في درجة الحرارة المحلية <span class="citation" data-cites="Groom2021 Kutcher1976"></span>. هذا التغير شبه اللحظي في درجة الحرارة يؤدي إلى تمدد حجمي سريع، وتنتشر التغيرات في الكثافة عبر السائل. نفترض هنا أن هذا التأثير، المعروف بـ"التسخين الموضعي"، هو المساهم الأكبر في توليد الموجة الصوتية، وهو ما يتوافق مع الأدبيات السابقة <span class="citation" data-cites="Vandenbroucke2005 Learned1979 Askaryan1979"></span>. في هذا القسم، نناقش آلية توليد الموجة، أي حد المصدر في معادلة الموجة.</p>
-<section id="derivation-from-navier-stokes-1" class="level3">
-<h3>الاشتقاق من معادلات نافير-ستوكس</h3>
-<p>لنعتبر تغيرًا موضعيًا في درجة الحرارة <span class="math inline">\(\tau (\bm{x},t)\)</span> بحيث تكون درجة الحرارة الكلية <span class="math inline">\(T(\bm{x},t) = T_0 + \tau(\bm{x},t)\)</span>، حيث <span class="math inline">\(T_0\)</span> هي درجة الحرارة عند التوازن. عند تغير درجة الحرارة، تتغير الكثافة بدلالة كل من الضغط ودرجة الحرارة. في المرتبة الأولى، يمكن التعبير عن تغير الكثافة كما يلي <span class="citation" data-cites="Morse1986"></span>:</p>
-<p><span class="math display">\[\rho = \left.\frac{\partial \rho}{\partial
+                    <p>في حال غياب التخميد (<span class="math inline">\(\omega_0 \to \infty\)</span>)، تصبح العلاقة <span class="math inline">\(kc = \omega\)</span> كما هو متوقَّع. تُظهر هذه المعادلة كيف يؤثّر حدّ التخميد في الموجة الصوتية المتولِّدة: فالمكوّنات عالية التردّد تضمحلّ أسرع، بينما تنتشر المكوّنات منخفضة التردّد لمسافاتٍ أبعد، ما يُيسِّر رصدها.</p>
+                </section>
+            </section>
+
+            <section id="source-term-derivation" class="level2">
+                <h2>اشتقاق حدّ المصدر <span id="subsec:source-term-derivation" label="subsec:source-term-derivation"></span></h2>
+                <p>من المعلوم أنّ الجسيمات المُؤيِّنة المارّة عبر سائل تُرسِّب طاقة تُحدث ارتفاعًا حادًّا في درجة الحرارة المحلية <span class="citation" data-cites="Groom2021 Kutcher1976"></span>. هذا التغيّر شبه اللحظي في درجة الحرارة يؤدّي إلى تمدّد حجمي سريع، وتنتشر تغيّرات الكثافة عبر السائل. نفترض هنا أنّ هذا الأثر، المعروف بـ «التسخين المُوضعي»، هو المُساهم الأكبر في توليد الموجة الصوتية، وهو ما يتوافق مع الأدبيات السابقة <span class="citation" data-cites="Vandenbroucke2005 Learned1979 Askaryan1979"></span>. في هذا القسم نشتقّ حدّ المصدر في معادلة الموجة.</p>
+
+                <section id="derivation-from-navier-stokes-1" class="level3">
+                    <h3>الاشتقاق من معادلات نافير–ستوكس</h3>
+                    <p>لنعتبر تغيّرًا موضعيًّا في درجة الحرارة <span class="math inline">\(\tau (\bm{x},t)\)</span> بحيث تكون درجة الحرارة الكلّية <span class="math inline">\(T(\bm{x},t) = T_0 + \tau(\bm{x},t)\)</span>، حيث <span class="math inline">\(T_0\)</span> هي درجة الحرارة عند التوازن. عند تغيّر درجة الحرارة، تتغيّر الكثافة بدلالة كلٍّ من الضغط ودرجة الحرارة. في المرتبة الأولى، يمكن التعبير عن اضطراب الكثافة كما يلي <span class="citation" data-cites="Morse1986"></span>:</p>
+                    <p class="equation"><span class="math display">\[\delta\rho = \left.\frac{\partial \rho}{\partial
 P}\right|_T p + \left.\frac{\partial \rho}{\partial T}\right|_P \tau,
     \label{eq:density-change}\]</span></p>
-<p>حيث <span class="math inline">\(P\)</span> و<span class="math inline">\(T\)</span> هما الضغط ودرجة الحرارة الكليان، و<span class="math inline">\(V\)</span> هو حجم صغير حول نقطة التفاعل. نذكر تعريفات قابلية الانضغاط متساوية الحرارة <span class="math inline">\(\kappa_T\)</span> ومعامل التمدد الحراري <span class="citation" data-cites="Lyamshev2004"></span>:</p>
-<p><span class="math display">\[\begin{aligned}
+                    <p>ونُذكِّر بتعريفَي قابلية الانضغاط متساوية الحرارة <span class="math inline">\(\kappa_T\)</span> ومعامل التمدّد الحراري <span class="citation" data-cites="Lyamshev2004"></span>:</p>
+                    <p class="equation"><span class="math display">\[\begin{aligned}
     \kappa_T &amp;= -\frac{1}{V} \left. \frac{\partial V}{\partial
 P}\right|_T = \frac{1}{\rho_0} \left. \frac{\partial \rho}{\partial
 P}\right|_T
@@ -287,290 +295,314 @@ P}\right|_T
 T}\right|_P = - \frac{1}{\rho_0} \left. \frac{\partial \rho}{\partial
 T}\right|_P.
     \label{eq:thermal-expansion}\end{aligned}\]</span></p>
-<p>يمكننا إعادة كتابة معادلة تغير الكثافة كما يلي <span class="citation" data-cites="Morse1986"></span>:</p>
-<p><span class="math display">\[\rho = \rho_0 (\kappa_T p - \beta \tau).\]</span></p>
-<p>من هنا، وباتباع نفس خطوات القسم السابق، نحصل على:</p>
-<p><span class="math display">\[\rho_0 \kappa_T \frac{\partial^2
-p}{\partial t^2} - \rho_0\beta\frac{\partial^2 \tau}{\partial t^2} =
+                    <p>بالتالي يمكن إعادة كتابة الاضطراب في الكثافة على الصورة <span class="citation" data-cites="Morse1986"></span>:</p>
+                    <p class="equation"><span class="math display">\[\delta\rho = \rho_0 (\kappa_T\, p - \beta\, \tau).\]</span></p>
+                    <p>وباتباع خطوات التصعيد نفسها كما في قسم التخميد، نحصل على:</p>
+                    <p class="equation"><span class="math display">\[\rho_0 \kappa_T \frac{\partial^2
+p}{\partial t^2} - \rho_0\,\beta\,\frac{\partial^2 \tau}{\partial t^2} =
 \Delta \left(p + \mu \kappa_T \frac{\partial p}{\partial t} + \mu \beta
 \frac{\partial \tau}{\partial t}\right).
     \label{eq:wave-source-I}\]</span></p>
-<p>تظهر هنا حد إضافي للتخميد. لكن بافتراض أن تغير درجة الحرارة صغير، يمكن إهماله. باستخدام القانون الأول للديناميكا الحرارية، يمكن حساب الحرارة المضافة لكل وحدة حجم <span class="math inline">\(\epsilon(\bm{x},t)\)</span>:</p>
-<p><span class="math display">\[\epsilon = \frac{\delta Q}{\delta V} = \rho_0 C_p
+                    <p>يظهر هنا حدٌّ إضافيّ للتخميد مرتبط بـ<span class="math inline">\(\tau\)</span>، لكن بافتراض أنّ تغيّر درجة الحرارة صغير يمكن إهماله. باستخدام القانون الأوّل للديناميكا الحرارية، تكون الحرارة المضافة لكل وحدة حجم <span class="math inline">\(\epsilon(\bm{x},t)\)</span>:</p>
+                    <p class="equation"><span class="math display">\[\epsilon = \frac{\delta Q}{\delta V} = \rho_0 C_p
 \tau,
     \label{eq:heat-per-volume}\]</span></p>
-<p>حيث <span class="math inline">\(C_p\)</span> هو السعة الحرارية النوعية عند ضغط ثابت. بإدخال <span class="math inline">\(\tau\)</span> من المعادلة السابقة، نحصل على معادلة الموجة الكاملة:</p>
-<p><span class="math display">\[\Delta \left(p + \mu \kappa_T \frac{\partial
+                    <p>حيث <span class="math inline">\(C_p\)</span> السعة الحرارية النوعية عند ضغطٍ ثابت. بإدخال <span class="math inline">\(\tau = \epsilon/(\rho_0 C_p)\)</span> في المعادلة السابقة، نحصل على معادلة الموجة الكاملة:</p>
+                    <p class="equation"><span class="math display">\[\Delta \left(p + \mu \kappa_T \frac{\partial
 p}{\partial t} \right) - \rho_0 \kappa_T \frac{\partial^2 p}{\partial
 t^2} = - \frac{\beta}{C_p} \frac{\partial^2 \epsilon}{\partial t^2}
     \label{eq:wave-source-spec}\]</span></p>
-<p>أو بشكل أكثر اختصارًا:</p>
-<p><span class="math display">\[\Delta \left(p +
+                    <p>أو على شكلٍ أكثر اختصارًا:</p>
+                    <p class="equation"><span class="math display">\[\Delta \left(p +
 \frac{1}{\omega_0} p_t \right) - \frac{1}{c^2} p_{tt} = -
 \frac{\beta}{C_p} \epsilon_{tt}.
     \label{eq:wave-source}\]</span></p>
-<p>لقد اشتققنا بنجاح حدود التصحيح لمعادلة الموجة الصوتية الناتجة عن مصدر حراري داخل السائل. في القسم <a href="#subsec:energy-deposition" data-reference-type="ref" data-reference="subsec:energy-deposition">4.1</a> سنوضح كيفية تقدير ترسيب الحرارة <span class="math inline">\(\epsilon(\bm{x},t)\)</span> لجسيم مشحون مفرد باستخدام معادلة بيت-بلوخ. من المهم هنا ملاحظة أن افتراض ثبات <span class="math inline">\(\kappa\)</span> و<span class="math inline">\(\beta\)</span> مع الزمن صحيح فقط بعيدًا عن نقطة ترسيب الطاقة.</p>
-</section>
-</section>
-</section>
-<section id="sec:solutions" class="level1">
-<h1>الحلول التحليلية لمعادلة الموجة</h1>
-<p>في هذا القسم، نحلل الإشارة الصوتية الناتجة عن جسيمات مفردة بشكل عام باستخدام نظرية الاضطراب. نطور أولاً مخططًا تقريبيًا اضطرابيًا للمعادلة غير المتجانسة للموجة المخمدة بشدة بناءً على اللزوجة، ثم نحسب دوال جرين للمؤثر المؤجل في كل مرتبة، وأخيرًا نقدم حلاً صريحًا للمرتبة الأولى في اللزوجة.</p>
-<p>نركز هنا على الشكل التالي من معادلة الموجة حيث تم استبدال حد المصدر بدالة اعتباطية <span class="math inline">\(f : \mathbb{R}^4 \to \mathbb{R}\)</span>:</p>
-<p><span class="math display">\[\label{eq:wave-general}
+                    <p>وهكذا اشتققنا حدود التصحيح لمعادلة الموجة الصوتية الناتجة عن مصدرٍ حراري داخل السائل. في القسم <a href="#subsec:energy-deposition" data-reference-type="ref" data-reference="subsec:energy-deposition">4.1</a> سنوضّح كيفية تقدير ترسيب الحرارة <span class="math inline">\(\epsilon(\bm{x},t)\)</span> لجسيمٍ مشحون مُفرد باستخدام معادلة بيت–بلوخ. يُذكر أنّ افتراض ثبات <span class="math inline">\(\kappa\)</span> و<span class="math inline">\(\beta\)</span> مع الزمن صالحٌ بعيدًا عن نقطة ترسيب الطاقة.</p>
+                </section>
+            </section>
+        </section>
+
+        <section id="sec:solutions" class="level1">
+            <h1>الحلول التحليلية لمعادلة الموجة</h1>
+            <p>نُحلّل في هذا القسم الإشارة الصوتية الناتجة عن جسيماتٍ مُفردة بصورةٍ عامة باستخدام نظرية الاضطراب. نُطوِّر أوّلًا مخطّطًا تقريبيًّا اضطرابيًّا للمعادلة غير المتجانسة للموجة المُخمَّدة بشدّة اعتمادًا على اللُّزوجة، ثم نحسب دوالّ غرين للمؤثّر المؤجَّل في كل مرتبة، وأخيرًا نعرض حلًّا صريحًا للمرتبة الأولى في اللُّزوجة.</p>
+            <p>نركّز هنا على الصيغة التالية لمعادلة الموجة حيث استُبدل حدّ المصدر بدالةٍ اعتباطية <span class="math inline">\(f : \mathbb{R}^4 \to \mathbb{R}\)</span>:</p>
+            <p class="equation"><span class="math display">\[\label{eq:wave-general}
     \Box p(\bm{x}) + \lambda \Delta \partial_t p(\bm{x}) = -
 f(\bm{x}),\]</span></p>
-<p>حيث <span class="math inline">\(\Box\)</span> هو مؤثر دالمبير، <span class="math inline">\(\lambda = 1/\omega_0\)</span> هو معامل اللزوجة، <span class="math inline">\(p\)</span> هو الضغط، و<span class="math inline">\(f\)</span> يمثل المصدر وله دعم محدود. لاحقًا سنفرض شروطًا إضافية على <span class="math inline">\(f\)</span> لتمثيل توزيع الطاقة لجسيم متحرك.</p>
-<section id="approximations-using-perturbation-theory" class="level2">
-<h2>التقريبات باستخدام نظرية الاضطراب<span
-id="subsec:perturbation-theory"
-label="subsec:perturbation-theory"></span></h2>
-<p>يمكن إيجاد حل لمعادلة الضغط <span class="math inline">\(p\)</span> السابقة بمعاملة حد التخميد <span class="math inline">\(\lambda \Delta \partial_t p(\bm{x})\)</span> كاضطراب صغير عندما تكون <span class="math inline">\(\lambda\)</span> صغيرة. نكتب الحل بدلالة <span class="math inline">\(\lambda\)</span>:</p>
-<p><span class="math display">\[p(\bm{x}) = p_0(\bm{x}) + \lambda
+            <p>حيث <span class="math inline">\(\Box\)</span> هو مؤثِّر دالامبير، و<span class="math inline">\(\lambda = 1/\omega_0\)</span> معامل يرتبط باللُّزوجة، و<span class="math inline">\(p\)</span> الضغط، و<span class="math inline">\(f\)</span> يمثّل المصدر وله دعمٌ محدود. لاحقًا سنفرض شروطًا إضافية على <span class="math inline">\(f\)</span> لتمثيل توزيع الطاقة لجسيمٍ متحرِّك.</p>
+
+            <section id="approximations-using-perturbation-theory" class="level2">
+                <h2>التقريبات باستخدام نظريّة الاضطراب<span id="subsec:perturbation-theory" label="subsec:perturbation-theory"></span></h2>
+                <p>يمكن إيجاد حلّ للضغط <span class="math inline">\(p\)</span> السابق بمعاملة حدّ التخميد <span class="math inline">\(\lambda \Delta \partial_t p(\bm{x})\)</span> كاضطرابٍ صغير عندما تكون <span class="math inline">\(\lambda\)</span> صغيرة. نكتب الحلّ على صورة متسلسلة في <span class="math inline">\(\lambda\)</span>:</p>
+                <p class="equation"><span class="math display">\[p(\bm{x}) = p_0(\bm{x}) + \lambda
 p_1(\bm{x}) + \cdots = \sum_{n=0}^{\infty} \lambda^n p_n(\bm{x}).
     \label{eq:perturbed-pressure}\]</span></p>
-<p>وباستخدام هذا التمثيل، يمكن إعادة كتابة المعادلة كالتالي:</p>
-<p><span class="math display">\[\label{eq:wave-perturbed}
+                <p>وباستخدام هذا التمثيل، تُعاد كتابة المعادلة كالتالي:</p>
+                <p class="equation"><span class="math display">\[\label{eq:wave-perturbed}
     \Box p_0(\bm{x}) + \sum_{n=1}^{\infty}\lambda^n \left[\Box
 p_n(\bm{x}) + \Delta \partial_t p_{n-1}(\bm{x}) \right] =
 -f(\bm{x}).\]</span></p>
-<p>ومن هنا، نحصل على علاقة تكرارية لتصحيح المرتبة <span class="math inline">\(n\)</span> في الضغط:</p>
-<p><span class="math display">\[\begin{aligned}
+                <p>ومنها نحصل على علاقةٍ تكرارية لتصحيح المرتبة <span class="math inline">\(n\)</span> في الضغط:</p>
+                <p class="equation"><span class="math display">\[\begin{aligned}
     \label{eq:wave-perturb-recursive-1}
     \Box p_0(\bm{x}) &amp;= - f(\bm{x})\\
     \label{eq:wave-perturb-recursive-2}
     \Box p_n(\bm{x}) &amp;= - \Delta \partial_t p_{n-1}
 (\bm{x}).\end{aligned}\]</span></p>
-<p>أي أن كل تصحيح أعلى هو موجة ناتجة عن انحناءات أعلى لدالة المصدر. سنركز الآن على حل مشكلة كوشي العامة لهذه المعادلة باستخدام دوال جرين. قبل ذلك، من المفيد تبسيط المعادلة باستخدام تحويل فورييه:</p>
-<p><span class="math display">\[\begin{aligned}
+                <p>أي إنّ كل تصحيحٍ أعلى هو موجةٌ ناتجة عن مُشتقّاتٍ زمنية ومكانية أعلى لدالة المصدر. سنحلّ الآن مسألة كوشي العامة لهذه المعادلة باستخدام دوالّ غرين. قبل ذلك، من المُفيد تبسيط المعادلة باستخدام تحويل فورييه:</p>
+                <p class="equation"><span class="math display">\[\begin{aligned}
     \label{eq:fourier}
     \hat{f}(\bm{k}) &amp;= \int_{\mathbb{R}^4}d^4x\, f(\bm{x}) e^{-i
 \bm{k} \cdot \bm{x}}\\
     \label{eq:fourier-inv}
-    f(\bm{x}) &amp;= \int_{\mathbb{R}^4}\frac{d^4 k}{(2\pi)^4} f(\bm{k})
+    f(\bm{x}) &amp;= \int_{\mathbb{R}^4}\frac{d^4 k}{(2\pi)^4} \,\hat{f}(\bm{k})
 e^{i \bm{k} \cdot \bm{x}},\end{aligned}\]</span></p>
-<p>وبذلك تصبح المعادلة:</p>
-<p><span class="math display">\[\label{eq:wave-perturb-ft}
+                <p>فتصبح:</p>
+                <p class="equation"><span class="math display">\[\label{eq:wave-perturb-ft}
     \hat{p}_n(\bm{k}) = \frac{1}{-\bm{k}^2} \left(\frac{i
 k_0\,\vec{k}^2}{-\bm{k}^2}\right)^n \hat{f}(\bm{k}),\]</span></p>
-<p>حيث <span class="math inline">\(\vec{k}^2 = k_1^2+  k_2^2 + k_3^2\)</span> و<span class="math inline">\(\bm{k}^2 = -k_0^2 + \vec{k}^2\)</span>. هذا التعبير يحدد تمامًا طيف التردد لكل مرتبة لأي دالة مصدر <span class="math inline">\(f\)</span>.</p>
-</section>
-<section id="subsec:greens-functions" class="level2">
-<h2>دوال جرين</h2>
-<p>لتقديم حلول مغلقة الشكل للمعادلة السابقة، ندرس التعبير العام للمؤثر المؤجل. سنرى أن المؤثر المؤجل ضروري للحفاظ على السببية.</p>
-<section id="using-potentials-and-residues" class="level3">
-<h3>استخدام الكمونات والبواقي</h3>
-<p>يتبسط شكل المؤثر إذا حللنا المعادلة السابقة لكمون <span class="math inline">\(\psi_{n}\)</span> بحيث <span class="math inline">\(\partial_t^n \psi_{n} = p_{n}\)</span>. بذلك تصبح المعادلة:</p>
-<p><span class="math display">\[\label{eq:wave-perturb-potential}
+                <p>حيث <span class="math inline">\(\vec{k}^2 = k_1^2+  k_2^2 + k_3^2\)</span> و<span class="math inline">\(\bm{k}^2 = -k_0^2 + \vec{k}^2\)</span>. هذا التعبير يُحدِّد تمامًا طيف التردّد لكل مرتبة لأي مصدرٍ <span class="math inline">\(f\)</span>.</p>
+            </section>
+
+            <section id="subsec:greens-functions" class="level2">
+                <h2>دوالّ غرين</h2>
+                <p>لتقديم حلولٍ مغلقة الشكل، ندرس التعبير العام للمؤثّر المؤجَّل. سنرى أنّ المؤثّر المؤجَّل ضروريٌّ للحفاظ على السببيّة.</p>
+
+                <section id="using-potentials-and-residues" class="level3">
+                    <h3>استخدام الكمونات والبواقي</h3>
+                    <p>يتبسّط شكل المؤثّر إذا حلّلنا المعادلة لكمون <span class="math inline">\(\psi_{n}\)</span> بحيث <span class="math inline">\(\partial_t^n \psi_{n} = p_{n}\)</span>. بذلك تصبح المعادلة:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:wave-perturb-potential}
     \Box^{n+1} \psi_{n}(\bm{x}) = -(-\Delta)^n f(\bm{x}).\]</span></p>
-<p>لحساب دالة جرين <span class="math inline">\(G_{n}(\bm{x})\)</span> للمرتبة <span class="math inline">\(n\)</span>، نستخدم تحويل فورييه. بإدخال مصدر دالي <span class="math inline">\(f(\bm{x}) = \delta (\bm{x})\)</span>، نحصل على:</p>
-<p><span class="math display">\[\label{eq:greens-ft}
-    \hat{G}_n(\bm{x}) = \frac{1}{-\bm{k}^2}
+                    <p>لحساب دالة غرين <span class="math inline">\(G_{n}(\bm{x})\)</span> للمرتبة <span class="math inline">\(n\)</span> نستخدم تحويل فورييه. وبإدخال مصدرٍ دالي <span class="math inline">\(f(\bm{x}) = \delta (\bm{x})\)</span> نحصل على:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:greens-ft}
+    \hat{G}_n(\bm{k}) = \frac{1}{-\bm{k}^2}
 \left(\frac{\vec{k}^2}{-\bm{k}^2}\right)^n.\]</span></p>
-<p>النقاط الشاذة من المرتبة <span class="math inline">\(n+1\)</span> تقع عند <span class="math inline">\(\bm{k}^2 = 0\)</span> أي <span class="math inline">\(k_0 = \pm |\vec{k}|\)</span>. لاستخراج المؤثر المؤجل في الإحداثيات المكانية، نأخذ تحويل فورييه العكسي مع مسار تكامل مناسب للحفاظ على السببية:</p>
-<p><span class="math display">\[\label{eq:greens-ift-2}
+                    <p>تقع النقاط الشاذّة من المرتبة <span class="math inline">\(n+1\)</span> عند <span class="math inline">\(\bm{k}^2 = 0\)</span> أي <span class="math inline">\(k_0 = \pm |\vec{k}|\)</span>. ولاستخراج المؤثّر المؤجَّل في الإحداثيات المكانية، نأخذ تحويل فورييه العكسي مع مسار تكاملٍ مناسب يحفظ السببيّة:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:greens-ift-2}
     G_n(\bm{x}) = \lim_{\varepsilon \to 0}\int_{\mathbb{R}^4} \frac{d^4
-k}{(2\pi)^4} \frac{(\vec{k}^2)^n\, e^{i \bm{k}\cdot \bm{x}}}{\left[(k_0
-+ i \varepsilon)^2 - \vec{k}^2\right]^{n+1}},\]</span></p>
-<p>يمكن حساب التكامل باستخدام نظرية البواقي، حيث يكون المؤثر المؤجل حقيقيًا لجميع المراتب <span class="math inline">\(n\)</span>.</p>
-</section>
-<section id="properties-of-residues" class="level3">
-<h3>خصائص البواقي</h3>
-<p>تقع جميع النقاط الشاذة في النصف السفلي من المستوى العقدي. إذا كان <span class="math inline">\(t&lt;0\)</span>، لا يشمل المسار أي نقطة شاذة ويكون التكامل صفرًا. أما إذا كان <span class="math inline">\(t&gt;0\)</span>، فيشمل المسار النقاط الشاذة ويجب حساب التكامل. يمكن إثبات أن البواقي مرتبطة بعلاقة <span class="math display">\[\label{eq:residues-relation}
+ k}{(2\pi)^4} \frac{(\vec{k}^2)^n\, e^{i \bm{k}\cdot \bm{x}}}{\left[(k_0
+ + i \varepsilon)^2 - \vec{k}^2\right]^{n+1}},\]</span></p>
+                    <p>ويمكن حساب التكامل باستخدام نظرية البواقي، حيث يكون المؤثّر المؤجَّل حقيقيًّا لجميع المراتب <span class="math inline">\(n\)</span>.</p>
+                </section>
+
+                <section id="properties-of-residues" class="level3">
+                    <h3>خصائص البواقي</h3>
+                    <p>تقع جميع النقاط الشاذّة في النصف السفلي من المستوى العقدي. إذا كان <span class="math inline">\(t&lt;0\)</span> لا يشمل المسار أي نقطةٍ شاذّة ويكون التكامل صفرًا. أمّا إذا كان <span class="math inline">\(t&gt;0\)</span> فيشمل المسار النقاط الشاذّة ويجب حساب التكامل. ويمكن إظهار أنّ البواقي مرتبطة بالعلاقة:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:residues-relation}
     \hat{g}_+(\vec{k}^2) = - \hat{g}_-^*(\vec{k}^2),\]</span></p>
-<p>وبذلك يمكن كتابة دالة جرين بدلالة الجزء التخيلي للباقي:</p>
-<p><span class="math display">\[\label{eq:lame-f}
+                    <p>وعليه يمكن كتابة دالة غرين بدلالة الجزء التخيّلي للباقي:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:lame-f}
     \hat{g}_n(\vec{k}^2) = i \hat{g}_+ (\vec{k}^2) -
-i\hat{g}_+^*(\vec{k}^2) = - 2 \text{Im}{\hat{g}_+(\vec{k}^2)},\]</span></p>
-</section>
-<section id="calculation-of-residues-and-greens-functions"
-class="level3">
-<h3>حساب البواقي ودوال جرين</h3>
-<p>يمكن الآن حساب التعبير التحليلي للبواقي عند <span class="math inline">\(k_0 = k_{\pm} = \pm |\vec{k}| + i \varepsilon\)</span>. يكفي حساب الباقي عند <span class="math inline">\(k_0 = k_+\)</span>، فنحصل على:</p>
-<p><span class="math display">\[\label{eq:residue}
+i\hat{g}_+^*(\vec{k}^2) = - 2 \,\mathrm{Im}\,{\hat{g}_+(\vec{k}^2)}.\]</span></p>
+                </section>
+
+                <section id="calculation-of-residues-and-greens-functions" class="level3">
+                    <h3>حساب البواقي ودوالّ غرين</h3>
+                    <p>يمكن الآن حساب التعبير التحليلي للبواقي عند <span class="math inline">\(k_0 = k_{\pm} = \pm |\vec{k}| + i \varepsilon\)</span>. يكفي حساب الباقي عند <span class="math inline">\(k_0 = k_+\)</span> لنحصل على:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:residue}
     \begin{aligned}
     \hat{g}_+ &amp;= \lim_{\varepsilon \to 0} -e^{-\varepsilon
-t}\Theta(t)\,\text{Im}\, \frac{e^{i (\vec{k}\cdot \vec{x} - |\vec{k}|
-t)}}{2^n |\vec{k}|} P(|\vec{k}|)\\
-    &amp;= - \Theta(t)\,\frac{\sin(\vec{k}\cdot{x} - |\vec{k}| t)}{2^n
-|\vec{k}|} P(|\vec{k}|),
+t}\,\Theta(t)\,\mathrm{Im}\!\left[ \frac{e^{i (\vec{k}\cdot \vec{x} - |\vec{k}|
+t)}}{2^n |\vec{k}|} P(|\vec{k}|) \right]\\
+    &amp;= - \Theta(t)\,\frac{\sin(\vec{k}\cdot\vec{x} - |\vec{k}| t)}{2^n
+|\vec{k}|} \,P(|\vec{k}|),
     \end{aligned}\]</span></p>
-<p>حيث <span class="math inline">\(P(k)\)</span> كثير حدود في <span class="math inline">\(|\vec{k}|\)</span>:</p>
-<p><span class="math display">\[\label{eq:polynomial}
+                    <p>حيث <span class="math inline">\(P(k)\)</span> كثير حدود في <span class="math inline">\(|\vec{k}|\)</span>:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:polynomial}
     P(|\vec{k}|) = (-1)^n \sum_{m=0}^{n}
 \frac{(2i|\vec{k}|t)^m}{m!}\binom{2n - m}{n}.\]</span></p>
-<p>وباستخدام الإحداثيات الكروية، نحصل على دالة جرين النهائية:</p>
-<p><span class="math display">\[\label{eq:retarded-propagator}
+                    <p>وباستخدام الإحداثيات الكروية، نحصل على دالة غرين النهائية:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:retarded-propagator}
     G_n(\bm{x}) = \sum_{m=0}^n \frac{(-2)^m}{4^{n+1} \pi
-m!}\binom{2n-m}{n} G_{nm}(\bm{x}),\]</span></p>
-<p>حيث <span class="math inline">\(G_{nm}(\bm{x}) = \frac{t^m}{r} \delta^{(m)}{(t-r)}\)</span> و<span class="math inline">\(r = |\vec{x}|\)</span>. باستخدام هذه الدوال، يمكن كتابة الضغط:</p>
-<p><span class="math display">\[\label{eq:greens-solutions}
+m!}\binom{2n-m}{n} \,G_{nm}(\bm{x}),\]</span></p>
+                    <p>حيث <span class="math inline">\(G_{nm}(\bm{x}) = \frac{t^m}{r} \,\delta^{(m)}(t-r)\)</span> و<span class="math inline">\(r = |\vec{x}|\)</span>. باستخدام هذه الدوالّ يمكن كتابة الضغط:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:greens-solutions}
     p(\bm{x}) = \sum_{n=0}^{\infty} \partial_{t}^{n}\,(G_n *
 f)(\bm{x}),\]</span></p>
-<p>وهو صالح لأي دالة مصدر اعتباطية <span class="math inline">\(f\)</span>.</p>
-</section>
-</section>
-<section id="causality" class="level2">
-<h2>السببية<span id="subsec:causality-proof"
-label="subsec:causality-proof"></span></h2>
-<p>من خلال وجود دالة هيفيسايد في دالة جرين، يتضح أن المؤثر المؤجل يحقق السببية. فكل مرتبة من الضغط تعتمد فقط على شكل المصدر قبل الزمن <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[\label{eq:convolution-integral}
+                    <p>وهو صالح لأي دالة مصدرٍ اعتباطية <span class="math inline">\(f\)</span>.</p>
+                </section>
+            </section>
+
+            <section id="causality" class="level2">
+                <h2>السببيّة<span id="subsec:causality-proof" label="subsec:causality-proof"></span></h2>
+                <p>من خلال وجود دالّة هيفيسايد في دالة غرين يتبيّن أنّ المؤثّر المؤجَّل يُحقِّق السببيّة: فكل مرتبة من الضغط تعتمد فقط على شكل المصدر قبل الزمن <span class="math inline">\(t\)</span>:</p>
+                <p class="equation"><span class="math display">\[\label{eq:convolution-integral}
     p_n(\bm{x}) = \int_{-\infty}^{t}dt'
 \int_{\mathbb{R}^3}d^3x'\, G_n(\bm{x} - \bm{x}')
-f(\bm{x}'),\]</span></p>
-</section>
-<section id="subsec:closed-form-solution" class="level2">
-<h2>حل مغلق الشكل لمصدر دالي</h2>
-<p>بفضل التعبير التحليلي للمرتبة <span class="math inline">\(n\)</span>، يمكن إيجاد حل لمصدر دالي متحرك من الشكل <span class="math inline">\(\delta(x)\delta(y)\delta(z-v t)\)</span> حيث <span class="math inline">\(v\)</span> سرعة الجسيم (بوحدات سرعة الصوت). إذا كانت كثافة الطاقة المترسبة بدلالة الزمن <span class="math inline">\(q(t)\)</span>، يكون المصدر:</p>
-<p><span class="math display">\[\label{eq:delta-source}
-    f(\bm{x}) = q(t)\delta(x) \delta(y) \delta(z-vt).\]</span></p>
-<p>لحساب <span class="math inline">\(p_n(\bm{x})\)</span>، نحتاج إلى حساب الالتفاف <span class="math inline">\((G_n * f)(\bm{x})\)</span>، ويمكن حساب كل حد من حدود الالتفاف كما يلي:</p>
-<p><span class="math display">\[\label{eq:source-convolution-1}
+\,f(\bm{x}').\]</span></p>
+            </section>
+
+            <section id="subsec:closed-form-solution" class="level2">
+                <h2>حلّ مغلق الشكل لمصدر دالي</h2>
+                <p>بفضل التعبير التحليلي للمرتبة <span class="math inline">\(n\)</span>، يمكن إيجاد حلٍّ لمصدرٍ دالي متحرِّك من الشكل <span class="math inline">\(\delta(x)\delta(y)\delta(z-v t)\)</span> حيث <span class="math inline">\(v\)</span> سرعة الجسيم (بوحدات سرعة الصوت). إذا كانت كثافة الطاقة المُترسَّبة بدلالة الزمن <span class="math inline">\(q(t)\)</span>، يكون المصدر:</p>
+                <p class="equation"><span class="math display">\[\label{eq:delta-source}
+    f(\bm{x}) = q(t)\,\delta(x)\, \delta(y)\, \delta(z-vt).\]</span></p>
+                <p>لحساب <span class="math inline">\(p_n(\bm{x})\)</span>، نحتاج إلى حساب الالتفاف <span class="math inline">\((G_n * f)(\bm{x})\)</span>، ويمكن تقييم كل حدٍّ من حدود الالتفاف كما يلي:</p>
+                <p class="equation"><span class="math display">\[\label{eq:source-convolution-1}
     G_{nm}*f(\bm{x}) = \int_{\mathbb{R}^3} d^{3}x'
 \int_{\mathbb{R}}dt'\, G_{nm}(\bm{x}')
-f(\bm{x}-\bm{x}'),\]</span></p>
-<p>وبإجراء التكاملات، نحصل على تعبير عام يعتمد على جذور معادلة تحدد نقاط التقاطع بين مسار الجسيم والموجة الأولية.</p>
-</section>
-<section id="subsec:roots-for-different-speeds" class="level2">
-<h2>مصادر الصوت لسرعات الجسيمات المختلفة</h2>
-<p>تظهر الجذور الخاصة في الحل السابق، وهي:</p>
-<p><span class="math display">\[\label{eq:z_k-primes}
+\,f(\bm{x}-\bm{x}'),\]</span></p>
+                <p>وبعد إجراء التكاملات، يُصار إلى تعبيرٍ عام يعتمد على جذور معادلة تُحدِّد نقاط التقاطع بين مسار الجسيم والموجة الأوليّة.</p>
+            </section>
+
+            <section id="subsec:roots-for-different-speeds" class="level2">
+                <h2>الجذور لسرعات الجسيمات المختلفة</h2>
+                <p>تظهر الجذور الخاصة في الحل السابق، وهي:</p>
+                <p class="equation"><span class="math display">\[\label{eq:z_k-primes}
     z_\pm' = \gamma^2 (z-vt) \pm |v|\sqrt{\gamma^4 (z-vt)^2 +
 \gamma^2 \rho^2},\]</span></p>
-<p>حيث <span class="math inline">\(\gamma^2 = 1/(1-v^2)\)</span> و<span class="math inline">\(\rho = \sqrt{x^2 + y^2}\)</span> هو البعد العمودي عن المسار.</p>
-<section id="slow-particles" class="level3">
-<h3>الجسيمات البطيئة</h3>
-<p>إذا كانت سرعة الجسيم أقل من سرعة الصوت (<span class="math inline">\(v&lt;1\)</span>)، يكون <span class="math inline">\(\gamma^2 &gt; 0\)</span>، وتكون الجذور معرفة دائمًا. لكن هناك شرط إضافي <span class="math display">\[\label{eq:z_k-condition}
+                <p>حيث <span class="math inline">\(\gamma^2 = 1/(1-v^2)\)</span> و<span class="math inline">\(\rho = \sqrt{x^2 + y^2}\)</span> هو البُعد العمودي عن المسار.</p>
+
+                <section id="slow-particles" class="level3">
+                    <h3>الجسيمات البطيئة</h3>
+                    <p>إذا كانت سرعة الجسيم أقل من سرعة الصوت (<span class="math inline">\(v&lt;1\)</span>)، يكون <span class="math inline">\(\gamma^2 &gt; 0\)</span> وتكون الجذور مُعرَّفة دائمًا. لكن يوجد شرط إضافي:</p>
+                    <p class="equation"><span class="math display">\[\label{eq:z_k-condition}
     z'-(z-vt) &gt; 0.\]</span></p>
-<p>وبذلك يكون الحل الوحيد المقبول هو <span class="math inline">\(z_+'\)</span>.</p>
-</section>
-<section id="fast-particles" class="level3">
-<h3>الجسيمات السريعة</h3>
-<p>أما إذا كانت سرعة الجسيم أكبر من سرعة الصوت (<span class="math inline">\(v&gt;1\)</span>)، فقد تصبح الجذور غير معرفة (تخيلية) لبعض القيم، ويكون الضغط صفرًا في تلك النقاط. عندما يتحقق شرط معين، يكون هناك حلان مقبولان.</p>
-</section>
-</section>
-<section id="subsec:leading-order-solution" class="level2">
-<h2>الحل التحليلي للمرتبة الأولى</h2>
-<p>لتوضيح النموذج، نقدم الحل المغلق للمرتبة <span class="math inline">\(n=0\)</span> (أي معادلة الموجة غير المخمدة):</p>
-<p><span class="math display">\[\label{eq:solution-n=0}
+                    <p>وبذلك يكون الحل الوحيد المقبول هو <span class="math inline">\(z_+'\)</span>.</p>
+                </section>
+
+                <section id="fast-particles" class="level3">
+                    <h3>الجسيمات السريعة</h3>
+                    <p>أمّا إذا كانت سرعة الجسيم أكبر من سرعة الصوت (<span class="math inline">\(v&gt;1\)</span>)، فقد تصبح الجذور تخيّلية لبعض القيم، ويكون الضغط صفرًا في تلك النقاط. وعندما يتحقّق شرطٌ معيّن، يظهر حلّان مقبولان (مخروط ماخ).</p>
+                </section>
+            </section>
+
+            <section id="subsec:leading-order-solution" class="level2">
+                <h2>الحلّ التحليلي للمرتبة الأولى</h2>
+                <p>للتوضيح، نعرض الحل المغلق للمرتبة <span class="math inline">\(n=0\)</span> (أي معادلة الموجة غير المُخمَّدة):</p>
+                <p class="equation"><span class="math display">\[\label{eq:solution-n=0}
     p(\bm{x}) = \sum_{z_k' \in S}\partial_t\,
 \frac{q(t-r(z_k'))}{4\pi \left(r(z_k') - v
 z_k'\right)},\]</span></p>
-<p>وبافتراض أن الجسيم يبدأ ترسيب الطاقة عند <span class="math inline">\(t=0\)</span>، يمكن تبسيط الحل إلى:</p>
-<p><span class="math display">\[\label{eq:solution-n=0-simple}
-    p(\bm{x}) = - \frac{ v \bar{z}\, \Theta( - \bar{z} - \rho \sqrt{v^2
+                <p>وبافتراض أنّ الجسيم يبدأ ترسيب الطاقة عند <span class="math inline">\(t=0\)</span>، يمكن تبسيط الحل إلى:</p>
+                <p class="equation"><span class="math display">\[\label{eq:solution-n=0-simple}
+    p(\bm{x}) = - \frac{ v \,\bar{z}\, \Theta( - \bar{z} - \rho \sqrt{v^2
 -1} )}{\left[\bar{z}^2 + \rho^2 (1-v^2)\right]^{\frac{3}{2}}},\]</span></p>
-<p>حيث <span class="math inline">\(\bar{z} = z - vt\)</span> و<span class="math inline">\(\Theta\)</span> دالة هيفيسايد. الجسيمات فوق الصوتية (<span class="math inline">\(v&gt;1\)</span>) تنتج إشارات مختلفة عن الجسيمات تحت الصوتية (<span class="math inline">\(v&lt;1\)</span>). يمكن استخدام هذا الحل لتحديد نقطة وزمن الذروة للإشارة كدالة للمسافة عن المسار.</p>
-</section>
-</section>
-<section id="sec:applications" class="level1">
-<h1>تطبيق على جسيمات التأين الدنيا</h1>
-<p>بعد تطوير إطار اضطرابي لحساب الإشارة الصوتية الناتجة عن مرور الجسيمات في السوائل، يمكننا تطبيقه على حالات واقعية مثل حساب الموجة الصوتية الناتجة عن الميونات الكونية. الميونات الكونية جسيمات نسبية تفقد طاقة بمعدل قريب من الحد الأدنى، وتسمى جسيمات التأين الدنيا (MIPs) <span class="citation" data-cites="Amsler2010"></span>.</p>
-<p>نبدأ باشتقاق تعبير لتوزيع معدل ترسيب الطاقة لجسيم MIP (أي حد المصدر في معادلة الموجة)، ثم نحاكي تطور الموجات الصوتية لحساب قيم الضغط العظمى عند سرعات مختلفة وفي أوساط متعددة.</p>
-<section id="subsec:energy-deposition" class="level2">
-<h2>تقدير ترسيب الطاقة</h2>
-<p>لنمذجة تأثير جسيم MIP في سائل، نهمل التأثيرات غير الخطية مثل التصادمات المباشرة مع جزيئات السائل، ونصف فقط متوسط ترسيب الطاقة. توجد عدة محاولات في الأدبيات لوصف ملف ترسيب الطاقة لجسيم مشحون مفرد <span class="citation" data-cites="Lahmann2016 Learned1979"></span>.</p>
-<div class="table*">
-<p>.</p>
-<div class="ruledtabular">
-<div class="tabular">
-<p><span>ldddddd</span> الاسم &amp; &amp; &amp; &amp; &amp; &amp;<br />
-الماء &amp; 298.15 &amp; 997.02 &amp; 1496.60 &amp; 8.90030 &amp;
-0.06122 &amp; 79.70<br />
-النيتروجين &amp; 77.00 &amp; 807.20 &amp; 853.50 &amp; 1.61980 &amp;
-2.72482 &amp; 82.00<br />
-الأرجون &amp; 84.00 &amp; 1415.67 &amp; 861.24 &amp; 2.88490 &amp; 3.98389
-&amp; 188.00<br />
-الزينون &amp; 165.00 &amp; 2942.40 &amp; 643.27 &amp; 5.10420 &amp;
-6.66136 &amp; 482.00<br />
-الزئبق &amp; 298.15 &amp; 13600.00 &amp; 1450.10 &amp; 16.85000 &amp;
-1.27989 &amp; 799.97<br />
-</p>
-</div>
-</div>
-</div>
-<p>رغم أن معادلة بيت-بلوخ <span class="citation" data-cites="Sternheimer1961"></span> تعطي تقديرًا دقيقًا لمتوسط الطاقة المفقودة، إلا أنها لا تعطي القيمة الأكثر احتمالاً بسبب أن توزيع فقدان الطاقة لكل تفاعل يتبع توزيع لاندو المنحرف <span class="citation" data-cites="Amsler2010"></span>. لذلك نستخدم القيمة الأكثر احتمالاً لتوزيع لاندو كما هو معطى في <span class="citation" data-cites="Groom2021"></span>:</p>
-<p><span class="math display">\[\label{eq:bethe-bloch}
+                <p>حيث <span class="math inline">\(\bar{z} = z - vt\)</span> و<span class="math inline">\(\Theta\)</span> دالّة هيفيسايد. الجسيمات فوق الصوتية (<span class="math inline">\(v&gt;1\)</span>) تُنتج إشاراتٍ مختلفة عن الجسيمات تحت الصوتية (<span class="math inline">\(v&lt;1\)</span>). يمكن استخدام هذا الحل لتحديد نقطة وزمن الذروة للإشارة كدالةٍ في المسافة عن المسار.</p>
+            </section>
+        </section>
+
+        <section id="sec:applications" class="level1">
+            <h1>تطبيق على جسيمات التأيُّن الدنيا</h1>
+            <p>بعد تطوير إطارٍ اضطرابي لحساب الإشارة الصوتية الناتجة عن مرور الجسيمات في السوائل، نُطبِّقه على حالاتٍ واقعية مثل حساب الموجة الصوتية الناتجة عن الميونات الكونية. الميونات الكونية جسيماتٌ نسبية تفقد طاقة بمعدّلٍ قريب من الحدّ الأدنى، وتُسمّى جسيمات التأيُّن الدنيا (MIPs) <span class="citation" data-cites="Amsler2010"></span>.</p>
+            <p>نبدأ باشتقاق تعبيرٍ لتوزيع معدّل ترسيب الطاقة لجسيم MIP (أي حدّ المصدر في معادلة الموجة)، ثم نحاكي تطوّر الموجات الصوتية لحساب قيم الضغط العُظمى عند سرعاتٍ مختلفة وفي أوساطٍ متعددة.</p>
+
+            <section id="subsec:energy-deposition" class="level2">
+                <h2>تقدير ترسيب الطاقة</h2>
+                <p>لنمذجة أثر جسيم MIP في سائل، نهمل التأثيرات غير الخطية مثل التصادمات المباشرة مع جزيئات السائل، ونصف فقط متوسط ترسيب الطاقة. توجد محاولاتٌ عدّة في الأدبيات لوصف مِلفّ ترسيب الطاقة لجسيمٍ مشحونٍ مُفرد <span class="citation" data-cites="Lahmann2016 Learned1979"></span>.</p>
+
+                <figure class="table">
+                    <table class="table table-sm table-bordered table-striped">
+                        <caption>خواص فيزيائية مختارة للسوائل المدروسة كما استُخدمت في المحاكاة</caption>
+                        <thead class="table-light">
+                            <tr>
+                                <th>السائل</th>
+                                <th>T [K]</th>
+                                <th>\(\rho_0\) [kg/m\(^3\)]</th>
+                                <th>\(c_s\) [m/s]</th>
+                                <th>المعامل (5)</th>
+                                <th>المعامل (6)</th>
+                                <th>\(I\) [eV]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>الماء</td><td>298.15</td><td>997.02</td><td>1496.60</td><td>8.90030</td><td>0.06122</td><td>79.70</td></tr>
+                            <tr><td>النيتروجين</td><td>77.00</td><td>807.20</td><td>853.50</td><td>1.61980</td><td>2.72482</td><td>82.00</td></tr>
+                            <tr><td>الأرجون</td><td>84.00</td><td>1415.67</td><td>861.24</td><td>2.88490</td><td>3.98389</td><td>188.00</td></tr>
+                            <tr><td>الزينون</td><td>165.00</td><td>2942.40</td><td>643.27</td><td>5.10420</td><td>6.66136</td><td>482.00</td></tr>
+                            <tr><td>الزئبق</td><td>298.15</td><td>13600.00</td><td>1450.10</td><td>16.85000</td><td>1.27989</td><td>799.97</td></tr>
+                        </tbody>
+                    </table>
+                </figure>
+
+                <p>رغم أنّ معادلة بيت–بلوخ <span class="citation" data-cites="Sternheimer1961"></span> تُعطي تقديرًا دقيقًا لمتوسط الطاقة المفقودة، إلّا أنّها لا تعطي «القيمة الأكثر احتمالًا» لأنّ توزيع فقدان الطاقة لكل تفاعل يتبع توزيع لاندو المنحرف <span class="citation" data-cites="Amsler2010"></span>. لذلك نستخدم القيمة الأكثر احتمالًا لتوزيع لاندو كما هو مُعطى في <span class="citation" data-cites="Groom2021"></span>:</p>
+                <p class="equation"><span class="math display">\[\label{eq:bethe-bloch}
     \left. \frac{dE}{dx}\right|_{M} = \xi\left[\ln \frac{2 m_e c_l^{2}
 \beta^{2} \gamma^{2}}{I}+\ln \frac{\xi}{I}-\beta^{2}\right],\]</span></p>
-<p>حيث <span class="math inline">\(\xi\)</span> طاقة مميزة، <span class="math inline">\(I\)</span> متوسط طاقة الإثارة للسائل، <span class="math inline">\(m_e\)</span> كتلة الإلكترون، <span class="math inline">\(c_l\)</span> سرعة الضوء، <span class="math inline">\(\gamma\)</span> عامل لورنتز، و<span class="math inline">\(\beta = v/c_l\)</span> نسبة سرعة الجسيم إلى سرعة الضوء. نفترض أن الجسيم يتحرك بخط مستقيم في السائل وأن تغير سرعته مهمل أثناء العبور:</p>
-<p><span class="math display">\[\frac{d}{dt}\frac{dE}{dx} = 0.\]</span></p>
-<p>وبذلك يكون معدل ترسيب الطاقة في الوسط:</p>
-<p><span class="math display">\[\frac{dE}{dt} =
+                <p>حيث <span class="math inline">\(\xi\)</span> طاقةٌ مميّزة، و<span class="math inline">\(I\)</span> متوسط طاقة الإثارة للسائل، و<span class="math inline">\(m_e\)</span> كتلة الإلكترون، و<span class="math inline">\(c_l\)</span> سرعة الضوء، و<span class="math inline">\(\gamma\)</span> عامل لورنتز، و<span class="math inline">\(\beta = v/c_l\)</span>. نفترض أنّ الجسيم يتحرّك بخطٍّ مستقيم في السائل وأنّ تغيّر سرعته مُهمَل أثناء العبور:</p>
+                <p class="equation"><span class="math display">\[\frac{d}{dt}\frac{dE}{dx} = 0.\]</span></p>
+                <p>وبذلك يكون معدّل ترسيب الطاقة في الوسط:</p>
+                <p class="equation"><span class="math display">\[\frac{dE}{dt} =
 \frac{dx}{dt}\left.\frac{dE}{dx}\right|_{M} = v
 \left.\frac{dE}{dx}\right|_{M}.
     \label{eq:dE-dt}\]</span></p>
-<p>نستخدم نظام إحداثيات أسطواني حول <span class="math inline">\(\hat{\bm{x}}\)</span> بحيث يكون موقع الجسيم دائمًا <span class="math inline">\((\rho,\phi,x) = (0,0,vt)\)</span> عند الزمن t. نحتاج الآن إلى اشتقاق معدل تغير كثافة الطاقة <span class="math inline">\(\epsilon_t(\bm{x},t) = \epsilon_t(\rho,x,t) = dE/dt\,d\Omega\)</span> لإدخاله في معادلة الموجة.</p>
-<p>باعتبار ترسيب الطاقة في حجم <span class="math inline">\(\Omega\)</span>، يكون المعدل:</p>
-<p><span class="math display">\[\frac{dE}{dt} = \int_{\Omega}\, d\Omega\, v
-\left.\frac{dE}{dx}\right|_{M} G(\bm{x}),
+                <p>نستخدم نظام إحداثياتٍ أسطواني حول المحور <span class="math inline">\(\hat{\bm{x}}\)</span> بحيث يكون موضع الجسيم دائمًا <span class="math inline">\((\rho,\phi,x) = (0,0,vt)\)</span> عند الزمن <span class="math inline">\(t\)</span>. نحتاج الآن إلى اشتقاق معدّل تغيّر كثافة الطاقة <span class="math inline">\(\epsilon_t(\bm{x},t)\)</span> لإدخاله في معادلة الموجة.</p>
+                <p>باعتبار ترسيب الطاقة في حجمٍ تفاضلي <span class="math inline">\(\Omega\)</span>، يكون المعدّل:</p>
+                <p class="equation"><span class="math display">\[\frac{dE}{dt} = \int_{\Omega}\, d\Omega\, v
+\left.\frac{dE}{dx}\right|_{M} \,G(\bm{x}),
     \label{eq:epsilon-I}\]</span></p>
-<p>حيث <span class="math inline">\(G(\bm{x})\)</span> توزيع الطاقة المترسبة. إذًا:</p>
-<p><span class="math display">\[\epsilon_t(\bm{x},t) = \epsilon_t(\rho,\phi,x,t)
-= \frac{dE}{dt}G(\rho,\phi,x-vt).\]</span></p>
-<p>وبالاستلهام من <span class="citation" data-cites="Learned1979 Groom2021"></span>، نختار <span class="math inline">\(G\)</span> دالة دالية، فنحصل على:</p>
-<p><span class="math display">\[\epsilon_t(\rho,x,t) =
-v\left.\frac{dE}{dx}\right|_{M} \delta^2(\rho)\delta(x - v t),\]</span></p>
-<p>حيث <span class="math inline">\(\rho\)</span> المسافة العمودية عن المسار، <span class="math inline">\(v\)</span> سرعة الجسيم، و<span class="math inline">\(x\)</span> المسافة على المسار.</p>
-<p>العنصر الأخير هو دالة تفعيل <span class="math inline">\(q(t)\)</span> تصف متى يبدأ الجسيم بترسيب الطاقة. استخدمنا سابقًا دالة هيفيسايد، لكن الأفضل استخدام دالة سيغمويدية لتجنب التفردات:</p>
-<p><span class="math display">\[q(t) = \frac{1}{1+e^{-\alpha t}},\]</span></p>
-<p>حيث <span class="math inline">\(\alpha\)</span> يحدد حدة الانتقال. بذلك يكون حد المصدر الكامل:</p>
-<p><span class="math display">\[\epsilon_t(\rho,x,t) =
-v\left.\frac{dE}{dx}\right|_{M} q(t) \delta^2(\rho)\delta(x - v t),
+                <p>حيث <span class="math inline">\(G(\bm{x})\)</span> توزيع الطاقة المُترسَّبة. إذًا:</p>
+                <p class="equation"><span class="math display">\[\epsilon_t(\bm{x},t)
+= \frac{dE}{dt}\,G(\bm{x}) = v\left.\frac{dE}{dx}\right|_{M}\! G(\bm{x}).\]</span></p>
+                <p>وبالاستلهام من <span class="citation" data-cites="Learned1979 Groom2021"></span>، نختار <span class="math inline">\(G\)</span> دالةً داليةً مُتمركزة على المسار:</p>
+                <p class="equation"><span class="math display">\[\epsilon_t(\rho,x,t) =
+v\left.\frac{dE}{dx}\right|_{M} \,\delta^2(\rho)\,\delta(x - v t),\]</span></p>
+                <p>حيث <span class="math inline">\(\rho\)</span> المسافة العمودية عن المسار، و<span class="math inline">\(v\)</span> سرعة الجسيم، و<span class="math inline">\(x\)</span> الإحداثي على طول المسار.</p>
+                <p>العنصرُ الأخير هو دالة التفعيل <span class="math inline">\(q(t)\)</span> التي تصف متى يبدأ الجسيم بترسيب الطاقة. استخدمنا سابقًا دالّة هيفيسايد، لكن الأفضل استخدام دالّة سيغمودية لتجنّب التفردات:</p>
+                <p class="equation"><span class="math display">\[q(t) = \frac{1}{1+e^{-\alpha t}},\]</span></p>
+                <p>حيث <span class="math inline">\(\alpha\)</span> يحدِّد حدّة الانتقال. وعليه يكون حدّ المصدر الكامل:</p>
+                <p class="equation"><span class="math display">\[\epsilon_t(\rho,x,t) =
+v\left.\frac{dE}{dx}\right|_{M}\, q(t)\, \delta^2(\rho)\,\delta(x - v t),
     \label{eq:source-term}\]</span></p>
-<p>وسنستخدم هذا في القسم التالي لحساب الإشارات الصوتية للميونات في أوساط مختلفة.</p>
-</section>
-<section id="subsec:tables" class="level2">
-<h2>تقديرات عددية لإشارة الميون في أوساط مختلفة</h2>
-<p>نطبق النموذج السابق لحساب الإشارات الصوتية للميونات النسبية المارة في الماء، والأرجون السائل، والزينون السائل، والنيتروجين السائل، والزئبق.</p>
-<p>لإجراء الحسابات، طورنا حزمة بايثون تقوم بتقييم القيم رمزيًا وحساب الضغط باستخدام بطاقة الرسوميات. الكود وتعليمات التثبيت متوفرة في <span class="citation" data-cites="Oikonomou2021"></span>.</p>
-<p>وباستخدام المحاكاة والثوابت في الجدول، يمكننا حساب خصائص كمية لمرور الميونات النسبية (<span class="math inline">\(\beta = 0.9\)</span>) في السوائل المذكورة.</p>
-<figure>
-<img src="../media/pressure-vs-time.png" id="fig:pressure-vs-time"
-alt="الضغط الأعظمي p_m بدلالة الزمن t على بعد \rho = 1\ \text{سم} في سوائل مختلفة للإشارة الصوتية الناتجة عن ميونات نسبية (\beta = 0.9). السوائل الأعلى كثافة ومعامل تمدد حراري أكبر تعطي قممًا أعلى لنفس الجسيمات." />
-<figcaption aria-hidden="true">الضغط الأعظمي <span
-class="math inline">\(p_m\)</span> بدلالة الزمن <span
-class="math inline">\(t\)</span> على بعد <span
-class="math inline">\(\rho = 1\ \text{سم}\)</span> في سوائل مختلفة للإشارة الصوتية الناتجة عن ميونات نسبية (<span
-class="math inline">\(\beta = 0.9\)</span>). السوائل الأعلى كثافة ومعامل تمدد حراري أكبر تعطي قممًا أعلى لنفس الجسيمات.</figcaption>
-</figure>
-<div class="ruledtabular">
-<div class="tabular">
-<p><span>ldd</span> &amp; &amp;<br />
-الماء &amp; 298.15 &amp; 1.0499<br />
-النيتروجين &amp; 77.00 &amp; 7.7324<br />
-الأرجون &amp; 84.00 &amp; 9.4589<br />
-الزينون &amp; 165.00 &amp; 5.2946<br />
-الزئبق &amp; 298.15 &amp; 10.4703<br />
-</p>
-</div>
-</div>
-<p>يبين الشكل أن الضغط الأعظمي <span class="math inline">\(p_m\)</span> على بعد <span class="math inline">\(\rho = 1 \, سم\)</span> من مسار الجسيم يصل إلى قيم في نطاق الفيمتو باسكال (<span class="math inline">\(10^{-15}\, Pa\)</span>). السوائل الأعلى كثافة ومعامل تمدد حراري أكبر، مثل الزئبق، هي الأنسب للكشف. يوضح الجدول تقديرًا عدديًا دقيقًا للضغط الأعظمي على بعد <span class="math inline">\(\rho = 1 سم\)</span> من مسار الميون.</p>
-<p>تعتمد قيمة الضغط الأعظمي على المسافة من المسار كما هو موضح في الشكل، حيث يظهر اتجاه أسي قوي بعد <span class="math inline">\(10^{-1}\,m\)</span> مع وجود قمة قبل ذلك. كما أن الضغط الأعظمي بدلالة سرعة الميونات <span class="math inline">\(\beta\)</span> يتناقص أسيًا.</p>
-</section>
-</section>
-<section id="conclusion" class="level1">
-<h1>الخلاصة<span id="sec:conclusion"
-label="sec:conclusion"></span></h1>
-<p>قدمنا منهجية متكاملة لحساب الإشارات الصوتية الناتجة عن ترسيب الطاقة من جسيمات مفردة في السوائل ذات اللزوجة الصغيرة غير المهملة. كمثال، طبقنا النموذج للتنبؤ بالإشارة الناتجة عن مرور الميونات النسبية في عدة سوائل. في هذا التحليل، أخذنا في الاعتبار فقط إنتاج الصوت الحراري وأهملنا التأثيرات غير الخطية مثل تكوّن الفقاعات الدقيقة.</p>
-<p>يمكن استخدام الحزمة البرمجية والمحاكاة المتوفرة في <span class="citation" data-cites="Oikonomou2021"></span> للتنبؤ بالإشارة الصوتية الناتجة عن أنواع مختلفة من الجسيمات في أوساط متعددة. جميع فرضيات النموذج موضحة بوضوح في الاشتقاقات السابقة مع وصف كامل للظواهر الفيزيائية المعنية.</p>
-<p>وبما أننا حسبنا تحليليًا التصحيحات من المرتبة الأولى والثانية بسبب اللزوجة، يمكننا تعميم ملاحظة Learned في <span class="citation" data-cites="Learned1979"></span> على الإشارات الناتجة عن الجسيمات المفردة في السوائل منخفضة اللزوجة. وجدنا أن الإشارات الصوتية تضمحل بقانون قوى مع المسافة وليس أسيًا كما ذُكر في <span class="citation" data-cites="Learned1979"></span>، مما يجعل الكشف عنها غير مستحيل تمامًا. ومع ذلك، فإن الإشارة المتوقعة منخفضة التردد والسعة، وهو ما يتوافق مع الطاقة المترسبة المنخفضة للجسيمات المفردة.</p>
-<p>تجري حاليًا دراسات إضافية لتوصيف تأثير اللزوجة بشكل غير اضطرابي لتمديد النتائج إلى السوائل عالية اللزوجة. ونطور أيضًا نظرية الحقل الفعال لتبسيط الحسابات وأخذ التأثيرات الكمومية في الاعتبار. من الناحية التجريبية، ورغم أن مستوى الإشارة صغير جدًا للكشف بالطرق التقليدية مثل الهيدروفونات أو أجهزة SQUID المتباعدة، نعتقد أن وسائل أخرى مثل صفائح المكثفات الكثيفة، الكيوبتات فائقة التوصيل، أو كواشف TES تستحق الدراسة. نترك تطوير الحساس الفيزيائي للفيزيائيين التجريبيين الشجعان الراغبين في خوض هذا المجال.</p>
-<div class="acknowledgments">
-<p>نتوجه بالشكر إلى البروفيسور جون جي. ليرند (جامعة هاواي)، والدكتور ماريو موتا (معهد كاليفورنيا للتقنية)، والبروفيسور جورجيو غراتا (جامعة ستانفورد) على النقاشات القيمة حول الصوتيات. كما نشكر البروفيسور إلينا بيريتا (جامعة نيويورك أبوظبي)، والبروفيسور جوناثان غودمان (جامعة نيويورك)، والبروفيسور جوناثان وير (جامعة نيويورك)، والبروفيسور ديوغو أرسينيو (جامعة نيويورك أبوظبي)، والبروفيسور فرانشيسكو باباريلا (جامعة نيويورك أبوظبي) على دعمهم في فهم الجوانب الرياضية للفيزياء. ونشكر أيضًا هنري روبرتس (جامعة نيويورك أبوظبي) ومريم السحار (جامعة نيويورك أبوظبي) على تدقيقهم اللغوي الدقيق للمخطوطة، وهاشم العيدروس (جامعة الشارقة) على جمع بيانات ثوابت السوائل. تم إجراء هذا البحث باستخدام موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي.</p>
-</div>
-</section>
-</body>
-</html>
-        
-        <hr style="margin: 40px 0;">
-        <div class="text-muted text-center">
-            <small>
-                تم تحويل هذا الإصدار HTML تلقائيًا من LaTeX.<br>
-                تم عرض المعادلات الرياضية باستخدام MathJax.
-            </small>
-        </div>
+                <p>وسنستخدم هذا في القسم التالي لحساب الإشارات الصوتية للميونات في أوساطٍ مختلفة.</p>
+            </section>
+
+            <section id="subsec:tables" class="level2">
+                <h2>تقديرات عددية لإشارة الميون في أوساط مختلفة</h2>
+                <p>نُطبِّق النموذج السابق لحساب الإشارات الصوتية للميونات النسبية المارّة في الماء، والأرجون السائل، والزينون السائل، والنيتروجين السائل، والزئبق.</p>
+                <p>لإجراء الحسابات، طوَّرنا حزمة بايثون تُقيِّم التعابير رمزيًّا وتحسب الضغط باستخدام بطاقة الرسوميات. الشيفرة وتعليمات التثبيت متوفّرة في <span class="citation" data-cites="Oikonomou2021"></span>.</p>
+                <p>وباستخدام المحاكاة والثوابت في الجدول السابق، نحسب خصائص كميّة لمرور ميونات نسبية (<span class="math inline">\(\beta = 0.9\)</span>) في السوائل المذكورة.</p>
+
+                <figure class="figure">
+                    <img src="../media/pressure-vs-time.png" id="fig:pressure-vs-time" alt="الضغط الأعظمي p_m بدلالة الزمن t على بعد \rho = 1\ \text{سم} في سوائل مختلفة للإشارة الصوتية الناتجة عن ميونات نسبية (\beta = 0.9)." />
+                    <figcaption aria-hidden="true">الضغط الأعظمي <span class="math inline">\(p_m\)</span> بدلالة الزمن <span class="math inline">\(t\)</span> على بُعد <span class="math inline">\(\rho = 1\ \text{سم}\)</span> في سوائل مختلفة للإشارة الصوتية الناتجة عن ميونات نسبية (<span class="math inline">\(\beta = 0.9\)</span>). السوائل الأعلى كثافةً ومعامل تمدّدٍ حراريٍّ أكبر تُعطي قممًا أعلى لنفس الجسيمات.</figcaption>
+                </figure>
+
+                <figure class="table">
+                    <table class="table table-sm table-bordered table-striped w-auto">
+                        <caption>تقدير عددي للضغط الأعظمي على بُعد \(\rho = 1\) سم من مسار الميون النسبي</caption>
+                        <thead class="table-light">
+                            <tr>
+                                <th>السائل</th>
+                                <th>T [K]</th>
+                                <th>\(p_m\) [fPa]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>الماء</td><td>298.15</td><td>1.0499</td></tr>
+                            <tr><td>النيتروجين</td><td>77.00</td><td>7.7324</td></tr>
+                            <tr><td>الأرجون</td><td>84.00</td><td>9.4589</td></tr>
+                            <tr><td>الزينون</td><td>165.00</td><td>5.2946</td></tr>
+                            <tr><td>الزئبق</td><td>298.15</td><td>10.4703</td></tr>
+                        </tbody>
+                    </table>
+                </figure>
+
+                <p>يُبيِّن الشكل أنّ الضغط الأعظمي <span class="math inline">\(p_m\)</span> على بُعد <span class="math inline">\(\rho = 1 \,\text{سم}\)</span> من مسار الجسيم يبلغ قيمًا في نطاق الفيمتو باسكال (<span class="math inline">\(10^{-15}\,\mathrm{Pa}\)</span>). السوائل الأعلى كثافةً ومعامل تمدّدٍ حراري أكبر، مثل الزئبق، تبدو أنسب للكشف. ويُظهر الجدول تقديرًا عدديًّا لقيمة <span class="math inline">\(p_m\)</span> على هذا البعد.</p>
+                <p>تعتمد قيمة الضغط الأعظمي على المسافة من المسار كما هو موضّح في الشكل، حيث يظهر اتجاه اضمحلال قويّ بعد <span class="math inline">\(10^{-1}\,\mathrm{m}\)</span> مع وجود قمةٍ قبله. كما أنّ <span class="math inline">\(p_m\)</span> بدلالة سرعة الميونات <span class="math inline">\(\beta\)</span> يتناقص على نحوٍ أُسّي تقريبًا.</p>
+            </section>
+        </section>
+
+        <section id="conclusion" class="level1">
+            <h1>الخلاصة<span id="sec:conclusion" label="sec:conclusion"></span></h1>
+            <p>قدّمنا منهجيةً متكاملة لحساب الإشارات الصوتية الناتجة عن ترسيب الطاقة من جسيماتٍ مُفردة في السوائل ذات اللُّزوجة الصغيرة غير المُهمَلة. وطبّقناها مثالًا للتنبؤ بالإشارة الناتجة عن مرور الميونات النسبية في عدّة سوائل. في هذا التحليل أخذنا في الاعتبار فقط إنتاج الصوت الحراري وأهملنا التأثيرات غير الخطية مثل تكوُّن الفُقاعات الدقيقة.</p>
+            <p>يمكن استخدام الحزمة البرمجية والمحاكاة المُتاحة في <span class="citation" data-cites="Oikonomou2021"></span> للتنبؤ بالإشارة الصوتية الناتجة عن أنواع مختلفة من الجسيمات في أوساطٍ متعددة. وقد وُضِّحت فرضيات النموذج بجلاء في الاشتقاقات السابقة مع وصفٍ كاملٍ للظواهر الفيزيائية المعنيّة.</p>
+            <p>وبما أنّنا حسبنا تحليليًّا تصحيحات المرتبتين الأولى والثانية الناجمة عن اللُّزوجة، يمكننا تعميم ملاحظة Learned في <span class="citation" data-cites="Learned1979"></span> على الإشارات الناتجة عن الجسيمات المفردة في السوائل منخفضة اللُّزوجة. وجدنا أنّ الإشارات الصوتية تضمحلّ بقانون قوى مع المسافة وليس أُسّيًّا كما ذُكر في <span class="citation" data-cites="Learned1979"></span>، ما يجعل الكشف عنها غير مستحيلٍ تمامًا. ومع ذلك، تبقى الإشارة المتوقّعة منخفضة التردّد والسعة، وهو ما يتّسق مع الطاقة المُترسَّبة المنخفضة للجسيمات المفردة.</p>
+            <p>تجري حاليًّا دراساتٌ إضافية لتوصيف أثر اللُّزوجة على نحوٍ غير اضطرابي لِتمديد النتائج إلى السوائل عالية اللُّزوجة. ونُطوِّر أيضًا نظرية الحقل الفعّال لتبسيط الحسابات وأخذ التأثيرات الكمّية بالحسبان. ومن الناحية التجريبية، وبرغم أنّ مستوى الإشارة صغيرٌ جدًّا للكشف بالوسائل التقليدية مثل الهيدروفونات أو أجهزة SQUID المتباعدة، نرى أنّ وسائل أخرى مثل صفائح المُكثِّفات الكثيفة، والكيوبتات فائقة التوصيل، وكواشف TES تستحقّ الدراسة. ونترك تطوير الحساس الفيزيائي للفيزيائيين التجريبيين الشجعان الراغبين في خوض هذا المجال.</p>
+            <div class="acknowledgments">
+                <p>نتوجّه بالشكر إلى البروفيسور جون جي. ليرند (جامعة هاواي)، والدكتور ماريو موتا (معهد كاليفورنيا للتقنية)، والبروفيسور جورجيو غراتا (جامعة ستانفورد) على النقاشات القيّمة حول الصوتيات. كما نشكر البروفيسور إلينا بيريتا (جامعة نيويورك أبوظبي)، والبروفيسور جوناثان غودمان (جامعة نيويورك)، والبروفيسور جوناثان وير (جامعة نيويورك)، والبروفيسور ديوغو أرسينيو (جامعة نيويورك أبوظبي)، والبروفيسور فرانشيسكو باباريلا (جامعة نيويورك أبوظبي) على دعمهم في فهم الجوانب الرياضية للفيزياء. ونشكر أيضًا هنري روبرتس (جامعة نيويورك أبوظبي) ومريم السحّار (جامعة نيويورك أبوظبي) على تدقيقهما اللغوي الدقيق للمخطوطة، وهاشم العيدروس (جامعة الشارقة) على جمع بيانات ثوابت السوائل. تمّ إجراء هذا البحث باستخدام موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي.</p>
+            </div>
+        </section>
     </div>
+
+    <hr style="margin: 40px 0;">
+    <div class="text-muted text-center">
+        <small>
+            تمّ تحويل هذا الإصدار HTML تلقائيًّا من LaTeX.<br>
+            تمّ عرض المعادلات الرياضية باستخدام MathJax.
+        </small>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

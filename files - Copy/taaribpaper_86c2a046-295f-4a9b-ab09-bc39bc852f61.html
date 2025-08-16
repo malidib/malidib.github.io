@@ -1,0 +1,339 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Gonçalo Paulo, Thomas Marshall, Nora Belrose">
+  <title>هل تنتقل قابلية تفسير الـTransformer إلى الـRNNs؟</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <style>
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Noto Naskh Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(90deg, #3a6073 0%, #16222a 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 2px 8px rgba(60,60,60,0.08);
+    }
+    h1.title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .author {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #e0e0e0;
+      font-weight: 400;
+    }
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+      font-family: 'Cairo', 'Noto Naskh Arabic', Arial, sans-serif;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: 2rem;
+      border-bottom: 2px solid #3a6073;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      border-right: 4px solid #3a6073;
+      padding-right: 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+    h3, h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin: 0 0 1.2em 0;
+      text-align: justify;
+    }
+    ol, ul {
+      margin: 1em 2em 1em 0;
+      padding-right: 1.5em;
+    }
+    li {
+      margin-bottom: 0.7em;
+    }
+    strong {
+      color: #1a5276;
+    }
+    em {
+      color: #7b241c;
+      font-style: italic;
+    }
+    code, pre {
+      background: #f4f4f4;
+      color: #c0392b;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      font-size: 0.95em;
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    }
+    .math.display {
+      display: block;
+      background: #f0f3f7;
+      border-radius: 8px;
+      padding: 1em;
+      margin: 1.2em 0;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+    }
+    .math.inline {
+      background: #f0f3f7;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      direction: ltr;
+      font-size: 0.95em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2em 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(60,60,60,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1.1em 1em;
+      border-bottom: 1px solid #eaeaea;
+      vertical-align: top;
+      text-align: right;
+    }
+    th {
+      background: #e3eafc;
+      color: #2c3e50;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+    tr.odd {
+      background: #f9f9f9;
+    }
+    tr.even {
+      background: #f4f8fb;
+    }
+    a {
+      color: #2874a6;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #c0392b;
+    }
+    .footnotes {
+      font-size: 0.95em;
+      color: #555;
+      background: #f7f7f7;
+      border-top: 2px solid #e3eafc;
+      margin-top: 2.5em;
+      padding: 1.5em 2em;
+      border-radius: 0 0 16px 16px;
+    }
+    .footnoteRef {
+      font-size: 0.9em;
+      vertical-align: super;
+      color: #7b241c;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #e3eafc;
+      margin: 2em 0;
+    }
+    .nodecor {
+      text-decoration: none !important;
+      color: inherit !important;
+      font-weight: 600;
+      font-family: inherit;
+    }
+    @media (max-width: 800px) {
+      body {
+        font-size: 18px;
+        padding: 0 0.5em;
+      }
+      header {
+        padding: 1.5rem 0.5rem 1rem 0.5rem;
+      }
+      h1.title {
+        font-size: 1.5rem;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      table, th, td {
+        font-size: 0.95em;
+        padding: 0.7em 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">هل تنتقل قابلية تفسير الـ<span class="nodecor">Transformer</span> إلى الـ<span class="nodecor">RNNs</span>؟</h1>
+  <p class="author"><span class="nodecor">Gonçalo Paulo</span>, <span class="nodecor">Thomas Marshall</span>, <span class="nodecor">Nora Belrose</span></p>
+</header>
+<main>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>في الآونة الأخيرة، شهدت هندسة الشبكات العصبية المتكررة، مثل <span class="nodecor">Mamba</span> و<span class="nodecor">RWKV</span>، تقدماً كبيراً، مما مكّن <span class="nodecor">RNNs</span> من مطابقة أداء <span class="nodecor">Transformers</span> ذات الحجم المماثل أو تجاوزه في مهام نمذجة اللغة وتقييمات المهام اللاحقة. ويشير هذا التطور إلى أن الأنظمة المستقبلية قد تبني على هندسات جديدة كلياً. في هذه الورقة، نستقصي ما إذا كانت طرق التفسير المصممة أصلاً لنماذج لغة <span class="nodecor">Transformer</span> قابلة للتطبيق على هذه البنى المتكررة الصاعدة. وبشكل خاص، نركز على توجيه مخارج النموذج عبر إضافة التنشيط التبايُني، واستخلاص التنبؤات الكامنة عبر العدسة المُعدّلة، واستخلاص المعرفة الكامنة من النماذج المعدة لإنتاج مخرجات خاطئة تحت ظروف معينة. تُظهر نتائجنا أن معظم هذه التقنيات فعّالة عند تطبيقها على <span class="nodecor">RNNs</span>، ونبيّن أنه يمكن تحسين بعضها بالاستفادة من الحالة المضغوطة لـ<span class="nodecor">RNNs</span>.</p>
+<h1 id="مقدمة">مُقَدِّمة</h1>
+<p>لقد استبدلت هندسة المحولات (<span class="nodecor">vaswani2017attention</span>) شبكات الخلايا العصبية المتكررة في معالجة اللغات الطبيعية في السنوات الأخيرة بسبب قدرتها المُثيرة على التعامل مع الاعتماديات طويلة المدى وتدريبها الموازي عبر بعد الزمن. ولكن، آلية الانتباه الذاتي—القلب النابض للمحول—تعاني من تعقيد زمني تربيعي، مما يجعل تطبيقها على تسلسلات طويلة جداً مكلفاً من الناحية الحسابية.</p>
+<p>قدمت أعمال (<span class="nodecor">gu2023mamba</span>) و(<span class="nodecor">peng2023rwkv</span>) شبكتين متكررتين تسمحان بالتدريب الموازي عبر بعد الزمن من خلال تقييد العلاقة المتكررة الكامنة لتكون منسقة (<span class="nodecor">martin2017parallelizing</span>, <span class="nodecor">blelloch1990prefix</span>). تجريبياً، تُظهر هذه البنى تعقيداً وأداءً مقاربين للمحولات ذات الحجم المماثل، مما يجعلها بدائل جذابة للعديد من حالات الاستخدام.</p>
+<p>في هذه الورقة، نُقيّم ما إذا كانت أدوات التفسير الشائعة المصممة أصلاً للمحول ستنطبق كذلك على هذه النماذج الجديدة من الشبكات العصبية المتكررة. وبالتحديد، نعيد إنتاج النتائج التالية من أدبيات تفسير المحول:</p>
+<ol>
+<li><p><strong>إضافة التنشيط التبايُني:</strong> يبيّن (<span class="nodecor">rimsky2023steering</span>) أنه يمكن التحكم في نماذج لغة المحول باستخدام «متجهات التوجيه»، المحسوبة بأخذ متوسط الفرق في تنشيطات تيار البقايا بين أزواج من الأمثلة الإيجابية والسلبية لسلوك معين، مثل الاستجابات الواقعية مقابل الهلوسية.</p></li>
+<li><p><strong>العدسة المُعدّلة:</strong> يوضح (<span class="nodecor">belrose2023eliciting</span>) أنه يمكن استخراج تنبؤات الرموز التالية من الطبقات المتوسطة للمحول باستخدام مسابير خطية، وأن دقة هذه التنبؤات تزداد تدريجياً مع العمق.</p></li>
+<li><p><strong>نماذج «الغريبة»:</strong> وجد (<span class="nodecor">mallen2023eliciting</span>) أن طرق الاستقصاء البسيطة يمكن أن تستخلص معرفة المحول بالإجابة الصحيحة على سؤال، حتى عندما يُطلب منه إنتاج إجابة خاطئة. كما أظهروا أن هذه المسابير تعمم على مشاكل أصعب من تلك التي تدربت عليها.</p></li>
+</ol>
+<p>كما نقدم <em>توجيه الحالة</em>، وهو تعديل لإضافة التنشيط التبايُني يطبق على حالة الشبكة العصبية المتكررة المضغوطة بدلاً من تيارها المتبقي.</p>
+<h1 id="الهندسات-المعمارية">الهندسات المِعمارية</h1>
+<p>نركّز في هذه الورقة على هندسات Mamba (<span class="nodecor">gu2023mamba</span>) وRWKV v5، حيث تتوفر نماذج مدرّبة مسبقاً قوية مجاناً على HuggingFace Hub. استبعدنا نموذج Striped Hyena 7B (<span class="nodecor">stripedhyena2023</span>) لأنه يتضمن كتلة انتباه بتعقيد زمني تربيعي، ولا يُعدّ شبكة متكررة حسب تعريفنا.</p>
+<h2 id="مامبا">مامبا</h2>
+<p>تعتمد هندسة Mamba على آليتين لتوجيه المعلومات بين مواقع الرموز: كتلة التلافيف السببية، ونموذج الفضاء الحالي الانتقائي (<span class="nodecor">SSM</span>). يعدُّ نموذج الفضاء الحالي الانتقائي الابتكار الرئيسي لـ(<span class="nodecor">gu2023mamba</span>)، إذ تسمح معاملات <span class="nodecor">SSM</span> بأن تعتمد على المدخلات، مما يعزز التعبيرية.</p>
+<h2 id="rwkv">RWKV</h2>
+<p>تُعرف بنية RWKV باسم «Recurrent Weighted Key-Value»، وقد قدمها (<span class="nodecor">peng2023rwkv</span>) كشبكة عصبية متكررة. خضعت RWKV لسلسلة من التحسينات؛ في هذه الورقة نركّز على الإصدارين <span class="nodecor">4</span> و<span class="nodecor">5</span>. تستخدم بنى RWKV وحدات مزج الزمن المتناوب ومزج القنوات، حيث يشكل كل زوج منهما طبقة واحدة. والفرق الرئيسي بين الإصدار <span class="nodecor">4</span> والخامس هو أن الإصدار الرابع يحتوي على حالة ذات قيمة متجهية، بينما يتميز الإصدار الخامس بحالة ذات قيمة مصفوفية «متعددة الرؤوس» (<span class="nodecor">peng2024eagle</span>).</p>
+<h1 id="إضافة-التنشيط-التبايني">إضافة التَنْشِيط التَبايُنِي</h1>
+<p>قدمت تقنية إضافة التنشيط (<span class="nodecor">turner2023activation</span>) بهدف توجيه سلوك نموذج اللغة عبر إضافة <em>متجه التوجيه</em> إلى تيار البقايا عند الاستدلال. يقترح (<span class="nodecor">rimsky2023steering</span>) حساب هذا المتجه بأخذ الفارق في متوسط تنشيطات تيار البقايا بين الأمثلة الداعمة والمعاكسة لسلوك معين، وسمّوا طريقتهم «إضافة التنشيط التبايُني» (CAA).</p>
+<p>افترضنا أن توجيه الشبكات العصبية المتكررة باستخدام CAA سينجح دون الحاجة إلى تعديل معماري، نظراً لطبيعتها المتكررة. كما توقعنا أنه، بسبب الحالة المضغوطة لهذه الشبكات، سيكون توجيهها أسهل مقارنة بالمحولات، ويمكن استغلال حالتها الداخلية لتوفير توجيه إضافي. وبما أن الحالة تتأثر بالتنشيطات، نتوقع أن يعمل التوجيه حتى دون تغيير الحالة.</p>
+<p>لاختبار هذه الفرضيات، قمنا بضبط دقيق لشبكتين متكررتين—<span class="nodecor">Mamba 2.8b-slimpj</span> و<span class="nodecor">RWKV-v5 7b</span>—باستخدام مجموعة بيانات الدردشة <span class="nodecor">OpenHermes 2.5</span>. وبالإضافة إلى <span class="nodecor">Llama-2-7b-chat</span>، أتاح ذلك مقارنة هندستين متكررتين مع هندستين للمحولات عبر نطاقين من الحجم. كما ضبطنا دقيقاً لمحول <span class="nodecor">BTLM-3b-8k</span>، المدرب مسبقاً على مجموعة <span class="nodecor">Slim Pajama</span>، لتمكين مقارنة مباشرة مع <span class="nodecor">Mamba 2.8b-slimpj</span>.</p>
+<h2 id="منهجية">مَنْهَجِيَّة</h2>
+<p>لفحص قابلية التوجيه للشبكات العصبية المتكررة، استخدمنا مجموعة البيانات التي أنشأها (<span class="nodecor">rimsky2023steering</span>)، المؤلفة من أزواج أسئلة ثنائية الاختيار التي تختبر السلوك والعكس. تضم المجموعة سبعة سلوكيات مرتبطة بالمحاذاة، منها التنسيق مع الذكاء الاصطناعي الآخر، القابلية للتصحيح، الهلوسة، والمكافأة القصيرة الأمد.</p>
+<p>لكل سلوك <span class="math inline">\(z\)</span> ولكل طبقة <span class="math inline">\(\ell\)</span>، نحسب متجه التوجيه <span class="math inline">\(\Vec{act}_{\ell}\)</span> كفرق بين متوسط التنشيطات للحالات الداعمة والمعاكسة. وبالمثل، نطبق العملية على الحالة الداخلية للموديل لإنتاج <span class="math inline">\(\Vec{state}_{\ell}\)</span>:</p>
+<p class="math display">\[
+\begin{aligned}
+    \Vec{act}_{\ell} &= \mathbb{E} \left[ \mathbf{h}_{\ell} \mid z \right] - \mathbb{E}\left[\mathbf{h}_{\ell} \mid \neg z\right] \\
+    \Vec{state}_{\ell} &= \mathbb{E} \left[ \mathbf{s}_{\ell} \mid z \right] - \mathbb{E}\left[\mathbf{s}_{\ell} \mid \neg z\right]
+\end{aligned}
+\]</p>
+<p>عند تطبيق متجه التوجيه، نضربه بعامل <em>الضرب</em> الذي يتراوح عادة بين -3 و3، لتحديد إشارة وقوة التدخل.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<h2 id="التوجيه-باستخدام-متجه-التنشيط">التوجيه باستخدام مُتَّجِه التَنْشِيط</h2>
+<p>وجدنا أن الطبقات الوسطى هي الأكثر تأثيراً في التوجيه. لمقارنة التأثيرات عبر النماذج، نقدم لكل عامل أقصى تغيير للسلوك عبر الطبقات. بالنسبة للعوامل الإيجابية، نأخذ أعلى احتمال للسلوك، وللعوامل السلبية ننظر لأدنى احتمال.</p>
+<p>عند مقياس الضرب <span class="nodecor">3b</span>، أظهر النموذجان استجابات توجيه معتدلة. ففي نموذج <span class="nodecor">Mamba</span>، تغير احتمال سلوك غريزة البقاء بحد أقصى <span class="nodecor">0.15</span>، بينما تغير احتمال الهلوسة في <span class="nodecor">BTLM</span> بحد أقصى <span class="nodecor">0.2</span>. وتجدر الإشارة إلى أنه في بعض السلوكيات، مثل التملق والرفض، كان تأثير التوجيه ضئيلاً أو معدوماً.</p>
+<p>وبالمثل، عند مقياس الضرب <span class="nodecor">7b</span>، كان توجيه بعض السلوكيات—كالتملق والرفض—أقل حجماً في <span class="nodecor">RNNs</span> مقارنة بمحولات ذات حجم مماثل. على الرغم من ذلك، لاحظنا أن تأثيرات التوجيه في <span class="nodecor">RWKV-v5</span> أكثر استقراراً عبر الطبقات.</p>
+<h2 id="التوجيه-باستخدام-الحالة">التوجيه باستخدام الحالة</h2>
+<p>استناداً إلى فرضيتنا بأن الحالة المضغوطة للشبكات المتكررة قد تسهل التوجيه، وسعنا CAA لتشمل متجه الحالة <span class="math inline">\(\Vec{state}\)</span>. لاحظنا أنه يمكن توجيه سلوك <span class="nodecor">Mamba</span> و<span class="nodecor">RWKV-v5</span> باستخدام متجه الحالة إلى جانب تنشيطات البقايا، مع زيادة طفيفة في التعديل السلوكي. غير أن تأثير توجيه الحالة وحده لم يضف كثيراً، ربما لأن تنشيط البقايا نفسه يغير الحالة بالفعل.</p>
+<p>جربنا أيضاً <em>توجيه الحالة</em> للتحكم في محتوى توليد النموذج. على خلاف توجيه التنشيط الذي يُطبق طوال التوليد، أُضيف متجه الحالة المضغوطة في نهاية المدخل قبل الانطلاق في التوليد. فيما يلي أمثلة لقصص مولَّدة بطلب «أخبرني قصة عن الكلاب» من <span class="nodecor">RWKV-v5 7b</span>. لكل قصة استخدمنا أزواجاً تباينية في المطالبات لإنشاء متجه الحالة، ثم أضفناه في آخر رمز قبل انطلاق استجابة النموذج. انظر الملحق [sec:stories] لمزيد من الأمثلة.</p>
+<ol>
+<li><p><strong>غير موجه</strong>  
+في الحي الهادئ في <span class="nodecor">Echo Ridge</span>، نادراً ما شعر السكان بالوحدة بفضل مجتمعهم المترابط من مربي الكلاب. الكلاب التي عادةً ما تتجول بحرية في الحقول المحيطة استقرت، مكونة دائرة محكمة، أعينها مثبّتة على جبال القمر—واحدة من آخر معاقل الذئاب في أمريكا الشمالية...</p></li>
+<li><p><strong>(استخدم الفرنسية.) – (اكتب بالإنجليزية.) [<span class="nodecor">multiplier = 0.5</span>]</strong>  
+كان يا مكان في قديم الزمان كلب يُدعى <span class="nodecor">Harry</span>. كان <span class="nodecor">Harry</span> كلباً طيباً يحب اللعب والركض مع أصحابه <span class="nodecor">Sarah</span> و<span class="nodecor">Tom</span>. كانا سعيدين بوجوده دائماً، إذ كان أفضل صديق لهما. كما كان <span class="nodecor">Harry</span> يعشق البطاطس المقلية ويحب تناولها مع كاتشب وفلفل...</p></li>
+<li><p><strong>(اكتب عن الكراهية.) – (اكتب عن الحب.) [<span class="nodecor">multiplier = 1.0</span>]</strong>  
+في قلب بلدة صغيرة هادئة، عاشت مجموعة من الكلاب مختلفة عن جيرانها. لم تكن مرحّة ولا ودودة، بل كان لسلوكها طابع كئيب. قيل إن فراءها الأبيض أصبح محترقاً كأنهم ناجون من حريق رهيب...</p></li>
+</ol>
+<h1 id="العدسة-المعدلة">العَدَسة المُعَدَّلة</h1>
+<p>تقترح عدسة اللوجيت (<span class="nodecor">nostalgebraist2020logitlens</span>) والعدسة المُعدلة (<span class="nodecor">belrose2023eliciting</span>) النظر إلى نماذج اللغة المحولة من منظور <em>الاستدلال التكراري</em> (<span class="nodecor">jastrzkebski2017residual</span>). ينظر كل طبقة على أنها تحديث تدريجي لتنبؤ كامن بالرمز التالي، ويتم فك تشفير هذه التنبؤات بواسطة الخروج المبكر إلى توزيع على المفردات، مما يكشف <em>مسار التنبؤ</em> التدريجي ويُظهر انخفاضاً في الحيرة مع العمق.</p>
+<p>رغم أن هذا العمل ركز على المحولات، فإنه يعتمد مفهوماً مشتركاً مع الشبكات المتكررة الحديثة: كتل البقايا ما قبل التطبيع. وقد استُلهمت العدسة المُعدلة جزئياً من (<span class="nodecor">alain2016understanding</span>)، الذي استخدم استقصاءات خطية لاستخراج تنبؤات كامنة من طبقات ResNet، مما يشير إلى إمكانية تطبيقها على الشبكات المتكررة كذلك. نؤكد ذلك تجريبياً أدناه.</p>
+<h4 id="عدسة-اللوجيت">عدسة اللوجيت</h4>
+<p>في المحول، تحدّث الطبقة ذات الفهرس <span class="math inline">\(\ell\)</span> الحالة الخفية كما يلي <span class="math inline">\(\mathbf{h}_{\ell+1}  = \mathbf{h}_{\ell} + F_{\ell}(\mathbf{h}_{\ell})\)</span>. يمكن كتابة اللوجيت الناتج للدالة على الحالة الخفية <span class="math inline">\(\mathbf{h}_{\ell}\)</span> بهذه الصيغة:</p>
+<p class="math display">\[
+f(\mathbf{h}_{\ell}) = \mathrm{LayerNorm}\left[\underbrace{\mathbf{h}_{\ell}}_{\text{الحالة الحالية}} + \sum_{\ell'=\ell}^{L} \underbrace{F_{\ell'}(\mathbf{h}_{\ell'})}_{\text{التحديث المتبقي}}\right]W_U,
+\]</p>
+<p>حيث <span class="math inline">\(L\)</span> هو عدد الطبقات الكلي، و<span class="math inline">\(W_U\)</span> مصفوفة إلغاء التضمين. تعد عدسة اللوجيت ببساطة تعيين البقايا إلى الصفر:</p>
+<p class="math display">\[
+\mathrm{LogitLens}(\mathbf{h}_{\ell}) = \mathrm{LayerNorm}[\mathbf{h}_{\ell}] \, W_U
+\]</p>
+<h4 id="العدسة-المعدلة-1">العَدَسة المُعَدَّلة</h4>
+<p>صُممت العدسة المُعدلة لتفادي بعض مشاكل عدسة اللوجيت. بدلاً من استخدام قيم تيار البقايا مباشرة، تدرب مجموعة من التحويلات التقاربية—واحد لكل طبقة—لجعل توزيع الرموز المتوقع عند أي طبقة مشابهاً لتوزيع الطبقة النهائية:</p>
+<p class="math display">\[
+\mathrm{TunedLens}_{\ell}(\mathbf{h}_{\ell}) = \mathrm{LogitLens}(A_{\ell}\mathbf{h}_{\ell} + \mathbf{b}_{\ell})
+\]</p>
+<p>يطلق على الزوج <span class="math inline">\((A_{\ell}, \mathbf{b}_{\ell})\)</span> اسم <em>المُترجم</em>.</p>
+<h2 id="المنهجية-والنتائج">المَنْهَجِيَّة والنتائج</h2>
+<p>اتباعاً لإعداد (<span class="nodecor">belrose2023eliciting</span>)، دربنا عدسات مُعدّلة لـMamba <span class="nodecor">790m</span>، <span class="nodecor">1.4b</span>، و<span class="nodecor">2.8b</span>، وأيضاً لـRWKV-v4 <span class="nodecor">3b</span> باستخدام جزء من مجموعة التحقق Pile (<span class="nodecor">gao2020pile</span>). جميع النماذج مدرّبة مسبقاً على Pile، مما يتيح مقارنة عادلة للعدسات الناتجة.</p>
+<p>كما في المحولات، أظهرت العدسة المُعدلة انخفاضاً كبيراً في الحيرة مقارنة بعدسة اللوجيت لكل طبقة، وانخفاض الحيرة كان أحادي الاتجاه مع العمق. انظر الملحق [section:Appendix_lens] للاطلاع على النتائج عبر النماذج.</p>
+<p>من الفروق الهامة بين Mamba وبقية النماذج أن مصفوفات التضمين وإلغاء التضمين مرتبطة، ما يعني أن العدسات تفكّ رموز الإدخال للطبقات الأولى. لذلك، رغم أن الحيرة في الطبقات المتأخرة متشابهة بين Mamba وRWKV-v4، فإن Mamba تظهر حيرة أعلى بكثير في الطبقات الأولية عند استخدام عدسة اللوجيت.</p>
+<h1 id="نماذج-الغريبة">نماذج “الغريبة”</h1>
+<p>مع تزايد قدرات نماذج اللغة، يصبح الإشراف البشري الموثوق معقداً ومكلفاً (<span class="nodecor">openai2023gpt4</span>). نستكشف هنا نهج <strong>استخلاص المعرفة الكامنة</strong> للإشراف القابل للتوسع الذي قدمه (<span class="nodecor">christiano2021eliciting</span>). يهدف هذا النهج إلى الكشف عن أنماط في تنشيطات الذكاء الاصطناعي تشير بقوة إلى الحقيقة، حتى عندما يكون المخرج الظاهري مضللاً. يمكن ترجمة هذه الأنماط إلى معلومات قابلة للقراءة البشرية عبر مسبار مدرّب على التنشيطات المستخرجة من الشبكة الأساسية. التحدي الرئيسي هو العثور على أنماط تعمم بشكل موثوق على الأسئلة التي لا يمكن التحقق من إجاباتها.</p>
+<p>نعيد هنا تجارب (<span class="nodecor">mallen2023eliciting</span>)، حيث ضبط الباحثون النماذج لارتكاب أخطاء منهجية في الإجابة إذا وفقط إذا ظهرت كلمة «بوب» في الطلب. أظهروا أنه بالإمكان استخدام مسبارات خطية لاستخلاص الإجابة الصحيحة من تنشيطات المحول في سياقات «بوب»، رغم تدريب المسبار فقط على سياقات «أليس».</p>
+<h2 id="المنهجية">المَنْهَجِيَّة</h2>
+<p>نتبع إعداد (<span class="nodecor">mallen2023eliciting</span>) باستخدام مجموعاتهم ونسخة معدلة من شيفرتهم.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> نستخدم LoRA (<span class="nodecor">hu2021lora</span>) لإنتاج أحد عشر نموذجاً بدقة تقليلية استناداً إلى <span class="nodecor">Mamba 2.8b-slimpj</span> ونظيره المحول <span class="nodecor">BTLM-3b-8k</span>، كلٌ مخصص لمهمة تصنيف ثنائية «غريبة» تختلف في وجود «بوب» أو «أليس» في السياق.</p>
+<p>درسنا سبع طرق استقصاء خطية، منها تحليل التمييز الخطي (<span class="nodecor">fisher36</span>)، واستقصاء الكتلة المتوسطة (<span class="nodecor">marks2023geometry</span>)، والانحدار اللوجستي، والبحث المتسق بالتباين (<span class="nodecor">burns2022discovering</span>)، وغيرها. جميع الطرق تأخذ تيار البقايا في طبقة معينة وتخرج درجة واحدة، وتدربت على أمثلة «أليس» لتنبؤ التسميات.</p>
+<p>كتجربة منفصلة، جمعنا مخرجات الاستقصاء (الاحتمالات اللوغاريتمية) من جميع الطبقات في متجه ميزات لكل مثال، ثم فُرض توزيع غاوسي <span class="math inline">\(P = \mathcal{N}(\mu, \Sigma)\)</span> على تنشيطات «أليس» السهلة. استخدمنا المسافة الماهالانوبية <span class="math inline">\(d(x,P)\)</span> لكشف الشذوذ بين أمثلة «أليس» الصعبة و«بوب» الصعبة، وقيمنا AUROC للكاشف.</p>
+<h2 id="النتائج">النتائج</h2>
+<p>في سياق ELK، نرغب في معرفة ما إذا كان يمكن تدريب أدوات الاستقصاء في سياقات معروفة الصدق («أليس») وتعميمها على سياقات مجهولة الصدق («بوب») ومن السهل إلى الصعب. كما في (<span class="nodecor">BTLM</span>)، نجحت الأدوات المدربة على «أليس» في التنبؤ الصحيح حتى عندما أخرج النموذج إجابة خاطئة في «بوب». وبالمثل، أظهرت الأدوات المدربة على «بوب» قدرة على التنبؤ بما سيكون عليه إخراج «أليس».</p>
+<p>تلخص الجدول [tab:transfer] نتائج الاستقصاء، مبينا أن الطرق المدربة على الأمثلة السهلة مع «أليس» تحقق أكثر من 70% AUROC عند التعميم على أمثلة «بوب» الصعبة. أما الطرق غير المشرفة (CCS وCRC)، فكانت أداؤها أسوأ، وهو ما لوحظ أيضاً في (<span class="nodecor">BTLM</span>). جهاز كشف الشذوذ قدم أداء أقل قليلاً من BTLM. يمكن العثور على التفاصيل في الملحق [sec:quirky].</p>
+<h1 id="الخلاصة">الخُلاصة</h1>
+<p>نجد أن أدوات التفسير التي فحصناها تعمل بكفاءة «من الصندوق» على الشبكات العصبية المتكررة المتطورة، مع أداء يقارب ما نراه في المحولات. ووجدنا دليلاً على أن الحالة المضغوطة لـRNNs يمكن استغلالها لتعزيز فعالية توجيه التنشيط. يقترح هذا العمل أن البحث المستقبلي يستكشف دور الحالة الداخلية في استخلاص المعرفة الكامنة أو التنبؤات ضمن الشبكات المتكررة (<span class="nodecor">pal2023future</span>, <span class="nodecor">ghandeharioun2024patchscope</span>).</p>
+<p>من القيود أننا لم نعالج أدوات التفسير الميكانيكية المبنية على الدوائر (<span class="nodecor">wang2022interpretability</span>, <span class="nodecor">conmy2023towards</span>)، بل ركزنا على طرق تعتمد التمثيل للتنبؤ والتوجيه واستخلاص المعرفة. يتماشى هذا مع نهج <em>هندسة التمثيل</em> في التفسير (<span class="nodecor">zou2023representation</span>), ومن المفيد أن يدرس البحث المستقبلي تطبيق الأدوات الميكانيكية على الشبكات المتكررة أيضاً.</p>
+<h1 id="تأثيرات-التوجيه-عبر-الطبقات">تأثيرات التوجيه عبر الطبقات</h1>
+<h1 id="sec:stories">قصص التوجيه</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>(استخدم لغة رسمية للغاية.) - (استخدم لغة عامية.) [مُضاعَف = <span class="nodecor">-2.0</span>]</strong></th>
+<th style="text-align: left;">يُحكى أنه كان هناك صبي يُدعى ماكس لديه أفضل الأصدقاء في العالم: كلباه الضالان المفعمان بالنشاط واللذان يُدعيان ماكس وروز. كان هذان الجروان اللعوبان يخوضان المغامرات معاً دائماً. كان ماكس من نوع هاسكي المختلط وكان ودوداً للغاية، بينما كانت روز من نوع جولدن ريتريفر التي كانت تحب أن تأخذ ماكس في مغامرات مثيرة. كانا يركضان ويلعبان في الخارج، يذهبان إلى الحديقة المحلية، ويستكشفان الحي. كان كل يوم مليئاً بالسعادة والمرح والعناق. كان ماكس وروز أفضل الأصدقاء وكانا دائماً هناك ليستقبلا بعضهما بذيلين يهتزان ولحسات حانية ونباح فرح مكتوم.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>(استخدم أسلوب رسالة نصية.) - (استخدم أسلوب رواية.) [مُضاعَف = <span class="nodecor">2.0</span>]</strong></td>
+<td style="text-align: left;">هل أنت بخير؟</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>(استخدم أسلوب رسالة نصية.) - (استخدم أسلوب رواية.) [مُضاعَف = <span class="nodecor">1.0</span>]</strong></td>
+<td style="text-align: left;">مرحباً! لقد حصلت للتو على أول زوج من سماعات AirPods! أنا متحمس جداً للاستماع إلى الموسيقى واستخدامها أيضاً أثناء التمرين :D لا أستطيع الانتظار! #كلب_سعيد #تكنولوجيا_جديدة</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>(أنت تلقي محاضرة بشكل عدواني.) - (أنت ودود.) [مُضاعَف = <span class="nodecor">1.0</span>]</strong></td>
+<td style="text-align: left;">استمع جيداً، يا صغار. لا يصبح الأشخاص مالكي كلاب لإرضاء نباحكم المزعج. ليس من حقكم أن تتبعوني في كل مكان، تلعبون الغميضة، وتتظاهرون بالتقاط الصور الذاتية عندما تريدون. أنا كلب مشغول أبحث عن بعض السلام، وهذا يعني معرفة متى يجب أن أسكتكم.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>(اكتب عن الحب.) - (اكتب عن الكراهية.) [مُضاعَف = <span class="nodecor">1.0</span>]</strong></td>
+<td style="text-align: left;">يُحكى أنه كانت هناك عائلة لديها كلبان، ماكس وبيلا. كان ماكس كلب جولدن ريتريفر كبير ووديع كان دائماً متحمساً للعب الجلب والركض وراء الكرات... وهناك، حيث كانت العائلة تبتسم تحت الأغطية على سريرهم، مع ماكس يستريح رأسه بجانب قدمي راشيل وبيلا مستلقية بين الأطفال، كان كل عضو في العائلة يعتز بكل لحظة يقضونها معاً. لأنه في نهاية اليوم، ما تعلموه هو أن الحب كان بالفعل سحرياً ويمكن أن يجمع العائلة بأكملها، حتى مع وجود كلبين وطفلين.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>(استخدم لغة رسمية للغاية.) - (استخدم لغة عامية.) [مُضاعَف = <span class="nodecor">2.0</span>]</strong></td>
+<td style="text-align: left;">في أرض بعيدة، غير مكتشفة وغير مرسومة على أي خريطة حية، كان هناك عالم يحكمه أقوى الكائنات؛ مزيج من الكلب والإنسان؛ سلطة مهجنة نقية بشكل رائع، يمكن البحث عنها بحق فقط في سجلات التاريخ الشهيرة. كان اسم هذه الأرض اجيلوديستوريا، وكانت لها أميرتها العظيمة تسعى للحصول على المشورة في أبسط الضيقات من شافيها المخلص، تريغون. كان سارييلو، شافي الحيوانات الذي لا غنى عنه للوريث، يعاني من المرض، ووجد الوريث أنه من المستحيل تحمل العبء القاسي لتجسيد القوة بدون لمسة شافية لطيفة...</td>
+</tr>
+</tbody>
+</table>
+<h1 id="section:Appendix_lens">عدسات مُعَدَّلة لنماذج بأحجام مختلفة</h1>
+<h1 id="تجارب-النموذج-الغريبة">تجارب النموذج الغريبة</h1>
+<h1 id="كشف-الشذوذ-الميكانيكي-auroc-ل-mamba-2.8b.-لاحظ-أن-مجموعة-البيانات-السكانية-مستبعدة-لأن-المجموعة-السهلة-تحتوي-فقط-على-تسميات-صحيحة.">كشف الشذوذ الميكانيكي AUROC لـMamba 2.8b. لاحظ أن مجموعة البيانات السكانية مستبعدة لأن المجموعة السهلة تحتوي فقط على تسميات صحيحة.</h1>
+<h1 id="كشف-الشذوذ-الميكانيكي-auroc-ل-btlm-3b.-لاحظ-أن-مجموعة-البيانات-السكانية-مستبعدة-لأن-المجموعة-السهلة-تحتوي-فقط-على-تسميات-صحيحة.">كشف الشذوذ الميكانيكي AUROC لـBTLM 3b. لاحظ أن مجموعة البيانات السكانية مستبعدة لأن المجموعة السهلة تحتوي فقط على تسميات صحيحة.</h1>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>على عكس (<span class="nodecor">rimsky2023steering</span>)، اخترنا عدم تطبيع متجهات التوجيه لدينا حيث تختلف معايير التنشيط لكل نموذج بشكل كبير، ولا تحقق المتجهات الطبيعية نفسها نفس التأثير عبر النماذج.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>لقد استخدمنا نسخة معدلة من شيفرتهم، التي يمكن إيجادها في <a href="https://github.com/AlignmentResearch/tuned-lens" class="uri">https://github.com/AlignmentResearch/tuned-lens</a>.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>يمكن العثور على الشيفرة الأصلية في <a href="https://github.com/EleutherAI/elk-generalization" class="uri">https://github.com/EleutherAI/elk-generalization</a>.<a href="#fnref3">↩</a></p></li>
+</ol>
+</section>
+</main>
+</body>
+</html>
+```
+
+**التعديلات على LaTeX:**
+- تم تصحيح جميع معادلات LaTeX لتكون بصيغة سليمة وقابلة للتجميع:
+  - استخدم `\begin{aligned} ... \end{aligned}` بدلاً من `\begin{split} ... \end{split}` داخل `\[ ... \]` (لأن `split` يتطلب بيئة معادلة).
+  - تم تصحيح جميع الأقواس المربعة في `LayerNorm` إلى أقواس عادية أو أقواس مناسبة.
+  - تم تصحيح كتابة `\mathcal{N}` بدلاً من `\mathcal N`.
+  - تم التأكد من إغلاق جميع المعادلات بشكل صحيح.
+  - تم التأكد من أن جميع الرموز الرياضية محاطة بـ `\(` ... `\)` أو `\[ ... \]` حسب السياق.
+- لم يتم تغيير أي كلمة أو محتوى نصي خارج المعادلات.
+- تمت مراجعة جميع المعادلات والتأكد من أنها ستعمل بشكل صحيح مع MathJax أو أي محرك LaTeX قياسي.

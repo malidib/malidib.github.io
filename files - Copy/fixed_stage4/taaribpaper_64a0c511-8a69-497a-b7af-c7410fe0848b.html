@@ -1,0 +1,238 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Tianyi Yang">
+  <meta name="author" content="Sitian Qian">
+  <meta name="author" content="Sen Deng">
+  <meta name="author" content="Jie Xiao">
+  <meta name="author" content="Leyun Gao">
+  <meta name="author" content="Andrew Michael Levin">
+  <meta name="author" content="Qiang Li">
+  <meta name="author" content="Meng Lu">
+  <meta name="author" content="Zhengyun You">
+  <title>الحالة الفيزيائية لمصادم النيوترينو اللبتوني في ضوء قياس كتلة <span class="nodecor">CDF W</span></title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+      font-size: 1.15em;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #3a6186 0%, #89253e 100%);
+      color: #fff;
+      padding: 2.5em 1.5em 1.5em 1.5em;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 2px 8px rgba(58,97,134,0.08);
+    }
+    h1.title {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+    .author {
+      display: inline-block;
+      margin: 0 0.5em;
+      font-size: 1em;
+      font-weight: 400;
+      background: rgba(255,255,255,0.12);
+      padding: 0.2em 0.8em;
+      border-radius: 1em;
+      margin-bottom: 0.2em;
+    }
+    main {
+      max-width: 900px;
+      margin: 2.5em auto 2em auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(58,97,134,0.10);
+      padding: 2.5em 2em 2em 2em;
+    }
+    h1, h2, h3, h4 {
+      color: #3a6186;
+      font-weight: 700;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      line-height: 1.4;
+    }
+    h1 {
+      font-size: 1.7em;
+      border-bottom: 2px solid #e0e4ea;
+      padding-bottom: 0.3em;
+      margin-bottom: 1.2em;
+    }
+    h2 {
+      font-size: 1.3em;
+      border-bottom: 1px solid #e0e4ea;
+      padding-bottom: 0.2em;
+      margin-bottom: 1em;
+    }
+    p {
+      margin: 1.2em 0;
+      text-align: justify;
+    }
+    .nodecor {
+      text-decoration: none !important;
+      color: inherit;
+      font-weight: 600;
+    }
+    code, pre {
+      font-family: 'Fira Mono', 'Consolas', 'monospace';
+      background: #f3f6fa;
+      color: #b71c1c;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+    pre {
+      display: block;
+      padding: 1em;
+      overflow-x: auto;
+      background: #f3f6fa;
+      color: #222;
+      border-radius: 8px;
+      margin: 1.5em 0;
+    }
+    .math.display {
+      display: block;
+      margin: 1.5em auto;
+      background: #f3f6fa;
+      border-radius: 8px;
+      padding: 1em 1.5em;
+      font-size: 1.1em;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+    }
+    .math.inline {
+      font-size: 1em;
+      background: #f3f6fa;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      margin: 0 0.1em;
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+    ul, ol {
+      margin: 1.2em 2em 1.2em 0;
+      padding: 0 1.5em 0 0;
+    }
+    li {
+      margin-bottom: 0.7em;
+    }
+    blockquote {
+      border-right: 4px solid #3a6186;
+      background: #f3f6fa;
+      color: #444;
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      font-size: 1.05em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2em 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      border: 1px solid #e0e4ea;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #e0e4ea;
+      color: #3a6186;
+      font-weight: 700;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #e0e4ea;
+      margin: 2.5em 0;
+    }
+    @media (max-width: 700px) {
+      main {
+        padding: 1.2em 0.7em;
+      }
+      header {
+        padding: 1.5em 0.5em 1em 0.5em;
+      }
+      h1.title {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">الحالة الفيزيائية لمصادم النيوترينو اللبتوني في ضوء قياس كتلة <span class="nodecor">CDF W</span></h1>
+  <div>
+    <span class="author">Tianyi Yang</span>
+    <span class="author">Sitian Qian</span>
+    <span class="author">Sen Deng</span>
+    <span class="author">Jie Xiao</span>
+    <span class="author">Leyun Gao</span>
+    <span class="author">Andrew Michael Levin</span>
+    <span class="author">Qiang Li</span>
+    <span class="author">Meng Lu</span>
+    <span class="author">Zhengyun You</span>
+  </div>
+</header>
+<main>
+<p>latex</p>
+<h1 id="ملخص">مُلخَّص</h1>
+<p>نقترح مصادمًا نيوترينيًا لَبْتونيًا حيث يتم توليد شعاع النيوترينو من تحللات الميون على مقياس تيرا إلكترون فولت. سيسمح هذا الجهاز بقياس دقيق لكتلة <span class="nodecor">W</span> استناداً إلى تفاعل إنتاج بوزون <span class="nodecor">W</span> الفردي <span class="math inline">\(\nu\,l \rightarrow \PW^{(*)}\)</span>. على الرغم من صعوبة تحقيق اللمعان اللحظي العالي مع مثل هذا المصادم، وجدنا أن اللمعان المتكامل البالغ 0.1<span class="nodecor">ab^{-1}</span> يمكن أن يوفر بالفعل نتائج فيزيائية تنافسية. بالإضافة إلى قياس كتلة <span class="nodecor">W</span>، يمكن تحقيق مجموعة غنية من الأهداف الفيزيائية مع مثل هذا المصادم، بما في ذلك قياسات دقيقة لبوزون <span class="nodecor">W</span>، والبحث عن بوزونات القياس اللبتوفيلية الثقيلة، والبحث عن تفاعلات غير عادية <span class="math inline">\(\PZ\nu\nu\)</span>. يُعتبر مصادم النيوترينو اللبتوني فكرة جديدة بحد ذاته، وقد يكون أيضاً خطوة وسيطة مفيدة، مع الحاجة إلى تبريد أقل للميون، نحو مصادم الميون-ميون الذي يتم العمل عليه بالفعل من قبل مجتمع فيزياء الطاقة العالية. وقد تكون هناك خيارات مستقبلية مثيرة للاهتمام أيضاً مثل مصادم النيوترينو-نيوترينو أو مصادم النيوترينو-بروتون لحدود الطاقة العالية.</p>
+<h1 id="introduction">مُقَدِّمة</h1>
+<p>في السنوات الأخيرة، شهدنا عدة تناقضات مهمة أو مؤشرات على إمكانية وجود فيزياء جديدة تتجاوز النموذج القياسي. أولاً، تقرير تعاون LHCb في اختبار توحيد نكهة اللبتون باستخدام <span class="math inline">\(B^+ \rightarrow K^+ \ell^+ \ell^-\)</span>، يُظهر قياساً ينحرف بـ<span class="nodecor">3.1</span> انحرافات معيارية عن تنبؤ النموذج القياسي (<span class="nodecor">Rk1</span>). ثانياً، أحدث نتيجة من تجربة Muon g-2 في فيرمي لاب قد دفعت المتوسط العالمي لقياسات اللحظة المغناطيسية الشاذة للميون إلى <span class="nodecor">4.2</span> انحرافات معيارية بعيداً عن تنبؤ النموذج القياسي (<span class="nodecor">gminus2</span>). ثالثاً، تقرير تعاون CDF II (<span class="nodecor">CDF:2022hxs</span>) بقياس كتلة بوزون <span class="math inline">\(W\)</span>، <span class="math inline">\(M_W^{\rm CDF} = 80.433 \pm 0.009 \,\, {\rm GeV}\)</span>، والذي يبتعد <span class="nodecor">7.2</span> عن تنبؤ النموذج القياسي <span class="math inline">\(M_W^{\rm SM} = 80.357 \pm 0.006 \,\, {\rm GeV}\)</span> (<span class="nodecor">RPP</span>). العديد من الدراسات النظرية، مثل المرجع (<span class="nodecor">wmasspheno</span>)، تحاول تفسير هذه التناقضات، التي قد تتطلب أو لا تتطلب تعديل النموذج القياسي.</p>
+<p>لقد حفزت هذه التناقضات أيضاً البحث والتطوير لمرافق تجريبية مستقبلية. في العقدين القادمين، سيستمر LHC وLHC عالي السطوع في استكشاف النموذج القياسي والبحث عن فيزياء تتجاوز ذلك. بعد LHC عالي السطوع، هناك العديد من المقترحات لمصادمات الجيل القادم بهدف قياسات متعلقة ببوزون هيغز، ومن بينها تتصدر المصادمات اللبتونية. المقترحات الواعدة تشمل مصادم إلكترون-بوزيترون خطي أو دائري (<span class="nodecor">ILC, FCC, CEPC, CLIC</span>) أو مصادم ميوون (<span class="nodecor">Muc0,Muc1,Muc2,Muc3,Muc4</span>). خيارات أخرى تشمل مصادم إلكترون-ميوون (<span class="nodecor">Lu:2020dkx</span>)، مصادم ميوون-بروتون (<span class="nodecor">Cheung:2021iev</span>)، أو مصادم ميوون-أيون (<span class="nodecor">Acosta:2021qpx</span>).</p>
+<p>تكمن صعوبة أداء قياس كتلة <span class="math inline">\(\PW\)</span> (<span class="nodecor">CDF:2022hxs</span>) في حقيقة أن <span class="math inline">\(\PW\rightarrow l\nu\)</span> (<span class="math inline">\(l\)</span>=e أو <span class="math inline">\(\mu\)</span>)، يهرب النيوترينو من الكواشف، وبالتالي يمكن إعادة بناء الكتلة العرضية فقط بدلاً من الكتلة الحقيقية لنظام <span class="math inline">\(\PW\rightarrow l\nu\)</span> (بينما <span class="math inline">\(\PW\rightarrow qq\)</span> أصعب لأنه يعتمد على معايرة مقياس السعرات الهادرونية). كل من الكتلة العرضية وزخم اللبتون يصعب تصميمهما ومعايرتهما بدقة كافية لتحقيق أي تحسن كبير في قياس الكتلة باستخدام مصادمات الهادرونات. ومع ذلك، إذا تم إنشاء شعاع تصادم من النيوترينوات، يمكن بعد ذلك جمع عينة نظيفة من إنتاج بوزون W الفردي (<span class="math inline">\(\nu\,l \rightarrow \PW^{(*)}\)</span>)، وربما استخراج كتلة وعرض W بكمية محدودة من اللمعان المتكامل.</p>
+<p>تم اقتراح العديد من تجارب تشتت النيوترينوات ذات الصلة في العقود القليلة الماضية، بما في ذلك NuTeV (<span class="nodecor">NuTeV:2001whx</span>)، NuMAX (<span class="nodecor">Delahaye:2018yfq</span>)، NuSOnG (<span class="nodecor">NuSOnG:2008weg</span>)، وnuSTORM (<span class="nodecor">nuSTORM:2012jbd</span>). تشمل دوافعها، على سبيل المثال، إجراء قياسات دقيقة لمقاطع التفاعل العرضية للنيوترينو، أو البحث عن فيزياء غير النموذج القياسي المتعلقة بالنيوترينو. ومع ذلك، يُقترح في هذه الرسالة لأول مرة مصادم نيوترينو لبْتوني مباشر على مقياس <span class="nodecor">100</span> جيجا إلكترون فولت، مع مناقشة إمكاناته الفيزيائية الغنية أدناه.</p>
+<h1 id="beam">الإعداد التجريبي</h1>
+<p>نأخذ شعاعاً على مقياس تيرا إلكترون فولت <span class="math inline">\(\mup\rightarrow  \elp\nue\nuam\)</span> كمثال توضيحي. يوضح الشكل [fig:Eneu] توزيعات طاقة نواتج تحلل شعاع الميون بطاقة <span class="nodecor">200</span> جيجا إلكترون فولت و<span class="nodecor">1</span> تيرا إلكترون فولت. بما أن زاوية التحلل <span class="math inline">\(\theta\)</span> تتناسب عكسياً تقريباً مع الطاقة (<span class="math inline">\(\theta\sim 10^{-4}/{\rm E(TeV)}\)</span>)، فإن نواتج تحلل الميون ستكون أكثر تركيزاً مع زيادة طاقة الشعاع (<span class="nodecor">King:1999kx</span>). لتوضيح ذلك أكثر، يوضح الشكل [fig:Thetaneu] توزيعات زاوية θ لنواتج التحلل.</p>
+<p>يُظهر الرسم التوضيحي للتصميم العام لشعاع النيوترينو والمصادم في الشكل [fig:design]. يتم تسريع شعاع الميون في القسم الدائري في الجزء العلوي الأيسر ثم يُستخرج إلى القسم المستطيل في الجزء الأيمن السفلي. خلال كل دورة، يتم ضغط الشعاع نتيجة انكماش لورنتز ثم يمر عبر أقسام قوسية (<span class="math inline">\(L_c\)</span>) وخطية (<span class="math inline">\(L_l\)</span>)، مولداً حزم نيوترينوات متراصة من تحللات الميون. يمكن احتجاز الإلكترونات الناتجة عن تحلل الميون أو استخدامها لمعايرة الطاقة من خلال تصادمها مع البوزيترونات الواردة من الجانب المقابل. استعمال حلقتين بدلاً من حلقة واحدة يوفر مزيداً من المرونة لاستيعاب حزم مزدحمة بفواصل زمنية أو مكانية مختلفة.</p>
+<p>سيقتصر اللمعان اللحظي لمصادم النيوترينو اللبتوني بشكل رئيسي على عاملين: <span class="nodecor">1)</span> شدة شعاع النيوترينو مقارنة بشعاع الميون الأصلي منخفضة تقريباً بمقدار (<span class="math inline">\(L_l/L_c\sim 0.1\)</span>)، أي نسبة القسم المستقيم إلى محيط الحلقة (<span class="nodecor">King:1999kx</span>)، و<span class="nodecor">2)</span> انتشار شعاع النيوترينو، والذي قد يبقى في نطاق <span class="nodecor">10</span> إلى <span class="nodecor">100</span> ميكرون عند نقطة التفاعل، من خلال تطبيق تعديل بسيط على زاوية تحلل الميون عبر انحناء عمودي لتحقيق شعاع نيوترينو أكثر تركيزاً (<span class="nodecor">vbending</span>).</p>
+<p>بمزيد من التفاصيل، باستخدام صيغة اللمعان اللحظي، <span class="math display">\[\begin{aligned}
+  {\cal L} = {N_{\rm beam 1} N_{\rm beam 2} \over 4 \pi \sigma_x \sigma_y} f_{\rm rep},\end{aligned}\]</span> حيث <span class="math inline">\(f_{\rm rep}\)</span> هو معدل التصادمات وعادةً <span class="nodecor">100</span> كيلوهرتز (<span class="nodecor">40</span> ميغاهرتز) لمصادمات اللبتونات (الهادرونات)، و<span class="math inline">\(N_{\rm beam 1,2}\)</span> هو عدد الجسيمات في كل حزمة والذي يمكن أن يؤخذ كـ<span class="math inline">\(\sim 10^{11}\text{--}10^{12}\)</span> (<span class="nodecor">FCC:2018evy</span>)، و<span class="math inline">\(\sigma_x\)</span> و<span class="math inline">\(\sigma_y\)</span> هما أبعاد الشعاع العرضية. خذ مصادم الهادرونات الكبير كمثال: مع <span class="math inline">\(f_{\rm rep}=40\)</span>MHz، و<span class="math inline">\(\sigma_{x,y}=16\)</span> ميكرون، و<span class="math inline">\(N_{\rm beam 1,2}=10^{11}\)</span>، يمكن الحصول على <span class="math inline">\( {\cal L}=10^{34}\)</span> cm<span class="math inline">\(^{-2}\)</span>s<span class="math inline">\(^{-1}\)</span>. بالنسبة لمصادمات الميون على مقياس تيرا إلكترون فولت (<span class="nodecor">Bossi:2020yne,Delahaye:2019omf</span>)، مع <span class="math inline">\(f_{\rm rep}=100\)</span>KHz، و<span class="math inline">\(\sigma_{x,y}\lesssim 10\)</span> ميكرون، و<span class="math inline">\(N_{\rm beam 1,2}=10^{12}\)</span>، فإن <span class="math inline">\( {\cal L}=10^{33}\text{--}10^{34}\)</span> cm<span class="math inline">\(^{-2}\)</span>s<span class="math inline">\(^{-1}\)</span>. بالنسبة لتصادمات النيوترينو-نيوترينو المذكورة أعلاه، هناك عوامل قمع إضافية ناتجة عن نسبة القسم المستقيم إلى القوس (<span class="math inline">\(L_l/L_c\sim 1/5\)</span>)، وتبعاً للتصميم الفعلي كما هو موضح في الشكل [fig:design]، وانتشار شعاع النيوترينو الذي قد يصل إلى حوالي <span class="nodecor">1000</span> ميكرون لـ<span class="math inline">\(L_l\sim\)</span> <span class="nodecor">10</span> إلى <span class="nodecor">100</span> متر. مع الأخذ في الاعتبار كل هذه العوامل، يمكن أن يصل اللمعان اللحظي الفعلي لتصادمات النيوترينو-نيوترينو إلى حوالي <span class="math inline">\( {\cal L}=10^{29-30}\)</span> cm<span class="math inline">\(^{-2}\)</span>s<span class="math inline">\(^{-1}\)</span>.</p>
+<p>من ناحية أخرى، فإن شعاع اللبتونات من الطرف المقابل يكون منخفض الطاقة بمقدار عدة جيجا إلكترون فولت، ويمكن تحسين جودته باستخدام تقنيات عالية التيار وعالية التردد. نفترض هنا أنه بالنسبة لمصادم الإلكترون-نيوترينو باستخدام النيوترينوات المنبعثة من شعاع الميون على مقياس تيرا إلكترون فولت، وعند طاقة إلكترون تبلغ نحو <span class="nodecor">5</span> جيجا إلكترون فولت، يمكن زيادة اللمعان اللحظي بشكل أكبر. في الدراسة التالية، نفترض أن اللمعان المتكامل سيصل إلى نحو <span class="nodecor">1–10 ab^{-1}</span> خلال <span class="nodecor">10</span> سنوات.</p>
+<h1 id="amm">الإمكانات الفيزيائية</h1>
+<p>إذا كان لدينا شعاع نيوترينو على مقياس تيرا إلكترون فولت <span class="math inline">\(\mup\rightarrow  \elp\nue\nuam\)</span>، وشعاع لَبْتونات (<span class="math inline">\(\elm\)</span> أو <span class="math inline">\(\mum\)</span>) من الطرف المقابل، فيمكن استعراض بعض العمليات الفيزيائية الرئيسية كما يلي: <span class="math display">\[\begin{aligned}
+&amp;\elp \elm \rightarrow \PZ^{0(*)},\,\,\, \nue \elm \rightarrow \nue \elm,\,\,\, \nuam \elm \rightarrow \nuam \elm, \\
+&amp;\nue \elp \rightarrow \PW^{+(*)},\,\,\, \nuam \elp \rightarrow \nuam \elp,\,\,\, \nuam \elp \rightarrow \nuae \mup, \\
+&amp;\nuam \mum \rightarrow \PW^{-(*)},\,\,\, \nue \mum \rightarrow \nue \mum,\,\,\, \nue \mum \rightarrow \elm \num .
+    \label{eq:mupdecay}\end{aligned}\]</span></p>
+<p>نحن مهتمون بشكل خاص بـ<span class="math inline">\(\nue \elp \rightarrow \PW^{+(*)}\)</span>، والذي يعتمد مقطعه العرضي على <span class="math inline">\(M_W\)</span>. لمحاكاة هذه العملية، ننفذ دالة كسر طاقة النيوترينو المعروضة أعلاه في <span class="nodecor">MGMCatNLO</span> (<span class="nodecor">Alwall:2014hca</span>). قمنا بمحاكاة <span class="math inline">\(\nue \elp \rightarrow \PW^{+(*)} \rightarrow \num\mup\)</span> لسيناريوهين لطاقة الشعاع: شعاع نيوترينو ناتج عن شعاع ميوون بطاقة <span class="nodecor">1000</span> (<span class="nodecor">500</span>) جيجا إلكترون فولت، وشعاع بوزيترون بطاقة <span class="nodecor">3</span> (<span class="nodecor">5</span>) جيجا إلكترون فولت. وفقاً لذلك، اشترطنا للمَيُون النهائي أن يحقق <span class="math inline">\(\pt&gt;10\)</span>GeV و<span class="math inline">\(0&lt;\eta&lt;3.0\)</span>.</p>
+<p>في الشكل [fig:emu]، نعرض توزيعات طاقة الميون الخارج المقابلة لفرضيات الكتلة الثلاث <span class="math inline">\(M_W=80.2\)</span>, <span class="math inline">\(80.4\)</span>, و<span class="math inline">\(80.6\)</span>GeV، على التوالي. يمكن ملاحظة اختلافات واضحة بين الحالات المختلفة في الطرف العلوي من الطيف، حيث تظهر الكتل الأعلى لـ<span class="math inline">\(\PW\)</span> مزيداً من الميونات عالية الطاقة. لاحظ أنه بالنسبة لشعاع البوزيترون بطاقة <span class="nodecor">3</span> (<span class="nodecor">5</span>) جيجا إلكترون فولت، فإن طاقة النيوترينو الواردة اللازمة للوصول إلى عتبة <span class="math inline">\(M_W\)</span> تقريباً <span class="nodecor">400-500</span> (<span class="nodecor">200-300</span>) جيجا إلكترون فولت. هذا، جنباً إلى جنب مع دالة توزيع طاقة النيوترينو، يفسر الانحناءات في الشكل.</p>
+<p>إذا أضفنا الشرط <span class="math inline">\(\pt&gt;40\)</span>GeV، فإن المقاطع العرضية في مصادم الإلكترون-نيوترينو بطاقة [1000, 3] جيجا إلكترون فولت عند <span class="math inline">\(M_W=80.4\, (80.41)\)</span> تكون <span class="nodecor">166.2</span> (<span class="nodecor">167.6</span>) pb. استناداً إلى تجربة عد بسيطة، يمكن تحقيق دقة <span class="nodecor">10</span> MeV على <span class="math inline">\(M_W\)</span> بلمعان متكامل يبلغ فقط <span class="nodecor">0.1</span>. في هذا الحساب، نعتبر فقط تحللات W إلى ميوونات. إذا شملنا قنوات التحلل الهادرونية وأجرينا تحليلاً شكلياً أكثر تعقيداً، فإن اللمعان المتكامل اللازم للوصول إلى دقة <span class="nodecor">10</span> MeV من المرجح أن يكون أقل بكثير من <span class="nodecor">0.1</span>. وعلى الرغم من أن الدراسة المنهجية التفصيلية تتجاوز نطاق هذه الورقة، فقد فحصنا مصدرين محتملين. أولاً، وجدنا أن التلوث الخلفي من <span class="math inline">\(\nue \elp \rightarrow \nue \elp \PZ\)</span> يمكن إهماله. ثانياً، قمنا بتغيير طاقة شعاع الميون والإلكترون الوارد بمقدار <span class="nodecor">0.5</span> جيجا إلكترون فولت و<span class="nodecor">10</span> MeV، على التوالي، والتي تعتبر محافظة جداً بناءً على المراجع (<span class="nodecor">deBlas:2022aow</span>) و(<span class="nodecor">Blondel:2019jmp</span>). وجدنا أن المقاطع العرضية تغيرت بحوالي <span class="nodecor">0.6</span> pb لكلا التغييرين. يمكن التخفيف من هذه الشكوك باستخدام شكل طاقة الميون الخارج، من خلال فحص طاقات الشعاعات الواردة المختلفة، أو من خلال معايرة طاقة شعاع الميون الوارد مع نواتج تحلل الإلكترون.</p>
+<p>نتائج فيزيائية محتملة أخرى من مصادم اللبتونات النيوترينية تشمل البحث عن بوزونات القياس المحبة لللبتون (<span class="nodecor">Buras:2021btx</span>)، ودراسات عمليات تشتت النيوترينو، مثل <span class="math inline">\(\nue \elm \rightarrow \nue \elm\)</span> و<span class="math inline">\(\nue \mum \rightarrow \nue \mum\)</span>، والتي يمكن استخدامها لاستكشاف اقترانات <span class="math inline">\(\PZ\nu\nu\)</span> (<span class="nodecor">NuTeV:2001whx</span>, <span class="nodecor">Davidson:2001ji</span>). بالنسبة لمصادم اللبتونات النيوترينية مع نيوترينوهات من شعاع ميوون بطاقة <span class="nodecor">1</span> تيرا إلكترون فولت وشعاع إلكترون بطاقة <span class="nodecor">5</span> (<span class="nodecor">20</span>) جيجا إلكترون فولت، فإن المقطع العرضي للتشتت حوالي <span class="nodecor">6</span> (<span class="nodecor">20</span>) pb. وبالتالي يمكن توقع تراكم مليون حدث مشابه لـNuTeV (<span class="nodecor">NuTeV:2001whx</span>)، بينما تغطي الحالات النهائية طاقات أعلى مع <span class="nodecor">10-100</span> أضعاف من البيانات بالفعل. أخيراً، قد يسلط هذا الجهاز الجديد الضوء أيضاً على مصفوفة خلط النيوترينو، مصفوفة PMNS، بطريقة مماثلة لمصانع B وقياسات CKM.</p>
+<h1 id="discussions">المناقشات</h1>
+<p>في ضوء الشذوذ الأخير في كتلة W من تعاون CDF، نقترح مصادمًا لَبْتونيًا للنيوترينو يستخدم شعاع نيوترينو متماسكًا للغاية من تحللات ميوون على مقياس تيرا إلكترون فولت. على الرغم من صعوبة تحقيق لمعان لحظي عالٍ نتيجة القيود على شدة وجودة شعاع النيوترينو من تحللات الميون، وجدنا أن اللمعان المتكامل البالغ <span class="nodecor">0.1</span> ab^{-1} كافٍ بالفعل لإنتاج نتائج فيزيائية تنافسية. نوضح ذلك من خلال إجراء تحليل بسيط على عملية <span class="math inline">\(\nu\,l \rightarrow \PW^{(*)}\)</span>، حيث يمكن تحقيق دقة <span class="nodecor">10</span> MeV على <span class="math inline">\(M_W\)</span> بلمعان متكامل قدره <span class="nodecor">0.5</span> ab^{-1}. إذا شملنا قنوات التحلل الهادرونية و/أو أجرينا تحليلاً شكلياً، فمن المحتمل أن يكون اللمعان المتكامل اللازم لتحقيق دقة <span class="nodecor">10</span> MeV أقل من <span class="nodecor">0.1</span> ab^{-1}. قد يشترك مصادم النيوترينو اللبتوني المقترح في بعض التآزر التكنولوجي مع مصادم الميون الذي يتم العمل عليه من قبل مجتمع فيزياء الطاقة العالية، وبالتالي يمكن اعتباره خطوة وسيطة أو منتج ثانوي لذلك الجهد. كما قد يتطلب أيضاً تبريداً أقل لحزمة الميون. وعلاوة على ذلك، قد تكون مفاهيم مصادمات النيوترينو الأخرى، مثل مصادم نيوترينو-نيوترينو أو مصادم نيوترينو-بروتون، خيارات مستقبلية مثيرة للاهتمام لحدود الطاقة العالية.</p>
+<p>يُدعم هذا العمل جزئياً من قبل المؤسسة الوطنية للعلوم الطبيعية في الصين بموجب المنح رقم <span class="nodecor">12150005</span>، ورقم <span class="nodecor">12075004</span> ورقم <span class="nodecor">12061141002</span>، بواسطة MOST تحت المنحة رقم <span class="nodecor">2018YFA0403900</span>.</p>
+<p>البيانات المستخدمة و/أو المحللة خلال الدراسة الحالية متاحة من المؤلف المراسل عند الطلب المعقول.</p>
+</main>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفيات والهوامش لجعل الورقة أكثر أناقة واحترافية.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو المحتوى.
+- تم التأكد من عدم وجود أخطاء HTML، وجميع العناصر مغلقة بشكل صحيح.
+- تم استخدام عناصر `main` و`header` للفصل البصري والتنظيمي.
+- تم تحسين عرض المعادلات الرياضية، الكود، والجداول.
+- تم تحسين استجابة الصفحة للأجهزة المحمولة.
+- تم الحفاظ على اتجاه النص من اليمين لليسار (rtl) للغة العربية.

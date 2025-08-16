@@ -1,12 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="G. MieleO. Pisanti">
-  <title>التخليق النووي البدائي: مراجعة حديثة لتوقعات النظرية مع تقديرات الفلك لوفرة النوى الخفيفة</title>
+  <meta name="author" content="G. Miele, O. Pisanti">
+  <title>التخليق النوويّ البدائي: مراجعة حديثة للتوقّعات النظريّة ومقارنتها بالتقديرات الفلكيّة لوفرة النوى الخفيفة</title>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -21,13 +20,14 @@
       margin: 0;
       padding: 0;
       line-height: 1.8;
+      animation: fadein 1.2s;
     }
     header {
       background: linear-gradient(90deg, #3a6073 0%, #16222a 100%);
       color: #fff;
       padding: 40px 0 20px 0;
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     }
     h1.title {
@@ -41,6 +41,12 @@
       margin-top: 0.5em;
       color: #e0e0e0;
       letter-spacing: 0.03em;
+    }
+    .author .sep { margin: 0 0.4em; color: #b0bec5; }
+    .content {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px 40px 22px;
     }
     h1, h2, h3 {
       color: #2c3e50;
@@ -84,7 +90,7 @@
       font-weight: bold;
     }
     code, pre {
-      font-family: 'Fira Mono', 'Consolas', 'monospace';
+      font-family: 'Fira Mono', 'Consolas', monospace;
       background: #f4f4f4;
       color: #c7254e;
       padding: 2px 6px;
@@ -103,9 +109,9 @@
     caption {
       caption-side: top;
       text-align: center;
-      font-size: 1.1em;
+      font-size: 1.05em;
       color: #3a6073;
-      margin-bottom: 0.7em;
+      margin-bottom: 0.6em;
       font-weight: 600;
       padding: 0.5em 0;
     }
@@ -120,24 +126,16 @@
       color: #2c3e50;
       font-weight: bold;
     }
-    tr.odd {
-      background: #f8fafc;
-    }
-    tr.even {
-      background: #f3f6fa;
-    }
-    tr:last-child td {
-      border-bottom: none;
-    }
+    tr.odd { background: #f8fafc; }
+    tr.even { background: #f3f6fa; }
+    tr:last-child td { border-bottom: none; }
     ul, ol {
       margin: 1.2em 2em 1.2em 0;
       padding-right: 1.5em;
     }
-    li {
-      margin-bottom: 0.5em;
-    }
+    li { margin-bottom: 0.5em; }
     .math.inline {
-      font-family: 'Fira Mono', 'Consolas', 'monospace';
+      font-family: 'Fira Mono', 'Consolas', monospace;
       background: #f4f4f4;
       color: #1a237e;
       padding: 1px 4px;
@@ -149,102 +147,85 @@
       table { width: 100%; }
       header { padding: 25px 0 10px 0; }
       h1.title { font-size: 1.3em; }
+      .content { padding: 0 14px 28px 14px; }
     }
-    /* Add a subtle fade-in for the body */
-    body {
-      animation: fadein 1.2s;
-    }
-    @keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+    @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 <body>
 <header>
-  <h1 class="title">التخليق النووي البدائي: مراجعة حديثة لتوقعات النظرية مع تقديرات الفلك لوفرة النوى الخفيفة</h1>
-  <p class="author"><span class="nodecor">G. Miele</span> <span class="nodecor">O. Pisanti</span></p>
+  <h1 class="title">التخليق النوويّ البدائي: مراجعة حديثة للتوقّعات النظريّة ومقارنتها بالتقديرات الفلكيّة لوفرة النوى الخفيفة</h1>
+  <p class="author"><span class="nodecor">G. Miele</span><span class="sep">·</span><span class="nodecor">O. Pisanti</span></p>
 </header>
 
-<h1 id="ملخص">مُلَخَّص</h1>
-<p>تُقدم هنا مراجعة حديثة لتوقعات التخليق النووي البدائي القياسي في إطار الانفجار العظيم مقابل التقديرات الفلكية لوفرة النوى الخفيفة. بشكل خاص، يحدد هذا التحليل النطاقات المتوقعة لنسبة الباريونات إلى الفوتون والعدد الفعّال للنيوترينو كما استُخلصت من بيانات التخليق النووي البدائي فقط.</p>
+<main class="content">
 
-<h1 id="مقدمة">مُقَدِّمَة</h1>
-<p>تلعب عملية التخليق النووي التي تحدث في البلازما البدائية دوراً مزدوجاً: فهي بلا شك أحد الأعمدة الرصدية لنموذج الانفجار العظيم الساخن، والمعروف ببساطة باسم "تخليق الانفجار العظيم النووي"، وفي الوقت نفسه توفر أحد أقدم الاختبارات الكونية المباشرة المتاحة حالياً، مما يقيّد خصائص الكون عندما كان عمره بضع ثوانٍ فقط، أو ما يعادله عند مقياس حرارة يقارب ميغا إلكترون فولت.</p>
-<p>ظهر الإطار الأساسي لتخليق الانفجار العظيم النووي في الفترة الفاصلة بين ورقة ألفر-بيث-جامو (المعروفة باسم <span class="math inline">\(\alpha\beta\gamma\)</span>) عام 1948 (<span class="nodecor">Alp48</span>) وإرساء النموذج الأساسي لتخليق العناصر الأثقل من <span class="math inline">\(^7\)</span>Li في النجوم بواسطة ورقة بي<sup>2</sup>إف إتش (<span class="nodecor">Bur57</span>). وتفصيلاً أكثر، تصف المراجع مثل (<span class="nodecor">Kra96</span>) هذه المرحلة الرائدة التي ربطت الإنتاج الأولي للعناصر الخفيفة الأربعة <span class="math inline">\(^2\)</span>H، <span class="math inline">\(^3\)</span>He، <span class="math inline">\(^4\)</span>He و<span class="math inline">\(^7\)</span>Li بالكرة النارية المبكرة، بينما تُنتَج بقية العناصر تقريباً في النجوم أو نتيجة لتفجيراتها.</p>
-<p>في العقود التالية، نما التأكيد على أهمية تخليق الانفجار العظيم النووي بشكل ملحوظ. ففي السيناريو الأبسط، المعاملتان الحرتان الوحيدتان في التخليق النووي البدائي هما نسبة الباريون إلى الفوتون <span class="math inline">\(\eta\)</span> (أو بعبارة أخرى كثافة الباريون في الكون) والجهود الكيميائية للنيوترينو <span class="math inline">\(\mu_{\nu_\alpha}\)</span>. ومع ذلك، فإن الجهود الكيميائية التي تفوق <span class="math inline">\(\eta\)</span> بعدة أُوامر من الحجم تُولّد تأثيرات ملحوظة. ولهذا السبب، يُشار عادةً إلى الحالة التي تُفترض فيها جميع <span class="math inline">\(\mu_{\nu_\alpha}\)</span> صغيرة جداً (من نفس بمقياس <span class="math inline">\(\eta\)</span>) باسم التخليق النووي البدائي القياسي. ومن المألوف أيضاً توسيع هذا النموذج بإضافة معلمة إضافية، تسمى <span><em>العدد الفعّال للنيوترينو</em></span>، <span class="math inline">\(N_{\rm eff}\)</span>، التي تقيس مقدار درجات الحرية النسبية حين حدوث التخليق النووي البدائي.</p>
+<h1 id="ملخص">مُلخّص</h1>
+<p>نُقدِّم مراجعة حديثة لتوقّعات التخليق النوويّ البدائي القياسي ضمن إطار نموذج الانفجار العظيم، في مقابل التقديرات الفلكيّة لوفرة النوى الخفيفة. وعلى وجه الخصوص نحدِّد مجالات القيم المتوقَّعة لكلٍّ من نسبة الباريونات إلى الفوتونات والعدد الفعّال للنيوترينوات، كما تُستخلص من بيانات التخليق النوويّ البدائي وحدها.</p>
 
-<h1 id="التنبؤات-النظرية-للنموذج-القياسي-للنووية-الكبيرة-مقابل-البيانات">التنبؤات النظرية للنموذج القياسي للتخليق النووي البدائي مقابل البيانات</h1>
-<p>الهدف من التحليل النظري للتخليق النووي البدائي هو استخلاص تقدير موثوق لمعلمات النموذج بالاعتماد على البيانات التجريبية الخاصة بالوفرة البدائية. في هذا القسم، نكتفي بحالة النموذج القياسي، حيث المتغيران الحرّان هما كثافة الطاقة الباريونية <span class="math inline">\(\Omega_B h^2\)</span> (أو بدلاً من ذلك نسبة الباريونات إلى الفوتونات <span class="math inline">\(\eta\)</span>) وربما أيضاً القيمة غير القياسية لمحتوى الطاقة النسبية خلال التخليق النووي البدائي. ويمكن بعد إبادة <span class="math inline">\(e^\pm\)</span> تعريف هذه النسبة من خلال العدد الفعّال للنيوترينو 
-<span class="math inline">\(R = 1 + \frac{7}{8}\left(\frac{4}{11}\right)^{4/3} N_{\rm eff}\)</span>
-. كما هو معروف جيداً، يمكن أن يتفاوت <span class="math inline">N_{\rm eff}</span> أيضاً بفعل الاختلالات الحرارية التي تميز توزيعات النيوترينو المتبقية. في الشكل [fig:finalfnu] نعرض القيم النهائية لتوزيع النيوترينو حسب النكهة، سواء بدون تذبذبات أو مع تذبذبات غير صفرية. تظهر الاعتمادية على التشوهات غير الحرارية في الزخم جليّةً، مما يعكس أن النيوترينوات الأعلى طاقة ظلت تتفاعل مع <span class="math inline">e^{\pm}</span> لفترة أطول. علاوة على ذلك، يُلاحظ أن تأثير تذبذبات النيوترينو يقلل الاختلاف بين التشوهات حسب النكهة. ويمكن الاطلاع على صيغ تقريبية لهذه التوزيعات في (<span class="nodecor">Mangano:2005cc</span>).</p>
-<p>في الجدول [tab:neffyp] نعرض تأثير انفصال النيوترينو اللافوري على كثافة الطاقة الإشعاعية <span class="math inline">N_{\rm eff}</span> وعلى كسر كتلة <span class="math inline">^4</span>He. ومع الأخذ في الحسبان تذبذبات النيوترينو، نحصل على تغير إجمالي في <span class="math inline">\(\Delta Y_p\simeq 2.1{\times} 10^{-4}\)</span> يتوافق مع النتائج الواردة في (<span class="nodecor">Han01</span>) بفضل إدراج تأثيرات الديناميكا الكمومية الكهرومغناطيسية. إلا أن الأثر الصافي للتذبذبات كان أدنى بنحو ثلاثة أضعاف مما قدّر سابقاً، بسبب قصور تقريب المتوسط على تكرار التشوهات الحقيقية.</p>
-<p>على وجه الخصوص، القيمة المذكورة لـ <span class="math inline">N_{\rm eff}</span> في الجدول [tab:neffyp] تمثل مساهمة النيوترينوات في ميزانية الطاقة الإشعاعية كاملةً، ولكن فقط عند انتهاء انفصال النيوترينو. لذا، فهي لا تدخل مباشرةً في عمليات التخليق النووي البدائي. لتوضيح هذه النقطة بدقة، نعرض في الجدول [tab:nuclides] تأثير انفصال النيوترينو غير الفوري على جميع النوى الخفيفة في السيناريو البسيط بدون تذبذبات، ونقارن هذه النتائج بما نحصل عليه إذا أضفنا مساهمة ثابتة <span class="math inline">\(\Delta N_{\rm eff} = 0.013\)</span> إلى الإشعاع. وعلى الرغم من استنساخ <span class="math inline">Y_p</span> (عن قصد)، فإن ذلك لا ينطبق على بقية النواتج النووية.</p>
+<h1 id="مقدمة">مُقَدِّمة</h1>
+<p>تلعب عملية التخليق النوويّ التي حدثت في البلازما البدائيّة دوراً مزدوجاً: فهي من جهة أحد الأعمدة الرصديّة لنموذج الانفجار العظيم الساخن، المعروف اختصاراً بالتخليق النوويّ البدائي، ومن جهة أخرى تُوفِّر أحد أقدم الاختبارات الكونيّة المباشرة المتاحة حالياً، ما يقيِّد خصائص الكون عندما كان عمره بضع ثوانٍ فقط، أي عند درجات حرارة من رتبة الميغا إلكترون فولت.</p>
+<p>تبلور الإطار الأساسي للتخليق النوويّ البدائي في الفاصل بين ورقة ألفر–بيته–جاموف (المعروفة بـ <span class="math inline">\(\alpha\beta\gamma\)</span>) عام 1948 (<span class="nodecor">Alp48</span>) وإرساء النموذج القياسي لتخليق العناصر الأثقل من <span class="math inline">\(^7\)</span>Li في النجوم عبر ورقة بي<sup>2</sup> إف إتش (<span class="nodecor">Bur57</span>). توفّر مراجع مثل (<span class="nodecor">Kra96</span>) عرضاً وافياً لهذه المرحلة الرياديّة التي ربطت الإنتاج الأوّلي للعناصر الخفيفة الأربعة <span class="math inline">\(^2\)</span>H و<span class="math inline">\(^3\)</span>He و<span class="math inline">\(^4\)</span>He و<span class="math inline">\(^7\)</span>Li بالكرة الناريّة المبكّرة، في حين تُنتَج بقية العناصر تقريباً في النجوم أو نتيجة لانفجاراتها.</p>
+<p>خلال العقود اللاحقة تعاظم التأكيد على أهمية التخليق النوويّ البدائي. ففي أبسط سيناريوهاته لا يحوي إلا معاملين حرّين: نسبة الباريونات إلى الفوتونات <span class="math inline">\(\eta\)</span> (أو ما يكافئها كثافة الباريونات الكونيّة)، وجهود النيوترينوات الكيميائيّة <span class="math inline">\(\mu_{\nu_\alpha}\)</span>. ومع أنّ هذه الجهود تُؤثِّر فقط إذا فاقت <span class="math inline">\(\eta\)</span> بعدة مراتب قَدْر، فإن الحالة التي تُفترض فيها جميع <span class="math inline">\(\mu_{\nu_\alpha}\)</span> صغيرة جداً (من رتبة <span class="math inline">\(\eta\)</span>) تُدعى عادةً التخليق النوويّ البدائي القياسي. ومن المألوف أيضاً توسيع هذا الوصف بإدخال مُعلمة إضافية هي <em>العدد الفعّال للنيوترينوات</em> <span class="math inline">\(N_{\rm eff}\)</span>، الذي يقيس مقدار درجات الحرية النسبيّة الفعّالة إبّان التخليق النوويّ البدائي.</p>
+
+<h1 id="التنبؤات-النظرية-للنموذج-القياسي-للنووية-الكبيرة-مقابل-البيانات">التنبؤات النظريّة للنموذج القياسي للتخليق النوويّ البدائي ومقارنتها بالبيانات</h1>
+<p>الهدف من التحليل النظري للتخليق النوويّ البدائي هو استخلاص تقديرات موثوقة لمعاملات النموذج بالاعتماد على القياسات الرصديّة للوفرة البدائيّة. سنقتصر هنا على الحالة القياسيّة، حيث المتغيّران الحرّان هما كثافة الطاقة الباريونيّة <span class="math inline">\(\Omega_B h^2\)</span> (أو نسبة الباريونات إلى الفوتونات <span class="math inline">\(\eta\)</span>) وربما أيضاً قيمة غير قياسيّة لمحتوى الطاقة النسبيّة إبّان التخليق النوويّ البدائي. وبعد إبادة <span class="math inline">\(e^{\pm}\)</span> يمكن تعريف نسبة كثافة الإشعاع إلى كثافة الفوتونات عبر</p>
+<p class="math inline">\(R \equiv \frac{\rho_{\rm R}}{\rho_\gamma} = 1 + \frac{7}{8}\left(\frac{4}{11}\right)^{4/3} N_{\rm eff}\).</p>
+<p>وكما هو معلوم، يمكن أن تتغيّر قيمة <span class="math inline">\(N_{\rm eff}\)</span> أيضاً بفعل الاختلالات غير الحراريّة التي تُميّز توزيعات النيوترينو المتبقّية. في الشكل [fig:finalfnu] تُعرض القيم النهائية لتوزيعات النيوترينو بحسب النكهة، مع وبدون تذبذبات. يتّضح الاعتماد على التشوّهات غير الحراريّة في الزخم، إذ تظل النيوترينوات الأعلى طاقةً متفاعلةً مع <span class="math inline">\(e^{\pm}\)</span> مدة أطول. كما يُرى أنّ تذبذبات النيوترينو تقلّل الفروق بين التشوّهات وفق النكهة. صيغٌ تقريبيّة لهذه التوزيعات متاحة في (<span class="nodecor">Mangano:2005cc</span>).</p>
+<p>في الجدول [tab:neffyp] نعرض أثر انفصال النيوترينوات غير الفوري على كثافة الطاقة الإشعاعيّة <span class="math inline">\(N_{\rm eff}\)</span> وعلى كسر الكتلة من <span class="math inline">\(^4\)</span>He. ومع أخذ تذبذبات النيوترينو بالحسبان نحصل على تغيّر إجمالي <span class="math inline">\(\Delta Y_p \simeq 2.1 \times 10^{-4}\)</span>، بما يتّسق مع النتائج الواردة في (<span class="nodecor">Han01</span>) بفضل إدراج تأثيرات الكهروديناميكا الكميّة. على أنّ الأثر الصافي للتذبذبات أقلّ بحوالي عامل ثلاثة ممّا قُدِّر سابقاً بسبب قُصور تقريب المتوسّط عن استنساخ التشوّهات الفعليّة.</p>
+<p>على وجه الدقّة، فإن القيمة المذكورة لـ<span class="math inline">\(N_{\rm eff}\)</span> في الجدول [tab:neffyp] تمثّل مساهمة النيوترينوات في ميزانية الطاقة الإشعاعيّة كاملةً، ولكن عند نهاية انفصال النيوترينوات فقط؛ لذا فهي لا تدخل مباشرةً في عمليّات التخليق النوويّ البدائي. لتوضيح ذلك، نعرض في الجدول [tab:nuclides] أثر الانفصال غير الفوري للنيوترينوات على جميع النوى الخفيفة في السيناريو البسيط من دون تذبذبات، ونقارن هذه النتائج بما نحصل عليه إذا أُضيفت مساهمة ثابتة <span class="math inline">\(\Delta N_{\rm eff} = 0.013\)</span> إلى الإشعاع. ومع أنّ <span class="math inline">\(Y_p\)</span> يُستنسَخ (عمداً)، فإن الأمر لا ينطبق على بقيّة النواتج النوويّة.</p>
 
 <table>
-<caption>مقارنة بين نتائج التخليق النووي البدائي الدقيقة مع تقريب <span class="math inline">\(\Delta N_{\rm eff}\)</span> الثابت. من (<span class="nodecor">Mangano:2005cc</span>).<span data-label="tab:nuclides"></span></caption>
+<caption id="tab:nuclides">مقارنة بين نتائج التخليق النوويّ البدائي الدقيقة وتقريب <span class="math inline">\(\Delta N_{\rm eff}\)</span> الثابت. من (<span class="nodecor">Mangano:2005cc</span>).</caption>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">النظير</td>
-<td style="text-align: left;">دقيق</td>
-<td style="text-align: left;">ثابت</td>
+  <th style="text-align: right;">النظير أو الكميّة</th>
+  <th style="text-align: right;">حساب دقيق</th>
+  <th style="text-align: right;">تقريب ثابت <span class="math inline">\(\Delta N_{\rm eff}\)</span></th>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">(بدون تذبذبات <span class="math inline">\(\nu\)</span>)</td>
-<td style="text-align: left;"><span class="math inline">\(\Delta N_{\rm eff} = 0.013\)</span></td>
+  <td style="text-align: right;"></td>
+  <td style="text-align: right;">(من دون تذبذبات <span class="math inline">\(\nu\)</span>)</td>
+  <td style="text-align: right;"><span class="math inline">\(\Delta N_{\rm eff} = 0.013\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\Delta Y_p\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(1.71{\times} 10^{-4}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(1.76{\times} 10^{-4}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(\Delta Y_p\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(1.71 \times 10^{-4}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(1.76 \times 10^{-4}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\Delta\)</span>(<span class="math inline">\(^2\)</span>H/H)</td>
-<td style="text-align: left;"><span class="math inline">\(-0.0068{\times} 10^{-5}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(+0.0044{\times} 10^{-5}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(\Delta\)</span>(<span class="math inline">\(^2\)</span>H/H)</td>
+  <td style="text-align: right;"><span class="math inline">\(-0.0068 \times 10^{-5}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(+0.0044 \times 10^{-5}\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\Delta\)</span>(<span class="math inline">\(^3\)</span>He/H)</td>
-<td style="text-align: left;"><span class="math inline">\(-0.0011{\times} 10^{-5}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(+0.0007{\times} 10^{-5}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(\Delta\)</span>(<span class="math inline">\(^3\)</span>He/H)</td>
+  <td style="text-align: right;"><span class="math inline">\(-0.0011 \times 10^{-5}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(+0.0007 \times 10^{-5}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\Delta\)</span>(<span class="math inline">\(^7\)</span>Li/H)</td>
-<td style="text-align: left;"><span class="math inline">\(+0.0214{\times} 10^{-10}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(-0.0058{\times} 10^{-10}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(\Delta\)</span>(<span class="math inline">\(^7\)</span>Li/H)</td>
+  <td style="text-align: right;"><span class="math inline">\(+0.0214 \times 10^{-10}\)</span></td>
+  <td style="text-align: right;"><span class="math inline">\(-0.0058 \times 10^{-10}\)</span></td>
 </tr>
 </tbody>
 </table>
 
-<p>تم تقديم تحليلات مماثلة مؤخراً من قبل مجموعات مختلفة، وقد تختلف قليلاً بحسب القيم المعتمدة لـ <span class="math inline">Y_p</span> أو قياس نسبة <span class="math inline">^2</span>H/H تجريبياً؛ انظر مثلاً (<span class="nodecor">Lis99,Bur99b,Esposito:2000hh,Bar03a,Cuo04,Cyb03c,Cyb04,Cyb05,Han02,Man07,Sim08b</span>).</p>
+<p>قُدِّمت تحليلات مماثلة حديثاً من قِبل مجموعات مختلفة، مع فروق طفيفة بحسب القيم المُعتمَدة لـ<span class="math inline">\(Y_p\)</span> أو لقياس نسبة <span class="math inline">\(^2\)</span>H/H رصدياً؛ انظر مثلاً (<span class="nodecor">Lis99,Bur99b,Esposito:2000hh,Bar03a,Cuo04,Cyb03c,Cyb04,Cyb05,Han02,Man07,Sim08b</span>).</p>
 
 <h1 id="مصفوفه-التغاير">مصفوفة التغاير</h1>
-<p>نعرّف مصفوفة التغاير 
-<span class="math inline">W_{ij} = \left[ \sigma_{ij}^2 + \sigma_{i, \mathrm{exp}}^2 + \sigma_{ij, \mathrm{other}}^2 \right]^{-1}</span>
-حيث <span class="math inline">\(\sigma_{ij}\)</span> و<span class="math inline">\(\sigma_{i, \mathrm{exp}}\)</span> تمثلان عدم اليقين في معدلات التفاعلات النووية والشك التجريبي في وفرة النوكليد <span class="math inline">X_i</span> على التوالي (ونستخدم عدم اليقين في المعدلات النووية كما في المرجع (<span class="nodecor">Ser04b</span>))، بينما نعبر عن <span class="math inline">\(\sigma_{ij, \mathrm{other}}^2\)</span> بأنها الخطأ التربيعي الناتج عن جميع عدم اليقين في المعاملات الأخرى (<span class="math inline">\(\tau_n\)</span>، <span class="math inline">G_{\rm N}</span>، إلخ).</p>
-<p>نعتبر أولاً وفرة <span class="math inline">^2</span>H وحيداً لتوضيح دور الديوتيريوم كمقياس باريومتري ممتاز. في هذه الحالة، تُعطى أفضل القيم المتوافقة 
-<span class="math inline">\(\Omega_B h^2 = 0.021\pm 0.001\)</span> (<span class="math inline">\(\eta_{10} = 5.7 \pm 0.3\)</span>) عند 68\% ثقة، و 
-<span class="math inline">\(\Omega_B h^2 = 0.021 \pm 0.002\)</span> عند 95\% ثقة. كما يمكن إجراء تحليل مماثل باستخدام <span class="math inline">^4</span>He: بأخذ الخطأ الإحصائي فقط نحصل على 
-<span class="math inline">\(\Omega_B h^2 = 0.021^{+0.005}_{-0.004}\)</span> (<span class="math inline">\(\eta_{10} = 5.7^{+1.4}_{-1.1}\)</span>) عند 68\% ثقة، و 
-<span class="math inline">\(\Omega_B h^2 = 0.021^{+0.010}_{-0.006}\)</span> عند 95\% ثقة. وعند احتساب أكبر خطأ منهجي ممكن على <span class="math inline">Y_p</span>، يصبح التحديد أكثر اعتماداً على الديوتيريوم. وعلى أي حال، تظل النتيجة متوافقة ضمن 2-<span class="math inline">\(\sigma\)</span> مع نتيجة خمس سنوات من WMAP: <span class="math inline">\(\Omega_B h^2 = 0.02273 \pm 0.00062\)</span> (<span class="nodecor">Dun08</span>). وقد يؤثر هذا الاختلاف الطفيف على قياس مؤشر الاضطراب العددي الأول <span class="math inline">n_s</span> في تحليل تقلبات CMB، كما أُشير إليه في (<span class="nodecor">Pet08</span>) حيث استُخدمت قيمة BBN للديوتيريوم كأساس لتحليل بيانات WMAP.</p>
-<p>في الجدول [table:sbbn] نعرض بعض التنبؤات للوفرة النووية ذات الأهمية لثلاث قيم مختلفة من كثافة الباريونات، كما وُقِّعت باستخدام <code>PArthENoPE</code> (<span class="nodecor">Par08</span>). ولاحظ التنبؤ المنخفض جداً لـ <span class="math inline">^6</span>Li وأن معظم <span class="math inline">^7</span>Li يتكوّن لهذه القيم من <span class="math inline">^7</span>Be عبر الالتقاط الإلكتروني اللاحق في النجوم.</p>
-<p>إذا ما خُفِّفت فرضية عدد درجات الحرية النسبية القياسية، يمكن استخراج حدود على أية إشعاعات إضافية في عصر BBN، سواء كانت جسيمات نسبية إضافية أو خواص غير قياسية للنيوترينوات النشطة.</p>
+<p>نُعرِّف مصفوفة الأوزان على النحو
+<span class="math inline">\(W_{ij} = \big[\,\sigma_{ij}^2 + \sigma_{i,\mathrm{exp}}^2 + \sigma_{ij,\mathrm{other}}^2\,\big]^{-1}\)</span>،
+حيث تمثّل <span class="math inline">\(\sigma_{ij}\)</span> لايقينيّات معدّلات التفاعلات النوويّة، وتمثّل <span class="math inline">\(\sigma_{i,\mathrm{exp}}\)</span> اللايقين التجريبي في وفرة النوكليد <span class="math inline">\(X_i\)</span>، بينما يرمز <span class="math inline">\(\sigma_{ij,\mathrm{other}}^2\)</span> إلى مجموع مربّعات اللايقينيّات في بقيّة المعاملات (مثل <span class="math inline">\(\tau_n\)</span> و<span class="math inline">\(G_{\rm N}\)</span> وغيرها). نستخدم لايقينيّات المعدّلات النوويّة كما في المرجع (<span class="nodecor">Ser04b</span>).</p>
+<p>نقتصر أولاً على وفرة الديوتيريوم <span class="math inline">\(^2\)</span>H لإبراز دوره كمِسْطرة باريومتريّة ممتازة. في هذه الحالة نحصل على أفضل توافق
+<span class="math inline">\(\Omega_B h^2 = 0.021 \pm 0.001\)</span> (<span class="math inline">\(\eta_{10} = 5.7 \pm 0.3\)</span>) عند مستوى ثقة 68%، و<span class="math inline">\(\Omega_B h^2 = 0.021 \pm 0.002\)</span> عند 95% ثقة. ويمكن إجراء تحليل مماثل باستخدام <span class="math inline">\(^4\)</span>He: باحتساب الخطأ الإحصائي فقط نحصل على
+<span class="math inline">\(\Omega_B h^2 = 0.021^{+0.005}_{-0.004}\)</span> (<span class="math inline">\(\eta_{10} = 5.7^{+1.4}_{-1.1}\)</span>) عند 68% ثقة، و<span class="math inline">\(\Omega_B h^2 = 0.021^{+0.010}_{-0.006}\)</span> عند 95% ثقة. وعند إدراج أكبر خطأ منهجي ممكن على <span class="math inline">\(Y_p\)</span> يصبح التحديد أكثر اعتماداً على الديوتيريوم. وفي جميع الأحوال تبقى النتيجة منسجمة ضمن <span class="math inline">\(2\sigma\)</span> مع نتيجة خمس سنوات من WMAP: <span class="math inline">\(\Omega_B h^2 = 0.02273 \pm 0.00062\)</span> (<span class="nodecor">Dun08</span>). وقد يؤثّر هذا الفارق الطفيف على قياس المؤشِّر الطيفي للاضطرابات السلميّة <span class="math inline">\(n_s\)</span> في تحليل تقلبات إشعاع الخلفيّة الكونيّة، كما أُشير في (<span class="nodecor">Pet08</span>) حيث استُخدمت قيمة BBN للديوتيريوم كقيد أساسي عند تحليل بيانات WMAP.</p>
+<p>في الجدول [table:sbbn] نعرض بعض التوقّعات لوفرة النوى ذات الأهمية لثلاث قيم مختلفة من كثافة الباريونات، كما حُسِبت باستخدام <code>PArthENoPE</code> (<span class="nodecor">Par08</span>). نُشير إلى التنبّؤ المنخفض جداً لـ<span class="math inline">\(^6\)</span>Li، وأن معظم <span class="math inline">\(^7\)</span>Li يتكوَّن في هذه النطاقات من <span class="math inline">\(^7\)</span>Be، مع تحوّله لاحقاً بالتقاط إلكتروني في النجوم.</p>
+<p>إذا خُفِّفت فرضيّة عدد درجات الحرية النسبيّة القياسيّة، أمكن استخراج حدود على أي إشعاع إضافي إبّان حقبة BBN، سواء أكان على هيئة جسيمات نسبيّة إضافيّة أم خواص غير قياسيّة للنيوترينوات النشطة.</p>
 
 <h1 id="الاستنتاجات">الاستنتاجات</h1>
-<p>المعلمة "الكلاسيكية" المحدودة بواسطة نموذج التخليق النووي البدائي هي نسبة الباريون إلى الفوتون <span class="math inline">\(\eta\)</span>، أو ما يعادلها كثافة الباريونات <span class="math inline">\(\Omega_B h^2\)</span>. في الوقت الراهن، يسيطر قياس الديوتيريوم على هذا التحديد، ونحصل على <span class="math inline">\(\Omega_B h^2=0.021\pm 0.001\)</span> (<span class="nodecor">1 <span class="math inline">\(\sigma\)</span></span>)، وهو توافق ملحوظ مع الحد الأعلى للهليوم البدائي و<em>حده الأدنى</em> للنيوترون الذي يوفره <span class="math inline">^3</span>He/H، وكذلك مع نطاقات <span class="math inline">^4</span>He التي تتجاهل الأخطاء المنهجية وتكون أضعف بخمس مرات. والتوافق ضمن 2 <span class="math inline">\(\sigma\)</span> مع قيمة WMAP 
-<span class="math inline">\(\Omega_B h^2=0.02273\pm 0.00062\)</span> يمثل نجاحاً بارزاً للنموذج الكوني القياسي. ومن ناحية أخرى، يبقى التناقض على مستوى <span class="math inline">\sim 3</span> مع قياسات <span class="math inline">^7</span>Li، التي يصعب التوفيق بينها حتى عند تبنّي ميزانيات خطأ محافظة في الملاحظات والمدخلات النووية. والأكثر إثارة للاندهاش هو بعض الاكتشافات التي تشير إلى وفرة <span class="math inline">^6</span>Li أعلى بكثير من المتوقع من النموذج القياسي. كلا هذين الإشارتين يوحيان بأن القيم الحالية لا تعكس وفرةً بدائية، ومردُّ ذلك إما إلى استبعاد هذه القياسات لأغراض كونية أو إلى وجود تعقيدات في كونولوجيا ما قبل BBN. ولا يمكن لعدد غير قياسي من درجات الحرية عديمة الكتلة في البلازما (المعبر عنه عبر <span class="math inline">N_{\rm eff}</span>) أو لانحياز اللبتون <span class="math inline">\xi_e</span> (مع افتراض تساوي جميع تناظرات اللبتون) أن يحل هذا التناقض. وتأتي القيود الحالية على هاتين الكميتين أساساً من قياس <span class="math inline">^4</span>He: <span class="math inline">N_{\rm eff}=3.0\pm 0.3_{\rm stat}\,(2\,\sigma)\pm 0.3_{\rm syst}</span> و<span class="math inline">\xi_e=0.004\pm 0.017_{\rm stat}\,(2\,\sigma)\pm 0.017_{\rm syst}</span>.</p>
+<p>المُعلّمة «الكلاسيكيّة» التي يقيّدها نموذج التخليق النوويّ البدائي هي نسبة الباريونات إلى الفوتونات <span class="math inline">\(\eta\)</span>، أو ما يكافئها كثافة الباريونات <span class="math inline">\(\Omega_B h^2\)</span>. حالياً يهيمن قياس الديوتيريوم على هذا التحديد، فنحصل على <span class="math inline">\(\Omega_B h^2 = 0.021 \pm 0.001\)</span> (<span class="nodecor">\(1\sigma\)</span>)، في توافق ملحوظ مع الحدّ الأعلى للهليوم البدائي ومع الحدّ الأدنى الذي تُوفِّره قياسات <span class="math inline">\(^3\)</span>He/H، وكذلك مع نطاقات <span class="math inline">\(^4\)</span>He عند إهمال الأخطاء المنهجيّة وإن كانت أقلّ صرامة بخمسة أضعاف تقريباً. كما أنّ التوافق ضمن <span class="math inline">\(2\sigma\)</span> مع قيمة WMAP <span class="math inline">\(\Omega_B h^2 = 0.02273 \pm 0.00062\)</span> يُعدّ نجاحاً بارزاً للنموذج الكوني القياسي. في المقابل يبقى التناقض عند مستوى يقارب <span class="math inline">\(\sim 3\sigma\)</span> مع قياسات <span class="math inline">\(^7\)</span>Li، وهو ما يصعب التوفيق معه حتى بافتراض ميزانيّات أخطاء محافظة في الرصد والمدخلات النوويّة. والأدهى أنّ بعض الادّعاءات تشير إلى وفرة <span class="math inline">\(^6\)</span>Li أعلى كثيراً ممّا يتنبّأ به النموذج القياسي. هاتان الإشارتان توحيان بأن القيم الراهنة لا تعكس وفرةً بدائيّة، ما يدعو إمّا إلى استبعاد هذه القياسات لأغراض كونيّة أو إلى تعقيدات في فيزياء الكون قبل حقبة BBN. ولا يكفي افتراض عدد غير قياسي من درجات الحرّية عديمة الكتلة في البلازما (المعبّر عنه بـ<span class="math inline">\(N_{\rm eff}\)</span>) أو انحياز لَبْتوني <span class="math inline">\(\xi_e\)</span> (مع افتراض تساوي تناظرات اللّبتون) لحلّ هذا التعارض. القيود الحاليّة على هاتين الكميّتين تأتي أساساً من قياس <span class="math inline">\(^4\)</span>He، وهي: <span class="math inline">\(N_{\rm eff} = 3.0 \pm 0.3_{\rm stat}\,(2\,\sigma) \pm 0.3_{\rm syst}\)</span> و<span class="math inline">\(\xi_e = 0.004 \pm 0.017_{\rm stat}\,(2\,\sigma) \pm 0.017_{\rm syst}\)</span>.</p>
+
+</main>
 </body>
 </html>
-```
-
-**تصحيحات اللاتكس:**
-- تم تصحيح جميع المعادلات لتكون بصيغة لاتكس صحيحة وقابلة للعرض عبر MathJax.
-- تم استبدال جميع الصيغ التي كانت مكتوبة بنص عادي أو غير مغلقة بشكل صحيح بعلامات `\(` و `\)` أو `\[ \]` حسب الحاجة.
-- تم تصحيح جميع الأسس والكسور (مثل \((4/11)^{4/3}\) إلى \(\left(\frac{4}{11}\right)^{4/3}\)).
-- تم تصحيح جميع الرموز مثل \(\neff\) إلى \(\mathcal{N}_{\rm eff}\) أو \(N_{\rm eff}\) حسب السياق.
-- تم تصحيح جميع المتغيرات التي كانت مكتوبة بنص عادي إلى رموز لاتكس صحيحة (مثل \(e^\pm\) و\(G_{\rm N}\) و\(\tau_n\) و\(\xi_e\) و\(n_s\)).
-- تم تصحيح جميع الكسور والأسس في الجداول والنصوص.
-- تم التأكد من أن جميع المعادلات مغلقة بشكل صحيح ولا تحتوي على أخطاء في الصياغة.
-- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو المحتوى.
-- تم التأكد من أن جميع المعادلات ستُعرض بشكل صحيح عبر MathJax ولا تحتوي على أخطاء في اللاتكس.

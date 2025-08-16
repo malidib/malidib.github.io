@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="أمين أحرش" />
+  <meta name="author" content="كريستيان إل. ماكدونالد" />
+  <meta name="author" content="صلاح نصري" />
+  <title>نماذج لكتلة النيوترينو وفيزياء ما بعد النموذج القياسي</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img, embed {
+      max-width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+      font-family: 'Cairo', 'Georgia', serif;
+      font-weight: bold;
+      color: #2a3a4a;
+      letter-spacing: 0.01em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 1.7em 1em 0;
+      padding-right: 1em;
+      border-right: 2px solid #e6e6e6;
+      color: #606060;
+      background: #f7f7fa;
+      border-radius: 6px;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: right;
+      font-size: 90%;
+      background: #f3f6fa;
+      border-radius: 8px;
+      border: 1px solid #e0e6ef;
+      padding: 1.2em 1.5em;
+      box-shadow: 0 2px 8px #e0e6ef33;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+      color: #1a3a5a;
+      letter-spacing: 0.02em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 90%;
+      margin: 0;
+      background: #f5f5f5;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      color: #2a3a4a;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+      background: #f5f5f5;
+      border-radius: 6px;
+      padding: 1em;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      direction: rtl;
+      background: #f8fafc;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #e0e6ef22;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+      font-size: 1em;
+      color: #2a3a4a;
+      font-weight: bold;
+      text-align: center;
+    }
+    thead th {
+      background: #e6eef7;
+      color: #1a3a5a;
+      border-bottom: 2px solid #b0c4de;
+      font-size: 1em;
+      padding: 0.5em 0.7em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #b0c4de;
+      border-bottom: 1px solid #b0c4de;
+    }
+    th, td {
+      padding: 0.4em 0.7em;
+      text-align: center;
+      border-bottom: 1px solid #e0e6ef;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .centering {
+      text-align: center;
+    }
+    .acknowledgments {
+      background: #f7f7fa;
+      border: 1px solid #e0e6ef;
+      border-radius: 8px;
+      margin: 2em 0 1em 0;
+      padding: 1em 1.5em;
+      font-size: 0.95em;
+      color: #444;
+    }
+    .thebibliography {
+      font-size: 0.95em;
+      background: #f3f6fa;
+      border-radius: 8px;
+      border: 1px solid #e0e6ef;
+      padding: 1.2em 1.5em;
+      margin-top: 2em;
+      color: #222;
+      direction: ltr;
+      text-align: left;
+    }
+    .thebibliography p {
+      margin: 0.5em 0;
+      line-height: 1.6;
+    }
+    figure {
+      margin: 2em auto;
+      text-align: center;
+    }
+    figcaption {
+      font-size: 0.95em;
+      color: #555;
+      margin-top: 0.5em;
+      text-align: center;
+    }
+    /* MathJax fixes */
+    mjx-container[jax="SVG"] {
+      direction: ltr !important;
+    }
+    .MathJax, .mjx-chtml {
+      direction: ltr !important;
+      unicode-bidi: embed;
+    }
+    /* End MathJax fixes */
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">نماذج لكتلة النيوترينو وفيزياء ما بعد النموذج القياسي</h1>
+<p class="author">أمين أحرش</p>
+<p class="author">كريستيان إل. ماكدونالد</p>
+<p class="author">صلاح نصري</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>في هذا العمل، نستعرض تحليلاً حديثاً لنماذج كتلة النيوترينو عند مستوى ثلاث حلقات مع وجود المادة المظلمة. نناقش بتفصيل نموذج كراوس-نصري-ترودن (KNT)، مبينين أنه يقدم حلاً فعالاً لمشكلتي كتلة النيوترينو والمادة المظلمة، ونصف الإشارات التجريبية القابلة للرصد التي يتنبأ بها النموذج. علاوة على ذلك، نوضح أن نموذج KNT ينتمي إلى فئة أوسع من النماذج ثلاثية الحلقات التي قد تختلف عن مقاربة KNT بطرق مثيرة للاهتمام.</p>
+</div>
+</header>
+<h1 id="introduction">مقدمة</h1>
+<p>تُعد النماذج التي تولد كتلة النيوترينو إشعاعياً ذات أهمية تجريبية كبيرة. فالتثبيط الناتج عن الحلقات في هذه النماذج يسمح بأن تكون الفيزياء الجديدة المسؤولة عن كتلة النيوترينو أخف مما هو متوقع عادةً. ويمكن أن تكون هذه الفيزياء الجديدة الخفيفة ضمن متناول التجارب، إما بشكل مباشر عبر مصادمات الجسيمات، أو بشكل غير مباشر من خلال البحث عن تأثيرات انتهاك حفظ نكهة اللبتونات (LFV). ويزداد التثبيط مع زيادة عدد الحلقات، لذا فإن النماذج التي تولد الكتلة عند مستوى ثلاث حلقات تكون مثيرة للاهتمام بشكل خاص، إذ تتطلب عادةً فيزياء جديدة عند مقياس TeV تقريباً.</p>
+<p>نقدم هنا فئة من النماذج التي تولد كتلة النيوترينو إشعاعياً عند مستوى ثلاث حلقات <span class="citation" data-cites="KNT AKS HNOO"></span>. نركز بشكل أساسي على نموذج KNT <span class="citation" data-cites="KNT"></span> ونستعرض تحليلاً حديثاً يُظهر أن النموذج يحقق قيود انتهاك حفظ نكهة اللبتونات، مثل <span class="math inline">\(\mu \rightarrow e + \gamma\)</span>، ويتوافق مع بيانات تذبذب النيوترينو. علاوة على ذلك، يحتوي النموذج على مرشح فعال للمادة المظلمة في الكون، يتمثل في نيوترينو يميني خفيف. كما نوضح أنه يمكن تحقيق انتقال طور كهرضعيف من الدرجة الأولى بقوة كبيرة مع كتلة هيغز <span class="math inline">\(\simeq 125\)</span> GeV، كما تم قياسها في مصادم الهادرونات الكبير <span class="citation" data-cites="ATLAS CMS"></span>. يحتوي النموذج على سكالارات مشحونة جديدة ونناقش تأثيرها على اضمحلال الهيغز إلى بوزونات القياس المحايدة عند مستوى حلقة واحدة. بعد ذلك، نوضح أن نموذج KNT ينتمي إلى فئة أوسع من النماذج ثلاثية الحلقات ذات خصائص متنوعة.</p>
+<h1 id="the-knt-model">نموذج KNT</h1>
+<p>يُعد نموذج KNT <span class="citation" data-cites="KNT"></span> امتداداً للنموذج القياسي (SM) بثلاثة نيوترينوهات يمينية <span class="math inline">\(N_{i}\)</span> وسكالارين مشحونين كهربائياً <span class="math inline">\(S_{1}^{\pm}\)</span> و<span class="math inline">\(S_{2}^{\pm}\)</span>، وهما منفردان تحت مجموعة القياس <span class="math inline">\(SU(2)_{L}\)</span>. بالإضافة إلى ذلك، يُفرض تناظر منفصل <span class="math inline">\(Z_{2}\)</span> على النموذج، حيث يتحول <span class="math inline">\(\{S_{2},N_{i}\}\rightarrow \{-S_{2},-N_{i}\}\)</span>، بينما تبقى جميع الحقول الأخرى زوجية. يلعب هذا التناظر دورين أساسيين: يمنع اقتراناً على مستوى الشجرة بين <span class="math inline">\(N_R\)</span> وهيغز النموذج القياسي، والذي كان سيؤدي إلى توليد كتل نيوترينو على مستوى الشجرة، ويضمن أن أخف فرميون <span class="math inline">\(N_1\)</span> هو مرشح مستقر للمادة المظلمة. لاغرانجيان النموذج يُعطى بـ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+\begin{aligned}
+\mathcal{L} &=
+\mathcal{L}_{SM}+\left\{f_{\alpha\beta}L_{\alpha}^{T}Ci\tau_{2}L_{\beta}S_{1}^{+}
++g_{i\alpha}N_{i}S_{2}^{+}\ell_{\alpha R}
++\frac{1}{2}m_{N_{i}}N_{i}^{C}N_{i}+\text{م.م.}\right\}
+-V(\Phi,S_{1},S_{2}),
+\end{aligned}
+\]
+</div>
+<p>
+حيث <span class="math inline">\(L_{\alpha}\)</span> هو مزدوج اللبتونات الأعسر، و<span class="math inline">\(f_{\alpha\beta}\)</span> هي اقترانات يوكاوا مضادة للتناظر في مؤشرات الأجيال <span class="math inline">\(\alpha\)</span> و<span class="math inline">\(\beta\)</span>، و<span class="math inline">\(m_{N_{i}}\)</span> هي كتل النيوترينو اليميني من نوع ماجورانا، و<span class="math inline">\(C\)</span> هو مصفوفة اقتران الشحنة، و<span class="math inline">\(V(\Phi,S_{1},S_{2})\)</span> هو جهد السكالار على مستوى الشجرة، ويُعطى بـ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+\begin{aligned}
+V(\Phi,S_{1,2}) & = \lambda\left( |\Phi|^{2} \right)^{2}
+-\mu^{2}|\Phi|^{2}
++m_{1}^{2}S_{1}^{\ast}S_{1}
++m_{2}^{2}S_{2}^{\ast}S_{2}
++\lambda_{1}S_{1}^{\ast}S_{1}|\Phi|^{2}
++\lambda_{2}S_{2}^{\ast}S_{2}|\Phi|^{2} \\
+& +\frac{\eta_{1}}{2}(S_{1}^{\ast}S_{1})^{2}
++\frac{\eta_{2}}{2}(S_{2}^{\ast}S_{2})^{2}
++\eta_{12}S_{1}^{\ast}S_{1}S_{2}^{\ast}S_{2}
++\left\{ \lambda_{s}S_{1}S_{1}S_{2}^{\ast}S_{2}^{\ast} + \text{م.م.} \right\}.
+\end{aligned}
+\]
+</div>
+<p>
+هنا <span class="math inline">\(\Phi\)</span> تمثل مزدوج هيغز في النموذج القياسي.</p>
+<h2 id="neutrino-mass-and-lfv">كتلة النيوترينو وانتهاك حفظ نكهة اللبتونات (LFV)</h2>
+<p>عناصر مصفوفة كتلة النيوترينو، الناتجة عن مخطط الحلقة الثلاثية في الشكل <a href="#diag" data-reference-type="ref" data-reference="diag">1</a>، تُعطى بـ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+(M_{\nu})_{\alpha\beta} = \frac{\lambda_{s} m_{\ell_{i}} m_{\ell_{k}}}{(4\pi^{2})^{3} m_{S_{2}}}
+f_{\alpha i} f_{\beta k} g_{ij} g_{kj}
+F\left( \frac{m_{N_{j}}^{2}}{m_{S_{2}}^{2}}, \frac{m_{S_{1}}^{2}}{m_{S_{2}}^{2}} \right),
+\]
+</div>
+<p>
+حيث <span class="math inline">\(\rho, \kappa (=e, \mu, \tau)\)</span> هي مؤشرات نكهات اللبتونات المشحونة، و<span class="math inline">\(i=1,2,3\)</span> تمثل النيوترينوهات اليمينية الثلاثة، ودالة الحلقة <span class="math inline">\(F\)</span> هي تكامل حلقي من رتبة واحد <span class="citation" data-cites="AN2013"></span>. من المثير للاهتمام أن نلاحظ أنه، على عكس آلية سي-سو التقليدية، فإن كتل النيوترينو المتولدة إشعاعياً تتناسب مباشرة مع كتل اللبتونات المشحونة وكتل النيوترينو اليميني، بالإضافة إلى كونها مثبطة بالحلقات.</p>
+<div class="centering">
+<figure>
+<embed src="nu.eps" id="diag" style="width:6cm;height:2.2cm" />
+<figcaption aria-hidden="true"><em>مخطط الحلقة الثلاثية الذي يولد كتلة النيوترينو.</em></figcaption>
+</figure>
+</div>
+<p>يؤدي لاغرانجيان (المعادلة أعلاه) إلى عمليات انتهاك حفظ نكهة اللبتونات مثل <span class="math inline">\(\ell_{\alpha}\rightarrow\gamma\ell_{\beta}\)</span> عندما <span class="math inline">\(m_{\ell_{\alpha}}>m_{\ell_{\beta}}\)</span>، والتي تتولد عند مستوى حلقة واحدة عبر تبادل السكالارين المشحونين <span class="math inline">\(S_{1,2}^{\pm}\)</span>. نسبة التفرع لهذه العملية تُعطى بـ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+\begin{aligned}
+B(\ell_{\alpha} \rightarrow \gamma \ell_{\beta}) =
+\frac{\alpha_{em} v^{4}}{384\pi}
+\left\{
+\frac{|\!f_{\kappa\alpha} f_{\kappa\beta}^{\ast}|^{2}}{m_{S_{1}}^{4}}
++ \frac{36}{m_{S_{2}}^{4}}
+\left| \sum_{i} g_{i\alpha} g_{i\beta}^{\ast} F_{2}\left( \frac{m_{N_{i}}^{2}}{m_{S_{2}}^{2}} \right) \right|^{2}
+\right\},
+\end{aligned}
+\]
+</div>
+<p>
+حيث <span class="math inline">\(\kappa \neq \alpha, \beta\)</span>، و<span class="math inline">\(\alpha_{em}\)</span> هو ثابت البنية الدقيقة، و<span class="math inline">\(F_{2}(x) = \frac{1-6x+3x^{2}+2x^{3}-6x^{2}\ln x}{6(1-x)^{4}}\)</span>. في حالة <span class="math inline">\(\ell_{\alpha} = \ell_{\beta} = \mu\)</span>، يؤدي ذلك إلى مساهمة جديدة في لحظة المغناطيسية الشاذة للميون <span class="math inline">\(\delta a_{\mu}\)</span>.<br />
+في مسحنا لفضاء معاملات النموذج، نفرض القيد التجريبي <span class="math inline">\(\mathbf{B}(\mu \rightarrow e\gamma) < 5.7 \times 10^{-13}\)</span> <span class="citation" data-cites="LFV"></span>؛ ونستخدم القيم المسموح بها لخلط النيوترينو <span class="math inline">\(s_{12}^{2}=0.320_{-0.017}^{+0.016}\)</span>، <span class="math inline">\(s_{23}^{2}=0.43_{-0.03}^{+0.03}\)</span>، <span class="math inline">\(s_{13}^{2}=0.025_{-0.003}^{+0.003}\)</span>، وفروق الكتل التربيعية <span class="math inline">\(|\Delta m_{31}^{2}| = 2.55_{-0.09}^{+0.06} \times 10^{-3}\)</span> إلكترون فولت<span class="math inline">\(^2\)</span> و<span class="math inline">\(\Delta m_{21}^{2} = 7.62_{-0.19}^{+0.19} \times 10^{-5}\)</span> إلكترون فولت<span class="math inline">\(^2\)</span> <span class="citation" data-cites="GF"></span>.</p>
+<h2 id="dark-matter">المادة المظلمة</h2>
+<p>من النتائج المباشرة لتناظر <span class="math inline">\(Z_{2}\)</span> أن أخف نيوترينو يميني <span class="math inline">\(N_{1}\)</span> يكون مستقراً، وبالتالي مرشحاً للمادة المظلمة. يتم تقليل كثافة <span class="math inline">\(N_{1}\)</span> عبر عملية <span class="math inline">\(N_{1}N_{1}\rightarrow\ell_{\alpha}\ell_{\beta}\)</span> من خلال قنوات t وu بتبادل <span class="math inline">\(S_{2}^{\pm}\)</span>. في الحد غير النسبي، يُعطى المقطع العرضي الكلي للإبادة بـ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+\sigma_{N_{1}N_{1}} v_{r} \simeq \sum_{\alpha,\beta} |g_{1\alpha} g_{1\beta}^{\ast}|^{2}
+\frac{m_{N_{1}}^{2} (m_{S_{2}}^{4} + m_{N_{1}}^{4})}{48\pi (m_{S_{2}}^{2} + m_{N_{1}}^{2})^{4}} v_{r}^{2},
+\]
+</div>
+<p>
+حيث <span class="math inline">\(v_{r}\)</span> هو السرعة النسبية بين جسيمات <span class="math inline">\(N_{1}\)</span>. يمكن الحصول على الكثافة المتبقية بعد انفصال <span class="math inline">\(N_{1}\)</span> بحل معادلة بولتزمان، وتُعطى تقريباً بـ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+\Omega_{N_{1}} h^{2} \simeq \frac{1.28 \times 10^{-2}}{\sum_{\alpha,\beta} |g_{1\alpha} g_{1\beta}^{\ast}|^{2}}
+\left( \frac{m_{N_{1}}}{135~\mathrm{GeV}} \right)^{2}
+\frac{(1 + m_{S_{2}}^{2}/m_{N_{1}}^{2})^{4}}{1 + m_{S_{2}}^{4}/m_{N_{1}}^{4}},
+\]
+</div>
+<p>
+حيث <span class="math inline">\(\langle v_{r}^{2} \rangle \simeq 6/x_{f} \simeq 6/25\)</span> هو متوسط مربع السرعة النسبية حرارياً لجسيمين من <span class="math inline">\(N_{1}\)</span>، و<span class="math inline">\(M_{pl}\)</span> هو كتلة بلانك، و<span class="math inline">\(g_{\ast}(T_{f})\)</span> هو عدد درجات الحرية الفعالة عند درجة حرارة الانفصال <span class="math inline">\(T_{f} \sim m_{N_{1}}/25\)</span>.</p>
+<p>في الشكل <a href="#msmn" data-reference-type="ref" data-reference="msmn">2</a>، نعرض النطاق المسموح لكتل <span class="math inline">\((m_{N_{1}}, m_{S_{i}})\)</span> الذي يعطي الكثافة المرصودة للمادة المظلمة <span class="citation" data-cites="Planck"></span>. كما هو موضح في الشكل، فإن بيانات النيوترينو التجريبية، وحدود عمليات LFV، مع الكثافة المتبقية، تفضل غالباً <span class="math inline">\(m_{S_{1}} > m_{S_{2}}\)</span> في مناطق واسعة من فضاء المعاملات. ومع ذلك، فإن كتل كل من جسيم المادة المظلمة والسكالار المشحون <span class="math inline">\(S_{2}^{\pm}\)</span> محدودة من الأعلى، حيث <span class="math inline">\(m_{N_{1}} < 225\)</span> جيجا إلكترون فولت و<span class="math inline">\(m_{S_{2}} < 245\)</span> جيجا إلكترون فولت.</p>
+<p><span id="Om" label="Om"></span></p>
+<div class="centering">
+<figure>
+<embed src="msvsmn1.eps" id="msmn" style="width:7.5cm;height:5.5cm" />
+<figcaption aria-hidden="true"><em>كتل السكالار المشحون <span class="math inline">\(m_{S_{1}}\)</span> (أحمر) و<span class="math inline">\(m_{S_{2}}\)</span> (أخضر) مقابل كتلة أخف نيوترينو يميني، حيث تم فرض التوافق مع بيانات النيوترينو، وقيود LFV، وكثافة المادة المظلمة.</em></figcaption>
+</figure>
+</div>
+<h2 id="electroweak-phase-transition">انتقال الطور الكهرضعيف</h2>
+<p>على الرغم من أن النموذج القياسي يحتوي على جميع العناصر النوعية اللازمة لتوليد الباريون في الانتقال الكهرضعيف، إلا أن كمية عدم التماثل بين المادة والمادة المضادة الناتجة صغيرة جداً. أحد الأسباب يعود إلى أن انتقال الطور الكهرضعيف ليس من الدرجة الأولى بقوة كافية، وهو أمر ضروري لقمع عمليات سفاليرون في الطور المكسور. يمكن تعزيز قوة الانتقال إذا وُجدت درجات حرية سكالارية جديدة حول مقياس الكهرضعيف ومقترنة بهيغز النموذج القياسي، كما هو الحال في نموذج KNT.</p>
+<p>تكشف دراسة الجهد الفعال للسكالار أنه، ضمن فضاء المعاملات المسموح به للنموذج، يمكن أن يكون انتقال الطور الكهرضعيف من الدرجة الأولى <span class="citation" data-cites="AN2013"></span>. نجد أنه إذا كانت تصحيحات حلقة واحدة لكتلة الهيغز كبيرة، فإن الشرط <span class="math inline">\(\upsilon(T_{c})/T_{c} > 1\)</span> لتحقيق انتقال من الدرجة الأولى يمكن تحقيقه مع الحفاظ على كتلة الهيغز حول <span class="math inline">\(125\)</span> جيجا إلكترون فولت. يعود ذلك إلى أن السكالارات المشحونة الإضافية تؤثر على ديناميكا قيمة التوقع الفراغي لحقل الهيغز حول درجة الحرارة الحرجة <span class="citation" data-cites="hna"></span>. في الشكل <a href="#ct" data-reference-type="ref" data-reference="ct">3</a>، نعرض الرسم البياني لـ <span class="math inline">\(\upsilon(T_{c})/T_{c}\)</span> مقابل درجة الحرارة الحرجة، ويُلاحظ أن انتقال الطور من الدرجة الأولى بقوة كبيرة ممكن بينما تقع درجة الحرارة الحرجة حول 100 جيجا إلكترون فولت.</p>
+<figure>
+<embed src="F1.eps" id="ct" style="width:7.5cm;height:5.5cm" />
+<figcaption aria-hidden="true"><em>درجة الحرارة الحرجة مقابل الكمية <span class="math inline">\(\upsilon_{c}/T_{c}\)</span>.</em></figcaption>
+</figure>
+<h2 id="knt-at-high-energy-lepton-colliders">نموذج KNT في مصادمات اللبتونات عالية الطاقة</h2>
+<p>بما أن النيوترينوهات اليمينية تتقارن مع اللبتونات المشحونة، فمن المتوقع إنتاجها في مصادمات <span class="math inline">\(e^{-}e^{+}\)</span> مثل ILC وCLIC، بطاقة تصادم <span class="math inline">\(\sqrt{s}\)</span> من بضع مئات من الجيجا إلكترون فولت حتى تيرا إلكترون فولت. إذا كانت الأزواج المنتجة من النوع <span class="math inline">\(N_{2,3}N_{2,3}\)</span> أو <span class="math inline">\(N_{1}N_{2,3}\)</span>، فإن <span class="math inline">\(N_{2,3}\)</span> ستضمحل إلى لبتيون مشحون و<span class="math inline">\(S_{2}^{\pm}\)</span>، ثم يضمحل <span class="math inline">\(S_{2}^{\pm}\)</span> إلى <span class="math inline">\(N_{1}\)</span> ولبتيون مشحون. بالإضافة إلى ذلك، سيتم إنتاج نيوترينوهات النموذج القياسي أيضاً عبر اضمحلال السكالار المشحون <span class="math inline">\(S_1\)</span>. نركز هنا على العملية <span class="math inline">\(e^{-}e^{+}\rightarrow e^{-}\mu^{+}+E_{miss}\)</span> <span class="citation" data-cites="ANS"></span>، حيث تمثل الطاقة المفقودة أي حالة من المجموعة <span class="math inline">\(\mathcal{E}_{miss}\subset \{\nu_{\mu}\bar{\nu}_{e}, \nu_{e}\bar{\nu}_{\tau}, \nu_{\tau}\bar{\nu}_{e}, \nu_{\mu}\bar{\nu}_{\mu}, \nu_{\tau}\bar{\nu}_{\mu}, \nu_{\tau}\bar{\nu}_{\tau}, N_{i}N_{k};~i,k=1,2,3\}\)</span>. المقطع العرضي الكلي المتوقع لهذه العمليات يُمثل بـ<span class="math inline">\(\sigma^{EX}\)</span>، بينما <span class="math inline">\(\sigma(\mathcal{E}_{miss})\)</span> تمثل المقطع العرضي للعمليات الفرعية المختلفة. كمثال مرجعي، نأخذ
+</p>
+<div dir="ltr" style="direction:ltr;text-align:left;">
+\[
+\begin{aligned}
+f_{e\mu} &= -(4.97 + i1.41) \times 10^{-2},\quad f_{e\tau} = 0.106 + i0.0859, \\
+f_{\mu\tau} &= (3.04 - i4.72) \times 10^{-6}, \\
+g_{i\alpha} &= 10^{-2} \times
+\begin{pmatrix}
+0.2249 + i0.3252 & 0.0053 + i0.7789 & 0.4709 + i1.47 \\
+1.099 + i1.511 & -1.365 - i1.003 & 0.6532 - i0.1845 \\
+122.1 + i178.4 & -0.6398 - i0.6656 & -10.56 + i68.56
+\end{pmatrix}, \\
+m_{N_{i}} &= \{162.2~\mathrm{GeV},\ 182.1~\mathrm{GeV},\ 209.8~\mathrm{GeV}\}, \\
+m_{S_{i}} &= \{914.2~\mathrm{GeV},\ 239.7~\mathrm{GeV}\}.
+\end{aligned}
+\]
+</div>
+<p>
+نستخدم برنامجي LanHep وCalcHep لمحاكاة النموذج وتوليد المقطع العرضي التفاضلي والمتغيرات الحركية ذات الصلة لطاقات مركز الكتلة المختلفة: <span class="math inline">\(E_{CM} =\)</span> 250، 350، 500 جيجا إلكترون فولت و1 تيرا إلكترون فولت، مع حزم غير مستقطبة أولاً؛ ثم نأخذ في الاعتبار الحزم المستقطبة مع <span class="math inline">\(P(e^{-},e^{+}) = [-0.8,+0.3]\)</span> و/أو <span class="math inline">\(P(e^{-},e^{+}) = [+0.8,-0.3]\)</span>. بفرض القطوع المناسبة المعطاة في الجدول <a href="#T1" data-reference-type="ref" data-reference="T1">1</a>، نعرض في الشكل <a href="#SvsL" data-reference-type="ref" data-reference="SvsL">[SvsL]</a> اعتماد الدلالة على اللمعان المتراكم مع وبدون حزم مستقطبة للطاقات المدروسة. نلاحظ بوضوح أنه مع الحزم المستقطبة يمكن رصد الإشارة حتى مع لمعان متكامل منخفض نسبياً. على سبيل المثال، عند <span class="math inline">\(E_{CM}=250\)</span> جيجا إلكترون فولت، فإن اللمعان المطلوب لدلالة 5<span class="math inline">\(\sigma\)</span> هو 150 <span class="math inline">fb^{-1}</span> للحزم المستقطبة مقارنة بـ700 <span class="math inline">fb^{-1}</span> بدون استقطاب.</p>
+<div id="T1">
+<table>
+<caption><em>القطوع المناسبة للعملية <span class="math inline">\(e^{+}e^{-}\rightarrow E_{miss}+e^{-}\mu^{+}\)</span> لطاقات مركز كتلة مختلفة. هنا <span class="math inline">\(E_{\ell}\)</span> و<span class="math inline">\(\eta_{\ell}\)</span> هما طاقة اللبتيون المشحون و"الزائف السريع" له، <span class="math inline">\(M_{e,\mu}\)</span> هو الكتلة الثابتة للإلكترون والميون، و<span class="math inline">\(M_{miss}\)</span> هي الكتلة الثابتة للطاقة المفقودة.</em></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(E_{CM}(\mathrm{GeV})\)</span></th>
+<th style="text-align: center;">القطوع المختارة</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(250\)</span></td>
+<td style="text-align: center;">
+<span class="math inline">\(
+\begin{array}{c}
+70~\mathrm{GeV} < E_{\ell} < 110~\mathrm{GeV},\ 70~\mathrm{GeV} < M_{e,\mu} < 220~\mathrm{GeV}, \\
+M_{miss} < 120~\mathrm{GeV},\ 0.5 < \eta_{e} < 2,\ -2 < \eta_{\mu} < -0.5
+\end{array}
+\)</span>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(350\)</span></td>
+<td style="text-align: center;">
+<span class="math inline">\(
+\begin{array}{c}
+90~\mathrm{GeV} < E_{\ell} < 165~\mathrm{GeV},\ 100~\mathrm{GeV} < M_{e,\mu} < 280~\mathrm{GeV}, \\
+M_{miss} < 200~\mathrm{GeV},\ 0.5 < \eta_{e} < 3,\ -2.5 < \eta_{\mu} < 0
+\end{array}
+\)</span>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(500\)</span></td>
+<td style="text-align: center;">
+<span class="math inline">\(
+\begin{array}{c}
+120~\mathrm{GeV} < E_{\ell} < 240~\mathrm{GeV},\ 300~\mathrm{GeV} < M_{e,\mu} < 480~\mathrm{GeV}, \\
+M_{miss} < 300~\mathrm{GeV},\ 0.5 < \eta_{e} < 3,\ -3 < \eta_{\mu} < 0
+\end{array}
+\)</span>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1000\)</span></td>
+<td style="text-align: center;">
+<span class="math inline">\(
+\begin{array}{c}
+E_{\ell} < 70~\mathrm{GeV},\ M_{e,\mu} < 140~\mathrm{GeV},\ M_{miss} > 750~\mathrm{GeV}, \\
+0.1 < \eta_{e} < 0.8,\ -0.8 < \eta_{\mu} < -0.1
+\end{array}
+\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="centering">
+<p><embed src="PSvsL.eps" style="width:7.5cm;height:5.5cm" /><embed src="SvsL.eps" style="width:7.5cm;height:5.5cm" /></p>
+</div>
+<h1 id="a-class-of-three-loop-models-with-dark-matter">فئة من النماذج ثلاثية الحلقات مع المادة المظلمة</h1>
+<p>يُعد نموذج KNT نظرية بسيطة قادرة على معالجة مشكلتي كتلة النيوترينو والمادة المظلمة في آن واحد. ويتنبأ بفيزياء جديدة يمكن اختبارها في المصادمات والتجارب الدقيقة. في نموذج KNT، تنتمي المادة المظلمة إلى قطاع فردي تحت <span class="math inline">\(Z_2\)</span> يساهم في الحلقة الداخلية لمخطط كتلة النيوترينو (انظر الشكل <a href="#diag" data-reference-type="ref" data-reference="diag">1</a>). قد يتساءل المرء عما إذا كانت هناك تعميمات لنموذج KNT. من المعروف أن آلية سي-سو يمكن تعميمها إلى نوع III مع فرميونات ثلاثية تحت <span class="math inline">\(SU(2)\)</span> <span class="citation" data-cites="Foot:1988aq"></span>، وأيضاً إلى نوع خماسي <span class="citation" data-cites="Kumericki:2012bh"></span>. لذا، ليس من المستغرب أن يشكل نموذج KNT جزءاً من فئة أوسع من النظريات التي تحقق كتلة النيوترينو عند مستوى ثلاث حلقات، مع وجود المادة المظلمة في الحلقة الداخلية.</p>
+<p>تتطلب النماذج المعممة أن يُضاف إلى النموذج القياسي السكالار المفرد المشحون <span class="math inline">\(S_1^+ \sim (1,1,2)\)</span>، وسكالار جديد <span class="math inline">\(S_2\)</span>، وثلاثة فرميونات حقيقية <span class="math inline">\(N_R\)</span>. لكن، بدلاً من اعتبار <span class="math inline">\(S_2\)</span> و<span class="math inline">\(N_R\)</span> كمفردات تحت <span class="math inline">\(SU(2)_L\)</span>، تستخدم النماذج المتنوعة متعددات أكبر. تشترك النماذج الناتجة في خصائص رئيسية مع نموذج KNT، حيث يحتفظ مخطط كتلة النيوترينو بنفس الشكل في الشكل <a href="#diag" data-reference-type="ref" data-reference="diag">1</a>، وتبقى المادة المظلمة هي أخف فرميون <span class="math inline">\(N_R\)</span>. ومع ذلك، هناك بعض الاختلافات المثيرة للاهتمام مقارنة بنموذج KNT. أولاً، أصبحت المادة المظلمة الآن جزءاً من متعدد أكبر مع تفاعلات قياسية غير تافهة، مما يغير التوقعات لكتلة المادة المظلمة ويسمح بتفاعلات جديدة. ثانياً، هناك نتائج مثيرة لتناظر <span class="math inline">\(Z_2\)</span>، تعتمد على تفاصيل النموذج، كما سنوضح:</p>
+<ul>
+<li><p><u>النموذج الثلاثي</u>: هنا <span class="math inline">\(S_2 \sim (1,3,2)\)</span> و<span class="math inline">\(N_R \sim (1,3,0)\)</span> هما ثلاثيتان تحت <span class="math inline">\(SU(2)_L\)</span> <span class="citation" data-cites="Ahriche:2014cda"></span>. كما في نموذج KNT، يتطلب النموذج الثلاثي تناظر <span class="math inline">\(Z_2\)</span> بحيث <span class="math inline">\(\{S_{2},N_{R}\}\rightarrow \{-S_{2},-N_{R}\}\)</span> لمنع كتل النيوترينو على مستوى الشجرة وضمان مرشح مستقر للمادة المظلمة. المادة المظلمة هي المكون المحايد من أخف فرميون ثلاثي ولها تفاعلات يوكاوا إضافية بوساطة <span class="math inline">\(g_{i\alpha} \neq 0\)</span> في معادلة لاغرانجيان النموذج. ونتيجة لذلك، تزداد كتلتها إلى <span class="math inline">\(M_\text{DM} \approx 3\)</span> تيرا إلكترون فولت <span class="citation" data-cites="Ahriche:2014cda"></span>.</p></li>
+<li><p><u>النموذج الخماسي</u>: يستخدم هذا النموذج متعددات <span class="math inline">\(S_2 \sim (1,5,2)\)</span> و<span class="math inline">\(N_R \sim (1,5,0)\)</span> <span class="citation" data-cites="Ahriche:2014oda"></span>. على عكس نموذج KNT والنموذج الثلاثي، لا يتطلب النموذج الخماسي تناظر <span class="math inline">\(Z_2\)</span> لمنع كتلة النيوترينو على مستوى الشجرة. لذا فهو نموذج فعال لكتلة النيوترينو الإشعاعية، بغض النظر عن المادة المظلمة. من المثير للاهتمام أن تناظر <span class="math inline">\(Z_2\)</span> <span class="math inline">\(\{S_{2},N_{R}\}\rightarrow \{-S_{2},-N_{R}\}\)</span> يُكسر بواسطة اقتران وحيد <span class="math inline">\(\lambda\)</span> في النموذج؛ لقيم صغيرة جداً من <span class="math inline">\(\lambda \ll 1\)</span>، نحصل على مرشح مادة مظلمة طويل العمر، بينما في الحد <span class="math inline">\(\lambda \rightarrow 0\)</span> يصبح التناظر <span class="math inline">\(Z_2\)</span> دقيقاً والمادة المظلمة مستقرة تماماً <span class="citation" data-cites="Ahriche:2014oda"></span>. لذا، النموذج الخماسي هو نموذج لكتلة النيوترينو الإشعاعية مع أو بدون مادة مظلمة، حسب منطقة فضاء المعاملات. وبسبب التفاعلات القياسية، يتطلب وجود المادة المظلمة <span class="math inline">\(M_\text{DM} \approx 10\)</span> تيرا إلكترون فولت.</p></li>
+<li><p><u>النموذج السباعي</u>: في هذه الحالة <span class="math inline">\(S_2 \sim (1,7,2)\)</span> و<span class="math inline">\(N_R \sim (1,7,0)\)</span>، وهو ذو أهمية خاصة <span class="citation" data-cites="Ahriche:2015wha"></span>. كما في النموذج الخماسي، لا يُشترط تناظر <span class="math inline">\(Z_2\)</span> لمنع كتلة النيوترينو على مستوى الشجرة. لكن، بخلاف النموذج الخماسي، يمتلك النموذج السباعي <em>تلقائياً</em> تناظراً عرضياً <span class="math inline">\(Z_2\)</span> بحيث <span class="math inline">\(\{S_{2},N_{R}\}\rightarrow \{-S_{2},-N_{R}\}\)</span>، وبالتالي يحتوي دائماً على مرشح مستقر للمادة المظلمة. هذا يوفر وصفاً مشتركاً لكتلة النيوترينو والمادة المظلمة دون الحاجة إلى تناظرات جديدة. المادة المظلمة هنا ثقيلة نسبياً، حيث <span class="math inline">\(M_\text{DM} \approx 20-25\)</span> تيرا إلكترون فولت، بسبب تعزيز سومرفيلد الناتج عن تبادل بوزونات القياس <span class="math inline">\(SU(2)\)</span> <span class="citation" data-cites="Ahriche:2015wha"></span>.</p></li>
+</ul>
+<p>تُظهر الدراسات التفصيلية أن النماذج المتنوعة تمتلك مناطق واسعة من فضاء المعاملات تتوافق مع بيانات تذبذب النيوترينو، وتعيد إنتاج الكثافة المرصودة للمادة المظلمة، وتحقق القيود التجريبية مثل عمليات LFV <span class="citation" data-cites="Ahriche:2014cda Ahriche:2014oda Ahriche:2015wha"></span>. في كل من هذه النماذج، تكون المادة المظلمة فرميون ماجورانا ثقيل ويجب أن تحقق كتلة <span class="math inline">\(S_2\)</span> الشرط <span class="math inline">\(M_2 > M_\text{DM}\)</span>، مما يضع كلا المتعددين خارج متناول المصادمات الحالية. ومع ذلك، يمكن أن يحتفظ السكالار <span class="math inline">\(S_1\)</span> بكتلة من رتبة 100 جيجا إلكترون فولت في جميع الحالات، مما يوفر أفضل فرصة لاختبار النماذج في المصادمات. كما تولد النماذج ذات المتعددات الأكبر تحت <span class="math inline">\(SU(2)_L\)</span> مساهمات كبيرة في عمليات LFV مثل <span class="math inline">\(\mu \rightarrow e + \gamma\)</span>، وغالباً ما تكون هذه المساهمات أكبر من حالة KNT، مما يعزز فرص اختبار النموذج في تجارب LFV المستقبلية <span class="citation" data-cites="Ahriche:2014cda Ahriche:2014oda Ahriche:2015wha"></span>. وبسبب التفاعلات القياسية الجديدة للمادة المظلمة، تتحسن أيضاً فرص الكشف المباشر في النماذج ذات المتعددات الأكبر <span class="citation" data-cites="Ahriche:2014cda Ahriche:2014oda Ahriche:2015wha"></span>.</p>
+<p>هناك نماذج إضافية لكتلة النيوترينو مع المادة المظلمة مرتبطة بنموذج KNT <span class="citation" data-cites="Chen:2014ska"></span>. على سبيل المثال، يمكن استبدال اللبتونات الداخلية في الشكل <a href="#diag" data-reference-type="ref" data-reference="diag">1</a> بكواركات من النوع d، <span class="math inline">\(e_{L,R} \rightarrow d_{L,R}\)</span>، وأخذ <span class="math inline">\(S_1 \sim (\bar{3},1,2/3)\)</span> و<span class="math inline">\(S_2 \sim (3,1,-2/3)\)</span> كمتعددات ملونة. وهناك أيضاً متغيرات ملونة أخرى ممكنة <span class="citation" data-cites="Chen:2014ska"></span>. بدلاً من ذلك، يمكن استبدال الفرميون الحقيقي (ماجورانا) <span class="math inline">\(N_R\)</span> بفرميون مركب (ديراك) والنظر في طوبولوجيا معدلة لمخطط الحلقة، بحيث تكون المادة المظلمة سكالاراً خاملاً (انظر الشكل <a href="#general" data-reference-type="ref" data-reference="general">4</a> كمثال). وصف منهجي لهذه النماذج المتنوعة يظهر في المرجع <span class="citation" data-cites="Chen:2014ska"></span>.</p>
+<div class="centering">
+<figure>
+<embed src="unitary_tv_loop.eps" id="general" style="width:7cm;height:3cm" />
+<figcaption aria-hidden="true"><em>مخطط حلقة ثلاثية لكتلة النيوترينو في نموذج متنوع مع <span class="math inline">\(S_1 \sim (1,2,1)\)</span>، <span class="math inline">\(S_2 \sim (1,2,3)\)</span> و<span class="math inline">\(F \sim (1,2,-1)\)</span>. المتعددات خارج النموذج القياسي <span class="math inline">\(S_{1,2}\)</span> و<span class="math inline">\(F\)</span> فردية تحت تناظر <span class="math inline">\(Z_2\)</span> والمادة المظلمة تنتمي إلى الزوج الخامل <span class="math inline">\(S_1\)</span>.</em></figcaption>
+</figure>
+</div>
+<h1 id="conclusion">الخلاصة</h1>
+<p>تقدم النماذج التي تولد كتلة النيوترينو إشعاعياً وسيلة واعدة للكشف تجريبياً عن الفيزياء الجديدة المسؤولة عن أصل كتلة النيوترينو. وتُعد النماذج ثلاثية الحلقات مثيرة للاهتمام بشكل خاص، إذ يُتوقع أن تكون الفيزياء الجديدة عند مقياس TeV تقريباً. علاوة على ذلك، يمكن أن توفر هذه النماذج مرشحين فعالين للمادة المظلمة، وبالتالي تحل مشكلتي كتلة النيوترينو والمادة المظلمة معاً. هنا استعرضنا تحليلاً حديثاً لنموذج KNT، يُظهر أنه نظرية فعالة لكتلة النيوترينو والمادة المظلمة وقابلة للاختبار في تجارب المصادمات. كما أوضحنا أن نموذج KNT ينتمي إلى فئة أوسع من النماذج ثلاثية الحلقات التي يمكن أن تولد تأثيرات رصدية مثيرة مماثلة.</p>
+<div class="acknowledgments">
+<p>يتقدم صلاح نصري بالشكر إلى شينيا كانيمورا وجميع أعضاء اللجنة المنظمة لمؤتمر HPNP2015 على اللقاء الممتع وحسن الضيافة في توياما. كما يشكر المؤلفون ر. سوله، س. س. تشين وت. توما على التعاون المثمر في هذا المجال.</p>
+</div>
+<div class="thebibliography">
+<p><span>99</span> L. M. Krauss, S. Nasri and M. Trodden, Phys. Rev. D <span><strong>67</strong></span>, 085002 (2003). M. Aoki, S. Kanemura and O. Seto, Phys. Rev. Lett. <span><strong>102</strong></span>, 051805 (2009). M. Gustafsson, J. M. No and M. A. Rivera, Phys. Rev. Lett. <span><strong>110</strong></span>, no. 21, 211802 (2013) [Erratum-ibid. 112, no. 25, 259902 (2014)]. H. Hatanaka, K. Nishiwaki, H. Okada and Y. Orikasa, Nucl. Phys. B <span><strong>894</strong></span>, 268 (2015). G. Aad et al. (ATLAS Collaboration), Phys. Lett. B 716, 1-29 (2012). S. Chatrchyan et al. (CMS Collaboration), Phys. Lett. B 716, 30-61 (2012). A. Ahriche and S. Nasri, JCAP <span><strong>1307</strong></span>, 035 (2013). J. Adam <span><em>et al.</em></span> [MEG Collaboration], Phys. Rev. Lett. <span><strong>110</strong></span>, 201801 (2013) [arXiv:1303.0754 [hep-ex]]. D.V. Forero, M. Tortola and J.W.F. Valle, Phys. Rev. D 86, 073012 (2012).</p>
+<p>P.A.R. Ade et al. [Planck Collaboration], Astron. Astrophys. <span><strong>571</strong></span>, A1 (2014).</p>
+<p>A. Ahriche, Phys. Rev. D75, 083522 (2007); A. Ahriche and S. Nasri, Phys. Rev. D 83, 045032 (2011); Phys. Rev. D 85, 093007 (2012).</p>
+<p>A. Ahriche, S. Nasri and R. Soualah, Phys. Rev. D 89, 095010 (2014).</p>
+<p>R. Foot, H. Lew, X. G. He and G. C. Joshi, Z. Phys. C <span><strong>44</strong></span>, 441 (1989). K. Kumericki, I. Picek and B. Radovcic, Phys. Rev. D <span><strong>86</strong></span>, 013006 (2012) [arXiv:1204.6599 [hep-ph]]; Y. Liao, JHEP <span><strong>1106</strong></span>, 098 (2011) [arXiv:1011.3633 [hep-ph]]. A. Ahriche, C. S. Chen, K. L. McDonald and S. Nasri, Phys. Rev. D <span><strong>90</strong></span>, 015024 (2014) [arXiv:1404.2696 [hep-ph]]. A. Ahriche, K. L. McDonald and S. Nasri, JHEP <span><strong>1410</strong></span>, 167 (2014) [arXiv:1404.5917 [hep-ph]]. A. Ahriche, K. L. McDonald, S. Nasri and T. Toma, arXiv:1504.05755 [hep-ph]. C. S. Chen, K. L. McDonald and S. Nasri, Phys. Lett. B <span><strong>734</strong></span>, 388 (2014) [arXiv:1404.6033 [hep-ph]].</p>
+</div>
+</body>
+</html>

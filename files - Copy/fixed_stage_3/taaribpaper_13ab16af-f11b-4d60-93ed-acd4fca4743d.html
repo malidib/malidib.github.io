@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Xiajun Jiang">
+  <meta name="author" content="Sumeet Vadhavkar">
+  <meta name="author" content="Yubo Ye">
+  <meta name="author" content="Maryam Toloubidokhti">
+  <meta name="author" content="Ryan Missel">
+  <meta name="author" content="Linwei Wang">
+  <title>HyPer-EP: النماذج الشخصية الهجينة للتعلم الآلي في علم كهرباء القلب</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">HyPer-EP: النماذج الشخصية الهجينة للتعلم الآلي في علم كهرباء القلب</h1>
+<p class="author"><span class="nodecor">Xiajun Jiang</span></p>
+<p class="author"><span class="nodecor">Sumeet Vadhavkar</span></p>
+<p class="author"><span class="nodecor">Yubo Ye</span></p>
+<p class="author"><span class="nodecor">Maryam Toloubidokhti</span></p>
+<p class="author"><span class="nodecor">Ryan Missel</span></p>
+<p class="author"><span class="nodecor">Linwei Wang</span></p>
+</header>
+<h1 id="ملخص">ملخص</h1>
+<p>لقد أظهرت النماذج الافتراضية الشخصية للقلب إمكانات متزايدة للاستخدام السريري، رغم أن تقدير معاملات هذه النماذج بناءً على بيانات المريض لا يزال تحدياً. تُعدّ المناهج التقليدية المعتمدة على الفيزياء مكلفة حسابياً وغالباً ما تتجاهل الأخطاء الهيكلية الكامنة في هذه النماذج بسبب التبسيطات والافتراضات. من ناحية أخرى، تعتمد أساليب التعلم العميق بشكل كبير على البيانات المشروطة وتفتقر إلى القدرة على التفسير. في هذه الورقة، نقدم إطاراً للنمذجة الهجينة يجمع التعبير الرياضي المبني على الفيزياء مع نموذج شبكة عصبية لسد الفجوة المجهولة بين النموذج وبيانات المريض. ثم نعرض إطاراً للتعلم الآلي يسمح باستدلال منفصل لكل من المكون الفيزيائي والمكون العصبي في النموذج الهجين. نختم بعرض مثالين تجريبيين اصطناعيين يُبيّنان جدوى الإطار.</p>
+<h1 id="مقدمة">مقدمة</h1>
+<p>لقد أظهرت النماذج الافتراضية الشخصية للقلب، مثل تلك التي تصف الكهروفسيولوجيا القلبية، تقدماً ملحوظاً في تصنيف المخاطر (<span class="nodecor">arevalo2016arrhythmia</span>)، وتخطيط العلاج (<span class="nodecor">zahid2016feasibility</span>)، والتنبؤ بالنتائج (<span class="nodecor">SERMESANT2012201</span>). ومع ذلك، لا يزال تخصيص هذه النماذج—وخاصة تقدير معاملات النموذج المتعلقة بخصائص أنسجة المريض—تحدياً رئيسياً بسبب الطبيعة المعقدة للمشكلة العكسية وتعدد الافتراضات والتبسيطات والتكلفة الحسابية العالية.</p>
+<p>بذلت العديد من الجهود لتخصيص معاملات نماذج الكهروفسيولوجيا الافتراضية للقلب. ركزت الأعمال السابقة على التحسين التكراري لاستنتاج المعاملات بغية تقليل الفجوة بين مخرجات النموذج والبيانات المقاسة (<span class="nodecor">sermesant2012patient,wong2015velocity</span>). ورغم التقدم، فإن هذا النهج الذي يتطلب تشغيلات متعددة للنموذج يصعب تطبيقه سريرياً، كما أنه يعزو أي فرق في المخرجات حصرياً إلى معاملات النموذج، متجاهلاً الأخطاء الهيكلية للنموذج—ما نطلق عليه هنا «نموذج الصندوق الأبيض».</p>
+<p>في المقابل، حققت أساليب الصندوق الأسود قائمة على الشبكات العصبية نجاحات في تعلّم العلاقة بين مدخلات خصائص الأنسجة ومخرجات الجهد (<span class="nodecor">kashtanova2021ep</span>) أو حتى استبدال النموذج الفيزيائي بشبكة عصبية تدريبية بالكامل (<span class="nodecor">10.1007/978-3-031-16452-1_5</span>). ورغم أنها تتجاوز القيود الفيزيائية التقليدية، إلا أنها تعتمد على مجموعات بيانات ضخمة غالباً ما تكون محاكاة، مما يحد من قدرتها على التعميم إلى حالات حقيقية.</p>
+<p>للتقريب بين الصندوق الأبيض والأسود، اقترحت أعمال سابقة شبكاتٍ عصبية مُستنيرة بالفيزياء (<span class="nodecor">10.3389/fcvm.2021.768419</span>)، حيث تُضاف خسارة آثار معادلة تفاضلية جزئية معروفة إلى خسارة توافق البيانات، ويتم ضبط المعاملات الفيزيائية وأوزان الشبكة معاً. غير أن جزء الشبكة يظل وظيفة «صندوق أسود»، وقد تكون المعادلة المفروضة ناقصة في توصيف النظام الحقيقي، فضلا عن الحاجة إلى تدريب مخصص لكل مريض على حدة.</p>
+<p>في هذا السياق، نقترح نموذج «الصندوق الرمادي» المتكامل مع الفيزياء، الذي يدمج صراحةً بين المكونات الفيزيائية ونماذج الشبكات العصبية داخل التوأم الرقمي القلبي. وبينما ظهرت النماذج الهجينة مسبقاً (<span class="nodecor">ALPS,NeuralSim,UDE,Inria</span>)، فإن الافتراض الشائع بوجود إشراف مباشر على المتغيرات النمذجية يحد من تطبيقها في القلب. في القسم التالي نقدم تفاصيل إطارنا المقترح.</p>
+<h1 id="عملنا">مساهمتنا</h1>
+<p>نعالج هنا مشكلة الاستدلال غير المُراقب على النماذج الهجينة عبر استراتيجية تعلم آلي تميّز معاملات المكون الفيزيائي وفجواته إلى البيانات الملحوظة بشكلٍ منفصل. أثناء التدريب، لا يتطلب أسلوبنا <span class="nodecor">HyPer-EP</span> معرفة صريحة بالمتغيرات النمذجية، بل يستفيد من المعرفة الفيزيائية المسبقة مع تعلم سد الفجوة نحو البيانات. وخلال الاختبار، يتيح <span class="nodecor">HyPer-EP</span> تخصيص توأم رقمي قلبي هجين—يجمع مكوناً فيزيائياً قابلاً للتفسير مع مكونات عصبية تتنبأ بالأخطاء—باستخدام بضع عمليات استدلال أمامية سريعة. نوضح عمومية وفائدة <span class="nodecor">HyPer-EP</span> من خلال مثالين تجريبيين اصطناعيين.</p>
+<h1 id="sec:bck">صياغة المشكلة</h1>
+<p>نهدف إلى بناء نموذج شخصي <span class="math inline">\(\mathcal{M}(\theta)\)</span> لوصف الانتشار الزماني المكاني للجهد الكهربائي <span class="math inline">\(\mathbf{x}_{0:T}\)</span> في البطينين، بمعاملات مريض <span class="math inline">\(\theta\)</span> وملاحظات جزئية <span class="math inline">\(\mathbf{y}_{0:T}=g(\mathbf{x}_{0:T})\)</span>.</p>
+<p>في نهج الصندوق الأبيض، يُفترض نموذج <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> معروفاً سلفاً ويُقدَّر <span class="math inline">\(\theta\)</span> عبر مقياس توافق مثل MSE:</p>
+<p><span class="math display">\[\hat{\theta}=\arg\min_\theta\|g(\mathcal{M}_{\text{PHY}}(\theta))-\mathbf{y}_{obs}\|_2^2\]</span></p>
+<p>دون أخذ الأخطاء الهيكلية للموديل في الاعتبار.</p>
+<p>في نهج الصندوق الأسود، يُستخدم عادة DNN <span class="math inline">\(\mathcal{M}_\phi\)</span> تُدرّب على مجموعة واسعة من المحاكاة <span class="math inline">\(\{\theta^i,\mathbf{x}_{0:T}^i\}\)</span> بالاعتماد على الخسارة المشرفة:</p>
+<p><span class="math display">\[\hat{\phi}=\arg\min_\phi\sum_{i=1}^N\|\mathcal{M}_\phi(\theta^i)-\mathbf{x}_{0:T}^i\|_2^2\]</span></p>
+<p>مما يثير صعوبات في التعميم على بيانات حقيقية نادرة.</p>
+<p>في شبكات PINN، تُضاف خسارة آثار PDE إلى خسارة توافق البيانات لضبط الأوزان والمعاملات الفيزيائية معاً:</p>
+<p><span class="math display">\[\{\hat{\phi},\hat{\theta}\}=\arg\min_{\phi,\theta}\{\|\mathcal{M}_\phi-\mathbf{x}_{0:T}\|_2^2+\lambda\|\mathcal{M}_{\text{PHY}}(\mathcal{M}_\phi;\theta)\|_2^2\}\]</span></p>
+<p>إلا أن الدمج المتوازي هنا يرث قيود الصندوق الأبيض والأسود معاً.</p>
+<h1 id="المنهجية">المنهجية</h1>
+<p>نقترح إطار عمل HyPer مبنياً على نموذج هجين <span class="math inline">\(\mathcal{M}_{\text{Hybrid}}\)</span> يجمع التعبير الرياضي المعروف <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> مع دالة عصبية <span class="math inline">\(\mathcal{M}_\phi\)</span> لسد فجوات النموذج الفيزيائي، ثم يُضمَّن ذلك في فضاء كامِن للترميز وفك الترميز لربط المتغيرات النمذجية بملاحظاتها غير المباشرة. هذا الإطار التوليدي الهجين واستراتيجية الاستدلال يشكّلان العمود الفقري لـ<span class="nodecor">HyPer-EP</span>، كما نوضح لاحقاً.</p>
+<h2 id="النمذجة-الهجينة-للاستجابة-الكهربائية-القلبية">النمذجة الهجينة للاستجابة الكهربائية القلبية</h2>
+<h3 id="صياغة-هايبر-العامة">الصياغة العامة لـ HyPer</h3>
+<p>نعرّف <span class="math inline">\(\mathcal{M}_{\text{Hybrid}}\)</span> كمزيج بسيط:</p>
+<p><span class="math display">\[\mathcal{M}_{\text{Hybrid}}=\mathcal{M}_{\text{PHY}}+\mathcal{M}_\phi\]</span></p>
+<p>حيث يلتقط <span class="math inline">\(\mathcal{M}_\phi\)</span> التعقيدات أو الأخطاء الهيكلية التي لا يغطيها نموذج <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span>.</p>
+<h3 id="التجسيد-الأول-hyper-لجسر-الفيزياء-البسيطة-والمولدة-للبيانات">التجسيد الأول – HyPer للجمع بين الفيزياء المبسطة والتعلم المعتمد على البيانات</h3>
+<p>نختار هنا نموذج إيكونال أحادي المتغير لـ <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> الذي يصف وقت وصول جبهة التنشيط <span class="math inline">\(\!T(\mathbf{r})\)</span> بالمعادلة:</p>
+<p><span class="math display">\[|\nabla T(\mathbf{r})|\;\theta(\mathbf{r})=1\]</span></p>
+<p>حيث تمثل <span class="math inline">\(\theta(\mathbf{r})\)</span> سرعة التوصيل المحلية. وبما أن هذه المعادلة لا تنمذج ديناميكيات جهد الفعل المكاني الزماني أو تأثير اتجاه الألياف، نضيف <span class="math inline">\(\mathcal{M}_\phi\)</span> لسد هذه الفجوات.</p>
+<p>نعبر عن العلاقة:</p>
+<p><span class="math display">\[\mathbf{x}_{0:T}=\mathcal{M}_\phi\bigl(T(\mathbf{r})\bigr)\]</span></p>
+<p>حيث تُؤخذ بنية القلب ثلاثية الأبعاد كهيكل بياني غير موجه (kNN)، تمثل كل نقطة جهد كرأس، وتبنى الحواف على k أقرب جيران بناءً على البعد المكاني. ينفذ <span class="math inline">\(\mathcal{M}_\phi\)</span> شبكة عصبية تلافيفية مكانية زمانية مبنية على spline-GCNN، مع طبقات تلافيف بيانية متداخلة وتسلسلات زمنية مستخلصة بطبقات متصلة بالكامل. يتيح هذا الدمج سرعة نموذج إيكونال في توصيف انتشار التنشيط مع المرونة المدفوعة بالبيانات.</p>
+<h3 id="التجسيد-2-هايبر-كمعادلة-تفاضلية-شاملة-ude">التجسيد 2 – HyPer كمعادلة تفاضلية شاملة (UDE)</h3>
+<p>نضع هنا المعادلة التفاضلية للوحدة الزمنية لوظيفة الجهد <span class="math inline">\(\mathbf{x}_t\)</span> كمجموع بين تعبير فيزيائي معروف ودالة عصبية:</p>
+<p><span class="math display">\[\frac{d\mathbf{x}_t}{dt}=f_{\textrm{PHY}}(\mathbf{x}_t;\theta)+f_{\textrm{NN}_\phi}(\mathbf{x}_t)\]</span></p>
+<p>حيث تمثل <span class="math inline">\(\theta\)</span> معاملات نموذج ألييف-بانفيلوف (أو نسخته المبسطة)، ويعالج <span class="math inline">\(f_{\textrm{NN}_\phi}\)</span> الخطأ الهيكلي.</p>
+<p>في التجارب الاصطناعية، استخدمنا نموذج ألييف-بانفيلوف ثنائي المتغير (<span class="nodecor">aliev1996simple</span>) لـ <span class="math inline">\(f_{\textrm{PHY}}\)</span>، في حين يمثل الخطأ العصبي MLP بتفعيلات ReLU وTanh. بضبط <span class="math inline">\(\theta\)</span> و<span class="math inline">\(\phi\)</span> معاً نحصل على نموذج HyPer-EP القلبي.</p>
+<h2 id="تعلم-التعريف">تعلم الاستدلال</h2>
+<p>يتطلب ضبط <span class="math inline">\(\mathcal{M}_{\text{Hybrid}}\)</span> تقدير معاملات المكونين الفيزيائي <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> والعصبي <span class="math inline">\(\mathcal{M}_{\text{NN}}\)</span> بشكل متزامن. نعيد صياغة ذلك في إطار التعلم الفوقي، حيث لدينا مجموعة بيانات <span class="math inline">\(\mathcal{D}=\{\mathcal{D}_j\}_{j=1}^M\)</span> تضم M ديناميكيات متشابهة متميزة. لكل ديناميكية <span class="math inline">\(\mathcal{D}_j\)</span> نأخذ <em>k</em> عينات سياق <span class="math inline">\(\mathcal{D}_j^s\)</span> وحالات استعلام <span class="math inline">\(\mathcal{D}_j^q\)</span> حيث <span class="math inline">\(k\ll d\)</span>. نعرّف دالة استدلال أماميّة <span class="math inline">\(\mathcal{G}_\zeta\)</span> لإنتاج تقدير <span class="math inline">\(\hat{\theta}_j\)</span> من عينات السياق:</p>
+<p><span class="math display">\[\hat{\theta}_j=\mathcal{G}_\zeta(\mathcal{D}_j^s)=\frac{1}{k}\sum_{\mathbf{y}_{0:T}^s\in\mathcal{D}_j^s}\xi_\zeta(\mathbf{y}_{0:T}^s)\]</span></p>
+<p>حيث يستخرج <span class="math inline">\(\xi_\zeta\)</span> تضمينات لكل حالة سياق ثم يجمعها عبر العينات. بعد ذلك، نقلل خطأ التنبؤ على حالات الاستعلام:</p>
+<p><span class="math display">\[\{\hat{\phi},\hat{\zeta}\}=\arg\min_{\phi,\zeta}\sum_{j=1}^M\sum_{\mathbf{y}_{0:T}^q\in\mathcal{D}_j^q}\|\mathbf{y}_{0:T}^q-g(\hat{\mathbf{x}}_{0:T}^q)\|_2^2\]</span></p>
+<h1 id="التجارب-والنتائج">التجارب والنتائج</h1>
+<h2 id="النتائج-على-آنستا">النتائج على Anista</h2>
+<p>أُجريت تجاربنا على بيانات اصطناعية مولَّدة بواسطة نموذج ألييف-بانفيلوف ثنائي المتغير في كل السيناريوهات:</p>
+<p><span class="math display">
+\[
+\begin{aligned}
+\frac{du}{dt}&=\nabla(D\nabla u)+k\,u(1-u)(u-a)-u\,v,\\
+\frac{dv}{dt}&=-e\bigl(k\,u(u-a-1)+v\bigr),
+\end{aligned}
+\]
+</span></p>
+<p>حيث <span class="math inline">\(u\)</span> جهد الفعل، <span class="math inline">\(v\)</span> متغير الاسترداد، <span class="math inline">\(D\)</span> موصلية النسيج، والعوامل الأخرى تتحكم في شكل الجهد الزمني المكاني. في التجسيد الأول اعتبرنا <span class="math inline">\(a\)</span> متغيراً مكانياً لتمثيل الأنسجة المتضررة، وفي الثاني متجانساً بقيم مختلفة عبر العينات.</p>
+<h3 id="النتائج-على-التجسيد-1">النتائج على التجسيد 1</h3>
+<p>استخدمنا أكثر من 1862 بنية قلبية مع 186 نقطة تنشيط مختلفة وتكرارٍ لإعدادات معاملات متنوعة. في HyPer-EP، يمثل <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> نموذج إيكونال، بينما تنفّذ <span class="math inline">\(\mathcal{M}_{\text{NN}}\)</span> شبكة عصبية ذات طبقتين خطيتين وثلاث طبقات تلافيف بيانية مكانية وزمنية تليها طبقة 1D لاستعادة السلسلة الزمنية. صُمّم المشفّر الفوقي بثلاث طبقات إضافية من التحويل الرسومي وطبقة 1D لتجميع الميزات الزمنية، ثم دُمجت النتائج عبر عينات السياق لتقدير المعاملات. درّبنا النموذج باستخدام k=5 عينات سياق وباشرنا اختبار الأداء عبر خمس إعدادات معاملات (~60 عينة لكل منها).</p>
+<p>يبين الشكل [fig:ins1_metric] أداء <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> وحده، و<span class="math inline">\(\mathcal{M}_{\text{NN}}\)</span> وحده، و<span class="math inline">\(\mathcal{M}_{\text{Hybrid}}\)</span> ضمن إطار التعلم الفوقي نفسه باستخدام مقاييس MSE وSCC وTCC، مع أمثلة مرئية في [fig:ins1_visual]. تظهر النتائج تفوّق النموذج الهجين على الفيزيائي أو العصبي بمفرده.</p>
+<h3 id="النتائج-على-التجسيد-2">النتائج على التجسيد 2</h3>
+<p>وللسيناريو الثاني، ولّدنا الإشارة على نفس البنى و1862 نقطة تنشيط بأربع قيم مختلفة لـ <span class="math inline">\(a\)</span> (<span class="nodecor">0.08</span>، <span class="nodecor">0.10</span>، <span class="nodecor">0.12</span>، <span class="nodecor">0.14</span>). في HyPer-EP أزلنا مصطلح <span class="math inline">\(u\,v\)</span> من المعادلة الفيزيائية ليعالجه <span class="math inline">\(\mathcal{M}_{\text{NN}}\)</span> الذي صُمّم بطبقتين خطيتين بتفعيل سيجمويد، وصمم المشفر الإضافي بطبقتين من خلايا LSTM مع تفعيلات ReLU. دُرّب النموذج على 1408 عينات واختُبر على 352 عينة جديدة.</p>
+<p>حقق HyPer-EP خطأ MSE قدره <span class="math inline">\(0.65\times10^{-5}\)</span> في تقدير معامل الإثارة الفيزيائية، بينما قدّر نموذج <span class="math inline">\(\mathcal{M}_{\text{PHY}}\)</span> وحده الجهد بخطأ متوسط 0.38 وانحراف معياري 0.42. النموذج الهجين <span class="math inline">\(\mathcal{M}_{\text{Hybrid}}\)</span> خفض MSE إلى 0.042 مع انحراف معياري 0.19.</p>
+<h1 id="الخلاصة">الخلاصة</h1>
+<p>قدمنا إطار عمل <span class="nodecor">HyPer-EP</span> الذي يدمج المعرفة الفيزيائية المسبقة مع نمذجة الأخطاء المعتمدة على البيانات في سياق التعلم الفوقي لتحقيق نمذجة قلبيّة هجينة شخصية. عرضنا دليلاً مفهوماً عبر مثالين اصطناعيين. ستركّز الأعمال المستقبلية على تقييمات تجريبية أوسع واختبارات باستخدام بيانات حقيقية.</p>
+</body>
+</html>

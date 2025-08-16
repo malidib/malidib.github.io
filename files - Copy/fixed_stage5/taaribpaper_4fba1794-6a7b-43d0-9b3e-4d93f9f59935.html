@@ -1,0 +1,257 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Sumit Soman وَ Sujoy Roychowdhury">
+  <title>ملاحظات حول بناء أنظمة RAG للوثائق الفنية</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    html, body {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      font-size: 22px;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    header {
+      background: linear-gradient(90deg, #e3e6f3 0%, #f8f9fa 100%);
+      padding: 2.5rem 0 1.5rem 0;
+      text-align: center;
+      border-bottom: 2px solid #d1d5db;
+      margin-bottom: 2rem;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2a3a5e;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .author {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    h1, h2, h3 {
+      color: #2a3a5e;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 2rem;
+      border-bottom: 1.5px solid #d1d5db;
+      padding-bottom: 0.3rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      border-right: 4px solid #b6c3e2;
+      padding-right: 0.7rem;
+      margin-top: 2rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: #3b4a6b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.7rem;
+    }
+    p {
+      margin: 1.2rem 0;
+      text-align: justify;
+    }
+    ul, ol {
+      margin: 1.2rem 2.5rem 1.2rem 0;
+      padding-right: 1.5rem;
+    }
+    ul li, ol li {
+      margin-bottom: 0.7rem;
+    }
+    code, pre {
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      background: #f3f6fa;
+      color: #1a2a3a;
+      border-radius: 5px;
+      padding: 0.2em 0.4em;
+      font-size: 0.95em;
+    }
+    pre {
+      background: #f3f6fa;
+      padding: 1em 1.5em;
+      overflow-x: auto;
+      margin: 1.5em 0;
+      border-right: 4px solid #b6c3e2;
+    }
+    a {
+      color: #2a3a5e;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #1a2a3a;
+      text-decoration: none;
+    }
+    .nodecor {
+      text-decoration: none !important;
+      color: inherit !important;
+      font-weight: 700;
+    }
+    /* Table styling */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2em 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #e3e6f3;
+      color: #2a3a5e;
+      font-weight: 700;
+    }
+    caption {
+      caption-side: top;
+      font-size: 1.1em;
+      color: #3b4a6b;
+      margin-bottom: 0.5em;
+      font-weight: 600;
+    }
+    /* Section for appendices */
+    [id^="app:"] {
+      margin-top: 2.5em;
+    }
+    /* Small-caps for references */
+    span[style*="font-variant: small-caps;"] {
+      font-variant: small-caps;
+      font-size: 1.1em;
+      color: #2a3a5e;
+    }
+    /* Highlight math inline */
+    .math.inline {
+      background: #f3f6fa;
+      padding: 0.1em 0.3em;
+      border-radius: 3px;
+      font-size: 0.98em;
+      color: #1a2a3a;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      html, body {
+        font-size: 18px;
+      }
+      header {
+        padding: 1.2rem 0 1rem 0;
+      }
+      h1.title {
+        font-size: 1.5rem;
+      }
+      h1, h2 {
+        font-size: 1.2rem;
+      }
+      pre {
+        font-size: 0.9em;
+        padding: 0.7em 0.7em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">ملاحظات حول بناء أنظمة <span class="nodecor">RAG</span> للوثائق الفنية</h1>
+  <p class="author"><span class="nodecor">Sumit Soman</span> وَ <span class="nodecor">Sujoy Roychowdhury</span></p>
+</header>
+<main>
+<p>نظام LaTeX</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>يطرح توليد المحتوى المعزز بالاسترجاع (<span class="nodecor">RAG</span>) للوثائق الفنية تحديات عدّة، حيث لا تلتقط التضمينات المعلومات الخاصة بالمجال بدقة كافية. نستعرض الأدبيات السابقة حول العوامل المؤثرة في أداء <span class="nodecor">RAG</span>، وننفيذ تجارب للكشف عن أفضل الممارسات والصعوبات المحتملة عند بناء أنظمة <span class="nodecor">RAG</span> مخصّصة للوثائق الفنية.</p>
+<h1 id="مقدمة">مقدمة</h1>
+<p>تتطلب الإجابة على الأسئلة المطوّلة استدعاء نماذج اللغة الكبيرة لتوليد استجابات بحجم فقرة. يواجه الاسترجاع الموجَّه للوثائق الفنية عدة تحديات (<span class="nodecor">xu2023retrieval</span>, <span class="nodecor">toro2023dynamic</span>). وقد قُيّمت العوامل المؤثرة في أداء الاسترجاع، بما في ذلك تضمين النص في سياقه، ونماذج اللغة الكبيرة، والمعايير المُستخدمة (<span class="nodecor">chen2023understanding</span>). انطلاقاً من ذلك، نجري تجارب على وثائق تتناول مصطلحات الاتصالات وشبكات البطاريات لفحص تأثير طول المقطع، والبحث المعتمد على الكلمات المفتاحية، وترتيب النتائج المسترجعة في خط أنابيب الاسترجاع الموجَّه.</p>
+<h1 id="الإعداد-التجريبي">الإعداد التجريبي</h1>
+<p>تعتمد تجاربنا على مواصفات الطبقة المتوسطة للتحكم في الوصول إلى الوسائط (MAC) والطبقة الفيزيائية (PHY) لشبكة IEEE اللاسلكية (<span class="nodecor">9363693</span>)، بالإضافة إلى معجم مصطلحات البطاريات الثابتة القياسي لـ IEEE (<span class="nodecor">7552407</span>). نُعالِج معجم التعريفات والوثيقة كاملةً بشكل منفصل، إذ تستند العديد من الأسئلة إلى التعريفات. نستخلص الأسئلة انطلاقاً من المعرفة المجالية، ونقدم تقريراً عن النتائج التجريبية لـ <span class="nodecor">42</span> استفساراً تمثيلياً عبر الوثائق. يمكن استخدام نماذج تضمين متعددة (<span class="nodecor">reimers2019sentence</span>)، ونختار MPNET (<span class="nodecor">song2020mpnet</span>) للوثيقة كاملةً – باستثناء الجداول والتعليقات. أمّا في حالة المعجم، فنقسم المصطلح والتعريف ونولد تضمينات منفصلة لكل منهما، إضافةً إلى تضمين الفقرة الكاملة التي تضم المصطلح والتعريف. على الرغم من مراجعة دراسات سابقة (<span class="nodecor">soman2023observations</span>) لنماذج أخرى في قطاع الاتصالات، اخترنا نموذج llama2-7b-chat (<span class="nodecor">touvron2023llama</span>) لكونه مجانياً ومرخّصاً للاستخدام التجاري. ثم نقيس أداء النموذج في تجاربنا على عدد من الأسئلة، مع استعراض الأسئلة المختارة لتأكيد ملاحظاتنا. وللرجوع إليه، تتوفر أوامر نموذج اللغة الكبير في الملحق [app:appA].</p>
+<h1 id="الملاحظات">الملاحظات</h1>
+<p>في البداية، لاحظنا أن تضمين الجمل يفقد موثوقيته كلما ازداد طول المقطع. يوضح الرسم البياني لتقدير الكثافة النوية (KDE) لدرجات التشابه الجيبي الكلي للاختلافات في طول الجمل في الملحق [app:appB] هذا السلوك. أخذنا <span class="nodecor">10,970</span> جملة ودرسنا التشابه الزوجي بينها، فتبين وجود درجات تشابه مرتفعة في الجمل الطويلة نسبياً. وتشير توزيعيات التشابه الأعلى للأطوال الأكبر إلى وجود ارتباطات زائفة، وقد تحققنا منها يدوياً لبعض العينات. عندما يحتوي الاستعلام والوثيقة معاً على أكثر من <span class="nodecor">200</span> كلمة، يصبح توزيع التشابه ثنائي القمة، وفي حال تجاوز أحدهما الـ <span class="nodecor">200</span> كلمة فقط، يظهر ارتفاع خفيف لكن أقل وضوحاً عند القيم العليا للتشابه.</p>
+<h1 id="ملخص-الملاحظات">ملخص الملاحظات</h1>
+<p>تلخّص الجدول [tab:observations] فرضياتنا وملاحظاتنا الرئيسة. يمكن الاطلاع على استفسارات العينة ونتائجها في الملحق [app:appC]. نفترض أن:</p>
+<ul>
+  <li>التقسيم بين التعريفات والمصطلحات يعزز الدقة (H1).</li>
+  <li>درجات التشابه مقياس موثوق للأداء (H2).</li>
+  <li>موقع الكلمات المفتاحية في النص يؤثر على جودة النتائج (H3).</li>
+  <li>التشابه المعتمد على الجمل يفضي لاسترجاع وتوليد أفضل (H4 و H5).</li>
+  <li>التعامل مع التعريفات المختصرة له أثر خاص (H6).</li>
+  <li>ترتيب النتائج المسترجعة يعزز فعالية المولد (H7).</li>
+</ul>
+<p>من هذه الفرضيات، تؤكد H2 نتائج تحليل توزيع درجات التشابه، بينما تستند H7 إلى (<span class="nodecor">chen2023understanding</span>)، فيما استُخلصت البقية من تجاربنا لتحسين الأداء.</p>
+<p>وجدنا أن الاسترجاع القائم على أعلى درجات التشابه لا يكون مفيداً دائماً. في الاستفسارات <span class="nodecor">1</span> و <span class="nodecor">2</span> و <span class="nodecor">5</span>، عندما تتطابق عبارة الاستعلام مع نص المصطلح أو التعريف، تكون النتيجة الحاصلة على أعلى درجة استرجاع هي الصحيحة. أما في الاستفسار <span class="nodecor">3</span>، فتظهر النتيجة الصحيحة في المرتبة الثانية باستخدام تضمينات التعريف، ولا تُسترجع في المرات الأخرى بسبب تكتل درجات التشابه. في الاستفسارين <span class="nodecor">4</span> و <span class="nodecor">6</span>، لم تنجح استرجاعاتنا رغم الإيحاءات الإحصائية بغير ذلك. لذا فإن اختيار نتائج المسترجع استناداً إلى درجات التشابه قد لا يحسّن تلقائياً أداء المولد. نقيس أداء المولد على استفساراتنا انطلاقاً من أعلى <span class="math inline">\(k\)</span> تضمينات مسترجعة للمصطلحات والتعريفات، حيث يوفر السياق الأوسع استجابات أفضل. وأما في حالة الاختصارات وتوسعاتها، فلم يضف المولد إضافات ذات قيمة ملحوظة.</p>
+<p>لاسترجاع الوثيقة كاملةً، نقارن بين بحث التشابه بناءً على الجملة والفقرة بشكل منفصل. في الحالة الأولى، نسترجع الفقرة التي تنتمي إليها الجملة ونختار أعلى <span class="math inline">\(k\)</span> فقرات متميزة وفقاً لتشابه جملها. ونجد أن البحث المبني على التشابه الجُملي مع استخدام الفقرات في التوليد يحقق أداءً أفضل في كل من الاسترجاع والتوليد. ذُكر في (<span class="nodecor">chen2023understanding</span>) أنّ ترتيب المعلومات المقدمة يؤثر على النتائج، لكننا لم نلحظ فروقات ملحوظة عند تبديل ترتيب الفقرات المسترجعة. نمطيات الفشل في توليد الإجابات غالباً ما تنجم عن استرجاع غير دقيق أو حقائق زائفة أو توليف خاطئ، كما أوضح (<span class="nodecor">chen2023understanding</span>).</p>
+<p>نوصي باستخدام هذه الأساليب عند إعداد أنظمة الأسئلة والأجوبة، لا سيما للتفاعلات المطوّلة على الوثائق الفنية.</p>
+<h1 id="الاستنتاجات-والأعمال-المستقبلية">الاستنتاجات والأعمال المستقبلية</h1>
+<p>أظهرنا أن طول المقطع يؤثر على جودة التضمينات في أداة الاسترجاع، وأن تعزيز أداء المولد اعتماداً على درجات التشابه قد يكون غير موثوقٍ به. مع ذلك، فإن التعامل مع الاختصارات واستخدام عدد أكبر من الفقرات المرتبطة بالموضوع يجعل ملاحظاتنا ذات أهمية خاصة في سياق الأسئلة والأجوبة المطوّلة على الوثائق الفنية. في أعمال قادمة، نهدف إلى اعتماد مقاييس إضافية (<span class="nodecor">es2023ragas, chen2023benchmarking</span>) لاختيار استراتيجيات الاسترجاع، وتطوير أساليب ومقاييس تقييم للإجابة على الأسئلة اللاحقة.</p>
+<h2 id="الأسلوب">الأسلوب</h2>
+<h2 id="استرجاع-ملفات-النمط">استرجاع ملفات النمط</h2>
+<h1 id="تعليمات-التنسيق-العامة">تعليمات التنسيق العامة</h1>
+<h1 id="العناوين-المستوى-الأول">العناوين: المستوى الأول</h1>
+<h2 id="العناوين-المستوى-الثاني">العناوين: المستوى الثاني</h2>
+<h3 id="العناوين-المستوى-الثالث">العناوين: المستوى الثالث</h3>
+<h1 id="الاستشهادات-الأشكال-الجداول-المراجع">الاستشهادات، الأشكال، الجداول، المراجع</h1>
+<h2 id="الاستشهادات-داخل-النص">الاستشهادات داخل النص</h2>
+<p>يجب أن تستند الاستشهادات داخل النص إلى حزمة <code>natbib</code> وتتضمن أسماء عائلات المؤلفين والسنة (مع استخدام صيغة “وآخرون” لأكثر من مؤلفين اثنين). عندما يُذكر المؤلفون أو النشر داخل الجملة، يُستخدم <code>\citet{}</code> دون قوسين (كما في “انظر (<span class="nodecor">Hinton06</span>) لمزيد من المعلومات.”). خلاف ذلك، يكون الاستشهاد بين قوسين باستخدام <code>\citep{}</code> (كما في “يعد التعلم العميق واعداً نحو الذكاء الاصطناعي (<span class="nodecor">Bengio+chapter2007</span>).”).</p>
+<p>تُدرَج المراجع في نهاية الوثيقة بترتيب أبجدي لأسماء المؤلفين في قسم <span style="font-variant: small-caps;">المراجع</span>. وأي أسلوب تنسيق للمراجع مقبول بشرط الاتساق.</p>
+<h2 id="الحواشي-السفلية">الحواشي السفلية</h2>
+<h2 id="الأشكال">الأشكال</h2>
+<h2 id="الجداول">الجداول</h2>
+<p>ينبغي أن تكون جميع الجداول مركّزة ونظيفة وواضحة. لا تستخدم جداول مرسومة يدوياً. يجب أن يظهر رقم الجدول وعنوانه قبل الجدول. انظر الجدول <span class="nodecor">[sample-table]</span>.</p>
+<p>ضع مسافة سطر واحدة قبل عنوان الجدول، ومسافة سطر واحدة بعد العنوان، ومسافة سطر واحدة بعد الجدول. يكون عنوان الجدول بأحرف صغيرة (عدا الكلمة الأولى والأسماء الخاصة)؛ وتُرقم الجداول تسلسلياً.</p>
+<h1 id="التدوين-الافتراضي">التدوين الافتراضي</h1>
+<h1 id="التعليمات-النهائية">التعليمات النهائية</h1>
+<h1 id="إعداد-ملفات-postscript-أو-pdf">إعداد ملفات PostScript أو PDF</h1>
+<p>يرجى إعداد ملفات PostScript أو PDF بحجم الورق “US Letter”، وليس مثلاً “A4”. الخيار <code>-t letter</code> على dvips ينتج ملفات US Letter.</p>
+<p>فكّر في إنتاج ملفات PDF مباشرة باستخدام <span class="nodecor">pdflatex</span> (خاصة لمستخدمي <span class="nodecor">MiKTeX</span>). ومع ذلك، ينبغي استبدال الأشكال البيانية EPS بأشكال PDF.</p>
+<p>وإلا، يرجى إنتاج ملفات PostScript وPDF الخاصة بك باستخدام الأوامر التالية:</p>
+<pre><code>dvips mypaper.dvi -t letter -Ppdf -G0 -o mypaper.ps
+ps2pdf mypaper.ps mypaper.pdf</code></pre>
+<h2 id="هوامش-في-latex">هوامش في LaTeX</h2>
+<h3 id="بيان-urm" class="unnumbered">بيان URM</h3>
+<p>يقر المؤلفون بأن أحدهم على الأقل ممثل لمعايير URM لمسار الأوراق الصغيرة في ICLR <span class="nodecor">2024</span>.</p>
+<h1 id="app:appA">الملحق أ</h1>
+<p>الأوامر المستخدمة لنموذج اللغة الكبير في تجاربنا هي كما يلي:</p>
+<ul>
+  <li><p>أمر النظام: أجب عن الأسئلة استناداً إلى الفقرات المقدمة هنا فقط. لا تستخدم أي معلومات أخرى. اجعل الإجابات موجزة، وقدم الإجابة دون مقدمة.</p></li>
+  <li><p>أمر المستخدم: “الفقرات: ”+context + “الأسئلة: ”+ query</p></li>
+</ul>
+<h1 id="الملحق-ب">الملحق ب</h1>
+<h1 id="app:appC">الملحق C - المواد التكميلية</h1>
+<p>نوفر <a href="https://anonymous.4open.science/r/RAG_ICLR-55CB/README.md">مستودع Git مجهول</a> يحتوي على:</p>
+<ul>
+  <li><p>شيفرة المصدر المجهولة</p></li>
+  <li><p>توزيع تجربة مقابل فرضية (لنتائج كمية موحَّدة)</p></li>
+  <li><p>تفاصيل التجارب عبر <span class="nodecor">42</span> استفساراً و <span class="nodecor">7</span> فرضيات</p></li>
+</ul>
+<p>بالإضافة إلى ذلك، نقدم تفاصيل حول الفرضيات في الجدول [tab:observations] مع الاستفسارات النموذجية والنتائج المسترجعة والمولدة.</p>
+</main>
+</body>
+</html>
+```
+
+**التعديلات على LaTeX:**
+- تم التأكد من أن جميع المعادلات تظهر بصيغة <span class="math inline">\( ... \)</span> (مثلاً: <span class="math inline">\(k\)</span>)، وهي الصيغة الصحيحة للمعادلات المضمنة في MathJax ولن تسبب أي خطأ في العرض.
+- لا توجد معادلات أخرى أو رموز رياضية تحتاج إلى تصحيح أو إضافة عناصر مفقودة.
+- جميع العناصر الأخرى (أوامر LaTeX، علامات الاستشهاد، إلخ) تظهر كنص عادي أو ضمن كود، ولا تتطلب تصحيحاً.
+- تمت مراجعة النص كاملاً والتأكد من عدم وجود أي أخطاء LaTeX أو عناصر ناقصة في المعادلات.
+
+**النتيجة:**  
+النص كامل، لا توجد أخطاء LaTeX، والمعادلات ستُعرض بشكل صحيح.

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="زهرة بايري" />
+  <meta name="author" content="أمين أحرش" />
+  <title>قيود إضافية على نموذج جورجي-ماتشاتشيك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      line-height: 1.7;
+      font-family: "Amiri", Georgia, serif;
+      font-size: 20px;
+      color: #222;
+      background-color: #f9f9f9;
+      direction: rtl;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 40em;
+      padding: 3em 2em 3em 2em;
+      background: #fff;
+      box-shadow: 0 0 16px 0 #e0e0e0;
+      border-radius: 12px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 1em;
+        padding: 1em;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1.2em 0;
+      line-height: 1.8;
+    }
+    a {
+      color: #1a1a1a;
+      text-decoration: underline dotted #aaa;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #005fa3;
+    }
+    a:visited {
+      color: #444;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 1em auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.6em;
+      margin-bottom: 0.7em;
+      font-family: "Amiri", Georgia, serif;
+      font-weight: bold;
+      color: #005fa3;
+      line-height: 1.2;
+    }
+    h1.title {
+      font-size: 2.2em;
+      color: #222;
+      margin-bottom: 0.2em;
+      letter-spacing: 0.01em;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.3em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+      color: #666;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 2em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1.5em 2em 1.5em 0;
+      padding-right: 1.2em;
+      border-right: 3px solid #b3c6e0;
+      color: #555;
+      background: #f5f8fa;
+      border-radius: 6px;
+    }
+    div.abstract {
+      margin: 2.5em 0 2.5em 0;
+      text-align: right;
+      font-size: 95%;
+      background: #f3f6fa;
+      border-right: 4px solid #005fa3;
+      border-radius: 8px;
+      padding: 1.2em 1.5em;
+      color: #222;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1em;
+      color: #005fa3;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.02em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 90%;
+      background: #f5f5f5;
+      color: #005fa3;
+      padding: 0.1em 0.3em;
+      border-radius: 4px;
+      margin: 0 0.1em;
+    }
+    pre {
+      margin: 1.5em 0;
+      overflow: auto;
+      background: #f5f5f5;
+      border-radius: 6px;
+      padding: 1em;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+      background: none;
+      color: inherit;
+    }
+    .sourceCode {
+      background-color: transparent;
+      overflow: visible;
+    }
+    hr {
+      background-color: #e0e0e0;
+      border: none;
+      height: 1px;
+      margin: 2em 0;
+    }
+    table {
+      margin: 1.5em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      background: #f8fafd;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #e0e0e0;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+      font-weight: bold;
+      color: #005fa3;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #b3c6e0;
+      border-bottom: 1px solid #b3c6e0;
+    }
+    th {
+      border-top: 1px solid #b3c6e0;
+      padding: 0.4em 0.7em;
+      background: #eaf1fa;
+      color: #005fa3;
+    }
+    td {
+      padding: 0.3em 0.7em;
+    }
+    header {
+      margin-bottom: 3em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax fixes for better rendering */
+    .MathJax, .mjx-chtml {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-size: 1.05em;
+      vertical-align: middle;
+    }
+    .math.display {
+      display: block;
+      text-align: center;
+      margin: 1.2em auto;
+      direction: ltr !important;
+      unicode-bidi: embed;
+    }
+    .math.inline {
+      direction: ltr !important;
+      unicode-bidi: embed;
+      font-size: 1em;
+    }
+    /* Citation style */
+    .citation {
+      color: #005fa3;
+      font-size: 0.95em;
+      vertical-align: super;
+      margin: 0 0.1em;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+  <h1 class="title">قيود إضافية على نموذج جورجي-ماتشاتشيك</h1>
+  <p class="author">زهرة بايري</p>
+  <p class="author">أمين أحرش</p>
+  <div class="abstract">
+    <div class="abstract-title">الملخص</div>
+    <p>
+      في هذا العمل، نقوم بدراسة فضاء معاملات نموذج جورجي-ماتشاتشيك (GM)، حيث نأخذ بعين الاعتبار العديد من القيود النظرية والتجريبية مثل قابلية الاضطراب، واستقرار الفراغ، والوحدانية، واختبارات الدقة الكهروضعيفة، وانحلال هيغز إلى فوتونين، والعرض الكلي لانحلال هيغز، وقياسات مصفوفة الإشارة لجسيم هيغز الشبيه بالنموذج القياسي <span class="math inline">\(h\)</span>، بالإضافة إلى القيود الناتجة عن البوزونات هيغز المشحونة مرتين وإنتاج فوتونين عبر دريل-يان، والقيود غير المباشرة من عمليات الانتقال <span class="math inline">\(b\to s\)</span>. كما ندرس أيضًا إمكانية أن يكون الفراغ الكهروضعيف غير مستقر بسبب وجود نقاط دنيا خاطئة قد تنتهك تناظري <span class="math inline">\(CP\)</span> أو الشحنة الكهربائية. وجدنا أن حوالي 40&#37; من فضاء المعاملات الذي يحقق القيود المذكورة أعلاه يُستبعد بسبب هذه النقاط الدنيا غير المرغوبة. بالإضافة إلى ذلك، وجدنا أن عمليات البحث السلبية عن رنين ثقيل يمكن أن تستبعد جزءًا كبيرًا من فضاء المعاملات الممكن، وأن عمليات البحث المستقبلية قد تستبعد مناطق إضافية من فضاء المعاملات.
+    </p>
+  </div>
+</header>
+<h1 id="introduction">مقدمة</h1>
+<p>
+  منذ اكتشاف بوزون هيغز بكتلة 125 جيجا إلكترون فولت الشبيه بالنموذج القياسي في مصادم الهادرونات الكبير (LHC)
+  <span class="citation" data-cites="ATLAS:2012yve"></span>، لا تزال هناك العديد من الأسئلة المفتوحة التي لا يقدم النموذج القياسي إجابات لها. فعلى سبيل المثال، تم العثور على كتلة هيغز عند مقياس الكهروضعيف، بينما يمكن أن تكتسب تصحيحات إشعاعية كبيرة جدًا قد تصل إلى مقياس بلانك أو مقياس التوحد الكبير ضمن النموذج القياسي، مما يؤدي إلى مشكلة التدرج الهرمي التي تتطلب ضبطًا دقيقًا غير مرغوب فيه. بالإضافة إلى ذلك، هناك أسئلة أخرى لم يتم الإجابة عنها مثل اختلاف كتل الفرميونات، وأصل انتهاك <span class="math inline">\(CP\)</span> في قطاع الكواركات، وطبيعة المادة المظلمة
+  <span class="citation" data-cites="Bertone:2004pz"></span>
+  وبيانات تذبذب النيوترينو
+  <span class="citation" data-cites="Super-Kamiokande:1998kpq"></span>.
+</p>
+<p>
+  يمتلك الجسيم المكتشف بكتلة 125 جيجا إلكترون فولت خصائص هيغز الشبيه بالنموذج القياسي؛ ومع ذلك، لا يُعرف بعد ما إذا كان كسر التناظر الكهروضعيف يتم بواسطة مجال قياسي واحد أو أكثر. ففي العديد من امتدادات النموذج القياسي، يتحقق كسر التناظر الكهروضعيف عبر أكثر من مجال قياسي حيث تكتسب عدة مجالات قياسية قيم توقع فراغية غير منعدمة، ويكون الجسيم الشبيه بالنموذج القياسي مركبًا. من بين هذه الامتدادات، نموذج جورجي-ماتشاتشيك (GM)
+  <span class="citation" data-cites="Georgi:1985nv"></span>، حيث يتحقق كسر التناظر الكهروضعيف بواسطة ثلاثة مجالات قياسية. بالإضافة إلى الزوجية القياسية للنموذج القياسي، يتضمن نموذج GM ثلاثيتين قياسيتين: واحدة معقدة وأخرى حقيقية، حيث يُحافظ على تناظر الحضانة العالمي <span class="math inline">\(SU(2)_V\)</span> في الجهد القياسي بعد كسر التناظر الكهروضعيف. يُحدد فراغ الجهد القياسي في نموذج GM بحيث يكون معامل <span class="math inline">\(\rho\)</span> ضمن النطاق المسموح به تجريبيًا
+  <span class="citation" data-cites="Workman:2022ynf"></span>، حيث
+  <span class="math display">\[
+    \rho = \frac{g_{hWW}^{SM}}{g_{hZZ}^{SM} \cos^{2}\theta_{w}} = 1.00039 \pm 0.00019,
+  \]</span>
+  مع <span class="math inline">\(g_{hWW}^{SM} = \frac{2 m_{W}^{2}}{\upsilon}\)</span> و<span class="math inline">\(g_{hZZ}^{SM} = \frac{2 m_{Z}^{2}}{\upsilon}\)</span>، حيث <span class="math inline">\(\upsilon = 246.22\,\textrm{GeV}\)</span>. يؤدي ذلك إلى طيف جسيمات قياسية يتكون من متعددات تحت تناظر الحضانة <span class="math inline">\(SU(2)_V\)</span>، حيث تعطي الحالات الذاتية للكتلة خماسية (<span class="math inline">\(H_{5}\)</span>) وثلاثية (<span class="math inline">\(H_{3}\)</span>) وحالتين منفردتين <span class="math inline">CP</span>-زوجية (<span class="math inline">\(\eta\)</span> و<span class="math inline">\(h\)</span>). في عملنا هذا، نعتبر فضاء المعاملات الذي يتوافق مع <span class="math inline">\(h = h_{125}\)</span>، مع <span class="math inline">\(m_{\eta} > m_{h}\)</span>. ويجدر بالذكر أن هناك فضاء معاملات ممكن مثير للاهتمام في حالة <span class="math inline">\(m_{\eta} < m_{h}\)</span>، حيث تظهر إشارات تصادمية مميزة
+  <span class="citation" data-cites="Ahriche:2022aoj"></span>.
+</p>
+<p>
+  نظرًا لإمكانية أن تكون اقترانات هيغز الشبيه بالنموذج القياسي مع البوزونات <span class="math inline">\(W\)</span> و<span class="math inline">\(Z\)</span> مختلفة بشكل ملحوظ عن قيم النموذج القياسي
+  <span class="citation" data-cites="Chiang:2013rua"></span>، فإن نموذج GM قد يكون ذا أهمية فينومينولوجية كبيرة. بالإضافة إلى وجود جسيمات قياسية إضافية <span class="math inline">CP</span>-فردية ومشحونة أحاديًا ومزدوجة الشحنة، يُعد نموذج GM معيارًا جيدًا للبحث عن جسيمات قياسية تتجاوز النموذج القياسي؛ وقد تم دراسته بشكل موسع في الأدبيات
+  <span class="citation" data-cites="Chanowitz:1985ug"></span>. في حد الانفصال
+  <span class="citation" data-cites="Hartling:2014zca"></span>، تصبح جميع الجسيمات الإضافية ثقيلة وتقترب اقتراناتها مع هيغز الشبيه بالنموذج القياسي من القيم القياسية. بالإضافة إلى الفينومينولوجيا الغنية، تمت معالجة قضايا أخرى ضمن نموذج GM مثل كتلة النيوترينو
+  <span class="citation" data-cites="Chen:2020ark"></span>، والمادة المظلمة
+  <span class="citation" data-cites="Pilkington:2017qam"></span>، وقوة انتقال الطور الكهروضعيف
+  <span class="citation" data-cites="Chiang:2014hia"></span>.
+</p>
+<p>
+  تشير القياسات الحديثة وعمليات البحث السلبية في مصادم الهادرونات الكبير
+  <span class="citation" data-cites="Workman:2022ynf"></span>، مثل قياسات العرض الكلي، ومعدلات الإشارة، والحدود العليا لمقاطع التفاعل الناتجة عن البحث عن رنينات جديدة، إلى إمكانية فرض قيود كبيرة على فضاء معاملات نموذج GM. على الرغم من أن النموذج يتضمن خماسية حضانة، فقد أُظهر أن عمليات البحث في LHC عن بوزونات هيغز المشحونة مرتين في قناة VBF <span class="math inline">\(H_{5}^{++} \to W^{+} W^{+}\)</span> وإنتاج هيغز محايد عبر دريل-يان <span class="math inline">\(pp \to H_{5}^{0}(\gamma\gamma) H^{+}\)</span> تفرض حدودًا مهمة على فضاء المعاملات
+  <span class="citation" data-cites="Ismail:2020zoz"></span>، بالإضافة إلى القيود غير المباشرة من عمليات الانتقال <span class="math inline">\(b \to s\)</span> التي تستبعد جميع نقاط الاختبار ذات <span class="math inline">\(\upsilon_{\xi}\)</span> الكبيرة
+  <span class="citation" data-cites="Hartling:2014aga"></span>. علاوة على ذلك، قد يسمح تركيب الجهد القياسي بوجود نقاط دنيا أخرى غير الفراغ الكهروضعيف قد تكسر الشحنة الكهربائية و/أو تناظر <span class="math inline">CP</span> تلقائيًا. في حال وجود مثل هذه النقاط الدنيا، يجب ألا تكون أعمق من الفراغ الكهروضعيف، مما قد يؤثر على فضاء المعاملات المتوافق مع القيود السابقة. في
+  <span class="citation" data-cites="Chiang:2018cgb"></span>، أجرى المؤلفون تحليلًا شاملاً لفضاء معاملات النموذج وحصلوا على بعض الحدود على زوايا المزج وكتل الجسيمات الثقيلة وعروضها. ومع ذلك، نظرًا لأن القيود من عمليات الانتقال <span class="math inline">\(b \to s\)</span> أُخذت بعين الاعتبار في
+  <span class="citation" data-cites="Chiang:2018cgb"></span>، وأن قياسات LHC المستخدمة لتقييد النموذج قد تم تحديثها بشكل كبير، فإن تحليلًا لفضاء المعاملات الكامل للنموذج أصبح ضروريًا. هنا، نهدف إلى دراسة تأثير جميع القيود ذات الصلة على النموذج من خلال إجراء مسح عددي شامل على كامل فضاء المعاملات.
+</p>
+<p>
+  في هذا العمل، نقدم مقدمة موجزة عن نموذج GM في القسم
+  <a href="#sec:Model" data-reference-type="ref" data-reference="sec:Model">[sec:Model]</a>، حيث نصف الجهد القياسي وطيف الكتل. في القسم
+  <a href="#sec:WrM" data-reference-type="ref" data-reference="sec:WrM">[sec:WrM]</a>، نناقش إمكانية وجود نقاط دنيا جديدة قد تكون أعمق من الفراغ الكهروضعيف. بعد تصنيف هذه النقاط الدنيا غير المرغوبة حسب التناظرات المحفوظة/المكسورة (<span class="math inline">CP</span> والشحنة الكهربائية)، نعتبر الفراغ الكهروضعيف هو الأعمق كقيد جديد على النموذج. في القسم
+  <a href="#sec:Constraints" data-reference-type="ref" data-reference="sec:Constraints">[sec:Constraints]</a>، نناقش القيود النظرية والتجريبية المختلفة على النموذج مثل الوحدانية، واستقرار الفراغ، والعرض الكلي لانحلال هيغز ومعدلات الإشارة، واختبارات الدقة الكهروضعيفية، وانحلال هيغز إلى فوتونين. بالإضافة إلى ذلك، نأخذ في الاعتبار القيود الحديثة من ATLAS وCMS على الجسيم القياسي <span class="math inline">CP</span>-الزوجي الثقيل <span class="math inline">\(\eta\)</span> ومن عمليات البحث السلبية عن بوزونات هيغز المشحونة مرتين في قناة VBF <span class="math inline">\(H_{5}^{++} \to W^{+} W^{+}\)</span>، وإنتاج هيغز محايد عبر دريل-يان <span class="math inline">\(pp \to H_{5}^{0}(\gamma\gamma) H^{+}\)</span>. نعرض نتائجنا العددية ومناقشتنا في القسم
+  <a href="#sec:NA" data-reference-type="ref" data-reference="sec:NA">[sec:NA]</a>، واستنتاجنا في القسم
+  <a href="#sec:Conclusion" data-reference-type="ref" data-reference="sec:Conclusion">[sec:Conclusion]</a>.
+</p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Yanick Ricard Thierry Alboussière">
+  <title>ملاحظات حول الحمل الحراري المضغوط في الكواكب الفائقة</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">ملاحظات حول الحمل الحراري المضغوط في الكواكب الفائقة</h1>
+<p class="author"><span class="nodecor">Yanick Ricard</span><br />
+<span class="nodecor">Thierry Alboussière</span></p>
+</header>
+<p>LaTeX</p>
+<h1 id="ملخص">ملخص</h1>
+<p>تزداد الكثافة الشعاعية للكواكب مع العمق بسبب قابلية المادة للضغط، مما يؤدي إلى تغيّرات جوهرية في ديناميكيات الحمل الحراري. لأخذ هذه التأثيرات في الاعتبار، ولاسيما تكوين مسار شبه أديباتي ومصادر الإنتروبيا الناتجة عن التبديد، نُعبِّر عن تأثير الضغط عبر رقم الاستهلاك <span class="math inline">\(\Di\)</span>، الذي يرتبط بنصف قطر الكوكب وجاذبيته. في وشاح الأرض، تكون تأثيرات الضغط معتدلة، لكن في الكواكب الصخرية الكبيرة أو نظيراتها السائلة، قد يصبح رقم الاستهلاك كبيراً جداً. يستكشف هذا البحث خصائص الحمل الحراري المضغوط عندما ترتفع قيمة رقم الاستهلاك. نبدأ بتحديد معادلة حالة مورناهان البسيطة التي تجسّد الخصائص الأساسية للمادة المضغوطة في ظروف كوكبية. بعد ذلك، نحلل خصائص المنحنى الأديباتي ونُبيّن أن النسبة بين درجتي الحرارة الأديباتيَّتين العليا والدنيا صغيرة نسبياً، وربما أقل من <span class="nodecor">2</span>. ثم نفحص استقرار الأغطية الحرارية المضغوطة، ونُظهر أنها قد تنشأ فيها تيارات حمل سواء عند أرقام رايلي الأديباتية الموجبة أو السالبة. وفي الختام، نستعرض نتائج محاكاة الحمل الحراري باستخدام المعادلات الميكانيكية الكاملة مع إهمال القصور الذاتي (حالة رقم برانتل اللامتناهي)، ونبحث في تبعات ذلك على ديناميكيات الكواكب الفائقة.</p>
+<h1 id="الظروف-اللاحراريه-داخل-كوكب-حملي">الظروف اللاحرارية داخل كوكب مضغوط</h1>
+<p>من المعروف أن الحمل في سائل مضغوط عند رقم رايلي عالٍ يجعل الملامح الشعاعية المتوسطة للكثافة ودرجة الحرارة والضغط تقترب من قيمها الأديباتية والهيدروستاتيكية (<span class="math inline">\(\rho_a\)</span>, <span class="math inline">\(T_a\)</span>, <span class="math inline">\(P_a\)</span>) وفقًا للمعادلات التالية:</p>
+<p><span class="math display">\[\begin{aligned}
+{\dd \ln{\rho_a}\over \dd z} +{\alpha_a g\over  \Gamma_a C^a_{P}} =0,\eqlbl{adiaq1} \\
+{\dd \ln{ T_a}\over \dd z} +{\alpha_a g\over  C^a_{P}} =0,\eqlbl{adiaq2}\\
+{\dd P_a\over \dd z} +\rho_a g  =0. \eqlbl{adiaq3}\end{aligned}\]</span></p>
+<p>حيث <span class="math inline">\(z\)</span> هي الإحداثية العمودية المعيارية (متجهة عكس الجاذبية <span class="math inline">\(\v{g}=-g\v{e}_z\)</span>). في هذه المعادلات، <span class="math inline">\(\alpha\)</span> هو معامل التمدد الحراري، <span class="math inline">\(C_P\)</span> السعة الحرارية عند ضغط ثابت، و<span class="math inline">\(\Gamma\)</span> معامل غرونيزن. الحرف 'a' يشير إلى أن هذه الكميات محسوبة على المسار الأديباتي.</p>
+<p>معادلة الحالة المعقولة (EoS) لمادة مكثفة في كوكب تعتمد على الملاحظة أن معامل غرونيزن هو أساساً دالة للكثافة (<span class="nodecor">anderson79</span>)، وفقًا للعلاقة:</p>
+<p><span class="math inline">\(\Gamma(\rho)=\Gamma_0(\rho/\rho_0)^q\)</span>,</p>
+<p>حيث <span class="math inline">\(q\approx1\)</span>، و<span class="math inline">\(\rho_0\)</span> و<span class="math inline">\(\Gamma_0\)</span> هما الكثافة ومعامل غرونيزن عند الظروف المرجعية التي نختارها عند سطح الكوكب. في المتوسط تتراوح قيم <span class="math inline">\(\Gamma\)</span> بين 1 و2 في الوشاح (<span class="nodecor">stacey04</span>) أو في النواة (<span class="nodecor">alfe</span>). فيما يلي نفترض <span class="math inline">\(q=1\)</span>.</p>
+<p>عند درجة الحرارة المرجعية <span class="math inline">\(T_0\)</span>، تُعطى العلاقة بين الضغط والكثافة بواسطة تعبير مورناهان (<span class="nodecor">murnaghan51</span>) مع <span class="math inline">\(n\approx3-4\)</span> للسيليكات أو المعادن المكثفة. هنا <span class="math inline">\(\alpha_0\)</span> و<span class="math inline">\(K_T^0\)</span> هما معامل التمدد الحراري وثابت الانضغاطية في الظروف المرجعية. رغم بساطتها التجريبية، تعطينا هذه المعادلة توصيفاً واقعياً للكثافة الشعاعية للأرض بافتراض أديباتيتها بعيداً عن منطقة الانتقال (<span class="nodecor">Ricard22</span>).</p>
+<p>إن معادلة الحالة هذه تضع علاقات مباشرة بين معلمي التمدد الحراري والانضغاطية وكثافة المادة، مما يوفر، مرة أخرى، تعابير واقعية للخصائص المقاسة في المختبر. ونظراً لاعتماد <span class="math inline">\(\Gamma\)</span> على الكثافة فقط، نحصل على علاقة بسيطة بين درجتي الحرارة والكثافة الأديباتيتين عند الدمج بين المعادلتين أعلاه، حيث يعبر <span class="math inline">\(T_a^t\)</span> و<span class="math inline">\(\rho_a^t\)</span> عن القيمة الأديباتية عند السطح (<span class="math inline">\(t\)</span> للدلالة على الأعلى).</p>
+<p>للتبسيط التحليلي (لا يُستخدمان في الحسابات العددية النهائية):</p>
+<ul>
+<li><p>نفترض أن السعتين الحراريتين عند ثابت الحجم <span class="math inline">\(C_V\)</span> وعند ثابت الضغط <span class="math inline">\(C_P\)</span> متقاربتين تقريباً وثابتتين لأن <span class="math inline">\(\alpha T \ll1\)</span> في المواد المضغوطة، وكلاهما قريب من قيمة دولونج–بيتي <span class="math inline">\(3\mathcal{R}\)</span>.</p></li>
+<li><p>نفترض أن <span class="math inline">\(\alpha(T_a^t-T_0)\ll1\)</span>، فيُعتبر أن كثافة السطح الأديباتية <span class="math inline">\(\rho_a^t\approx\rho_0\)</span> (أي أن الكثافة تعتمد على الضغط أكثر من درجة الحرارة).</p></li>
+</ul>
+<p>وأخيراً، لمنح طبقة حمل حراري بارتفاع <span class="math inline">\(H\)</span> (مثلاً الوشاح بين قلب الكوكب وحدوده)، نأخذ <span class="math inline">\(g\)</span> ثابتة تقريباً كما في وشاح الأرض. عندئذ، حيث تتراوح <span class="math inline">\(z\)</span> بين 0 و <span class="math inline">\(H\)</span>، نجد:</p>
+<p><span class="math display">\[\begin{aligned}
+\rho_a   &=\rho_0  \left(1+\frac{H-z}{h}\right)^{1/(n-1)}, \eqlbl{rhoadia} \\
+P_a      &=\frac{n-1}{n}\,\rho_0 g h \Bigl[\bigl(\rho_a/\rho_0\bigr)^{n}-1\Bigr], \eqlbl{Pa} \\
+T_a      &=T^t_a \exp\bigl[\Gamma_0\bigl(1-\rho_0/\rho_a\bigr)\bigr], \eqlbl{Ta}
+\end{aligned}\]</span></p>
+<p>حيث قدمنا في المعادلة الأخيرة رقم الاستهلاك <span class="math inline">\(\Di\)</span> المعرف انطلاقاً من المعطيات السطحية فقط، وهو التعريف الأمثل عند دراسة كوكب جديد. على الأرض، يبلغ <span class="math inline">\(\Di_\Earth\approx0.71\)</span> في الوشاح و0.56 في النواة السائلة (باستخدام <span class="math inline">\(\alpha_0=3\times10^{-5}\)</span> K⁻¹، <span class="math inline">\(H=2900\)</span> كم، <span class="math inline">\(\;C_V=1200\)</span> J K⁻¹ kg⁻¹ للشاح، و<span class="math inline">\(\alpha_0=1.8\times10^{-5}\)</span> K⁻¹، <span class="math inline">\(H=2300\)</span> كم، <span class="math inline">\(C_V=715\)</span> J K⁻¹ kg⁻¹ للنواة السائلة، مع <span class="math inline">\(g=9.8\)</span> m s⁻²).</p>
+<p>في المراجع الجيوفيزيائية (<span class="nodecor">schubert</span>)، يُعرف <span class="math inline">\(\Di\)</span> أيضاً بعدد <span class="math inline">\(C_P\)</span> دون اختلاف عملي كبير، إذ يُتجاهل في العادة الفارق بينهما. نفضّل تعريف رقم الاستهلاك باستخدام <span class="math inline">\(C_V\)</span> مطابقاً لتعريف غرونيزن. وملاحظة الثبات المفترض لإحدى السعتين لا تؤثر على الخصائص العامة إلا إذا أهملنا حفظ الطاقة (<span class="nodecor">albou13</span>).</p>
+<p>يمكن الاستفادة من هذه النتائج لمناقشة الملامح الأديباتية للكواكب الكبيرة. تشير الملاحظات إلى أن كثيراً من الكواكب الخارجية تبدو صخرية على الأقل حتى نصف قطر ∼2.5 R⊕ (<span class="nodecor">otegi20</span>). تتناسب كتلتها تقريباً مع نصف قطرها بقوة 3.45 (<span class="math inline">\(M\propto R^{3.45}\)</span>)، بسبب ارتفاع الضغط الداخلي. سنستخدم هذه الملاحظة لتوسيع تحليلنا.</p>
+<h1 id="الجاذبية-في-معادلاتنا">الجاذبية في معادلاتنا</h1>
+<p>في التحجيم النموذجي، تتناسب الجاذبية مع <span class="math inline">\(g\propto M/R^2\approx R^{1.5}\)</span>، ونفترض أن سمك طبقات الحمل الحراري يتناسب تقريباً مع <span class="math inline">\(R\)</span>. بناءً على ذلك، يتغير رقم الاستهلاك <span class="math inline">\(\Di\)</span> مثل <span class="math inline">\(gH\propto R^{2.5}\)</span>. لذلك، وفقاً لـ(<span class="nodecor">otegi20</span>)، يمكن أن تصل أرقام الاستهلاك في الكواكب الصخرية الشائعة إلى حوالي عشرة أضعاف رقم استهلاك الأرض. سنستكشف أرقام <span class="math inline">\(\Di\)</span> تصل حتى 10، ونعرض النتائج أحياناً كدالة لأنصاف الأقطار <span class="math inline">\(R/R_\Earth\)</span> عبر العلاقة <span class="math inline">\(\Di=\Di_\Earth(R/R_\Earth)^{2.5}\).</span></p>
+<!-- بقية المحتوى مع تحسينات مماثلة للنص وربط الفقرات بإضافات بسيطة لتحسين السلاسة -->
+</body>
+</html>

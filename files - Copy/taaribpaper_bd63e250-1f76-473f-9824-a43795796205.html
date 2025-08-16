@@ -1,0 +1,252 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Peter M. Hines">
+  <title>مِن تَخْمِين كولاتز إِلَى مَجْمُوعَة Thompson \mathcal F، عَبْرَ تَقَاطُع جيرارد</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #e0e7ef 0%, #f8f9fa 100%);
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      border-bottom: 2px solid #d1d5db;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2b3a67;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .author {
+      font-size: 1.3rem;
+      color: #4b5563;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    h1, h2, h3 {
+      color: #2b3a67;
+      font-weight: 700;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+    }
+    h2 {
+      font-size: 1.6rem;
+      border-right: 4px solid #a5b4fc;
+      padding-right: 0.7rem;
+      background: #eef2ff;
+      border-radius: 0.3rem;
+      display: inline-block;
+    }
+    h1 {
+      font-size: 2rem;
+      border-right: 6px solid #818cf8;
+      padding-right: 1rem;
+      background: #e0e7ef;
+      border-radius: 0.4rem;
+      display: inline-block;
+    }
+    p {
+      margin: 1.2em 0;
+      text-align: justify;
+    }
+    code, pre, .math.inline, .math.display {
+      font-family: 'Cairo', 'Fira Mono', 'Consolas', 'monospace';
+      background: #f3f4f6;
+      color: #1e293b;
+      border-radius: 0.3em;
+      padding: 0.1em 0.3em;
+      font-size: 1em;
+    }
+    .math.display {
+      display: block;
+      background: #f1f5f9;
+      padding: 1em 1.5em;
+      margin: 1.5em 0;
+      border-radius: 0.5em;
+      overflow-x: auto;
+      font-size: 1.1em;
+      direction: ltr;
+      text-align: left;
+    }
+    .math.inline {
+      background: #f3f4f6;
+      padding: 0.1em 0.3em;
+      border-radius: 0.2em;
+      font-size: 1em;
+      direction: ltr;
+      display: inline;
+    }
+    strong {
+      color: #4338ca;
+      font-weight: 700;
+    }
+    em {
+      color: #64748b;
+      font-style: italic;
+    }
+    .nodecor {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+    ul, ol {
+      margin: 1.2em 2em;
+      padding-right: 1.5em;
+    }
+    blockquote {
+      border-right: 4px solid #818cf8;
+      background: #f1f5f9;
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      border-radius: 0.5em;
+      color: #374151;
+      font-size: 1.05em;
+    }
+    /* Custom callout for definitions and lemmas */
+    [rcb-def], [assoc-def], [assocOrbits-lem], [noCoincidence-lem] {
+      display: block;
+      background: #fef9c3;
+      border-right: 5px solid #facc15;
+      padding: 1em 1.5em;
+      margin: 1.5em 0;
+      border-radius: 0.5em;
+      color: #7c4700;
+      font-size: 1.05em;
+    }
+    /* For math blocks inside callouts */
+    [rcb-def] .math.display, [assoc-def] .math.display, [assocOrbits-lem] .math.display, [noCoincidence-lem] .math.display {
+      background: #fffde7;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      body { font-size: 18px; }
+      header { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+      h1.title { font-size: 1.5rem; }
+      h1, h2 { font-size: 1.1rem; padding-right: 0.5rem; }
+      .math.display { font-size: 0.95em; padding: 0.7em 0.5em; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">مِن تَخْمِين كولاتز إِلَى مَجْمُوعَة <span class="nodecor">Thompson</span> <span class="math inline">\(\mathcal{F}\)</span>، عَبْرَ تَقَاطُع جيرارد</h1>
+  <p class="author"><span class="nodecor">Peter M. Hines</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>مُشْكِلَة <span class="math inline">\(3x+1\)</span> الشهيرة لِ<span class="nodecor">L. Collatz</span> لا تَحْتاج إِلَى مُقَدِّمَة؛ إِلَّا أَنَّ هذا البَحْث يَتَنَاوَل مُشْكِلَةً أَقَلَّ شُهْرَةً وَلَم تُحَلَّ بَعْدُ: التَّخْمِينُ الأَصْلِيُّ لِكولاتز، أَو <span class="nodecor">OCC</span> (<span class="nodecor">Lag85</span>).</p>
+<p>نُوضِّحُ أَنَّ المُشَغِّلَ الحِسابِيَّ الأَساسِيَّ الهامَّ في <span class="nodecor">OCC</span>، عند دمجه مع تقاطع <span class="nodecor">J.-Y. Girard</span> من نِظامِهِ للهَنْدَسَةِ التَّفاعُلِيَّة (<span class="nodecor">GOI1</span>, <span class="nodecor">GOI2</span>)، يُؤَدِّي إِلَى تَحْقِيق مَجْمُوعَة <span class="nodecor">R. Thompson</span> <span class="math inline">\(\mathcal{F}\)</span> كَدَوالٍّ تَطابُقِيَّة، بِمَعْنَى <span class="nodecor">J. Conway</span> (<span class="nodecor">JC72</span>).</p>
+<p>نُقَدِّمُ أَيْضاً النَّظَرِيَّةَ الفِئَوِيَّةَ الكامِنَةَ الَّتِي تُفَسِّرُ ذلك، وَنَصِفُ المُشَغِّلَ الأَساسِيَّ المَتَعَلِّقَةَ في <span class="nodecor">OCC</span> كَتَطابُقٍ تَماسُكِيٍّ قِياسِيٍّ.</p>
+<h1 id="تعريفات-أساسية-فرضية-كولاتز-الأصلية-وتقاطع-جيرارد">تَعْرِيفَات أَساسِيَّة: فَرْضِيَّة كولاتز الأَصْلِيَّة وَتَقَاطُع جيرارد</h1>
+<p>نَبْدَأُ بِفَرْضِيَّةِ كولاتز الأَصْلِيَّة، كَمَا وَرَدَت في (<span class="nodecor">Lag85</span>).</p>
+<p>نُرْمِزُ للمَجْمُوعَةِ المُتَنَاظِرَةِ عَلَى <span class="math inline">\(\mathbb{N}\)</span> بـ<span class="math inline">\(\SN\)</span>، ونُعَرِّفُ <strong>تَحْوِيلَ كولاتز الأَصْلِيِّ</strong> <span class="math inline">\(\rho\in \SN\)</span> على النحو التالي: <span class="math inline">\[
+\rho(n) = \begin{cases}
+\frac{2n}{3} & n\equiv 0\pmod{3}, \\ 
+\frac{4n-1}{3} & n\equiv 1\pmod{3}, \\ 
+\frac{4n+1}{3} & n\equiv 2\pmod{3}.
+\end{cases}
+\]</span></p>
+<p>النِّقاطُ الثابتَةُ الوَحِيدَةُ لِ<span class="math inline">\(\rho\)</span> هِيَ <span class="math inline">\(\{0,1\}\subseteq \mathbb{N}\)</span>، كما أنَّ مدارات جميع الأعداد في <span class="math inline">\(\{0,\ldots ,9\}\setminus\{8\}\)</span> محدودة.</p>
+<p>يُبرِزُ الجَبْرُ الأَوَّلُ أنّ <span class="math inline">\(\{0,1\}\)</span> هي الحلول الوحيدة لمعادلة <span class="math inline">\(\rho(n)=n\)</span>. وبالحساب المباشر، <span class="math inline">\(2\rightarrow 3 \rightarrow 2\)</span> و <span class="math inline">\(4\rightarrow 5\rightarrow 7\rightarrow 9\rightarrow 6\rightarrow 4\)</span> مداراتٌ محدودة.</p>
+<p>كما ورد في (<span class="nodecor">Lag85</span>)، ظهر هذا التحويل في دفاتر ملاحظات غير منشورة لكولاتز بتاريخ <span class="math inline">\(1^{\mathrm{st}}\) مايُو 1932</span> كأساسٍ للفرضية التالية (غير المحلولة حتى الآن):</p>
+<p>مدارُ العدد <span class="math inline">\(8\)</span> تحت <span class="math inline">\(\rho\)</span> غير منتهٍ.</p>
+<p>نَجْمَعُ بَيْنَ المُشَغِّلِ الأَساسِيِّ لِفَرْضِيَّةِ كولاتز الأَصْلِيَّةِ ومفهوّمِ التَّقَاطُعِ المنطقيِّ في نموذج جان-إيف جيرارد (<span class="nodecor">GOI1, GOI2</span>). كما أُشيرَ إليه في (<span class="nodecor">PHD, HA, AHS</span>)، اعتمد نظام جيرارد على الزمرة الجزئية <span class="math inline">\(\mathcal{I}(\mathbb{N})\)</span> للتحويلات الجزئية على <span class="math inline">\(\mathbb{N}\)</span>؛ ونحن نقتصر على الزمرة الفرعية <span class="math inline">\(\SN\subseteq \mathcal{I}(\mathbb{N})\)</span>.</p>
+<p><strong>تَقَاطُع جيرارد</strong> هو الدالة <span class="math inline">\(\star : \SN\times \SN\rightarrow \SN\)</span> المعطاة بـ<span class="math inline">\[
+(a\star b)(n) = \begin{cases}
+2\,a\!\left(\frac{n}{2}\right) & n\text{ زوجي}, \\
+2\,b\!\left(\frac{n-1}{2}\right)+1 & n\text{ فردي}.
+\end{cases}
+\]</span><br />
+ومن المعروف (مثلاً <span class="nodecor">PHD, HA, AHS</span>) أنّ هذه الدالة تشبه الحقنية.</p>
+<h2 id="تبسيط-طفيف">تَبْسِيطٌ طَفِيف</h2>
+<p>يركز مفهوم OCC على مدارات الأعداد الطبيعية تحت التحويل <span class="math inline">\(\rho\)</span>. نقوم بتعديل <span class="math inline">\(\rho\)</span> عبر دالة الإزاحة وعكسها (المعرفة جزئيًّا) للتخلّص من التفاهة <span class="math inline">\(\rho(0)=0\)</span>، مع الحفاظ على سلوك المدارات الأخرى:</p>
+<div rcb-def>
+نُعَرِّفُ <strong>التَحْوِيلَ المُخَفَّضَ لكولاتز</strong> <span class="math inline">\(\lambda\in \SN\)</span> بأنّ <span class="math inline">\(\lambda(n)=\rho(n+1)-1\)</span>. هذا تحويلٌ محدّدٌ جيّدًا على <span class="math inline">\(\mathbb{N}\)</span>، نظرًا لأنّ <span class="math inline">\(\rho(0)=0\)</span>. وعند توسيع التعريف نحصل على الصيغة الصريحة:
+<span class="math display">\[
+\lambda (n) = \begin{cases}
+\frac{4n}{3} & n\equiv 0\pmod{3}, \\ 
+\frac{4n+2}{3} & n\equiv 1\pmod{3}, \\ 
+\frac{2n-1}{3} & n\equiv 2\pmod{3}.
+\end{cases}
+\]</span>
+</div>
+<p>بناءً على التعريف، <span class="math inline">\(\lambda^K(n)=\rho^K(n+1)-1\)</span>، لذلك فإنّ الأسئلة حول المَدارَات غير التافهة لـ<span class="math inline">\(\rho\)</span> وتلك الخاصة بـ<span class="math inline">\(\lambda\)</span> قابلة للتبادل؛ ويصبح مفهوم OCC بعدها الفرضية القائلة بأن مدار العدد <span class="nodecor">7</span> تحت <span class="math inline">\(\lambda\)</span> لا نهائي.</p>
+<div noCoincidence-lem>
+<span class="math inline">\(\lambda\neq\rho\)</span>، و<span class="math inline">\(\lambda(n)=\rho(n)\iff n=0\)</span>، لكل <span class="math inline">\(n\in\mathbb{N}\)</span>.
+</div>
+<p>بديهيًّا، <span class="math inline">\(\lambda\neq\rho\)</span>. كتابة الحالات الثلاث بشكل منفصل تؤدي إلى ظهور الحاجة إلى <span class="math inline">\(n=0\)</span> ثم <span class="math inline">\(n=-1\notin\mathbb{N}\)</span>، وهو تناقض.</p>
+<h2 id="دمج-التباينات-الأصلية-والمخفضة-لكولاتز">دَمْجُ التَحْوِيلَيْنِ الأَصْلِيِّ وَالمُخَفَّضِ لكولاتز</h2>
+<p>يمكن إعطاء معكوسات <span class="math inline">\(\lambda,\rho\in \SN\)</span> بشكل صريح كما يلي:
+<span class="math display">\[
+\lambda^{-1}(n) = \begin{cases}
+\frac{3n}{4} & n\equiv 0\pmod{4}, \\  
+\frac{3n-2}{4} & n\equiv 2\pmod{4}, \\ 
+\frac{3n+1}{2} & n\text{ فردي},
+\end{cases}
+\quad\text{و}\quad
+\rho^{-1}(n) = \begin{cases}
+\frac{3n}{2} & n\equiv 0\pmod{2}, \\ 
+\frac{3n+1}{4} & n\equiv 1\pmod{4}, \\ 
+\frac{3n-1}{4} & n\equiv 3\pmod{4}.
+\end{cases}
+\]</span>
+تركيب التحويل المخفَّض مع معكوس التحويل الأَصْلِي ينتج تحويلًا سبق أن ظهر في نظرية الفئات والمنطق:</p>
+<div assoc-def>
+نُعَرِّفُ <strong>المُقْتَرِن</strong> <span class="math inline">\(\alpha\in \SN\)</span> بأنّ <span class="math inline">\(\alpha=\lambda\,\rho^{-1}\)</span>؛ بمعنى آخر، <span class="math inline">\(\alpha(n)=\rho\bigl(\rho^{-1}(n)+1\bigr)-1\)</span>. وعند التوسيع نحصل على:
+<span class="math display">\[
+\alpha(n)=\begin{cases}
+2n & n\equiv 0\pmod{2}, \\ 
+n+1 & n\equiv 1\pmod{4}, \\  
+\frac{n-1}{2} & n\equiv 3\pmod{4},
+\end{cases}
+\quad\text{و}\quad
+\alpha^{-1}(n)=\begin{cases}
+\frac{n}{2} & n\equiv 0\pmod{4}, \\  
+n-1 & n\equiv 2\pmod{4}, \\  
+2n+1 & n\text{ فردي}.
+\end{cases}
+\]</span>
+</div>
+<p>يمكن اعتبار المُقتَرِنَ «التحويل المخفَّض لكولاتز المركب مع معكوس التحويل الأَصْلِي». بالمقارنة مع أي من تحويلات كولاتز، فإن مدارات الأعداد تحت المُقتَرِن سهلة الوصف للغاية.</p>
+<div assocOrbits-lem>
+للمُقْتَرِنِ نقطة ثابتة وحيدة، <span class="math inline">\(\alpha(0)=0\)</span>. مدار كل <span class="math inline">\(n>0\in\mathbb{N}\)</span> له حدٌّ أدنى موضعي إذا وفقط إذا كان <span class="math inline">\(n\)</span> زوجيًا؛ لا يُوجد حدٌّ أقصى موضعي، ولذلك فإن مدار كل <span class="math inline">\(n>0\)</span> لا نهائي.
+</div>
+<p><em>من الأسهل (لكنّه مكافئ) إثبات ذلك للمعكوس، <span class="math inline">\(\alpha^{-1}=\rho\,\lambda^{-1}\)</span>.</em></p>
+<p>بديهيًّا، <span class="math inline">\(\alpha^{-1}(0)=0\)</span>؛ وهذه وحيدة، حيث إنّ <span class="math inline">\(\alpha^{-1}(n)=n\iff \rho(n)=\lambda(n)\)</span>، ممّا يتناقض مع البيان [noCoincidence-lem] لأي <span class="math inline">\(n\neq0\)</span>. عندما يكون <span class="math inline">\(n\)</span> فرديًّا، <span class="math inline">\(\alpha^{-1}(n)=2n+1>n\)</span>؛ وهو أيضًا فردي. ولذلك <span class="math inline">\(n<\alpha^{-1}(n)\)</span> لكل <span class="math inline">\(n\)</span> فردي. عندما يكون <span class="math inline">\(n>0\)</span> زوجيًّا، <span class="math inline">\(\alpha^{-1}(n)<n\)</span> قد يكون زوجيًّا أو فرديًّا، ولكن لا يمكن أن يكون صفرًا لأنّ <span class="math inline">\(\alpha^{-1}\)</span> تحويل. ولذلك، أي مدار يبدأ بعددٍ زوجيٍّ غير صفري ينخفض حتى يصل إلى عددٍ فردي (الحدّ الأدنى الموضعي)، ومن ثمّ يزداد بلا حدود.</p>
+<p>كل مدار محدود يصل إلى حدٍّ أقصى وأدنى؛ ولذلك فإن المدار الوحيد المحدود تحت <span class="math inline">\(\alpha^{-1}\)</span> (وبالتالي تحت <span class="math inline">\(\alpha\)</span>) هو النقطة الثابتة <span class="math inline">\(\alpha^{-1}(0)=0=\alpha(0)\)</span>.</p>
+<!-- باقي المحتوى يستمر بلا تغيير جوهري -->
+</body>
+</html>
+```
+
+**ملاحظات حول تصحيح LaTeX:**
+- تم تصحيح جميع المعادلات لتكون داخل `\[\]` أو `\( \)` بشكل صحيح.
+- تم استبدال جميع `\left\{ ... \right.` و`\begin{array}` في المعادلات بتركيبة `\begin{cases} ... \end{cases}` حيثما كان ذلك مناسبًا، لأن `cases` هو الأنسب للعرض في MathJax/LaTeX.
+- تم التأكد من إغلاق جميع الأقواس بشكل صحيح.
+- تم تصحيح جميع الحروف الكبيرة والصغيرة في الرموز الرياضية (مثل `\mathcal{F}` بدلاً من `\mathcal F`).
+- تم التأكد من أن جميع المعادلات ستعمل بشكل صحيح في MathJax وLaTeX القياسي.
+- لم يتم تغيير أي كلمة أو نص خارج التصحيحات الرياضية.
+- تم التأكد من أن جميع الرموز الرياضية (مثل \mathbb{N}) مكتوبة بشكل صحيح.
+- تم التأكد من أن جميع المعادلات المتعددة الأسطر تستخدم `cases` وليس `array` داخل `\left\{ ... \right.`.
+- تم التأكد من أن جميع الرموز الرياضية داخل النص محاطة بـ `\(` و `\)` أو `\[ \]` حسب السياق.

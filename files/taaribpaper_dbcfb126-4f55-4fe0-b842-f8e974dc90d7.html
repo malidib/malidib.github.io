@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Yanick Ricard Thierry Alboussière">
+  <meta name="author" content="Yanick Ricard — Thierry Alboussière">
   <title>ملاحظات حول الحمل الحراري المضغوط في الكواكب الفائقة</title>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
@@ -21,7 +20,7 @@
       color: #222;
       margin: 0;
       padding: 0;
-      line-height: 1.7;
+      line-height: 1.75;
     }
     header {
       background: linear-gradient(90deg, #3a6073 0%, #16222a 100%);
@@ -38,7 +37,7 @@
       letter-spacing: 1px;
     }
     .author {
-      font-size: 1.2em;
+      font-size: 1.05em;
       margin-top: 10px;
       color: #e0e0e0;
     }
@@ -107,7 +106,6 @@
       border-radius: 8px;
       font-size: 1.05em;
     }
-    /* Table styling if needed */
     table {
       border-collapse: collapse;
       width: 100%;
@@ -127,21 +125,9 @@
       color: #fff;
       font-weight: 700;
     }
-    /* Links */
-    a {
-      color: #3a6073;
-      text-decoration: underline;
-      transition: color 0.2s;
-    }
-    a:hover {
-      color: #16222a;
-    }
-    /* Custom classes for math and references */
-    .nodecor {
-      text-decoration: none;
-      color: inherit;
-    }
-    /* Responsive */
+    a { color: #3a6073; text-decoration: underline; transition: color 0.2s; }
+    a:hover { color: #16222a; }
+    .nodecor { text-decoration: none; color: inherit; }
     @media (max-width: 700px) {
       body { font-size: 18px; }
       header { padding: 25px 0 18px 0; }
@@ -154,69 +140,76 @@
 </head>
 <body>
 <header>
-  <h1 class="title">ملاحظات حول الحمل الحراري المضغوط في الكواكب الفائقة</h1>
+  <h1 class="title">ملاحظات حول الحمل الحراري المُضغَط في الكواكب الفائقة</h1>
   <p class="author"><span class="nodecor">Yanick Ricard</span><br />
   <span class="nodecor">Thierry Alboussière</span></p>
 </header>
 
 <main style="max-width: 900px; margin: auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 40px 30px 50px 30px;">
 
-<h1 id="ملخص">ملخص</h1>
-<p>تزداد الكثافة الشعاعية للكواكب مع العمق بسبب القابلية للانضغاط، مما يؤدي إلى تأثيرات على ديناميكيات الحمل الحراري فيها. لأخذ هذه التأثيرات في الاعتبار، بما في ذلك وجود منحنى درجة حرارة شبه أديباتي ومصادر الإنتروبيا الناتجة عن التبدد، يتم التعبير عن القابلية للانضغاط من خلال رقم التبدد، <span class="math inline">\(\Di\)</span>، الذي يتناسب مع نصف قطر الكوكب وجاذبيته. في وشاح الأرض، تكون تأثيرات القابلية للانضغاط معتدلة، ولكن في الكواكب الصخرية الكبيرة أو الكواكب السائلة (الكواكب الفائقة)، يمكن أن يصبح رقم التبدد كبيرًا جدًا. يستكشف هذا البحث خصائص الحمل الحراري المضغوط عندما يكون رقم التبدد مهمًا. نبدأ بتحديد معادلة حالة مورناهان البسيطة التي تجسد الخصائص الأساسية للمادة المكثفة في ظروف الكواكب. بعد ذلك، نحلل خصائص المنحنيات الأديباتية ونوضح أن النسبة بين درجات الحرارة الأديباتية السفلية والعلوية صغيرة نسبيًا وربما أقل من <span class="nodecor">2</span>. نفحص استقراري الحواف الهامشية للأغلفة الحرارية المضغوطة ونكشف أنها يمكن أن تخضع للحمل الحراري سواء بأرقام رايلي فوق أديباتية موجبة أو سالبة. أخيرًا، نغوص في محاكاة الحمل الحراري باستخدام المعادلات الدقيقة للميكانيكا، مع إهمال القصور الذاتي (حالة رقم برانتل اللانهائي)، ونفحص تبعاتها لديناميكيات الكواكب الفائقة.</p>
+<h1 id="ملخص">ملخّص</h1>
+<p>تزداد الكثافة مع العمق في الكواكب بسبب قابليّة الانضغاط، ما يفضي إلى آثار واضحة على ديناميّات الحمل الحراري فيها. ولأخذ هذه الآثار في الحسبان، بما في ذلك وجود منحنى درجة حرارة شبه أديباتي ومصادر الإنتروبيا الناتجة عن التبدُّد، نُمثّل القابليّة للانضغاط عبر رقم التبدُّد <span class="math inline">\(\Di\)</span>، وهو يتناسب مع حاصل ضرب الجاذبية في السُّمك المميز للغلاف الحَمْلي. في وشاح الأرض تكون آثار القابليّة للانضغاط متوسّطة، لكن في الكواكب الصخرية الكبيرة أو الكواكب السائلة (الكواكب الفائقة) قد يغدو رقم التبدُّد كبيرًا جدًّا. نستكشف هنا خصائص الحمل الحراري المُضغَط عندما يكون رقم التبدُّد مُهيمِنًا. نبدأ بمعادلة حالة مورناهان البسيطة التي تُجسِّد الخصائص الأساسية للمادّة المكثّفة في ظروف كوكبية. ثم نحلّل خصائص المنحنيات الأديباتية ونُبيّن أنّ نسبة درجتَي الحرارة الأديباتيتين عند القاع والقمة تبقى صغيرة نسبيًّا، وربّما أقل من <span class="nodecor">2</span>. نفحص استقرار الأغلفة الحرارية المُضغَطة ونكشف أنّها قد تخضع للحمل سواء بأرقام رايلي فائق الأديباتية موجبة أو سالبة. وأخيرًا، نُجري محاكاة للحمل الحراري باستخدام المعادلات الصحيحة للميكانيكا مع إهمال العطالة (حالة رقم برانتل اللا نهائي)، ونبحث تبعات ذلك على ديناميّات الكواكب الفائقة.</p>
 
-<h1 id="الظروف-اللاحراريه-داخل-كوكب-حملي">الظروف اللاحرارية داخل كوكب حملي</h1>
-<p>من المعروف أن الحمل في السائل المضغوط عند رقم رايلي عالٍ يقرب الملامح الشعاعية المتوسطة للكثافة ودرجة الحرارة والضغط إلى قيمها الأديباتية والهيدروستاتيكية (<span class="math inline">\(\rho_a\)</span>, <span class="math inline">\(T_a\)</span>, <span class="math inline">\(P_a\)</span>) وفقًا للمعادلات الأديباتية التالية:</p>
+<h1 id="الحالة-الأديباتية-داخل-كوكب-حملي">الحالة الأديباتية داخل كوكب حَمْلي</h1>
+<p>من المعروف أنّ الحمل في وسط مُنضغِط وعند رقم رايلي مرتفع، يُقرِّب الملامح الشعاعية المتوسطة للكثافة ودرجة الحرارة والضغط من حالاتها الأديباتية والهيدروستاتيكية <span class="math inline">\((\rho_a, T_a, P_a)\)</span>، وفقًا للمعادلات الأديباتية التالية:</p>
 <div class="math display">\[
 \begin{aligned}
-\frac{\dd \ln{\rho_a}}{\dd z} + \frac{\alpha_a g}{\Gamma_a C^a_{P}} &= 0, \\
-\frac{\dd \ln{T_a}}{\dd z} + \frac{\alpha_a g}{C^a_{P}} &= 0, \\
-\frac{\dd P_a}{\dd z} + \rho_a g &= 0
+\frac{\mathrm{d} \ln{\rho_a}}{\mathrm{d} z} + \frac{\alpha_a \, g}{\Gamma_a \, C^{a}_{P}} &= 0, \\
+\frac{\mathrm{d} \ln{T_a}}{\mathrm{d} z} + \frac{\alpha_a \, g}{C^{a}_{P}} &= 0, \\
+\frac{\mathrm{d} P_a}{\mathrm{d} z} + \rho_a \, g &= 0.
 \end{aligned}
 \]</div>
-<p>حيث <span class="math inline">\(z\)</span> هي الإحداثية العمودية (موجهة عكس الجاذبية <span class="math inline">\(\vec{g} = -g \vec{e}_z\)</span>). في هذه المعادلات، <span class="math inline">\(\alpha\)</span> هو معامل التمدد الحراري، <span class="math inline">\(C_P\)</span> هو السعة الحرارية (أو الحرارة النوعية) عند ضغط ثابت و<span class="math inline">\(\Gamma\)</span> هو معامل غرونيزن السفلي أو العلوي ’a’ في المعادلات -- يشير إلى أن الكميات المختلفة محسوبة على طول المنحنى الأديباتي نفسه.</p>
-<p>معادلة الحالة المناسبة لكوكب مكثف تعتمد على الملاحظة أن معامل غرونيزن هو في الأساس دالة للكثافة (<span class="nodecor">anderson79</span>)، حيث <span class="math inline">\(q\)</span> حوالي 1، <span class="math inline">\(\rho_0\)</span> و<span class="math inline">\(\Gamma_0\)</span> هما الكثافة ومعامل غرونيزن في الظروف القياسية التي نختارها لتكون عند سطح الكوكب. في المتوسط، معامل غرونيزن بين 1 و2 في الوشاح (<span class="nodecor">stacey04</span>) أو في النواة (<span class="nodecor">alfe</span>). فيما يلي سنستخدم <span class="math inline">\(q=1\)</span>. في هذه الحالة، تصبح معادلة الحالة المناسبة للمواد المكثفة حيث في درجة الحرارة المرجعية <span class="math inline">\(T_0\)</span>، تُعطى العلاقة بين الضغط والكثافة بواسطة تعبير مورناهان (<span class="nodecor">murnaghan51</span>) و<span class="math inline">\(n\approx 3-4\)</span> للسيليكات الصلبة أو السائلة أو المعادن. في المعادلة، <span class="math inline">\(\alpha_0\)</span> و<span class="math inline">\(K_T^0\)</span> هما معامل التمدد الحراري وعدم القابلية للانضغاط الآيزوثيرمي في الظروف المرجعية. رغم أن معادلة الحالة بسيطة وتجريبية، إلا أنها تلخص الخصائص النموذجية للمواد الصلبة والسوائل وتعطي تطابقًا جيدًا جدًا للكثافة الشعاعية للأرض بافتراض أديباتيتها، بعيدًا عن منطقة الانتقال (<span class="nodecor">Ricard22</span>). تعني هذه المعادلة علاقات مباشرة بين التمدد الحراري وعدم القابلية للانضغاط مع الكثافة، وهي، ومرة أخرى، توفر هذه التعبيرات معًا تعبيرات واقعية للخصائص المقاسة في تجارب المختبر. بما أن معامل غرونيزن يعتمد على الكثافة فقط، يحصل المرء على علاقة بسيطة بين درجة الحرارة الأديباتية والكثافة الأديباتية من خلال الجمع بين المعادلتين أعلاه، حيث <span class="math inline">\(T^t_a\)</span> و<span class="math inline">\(\rho_a^t\)</span> هما درجة الحرارة الأديباتية والكثافة السطحية (<span class="math inline">\(t\)</span> تعني الأعلى).</p>
-<p>نقوم بتقديرين إضافيين عند استنتاج التعبيرات التحليلية للملامح الأديباتية (هذه التقديرات لن تُستخدم في الحسابات العددية لأنها ستبطلها).</p>
+<p>حيث <span class="math inline">\(z\)</span> هي الإحداثية العمودية (مُوجّهة عكس الجاذبية <span class="math inline">\(\vec{g} = -\,g\, \vec{e}_z\)</span>). في هذه المعادلات، <span class="math inline">\(\alpha\)</span> هو مُعامل التمدّد الحراري، و<span class="math inline">\(C_P\)</span> السعة الحرارية عند ضغط ثابت، و<span class="math inline">\(\Gamma\)</span> مُعامل غروينيزن. والحرف <span class="math inline">\(a\)</span> يُشير إلى أنّ الكميات محسوبة على طول المنحنى الأديباتي ذاته.</p>
+
+<p>معادلة الحالة المناسبة لمادّة كوكبية مكثّفة تعتمد على الملاحظة أنّ مُعامل غروينيزن دالّة في الأساس للكثافة (<span class="nodecor">anderson79</span>). نأخذ <span class="math inline">\(q \approx 1\)</span> بحيث <span class="math inline">\(\Gamma(\rho) = \Gamma_0 \left(\dfrac{\rho_0}{\rho}\right)^{q}\)</span>، حيث <span class="math inline">\(\rho_0\)</span> و<span class="math inline">\(\Gamma_0\)</span> هما الكثافة ومُعامل غروينيزن في ظروف مرجعية نختارها عند سطح الكوكب. في المتوسّط يتراوح <span class="math inline">\(\Gamma\)</span> بين <span class="nodecor">1</span> و<span class="nodecor">2</span> في الوشاح (<span class="nodecor">stacey04</span>) كما في النواة (<span class="nodecor">alfe</span>). سنستخدم فيما يلي <span class="math inline">\(q=1\)</span>. عندئذ تصبح معادلة الحالة مناسبة للمواد المكثّفة: عند درجة الحرارة المرجعية <span class="math inline">\(T_0\)</span> تُعطى علاقة الضغط بالكثافة بتعبير مورناهان (<span class="nodecor">murnaghan51</span>)، ويكون <span class="math inline">\(n \approx 3\text{–}4\)</span> للسيليكات الصلبة أو السائلة وللمعادن. في هذه الصياغة تمثّل <span class="math inline">\(\alpha_0\)</span> و<span class="math inline">\(K_T^0\)</span> (عدم القابلية للانضغاط الآيزوثيرمي المرجعي) قيمًا مرجعية. ورغم أنّ المعادلة بسيطة وتجريبية، فإنها تُلخِّص خصائص نمطية للمواد الصلبة والسوائل وتُطابق بصورة جيّدة جدًّا الكثافة الشعاعية للأرض بافتراض الأديباتية، بعيدًا عن منطقة الانتقال (<span class="nodecor">Ricard22</span>). وتستتبع هذه المعادلة علاقات مباشرة بين التمدّد الحراري وعدم القابلية للانضغاط من جهة، والكثافة من جهة أخرى؛ وهذه التعبيرات تتوافق مع القياسات المخبرية. وبما أنّ مُعامل غروينيزن يعتمد على الكثافة فقط، تَنتج علاقة بسيطة بين درجة الحرارة والكثافة الأديباتيتين بدمج المعادلات أعلاه، حيث <span class="math inline">\(T_a^t\)</span> و<span class="math inline">\(\rho_a^t\)</span> هما القِيمتان الأديباتيتان عند السطح (<span class="math inline">\(t\)</span> تعني الأعلى).</p>
+
+<p>نعتمد تقديرين إضافيين لاشتقاق صيغ تحليلية للملامح الأديباتية (لن نستخدم هذين التقديرين في الحسابات العددية كي لا يُخِلّا بصحّتها):</p>
 <ul>
-<li><p>نفترض أن السعات الحرارية عند الحجم ودرجة الحرارة الثابتين <span class="math inline">\(C_V\)</span> و<span class="math inline">\(C_P\)</span> متساويتان وثابتتان. السعات الحرارية فعلاً قريبة جدًا عندما <span class="math inline">\(\alpha T \ll 1\)</span> وهو الحال للمواد المكثفة، وكلاهما قريب من قيم دولونج وبيتيت <span class="math inline">\(C_V\approx C_P\approx 3\mathcal{R}\)</span> في J K<span class="math inline">^{-1}</span> mol<span class="math inline">^{-1}</span> (<span class="math inline">\(\mathcal{R}\)</span> هو الثابت الغازي) عند درجات حرارة عالية (<span class="nodecor">dulongpetit</span>).</p></li>
-<li><p>من المحتمل أن تكون درجة الحرارة الأديباتية السطحية مختلفة عن درجة الحرارة السطحية، ومع ذلك طالما <span class="math inline">\(\alpha (T_a^t-T_0)\ll 1\)</span>، يمكن أيضًا اعتبار الكثافة الأديباتية السطحية والكثافة المرجعية متساويتين، <span class="math inline">\(\rho_a^0\approx \rho_0\)</span> (بمعنى أن كثافة الكواكب دالة للضغط، لا لدرجة الحرارة).</p></li>
+  <li>نفترض أنّ السعتين الحراريتين عند الحجم الثابت <span class="math inline">\(C_V\)</span> وعند الضغط الثابت <span class="math inline">\(C_P\)</span> متساويتان وثابتتان. وهما بالفعل متقاربتان عندما <span class="math inline">\(\alpha T \ll 1\)</span>، وهو حال المواد المكثّفة؛ وكلتاهما قريبتان من قيمة ديولونغ وپتي <span class="math inline">\(C_V \approx C_P \approx 3\mathcal{R}\)</span> (J K<span class="math inline">\(^{-1}\)</span> mol<span class="math inline">\(^{-1}\)</span>) عند درجات حرارة عالية (<span class="nodecor">dulongpetit</span>).</li>
+  <li>قد تختلف درجة الحرارة الأديباتية السطحية عن درجة حرارة السطح، غير أنّه ما دام <span class="math inline">\(\alpha \,(T_a^t - T_0) \ll 1\)</span> يمكن اعتبار الكثافة الأديباتية السطحية مساوية تقريبًا للكثافة المرجعية، <span class="math inline">\(\rho_a^t \approx \rho_0\)</span> (أي إنّ كثافة الكواكب دالة للضغط أكثر منها لدرجة الحرارة).</li>
 </ul>
-<p>أخيرًا، يُفترض تغير الجاذبية مع العمق في كوكب عام. من أجل البساطة، نفترض أن الجاذبية موحدة وهو الحال بشكل أساسي في وشاح الأرض.</p>
-<p>مع هذه الفرضيات من السهل حل الظروف الأديباتية في طبقة حيث <span class="math inline">\(z\)</span> يتغير بين <span class="math inline">\(0\)</span> و<span class="math inline">\(H\)</span> (على سبيل المثال، وشاح بسُمك <span class="math inline">\(H\)</span>، <span class="math inline">\(z=0\)</span> يكون عند حدود النواة-الوشاح)، ونحصل على</p>
+
+<p>سنتجاهل أيضًا تغيّر الجاذبية مع العمق للبساطة، وهو تقريب معقول في وشاح الأرض.</p>
+
+<p>مع هذه الفرضيات يسهل حلّ الحالة الأديباتية في طبقة حيث تتغيّر <span class="math inline">\(z\)</span> بين <span class="math inline">\(0\)</span> و<span class="math inline">\(H\)</span> (مثل وشاح بسماكة <span class="math inline">\(H\)</span>، مع <span class="math inline">\(z=0\)</span> عند حدّ النواة–الوشاح)، فنحصل على:</p>
 <div class="math display">\[
 \begin{aligned}
 \rho_a   &= \rho_0  \left(1+\frac{H-z}{h} \right)^{1/(n-1)}, \\
-P_a       &= \frac{n-1}{n} \rho_0 g h \left[ \left(\frac{\rho_a}{\rho_0}\right)^{n} -1\right], \\
-T_a       &= T^t_a \exp \left[ \Gamma_0 \left( 1-\frac{\rho_0}{\rho_a} \right) \right]
+P_a      &= \frac{n-1}{n}\,\rho_0\, g\, h \left[ \left(\frac{\rho_a}{\rho_0}\right)^{n} - 1 \right], \\
+T_a      &= T^t_a \;\exp \!\left[ \Gamma_0 \left( 1 - \frac{\rho_0}{\rho_a} \right) \right].
 \end{aligned}
 \]</div>
-<p>حيث في المعادلة الأخيرة، قدمنا رقم الاستهلاك <span class="math inline">\(\Di\)</span> المعرف برقم الاستهلاك السطحي هذا معبر عنه فقط من الكميات المعروفة على السطح، ويبدو أن هذا الاختيار هو الاختيار الوحيد الممكن عند استكشاف كوكب جديد. في الأرض، رقم الاستهلاك حوالي <span class="math inline">\(\Di_\Earth =0.71\)</span> في الوشاح و0.56 في النواة السائلة (باستخدام <span class="math inline">\(\alpha_0=3\times 10^{-5}\)</span> K<span class="math inline">^{-1}</span>, <span class="math inline">\(H=2900\)</span> km و<span class="math inline">\(C_V=1200\)</span> J K<span class="math inline">^{-1}</span> kg<span class="math inline">^{-1}</span> في الوشاح، <span class="math inline">\(\alpha_0=1.8 \times 10^{-5}\)</span> K<span class="math inline">^{-1}</span> (<span class="nodecor">murphy13</span>), <span class="math inline">\(H=2300\)</span> km و<span class="math inline">\(C_V=715\)</span> J K<span class="math inline">^{-1}</span> kg<span class="math inline">^{-1}</span> (<span class="nodecor">gubbins</span>) في النواة السائلة، مع <span class="math inline">\(g=9.8\)</span> m s<span class="math inline">^{-2}</span>).</p>
-<p>في الكتب الجيوفيزيائية (<span class="nodecor">schubert</span>) يُعرف <span class="math inline">\(\Di\)</span> باستخدام <span class="math inline">\(C_P\)</span> في المقام، إذ لا يحدث فرقًا عمليًا كبيرًا حيث يتم دائمًا إهمال الفرق بينهما في الأدبيات الجيولوجية. ومع ذلك، نفضل تعريف الاستهلاك بـ <span class="math inline">\(C_V\)</span> كما في تعريف معامل غرونيزن. نحن أحرار في افتراض أن إحدى السعتين الحراريتين ثابتة (هنا يتم اختيار <span class="math inline">\(C_V\)</span> ثابتة)، ولكن افتراض ثبات كلتا السعتين الحراريتين يؤدي إلى تناقضات في حفظ الطاقة (<span class="nodecor">albou13</span>) لأن الفرق بينهما مرتبط مباشرة بمعادلة الحالة من خلال علاقة ماير.</p>
-<p>المعادلات السابقة -- يمكن استخدامها لمناقشة الخصائص المحتملة للملامح الأديباتية للكواكب الكبيرة. من تنوع الكتل والأقطار للكواكب الخارجية التي تم اكتشافها، يبدو أن العديد منها صخري على الأقل حتى قطر حوالي 2.5 مرة قطر الأرض (<span class="nodecor">otegi20</span>). كتلتها الملحوظة <span class="math inline">\(M\)</span> تزداد تقريبًا كقوة 3.45 من قطرها <span class="math inline">\(R\)</span> (ضغوطها الداخلية الكبيرة تزيد من كثافتها المتوسطة كـ <span class="math inline">\(\approx R^{0.45}\)</span>). سنستخدم هذه الملاحظة لتوسيع نطاق تحليلاتنا.</p>
+<p>حيث <span class="math inline">\(h \equiv \dfrac{K_T^0}{\rho_0\, g}\)</span> هو طول الضغط المرجعي. وفي التعبير الأخير قدّمنا رقم التبدُّد <span class="math inline">\(\Di\)</span>، ونُعرِّفه بالقيمة السطحية على نحوٍ يعتمد فقط على كميات معروفة عند السطح:</p>
+<p class="math display">\[
+\Di \;\equiv\; \frac{\alpha_0\, g\, H}{C_V}.
+\]</p>
+<p>في الأرض، يبلغ رقم التبدُّد نحو <span class="math inline">\(\Di_{\oplus} \approx 0.71\)</span> في الوشاح ونحو <span class="math inline">\(0.56\)</span> في النواة السائلة (باستخدام <span class="math inline">\(\alpha_0=3\times 10^{-5}\)</span> K<span class="math inline">\(^{-1}\)</span>، <span class="math inline">\(H=2900\)</span> كم، و<span class="math inline">\(C_V=1200\)</span> J K<span class="math inline">\(^{-1}\)</span> kg<span class="math inline">\(^{-1}\)</span> في الوشاح؛ و<span class="math inline">\(\alpha_0=1.8\times 10^{-5}\)</span> K<span class="math inline">\(^{-1}\)</span> (<span class="nodecor">murphy13</span>)، <span class="math inline">\(H=2300\)</span> كم، و<span class="math inline">\(C_V=715\)</span> J K<span class="math inline">\(^{-1}\)</span> kg<span class="math inline">\(^{-1}\)</span> (<span class="nodecor">gubbins</span>) في النواة السائلة، مع <span class="math inline">\(g=9.8\)</span> m s<span class="math inline">\(^{-2}\)</span>).</p>
+
+<p>في المراجع الجيوفيزيائية (<span class="nodecor">schubert</span>) يُعرَّف <span class="math inline">\(\Di\)</span> أحيانًا باستخدام <span class="math inline">\(C_P\)</span> في المقام؛ وهذا لا يُحدِث فرقًا عمليًّا كبيرًا إذ غالبًا ما يُهمَل الفارق بين <span class="math inline">\(C_P\)</span> و<span class="math inline">\(C_V\)</span> في الأدبيات. غير أنّنا نُفضِّل تعريف <span class="math inline">\(\Di\)</span> بـ<span class="math inline">\(C_V\)</span> اتساقًا مع تعريف مُعامل غروينيزن. ويجوز افتراض ثبات إحدى السعتين الحراريتين (نأخذ هنا <span class="math inline">\(C_V\)</span> ثابتة)، أمّا افتراض ثبات كلتيهما فيؤدّي إلى تناقضات في حفظ الطاقة (<span class="nodecor">albou13</span>) لأن الفرق بينهما يرتبط مباشرةً بمعادلة الحالة عبر علاقة ماير.</p>
+
+<p>المعادلات السابقة يمكن استخدامها لمناقشة الخصائص المحتملة للملامح الأديباتية في الكواكب الكبيرة. ومن تنوّع الكتل والأقطار للكواكب الخارجية المكتشفة، يبدو أنّ الكثير منها صخريّ حتى قطر يقارب مرّتين ونصف قطر الأرض (<span class="nodecor">otegi20</span>). وتزيد كتلتها المرصودة <span class="math inline">\(M\)</span> تقريبًا كقوّة <span class="math inline">\(3.45\)</span> من نصف القطر <span class="math inline">\(R\)</span> (إذ ترفع الضغوط الداخلية الكبيرة كثافتها المتوسّطة كـ <span class="math inline">\(\approx R^{0.45}\)</span>). سنستخدم هذه الملاحظة لتوسيع نطاق تحليلاتنا.</p>
 
 <h1 id="الجاذبية-في-معادلاتنا">الجاذبية في معادلاتنا</h1>
-<p>تتناسب الجاذبية في معادلاتنا مع <span class="math inline">\(g\propto  M/R^2 \approx R^{1.5}\)</span> ونعتبر أن سمك طبقات الحمل الحراري يتناسب مع <span class="math inline">\(R\)</span>. مع هذه المقاييس، يتغير رقم الاستنزاف <span class="math inline">\(\Di\)</span> مثل <span class="math inline">\(gH\propto R^{2.5}\)</span>. وبالتالي، وفقًا لـ(<span class="nodecor">otegi20</span>) يمكن توقع أرقام استنزاف تصل إلى <span class="math inline">\(2.5^{2.5}=10\)</span> أضعاف رقم استنزاف الأرض في الكواكب الصخرية الشائعة نسبيًا، وفيما يلي سنستكشف أرقام استنزاف تصل إلى <span class="math inline">\(\Di=10\)</span>. سنستخدم <span class="math inline">\(\Di=\Di_\Earth (R/R_\Earth)^{2.5}\)</span> عندما، لتوضيح الأفكار، نناقش من حيث أنصاف أقطار الكواكب بدلًا من أرقام الاستنزاف؛ كوكب فائق الأرض بنصف قطر يساوي ضعف نصف قطر الأرض (أو ثلاثة أضعاف) سيفترض بالتالي أن له وشاحًا برقم استنزاف حوالي <span class="nodecor">4.0</span> (أو <span class="nodecor">11.1</span>) ونواة برقم استنزاف حوالي <span class="nodecor">3.2</span> (أو <span class="nodecor">8.7</span>).</p>
+<p>تتناسب الجاذبية عند السطح مع <span class="math inline">\(g \propto M/R^2 \approx R^{1.5}\)</span>، ونفترض أنّ سُمك طبقات الحمل الحراري يتناسب مع <span class="math inline">\(R\)</span>. ووفق هذه المقاييس يتغيّر رقم التبدُّد <span class="math inline">\(\Di\)</span> مثل <span class="math inline">\(gH \propto R^{2.5}\)</span>. وبناءً على (<span class="nodecor">otegi20</span>) يمكن توقّع أرقام تبدُّد تصل إلى <span class="math inline">\(2.5^{2.5} \approx 10\)</span> أضعاف رقم تبدُّد الأرض في كواكب صخرية شائعة نسبيًّا؛ وفيما يلي سنستكشف قيمًا حتى <span class="math inline">\(\Di = 10\)</span>. سنستخدم <span class="math inline">\(\Di = \Di_{\oplus}\,\big(R/R_{\oplus}\big)^{2.5}\)</span> عندما نُعيد الصياغة بدلالة أنصاف الأقطار بدلًا من أرقام التبدُّد: فكوكب فائق الأرض بنصف قطر يساوي ضعفي نصف قطر الأرض (أو ثلاثة أضعافه) سيكون وشاحه عندئذٍ ذا رقم تبدُّد يقارب <span class="nodecor">4.0</span> (أو <span class="nodecor">11.1</span>)، ونواته نحو <span class="nodecor">3.2</span> (أو <span class="nodecor">8.7</span>).</p>
 
-<h1 id="الشروط-اللاحراريه-في-كوكب-فائق-الأرض">الشروط اللاحرارية في كوكب فائق الأرض</h1>
-<h2 id="ملامح-الكثافة-ودرجة-الحرارة-اللاحراريه">ملامح الكثافة ودرجة الحرارة الأديباتية</h2>
-<p>مع زيادة عدم القابلية للانضغاط بشكل كبير مع الكثافة وبالتالي مع الضغط، فإن الكثافة ودرجة الحرارة الأديباتية تزداد فقط بشكل معتدل كدالة لنصف قطر الكوكب. نستخدم <span class="math inline">\(\Di=\Di_\Earth=0.6\)</span> (أسود)، <span class="math inline">\(\Di=2\)</span> (أحمر)، <span class="math inline">\(\Di=10\)</span> (أخضر).</p>
-<p>نسبة الكثافة الأديباتية بين القاع والقمة لغلاف صهاري متحرك تكون وفقًا للعلاقة أعلاه وترسم هذه النسبة في الشكل [Ratio]a كدالة لـ <span class="math inline">\(\Di\)</span> (المحور السفلي) وكدالة لـ <span class="math inline">\(R\)</span> (المحور العلوي، بافتراض أن <span class="math inline">\(\Di\propto R^{2.5}\)</span>). يشير رمز الأرض إلى موقع الأرض حيث يتوقع أن تكون نسبة الكثافة الأديباتية عبر الغلاف الصهاري 1.52 (بسبب التغيرات الطورية في منطقة الانتقال يُلاحظ تغير الكثافة في غلاف الأرض الصهاري بدلًا من ذلك 1.70).</p>
-<p>تتحكم هذه النسبة في نسبة درجة الحرارة الأديباتية وفقًا للتعبير أعلاه (انظر الشكل [Ratio]b). بالنسبة للأرض، يجب أن تكون هذه النسبة 1.41 عبر الغلاف الصهاري (مشار إليه برمز الأرض، من 1600 K في الأعلى إلى 2256 K في الأسفل). درجة الحرارة القصوى في القاع <span class="math inline">\(T_a^b\)</span> محدودة على أي حال عندما <span class="math inline">\(\rho_a \rightarrow \infty\)</span> بواسطة
-\[
-T_a^b = T_a^t \exp(\Gamma_0)
-\]
-حتى في الكواكب الفائقة السيليكاتية الكبيرة جدًا، يجب أن تظل درجة الحرارة الأديباتية في القاع معتدلة وبالكاد تتجاوز الضعف مقارنة بدرجة الحرارة الأديباتية على السطح (الشكل [Ratio]b).</p>
+<h1 id="الحالة-الأديباتية-في-كوكب-فائق-الأرض">الحالة الأديباتية في كوكب فائق الأرض</h1>
 
-<h2 id="تدفق-الحرارة-في-الحمل-القابل-للانضغاط">تدفق الحرارة في الحمل القابل للانضغاط</h2>
-<p>للحمل القابل للانضغاط عند رقم برانتل غير محدود، يرتبط تدفق الحرارة الفائق الأديباتي (تدفق الحرارة السطحي <span class="math inline">\(Q\)</span> ناقص تدفق الحرارة الأديباتي السطحي <span class="math inline">\(Q_a\)</span>) ورقم رايلي الفائق الأديباتي بالعلاقة <span class="math inline">\({\rm Nu}_{sa}\propto {\rm Ra}_{sa}^{1/3}\)</span> حيث <span class="math inline">\({\rm Nu}_{sa}\)</span> هو رقم نوسلت الفائق الأديباتي (في المعادلة، يتم تقييم التدفقات الحرارية اللابعدية بواسطة <span class="math inline">\(kT_0/H\)</span> والحرارة بواسطة <span class="math inline">\(T_0\)</span>). هذه القاعدة التوسعية مع رقم رايلي الفائق الأديباتي تتفق مع ما وجد في تقريب بوسينسك (<span class="nodecor">malkus,GrLo01</span>). يقترح هذا التعبير عادة في الحالات التي يكون فيها <span class="math inline">\(\Delta T_a\)</span> أصغر وغالبًا أصغر بكثير من <span class="math inline">\(\Delta T\)</span> وهو ما لا يتحقق بالضرورة عندما يكون <span class="math inline">\(\Di\)</span> كبيرًا، حيث يمكن أن يحدث الحمل حتى عندما <span class="math inline">\(\Delta T_a \geq \Delta T\)</span>. لاحظ أيضًا أنه، كما يظهر بالخط المتقطع الأزرق في الشكل [figTa]، قد يكون تدفق الحرارة الأديباتي على السطح كبيرًا جدًا وقد يكون <span class="math inline">\(Q-Q_a\)</span> سلبيًا حتى في الحالة التي <span class="math inline">\(\Delta T_a\leq\Delta T\)</span>. رقم “نوسلت الأديباتي”، <span class="math inline">\({\rm Nu}_a=Q_a/\Delta T_a=\Di T_a^t/\Delta T_a\)</span> (انظر التعريف أعلاه) هو من الرتبة <span class="math inline">\(\Di\)</span> حيث <span class="math inline">\(T_a^t/\Delta T_a\approx 1\)</span>. لـ <span class="math inline">\(\Di=10\)</span>، هذا بالفعل تدفق حراري كبير يتطلب رقم رايلي من <span class="nodecor">10</span><span class="math inline">\(^5\)</span>-<span class="nodecor">10</span><span class="math inline">\(^6\)</span> في حالة بوسينسك.</p>
+<h2 id="ملامح-الكثافة-ودرجة-الحرارة-الأديباتية">ملامح الكثافة ودرجة الحرارة الأديباتية</h2>
+<p>نظرًا لازدياد عدم القابلية للانضغاط مع الكثافة ومن ثمّ مع الضغط، فإن الكثافة ودرجة الحرارة الأديباتية تزدادان باعتدال فقط مع ازدياد نصف قطر الكوكب. نعرض أمثلة لِقِيَم <span class="math inline">\(\Di\)</span>: <span class="math inline">\(\Di=\Di_{\oplus}\approx 0.6\)</span> (أسود)، <span class="math inline">\(\Di=2\)</span> (أحمر)، <span class="math inline">\(\Di=10\)</span> (أخضر).</p>
+
+<p>نسبة الكثافة الأديباتية بين القاع والقمة في وشاحٍ حَمْلي تُستنتَج من العلاقة أعلاه، وتُرسَم عادةً مقابل <span class="math inline">\(\Di\)</span> (المحور السفلي) ومقابل <span class="math inline">\(R\)</span> (المحور العلوي، بافتراض <span class="math inline">\(\Di\propto R^{2.5}\)</span>). يُشير رمز الأرض إلى موضع الأرض حيث تُقدَّر نسبة الكثافة الأديباتية عبر الوشاح بنحو <span class="nodecor">1.52</span> (بينما تُرصد عبر وشاح الأرض قيمة أقرب إلى <span class="nodecor">1.70</span> بسبب التحوّلات الطورية في منطقة الانتقال).</p>
+
+<p>وتتحكّم هذه النسبة في نسبة درجة الحرارة الأديباتية وفق التعبير أعلاه أيضًا. بالنسبة إلى الأرض، يجب أن تكون هذه النسبة حوالى <span class="nodecor">1.41</span> عبر الوشاح (مشار إليها برمز الأرض؛ من <span class="nodecor">1600</span> K في الأعلى إلى <span class="nodecor">2256</span> K في الأسفل). أمّا درجة الحرارة القصوى في القاع <span class="math inline">\(T_a^b\)</span> فهي مُقَيَّدة، عندما <span class="math inline">\(\rho_a \rightarrow \infty\)</span>، بالعلاقة:</p>
+<div class="math display">\[
+T_a^b \;=\; T_a^t \,\exp(\Gamma_0).
+\]</div>
+<p>وعليه، حتى في الكواكب الفائقة السيليكاتية الكبيرة جدًّا يجب أن تبقى درجة الحرارة الأديباتية عند القاع معتدلة، ونادرًا ما تتجاوز ضعف درجة الحرارة الأديباتية عند السطح.</p>
+
+<h2 id="تدفق-الحرارة-في-الحمل-القابل-للانضغاط">تدفّق الحرارة في الحمل القابل للانضغاط</h2>
+<p>في الحمل القابل للانضغاط عند رقم برانتل لا نهائي، يرتبط تدفّق الحرارة فائق الأديباتية (تدفّق الحرارة السطحي <span class="math inline">\(Q\)</span> مطروحًا منه التدفّق الأديباتي السطحي <span class="math inline">\(Q_a\)</span>) ورقم رايلي فائق الأديباتية بالعلاقة <span class="math inline">\({\rm Nu}_{sa}\propto {\rm Ra}_{sa}^{1/3}\)</span>، حيث <span class="math inline">\({\rm Nu}_{sa}\)</span> هو رقم نوسلت فائق الأديباتية. (جرى لابُعدَة التدفقات الحرارية بالقسمة على <span class="math inline">\(k\,T_0/H\)</span>، ودرجات الحرارة بالقسمة على <span class="math inline">\(T_0\)</span>.) وتتماشى هذه القاعدة التحجيمية مع ما وُجد في تقريب بوسينسك (<span class="nodecor">malkus, GrLo01</span>). يُقترَح هذا التعبير عادةً عندما تكون <span class="math inline">\(\Delta T_a\)</span> أصغر — وغالبًا أصغر بكثير — من <span class="math inline">\(\Delta T\)</span>، وهو ما لا يتحقّق بالضرورة عندما يكون <span class="math inline">\(\Di\)</span> كبيرًا، إذ قد يحدث الحمل حتى عندما <span class="math inline">\(\Delta T_a \ge \Delta T\)</span>. لاحظ أيضًا أنه قد يكون التدفّق الأديباتي السطحي كبيرًا بحيث يغدو <span class="math inline">\(Q - Q_a\)</span> سالبًا رغم أن <span class="math inline">\(\Delta T_a \le \Delta T\)</span>.</p>
+
+<p>أمّا رقم نوسلت الأديباتي فيُعرَّف بـ <span class="math inline">\({\rm Nu}_a = Q_a / \Delta T_a = \Di\, T_a^t / \Delta T_a\)</span> (انظر التعريف أعلاه)، وهو من رتبة <span class="math inline">\(\Di\)</span> إذا كانت <span class="math inline">\(T_a^t / \Delta T_a \approx 1\)</span>. وعند <span class="math inline">\(\Di = 10\)</span> يكون ذلك تدفّقًا حراريًّا كبيرًا يتطلّب رقم رايلي على رتبة <span class="math inline">\(10^{5}\text{–}10^{6}\)</span> في حالة بوسينسك.</p>
 
 </main>
 </body>
 </html>
-```
-**ملاحظات التصحيح:**
-- تم تصحيح جميع المعادلات لتكون بصياغة لاتكس سليمة وقابلة للعرض في MathJax.
-- تم استبدال جميع أوامر `\eqlbl{}` غير القياسية بحذفها (لأنها ليست جزءًا من لاتكس القياسي أو MathJax).
-- تم تصحيح جميع الكسور والأسس واستخدام الأقواس بشكل صحيح.
-- تم إضافة معادلة درجة الحرارة الأديباتية القصوى التي كانت مذكورة نصًا فقط.
-- تم التأكد من أن جميع المعادلات مغلقة بشكل صحيح وتخلو من أي أخطاء لاتكس.
-- لم يتم تغيير أي كلمة من النص الأصلي.

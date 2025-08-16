@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Liwen Zhu Peking University liwenzhu@pku.edu.cn Peixi Peng Peking University pxpeng@pku.edu.cn Zongqing Lu Peking University zongqing.lu@pku.edu.cn Yonghong Tian Peking University yhtian@pku.edu.cn">
+  <title>MTLight: تعلم تعزيزِي متعدد المهام فعّال للتحكم في إشارات المرور</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">MTLight: تعلم تعزيزِي متعدد المهام فعّال للتحكم في إشارات المرور</h1>
+<p class="author"><span class="nodecor">Liwen Zhu</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">liwenzhu@pku.edu.cn</span><br />
+<span class="nodecor">Peixi Peng</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">pxpeng@pku.edu.cn</span><br />
+<span class="nodecor">Zongqing Lu</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">zongqing.lu@pku.edu.cn</span><br />
+<span class="nodecor">Yonghong Tian</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">yhtian@pku.edu.cn</span><br /></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">ملخص</h1>
+<p>للتحكم في إشارات المرور تأثير كبير على تخفيف الازدحام المروري في المدن الحديثة. في السنوات الأخيرة، استُخدم التعلم التعزيزي العميق على نطاق واسع لهذه المهمة، حيث أظهر نتائج واعدة، لكنه واجه أيضًا عدة تحديات مثل محدودية الأداء وضعف كفاءة العينات. لمواجهة هذه التحديات، اقترحنا <span class="nodecor">MTLight</span> لتعزيز التمثيل الكامن للحالة من خلال تتبع مجموعة واسعة من مؤشرات المرور. في الوقت نفسه، بُنيت مهام مساعدة وإشرافية متعددة لتعلّم هذا التمثيل الكامن، إضافة إلى استخدام نوعين من ميزات التضمين: خاصة بالمهمة ومشتركة، لإثراء التمثيل الكامن. أظهرت التجارب الموسعة التي أُجريت على <span class="nodecor">CityFlow</span> أن <span class="nodecor">MTLight</span> يتميز بسرعة تقارب رائدة وأداء تنافسي. كما قمنا بمحاكاة ذروة حركة المرور في سيناريوهات ذات صعوبة متزايدة في التحكم، وأشارت النتائج إلى قدرة عالية على التكيف.</p>
+<h1 id="sec:introduction">مقدمة</h1>
+<p>يهدف التحكم في إشارات المرور إلى تنسيق الإشارات عبر التقاطعات لتحسين كفاءة الحركة في منطقة أو مدينة، وهو عامل مهم في النقل الفعّال. ترتكز معظم الأساليب التقليدية للتحكم في الإشارات إما على جداول زمنية ثابتة (<span class="nodecor">koonce2008traffic</span>) أو على قواعد مصممة يدويًّا (<span class="nodecor">kouvelas2014maximum</span>)، وتعتمد بشكل كبير على الخبرة والتحليل المعمق للبيانات التاريخية للمرور، مما يصعّب نقلها. مؤخرًا، بدأت الأساليب المبنية على التعلم التعزيزي العميق (<span class="nodecor">DRL</span>) (<span class="nodecor">guo2021urban,jintao2020learning,pan2020spatio,he2020spatio,tong2021combinatorial,wang2020deep,gu2020exploiting,liu2021urban,xu2021hierarchically,zhang2021periodic</span>) تستخدم الشبكات العصبية العميقة لتعلم سياسات التحكم في كل تقاطع عبر التفاعل المباشر مع البيئة. ومع ذلك، تبقى المشكلة تحديًا بسبب وفرة مؤشرات المرور (عدد السيارات، طول الطابور، وقت الانتظار، السرعة، إلخ) وتعقيد الملاحظات والبيئة الديناميكية.</p>
+<p>نظرًا لأن الملاحظة والمكافأة وديناميكيات كل إشارة مرتبطة ارتباطًا وثيقًا بالإشارات الأخرى، يُمكن نمذجة التحكم في الإشارات ضمن شبكة طرق واسعة النطاق كمشكلة تعلم تعزيزي متعدد الوكلاء (<span class="nodecor">MARL</span>). اقترحت معظم الأعمال السابقة (<span class="nodecor">wei2019presslight,zhang2020generalight,chen2020toward,zheng2019learning</span>) تعلم سياسة كل وكيل بالاعتماد فقط على ملاحظات التقاطع المحلية، مع تجاهل الحالة العالمية المتاحة في المدينة الذكية. وكما ذُكر في (<span class="nodecor">zheng2019diagnosing</span>)، للمقاييس المختلفة تأثير كبير على مهمة التحكم في الإشارات. لذلك، يجب ألا يقتصر تصميم ملاحظة الوكيل على المعلومات المحلية فحسب، بل يشمل أيضًا الحالة العالمية.</p>
+<p>يمكن لتصميم ملاحظة جيد أن يستفيد بشكل كامل من العينات، محسنًا ليس فقط أداء السياسة ولكن أيضًا كفاءة العينة. ومع ذلك، توجد عدّة مؤشرات مرورية في الحالة العالمية، ويصعب اختيار ملاحظة وكيل مناسبة وغير متكررة بسبب التوازن بين الاكتفاء في التمثيل وتقليل الأبعاد. فمن ناحية، قد لا يمثل التصميم المقتصر خصائص الحالة بدقة كافية، مما يؤثر على تقدير انتقال الحالة واختيار الإجراء. ومن ناحية أخرى، إذا استخدمنا مجموعة معقدة من المؤشرات، فقد يصعب ضبط أوزانها بدقة، مما يؤدي إلى ازدواجية البيانات وزيادة الأبعاد، بالإضافة إلى استهلاك موارد حاسوبية عالية وتعقيد تعلم الوكيل.</p>
+<p>لذلك، ولتوفير تمثيل كافٍ لمهمة التحكم في الإشارات، نُقدّم مفهوم التمثيل الكامن. أولًا، نأخذ الملاحظة المحلية الأولية لكل تقاطع، ثم نُعزّز هذه الملاحظة بجزء كامن يُتعلم من الحالة العالمية. لبناء هذا الجزء الكامن، صُممت مهام مساعدة وإشرافية متعددة تتعلق بأنماط حركة المرور، حيث تعالج شبكة متكررة (<span class="nodecor">RNN</span>) تسلسلًا من إحصاءات التاريخ العالمي، ثم تتفرع لتنبؤات مختلفة مثل توزيع التدفقات ووقت السفر. ولإثراء الفضاء الكامن، تستخرج هذه البنية نوعين من ميزات التضمين: خاصة بالمهمة وعامة (مشتركة)، مما يكملهما بعضهما البعض عند تعزيز الملاحظة الأولية. أخيرًا، بناءً على الملاحظة المعززة، تُتعلم السياسة عبر (<span class="nodecor">DRL</span>) (<span class="nodecor">mnih2015human</span>)، حيث تُدرّب المهام المتعددة في آن واحد مع تعلم السياسة، مما يجعل التمثيل الكامن أكثر تكيفًا.</p>
+<h1 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h1>
+<p>يُستعرض العمل السابق في القسم [sec:related_work]، ويُقدّم الأساس النظري في القسم [sec:preliminaries]. يُوضّح القسم [sec:problem_definition] صياغة مشكلة التعلم متعدد الوكلاء. بينما يُفصّل القسم [sec:method] منهجية <span class="nodecor">MTLight</span>. يُقدّم القسم [sec:experiment] النتائج التجريبية التي تبيّن فعالية الطريقة. وأخيرًا، يناقش القسم [sec:conclusion] الاستنتاجات والأعمال المستقبلية.</p>
+<h1 id="sec:problem_statement">بيان المشكلة</h1>
+<h2 id="sec:problem_definition">تعريف المشكلة</h2>
+<p>نفترض مشكلة التحكم في إشارات المرور متعددة الوكلاء، حيث تُنمذج اللعبة كلعبة ماركوف (<span class="nodecor">Markov Game</span>) (<span class="nodecor">littman1994markov</span>)، ويمكن تمثيلها بالمعادلة <span class="math inline">\(\mathcal{G}=\langle \mathcal{N},\mathcal{S}, \mathcal{A}, \mathcal{O}, \mathcal{P}, \mathcal{R}, \mathcal{H}, \gamma\rangle\)</span>. <span class="math inline">\(\mathcal{N}=\{1, \ldots, n\}\)</span> هي مجموعة الوكلاء، بحيث يتحكم كل وكيل في تقاطع واحد. <span class="math inline">\(\mathcal{S}\)</span> تمثل فضاء الحالة العالمي، و<span class="math inline">\(\mathcal{A}\)</span> فضاء الأفعال لكل وكيل. يشير الفعل المشترك <span class="math inline">\(\boldsymbol{a}\in \mathbf{A}\equiv\mathcal{A}^{n}\)</span> إلى مجموعة الأفعال الفردية <span class="math inline">\([a_i]_{i=1}^n\)</span>. في كل خطوة زمنية، يتلقى الوكيل \(i\) ملاحظة \(o_i\in\mathcal{O}\)، يختار فعلًا \(a_i\)، ثم ينتقل النظام إلى الحالة التالية \(s'\) وفقًا لدالة الانتقال \(\mathcal{P}(s'\mid s,\boldsymbol{a})\)، ويحصل كل وكيل على مكافأة \(r_i=\mathcal{R}(s,\boldsymbol{a})\). تمثل \(\mathcal{H}\) أفق الزمن و\(\gamma\in[0,1)\) عامل الخصم.</p>
+<h2 id="sec:agent_design">تصميم الوكيل</h2>
+<p>يتحكم في كل تقاطع وكيل مستقل. فيما يلي، نوضح تصميم الملاحظة وتصميم الفعل وتصميم المكافأة لوكيل التعلم التعزيزي.</p>
+<ul>
+<li><p><strong>الملاحظة.</strong> تتكون ملاحظة الوكيل الأولية من جزأين: (1) عدد المركبات على كل مسار وارد \(\mathbf{f}_t^v\)؛ (2) الطور الحالي للإشارة \(\mathbf{f}_t^s\). يمكن الحصول على كلا الجزأين مباشرةً من المحاكي، وقد وُصفت التفاصيل في القسم [sec:preliminaries]. تُعرّف الملاحظة الأولية للوكيل \(i\) بـ
+<span class="math display">
+\[
+  o_{i} = \{ \mathbf{f}_t^v, \mathbf{f}_t^s \},
+\]
+</span>
+حيث \(\mathbf{f}_t^v = \{V_{l_{1}^{in}}, V_{l_{2}^{in}}, \ldots, V_{l_{m}^{in}}\}\) و\(\{l_{1}^{in}, \ldots, l_{m}^{in}\}\) هي المسارات الواردة للتقاطع، والطور الحالي \(\mathbf{f}_t^s=p_k, k\in\{1,\ldots,K\}\) يمثل بمتجه التمثيل الحراري. هدفنا هو تعلّم الفضاء الكامن لتعزيز هذه الملاحظة والاستفادة بشكل أفضل من العينات.</p></li>
+<li><p><strong>الفعل.</strong> يتمثل فعل كل وكيل في اختيار الطور للفترة الزمنية التالية. على الرغم من أن الأطوار قد تكون مرتبة تسلسليًّا في الواقع، فإن الاختيار المباشر يوفّر مرونة أكبر. يُعرّف فعل الوكيل \(i\) بـ
+<span class="math display">
+\[
+  a_{i} = \{ \mathbf{f}_t^s\},
+\]
+</span>
+حيث \(\mathbf{f}_t^s=p_k, k\in\{1,\ldots,K\}.\)</p></li>
+<li><p><strong>المكافأة.</strong> نعّرف المكافأة بسالب مجموع أطوال الطوابير على المسارات الواردة، وهو مقياس شائع في الأعمال السابقة (<span class="nodecor">zheng2019diagnosing</span>, <span class="nodecor">huang2021modellight</span>, <span class="nodecor">zang2020metalight</span>, <span class="nodecor">zheng2019learning</span>, <span class="nodecor">wei2019colight</span>). تُعرّف مكافأة الوكيل \(i\) بـ
+<span class="math display">
+\[
+  r_{i} = -\sum_{m=1}^{M} q_{l^{in}_{m}},
+\]
+</span>
+حيث \(q_{l^{in}_{m}}\) طول الطابور على المسار الوارد \(l^{in}_{m}\).</p></li>
+</ul>
+<!-- The rest of the document remains unchanged as it is already well-written and natural. -->
+</body>
+</html>

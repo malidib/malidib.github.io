@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>main</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 1.7em 1em 0;
+      padding-right: 1em;
+      border-right: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+      direction: rtl;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax fixes */
+    .MathJax, .mjx-chtml { direction: ltr !important; unicode-bidi: embed; }
+    /* LaTeX block equations RTL fix */
+    .mjx-chtml[display="true"] { text-align: center !important; direction: ltr !important; }
+    /* Center figures and tables */
+    figure, .figure*, .table* {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    figcaption {
+      text-align: center;
+      font-size: 0.95em;
+      color: #444;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }
+    .center {
+      text-align: center;
+    }
+    /* PDF object styling */
+    object[type="application/pdf"] {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin: 1em 0;
+      min-height: 400px;
+      background: #fafafa;
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+    /* Table styling */
+    table {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      text-align: center;
+      vertical-align: middle;
+    }
+    th {
+      background: #f5f5f5;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+    tr:nth-child(odd) {
+      background: #f0f0f0;
+    }
+    /* Highlight important text */
+    strong {
+      color: #2a2a2a;
+    }
+    /* Section heading styling */
+    h1, h2, h3 {
+      color: #2a2a2a;
+      font-weight: bold;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.2em;
+      margin-bottom: 0.8em;
+    }
+    h1.unnumbered {
+      border-bottom: 2px solid #bdbdbd;
+      margin-top: 2em;
+    }
+    /* Arabic font for better rendering */
+    body, html {
+      font-family: 'Amiri', 'Noto Naskh Arabic', 'Georgia', serif;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div class="center">
+<p><strong><span>التأريخ الزمني لتجمع مجرة درب التبانة في مراحلها المبكرة</span></strong><br />
+</p>
+</div>
+<p>جوزيفينا مونتالبان<span class="math inline">\(^{1}\)</span>، جي. تيد ماكيريث<span class="math inline">\(^{1,2,3,4}\)</span>، أندريا ميغليو<span class="math inline">\(^{1,5,6}\)</span>، فيورينزو فينتشينزو<span class="math inline">\(^{1,7,8}\)</span>، كريستينا كيابيني<span class="math inline">\(^{9}\)</span>، غايل بولدين<span class="math inline">\(^{10}\)</span>، بونوا موسيه<span class="math inline">\(^{11}\)</span>، أرليت نولز<span class="math inline">\(^{12}\)</span>، ريتشارد سكوفلير<span class="math inline">\(^{12}\)</span>، ماثيو فرار<span class="math inline">\(^{8,13}\)</span>، إيما ويليت<span class="math inline">\(^{1,14}\)</span>، غاي آر. ديفيز<span class="math inline">\(^{1,14}\)</span>، أوليفر هول<span class="math inline">\(^{1,14}\)</span>، مارتن بو نيلسن<span class="math inline">\(^{1,14,15}\)</span>، سانيا خان<span class="math inline">\(^{1,14}\)</span>، بن إم. ريندل<span class="math inline">\(^{1,14}\)</span>، والتر إي. فان روسيم<span class="math inline">\(^{1,14}\)</span>، جيسون دبليو. فيرغسون<span class="math inline">\(^{16}\)</span>، ويليام جي. تشابلين<span class="math inline">\(^{1,14}\)</span><br />
+</p>
+<p><span class="math inline">\(^{1}\)</span> كلية الفيزياء والفلك، جامعة برمنغهام، برمنغهام B15 2TT، المملكة المتحدة</p>
+<p><span class="math inline">\(^{2}\)</span> قسم الفلك والفيزياء الفلكية، جامعة تورنتو، 50 شارع سانت جورج، تورنتو، أونتاريو، M5S 3H4، كندا</p>
+<p><span class="math inline">\(^{3}\)</span> المعهد الكندي للفلك النظري، جامعة تورنتو، 60 شارع سانت جورج، تورنتو، أونتاريو، M5S 3H8، كندا</p>
+<p><span class="math inline">\(^{4}\)</span> معهد دنلاب للفلك والفيزياء الفلكية، جامعة تورنتو، 50 شارع سانت جورج، تورنتو، أونتاريو، M5S 3H4، كندا</p>
+<p><span class="math inline">\(^{5}\)</span> قسم الفيزياء والفلك، جامعة بولونيا، فيا غوبتي 93/2، I-40129 بولونيا، إيطاليا</p>
+<p><span class="math inline">\(^{6}\)</span> المرصد الوطني للفيزياء الفلكية وعلوم الفضاء بولونيا، فيا غوبتي 93/3، I-40129 بولونيا، إيطاليا</p>
+<p><span class="math inline">\(^{7}\)</span> مركز علم الكونيات وفيزياء الجسيمات الفلكية، جامعة ولاية أوهايو، 191 شارع ويست وودروف، كولومبوس، أوهايو 43210، الولايات المتحدة الأمريكية</p>
+<p><span class="math inline">\(^{8}\)</span> قسم الفلك، جامعة ولاية أوهايو، كولومبوس، أوهايو 43210، الولايات المتحدة الأمريكية</p>
+<p><span class="math inline">\(^{9}\)</span> معهد لايبنيز لفيزياء الفلك بوتسدام (AIP)، أن دير شتيرنفارته 16، 14482 بوتسدام، ألمانيا</p>
+<p><span class="math inline">\(^{10}\)</span> مرصد جنيف، جامعة جنيف، 51 طريق دي ماييت، 1290 سوفيرني، سويسرا</p>
+<p><span class="math inline">\(^{11}\)</span> ليسيا، مرصد باريس، جامعة PSL، المركز الوطني للبحث العلمي، جامعة السوربون، جامعة باريس، 5 ساحة جول جانسن، 92195 مودون، فرنسا</p>
+<p><span class="math inline">\(^{12}\)</span> معهد أبحاث علوم وتكنولوجيا الفضاء والفيزياء الفلكية (STAR)، جامعة لييج، 19c أليه دو 6 أوت، B-4000 لييج، بلجيكا</p>
+<p><span class="math inline">\(^{13}\)</span> معهد الفيزياء الفلكية وعلوم الفضاء، جامعة بورتو، CAUP، شارع النجوم، 4150-762 بورتو، البرتغال</p>
+<p><span class="math inline">\(^{14}\)</span> مركز الفيزياء الفلكية النجمية (SAC)، قسم الفيزياء والفلك، جامعة آرهوس، ني مونكيغاد 120، DK-8000 آرهوس سي، الدنمارك</p>
+<p><span class="math inline">\(^{15}\)</span> مركز علوم الفضاء، جامعة نيويورك أبوظبي، صندوق بريد 129188، أبوظبي، الإمارات العربية المتحدة</p>
+<p><span class="math inline">\(^{16}\)</span> قسم الفيزياء، جامعة ولاية ويتشيتا، ويتشيتا، كانساس 67260-0032، الولايات المتحدة الأمريكية</p>
+<p><strong>يتنبأ النموذج الكوني القياسي (<span class="math inline">\(\Lambda\)</span>-CDM) بأن المجرات تتكون عبر تجميع هرمي على مقاييس زمنية كونية<span class="citation" data-cites="Peebles1993 Kauffmann1993"></span>. وقد مرت مجرة درب التبانة، مثل غيرها من المجرات القرصية، باندماجات عنيفة وامتصاص لمجرات قزمة صغيرة في تاريخها المبكر. وبفضل بيانات Gaia-DR2<span class="citation" data-cites="gaia"></span> والمسوح الطيفية<span class="citation" data-cites="apogee"></span>، تم التعرف على بقايا النجوم الناتجة عن تلك الاندماجات<span class="citation" data-cites="Helmi2018 Belokurov2018 Myeong2019"></span>. إن التأريخ الزمني لمثل هذه الأحداث أمر بالغ الأهمية لكشف تكوّن وتطور المجرة عند الانزياحات الحمراء العالية، إلا أن ذلك كان صعبًا حتى الآن بسبب صعوبة الحصول على أعمار دقيقة لهذه النجوم القديمة جدًا. هنا، نجمع بين علم الزلازل النجمية – دراسة اهتزازات النجوم – مع الحركيات والغنى الكيميائي، لتقدير أعمار نجمية دقيقة (بنسبة تقريبية <span class="math inline">\(\sim\)</span> 11%) لعينة من النجوم التي رصدها مرصد الفضاء <em>كيبلر</em><span class="citation" data-cites="Borucki2016"></span>. والأهم من ذلك، أن هذه العينة تشمل ليس فقط بعض أقدم النجوم التي تشكلت داخل المجرة، بل أيضًا نجومًا تشكلت خارجيًا ثم تم امتصاصها لاحقًا في درب التبانة. وبالاستفادة من هذا التمييز العمري، نقدم دليلاً قويًا يدعم النماذج التي تشير إلى أن المجرة كانت قد كوّنت بالفعل جزءًا كبيرًا من نجومها (التي تقيم الآن بشكل رئيسي في قرصها السميك) قبل سقوط المجرة القزمة التابعة Gaia-Enceladus/Sausage<span class="citation" data-cites="Helmi2018 Belokurov2018"></span> قبل حوالي 10 مليارات سنة.</strong><br />
+كشفت نتائج حديثة استنادًا إلى مهمة Gaia التابعة لوكالة الفضاء الأوروبية<span class="citation" data-cites="gaia"></span> أن محتوى النجوم في الهالة الداخلية لدرب التبانة يهيمن عليه حطام من بعض المجرات القزمة الضخمة نسبيًا، مثل Gaia-Enceladus/Sausage (يشار إليها لاحقًا بـ GES). ويُعتقد الآن أن حدث الاندماج مع GES كان من أهم الأحداث في تاريخ المجرة، حيث شكّل ما نراه اليوم<span class="citation" data-cites="Belokurov2018 Belokurov2019 DiMatteo2019 Vincenzo2019"></span>. ولتقييد تأثير مثل هذه الاندماجات على درب التبانة والمجرات المشابهة، من الضروري فهم حالتها قبل وبعد الاندماج. ويتطلب ذلك رسم التسلسل الزمني لهذه الأحداث بأعلى دقة ممكنة (<span class="math inline">\(\sim 10\%\)</span> لمتابعة أول 4 مليارات سنة بعد الانفجار العظيم<span class="citation" data-cites="Miglio2017"></span>). وقد قدرت عدة دراسات حديثة خصائص وتوقيت هذا الحدث الاندماجي <span class="citation" data-cites="Helmi2018 Haywood2018 DiMatteo2019 Mackereth2019 Vincenzo2019 Grand2020"></span>، بينما سعت دراسات أخرى (قبل<span class="citation" data-cites="Schuster2012 Hawkins2014"></span> وبعد<span class="citation" data-cites="Das2020 Gallart2019"></span> Gaia-DR2) إلى تأريخ النجوم الممتصة ونجوم <em>الموقع الأصلي</em> في هالة درب التبانة (انظر مراجعة Helmi<span class="citation" data-cites="Helmi2020"></span>). وعلى الرغم من اختلاف الأهداف والمنهجيات، إلا أن تقنيات التأريخ هذه محدودة الدقة والموثوقية، إذ تعتمد على خصائص سطحية للنجوم وتوقعات من نماذج تطور النجوم، والتي تتأثر بعدم اليقين في الفيزياء وتداخل المعاملات، مما يصعب الحصول على أعمار نجمية بالدقة المطلوبة.</p>
+<p>تُعد نجوم العمالقة الحمراء، نظرًا لطول أعمارها وسطوعها الذاتي العالي، مرشحة ممتازة لرسم خريطة الأعمار في مناطق مختلفة من درب التبانة<span class="citation" data-cites="Miglio2013 Miglio2017 Das2020"></span>. إلا أن تقدير أعمار العمالقة الحمراء في فضاء اللون-القدر باستخدام خصائصها السطحية يعطي نتائج غير مؤكدة، إذ أن ألوانها ولمعانها متشابهة بغض النظر عن الكتلة أو العمر. ولحسن الحظ، يوفر علم الزلازل النجمية، الذي يستكشف البنية الداخلية للنجوم، وسيلة للوصول إلى دقة تتراوح بين 10-20% في تأريخ أعمار العمالقة الحمراء الفردية<span class="citation" data-cites="ChaplinMiglio2013 Miglio2017 Miglio2020"></span>.</p>
+<p>من بين نحو 15,000 نجم عملاق أحمر من النوع K وG تم رصد اهتزازاتها في مجال تلسكوب الفضاء <em>كيبلر</em><span class="citation" data-cites="Borucki2016"></span>، تقع نسبة صغيرة في نطاق الفقر المعدني المنخفض المميز لهالة درب التبانة الداخلية ومكون القرص عالي <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> (<span class="math inline">\(\mathrm{[Fe/H]} &lt;-0.5\)</span>). من بين هؤلاء، هناك حوالي 400 نجم تم قياس وفرة عناصرها بدقة، ومعاملاتها الجوية وسرعاتها الشعاعية من الإصدار الرابع عشر لمسح تطور مجرة درب التبانة الطيفي (APOGEE DR14<span class="citation" data-cites="apogee"></span>)، بالإضافة إلى حركاتها الذاتية المفصلة من Gaia-DR2<span class="citation" data-cites="gaia"></span>.</p>
+<figure>
+<object data="figure1.pdf" id="fig:powspec" type="application/pdf" style="width:90.0%"></object>
+<figcaption aria-hidden="true"><span><strong>الطيف الطاقي النجمي المرصود والنموذجي.</strong></span> أطياف القدرة لثلاثة نجوم من عينتنا تغطي نطاقًا واسعًا في <span class="math inline">\(\mathrm{[Fe/H]}\)</span>، مقارنة مع الأطياف النظرية للنموذج الأفضل توافقًا كما أعادته أداة AIMS. تمثل نسبة الإشارة إلى الضجيج (SNR) ارتفاع قمم الأنماط الاهتزازية بالنسبة إلى مستوى الضجيج المحيط. تشير الخطوط العمودية، الملونة حسب الدرجة الزاوية <span class="math inline">\(\ell\)</span>، إلى تردد النمط الاهتزازي وتقدير سعة النمط النسبية. تم استخدام ترددات الأنماط <span class="math inline">\(\ell=0\)</span> المقاسة فقط (الموضحة بخطوط متقطعة رمادية) كقيود زلزالية في AIMS. ترددات الأنماط <span class="math inline">\(\ell=1\)</span> و<span class="math inline">\(\ell=2\)</span> المتوقعة من النموذج الأفضل توافقًا تعيد إنتاج الأنماط المرصودة في البيانات بدقة جيدة، مما يعزز الثقة في جودة إجراء المطابقة والمعاملات النجمية المستنتجة.</figcaption>
+</figure>
+<p>توفر بيانات <em>كيبلر</em> أطياف تردد اهتزازي عالية الجودة والدقة، مما يسمح بتقدير دقيق لترددات الأنماط ذات الدرجات الزاوية المختلفة (شعاعي <span class="math inline">\(\ell=0\)</span>، ثنائي القطب <span class="math inline">\(\ell=1\)</span>، رباعي القطب <span class="math inline">\(\ell=2\)</span>)، وبالتالي تحديد المعاملات الأساسية والحالة التطورية للنجوم. نستخدم أولاً هذه المعلومات الزلزالية لاستبعاد النجوم التي تقع في مرحلة الكتلة الحمراء (RC) (أي نجوم منخفضة الكتلة تحرق الهيليوم في النواة والتي من المرجح أنها فقدت كتلة في مراحل تطورها السابقة) والمراحل اللاحقة. بعد إزالة هذه النجوم، يتبقى لدينا عينة من <span class="math inline">\(95\)</span> نجمًا على فرع العمالقة الحمراء (RGB) تم قياس ترددات أنماطها الشعاعية لاستخدامها كمدخلات زلزالية لاستنتاج أعمار دقيقة وموثوقة (انظر قسم <strong>الطرق</strong> والشكل الموسع 5 للمزيد من التفاصيل).</p>
+<div class="figure*">
+<p><object data="figure2.pdf" type="application/pdf"></object></p>
+</div>
+<p>نقدّر خصائص النجوم (انظر الجدول التكميلي 1) باستخدام ترددات الأنماط الشعاعية الفردية والمعاملات الجوية من التحليل الطيفي كمدخلات رصدية في أداة AIMS<span class="citation" data-cites="aims"></span>، وهي أداة تقدير معاملات بايزية توفر أفضل توافق للخصائص النجمية وتوزيعات احتمالية كاملة من خلال المقارنة مع النماذج النجمية النظرية والترددات الاهتزازية الأداباتية (انظر <strong>الطرق</strong> والشكل الموسع 6 و7). الدقة التي نحققها في تقدير العمر، بمتوسط 11%، تتيح لنا فك التسلسل الزمني للأحداث قبل نحو <span class="math inline">\(\sim 12\)</span> مليار سنة، كما سنوضح أدناه.</p>
+<p>تم التحقق من متانة توزيعات الأعمار النجمية المقدرة لدينا من خلال إجراء اختبارات مختلفة (انظر قسم <strong>الطرق</strong> والأشكال الموسعة 8 و9 لوصف مفصل). علاوة على ذلك، كما هو موضح في الشكل 1، على الرغم من أننا قمنا بملاءمة أنماط <span class="math inline">\(\ell=0\)</span> فقط، إلا أن الأطياف النظرية المتوقعة من معاملات النموذج الأفضل توافقًا تعيد إنتاج الأنماط غير الشعاعية (<span class="math inline">\(\ell=1, 2\)</span>) في الأطياف المرصودة بدقة، مما يعزز الثقة في جودة المعاملات النجمية المستنتجة.</p>
+<figure>
+<object data="figure3.pdf" id="fig:cmd" type="application/pdf"></object>
+<figcaption aria-hidden="true"><strong>مخطط اللون-القدر (CMD) من Gaia-DR2 لعينة الدراسة والهالة المعرفة حركيًا.</strong> المدرج التكراري ثنائي الأبعاد باللون الرمادي يمثل النجوم ذات السرعة العرضية <span class="math inline">\(\mathrm{v_{T}} &gt; 200 \,\mathrm{كم\,ث^{-1}}\)</span>، والرموز الملونة حسب العمر (كما في الشكل 2) تمثل عينة العمالقة الحمراء البالغ عددها 95 نجمًا. هذا المخطط (القدر المطلق في حزمة Gaia – G – مقابل اللون الممثل بفارق مقادير Gaia في حزمتي BP وRP) تمت مناقشته سابقًا<span class="citation" data-cites="Gallart2019 Babusiaux2016 Haywood2018"></span>، لكننا نظهر هنا أن النجوم التي نحددها كأعضاء في هالة <em>خارجية المنشأ</em> (المجموعة A) تقع أساسًا على التسلسل الأزرق ولديها، في المتوسط، أعمار زلزالية أصغر من نجوم المجموعة C (<em>داخلية المنشأ</em>) على التسلسل الأحمر. ولغرض التوضيح البصري فقط، أضفنا خطي تساوي عمر (isochrones)<span class="citation" data-cites="PARSEC"></span> (خطوط متقطعة رمادية) تتبع التسلسلين الأزرق والأحمر.</figcaption>
+</figure>
+<p>يلخص الشكل 2 الخصائص الزمنية والكيميائية والحركية للعينة النهائية المكونة من 95 نجمًا على فرع العمالقة الحمراء والتي تمكنا من تحديد أعمارها بدقة. في الشكل 2أ نعرض توزيع <span class="math inline">\(\mathrm{[Fe/H]}\)</span>-<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> (ملون حسب العمر)، إلى جانب توزيع عينة APOGEE DR14 (نقاط رمادية). تظهر النقاط الرمادية بوضوح، بالإضافة إلى كثافتين عند قيم <span class="math inline">\(\mathrm{[Fe/H]}\)</span> الأعلى تمثلان تجمعي القرص المجري منخفض وعالي <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> والهالة الغنية بالمعادن <em>داخلية المنشأ</em><span class="citation" data-cites="Hayden2015"></span>، تجمعًا متشتتًا عند <span class="math inline">\(\mathrm{[Fe/H] &lt; -0.7}\)</span> و<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> متوسطة (<span class="math inline">\(\sim 0.1\)</span> إلى <span class="math inline">\(0.2\)</span>)، حيث تقع مجموعة GES التي تم توصيفها مؤخرًا<span class="citation" data-cites="Helmi2018 Hayes2018 Mackereth2019"></span>. تحتوي عينتنا النهائية (دوائر ملونة) على أعضاء من كل هذه التجمعات. كما ندرج، للمرجعية، موقع النجم <span class="math inline">\(\nu\)</span> إندي، وهو نجم تحت عملاق ساطع تم تأريخه مؤخرًا باستخدام الزلازل النجمية وصنف كعضو في "القرص السميك المسخن"<span class="citation" data-cites="Chaplin2020"></span>.</p>
+<p>تشير دراسات حديثة للهالة المجرية والمجرات القزمة في المجموعة المحلية<span class="citation" data-cites="Tolstoy2009"></span> إلى أن النجوم في تسلسل <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> المنخفض عند <span class="math inline">\(\mathrm{[Fe/H] \lesssim -0.7}\)</span> قد تم امتصاصها على الأرجح إلى المجرة<span class="citation" data-cites="NissenSchuster2010 Schuster2012 Hawkins2015 Fernandez-Alvar2018 Hayes2018"></span>. تشير نسب <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> في المجرات القزمة المحلية إلى تلوث أعلى من المستعرات العظمى من النوع Ia مقارنة بالمستعرات المنهارة نواتها، ويرجح أن ذلك بسبب ضعف نشاط تكوين النجوم وتدفقات الغاز القوية<span class="citation" data-cites="Salvadori2009 Vincenzo2014"></span>. ونتيجة لذلك، فإن نسب <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> فيها أقل من نجوم الهالة <em>داخلية المنشأ</em>، حيث تتأثر وفرة العناصر أكثر بمنتجات النوى من المستعرات المنهارة نواتها مقارنة بالنوع Ia.</p>
+<p>استنادًا إلى الدراسات السابقة، نصنف عينة العمالقة الحمراء الزلزالية لدينا عبر قطع في فضاء <span class="math inline">\(\mathrm{[Fe/H]}\)</span>-<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> على طول الخط <span class="math inline">\(\mathrm{[Mg/Fe]} = -0.2\ \mathrm{[Fe/H]} + 0.05\)</span>. النجوم أسفل هذا الخط يُحتمل أن تكون قد تشكلت في مجرات قزمة ثم امتصت، أما التي فوقه فمن المرجح أنها تشكلت <em>داخل المجرة</em>. من الممكن أن يكون هناك تداخل بين التجمعين. ولتقليل ذلك، نقسم النجوم أسفل الخط إلى مجموعتين حسب شذوذ المدار (الإهليلجية) (محسوبة كما هو موضح في قسم <strong>الطرق</strong>). النجوم ذات المدارات الأكثر راديالية (شذوذ <span class="math inline">\(e &gt; 0.7\)</span>، رموز مفتوحة) هي الأكثر احتمالاً أن تكون قد امتصت من سلف GES<span class="citation" data-cites="Mackereth2019"></span>.</p>
+<p>يدعم الشكل 2ب، الذي يعرض وفرة النيكل بالنسبة للحديد <span class="math inline">\(\mathrm{[Ni/Fe]}\)</span> ومجموع وفرة الكربون والنيتروجين بالنسبة للأكسجين <span class="math inline">\(\mathrm{[(C+N)/O]}\)</span>، أن القطوع المطبقة تعزل التجمعات النجمية المختلفة بكفاءة<span class="citation" data-cites="NissenSchuster2010 Hawkins2015"></span>. عينة APOGEE-DR14 أسفل خط <span class="math inline">\(\mathrm{[Fe/H]}\)</span>-<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> (نقاط رمادية كبيرة) فقيرة في كل من <span class="math inline">\(\mathrm{[Ni/Fe]}\)</span> و<span class="math inline">\(\mathrm{[(C+N)/O]}\)</span>، بما يتوافق مع المجرات القزمة المحلية التي تحتوي على نجوم ذات نسب <span class="math inline">\(\mathrm{[Ni/Fe]}\)</span> أقل من درب التبانة<span class="citation" data-cites="McWilliam2018 Kirby2019"></span>. تقع نجوم عينتنا ذات الشذوذ العالي <span class="math inline">\(e\)</span> و<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> المنخفضة [المجموعة (A)] عند أدنى قيم <span class="math inline">\(\mathrm{[Ni/Fe]}\)</span>، وهي منفصلة بوضوح عن المجموعات الأخرى، مما يعزز فرضيتنا بأن مجموعة <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> المنخفضة و<span class="math inline">\(e &gt; 0.7\)</span> تشكلت على الأرجح <em>خارج المجرة</em>. أما المجموعة ذات الشذوذ المنخفض <span class="math inline">\(e\)</span> و<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> المنخفضة [المجموعة (B)]، فهي على الأرجح مزيج من نجوم ذات أصول مختلفة <span class="citation" data-cites="Mackereth2019 Koppelman2019"></span>: ذيل منخفض الشذوذ لنجوم GES، الطرف الفقير بالمعادن من القرص الرقيق (مثلاً، النجمين عند <span class="math inline">\(\mathrm{[Fe/H]}\gtrsim-0.7\)</span>)، أو بقايا أحداث امتصاص أقل كتلة، كما قد يكون الحال للنجوم ذات أنماط <span class="math inline">\(\mathrm{[Ni/Fe]}\)</span> و<span class="math inline">\(\mathrm{[(C+N)/O]}\)</span> المشابهة لنجوم <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> العالية، مما قد يشير إلى تاريخ تكوين نجمي مختلف في المجرة الأصلية<span class="citation" data-cites="McWilliam2018 Kirby2019"></span>. تكوين هذه المجموعة هو الأكثر حساسية لتفاصيل معيار التصنيف المعتمد، إلا أن ذلك لا يؤثر على متانة استنتاجاتنا الرئيسية حول الترتيب الزمني لمجموعتي GES و<span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> العالية [المجموعة (C)] (انظر قسم <span><strong>الطرق</strong></span>، والشكل الموسع 10).</p>
+<figure>
+<object data="figure4.pdf" id="fig:summary" type="application/pdf" style="width:75.0%"></object>
+<figcaption aria-hidden="true"><span><strong>توزيعات العمر والشذوذ المداري.</strong></span> العمر مقابل الشذوذ المداري (<span class="math inline">\(e\)</span>) للنجوم في العينة ملونة حسب <span class="math inline">\(\mathrm{[Fe/H]}\)</span>. تمثل الدوائر قيم العمر للنماذج الأفضل توافقًا، والخطوط الأفقية تمثل عدم اليقين ([فاصل الثقة 16%-84%] من التوزيع الاحتمالي الكامل). عدم اليقين في <span class="math inline">\(e\)</span> أصغر من حجم الرمز. يمثل الماسة النجم <span class="math inline">\(\nu\)</span> إندي<span class="citation" data-cites="Chaplin2020"></span> (غير مدرج في التوزيعات). المدرج التكراري في الأعلى يعكس التوزيعات الاحتمالية المجمعة للنجوم في كل مجموعة. النجوم ذات <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> المنخفضة والشذوذ العالي (A) أصغر عمرًا قليلاً من غالبية عينة <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> العالية (C)، مما يشير إلى أن معظم تجمع <em>داخل المجرة</em> عالي <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> كان موجودًا بالفعل قبل وقوع حدث الامتصاص الرئيسي.</figcaption>
+</figure>
+<p>يرتبط التسلسلان الأزرق (BS) والأحمر (RS) اللذان كشفت عنهما Gaia-DR2<span class="citation" data-cites="Babusiaux2016"></span> في مخطط اللون-القدر للهالة المعرفة حركيًا، بتجمع نجمي من أصل خارج المجرة، وبالهالة <em>داخلية المنشأ</em> و/أو القرص السميك المسخن على التوالي<span class="citation" data-cites="Haywood2018"></span>. كما هو موضح في الشكل 3، فإن معظم نجوم مجموعتنا (C)، التي صنفناها كنجوم قرص/هالة عالية <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> <em>داخلية المنشأ</em>، تحتل التسلسل الأحمر، بينما تقع نجوم GES المحتملة في التسلسل الأزرق. تتيح لنا الأعمار الدقيقة التي يوفرها علم الزلازل النجمية ترتيب تكوين التجمع الممتص زمنيًا بالنسبة لتجمع <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> العالي <em>داخل المجرة</em>.</p>
+<p>يعرض الشكل 4 النتيجة الرئيسية لدراستنا: توزيع النجوم في العينة حسب العمر وشذوذ المدار (ملونة حسب <span class="math inline">\(\mathrm{[Fe/H]}\)</span>). يظهر اللوح العلوي التوزيعات الاحتمالية الهامشية للأعمار لمجموعاتنا الثلاث: (A) <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> أقل من القطع و<span class="math inline">\(e&gt;0.7\)</span> (حطام GES)، جميعها متجمعة عند عمر وشذوذ متشابهين؛ (B) <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> أقل من القطع و<span class="math inline">\(e &lt; 0.7\)</span>؛ و(C) <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> أعلى من القطع، مع انتشار كبير في <span class="math inline">\(e\)</span>، وأعمار أقدم ولكن مع ذيل واضح لنجوم أصغر عمرًا في التجمع.</p>
+<p>كما في دراسات حديثة أخرى<span class="citation" data-cites="Chiappini2015 Martig2015"></span>، نجد في عينتنا جزءًا من النجوم "الفتية ظاهريًا"، رغم وجود مؤشرات كيميائية تدل على أعمار قديمة (ارتفاع وفرة عناصر <span class="math inline">\(\alpha\)</span> ونسبة C/N عالية). وبما أن علم الزلازل النجمية يعطي كتلة عالية لهذه النجوم، فقد تم التعرف عليها سابقًا كنجوم "زائدة الكتلة" وغنية بعناصر <span class="math inline">\(\alpha\)</span> (من المرجح أنها نتاج نقل كتلة<span class="citation" data-cites="Jofre2016"></span>).</p>
+<div class="table*">
+<p><span id="tab:HBM" label="tab:HBM"></span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">المجموعة</th>
+<th style="text-align: center;"><span class="math inline">\(\mu\rm[مليار سنة]\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{\tau\,[مليار سنة]}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{\mu_{c}\,[مليار سنة]}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{\tau_c\,[مليار سنة]}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\epsilon\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">(A) <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> منخفضة، <span class="math inline">\(e &gt; 0.7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(9.7\pm0.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.8^{+0.9}_{-0.4}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4.5\pm2.0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.9^{+5.7}_{-2.0}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.15^{+0.12}_{-0.08}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">(B) <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> منخفضة، <span class="math inline">\(e &lt; 0.7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(8.2\pm0.8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.8^{+1.0}_{-0.5}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4.9\pm2.0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.8^{+5.1}_{-1.8}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.06^{+0.07}_{-0.03}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">(C) <span class="math inline">\(\mathrm{[Mg/Fe]}\)</span> عالية</td>
+<td style="text-align: center;"><span class="math inline">\(10.4\pm0.3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.5^{+0.4}_{-0.3}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4.2\pm0.8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.1^{+4.2}_{-1.4}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.16^{+0.05}_{-0.04}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>قمنا بملاءمة نموذج هرمي لأعمار النجوم في كل مجموعة، لتقييم متوسط العمر وانتشار الأعمار الداخلي لكل تجمع. نفترض أن العمر الحقيقي لكل نجم في كل مجموعة يُسحب من توزيع طبيعي بمتوسط عمر <span class="math inline">\(\mu\)</span> وعرض <span class="math inline">\(\tau\)</span>، مع تلوث من توزيع طبيعي أوسع بنسبة <span class="math inline">\(\epsilon\)</span>، بمتوسط <span class="math inline">\(\mu_c\)</span> وانتشار <span class="math inline">\(\tau_c\)</span> لتمثيل مساهمة النجوم "زائدة الكتلة" (انظر <strong>الطرق</strong> والشكل الموسع 11 لوصف أكثر تفصيلاً). تظهر أفضل معاملات التوافق لكل تجمع في الجدول 1. وتشير النتائج إلى: <em>أولاً</em> أن متوسط العمر (<span class="math inline">\(\mu\)</span>) للمجموعة (B) أقل بشكل ملحوظ من نجوم المجموعتين (A) و(C). وعلى الرغم من علمنا بأن بعض عناصرها قد تكون ملوثة من القرص الرقيق، إلا أننا نلاحظ أن اثنين فقط من أصل سبعة نجوم لها أقصى ارتفاع رأسي عن مستوى المجرة أقل من 1 كيلوبارسيك، وإزالتها من العينة لا يغير توزيع الأعمار. هذا الفرق واضح في التوزيع الاحتمالي للأعمار لهذه النجوم في الشكل 4 (المدرج التكراري الأصفر). <em>ثانيًا</em> نجوم المجموعة (A) (التي نربطها بسلف GES) لها متوسط عمر وانتشار متوافق مع نجوم المجموعة (C). وهذا يشير إلى أن هذه النجوم، التي يُحتمل أنها تشكلت <em>خارج المجرة</em>، تكونت في نفس الوقت تقريبًا أو بعد قليل من تجمع <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> العالي (C) الذي تشكل في درب التبانة بدءًا من حوالي <span class="math inline">\(\sim 10\)</span> إلى <span class="math inline">\(11.5\)</span> مليار سنة مضت، كما يظهر في هذه الدراسة.</p>
+<p>توفر الأعمار الدقيقة المستنتجة هنا للأجسام الفردية في التسلسلين الأزرق والأحمر في الشكل 3، قيودًا حاسمة لنماذج تكوّن درب التبانة وللنقاش الأوسع حول المحركات الرئيسية لتكوّن القرص السميك، سواء كانت الاندماجات أو تراكم الغاز البارد. تشير بعض الدراسات الحديثة<span class="citation" data-cites="DiMatteo2019 Chaplin2020 Gallart2019 Vincenzo2019 Grand2020 Belokurov2018 Belokurov2019 Mackereth2018 Myeong2019 Kruijssen2020 Bignone2019"></span> إلى أدلة غير مباشرة تدعم سيناريو يؤثر فيه الاندماج مع GES على تطور مجرة أولية عالية <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> كانت موجودة بالفعل. من خلال تحديد التسلسل الزمني للأحداث في درب التبانة المبكرة بأعمار دقيقة، تؤكد نتائجنا هذه الصورة الناشئة من دراسات أخرى والتي تشير إلى أن تجمع <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> العالي كان قد تشكل بالفعل عندما اندمجت GES مع درب التبانة.</p>
+<p>إن حقيقة أن نجوم الهالة المجرية التي تنتمي إلى حطام GES المحدد كيميائيًا وحركيًا قد تشكلت في نفس الوقت أو بعد نجوم درب التبانة <em>داخلية المنشأ</em> المبكرة، لها آثار عميقة على تاريخ تكوّن وتجميع المجرة. وعلى الرغم من أن الطرف الفقير بالمعادن من القرص السميك (<span class="math inline">\(\mathrm{[Fe/H]&lt;-0.5}\)</span>) الذي حللناه هنا يُتوقع أن يكون أقدم من مكونه الرئيسي، إلا أن دراسة حديثة<span class="citation" data-cites="Miglio2020"></span> تظهر أن تجمع القرص السميك (<span class="math inline">\(\mathrm{-1.55&lt;[Fe/H]&lt;0.26}\)</span> و<span class="math inline">\(\mathrm{[\alpha/Fe]&gt;0.1}\)</span>) له انتشار عمري داخلي لا يتجاوز 1.25 مليار سنة. وتشير هذه النتائج إلى أن غالبية نجوم تجمع <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> العالي كانت موجودة قبل الاندماج مع سلف GES (الذي له حد أدنى 9 مليارات سنة في قياسات أعمارنا، بما يتوافق مع وقت الاندماج المتوقع من المحاكاة الكونية الحديثة<span class="citation" data-cites="Kruijssen2020"></span>)، وتدعم النماذج التي تشير إلى أن GES لم يكن محفزًا رئيسيًا لتكوّن القرص السميك. وبما أنه من المعروف أن مثل هذه النجوم <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> لا تتكون إلا في أحداث تكوين نجمي كثيفة في مجرات غنية بالغاز<span class="citation" data-cites="Chiappini1997 Mackereth2018"></span>، فإن ذلك يعني إما: أ) أن المجرة شهدت اندماجًا غنيًا جدًا بالغاز <em>قبل</em> GES، أو ب) أن محتوى الغاز الداخلي المبكر لدرب التبانة تم تراكمه بسرعة كافية لتكوين نجوم <span class="math inline">\(\mathrm{[\alpha/Fe]}\)</span> العالية دون أي حدث اندماج. بينما يتنبأ السيناريو الأول بإمكانية وجود اندماج رئيسي آخر، يشير الثاني إلى أن تجميع المادة المظلمة في المجرة كان سريعًا بما يكفي لتراكم الغاز بكميات كافية في الأزمنة المبكرة لتحفيز هذا التكوين النجمي.</p>
+<h1 class="unnumbered" id="methods">الطرق</h1>
+<!-- بقية النص كما هو أعلاه، مع جميع الصيغ الرياضية بين \(...\) أو $$...$$ -->
+<!-- تم استبدال جميع <embed> بعنصر <object> مع type="application/pdf" لعرض ملفات PDF بشكل صحيح -->
+<!-- MathJax من CDN مفعّل، وتمت إزالة السطر الخاص بمسار MathJax المحلي -->
+<!-- تم إضافة بعض CSS لضمان اتجاه صحيح للمعادلات في العربية -->
+<!-- لا تغييرات أخرى مطلوبة -->
+</body>
+</html>

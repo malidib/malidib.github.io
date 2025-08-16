@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Alexander Ulrichsen,  Paul Murray,  Stephen Marshall,  Moncef Gabbouj  Serkan Kiranyaz,  Mehmet Yamaç, Nour Aburaed,        " />
-  <title>الشبكات العصبية التشغيلية لتحقيق رفع الدقة الطيفية الفائق بكفاءة في عدد المعاملات</title>
+  <meta name="author" content="Alexander Ulrichsen, Paul Murray, Stephen Marshall, Moncef Gabbouj, Serkan Kiranyaz, Mehmet Yamaç, Nour Aburaed" />
+  <title>الشبكات العصبية التشغيلية للاستعادة فائقة الدقّة في الصور فائقة الطيف بكفاءة من حيث عدد المعاملات</title>
   <style>
     html {
       line-height: 1.6;
@@ -17,8 +17,8 @@
     }
     body {
       margin: 0 auto;
-      max-width: 40em;
-      padding: 50px 50px 50px 50px;
+      max-width: 42em;
+      padding: 48px 48px 56px 48px;
       hyphens: auto;
       overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
@@ -95,7 +95,7 @@
       text-align: right;
       font-size: 90%;
       background: #f6f6f6;
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 1.5em;
       box-shadow: 0 2px 8px #eee;
     }
@@ -172,8 +172,18 @@
       text-align: center;
     }
     header {
-      margin-bottom: 4em;
+      margin-bottom: 2.5em;
       text-align: center;
+    }
+    .authors {
+      margin-top: 0.5em;
+      font-size: 95%;
+      line-height: 1.8;
+    }
+    sup.footnote-ref {
+      font-size: 70%;
+      vertical-align: super;
+      padding: 0 0.15em;
     }
     #TOC li {
       list-style: none;
@@ -224,59 +234,60 @@
 </head>
 <body>
 <header id="title-block-header">
-  <h1 class="title">الشبكات العصبية التشغيلية لتحقيق رفع الدقة الطيفية الفائق بكفاءة في عدد المعاملات</h1>
-  <p class="author">ألكسندر أولريخسن، بول موراي، ستيفن مارشال، منصف قبوج، سيركان كيرانياز، محمد ياماش، نور أبورائد</p>
+  <h1 class="title">الشبكات العصبية التشغيلية للاستعادة فائقة الدقّة في الصور فائقة الطيف بكفاءة من حيث عدد المعاملات</h1>
+  <p class="author authors">
+    ألكسندر أولريخسن<sup><a href="#fn1" id="fnref1" class="footnote-ref" role="doc-noteref">1</a></sup>،
+    بول موراي<sup><a href="#fn2" id="fnref2" class="footnote-ref" role="doc-noteref">2</a></sup>،
+    ستيفن مارشال<sup><a href="#fn3" id="fnref3" class="footnote-ref" role="doc-noteref">3</a></sup>،
+    منصف قبّوج<sup><a href="#fn4" id="fnref4" class="footnote-ref" role="doc-noteref">4</a></sup>،
+    سيركان كيرانياز<sup><a href="#fn5" id="fnref5" class="footnote-ref" role="doc-noteref">5</a></sup>،
+    محمد ياماش<sup><a href="#fn6" id="fnref6" class="footnote-ref" role="doc-noteref">6</a></sup>،
+    نور أبو رائد<sup><a href="#fn7" id="fnref7" class="footnote-ref" role="doc-noteref">7</a></sup>
+  </p>
   <div class="abstract">
-    <div class="abstract-title">الملخص</div>
+    <div class="abstract-title">الملخّص</div>
     <p>
-      تصوير الطيف الفائق هو أداة أساسية في الاستشعار عن بعد، حيث يلتقط معلومات طيفية تفوق بكثير ما توفره الصور الملونة التقليدية. إلا أن زيادة المعلومات الطيفية تأتي على حساب انخفاض الدقة المكانية. ويعد رفع الدقة الفائق تقنية شائعة تهدف إلى توليد نسخة عالية الدقة من صورة منخفضة الدقة. تعتمد معظم طرق رفع الدقة الحديثة على الشبكات العصبية الالتفافية، إلا أن الالتفاف بحد ذاته عملية خطية، وتعتمد الشبكات على دوال التفعيل غير الخطية بعد كل طبقة لتوفير اللاخطية اللازمة لتعلم الدوال المعقدة. وهذا يؤدي إلى أن تكون الشبكات العصبية الالتفافية عميقة جداً لتحقيق النتائج المرجوة. مؤخراً، تم اقتراح الشبكات العصبية التشغيلية ذاتية التنظيم، والتي تهدف إلى تجاوز هذا القيد من خلال استبدال المرشحات الالتفافية بدوال غير خطية قابلة للتعلم باستخدام متسلسلة ماكلورين. يركز هذا العمل على توسيع مرشحات الالتفاف في نموذج رفع الدقة الفائق الشائع إلى مرشحات تشغيلية أكثر قوة لتعزيز أداء النموذج على الصور الطيفية الفائقة. كما ندرس تأثير التوصيلات المتبقية وأنواع التطبيع المختلفة على هذا النوع من الشبكات المحسنة. على الرغم من أن عدد معاملات الشبكات التشغيلية أقل من نظيراتها من الشبكات الالتفافية، إلا أن نتائجنا تظهر أن الشبكات التشغيلية تحقق أداءً متفوقاً في رفع الدقة الفائق على مجموعات بيانات الصور الطيفية الصغيرة. الكود متاح على Github: <a href="https://github.com/aulrichsen/SRONN" target="_blank">https://github.com/aulrichsen/SRONN</a>.
+      يُعَدّ التصويرُ فائقُ الطيف أداةً أساسيةً في الاستشعار عن بُعد، إذ يلتقط معلوماتٍ طيفيّةً تفوق بكثير ما توفّره الصورُ الملونة التقليدية (RGB). غير أنّ زيادةَ المعلومات الطيفية تأتي عادةً على حساب انخفاض الدقّة المكانية. وتُعنى الاستعادةُ فائقةُ الدقّة بإعادة بناء صورةٍ عاليةِ الدقّة من نظيرتها منخفضة الدقّة.
+    </p>
+    <p>
+      تعتمدُ معظمُ طرائق الاستعادة الحديثة على الشبكات العصبية الالتفافية (CNNs). وبما أنّ الالتفاف عمليةٌ خطّيّة في حدّ ذاته، تعتمد هذه الشبكات على دوالّ تفعيلٍ لاخطّيّة بعد كل طبقة لتوفير اللّاخطّية اللازمة لتعلّم الدوال المعقّدة؛ ما يستدعي غالباً شبكاتٍ عميقةً جدّاً لتحقيق الأداء المنشود.
+    </p>
+    <p>
+      حديثاً، اقتُرحت الشبكاتُ العصبية التشغيلية ذاتيّةُ التنظيم (Self-ONNs) لتجاوز هذا القيد عبر استبدال المرشّحات الالتفافية بمرشّحاتٍ تشغيليّةٍ لاخطّيّةٍ قابلةٍ للتعلّم تُقرَّب بسلسلةِ ماكلورين. يركّز هذا العمل على ترقية مرشّحات الالتفاف في نموذجٍ شائعٍ للاستعادة فائقة الدقّة إلى مرشّحاتٍ تشغيليّةٍ أقوى، بهدف تعزيز الأداء على الصورِ فائقةِ الطيف. كما ندرسُ تأثيرَ الوصلاتِ المتبقّية وأنواعِ التطبيع المختلفة على هذا الصنف من الشبكات المُحسّنة.
+    </p>
+    <p>
+      على الرغم من أنّ عددَ معاملاتِ الشبكات التشغيلية يمكن أن يكون أقلّ مقارنةً بنظيراتها الالتفافية، تُظهرُ نتائجُنا أنّ هذه الشبكات تُحقّق أداءً مُتفوقاً في الاستعادةِ فائقةِ الدقّة على مجموعاتِ بياناتِ الصورِ فائقةِ الطيف صغيرةِ الحجم. الشيفرةُ متاحةٌ على GitHub: <a href="https://github.com/aulrichsen/SRONN" target="_blank" rel="noopener">https://github.com/aulrichsen/SRONN</a>.
     </p>
   </div>
 </header>
 
-<p><span>شل وآخرون: مقالة نموذجية باستخدام IEEEtran.cls لمجلات IEEE</span></p>
-
 <div class="IEEEkeywords">
-  <p>تصوير الطيف الفائق، رفع الدقة الفائق، الشبكات العصبية التشغيلية</p>
+  <p>الكلمات المفتاحية: التصوير فائق الطيف، الاستعادة فائقة الدقّة، الشبكات العصبية التشغيلية</p>
 </div>
 
 <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
   <hr />
   <ol>
     <li id="fn1" role="doc-endnote">
-      <p>أ. أولريخسن يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة
-        <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>أ. أولريخسن يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
     <li id="fn2" role="doc-endnote">
-      <p>ب. موراي يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة
-        <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>ب. موراي يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
     <li id="fn3" role="doc-endnote">
-      <p>س. مارشال يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة
-        <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>س. مارشال يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة. <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
     <li id="fn4" role="doc-endnote">
-      <p>م. قبوج يعمل في كلية تكنولوجيا المعلومات وعلوم الاتصالات، جامعة تامبيري، تامبيري، فنلندا
-        <a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>م. قبّوج يعمل في كلية تكنولوجيا المعلومات وعلوم الاتصالات، جامعة تامبيري، تامبيري، فنلندا. <a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
     <li id="fn5" role="doc-endnote">
-      <p>س. كيرانياز يعمل في قسم الهندسة الكهربائية، كلية الهندسة، جامعة قطر، قطر
-        <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>س. كيرانياز يعمل في قسم الهندسة الكهربائية، كلية الهندسة، جامعة قطر، الدوحة، قطر. <a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
     <li id="fn6" role="doc-endnote">
-      <p>م. ياماش يعمل في كلية تكنولوجيا المعلومات وعلوم الاتصالات، جامعة تامبيري، تامبيري، فنلندا
-        <a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>م. ياماش يعمل في كلية تكنولوجيا المعلومات وعلوم الاتصالات، جامعة تامبيري، تامبيري، فنلندا. <a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
     <li id="fn7" role="doc-endnote">
-      <p>ن. أبورائد يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة، ومختبر مركز محمد بن راشد للفضاء، جامعة دبي، دبي، الإمارات العربية المتحدة
-        <a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a>
-      </p>
+      <p>ن. أبو رائد يعمل في قسم الهندسة الإلكترونية والكهربائية، جامعة ستراثكلايد، غلاسكو، المملكة المتحدة، ومختبر مركز محمد بن راشد للفضاء، جامعة دبي، دبي، الإمارات العربية المتحدة. <a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p>
     </li>
   </ol>
 </section>

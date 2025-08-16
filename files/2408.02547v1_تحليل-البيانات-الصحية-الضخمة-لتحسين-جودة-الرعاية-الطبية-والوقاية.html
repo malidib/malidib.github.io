@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دور الشبكات العضلية الوظيفية في تحسين إدراك إشارات اليد لواجهات الإنسان-الآلة</title>
+    <title>دور الشبكات العضلية الوظيفية في تحسين إدراك إشارات اليد في واجهات الإنسان-الآلة</title>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Times New Roman', serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #333;
             background-color: #fafafa;
             direction: rtl;
         }
         .container {
-            max-width: 900px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 920px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
             padding: 40px;
-            margin: 20px auto;
+            margin: 24px auto;
+            border-radius: 6px;
         }
         h1 {
             text-align: center;
@@ -41,8 +42,8 @@
         }
         h3 {
             color: #5d6d7e;
-            font-size: 1.3em;
-            margin-top: 25px;
+            font-size: 1.25em;
+            margin-top: 24px;
             margin-bottom: 12px;
         }
         p {
@@ -56,6 +57,7 @@
             padding: 20px;
             margin: 30px 0;
             font-style: italic;
+            border-radius: 4px;
         }
         .keywords {
             background-color: #e9ecef;
@@ -72,14 +74,26 @@
         }
         .figure {
             text-align: center;
-            margin: 30px 0;
-            padding: 20px;
+            margin: 28px 0;
+            padding: 16px;
             background-color: #f8f9fa;
-            border-radius: 5px;
+            border-radius: 6px;
             border: 1px solid #dee2e6;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+        }
+        .figure-caption {
+            margin-top: 10px;
+            color: #6c757d;
+            font-size: 0.95em;
         }
         .table {
             margin: 25px 0;
+        }
+        .table table {
+            width: 100%;
         }
         .reference {
             font-size: 0.9em;
@@ -125,6 +139,17 @@
             padding-right: 15px;
             margin: 15px 0;
         }
+        nav#TOC ul {
+            list-style: none;
+            padding-right: 0;
+        }
+        nav#TOC ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        nav#TOC ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -134,354 +159,412 @@
             <strong>Original LaTeX:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2408.02547v1_extracted/Root_ArXiv.tex</code><br>
             <strong>Converted:</strong> 2025-06-06 13:15:52
         </div>
+
         <header id="title-block-header">
-<h1 class="title">دور الشبكات العضلية الوظيفية في تحسين إدراك إشارات اليد لواجهات الإنسان-الآلة</h1>
-<p class="author">كوستانزا أرميني<span class="math inline">\(^{*1}\)</span>، توكا الحناي<span class="math inline">\(^{2}\)</span>، فرح إي. شمعوت<span class="math inline">\(^{2,3,4}\)</span>، إس. فاروق أطشزار<span class="math inline">\(^{3,5,6}\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
-<div class="abstract">
-<div class="abstract-title">الملخص</div>
-<p>تطوير نماذج دقيقة لإدراك إشارات اليد يُعد أمرًا بالغ الأهمية للعديد من تطبيقات الروبوتات، خاصة الروبوتات التفاعلية والروبوتات العصبية. تُمكّن هذه النماذج من تحقيق تواصل أكثر سلاسة وفعالية بين الإنسان والآلة، مما يؤثر بشكل مباشر على مجال الروبوتات العصبية. في الآونة الأخيرة، حظيت تقنية تخطيط كهربية العضلات السطحية (sEMG) باهتمام واسع نظرًا لغناها المعلوماتي وسهولة استخدامها عند دمجها مع تقنيات تعلم الآلة المتقدمة والأنظمة القابلة للارتداء. وقد تناولت الأدبيات العديد من الأساليب لتحسين الأداء مع ضمان المتانة في الروبوتات العصبية باستخدام sEMG، إلا أن هذه الجهود غالبًا ما تؤدي إلى نماذج تتطلب قدرة معالجة عالية وبيانات ضخمة وحلول أقل قابلية للتوسع. تتناول هذه الورقة هذا التحدي من خلال اقتراح فك تشفير تزامن العضلات بدلاً من تفعيل العضلات الفردية. ندرس الشبكات العضلية الوظيفية المعتمدة على التوافق (coherence) كأساس للعملية الحسابية في نموذج الإدراك لدينا. نفترض أن التزامن الوظيفي بين العضلات والشبكة الرسومية الناتجة عن ترابط العضلات تحمل معلومات سياقية حول إشارات اليد المقصودة، ويمكن فك تشفيرها باستخدام تقنيات تعلم آلة بسيطة (مثل آلات الدعم الناقل) دون الحاجة إلى شبكات عميقة زمنية تتطلب موارد حسابية كبيرة. من شأن هذه التقنية أن تؤثر على التحكم العضلي الكهربائي في الروبوتات العصبية من خلال تقليل العبء الحسابي بشكل كبير وتعزيز الكفاءة. تم اختبار المنهجية المقترحة باستخدام قاعدة بيانات Ninapro DB-2، التي تحتوي على 12 إشارة EMG من 40 مشاركًا يؤدون 17 إشارة يد مختلفة. حقق النهج دقة إجمالية بلغت <span class="math inline">\(\mathbf{85.1\%}\)</span>، مما يُظهر تحسنًا في الأداء مقارنة بالطرق الحالية مع تقليل كبير في متطلبات القدرة الحسابية. تدعم النتائج الفرضية القائلة بأن الشبكة العضلية الوظيفية المعتمدة على التوافق تحمل معلومات أساسية تتعلق بتنفيذ الإشارات، مما يعزز بشكل كبير إدراك إشارات اليد مع إمكانيات تطبيقية في أنظمة الروبوتات العصبية والآلات التفاعلية.</p>
-</div>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#sec:introduction">المقدمة</a></li>
-<li><a href="#sec::Data">البيانات والمعالجة المسبقة</a>
-<ul>
-<li><a href="#pre-processing">المعالجة المسبقة</a></li>
-</ul></li>
-<li><a href="#sec::Coherence">تحليل التوافق العضلي</a></li>
-<li><a href="#sec::Model">نموذج تصنيف الإشارات</a>
-<ul>
-<li><a href="#results">النتائج</a></li>
-</ul></li>
-<li><a href="#sec::Concl">الخلاصة</a></li>
-</ul>
-</nav>
-<div class="IEEEkeywords">
-<p>الروبوتات المتمركزة حول الإنسان، اللمس وواجهات اللمس، الروبوتات والأنظمة الطبية.</p>
-</div>
-<section id="sec:introduction" class="level1">
-<h1>المقدمة</h1>
-<p>تُعد الروبوتات العصبية والروبوتات التفاعلية من أبرز المجالات البحثية التي طُبقت فيها نماذج التعرف على إشارات اليد بشكل واسع. إذ تشكل هذه النماذج جوهر استراتيجيات التحكم، حيث تتيح تواصلاً بديهيًا وفعالًا بين الإنسان والآلة، وهو أمر أساسي لتحقيق تفاعل سلس. لقد دُرست تقنية تخطيط كهربية العضلات السطحية (sEMG) على نطاق واسع لتطبيقاتها في التحكم بالأطراف الاصطناعية والروبوتات العصبية وواجهات الإنسان-الآلة <span class="citation" data-cites="Sayin_2018"></span>، <span class="citation" data-cites="Wei_2019"></span>، <span class="citation" data-cites="Kumar_2022"></span>، <span class="citation" data-cites="Raez_2006"></span>. ويعود ذلك إلى قدرتها على التعرف على إشارات اليد والتنبؤ بها بطريقة قابلة للارتداء وغير جراحية.</p>
-<p>عند دمج إشارات sEMG مع تقنيات تعلم الآلة، تبرز إمكانيات كبيرة لتطوير نماذج إدراك دقيقة، مما يعزز تفسيرها ويُمكّن من بناء نماذج فعالة للتعرف على إشارات اليد <span class="citation" data-cites="JaramilloYanez_2020"></span>، <span class="citation" data-cites="Kim_2008"></span>. في هذه الأساليب، تُستخرج الميزات عادة من المجال الزمني (مثل الجذر التربيعي المتوسط، التباين، القيمة المطلقة المتوسطة، عدد عبور الصفر، المدرج التكراري) أو المجال الترددي (مثل تحويل فورييه قصير الزمن، معاملات السبيستروم)، ثم تُغذى إلى مصنفات تقليدية مثل آلات الدعم الناقل (SVM) أو تحليل التمييز الخطي (LDA) <span class="citation" data-cites="Shehata_2021"></span>، <span class="citation" data-cites="Phinyomark_2013"></span>، <span class="citation" data-cites="Tavakoli_2018"></span>، <span class="citation" data-cites="Gijsberts_2014"></span>. من أبرز القيود في هذه الأساليب التقليدية بساطة الميزات المستخرجة والنماذج المستخدمة، مما يجعلها تواجه صعوبة في الحفاظ على دقة عالية مع زيادة تعقيد وتنوع الإشارات. مع ظهور البيانات الضخمة، اتجه الباحثون نحو تقنيات التعلم العميق (DL)، التي أظهرت نتائج واعدة في تحسين أداء مهام التعرف على إشارات اليد المعتمدة على sEMG. تستفيد هذه النماذج من كميات ضخمة من البيانات وبنى الشبكات العصبية المتقدمة لتحقيق دقة ومتانة أعلى. على وجه الخصوص، تزيل الشبكات العصبية الالتفافية (CNN) الحاجة إلى هندسة الميزات يدويًا، مما يحسن أداء النموذج <span class="citation" data-cites="Wei_2019"></span>، <span class="citation" data-cites="Ding_2018"></span>. كما تم استخدام شبكات الذاكرة طويلة وقصيرة الأمد (LSTM) لقدرتها على التقاط ديناميكيات الإشارات الزمنية <span class="citation" data-cites="Cifuentes_2019"></span>، <span class="citation" data-cites="Jabbari_2020"></span>. مؤخرًا، أظهر فريقنا إمكانيات نماذج التعلم العميق الأكثر تقدمًا، مثل المحولات البصرية (Vision Transformers) مع التعلم الانتقالي، مما عزز الأداء وقابلية التعميم لواجهات الأعصاب <span class="citation" data-cites="Erin_JSTSP"></span>، <span class="citation" data-cites="Erin_INSTRUM"></span>. رغم هذه الإمكانيات، تواجه نماذج التعلم العميق تحديات خاصة بها، إذ أن معظمها صُممت أساسًا لمعالجة النصوص وتستهلك موارد حسابية كبيرة وتتطلب مجموعات بيانات ضخمة، مما يعيق تطبيقها العملي في الأنظمة الزمنية الحقيقية. في هذه الورقة، نقدم منهجية جديدة تركز على مفهوم الشبكات العضلية الوظيفية، بهدف توفير نموذج دقيق لإدراك إشارات اليد يوازن بين الأداء والكفاءة الحسابية.</p>
-<div class="figure*">
-<p><img src="WorkFlow.png" alt="image" /></p>
-</div>
-<p>مؤخرًا، ظهر مفهوم الشبكات العضلية الوظيفية المعتمدة على التوافق في علم الأعصاب بهدف نمذجة الترابط التآزري بين العضلات المختلفة، خاصة لتطبيقات التشخيص والمؤشرات الحيوية لاضطرابات الجهاز العصبي العضلي، مثل الفيزيولوجيا المرضية لمرض باركنسون <span class="citation" data-cites="Sarnthein_2007"></span>، والتغيرات في الترابط العضلي الوظيفي لدى الناجين من السكتة الدماغية <span class="citation" data-cites="Houston_2021"></span>، وبروتوكولات التأهيل الجديدة <span class="citation" data-cites="Tung_2013"></span>، <span class="citation" data-cites="OKeeffe_SciRep_2022"></span>، أو تأثير التعب أثناء التمارين المتكررة <span class="citation" data-cites="Garcia_Retortillo_2023"></span>، <span class="citation" data-cites="OKeeffe_JBHI"></span>. كما تم دراسة التوافق العضلي لفهم تقنيات التزامن والتحكم في الجسم البشري أثناء أداء المهام اليومية البسيطة، مثل مهام التوازن <span class="citation" data-cites="Boonstra_2015"></span>، والمشي <span class="citation" data-cites="Kerkman_Frontiers2020"></span>، أو لتقييم الأداء الصوتي واضطرابات الصوت <span class="citation" data-cites="Rory_TBME2022"></span>. مستلهمين من نظرية الرسوميات وتحليل ترابط الدماغ، تمثل الشبكات العضلية الوظيفية أداة ناشئة لفك شفرة كيفية توزيع الدفعة العصبية القادمة من الجهاز العصبي المركزي (CNS) بشكل تآزري بين العضلات المختلفة للتحكم في الجهاز العضلي الهيكلي. يمكن لهذه الشبكات أن توفر رؤى مهمة حول كيفية تحكم الجهاز العصبي المركزي وتنسيقه لتفعيل العضلات أثناء أداء المهام الوظيفية. من المقبول على نطاق واسع أنه عند أداء حركة ما، يقوم الجهاز العصبي المركزي بترميز الوظيفة من خلال التحكم في سلسلة من الوظائف العضلية التعاونية (مثل اختيار إجراء من مكتبة الحركات) <span class="citation" data-cites="Bizzi_2013"></span>. وقد تم دراسة هذا المفهوم تقليديًا في الأدبيات تحت مسمى التحكم التآزري للعضلات، وتم توسيعه مؤخرًا ليشمل مفهوم الشبكات الوظيفية التآزرية التي تقدم رؤية شاملة لتوزيع الدفعة العصبية عبر العضلات المختلفة أثناء أداء المهام الوظيفية <span class="citation" data-cites="DAvella_2013"></span>. تؤكد هذه المفاهيم أن الجهازين العصبي والعضلي الهيكلي يعملان معًا لتنسيق التآزر العضلي اللازم لتنفيذ الحركات والسلوكيات المعقدة. يمثل التوافق العضلي درجة التزامن بين العضلات التي تعمل بتناغم عند ترددات مختلفة لتنفيذ المهام الوظيفية. ويجدر الإشارة إلى أن مصطلح <em>التوافق</em> يشير إلى مقياس إحصائي يُستخدم لدراسة العلاقة بين إشارتين عند ترددات مختلفة، بينما يدرس <em>التوافق العضلي</em> تحديدًا تزامن الإشارات العضلية المختلفة <span class="citation" data-cites="Laine_2017"></span>. في هذا السياق، يُستخدم مقياس التوافق التربيعي المطلق (MSC) كمؤشر للارتباط الخطي بين إشارتين في المجال الترددي. تتراوح قيمة MSC بين <span class="math inline">\(0\)</span> و<span class="math inline">\(1\)</span>، حيث تشير <span class="math inline">\(MSC = 1\)</span> إلى ارتباط خطي تام (أي أن الإشارتين متطابقتان) عند تردد معين، بينما تشير <span class="math inline">\(MSC = 0\)</span> إلى عدم وجود ارتباط عند ذلك التردد.</p>
-<p>في هذه الورقة، نقدم مصنف تعلم آلي يعتمد على تحليل تزامن العضلات الوظيفية التي تمثل تنسيق العضلات أثناء أداء إشارة اليد. يوضح الشكل التخطيطي للعملية المقترحة في الشكل <a href="#fig::WorkFlow" data-reference-type="ref" data-reference="fig::WorkFlow">[fig::WorkFlow]</a>. لاختبار فرضيتنا، قمنا بتقييم النموذج باستخدام مجموعة بيانات عامة - NinaPro <span class="citation" data-cites="Ninapro_Original"></span>. في هذا السياق، قمنا بدراسة أنماط الشبكات العضلية الوظيفية المعتمدة على التوافق لـ <span class="math inline">\(40\)</span> مشاركًا سليمًا أثناء أداء <span class="math inline">\(17\)</span> حركة يد مختلفة. تُعالج الميزات المستخرجة من الشبكات العضلية الوظيفية في المجال الترددي بواسطة آلة دعم ناقل بسيطة لتصنيف الإشارات. دعمت النتائج الفرضية المركزية لهذه الورقة، حيث أظهرت أن الشبكات العضلية الوظيفية المعتمدة على التوافق تحمل معلومات أساسية تتعلق بتنفيذ الإشارات، مما يسمح بتطوير مصنف إشارات منخفض الأبعاد يستفيد بفعالية من التناغم الوظيفي بين العضلات المختلفة بدلاً من التركيز على شدة التفعيل في كل عضلة على حدة. كما يعزز هذا النهج فهمنا لتنسيق العضلات ويبرز التطبيقات العملية لشبكات التوافق العضلي في بناء نماذج فعالة ودقيقة لإدراك الإشارات. يمكن أن يؤدي هذا الأسلوب إلى تبسيط عملية التصنيف وزيادة كفاءتها، مما يجعله خيارًا مناسبًا للتطبيقات الزمنية الحقيقية، بما في ذلك الروبوتات العصبية والأنظمة التفاعلية. علاوة على ذلك، توفر النتائج رؤى أعمق حول العمليات العصبية العضلية الأساسية وتُمكّن من تطوير نماذج أكثر تقدمًا وقابلة للتفسير.</p>
-<p>تنظم بقية الورقة على النحو التالي: في القسم <a href="#sec::Data" data-reference-type="ref" data-reference="sec::Data">2</a> نستعرض البيانات ومعالجتها المسبقة، بينما يوضح القسم <a href="#sec::Coherence" data-reference-type="ref" data-reference="sec::Coherence">3</a> تحليل التوافق ودراسة الشبكات العضلية. في القسم <a href="#sec::Model" data-reference-type="ref" data-reference="sec::Model">4</a> نستخدم هذه النتائج لتطوير مصنف إشارات اليد باستخدام آلة الدعم الناقل، مع عرض النتائج ومقارنتها مع الأدبيات الحالية. أخيرًا، في القسم <a href="#sec::Concl" data-reference-type="ref" data-reference="sec::Concl">5</a> نستخلص الاستنتاجات ونناقش آفاق العمل المستقبلي.</p>
-</section>
-<section id="sec::Data" class="level1">
-<h1>البيانات والمعالجة المسبقة</h1>
-<p>تم تقديم العديد من مجموعات بيانات sEMG وإتاحتها للعامة في الأدبيات <span class="citation" data-cites="Phinyomark_2018"></span> <span class="citation" data-cites="Kaczmarek_2019"></span> <span class="citation" data-cites="Ozdemir_2022"></span> <span class="citation" data-cites="Nunez"></span>، ومن بينها تبرز مبادرة NinaPro <span class="citation" data-cites="Ninapro_Original"></span> لشعبيتها في المجتمع العلمي ومجال الروبوتات. تمثل NinaPro (الأطراف الاصطناعية التكيفية غير الجراحية) مشروعًا بحثيًا شاملاً يوفر مجموعة واسعة من تسجيلات sEMG المأخوذة من أشخاص سليمين ومبتوري اليد من مستوى الساعد أثناء أداء مجموعة من إشارات وحركات اليد والمعصم. تتكون من <span class="math inline">\(10\)</span> مجموعات بيانات تختلف في عدد المشاركين والحركات وطرق التسجيل.</p>
-<div class="figure*">
-<p><img src="Gestures.png" alt="image" /></p>
-</div>
-<p>نستخدم في هذا العمل قاعدة بيانات Ninapro DB-2، التي تحتوي على بيانات sEMG وحركية وقوة من <span class="math inline">\(40\)</span> مشاركًا سليمًا (<span class="math inline">\(28\)</span> ذكور، <span class="math inline">\(12\)</span> إناث؛ متوسط العمر <span class="math inline">\(29.9 \pm 3.9\)</span> سنة؛ <span class="math inline">\(34\)</span> أيمن و<span class="math inline">\(6\)</span> أعسر). تم جمع البيانات الحركية باستخدام قفاز Cyberglove 2، بينما تم جمع إشارات sEMG باستخدام <span class="math inline">\(12\)</span> قطبًا من نوع Delsys Trigno، وُزعت كالتالي: ثمانية أقطاب حول الساعد بالقرب من مفصل الكوع، وقطبان على مواقع النشاط الرئيسية لعضلتي الثني والباسط للأصابع، وقطبان على مواقع النشاط الرئيسية للعضلتين ذات الرأسين والثلاثية الرؤوس. تم أخذ عينات إشارات sEMG بتردد <span class="math inline">\(2000\)</span> هرتز.</p>
-<p>خلال جمع البيانات، طُلب من المشاركين تقليد حركات تظهر في مقاطع فيديو على شاشة حاسوب محمول. أدى جميع المشاركين الحركات باليد اليمنى لمدة <span class="math inline">\(5\)</span> ثوانٍ، تليها <span class="math inline">\(3\)</span> ثوانٍ من الراحة، وتضمن البروتوكول <span class="math inline">\(6\)</span> تكرارات لكل حركة. بينما تحتوي قاعدة البيانات الكاملة على <span class="math inline">\(49\)</span> حركة يد ومعصم، نركز هنا فقط على <span class="math inline">\(17\)</span> إشارة من التمرين B، الموضحة في الشكل <a href="#fig::Gestures" data-reference-type="ref" data-reference="fig::Gestures">[fig::Gestures]</a>.</p>
-<div class="figure*">
-<p><img src="MSC_matrices_S19.png" alt="image" /></p>
-</div>
-<section id="pre-processing" class="level2">
-<h2>المعالجة المسبقة</h2>
-<p>نستخدم كامل مدة بيانات كل إشارة وهي <span class="math inline">\(5\)</span> ثوانٍ، بما في ذلك الطور الانتقالي (يمثل أول <span class="math inline">\(1\)</span> ثانية من تفعيل الحركة <span class="citation" data-cites="Eion_RAL2022"></span>) وحالة الثبات للانقباض (الأربع ثواني المتبقية). تم تقسيم بيانات التدريب والاختبار لتصنيف الإشارات بناءً على رقم التكرار، كما في <span class="citation" data-cites="Ninapro_Original"></span> ودراسات أخرى نستخدمها كمرجعية: التكرارات <span class="math inline">\(1\)</span>، <span class="math inline">\(3\)</span>، <span class="math inline">\(4\)</span>، و<span class="math inline">\(6\)</span> للتدريب، بينما التكرارات <span class="math inline">\(2\)</span> و<span class="math inline">\(5\)</span> للاختبار.</p>
-<p>لضمان جودة وقابلية استخدام بيانات sEMG، تم تنفيذ سلسلة من خطوات المعالجة المسبقة باستخدام مرشحات رقمية:</p>
-<ul>
-<li><p><strong>الترشيح النطاقي (Bandpass):</strong> تم تصميم مرشح Butterworth من الدرجة الرابعة بنطاق تمرير من <span class="math inline">\(10\)</span> هرتز إلى <span class="math inline">\(900\)</span> هرتز للاحتفاظ بالترددات ذات الصلة لإشارات sEMG مع تقليل الترددات غير المرغوب فيها.</p></li>
-<li><p><strong>الترشيح النوتشي (Notch):</strong> تم تطبيق مرشح نوتشي لإزالة تداخل التيار الكهربائي عند <span class="math inline">\(50\)</span> هرتز.</p></li>
-</ul>
-<p>تم أيضًا تطبيق ترشيح عديم الطور (Zero-phase) لتجنب تشويه الطور. بعد ذلك، تم تطبيق معيار Z-score حيث تم تطبيع البيانات ليكون متوسطها <span class="math inline">\(0\)</span> وانحرافها المعياري <span class="math inline">\(1\)</span>، بناءً على مجموعة التدريب فقط. يضمن ذلك أن تكون البيانات على مقياس موحد، وهو أمر أساسي للتحليل الفعال والمقارنة.</p>
-</section>
-</section>
-<section id="sec::Coherence" class="level1">
-<h1>تحليل التوافق العضلي</h1>
-<p>يشير التوافق العضلي إلى مدى تطابق مكونات التردد في إشارة عضلية مع أخرى عبر الزمن. تشير القيم العالية للتوافق إلى أن العضلات تعمل بتنسيق عالٍ، بينما تشير القيم المنخفضة إلى قلة التآزر. يمكن قياس التوافق بين زوج من الإشارات باستخدام مقياس التوافق التربيعي المطلق (MSC). إذا كان لدينا إشارتان <span class="math inline">\(x(t)\)</span> و<span class="math inline">\(y(t)\)</span>، فإن MSC يُعرّف كالتالي: <span class="math display">\[\label{eq:MSC}
-    MSC(f) = \frac{|{P}_{xy}(f)|^2}{P_{xx}(f) \cdot P_{yy}(f)} \;
-,\]</span></p>
-<p>حيث:</p>
-<ul>
-<li><p><span class="math inline">\(P_{xy}(f)\)</span> هو الكثافة الطيفية المتقاطعة بين الإشارتين <span class="math inline">\(x\)</span> و<span class="math inline">\(y\)</span> عند التردد <span class="math inline">\(f\)</span>؛</p></li>
-<li><p><span class="math inline">\(P_{xx}(f)\)</span> و<span class="math inline">\(P_{yy}(f)\)</span> هما الكثافتان الطيفيتان للإشارتين <span class="math inline">\(x\)</span> و<span class="math inline">\(y\)</span> عند التردد <span class="math inline">\(f\)</span>.</p></li>
-</ul>
-<p>تتراوح قيمة MSC بين <span class="math inline">\(0\)</span> و<span class="math inline">\(1\)</span>، حيث تشير <span class="math inline">\(MSC = 1\)</span> إلى ارتباط خطي تام عند تردد معين (أي أن الإشارتين متطابقتان عند هذا التردد)، بينما تشير <span class="math inline">\(MSC = 0\)</span> إلى عدم وجود ارتباط خطي عند ذلك التردد (أي أن الإشارتين غير مترابطتين تمامًا). من خلال تحليل قيم MSC عبر أزواج العضلات والترددات المختلفة، يمكننا استخلاص أنماط تنسيق النشاط العضلي أثناء أداء الإشارات المدروسة.</p>
-<div class="figure*">
-<p><img src="Networks.png" alt="image" /></p>
-</div>
-<p>لحساب الكثافات الطيفية في المعادلة <a href="#eq:MSC" data-reference-type="ref" data-reference="eq:MSC">[eq:MSC]</a>، تم استخدام طريقة ويلش (Welch) بحجم نافذة <span class="math inline">\(600\)</span> عينة (أي ما يعادل <span class="math inline">\(300\)</span> مللي ثانية عند تردد أخذ العينات <span class="math inline">\(2\)</span> كيلوهرتز) وتداخل بنسبة <span class="math inline">\(50\%\)</span>. في النهاية، تم الحصول على مصفوفات التوافق التي تحتوي على قيم MSC عبر المجال الترددي لكل زوج من الإشارات.</p>
-<p>يعرض الشكل <a href="#fig::MSC" data-reference-type="ref" data-reference="fig::MSC">[fig::MSC]</a> النتائج التي تم الحصول عليها للمشارك رقم <span class="math inline">\(19\)</span> لجميع الإشارات السبعة عشر. تحتوي كل مصفوفة على <span class="math inline">\(12 \times 12 = 144\)</span> خانة، تمثل القيم المتوسطة للتوافق لكل زوج من الإشارات عبر جميع التكرارات. اللون يعكس شدة التوافق الزوجي، حيث يشير اللون الأزرق إلى <span class="math inline">\(MSC = 0\)</span> (عدم وجود توافق) والأصفر إلى <span class="math inline">\(MSC = 1\)</span> (توافق أقصى). ونظرًا لأن الترابط بين الإشارات غير موجه، فإن المصفوفات متماثلة. كما أن القيم القطرية تمثل توافق الإشارة مع نفسها، أي <span class="math inline">\(x=y\)</span> في المعادلة <a href="#eq:MSC" data-reference-type="ref" data-reference="eq:MSC">[eq:MSC]</a>، مما يؤدي بالضرورة إلى <span class="math inline">\(MSC=1\)</span> (الإشارتان متطابقتان). تم تعيين هذه القيم يدويًا إلى <span class="math inline">\(0\)</span> لتجنب طغيانها على أنماط الترابط الأخرى ذات القيم المنخفضة.</p>
-<p>يمثل الشكل <a href="#fig::Networks" data-reference-type="ref" data-reference="fig::Networks">[fig::Networks]</a> الشبكات التوافقية المستخرجة من بيانات المشارك رقم 1. كل عقدة تمثل حساسًا، بينما تمثل الحواف بين العقد قيم التوافق، ويعكس لون الحافة شدة التوافق.</p>
-<p>من خلال الشكلين، يمكن ملاحظة أن إشارة تمديد المعصم (رقم <span class="math inline">\(14\)</span>) أظهرت أعلى قيم التوافق العضلي، تليها إشارات <span class="math inline">\(5\)</span> (إبعاد جميع الأصابع)، <span class="math inline">\(6\)</span> (قبضة اليد)، <span class="math inline">\(8\)</span> (إبعاد الأصابع الممدودة)، <span class="math inline">\(13\)</span> (ثني المعصم) و<span class="math inline">\(15\)</span> (انحراف المعصم الشعاعي)، مع اختلاف مستويات MSC حسب المشارك.</p>
-</section>
-<section id="sec::Model" class="level1">
-<h1>نموذج تصنيف الإشارات</h1>
-<p>في هذا القسم، نقدم النموذج المقترح مع مناقشة الأعمال السابقة التي استخدمت نفس مجموعة البيانات والتي تمثل خط الأساس للمقارنة. لقد استُخدمت قاعدة بيانات Ninapro DB-2 على نطاق واسع لتصنيف إشارات sEMG باستخدام أساليب تعلم الآلة التقليدية مثل الغابات العشوائية، وآلات الدعم الناقل، وأقرب الجيران <span class="citation" data-cites="Ninapro_Original"></span>، بالإضافة إلى تقنيات التعلم العميق المتقدمة مثل الشبكات العصبية الالتفافية <span class="citation" data-cites="Atzori_2016"></span>، <span class="citation" data-cites="Ding_2018"></span>، وشبكات LSTM <span class="citation" data-cites="Sun_2021"></span>، والأساليب الهجينة <span class="citation" data-cites="Gulati_2021"></span>، وشبكة الكبسولات الفعالة (CapsNet) <span class="citation" data-cites="Eion_RAL2022"></span>. يوضح الجدول <a href="#table:Comparison" data-reference-type="ref" data-reference="table:Comparison">[table:Comparison]</a> خصائص ودقة الأساليب التي استخدمت نفس مجموعة البيانات (التمرين B مع <span class="math inline">\(17\)</span> إشارة)، مما يشكل خط الأساس لطريقتنا. تهدف هذه الورقة إلى إثبات أنه من خلال الاستفادة من مفهوم التوافق العضلي يمكن تحقيق نتائج تصنيف مماثلة أو أفضل. يركز نهجنا على استخراج ميزات ذات معنى من التوافق التربيعي المطلق لإشارات sEMG، مما يقلل من تعقيد النموذج دون التأثير على دقته. يمكن تحقيق ذلك باستخدام نموذج تعلم آلة تقليدي مثل آلة الدعم الناقل (SVM).</p>
-<p>بعد الحصول على مصفوفات MSC في القسم <a href="#sec::Coherence" data-reference-type="ref" data-reference="sec::Coherence">3</a>، تم تقليل التكلفة الحسابية للنموذج من خلال حساب المتوسط لقيم MSC عبر المجال الترددي. ينتج عن هذه العملية مصفوفة ميزات بحجم <span class="math inline">\(102 \times 132\)</span>. عدد الصفوف (<span class="math inline">\(102\)</span>) ناتج عن حاصل ضرب <span class="math inline">\(17\)</span> حركة في <span class="math inline">\(6\)</span> تكرارات. على سبيل المثال، الصفوف <span class="math inline">\(1-6\)</span> تحتوي على بيانات التكرارات الستة للإشارة الأولى، والصفوف <span class="math inline">\(7-12\)</span> للإشارة الثانية، وهكذا. كل صف يحتوي على مصفوفة التوافق المتوسطة لحركة وتكرار معينين، مرتبة في شكل متجه بدون القيم القطرية حيث <span class="math inline">\(MSC = 1\)</span>. بذلك نحصل على <span class="math inline">\(132\)</span> عمودًا: <span class="math inline">\(12 \times 12 = 144\)</span> احتمال لزوج إشارات، ناقص <span class="math inline">\(12\)</span> قيم قطرية.</p>
-<div class="table*">
-<table>
-<thead>
-<tr class="header">
-<th colspan="2" style="text-align: center;"><strong>الإشارة</strong></th>
-<th style="text-align: center;"><strong>الدقة</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
-<th style="text-align: center;"><strong>الدقة الإيجابية</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
-<th style="text-align: center;"><strong>الاسترجاع</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
-<th style="text-align: center;"><strong>معدل F1</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
-<th style="text-align: center;"><strong>AUC</strong> [<span class="math inline">\(\mathbf{10^{-2}}\)</span>]</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: right;">إشارة الإبهام للأعلى</td>
-<td style="text-align: center;">91.3</td>
-<td style="text-align: center;">87.3</td>
-<td style="text-align: center;">91.3</td>
-<td style="text-align: center;">87.6</td>
-<td style="text-align: center;">97.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: right;">تمديد وثني السبابة والوسطى</td>
-<td style="text-align: center;">83.6</td>
-<td style="text-align: center;">85.4</td>
-<td style="text-align: center;">83.8</td>
-<td style="text-align: center;">81.9</td>
-<td style="text-align: center;">95.7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: right;">ثني البنصر والخنصر، تمديد الباقي</td>
-<td style="text-align: center;">82.5</td>
-<td style="text-align: center;">80.6</td>
-<td style="text-align: center;">82.5</td>
-<td style="text-align: center;">78.4</td>
-<td style="text-align: center;">97.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: right;">الإبهام مقابل قاعدة الخنصر</td>
-<td style="text-align: center;">85.0</td>
-<td style="text-align: center;">82.9</td>
-<td style="text-align: center;">85.0</td>
-<td style="text-align: center;">81.3</td>
-<td style="text-align: center;">98.3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: right;">إبعاد جميع الأصابع</td>
-<td style="text-align: center;">82.5</td>
-<td style="text-align: center;">77.2</td>
-<td style="text-align: center;">82.5</td>
-<td style="text-align: center;">76.7</td>
-<td style="text-align: center;">98.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: right;">قبضة اليد</td>
-<td style="text-align: center;">87.5</td>
-<td style="text-align: center;">92.5</td>
-<td style="text-align: center;">87.5</td>
-<td style="text-align: center;">88.1</td>
-<td style="text-align: center;">98.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: right;">إشارة السبابة</td>
-<td style="text-align: center;">83.8</td>
-<td style="text-align: center;">76.7</td>
-<td style="text-align: center;">83.8</td>
-<td style="text-align: center;">78.1</td>
-<td style="text-align: center;">97.1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td style="text-align: right;">إبعاد الأصابع الممدودة</td>
-<td style="text-align: center;">83.8</td>
-<td style="text-align: center;">87.9</td>
-<td style="text-align: center;">83.8</td>
-<td style="text-align: center;">83.4</td>
-<td style="text-align: center;">95.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td style="text-align: right;">استدارة المعصم (محور السبابة)</td>
-<td style="text-align: center;">77.5</td>
-<td style="text-align: center;">85.8</td>
-<td style="text-align: center;">77.5</td>
-<td style="text-align: center;">79.2</td>
-<td style="text-align: center;">94.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td style="text-align: right;">كب المعصم (محور السبابة)</td>
-<td style="text-align: center;">86.3</td>
-<td style="text-align: center;">86.7</td>
-<td style="text-align: center;">86.3</td>
-<td style="text-align: center;">84.4</td>
-<td style="text-align: center;">97.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td style="text-align: right;">استدارة المعصم (محور الخنصر)</td>
-<td style="text-align: center;">87.5</td>
-<td style="text-align: center;">85.8</td>
-<td style="text-align: center;">87.5</td>
-<td style="text-align: center;">84.3</td>
-<td style="text-align: center;">96.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">12</td>
-<td style="text-align: right;">كب المعصم (محور الخنصر)</td>
-<td style="text-align: center;">86.2</td>
-<td style="text-align: center;">79.2</td>
-<td style="text-align: center;">86.3</td>
-<td style="text-align: center;">81.4</td>
-<td style="text-align: center;">97.4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td style="text-align: right;">ثني المعصم</td>
-<td style="text-align: center;">85.0</td>
-<td style="text-align: center;">92.5</td>
-<td style="text-align: center;">85.0</td>
-<td style="text-align: center;">86.8</td>
-<td style="text-align: center;">96.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">14</td>
-<td style="text-align: right;">تمديد المعصم</td>
-<td style="text-align: center;">80.0</td>
-<td style="text-align: center;">97.9</td>
-<td style="text-align: center;">80.0</td>
-<td style="text-align: center;">85.3</td>
-<td style="text-align: center;">93.3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">15</td>
-<td style="text-align: right;">انحراف المعصم الشعاعي</td>
-<td style="text-align: center;">76.2</td>
-<td style="text-align: center;">84.6</td>
-<td style="text-align: center;">76.3</td>
-<td style="text-align: center;">78.6</td>
-<td style="text-align: center;">91.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">16</td>
-<td style="text-align: right;">انحراف المعصم الزندي</td>
-<td style="text-align: center;">93.8</td>
-<td style="text-align: center;">94.6</td>
-<td style="text-align: center;">93.8</td>
-<td style="text-align: center;">92.9</td>
-<td style="text-align: center;">99.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">17</td>
-<td style="text-align: right;">تمديد المعصم مع انغلاق اليد</td>
-<td style="text-align: center;">93.8</td>
-<td style="text-align: center;">96.2</td>
-<td style="text-align: center;">93.8</td>
-<td style="text-align: center;">93.5</td>
-<td style="text-align: center;">98.5</td>
-</tr>
-<tr class="even">
-<td colspan="2" style="text-align: center;"><strong>المتوسط</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\textbf{85.1}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\textbf{86.7}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\textbf{85.1}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\textbf{83.6}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\textbf{96.8}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><span id="table:Accuracy" label="table:Accuracy"></span></p>
-</div>
-<p>تُستخدم مصفوفة الميزات بعد ذلك لتدريب نموذج آلة دعم ناقل متعدد الحدود. لضمان مقارنة عادلة مع الأدبيات، اتبعنا النهج القياسي باستخدام التكرارات <span class="math inline">\(1\)</span>، <span class="math inline">\(3\)</span>، <span class="math inline">\(4\)</span>، و<span class="math inline">\(6\)</span> للتدريب، مع تخصيص التكرارين المتبقيين للاختبار. ونظرًا لمحدودية البيانات وعدم وجود مجموعة تحقق منفصلة، استخدمنا التحقق المتقاطع بثلاثة أضعاف (3-fold cross-validation) لإجراء بحث شبكي لضبط معاملات آلة الدعم الناقل، أي رتبة النواة متعددة الحدود ومعامل التنظيم <span class="math inline">\(\mathcal{C}\)</span>. أدى ذلك إلى اختيار نواة متعددة الحدود من الرتبة <span class="math inline">\(2\)</span> وقيمة <span class="math inline">\(\mathcal{C}\)</span> تساوي <span class="math inline">\(10\)</span>، والتي أعطت أفضل أداء في تجارب التحقق المتقاطع.</p>
-<section id="results" class="level2">
-<h2>النتائج</h2>
-<p>تم تدريب واختبار مصنف SVM على كل مشارك بشكل منفصل. يعرض الجدول <a href="#table:Accuracy" data-reference-type="ref" data-reference="table:Accuracy">[table:Accuracy]</a> متوسط الدقة والدقة الإيجابية والاسترجاع ومعدل F1 ومساحة تحت منحنى ROC (AUC) لكل إشارة مدروسة. كما يوضح الشكل <a href="#fig::ConfMatrix" data-reference-type="ref" data-reference="fig::ConfMatrix">[fig::ConfMatrix]</a> متوسط مصفوفة الالتباس عبر جميع المشاركين. لكل إشارة، يتكون مجموعة الاختبار من <span class="math inline">\(2\)</span> تكرارات. في المتوسط، تم التنبؤ بشكل صحيح بـ <span class="math inline">\(28.9\)</span> عينة من أصل <span class="math inline">\(34\)</span> عينة. أظهرت الفئة 9 (استدارة المعصم حول محور السبابة) أعلى معدلات الالتباس، وغالبًا ما تم الخلط بينها وبين الفئة 11 (استدارة المعصم حول محور الخنصر). يمكن توقع ذلك أيضًا من الشكلين <a href="#fig::MSC" data-reference-type="ref" data-reference="fig::MSC">[fig::MSC]</a> و<a href="#fig::Networks" data-reference-type="ref" data-reference="fig::Networks">[fig::Networks]</a>، حيث تظهر هاتان الفئتان قيم MSC متشابهة. كما تم الخلط بين الفئة 15 (انحراف المعصم الشعاعي) والفئة 3 (ثني البنصر والخنصر مع تمديد الباقي)، ومن نتائج المشارك 19 في الشكل <a href="#fig::MSC" data-reference-type="ref" data-reference="fig::MSC">[fig::MSC]</a>، يمكن ملاحظة تشابه مصفوفتَي MSC لهاتين الفئتين.</p>
-<p>رغم استخدام مصنف بسيط منخفض التكلفة الحسابية، كانت النتائج مماثلة أو حتى متفوقة أحيانًا على تلك الملخصة في الجدول <a href="#table:Comparison" data-reference-type="ref" data-reference="table:Comparison">[table:Comparison]</a>، والتي تتضمن دقة الأساليب الحديثة باستخدام نفس مجموعة البيانات. تم تحقيق ذلك من خلال استخدام التوافق بين أزواج الإشارات كميزة رئيسية للمصنف بدلاً من النظر إلى كل إشارة على حدة، مما أدى إلى تقليل تعقيد الخوارزمية بشكل كبير.</p>
-<div class="figure*">
-<p><img src="ConfMatrix.png" alt="image" /></p>
-</div>
-<div class="table*">
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><strong>المرجع</strong></th>
-<th style="text-align: center;"><strong>المنهجية</strong></th>
-<th style="text-align: center;"><strong>الميزات</strong></th>
-<th style="text-align: center;"><strong>عدد الإشارات</strong></th>
-<th style="text-align: center;"><strong>الدقة</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="citation" data-cites="Eion_RAL2022"></span></td>
-<td style="text-align: center;">التعلم الانتقالي لشبكة الكبسولات الفعالة</td>
-<td style="text-align: center;">ميزات مستخرجة بواسطة CNN</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;"><span class="math inline">\(78.3\%\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="citation" data-cites="Gulati_2021"></span></td>
-<td style="text-align: center;">LSTM وCNN موسعة</td>
-<td style="text-align: center;">ميزات مستخرجة بواسطة CNN</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;"><span class="math inline">\(82.0\%\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="citation" data-cites="Sun_2021"></span></td>
-<td style="text-align: center;">توسيع زمني في LSTM وDeepNet</td>
-<td style="text-align: center;">ميزات مستخرجة بواسطة CNN</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;"><span class="math inline">\(82.4\%\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="citation" data-cites="Ding_2018"></span></td>
-<td style="text-align: center;">CNN متعددة المقاييس بالتوازي</td>
-<td style="text-align: center;">ميزات مستخرجة بواسطة CNN</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;"><span class="math inline">\(83.8\%\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>هذه الورقة</strong></td>
-<td style="text-align: center;"><strong>SVM</strong></td>
-<td style="text-align: center;"><strong>MSC</strong></td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;"><span class="math inline">\(\textbf{85.1\%}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><span id="table:Comparison" label="table:Comparison"></span></p>
-</div>
-<p>أظهر نهجنا، كما هو موضح في الجدول <a href="#table:Comparison" data-reference-type="ref" data-reference="table:Comparison">[table:Comparison]</a>، دقة إجمالية بلغت <span class="math inline">\(85.1\%\)</span>. حتى عند مقارنة نتائجنا مع أفضل أساليب التعلم العميق، نلاحظ تحسنًا في الدقة. وبينما تزيل تقنيات التعلم العميق الحاجة لاستخراج الميزات يدويًا، إلا أنها تتطلب بيانات ضخمة وموارد حسابية كبيرة. في المقابل، أظهرنا أن فك تشفير إشارات sEMG للحصول على التوافق بين العضلات يوفر رؤى مهمة حول استراتيجيات التحكم العصبي أثناء حركات اليد. من خلال استغلال هذه المعلومات، بنينا ميزاتنا وأثبتنا أن الأساليب الأبسط يمكن أن تكون فعالة بنفس القدر.</p>
-</section>
-</section>
-<section id="sec::Concl" class="level1">
-<h1>الخلاصة</h1>
-<p>في هذه الورقة، قدمنا مصنف تعلم آلي جديد يعتمد على الشبكات العضلية الوظيفية المعتمدة على التوافق لتحسين إدراك إشارات اليد. من خلال تحليل تنسيق العضلات أثناء الحركات اليدوية، يوفر نهجنا مصنف إشارات منخفض الأبعاد يلتقط بفعالية المعلومات الأساسية اللازمة لتنفيذ الإشارات بدقة. أظهر استخدام التوافق التربيعي المطلق لإشارات sEMG ومعالجتها بواسطة مصنف SVM بسيط أن هذه الطريقة لا تحسن فقط دقة التصنيف، بل توفر أيضًا كفاءة حسابية مناسبة للتطبيقات الزمنية الحقيقية. تؤكد النتائج إمكانيات الشبكات العضلية الوظيفية المعتمدة على التوافق في فك شفرة التنسيق العصبي العضلي، وتبرز أهميتها في تطوير واجهات إنسان-آلة بديهية وفعالة.</p>
-<p>تمهد نتائجنا الطريق لتطورات في مجال الروبوتات العصبية والأنظمة التفاعلية، حيث يُعد التعرف على إشارات اليد بدقة وكفاءة وفي الزمن الحقيقي أمرًا بالغ الأهمية. من خلال استخراج ميزات ذات معنى عبر التوافق العضلي، يمكن دمج الطريقة المقترحة في استراتيجيات التحكم الروبوتي، مما يعزز دقة ومرونة واجهات الأعصاب. وبالنظر إلى الطبيعة متعددة الأنماط لمجموعة البيانات، يمكن للأعمال المستقبلية تحسين المصنف من خلال دمج معلومات إضافية، مما يزيد من متانته وتنوعه في السيناريوهات العملية. علاوة على ذلك، توفر نتائجنا رؤى أعمق حول العمليات العصبية العضلية المرتبطة بتنفيذ الإشارات، وتدعم تطوير نماذج متقدمة وقابلة للتفسير للأنظمة الروبوتية العصبية والآلات التفاعلية. سيركز العمل المستقبلي على تحسين النموذج بشكل أكبر، واستكشاف تطبيقه على مجموعة أوسع من الإشارات والسيناريوهات الواقعية، ودمجه في أنظمة عملية لتحقيق أقصى استفادة من إمكانياته.</p>
-</section>
-<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>تم دعم المادة المقدمة في هذه الورقة جزئيًا من قبل مركز الذكاء الاصطناعي والروبوتات (CAIR) في جامعة نيويورك أبوظبي: الجائزة CG010. كما تم دعم العمل جزئيًا من قبل المؤسسة الوطنية للعلوم في الولايات المتحدة بموجب المنحتين رقم 2229697 و2121391. كما تم دعم العمل بجائزة من شركة Mathworks.</p>
-<p>المؤلف المراسل: <span>كوستانزا أرميني <code>ca3072@nyu.edu</code></span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><span class="math inline">\(^{1}\)</span> مركز الذكاء الاصطناعي والروبوتات (CAIR)، جامعة نيويورك أبوظبي (NYUAD)، أبوظبي، الإمارات العربية المتحدة<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p><span class="math inline">\(^{2}\)</span> قسم الهندسة، جامعة نيويورك أبوظبي (NYUAD)، أبوظبي، الإمارات العربية المتحدة<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p><span class="math inline">\(^{3}\)</span> قسم الهندسة الطبية الحيوية، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p><span class="math inline">\(^{4}\)</span> قسم علوم وهندسة الحاسوب، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p><span class="math inline">\(^{5}\)</span> قسم الهندسة الكهربائية وهندسة الحاسوب، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p><span class="math inline">\(^{6}\)</span> قسم الهندسة الميكانيكية والفضائية، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+            <h1 class="title">دور الشبكات العضلية الوظيفية في تحسين إدراك إشارات اليد في واجهات الإنسان-الآلة</h1>
+            <p class="author">كوستانزا أرميني<span class="math inline">\(^{*1}\)</span>، توكا الحناي<span class="math inline">\(^{2}\)</span>، فرح إي. شمعوت<span class="math inline">\(^{2,3,4}\)</span>، إس. فاروق أطشزار<span class="math inline">\(^{3,5,6}\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+
+            <div class="abstract">
+                <div class="abstract-title">الملخص</div>
+                <p>يُعَدّ تطوير نماذج دقيقة لإدراك إشارات اليد أمرًا بالغ الأهمية لعدد كبير من تطبيقات الروبوتات، ولا سيّما الروبوتات التفاعليّة والروبوتات العَصَبيّة. تُتيح هذه النماذج تواصُلًا أكثر سلاسة وفاعليّة بين الإنسان والآلة، بما ينعكس مباشرةً على أداء الواجهات العَصَبيّة. في الآونة الأخيرة، حظيت تقنية تخطيط كهربيّة العضل السطحي (sEMG) باهتمام واسع نظرًا لغناها المعلوماتي، وإمكانية ارتدائها، وسهولة توظيفها مع تعلُّم الآلة المتقدِّم والأنظمة القابلة للارتداء. وعلى الرغم من كثرة الأساليب المقترحة لتحسين الأداء وضمان المتانة في الروبوتات العَصَبيّة اعتمادًا على sEMG، فإن كثيرًا منها يقود إلى نماذج تحتاج قدرة معالجة عالية وبيانات ضخمة، وتكون أقل قابليةً للتوسّع.</p>
+                <p>تعالج هذه الورقة هذا التحدّي عبر اقتراح فكّ ترميز التزامُن بين العضلات بدلًا من التركيز على تفعيل كل عضلة على حدة. ندرس الشبكات العضلية الوظيفية القائمة على التوافُق (coherence) كأساس حسابي في نموذج الإدراك لدينا. نفرض أنّ التزامُن الوظيفي بين العضلات، وما ينتج عنه من شبكة ترابُط عضلي، يحمل معلومات سياقيّة عن إشارات اليد المقصودة، ويمكن فكّ ترميزها باستخدام تقنيات تعلُّم آلة بسيطة مثل آلة الدَّعم الناقل (SVM)، من غير الحاجة إلى شبكات عميقة زمنية مُكلفة حسابيًّا. يُتوقَّع أن يؤثِّر هذا النهج إيجابًا في التحكُّم الكهربي العضلي في الروبوتات العَصَبيّة عبر خفض العبء الحسابي وتعزيز الكفاءة.</p>
+                <p>اختُبرت المنهجيّة المقترحة باستخدام قاعدة بيانات Ninapro DB-2، التي تضم 12 قناة sEMG لعدد 40 مشاركًا يؤدّون 17 إشارة يد مختلفة. حقّق النهج دقّة إجمالية بلغت <span class="math inline">\(\mathbf{85.1\%}\)</span>، مُظهِرًا تحسُّنًا في الأداء مقارنةً بالأساليب الراهنة مع خفض كبير في المتطلّبات الحسابيّة. تؤكِّد النتائج فرضية أنّ الشبكات العضلية الوظيفية المعتمدة على التوافُق تحمل معلومات جوهرية تتعلّق بتنفيذ الإشارات، ما يُحسِّن إدراك إشارات اليد ويُبرز قابليّة التطبيق في الأنظمة العَصَبيّة والآلات التفاعليّة.</p>
+            </div>
+        </header>
+
+        <nav id="TOC" role="doc-toc">
+            <ul>
+                <li><a href="#sec:introduction">المقدمة</a></li>
+                <li><a href="#sec::Data">البيانات والمعالجة المسبقة</a>
+                    <ul>
+                        <li><a href="#pre-processing">المعالجة المسبقة</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec::Coherence">تحليل التوافُق العضلي</a></li>
+                <li><a href="#sec::Model">نموذج تصنيف الإشارات</a>
+                    <ul>
+                        <li><a href="#results">النتائج</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec::Concl">الخلاصة</a></li>
+            </ul>
+        </nav>
+
+        <div class="keywords">
+            <strong>الكلمات المفتاحية:</strong> الروبوتات المتمركزة حول الإنسان، اللمس وواجهات اللمس، الروبوتات والأنظمة الطبية.
+        </div>
+
+        <section id="sec:introduction" class="level1">
+            <h1>المقدمة</h1>
+            <p>تُمثِّل الروبوتات العَصَبيّة والروبوتات التفاعُليّة من أبرز المجالات التي استُخدمت فيها نماذج التعرُّف إلى إشارات اليد على نطاق واسع؛ إذ تشكِّل هذه النماذج جوهر استراتيجيات التحكُّم، فتتيح تواصُلًا بديهيًّا وفعّالًا بين الإنسان والآلة، وهو أمر أساسي لتحقيق تفاعل سلس. لقد دُرست تقنية تخطيط كهربيّة العضل السطحي (sEMG) على نطاق واسع لتطبيقاتها في التحكُّم بالأطراف الاصطناعية والروبوتات العَصَبيّة وواجهات الإنسان-الآلة <span class="citation" data-cites="Sayin_2018"></span>، <span class="citation" data-cites="Wei_2019"></span>، <span class="citation" data-cites="Kumar_2022"></span>، <span class="citation" data-cites="Raez_2006"></span>، وذلك لقدرتها على التعرُّف إلى إشارات اليد والتنبّؤ بها بطريقة قابلة للارتداء وغير جراحيّة.</p>
+            <p>عند دمج إشارات sEMG مع تقنيات تعلُّم الآلة، تظهر إمكانات كبيرة لتطوير نماذج إدراك دقيقة وقابلة للتفسير، ما يُمكِّن من بناء مصنِّفات فعّالة لإشارات اليد <span class="citation" data-cites="JaramilloYanez_2020"></span>، <span class="citation" data-cites="Kim_2008"></span>. في هذه الأساليب، تُستخرَج الميزات عادةً من المجال الزمني (مثل الجذر التربيعي المتوسط، والتباين، والمتوسط المطلق للقيمة، وعدّ عبور الصفر، والمدرّج التكراري) أو من المجال التردُّدي (مثل تحويل فورييه قصير الزمن، ومعاملات السبيستروم)، ثم تُغذّى إلى مصنِّفات تقليدية كآلة الدَّعم الناقل (SVM) أو تحليل التمييز الخطي (LDA) <span class="citation" data-cites="Shehata_2021"></span>، <span class="citation" data-cites="Phinyomark_2013"></span>، <span class="citation" data-cites="Tavakoli_2018"></span>، <span class="citation" data-cites="Gijsberts_2014"></span>. من قيود هذه الأساليب بساطةُ الميزات والنماذج، ما يجعل الحفاظ على دقّة عالية صعبًا مع تزايد تعقيد وتنوُّع الإشارات.</p>
+            <p>مع توسُّع البيانات، اتّجه الباحثون إلى التعلُّم العميق، الذي أظهر نتائج واعدة في تحسين أداء التعرُّف إلى إشارات اليد المعتمدة على sEMG. تستفيد هذه النماذج من كمّيات بيانات كبيرة وبُنى عصبية متقدّمة لتحقيق دقّة ومتانة أعلى. وعلى وجه الخصوص، تُغني الشبكات الالتفافية (CNN) عن هندسة الميزات يدويًّا، فتُحسِّن أداء النموذج <span class="citation" data-cites="Wei_2019"></span>، <span class="citation" data-cites="Ding_2018"></span>. كما استُخدمت شبكات الذاكرة طويلة وقصيرة الأمد (LSTM) لقدرتها على التقاط ديناميّات الإشارات الزمنيّة <span class="citation" data-cites="Cifuentes_2019"></span>، <span class="citation" data-cites="Jabbari_2020"></span>. ومؤخرًا، أظهر فريقنا إمكانات نماذج أكثر تقدُّمًا مثل المحوِّلات البصريّة (Vision Transformers) مع التعلُّم الانتقالي، ما حسَّن الأداء وقابلية التعميم لواجهات الأعصاب <span class="citation" data-cites="Erin_JSTSP"></span>، <span class="citation" data-cites="Erin_INSTRUM"></span>. رغم ذلك، تبقى نماذج التعلُّم العميق مُكلفة حسابيًّا وتتطلّب مجموعات بيانات كبيرة، ما يحدّ من تطبيقها العملي في الزمن الحقيقي.</p>
+
+            <div id="fig::WorkFlow" class="figure">
+                <img src="WorkFlow.png" alt="مخطط سير العمل للمنهجية المقترحة">
+                <div class="figure-caption">الشكل 1: مخطط سير العمل للمنهجيّة المقترحة لاستخراج الشبكات العضلية الوظيفية القائمة على التوافُق وتصنيف الإشارات.</div>
+            </div>
+
+            <p>ظهر مفهوم الشبكات العضلية الوظيفية القائمة على التوافُق في علوم الأعصاب لنمذجة الترابُط التآزري بين العضلات المختلفة، لا سيّما لأغراض التشخيص والمؤشّرات الحيويّة لاضطرابات الجهاز العصبي العضلي، مثل الفيزيولوجيا المرضيّة لمرض باركنسون <span class="citation" data-cites="Sarnthein_2007"></span>، والتغيّرات في الترابُط الوظيفي لدى الناجين من السكتة الدماغيّة <span class="citation" data-cites="Houston_2021"></span>، وبروتوكولات التأهيل الجديدة <span class="citation" data-cites="Tung_2013"></span>، <span class="citation" data-cites="OKeeffe_SciRep_2022"></span>، أو تأثير التعب أثناء التمارين المتكرّرة <span class="citation" data-cites="Garcia_Retortillo_2023"></span>، <span class="citation" data-cites="OKeeffe_JBHI"></span>. كما استُخدم التوافُق العضلي لفهم آليات التزامُن والتحكُّم في الجسم عند أداء مهام يومية بسيطة، مثل التوازن <span class="citation" data-cites="Boonstra_2015"></span>، والمشي <span class="citation" data-cites="Kerkman_Frontiers2020"></span>، وكذلك لتقييم الأداء الصوتي واضطرابات الصوت <span class="citation" data-cites="Rory_TBME2022"></span>.</p>
+            <p>استلهامًا من نظرية الرسوم وتحليل ترابُط الدماغ، تُعدّ الشبكات العضلية الوظيفية أداة ناشئة لفكّ كيفيّة توزيع الدفعة العصبيّة الواردة من الجهاز العصبي المركزي (CNS) تآزريًّا بين العضلات للتحكُّم في الجهاز العضلي الهيكلي. يمكن لهذه الشبكات أن توفّر رؤى مهمّة حول كيف ينسِّق الجهاز العصبي المركزي تفعيل العضلات أثناء أداء المهام الوظيفية. ويُعتقد على نطاق واسع أنّ CNS يُشفِّر الحركات عبر التحكُّم في تآزرات عضلية وظيفية <span class="citation" data-cites="Bizzi_2013"></span>، وقد دُرس هذا المفهوم تقليديًّا تحت مسمّى التحكُّم التآزري للعضلات، وتوسّع حديثًا إلى مفهوم الشبكات الوظيفية التآزرية التي تُقدِّم رؤية شاملة لتوزيع الدفعة العصبية عبر العضلات أثناء تنفيذ المهام <span class="citation" data-cites="DAvella_2013"></span>.</p>
+            <p>يمثِّل التوافُق العضلي درجة التزامُن بين العضلات العاملة بتناغم عند تردّدات مختلفة لتنفيذ المهام الوظيفية. ونُشير هنا إلى أنّ مصطلح <em>التوافُق</em> هو مقياس إحصائي لدراسة العلاقة بين إشارتين عبر التردّدات، بينما يدرس <em>التوافُق العضلي</em> تحديدًا تزامُن الإشارات العضلية <span class="citation" data-cites="Laine_2017"></span>. في هذا السياق، يُستخدم مقياس التوافُق التربيعي المُطلق (MSC) كمؤشِّر للارتباط الخطي بين إشارتين في المجال التردّدي. تتراوح قيمة MSC بين <span class="math inline">\(0\)</span> و<span class="math inline">\(1\)</span>، حيث تشير <span class="math inline">\(MSC = 1\)</span> إلى ارتباط خطي تام عند تردّد معيّن، و<span class="math inline">\(MSC = 0\)</span> إلى انعدامه.</p>
+            <p>نُقدِّم في هذه الورقة مصنِّف تعلُّم آلة يعتمد على تحليل تزامُن العضلات الوظيفي الذي يمثِّل تنسيق العضلات أثناء أداء إشارة اليد. يوضّح الشكل التخطيطي للعملية المقترحة في الشكل <a href="#fig::WorkFlow" data-reference-type="ref" data-reference="fig::WorkFlow">[fig::WorkFlow]</a>. لاختبار فرضيتنا، قيَّمنا النموذج على مجموعة بيانات NinaPro <span class="citation" data-cites="Ninapro_Original"></span>، حيث درسنا أنماط الشبكات العضلية الوظيفية القائمة على التوافُق لـ<span class="math inline">\(40\)</span> مشاركًا أصحّاء أثناء أداء <span class="math inline">\(17\)</span> حركة يد. تُعالَج الميزات المُستخرجة من هذه الشبكات في المجال التردّدي بواسطة آلة دَّعم ناقل بسيطة لتصنيف الإشارات.</p>
+            <p>دعمت النتائج فرضيتنا المركزية بأن شبكات التوافُق العضلي تحمل معلومات أساسية ترتبط بتنفيذ الإشارات، ما يسمح ببناء مصنِّف منخفض الأبعاد يستثمر التناغم الوظيفي بين العضلات بدلًا من الاكتفاء بشدّة تفعيل كل عضلة منفردة. يُبَسِّط هذا النهج عملية التصنيف ويرفع كفاءتها، ما يجعله مناسبًا للتطبيقات الزمنية الحقيقية، بما يشمل الروبوتات العَصَبيّة والأنظمة التفاعلية. كما توفّر النتائج رؤى أعمق حول العمليات العَصَبيّة العضلية الأساسية وتدعم تطوير نماذج أكثر قابليةً للتفسير.</p>
+            <p>تُنظَّم بقية الورقة كما يلي: في القسم <a href="#sec::Data" data-reference-type="ref" data-reference="sec::Data">2</a> نستعرض البيانات والمعالجة المسبقة، وفي القسم <a href="#sec::Coherence" data-reference-type="ref" data-reference="sec::Coherence">3</a> نعرض تحليل التوافُق وبناء الشبكات. في القسم <a href="#sec::Model" data-reference-type="ref" data-reference="sec::Model">4</a> نطوِّر مصنِّف إشارات اليد باستخدام آلة الدَّعم الناقل ونقدِّم النتائج مع مقارنتها بالأدبيات. وأخيرًا، في القسم <a href="#sec::Concl" data-reference-type="ref" data-reference="sec::Concl">5</a> نخلص إلى الاستنتاجات وآفاق العمل المستقبلي.</p>
+        </section>
+
+        <section id="sec::Data" class="level1">
+            <h1>البيانات والمعالجة المسبقة</h1>
+            <p>قُدِّمت مجموعات بيانات sEMG عديدة وأُتيحت للعموم في الأدبيات <span class="citation" data-cites="Phinyomark_2018"></span> <span class="citation" data-cites="Kaczmarek_2019"></span> <span class="citation" data-cites="Ozdemir_2022"></span> <span class="citation" data-cites="Nunez"></span>، وتبرز مبادرة NinaPro <span class="citation" data-cites="Ninapro_Original"></span> لشعبيتها في المجتمع العلمي ومجال الروبوتات. تمثّل NinaPro (الأطراف الاصطناعية التكيفية غير الجراحية) مشروعًا بحثيًّا شاملًا يوفّر تسجيلات sEMG واسعة من أشخاص أصحّاء ومن مبتوري الساعد أثناء أداء مجموعة من إشارات وحركات اليد والمعصم. تتكوّن المبادرة من <span class="math inline">\(10\)</span> قواعد بيانات تختلف في عدد المشاركين والحركات وطرائق التسجيل.</p>
+
+            <div id="fig::Gestures" class="figure">
+                <img src="Gestures.png" alt="مجموعة إيماءات اليد في NinaPro DB-2 - التمرين B">
+                <div class="figure-caption">الشكل 2: إيماءات اليد المستهدفة في التمرين B (عددها 17) من قاعدة بيانات NinaPro DB-2.</div>
+            </div>
+
+            <p>نعتمد في هذا العمل قاعدة بيانات Ninapro DB-2، التي تحتوي على بيانات sEMG وحركية وقوة لـ<span class="math inline">\(40\)</span> مشاركًا أصحّاء (<span class="math inline">\(28\)</span> ذكور، <span class="math inline">\(12\)</span> إناث؛ متوسط العمر <span class="math inline">\(29.9 \pm 3.9\)</span> سنة؛ <span class="math inline">\(34\)</span> أيمن و<span class="math inline">\(6\)</span> أعسر). جُمعت البيانات الحركية باستخدام قفاز Cyberglove 2، فيما جُمعت إشارات sEMG بواسطة <span class="math inline">\(12\)</span> قطبًا من نوع Delsys Trigno، وُزِّعت كالتالي: ثمانية أقطاب حول الساعد قرب مفصل الكوع، وقطبان فوق منطقتَي النشاط الرئيسيتين لعضلتي الثني والباسط للأصابع، وقطبان فوق منطقتَي النشاط للعضلتين ذات الرأسين والثلاثية الرؤوس. أُخذت عينات sEMG بمعدّل <span class="math inline">\(2000\)</span> هرتز.</p>
+            <p>طُلِب من المشاركين تقليد حركات تظهر في مقاطع فيديو على شاشة حاسوب محمول. أُدّيت الحركات باليد اليمنى لمدة <span class="math inline">\(5\)</span> ثوانٍ تليها <span class="math inline">\(3\)</span> ثوانٍ راحة، مع <span class="math inline">\(6\)</span> تكرارات لكل حركة. ورغم أن القاعدة تضم <span class="math inline">\(49\)</span> حركة يد ومعصم، نركّز هنا على <span class="math inline">\(17\)</span> إشارة من التمرين B، الموضّحة في الشكل <a href="#fig::Gestures" data-reference-type="ref" data-reference="fig::Gestures">[fig::Gestures]</a>.</p>
+
+            <div id="fig::MSC" class="figure">
+                <img src="MSC_matrices_S19.png" alt="مصفوفات التوافُق للمشارك 19 لكل الإشارات">
+                <div class="figure-caption">الشكل 3: مصفوفات التوافُق التربيعي المُطلق (MSC) للمشارك رقم 19 عبر الإشارات السبعة عشر.</div>
+            </div>
+
+            <section id="pre-processing" class="level2">
+                <h2>المعالجة المسبقة</h2>
+                <p>استُخدمت كامل مدة كل إشارة (خمس ثوانٍ) بما يشمل الطور الانتقالي الأوّل (يمثِّل ثانية واحدة من بدء الحركة <span class="citation" data-cites="Eion_RAL2022"></span>) وحالة الثبات للانقباض (الأربعُ ثوانٍ المتبقية). جرت قسمة بيانات التدريب والاختبار وفق رقم التكرار، كما في <span class="citation" data-cites="Ninapro_Original"></span> ومراجع أخرى نعتمدها: التكرارات <span class="math inline">\(1\)</span>، <span class="math inline">\(3\)</span>، <span class="math inline">\(4\)</span>، و<span class="math inline">\(6\)</span> للتدريب، والتكراران <span class="math inline">\(2\)</span> و<span class="math inline">\(5\)</span> للاختبار.</p>
+                <p>لضمان جودة إشارات sEMG وقابليتها للاستخدام، نُفِّذت سلسلة ترشيحات رقمية:</p>
+                <ul>
+                    <li><p><strong>ترشيح نطاقي (Bandpass):</strong> مُرشِّح Butterworth من الرتبة الرابعة بنطاق تمرير من <span class="math inline">\(10\)</span> إلى <span class="math inline">\(900\)</span> هرتز للاحتفاظ بالتردّدات ذات الصلة وتقليل الضوضاء غير المرغوبة.</p></li>
+                    <li><p><strong>ترشيح نُوتشي (Notch):</strong> لإزالة تداخل التيار الكهربائي عند <span class="math inline">\(50\)</span> هرتز.</p></li>
+                </ul>
+                <p>طُبِّق كذلك ترشيح عديم الطور (Zero-phase) لتفادي تشوّه الطور. ثم استُخدم معيار Z-Score حيث طُبِّعت البيانات لتكون بمتوسط <span class="math inline">\(0\)</span> وانحراف معياري <span class="math inline">\(1\)</span> اعتمادًا على مجموعة التدريب فقط، لضمان مقياس موحّد ملائم للتحليل والمقارنة.</p>
+            </section>
+        </section>
+
+        <section id="sec::Coherence" class="level1">
+            <h1>تحليل التوافُق العضلي</h1>
+            <p>يشير التوافُق العضلي إلى مدى تطابُق مكوّنات التردّد في إشارة عضلية مع أخرى عبر الزمن. قيم التوافُق العالية تعني تنسيقًا أعلى بين العضلات، والمنخفضة تعني قلّة التآزر. يُقاس التوافُق بين زوج إشارات بمقياس التوافُق التربيعي المُطلق (MSC). إذا كانت لدينا إشارتان <span class="math inline">\(x(t)\)</span> و<span class="math inline">\(y(t)\)</span>، فإنّ MSC يُعرَّف كما يلي:</p>
+            <div class="equation">
+                \[\label{eq:MSC}
+                    MSC(f) = \frac{|{P}_{xy}(f)|^2}{P_{xx}(f) \cdot P_{yy}(f)} \;
+                ,\]
+            </div>
+            <span id="eq:MSC"></span>
+            <p>حيث:</p>
+            <ul>
+                <li><p><span class="math inline">\(P_{xy}(f)\)</span> الكثافة الطيفيّة المُتقاطِعة بين <span class="math inline">\(x\)</span> و<span class="math inline">\(y\)</span> عند التردّد <span class="math inline">\(f\)</span>؛</p></li>
+                <li><p><span class="math inline">\(P_{xx}(f)\)</span> و<span class="math inline">\(P_{yy}(f)\)</span> الكثافتان الطيفيتان لكلّ من <span class="math inline">\(x\)</span> و<span class="math inline">\(y\)</span> عند التردّد ذاته.</p></li>
+            </ul>
+            <p>تتراوح قيمة <span class="math inline">\(MSC\)</span> بين <span class="math inline">\(0\)</span> و<span class="math inline">\(1\)</span>؛ فـ<span class="math inline">\(MSC = 1\)</span> تعني ارتباطًا خطيًّا تامًّا عند تردّد معيّن، و<span class="math inline">\(MSC = 0\)</span> تعني عدم وجود ارتباط خطي. بتحليل قيم <span class="math inline">\(MSC\)</span> عبر أزواج العضلات والتردّدات المختلفة، يمكن استخلاص أنماط تنسيق النشاط العضلي أثناء أداء الإشارات.</p>
+
+            <div id="fig::Networks" class="figure">
+                <img src="Networks.png" alt="الشبكات التوافقية المستخرجة من بيانات أحد المشاركين">
+                <div class="figure-caption">الشكل 4: شبكات التوافُق العضلي المستخرَجة من بيانات المشارك رقم 1؛ تمثِّل العقد الحساسات وتمثِّل الحوافّ شدّة التوافُق.</div>
+            </div>
+
+            <p>لإحصاء الكثافات الطيفية في المعادلة <a href="#eq:MSC" data-reference-type="ref" data-reference="eq:MSC">[eq:MSC]</a>، استُخدمت طريقة ويلش (Welch) بنافذة حجمها <span class="math inline">\(600\)</span> عيّنة (أي <span class="math inline">\(300\)</span> مللي ثانية عند تردّد أخذ عيّنات <span class="math inline">\(2\)</span> كيلوهرتز) وتداخُل نسبته <span class="math inline">\(50\%\)</span>. في النهاية، حُصِلت مصفوفات التوافُق التي تحتوي قيم <span class="math inline">\(MSC\)</span> عبر المجال التردّدي لكل زوج إشارات.</p>
+            <p>يعرض الشكل <a href="#fig::MSC" data-reference-type="ref" data-reference="fig::MSC">[fig::MSC]</a> النتائج للمشارك رقم <span class="math inline">\(19\)</span> لجميع الإشارات السبعة عشر. تحوي كل مصفوفة <span class="math inline">\(12 \times 12 = 144\)</span> خانة تمثّل المتوسط عبر التكرارات لقيم التوافُق لكل زوج. يعكس اللون شدة التوافُق: الأزرق لـ<span class="math inline">\(MSC = 0\)</span> والأصفر لـ<span class="math inline">\(MSC = 1\)</span>. وبما أنّ الترابُط غير مُوجَّه فالمصفوفات متماثلة. وتمثّل القيم القطرية توافُق الإشارة مع نفسها (<span class="math inline">\(x=y\)</span>) ما يُفضي إلى <span class="math inline">\(MSC=1\)</span>، وقد أُبدلت هذه القيم إلى <span class="math inline">\(0\)</span> لتفادي طغيانها على الأنماط الأخرى.</p>
+            <p>يوضح الشكل <a href="#fig::Networks" data-reference-type="ref" data-reference="fig::Networks">[fig::Networks]</a> الشبكات التوافقية للمشارك رقم 1، حيث تمثّل كل عقدة حساسًا، وتمثّل الحوافّ قيم التوافُق، ويعبّر لون الحافة عن شدّته.</p>
+            <p>من الشكلين، تُظهِر إشارة تمديد المعصم (رقم <span class="math inline">\(14\)</span>) عادةً أعلى قيم توافُق، تليها الإشارات <span class="math inline">\(5\)</span> (إبعاد جميع الأصابع)، <span class="math inline">\(6\)</span> (قبضة اليد)، <span class="math inline">\(8\)</span> (إبعاد الأصابع الممدودة)، <span class="math inline">\(13\)</span> (ثني المعصم) و<span class="math inline">\(15\)</span> (الانحراف الشعاعي للمعصم)، مع اختلافات بين المشاركين.</p>
+        </section>
+
+        <section id="sec::Model" class="level1">
+            <h1>نموذج تصنيف الإشارات</h1>
+            <p>نقدِّم هنا النموذج المقترح ونقارن بالأعمال السابقة على القاعدة نفسها، بوصفها خطّ أساس. استُخدمت Ninapro DB-2 على نطاق واسع لتصنيف sEMG باستخدام أساليب تقليدية مثل الغابات العشوائية، وآلة الدَّعم الناقل، وأقرب جار <span class="citation" data-cites="Ninapro_Original"></span>، وكذلك بأساليب تعلُّم عميق متقدِّمة كـCNN <span class="citation" data-cites="Atzori_2016"></span>، <span class="citation" data-cites="Ding_2018"></span>، وLSTM <span class="citation" data-cites="Sun_2021"></span>، والمناهج الهجينة <span class="citation" data-cites="Gulati_2021"></span>، وشبكة الكبسولات (CapsNet) <span class="citation" data-cites="Eion_RAL2022"></span>. يوضّح الجدول <a href="#table:Comparison" data-reference-type="ref" data-reference="table:Comparison">[table:Comparison]</a> خصائص ودقّة الأساليب على التمرين B (17 إشارة)، وهو ما نعتمده للمقارنة.</p>
+            <p>بعد الحصول على مصفوفات <span class="math inline">\(MSC\)</span> في القسم <a href="#sec::Coherence" data-reference-type="ref" data-reference="sec::Coherence">3</a>، خُفِّضت الكلفة الحسابية بأخذ المتوسّط عبر المجال التردّدي لكل زوج، فنحصل على مصفوفة ميزات أبعادها <span class="math inline">\(102 \times 132\)</span> لكل مشارك. عدد الصفوف (<span class="math inline">\(102\)</span>) يساوي <span class="math inline">\(17\)</span> حركة × <span class="math inline">\(6\)</span> تكرارات. مثلًا: الصفوف <span class="math inline">\(1\!-\!6\)</span> تخصّ الإشارة الأولى، والصفوف <span class="math inline">\(7\!-\!12\)</span> تخصّ الثانية، وهكذا. يحتوي كل صف على مصفوفة التوافُق المتوسّطة للحركة والتكرار المعنيَّين، مُسطّحةً إلى متجه بعد إهمال القيم القطرية حيث <span class="math inline">\(MSC = 1\)</span>، فنحصل على <span class="math inline">\(132\)</span> عمودًا: <span class="math inline">\(12 \times 12 = 144\)</span> زوجًا ممكنًا ناقص <span class="math inline">\(12\)</span> عناصر قطرية.</p>
+
+            <div class="table">
+                <table class="table table-striped table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr class="header">
+                            <th colspan="2" style="text-align: center;"><strong>الإشارة</strong></th>
+                            <th style="text-align: center;"><strong>الدقّة</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
+                            <th style="text-align: center;"><strong>الدقّة الإيجابية</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
+                            <th style="text-align: center;"><strong>الاسترجاع</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
+                            <th style="text-align: center;"><strong>معدل F1</strong> [<span class="math inline">\(\textbf{\%}\)</span>]</th>
+                            <th style="text-align: center;"><strong>AUC</strong> [<span class="math inline">\(\mathbf{10^{-2}}\)</span>]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">1</td>
+                            <td style="text-align: right;">إشارة الإبهام للأعلى</td>
+                            <td style="text-align: center;">91.3</td>
+                            <td style="text-align: center;">87.3</td>
+                            <td style="text-align: center;">91.3</td>
+                            <td style="text-align: center;">87.6</td>
+                            <td style="text-align: center;">97.8</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">2</td>
+                            <td style="text-align: right;">تمديد وثني السبابة والوسطى</td>
+                            <td style="text-align: center;">83.6</td>
+                            <td style="text-align: center;">85.4</td>
+                            <td style="text-align: center;">83.8</td>
+                            <td style="text-align: center;">81.9</td>
+                            <td style="text-align: center;">95.7</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">3</td>
+                            <td style="text-align: right;">ثني البنصر والخنصر، تمديد الباقي</td>
+                            <td style="text-align: center;">82.5</td>
+                            <td style="text-align: center;">80.6</td>
+                            <td style="text-align: center;">82.5</td>
+                            <td style="text-align: center;">78.4</td>
+                            <td style="text-align: center;">97.5</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">4</td>
+                            <td style="text-align: right;">الإبهام مقابل قاعدة الخنصر</td>
+                            <td style="text-align: center;">85.0</td>
+                            <td style="text-align: center;">82.9</td>
+                            <td style="text-align: center;">85.0</td>
+                            <td style="text-align: center;">81.3</td>
+                            <td style="text-align: center;">98.3</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">5</td>
+                            <td style="text-align: right;">إبعاد جميع الأصابع</td>
+                            <td style="text-align: center;">82.5</td>
+                            <td style="text-align: center;">77.2</td>
+                            <td style="text-align: center;">82.5</td>
+                            <td style="text-align: center;">76.7</td>
+                            <td style="text-align: center;">98.3</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">6</td>
+                            <td style="text-align: right;">قبضة اليد</td>
+                            <td style="text-align: center;">87.5</td>
+                            <td style="text-align: center;">92.5</td>
+                            <td style="text-align: center;">87.5</td>
+                            <td style="text-align: center;">88.1</td>
+                            <td style="text-align: center;">98.0</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">7</td>
+                            <td style="text-align: right;">إشارة السبابة</td>
+                            <td style="text-align: center;">83.8</td>
+                            <td style="text-align: center;">76.7</td>
+                            <td style="text-align: center;">83.8</td>
+                            <td style="text-align: center;">78.1</td>
+                            <td style="text-align: center;">97.1</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">8</td>
+                            <td style="text-align: right;">إبعاد الأصابع الممدودة</td>
+                            <td style="text-align: center;">83.8</td>
+                            <td style="text-align: center;">87.9</td>
+                            <td style="text-align: center;">83.8</td>
+                            <td style="text-align: center;">83.4</td>
+                            <td style="text-align: center;">95.9</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">9</td>
+                            <td style="text-align: right;">استدارة المعصم (محور السبابة)</td>
+                            <td style="text-align: center;">77.5</td>
+                            <td style="text-align: center;">85.8</td>
+                            <td style="text-align: center;">77.5</td>
+                            <td style="text-align: center;">79.2</td>
+                            <td style="text-align: center;">94.4</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">10</td>
+                            <td style="text-align: right;">كبّ المعصم (محور السبابة)</td>
+                            <td style="text-align: center;">86.3</td>
+                            <td style="text-align: center;">86.7</td>
+                            <td style="text-align: center;">86.3</td>
+                            <td style="text-align: center;">84.4</td>
+                            <td style="text-align: center;">97.9</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">11</td>
+                            <td style="text-align: right;">استدارة المعصم (محور الخنصر)</td>
+                            <td style="text-align: center;">87.5</td>
+                            <td style="text-align: center;">85.8</td>
+                            <td style="text-align: center;">87.5</td>
+                            <td style="text-align: center;">84.3</td>
+                            <td style="text-align: center;">96.6</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">12</td>
+                            <td style="text-align: right;">كبّ المعصم (محور الخنصر)</td>
+                            <td style="text-align: center;">86.2</td>
+                            <td style="text-align: center;">79.2</td>
+                            <td style="text-align: center;">86.3</td>
+                            <td style="text-align: center;">81.4</td>
+                            <td style="text-align: center;">97.4</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">13</td>
+                            <td style="text-align: right;">ثني المعصم</td>
+                            <td style="text-align: center;">85.0</td>
+                            <td style="text-align: center;">92.5</td>
+                            <td style="text-align: center;">85.0</td>
+                            <td style="text-align: center;">86.8</td>
+                            <td style="text-align: center;">96.4</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">14</td>
+                            <td style="text-align: right;">تمديد المعصم</td>
+                            <td style="text-align: center;">80.0</td>
+                            <td style="text-align: center;">97.9</td>
+                            <td style="text-align: center;">80.0</td>
+                            <td style="text-align: center;">85.3</td>
+                            <td style="text-align: center;">93.3</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">15</td>
+                            <td style="text-align: right;">الانحراف الشعاعي للمعصم</td>
+                            <td style="text-align: center;">76.2</td>
+                            <td style="text-align: center;">84.6</td>
+                            <td style="text-align: center;">76.3</td>
+                            <td style="text-align: center;">78.6</td>
+                            <td style="text-align: center;">91.7</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">16</td>
+                            <td style="text-align: right;">الانحراف الزندي للمعصم</td>
+                            <td style="text-align: center;">93.8</td>
+                            <td style="text-align: center;">94.6</td>
+                            <td style="text-align: center;">93.8</td>
+                            <td style="text-align: center;">92.9</td>
+                            <td style="text-align: center;">99.8</td>
+                        </tr>
+                        <tr class="odd">
+                            <td style="text-align: center;">17</td>
+                            <td style="text-align: right;">تمديد المعصم مع انغلاق اليد</td>
+                            <td style="text-align: center;">93.8</td>
+                            <td style="text-align: center;">96.2</td>
+                            <td style="text-align: center;">93.8</td>
+                            <td style="text-align: center;">93.5</td>
+                            <td style="text-align: center;">98.5</td>
+                        </tr>
+                        <tr class="even">
+                            <td colspan="2" style="text-align: center;"><strong>المتوسط</strong></td>
+                            <td style="text-align: center;"><span class="math inline">\(\textbf{85.1}\)</span></td>
+                            <td style="text-align: center;"><span class="math inline">\(\textbf{86.7}\)</span></td>
+                            <td style="text-align: center;"><span class="math inline">\(\textbf{85.1}\)</span></td>
+                            <td style="text-align: center;"><span class="math inline">\(\textbf{83.6}\)</span></td>
+                            <td style="text-align: center;"><span class="math inline">\(\textbf{96.8}\)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><span id="table:Accuracy" label="table:Accuracy"></span></p>
+            </div>
+
+            <p>تُستخدم مصفوفة الميزات لتدريب مصنِّف آلة دَّعم ناقل بنواة متعددة الحدود. اتّبعنا الإعداد القياسي ذاته في تقسيم التكرارات: <span class="math inline">\(1\)</span>، <span class="math inline">\(3\)</span>، <span class="math inline">\(4\)</span>، <span class="math inline">\(6\)</span> للتدريب، و<span class="math inline">\(2\)</span> و<span class="math inline">\(5\)</span> للاختبار. ونظرًا لمحدودية البيانات وعدم توافر مجموعة تحقّق منفصلة، استُخدم التحقّق المتقاطع بثلاثة أطراف (3-fold) مع بحث شبكي لضبط معاملات SVM، أي رتبة النواة متعددة الحدود ومعامل التنظيم <span class="math inline">\(\mathcal{C}\)</span>. أفضى ذلك إلى اختيار نواة من الرتبة <span class="math inline">\(2\)</span> وقيمة <span class="math inline">\(\mathcal{C}=10\)</span>، مع أفضل أداء في التحقّق المتقاطع.</p>
+
+            <section id="results" class="level2">
+                <h2>النتائج</h2>
+                <p>دُرِّب واختُبر مصنِّف SVM لكل مشارك على حدة. يقدّم الجدول <a href="#table:Accuracy" data-reference-type="ref" data-reference="table:Accuracy">[table:Accuracy]</a> متوسّط الدقّة والدقّة الإيجابية والاسترجاع وF1 وAUC لكل إشارة. ويوضّح الشكل <a href="#fig::ConfMatrix" data-reference-type="ref" data-reference="fig::ConfMatrix">[fig::ConfMatrix]</a> متوسّط مصفوفة الالتباس عبر جميع المشاركين. لمجموعة الاختبار، يوجد <span class="math inline">\(2\)</span> تكرارات لكل إشارة، وبالمتوسط جرى التنبّؤ الصحيح بـ<span class="math inline">\(28.9\)</span> عيّنة من أصل <span class="math inline">\(34\)</span>. سُجِّلت أعلى معدّلات الالتباس في الفئة 9 (استدارة المعصم بمحور السبابة)، وغالبًا ما التُبسَت بالفئة 11 (استدارة المعصم بمحور الخنصر)، وهو متسق مع الشكلين <a href="#fig::MSC" data-reference-type="ref" data-reference="fig::MSC">[fig::MSC]</a> و<a href="#fig::Networks" data-reference-type="ref" data-reference="fig::Networks">[fig::Networks]</a> حيث تتقارب قيم <span class="math inline">\(MSC\)</span>. كما ظهر التباس بين الفئة 15 (الانحراف الشعاعي للمعصم) والفئة 3 (ثني البنصر والخنصر مع تمديد البقية)، وهو ما تؤكّده مصفوفتا <span class="math inline">\(MSC\)</span> للمشارك 19 في الشكل <a href="#fig::MSC" data-reference-type="ref" data-reference="fig::MSC">[fig::MSC]</a>.</p>
+
+                <p>على الرغم من استخدام مصنِّف بسيط ومنخفض الكلفة، جاءت النتائج مماثلةً أو متفوِّقةً على تلك المُلخّصة في الجدول <a href="#table:Comparison" data-reference-type="ref" data-reference="table:Comparison">[table:Comparison]</a> لأساليب حديثة على القاعدة نفسها. وقد تحقق ذلك بالاعتماد على التوافُق بين أزواج الإشارات كميزة رئيسية بدلًا من معالجة كل قناة على انفراد، ما خفّض تعقيد الخوارزمية بشكل كبير.</p>
+
+                <div id="fig::ConfMatrix" class="figure">
+                    <img src="ConfMatrix.png" alt="مصفوفة الالتباس المتوسطة عبر المشاركين">
+                    <div class="figure-caption">الشكل 5: مصفوفة الالتباس المتوسّطة عبر جميع المشاركين لإشارات التمرين B.</div>
+                </div>
+
+                <div class="table">
+                    <table class="table table-striped table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr class="header">
+                                <th style="text-align: center;"><strong>المرجع</strong></th>
+                                <th style="text-align: center;"><strong>المنهجيّة</strong></th>
+                                <th style="text-align: center;"><strong>الميزات</strong></th>
+                                <th style="text-align: center;"><strong>عدد الإشارات</strong></th>
+                                <th style="text-align: center;"><strong>الدقّة</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td style="text-align: center;"><span class="citation" data-cites="Eion_RAL2022"></span></td>
+                                <td style="text-align: center;">تعلُّم انتقالي لشبكة الكبسولات</td>
+                                <td style="text-align: center;">ميزات مُستخرَجة بواسطة CNN</td>
+                                <td style="text-align: center;">17</td>
+                                <td style="text-align: center;"><span class="math inline">\(78.3\%\)</span></td>
+                            </tr>
+                            <tr class="even">
+                                <td style="text-align: center;"><span class="citation" data-cites="Gulati_2021"></span></td>
+                                <td style="text-align: center;">LSTM مع CNN موسّعة</td>
+                                <td style="text-align: center;">ميزات مُستخرَجة بواسطة CNN</td>
+                                <td style="text-align: center;">17</td>
+                                <td style="text-align: center;"><span class="math inline">\(82.0\%\)</span></td>
+                            </tr>
+                            <tr class="odd">
+                                <td style="text-align: center;"><span class="citation" data-cites="Sun_2021"></span></td>
+                                <td style="text-align: center;">توسيع زمني في LSTM وDeepNet</td>
+                                <td style="text-align: center;">ميزات مُستخرَجة بواسطة CNN</td>
+                                <td style="text-align: center;">17</td>
+                                <td style="text-align: center;"><span class="math inline">\(82.4\%\)</span></td>
+                            </tr>
+                            <tr class="even">
+                                <td style="text-align: center;"><span class="citation" data-cites="Ding_2018"></span></td>
+                                <td style="text-align: center;">CNN متعددة المقاييس بالتوازي</td>
+                                <td style="text-align: center;">ميزات مُستخرَجة بواسطة CNN</td>
+                                <td style="text-align: center;">17</td>
+                                <td style="text-align: center;"><span class="math inline">\(83.8\%\)</span></td>
+                            </tr>
+                            <tr class="odd">
+                                <td style="text-align: center;"><strong>هذه الورقة</strong></td>
+                                <td style="text-align: center;"><strong>SVM</strong></td>
+                                <td style="text-align: center;"><strong>MSC</strong></td>
+                                <td style="text-align: center;">17</td>
+                                <td style="text-align: center;"><span class="math inline">\(\textbf{85.1\%}\)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><span id="table:Comparison" label="table:Comparison"></span></p>
+                </div>
+
+                <p>أظهر نهجُنا دقّةً إجماليّة تبلغ <span class="math inline">\(85.1\%\)</span>، متفوِّقًا حتى على أفضل نتائج التعلُّم العميق المبلّغ عنها للتمرين ذاته. وبينما تُخفِّف نماذج التعلُّم العميق عبء هندسة الميزات يدويًّا، فإنها تتطلّب بيانات وفيرة وموارد حسابية كبيرة. بالمقابل، برهنا أنّ فكّ ترميز sEMG إلى توافُق بين العضلات يقدّم رؤًى مهمّة حول استراتيجيات التحكُّم العَصَبي أثناء حركات اليد، ومن ثمّ يمكن لأساليب أبسط أن تكون فعّالة بالقدر نفسه عندما تُصمَّم الميزات بعناية.</p>
+            </section>
+        </section>
+
+        <section id="sec::Concl" class="level1">
+            <h1>الخلاصة</h1>
+            <p>قدّمنا مصنِّف تعلُّم آلة يعتمد على الشبكات العضلية الوظيفية القائمة على التوافُق لتحسين إدراك إشارات اليد. عبر تحليل تنسيق العضلات أثناء الحركات، يقدّم النهج مصنِّفًا منخفض الأبعاد يلتقط المعلومات الجوهرية اللازمة لتعرُّف الإشارات بدقّة. أظهر استخدام التوافُق التربيعي المُطلق لإشارات sEMG، ثم معالجته بمصنِّف SVM بسيط، أنّ هذه الطريقة تُحسِّن الدقّة وتُقلِّل الكلفة الحسابية بما يلائم التطبيقات في الزمن الحقيقي. تؤكّد النتائج إمكانات الشبكات العضلية الوظيفية القائمة على التوافُق في فكّ شفرة التنسيق العَصَبي العضلي، وتُبرز أهميتها لتطوير واجهات إنسان-آلة بديهية وفعّالة.</p>
+            <p>تُمهِّد نتائجنا لتطوّرات في الروبوتات العَصَبيّة والأنظمة التفاعلية، حيث يُعَدّ التعرُّف الدقيق والفعّال زمنيًّا على إشارات اليد أمرًا محوريًّا. ومن خلال استخراج ميزات دالّة عبر التوافُق العضلي، يمكن دمج الطريقة المقترحة في استراتيجيات التحكُّم الروبوتي لتعزيز الدقّة والمرونة. وبالنظر إلى الطبيعة متعدّدة الأنماط لقاعدة البيانات، قد تُحسَّن النتائج مستقبلًا بدمج معلومات إضافية، بما يزيد المتانة والتنوّع في السيناريوهات العمليّة. كما توفّر النتائج رؤًى أعمق في العمليات العَصَبيّة العضلية المرتبطة بتنفيذ الإشارات، وتدعم تطوير نماذج متقدّمة وقابلة للتفسير. سيركّز العمل اللاحق على تحسين النموذج، وتوسيعه إلى مجموعة أوسع من الإشارات والسيناريوهات الواقعية، ودمجه في أنظمة عملية لتحقيق أقصى استفادة من إمكاناته.</p>
+        </section>
+
+        <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+            <hr />
+            <ol>
+                <li id="fn1" role="doc-endnote">
+                    <p>دُعمَت المادة المقدَّمة في هذه الورقة جزئيًّا من مركز الذكاء الاصطناعي والروبوتات (CAIR) في جامعة نيويورك أبوظبي: الجائزة CG010. كما دُعم العمل جزئيًّا من المؤسسة الوطنية للعلوم في الولايات المتحدة بموجب المنحتين رقم 2229697 و2121391، إضافةً إلى جائزة من شركة MathWorks.</p>
+                    <p>المؤلف المراسل: <span>كوستانزا أرميني <code dir="ltr">ca3072@nyu.edu</code></span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+                <li id="fn2" role="doc-endnote">
+                    <p><span class="math inline">\(^{1}\)</span> مركز الذكاء الاصطناعي والروبوتات (CAIR)، جامعة نيويورك أبوظبي (NYUAD)، أبوظبي، الإمارات العربية المتحدة<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+                <li id="fn3" role="doc-endnote">
+                    <p><span class="math inline">\(^{2}\)</span> قسم الهندسة، جامعة نيويورك أبوظبي (NYUAD)، أبوظبي، الإمارات العربية المتحدة<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+                <li id="fn4" role="doc-endnote">
+                    <p><span class="math inline">\(^{3}\)</span> قسم الهندسة الطبية الحيوية، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+                <li id="fn5" role="doc-endnote">
+                    <p><span class="math inline">\(^{4}\)</span> قسم علوم وهندسة الحاسوب، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+                <li id="fn6" role="doc-endnote">
+                    <p><span class="math inline">\(^{5}\)</span> قسم الهندسة الكهربائية وهندسة الحاسوب، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+                <li id="fn7" role="doc-endnote">
+                    <p><span class="math inline">\(^{6}\)</span> قسم الهندسة الميكانيكية والفضائية، جامعة نيويورك (NYU)، نيويورك، الولايات المتحدة الأمريكية<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p>
+                </li>
+            </ol>
+        </section>
     </div>
+
     <hr style="margin: 40px 0;">
     <div class="text-muted text-center">
         <small>
             تم تحويل هذا الإصدار HTML تلقائيًا من LaTeX.<br>
-            يتم عرض المعادلات الرياضية باستخدام MathJax.
+            تُعرَض المعادلات الرياضية باستخدام MathJax.
         </small>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

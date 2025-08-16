@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Adam Fenton">
+  <meta name="author" content="Dimitris Stamatellos">
+  <title>البُنْيَةُ ثُلاثِيَّةُ الأَبْعاد لِكَوَاكِبِ القُرْصِ غَيْرِ المُسْتَقِرَّةِ</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">البُنْيَةُ ثُلاثِيَّةُ الأَبْعاد لِكَوَاكِبِ القُرْصِ غَيْرِ المُسْتَقِرَّةِ</h1>
+<p class="author"><span class="nodecor">Adam Fenton</span></p>
+<p class="author"><span class="nodecor">Dimitris Stamatellos</span></p>
+</header>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>يُقدّم نموذج تجزئة القرص غير المستقر جاذبيًا آليةً بديلةً لتشكيل الكواكب الغازية العملاقة، خصوصًا تلك التي تنشأ على مداراتٍ واسعةٍ.</p>
+<p>يتمثل هدفنا في تحديد البنية ثلاثية الأبعاد لهذه الكواكب ودراسة علاقة ذلك بالفارق الحراري خلال عملية التجزئة.</p>
+<p>استخدمنا كود <span class="nodecor">SPH</span> المعروف بـ<span class="nodecor">PHANTOM</span> لمحاكاة تجزئة الأقراص غير المستقرة جاذبيًا، وتتبعنا تطور الكواكب الناشئة خلال مرحلتي النواة الهيدروستاتيكية الأولى والثانية، وصولًا إلى كثافاتٍ تبلغ <span class="math inline">\(10^{-3}\text{g\,cm}^{-3}\)</span>.</p>
+<p>أظهرت نتائجنا أن بنية هذه الكواكب تتأثر بشدة ببيئة القرص وتاريخ تكوينها (مثل التفاعلات مع الأذرع الحلزونية وعمليات الاندماج). وتبيّن أن معظمها لا يكون كرويًا، بل مفلطحًا، ويكتسب غازه بشكلٍ أسرع عند خط الاستواء مقارنةً بالأقطاب.</p>
+<p>نتوقع أن تؤثر هذه البنية ثلاثية الأبعاد على الخصائص المرصودة لهذه الكواكب، ويجب أخذ ذلك بعين الاعتبار عند تفسير الملاحظات الخاصة بالكواكب المدمجة في أقراصها الأم.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>تعد تجزئة القرص غير المستقر جاذبيًا في الأقراص النجمية الأولية ذات الكتلة العالية (<span class="math inline">\(M_{\rm disc}\gtrsim0.1 M_\star\)</span>) آليةً بديلةً لتراكم النواة (<span class="nodecor">Goldreich:1973a, Drazkowska:2023i</span>) في تكوين الكواكب الغازية العملاقة.</p>
+<p>تظهر حالات عدم الاستقرار الجاذبي في هذه الأقراص عندما يتحقق معيار تومري (<span class="nodecor">Toomre:1964a</span>)،</p>
+<p class="math display">\[Q \equiv \frac{c_{s} (R) \kappa (R)}{\pi G \Sigma (R)} \lesssim 1,\]
+</p>
+<p>حيث <span class="math inline">\(c_{s}\)</span> سرعة الصوت، <span class="math inline">\(\kappa\)</span> التردد الاهليجي، و<span class="math inline">\(\Sigma\)</span> كثافة السطح عند نصف القطر <span class="math inline">\(R\)</span>. ويؤدي ذلك إلى تجزئة القرص فعليًا إذا برد بسرعةٍ كافية (<span class="math inline">\(t_{\rm cool}<(0.5-2)\,t_{\rm orb}\)</span>).</p>
+<p>كما يمكن للمجالات المغناطيسية أن تؤثر لاحقًا في تكوين القرص وتجزئته (<span class="nodecor">Wurster:2018a, Lebreuilly:2023v, Hennebelle:2020c, Commercon:2010a</span>)، غالبًا بما يثبط التجزئة.</p>
+<p>تنتج هذه العمليات كتلًا تفوق عدة أضعاف كتلة المشتري (<span class="math inline">\(M_{\rm J}\)</span>)، ولكن قد تصل الكتلة النهائية للكوكب إلى قيم أكبر بكثير (<span class="nodecor">Stamatellos:2009a, Kratter:2010a, Vorobyov:2013a, Kratter:2016a, Mercer:2017a, Fletcher:2019q</span>).</p>
+<p>تتوافق هذه النظرية مع تكوين الكواكب الغازية العملاقة على مداراتٍ واسعةٍ (<span class="nodecor">Stamatellos:2009a</span>)، إلا أن التفاعلات مع النجوم المارة قد تدمر عددًا أوليًا منها (<span class="nodecor">Carter:2023g</span>)، وهو ما يوافق قلة المشاهدات المباشرة (<span class="nodecor">Bowler:2018a, Vigan:2021w</span>).</p>
+<p>تمر شظايا القرص المتجزرة بمرحلتي النواة الهيدروستاتيكية الأولى والثانية (<span class="nodecor">Larson:1969a, Masunaga:2000a, Stamatellos:2007b, Stamatellos:2009d</span>)، مشابهةً إلى حدٍ بعيدٍ لسحابةٍ جزيئية منهارة، لكن مع أطوارٍ أصغر حجمًا وكتلٍ تبلغ بضعة <span class="math inline">\(M_{\rm J}\)</span> وسرعاتٍ عالية (<span class="nodecor">Stamatellos:2009d, Mercer:2020a</span>).</p>
+<p>أصبح رصد الكواكب المدمجة في أقراصها الأم (المعروفة بالكواكب الأولية) ممكنًا في الآونة الأخيرة (<span class="nodecor">Currie:2023s</span>). فرصدا الكوكبين حول النجم PDS 70 (عمره ~5 Myr) يُعدّان أول دليل واضح (<span class="nodecor">Keppler:2018a, Haffert:2019d</span>)، حيث يدور <span class="math inline">PDS 70 b</span> (كتلته <12 <span class="math inline">\({\rm M_J}\)</span>) على بعد ~20 AU، و<span class="math inline">PDS 70 c</span> على ~34 AU، ويرافقهما أقراصٌ كوكبيةٌ غازيةٌ (<span class="nodecor">Stolker:2020p, Benisty:2021j</span>).</p>
+<p>مؤخرًا، اكتُشف كوكب أولي حول نجم AB Aurigae (عمره 1–3 Myr) بكتلةٍ ~9 <span class="math inline">\({\rm M_J}\)</span> وعلى بعد ~93 AU (<span class="nodecor">Currie:2022q</span>).</p>
+<p>ومع توقع تزايد الملاحظات المباشرة وغير المباشرة لهذه الكواكب في المستقبل القريب، من الضروري تحديد خصائصها عند تكوينها عبر سيناريوهات مختلفة (تراكم النواة وعدَم الاستقرار). في هذا العمل نجري سلسلةً من المحاكاة الهيدروديناميكية لتجزئة القرص بهدف استكشاف البنية ثلاثية الأبعاد للكواكب الأولية الناتجة. يناقش القسم 2 الظروف الأولية للأقراص وطريقة المحاكاة، وفي القسم 3 نعرض النتائج العامة، ثم في القسم 4 ندرس ملفات الكثافة والحرارة والسرعة، وفي القسم 5 نركز على شكل الكواكب الأولية، وأخيرًا في القسم 6 نلخص الاستنتاجات.</p>
+<h1 id="sec:methods">المَنْهَجِيَّة</h1>
+<p>نقوم بنمذجة الديناميكا الحرارية للأقراص غير المستقرة جاذبيًا باستخدام كود الهيدروديناميك الجسيمي PHANTOM (<span class="nodecor">Price:2018b</span>)، مع اعتماد معادلة حالة باروتروبية (<span class="nodecor">Bate:1998a</span>) وتعديلها لتشمل التغذية الإشعاعية من النجم المركزي.</p>
+<h2 id="ظروف-القرص-الأولية">ظُرُوفُ القُرْصِ الأَوَّلِيَّةِ</h2>
+<p>عيّنا قرصًا بكتلة <span class="math inline">\(M_{\rm D}=0.6\,M_{\odot}\)</span> حول نجمٍ ضيفٍ كتلته 0.8 <span class="math inline">\(M_{\odot}\)</span>. يمتد القرص من 10 إلى 300 AU ومُثّل بـ<span class="math inline">\(4\times10^6\)</span> جسيمات SPH. اخترنا هذا الإعداد لضمان تكوّن عدد كافٍ من الشظايا لتسهيل تحليلٍ إحصائيٍّ لخصائصها. الحد الأدنى للكتلة القابلة للحل هو ~7.5×10<sup>−4</sup> <span class="math inline">\(M_{\rm J}\)</span> (<< حد العتامة؛ <span class="nodecor">Whitworth:2006a</span>)، مما يتيح تجزئةً دقيقة.</p>
+<p>يُحدّد ملف كثافة السطح بالقانون</p>
+<p class="math display">\[\Sigma=\Sigma_{0}\Bigl(\tfrac{R}{R_{\rm in}}\Bigr)^{-3/2}\Bigl(1-\sqrt{\tfrac{R_{\rm in}}{R}}\Bigr),\]</p>
+<p>حيث <span class="math inline">\(R_{\rm in}=10\)</span> AU و<span class="math inline">\(\Sigma_0=1.53\times10^3\,\mathrm{g\,cm}^{-2}\).</span> أما ملف درجة الحرارة فكان</p>
+<p class="math display">\[T(R)=T_{1\mathrm{AU}}\Bigl(\tfrac{R}{\mathrm{AU}}\Bigr)^{-0.5},\]</p>
+<p>بـ<span class="math inline">\(T_{1\mathrm{AU}}=[150,200]\)</span> K. يضمن هذا الإعداد استقرارًا تومريًا حتى ~50 AU فقط.</p>
+<h2 id="section:disc_thermodynamics">دِيناميكا حَرارِيَّةُ القُرْصِ</h2>
+<p>عادةً ما تُستخدم المحاكاة الهيدروديناميكية بمعادلة الحالة الباروتروبية (<span class="math inline">\(P\propto\rho^\gamma\)</span>) لتبسيط الحسابات (<span class="nodecor">Masunaga:1998a, Masunaga:2000a, Whitehouse:2004a, Mercer:2018a</span>). وحسب هذا النهج، تُحدد درجة حرارة الجسيم <span class="math inline">\(i\)</span> ب:</p>
+<p class="math display">\[T_i=\max\{T(R_i),\,T_B(\rho_i)\},\]</p>
+<p>حيث <span class="math inline">\(T(R_i)\)</span> من معادلة (&#x27;temperature-profile&#x27;) و<span class="math inline">\(T_B(\rho)\)</span> من المعادلة الباروتروبية:</p>
+<p class="math display">\[T_B(\rho)=
+\begin{cases}
+T_0 & \rho<\rho_1,\\
+T_0(\rho/\rho_1)^{\gamma_1-1} & \rho_1\le\rho<\rho_2,\\
+T_0(\rho_2/\rho_1)^{\gamma_1-1}(\rho/\rho_2)^{\gamma_2-1} & \rho_2\le\rho<\rho_3,\\
+T_0(\tfrac{\rho_2}{\rho_1})^{\gamma_1-1}(\tfrac{\rho_3}{\rho_2})^{\gamma_2-1}(\rho/\rho_3)^{\gamma_3-1} & \rho\ge\rho_3.
+\end{cases}\]</p>
+<p>تعكس المناطق الأربعة مراحل الشفافية والتنشيط الحراري وتفكك الهيدروجين مع ازدياد الكثافة.</p>
+<h1 id="تجزئة-القرص-وتكوين-الكواكب-الأولية">تَجْزِئَةُ القُرْصِ وَتَكْوِينُ الكَوَاكِبِ الأَوَّلِيَّةِ</h1>
+<p>أجرينا تسع محاكاة مختلفة لتجزئة القرص، موضحةً في الجدول [tab:params]. اختُيرت الظروف بحيث يدخُل القرص بسرعة في حالة عدم استقرار جاذبي ويبدأ بالتجزئة، فتتشكل شظايا ذاتية الجاذبية نشير إليها بالكواكب الأولية. وتتبعنا تطورها حتى بلوغ كثافة 10<sup>−3</sup> <span class="math inline">g\,cm<sup>−3</sup></span>. بشكلٍ عام، يقل عدد الكواكب الأولية مع ازدياد صلابة معادلة الحالة (<span class="math inline">γ=1.66</span>) بسبب الدعم الحراري المضاغط. أنتجت المحاكاة نحو 107 كواكب أولية في المجموع.</p>
+<p>يتشابه انهيار الشظية الأولية مع انهيار سحابة جزيئية كتلتها شمسية (<span class="nodecor">Stamatellos:2009d</span>)، لكن كتلتها فقط 10–100 <span class="math inline">M_J</span>، وتبدأ ثابتة الحرارة حسب بعدها عن النجم (10–30 K). عند انعدام الشفافية تتشكل النواة الهيدروستاتيكية الأولى، فتزداد حرارة الغاز ويظهر صدمة الاستحواذ. وعند ~2000 K يبدأ تفكك الهيدروجين جزيئيًا، لينشأ الانهيار الثاني والنواة الهيدروستاتيكية الثانية (<span class="nodecor">Stamatellos:2009d, Mercer:2020a</span>). كتلة النواة الأولى 10–20 <span class="math inline">M_J</span>، والثانية بضع <span class="math inline">M_J</span>، ويتحدد مقدار الكتلة النهائية للتفاعلات مع القرص (<span class="nodecor">Mercer:2020a</span>). كُل كوكب أولي مثّل بأكثر من <span class="math inline">6\times10^5</span> جسيمات SPH، ما يضمن حلًا حراريًا دقيقًا (<span class="nodecor">Stamatellos:2007b</span>).</p>
+<h1 id="البنية-ثلاثية-الأبعاد-لكواكب-ما-قبل-النجوم-المتكونه-من-عدم-الاستقرار-القرصي">البُنْيَةُ ثُلاثِيَّةُ الأَبْعاد لِكَوَاكِبِ مَا قَبْلَ النُّجُومِ المُتَكَوِّنَةِ مِنْ عَدَمِ الاِسْتِقْرَارِ القُرْصِيِّ</h1>
+<p>افترضت الدراسات السابقة (<span class="nodecor">Mercer:2020a</span>) أن هذه الكواكب تتمتع بتماثل كروي تام. ولكنها تتشكل في أقراص شبه كبلرية دوّارة (<span class="nodecor">Bate:1998a, Saigo:2006a, Saigo:2008a</span>)، ومن ثم من المتوقع أن تكون مسطحة ومفلطحة.</p>
+<p>للمزيد من التحليل، حسبنا الكثافة ودرجة الحرارة وسرعة الدوران والانهيار على امتدادات مختلفة حول مركز كل كوكب في الاتجاهات (±x، ±y، ±z)، وكذلك المتوسطات المحورية في مستوى x–y (المستوى المداري). أظهرت النتائج لجسيم نموذجي أن الكثافة في اتجاه z تنخفض أسرع مقارنةً بالاتجاهين الآخرين، مما يدلّ على تفلطحٍ واضح. كما يختلف توزيع درجة الحرارة قليلاً على الحواف نتيجة تداخل القرص المغذي.</p>
+<p>سرعة الدوران (حول محور z) تظهر تباينات عرضية تبعًا لبيئة التغذية من القرص، أما سرعة السقوط فتعظم عند الأقطاب (±z)، مع وجود صدمتي استحواذ حول النواتين الأولى والثانية (انظر الأشكال [fig:BM_clump1_3D]).</p>
+<p>تؤكد نتائجنا لجميع الكواكب المتشكلة أن (i) الكواكب مسطحة ومتماثلة في مستوى القرص النجمي (x–y)، و(ii) شبه محورية رغم الاختلافات عند الحواف بسبب بيئة التكوين وتاريخ الانبثاق (مثل تصادم الشظايا) (انظر [fig:all_clumps_xy]–[fig:all_clumps2_xz]). لتبسيط المقارنات نفترض في ما تبقى أن الكواكب تُقارب المحورية.</p>
+<p>تجدر الإشارة إلى أننا لم نأخذ تأثير المجالات المغناطيسية في الاعتبار، والتي قد تُعدل بنية القرص وتجزئته لاحقًا (<span class="nodecor">Commercon:2010a</span>) وبالتالي بنية الكواكب ثلاثية الأبعاد.</p>
+<h1 id="شكل-الكواكب-الأولية-المتقلبة">شَكْلُ الكَوَاكِبِ الأَوَّلِيَّةِ المُتَقَلِّبَةِ</h1>
+<p>تتسم الكواكب الأولية بمفلتحةٍ طفيفةٍ (نسبة محاور <1)؛ فهي تُشبه الكرات المفطحة حول محور الدوران z ومحور المستوى x–y. استخدمنا ثلاثة مقاييس: (1) <span class="math inline">\(e_{fc}\)</span> نسبة نصف القطر الداخلي في مستوى x–y إلى المقابل في z عند صدمة النواة الأولى؛ (2) <span class="math inline">\(e_{sc}\)</span> نسبة نصف القطر الخارجي للنواة الثانية عند صدمة الاستحواذ؛ (3) <span class="math inline">\(e_\rho\)</span> نسبة نصف قطر انخفاض الكثافة إلى <span class="math inline">\(\rho_c=10^{-9}\text{g\,cm}^{-3}\)</span> بين اتجاه z ومستوى x–y، وهو قابل للتعريف لجميع الكواكب.</p>
+<p>جميع المقاييس الثلاثة أعطت نتائج متقاربة بالنسبة للمورفولوجيا: أغلب الكواكب الأولية لها نسب محاور <1، فيما تظهر حالات نادرة بقيم أعلى نتيجة أحداث عنيفة (تفاعلات أو اندماجات).</p>
+<p>لوحظ أن النواة الثانية ذات قيم عالية لـ<span class="math inline">β_{sc}</span> تميل إلى تفلطح أكبر، بينما لا توجد علاقة واضحة للنواة الأولى، ما يدل على دور التفاعل مع القرص في تحديد شكلها.</p>
+<p>تقارن توزيعات نسب المحاور للنواتين بوضوح: تبلغ ذروة <span class="math inline">e_{sc}</span> ~0.7–1، أما <span class="math inline">e_{fc}</span> فتبلغ ذروتها ~0.1، مشابهًا لارتفاع القرص.</p>
+<p>توفر معادلة حالة أكثر صلابة (<span class="math inline">γ_1=1.66</span> مقابل <span class="math inline">γ_1=1.4</span>) نواة أولى أكثر كروية (<span class="math inline">〈e_{fc}〉=0.62</span> مقابل 0.26)، لكنها تعطي نواة ثانية أكثر تفلطحًا (<span class="math inline">〈e_{sc}〉=0.68</span> مقابل 0.96).</p>
+<h1 id="الاستنتاجات">الاِسْتِنْتَاجَات</h1>
+<p>تبيّن أن الكواكب الأولية الناتجة عن عدم استقرار القرص لا تكون متماثلة كرويًا، بل تقريبًا كرات مفطحة. وتعرض حوافها بنيةً أكثر تعقيدًا وغير متماثلة بفعل التفاعلات مع القرص وتاريخ تكوينها. ويتراكم الغاز بشكل أسرع عند خط الاستواء مقارنة بالأقطاب.</p>
+<p>نتوقع أن يؤدي ذلك إلى تعديلات ملحوظة في الخصائص المرصودة لهذه الكواكب (<span class="nodecor">Zhu:2015a, Marleau:2022v, Marleau:2023l</span>) ويجب أخذ زاوية الرؤية في الاعتبار عند تفسير بيانات أنظمة مثل PDS 70 b,c (<span class="nodecor">Keppler:2018a, Haffert:2019d</span>) وAB Aurigae b (<span class="nodecor">Currie:2022q</span>).</p>
+<p>نشكُر المحكم المجهول على ملاحظاته القيمة. جرت المحاكاة على منشآت عالية الأداء في جامعة سنترال لانكشاير وبنية ذاكرة جامعة دورهام (STFC DiRAC) وجامعة ليستر. تم تمويل DiRAC من BEIS وUKRI وSTFC. أُنتجت رسومات الكثافة السطحية باستخدام SPLASH (<span class="nodecor">Price:2007b</span>). نشكر دعم منحة STFC ST/X508329/1.</p>
+<h1 id="معلمات-المحاكاة-ومعرض-رسومات-كثافة-سطح-الكوكب-الأولى">مُعَلِّمَاتُ المُحَاكَاةِ وَمَعْرِضُ رُسُومَاتِ كَثَافَةِ سَطْحِ الكَوْكَبِ الأَوَّلِيِّ</h1>
+<p>سُردت مجموعات المعلمات المدروسة في الجدول [tab:params]. للاطلاع على وصفها، انظر القسم [sec:methods].</p>
+<p>رُسمت الكواكب الأولية لكل من ثماني مجموعات معلمات حالة المعادلة في الأشكال [fig:all_clumps_xy]–[fig:all_clumps2_xz]، حيث تظهر التباينات بوضوح.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;"><span class="math inline">\(\rho_{1}\,(\text{g\,cm}^{-3})\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_{2}\,(\text{g\,cm}^{-3})\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_{3}\,(\text{g\,cm}^{-3})\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\gamma_{1}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\gamma_{2}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\gamma_{3}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rm T_{1\,\rm AU} (\rm K)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Benchmark</td>
+<td style="text-align: center;"><span class="math inline">\(1\times 10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.27\times10^{-12}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5.86\times 10^{-9}\)</span></td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">200.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Run 1</td>
+<td style="text-align: center;"><span class="math inline">\(1\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.16\times10^{-11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5.66\times10^{-8}\)</span></td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">200.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Run 2</td>
+<td style="text-align: center;"><span class="math inline">\(1\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.16\times10^{-11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5.66\times10^{-8}\)</span></td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">150.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Run 3</td>
+<td style="text-align: center;"><span class="math inline">\(1\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.27\times10^{-12}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.06\times10^{-10}\)</span></td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">200.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Run 4</td>
+<td style="text-align: center;"><span class="math inline">\(1\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.27\times10^{-12}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.06\times10^{-10}\)</span></td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">150.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Run 5</td>
+<td style="text-align: center;"><span class="math inline">\(6\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.9\times10^{-10}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.39\times10^{-7}\)</span></td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">200.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Run 6</td>
+<td style="text-align: center;"><span class="math inline">\(6\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.9\times10^{-10}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.39\times10^{-7}\)</span></td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.4</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">150.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Run 7</td>
+<td style="text-align: center;"><span class="math inline">\(6\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.96\times10^{-11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.84\times10^{-9}\)</span></td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">200.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Run 8</td>
+<td style="text-align: center;"><span class="math inline">\(6\times10^{-13}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.96\times10^{-11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.84\times10^{-9}\)</span></td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.66</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">150.0</td>
+</tr>
+</tbody>
+</table>
+<p>[tab:params]</p>
+</body>
+</html>

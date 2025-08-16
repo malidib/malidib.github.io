@@ -5,25 +5,22 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="أمين أحرش" />
-  <meta name="author" content="عبد السلام أحرِب" />
+  <meta name="author" content="عبد السلام أحرب" />
   <meta name="author" content="صلاح نصري" />
-  <title>ظواهر هيغز في نموذج الحقلين المفردين</title>
+  <title>ظواهر هيغز في نموذج الحقلين المُفرَدين</title>
   <style>
     html {
-      line-height: 1.5;
+      line-height: 1.8;
       font-family: Georgia, serif;
       font-size: 20px;
       color: #1a1a1a;
-      background-color: #fdfdfd;
+      background-color: #fcfcfc;
       direction: rtl;
     }
     body {
       margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
+      max-width: 40em;
+      padding: 48px 50px 56px;
       hyphens: auto;
       overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
@@ -31,153 +28,67 @@
       direction: rtl;
     }
     @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
+      body { font-size: 0.95em; padding: 1em; }
+      h1 { font-size: 1.8em; }
     }
     @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
+      body { background-color: transparent; color: black; font-size: 12pt; }
+      p, h2, h3 { orphans: 3; widows: 3; }
+      h2, h3, h4 { page-break-after: avoid; }
     }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-right: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
+    p { margin: 1em 0; }
+    a, a:visited { color: #1a1a1a; }
+    img { max-width: 100%; height: auto; }
+    header { margin-bottom: 2.2em; text-align: center; }
+    h1.title { margin-bottom: 0.2em; }
+    h1, h2, h3, h4, h5, h6 { margin-top: 1.4em; }
+    h1 { border-bottom: 1px solid #e6e6e6; padding-bottom: 0.25em; }
+    h5, h6 { font-size: 1em; font-style: italic; }
+    h6 { font-weight: normal; }
+    ol, ul { padding-right: 1.7em; margin-top: 1em; }
+    li > ol, li > ul { margin-top: 0; }
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-right: 1em;
-      border-right: 2px solid #e6e6e6;
+      border-right: 3px solid #e6e6e6;
       color: #606060;
+      background: #fafafa;
     }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
+    code { font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace; font-size: 85%; }
+    pre { margin: 1em 0; overflow: auto; }
+    pre code { padding: 0; overflow: visible; overflow-wrap: normal; }
+    .sourceCode { background-color: transparent; overflow: visible; }
+    hr { background-color: #d0d0d0; border: none; height: 1px; margin: 1.5em 0; }
     table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-      direction: rtl;
+      margin: 1em 0; border-collapse: collapse; width: 100%;
+      overflow-x: auto; display: block;
+      font-variant-numeric: lining-nums tabular-nums; direction: rtl;
     }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-right: 1.3em;
-    }
-    #TOC > ul {
-      padding-right: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
+    table caption { margin-bottom: 0.75em; color: #444; }
+    tbody { margin-top: 0.5em; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+    th { border-top: 1px solid #1a1a1a; padding: 0.25em 0.5em; background: #f6f6f6; }
+    td { padding: 0.125em 0.5em 0.25em; }
+    #TOC li { list-style: none; }
+    #TOC ul { padding-right: 1.3em; }
+    #TOC > ul { padding-right: 0; }
+    #TOC a:not(:hover) { text-decoration: none; }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    /* MathJax block alignment for RTL */
-    .MathJax_Display {
-      text-align: center !important;
-      direction: ltr !important;
-      margin: 1em 0 !important;
-    }
+    .MathJax_Display { text-align: center !important; direction: ltr !important; margin: 1em 0 !important; }
     .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1em;
-      margin: 2em 0;
+      display: flex; justify-content: center; align-items: center; gap: 1em; margin: 1.25em 0;
+      flex-wrap: wrap;
     }
     .center img, .center embed {
-      border: 1px solid #ccc;
-      background: #fff;
-      box-shadow: 0 2px 8px #eee;
-      max-width: 100%;
-      height: auto;
+      border: 1px solid #dcdcdc; background: #fff; box-shadow: 0 2px 8px #eee;
+      max-width: 100%; height: auto;
     }
+    figure { margin: 1.5em 0; }
+    figcaption { text-align: center; color: #444; font-size: 0.95em; margin-top: 0.5em; }
   </style>
   <script>
   window.MathJax = {
@@ -189,23 +100,25 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">ظواهر هيغز في نموذج الحقلين المفردين</h1>
+<h1 class="title">ظواهر هيغز في نموذج الحقلين المُفرَدين</h1>
 <p class="author">أمين أحرش</p>
-<p class="author">عبد السلام أحرِب</p>
+<p class="author">عبد السلام أحرب</p>
 <p class="author">صلاح نصري</p>
 </header>
-<h1 id="introduction">مقدمة</h1>
-<p>أنهى مصادم الهادرونات الكبير (LHC) في سيرن مؤخرًا بنجاح المرحلة الأولى من تشغيله بطاقة 7 و8 تيرا إلكترون فولت. وقد أعلنت تجربتا ATLAS وCMS في LHC في يوليو الماضي عن اكتشاف جسيم شبيه بهيغز بكتلة في النطاق 125-126 <span class="roman">GeV</span> <span class="citation" data-cites="ATLAS CMS"></span>. وقد أبلغت كل من ATLAS وCMS عن وجود زيادة واضحة في قناة الفوتونين وقناة <span class="math inline">\(ZZ^{\ast}\)</span> <span class="citation" data-cites="ATLAS CMS"></span>. كما تم تأكيد الاكتشاف، ولكن بأهمية أقل، في قنوات أخرى <span class="citation" data-cites="atlasmoriond cmsmoriond"></span> مثل <span class="math inline">\(WW^{\ast}\)</span> التي تتميز بدقة كتلية أقل، وكذلك من خلال النتائج النهائية لتيفاترون التي أبلغت عنها تجارب CDF وD0 <span class="citation" data-cites="tevatron"></span>.</p>
-<p>تشير عملية استخراج اقترانات الجسيم الشبيه بهيغز مع بوزونات القياس والفرميونات حتى الآن من بيانات <span class="math inline">\(7 \oplus8\)</span> تيرا إلكترون فولت إلى أن هذا الجسيم يبدو أكثر فأكثر كجسيم هيغز في النموذج القياسي <span class="citation" data-cites="atlasmoriond cmsmoriond"></span>، مع الحاجة إلى المزيد من البيانات لتحديد الطبيعة الدقيقة للجسيم المكتشف حديثًا.</p>
-<p>على الرغم من أن بيانات ATLAS وCMS لا تظهر انحرافًا كبيرًا في الإشارة عن تنبؤات النموذج القياسي، إلا أن قناة الفوتونين في ATLAS تظهر بعض التعزيز الطفيف. قوة الإشارة الكلية للفوتونين تبلغ حوالي <span class="math inline">\(1.55_{-0.28}^{+0.33}\)</span>، وهو ما يعادل انحرافًا بمقدار 2 <span class="math inline">\(\sigma\)</span> عن تنبؤ النموذج القياسي <span class="citation" data-cites="ATLAS2G"></span>، بينما القنوات الأخرى متوافقة مع النموذج القياسي. أما في CMS، فإن التحليل الجديد لقناة الفوتونين باستخدام التحليل متعدد المتغيرات <span class="citation" data-cites="CMS2G"></span> يعطي <span class="math inline">\(0.77\pm0.27\)</span>، وهو متوافق مع النموذج القياسي. وقد تم اقتراح العديد من النماذج خارج النموذج القياسي لتفسير زيادة الفوتونين، لكن الخلاف الحالي بين ATLAS وCMS لا يسمح باستخلاص استنتاجات حاسمة.</p>
-<p>وبما أن الجسيم الشبيه بهيغز يتحلل إلى فوتونين، فلا يمكن أن يكون جسيمًا ذا لف مغزلي واحد بسبب مبرهنة لاندو-يانغ، بل هو إما لف مغزلي صفر أو اثنان. مؤخرًا، تمت دراسة اللف المغزلي والتكافؤ للجسيم الشبيه بهيغز من خلال التوزيع الزاوي للفوتونين وقنوات <span class="math inline">\(ZZ^{\ast}\)</span> و<span class="math inline">\(WW^{\ast}\)</span> <span class="citation" data-cites="atlaspin cmspin"></span> في ATLAS وCMS. وقد استبعدت كلتا التجربتين فرضية الجسيم الكاذب النقي <span class="math inline">\(J^{P}=0^{-}\)</span>، وكذلك فرضية اللف المغزلي 2 النقي. بالإضافة إلى ذلك، تم استبعاد فرضية اللف المغزلي 1 بثقة أعلى.</p>
-<p>لذا، فإن المرحلة الأولى من تشغيل LHC ليست سوى بداية برنامج قياس دقيق يبدأ ببيانات <span class="math inline">\(7\oplus8\)</span> تيرا إلكترون فولت وسيكتمل بالمرحلة الثانية من LHC عند 13-14 تيرا إلكترون فولت وكذلك من خلال المصادم الخطي الدولي (ILC). من المعروف أن برامج القياس الدقيق في ILC وLHC مكملة لبعضها البعض <span class="citation" data-cites="Weiglein:2004hn Peskin:2012we"></span>. مثل هذه القياسات، إذا كانت دقيقة بما فيه الكفاية، يمكن أن تساعد أيضًا في التمييز بين النماذج من خلال حساسيتها لتأثيرات التصحيحات الإشعاعية، خاصة في حالات محددة مثل حد الانفصال. من المعروف أن العديد من امتدادات النموذج القياسي مثل نماذج SUSY أو نماذج قطاع هيغز الموسع تمتلك مثل هذا الحد حيث يقلد بوزون هيغز الخفيف تمامًا هيغز النموذج القياسي.</p>
-<p>لقد أدى اكتشاف ATLAS وCMS إلى فرض العديد من القيود الظواهرية على القطاع السلمي في مثل هذه الامتدادات لقطاع هيغز النموذج القياسي مع مزدوجات إضافية، أو قطاع هيغز مع مزدوجة ومفردات، أو قطاع هيغز مع مزدوجة وثلاثيات، إلخ... حقيقة أن اقترانات الجسيم الشبيه بهيغز مع بوزونات القياس والفرميونات متوافقة مع تنبؤات النموذج القياسي؛ يمكن أن تفرض قيودًا صارمة على جميع الامتدادات خارج النموذج القياسي التي تحاول استيعاب مثل هذا الجسيم.</p>
-<p>يهدف هذا البحث إلى دراسة ظواهر قطاع هيغز في النموذج القياسي الموسع بحقلين حقيقيين عديمي اللف المغزلي ومتماثلين تحت <span class="math inline">\(\mathbb{Z}_{2}\)</span>، واللذان يمكن أن يفسرا المادة المظلمة (DM) <span class="citation" data-cites="TSM last"></span>. يحتوي النموذج على ثلاثة جسيمات سلمية حتى CP، اثنان منها <span class="math inline">\(h_{1,2}\)</span> هما مزيج من مزدوجة <span class="math inline">\(SU(2)_{L}\)</span> ومفردة، بينما يبقى المفرد الفردي تحت <span class="math inline">\(\mathbb{Z}_{2}\)</span> <span class="math inline">\(S_{0}\)</span> غير مختلط، ويمكن أن يلعب دور مرشح المادة المظلمة. ومع ذلك، يمكن لكل من <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> أن يتحللا إلى زوج من <span class="math inline">\(S_{0}\)</span> إذا كان ذلك مسموحًا حركيًا، مما يساهم في التحلل غير المرئي لـ<span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span>، وقد يعدل خصائص الجسيم الشبيه بهيغز <span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span>. بالإضافة إلى ذلك، فإن إفناء <span class="math inline">\(S_{0}\)</span> إلى جسيمات النموذج القياسي يوفر كثافة بقايا حرارية، وتبعثر <span class="math inline">\(S_{0}\)</span> على النيوكليونات يؤدي إلى إشارات كشف مباشر.</p>
-<p>في ضوء الاكتشاف الأخير لجسيم شبيه بهيغز بكتلة 125 <span class="roman">GeV</span> <span class="citation" data-cites="ATLAS CMS"></span>، نبحث في إطار نموذج الحقلين المفردين إمكانية أن يكون أحد الجسيمات السلمية <span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span> هو الجسيم الذي رصدته ATLAS وCMS. لذلك، نعتبر حالتين حيث تقع إحدى الكتل الذاتية <span class="math inline">\(m_{1}\)</span> أو <span class="math inline">\(m_{2}\)</span> في النطاق 123.5-127.5 <span class="roman">GeV</span> المسموح به تجريبيًا، مع اقتراناتها مع فرميونات وبوزونات النموذج القياسي قريبة من الحالة القياسية، أي <span class="math inline">\(\frac{g_{h_{i}f\bar{f}}^{2}}{g_{hf\bar{f}}^{2(SM)}} = \frac{g_{h_{i}VV}^{2}}{g_{hVV}^{2(SM)}} \geq 0.9\)</span>. بعد ذلك، سنبحث في ظواهر هيغز غير القياسي في كلتا الحالتين.</p>
-<p>تنظيم هذا البحث كالتالي: نقدم أولاً نموذج الحقلين المفردين وقيوده النظرية في القسم الثاني. نبحث المادة المظلمة وقيود الكشف المباشر عليها في القسم الثالث. القسم الرابع مخصص لمختلف اقترانات هيغز الثلاثية الذاتية الموجودة في هذا النموذج مع التركيز على اقتران هيغز الثلاثي الشبيه بالنموذج القياسي. نناقش بعض الجوانب الظواهرية للنموذج مثل تحللات هيغز وإنتاج هيغز المزدوج في القسم الخامس ونقدم الاستنتاج في القسم السادس. في الملاحق، نقدم اقترانات الحقول السلمية التكعيبية والرباعية على مستوى الشجرة ونوضح تفاصيل حساب اقترانات هيغز الثلاثية الفعالة من الجهد الفعال.</p>
-<h1 id="the-two-singlet-model">نموذج الحقلين المفردين</h1>
-<p>في هذا النموذج، نوسع النموذج القياسي بحقلين سلميين حقيقيين <span class="math inline">\(S_{0}\)</span> و<span class="math inline">\(\chi_{1}\)</span>، يتحولان تحت التناظر المنفصل <span class="math inline">\(\mathbb{Z}_{2}^{(0)}\otimes\mathbb{Z}_{2}^{(1)}\)</span> كما يلي:</p>
+
+<h1 id="introduction">مقدّمة</h1>
+<p>أنهى مُصادِم الهادرونات الكبير (LHC) في سيرن مؤخّراً المرحلةَ الأولى من تشغيله بطاقة 7 و8 تيرا إلكترون فولت. وقد أعلنت تجربتا ATLAS وCMS في يوليو/تمّوز الماضي عن اكتشاف جسيمٍ شبيهٍ بهيغز بكتلةٍ في النطاق 125–126 <span class="roman">GeV</span> <span class="citation" data-cites="ATLAS CMS"></span>. وأبلغت كلٌّ من ATLAS وCMS عن زيادةٍ واضحة في قناة ثنائيّ الفوتون وقناة <span class="math inline">\(ZZ^{\ast}\)</span> <span class="citation" data-cites="ATLAS CMS"></span>، كما تأكّد الاكتشاف – لكن بأهمّيةٍ أدنى – في قنواتٍ أُخرى <span class="citation" data-cites="atlasmoriond cmsmoriond"></span> مثل <span class="math inline">\(WW^{\ast}\)</span> التي تمتاز بدقّةٍ كتليّة أقلّ، وكذلك من خلال النتائج النهائيّة لتيفاترون التي أبلغت عنها تجربتا CDF وD0 <span class="citation" data-cites="tevatron"></span>.</p>
+<p>تشير ملاءمة اقترانات الجسيم الشبيه بهيغز مع بوزونات القياس والفرميونات حتى الآن باستخدام بيانات <span class="math inline">\(7 \oplus 8\)</span> تيرا إلكترون فولت إلى أنّ هذا الجسيم يبدو أكثر فأكثر كجسيم هيغز في النموذج القياسي <span class="citation" data-cites="atlasmoriond cmsmoriond"></span>، مع الحاجة إلى مزيدٍ من البيانات لتحديد طبيعته بدقّة.</p>
+<p>ورغم أنّ بيانات ATLAS وCMS لا تُظهر انحرافاً كبيراً عن تنبّؤات النموذج القياسي، إلّا أنّ قناة ثنائيّ الفوتون في ATLAS تُظهِر تعزيزاً طفيفاً؛ فقوّة الإشارة الكلّية لثنائي الفوتون نحو <span class="math inline">\(1.55_{-0.28}^{+0.33}\)</span>، وهو ما يعادل انحرافاً بمقدار <span class="math inline">\(2\sigma\)</span> عن تنبّؤ النموذج القياسي <span class="citation" data-cites="ATLAS2G"></span>، بينما القنوات الأُخرى متوافقة مع النموذج القياسي. أمّا في CMS فإنّ التحليل الجديد لقناة ثنائيّ الفوتون باستخدام تحليلٍ متعدّد المتغيّرات <span class="citation" data-cites="CMS2G"></span> يعطي <span class="math inline">\(0.77\pm0.27\)</span>، وهو متوافقٌ مع النموذج القياسي. وقد اقتُرحت نماذج عديدة خارج النموذج القياسي لتفسير زيادة ثنائيّ الفوتون، لكنّ الخلاف الحالي بين ATLAS وCMS لا يسمح باستخلاص استنتاجاتٍ حاسمة.</p>
+<p>وبما أنّ الجسيم الشبيه بهيغز يتحلّل إلى فوتونين، فلا يمكن أن يكون ذا لَفٍّ مغزلي واحد بسبب مبرهنة لاندو–يانغ، بل إمّا أن يكون لفّه صفراً أو اثنين. وقد دُرِست حديثاً خصائص اللَّفّ والتكافؤ <span dir="ltr">(parity)</span> للجسيم الشبيه بهيغز عبر التوزيع الزاوي للفوتونين وقناتي <span class="math inline">\(ZZ^{\ast}\)</span> و<span class="math inline">\(WW^{\ast}\)</span> <span class="citation" data-cites="atlaspin cmspin"></span> في ATLAS وCMS. وقد استبعدت كلتا التجربتين فرضيّة الحالة <span dir="ltr">CP</span> السالبة النقيّة <span class="math inline">\(J^{P}=0^{-}\)</span>، وكذلك فرضيّة اللَّفّ 2 النقيّة. إضافةً إلى ذلك، استُبعدت فرضيّة اللَّفّ 1 بثقةٍ أعلى.</p>
+<p>لذلك فإنّ المرحلة الأولى من تشغيل LHC ليست سوى فاتحةٍ لبرنامج قياساتٍ دقيقة يبدأ ببيانات <span class="math inline">\(7\oplus8\)</span> تيرا إلكترون فولت ويُستكمَل بالمرحلة الثانية من LHC عند 13–14 تيرا إلكترون فولت وكذلك من خلال المُصادِم الخطيّ الدولي <span dir="ltr">(ILC)</span>. ومن المعروف أنّ برنامجي القياس الدقيق في ILC وLHC مُتكاملان <span class="citation" data-cites="Weiglein:2004hn Peskin:2012we"></span>. مثل هذه القياسات، إذا بلغت من الدقّة قدراً كافياً، يُمكنها أيضاً التمييز بين النماذج عبر حساسيتها لتأثيرات التصحيحات الإشعاعيّة، خاصّةً في حالاتٍ مثل حدّ الانفصال. ومن المعلوم أنّ كثيراً من امتدادات النموذج القياسي مثل نماذج SUSY أو نماذج قطاع هيغز المُوسَّع تمتلك مثل هذا الحدّ حيث يُقلّد بوزون هيغز الخفيف سلوك هيغز النموذج القياسي تماماً.</p>
+<p>لقد أدّى اكتشاف ATLAS وCMS إلى فرض قيودٍ ظواهريّة كثيرة على القطاع السلّميّ في امتدادات قطاع هيغز النموذج القياسي: مع مُزدوجات إضافية، أو مُزدوجةٍ ومُفرَدات، أو مُزدوجةٍ وثُلاثيات، وغيرها. وحقيقةُ أنّ اقترانات الجسيم الشبيه بهيغز مع بوزونات القياس والفرميونات متوافقةٌ مع تنبّؤات النموذج القياسي تفرض قيوداً صارمة على الامتدادات خارج النموذج القياسي التي تحاول استيعاب مثل هذا الجسيم.</p>
+<p>يهدف هذا العمل إلى دراسة ظواهر قطاع هيغز في النموذج القياسي المُوسّع بحقلين سلّميَّين حقيقيَّين عديمي اللَّفّ ومتماثلين تحت <span class="math inline">\(\mathbb{Z}_{2}\)</span>، يُمكنهما تفسير المادة المُظلمة <span dir="ltr">(DM)</span> <span class="citation" data-cites="TSM last"></span>. يحتوي النموذج على ثلاث حالاتٍ سلّميّة من نوع <span dir="ltr">CP</span>-زوجي؛ اثنتان منها <span class="math inline">\(h_{1,2}\)</span> هما مزيجٌ من مُزدوجة <span class="math inline">\(SU(2)_{L}\)</span> ومُفرَدة، بينما يبقى الحقل <span class="math inline">\(S_{0}\)</span> فردياً تحت <span class="math inline">\(\mathbb{Z}_{2}\)</span> من دون اختلاط، ويمكن أن يلعب دور مرشّح المادة المُظلمة. ويمكن لكلٍّ من <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> أن يتحلّلا إلى زوجٍ من <span class="math inline">\(S_{0}\)</span> إذا كان ذلك مسموحاً حركيّاً، ممّا يُسهم في تحلّلٍ غير مرئيٍّ لـ<span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span> وقد يُعدّل خصائص الجسيم الشبيه بهيغز. إضافةً إلى ذلك، فإنّ إفناء <span class="math inline">\(S_{0}\)</span> إلى جسيمات النموذج القياسي يُحدّد كثافة البقايا الحراريّة، كما أنّ تشتّت <span class="math inline">\(S_{0}\)</span> على النيوكليونات يؤدّي إلى إشارات كشفٍ مباشر.</p>
+<p>في ضوء الاكتشاف الأخير لجسيمٍ شبيهٍ بهيغز بكتلة 125 <span class="roman">GeV</span> <span class="citation" data-cites="ATLAS CMS"></span>، نبحث ضمن نموذج الحقلين المُفرَدين إمكانيّة أن يكون أحد السلّميَّين <span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span> هو الجسيم الذي رصدته ATLAS وCMS. لذلك نعتبر حالتين حيث تقع إحدى الكتل الذاتيّة <span class="math inline">\(m_{1}\)</span> أو <span class="math inline">\(m_{2}\)</span> في النطاق 123.5–127.5 <span class="roman">GeV</span> المسموح به تجريبيّاً، مع اقتراناتها مع فرميونات وبوزونات النموذج القياسي قريبةٍ من الحالة القياسيّة، أي <span class="math inline">\(\frac{g_{h_{i}f\bar{f}}^{2}}{g_{hf\bar{f}}^{2(SM)}} = \frac{g_{h_{i}VV}^{2}}{g_{hVV}^{2(SM)}} \geq 0.9\)</span>. ثم نبحث ظواهر هيغز غير القياسيّة في كلتا الحالتين.</p>
+<p>تنظيم هذا العمل كالآتي: نُقدِّم أوّلاً نموذج الحقلين المُفرَدين وقيوده النظريّة في القسم الثاني. نبحث المادة المُظلمة وقيود الكشف المباشر عليها في القسم الثالث. القسم الرابع مُخصّص لمختلف اقترانات هيغز الثلاثيّة الذاتيّة الموجودة في هذا النموذج مع التركيز على اقتران هيغز الثلاثيّ الشبيه بالنموذج القياسي. نُناقش بعض الجوانب الظواهريّة للنموذج مثل تحلّلات هيغز وإنتاج هيغز المزدوج في القسم الخامس ونُقدّم الاستنتاج في القسم السادس. في الملاحق نعرض اقترانات الحقول السلّميّة التكعيبيّة والرباعيّة على مستوى الشجرة ونوضّح تفاصيل حساب اقترانات هيغز الثلاثيّة الفعّالة من الجهد الفعّال.</p>
+
+<h1 id="the-two-singlet-model">نموذج الحقلين المُفرَدين</h1>
+<p>نوسّع في هذا العمل النموذج القياسي بحقلين سلّميَّين حقيقيَّين <span class="math inline">\(S_{0}\)</span> و<span class="math inline">\(\chi_{1}\)</span>، يتحوّلان تحت التناظر المنفصل <span class="math inline">\(\mathbb{Z}_{2}^{(0)}\otimes\mathbb{Z}_{2}^{(1)}\)</span> كما يلي:</p>
 <div class="MathJax_Display">
 \[
 \begin{array}{ccc}
@@ -214,17 +127,13 @@
 \end{array}
 \]
 </div>
-<p>
-الحقل <span class="math inline">\(\chi_{1}\)</span> يمتلك قيمة توقع فراغي غير صفرية، مما يكسر تناظر <span class="math inline">\(\mathbb{Z}_{2}^{(1)}\)</span> تلقائيًا، بينما <span class="math inline">\(\langle S_{0}\rangle = 0\)</span>، وبالتالي <span class="math inline">\(S_{0}\)</span> مرشح للمادة المظلمة. كلا الحقلين مفردان تحت تناظر النموذج القياسي، وبالتالي يتفاعلان مع الجسيمات "المرئية" فقط عبر مزدوجة هيغز <span class="math inline">\(H\)</span>. جزء لاغرانجيان الذي يشمل الحقول <span class="math inline">\(S_{0}\)</span>، <span class="math inline">\(H\)</span>، و<span class="math inline">\(\chi_{1}\)</span> يُكتب كما يلي:
-</p>
+<p>يمتلك الحقل <span class="math inline">\(\chi_{1}\)</span> قيمةَ توقّعٍ فراغيّة غير صفريّة، ما يكسر تناظر <span class="math inline">\(\mathbb{Z}_{2}^{(1)}\)</span> تلقائيّاً، بينما <span class="math inline">\(\langle S_{0}\rangle = 0\)</span>؛ ولذلك يبقى <span class="math inline">\(S_{0}\)</span> مرشّحاً للمادة المُظلمة. كلا الحقلين مُفرَدان تحت تماثلات النموذج القياسي، ولذا يتفاعلان مع الجسيمات المرئيّة فقط عبر مُزدوجة هيغز <span class="math inline">\(H\)</span>. جزء اللاغرانجيان الذي يشمل الحقول <span class="math inline">\(S_{0}\)</span> و<span class="math inline">\(H\)</span> و<span class="math inline">\(\chi_{1}\)</span> يُكتب كما يلي:</p>
 <div class="MathJax_Display">
 \[
 \mathcal{L} = (D_{\mu}H)^{\dagger} D^{\mu} H + \frac{1}{2} (\partial_{\mu} S_{0})^2 + \frac{1}{2} (\partial_{\mu} \chi_{1})^2 - V(H, \chi_{1}, S_{0}),
 \]
 </div>
-<p>
-حيث
-</p>
+<p>حيث</p>
 <div class="MathJax_Display">
 \[
 \begin{aligned}
@@ -233,9 +142,7 @@ H^{T} &= \left( h^{+},~\frac{\upsilon + \widetilde{h} + i\chi_{0}}{\sqrt{2}} \ri
 \end{aligned}
 \]
 </div>
-<p>
-حيث <span class="math inline">\(\sigma^{a}\)</span> هي مصفوفات باولي، و<span class="math inline">\(W_{\mu}^{a}\)</span> (<span class="math inline">\(B_{\mu}\)</span>) و<span class="math inline">\(g_{2}\)</span> (<span class="math inline">\(g_{1}\)</span>) هي حقول واقترانات تناظر <span class="math inline">\(SU(2)_{L}\)</span> (<span class="math inline">\(U(1)_{Y}\)</span>) على التوالي. الجهد السلمي على مستوى الشجرة الذي يحترم تناظرات <span class="math inline">\(\mathbb{Z}_{2}\)</span> يُعطى بـ <span class="citation" data-cites="TSM"></span>
-</p>
+<p>حيث <span class="math inline">\(\sigma^{a}\)</span> هي مصفوفات باولي، و<span class="math inline">\(W_{\mu}^{a}\)</span> (<span class="math inline">\(B_{\mu}\)</span>) و<span class="math inline">\(g_{2}\)</span> (<span class="math inline">\(g_{1}\)</span>) هي حقول واقترانات تناظري <span class="math inline">\(SU(2)_{L}\)</span> و<span class="math inline">\(U(1)_{Y}\)</span> على التوالي. الجهد السلّمي على مستوى الشجرة الذي يحترم تماثلات <span class="math inline">\(\mathbb{Z}_{2}\)</span> يُعطى بـ <span class="citation" data-cites="TSM"></span>:</p>
 <div class="MathJax_Display">
 \[
 \begin{aligned}
@@ -244,38 +151,30 @@ V(H, \chi_{1}, S_{0}) = & -\mu^{2} H^{\dagger} H + \frac{\lambda}{6} (H^{\dagger
 \end{aligned}
 \]
 </div>
-<p>
-يمكن حذف المعاملين <span class="math inline">\(\mu^{2}\)</span> و<span class="math inline">\(\mu_{1}^{2}\)</span> من الجهد بفرض أن (<span class="math inline">\(\upsilon,\upsilon_{1}\)</span>) هو الحد الأدنى المطلق كما يلي:
-</p>
+<p>يمكن حذف المعاملين <span class="math inline">\(\mu^{2}\)</span> و<span class="math inline">\(\mu_{1}^{2}\)</span> من الجهد بفرض أنّ <span class="math inline">\((\upsilon,\upsilon_{1})\)</span> هو الحدّ الأدنى المطلق كما يلي:</p>
 <div class="MathJax_Display">
 \[
 \begin{aligned}
-\mu^{2} &= \frac{\lambda \upsilon^{2}}{6} + \frac{\lambda_{1} \upsilon_{1}^{2}}{2} + \frac{1}{\upsilon} \left. \frac{\partial}{\partial \tilde{h}} V^{1-l} \right|_{\tilde{h} = \upsilon, \chi_{1} = \upsilon_{1}, S_{0} = 0} \\
-\mu_{1}^{2} &= \frac{\eta_{1} \upsilon_{1}^{2}}{6} + \frac{\lambda_{1} \upsilon^{2}}{2} + \frac{1}{\upsilon_{1}} \left. \frac{\partial}{\partial \chi_{1}} V^{1-l} \right|_{\tilde{h} = \upsilon, \chi_{1} = \upsilon_{1}, S_{0} = 0}
+\mu^{2} &= \frac{\lambda \upsilon^{2}}{6} + \frac{\lambda_{1} \upsilon_{1}^{2}}{2} + \frac{1}{\upsilon} \left. \frac{\partial}{\partial \widetilde{h}} V^{1-l} \right|_{\widetilde{h} = 0,\, \widetilde{\chi}_{1} = 0,\, S_{0} = 0} \\
+\mu_{1}^{2} &= \frac{\eta_{1} \upsilon_{1}^{2}}{6} + \frac{\lambda_{1} \upsilon^{2}}{2} + \frac{1}{\upsilon_{1}} \left. \frac{\partial}{\partial \widetilde{\chi}_{1}} V^{1-l} \right|_{\widetilde{\chi}_{1} = 0,\, \widetilde{h} = 0,\, S_{0} = 0}
 \end{aligned}
 \]
 </div>
-<p>
-حيث <span class="math inline">\(V^{1-l}\)</span> هو تصحيح الحلقة الواحدة للجهد السلمي. بينما يجب تحقيق الشرط
-</p>
+<p>حيث <span class="math inline">\(V^{1-l}\)</span> هو تصحيح الحلقة الواحدة للجهد السلّمي. كما يجب تحقيق الشرط</p>
 <div class="MathJax_Display">
 \[
-\widetilde{m}_{0}^{2} + \frac{\lambda_{0} \upsilon^{2}}{2} + \frac{\eta_{01} \upsilon_{1}^{2}}{2} + \left. \frac{1}{S_{0}} \frac{\partial}{\partial S_{0}} V^{1-l} \right|_{\tilde{h} = \upsilon, \chi_{1} = \upsilon_{1}, S_{0} = 0} > 0
+\widetilde{m}_{0}^{2} + \frac{\lambda_{0} \upsilon^{2}}{2} + \frac{\eta_{01} \upsilon_{1}^{2}}{2} + \left. \frac{\partial^{2}}{\partial S_{0}^{2}} V^{1-l} \right|_{\widetilde{h} = 0,\, \widetilde{\chi}_{1} = 0,\, S_{0} = 0} > 0
 \]
 </div>
-<p>
-حتى لا يطور الجهد قيمة توقع فراغي في اتجاه <span class="math inline">\(S_{0}\)</span>. في الواقع، الشروط السابقة ليست كافية لضمان أن الفراغ هو (<span class="math inline">\(\upsilon,\upsilon_{1}\)</span>)؛ بل يجب أن يكون محدد اليعقوبي موجبًا، أي أن القيم الذاتية لمصفوفة الكتلة-تربيع موجبة. بالإضافة إلى ذلك، نفرض شرط استقرار الفراغ:
-</p>
+<p>حتّى لا يطوّر الجهد قيمةَ توقّعٍ فراغيّة في اتجاه <span class="math inline">\(S_{0}\)</span>. والشرطان السابقان غير كافيين لضمان أنّ الفراغ هو <span class="math inline">\((\upsilon,\upsilon_{1})\)</span>؛ إذ يجب أن تكون القيمُ الذاتيّة لمصفوفة الكتلة-التربيع موجبة. إضافةً إلى ذلك نفرض شرط استقرار الفراغ:</p>
 <div class="MathJax_Display">
 \[
 \lambda \eta_{0} \eta_{1} - 9 \eta_{0} \lambda_{1}^{2} - 9 \lambda \eta_{01}^{2} - 9 \eta_{1} \lambda_{0}^{2} + 54 \lambda_{0} \lambda_{1} \eta_{01} > 0
 \]
 </div>
-<p>
-حيث يجب أن تكون <span class="math inline">\(\lambda\)</span>، <span class="math inline">\(\eta_{1}\)</span> و<span class="math inline">\(\eta_{0}\)</span> موجبة تمامًا، بينما يمكن أن تأخذ <span class="math inline">\(\lambda_{0}\)</span>، <span class="math inline">\(\lambda_{1}\)</span> و<span class="math inline">\(\eta_{01}\)</span> قيمًا سالبة ضمن الشرط أعلاه. علاوة على ذلك، يجب أن تبقى جميع هذه المعاملات في النطاق الاضطرابي.</p>
-<p>يكسر الكسر التلقائي لتناظري الكتروضعيف و<span class="math inline">\(\mathbb{Z}_{2}\)</span> قيمتي التوقع الفراغي <span class="math inline">\(\upsilon\)</span> و<span class="math inline">\(\upsilon_{1}\)</span> على التوالي. قيمة <span class="math inline">\(\upsilon\)</span> مثبتة تجريبيًا عند 246 <span class="roman">GeV</span> من كتلة بوزون W، ويحتوي النموذج على عشرة معاملات. تسمح شروط تصغير الجهد الفعال بحذف <span class="math inline">\(\mu^{2}\)</span> و<span class="math inline">\(\mu_{1}^{2}\)</span> لصالح <span class="math inline">\((\upsilon,\upsilon_{1})\)</span>. إذًا، يتبقى لدينا ثمانية معاملات: <span class="math inline">\(\lambda\)</span>، <span class="math inline">\(\lambda_{0}\)</span>، <span class="math inline">\(\lambda_{1}\)</span>، <span class="math inline">\(\eta_{0}\)</span>، <span class="math inline">\(\eta_{1}\)</span>، <span class="math inline">\(\eta_{01}\)</span>، <span class="math inline">\(\upsilon_{1}\)</span> و<span class="math inline">\(m_{0}\)</span>. ومع ذلك، فإن ثابت اقتران المادة المظلمة الذاتي <span class="math inline">\(\eta_{0}\)</span> لا يدخل في حسابات العمليات من الرتبة الدنيا في هذا العمل، لذا فعليًا يتبقى لدينا سبعة معاملات إدخال.</p>
-<p>الجسيمات السلمية الفيزيائية <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span>، بكتل <span class="math inline">\(m_{1}\)</span> و<span class="math inline">\(m_{2}\)</span> (مع <span class="math inline">\(m_{1}<m_{2}\)</span>)، ترتبط بإثارة المكون المعتدل من مزدوجة هيغز النموذج القياسي، Re<span class="math inline">\((H^{(0)})=(\upsilon+{\widetilde{h}})/\sqrt{2}\)</span>، والحقل <span class="math inline">\(\chi_{1}=\widetilde{\chi}_{1}+\upsilon_{1}\)</span> من خلال زاوية خلط <span class="math inline">\(\theta\)</span>. الحقول <span class="math inline">\(\widetilde{h}\)</span> و<span class="math inline">\(\widetilde{\chi}_{1}\)</span> ليست هي الحقول المتفاعلة بل مكونات من الحالات الذاتية <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> التي يتم الحصول عليها بعد كسر التناظرين الكتروضعيف و<span class="math inline">\(\mathbb{Z}_{2}\)</span> تلقائيًا. إذًا، تفاعلات مرشح المادة المظلمة مع القطاع السلمي ذات الصلة بكثافة البقايا ليست كما في الجهد الأصلي، بل تتعدل كما يلي:
-</p>
+<p>على أن تكون <span class="math inline">\(\lambda\)</span> و<span class="math inline">\(\eta_{1}\)</span> و<span class="math inline">\(\eta_{0}\)</span> موجبةً تماماً، بينما يمكن أن تأخذ <span class="math inline">\(\lambda_{0}\)</span> و<span class="math inline">\(\lambda_{1}\)</span> و<span class="math inline">\(\eta_{01}\)</span> قيماً سالبةً ضمن الشرط أعلاه. علاوةً على ذلك، يجب أن تبقى جميع هذه المعاملات ضمن مجال الاضطراب.</p>
+<p>يُنتِج كسرُ التماثُل الكهروضعيف وتناظر <span class="math inline">\(\mathbb{Z}_{2}\)</span> قيمتي التوقّع الفراغيّ <span class="math inline">\(\upsilon\)</span> و<span class="math inline">\(\upsilon_{1}\)</span> على التوالي. قيمة <span class="math inline">\(\upsilon\)</span> مُثبّتة تجريبيّاً عند 246 <span class="roman">GeV</span> باستخدام كتلة بوزون <span dir="ltr">W</span>، ويحتوي النموذج على عشرة معاملات. وتسمح شروط تصغير الجهد الفعّال بحذف <span class="math inline">\(\mu^{2}\)</span> و<span class="math inline">\(\mu_{1}^{2}\)</span> لصالح <span class="math inline">\((\upsilon,\upsilon_{1})\)</span>، فيتبقّى ثمانية معاملات: <span class="math inline">\(\lambda\)</span>، <span class="math inline">\(\lambda_{0}\)</span>، <span class="math inline">\(\lambda_{1}\)</span>، <span class="math inline">\(\eta_{0}\)</span>، <span class="math inline">\(\eta_{1}\)</span>، <span class="math inline">\(\eta_{01}\)</span>، <span class="math inline">\(\upsilon_{1}\)</span> و<span class="math inline">\(m_{0}\)</span>. ومع أنّ ثابت اقتران المادة المُظلمة الذاتي <span class="math inline">\(\eta_{0}\)</span> لا يدخل في حسابات العمليات من الرتبة الدنيا في هذا العمل، فعليّاً يتبقّى لدينا سبعة معاملات إدخال.</p>
+<p>السلّميّتان الفيزيائيّتان <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span>، بكتل <span class="math inline">\(m_{1}\)</span> و<span class="math inline">\(m_{2}\)</span> (مع <span class="math inline">\(m_{1}<m_{2}\)</span>)، ترتبطان بإثارة المركّبة المحايدة من مُزدوجة هيغز النموذج القياسي، <span dir="ltr">\(\mathrm{Re}(H^{(0)})=(\upsilon+\widetilde{h})/\sqrt{2}\)</span>، وبالحقل <span class="math inline">\(\chi_{1}=\widetilde{\chi}_{1}+\upsilon_{1}\)</span> من خلال زاوية خلط <span class="math inline">\(\theta\)</span>. فالحقول <span class="math inline">\(\widetilde{h}\)</span> و<span class="math inline">\(\widetilde{\chi}_{1}\)</span> هما حالاتُ التفاعل، وليستا حالاتِ الكتلة؛ إذ تختلطان لتوليد الحالات الذاتيّة الكتليّة <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> بعد الكسر التلقائي للتناظرين الكهروضعيف و<span class="math inline">\(\mathbb{Z}_{2}\)</span>. وعليه تتعدّل تفاعلات مرشّح المادة المُظلمة مع القطاع السلّمي ذات الصلة بكثافة البقايا كما يلي:</p>
 <div class="MathJax_Display">
 \[
 \begin{pmatrix}
@@ -293,9 +192,7 @@ h_{2}
 \end{pmatrix}
 \]
 </div>
-<p>
-كما هو موضح في الجهد بعد كسر التناظر. في عملنا، يتم تقدير كتل الجسيمات السلمية حتى CP وزاوية الخلط عند مستوى الحلقة الواحدة. هنا تتعدل التفاعلات الرباعية وتظهر تفاعلات تكعيبية جديدة <span class="citation" data-cites="TSM"></span>. اقترانات <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> مع الفرميونات وحقول القياس هي مجرد إسقاطات لاقترانات المزدوجة باستخدام مصفوفة الخلط أعلاه. الجهد السلمي بعد كسر التناظر الكتروضعيف يُعطى بدلالة الحالات الذاتية السلمية كما يلي:
-</p>
+<p>في عملنا نُحدِّد كتل السلّميّات <span dir="ltr">CP</span>-الزوجيّة وزاويةَ الخلط عند مستوى الحلقة الواحدة. هنا تتعدّل التفاعلات الرباعيّة وتظهر تفاعلاتٌ تكعيبيّة جديدة <span class="citation" data-cites="TSM"></span>. واقترانات <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> مع الفرميونات وحقول القياس هي إسقاطاتٌ لاقترانات المُزدوجة باستخدام مصفوفة الخلط أعلاه. الجهد السلّمي بعد كسر التناظر الكهروضعيف يُعطى بدلالة الحالات الذاتيّة السلّميّة كما يلي:</p>
 <div class="MathJax_Display">
 \[
 \begin{aligned}
@@ -306,17 +203,13 @@ V(h_{1}, h_{2}, S_{0}) = & \frac{m_{0}^{2}}{2} S_{0}^{2} + \frac{m_{1}^{2}}{2} h
 \end{aligned}
 \]
 </div>
-<p>
-حيث تُعطى اقترانات التكعيب والرباعية في الملحق أ. في تحليلنا نفرض ما يلي:
-</p>
+<p>حيث تُعطى اقتراناتُ التكعيب والرباعيّة في الملحق أ. في تحليلنا نفرض ما يلي:</p>
 <ul>
-<li><p>جميع الاقترانات الرباعية عديمة البعد يجب أن تكون <span class="math inline">\(\ll 4\pi\)</span> ليبقى النموذج اضطرابيًا،</p></li>
-<li><p>يجب اختيارها بحيث تضمن استقرار الحالة الأرضية،</p></li>
-<li><p>ونفترض أن كتلة المادة المظلمة تصل حتى 1 تيرا إلكترون فولت.</p></li>
+<li><p>جميع الاقترانات الرباعيّة عديمة البُعد يجب أن تكون <span class="math inline">\(\ll 4\pi\)</span> ليبقى النموذج اضطرابيّاً،</p></li>
+<li><p>ويجب اختيارُها بما يضمن استقرار الحالة الأرضيّة،</p></li>
+<li><p>ونفترض أن كتلة المادة المُظلمة تصل حتى 1 تيرا إلكترون فولت.</p></li>
 </ul>
-<p>
-في عملنا، نأخذ القيم التالية للمعاملات الحرة:
-</p>
+<p>في مسوحنا العدديّة نأخذ القيم التالية للمعاملات الحرّة:</p>
 <div class="MathJax_Display">
 \[
 \begin{aligned}
@@ -325,78 +218,58 @@ V(h_{1}, h_{2}, S_{0}) = & \frac{m_{0}^{2}}{2} S_{0}^{2} + \frac{m_{1}^{2}}{2} h
 \end{aligned}
 \]
 </div>
-<p>
-ونختار عشوائيًا مع الأخذ في الاعتبار أن كثافة البقايا تقع في النطاق الفيزيائي وأنها لا تتعارض مع تجارب الكشف المباشر للمادة المظلمة. أيضًا، تقع كتلة أحد الجسيمات السلمية حتى CP حول 123.5-127.5 <span class="math inline">\(\mathrm{GeV}\)</span>، مع اقترانات مع فرميونات وبوزونات النموذج القياسي مشابهة للحالة القياسية بأكثر من <span class="math inline">\(\epsilon \gtrsim 90\%\)</span>، حيث <span class="math inline">\(\epsilon\)</span> هي <span class="math inline">\(\cos^{2}\theta\)</span> أو <span class="math inline">\(\sin^{2}\theta\)</span> حسب ما إذا كان <span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span> هو هيغز الشبيه بالنموذج القياسي.
-</p>
-<p>
-للتوضيح العددي، نعرف السيناريوهين التاليين: A وB حيث يكون هيغز الشبيه بالنموذج القياسي هو <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> على التوالي. بالإضافة إلى ذلك، يمكن أن تكون قناة التحلل غير المرئي في الحالة A <span class="math inline">\(h_{1} \rightarrow 2DM\)</span> مفتوحة حتى 20%، بينما يجب ألا تتجاوز كل من <span class="math inline">\(h_{2} \rightarrow 2DM\)</span> و<span class="math inline">\(h_{2} \rightarrow h_{1} h_{1}\)</span> معًا 20% في الحالة B. في الواقع، ينشأ القيد السابق على التحلل غير المرئي من تحليل التوافق العالمي لبيانات ATLAS وCMS <span class="citation" data-cites="global global0 strumia"></span>. عند اشتقاق هذا الحد في تحليل عالمي، يُفترض أن بوزون هيغز له اقترانات مماثلة مع الفرميونات وبوزونات القياس كما في النموذج القياسي مع قنوات تحلل غير مرئية إضافية. على سبيل المثال، إذا تم اعتبار اقتران هيغز مع الغلوونات أو الفوتونات أو الفرميونات، فإن اقترانات هيغز مع بوزونات القياس تتعدل، وبالتالي يمكن تجاوز الحد أعلاه <span class="citation" data-cites="global0 strumia"></span>. لذلك، نأخذ في عملنا الخيار المحافظ <span class="math inline">\(B(h \rightarrow invisible) \leq 20\%\)</span>. مؤخرًا، بحثت كل من ATLAS وCMS عن تحلل هيغز غير المرئي. بافتراض مقطع إنتاج هيغز-سترالونغ القياسي لعملية <span class="math inline">\(pp \rightarrow ZH\)</span> مع بوزون هيغز بكتلة 125 <span class="roman">GeV</span>، تستبعد ATLAS بنسبة ثقة 95% جزء تحلل غير مرئي أكبر من 65%، وCMS تحصل على نتيجة مماثلة <span class="citation" data-cites="Higgs-invisible"></span>. كما بحثت CMS عن تحلل هيغز غير المرئي عبر عملية اندماج بوزونات القياس واستبعدت جزء تحلل غير مرئي أكبر من 69% <span class="citation" data-cites="CMS-VBF"></span>. عند دمج بيانات <span class="math inline">\(pp \rightarrow ZH\)</span> وVBF يصبح الحد 54% <span class="citation" data-cites="CMS-VBF"></span>.
-</p>
-<p>
-في عمليات المسح العددية، نأخذ القيم التي:
-</p>
+<p>ونُولِّد عيِّناتٍ عشوائيّةً مع مراعاة أن تقع كثافةُ البقايا في النطاق الفيزيائي وأنها لا تتعارض مع تجارب الكشف المباشر للمادة المُظلمة. كذلك تقع كتلة أحد السلّميَّين <span dir="ltr">CP</span>-الزوجيَّين حول 123.5–127.5 <span class="math inline">\(\mathrm{GeV}\)</span>، مع اقتراناتٍ مع فرميونات وبوزونات النموذج القياسي مماثلةٍ للنموذج القياسي بأكثر من <span class="math inline">\(\epsilon \gtrsim 90\%\)</span>، حيث <span class="math inline">\(\epsilon\)</span> هي <span class="math inline">\(\cos^{2}\theta\)</span> أو <span class="math inline">\(\sin^{2}\theta\)</span> تبعاً لكون <span class="math inline">\(h_{1}\)</span> أو <span class="math inline">\(h_{2}\)</span> هو الهيغز الشبيه بالنموذج القياسي.</p>
+<p>للتوضيح العددي نُعرِّف السيناريوهين التاليين: A وB حيث يكون الهيغز الشبيه بالنموذج القياسي هو <span class="math inline">\(h_{1}\)</span> و<span class="math inline">\(h_{2}\)</span> على التوالي. إضافةً إلى ذلك، يمكن أن تكون قناة التحلّل غير المرئي في الحالة A، <span class="math inline">\(h_{1} \rightarrow S_{0} S_{0}\)</span>، مفتوحةً على ألّا تتجاوز <span class="math inline">\(20\%\)</span>، بينما يجب ألّا يتجاوز مجموع <span class="math inline">\(h_{2} \rightarrow S_{0} S_{0}\)</span> و<span class="math inline">\(h_{2} \rightarrow h_{1} h_{1}\)</span> نسبة <span class="math inline">\(20\%\)</span> في الحالة B. ينشأ هذا القيد على التحلّل غير المرئي من تحليلات التوافق العالميّة لبيانات ATLAS وCMS <span class="citation" data-cites="global global0 strumia"></span>. عند اشتقاق هذا الحدّ يُفترض أن بوزون هيغز يمتلك اقتراناتٍ مماثلةً مع الفرميونات وبوزونات القياس كما في النموذج القياسي مع قنوات تحلّل غير مرئيّة إضافيّة. أمّا إذا اعتُبرت تعديلاتٌ في اقتران هيغز مع الغلوونات أو الفوتونات أو الفرميونات، فإنّ اقتراناته مع بوزونات القياس تتغيّر، وقد يتجاوز الحدّ المذكور <span class="citation" data-cites="global0 strumia"></span>. لذلك نتّخذ في عملنا الخيار المُحافِظ <span class="math inline">\(B(h \rightarrow invisible) \leq 20\%\)</span>. وقد بحثت ATLAS وCMS أيضاً عن تحلّل هيغز غير المرئي. وبافتراض مقطع الإنتاج القياسي لعملية الإنتاج المُصاحِب <span class="math inline">\(pp \rightarrow ZH\)</span> مع بوزون هيغز بكتلة 125 <span class="roman">GeV</span>، تستبعد ATLAS عند 95% نسبةِ ثقة جزءَ تحلّلٍ غير مرئيّ أكبر من 65%، وتحصل CMS على نتيجةٍ مماثلة <span class="citation" data-cites="Higgs-invisible"></span>. كما بحثت CMS عن التحلّل غير المرئي عبر عملية اندماج بوزونات القياس واستبعدت جزء تحلّلٍ غير مرئي أكبر من 69% <span class="citation" data-cites="CMS-VBF"></span>. وعند دمج بيانات <span class="math inline">\(pp \rightarrow ZH\)</span> و<span dir="ltr">VBF</span> يصبح الحدّ 54% <span class="citation" data-cites="CMS-VBF"></span>.</p>
+<p>في عمليات المسح العدديّة نأخذ القيم التي:</p>
 <ul>
-<li><p>تضمن أن أحد الجسيمات السلمية حتى CP هو شبيه بالنموذج القياسي بأكثر من 90%،</p></li>
-<li><p>تعطي الكمية الصحيحة من كثافة بقايا المادة المظلمة،</p></li>
-<li><p>لا تتعارض مع تجارب الكشف المباشر مثل CDMSII <span class="citation" data-cites="CDMSII"></span> وXe100 <span class="citation" data-cites="Xe"></span>،</p></li>
-<li><p>في الحالة A، يهرب الجسيم السلمي الثقيل <span class="math inline">\(h_{2}\)</span> من حدود ATLAS <span class="citation" data-cites="ATLAS"></span> وCMS <span class="citation" data-cites="CMS"></span>؛ وفي الحالة B، يهرب هيغز الخفيف من قيود LEP <span class="citation" data-cites="OPAL"></span>،</p></li>
-<li><p>وألا تتجاوز قناة التحلل غير المرئي لهيغز الشبيه بالنموذج القياسي 20%.</p></li>
+<li><p>تضمن أن أحد السلّميَّين <span dir="ltr">CP</span>-الزوجيَّين شبيهٌ بالنموذج القياسي بأكثر من 90%،</p></li>
+<li><p>تُعطي الكميّة الصحيحة من كثافة بقايا المادة المُظلمة،</p></li>
+<li><p>لا تتعارض مع تجارب الكشف المباشر مثل CDMSII <span class="citation" data-cites="CDMSII"></span> وXENON100 <span class="citation" data-cites="Xe"></span>،</p></li>
+<li><p>في الحالة A، يتفادى السلّميّ الثقيل <span class="math inline">\(h_{2}\)</span> حدود ATLAS <span class="citation" data-cites="ATLAS"></span> وCMS <span class="citation" data-cites="CMS"></span>؛ وفي الحالة B، يتفادى الهيغز الأخفّ قيود LEP <span class="citation" data-cites="OPAL"></span>،</p></li>
+<li><p>وألّا تتجاوز قناة التحلّل غير المرئي لهيغز الشبيه بالنموذج القياسي 20%.</p></li>
 </ul>
-<h1 id="dark-matter-detection">المادة المظلمة والكشف عنها</h1>
-<p>
-في إطار الديناميكا الحرارية للكون ضمن النموذج الكوني القياسي <span class="citation" data-cites="kolb"></span>، ترتبط كثافة بقايا WIMP بمعدل إفنائها بالعلاقة المعروفة:
-</p>
+
+<h1 id="dark-matter-detection">المادة المُظلمة والكشف عنها</h1>
+<p>ضمن الديناميكا الحراريّة للكون في النموذج الكونيّ القياسي <span class="citation" data-cites="kolb"></span>، ترتبط كثافة بقايا <span dir="ltr">WIMP</span> بمعدّل إفنائها بالعلاقة المعروفة:</p>
 <div class="MathJax_Display">
 \[
-\Omega_{D} \bar{h}^{2} = \frac{1.07 \times 10^{9} x_{f}}{\sqrt{g_{*}} m_{Pl} \langle v_{12} \sigma_{ann} \rangle~\mathrm{GeV}}
+\Omega_{D} h^{2} = \frac{1.07 \times 10^{9} x_{f}}{\sqrt{g_{*}} m_{Pl} \langle v_{12} \sigma_{ann} \rangle~\mathrm{GeV}}
 \]
 </div>
-<p>
-حيث
-</p>
+<p>حيث</p>
 <div class="MathJax_Display">
 \[
 x_{f} = \ln \left( \frac{0.038~m_{Pl} m_{0} \langle v_{12} \sigma_{ann} \rangle}{\sqrt{g_{*} x_{f}}} \right)
 \]
 </div>
-<p>
-الرموز كالتالي: <span class="math inline">\(\bar{h}\)</span> هو ثابت هابل بوحدة 100 <span class="math inline">\(\mathrm{كم}\cdot \mathrm{ث}^{-1}\cdot \mathrm{ميغابارسك}^{-1}\)</span>، <span class="math inline">\(m_{Pl} = 1.22 \times 10^{19}\)</span> <span class="roman">GeV</span> هو كتلة بلانك، <span class="math inline">\(m_{0}\)</span> كتلة المادة المظلمة، <span class="math inline">\(x_{f} = m_{0}/T_{f}\)</span> نسبة كتلة المادة المظلمة إلى درجة حرارة التجميد <span class="math inline">\(T_{f}\)</span>، و<span class="math inline">\(g_{*}\)</span> عدد درجات الحرية النسبية ذات الكتلة الأقل من <span class="math inline">\(T_{f}\)</span>. الكمية <span class="math inline">\(\langle v_{12} \sigma_{ann} \rangle\)</span> هي متوسط مقطع الإفناء الحراري لزوج من جسيمات المادة المظلمة مضروبًا في سرعتهما النسبية في إطار مركز الكتلة <span class="citation" data-cites="TSM"></span>. عند أخذ القيمة الحالية لكثافة بقايا المادة المظلمة <span class="citation" data-cites="DM"></span>:
-</p>
+<p>والرموز كالتالي: <span class="math inline">\(h\)</span> هو ثابت هابل بوحدة 100 <span class="math inline">\(\mathrm{كم}\cdot \mathrm{ث}^{-1}\cdot \mathrm{ميغابارسك}^{-1}\)</span>، <span class="math inline">\(m_{Pl} = 1.22 \times 10^{19}\)</span> <span class="roman">GeV</span> كتلةُ بلانك، <span class="math inline">\(m_{0}\)</span> كتلةُ المادة المُظلمة، <span class="math inline">\(x_{f} = m_{0}/T_{f}\)</span> نسبةُ كتلة المادة المُظلمة إلى درجة حرارة التجميد <span class="math inline">\(T_{f}\)</span>، و<span class="math inline">\(g_{*}\)</span> عدد درجات الحرّية النسبية ذات الكتلة الأقلّ من <span class="math inline">\(T_{f}\)</span>. والكمّية <span class="math inline">\(\langle v_{12} \sigma_{ann} \rangle\)</span> هي متوسّط مقطع الإفناء الحراريّ لزوجٍ من جسيمات المادة المُظلمة مضروباً في سرعتهما النسبيّة في إطار مركز الكتلة <span class="citation" data-cites="TSM"></span>. وبأخذ القيمة الحاليّة لكثافة بقايا المادة المُظلمة <span class="citation" data-cites="DM"></span>:</p>
 <div class="MathJax_Display">
 \[
-\Omega_{D} \bar{h}^{2} = 0.1187 \pm 0.0017
+\Omega_{D} h^{2} = 0.1187 \pm 0.0017
 \]
 </div>
-<p>
-وباستخدام القيم التقريبية <span class="math inline">\(x_{f} \approx 19.2 \sim 21.6\)</span> و<span class="math inline">\(m_{0} \approx 10 \sim 100\)</span> <span class="math inline">\(\mathrm{GeV}\)</span>، نحصل على:
-</p>
+<p>وباستعمال القيم التقريبيّة <span class="math inline">\(x_{f} \approx 19.2 \sim 21.6\)</span> و<span class="math inline">\(m_{0} \approx 10 \sim 100\)</span> <span class="math inline">\(\mathrm{GeV}\)</span>، نحصل على:</p>
 <div class="MathJax_Display">
 \[
 \langle v_{12} \sigma_{ann} \rangle = (1.9 \pm 0.2) \times 10^{-9}~\mathrm{GeV}^{-2}
 \]
 </div>
-<p>
-القيمة السابقة لمقطع إفناء المادة المظلمة تترجم إلى علاقة بين معاملات النظرية المدخلة في التعبير المحسوب لـ<span class="math inline">\(\langle v_{12} \sigma_{ann} \rangle\)</span>، وبالتالي فرض قيد على هذه المعاملات سيحد من النطاق الممكن لكتل المادة المظلمة. يمكن استغلال هذه القيود لفحص جوانب النظرية مثل الاضطرابية، مع تقليل عدد المعاملات بواحد. ومع ذلك، بما أننا سنأخذ نطاقًا واسعًا لكتلة المادة المظلمة <span class="math inline">\(1 \sim 1000\)</span> <span class="math inline">\(\mathrm{GeV}\)</span>، سيتم تقدير النسبة <span class="math inline">\(x_{f}\)</span> عدديًا باستخدام العلاقة أعلاه، خاصة للقيم الصغيرة للكتلة. حسب مدى ثقل/خفة مرشح المادة المظلمة، ستكون قنوات الإفناء الرئيسية إلى أزواج فرميونية <span class="math inline">\(f\bar{f}\)</span> (<span class="math inline">\(b\bar{b}\)</span>، <span class="math inline">\(c\bar{c}\)</span>، <span class="math inline">\(\tau\bar{\tau}\)</span>، أو <span class="math inline">\(\mu\bar{\mu}\)</span>)، أما للكتل الكبيرة جدًا فقد تكون القنوات <span class="math inline">\(h_{1}h_{1}\)</span>، <span class="math inline">\(h_{1}h_{2}\)</span>، <span class="math inline">\(h_{2}h_{2}\)</span>، <span class="math inline">\(WW\)</span>، <span class="math inline">\(WW^{*}\)</span>، <span class="math inline">\(ZZ\)</span>، <span class="math inline">\(ZZ^{*}\)</span> و<span class="math inline">\(t\bar{t}\)</span> مهمة أيضًا. جميع الصيغ الصريحة لمقطع الإفناء مذكورة في <span class="citation" data-cites="TSM"></span>.
-</p>
-<p>
-خلال السنوات الماضية، بحثت تجارب مثل CDMS II <span class="citation" data-cites="CDMSII"></span>، XENON 10/100 <span class="citation" data-cites="Xe"></span> وCoGeNT <span class="citation" data-cites="CoGe"></span> عن إشارات تشتت مرن لجسيم WIMP المادة المظلمة على أهداف نووية في أعماق الأرض. وعلى الرغم من عدم رصد إشارة واضحة حتى الآن، فقد وضعت حدود استبعادية متزايدة الصرامة على المقطع الكلي لتشتت المادة المظلمة على النيوكليون <span class="math inline">\(\sigma_{det}\)</span> بدلالة كتلة المادة المظلمة <span class="math inline">\(m_{0}\)</span>. مقطع الكشف المباشر لتشتت <span class="math inline">\(S_{0}\)</span> (مرشح المادة المظلمة في هذا النموذج) على النيوكليون يُعطى بـ <span class="citation" data-cites="TSM last"></span>:
-</p>
+<p>تُترجَم القيمةُ السابقة لمقطع إفناء المادة المُظلمة إلى علاقةٍ بين معاملات النظريّة الداخلة في التعبير المحسوب لـ<span class="math inline">\(\langle v_{12} \sigma_{ann} \rangle\)</span>، وبالتالي يفرض ذلك قيداً على هذه المعاملات يحدّ من النطاق الممكن لكتل المادة المُظلمة. يمكن استغلال هذه القيود لفحص جوانب النظريّة مثل الاضطرابيّة، مع تقليل عدد المعاملات بواحد. ومع أنّنا سنأخذ نطاقاً واسعاً لكتلة المادة المُظلمة <span class="math inline">\(1 \sim 1000\)</span> <span class="math inline">\(\mathrm{GeV}\)</span>، سنُقدّر النسبة <span class="math inline">\(x_{f}\)</span> عدديّاً باستخدام العلاقة أعلاه، خاصّةً للقيم الصغيرة للكتلة. حسب مدى خِفّة أو ثِقَل مرشّح المادة المُظلمة، تكون قنوات الإفناء الرئيسة إلى أزواجٍ فرميونيّة <span class="math inline">\(f\bar{f}\)</span> (<span class="math inline">\(b\bar{b}\)</span>، <span class="math inline">\(c\bar{c}\)</span>، <span class="math inline">\(\tau\bar{\tau}\)</span>، أو <span class="math inline">\(\mu\bar{\mu}\)</span>)، أمّا للكتل الأكبر فقد تكون القنوات <span class="math inline">\(h_{1}h_{1}\)</span>، <span class="math inline">\(h_{1}h_{2}\)</span>، <span class="math inline">\(h_{2}h_{2}\)</span>، <span class="math inline">\(WW\)</span>، <span class="math inline">\(WW^{*}\)</span>، <span class="math inline">\(ZZ\)</span>، <span class="math inline">\(ZZ^{*}\)</span> و<span class="math inline">\(t\bar{t}\)</span> مهمّةً أيضاً. جميع الصيغ الصريحة لمقطع الإفناء مذكورةٌ في <span class="citation" data-cites="TSM"></span>.</p>
+<p>خلال السنوات الماضية، بحثت تجارب مثل CDMS II <span class="citation" data-cites="CDMSII"></span> وXENON 10/100 <span class="citation" data-cites="Xe"></span> وCoGeNT <span class="citation" data-cites="CoGe"></span> عن إشاراتِ تشتّتٍ مرنٍ لجسيم <span dir="ltr">WIMP</span> على أهدافٍ نوويّة في أعماق الأرض. وعلى الرغم من عدم رصد إشارةٍ واضحة حتى الآن، فقد وُضِعت حدودٌ استبعاديّة متزايدةُ الصرامة على المقطع الكلّي لتشتّت المادة المُظلمة على النيوكليون <span class="math inline">\(\sigma_{det}\)</span> بدلالة كتلة المادة المُظلمة <span class="math inline">\(m_{0}\)</span>. مقطع الكشف المباشر لتشتّت <span class="math inline">\(S_{0}\)</span> (مرشّح المادة المُظلمة في هذا النموذج) على النيوكليون يُعطى بـ <span class="citation" data-cites="TSM last"></span>:</p>
 <div class="MathJax_Display">
 \[
 \sigma_{det} = \frac{g_{HNN}^{2} m_{N}^{2}}{4\pi (m_{N} + m_{0})^{2}} \left[ \frac{\lambda_{001}^{(3)} \cos\theta}{m_{1}^{2}} - \frac{\lambda_{002}^{(3)} \sin\theta}{m_{2}^{2}} \right]^{2}
 \]
 </div>
-<p>
-حيث <span class="math inline">\(m_{N}\)</span> كتلة النيوكليون، <span class="math inline">\(\lambda_{00i}^{(3)}\)</span> معاملات اقتران <span class="math inline">\(h_{i} S_{0}^{2}\)</span> مذكورة في الملحق أ، و<span class="math inline">\(g_{HNN}\)</span> هو اقتران هيغز-نيوكليون الفعال، والمقدر بناءً على نظرية الاضطراب الشيرالي للباريونات الثقيلة بـ<span class="math inline">\(g_{HNN} \simeq 1.5 \times 10^{-3}\)</span> <span class="citation" data-cites="SVZ Ch GLS"></span>، بينما تعطي حسابات الشبكة قيمًا أصغر نوعًا ما <span class="citation" data-cites="Lat1 Lat2"></span>.
-</p>
-<p>
-في عملنا، يتم اختيار المعاملات الحرة بحيث يكون طيف القطاع السلمي يحتوي على جسيم شبيه بهيغز بكتلة 125 <span class="roman">GeV</span>، وكثافة بقايا <span class="math inline">\(S_{0}\)</span> متوافقة مع بيانات بلانك <span class="citation" data-cites="DM"></span>. كما هو موضح في الشكل <a href="#Sig" data-reference-type="ref" data-reference="Sig">[Sig]</a>، نجد أن معظم النقاط المرجعية تقع فيها مقاطع التشتت المرن <span class="math inline">\(\sigma_{det}\)</span> تحت <span class="math inline">\(10^{-45}\)</span> <span class="math inline">\(\mathrm{cm}^{2}\)</span>، أي تحت جميع الحدود التجريبية بما في ذلك الحد الجديد من Xe100 وكذلك نتائج LUX الأخيرة <span class="citation" data-cites="LUX"></span>، خاصة لكتل المادة المظلمة الأكبر من 125 <span class="roman">GeV</span> في الحالة A، و50 <span class="roman">GeV</span> في الحالة B.
-</p>
-<div class="center">
-  <embed src="svsm0A.eps" style="width:8cm;height:6cm" />
-  <embed src="svsm0B.eps" style="width:7.6cm;height:5.8cm" />
-</div>
-<p>
-قد يُعزى هذا السلوك إلى الإلغاء بين الحدين داخل القوسين في المعادلة أعلاه أو/و إلى اعتماد <span class="math inline">\(\sigma_{det}\)</span> على معكوس مربع <span class="math inline">\(m_{0}\)</span> مما يؤدي إلى قمع معدل الأحداث للمادة المظلمة الثقيلة. ومع ذلك، للمادة المظلمة الأخف من <span class="math inline">\(30\)</span> <span class="roman">GeV</span>، يتجاوز جزء التحلل غير المرئي لهيغز <span class="math inline">\(20\%\)</span>، وبالتالي يتعارض مع بيانات ATLAS وCMS.
-</p>
+<p>حيث <span class="math inline">\(m_{N}\)</span> كتلةُ النيوكليون، و<span class="math inline">\(\lambda_{00i}^{(3)}\)</span> معاملاتُ اقتران <span class="math inline">\(h_{i} S_{0}^{2}\)</span> مذكورةٌ في الملحق أ، و<span class="math inline">\(g_{HNN}\)</span> هو اقتران هِغز–نيوكليون الفعّال والمقدّر، بناءً على نظريّة الاضطراب الشيرالي للباريونات الثقيلة، بـ<span class="math inline">\(g_{HNN} \simeq 1.5 \times 10^{-3}\)</span> <span class="citation" data-cites="SVZ Ch GLS"></span>، بينما تُعطي الحسابات الشبكيّة قيماً أصغر نوعاً ما <span class="citation" data-cites="Lat1 Lat2"></span>.</p>
+<p>في عملنا نختار المعاملات الحرّة بحيث يحتوي طيفُ القطاع السلّمي على جسيمٍ شبيهٍ بهيغز بكتلة 125 <span class="roman">GeV</span>، وتكون كثافةُ بقايا <span class="math inline">\(S_{0}\)</span> متوافقةً مع بيانات بلانك <span class="citation" data-cites="DM"></span>. كما هو موضّح في الشكل <a href="#Sig" data-reference-type="ref" data-reference="Sig">[Sig]</a>، نجد أنّ معظم النقاط المرجعيّة تقع فيها مقاطعُ التشتّت المرن <span class="math inline">\(\sigma_{det}\)</span> تحت <span class="math inline">\(10^{-45}\)</span> <span class="math inline">\(\mathrm{cm}^{2}\)</span>، أي دون جميع الحدود التجريبيّة بما فيها الحدّ الجديد من XENON100 وكذلك نتائج LUX الأخيرة <span class="citation" data-cites="LUX"></span>، خاصّةً لكتل مادةٍ مُظلمة أكبر من 125 <span class="roman">GeV</span> في الحالة A، و50 <span class="roman">GeV</span> في الحالة B.</p>
+<figure id="Sig">
+  <div class="center">
+    <embed src="svsm0A.eps" style="width:8cm;height:6cm" />
+    <embed src="svsm0B.eps" style="width:7.6cm;height:5.8cm" />
+  </div>
+  <figcaption>مقطع الكشف المباشر <span class="math inline">\(\sigma_{det}\)</span> بدلالة كتلة المادة المُظلمة <span class="math inline">\(m_{0}\)</span> في السيناريوهين A (يسار) وB (يمين).</figcaption>
+</figure>
+<p>قد يُعزى هذا السلوك إلى إلغاءٍ بين الحدّين داخل القوسين في المعادلة أعلاه أو/و إلى اعتماد <span class="math inline">\(\sigma_{det}\)</span> على معكوس مربّع <span class="math inline">\(m_{0}\)</span> في حدّ <span class="math inline">\(m_{0}\gg m_{N}\)</span>، ما يؤدّي إلى قمع معدّل الأحداث للمادة المُظلمة الثقيلة. ومع ذلك، للمادة المُظلمة الأخفّ من <span class="math inline">\(30\)</span> <span class="roman">GeV</span> يتجاوز كسرُ التحلّل غير المرئيّ لهيغز <span class="math inline">\(20\%\)</span>، بما يتعارض مع بيانات ATLAS وCMS.</p>
 </body>
 </html>

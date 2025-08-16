@@ -1,0 +1,224 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Mikhail Denissenya وَ Eric V. Linder وَ Sangwoo Park وَ Arman Shafieloo وَ Satadru Bag">
+  <title>إِعادَة بِناء خَرِيطَة سُرْعَة النُجُومِ المَجَرِيَّة بِشَكْلٍ مُسْتَقِلٍّ عَن النَمُوذَج</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(90deg, #3a6186 0%, #89253e 100%);
+      color: #fff;
+      padding: 40px 0 20px 0;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(58,97,134,0.08);
+    }
+    h1.title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
+    }
+    .author {
+      font-size: 1.2em;
+      margin: 0;
+      color: #f3e9e9;
+      letter-spacing: 0.5px;
+    }
+    h1, h2, h3, h4 {
+      color: #3a6186;
+      font-weight: 700;
+      margin-top: 2.2em;
+      margin-bottom: 0.7em;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2em;
+      border-bottom: 2px solid #89253e;
+      padding-bottom: 0.2em;
+      margin-bottom: 1em;
+    }
+    h1.unnumbered {
+      border-bottom: none;
+      margin-top: 2.5em;
+    }
+    p {
+      margin: 1.2em 0;
+      text-align: justify;
+    }
+    code, pre {
+      background: #f3f3f3;
+      color: #89253e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95em;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+    }
+    .math.inline {
+      background: #f3f3f3;
+      color: #3a6186;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95em;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+    }
+    .nodecor {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+    a {
+      color: #89253e;
+      text-decoration: underline dotted;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #3a6186;
+    }
+    ul, ol {
+      margin: 1.2em 2em 1.2em 0;
+      padding: 0 1.5em 0 0;
+    }
+    li {
+      margin-bottom: 0.7em;
+    }
+    hr {
+      border: 0;
+      border-top: 2px solid #89253e;
+      margin: 2em 0;
+    }
+    section.footnotes {
+      font-size: 0.95em;
+      color: #555;
+      background: #f3f3f3;
+      border-radius: 8px;
+      padding: 1em 2em;
+      margin: 2em 0 0 0;
+    }
+    .footnoteRef {
+      font-size: 0.8em;
+      vertical-align: super;
+      color: #89253e;
+      text-decoration: none;
+    }
+    sup {
+      font-size: 0.8em;
+      vertical-align: super;
+    }
+    /* Table styling if needed */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2em 0;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #3a6186;
+      color: #fff;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      body {
+        font-size: 18px;
+      }
+      header {
+        padding: 25px 0 10px 0;
+      }
+      h1.title {
+        font-size: 1.5em;
+      }
+      h1 {
+        font-size: 1.2em;
+      }
+      section.footnotes {
+        padding: 1em 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">إِعادَة بِناء خَرِيطَة سُرْعَة النُجُومِ المَجَرِيَّة بِشَكْلٍ مُسْتَقِلٍّ عَن النَمُوذَج</h1>
+  <p class="author"><span class="nodecor">Mikhail Denissenya</span> وَ <span class="nodecor">Eric V. Linder</span> وَ <span class="nodecor">Sangwoo Park</span> وَ <span class="nodecor">Arman Shafieloo</span> وَ <span class="nodecor">Satadru Bag</span></p>
+</header>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>نُطَوِّر طَرِيقَة مُسْتَقِلَّة عن النَمُوذَج وموثوقة وعملية لِقياس سرعات دوران المجرّات عبر مصفوفة ثنائية الأبعاد من البكسلات باستخدام مطياف حقل التكامل. تُظهر المحاكاة أن الطريقة دقيقة حتى مع إشارة طيفية إلى نسبة إشارة إلى الضوضاء أقل من الطرق القياسية: دقة <span class="nodecor">99%</span> عندما تكون الوسيطة <span class="nodecor"><span class="math inline">\(S/N=4\)</span></span>. نطبقها على بيانات <span class="nodecor">MaNGA</span> لبناء خريطة سرعة المجرة ومنحنى دورانها. كما نطور طريقة تنعيم سبلاين مكعّب عالية الكفاءة أسرع بمقدار <span class="nodecor">25</span> مرة من الناحية الحسابية وبانخفاض طفيف في الدقة. يمكن أن تكون مثل هذه الطرق المستقلة عن النموذج مفيدة في دراسة خصائص المادة المظلمة دون الافتراض بنموذج مجري.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>تُوَفِّر دِينامِيكِيّات الأجرام السَماوِيَّة الداخِلِيَّة رُؤى حاسِمَة حَوْل المَجال الجاذبي داخِل الجُرْم السَماوِيّ، خاصَّة فِيمَا يَتَعَلَّق بِتَوْزِيع مُكَوِّن المادَّة المُظْلِمَة. ظَهَرَت الدَلائِل الأُولَى عَلَى وُجُود المادَّة المُظْلِمَة في عِدَّة أَعْمال رائِدَة في أَوائِل القَرْن العِشْرِينَ، بِما في ذلك (<span class="nodecor">Oort1932</span>)، (<span class="nodecor">Zwicky1933</span>)، وَ(<span class="nodecor">Babcock1939</span>). (<span class="nodecor">Bertone2018</span>) يُقَدِّم مُراجَعَة شامِلَة لِلتَطَوُّر التارِيخِي للمادَّة المُظْلِمَة؛ أُنْظُر أَيْضاً (<span class="nodecor">2023arXiv230906390B</span>). بَعْدَ ذٰلِكَ، تَمَّ تَأْكِيد وُجُود المادَّة المُظْلِمَة في الأجرام السَماوِيَّة مِن خِلال دِراسات رائِدَة لِعِدَّة أجرام سَماوِيَّة حَلَزُونِيَّة (<span class="nodecor">Rubin1970, Roberts1973, Rubin1980</span>)، حَيْثُ لُوحِظَ أَنَّ النُجُوم تَتْبَع مُنْحَنَيات دَوَران مُسَطَّحة نِسْبِيّاً، بَدَلاً مِن الانخفاض كما هو متوقع من الضوء المرصود. أَدَّت هٰذِهِ الدِراسات إلَى الاِسْتِنْتاج بأنَّ الكتلة الديناميكية المقدّرة من حركة النجوم أو الأجرام السامية تتجاوز ما يمكن توقعه بناءً فقط على الضوء، مما يشير إلى وجود مكوّن من المادة المظلمة.</p>
+<p>حَتَّى يَوْمِنا هٰذا، تَظَلّ الدِينامِيكِيّات الداخِلِيَّة جانباً حاسِماً في دراسات الأجرام السماوية، مُتَضَمِّنة في الخصائص التوسعية التجريبية التي تشمل علاقة تَولي–فيشر (<span class="nodecor">TullyFisher</span>)، علاقة فابر–جاكسون (<span class="nodecor">FaberJackson</span>)، والمستوى الأساسي (<span class="nodecor">Gudehus,Cole1994</span>)، والتي تلتزم بها جميع الأجرام تقريباً. فوق كل شيء، يظل فهمنا لتوزيع المادة المظلمة في الأجرام السماوية معتمداً أساسياً على القياسات الدقيقة للديناميكيات على طول خط البصر (<span class="nodecor">Rubin1978, Bosma1981, vanAlbada1985,2011MNRAS.415..545T,2020MNRAS.496.1857L,2021MNRAS.503.5238K</span>)؛ أنظر (<span class="nodecor">Sofue2001</span>) للمراجعة.</p>
+<p>على الصعيد الرصدي، أضافت أطياف المجال التكاملي تفاصيل كبيرة لديناميكيات الأجرام السماوية، موفرة مصفوفة ثنائية الأبعاد من البكسلات – بكسيلا عبر وجه الجرم، كل منها بطيفه الخاص. عدة مسوحات واسعة النطاق، بما في ذلك CALIFA (<span class="nodecor">https://califa.caha.es/</span>) (<span class="nodecor">2012A&amp;A...538A...8S,Califa</span>)، MANGA (<span class="nodecor">https://www.sdss.org/surveys/manga/</span>) (<span class="nodecor">Manga2015,2015AJ....149...77D,2016AJ....152..197Y,2017AJ....154...86W</span>) وSAMI (<span class="nodecor">http://sami-survey.org/</span>) (<span class="nodecor">SAMI,Croom2021</span>)، قد جمعت قواعد بيانات شاملة تضمّ آلاف الأجرام السماوية<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. تؤكد هذه الموارد على الأهمية الحاسمة لقياس الديناميكيات الداخلية للأجرام السماوية بدقة.</p>
+<p>تقليدياً، يتمّ تحديد حركيات الأجرام السماوية من خلال ملاءمة الطيف (<span class="nodecor">Cappellari2004,Fernandes2005,Ocvirk2006,Walcher:2006hd,Koleva:2009kt,Sanchez,2017MNRAS.466..798C</span>)، وتقديم ثروة من المعلومات تتجاوز سرعات خط البصر، مثل التفاصيل حول توزيعات النجوم، التشتت، الأعمار، الفلزات إلخ (<span class="nodecor">2012IAUS..284...42A,2017MNRAS.466..798C,2019A&amp;A...622A.103B,2021ApJS..254...22J</span>). ومع ذلك، يمكن أن تتأثر النتائج بالافتراضات المضمنة في نمذجة الطيف. إضافةً إلى ذلك، غالباً ما تواجه طريقة ملاءمة القالب تحديات في قياس سرعات خط البصر للطيف ذو إشارة إلى ضوضاء منخفضة (<span class="math inline">\(S/N\)</span>)، وهو سيناريو شائع عند التعامل مع الأجرام ذات السطوع السطحي المنخفض أو في مناطق الأطراف الخارجية. إحدى البدائل المحتملة هي دمج البيانات من عدة بكسيلات، مثل استخدام تبليط فورونوي (<span class="nodecor">voronoi,Cappellari2003,2015A&amp;A...573A..59G,2019MNRAS.489..608F,2020MNRAS.493.3081R,2021MNRAS.507.2488G</span>)، لتحسين <span class="math inline">\(S/N\)</span>. ومَعَ ذلك، فإنَّ هذا النهج يفرض قيوداً على دقة النتائج وحساسيتها عبر المسافات الشعاعية المختلفة.</p>
+<p>في عملنا السابق (<span class="nodecor">paper1</span>)، قدمنا تقنية مبتكرة مستقلة إلى حد كبير عن النموذج، تعتمد على التقاطع المتقاطع للبكسلات بعد التنعيم التكراري. تجمع هذه الطريقة المعلومات من جميع أقسام الطيف وبالتالي تظهر إمكانات هائلة في التعامل مع الطيف ذو إشارة إلى ضوضاء منخفضة جداً (<span class="math inline">\(S/N\sim1\)</span>). كان هذا العمل مقتصراً على البكسلات على طول محور الجرم السماوي لتسهيل استنتاج منحنيات الدوران ثنائية الأبعاد من خلال ملاءمة قائمة على مونت كارلو الهاملتوني. في هذا العمل الحالي، قمنا بتوسيع هذه الطريقة لتشمل بيانات وحدة المجال التكاملي ثنائية الأبعاد بالكامل، مما يمكن من تحديد الديناميكيات الداخلية بثنائية الأبعاد. تأخذ هذه الطريقة المحسَّنة في الاعتبار اختلافات السرعة بين البكسلات من خلال التقاطع المتقاطع للطيف المنزاح دوبلرياً مع دمج الفحوصات المتقاطعة والاعتبارات التماثلية. ونتيجة لذلك، فإنها توفر تقييماً قوياً للسرعات والشوك المرتبطة بها عبر خريطة الجرم السماوي بأكمله.</p>
+<p>القسم [sec:method] يصف الطريقة ومزاياها، بشكل خاص النجاح حتى للطيف ذو إشارة إلى ضوضاء منخفضة نسبياً (<span class="math inline">\(S/N\)</span>). نختبرها بشكل موسّع ضد المحاكاة في القسم [sec:sim]، لتحديد الدقة مقابل <span class="math inline">\(S/N\)</span> واستكشاف تنويعات الطريقة التكرارية. في القسم [sec:manga]، نطبق الطريقة على بيانات فعلية من مانجا (رصد الأجرام السماوية القريبة في مرصد أباتشي بوينت <span class="nodecor">Manga2015</span>، جزء من مسح سلون الرقمي للسماء 4). نلخص ونناقش العمل المستقبلي في القسم [sec:concl].</p>
+<h1 id="sec:method">الطَرِيقَة</h1>
+<p>تُستخدم طريقتنا في بناء خرائط سرعة الخط البصري ثنائية الأبعاد من بيانات الطيف MaNGA IFU عبر خوارزمية تقدير سرعة الخط البصري بين زوج من الطيف، كما وُصف في (<span class="nodecor">paper1</span>). يتمّ تحديد فرق السرعة الخطي البصري <span class="math inline">\(\Delta V\)</span> بين زوج من الطيف (على سبيل المثال <span class="math inline">\(A\)</span> و <span class="math inline">\(B\)</span>) من خلال تعظيم التقاطع المتقاطع الموزون r_<span>AB</span>(V)=  ، حيثُ <span class="math inline">\(\Delta\lambda=\lambda\Delta V/c\)</span> هو انزياح الطول الموجي و <span class="math inline">\(\Delta F=F-\langle F\rangle\)</span> هو التدفق مطروحًا من المتوسط. يتم الحصول على الطيف الملساء المنزاح <span class="math inline">\(F^s_A(\lambda_i+\Delta \lambda)\)</span> من خلال تلْسِين الطيف الأصلي <span class="math inline">\(F_A(\lambda_i)\)</span>، كما نوقش أدناه، وتحويل الطول الموجي لحساب فرق السرعة <span class="math inline">\(\Delta V\)</span>. تُستخدم عدَم اليقين <span class="math inline">\(\sigma_{Bi}\)</span> في الطيف غير الملساء <span class="math inline">\(F_B(\lambda_i)\)</span> لتعريف الأوزان <span class="math inline">\(w_i=1/\sigma_{Bi}^2\)</span>.</p>
+<p>للمتانة ولتمكين التحقق المتقاطع نقسم كل طيف إلى أربعة أجزاء متساوية من الطول الموجي، كما وُصف في (<span class="nodecor">paper1</span>). لكل زوج من البكسلات، نحدد فترات الطول الموجي المتداخلة عند انزياح طول موجي معين ونجد فروق السرعة المثلى في الأجزاء المقابلة. ثمّ نبادِل دور البكسلتين، أي تلْسِين وتحويل الطيف في البكسل <span class="math inline">\(B\)</span> وتقاطعه مع الطيف المرصود في البكسل <span class="math inline">\(A\)</span>، ونكرر الحساب، متوقعين نتائج متينة تتبع التماثل V_<span>AB</span> - V_<span>BA</span>. [eq:sym] يعطي تنفيذ التبادل المراتي لكل من الأجزاء الأربعة مجموع ثماني تقديرات <span class="math inline">\(\Delta V\)</span>.</p>
+<p>نفترض شرط التماثل ونطلب تناسق التقديرات بين أجزاء الطول الموجي لتوفير تحقق متقاطع مهم لمتانة الطريقة، مع تكييف معايير (<span class="nodecor">paper1</span>) من خلال تقديم عامل مقياس، يُشار إليه ب crit <span class="math inline">\(\times\, c\)</span>، &&V_<span>AB_j</span>+V_<span>BA_j</span> [eq:critc]<br />
+&& . نأخذ عمومًا <span class="math inline">\(c=1\)</span> كما في (<span class="nodecor">paper1</span>)، ولكن ندرس معدل نجاح تحديد السرعة لقيم مختلفة من <span class="math inline">\(c\)</span> في القسم [sec:manga]. نحصل على السرعة النهائية <span class="math inline">\(\Delta V\)</span> وعدَم يقينها <span class="math inline">\(\sigma_{\Delta V}\)</span> من خلال متوسط التقديرات التي تجتاز المعايير وحساب الانحراف المعياري.</p>
+<p>بالنسبة لنهج التلْسِين التكراري (أنظر <span class="nodecor">Shafieloo:2005nd, Shafieloo:2007cs, Shafieloo:2009hi, Aghamousa:2014uya</span>) نستخدم طول التلْسِين <span class="math inline">\(\Delta=1.5\)</span> وعدد التكرارات <span class="math inline">\(N_{\rm it}=10\)</span>. نفكر أيضًا في نهج تنعيم السبلاين المكعّب الأسرع، باستخدام روتين <span class="nodecor">scipy.interpolate.splrep</span> المتاح في (<span class="nodecor">scipy</span>)، كما نناقش في القسم التالي.</p>
+<h1 id="sec:sim">الاِخْتِبارات مُقابِل المُحاكاة</h1>
+<p>تم تقديم اختبارات موسّعة لنهج التنعيم التكراري في (<span class="nodecor">paper1</span>). هنا، نستكشف بعض الاختلافات في هذا النهج، مع التركيز على القوة، خاصة لبيانات الإشارة إلى الضوضاء المنخفضة (<span class="math inline">\(S/N\)</span>)، والتعميم من إعادة البناء ثنائي الأبعاد على طول المحور الرئيسي للمجرة إلى خرائط الطيف الميدانية الكاملة ثنائية الأبعاد، وتسريع الحسابات. لذلك، نجري مزيداً من الاختبارات، في البداية مع بيانات محاكاة لتقييم الدقة.</p>
+<p>كبديل للتنعيم التكراري للبيانات الطيفية، قمنا بفحص التنعيم المكعّب، التنعيم بالسبلاين المكعّب، وانحذار عملية غاوس. كان البديل الأكثر نجاحاً هو التنعيم بالسبلاين المكعّب، لذلك سنركز على ذلك في هذه المقالة.</p>
+<p>في تنعيم السبلاين المكعّب، يتم دمج نقاط البيانات المدخلة وانحرافاتها المعيارية لبناء منحنى سبلاين (<span class="nodecor">scipy</span>). يضمن معامل التنعيم <span class="math inline">\(s\)</span> أن توقعات منحنى السبلاين لا تؤدي إلى تجاوز <span class="math inline">\(χ^2\)</span> لكل درجة حرية القيمة <span class="math inline">\(s\)</span>. نضبط <span class="math inline">\(s=1\)</span> لمطابقة بيانات الإدخال ومنحنى السبلاين الناتج.</p>
+<p>تم اختبار نهج التنعيم التكراري على مجموعة من الطيف <span class="math inline">\(S/N\)</span> في (<span class="nodecor">paper1</span>)، ولمختلف الطيف، ولكن تم تغييره في نفس الوقت. هنا، ندرس تأثير <span class="math inline">\(S/N\)</span> على قياس السرعة، بعزل التأثير عن طريق تثبيت الطيف لتوضيح الكمية. نعتمد أيضًا نموذجاً أكثر واقعية لتغير <span class="math inline">\(S/N\)</span> من مركز المجرة إلى الحافة، باتباع ملف تعريف أُسِّي، S/N(r)=S/N(0)e^<span>-r/r_c</span> [eq:snrf] حيث <span class="math inline">\(r\)</span> هو عدد البكسلات من المركز. يتم الحصول على مستوى <span class="math inline">\(S/N\)</span> لبكسل على مسافة <span class="math inline">\(r\)</span> من المركز عن طريق تغيير سعة الضوضاء الغاوسية المضافة إلى طيف البكسل المركزي. نعتمد <span class="math inline">\(r_c=25\)</span> لمحاكاتنا، وهو ملائم جيد للبيانات الحقيقية من مجرة MaNGA 7991-12701. يرجى ملاحظة أن <span class="math inline">\(S/N\)</span> لبكسل معرف كما في (<span class="nodecor">SNR</span>)، كما هو مستخدم في (<span class="nodecor">paper1</span>). نحاكي منحنيات سرعة الدوران الداخلية لمجموعة من <span class="math inline">\(S/N(0)\)</span> من <span class="nodecor">50</span> إلى <span class="nodecor">4</span>؛ لاحظ أن الوسيط <span class="math inline">\(S/N\approx0.57\,S/N(0)\)</span> للشكل الأُسِّي، وبالتالي يتراوح الوسيط <span class="math inline">\(S/N\)</span> من <span class="nodecor">28.5</span> إلى <span class="nodecor">2.3</span>.</p>
+<p>تولد المحاكاة منحنيات دوران الإدخال التالية (<span class="nodecor">Yoon_2021</span>), V(r) = V_c ()+s_<span>out</span>r, [eq:vofr] حيث <span class="math inline">\(V_c=-170\)</span> km/s، <span class="math inline">\(r\)</span> هو المسافة من المركز بالبكسلات، <span class="math inline">\(R_t=7.5\)</span> بنفس الوحدات، و<span class="math inline">\(s_{\rm out}=1/R_t=0.133\)</span>. تم اختيار هذه المعلمات لتتطابق بشكل وثيق مع منحنى الدوران المعاد بناؤه من مجرة MaNGA 7991-12701.</p>
+<p>لتقدير النتائج المستمدة من مختلف نهج التركيب، أي سرعات الإخراج لكل بكسل على طول خط البصر ثنائي الأبعاد (على سبيل المثال، المحور الرئيسي) بالنسبة للحقيقة المدخلة، نستكشف انحراف السرعة الجذري المتوسط والدقة، أي عدم وجود تحيّز. للدقة، نرى أن الدقة ضمن <span class="nodecor">1%</span> للوسيط <span class="math inline">\(S/N\ge4\)</span> للحالة التكرارية أو <span class="nodecor">2%</span> للوسيط <span class="math inline">\(S/N\ge7\)</span> للتنعيم المكعّب (في حين أن نهج التنعيم المكعّب أسرع بمقدار <span class="nodecor">25</span> مرة من الناحية الحسابية). نذكّر أن الوسيط يعني أن نصف البكسلات ستكون أقل، أي حالة الوسيط <span class="math inline">\(S/N=4\)</span> لديها <span class="nodecor">50%</span> من البكسلات في <span class="math inline">\(S/N=[2.3,4]\)</span>، لذلك فإن الطريقة دقيقة حتى لـ <span class="math inline">\(S/N\)</span> المنخفض جداً. يأتي التحيّز السلبي نسبياً من أن عرض خطوط الميزات الطيفية غالباً ما يكون مماثلاً للتحولات التي يسببها سرعة الدوران. وبالتالي، في التقاطع بين البكسلات لتقدير السرعة، قد تتداخل الميزات، مفضلة تحولات سرعة أقل من الفعلية لبيانات <span class="math inline">\(S/N\)</span> المنخفضة التي لا يمكنها حل ملف تعريف الخط.</p>
+<p>توفر تقنيات الإعادة بناء أيضاً تقديرات معقولة لعدم اليقين في السرعة الجذرية المتوسطة، كما هو متوقع، فإن تقدير السرعة لديه عدم يقين أكبر في مناطق <span class="math inline">\(S/N\)</span> المنخفضة، عادةً عند حوافّ المجرة حيث يبقى عدم اليقين <em>الكسري</em> معقولاً، على سبيل المثال <span class="nodecor"><span class="math inline">\(\sim10\%\)</span></span>. يمكن تخفيف زيادة عدم اليقين في السرعة من خلال الحد من البكسلات إلى <span class="math inline">\(S/N&gt;4\)</span>؛ على سبيل المثال، نرى أن هذا يقلل من الشك نحو <span class="nodecor"><span class="math inline">\(\sim30-40\%\)</span></span> حتى للوسيط <span class="math inline">\(S/N\approx3\)</span>. في القسم التالي، سنقدم أيضاً إجراء المرسى لتحسين القوة أكثر.</p>
+<p>يُعتبر نهج التنعيم المكعّب تقنية ثانية قابلة للتطبيق. (لاحظ أن الانخفاض في rms هو فقط بسبب عدد أقل نسبياً من الصناديق التي تمر بالمعايير وتدرج، مع وجود صناديق جيدة لديها تشتت أقل.) في المقابل، تم تأسيس النهج التكراري بشكل أكبر مع الاختبارات التي تتجاوز (<span class="nodecor">paper1</span>). لذلك ننتقل الآن إلى استخدام كلا النهجين على البيانات الفعلية.</p>
+<h1 id="sec:manga">تَطْبِيق عَلَى البَيانات الحَقِيقِيَّة</h1>
+<p>نرغب في استخدام جميع البيانات الطيفية من التصوير الطيفي الميداني المتكامل، لذلك نوسع اختيار المحور الرئيسي ثنائي الأبعاد المستخدم سابقاً ليشمل الشكل السداسي الكامل لمجال MaNGA. نركز على مجرة MaNGA 7991-12701 التي تم تحديد محورها الرئيسي فقط في (<span class="nodecor">paper1</span>).</p>
+<p>بيانات MaNGA لهذه المجرة تشمل 2939 spaxel، ولكن بعضها يحتوي على فجوات كبيرة في تغطية الطول الموجي مما قد يؤدي إلى فشل تقنية التقاطع المتقاطع أو إلى نتائج زائفة. نزيل spaxels التي تحتوي على بيانات في أقل من 3780 طولاً موجيًا، مما يترك 2632 spaxel.</p>
+<p>إذا تم تقاطع كل spaxel مع كل spaxel آخر، فسيسفر ذلك عن مهمة حسابية تتطلب أكثر من مليون دالة تقاطع. بدلاً من ذلك نتبع نهجين. الأول هو تقاطع كل spaxel مع spaxel المركزي (عادةً الأعلى في نسبة الإشارة إلى الضوضاء)، مما يقلل المشكلة إلى قدر <span class="math inline">\(N_{\rm spaxel}\)</span> بدلاً من <span class="math inline">\(N^2_{\rm spaxel}\)</span>، لكنه يفقد معلومات حول التباينات الطيفية بعيداً عن المركز. الثاني هو اختيار مجموعة متواضعة من نقاط الربط في أنحاء المجرة، وتعريف مناطق spaxels المجاورة “التابعة” لكل نقطة ربط.</p>
+<p>علاوةً على ذلك، فإن أحد جوانب البيانات الحقيقية هو اختلاف الخصائص الطيفية من مركز المجرة إلى حوافها. تحقّقنا من مجموعة متنوعة من هذه التغيّرات في (<span class="nodecor">paper1</span>) لتحديد الحد الذي تنجح عنده التقنية. هنا، نعتمد طريقة الربط باستخدام طيف spaxel المرتبط بالمنطقة المجاورة لتقدير الاختلافات في السرعة، بدلاً من استخدام طيف spaxel المركزي دائماً.</p>
+<p>في هذه المقالة، نقارن هاتين التقنيتين لتحديد خريطة السرعة، في نهج محلي (1 spaxel إلى 1 spaxel مركزي لتقنية المركز، 1 spaxel إلى 1 spaxel ربط إلى 1 spaxel مركزي لتقنية الربط). يمكن أن تكون تقنية الربط مفيدة أيضاً في النهج العالمي حيث يتمّ تنفيذ التحسين على جميع spaxels في وقت واحد. لتسع مناطق (أنظر الشكل [fig:anchs])، والتحسين داخل كل منطقة بشكل مستقل، سيعطي تقريباً <span class="math inline">\(9(N_{\rm spaxel}/9)^2\)</span> تقاطعات. تحليل مونت كارلو الهاملتوني هو إمكانية لمثل هذا التحسين الثنائي الأبعاد المتزامن، ولكن هذا العمل يتجاوز نطاق هذه المقالة.</p>
+<p>عند تنفيذ تحليل البيانات، نجد أن تقنية الربط تظهر نتائج محسنة لحالات نسبة الإشارة إلى الضوضاء المنخفضة.</p>
+<p>نلاحظ تحسناً واضحاً في مناطق المجرّة التي يكون فيها <span class="nodecor"><span class="math inline">\(S/N\)</span></span> الأدنى.</p>
+<p>يُقدم الشكل <span class="nodecor">[fig:vmaps2D]</span> خريطة السرعة ثنائية الأبعاد التي نعيد بناؤها (باستخدام معاييرنا الأساسية <span class="nodecor"><span class="math inline">\(c=1\)</span></span>) من بيانات التحليل الطيفي للمجال التكاملي لمجرة <span class="nodecor">MaNGA 7991-12701</span>. لاحظ أن المنطقة الكاملة التي تحتوي على ضوء مجرّي ملحوظ (أي <span class="nodecor"><span class="math inline">\(S/N\)</span></span> غير تافه) يتم ملؤها؛ فقط الحواف اليمنى واليسرى حيث <span class="nodecor"><span class="math inline">\(S/N\)</span></span> منخفظة جداً ولا تجتاز معايير الصلابة. تُعطي تقنيات التنعيم التكراري والمكعّب نتائج متسقة، على الرغم من أن التكراري ينجح في خفض <span class="nodecor"><span class="math inline">\(S/N\)</span></span>.</p>
+<p>تحتوي خريطة السرعة ثنائية الأبعاد على معلومات مفيدة كبيرة ولكن غالباً ما يتم تكثيفها إلى منحنى دوران مجرّي أحادي البعد. يمكن القيام بذلك من خلال افتراض ملف تعريف نموذجي وملاءمته للبيانات، ومع ذلك، نفضل أن نتبع نهجاً مستقلاً عن النموذج. هنا نقدم للتوضيح ثلاث شرائح عبر الخريطة ثنائية الأبعاد، على طول المحور الرئيسي للمجرة وعبر نقاط الربط القطرية. يقدم الشكل <span class="nodecor">[fig:rcs]</span> هذه النتائج. تمتد منحنيات الدوران على طول القطرين الرئيسيين إلى مسافات مختلفة بسبب زاوية ميل المجرة، وبالتالي فإن لديها ذيول أقصر مقارنة بمنحنى الدوران الموجود على طول المحور الرئيسي المحاذي لاتجاه <span class="nodecor"><span class="math inline">\(y\)</span></span>.</p>
+<h1 id="sec:concl">الاِسْتِنْتاجات</h1>
+<p>تُوفر الطيفية المجال المتكامل معلومات غنية عن بنية المجرة، وهي مهمة لفهم توزيع المادة المظلمة. نطور نهجين لاستخدام مصفوفة <span class="nodecor">2D</span> الكاملة من <span class="nodecor">spaxels</span> عبر المجرة لإعادة بناء خريطة السرعة دون الافتراض بنموذج ملف تعريف.</p>
+<p>النهجان المتمثلان في التنعيم التكراري والتنعيم المكعّب المطبّق بين <span class="nodecor">spaxel</span>يين ناجحان في إيجاد السرعة النسبية، حتى عند <span class="nodecor">S/N</span> منخفض حيث قد تواجه تقنيات قياسية مثل <span class="nodecor">Penalized Pixel-Fitting</span> (<span class="nodecor">pPXF</span>) (<span class="nodecor">Cappellari2004</span>) صعوبة. على سبيل المثال، لـ <span class="nodecor">90%</span> من <span class="nodecor">spaxels</span> التي تملك <span class="nodecor">S/N</span> في النطاق <span class="nodecor">[4,5]</span>، تجتاز النتائج معاييرنا لتقدير السرعة القوية.</p>
+<p>تُظهر الاختبارات مقابل المحاكاة أن تحيّز إعادة بناء السرعة أقل من <span class="nodecor">1%</span> حتى للوسيط <span class="nodecor">S/N=4</span> (أي حيث يكون <span class="nodecor">S/N</span> لنصف <span class="nodecor">spaxels</span> أقل من <span class="nodecor">4</span>). النهج التكراري أكثر دقة من نهج التنعيم المكعّب، ولكن الأخير أسرع بحوالي <span class="nodecor">25</span> مرة من الناحية الحسابية.</p>
+<p>استخدام <span class="nodecor">spaxels</span> المرسى يقدم عدة مزايا. تتحسن القوة بشكل كبير: حوالي <span class="nodecor">90%</span> من <span class="nodecor">spaxels</span> المناسبة تجتاز المعايير مقابل حوالي <span class="nodecor">60%</span> دون تثبيت، وحوالي <span class="nodecor">4</span> مرات أكثر <span class="nodecor">spaxels</span> تجتاز في جميع أجزاء الطول الموجي، لـ <span class="nodecor">S/N</span> في النطاق <span class="nodecor">[4,5]</span>. تتحسن دقة خريطة السرعة الكلية، أي استعادة الإدخال في المحاكاة. بالنسبة للبيانات الفعلية مع تباين الطيف عبر المجرة، من المرجح أن يكون لطيف <span class="nodecor">spaxel</span> أكثر تشابهاً مع <span class="nodecor">spaxel</span> المرسى المجاور منه مع <span class="nodecor">spaxel</span> مركز المجرة. أخيراً، بالنسبة للملاءمات العالمية النهائية لخريطة السرعة، يمكن أن تقلل المراسي والمناطق من أبعاد التحسين وتخفف العبء الحسابي.</p>
+<p>خرائط السرعة <span class="nodecor">2D</span> لدينا سلسة وتتصرف بشكل جيد، وتمتد أبعد عن المحور الرئيسي مقارنة بخرائط <span class="nodecor">MaNGA-Marvin</span> المكافئة، وإلى <span class="nodecor">S/N</span> أقل. بالمثل، عند إسقاطها إلى منحنيات دوران المجرة <span class="nodecor">1D</span>، تكون النتائج أكثر سلاسة (بدون أي نموذج ملف تعريف معلم) وبشكل عام مع عدم يقين أقل. تشمل الأعمال المستقبلية تنفيذ تحسين عالمي فعّال للخرائط، وتعزيز إضافي لتقنية المرسى.</p>
+<h1 id="الشكر" class="unnumbered">الشُكْر</h1>
+<p>نشكُر جامعة نزارباييف للحوسبة البحثية لتوفير الموارد الحسابية لهذا العمل. تم دعم هذا العمل جزئياً بواسطة مختبر الكون النشط. يتلقى <span class="nodecor">EL</span> دعماً جزئياً من وزارة الطاقة الأميركية، مكتب العلوم، مكتب فيزياء الطاقة العالية، بموجب العقد رقم <span class="nodecor">DE-AC02-05CH11231</span>. يود <span class="nodecor">AS</span> أن يشكر الدعم من المؤسسة الوطنية للبحوث في كوريا <span class="nodecor">NRF-2021M3F7A1082053</span>، ودعم معهد كوريا للدراسات المتقدمة (<span class="nodecor">KIAS</span>) المموّل من قِبَل حكومة كوريا. يشكر <span class="nodecor">SB</span> مؤسسة ألكسندر فون همبولت على التمويل.</p>
+<section class="footnotes">
+  <hr />
+  <ol>
+    <li id="fn1"><p>فكِّر أيضاً في المسح القادم هكتور (<span class="nodecor">Hector</span>) في هذا الصدد.<a href="#fnref1">↩</a></p></li>
+  </ol>
+</section>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفية لجعل الورقة أكثر أناقة واحترافية.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو الحذف.
+- تم التأكد من عدم وجود أخطاء HTML، وجميع العناصر مغلقة بشكل صحيح.
+- تم تحسين تنسيق العناوين والفقرات والروابط والرياضيات والهوامش.
+- تم جعل التصميم متجاوبًا مع الشاشات الصغيرة.
+- تم استخدام خط عربي حديث (Cairo) لسهولة القراءة وجمالية العرض.

@@ -1,0 +1,218 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="K. G. Puschmann, B. Ruiz Cobo, V. Martínez Pillet">
+  <title>البنية ثلاثية الأبعاد للشعيرات الشمسية من ملاحظات Hinode</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #e0e7ef 0%, #f8f9fa 100%);
+      padding: 2.5rem 0 1.5rem 0;
+      text-align: center;
+      border-bottom: 2px solid #d1dbe6;
+      margin-bottom: 2rem;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a237e;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .author {
+      font-size: 1.2rem;
+      color: #374151;
+      margin-bottom: 0;
+    }
+    h1, h2, h3, h4 {
+      color: #1a237e;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2rem;
+      border-right: 5px solid #1a237e;
+      padding-right: 0.7rem;
+      background: #e3eaf6;
+      border-radius: 0 1.5rem 1.5rem 0;
+      display: inline-block;
+      margin-right: 0;
+    }
+    p {
+      margin: 1.2rem 0;
+      text-align: justify;
+    }
+    code, pre {
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      background: #f3f6fa;
+      color: #1a237e;
+      padding: 0.2em 0.4em;
+      border-radius: 0.3em;
+      font-size: 0.95em;
+    }
+    .math.inline {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 1em;
+      color: #0d47a1;
+      background: none;
+      padding: 0;
+    }
+    .math.display {
+      display: block;
+      margin: 1.5em auto;
+      text-align: center;
+      font-size: 1.1em;
+      color: #0d47a1;
+      background: none;
+      padding: 0;
+    }
+    span.nodecor {
+      text-decoration: none !important;
+      color: inherit;
+    }
+    ul, ol {
+      margin: 1.2em 2em;
+      padding: 0 1.5em;
+    }
+    /* Section separation */
+    h1:not(.title) {
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+      border-right: 6px solid #1976d2;
+      background: #e3eaf6;
+      border-radius: 0 1.5rem 1.5rem 0;
+      padding-right: 1rem;
+      font-size: 1.7rem;
+    }
+    /* Highlighted words */
+    strong {
+      color: #1976d2;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      body {
+        font-size: 18px;
+      }
+      h1.title {
+        font-size: 1.5rem;
+      }
+      h1 {
+        font-size: 1.2rem;
+        padding-right: 0.5rem;
+      }
+    }
+    /* Table styling if any */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2em 0;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #d1dbe6;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #e3eaf6;
+      color: #1a237e;
+    }
+    /* Figure/Caption styling */
+    figure {
+      display: block;
+      margin: 2em auto;
+      text-align: center;
+    }
+    figcaption {
+      font-size: 1em;
+      color: #374151;
+      margin-top: 0.5em;
+    }
+    /* Footnote styling */
+    sup {
+      font-size: 0.8em;
+      color: #1976d2;
+    }
+    /* Custom blockquote */
+    blockquote {
+      border-right: 4px solid #1976d2;
+      background: #f3f6fa;
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      color: #374151;
+      border-radius: 0 1em 1em 0;
+    }
+    /* Miscellaneous */
+    hr {
+      border: none;
+      border-top: 2px solid #d1dbe6;
+      margin: 2.5em 0;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">البنية ثلاثية الأبعاد للشعيرات الشمسية من ملاحظات <span class="nodecor">Hinode</span></h1>
+  <p class="author"><span class="nodecor">K. G. Puschmann</span>, <span class="nodecor">B. Ruiz Cobo</span>, <span class="nodecor">V. Martínez Pillet</span></p>
+</header>
+
+<p>latex</p>
+
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>نُحلِّل الملاحظات الطيفية المستقطبة للشعيرات القلمية الشمسية في <span class="nodecor">NOAA AR 10953</span> بدقة مكانية عالية (0.3<span class="nodecor"><span class="math inline">\(^{\prime\prime}\)</span></span>). تُسجل ملامح ستوكس الكاملة لخطوط <span class="nodecor">Fe <span>i</span></span> عند 630.1nm و630.2nm باستخدام تلسكوب <span class="nodecor">Solar Optical Telescope (SOT)</span> على متن القمر الصناعي <span class="nodecor">Hinode</span>. استُنتجت توزيعات درجة الحرارة وسرعة خط الرؤية ومكونات متجه المجال المغناطيسي مع العمق البصري عبر كود <span class="nodecor">SIR</span>. ولحساب ضغط الغاز وإيجاد مقياس ارتفاع هندسي مناسب، دمجنا معادلة الحركة لكل بكسل مع مراعاة قوة <span class="nodecor">Lorentz</span>، وحددنا شرط الحد عبر خوارزمية جينية. يظهر المجال المغناطيسي النهائي الناتج تباعداً يندر ضمن حدود عدم التأكد. تدعم التحليلات الأولية للارتباطات بين اكتئاب <span class="nodecor">Wilson</span> وكل من السرعة ودرجة الحرارة وقوة وميل المجال نموذج الشعرة الشمسية غير الممشط المقترح من قبل <span class="nodecor">Solanki</span> و<span class="nodecor">Montavon</span> (<span class="nodecor">solankimontafon93</span>).</p>
+
+<h1 id="sec:1">مُقَدِّمَة</h1>
+<p>لا تزال الهياكل الخيطية داخل البقع الشمسية تثير العديد من الإشكاليات العلمية، مثل مصدر تدفق إيفرشيد، وأصل الخيوط القلمية ذات القلب الداكن التي اكتشفها شارمر وآخرون (<span class="nodecor">scharmeretal02</span>), بالإضافة إلى بنية الخيوط القلمية نفسها، التي قد تُفسَّر كميزات مغناطيسية عالية (نموذج القلم غير الممشط لـ <span class="nodecor">Solanki</span> و <span class="nodecor">Montavon</span> (<span class="nodecor">solankimontafon93</span>), وبوريرو وآخرون (<span class="nodecor">borreroetal05</span>, <span class="nodecor">borreroetal06</span>)), أو كنتيجة لاختراقات حرارية (نموذج القلم الفجوي لـ <span class="nodecor">spruit</span> و <span class="nodecor">Scharmer</span> (<span class="nodecor">scharmerspruit06</span>)), أو كمزيج من السيناريوهين كما أوضحت محاكاة الديناميكا المغناطيسية الهيدروديناميكية لـ <span class="nodecor">rempel</span> وآخرين (<span class="nodecor">rempeletal08</span>). توفر طرق الاستقصاء المتطورة معلومات عن توزيعات الكميات الفيزيائية مثل درجة الحرارة <span class="math inline">\(T\)</span>، وقوة المجال المغناطيسي <span class="math inline">\(B\)</span>، وميل المجال <span class="math inline">\(\gamma\)</span>، وأزيموث المجال <span class="math inline">\(\phi\)</span>، وسرعة خط الرؤية <span class="math inline">\(V_{\rm los}\)</span> مقابل العمق البصري، لكنها لا تقدّم معلومات مباشرة عن الارتفاعات الهندسية (إذ لا يمكن استنتاج اكتئاب ويلسون مباشرة من الاستقصاءات الطيفية). حصل كارول وكوبف (<span class="nodecor">carrolkopf08</span>) على توزيعات الكميات الفيزيائية بالارتفاع الهندسي باستخدام تقنية استقصاء الشبكة العصبية المستندة إلى محاكاة الديناميكا المغناطيسية الهيدروديناميكية للشمس الهادئة. ومع ذلك، لا يمكن تطبيق هذه الطريقة إلا ضمن إطار تلك المحاكاة. لذا، يُعد بناء مقياس ارتفاع هندسي ضرورياً لتحديد متجه التيار الكهربائي <span class="math inline">\(\vec{J}\)</span> (أساسي لحساب تبدد الطاقة الأومية واستقراء المجال المغناطيسي من الغلاف الضوئي إلى الكروموسفير)، ولنمذجة الميزات المغناطيسية في <span class="nodecor">3</span> أبعاد، واختبار مصداقية محاكاة الديناميكا المغناطيسية الهيدروديناميكية.</p>
+
+<h1 id="الملاحظات">الملاحظات</h1>
+<p>تم رصد المنطقة النشطة AR 10953 عند زاوية مركزية <span class="math inline">\(\theta\)</span>=10<span class="math inline">\(^{\circ}\)</span> باستخدام جهاز الاستقطاب الطيفي لتلسكوب البصريات الشمسية على متن مركبة هينودي (<span class="nodecor">Lites <span class="nodecor">et al</span>. 01</span>; <span class="nodecor">Kosugi <span class="nodecor">et al</span>. 07</span>) في الأول من مايو 2007، بين الساعة 10:46 صباحاً و12:25 ظهراً بتوقيت UTC. شمل المسح ألف خطوة بعرض 0.148<span class="math inline">\(^{\prime\prime}\)</span> وشق بعرض 0.158<span class="math inline">\(^{\prime\prime}\)</span>، وسُجل المتجه الكامل لستوك斯 في زوج خطوط الحديد المحايد عند 630 نانومتر بدقة طيفية 21.53 ميليأنغستروم. بلغت الدقة المكانية نحو <span class="math inline">\(\sim\)</span>0.32<span class="math inline">\(^{\prime\prime}\)</span>، واستغرق وقت التكامل 4.8 ثوانٍ، مفضياً إلى نسبة ضوضاء تقريبية 1.2<span class="math inline">\(\times\)</span>10<span class="math inline">\(^{-3}\)</span>. أُجريت معايرة الطول الموجي بافتراض أن الملف الشعاعي المرجعي خالٍ من السرعات. نركّز لاحقاً على جزء متجانس من الخيط القلمي الكبير في البقعة الشمسية، والمحاذي مركزياً، كما هو مبين في الشكل [Fig1].</p>
+
+<h1 id="إجراء-العكس">إجراء العكس</h1>
+<p>لتحديد المعلمات الفيزيائية للغلاف الجوي الشمسي كدالة للعمق البصري المستمر — أي درجة الحرارة <span class="math inline">\(T(\tau)\)</span>، وقوة المجال المغناطيسي <span class="math inline">\(B(\tau)\)</span>، وميل <span class="math inline">\(\gamma(\tau)\)</span> وأزيموث <span class="math inline">\(\phi(\tau)\)</span> المجال المغناطيسي، وسرعة خط الرؤية <span class="math inline">\(V_{\rm los}(\tau)\)</span> — طُبّق كود SIR (<span class="nodecor">ruizcobodeltoro92</span>) على البيانات الطيفية الاستقطابية. أُسترجعت قيم هذه المعلمات عبر عدد من نقاط العمق البصري المسماة العقد. وبالنظر إلى الدقة المكانية العالية لملاحظات هينودي وافتراض تراوح البنى القلمية محلياً، اعتمدنا عنصر نموذج واحد أفقي فقط، مما أتاح استخدام <span class="nodecor">5</span> عقد في <span class="math inline">\(T(\tau)\)</span>، و<span class="nodecor">3</span> عقد في <span class="math inline">\(B(\tau)\)</span> و<span class="nodecor">3</span> عقد في <span class="math inline">\(V_{\rm los}(\tau)\)</span>، وعقدتين في كل من <span class="math inline">\(\gamma(\tau)\)</span> و<span class="math inline">\(\phi(\tau)\)</span>. لم نأخذ في الاعتبار سرعات المايكروتوربولنس أو التلوث بالضوء الضال، فيما أُدرجت سرعة الماكروتوربولنس <span class="math inline">\(V_{\rm mac}\)</span> كمعامل حر إضافي في العكس.</p>
+
+<h1 id="تحديد-مقياس-ارتفاع-هندسي">تحديد مقياس ارتفاع هندسي</h1>
+<p>توفر طريقة الاستقراء لكل بكسل توزيعاً لنموذج جوي مقابل العمق البصري المستمر، أي نحصل على <span class="math inline">\(\vec{B}(x,y,\tau)\)</span>، <span class="math inline">\(T(x,y,\tau)\)</span>، إلخ. يمكن استنتاج مقياس ارتفاع هندسي <span class="math inline">\(z(x,y,\tau)\)</span> من خلال تكامل <span class="math display">\[d\tau=-\kappa \rho dz \,\,.
+\label{optical depth}\]</span> لهذا التكامل، هناك ثلاثة مكونات مطلوبة: <span class="math inline">\(\kappa\)</span> (معامل الامتصاص المستمر لكل جرام)، <span class="math inline">\(\rho\)</span> (كثافة الكتلة) وشرط الحد <span class="math inline">\(Z_{W}\)</span>=<span class="math inline">\(z\)</span>(<span class="math inline">\(\tau\)</span>=1) (اكتئاب ويلسون).</p>
+<p>يتم تقييم المكون الأول، <span class="math inline">\(\kappa\)</span>، بواسطة SIR من درجات الحرارة والوفرة. من الواضح أنه يعتمد أيضاً على ضغط الغاز. ومع ذلك، يمكن إثبات أن هذا الاعتماد صغير لدرجة أنه يمكن الحصول على قيم <span class="math inline">\(\kappa\)</span> دقيقة حتى من قيم <span class="math inline">\(P_{g}\)</span> سيئة للغاية. في الواقع، يحصل SIR على توزيع ضغط الغاز من خلال تكامل معادلة التوازن الهيدروستاتيكي في مقياس العمق البصري.</p>
+<p>يتم استخدام توزيع الضغط لحساب المكون الثاني، الكثافة، باستخدام معادلة الحالة للغاز المثالي مع الأخذ بعين الاعتبار الأيونات الجزئية.</p>
+<p>إذا قمنا بتعيين <span class="math inline">\(Z_{W}\)</span>=0 في جميع البكسلات، يمكن بناء مقياس ارتفاع هندسي <span class="math inline">\(z(x,y,\tau)\)</span> بعد تكامل المعادلة [optical depth]. يتم الحصول على خرائط <span class="math inline">\(\vec{B}(x,y,z)\)</span> من خلال استيفاء خرائط <span class="math inline">\(\vec{B}(x,y,\tau)\)</span> الناتجة عن استقراء SIR. من الواضح أن خرائط <span class="math inline">\(\vec{B}(x,y,z)\)</span> هذه لها تباعد غير صفري. علاوة على ذلك، النماذج ليست في توازن ميكانيكي. سيقلل اختيار <span class="math inline">\(Z_{W}(x,y)\)</span> المثالي في ارتفاع معين كلاً من تباعد المجال المغناطيسي <span class="math inline">\(\nabla \vec{B}\)</span> والخطأ في معادلة الحركة.</p>
+<p>بتجاهل اللزوجة، يمكن كتابة معادلة الحركة كما يلي <span class="math display">\[\vec{F}=\vec{J}\times\vec{B}+\rho\,\vec{g}-\nabla P_{g}\,\, .
+\label{appmotioneq}\]</span> إذا تجاهلنا التسارع، يجب أن يكون <span class="math inline">\(\vec{F}\)</span> صفراً. ولضمان المعنى الفيزيائي للحل، يجب أن يكون <span class="math inline">\(\nabla{\vec{B}}\)</span> أيضاً صفراً.</p>
+<p>نحدد دالة الجدارة كما يلي <span class="math display">\[\chi^{2}=\sum_{pixels}{w_{1}(F_{x}^{2}+F_{y}^{2}+F_{z}^{2})+w_{2}(\nabla \vec{B}\nabla \vec{B})}\,\,,
+\label{meritfunction}\]</span> حيث <span class="math inline">\(w_{1}\)</span> و<span class="math inline">\(w_{2}\)</span> معاملات توازن بين مساهمات <span class="math inline">\(\vec{F}\)</span> و<span class="math inline">\(\nabla{\vec{B}}\)</span>. من خلال إدخال الإزاحات العمودية للنماذج الجوية في كل بكسل نحاول تقليل دالة الجدارة (المعادلة [meritfunction]) عند مستوى ارتفاع 200 كم، حيث يكون عدم اليقين في المجال المغناطيسي المعكوس الأدنى. نستخدم خوارزمية جينية تغير الكروموسوم (مصفوفة <span class="math inline">\(D_{z}(x,y)\)</span> التي تحتوي على إزاحات النماذج الجوية في كل بكسل) حتى يتم تقليل دالة الجدارة. تم توفير الخوارزمية الجينية بلطف من قبل Páez Mañá (مهندس برمجيات في معهد الفلك في جزر الكناري). بسبب عدم اليقين في طريقة الاستقراء، فإن التوزيع الناتج للمجال المغناطيسي ليس لادوامياً ولا يرضي معادلة الحركة. وبالتالي، لتقييم <span class="math inline">\(\chi^{2}\)</span>، نستخدم قيماً معدلة قليلاً <span class="math inline">\(B&#39;(x,y,z)\)</span>=<span class="math inline">\(B(x,y,z)\)</span>+<span class="math inline">\(N_{B}(x,y)\)</span>، <span class="math inline">\(\gamma&#39;(x,y,z)\)</span>=<span class="math inline">\(\gamma(x,y,z)\)</span>+<span class="math inline">\(N_{\gamma}(x,y)\)</span>، و<span class="math inline">\(\phi&#39;(x,y,z)\)</span>=<span class="math inline">\(\phi(x,y,z)\)</span>+<span class="math inline">\(N_{\phi}(x,y)\)</span>، مع قيم مطلقة لـ <span class="math inline">\(N_{B}(x,y)\)</span>، <span class="math inline">\( N_{\gamma}(x,y)\)</span>، <span class="math inline">\( N_{\phi}(x,y)\)</span> أصغر من عدم اليقين في الأخطاء للمعلمات المعنية. النتائج المتراكمة لملفات ستوكس، مع الأخذ بعين الاعتبار <span class="math inline">\(B&#39;\)</span>، <span class="math inline">\(\gamma&#39;\)</span> و<span class="math inline">\(\phi&#39;\)</span>، لا تزال متوافقة مع ملفات ستوكس المرصودة. باختصار، الحل الذي وجدته الخوارزمية الجينية يتكون من القيم المثلى لـ <span class="math inline">\(D_{z}(x,y)\)</span>، <span class="math inline">\(N_{B}(x,y)\)</span>، <span class="math inline">\(N_{\gamma}(x,y)\)</span>، و<span class="math inline">\(N_{\phi}(x,y)\)</span>. تم الوصول إلى الحل الأفضل من خلال تعيين <span class="math inline">\(w_{1}\)</span> و<span class="math inline">\(w_{2}\)</span> بحيث تكون المساهمة في المعادلة [meritfunction] متساوية. في كل تحقيق، ينتج الكود نتائج مختلفة قليلاً مع توزيع غاوسي حول قيمة متوسطة في كل بكسل. لذلك، نعتمد كحل نهائي متوسط 20 تحقيقاً فردياً.</p>
+<p>بعد إدخال <span class="math inline">\(D_{z}(x,y)\)</span>، <span class="math inline">\(N_{B}(x,y)\)</span>، <span class="math inline">\(N_{\gamma}(x,y)\)</span> و<span class="math inline">\(N_{\phi}(x,y)\)</span> والاستيفاء إلى مقياس <span class="math inline">\(z\)</span> المشترك يمكننا افتراض أن الطبقة عند 200km ترضي تقريباً كلاً من <span class="math inline">\(\nabla \vec{B}\)</span> ومعادلة الحركة، على الرغم من أن توزيع الضغط لكل بكسل لا يزال هيدروستاتيكياً. يمكننا الحصول على توزيع <span class="math inline">\(P_{g}\)</span> أكثر دقة من خلال تكامل المكون <span class="math inline">\(z\)</span> لمعادلة [appmotioneq]. ومع ذلك، عندما يتغير توزيع <span class="math inline">\(P_{g}\)</span>، يتم تعديل مقياس <span class="math inline">\(z\)</span> أيضاً. لذلك من الأسهل دمج هذه المعادلة من حيث العمق البصري. مع الأخذ بعين الاعتبار أن كلاً من معامل الامتصاص <span class="math inline">\(\kappa\)</span> والوزن الجزيئي المتوسط <span class="math inline">\(\mu\)</span> لا يعتمدان بشكل كبير على ضغط الغاز، يمكننا إعادة كتابة المكون العمودي لمعادلة [appmotioneq] من حيث <span class="math inline">\(\tau\)</span>، مع تعيين <span class="math inline">\(\vec{F}\)</span>=0: <span class="math display">\[\kappa\,{\frac{\mu P_{g}}{R T}}\frac{dP_{g}}{d\tau}=g\,\frac{\mu P_{g}}{R T}-{(\vec{J}\times\vec{B})}\mid_{z}\,\, .
+\label{motioneqtau}\]</span> بعد تكامل هذه المعادلة، على سبيل المثال بواسطة Runge-Kutta، نحصل على <span class="math inline">\(\rho\)</span> ومن ثم المقياس <span class="math inline">\(z\)</span> الجديد من المعادلة [optical depth]. يجب تكرار هذا الإجراء بسبب التعديل الطفيف لقيم <span class="math inline">\(\vec{B}\)</span> و<span class="math inline">\(\vec{J}\)</span>. يتم الوصول إلى التقارب بعد تكرارين فقط. يتم استيفاء النماذج في جميع البكسلات إلى مقياس <span class="math inline">\(z\)</span> عالمي مشترك.</p>
+
+<h1 id="النتائج-والمناقشة">النتائج والمناقشة</h1>
+<p>من خلال الخوارزمية الجينية، حددنا شرط الحد الأمثل لتكامل المكون العمودي لمعادلة الحركة مع مراعاة قوى لورنتز. يُظهر النموذج الجوي الناتج، بعد دمجه على مقياس ارتفاع هندسي مشترك <span class="math inline">\(z\)</span>، قيماً صغيرة جداً لـ <span class="math inline">\(\nabla \vec{B}\)</span> بين <span class="nodecor">50</span> كم و<span class="nodecor">200</span> كم، مما يؤكد اتساق النتائج على الرغم من أن الخوارزمية تقلل <span class="math inline">\(\nabla \vec{B}\)</span> فعلياً عند <span class="nodecor">200</span> كم فقط. مع توفر مقياس مشترك، يمكن تقييم التيارات الكهربائية واكتئاب ويلسون والبنية ثلاثية الأبعاد للميزات القلمية، وهو ما ستتناوله الدراسات القادمة بالتفصيل. هنا نعرض في الشكل [scat_zw] رسوماً بيانية لعدة كميات عند ارتفاعات هندسية مختارة مقابل اكتئاب ويلسون (<span class="math inline">\(Z_{W}\)</span>). يُلاحظ ارتباط قوي بين درجة الحرارة <span class="math inline">\(T\)</span> و<span class="math inline">\(Z_{W}\)</span>؛ فكلما ارتفعت <span class="math inline">\(T\)</span>، انتقل مستوى <span class="math inline">\(\log\tau\)</span>=<span class="nodecor">0</span> إلى طبقات أعلى نظراً لاعتمادية العتمة على درجة الحرارة. كما تبدو الطبقة عند <span class="math inline">\(z\)</span>=<span class="nodecor">200</span> كم متساوية الحرارة تقريباً. تظهر قوة المجال المغناطيسي <span class="math inline">\(B\)</span> ارتباطاً طفيفاً مع <span class="math inline">\(Z_{W}\)</span>؛ فالمناطق الأعلى في اكتئاب ويلسون ترتبط عادة بمجالات أضعف. ومع ذلك، تتجلى اتجاهات واضحة بين ميل المجال <span class="math inline">\(\gamma\)</span> واكتئاب ويلسون في جميع الطبقات، كما ينعكس نفس النمط في سرعة خط الرؤية <span class="math inline">\(V_{\rm los}\)</span>. تمثل النقاط الحمراء في الشكل [scat_zw] البكسلات ذات المكون العمودي القوي لتدفق إيفرشيد (<span class="math inline">\(V_{\rm los}\)</span><span class="math inline">&lt;</span><span class="nodecor">-0.2</span> kms<span class="math inline">\(^{-1}\)</span>). يوضح توزيع هذه النقاط توافق تدفق إيفرشيد مع ازدياد اكتئاب ويلسون وارتفاع درجة الحرارة والمجالات الأضعف والأكثر أفقية، وهو ما يدعم نموذج الشعرة الشمسية غير الممشط المقترح من قبل <span class="nodecor">Solanki</span> و<span class="nodecor">Montavon</span> (<span class="nodecor">solankimontafon93</span>) (انظر أيضاً <span class="nodecor">Ruizcobobellotrubio08</span>).</p>
+<p>لقد دُعمت هذه الأعمال من قبل وزارة التعليم والعلوم الإسبانية من خلال المشاريع ESP <span class="nodecor">2006</span>-<span class="nodecor">13030</span>-C<span class="nodecor">06</span>-<span class="nodecor">01</span> وAYA<span class="nodecor">2007</span>-<span class="nodecor">63881</span>.</p>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفية والفواصل لجعل الورقة أكثر أناقة واحترافية.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو الحذف.
+- تم التأكد من عدم وجود أخطاء HTML، وجميع العناصر مغلقة بشكل صحيح.
+- تم تحسين مظهر العناوين والفقرات والمعادلات الرياضية.
+- تم دعم اللغة العربية والاتجاه من اليمين لليسار بشكل كامل.
+- لم يتم استخدام أي عناصر وهمية أو نصوص بديلة.

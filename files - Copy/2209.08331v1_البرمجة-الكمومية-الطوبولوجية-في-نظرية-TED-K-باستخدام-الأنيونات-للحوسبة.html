@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البرمجة الكمومية الطوبولوجية في TED-K</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-right: 4px solid #3498db;
+            padding-right: 10px;
+        }
+        h3 {
+            color: #5d6d7e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .abstract {
+            background-color: #f8f9fa;
+            border-right: 4px solid #007bff;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        .keywords {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .figure {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        .table {
+            margin: 25px 0;
+        }
+        .reference {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        .meta-info {
+            background-color: #e7f3ff;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            direction: ltr;
+            text-align: left;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-right: 4px solid #6c757d;
+            padding-right: 20px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        .theorem, .lemma, .proposition, .corollary {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .proof {
+            border-right: 2px solid #28a745;
+            padding-right: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="meta-info">
+            <strong>معرّف arXiv:</strong> 2209.08331v1<br>
+            <strong>LaTeX الأصلي:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2209.08331v1_extracted/TQP-in-TED-K-arXiv-v1.tex</code><br>
+            <strong>تم التحويل:</strong> 2025-06-06 13:13:49
+        </div>
+        <header id="title-block-header">
+            <h1 class="title">البرمجة الكمومية الطوبولوجية في TED-K</h1>
+            <p class="author">هشام ساطي</p>
+            <p class="author">أورس شرايبر</p>
+            <div class="abstract">
+                <div class="abstract-title">الملخص</div>
+                <p>بينما يتطلب تحقيق الحوسبة الكمومية القابلة للتوسع على الأرجح تثبيتاً طوبولوجياً، وما يتبع ذلك من برمجة كمومية مدركة للطوبولوجيا والتحقق من الدوائر الكمومية الطوبولوجية، إلا أن الجمع المناسب بين هذه الاستراتيجيات في لغات برمجة كمومية طوبولوجية مخصصة لم يحظَ بعد بالاهتمام الكافي.</p>
+                <p>نقدم هنا مخططاً أساسياً وطبيعياً نقوم بتطويره لبرمجة كمومية طوبولوجية وظيفية ذات أنواع (وبالتالي قابلة للتحقق)، تكون مدركة للطوبولوجيا المادية للأجهزة، بحيث تعكس بشكل أصيل التفاصيل التقنية الدقيقة العالمية للكيوبتات الطوبولوجية، أي الحالات الأرضية للأنيونات من نوع لافلين المحمية أو المعززة بالتناظر في الأطوار الطوبولوجية للمواد الكمومية.</p>
+                <p>يعتمد هذا العمل على:</p>
+                <ul>
+                    <li>
+                        <p>نتيجتنا الحديثة <span class="citation" data-cites="SS22AnyonictopologicalOrder"></span><span class="citation" data-cites="SS22AnyonicDefectBranes"></span> التي تبين أن دوال الموجة للأنواع الواقعية والقابلة للتطبيق تكنولوجياً من الأنيونات — أي أنيونات <span class="math inline">\(\mathfrak{su}(2)\)</span> مثل أنيونات ماجورانا/إيسينج الشهيرة وكذلك أنيونات فيبوناتشي الشاملة حسابياً — تنعكس في التماسك التوافقي التفاضلي الملتوي (TED) لنظرية K لمواضع العيوب النقطية ذات البعد المشترك = 2 في أوربيفولد البلورة للمادة المضيفة.</p>
+                    </li>
+                    <li>
+                        <p>إضافة إلى ملاحظتنا السابقة <span class="citation" data-cites="SS21EPB"></span><span class="citation" data-cites="SS20OrbifoldCohomology"></span><span class="citation" data-cites="Schreiber14"></span> أن مثل هذه النظريات التوافقية العامة من نوع TED على الأوربيفولد تفسر أنواع البيانات الخطية المعتمدة حدسياً في نظرية الأنواع المتماسكة (HoTT)، مما يدعم شكلاً حديثاً وقوياً من منطق كمومي نمطي.</p>
+                    </li>
+                </ul>
+                <p>لا يقتصر الأمر على أن محاكاة وظائف الأجهزة الطوبولوجية الأنيونية عبر <span><code>TED-K</code></span> المنفذة في HoTT المتماسكة تتيح أدوات تحقق برمجي متقدمة للبرمجة الكمومية الطوبولوجية المدركة للأجهزة، بل إن الطبيعة البنائية لعملية التحقق من الأنواع لبرنامج كمومي <span><code>TED-K</code></span> في HoTT المتماسكة على حاسوب كلاسيكي باستخدام البرمجيات الحالية (مثل <span><code>Agda-\flat</code></span>) قد تتيح في الوقت ذاته محاكاة كلاسيكية للحوسبة الكمومية المقصودة على المستوى الفيزيائي العميق للكيوبتات الطوبولوجية.</p>
+                <p>سيجعل ذلك من <span><code>TED-K</code></span> في HoTT المتماسكة مختبراً برمجياً مثالياً للحوسبة الكمومية الطوبولوجية على أنواع الكيوبتات الطوبولوجية القابلة للتطبيق تكنولوجياً، مع إمكانية الترجمة الفورية إلى دوائر كمومية طوبولوجية فور توفر الأجهزة المناسبة.</p>
+                <p>في هذه المذكرة القصيرة، نقدم عرضاً للأفكار الأساسية، ومراجعة سريعة للنتائج الأساسية، وإشارة موجزة إلى البنى اللغوية الأساسية لتضفير الأنيونات عبر <span><code>TED-K</code></span> في HoTT المتماسكة. نظام اللغة قيد التطوير في <a href="https://ncatlab.org/nlab/show/Center+for+Quantum+and+Topological+Systems"><em>مركز الأنظمة الكمومية والطوبولوجية</em></a> في معهد أبحاث جامعة نيويورك أبوظبي. للمزيد من المواد التكميلية حول هذا الإعلان، انظر: <a href="https://ncatlab.org/schreiber/show/Topological+Quantum+Computation+in+TED-K"><code>ncatlab.org/schreiber/show/TQCinTEDK</code></a>.</p>
+            </div>
+        </header>
+        <div class="CCSXML">
+            <p>
+                &lt;ccs2012&gt; &lt;concept&gt;
+                &lt;concept_id&gt;10003752.10003753.10003758.10010626&lt;/concept_id&gt;
+                &lt;concept_desc&gt;نظرية الحوسبة — نظرية المعلومات الكمومية&lt;/concept_desc&gt;
+                &lt;concept_significance&gt;100&lt;/concept_significance&gt;
+                &lt;/concept&gt; &lt;concept&gt;
+                &lt;concept_id&gt;10011007.10011006.10011008.10011009.10011012&lt;/concept_id&gt;
+                &lt;concept_desc&gt;البرمجيات وهندستها — لغات البرمجة الوظيفية&lt;/concept_desc&gt;
+                &lt;concept_significance&gt;300&lt;/concept_significance&gt;
+                &lt;/concept&gt; &lt;concept&gt;
+                &lt;concept_id&gt;10010583.10010786.10010813.10011726.10011728&lt;/concept_id&gt;
+                &lt;concept_desc&gt;الأجهزة — تصحيح الأخطاء الكمومية والتحمل للأخطاء&lt;/concept_desc&gt;
+                &lt;concept_significance&gt;500&lt;/concept_significance&gt;
+                &lt;/concept&gt; &lt;/ccs2012&gt;
+            </p>
+        </div>
+        <p><span><strong>الحاجة إلى البرمجة الكمومية الطوبولوجية.</strong></span> يكمن المفتاح <span class="citation" data-cites="Shor95"></span> لتحقيق فكرة الحوسبة الكمومية (انظر <span class="citation" data-cites="BenentiCasatiRoissini18"></span><span class="citation" data-cites="NielsenChuang00"></span>) كواقع عملي في <span class="citation" data-cites="Monz22"></span> تثبيت الدوائر الكمومية ضد الضوضاء وفقدان التماسك (<span><em>التحمل للأخطاء</em></span>، انظر <span class="citation" data-cites="Preskill97a"></span><span class="citation" data-cites="Preskill97b"></span><span class="citation" data-cites="Gottesman07"></span>). يمكن تحقيق ذلك لاحقاً عبر <span><em>تصحيح الأخطاء الكمومية</em></span> (<span class="citation" data-cites="Shor95"></span>، انظر <span class="citation" data-cites="Terhal15"></span><span class="citation" data-cites="BallCentellesHuber20"></span>)، لكن من الأفضل تجنب هذه الأخطاء من الأساس: الوعد الكبير لـ<span><em>الحوسبة الكمومية الطوبولوجية</em></span> (<span>TQC</span>، <span class="citation" data-cites="Kitaev03"></span><span class="citation" data-cites="FKLW01"></span><span class="citation" data-cites="NSSFS08"></span>، مراجعة في <span class="citation" data-cites="Wang10"></span>) هو استغلال <span><em>الظواهر الطوبولوجية</em></span> في المواد الكمومية الأساسية (انظر <span class="citation" data-cites="Stanescu20"></span><span class="citation" data-cites="ZCZW19"></span><span class="citation" data-cites="MoessnerMoore21"></span><span class="citation" data-cites="SS22AnyonictopologicalOrder"></span>) لتقييد مسارات فقدان التماسك الكمومي. يمكن القول <span class="citation" data-cites="DasSarma22"></span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> إن الحماية الطوبولوجية ليست خياراً بل ضرورة لتحقيق حوسبة كمومية ذات معنى.</p>
+        <p>وبما أن المكون الأساسي للأجهزة في TQC — أي <span><em>الترتيب الطوبولوجي الأنيوني</em></span> في الأطوار الطوبولوجية للمواد الكمومية (<span class="citation" data-cites="Kitaev06"></span><span class="citation" data-cites="SS22AnyonictopologicalOrder"></span>) — قد تم إثباته تجريبياً مؤخراً (<span class="citation" data-cites="BartolomeiEtAl20"></span><span class="citation" data-cites="NLGM20"></span><span class="citation" data-cites="MintairovEtAl21"></span>، خاصة في تجسيد متبادل جديد واعد عبر عقد الحزم في فضاء العزم <span class="citation" data-cites="BzdusekEtAl20"></span><span class="citation" data-cites="SS22AnyonictopologicalOrder"></span>)، فلا يبدو أن هناك عائقاً تقنياً أساسياً أمام بناء أجهزة TQC في نهاية المطاف، رغم أن ذلك لا يزال طموحاً. لذا، بينما ينشغل المهندسون ببناء الأجهزة الكمومية الطوبولوجية، يجب على المنظرين أن يأخذوا بجدية ممارسة <span><em>البرمجة الكمومية الطوبولوجية</em></span> القادمة.</p>
+        <p><span><strong>طبيعة البرمجة الكمومية الطوبولوجية.</strong></span> تتطلب الكفاءة أن تكون لغة البرمجة <span><em>مدركة للأجهزة</em></span>، بحيث تتماشى مبادئ تصميمها مع الوظائف التي توفرها الآلة. أصبح هذا أمراً شائعاً في الحواسيب الكمومية المتوفرة أو التجريبية (<span class="citation" data-cites="ShiEtAl20"></span><span class="citation" data-cites="ZhuCross20"></span>)، لكن في ظل الثورة الكمومية الطوبولوجية المرتقبة يبقى السؤال:</p>
+        <div class="center">
+            <p><span><em>كيف يمكن للغة برمجة كمومية أن تكون مدركة للأجهزة الكمومية الطوبولوجية؟</em></span></p>
+        </div>
+        <p>نعني بذلك أن تعكس بنية اللغة النموذج التطبيقي المعتمد للحوسبة الكمومية الطوبولوجية (انظر <span class="citation" data-cites="SS22AnyonictopologicalOrder"></span> للمزيد)، بما في ذلك:</p>
+        <ul>
+            <li>كيوبتات طوبولوجية مشفرة في حالات أرضية مرتبة طوبولوجياً تعتمد على مواضع عيوب الأنيونات من نوع <span class="math inline">\(\widehat{\mathfrak{su}_{2}}^{k}\)</span> عند أي مستوى Chern-Simons مسموح <span class="math inline">\(k\)</span>،</li>
+            <li>بوابات منطقية كمومية تعمل عبر التضفير البطيء (adiabatic) لهذه المواضع.</li>
+        </ul>
+        <p>لكن مسألة إدراك الأجهزة الطوبولوجية لم تحظَ بعد بالاهتمام الكافي، باستثناء السؤال النظري حول ترجمة البرامج الكمومية من دوائر بوابات التضفير (<span class="citation" data-cites="BonesteelEtAl05"></span><span class="citation" data-cites="Hormozi07"></span>).</p>
+        <p>نقدم هنا <span><em>إجابة أساسية</em></span> على هذا السؤال بالعودة إلى جذور المفاهيم في:</p>
+        <p>
+            <span class="math inline">\(\left.
+            \mbox{
+            \begin{tabular}{ll}
+            (أ)
+            & {\bf الحوسبة}
+            \\
+            (ب)
+            & {\bf الطوبولوجيا الجبرية}
+            \\
+            (ج)
+            & {\bf الفيزياء الكمومية}
+            \end{tabular}
+            }
+            \right\}
+            \mbox{
+            \hspace{-.1cm}
+            في صورتها كـ
+            \hspace{-.05cm}
+            }
+            \left\{
+            \mbox{
+            \begin{tabular}{lll}
+            (أ)
+            & {\bf نظرية الأنواع المتماسكة}
+            & \cite{UFP13}
+            \\
+            (ب)
+            & {\bf التوافقية العامة}
+            & \cite{TamakiKono06}
+            \\
+            (ج)
+            & {\bf تكمية الشحنة}
+            & \cite{FSS20Character},
+            \end{tabular}
+            }
+            \right.\)</span>
+        </p>
+        <p>حيث نجد مخطط برمجة جديد يربط بشكل أصيل بين:</p>
+        <ul>
+            <li>المبادئ الفيزيائية المتوسطة <span><strong>للحالات الكمومية المرتبة طوبولوجياً</strong></span> <span class="citation" data-cites="Kitaev06"></span><span class="citation" data-cites="NSSFS08"></span></li>
+            <li>لغة منطق الكمومية عالية المستوى في صورة <span><strong>نظرية الأنواع الخطية المعتمدة</strong></span> <span class="citation" data-cites="Schreiber14"></span><span class="citation" data-cites="Vakar15"></span><span class="citation" data-cites="FKRS20"></span><span class="citation" data-cites="RileyFinsterLicata21"></span><span class="citation" data-cites="Riley22"></span>.</li>
+        </ul>
+        <p><span><strong>نظرية K-TED للبرمجة الكمومية الطوبولوجية.</strong></span> الرابط بين هذه المفاهيم هو (<span class="citation" data-cites="SS22AnyonictopologicalOrder"></span><span class="citation" data-cites="SS22AnyonicDefectBranes"></span>) نظرية التوافقية العامة المتماسكة المعروفة باسم (<span class="citation" data-cites="SS21EPB"></span><span class="citation" data-cites="SS22TED"></span> تبعاً لـ<span class="citation" data-cites="AtiyahSegal04"></span><span class="citation" data-cites="HopkinsSinger05"></span>):</p>
+        <div class="center">
+            <p><span><em>نظرية K التفاضلية الملتوية والمتكافئة (ويشار إليها اختصاراً بـ TED-K-theory).</em></span></p>
+        </div>
+        <p>حيث تعكس نظرية K-TED بشكل طبيعي ودقيق (وسنوضح ذلك لاحقاً):</p>
+        <ul>
+            <li>المبادئ الأساسية <span><strong>للفيزياء الكمومية الطوبولوجية</strong></span> (كما أوضح لأول مرة في <span class="citation" data-cites="FreedMoore12"></span>، انظر <span class="citation" data-cites="SS22AnyonictopologicalOrder"></span> للمزيد)، وبالأخص الحالات الأرضية المرتبة طوبولوجياً للأنيونات (<span class="citation" data-cites="SS22AnyonictopologicalOrder"></span>).</li>
+        </ul>
+        <ul>
+            <li>في رياضيات <span><strong>الطوبولوجيا المتكافئة الهندسية</strong></span> <span class="citation" data-cites="Brown73"></span> و<span><strong>المتكافئة</strong></span> <span class="citation" data-cites="tomDieck79"></span> و<span><strong>الثابتة</strong></span> <span class="citation" data-cites="Adams74"></span> <span><strong>ونظرية الطوبولوجيا المتكافئة</strong></span> <span class="citation" data-cites="Strom11"></span>.</li>
+        </ul>
+        <p>لكن توجد لغة برمجة للبناء التركيبي في هذا الشكل الغني من نظرية الطوبولوجيا المتكافئة، وهي <span><strong>نظرية الأنواع المتماسكة</strong></span> <span class="citation" data-cites="Schreiber13"></span><span class="citation" data-cites="Schreiber14"></span><span class="citation" data-cites="Schreiber14Talk"></span><span class="citation" data-cites="SchreiberShulman14"></span><span class="citation" data-cites="Schreiber15"></span><span class="citation" data-cites="Shulman15"></span><span class="citation" data-cites="Wellen18a"></span><span class="citation" data-cites="Corfield20"></span><span class="citation" data-cites="SS20OrbifoldCohomology"></span><span class="citation" data-cites="Myers21"></span><span class="citation" data-cites="RileyFinsterLicata21"></span><span class="citation" data-cites="SS21EPB"></span><span class="citation" data-cites="Riley22"></span>؛ انظر <span class="citation" data-cites="Licata13"></span><span class="citation" data-cites="Wellen18b"></span><span class="citation" data-cites="Shulman21"></span><span class="citation" data-cites="SS20OrbifoldCohomology"></span> للمزيد من الشرح والمراجع.</p>
+        <p>وبذلك، تصبح نظرية K-TED <span><em>مخططاً طبيعياً للبرمجة الكمومية الطوبولوجية</em></span> عند التعامل معها بشكل مناسب: فتنفيذها في HoTT المتماسكة يجعلها بنية لغوية برمجية، وانعكاسها للترتيب الكمومي الطوبولوجي للأنيونات يجعلها لغة برمجة كمومية مدركة للأجهزة الطوبولوجية (وسنوضح ذلك لاحقاً):</p>
+        <p>
+            <span class="math display">\[\begin{tikzcd}[
+                column sep={between origins, 69pt}
+                ]
+                \mbox
+                {
+                  \bf
+                  منصة البرمجة:
+                }
+                &amp;[+10pt]&amp;
+                \mbox
+                {\bf مكتبة/وحدة:}
+                &amp;&amp;
+                \mathclap{
+                \mbox
+                {\bf منصة الأجهزة:}
+                }
+                \\[-20pt]
+                \mathllap{
+                  \scalebox{.7}{
+                  \def\arraystretch{.9}
+                   \begin{tabular}{c}
+                     \cite{Schreiber14}
+                     \\
+                     \cite{RileyFinsterLicata21}
+                   \end{tabular}
+                  }
+                  \hspace{-2pt}
+                }
+                \fbox{
+                  \hspace{-10pt}
+                  \small
+                  \begin{tabular}{c}
+                    نظرية الأنواع المتماسكة
+                    \\
+                    مع الأنواع الخطية المعتمدة
+                  \end{tabular}
+                  \hspace{-10pt}
+                }
+                \ar[
+                  rr,
+                  &quot;{
+                    \color{greenii} \footnotesize \bf
+                    \mbox{تنفذ}
+                  }&quot;,
+                  &quot;{
+                    \scalebox{.8}{
+                      \cite{SS20OrbifoldCohomology}\cite{SS21EPB}
+                    }
+                  }&quot;{swap, yshift=-2pt}
+                ]
+                \ar[
+                  drrrr,
+                  rounded corners,
+                  to path={
+                       ([yshift=-3pt]\tikztostart.south)
+                   --  ([yshift=-40pt]\tikztostart.south)
+                   --
+                   node[above]
+                     {
+                       \scalebox{1}{
+                         \color{greenii}
+                         البرمجة الكمومية الطوبولوجية
+                       }
+                     }
+                    ([xshift=-4pt]\tikztotarget.west)
+                  }
+                ]
+                &amp;[+2pt]&amp;
+                \fbox{
+                  \hspace{-10pt}
+                  \small
+                  \begin{tabular}{c}
+                    {\color{orangeii}توافقية TED-K} لتكوينات العيوب
+                    \\
+                    في أوربيفولدات البلورة
+                  \end{tabular}
+                  \hspace{-10pt}
+                }
+                \ar[
+                  rr,
+                  &quot;{
+                    \color{greenii} \footnotesize \bf
+                    \mbox{تحاكي}
+                  }&quot;{yshift=2pt},
+                  &quot;{
+                    \scalebox{.8}{
+                      \cite{SS22AnyonictopologicalOrder}
+                    }
+                  }&quot;{swap}
+                ]
+                &amp;[+2pt]&amp;
+                \fbox{
+                  \hspace{-10pt}
+                  \small
+                  \begin{tabular}{c}
+                    حالات كمومية أنيونية
+                    \\
+                    في الأطوار الطوبولوجية
+                    \\
+                    للمواد الكمومية
+                  \end{tabular}
+                  \hspace{-10pt}
+                }
+                \ar[
+                  d,
+                  &quot;{
+                    \color{greenii} \footnotesize \bf
+                    \mbox{تشغل}
+                  }&quot;{xshift=-1pt, yshift=1pt, swap},
+                  &quot;{
+                    \scalebox{.8}{
+                      \hspace{-.2cm}
+                      \def\arraystretch{.9}
+                      \begin{tabular}{l}
+                        \cite{Kitaev03}\cite{FKLW01}
+                        \\
+                        \cite{NSSFS08}
+                      \end{tabular}
+                    }
+                  }&quot;
+                ]
+                \\[+0pt]
+                &amp;&amp;
+                &amp;&amp;
+                \fbox{
+                  \hspace{-10pt}
+                  \small
+                  \begin{tabular}{c}
+                    دوائر
+                    \\
+                    كمومية
+                    \\
+                    طوبولوجية
+                  \end{tabular}
+                  \hspace{-10pt}
+                }
+              \end{tikzcd}\]</span>
+        </p>
+        <p>للمقارنة، لاحظ أن لغات البرمجة الكمومية الحالية (انظر <span class="citation" data-cites="GGA21"></span>) هي في جوهرها لغات رسمية لـ<span><em>الجبر الخطي</em></span> (كما تنبأ به <span class="citation" data-cites="Pratt92"></span><span class="citation" data-cites="AbramskyCoecke04"></span><span class="citation" data-cites="Selinger04"></span><span class="citation" data-cites="AbramskyDuncan06"></span><span class="citation" data-cites="Duncan06"></span>)، حيث أنواع البيانات هي <span><em>أنواع خطية</em></span> (مثل فضاءات هيلبرت) للحالات الكمومية وخوارزمياتها هي تطبيقات خطية (مؤثرات وحدوية) بينها: أي دوائر كمومية <span class="citation" data-cites="DalLagoFaggian12"></span>.</p>
+        <p>أما في الصياغة الطوبولوجية لهذا الوضع، فإن نظرية الأنواع المتماسكة هي بالأخص (<span class="citation" data-cites="Schreiber13"></span><span class="citation" data-cites="Schreiber14"></span><span class="citation" data-cites="Schreiber14Talk"></span><span class="citation" data-cites="RileyFinsterLicata21"></span>) لغة (تحديداً: <span><em>وظيفية</em></span>، مثل <span><code>QML</code></span> <span class="citation" data-cites="AltenkirchGrattage05"></span> أو <span><code>Quipper</code></span> <span class="citation" data-cites="GLRSV13"></span>) لـ<span><em>نظرية الطوبولوجيا المتماسكة الخطية</em></span> المعروفة تقليدياً باسم <span><em>نظرية الطوبولوجيا المتماسكة الثابتة</em></span>، حيث تشمل أنواع البيانات "أنواع الطوبولوجيا الخطية" المعروفة باسم <span><em>الطيف</em></span>، ومن أبرز أمثلتها الطيف <span class="math inline">\(\mathrm{KU}\)</span> الذي يمثل نظرية K الطوبولوجية (انظر <span class="citation" data-cites="AGP08"></span>).</p>
+        <div class="center">
+            <div class="tabular">
+                <p>
+                    <span>|c||c|c|</span> &amp; <strong>البرمجة الكمومية التقليدية &amp; <strong><span><code>TED-K</code></span> في HoTT المتماسكة<br />
+                    <strong>نظرية الأنواع &amp;</strong></strong></strong>
+                </p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">نظرية الأنواع الخطية</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">(الجبر الخطي)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&amp;</p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">نظرية الأنواع الطوبولوجية الخطية</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">(نظرية الطيف المتماسك)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><br />
+                <strong>أنواع البيانات &amp;</strong></p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">أنواع خطية</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">(فضاءات متجهية)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&amp;</p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">أنواع طوبولوجية خطية</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">(طيف متماسك)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><br /></p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;"><strong>تحكم كلاسيكي بطيء</strong></td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;"><strong>(adiabatic)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&amp;</p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">أنواع خطية معتمدة</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">(حزم متجهية)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&amp;</p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">أنواع طوبولوجية خطية معتمدة</td>
+                        </tr>
+                        <tr class="even">
+                            <td style="text-align: center;">(طيف متماسك معتمد)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><br /></p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;"><strong>وحدة المعلومات</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&amp;</p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">كيوبت في <span class="math inline">\(\mathbb{C}\)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&amp;</p>
+                <table>
+                    <tbody>
+                        <tr class="odd">
+                            <td style="text-align: center;">حرف في <span class="math inline">\(\mathrm{KU}_G^\tau(-; \mathbb{C})\)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><br /></p>
+            </div>
+        </div>
+        <p>في الواقع، يشمل ذلك <span><em>أنواع الطوبولوجيا الخطية المعتمدة</em></span> <span class="citation" data-cites="Schreiber14"></span><span class="citation" data-cites="Vakar15"></span><span class="citation" data-cites="RileyFinsterLicata21"></span><span class="citation" data-cites="Riley22"></span>، التي ترمز لنظريات التوافقية العامة الملتوية (انظر <span class="citation" data-cites="GS-tAHSS"></span><span class="citation" data-cites="FSS20Character"></span>)، مثل نظرية K-TED. حسابياً، تعكس التبعية (dependency) لأنواع البيانات الخطية على الأنواع العادية (أي "الحدسية") <span><em>تحكم</em></span> الحوسبة الكمومية بواسطة الحواسيب الكلاسيكية (على غرار <span class="citation" data-cites="PerdrixJorrand06"></span>)، وبشكل خاص <span><em>الحوسبة الكمومية البطيئة (adiabatic)</em></span> عبر التغير البطيء للمعاملات الخارجية، مثل تضفير الأنيونات (انظر <span class="citation" data-cites="FKLW01"></span><span class="citation" data-cites="NSSFS08"></span><span class="citation" data-cites="CGDS11"></span><span class="citation" data-cites="CLBFN15"></span>)، وسنعود لذلك لاحقاً.</p>
+        <p><span><strong>ثلاثية الحوسبة الكمومية الطوبولوجية.</strong></span> لفهم مدى طبيعية هذا المخطط البرمجي المطور، لاحظ أنه يمكننا فهم الانتقال من العمود الأيسر إلى الأيمن في الجدول أعلاه كـ<span><em>طوبولوجية</em></span> تليها <span><em>تكمية</em></span> للثلاثية الحوسبية الكلاسيكية (<span><strong>I</strong></span> أدناه، وفق <span class="citation" data-cites="Mellies06"></span> بعد <span class="citation" data-cites="LambekScott86"></span>، مراجعة في <span class="citation" data-cites="Eades12"></span>) التي تربط بين نظريات<br />
+        <span><strong>(1)</strong></span> الحوسبة،
+        <span><strong>(2)</strong></span> نظرية الأنواع
+        <span><strong>(3)</strong></span> نظرية التصنيف:</p>
+        <ul>
+            <li>أولاً (في <span><strong>II</strong></span>) تحدد <span><em>الثلاثية الحوسبية الطوبولوجية</em></span> (انظر <span class="citation" data-cites="Shulman18"></span> مع <span class="citation" data-cites="SS20OrbifoldCohomology"></span>) ما يلي:<br />
+            <span><strong>(1)</strong></span> الحوسبة المعتمدة/السياقية،
+            <span><strong>(2)</strong></span> نظرية الأنواع الطوبولوجية،
+            <span><strong>(3)</strong></span> نظرية الطوبولوجيا المتكافئة؛</li>
+            <li>ثم (في <span><strong>III</strong></span>) تحدد <span><em>الثلاثية الحوسبية الكمومية</em></span> ما يلي:<br />
+            <span><strong>(1)</strong></span> الحوسبة الكمومية المتحكم بها كلاسيكياً،
+            <span><strong>(2)</strong></span> نظرية الأنواع الطوبولوجية الخطية المعتمدة،
+            <span><strong>(3)</strong></span> الطوبولوجيا الجبرية.</li>
+        </ul>
+        <p>وبشكل خاص، فإن الكيوبتات الطوبولوجية في فضاءات هيلبرت لدوال موجة الأنيونات المعتمدة على موضع العيوب (الدوامات) تشكل نوع البيانات الخطية المعتمدة التي تجسد الحالات الكمومية للأنيونات مع حركتها البطيئة عبر بوابات التضفير الكمومية الطوبولوجية (انظر الرسوم في <span class="citation" data-cites="SS22AnyonictopologicalOrder"></span>):</p>
+        <div class="center">
+            <div id="BraidGateSchematics">
+            </div>
+        </div>
+        <p>لاحظ أن مجموعة ميزات اللغة الكاملة <span><em>لأنواع البيانات الخطية المعتمدة</em></span> في <span><em>نظرية الأنواع المتماسكة</em></span> ضرورية وكافية لتمثيل هذا الوضع بدقة. نختتم هذه المذكرة بالإشارة<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> إلى صياغة <span><code>TED-K</code></span> في HoTT المتماسكة التي توفر انعكاساً لغوياً برمجياً لمثل هذه البوابات الكمومية الطوبولوجية. هذا مشروع بحثي في <span><em>مركز الأنظمة الكمومية والطوبولوجية</em></span> (<a href="https://ncatlab.org/nlab/show/Center+for+Quantum+and+Topological+Systems"><u>CQTS</u></a>)، وسيتم نشر نتائجه التفصيلية لاحقاً.</p>
+        <p><span><strong>لغة <span><code>TED-K</code></span>.</strong></span> في نظرية الأنواع المتماسكة، تتوفر نوع البيانات <span class="math inline">\(\mathbb{R}^1\)</span> للأعداد الحقيقية مع طوبولوجيتها التفاضلية <span class="citation" data-cites="Shulman15"></span>. ومن ذلك، يمكن بناء أنواع بيانات تمثل كائنات مألوفة في الطوبولوجيا التفاضلية والتحليل، مثل فضاءات هيلبرت المركبة القابلة للفصل <span class="math inline">\(\mathscr{H}\)</span>، ومجموعاتها الوحدوية الإسقاطية <span class="math inline">\(\mathrm{PU}\)</span> وفضاءات المؤثرات فريدولم <span class="math inline">\(\mathrm{Fred}^0_{\mathbb{C}}\)</span>، إلخ، جميعها مع طوبولوجيتها المناسبة (انظر <span class="citation" data-cites="SS21EPB"></span> للتفاصيل).</p>
+        <p>وبذلك، تُرمز مجموعات نظرية K الطوبولوجية المركبة لأي نوع بيانات متماسك <span class="math inline">\(\mathcal{X}\)</span> كنوع من أصناف الهوموتوبي المتماسكة لدوال بقيم مؤثرات فريدولم:
+            <span class="math display">\[\label{KTheoryCodedInTypeTheory}
+              \mathcal{X}
+              \,\colon\,
+              \mathrm{Type}
+              \quad
+              \vdash
+              \quad
+              \mathrm{KU}
+              \big(\mathcal{X}\big)
+              \;\equiv\;
+              \big\vert
+              \,
+              \raisebox{1pt}{\rm\normalfont\textesh}
+            \big(
+                \mathcal{X}
+                \xrightarrow{\;}
+              \mathrm{Fred}
+            ^0_{\mathbb{C}}
+              \big)
+              \big\vert_0
+              \,\colon\,
+              \mathrm{Type}
+              \,.\]</span>
+            هنا " " ترمز لمعامل <span><em>شكل</em></span> في HoTT المتماسكة و<span class="math inline">\(\vert-\vert_0\)</span> ترمز لمعامل القطع عند الصفر الموجود في HoTT العادية (انظر <span class="citation" data-cites="RSS20"></span>).
+        </p>
+        <p>علاوة على ذلك، فإن نوع مؤثرات فريدولم (ذات التدرج الفردي الذاتي) يخضع لفعل تقارن طبيعي بواسطة المجموعة الوحدوية الإسقاطية (ذات التدرج) <span class="math inline">\(\mathrm{PU}\)</span>، وبالتالي (انظر <span class="citation" data-cites="NSS12"></span><span class="citation" data-cites="BvDR18"></span><span class="citation" data-cites="SS21EPB"></span>) يظهر كليف من نوع معتمد <span class="math inline">\(\mathrm{Fred}^0_{\mathbb{C}} \!\sslash\! \mathrm{PU}\)</span> فوق نوع <span><em>التدوير</em></span> <span class="math inline">\(\mathbf{B}\mathrm{PU}\)</span>. باعتبار دالة من أي نوع <span class="math inline">\(\mathcal{X}\)</span> إلى <span class="math inline">\(\mathbf{B}\mathrm{PU}\)</span> كـ"twist"، نحصل على نوع <span><em>نظرية K الملتوية</em></span> كقطع عند الصفر لشكل جداء الدوال المعتمدة:
+            <span class="math display">\[\label{TwistedKTheoryCodedInTypeTheory}
+              \mathcal{X}
+              \,\colon\,
+              \mathrm{Type}
+              ;\,
+              \tau
+              \,\colon\,
+              \mathcal{X}
+              \xrightarrow{\;}
+              \mathbf{B}\mathrm{PU}
+              \quad
+              \vdash
+              \quad
+              \mathrm{KU}^\tau
+              \big(\mathcal{X}\big)
+              \,\equiv\,
+              \bigg\vert
+              \,
+                \raisebox{1pt}{\rm\normalfont\textesh}
+            \,
+                {\prod}_{\mathbf{B}\mathrm{PU}}
+                \Big(
+                  \mathcal{X}
+                  \xrightarrow{\;}
+                  \mathrm{Fred}
+            ^0_{\mathbb{C}}
+                     \!\sslash\!  \mathrm{PU}
+                \Big)
+              \bigg\vert_0
+              \;:\;
+              \mathrm{Type}\]</span>
+            إذا كان <span class="math inline">\(\mathcal{X}\)</span> غير مقطوع عند الصفر، فهذا هو <span><em>نظرية K الملتوية للأوربيفولد</em></span>. تحديداً، إذا كان <span class="math inline">\(\mathcal{X} \,\simeq\, \mathrm{X} \!\sslash\! G\)</span> لمجموعة منفصلة <span class="math inline">\(G\)</span> تؤثر على نوع <span class="math inline">\(\mathrm{X}\)</span>، فهذا هو <span><em>نظرية K الملتوية المتكافئة مع \(G\)</em></span>.
+        </p>
+        <p>نعني بذلك أنه عند تفسير نظرية الأنواع المتماسكة في <span class="math inline">\(\infty\)</span>-توبوس (انظر <span class="citation" data-cites="Riehl22"></span>)، وهنا تحديداً في <span class="math inline">\(\infty\)</span>-توبوس المتماسك للمجموعة اللانهائية الناعمة (<span class="citation" data-cites="Schreiber13"></span>، تفاصيل في <span class="citation" data-cites="FSS20Character"></span><span class="citation" data-cites="SS21EPB"></span>)، تتطابق الأنواع أعلاه مع مجموعات نظرية K الملتوية المتكافئة المعروفة في الأدبيات التقليدية (<span class="citation" data-cites="AtiyahSegal04"></span><span class="citation" data-cites="LupercioUribe01"></span><span class="citation" data-cites="AdemRuan01"></span>، انظر <span class="citation" data-cites="SS21EPB"></span>).</p>
+        <p><span><strong>الصياغة الكمومية الطوبولوجية.</strong></span> النقطة الأساسية هنا <span class="citation" data-cites="SS22AnyonictopologicalOrder"></span>: عند أخذ النوع <span class="math inline">\(\mathrm{X}\)</span> كفضاء تكوين نقاط على الطور، فإن مجموعات K الملتوية المتكافئة <a href="#TwistedKTheoryCodedInTypeTheory" data-reference-type="eqref" data-reference="TwistedKTheoryCodedInTypeTheory">[TwistedKTheoryCodedInTypeTheory]</a> تشمل طبيعياً (من حيث الشروط الكتلية) فضاءات الحالات الأرضية المرتبة طوبولوجياً للأنيونات من نوع <span class="math inline">\(\mathfrak{su}(2)\)</span> (<span class="citation" data-cites="SS22AnyonicDefectBranes"></span>)، وتفعل ذلك كأنواع خطية <span><em>معتمدة</em></span> على المعامل الكلاسيكي/الخارجي/الحدسي لمواضع عيوب الأنيونات:
+            <span class="math display">\[\label{AnyonsCodedInTypeTheory}
+              \underset{
+                \mathrlap{
+                \hspace{-1.8cm}
+                \raisebox{-.5pt}{
+                  \tiny
+                  \color{orangeii}
+                  \bf
+                  مواضع عيوب الأنيونات
+                }
+                }
+              }{
+              \overset{
+                \mathrlap{
+                \hspace{-1.8cm}
+                \raisebox{2pt}{
+                  \tiny
+                  \color{darkblue}
+                  \bf
+                  عنصر من نوع القاعدة
+                }
+                }
+              }{
+              \{
+                k_I
+              \}_{I=1}^N
+              \,:\,
+                \underset{
+                \scalebox{.65}{$
+                  \{1,\cdots,N\}
+                $}
+              }
+              {\mathrm{Conf}}
+              \big(
+                \widehat{\mathbb{T}}{}^{2}
+              \big)
+               \!\sslash\!
+                G
+              }
+              }
+              \quad
+              \vdash
+              \quad
+              \underset{
+                \mathrlap{
+                \hspace{-5.1cm}
+                \raisebox{-1pt}{
+                   {  \tiny
+                  \color{greenii}
+                  \bf  يحدد}
+                  \;
+                 {
+                  \tiny
+                  \color{orangeii}
+                  \bf فضاء هيلبرت لدوال الموجة الأرضية المرتبة طوبولوجياً
+                  }
+                }
+                }
+              }{
+              \overset{
+                \mathrlap{
+                \hspace{-4.65cm}
+                \raisebox{0pt}{
+                 {\color{greenii}     \tiny \bf يؤدي إلى}
+                  \; \quad
+            {\tiny
+                  \color{darkblue}
+                  \bf      نوع خطي معتمد من TED-K
+                }
+                }
+              }{
+              \Big\vert
+              \,
+              \raisebox{1pt}{\rm\normalfont\textesh}
+              \,
+              {\prod}_{\mathbf{B}\mathrm{PU}}
+              \Big(
+                \underset{
+                \scalebox{.65}{$
+                  \{1,\cdots,n\}
+                $}
+              }
+              {\mathrm{Conf}}
+                \big(
+                  \widehat{\mathbb{T}}{}^{2}
+                    \setminus
+                  \{k_I\}_{I=1}^M
+                \big)
+                 \!\sslash\! G
+                \xrightarrow{\;}
+                \mathrm{Fred}
+            ^0_{\mathbb{C}}  \!\sslash\!  \mathrm{PU}
+              \Big)
+              \Big\vert_0
+              }
+              }
+              :
+              \mathrm{Type}\]</span>
+            ويتبين أن ذلك يعتمد فقط على <span><em>شكل</em></span> الفضاء التماسك <span class="math inline">\(\raisebox{1pt}{\rm\normalfont\textesh}\)</span> لفضاء التكوين — والذي يعادل (تدوير) مجموعة التضفير (انظر <span class="citation" data-cites="Kohno02"></span><span class="citation" data-cites="EtingofFrenkelKirillov98"></span>):
+            <span class="math display">\[\label{ShapeOfConfigurationSpaceOfPoints}
+              \mathllap{
+                \mbox{
+                  \tiny
+                  \color{darkblue}
+                  \bf
+                  \def\arraystretch{.9}
+                  \begin{tabular}{c}
+                    الشكل التماسك
+                    \\
+                    لنوع القاعدة
+                  \end{tabular}
+                }
+              }
+              \raisebox{1pt}{\rm\normalfont\textesh}
+              \,
+              \Big(
+                  \underset{
+                \scalebox{.65}{$
+                  \{1,\cdots,N\}
+                $}
+              }
+              {\mathrm{Conf}}
+                \big(
+                  \widehat{\mathbb{T}}{}^{2}
+                \big)
+              \Big)
+              \;\simeq\;
+              \mathbf{B}
+              \big(
+              \mathrm{Br}_{{}_{\widehat{\mathbb{T}}{}^{2}}}(N)
+              \big)
+              \mathrlap{
+                \tiny
+                \color{orangeii}
+                \bf
+                \def\arraystretch{.9}
+                \begin{tabular}{c}
+              \bf    تدوير حزمة
+                  \\
+               \bf   لمجموعة التضفير
+                  {\color{black}.}
+                \end{tabular}
+              }\]</span>
+            وبالتالي، توفر نظرية الأنواع المتماسكة الموحدة الآن عملية <span><em>النقل</em></span> (<span class="citation" data-cites="UFP13"></span>) للنوع المعتمد <a href="#AnyonsCodedInTypeTheory" data-reference-type="eqref" data-reference="AnyonsCodedInTypeTheory">[AnyonsCodedInTypeTheory]</a> على الهويات في الشكل التماسك لقاعدة نوعه <a href="#ShapeOfConfigurationSpaceOfPoints" data-reference-type="eqref" data-reference="ShapeOfConfigurationSpaceOfPoints">[ShapeOfConfigurationSpaceOfPoints]</a>:
+            <span class="math display">\[\underset{
+                \mathclap{
+                  \hspace{-.5cm}
+                  \raisebox{-0pt}{
+                    \tiny
+                    \color{orangeii}
+                    \bf
+                    تضفير مسارات عيوب الأنيونات
+                  }
+                }
+              }{
+              \overset{
+                \mathclap{
+                \hspace{-12pt}
+                \raisebox{2pt}{
+                  \tiny
+                  \color{darkblue}
+                  \bf
+                  عنصر من نوع الهوية لقاعدة النوع
+                }
+                }
+              }{
+              \gamma \,:
+              \bigg(
+              (k_I)_{I =1}^N
+              \underset
+              {
+                \mathclap{
+                \raisebox{-6pt}{
+                \scalebox{.7}{$
+                  \raisebox{1pt}{\rm\normalfont\textesh}
+            \mathrm{Conf}_N\big(\widehat{\mathbb{T}}{}^{2}\big)
+                   \!\sslash\! G
+                $}
+                }
+                }
+              }{
+                \;\;
+                =
+                \;\;
+              }
+              (k_I)_{I =1}^N
+              \bigg)
+              }
+              }
+              \;\;
+              \vdash
+              \;\;
+              \underset{
+                \mathrlap{
+                \hspace{-3.35cm}
+                \raisebox{-6.2pt}{
+                      {\color{greenii}     \tiny \bf  يؤدي إلى} \;
+                {\tiny
+                  \color{orangeii}
+                  \bf  عملية بوابة كمومية وحدوية على الكيوبتات الطوبولوجية
+                  }
+                  }
+                }
+              }{
+              \overset{
+                \mathrlap{
+                \hspace{-3.35cm}
+                \raisebox{5.5pt}{
+                      {\color{greenii}     \tiny \bf   يؤدي إلى}
+                  \;
+                  {\tiny
+                  \color{darkblue}
+                  \bf عملية نقل نوع معتمد على أنواع TED-K
+                  }
+                }
+                }
+              }{
+              U(\gamma)
+              \,:\,
+              \mathrm{KU}^\tau_G
+              \Big(
+                  \underset{
+                \scalebox{.65}{$
+                  \{1,\cdots,n\}
+                $}
+              }
+              {\mathrm{Conf}}
+                \big(
+                  \widehat{\mathbb{T}}{}^{2}
+                  \setminus
+                  (k_I)_{I=1}^N
+                \big)
+              \Big)
+              }
+              }
+              \xrightarrow{\;}
+              \mathrm{KU}^\tau_G
+              \Big(
+                  \underset{
+                \scalebox{.65}{$
+                  \{1,\cdots,n\}
+                $}
+              }
+              {\mathrm{Conf}}
+                \big(
+                  \widehat{\mathbb{T}}{}^{2}
+                  \setminus
+                  (k_I)_{I=1}^N
+                \big)
+              \Big).\]</span>
+            وبحسب ما سبق، فإن هذا العنصر يرمز لعملية من مجموعة التضفير على فضاء الحالات الأرضية للأنيونات، وبهذا يرمز للبوابات الكمومية التضفيرية كما هو موضح في <a href="#BraidGateSchematics">ص. 4</a>.
+        </p>
+        <div class="thebibliography">
+            <!-- قائمة المراجع كما هي، يمكن ترجمة العناوين إذا لزم الأمر -->
+        </div>
+        <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+            <hr />
+            <ol>
+                <li id="fn1" role="doc-endnote"><p>«<span><em>أنظمة الكيوبت التي لدينا اليوم إنجاز علمي هائل، لكنها لم تقربنا من امتلاك حاسوب كمومي يمكنه حل مشكلة تهم أي شخص. [...] ما ينقص هو الاختراق [...] بتجاوز تصحيح الأخطاء الكمومية باستخدام كيوبتات أكثر استقراراً بكثير، في نهج يسمى الحوسبة الكمومية الطوبولوجية.</em></span>» <span class="citation" data-cites="DasSarma22"></span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+                <li id="fn2" role="doc-endnote"><p>للتفاصيل، انظر المواد التكميلية المتوفرة على: <a href="https://ncatlab.org/schreiber/show/Topological+Quantum+Computation+in+TED-K#GMConAbs"><code>ncatlab.org/schreiber/show/TQCinTEDK#GMConAbs</code></a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            </ol>
+        </section>
+        <hr style="margin: 40px 0;">
+        <div class="text-muted text-center">
+            <small>
+                تم تحويل هذا الإصدار HTML تلقائياً من LaTeX.<br>
+                يتم عرض المعادلات الرياضية باستخدام MathJax.
+            </small>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

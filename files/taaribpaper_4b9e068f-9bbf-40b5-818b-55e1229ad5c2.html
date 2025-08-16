@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,25 +5,35 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Zhenwen Dai, Federico Tomasi, Sina Ghiassian">
-  <title>استكشاف السياق والاستغلال في تعلم التعزيز</title>
+  <title>الاستكشاف والاستغلال داخل السياق في تعلّم التعزيز</title>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-    body {
+    :root {
+      --brand-1: #3a8dde;
+      --brand-2: #6dd5ed;
+      --ink: #222;
+      --sub-ink: #555;
+      --paper: #fff;
+      --bg: #f8f9fa;
+      --soft: #e3f2fd;
+      --muted: #f1f3f4;
+    }
+    html, body {
       direction: rtl;
       font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
       font-size: 22px;
-      background: #f8f9fa;
-      color: #222;
+      background: var(--bg);
+      color: var(--ink);
       margin: 0;
       padding: 0;
       line-height: 1.7;
     }
     header {
-      background: linear-gradient(90deg, #3a8dde 0%, #6dd5ed 100%);
+      background: linear-gradient(90deg, var(--brand-1) 0%, var(--brand-2) 100%);
       color: #fff;
       padding: 40px 0 30px 0;
       text-align: center;
@@ -32,121 +41,151 @@
       margin-bottom: 40px;
     }
     h1.title {
-      font-size: 2.7em;
+      font-size: 2.6em;
       font-weight: 700;
       margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-    .author {
-      font-size: 1.2em;
-      margin-top: 0;
-      color: #e3f2fd;
       letter-spacing: 0.5px;
     }
+    .author {
+      font-size: 1.05em;
+      margin-top: 0;
+      color: #e3f2fd;
+      letter-spacing: 0.4px;
+    }
     main {
-      max-width: 900px;
-      background: #fff;
-      margin: 0 auto 40px auto;
+      max-width: 920px;
+      background: var(--paper);
+      margin: 0 auto 48px auto;
       padding: 40px 32px 32px 32px;
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(58,141,222,0.10);
     }
     h1, h2, h3, h4 {
-      color: #3a8dde;
+      color: var(--brand-1);
       font-weight: 700;
       margin-top: 2.2em;
       margin-bottom: 0.7em;
       line-height: 1.2;
     }
     h1 {
-      font-size: 2em;
-      border-bottom: 2px solid #e3f2fd;
-      padding-bottom: 0.2em;
+      font-size: 1.95em;
+      border-bottom: 2px solid var(--soft);
+      padding-bottom: 0.25em;
     }
     h2 {
       font-size: 1.5em;
-      border-bottom: 1px solid #e3f2fd;
-      padding-bottom: 0.15em;
+      border-bottom: 1px solid var(--soft);
+      padding-bottom: 0.2em;
     }
     h3 {
       font-size: 1.2em;
     }
     p {
-      margin: 1.2em 0;
+      margin: 1.05em 0;
       text-align: justify;
     }
     strong {
       color: #1976d2;
     }
     em {
-      color: #555;
+      color: var(--sub-ink);
       font-style: italic;
     }
     code, .nodecor {
       font-family: 'Cairo', 'Fira Mono', 'Consolas', monospace;
-      background: #f1f3f4;
+      background: var(--muted);
       color: #1976d2;
       padding: 2px 6px;
       border-radius: 5px;
       font-size: 0.95em;
     }
     ul, ol {
-      margin: 1.2em 2em;
+      margin: 1.1em 2em;
       padding-right: 1.5em;
     }
     li {
-      margin-bottom: 0.5em;
+      margin-bottom: 0.4em;
     }
     blockquote {
-      border-right: 4px solid #3a8dde;
+      border-right: 4px solid var(--brand-1);
       background: #f1f8ff;
       margin: 1.5em 0;
       padding: 1em 1.5em;
       color: #444;
       border-radius: 8px;
     }
+    .meta {
+      margin-top: -14px;
+      color: #666;
+      font-size: 0.92em;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid var(--soft);
+      margin: 2em 0 1.5em 0;
+    }
+    footer {
+      max-width: 920px;
+      margin: 0 auto 48px auto;
+      color: #666;
+      font-size: 0.9em;
+      text-align: center;
+    }
     @media (max-width: 600px) {
       main {
-        padding: 18px 6px 18px 6px;
+        padding: 18px 12px 18px 12px;
+        border-radius: 14px;
       }
       header {
         padding: 24px 0 18px 0;
       }
       h1.title {
-        font-size: 1.5em;
+        font-size: 1.55em;
       }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1 class="title">استكشاف السياق والاستغلال في تعلم التعزيز</h1>
-  <p class="author"><span class="nodecor">Zhenwen Dai</span>, <span class="nodecor">Federico Tomasi</span>, <span class="nodecor">Sina Ghiassian</span></p>
+  <h1 class="title">الاستكشاف والاستغلال داخل السياق في تعلّم التعزيز</h1>
+  <p class="author"><span class="nodecor">Zhenwen Dai</span>، <span class="nodecor">Federico Tomasi</span>، <span class="nodecor">Sina Ghiassian</span></p>
+  <p class="meta">ورقة بحثية في تقاطع التعلّم داخل السياق، التحسين البايزي، والمحولات في تعلّم التعزيز</p>
 </header>
-<main>
-<p>latex</p>
-<h1 id="ملخص">مُلخّص</h1>
-<p>التعلم في السياق هو نهج واعد لتعلم السياسات عبر الإنترنت لطرق تعلم التعزيز (<span class="nodecor">RL</span>) دون الاتصال، والذي يمكن تحقيقه في وقت الاستدلال دون الحاجة إلى تحسين تدريجي. ومع ذلك، يعيق هذا الأسلوب تكاليف حسابية كبيرة ناتجة عن جمع مجموعات كبيرة من مسارات التدريب والحاجة إلى تدريب نماذج <span class="nodecor">Transformer</span> ضخمة. نعالج هذا التحدي من خلال تقديم خوارزمية استكشاف السياق والاستغلال (<span class="nodecor">ICEE</span>)، المصممة لتحسين كفاءة تعلم السياسات في السياق. على عكس النماذج الحالية، تحقق <span class="nodecor">ICEE</span> توازناً بين الاستكشاف والاستغلال في وقت الاستدلال داخل نموذج <span class="nodecor">Transformer</span>، دون الحاجة إلى استدلال <span class="nodecor">Bayesian</span> صريح. ونتيجة لذلك، يمكن لـ<span class="nodecor">ICEE</span> حل مشاكل التحسين <span class="nodecor">Bayesian</span> بكفاءة تعادل طرق المعالجة المعتمدة على عملية <span class="nodecor">Gaussian</span>، ولكن في وقت أقل بكثير. من خلال التجارب في بيئات العالم الشبكي، نظهر أن <span class="nodecor">ICEE</span> يمكن أن تتعلم حل مهام تعلم التعزيز الجديدة باستخدام عشرات الحلقات فقط، مما يمثل تحسناً كبيراً عن المئات من الحلقات التي تحتاجها طريقة التعلم في السياق السابقة.</p>
-<h1 id="مقدمة">مقدمة</h1>
-<p>تمثل النماذج المحولة نهجاً فعالاً للغاية في نمذجة التسلسل، مع تطبيقات تمتد عبر مجالات متعددة مثل النصوص والصور والصوت. في مجال التعلم المعزز (<span class="nodecor">Reinforcement Learning (RL)</span>)، اقترح (<span class="nodecor">NEURIPS2021_7f489f64</span>) و(<span class="nodecor">NEURIPS2021_099fe6b0</span>) مفهوم معالجة التعلم المعزز دون اتصال كمشكلة تنبؤ تسلسلي باستخدام النموذج المحول. لقد أثبت هذا الأسلوب نجاحه في التعامل مع مجموعة من المهام باستخدام تقنيات نمذجة التسلسل على نطاق واسع فقط (<span class="nodecor">NEURIPS2022_b2cac94f, Reed2022-lj</span>). يكمن العيب البارز في عدم قدرة السياسة على تحسين نفسها عند استخدامها في بيئات عبر الإنترنت. للتغلب على ذلك، تم تقديم طرق التنعيم مثل (<span class="nodecor">Zheng2022-kr</span>)، التي تمكن من تحسين السياسة بشكل مستمر. ومع ذلك، غالباً ما تعتمد هذه الطرق على التحسين القائم على التدرج البطيء والمكلف حسابياً.</p>
-<p>من ناحية أخرى، يمكن للتعلم في السياق، وهو خاصية ملحوظة في نماذج اللغة الكبيرة (<span class="nodecor">Large Language Models (LLMs)</span>)، التعامل مع المهام الجديدة من خلال توفير تفاصيل المهمة عبر تلميحات لغوية، مما يلغي الحاجة إلى التنعيم. يقترح (<span class="nodecor">laskin2023incontext</span>) خوارزمية تعلم في السياق للتعلم المعزز، والتي تستخدم نموذج تسلسل لتقطير خوارزمية تعلم السياسة من مسارات تدريب التعلم المعزز. النموذج الناتج قادر على إجراء تعلم السياسة في وقت الاستدلال من خلال عملية تكرارية لأخذ العينات من الإجراءات وزيادة التلميح. تتكبد هذه الطريقة تكاليف حسابية كبيرة في جمع مجموعات واسعة من مسارات التدريب وتدريب نماذج المحولات الكبيرة التي تحتاج إلى نمذجة جزء كبير من مسار التدريب. السبب الرئيسي لهذه التكلفة الحسابية العالية هو مسارات التدريب الطويلة الناتجة عن عملية التجربة والخطأ البطيئة لخوارزميات تعلم سياسة التعلم المعزز.</p>
-<p>تهدف هذه الورقة إلى تحسين كفاءة تعلم السياسة في السياق من خلال القضاء على الحاجة إلى التعلم من مسارات تعلم السياسة. في سيناريو مثالي، يمكن تحقيق تعلم سياسة فعال من خلال عملية تجربة وخطأ فعالة. بالنسبة لمشاكل التعلم المعزز المبسطة مثل الأذرع المتعددة (<span class="nodecor">Multi-Armed Bandits (MAB)</span>)، تم إثبات وجود عملية تجربة وخطأ فعالة مثل عينة تومسون والحدود العليا للثقة. تعتمد هذه العملية، والتي غالباً ما يشار إليها باسم تجارة الاستكشاف-الاستغلال (<span class="nodecor">Exploration-Exploitation (EE)</span>)، بشكل كبير على عدم اليقين المعرفي المستمد من الاعتقاد البايزي. ومع ذلك، من الصعب استنتاج عدم اليقين المعرفي الدقيق لمشاكل التعلم المعزز التسلسلي باستخدام الطرق البايزية التقليدية. في ضوء الدراسات الحديثة حول تقدير عدم اليقين لنماذج اللغة الكبيرة (<span class="nodecor">yin-etal-2023-large</span>)، نفحص التوزيعات التنبؤية لنماذج التسلسل، مما يظهر أنه، من خلال التدريب بالتعلم الإشرافي البحت على البيانات دون اتصال، يمكن لنموذج التسلسل التقاط عدم اليقين المعرفي في التنبؤ بالتسلسل. هذا يوحي بإمكانية تنفيذ الاستكشاف-الاستغلال في التعلم المعزز دون اتصال.</p>
-<p>استناداً إلى هذه الملاحظة، نطور خوارزمية الاستكشاف-الاستغلال في السياق (<span class="nodecor">ICEE</span>) لتعلم السياسة. تأخذ <span class="nodecor">ICEE</span> كمدخلات سلسلة من الحلقات المتعددة لنفس المهمة وتتنبأ بالإجراء المقابل في كل خطوة مشروطة ببعض المعلومات بأثر رجعي. يشبه تصميم التعلم المعزز دون اتصال هذا المحول القراري (<span class="nodecor">Decision Transformer (DT)</span>)، ولكن <span class="nodecor">ICEE</span> يتعامل مع تعلم السياسة في السياق من خلال نمذجة الحلقات المتعددة لمهمة بينما <span class="nodecor">DT</span> ينمذج حلقة واحدة فقط. علاوة على ذلك، لا تحتاج هذه الحلقات إلى النشأة من مسار تدريب، مما يتجنب التكاليف الحسابية العالية المرتبطة بتوليد واستهلاك مسارات التعلم. تتجه توزيعات الإجراءات المتعلمة في <span class="nodecor">DT</span> نحو سياسة جمع البيانات، والتي قد لا تكون مثالية عندما تكون دون المستوى الأمثل. لمعالجة هذا التحيز، نقدم هدفاً غير متحيز ونطور شكلاً معيناً من المعلومات بأثر رجعي للاستكشاف-الاستغلال الفعال عبر الحلقات.</p>
-<p>من خلال التجارب، نوضح أن سلوك الاستكشاف-الاستغلال يظهر في <span class="nodecor">ICEE</span> أثناء الاستدلال بفضل عدم اليقين المعرفي في التنبؤ بالإجراء. هذا واضح بشكل خاص عند تطبيق <span class="nodecor">ICEE</span> على التحسين البايزي (<span class="nodecor">Bayesian Optimization (BO)</span>)، حيث أن أداء <span class="nodecor">ICEE</span> يضاهي طريقة تعتمد على عملية غاوسية في مهام <span class="nodecor">BO</span> المنفصلة. نوضح أيضاً أن <span class="nodecor">ICEE</span> يمكن أن يحسن بنجاح السياسة لمهمة جديدة مع التجارب والأخطاء من الصفر لمشاكل التعلم المعزز التسلسلي. حسب علمنا، <span class="nodecor">ICEE</span> هي الطريقة الأولى التي تدمج بنجاح الاستكشاف-الاستغلال في السياق في التعلم المعزز من خلال النمذجة التسلسلية دون اتصال.</p>
-<h1 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h1>
-<p><strong>التعلم البياني.</strong> لقد زاد الاهتمام مؤخراً بخوارزميات <em>التعلم البياني</em> أو <em>تعلم التعلم</em>. بينما يكون المتعلم عبارة عن وكيل يتعلم حل مهمة باستخدام البيانات المرصودة، يتضمن خوارزمية تعلم التعلم وجود <em>متعلم بياني</em> يحسن باستمرار من عملية التعلم للمتعلم (<span class="nodecor">schmidhuber1996simple, thrun2012learning, hospedales2021meta, sutton2022history</span>). تم إجراء الكثير من الأعمال في مجال التعلم البياني. على سبيل المثال، اقترح (<span class="nodecor">finn2017model</span>) خوارزمية تعلم بياني عامة لا تعتمد على النموذج تدرب المعلمات الأولية للنموذج بحيث يكون للنموذج أداء أقصى في مهمة جديدة بعد تحديث معلمات النموذج من خلال بضع خطوات تدريجية محسوبة بكمية صغيرة من البيانات من المهمة الجديدة. تشمل الأعمال الأخرى في التعلم البياني تحسين المحسنات (<span class="nodecor">andrychowicz2016learning, li2016learning, ravi2016optimization, wichrowska2017learned</span>)، تحسين التعلم القليل الأمثلة (<span class="nodecor">mishra2017simple, duan2017one</span>)، تعلم الاستكشاف (<span class="nodecor">stadie2018some</span>)، والتعلم غير المشرف عليه (<span class="nodecor">hsu2018unsupervised</span>).</p>
-<p>في مجال التعلم البياني العميق لتعزيز التعلم (<span class="nodecor">wang2016learning</span>)، ركزت بعض الأعمال على شكل خاص من التعلم البياني يسمى التدرجات البيانية. في التدرجات البيانية، يتم تدريب المتعلم البياني بواسطة التدرجات من خلال قياس تأثير المعلمات البيانية على متعلم يتم تدريبه أيضاً باستخدام خوارزمية التدرج (<span class="nodecor">xu2018meta</span>). في عمل آخر، استخدم (<span class="nodecor">zheng2018learning</span>) التدرجات البيانية لتعلم المكافآت. ركز (<span class="nodecor">gupta2018unsupervised</span>) على أتمتة عملية تصميم المهام في تعزيز التعلم، لتحرير الخبير من عبء التصميم اليدوي لمهام التعلم البياني. بالمثل، قدم (<span class="nodecor">veeriah2019discovery</span>) طريقة لوكيل تعزيز التعلم لاكتشاف الأسئلة المصاغة كوظائف قيمة عامة من خلال استخدام التدرجات البيانية غير القصيرة النظر. ومؤخراً، شهد تعلم تعزيز التدرجات البيانية تقدماً كبيراً من مكاسب الأداء في المعايير الشعبية إلى خوارزميات هجينة للتعلم البياني لتعزيز التعلم عبر الإنترنت وغير المتصل (<span class="nodecor">xu2020meta, zahavy2020self, flennerhag2021bootstrapped, mitchell2021offline, yin-etal-2023-large, pong2022offline</span>). تمت دراسة دور الشك في تعزيز التعلم البياني من قبل (<span class="nodecor">JMLR:v22:21-0657</span>)، والذي أسفر عن طريقة فعالة لتعزيز التعلم البياني عبر الإنترنت. ثم تم توسيع هذا العمل من قبل (<span class="nodecor">NEURIPS2021_24802454</span>) إلى الإعداد غير المتصل بالسياسة.</p>
-<p><strong>تعلم التعزيز غير المتصل.</strong> بشكل عام، تم اقتراح تعلم التعزيز كنموذج أساسي عبر الإنترنت (<span class="nodecor">sutton1988learning, sutton1999policy, sutton2018reinforcement</span>). تأتي هذه الطبيعة التعليمية عبر الإنترنت مع بعض القيود مثل صعوبة تبنيها في العديد من التطبيقات التي من المستحيل جمع البيانات عبر الإنترنت والتعلم في نفس الوقت، مثل القيادة الذاتية وأحياناً ليست فعالة من حيث البيانات كما يمكن أن تكون، حيث قد يختار التعلم من عينة ثم التخلص من العينة والانتقال إلى العينة التالية (<span class="nodecor">levine2020offline</span>). إحدى الأفكار للحصول على المزيد من الخبرة المجمعة هي استخدام مخازن إعادة التشغيل. عند استخدام المخازن، يتم الاحتفاظ بجزء من العينات في الذاكرة ثم يتم إعادة استخدامها عدة مرات بحيث يمكن للوكيل التعلم أكثر منها (<span class="nodecor">lin1992self, mnih2015human</span>). يشير متغير من تعلم التعزيز، يعرف باسم <em>تعلم التعزيز غير المتصل</em>، إلى خوارزميات تعلم التعزيز التي يمكن أن تتعلم بالكامل غير متصل، من مجموعة ثابتة من البيانات التي تم جمعها مسبقاً دون جمع بيانات جديدة في وقت التعلم (<span class="nodecor">ernst2005tree, riedmiller2005neural, lange2012batch, fujimoto2019off, siegel2020keep, gulcehre2020rl, nair2020awac</span>). تركز الأدبيات الحديثة على محولات القرار أيضاً على تعلم التعزيز غير المتصل (<span class="nodecor">NEURIPS2021_7f489f64</span>) لأنها تحتاج إلى حساب <em>العائد المتبقي</em> في وقت التدريب، والذي بدوره يتطلب بيانات تم جمعها مسبقاً.</p>
-<p><strong>التعلم في السياق.</strong> خوارزميات تعلم التعزيز في السياق هي تلك التي تحسن سياستها بالكامل <em>في السياق</em> دون تحديث معلمات الشبكة أو دون أي تعديل دقيق للنموذج (<span class="nodecor">lu2021pretrained</span>). تم إجراء بعض الأعمال لدراسة ظاهرة التعلم في السياق في محاولة لشرح كيف قد يكون التعلم في السياق ممكناً (<span class="nodecor">abernethy2023mechanism, min2022rethinking</span>). يعمل الوكيل "جاتو" الذي طوره (<span class="nodecor">reed2022generalist</span>) كوكيل عام متعدد النماذج ومتعدد المهام ومتعدد الأجسام، بمعنى أن نفس الوكيل المدرب يمكنه لعب أتاري، ووضع تعليقات توضيحية على الصور، والدردشة، وتكديس الكتل باستخدام ذراع روبوت حقيقي فقط بناءً على سياقه. من خلال تدريب وكيل تعلم التعزيز على نطاق واسع، أظهر (<span class="nodecor">team2023human</span>) أن وكيلاً في السياق يمكنه التكيف مع بيئات ثلاثية الأبعاد جديدة ومفتوحة النهايات. من الاهتمام الخاص بالنسبة لنا هو تقطير الخوارزمية (AD)، وهي طريقة تعلم تعزيز بياني في السياق (<span class="nodecor">laskin2023incontext</span>). على وجه التحديد، AD هي طريقة تعلم تعزيز بياني في السياق غير متصل. بشكل أساسي، AD خالٍ من التدرجات—يتكيف مع المهام اللاحقة دون تحديث معلمات شبكته.</p>
-<h1 id="عدم-اليقين-المعرفي-في-تنبؤ-نموذج-التسلسل">عدم اليقين المعرفي في تنبؤ نموذج التسلسل</h1>
-<p>يعالج DT، المعروف أيضاً باسم RL المقلوب، مشكلة تعلم السياسة دون اتصال كمشكلة في نمذجة التسلسل. في هذا القسم، ننظر في نموذج تسلسل عام ونحلل عدم اليقين التنبؤي له.</p>
-<!-- بقية النص كما هو -->
+
+<main role="main">
+  <h1 id="ملخص">مُلخّص</h1>
+  <p>يُعَدّ <strong>التعلّم داخل السياق</strong> نهجًا واعدًا لتعلّم السياسات أثناء وقت الاستدلال في طُرُق <span class="nodecor">RL</span> غير المتّصلة، من غير حاجةٍ إلى تحديثات تدرّجيّة. غير أنّ هذا النهج يستلزم كُلَفًا حوسبيّة مرتفعة ناتجة عن تجميع مجموعات كبيرة من <em>المسارات</em> التدريبية والحاجة إلى تدريب نماذج <span class="nodecor">Transformer</span> ضخمة. نعالج هذا التحدّي بتقديم خوارزمية <strong>الاستكشاف-الاستغلال داخل السياق</strong> (<span class="nodecor">ICEE</span>) المصمَّمة لرفع كفاءة تعلّم السياسات داخل السياق. وعلى خلاف الأساليب القائمة، تُوازِن <span class="nodecor">ICEE</span> بين الاستكشاف والاستغلال في وقت الاستدلال ضمن نموذج <span class="nodecor">Transformer</span> من غير حاجةٍ إلى استدلالٍ بايزيٍّ صريح. ونتيجةً لذلك، تستطيع <span class="nodecor">ICEE</span> حلَّ مسائل <strong>التحسين البايزي</strong> بكفاءةٍ تضاهي الطرائق المعتمِدة على <em>العمليات الغاوسيّة</em>، ولكن بزمنٍ أقلّ بكثير. ومن خلال تجارب في بيئات مُحاكاة، نُظهر أنّ <span class="nodecor">ICEE</span> تتعلّم حلَّ مهامّ <span class="nodecor">RL</span> جديدة باستخدام عَشرات الحلقات فقط، وهو تحسّن كبير مقارنةً بمئات الحلقات التي تتطلّبها طريقة التعلّم داخل السياق السابقة.</p>
+
+  <h1 id="مقدمة">مقدمة</h1>
+  <p>تُعَدّ <strong>المُحوِّلات</strong> نهجًا فعّالًا للغاية في نمذجة التسلسلات، مع تطبيقات تمتدّ عبر مجالاتٍ مثل النصوص والصور والصوت. في مجال <span class="nodecor">Reinforcement Learning (RL)</span>، اقترح (<span class="nodecor">NEURIPS2021_7f489f64</span>) و(<span class="nodecor">NEURIPS2021_099fe6b0</span>) معالجة <strong>تعلّم التعزيز غير المتّصل</strong> كمشكلة تنبّؤٍ تسلسلي باستخدام المُحوِّل. وقد أثبت هذا التوجّه نجاحًا في التعامل مع طيف واسع من المهام بالاعتماد على تقنيات نمذجة التسلسل واسعة النطاق فقط (<span class="nodecor">NEURIPS2022_b2cac94f, Reed2022-lj</span>). إلّا أنّ عيبه الأبرز هو عدم قدرة السياسة على تحسين نفسها عند استخدامها على-الخط (online). للتغلّب على ذلك، قُدِّمت أساليب <strong>الضبط الدقيق</strong> مثل (<span class="nodecor">Zheng2022-kr</span>)، التي تُتيح تحسين السياسة بصورة مستمرة، لكنها غالبًا ما تعتمد على تحسينٍ تدرّجي بطيء ومكلف حوسبيًا.</p>
+
+  <p>من ناحيةٍ أُخرى، يتيح <strong>التعلّم داخل السياق</strong>، وهي خاصّية لافتة في <span class="nodecor">Large Language Models (LLMs)</span>، التعامل مع مهامّ جديدة عبر تمرير تفاصيل المهمّة ضمن <em>تلميحات/مطالبات</em> لغوية، ما يُلغي الحاجة إلى الضبط الدقيق. يقترح (<span class="nodecor">laskin2023incontext</span>) خوارزمية تعلّم داخل السياق لـ<span class="nodecor">RL</span> تستخدم نموذج تسلسل لتقطير <em>خوارزمية</em> تعلّم سياسة من مسارات تدريب <span class="nodecor">RL</span>. ويكون النموذج الناتج قادرًا على إجراء تعلّم السياسة <em>زمنيًا أثناء الاستدلال</em> عبر عملية تكرارية لأخذ عيّنات من الأفعال وتوسيع التلميح/المطالبة. غير أنّ هذه الطريقة تتكبّد كُلفًا حوسبيّة كبيرة بسبب الحاجة إلى تجميع مجموعات واسعة من المسارات التدريبية وتدريب مُحوِّلات كبيرة تُحاول نمذجة جزء كبير من مسار التدريب. ويعود السبب الرئيس في هذه الكُلفة إلى المسارات الطويلة الناجمة عن عملية التجربة والخطأ البطيئة في خوارزميات تعلّم السياسات.</p>
+
+  <p>تهدف هذه الورقة إلى رفع كفاءة تعلّم السياسة داخل السياق عبر إزالة الحاجة إلى التعلّم من <em>مسارات تعلّم السياسات</em>. في سيناريو مثالي، يمكن تحقيق تعلّم سياسةٍ فعّال بعملية تجربةٍ وخطأ فعّالة. في مسائل <span class="nodecor">RL</span> المُبسّطة مثل <strong>الأذرع المتعدّدة</strong> (<span class="nodecor">Multi-Armed Bandits (MAB)</span>)، أُثبتت فاعلية إجراءات مثل <em>أخذ عينات تومسون</em> وحدود الثقة العليا (<span class="nodecor">UCB</span>). وتعتمد هذه التجارة—المعروفة بـ<em>الاستكشاف-الاستغلال</em> (<span class="nodecor">Exploration-Exploitation (EE)</span>)—بشدّة على <strong>عدم اليقين المعرفي</strong> المستمدّ من التالي البايزي. غير أنّ استدلال عدم اليقين المعرفي الدقيق في مسائل <span class="nodecor">RL</span> التسلسلية يظلّ صعبًا بالطرائق البايزيّة التقليدية. وبالاستناد إلى دراسات حديثة حول تقدير عدم اليقين في <span class="nodecor">LLMs</span> (<span class="nodecor">yin-etal-2023-large</span>)، نفحص التوزيعات التنبؤية لنماذج التسلسل، ونُظهر أنّه—عبر تدريبٍ إشرافي صرف على بيانات غير متّصلة—يمكن لنموذج التسلسل التقاط عدم اليقين المعرفي في التنبؤ بالتسلسل، ما يوحي بإمكان تنفيذ <em>الاستكشاف-الاستغلال</em> في <span class="nodecor">RL</span> غير المتّصل.</p>
+
+  <p>استنادًا إلى هذه الملاحظة، نطوّر خوارزمية <span class="nodecor">ICEE</span> لتعلّم السياسات داخل السياق. تأخذ <span class="nodecor">ICEE</span> كمدخلات سلسلةً من عِدّة <em>حلقات</em> للمهمّة نفسها، وتُنبئ بالفعل الموافق في كلّ خطوةٍ مشروطًا ببعض المعلومات <strong>بأثرٍ رجعيّ</strong>. يُشبه هذا التصميم في <span class="nodecor">RL</span> غير المتّصل <span class="nodecor">المُحوِّل القراري (DT)</span>، إلا أنّ <span class="nodecor">ICEE</span> تتعامل مع تعلّم السياسات داخل السياق عبر نمذجة عدّة حلقات للمهمّة، بينما يُنمذج <span class="nodecor">DT</span> حلقةً واحدةً فقط. إضافةً إلى ذلك، لا يلزم أن تنشأ هذه الحلقات من <em>مسار تدريب</em> معيّن، ما يتجنّب الكُلف الحوسبيّة العالية المرتبطة بتوليد واستهلاك مسارات التعلّم. تميل توزيعات الأفعال المتعلَّمة في <span class="nodecor">DT</span> إلى سياسة جمع البيانات، وهو ما قد لا يكون ملائمًا عند كونها دون المثالي. ولمعالجة هذا الانحياز، نقدّم <strong>دالة هدف غير متحيّزة</strong> ونطوّر شكلًا مناسبًا من المعلومات بأثرٍ رجعيّ لتمكين استكشاف-استغلال فعّال عبر الحلقات.</p>
+
+  <p>تُظهر تجاربُنا أنّ سلوك <em>الاستكشاف-الاستغلال</em> يبرز في <span class="nodecor">ICEE</span> أثناء الاستدلال بفضل عدم اليقين المعرفي في التنبّؤ بالفعل. ويتّضح ذلك خصوصًا عند تطبيق <span class="nodecor">ICEE</span> في <strong>التحسين البايزي</strong> (<span class="nodecor">Bayesian Optimization (BO)</span>)، حيث يضاهي أداؤها طرائق قائمة على <em>العملية الغاوسيّة</em> في مهامّ <span class="nodecor">BO</span> المنفصلة. ونُبيّن كذلك أنّ <span class="nodecor">ICEE</span> تستطيع تحسين سياسةٍ لمهمّة جديدة بنجاح، من الصفر، عبر التجربة والخطأ في مسائل <span class="nodecor">RL</span> التسلسلية. وحسب علمنا، فـ<span class="nodecor">ICEE</span> هي أوّل طريقة تُدمِج بنجاح <em>الاستكشاف-الاستغلال داخل السياق</em> في <span class="nodecor">RL</span> عبر نمذجة تسلسلية غير متّصلة.</p>
+
+  <h1 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h1>
+  <p><strong>التعلّم الفوقي (Meta-learning).</strong> ازداد الاهتمام مؤخرًا بخوارزميات <em>التعلّم الفوقي</em> أو <em>ما وراء التعلّم</em>. ففي حين أنّ <em>المتعلِّم</em> وكيلٌ يتعلّم حلّ مهمّة من البيانات المرصودة، تتضمّن خوارزميات التعلّم الفوقي وجود <em>متعلّمٍ فوقيّ</em> يُحسّن باستمرار عملية تعلّم المتعلّم (<span class="nodecor">schmidhuber1996simple, thrun2012learning, hospedales2021meta, sutton2022history</span>). وقد أُنجز كثير من الأعمال في هذا المجال؛ على سبيل المثال، اقترح (<span class="nodecor">finn2017model</span>) خوارزمية تعلّم فوقي عامّة غير معتمدة على النموذج تُدرَّب فيها المعلمات الابتدائية بحيث يُحقّق النموذج أداءً مرتفعًا في مهمّةٍ جديدة بعد بضع خطوات تدرّجية باستخدام كمّية صغيرة من بيانات تلك المهمّة. وتشمل أعمالٌ أخرى في التعلّم الفوقي: تعلّم المُحسّنات (<span class="nodecor">andrychowicz2016learning, li2016learning, ravi2016optimization, wichrowska2017learned</span>)، والتعلّم قَليل اللقطات (<span class="nodecor">mishra2017simple, duan2017one</span>)، وتعلّم الاستكشاف (<span class="nodecor">stadie2018some</span>)، والتعلّم غير المُشرف (<span class="nodecor">hsu2018unsupervised</span>).</p>
+
+  <p>في مجال <strong>التعلّم الفوقي العميق لتعلّم التعزيز</strong> (<span class="nodecor">wang2016learning</span>)، ركّزت بعض الأعمال على شكلٍ خاص يُسمّى <em>التدرّجات الفوقيّة</em>، حيث يُدرَّب المتعلّم الفوقي باستخدام التدرّجات عبر قياس أثر المعلمات الفوقيّة على متعلّمٍ يُدرَّب بدوره عبر خوارزمية التدرّج (<span class="nodecor">xu2018meta</span>). وفي عملٍ آخر، استخدم (<span class="nodecor">zheng2018learning</span>) التدرّجات الفوقيّة لتعلّم دوالّ المكافآت. وركّز (<span class="nodecor">gupta2018unsupervised</span>) على أتمتة عملية تصميم المهامّ في <span class="nodecor">RL</span> لتحرير الخبير من عبء التصميم اليدوي لمهامّ التعلّم الفوقي. وبالمثل، قدّم (<span class="nodecor">veeriah2019discovery</span>) طريقةً لوكيل <span class="nodecor">RL</span> لاكتشاف «الأسئلة» المصاغة كـ<em>وظائف قيمة عامّة</em> باستخدام تدرّجات فوقيّة غير قصيرة النظر. ومؤخّرًا، شهد <em>التعلّم الفوقي المعزَّز بالتدرّجات</em> تقدّمًا كبيرًا—من مكاسب في الأداء ضمن المعايير الشائعة إلى خوارزميات هجينة للتعلّم الفوقي في <span class="nodecor">RL</span> على-الخط وخارجه (<span class="nodecor">xu2020meta, zahavy2020self, flennerhag2021bootstrapped, mitchell2021offline, yin-etal-2023-large, pong2022offline</span>). وقد دُرس دور <strong>عدم اليقين</strong> في التعلّم الفوقي لـ<span class="nodecor">RL</span> من قِبل (<span class="nodecor">JMLR:v22:21-0657</span>)، ما أسفر عن طريقة فعّالة في الإعداد على-الخط، ثم وُسِّع هذا العمل في (<span class="nodecor">NEURIPS2021_24802454</span>) إلى الإعداد <em>خارج السياسة</em>.</p>
+
+  <p><strong>تعلّم التعزيز غير المتّصل (Offline RL).</strong> عُمّم <span class="nodecor">RL</span> تقليديًا كإطارٍ على-الخط (<span class="nodecor">sutton1988learning, sutton1999policy, sutton2018reinforcement</span>). وتأتي هذه الطبيعة مع قيود، منها صعوبة اعتماده في تطبيقاتٍ يتعذّر فيها جمع البيانات والتعلّم على-الخط معًا—مثل القيادة الذاتية—وأحيانًا انخفاض الكفاءة العيّانية، إذ قد يستهلك الوكيل عيّنة واحدة ثم ينتقل إلى التالية (<span class="nodecor">levine2020offline</span>). إحدى الأفكار لتعظيم الاستفادة من الخبرة المجمّعة هي استخدام <strong>مخازن/ذاكرات إعادة التشغيل</strong>؛ حيث يُحتفظ بجزء من العيّنات ويُعاد استخدامه مرّاتٍ عديدة ليتعلّم الوكيل أكثر (<span class="nodecor">lin1992self, mnih2015human</span>). ويشير متغيّر من <span class="nodecor">RL</span> يُعرَف باسم <em>تعلّم التعزيز غير المتّصل</em> إلى خوارزمياتٍ تتعلّم بالكامل من مجموعة ثابتة مسبقة الجمع دون تحصيل بيانات جديدة أثناء التعلّم (<span class="nodecor">ernst2005tree, riedmiller2005neural, lange2012batch, fujimoto2019off, siegel2020keep, gulcehre2020rl, nair2020awac</span>). كما ركّزت الأدبيات الحديثة حول <span class="nodecor">المُحوِّل القراري</span> على <span class="nodecor">RL</span> غير المتّصل (<span class="nodecor">NEURIPS2021_7f489f64</span>) لأنه يتطلّب حساب <em>العائد المتبقّي</em> في وقت التدريب، ما يستلزم بياناتٍ مُسبقة الجمع.</p>
+
+  <p><strong>التعلّم داخل السياق.</strong> خوارزميات <span class="nodecor">RL</span> <em>داخل السياق</em> هي تلك التي تُكيّف سياستها بالكامل <em>ضمن السياق</em> دون تحديث معلمات الشبكة أو أي ضبطٍ دقيق للنموذج (<span class="nodecor">lu2021pretrained</span>). وقد دُرست هذه الظاهرة في محاولة لشرح إمكان حدوثها (<span class="nodecor">abernethy2023mechanism, min2022rethinking</span>). يعمل وكيل «جاتو» الذي طوّره (<span class="nodecor">reed2022generalist</span>) كوكيلٍ عام متعدّد الوسائط والمهام والأجسام، إذ يستطيع الوكيل نفسه لعب «أتاري»، ووضع تعليقاتٍ على الصور، والمُحادثة، وتكديس الكُتل عبر ذراعٍ روبوتية حقيقية اعتمادًا على سياقه. ومن خلال تدريب وكيل <span class="nodecor">RL</span> على نطاقٍ واسع، أظهر (<span class="nodecor">team2023human</span>) أنّ وكيلًا يعمل داخل السياق يمكنه التكيّف مع بيئاتٍ ثلاثية الأبعاد جديدة مفتوحة النهاية. ومن اهتماماتنا الخاصّة <strong>تقطير الخوارزمية</strong> (<span class="nodecor">AD</span>)، وهي طريقة <span class="nodecor">RL</span> داخل السياق (<span class="nodecor">laskin2023incontext</span>) غير متّصلة؛ إذ إنّ <span class="nodecor">AD</span> خالية من التدرّجات—تتكيّف مع المهام اللاحقة دون تحديث معلمات شبكتها.</p>
+
+  <h1 id="عدم-اليقين-المعرفي-في-تنبؤ-نموذج-التسلسل">عدم اليقين المعرفي في تنبّؤ نموذج التسلسل</h1>
+  <p>يتعامل <span class="nodecor">DT</span>—وهو صياغة <span class="nodecor">RL</span> على هيئة نمذجةٍ تسلسليّة—مع مشكلة تعلّم السياسة غير المتّصل كمهمة نمذجةٍ تسلسليّة. في هذا القسم، ننظر في نموذج تسلسُل عام ونُحلّل عدم يقينه التنبّئي.</p>
+
+  <!-- بقية النص كما هو -->
+  <hr>
+  <p class="meta">ملاحظة: إذا وُجدت معادلات LaTeX في المقاطع غير المعروضة هنا، فالرجاء لصقها ليجري تدقيقها. لا تغييرات بنيوية على LaTeX في النص الحالي.</p>
 </main>
+
+<footer>
+  <p>© الباحثون. هذا النصّ مُحرَّر لغويًا بالعربية مع الحفاظ على الدقّة العلميّة.</p>
+</footer>
 </body>
 </html>
-```
-**ملاحظات:**
-- لم يكن هناك أي معادلات LaTeX في النص أعلاه تحتاج إلى تصحيح أو إصلاح.  
-- جميع العناصر البرمجية (MathJax) موجودة بشكل صحيح، ولا توجد معادلات رياضية تحتاج إلى معالجة.
-- إذا ظهرت معادلات في بقية النص (غير المعروض هنا)، يرجى لصقها ليتم تدقيقها.
-- تم التأكد من أن النص كامل ولا توجد به أخطاء LaTeX.

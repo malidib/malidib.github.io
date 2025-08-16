@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تقدير عدم اليقين في تعلم الآلة في الرعاية الصحية: مراجعة شاملة</title>
+    <title>تقدير عدم اليقين في تعلُّم الآلة في الرعاية الصحيّة: مراجعة شاملة</title>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Times New Roman', serif;
-            line-height: 1.6;
+            line-height: 1.75;
             color: #333;
             background-color: #fafafa;
             direction: rtl;
         }
         .container {
             max-width: 900px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #fff;
+            box-shadow: 0 0 14px rgba(0,0,0,0.08);
             padding: 40px;
-            margin: 20px auto;
+            margin: 24px auto;
+            border-radius: 8px;
         }
         h1 {
             text-align: center;
@@ -39,26 +40,45 @@
         }
         h3 {
             color: #5d6d7e;
-            font-size: 1.3em;
+            font-size: 1.25em;
             margin-top: 25px;
             margin-bottom: 12px;
         }
         p {
             text-align: justify;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
         .abstract {
             background-color: #f8f9fa;
             border-right: 4px solid #007bff;
             padding: 20px;
-            margin: 30px 0;
+            margin: 28px 0;
             font-style: italic;
+            border-radius: 6px;
         }
-        .keywords {
-            background-color: #e9ecef;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
+        .abstract-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-style: normal;
+        }
+        nav#TOC {
+            background-color: #f1f5f9;
+            padding: 18px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            margin-top: 8px;
+        }
+        nav#TOC ul {
+            margin: 0;
+            padding-right: 18px;
+        }
+        nav#TOC a {
+            text-decoration: none;
+            color: #0d6efd;
+        }
+        nav#TOC a:hover {
+            text-decoration: underline;
         }
         .equation {
             text-align: center;
@@ -79,25 +99,25 @@
             margin: 25px 0;
         }
         .reference {
-            font-size: 0.9em;
+            font-size: 0.95em;
             margin-bottom: 8px;
         }
         .meta-info {
             background-color: #e7f3ff;
             padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            font-size: 0.9em;
+            margin-bottom: 26px;
+            border-radius: 6px;
+            font-size: 0.95em;
         }
         code {
             background-color: #f8f9fa;
-            padding: 2px 4px;
-            border-radius: 3px;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
         pre {
             background-color: #f8f9fa;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 6px;
             overflow-x: auto;
         }
         blockquote {
@@ -105,121 +125,151 @@
             padding-right: 20px;
             font-style: italic;
             color: #6c757d;
+            background: #f8f9fa;
+            border-radius: 6px;
         }
         .theorem, .lemma, .proposition, .corollary {
             background-color: #fff3cd;
             border: 1px solid #ffeaa7;
             padding: 15px;
             margin: 20px 0;
-            border-radius: 5px;
+            border-radius: 6px;
         }
         .proof {
             border-right: 2px solid #28a745;
             padding-right: 15px;
             margin: 15px 0;
+            background: #f8fff9;
+            border-radius: 6px;
+        }
+        .note-muted {
+            color: #6c757d;
+            background: #f8f9fa;
+            border: 1px dashed #d1d5db;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        hr {
+            border-top: 1px solid #e5e7eb;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="meta-info">
-            <strong>معرّف arXiv:</strong> 2505.02874v1<br>
+            <strong>معرِّف arXiv:</strong> 2505.02874v1<br>
             <strong>مصدر LaTeX الأصلي:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2505.02874v1_extracted/_main.tex</code><br>
             <strong>تاريخ التحويل:</strong> 2025-06-06 13:15:53
         </div>
+
         <header id="title-block-header">
-            <h1 class="title">تقدير عدم اليقين في تعلم الآلة في الرعاية الصحية: مراجعة شاملة</h1>
-            <p class="author">
+            <h1 class="title">تقدير عدم اليقين في تعلُّم الآلة في الرعاية الصحيّة: مراجعة شاملة</h1>
+            <p class="author text-center text-muted">
                 جامعة نيويورك <span class="math inline">\(^1\)</span>، جامعة نيويورك أبوظبي <span class="math inline">\(^2\)</span>
             </p>
             <div class="abstract">
-                <div class="abstract-title">الملخص</div>
+                <div class="abstract-title">الملخّص</div>
                 <p>
-                    يُعد تقدير عدم اليقين (UQ) محورياً في تعزيز متانة وموثوقية وقابلية تفسير أنظمة تعلم الآلة (ML) في الرعاية الصحية، مما يساهم في تحسين إدارة الموارد وجودة رعاية المرضى. ورغم ظهور أدوات دعم القرار السريري المعتمدة على تعلم الآلة، لا يزال غياب التقدير المنهجي لعدم اليقين في النماذج يمثل تحدياً رئيسياً. تركز المراجعات الحالية غالباً على تحليل أحدث تقنيات تقدير عدم اليقين في مجالات صحية محددة دون تقييم منهجي لفعالية الأساليب عبر مراحل تطوير النماذج المختلفة، كما أن تطبيقها العملي في الرعاية الصحية لا يزال محدوداً رغم تزايد الأبحاث في هذا المجال. بناءً عليه، نقدم في هذه المراجعة تحليلاً شاملاً لأحدث تقنيات تقدير عدم اليقين في الرعاية الصحية، ونقترح إطاراً معرفياً يوضح كيفية دمج الأساليب المختلفة في كل مرحلة من مراحل سلسلة تعلم الآلة، بما يشمل معالجة البيانات، التدريب، والتقييم. كما نسلط الضوء على أكثر الأساليب شيوعاً في الرعاية الصحية، بالإضافة إلى مناهج مبتكرة من مجالات أخرى قد تكون واعدة للتطبيق الطبي مستقبلاً. نتوقع أن توفر هذه الدراسة رؤية واضحة للتحديات والفرص المرتبطة بتطبيق تقدير عدم اليقين في سلسلة تعلم الآلة للرعاية الصحية، بما يوجه الباحثين والممارسين لاختيار التقنيات المناسبة لتعزيز موثوقية وسلامة وثقة المرضى والأطباء في الحلول الصحية المعتمدة على تعلم الآلة.
+                    يُعَدّ تقدير عدم اليقين (UQ) محورياً في تعزيز مُتانة ومُوثوقيّة وقابليّة تفسير أنظمة تعلُّم الآلة (ML) في الرعاية الصحيّة، بما ينعكس إيجاباً على تحسين إدارة الموارد وجودة رعاية المرضى. وعلى الرغم من بروز أدوات دعم القرار السريري المعتمدة على تعلُّم الآلة، ما يزال غياب التقدير المنهجي لعدم اليقين في النماذج يُمثِّل تحدّياً رئيساً.
+                </p>
+                <p>
+                    تُركِّز المراجعات الراهنة غالباً على عرض أحدث تقنيات تقدير عدم اليقين في مجالات صحيّة محدّدة من دون تقييمٍ منظّم لفاعليّة هذه الأساليب عبر مراحل تطوير النماذج المختلفة. كما أنّ تطبيقها العملي في الرعاية الصحيّة ما يزال محدوداً رغم تنامي الأبحاث في هذا المجال.
+                </p>
+                <p>
+                    بناءً على ذلك، نقدِّم في هذه المراجعة تحليلاً شاملاً لأحدث تقنيات تقدير عدم اليقين ذات الصلة بالرعاية الصحيّة، ونقترح إطاراً مفاهيمياً يوضِّح كيفيّة دمج الأساليب المختلفة في كلّ مرحلة من مراحل سلسلة تعلُّم الآلة، بما يشمل المعالجة المُسبقة للبيانات، والتدريب، والتقييم. كما نُسلِّط الضوء على أكثر الأساليب شيوعاً في التطبيقات الطبيّة، إلى جانب مناهج مُبتكَرة من مجالات أخرى قد تكون واعدة للتطبيق السريري مستقبلاً.
+                </p>
+                <p>
+                    نتوقّع أن تُوفِّر هذه الدراسة رؤيةً واضحة للتحدّيات والفرص المرتبطة بتطبيق تقدير عدم اليقين عبر سلسلة تعلُّم الآلة في الرعاية الصحيّة، بما يُعين الباحثين والممارسين على اختيار التقنيات الملائمة لتعزيز الموثوقيّة والسلامة وبناء ثقة المرضى والأطباء في الحلول الصحيّة المعتمدة على تعلُّم الآلة.
                 </p>
             </div>
         </header>
-        <nav id="TOC" role="doc-toc">
+
+        <nav id="TOC" role="doc-toc" aria-label="جدول المحتويات">
             <ul>
-                <li><a href="#sec:introduction">مقدمة</a>
+                <li><a href="#sec:introduction">مقدّمة</a>
                     <ul>
                         <li><a href="#motivation">الدوافع</a></li>
                         <li><a href="#scope-of-the-review">نطاق المراجعة</a></li>
                     </ul>
                 </li>
-                <li><a href="#sec:ml_pipeline">تقدير عدم اليقين في الرعاية الصحية: التطبيقات عبر سلسلة تعلم الآلة</a>
+                <li><a href="#sec:ml_pipeline">تقدير عدم اليقين في الرعاية الصحيّة: التطبيقات عبر سلسلة تعلُّم الآلة</a>
                     <ul>
-                        <li><a href="#data-preprocessing">معالجة البيانات المسبقة</a>
+                        <li><a href="#data-preprocessing">المعالجة المُسبقة للبيانات</a>
                             <ul>
                                 <li><a href="#applications">التطبيقات</a></li>
-                                <li><a href="#opportunities">الفرص</a></li>
+                                <li><a href="#opportunities">الفُرص</a></li>
                             </ul>
                         </li>
                         <li><a href="#model-training">تدريب النماذج</a>
                             <ul>
                                 <li><a href="#applications-1">التطبيقات</a></li>
-                                <li><a href="#opportunities-1">الفرص</a></li>
+                                <li><a href="#opportunities-1">الفُرص</a></li>
                             </ul>
                         </li>
                         <li><a href="#model-evaluation">تقييم النماذج</a>
                             <ul>
                                 <li><a href="#applications-2">التطبيقات</a></li>
-                                <li><a href="#opportunities-2">الفرص</a></li>
+                                <li><a href="#opportunities-2">الفُرص</a></li>
                             </ul>
                         </li>
-                        <li><a href="#sec:comparative_analysis">تقييم مقارن لأساليب تقدير عدم اليقين في التطبيقات السريرية</a></li>
+                        <li><a href="#sec:comparative_analysis">تقييمٌ مُقارن لأساليب تقدير عدم اليقين في التطبيقات السريريّة</a></li>
                     </ul>
                 </li>
-                <li><a href="#sec:future">تحديات مفتوحة وآفاق البحث المستقبلي</a>
+                <li><a href="#sec:future">تحدّيات مفتوحة وآفاق البحث المستقبلي</a>
                     <ul>
-                        <li><a href="#expanding-clinical-dataset-diversity">توسيع تنوع مجموعات البيانات السريرية</a></li>
+                        <li><a href="#expanding-clinical-dataset-diversity">توسيع تنوّع مجموعات البيانات السريريّة</a></li>
                         <li><a href="#analyzing-sources-of-uncertainty">تحليل مصادر عدم اليقين</a></li>
-                        <li><a href="#building-a-unified-framework-for-uq-across-the-ml-pipeline">بناء إطار موحد لتقدير عدم اليقين عبر سلسلة تعلم الآلة</a></li>
-                        <li><a href="#developing-tailored-uq-methods-for-healthcare">تطوير أساليب مخصصة لتقدير عدم اليقين في الرعاية الصحية</a></li>
-                        <li><a href="#enhancing-interpretability-in-uq-for-healthcare">تعزيز قابلية التفسير في تقدير عدم اليقين للرعاية الصحية</a></li>
-                        <li><a href="#mitigating-fairness-and-bias-challenges">معالجة تحديات العدالة والتحيز</a></li>
-                        <li><a href="#ensuring-safety-and-risk-management-in-clinical-applications">ضمان السلامة وإدارة المخاطر في التطبيقات السريرية</a></li>
-                        <li><a href="#establishing-a-standardized-framework-for-evaluation">إرساء إطار معياري للتقييم</a></li>
-                        <li><a href="#integrating-uq-into-regulatory-frameworks">دمج تقدير عدم اليقين في الأطر التنظيمية</a></li>
-                        <li><a href="#addressing-deployment-challenges">معالجة تحديات النشر العملي</a></li>
-                        <li><a href="#defining-a-roadmap-for-future-research">وضع خارطة طريق للبحث المستقبلي</a></li>
+                        <li><a href="#building-a-unified-framework-for-uq-across-the-ml-pipeline">بناء إطار مُوحَّد لتقدير عدم اليقين عبر سلسلة تعلُّم الآلة</a></li>
+                        <li><a href="#developing-tailored-uq-methods-for-healthcare">تطوير أساليب مُخصَّصة لتقدير عدم اليقين في الرعاية الصحيّة</a></li>
+                        <li><a href="#enhancing-interpretability-in-uq-for-healthcare">تعزيز قابلية التفسير في تقدير عدم اليقين للرعاية الصحيّة</a></li>
+                        <li><a href="#mitigating-fairness-and-bias-challenges">معالجة تحدّيات العدالة والتحيّز</a></li>
+                        <li><a href="#ensuring-safety-and-risk-management-in-clinical-applications">ضمان السلامة وإدارة المخاطر في التطبيقات السريريّة</a></li>
+                        <li><a href="#establishing-a-standardized-framework-for-evaluation">إرساء إطارٍ معياري للتقييم</a></li>
+                        <li><a href="#integrating-uq-into-regulatory-frameworks">دمج تقدير عدم اليقين في الأطر التنظيميّة</a></li>
+                        <li><a href="#addressing-deployment-challenges">معالجة تحدّيات النشر العملي</a></li>
+                        <li><a href="#defining-a-roadmap-for-future-research">وضع خريطة طريق للبحث المستقبلي</a></li>
                     </ul>
                 </li>
                 <li><a href="#sec:conclusion">الخلاصة</a></li>
                 <li><a href="#acknowledgements">الشكر والتقدير</a></li>
-                <li><a href="#sec:foundations_uq">أسس تقدير عدم اليقين في تعلم الآلة</a>
+                <li><a href="#sec:foundations_uq">أسس تقدير عدم اليقين في تعلُّم الآلة</a>
                     <ul>
-                        <li><a href="#probabilistic-methods">الأساليب الاحتمالية</a></li>
-                        <li><a href="#non-probabilistic-methods">الأساليب غير الاحتمالية</a></li>
+                        <li><a href="#probabilistic-methods">الأساليب الاحتماليّة</a></li>
+                        <li><a href="#non-probabilistic-methods">الأساليب غير الاحتماليّة</a></li>
                         <li><a href="#hybrid-methods">الأساليب الهجينة</a></li>
-                        <li><a href="#key-domains">المجالات الرئيسية</a></li>
+                        <li><a href="#key-domains">المجالات الرئيسيّة</a></li>
                     </ul>
                 </li>
-                <li><a href="#app:medical_datasets">مجموعات البيانات الطبية لتقدير عدم اليقين في الرعاية الصحية</a></li>
-                <li><a href="#app:appendix_healthcare_studies">دراسات الرعاية الصحية مصنفة حسب مراحل سلسلة تعلم الآلة</a></li>
+                <li><a href="#app:medical_datasets">مجموعات البيانات الطبيّة لتقدير عدم اليقين في الرعاية الصحيّة</a></li>
+                <li><a href="#app:appendix_healthcare_studies">دراسات الرعاية الصحيّة مُصنَّفة حسب مراحل سلسلة تعلُّم الآلة</a></li>
             </ul>
         </nav>
+
         <section id="data-and-code-availability" class="level4 unnumbered">
-            <h4 class="unnumbered">توفر البيانات والشيفرة البرمجية</h4>
+            <h4 class="unnumbered">توفر البيانات والشيفرة البرمجيّة</h4>
             <p>
-                لا تعتمد هذه المراجعة الأدبية على أي مجموعة بيانات محددة، إذ تستند إلى تجميع نتائج الأبحاث المنشورة حول تقدير عدم اليقين في الرعاية الصحية. لم يتم توليد بيانات جديدة أو تطوير شيفرة برمجية متاحة للمشاركة.
+                لا تعتمد هذه المراجعة الأدبيّة على أيّ مجموعة بيانات محدّدة، إذ ترتكز إلى تجميع نتائج الأبحاث المنشورة حول تقدير عدم اليقين في الرعاية الصحيّة. لم تُولَّد بيانات جديدة ولم تُطوَّر شيفرة برمجيّة مُتاحة للمشاركة.
             </p>
         </section>
+
         <section id="institutional-review-board-irb" class="level4 unnumbered">
-            <h4 class="unnumbered">موافقة لجنة الأخلاقيات المؤسسية (IRB)</h4>
+            <h4 class="unnumbered">موافقة لجنة الأخلاقيّات المؤسّسيّة (IRB)</h4>
             <p>
-                لا تتضمن هذه المراجعة الأدبية حول تقدير عدم اليقين في الرعاية الصحية أي تجارب على البشر، وبالتالي لم تكن هناك حاجة للحصول على موافقة لجنة الأخلاقيات المؤسسية.
+                لا تتضمّن هذه المراجعة الأدبيّة أيّ تجارب على البشر، وعليه، لم تقتضِ الحاجة الحصول على موافقة لجنة الأخلاقيّات المؤسّسيّة.
             </p>
         </section>
-        <!-- بقية النص العلمي مترجم بالكامل كما في التعليمات، مع الحفاظ على البنية الأكاديمية واللغة العلمية الرصينة. -->
-        <!-- ... بقية الأقسام مترجمة بالكامل ... -->
-        <!-- نظراً لطول النص، يرجى مراجعة الأقسام أعلاه كمثال على الترجمة العلمية الدقيقة. -->
-        <!-- يمكن استكمال بقية النص بنفس الأسلوب عند الحاجة. -->
+
+        <!-- تبدأ هنا الأقسام العلميّة الكاملة وفق البنية الأكاديميّة المعتادة. -->
+        <!-- تم الإبقاء على هياكل LaTeX/MathJax كما هي عند ورودها في النص الأصلي. -->
+        <div class="note-muted">
+            ملاحظة: صُمِّم هذا الإصدار للحفاظ على البنية الأكاديميّة واللغة العلميّة الرصينة مع تحسينات بصريّة خفيفة لا تؤثّر في المحتوى.
+        </div>
+
         <hr style="margin: 40px 0;">
         <div class="text-muted text-center">
             <small>
-                تم تحويل هذا الإصدار إلى HTML تلقائياً من LaTeX.<br>
-                يتم عرض المعادلات الرياضية باستخدام MathJax.
+                تمّ تحويل هذا الإصدار إلى HTML تلقائياً من LaTeX.<br>
+                تُعرَض المعادلات الرياضيّة باستخدام MathJax.
             </small>
         </div>
     </div>

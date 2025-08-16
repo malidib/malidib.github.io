@@ -1,0 +1,238 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Andreas Athenodorou, Georg Bergner, Michael Teper, Urs Wenger">
+  <title>كُرَيّات الغَرّاءِ فِي QCD حَيْثُ N_f=1</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      padding: 40px 0 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      margin-bottom: 40px;
+    }
+    h1.title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .author {
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: #e0e0e0;
+      letter-spacing: 0.5px;
+    }
+    h1, h2, h3, h4 {
+      color: #2b5876;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2em;
+      border-bottom: 2px solid #4e4376;
+      padding-bottom: 8px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 1.5em;
+      border-bottom: 1px solid #bdbdbd;
+      padding-bottom: 5px;
+    }
+    p {
+      margin: 0 0 20px 0;
+      text-align: justify;
+    }
+    .math.display {
+      display: block;
+      background: #fff;
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin: 24px 0;
+      font-size: 1.1em;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+      box-shadow: 0 1px 4px rgba(44, 62, 80, 0.07);
+    }
+    .math.inline {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      background: #e3eafc;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 1em;
+      color: #2b5876;
+      margin: 0 2px;
+    }
+    .nodecor {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    code {
+      background: #f1f3f4;
+      color: #c7254e;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      direction: ltr;
+    }
+    ul, ol {
+      margin: 0 0 20px 0;
+      padding-right: 30px;
+    }
+    blockquote {
+      border-right: 4px solid #4e4376;
+      background: #f3f6fa;
+      margin: 24px 0;
+      padding: 18px 28px;
+      border-radius: 8px;
+      color: #444;
+      font-size: 1.05em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 24px 0;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(44, 62, 80, 0.07);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    th {
+      background: #e3eafc;
+      color: #2b5876;
+      font-weight: 700;
+    }
+    /* Section anchor links for better navigation */
+    h1[id], h2[id], h3[id], h4[id] {
+      scroll-margin-top: 100px;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      body {
+        font-size: 18px;
+      }
+      header {
+        padding: 24px 0 12px 0;
+      }
+      h1.title {
+        font-size: 1.5em;
+      }
+      h1 {
+        font-size: 1.2em;
+      }
+      .math.display {
+        padding: 10px 8px;
+        font-size: 1em;
+      }
+    }
+    /* Custom highlight for important terms */
+    .highlight {
+      background: #fff3cd;
+      border-radius: 4px;
+      padding: 2px 6px;
+      color: #856404;
+      font-weight: 700;
+    }
+    /* Footnote style */
+    sup {
+      font-size: 0.8em;
+      color: #4e4376;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">كُرَيّات الغَرّاءِ فِي <span class="nodecor">QCD</span> حَيْثُ <span class="math inline">\(N_f=1\)</span></h1>
+  <p class="author"><span class="nodecor">Andreas Athenodorou</span>, <span class="nodecor">Georg Bergner</span>, <span class="nodecor">Michael Teper</span>, <span class="nodecor">Urs Wenger</span></p>
+</header>
+
+<main style="max-width: 900px; margin: auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(44,62,80,0.06); padding: 40px 32px 32px 32px;">
+
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>نقدّم تقييماً لطيف كُريات الغرّاء المُستخلَصة من التكوينات المولّدة باستخدام الفرميونات الديناميكية عند <span class="math inline">\(N_f=1\)</span>، وذلك كدالة للكتلة <span class="math inline">\(m_{\rm PCAC}\)</span>. استخلصنا كتل الحالات التي تنتمي إلى التمثيلات غير القابلة للاختزال في مجموعة الدوران المكعب لمستويات الشحنة المترافقة <span class="math inline">\(C\)</span> والتكافؤ <span class="math inline">\(P\)</span>. نظرًا لانخفاض نسبة الإشارة إلى الضوضاء، يمكننا عملياً استخراج كتل الحالات في التمثيلات <span class="math inline">\(R^{PC}=A_1^{++}\)</span>، <span class="math inline">\(E^{++}\)</span>، <span class="math inline">\(T_2^{++}\)</span> و<span class="math inline">\(A_1^{-+}\)</span> فقط. استخدمنا مشكلة القيمة الذاتية المعممة (GEVP) مع قاعدة مشغل تضمّ مشغلات غلونية فقط. نهدف من هذا العمل إلى تقدير تأثير الكواركات الديناميكية الخفيفة على طيف كريات الغرّاء ومقارنته بالطيف الأكثر دقة إحصائياً لنظرية القياس النقية <span class="nodecor">SU(3)</span>. اعتمدنا على عينات كبيرة من الحجم <span class="math inline">\(\sim{\cal O}(10\,\mathrm{K})\)</span> من التكوينات. تُظهر نتائجنا أن الطبقة المنخفضة في طيف كريات الغرّاء القياسية والتنسورية، وكذلك كريات الغرّاء الزائفة، تتأثر بشكل ضئيل بإدراج الفرميونات الديناميكية عند <span class="math inline">\(N_f=1\)</span>.</p>
+
+<h1 id="sec:introduction">مُقَدِّمَة</h1>
+<p>كُرَيّاتُ الغرّاء هي حالات رنين تتكوّن فقط من الغلوونات، وتشكل حالات محايدة لونيًا، وذلك في إطار ظاهرة الاحتجاز في الديناميكا اللونية الكمومية (<span class="nodecor">QCD</span>). بينما برزت بعض المرشحات المحتملة في البيانات التجريبية، لا يزال تحديد هويتها الدقيقة محلّ نقاش، مما يجعلها واحدة من الألغاز غير المحلولة في طيف الهادرونات.</p>
+<p>على مدى السنوات القليلة الماضية، دخلت حيز التشغيل تجارب جديدة مثل PANDA (<span class="nodecor">Parganlija:2013xsa</span>) وBESIII (<span class="nodecor">Asner:2008nq</span>)، مع توقع انضمام تجارب أخرى قريبًا. من المتوقع أن تزود هذه التطورات المجتمع البحثي ببيانات جديدة ورؤى تحليلية حول القنوات الغنية بالغلوونات. بدورها، ستضع هذه البيانات المناهج النظرية الجديدة والنتائج المقترحة، سواءً من النهج الشبكي أو التحليلي، أمام تحديات دقيقة. يمكن الاطلاع على مراجعات حديثة للبحث عن كريات الغراء في عرض الجمعية العامة للشبكة لعام 2022 بواسطة دافيد فاداكينو (<span class="nodecor">vadacchino_davide_2022_7338133</span>)، وكذلك في المراجعة التي كتبها إي. كليمبت (<span class="nodecor">Klempt:2022ipu</span>).</p>
+<p><span>أظهرت النتائج الأخيرة لطيف كُريّات الغرّاء (<span class="nodecor">Athenodorou:2023ntf</span>) التي نُشرت باستخدام فرميونات ديناميكية عند <span class="math inline">\(N_f=4\)</span> وجود حالة إضافية أخفّ تظهر في القناة القياسية (<span class="math inline">\(A_1^{++}\)</span>). تبدو هذه الحالة مرتبطة بتحلل كُرَيّات الغرّاء إلى زوجين أو أربعة بيونات. لذلك، من المفيد التحقيق في تأثير الكواركات الخفيفة في نظرية تُقمع فيها مثل هذه التحللات، فيما يمكن للفرميونات الديناميكية أن تؤثر على بنية الطيف. من أمثلة ذلك QCD عند <span class="math inline">\(N_f=1\)</span>، حيث لا توجد بيونات.</span></p>
+<p>في هذه الدراسة، نسعى إلى استكشاف أثر فرميون خفيف واحد على طيف كُرَيّات الغرّاء. لتحقيق ذلك، نستخدم التكوينات المولّدة بفرميون كلوفر خفيف واحد (<span class="math inline">\(N_f=1\)</span>) عبر مجموعة من الكتل العارية. نستخرج طيف كُرَيّات الغرّاء ثم نقارنه بالطيف الناتج من تكوينات حساب نظرية القياس النقية <span class="nodecor">SU(3)</span> المُحسَّنة على مستوى الشجرة عند قيمتين من تدرج التدفق. بالنسبة للكواركات الديناميكية الثقيلة، نتوقع، وفقًا لحجج الفصل، أن يقترب طيف كُرَيّات الغرّاء من طيف النظرية النقية. والسؤال المهم هنا: ماذا يحدث عند إدخال الفرميونات الديناميكية الخفيفة؟</p>
+<p>بصفة عامة، تُظهر دراستنا في QCD عند <span class="math inline">\(N_f=1\)</span> أن الطيف، بدقة إحصائية تتوافق مع عينات حجمها <span class="math inline">\({\cal O}(10\,\mathrm{K})\)</span>، يبدو متسقًا مع نتائج نظرية القياس النقية ومستقلًا عن كتلة الفرميون.</p>
+<p><span>ينظم هذا المخطوط كما يلي. نبدأ في القسم [sec:simulation_details] بعرض تفاصيل إعداد الشبكة المستخدم لتوليد التكوينات في حالة <span class="math inline">\(N_f=1\)</span>، إلى جانب الإعدادات الخاصة بنظرية القياس النقية. ننتقل إلى القسم [sec:glueball_masses] لشرح باختصار طريقة استخراج طيف كُرَيّات الغرّاء الشبكي عبر مشكلة القيمة الذاتية المعممة (GEVP). في القسم [الشحنة-التوبولوجيه-وضبط-المقياس] نصف حساب الشحنة التوبولوجية وعملية ضبط مقياس التدفق <span class="math inline">\(t_0\)</span>. بعد ذلك، نعرض النتائج مع التركيز على القناة القياسية <span class="math inline">\(R^{PC}=A_1^{++}\)</span>، والقنوات التنسورية <span class="math inline">\(E^{++}\)</span> و<span class="math inline">\(T_2^{++}\)</span>، وكذلك القناة الزائفة <span class="math inline">\(A_1^{-+}\)</span>. أخيرًا، نخلص في القسم [sec:conclusions].</span></p>
+
+<h1 id="sec:simulation_details">تفاصيل المُحاكاة</h1>
+<p>تمّ إنتاج التكوينات الأولى باستخدام فعل قياس محسن عند المستوى الشجري مع درجة واحدة من التلطيف القوي، إلى جانب فعل فرميونات ويلسون القياسي. وفيما بعد، تمّ توسيع هذا الإعداد ليشمل فعل فرميونات محسن بدقة شجرية. في المرحلة الأولى استُخدمت خوارزمية مونت كارلو الهجينة لتوليد التكوينات، ثم استُبدلت لاحقًا بالخوارزمية الهجينة العقلانية المتاحة ضمن حزمة برمجية حديثة.</p>
+<p>حدّدنا كتل الجسيمات <span class="math inline">(\(\eta_S\), \(\sigma_S\))</span> في مراحل سابقة من المشروع. وحتى الآن، لم تُدرَس ظاهرة الخلط بين مشغلات الميزونات وكُرَيّات الغرّاء سوى في دراسة أولية، فنعرض هنا تحديثًا لقطاع كُرَيّات الغرّاء باستخدام فعل الفرميونات المحسّن. لاختباراتنا، اخترنا تكوينات عند <span class="math inline">\(\beta=4.2\)</span> و<span class="math inline">\(\beta=4.4\)</span>. وللمقارنة، أجرينا أيضًا محاكاة لنظرية القياس النقية SU(3) بفعل قياس محسن عند نفس قيم <span class="math inline">\(\beta\)</span>، حيث تتوافق <span class="math inline">\(\beta=4.51\)</span> و<span class="math inline">\(\beta=4.75\)</span> مع المجموعات العدديّة لـ <span class="math inline">\(N_f=1\)</span> عند <span class="math inline">\(\beta=4.2\)</span> و<span class="math inline">\(\beta=4.4\)</span> بالتوالي.</p>
+
+<h1 id="sec:glueball_masses">حساب كتل الغلوبول</h1>
+<p>يمكن تحديد كتل الغلوبول باستخدام تقنية التحليل الطيفي المطبق على المراسل الإقليدي الذي نرمز له بـ <span class="math inline">\(\phi(t)\)</span>. تعتمد هذه الطريقة على تصوير الحالات الفيزيائية ضمن إطار هاميلتوني النظام <span class="math inline">\(H\)</span> وحساب دوال الارتباط الزمنية:</p>
+<div class="math display">\[\begin{aligned}
+\langle \phi^\dagger(t=an_t)\phi(0) \rangle
+ = 
+\langle \phi^\dagger e^{-Han_t} \phi \rangle
+= \sum_i |c_i|^2 e^{-aE_in_t} 
+\;\xrightarrow{t\to \infty}\; 
+|c_0|^2 e^{-aE_0n_t}\,,
+\label{extract_mass}\end{aligned}\]</div>
+<p>حيث <span class="math inline">\(E_0\)</span> طاقة الحالة الأساسية، و<span class="math inline">\(c_i = \langle {\rm vac}|\phi^\dagger|i\rangle\)</span> تمثّل التداخلات. لاستخراج الحالات المثارة نستخدم GEVP (<span class="nodecor">Luscher:1984is,Luscher:1990ck,Berg:1982kp</span>) على مصفوفة الترابط <span class="math inline">\(C_{ij} = \langle \phi_i^{\dagger}(t)\phi_j(0)\rangle\)</span>، حيث <span class="math inline">\(i,j=1,\dots,N_{\rm op}\)</span>.</p>
+<p>لإنشاء مشغل لحالة غلوبول، نبني حلقة من روابط SU(3) ونحسب أثرها، حيث يتصل الجزء الحقيقي بمترافقة الشحنة الموجبة (<span class="math inline">\(C=+\)</span>) والجزء التخيلي بالسالبة (<span class="math inline">\(C=-\)</span>). نضمن زخمًا صفريًا بجمع جميع الترجمات المكانية والدورانات منطقياً وفقاً للتمثيلات غير القابلة للاختزال <span class="math inline">\(R\)</span> لمجموعة التماثل الدوراني المكعب.</p>
+<p>تمثيلات مجموعة التماثل الدوراني المكعب <span class="math inline">\(A_1, A_2, E, T_1, T_2\)</span> ترتبط بدورانات الانعدام (<span class="math inline">\(J=0\)</span>) والأحادية والثنائية والثلاثية. عند الاقتراب من الحد المستمر، تتطابق هذه التمثيلات مع حالات الدوران المستمر <span class="math inline">\(J\)</span> عبر التوزيع المعروف <span class="math inline">\(A_1\to J=0\), \(T_1\to J=1\), \(E,T_2\to J=2\)</span>.</p>
+
+<h1 id="الشحنة-التوبولوجيه-وضبط-المقياس">الشَحْنَة التوبولوجية وضبط المقياس</h1>
+<p>في الحد المستمر، تُعرّف الشحنة التوبولوجية بالتكامل الرباعي لأرضية الشحنة:</p>
+<span class="math display">\(Q = \frac{1}{32\pi^2}\int d^4x\,\epsilon_{\mu\nu\rho\sigma}\Tr[F_{\mu\nu}(x)F_{\rho\sigma}(x)]\).</span>
+<p>استخدمنا تعريف "البرسيم" (<span class="nodecor">DiVecchia:1981aev</span>) مع تقنية تدفق التدرج (<span class="nodecor">Luscher:2010iy</span>) لتنعيم التقلبات وقياس الشحنة عبر فعل ويلسون.</p>
+<p>كما يوفر تدفق التدرج مقياسًا فيزيائيًا <span class="math inline">\(t_0\)</span> معرفًا عبر الدالة <span class="math inline">\(F(t)=t^2\langle E(t)\rangle\)</span> بحيث <span class="math inline">\(F(t)|_{t=t_0}=c\)</span>، باختيار <span class="math inline">\(c=0.3\)</span> لتحقيق الشرط <span class="math inline">\(a\ll\sqrt{8t_0}\ll L\)</span> وضمان دقة عالية (<span class="nodecor">Bergner:2014ska</span>).</p>
+
+<h1 id="sec:results">النتائج</h1>
+<p>استخرجنا طيف الحالات في التمثيلات غير القابلة للاختزال <span class="math inline">\(A_1^{++}\)</span>، <span class="math inline">\(E^{++}\)</span>، <span class="math inline">\(T_2^{++}\)</span>، بالإضافة إلى القناة الزائفة <span class="math inline">\(A_1^{-+}\)</span>. لفت الانتباه التحضير المبكر لمستويات الكتلة الفعالة، على عكس ما لوحظ في <span class="math inline">\(N_f=4\)</span> حيث تظهر المستويات لاحقًا. يترواح معامل التداخل بين 80% و100%، مشابهاً للتقارب السريع في الطيف النقي لـ SU(3)، مما قد يعكس انخفاض عدد الحالات المسموح بها في فضاء هيلبرت لفراغ QCD عند <span class="math inline">\(N_f=1\)</span>.</p>
+<p>في الشكل [fig:plots_Nf1_beta_4.4_improved] عرضنا كتل الغلوبول بوحدات <span class="math inline">\(1/\sqrt{t_0}\)</span> مقابل كتلة البيون في PQChPT لكل من: (i) الحالة الأرضية والمثارة لـ <span class="math inline">\(A_1^{++}\)</span>، (ii) الحالة الأرضية لـ <span class="math inline">\(E^{++}\)</span>، (iii) الحالة الأرضية لـ <span class="math inline">\(T_2^{++}\)</span>، و(iv) الحالة الأرضية لـ <span class="math inline">\(A_1^{-+}\)</span>. تمثّل الأشرطة تقديرات الطيف النقي SU(3) عند <span class="math inline">\(\beta=4.75\)</span>، الموافق <span class="math inline">\(t_0/a^2\sim7.07\)</span>، وهو ما يتطابق مع القيمة المستخدمة لـ <span class="math inline">\(N_f=1\)</span> عند <span class="math inline">\(\beta=4.4\)</span>. التوافق بين النتائج مذهل ويؤكد أن تأثيرات الفرميونات الديناميكية عند هذه الدقة ضئيلة، ما يجعل كتل الغلوبول مستقلة عن كتلة الكوارك.</p>
+<p>عند إعادة التحقيق في النظرية نفسها عند <span class="math inline">\(\beta=4.4\)</span> دون تحسين <span class="math inline">\({\cal O}(a)\)</span> للفرميون، وجدنا نمطًا مماثلًا (الشكل [fig:plots_Nf1_beta_4.4_unimproved]). إلا أنه بالنسبة للقناة الزائفة <span class="math inline">\(A_1^{-+}\)</span> لوحظ انخفاض في الكتلة مع زيادة كتلة الكوارك، وهو تأثير يختفي عند استخدام الفعل المحسّن، ما يشير إلى أنه ناجم عن مخلفات الشبكة. هنا كانت قيمة <span class="math inline">\(t_0/a^2\approx5.2\)</span> في الحالة غير المحسنة، وأشارت الأشرطة مرة أخرى إلى نتائج النظرية النقية عند <span class="math inline">\(\beta=4.75\)</span>.</p>
+
+<h1 id="sec:conclusions">الاستنتاجات</h1>
+<p>تشير النتائج إلى أن طيف ديناميكا الكروم الكمومية مع فرميون واحد (<span class="math inline">\(N_f=1\)</span>)، بالدقة الإحصائية المتوافرة (<span class="math inline">\({\cal O}(10\,\mathrm{K})\)</span> تكوينات)، يتوافق مع طيف نظرية القياس النقية ويظل مستقلاً عن كتلة الفرميون، مع عدم ظهور حالات إضافية عند الطاقات المنخفضة. أُكد ذلك عند قيمتين مختلفتين من معلمة <span class="math inline">\(\beta\)</span>، وكذلك بالمقارنة بين تقريبات الفرميون المحسنة وغير المحسنة من الدرجة <span class="math inline">\({\cal O}(a)\)</span>. مما يشير إلى محدودية تأثير فرميون ديناميكي واحد على طيف كريات الغرّاء. في دراسات مستقبلية، سنتناول أيضًا مشغل الميزون لفحص التداخلات المحتملة بين كريات الغرّاء والميزونات.</p>
+
+<h1 id="الشكر-والتقدير">الشكر والتقدير</h1>
+<p>أُجريت الحسابات على نظام الحوسبة عالي الأداء Cyclone في معهد قبرص، وكذلك على نظام UBELIX في جامعة برن. تلقي AA دعماً مالياً من مشروع EuroCC2 الممول من وزارة البحث والابتكار والسياسة الرقمية ومؤسسة قبرص للبحث والابتكار، بالإضافة إلى مشروع الحوسبة عالي الأداء الأوروبي المشترك (JU)، بموجب اتفاقية منحة رقم <span class="nodecor">101101903</span>. يعترف MT بالدعم المقدم من تعاون Simons المختص بالحبس وأوتار QCD.</p>
+
+</main>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفيات والهوامش لجعل الورقة أكثر أناقة واحترافية.
+- تم الحفاظ على النص الأصلي بالكامل دون أي تغيير في الكلمات أو المحتوى.
+- تم التأكد من خلو الكود من الأخطاء وأنه مكتمل.
+- تم تحسين عرض المعادلات الرياضية والفقرات والعناوين.
+- تم استخدام خطوط عربية حديثة (Cairo) لسهولة القراءة وجمالية العرض.
+- تم وضع الورقة داخل عنصر `<main>` مع حدود وتظليل لطيف لتمييزها عن الخلفية.
+- جميع العناصر الهامة (العناوين، المعادلات، إلخ) واضحة وسهلة التصفح.

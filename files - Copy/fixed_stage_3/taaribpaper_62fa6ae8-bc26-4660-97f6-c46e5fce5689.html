@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Feilong Tang">
+  <meta name="author" content="Zhongxing Xu">
+  <meta name="author" content="Zhaojun Qu">
+  <meta name="author" content="Wei Feng">
+  <meta name="author" content="Xingjian Jiang">
+  <meta name="author" content="Zongyuan Ge">
+  <title>استراتيجية التعلم المدرك للنموذج الأولي في سياق التجزئة الدلالية ضعيفة الإشراف</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">استراتيجية التعلم المدرك للنموذج الأولي في سياق التجزئة الدلالية ضعيفة الإشراف</h1>
+<p class="author"><span class="nodecor">Feilong Tang</span></p>
+<p class="author"><span class="nodecor">Zhongxing Xu</span></p>
+<p class="author"><span class="nodecor">Zhaojun Qu</span></p>
+<p class="author"><span class="nodecor">Wei Feng</span></p>
+<p class="author"><span class="nodecor">Xingjian Jiang</span></p>
+<p class="author"><span class="nodecor">Zongyuan Ge</span></p>
+</header>
+<h1 id="ملخص">ملخص</h1>
+<p>تسعى الأساليب الحديثة للتجزئة الدلالية ضعيفة الإشراف (<span class="nodecor">WSSS</span>) إلى دمج المعرفة السياقية لتحسين كامل خرائط تنشيط الفئة (<span class="nodecor">CAM</span>). في هذا العمل، نبيّن أن التحيز المعرفي بين المثيلات والسياقات يحدّ من قدرة النموذج الأولي على استيعاب الدلالات السياقية بدقة. مستوحين من نظرية تعلم النماذج الأولية، نعتمد على الوعي بالنموذج الأولي لاستكشاف السمات المتنوعة والدقيقة للمثيلات. قد تنشط النماذج الأولية السياقية فئات متشابهة ومتكررة بصورة خاطئة بسبب هذا التحيز. لذا، نقترح تعزيز تمثيل النموذج الأولي بتخفيف التحيز وتحسين التغطية المكانية للمناطق الدلالية. لتحقيق ذلك، نعرض استراتيجية التعلم المدرك للنموذج الأولي السياقي (<span class="nodecor">CPAL</span>) التي تستفيد من السياق الدلالي لإثراء الفهم. جوهر الطريقة يكمن في التقاط التباينات داخل الفئة بدقة عبر نماذج أولية مدركة للسياق، مما يسهل التكيف مع السمات الدلالية المتنوّعة للمثيلات. نضع آلية لمحاذاة التوزيع لتعزيز الوعي بالنموذج الأولي من خلال محاذاة توزيع ميزات المثيلات مع المراكز الكثيفة. علاوة على ذلك، نقدّم إطارًا تدريبيًا موحدًا يجمع بين الإشراف التصنيفي القائم على التسميات والإشراف الذاتي المبني على النماذج الأولية. تظهر التجارب على <span class="nodecor">PASCAL VOC 2012</span> و<span class="nodecor">MS COCO 2014</span> أن <span class="nodecor">CPAL</span> يحسّن بشكل ملحوظ الأساليب القائمة ويحقق أداءً رائدًا. وستتاح الشفرة على <a href="https://github.com/Barrett-python/CPAL">https://github.com/Barrett-python/CPAL</a>.</p>
+<h1 id="sec:intro">مقدمة</h1>
+<p>تعد التجزئة الدلالية مهمة أساسية في مجال الرؤية الحاسوبية. وأصبح نهج التجزئة الدلالية ضعيفة الإشراف (<span class="nodecor">WSSS</span>) شائعًا، حيث يتعلم النموذج من إشراف ضعيف مثل تسميات على مستوى الصورة (<span class="nodecor">kolesnikov2016seed, lee2021anti</span>) أو خربشات (<span class="nodecor">lin2016scribblesup, vernaza2017learning</span>) أو مربعات الإحاطة (<span class="nodecor">dai2015boxsup, lee2021bbam, song2019box</span>) بدلًا من التعليقات التوضيحية على مستوى البكسل. تعتمد معظم أساليب WSSS على خرائط تنشيط الفئة (<span class="nodecor">CAM</span>) (<span class="nodecor">zhou2016learning</span>) لتوفير إشارات موقع الكائن وربط المفاهيم البصرية بمناطق البكسل.</p>
+<p>يكمن التحدي الأساسي في WSSS في توليد خرائط تنشيط تغطي الكائن كاملاً. تهدف الدراسات الحديثة (<span class="nodecor">chang2020weakly, sun2020mining, zhang2020inter, wang2023hunting</span>) إلى تحسين دقة التجزئة واستقرارها عبر دمج المعرفة السياقية. مستوحين من تقدم تعلم التمثيل (<span class="nodecor">fan2020learning, wu2021embedded</span>)، قدمت بعض الأعمال (<span class="nodecor">li2021group, su2021context, zhang2020causal, zhang2022multi</span>) نماذج سياقية على مستوى عالمي لتحليل السمات الدلالية بدقة أكبر، لكنها غالبًا ما تتجاهل التباين الكبير داخل الفئة، حيث قد تبدو المناطق التي تنتمي لنفس الفئة مختلفة تمامًا حتى داخل الصورة نفسها. ينتج عن ذلك تباين بين المعرفة السياقية (السمات العالمية داخل الفئة) والمعرفة الخاصة بالمثيل (السمات الفريدة)، مما يصعّب نقل التسميات من مستوى الصورة إلى مستوى البكسل. في هذا العمل، نبين أن تخفيف هذا التحيز يمكن أن يساعد على التقاط مناطق أكثر دقة واكتمالًا، مع إضافة إشارات إشرافية لتسريع هذه العملية.</p>
+<p>تمثيل النموذج الأولي للفئة عبر تخفيف التحيز أظهر فعاليته في كشف أنماط الميزات ضمن مهام التعلم قليل الأمثلة مثل BDCSPN (<span class="nodecor">liu2020prototype</span>). تنص نظرية تعلم النماذج الأولية (<span class="nodecor">zhou2022rethinking, wang2019panet</span>) على أن النماذج الأولية يمكنها تمثيل السمات المحلية والعالمية والمواقع الخاصة بالأجسام. اعتمادًا على التباين داخل الفئة، يمكن لنموذج أولي للمثيل (<span class="nodecor">chen2022self</span>) أن يميز السمات التمييزية لصورة بعينها، بينما تستطيع النماذج الأولية المدعمة بالسياق (<span class="nodecor">zhou2022regional</span>) التقاط أنماط فئوية أكثر شمولًا، مما يعزز تغطية الكائن مقارنةً بنموذج أولي وحيد.</p>
+<p>في هذا العمل، نقترح استراتيجية التعلم المدرك للنموذج الأولي السياقي (<span class="nodecor">CPAL</span>) لاستخراج ميزات فعالة من هيكل العنقود السياقي. نستخرج مثيلات مرتبطة بالصورة الحالية لبناء نماذج أولية سياقية كجيران محتملين، ثم نختار منها الجيران ذوي الصلة العالية بصورة مرنة بناءً على معيار إيجابية ديناميكي. بعد ذلك، نراجع مساهمات هذه النماذج الأولية في تقدير السمات، مما يخفف التحيزات المتعلقة بالتنوع داخل الفئة والمثيل. في الوقت نفسه، نطبق آلية لتوافق توزيع الميزات تدفع ميزات المثيل نحو مراكز العناقيد الكثيفة، مما يعزز الوعي الدقيق بالمثيل.</p>
+<p>...</p>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عنوان المقالة</title>
+    
+    <!-- MathJax for LaTeX math rendering -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['ams', 'amssymb', 'amsmath', 'amsthm', 'newcommand', 'boldsymbol']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    
+    <!-- Bootstrap for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS for academic paper styling -->
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+        
+        .container {
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 20px auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        h3 {
+            color: #5d6d7e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        
+        .abstract {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        .keywords {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .figure {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .table {
+            margin: 25px 0;
+        }
+        
+        .reference {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        
+        .meta-info {
+            background-color: #e7f3ff;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        blockquote {
+            border-left: 4px solid #6c757d;
+            padding-left: 20px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        .theorem, .lemma, .proposition, .corollary {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .proof {
+            border-left: 2px solid #28a745;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="meta-info">
+            <strong>معرّف ArXiv:</strong> 2311.03217v2<br>
+            <strong>LaTeX الأصلي:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2311.03217v2_extracted/main.tex</code><br>
+            <strong>تاريخ التحويل:</strong> 2025-06-06 13:15:50
+        </div>
+        <header id="title-block-header">
+<h1 class="title">عنوان المقالة</h1>
+<p class="author"></p>
+<p class="author">
+<span class="math inline">\(^{1,2,3}\)</span><span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></span><br />
+<span class="math inline">\(^3\)</span><br />
+<span class="math inline">\(^3\)</span><br />
+<span class="math inline">\(^2\)</span><br />
+<span class="math inline">\(^{2,3}\)</span><br />
+<span class="math inline">\(^{4,5,6}\)</span><br />
+<span class="math inline">\(^{2,3,1}\)</span><br />
+<span class="math inline">\(^1\)</span> مركز علوم البيانات، جامعة نيويورك، نيويورك، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^2\)</span> قسم الأشعة، مركز لانغون الصحي بجامعة نيويورك، نيويورك، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^3\)</span> كلية الطب بجامعة نيويورك غروسمان، نيويورك، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^4\)</span> قسم الهندسة، جامعة نيويورك أبوظبي، أبوظبي، الإمارات العربية المتحدة<br />
+<span class="math inline">\(^5\)</span> علوم وهندسة الحاسوب، جامعة نيويورك، نيويورك، الولايات المتحدة الأمريكية<br />
+<span class="math inline">\(^6\)</span> قسم الهندسة الطبية الحيوية، جامعة نيويورك، نيويورك، الولايات المتحدة الأمريكية<br />
+</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>
+يُعد فحص سرطان الثدي، الذي يُجرى بشكل أساسي عبر التصوير الشعاعي للثدي، مدعوماً غالباً بالموجات فوق الصوتية لدى النساء ذوات الكثافة النسيجية العالية للثدي. إلا أن النماذج الحالية للتعلم العميق تقوم بتحليل كل وسيلة تصوير بشكل مستقل، مما يفوّت فرصة دمج المعلومات عبر الوسائط الزمنية المختلفة. في هذه الدراسة، نقدم المحول متعدد الوسائط (MMT)، وهو شبكة عصبية تستفيد من التصوير الشعاعي للثدي والموجات فوق الصوتية بشكل تكاملي، لتحديد المرضى المصابين حالياً بالسرطان وتقدير خطر الإصابة المستقبلية لدى المرضى الخالين حالياً من السرطان. يقوم MMT بتجميع البيانات متعددة الوسائط عبر آلية الانتباه الذاتي، ويتتبع التغيرات النسيجية الزمنية من خلال مقارنة الفحوصات الحالية مع الصور السابقة. بعد تدريبه على 1.3 مليون فحص، يحقق MMT مساحة تحت منحنى ROC (AUROC) قدرها 0.943 في كشف السرطانات الحالية، متفوقاً على النماذج أحادية الوسيط. أما في توقع خطر الإصابة خلال خمس سنوات، فقد بلغ AUROC للنموذج 0.826، متجاوزاً النماذج السابقة المعتمدة على التصوير الشعاعي للثدي. تبرز نتائجنا أهمية دمج التصوير متعدد الوسائط والطولي في تشخيص السرطان وتحديد المخاطر.
+</p>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#sec:intro">المقدمة</a></li>
+<li><a href="#sec:method">الطرق</a></li>
+<li><a href="#sec:result">النتائج</a></li>
+<li><a href="#sec:discussion">المناقشة والاستنتاج</a></li>
+<li><a href="#acknowledgements">الشكر والتقدير</a></li>
+</ul>
+</nav>
+<div class="keywords">
+<p>سرطان الثدي، التعلم العميق، التصوير الشعاعي للثدي، الموجات فوق الصوتية، بيانات متعددة الوسائط</p>
+</div>
+<section id="sec:intro" class="level1">
+<h1>المقدمة</h1>
+<p>
+يُعد سرطان الثدي السبب الرئيسي للوفاة بالسرطان بين النساء على مستوى العالم. يهدف فحص سرطان الثدي إلى اكتشاف الورم في مراحله المبكرة، مما يسمح بتحقيق نتائج علاجية أفضل. على الرغم من الانتشار الواسع للتصوير الشعاعي الرقمي الكامل للثدي (FFDM) والتصوير المقطعي للثدي (DBT)، إلا أن حوالي 75% فقط من سرطانات الثدي تُشخّص عبر التصوير الشعاعي <span class="citation" data-cites="lee2021radiologist monticciolo2017breast"></span>. تعود هذه المحدودية إلى أن النسيج الكثيف للثدي قد يخفي الأورام الصغيرة ويقلل من حساسية التصوير الشعاعي إلى 61-65% لدى النساء ذوات الكثافة النسيجية العالية <span class="citation" data-cites="mandelson2000breast wanders2017volumetric destounis2017using"></span>. تحتاج هؤلاء النساء إلى فحوصات تكميلية لتعويض قصور التصوير الشعاعي. وتُعد الموجات فوق الصوتية خياراً شائعاً نظراً لتوفرها وتكلفتها المنخفضة وعدم احتوائها على إشعاع. ورغم أن الموجات فوق الصوتية تزيد من معدلات اكتشاف السرطان بمقدار 3-4 لكل 1000 امرأة <span class="citation" data-cites="berg2012detection"></span>، إلا أن ذلك يأتي على حساب انخفاض النوعية، وزيادة معدلات الاستدعاء إلى 7.5-10.6% <span class="citation" data-cites="berg2019screening brem2015screening butler2020screening"></span>، وانخفاض القيم التنبؤية الإيجابية إلى 9-11% <span class="citation" data-cites="berg2019screening"></span>، مما يؤدي إلى فحوصات تشخيصية وخزعات غير ضرورية. وتوفر تقنيات الذكاء الاصطناعي فرصاً لتحسين الدقة من خلال الاستخدام التكاملي للتصوير الشعاعي والموجات فوق الصوتية.
+</p>
+<p>
+تم تطبيق نماذج التعلم العميق لدعم فحص سرطان الثدي، سواء في كشف السرطانات الحالية <span class="citation" data-cites="shen2021interpretable wu2019deep mckinney2020international shen2019deep lotter2021robust rodriguez2019stand lotter2021robust"></span> أو في توقع خطر الإصابة المستقبلي <span class="citation" data-cites="yala2019deep yala2021toward arasu2023comparison lehman2022deep"></span>. وقد قدمت عدة دراسات رائدة إسهامات كبيرة في هذا المجال؛ حيث أظهرت <span class="citation" data-cites="mckinney2020international"></span> أن الشبكات العصبية الالتفافية (CNNs) تضاهي أداء أطباء الأشعة في الفحص وتحتفظ بقدرتها على التعميم عبر الدول. كما اقترحت <span class="citation" data-cites="yala2019deep yala2021toward"></span> نظام "ميراي" (Mirai)، وهو نظام ذكاء اصطناعي يستخدم التصوير الشعاعي وعوامل الخطر السريرية لتوقع خطر الإصابة المستقبلي بسرطان الثدي. وأظهرت <span class="citation" data-cites="shen2021artificial"></span> أن الذكاء الاصطناعي يمكن أن يقلل من معدلات الإيجابيات الكاذبة بنسبة 37.3% في تفسير صور الموجات فوق الصوتية للثدي دون التأثير على الحساسية.
+</p>
+<p>
+رغم هذه التطورات، هناك محدوديتان رئيسيتان: أولاً، تركز الأعمال السابقة غالباً على وسيلة تصوير واحدة، متجاهلة الأنماط المشتركة التي لا تظهر إلا من خلال دمج عدة وسائط تصويرية. في المقابل، يعتمد أطباء الأشعة عادةً على وسائل تصوير تكميلية للوصول إلى التشخيص بدقة أعلى <span class="citation" data-cites="bankman2008handbook"></span>. ثانياً، تتجاهل الأعمال السابقة أهمية الصور السابقة، رغم أن المقارنة مع الصور الشعاعية السابقة ثبت أنها تقلل بشكل كبير من معدلات الاستدعاء وتزيد من معدلات اكتشاف السرطان والقيمة التنبؤية الإيجابية <span class="citation" data-cites="hayward2016improving"></span>.
+</p>
+<p>
+في هذه الدراسة، نقدم نظام ذكاء اصطناعي قادراً على الرجوع إلى الصور السابقة ودمج المعلومات من كل من التصوير الشعاعي والموجات فوق الصوتية. لهذا النظام وظيفتان أساسيتان: كشف السرطانات الحالية وتوقع خطر الإصابة المستقبلي.
+</p>
+<figure>
+<embed src="images/20231016_mml_v2.3.drawio.pdf" id="fig:mml_transformer" style="width:40.0%" />
+<figcaption aria-hidden="true">بنية المحول متعدد الوسائط (MMT).</figcaption>
+</figure>
+</section>
+<section id="sec:method" class="level1">
+<h1>الطرق</h1>
+<section id="problem-formulation" class="level4">
+<h4>صياغة المشكلة</h4>
+<p>
+نصوغ تشخيص سرطان الثدي كمهمة تصنيف تسلسلي. لنرمز إلى الفحص التصويري بـ <span class="math inline">\(S_i\)</span>، ويحتوي على صور <span class="math inline">\(I_i^1, I_i^2, ..., I_i^{l_i}\)</span>، حيث <span class="math inline">\(l_i\)</span> هو عدد الصور في الفحص <span class="math inline">\(S_i\)</span>. نرمز إلى نوع وسيلة التصوير بـ <span class="math inline">\(m_i\)</span>، وزمن إجراء الفحص بـ <span class="math inline">\(t_i\)</span>. لكل فحص <span class="math inline">\(S_i\)</span> فحوصات سابقة <span class="math inline">\(S_i^1, S_i^2, \ldots, S_i^{r_i}\)</span> لنفس المريضة، أُجريت في نفس الوقت أو قبله <span class="math inline">\(t_i^1, t_i^2, ..., t_i^{r_i} \leq t_i\)</span>، حيث <span class="math inline">\(r_i\)</span> هو عدد الفحوصات السابقة. هدفنا بناء نظام ذكاء اصطناعي يأخذ التسلسل <span class="math inline">\(Q_i = \{S_i, S_i^1, S_i^2, ..., S_i^{r_i}\}\)</span> كمدخل، ويقدم سلسلة من التنبؤات الاحتمالية <span class="math inline">\(\hat{y}_i^j \in [0,1]\)</span> تعبر عن احتمال وجود ورم خبيث خلال 120 يوماً (<span class="math inline">\(j=0\)</span>) وكل سنة من 1 إلى 5 سنوات (<span class="math inline">\(j=\text{1, 2, ..., 5}\)</span>) من زمن الفحص <span class="math inline">\(t_i\)</span>.
+</p>
+<p>
+هناك تحديان رئيسيان: أولاً، لكل مريضة تاريخ فحوصات فريد (وبالتالي مجموعة وسائط تصويرية مختلفة) وعدد متغير من الصور. يجب أن يكون النموذج قادراً على التعامل مع هذا التباين. ثانياً، تظهر الأورام الخبيثة بأنماط بصرية متنوعة عبر الوسائط المختلفة، ويجب على النموذج التقاط هذا الطيف ودمج النتائج عبر الوسائط.
+</p>
+</section>
+<section id="multi-modal-transformer" class="level4">
+<h4>المحول متعدد الوسائط</h4>
+<p>
+نقترح المحول متعدد الوسائط (MMT) لمعالجة التحديات المذكورة. كما هو موضح في الشكل <a href="#fig:mml_transformer" data-reference-type="ref" data-reference="fig:mml_transformer">1</a>، ينتج MMT تنبؤات حول وجود السرطان عبر ثلاث مراحل. أولاً، يطبق MMT كواشف متخصصة بكل وسيلة تصوير لاستخلاص متجهات السمات من المناطق المشتبه بها في الصور. ثانياً، يدمج هذه السمات مع تمثيلات متجهية للمتغيرات غير الصورية. وأخيراً، تُغذى السمات بعد التضمين إلى مشفر محول (Transformer Encoder) لرصد التغيرات الزمنية في أنماط النسيج ودمج المعلومات متعددة الوسائط وإنتاج التنبؤات. فيما يلي شرح مفصل لكل خطوة.
+</p>
+<p>
+<em>توليد مناطق الاهتمام ومتجهات السمات.</em> يتضمن التسلسل المدخل <span class="math inline">\(Q_i\)</span> صوراً من وسائط متعددة. ونظراً لاختلاف شكل الورم عبر الوسائط، ندرب كاشفاً <span class="math inline">\(D_{m}\)</span> لكل وسيلة <span class="math inline">\(m \in \{\text{FFDM},\text{DBT}, \text{Ultrasound}\}\)</span>. يأخذ كل كاشف <span class="math inline">\(D_m\)</span> صورة <span class="math inline">\(I\)</span> ويخرج <span class="math inline">\(k_m\)</span> مناطق اهتمام مع تمثيلات سمات <span class="math inline">\(H \in \mathbb{R}^{k_m, d_m}\)</span> ودرجات <span class="math inline">\(P_c \in \mathbb{R}^{k_m}\)</span> تعكس احتمال وجود ورم خبيث في كل منطقة. نستخرج فقط أعلى <span class="math inline">\(k_m\)</span> مناطق حسب الدرجات، حيث <span class="math inline">\(k_m\)</span> هو معامل يتم ضبطه على مجموعة التحقق. بعض الكواشف تنتج أيضاً متجهات سمات عامة. ونظراً لاختلاف حجم وقياس المتجهات المستخرجة من كل <span class="math inline">\(D_{m}\)</span>، نطبق تحويل خاص بكل وسيلة <span class="math inline">\(G_{m}\)</span> (شبكة عصبية متعددة الطبقات) لإسقاط جميع السمات في نفس الفضاء: <span class="math inline">\(B = G_m(H)\)</span>، حيث <span class="math inline">\(B \in \mathbb{R}^{k_m, d}\)</span> تمثل متجهات السمات بعد الإسقاط.
+</p>
+<p>
+<em>تضمين المتغيرات الفئوية.</em> ندمج متغيرات فئوية مثل تاريخ الفحص، الجهة (يمين/يسار)، نوع وسيلة التصوير، زاوية التصوير، وعمر المريضة (مجزأ إلى فئات). تساعد هذه المتغيرات النموذج على فهم الأنماط الزمنية والمكانية في مناطق الاهتمام. نستخدم تقنية التضمين لتمثيل كل متغير <span class="math inline">\(c\)</span> بمتجه <span class="math inline">\(K_c \in \mathbb{R}^{100}\)</span>، ثم ندمجها مع متجهات السمات بعد الإسقاط. بعد ذلك، نستخدم شبكة عصبية متعددة الطبقات <span class="math inline">\(f_\text{emb}: \mathbb{R}^{d+500} \mapsto \mathbb{R}^{d}\)</span> لتقليل الأبعاد: <span class="math display">\[X = f_\text{emb}([B, K_{\text{date}}, K_{\text{lat}}, K_{\text{mod}}, K_{\text{view}}, K_{\text{age}}]^T),\]</span> حيث <span class="math inline">\(X \in \mathbb{R}^{k_m, d}\)</span> تمثل المتجهات بعد التضمين.
+</p>
+<p>
+<em>المحول (Transformer).</em> نستخدم مشفر محول لتمكين التفاعل بين متجهات مناطق الاهتمام بعد التضمين من جميع الصور <span class="citation" data-cites="vaswani2017attention"></span>. يستخدم المشفر آلية انتباه متعددة الرؤوس لدمج المعلومات من التسلسل المدخل. وكما هو متبع <span class="citation" data-cites="devlin2018bert"></span>، نضيف رمز CLS خاص إلى التسلسل المدخل، ليكثف التسلسلات ذات الطول المتغير في تمثيل ثابت الحجم، ويتيح للمحول تحديثه تكرارياً باستخدام إشارات من جميع المتجهات: <span class="math display">\[\text{CLS&#39;} = \text{transformer}([X, \text{CLS}]).\]</span>
+</p>
+<p>
+بعد ذلك، نطبق شبكة عصبية متعددة الطبقات <span class="math inline">\(Z: \mathbb{R}^d \mapsto \mathbb{R}^6\)</span> مع دالة ReLU على متجه CLS الناتج من المحول لإنتاج ست درجات خطر غير سالبة لفترات زمنية غير متداخلة: خطر أساسي خلال 120 يوماً (<span class="math inline">\(L^0\)</span>)، خطر إضافي من 120 يوم إلى سنة (<span class="math inline">\(L^1\)</span>)، خطر من سنة إلى سنتين (<span class="math inline">\(L^2\)</span>)، من سنتين إلى ثلاث (<span class="math inline">\(L^3\)</span>)، من ثلاث إلى أربع (<span class="math inline">\(L^4\)</span>)، ومن أربع إلى خمس سنوات (<span class="math inline">\(L^5\)</span>). ويعبر عن ذلك بالمعادلة التالية: <span class="math display">\[^T = \text{ReLU}(Z(\text{CLS&#39;})).\]</span>
+</p>
+<p>
+أخيراً، نستخدم طبقة خطر تراكمي <span class="citation" data-cites="aalen2005aalen"></span> مع دالة سيغمويد لإنتاج الاحتمال التراكمي للخباثة: <span class="math display">\[\hat{y}^j = \sigma(L^0 + \sum_{k=1}^j L_k).\]</span>
+</p>
+</section>
+<section id="training" class="level4">
+<h4>التدريب</h4>
+<p>
+يتم تدريب MMT على مرحلتين. أولاً، لكل وسيلة تصوير، ندرب كواشف السرطان بشكل مستقل باستخدام صور تلك الوسيلة فقط. يتم تصميم كواشف FFDM وDBT باستخدام YOLOX <span class="citation" data-cites="ge2021yolox"></span>، وMogaNet <span class="citation" data-cites="li2022efficient"></span>، وGMIC <span class="citation" data-cites="shen2021artificial shen2019globally"></span>. يعد YOLOX نسخة خالية من المراسي من عائلة نماذج YOLO الشهيرة <span class="citation" data-cites="redmon2016you"></span>. MogaNet هو شبكة عصبية تلافيفية فعالة في نمذجة التفاعلات البصرية. GMIC شبكة عصبية فعالة للصور الطبية عالية الدقة. بالنسبة لـ DBT، ندرب على مقاطع ثنائية الأبعاد لتقليل الحسابات. يتم تدريب كواشف YOLOX وMogaNet باستخدام تسميات الصور وصناديق التحديد. لتدريبها مع تسميات الصور فقط، نقوم بتجميع السمات ذات الدرجات الأعلى وتصنيفها باستخدام طبقة انحدار لوجستي. نستخدم UltraNet المقترحة في <span class="citation" data-cites="shen2021artificial"></span> ككاشف للموجات فوق الصوتية. ولتوازن التكلفة الحسابية، نستخرج 10 مناطق اهتمام من كل صورة عبر الوسائط.
+</p>
+<p>
+في المرحلة الثانية، نقوم بتثبيت أوزان الكواشف وندرب مشفر المحول والشبكات العصبية متعددة الطبقات والتضمينات على تسلسلات متعددة الوسائط باستخدام دالة خسارة الانتروبي المتقاطع الثنائي ووسيط التحسين Adam <span class="citation" data-cites="kingma2014adam"></span> بمعدل تعلم <span class="math inline">\(10^{-5}\)</span>.
+</p>
+</section>
+<section id="ensembling" class="level4">
+<h4>التجميع (Ensembling)</h4>
+<p>
+لتحسين النتائج، نستخدم تقنية تجميع النماذج <span class="citation" data-cites="dietterich2000ensemble"></span>. ندرب 100 نموذج MMT، حيث يتم اختيار نموذج عشوائي من كل عائلة كواشف مع مشفر محول يتم تهيئته عشوائياً كـ DeiT <span class="citation" data-cites="touvron2021training"></span> أو ViT <span class="citation" data-cites="dosovitskiy2020image"></span> أو BERT <span class="citation" data-cites="devlin2018bert"></span>. يتم تجميع أفضل 5 نماذج MMT حسب الأداء على مجموعة التحقق لإنتاج التنبؤ النهائي.
+</p>
+</section>
+</section>
+<section id="sec:result" class="level1">
+<h1>النتائج</h1>
+<section id="dataset" class="level4">
+<h4>مجموعة البيانات</h4>
+<p>
+قمنا بتدريب وتقييم النموذج على مجموعة بيانات تشخيص سرطان الثدي متعددة الوسائط الخاصة بجامعة نيويورك، والتي تحتوي على 1,353,521 فحص FFDM/DBT/موجات فوق صوتية من 297,751 مريضة زرن مركز NYU Langone Health بين عامي 2010 و2020. تم تقسيم الفحوصات إلى مجموعات تدريب (87.1%)، تحقق (3.9%)، واختبار (8.9%)، مع تخصيص جميع فحوصات كل مريضة لمجموعة واحدة فقط. تم اشتقاق التسميات الدالة على وجود أو غياب السرطان من تقارير الباثولوجيا المقابلة. تم تصفية مجموعتي التحقق والاختبار بحيث يكون للفحوصات الإيجابية تأكيد باثولوجي، وللفحوصات السلبية متابعة سلبية. انظر الجدول <a href="#tab:dataset_table" data-reference-type="ref" data-reference="tab:dataset_table">[tab:dataset_table]</a> لتفاصيل المجموعة.
+</p>
+</section>
+<section id="evaluation" class="level4">
+<h4>التقييم</h4>
+<p>
+قمنا بتقييم قدرة النموذج على كشف السرطانات الحالية وتوقع الخطر في مجتمع الفحص العام. كل حالة اختبار هي زيارة فحص تتضمن FFDM إلزامي وDBT/موجات فوق صوتية اختياري. يستخدم النموذج جميع الوسائط المتاحة والدراسات السابقة. بالنسبة لكشف السرطان الحالي، تعتبر الزيارة إيجابية إذا تم تأكيد السرطان في غضون 120 يوماً من الفحص. بلغ عدد الفحوصات في مجموعة الاختبار 121,037 فحصاً من 54,789 زيارة فحص، منها 483 أدت إلى تشخيص سرطان. من بين هذه الزيارات، 26,028 (47.5%) تضمنت DBT في نفس اليوم، و15,542 (28.4%) تضمنت موجات فوق صوتية في نفس اليوم، و34,888 (63.7%) كان لديها صور سابقة متاحة. بلغ متوسط عدد الفحوصات السابقة المرتبطة بكل زيارة 1.9. بالنسبة لتصنيف الخطر على مدى خمس سنوات، استبعدنا السرطانات المكتشفة بالفحص والحالات السلبية التي تقل متابعتها عن خمس سنوات، للتركيز على التنبؤ طويل الأمد. بقيت 6,173 زيارة مع 598 حالة إيجابية في مجموعة الاختبار. استخدمنا مساحة تحت منحنى ROC (AUROC) ومساحة تحت منحنى الدقة-الاسترجاع (AUPRC) كمقاييس تقييم.
+</p>
+</section>
+<section id="performance" class="level4">
+<h4>الأداء</h4>
+<p>
+لمقارنة أداء MMT في تشخيص السرطان، قارناه مع أربعة نماذج مرجعية: GMIC، YOLOX، وMogaNet باستخدام FFDM فقط، وتجميع متعدد الوسائط يجمع تنبؤات النماذج السابقة مع UltraNet عند توفر الموجات فوق الصوتية. لكل نموذج أحادي الوسيط، تم تدريب 20 نموذجاً وتجميع أفضل 5 للتقييم. تظهر النتائج في الجدول <a href="#tab:perf-cancer-120" data-reference-type="ref" data-reference="tab:perf-cancer-120">1</a>. حقق MMT أعلى AUROC وAUPRC من النماذج المعتمدة على التصوير الشعاعي فقط، مما يدل على أن دمج الموجات فوق الصوتية يحسن الدقة التشخيصية. كما تفوق MMT على التجميع متعدد الوسائط، مما يشير إلى أن المحول يدمج المعلومات متعددة الوسائط بشكل أفضل من المتوسط البسيط.
+</p>
+<div id="tab:perf-cancer-120">
+<table>
+<caption>أداء تشخيص السرطان.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">النموذج</th>
+<th style="text-align: center;">AUROC</th>
+<th style="text-align: center;">AUPRC</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">GMIC <span class="citation" data-cites="shen2021interpretable"></span></td>
+<td style="text-align: center;">0.866</td>
+<td style="text-align: center;">0.167</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YOLOX <span class="citation" data-cites="ge2021yolox"></span></td>
+<td style="text-align: center;">0.876</td>
+<td style="text-align: center;">0.172</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MogaNet <span class="citation" data-cites="li2022efficient"></span></td>
+<td style="text-align: center;">0.874</td>
+<td style="text-align: center;">0.181</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">تجميع متعدد الوسائط</td>
+<td style="text-align: center;">0.925</td>
+<td style="text-align: center;">0.251</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MMT</td>
+<td style="text-align: center;"><strong>0.943</strong></td>
+<td style="text-align: center;"><strong>0.518</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+في تصنيف الخطر، قارنا MMT مع معيارين: تشخيص أطباء الأشعة (BI-RADS) ونظام ميراي <span class="citation" data-cites="yala2021toward"></span>، وهو نظام ذكاء اصطناعي يتنبأ بخطر الإصابة المستقبلي بسرطان الثدي باستخدام عوامل الخطر الفئوية والتصوير الشعاعي، على نفس مجموعة الاختبار. تظهر النتائج في الجدول <a href="#tab:perf-risk" data-reference-type="ref" data-reference="tab:perf-risk">2</a>. في توقع الإصابة خلال خمس سنوات، حقق MMT AUROC قدره 0.826 وAUPRC قدره 0.524، متفوقاً على كلا المنهجين. من خلال الاستفادة من التصوير متعدد الوسائط والتاريخ الطولي للمريضة، يظهر MMT قدرة قوية على توقع خطر الإصابة المستقبلي بسرطان الثدي.
+</p>
+<div id="tab:perf-risk">
+<table>
+<caption>أداء تصنيف الخطر.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">النموذج</th>
+<th style="text-align: center;">AUROC</th>
+<th style="text-align: center;">AUPRC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BI-RADS</td>
+<td style="text-align: center;">0.585</td>
+<td style="text-align: center;">0.118</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mirai <span class="citation" data-cites="yala2019deep"></span></td>
+<td style="text-align: center;">0.732</td>
+<td style="text-align: center;">0.252</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MMT</td>
+<td style="text-align: center;"><strong>0.826</strong></td>
+<td style="text-align: center;"><strong>0.524</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ablation-study" class="level4">
+<h4>دراسة الاستبعاد (Ablation Study)</h4>
+<p>
+أجرينا دراسة استبعادية لفهم تأثير الوسائط التكميلية والصور السابقة. قمنا بتقييم أداء MMT باستخدام التصوير الشعاعي فقط مع الصور السابقة (تصوير شعاعي فقط)، وباستخدام التصوير الشعاعي والموجات فوق الصوتية دون صور سابقة (بدون صور سابقة)، ودمج صور سابقة لمدة سنة أو سنتين أو ثلاث سنوات. كما هو موضح في الجدول <a href="#tab:ablation" data-reference-type="ref" data-reference="tab:ablation">[tab:ablation]</a>، أظهر MMT تحسناً ملحوظاً عند استخدام الموجات فوق الصوتية مع التصوير الشعاعي في كلا المهمتين، مما يؤكد أهمية الوسائط التكميلية. في المقابل، تساهم الصور السابقة بشكل رئيسي في تصنيف الخطر طويل الأمد، بينما لا تقدم الصور السابقة لأكثر من سنتين سوى تحسن طفيف، وهو ما يتوافق مع الممارسة السريرية بالاعتماد على صور السنتين الأخيرتين. تؤكد هذه الدراسة أهمية المعلومات متعددة الوسائط والطولية، حيث يحسن كل من الموجات فوق الصوتية والصور السابقة الحديثة من دقة التشخيص وتوقع الخطر.
+</p>
+</section>
+</section>
+<section id="sec:discussion" class="level1">
+<h1>المناقشة والاستنتاج</h1>
+<p>
+لكل وسيلة تصوير طبي مزاياها وقيودها الخاصة. وغالباً ما يجمع أطباء الأشعة بين عدة وسائط لاتخاذ القرار التشخيصي. في هذا السياق، نقترح MMT للاستفادة المشتركة من التصوير الشعاعي والموجات فوق الصوتية في فحص سرطان الثدي. يحقق MMT أداءً قوياً في كشف السرطانات الحالية وتوقع الخطر طويل الأمد.
+</p>
+<p>
+تعتمد نماذج تقدير الخطر التقليدية على التاريخ الشخصي، والعوامل الوراثية، وتاريخ العائلة، وكثافة الثدي، لكنها غالباً ما تعاني من دقة دون المستوى الأمثل <span class="citation" data-cites="arasu2023comparison"></span>، وذلك لاعتمادها على متغيرات عامة لا تعكس التغاير النسيجي المرتبط بخطر السرطان. توضح دراستنا أن دمج بيانات المريضة متعددة الوسائط والطولية مع الشبكات العصبية يمكن أن يحسن بشكل كبير من نمذجة الخطر عبر استخراج سمات نسيجية أكثر ثراءً ودلالة.
+</p>
+<p>
+هناك بعض القيود في هذه الدراسة. أولاً، لم نقم بتقييم النموذج على مجموعات بيانات خارجية، وهو أمر ضروري لإثبات قدرته على التعميم عبر مجموعات سكانية وبروتوكولات تصوير مختلفة. بالإضافة إلى ذلك، يعتمد نموذجنا بشكل أساسي على بيانات التصوير. قد يؤدي دمج عوامل الخطر مثل الديموغرافيا وتاريخ العائلة إلى تعزيز نمذجة الخطر بشكل أكبر. إن معالجة هذه القيود من خلال دراسات متعددة المؤسسات ودمج البيانات غير التصويرية ستكون من الاتجاهات المستقبلية الهامة لترجمة هذه النتائج الواعدة إلى الممارسة السريرية.
+</p>
+</section>
+<section id="acknowledgements" class="level1">
+<h1>الشكر والتقدير</h1>
+<p>
+تم دعم هذا البحث من قبل المعاهد الوطنية للصحة (NIH) من خلال المنح TL1TR001447 (المركز الوطني للعلوم الانتقالية المتقدمة) وP41EB017183، ومؤسسة غوردون وبيتي مور (9683)، والمؤسسة الوطنية للعلوم (1922658). إن محتوى هذا العمل يعبر عن رأي المؤلفين فقط ولا يعكس بالضرورة وجهات نظر الجهات الممولة.
+</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">AUROC (تشخيص السرطان)</th>
+<th style="text-align: center;">AUROC (تصنيف الخطر)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>العمر</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(&lt;\)</span>50 سنة</td>
+<td style="text-align: center;">0.927</td>
+<td style="text-align: center;">0.820</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">50-60 سنة</td>
+<td style="text-align: center;">0.957</td>
+<td style="text-align: center;">0.790</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">60-70 سنة</td>
+<td style="text-align: center;">0.941</td>
+<td style="text-align: center;">0.810</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">70-80 سنة</td>
+<td style="text-align: center;">0.920</td>
+<td style="text-align: center;">0.830</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(&gt;\)</span>80 سنة</td>
+<td style="text-align: center;">0.928</td>
+<td style="text-align: center;">0.965</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>كثافة الثدي</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: center;">0.967</td>
+<td style="text-align: center;">0.776</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">0.949</td>
+<td style="text-align: center;">0.813</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: center;">0.936</td>
+<td style="text-align: center;">0.824</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D</td>
+<td style="text-align: center;">0.921</td>
+<td style="text-align: center;">0.838</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">تدريب</th>
+<th style="text-align: center;">تحقق</th>
+<th style="text-align: center;">اختبار</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>عدد المريضات</strong></td>
+<td style="text-align: center;">263,573</td>
+<td style="text-align: center;">10,839</td>
+<td style="text-align: center;">23,339</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">العمر، متوسط (انحراف معياري)</td>
+<td style="text-align: center;">56.98 (13.09)</td>
+<td style="text-align: center;">59.58 (11.55)</td>
+<td style="text-align: center;">59.77 (11.47)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(&lt;\)</span>40 سنة</td>
+<td style="text-align: center;">17,186 (6.52%)</td>
+<td style="text-align: center;">173 (1.60%)</td>
+<td style="text-align: center;">351 (1.50%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">40-49 سنة</td>
+<td style="text-align: center;">63,158 (23.96%)</td>
+<td style="text-align: center;">2,308 (21.29%)</td>
+<td style="text-align: center;">4,806 (20.59%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">50-59 سنة</td>
+<td style="text-align: center;">64,882 (24.62%)</td>
+<td style="text-align: center;">3,088 (28.49%)</td>
+<td style="text-align: center;">6,679 (28.62%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">60-69 سنة</td>
+<td style="text-align: center;">54,980 (20.86%)</td>
+<td style="text-align: center;">2,960 (27.31%)</td>
+<td style="text-align: center;">6,582 (28.20%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\geq70\)</span> سنة</td>
+<td style="text-align: center;">43,022 (16.32%)</td>
+<td style="text-align: center;">2,092 (19.30%)</td>
+<td style="text-align: center;">4,582 (19.63%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">غير معروف</td>
+<td style="text-align: center;">20,345 (7.72%)</td>
+<td style="text-align: center;">218 (2.01%)</td>
+<td style="text-align: center;">339 (1.45%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">كثافة الثدي</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: center;">18,616 (7.06%)</td>
+<td style="text-align: center;">773 (7.13%)</td>
+<td style="text-align: center;">1,756 (7.52%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">93,990 (35.66%)</td>
+<td style="text-align: center;">4,225 (38.98%)</td>
+<td style="text-align: center;">9,415 (40.34%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: center;">113,631 (43.11%)</td>
+<td style="text-align: center;">5,005 (46.18%)</td>
+<td style="text-align: center;">10,542 (45.17%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D</td>
+<td style="text-align: center;">16,991 (6.45%)</td>
+<td style="text-align: center;">618 (5.70%)</td>
+<td style="text-align: center;">1,287 (5.51%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">غير معروف</td>
+<td style="text-align: center;">20,345 (7.72%)</td>
+<td style="text-align: center;">218 (2.01%)</td>
+<td style="text-align: center;">339 (1.45%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>عدد الفحوصات</strong></td>
+<td style="text-align: center;">1,179,171</td>
+<td style="text-align: center;">53,313</td>
+<td style="text-align: center;">121,037</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">سرطان خلال 120 يوماً</td>
+<td style="text-align: center;">15,586 (1.32%)</td>
+<td style="text-align: center;">877 (1.65%)</td>
+<td style="text-align: center;">1,902 (1.57%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">سرطان 120 يوم - سنة</td>
+<td style="text-align: center;">1,566 (0.13%)</td>
+<td style="text-align: center;">19 (0.04%)</td>
+<td style="text-align: center;">13 (0.01%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">سرطان 1-2 سنة</td>
+<td style="text-align: center;">4,816 (0.41%)</td>
+<td style="text-align: center;">54 (0.10%)</td>
+<td style="text-align: center;">133 (0.11%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">سرطان 2-3 سنوات</td>
+<td style="text-align: center;">3,417 (0.29%)</td>
+<td style="text-align: center;">249 (0.47%)</td>
+<td style="text-align: center;">613 (0.51%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">سرطان 3-4 سنوات</td>
+<td style="text-align: center;">2,089 (0.18%)</td>
+<td style="text-align: center;">182 (0.34%)</td>
+<td style="text-align: center;">364 (0.30%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">سرطان 4-5 سنوات</td>
+<td style="text-align: center;">1,281 (0.11%)</td>
+<td style="text-align: center;">101 (0.19%)</td>
+<td style="text-align: center;">248 (0.20%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">سرطان <span class="math inline">\(&gt;\)</span>5 سنوات</td>
+<td style="text-align: center;">1,391 (0.12%)</td>
+<td style="text-align: center;">92 (0.17%)</td>
+<td style="text-align: center;">268 (0.22%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">وسيلة التصوير</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FFDM</td>
+<td style="text-align: center;">546,862 (46.38%)</td>
+<td style="text-align: center;">26,687 (50.06%)</td>
+<td style="text-align: center;">62,249 (51.43%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DBT</td>
+<td style="text-align: center;">300,277 (25.47%)</td>
+<td style="text-align: center;">12,139 (22.77%)</td>
+<td style="text-align: center;">28,339 (23.41%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">موجات فوق صوتية</td>
+<td style="text-align: center;">332,032 (28.16%)</td>
+<td style="text-align: center;">14,487 (27.17%)</td>
+<td style="text-align: center;">30,449 (25.16%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BI-RADS على مستوى الفحص</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: center;">439,112 (10.99%)</td>
+<td style="text-align: center;">19,811 (9.66%)</td>
+<td style="text-align: center;">45,060 (9.57%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">439,112 (37.24%)</td>
+<td style="text-align: center;">19,811 (37.16%)</td>
+<td style="text-align: center;">45,060 (37.23%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">501,915 (42.57%)</td>
+<td style="text-align: center;">24,598 (46.14%)</td>
+<td style="text-align: center;">56,810 (46.94%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: center;">70,935 (6.02%)</td>
+<td style="text-align: center;">1,683 (3.16%)</td>
+<td style="text-align: center;">3,453 (2.85%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: center;">33,517 (2.84%)</td>
+<td style="text-align: center;">1,999 (3.75%)</td>
+<td style="text-align: center;">4,002 (3.31%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: center;">2,535 (0.21%)</td>
+<td style="text-align: center;">73 (0.14%)</td>
+<td style="text-align: center;">129 (0.11%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: center;">1,611 (0.14%)</td>
+<td style="text-align: center;">0 (0.00%)</td>
+<td style="text-align: center;">0 (0.00%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>ساهم هؤلاء المؤلفون بالتساوي<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    <hr style="margin: 40px 0;">
+    <div class="text-muted text-center">
+        <small>
+            تم تحويل هذه النسخة HTML تلقائياً من LaTeX.<br>
+            يتم عرض المعادلات الرياضية باستخدام MathJax.
+        </small>
+    </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

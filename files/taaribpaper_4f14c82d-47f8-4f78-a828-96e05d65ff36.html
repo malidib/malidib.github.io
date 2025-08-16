@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -9,7 +8,7 @@
   <meta name="author" content="L. H. C. Borges">
   <meta name="author" content="G. Dallabona">
   <meta name="author" content="L. C. T. Brito">
-  <title>الحُدُودِ المادِّيَّةِ في الديناميكا الكهرومغناطيسية المخالِفة للورنتز لكارول-فَيَلِد-جاكوي</title>
+  <title>الشروط الحدِّيّة المادِّية في كهروديناميكا كارول–فيلد–جاكيو الكاسِرة لتماثُل لورنتز</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <style>
@@ -32,24 +31,29 @@
       margin-bottom: 40px;
     }
     h1.title {
-      font-size: 2.5em;
+      font-size: 2.2em;
       font-weight: 700;
       margin-bottom: 0.3em;
       letter-spacing: 1px;
       line-height: 1.2;
     }
     .author {
-      font-size: 1.1em;
+      font-size: 1.05em;
       margin: 0.2em 0;
       color: #e0e0e0;
       letter-spacing: 0.5px;
     }
+    main {
+      max-width: 980px;
+      margin: 0 auto 60px auto;
+      padding: 0 16px;
+    }
     h1 {
       color: #2c3e50;
-      font-size: 2em;
+      font-size: 1.8em;
       border-bottom: 2px solid #3a6073;
       padding-bottom: 0.2em;
-      margin-top: 1.5em;
+      margin-top: 1.4em;
       margin-bottom: 0.7em;
       font-weight: 700;
     }
@@ -80,7 +84,7 @@
       color: #1a237e;
       direction: ltr;
       text-align: left;
-      font-size: 1.1em;
+      font-size: 1.08em;
       overflow-x: auto;
       max-width: 95vw;
     }
@@ -97,21 +101,20 @@
         padding: 25px 0 18px 0;
       }
       h1.title {
-        font-size: 1.3em;
+        font-size: 1.4em;
       }
       h1 {
-        font-size: 1.1em;
+        font-size: 1.15em;
       }
       p {
-        padding: 0.7em 0.7em;
+        padding: 0.8em 0.8em;
         font-size: 1em;
       }
       .math.display {
-        padding: 0.5em 0.5em;
+        padding: 0.6em 0.6em;
         font-size: 1em;
       }
     }
-    /* Remove link underline for .nodecor */
     .nodecor {
       text-decoration: none;
       color: inherit;
@@ -120,7 +123,7 @@
 </head>
 <body>
 <header>
-  <h1 class="title">الحُدُودِ المادِّيَّةِ في الديناميكا الكهرومغناطيسية المخالِفة للورنتز لكارول-فَيَلِد-جاكوي</h1>
+  <h1 class="title">الشروط الحدِّيّة المادِّية في كهروديناميكا كارول–فيلد–جاكيو الكاسِرة لتماثُل لورنتز</h1>
   <p class="author"><span class="nodecor">David M. Soares</span></p>
   <p class="author"><span class="nodecor">L. H. C. Borges</span></p>
   <p class="author"><span class="nodecor">G. Dallabona</span></p>
@@ -128,42 +131,31 @@
 </header>
 
 <main>
-  <h1 id="ملخص">مُلَخَّص</h1>
-  <p>يستقصي هذا العمل بعض الجوانب الخاصّة بقطاع الفوتون غير المتماثل (CPT-odd) في التوسيع القياسي الأدنى (SME) عند وجود لوح موصل تامّاً (مرآة مثالية). يُعتمد فيه الوصف على ديناميكا كارول-فيلد-جاكوي (CFJ)، حيث ينشأ كسر تماثل لورنتز من متجه خلفي وحيد <span class="math inline">\(\left(k_{AF}\right)^{\mu}\)</span>، نتعامل معه تقريبياً حتى الرتبة الثانية. بالتحديد، نشتق المروج المعدل لحقل الكهرومغناطيسية بفعل المرآة، ونفحص التفاعل بين المرآة وشحنة نقطية ثابتة. تكشف النتائج أنه عند وضع الشحنة بالقرب من المرآة ينشأ عزوم دوران تلقائي، وهو أثر فريد ناجم عن كسر تماثل لورنتز. كما نُبيِّن صلاحية طريقة الصورة في هذه النظرية عندما يكون المتجه الخلفي موازٍ لعمود المرآة.</p>
+  <h1 id="ملخص">ملخّص</h1>
+  <p>يستقصي هذا العمل جوانبَ من قطاع الفوتون غير الزوجي تحت <span class="nodecor">CPT</span> في التوسيع القياسي الأدنى (<span class="nodecor">SME</span>) عند وجود لوحٍ مُوصِلٍ مثاليٍّ (مرآة مثاليّة). يُعتمد فيه الوصف على كهروديناميكا كارول–فيلد–جاكيو (<span class="nodecor">CFJ</span>)، حيث ينشأ كسرُ تماثُل لورنتز من مُتجهٍ خَلْفيٍّ وحيد <span class="math inline">\(\left(k_{AF}\right)^{\mu}\)</span>، ونتعامل معه تقريبيّاً حتى الرتبة الثانية. على وجه التحديد، نشتقّ المُرَوِّج المُعَدَّل لحقل الكهرومغناطيسيّة بسبَب المرآة، ونفحص التفاعل بين المرآة وشُحنةٍ نقطيّةٍ ساكنة. تكشف النتائج أنّه عند وضع الشحنة قرب المرآة يتولَّد عزمٌ تلقائيّ، وهو أثر فريد ناجم عن كسر تماثُل لورنتز. كما نُبيِّن صلاحيّة طريقة الصورة في هذه النظريّة عندما يكون المُتجه الخَلْفي موازياً للعموديّ على اللوح.</p>
 
   <h1 id="I">مقدمة</h1>
-  <p>في السنوات الأخيرة، حظيت نظريات كسر تماثل لورنتز باهتمام واسع باعتبارها نافذة لاكتشاف فيزياء ما وراء النموذج القياسي عند مقياس بلانك. وقد خُصِّصت معظم الدراسات ضمن إطار التوسيع القياسي الأدنى (<span class="nodecor">SME</span>). يضم القطاع الكهرومغناطيسي لـSME عنصريْن: جزء غير متماثل (<span class="nodecor">CPT-odd</span>) وجزء متماثل (<span class="nodecor">CPT-even</span>).</p>
-  <p>يُوصَف الجزء غير المتماثل بواسطة لاغرانجيان كارول-فيلد-جاكوي (<span class="nodecor">CFJ</span>) الذي يضيف إلى لاغرانجيان ماكسويل المصطلح <span class="math inline">\(\sim\epsilon^{\mu\nu\alpha\beta}(k_{AF})_{\mu}A_{\nu}F_{\alpha\beta}\)</span>، حيث <span class="math inline">\((k_{AF})^{\mu}\)</span> هو متجه خلفي ثابت مسؤول عن الكسر. وقد درس الباحثون تأثيرات هذا المصطلح في جوانب الكهروديناميكيات الكلاسيكية (<span class="nodecor">CL1–CL5</span>)، والتصحيحات الإشعاعية (<span class="nodecor">R1–R5</span>)، والكهروديناميكيات الكمومية (<span class="nodecor">QED1–QED2</span>)، والعيوب الطوبولوجية (<span class="nodecor">TP1–TP2</span>)، وغيرها.</p>
-  <p>أما الجزء المتماثل فيُدرج فيه المصطلح <span class="math inline">\(\sim (K_{F})^{\mu\nu\alpha\beta}F_{\mu\nu}F_{\alpha\beta}\)</span>، حيث يحتوي التنسر <span class="math inline">\(K_F\)</span> على 19 معاملاً مستقلاً، منها 10 تؤثر في ازدواجية الضوء و9 لا تؤثر (<span class="nodecor">Ce0</span>). وقد عُرضت بعض نتائج هذا القطاع في (<span class="nodecor">Ce1…Ce13</span>).</p>
-  <p>إن ديناميكيات الحقل الكمّي تحت شروط حدودية غير اعتيادية لها تطبيقات كثيرة، من بينها نماذج تستخدم دلائل <span class="math inline">\(\delta\)</span> لوصف حدود الموصلات (<span class="nodecor">FABFEB…FABFEB2</span>)، والكهروديناميكيات لي-ويك (<span class="nodecor">FABAAN1, LW1–LW3, BorgesBarone22</span>)، ودراسات نظرية الطائرات (<span class="nodecor">plane1–plane2</span>).</p>
-  <p>نظراً لأن التكوينات الكهرومغناطيسية العملية غالباً ما تُحاط بموصلات، فمن المهم احتساب أثر هذه المُجاورات ضمن نماذج كسر تماثل لورنتز. وقد أُجرِي عدد من الدراسات حول طاقة كازيمير (<span class="nodecor">CSE1–CSE20</span>)، كما استُقصيت آثار مرآة كاملة في SME وِغير SME (<span class="nodecor">LHCBFABplate, LHCBFABplate2</span>)، إضافة إلى مرآة شبه شفافة (<span class="nodecor">LHCBAFFFAB, LHCBAFFSM</span>).</p>
-  <p>رغم ذلك، لم يُستَكشَف بعد دور القطاع غير المتماثل CPT-odd عند وجود لوح موصل تام، وهو ما نعالجه هنا. نركّز على نموذج CFJ ونفترض أن المكون الخلفي صغير جداً، لذا نعتمد التقريب حتى الدرجة الثانية. في القسم [II] نشتق المروج في وجود اللوح، وفي القسم [III] نحسب طاقة وقوة التفاعل بين الشحنة والمرآة، مكتشفين عزوماً تلقائية لا تظهر في ديناميكيات ماكسويل التقليدية مع مرآة مثالية. وأخيراً في القسم [IV] نعرض الاستنتاجات.</p>
-  <p>نعمل في فضاء-زمن مينكوفسكي (3+1) بإحداثيات تعتمد المقياس <span class="math inline">\(\eta^{\rho\nu}=(1,-1,-1,-1)\)</span>.</p>
+  <p>في السنوات الأخيرة، حظيت نظريّات كسر تماثُل لورنتز باهتمام واسع باعتبارها نافذةً لاكتشاف فيزياء ما وراء النموذج القياسي عند مِقياس بلانك. وقد أُنجِز معظمُ الدراسات ضمن إطار التوسيع القياسي الأدنى (<span class="nodecor">SME</span>). يضمّ القطاع الكهرومغناطيسي لـ<span class="nodecor">SME</span> قسمين: قسمٌ غير زوجيّ تحت <span class="nodecor">CPT</span> وقسمٌ زوجيّ تحت <span class="nodecor">CPT</span>.</p>
+  <p>يُوصَف القسم غير الزوجي بواسطة لاغرانجيان كارول–فيلد–جاكيو (<span class="nodecor">CFJ</span>) الذي يُضيف إلى لاغرانجيان ماكسويل المصطلح <span class="math inline">\(\sim \epsilon^{\mu\nu\alpha\beta}(k_{AF})_{\mu}A_{\nu}F_{\alpha\beta}\)</span>، حيث <span class="math inline">\((k_{AF})^{\mu}\)</span> مُتجه خَلْفيّ ثابت مسؤول عن الكسر. وقد دُرِست آثار هذا المصطلح في جوانب الكهروديناميكا الكلاسيكيّة (<span class="nodecor">CL1–CL5</span>)، والتصحيحات الإشعاعيّة (<span class="nodecor">R1–R5</span>)، والكهروديناميكا الكموميّة (<span class="nodecor">QED1–QED2</span>)، والعيوب الطوبولوجيّة (<span class="nodecor">TP1–TP2</span>)، وغيرها.</p>
+  <p>أمّا القسم الزوجي فيُدرَج فيه المصطلح <span class="math inline">\(\sim (K_{F})^{\mu\nu\alpha\beta}F_{\mu\nu}F_{\alpha\beta}\)</span>، حيث يحتوي المُوَتَّر <span class="math inline">\(K_F\)</span> على 19 معاملاً مستقلاً، عشرةٌ منها تُسبِّب ثنائيّةَ الانكسار، وتسعة لا تُسبِّبها (<span class="nodecor">Ce0</span>). وقد عُرضت بعض نتائج هذا القسم في (<span class="nodecor">Ce1…Ce13</span>).</p>
+  <p>إنّ ديناميّات الحقل الكمّي تحت شروطٍ حدِّيّةٍ غير اعتياديّة لها تطبيقات كثيرة، من بينها نماذج تستخدم مُقاربَ دلتا ديراك <span class="math inline">\(\delta\)</span> لوصف حدود المُوصِلات (<span class="nodecor">FABFEB…FABFEB2</span>)، والكهروديناميكا لي–ويك (<span class="nodecor">FABAAN1, LW1–LW3, BorgesBarone22</span>)، ودراسات النماذج المُستويّة (<span class="nodecor">plane1–plane2</span>).</p>
+  <p>وبالنظر إلى أنّ الترتيبات الكهرومغناطيسيّة العمليّة تُحاط غالباً بمُوصِلات، فمن المهمّ احتساب أثر هذه المُجاوَرة ضمن نماذج كسر تماثُل لورنتز. وقد أُجرِيَت دراسات كثيرة حول طاقة كازيمير (<span class="nodecor">CSE1–CSE20</span>)، كما استُقصِيت آثار مرآةٍ كاملة في <span class="nodecor">SME</span> وغير <span class="nodecor">SME</span> (<span class="nodecor">LHCBFABplate, LHCBFABplate2</span>)، إضافةً إلى مرآةٍ شبه شفّافة (<span class="nodecor">LHCBAFFFAB, LHCBAFFSM</span>).</p>
+  <p>مع ذلك، لم يُستكشَف بعدُ دورُ القسم غير الزوجي تحت <span class="nodecor">CPT</span> عند وجود لوحٍ مُوصِلٍ مثالي، وهو ما نعالجه هنا. نركّز على نموذج <span class="nodecor">CFJ</span> ونفترض أنّ المُكوِّن الخَلْفي صغيرٌ جدّاً، لذا نعتمد التقريب حتى الرتبة الثانية. في القسم [II] نشتقّ المُروِّج في وجود اللوح، وفي القسم [III] نحسب طاقةَ وقوّةَ التفاعل بين الشحنة والمرآة، مُكتشفين تولُّدَ عزمٍ تلقائيّ لا يظهر في كهروديناميكا ماكسويل التقليديّة مع مرآةٍ مثاليّة. وأخيراً، في القسم [IV] نعرض الاستنتاجات.</p>
+  <p>نعمل في فضاء–زمن مينكوفسكي (3+1) بتوقيع <span class="math inline">\(\eta^{\rho\nu}=(1,-1,-1,-1)\)</span>.</p>
 
-  <h1 id="II">المروج في وجود حدود مادية</h1>
-  <p>نموذج CFJ هو جزء من القطاع <span class="nodecor">CPT-odd</span> في التوسيع القياسي الأدنى ويُعبَّر عنه بكثافة لاغرانجيان (<span class="nodecor">SME3, CFJ1</span>): <span class="math display">\[
+  <h1 id="II">المُروِّج في وجود شروطٍ حدِّيّة مادِّية</h1>
+  <p>نموذج <span class="nodecor">CFJ</span> هو جزء من القسم غير الزوجي تحت <span class="nodecor">CPT</span> في التوسيع القياسي الأدنى، وتُعطى كثافةُ لاغرانجيانه (<span class="nodecor">SME3, CFJ1</span>) بـ<span class="math display">\[
   {\cal L}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-\frac{1}{2\gamma}\left(\partial_{\mu}A^{\mu}\right)^{2}+\frac{1}{2}\epsilon^{\mu\nu\alpha\beta}(k_{AF})_{\mu}A_{\nu}F_{\alpha\beta}-J^{\mu}A_{\mu}\ .
-  \]</span> هنا <span class="math inline">\(A^{\mu}\)</span> حقل الفوتون، و<span class="math inline">\(F^{\mu\nu}=\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}\)</span>، و<span class="math inline">\(J^{\mu}\)</span> مصدر كهرومغناطيسي، و<span class="math inline">\(\gamma\)</span> معامل تثبيت القياس. المتجه الخلفي <span class="math inline">\((k_{AF})^{\mu}\)</span> يمثل كسر لورنتز بأبعاد كتلة، ونعمل على توسيع تقريبي حتى الرتبة الثانية.</p>
-  <p>يمكن إعادة كتابة النموذج أعلاه كالتالي: <span class="math display">\[
+  \]</span> هنا <span class="math inline">\(A^{\mu}\)</span> هو حقل الفوتون، و<span class="math inline">\(F^{\mu\nu}=\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu}\)</span>، و<span class="math inline">\(J^{\mu}\)</span> مصدرٌ كهرومغناطيسيّ، و<span class="math inline">\(\gamma\)</span> معاملُ تثبيتِ المقياس. المُتجه الخَلْفي <span class="math inline">\((k_{AF})^{\mu}\)</span> يمثّل كسرَ لورنتز بأبعاد الكتلة، ونعمل على توسُّعٍ تقريبيّ حتى الرتبة الثانية.</p>
+  <p>يمكن إعادةُ كتابة النموذج أعلاه على الصورة: <span class="math display">\[
   {\cal L} = \frac{1}{2}A_{\mu}{\cal{O}}^{\mu\nu}A_{\nu}-J^{\mu}A_{\mu}\ ,
   \]</span> حيث <span class="math display">\[
-  {\cal{O}}_{\mu\nu} =\Box\eta_{\mu\nu}-\left(1-\frac{1}{\gamma}\right)\partial_{\mu}\partial_{\nu}-2\epsilon_{\mu\nu\rho\alpha}(k_{AF})^{\rho}\partial^{\alpha}\ .
-  \]</span> المروج <span class="math inline">\(D^{\mu\nu}(x,y)\)</span> يحل المعادلة <span class="math display">\[
-  {\cal{O}}_{\mu\nu}D^{\nu}{}_{\lambda}(x,y)=\eta_{\mu\lambda}\delta^{4}(x-y)\ .
+  {\cal{O}}_{\mu\nu} =\Box\,\eta_{\mu\nu}-\left(1-\frac{1}{\gamma}\right)\partial_{\mu}\partial_{\nu}-2\,\epsilon_{\mu\nu\rho\alpha}(k_{AF})^{\rho}\partial^{\alpha}\ .
+  \]</span> المُروِّج <span class="math inline">\(D^{\mu\nu}(x,y)\)</span> يحلّ المعادلة <span class="math display">\[
+  {\cal{O}}_{\mu\nu}D^{\nu}{}_{\lambda}(x,y)=\eta_{\mu\lambda}\,\delta^{4}(x-y)\ .
   \]</span></p>
-  <p>باختيار مقياس فينمان <span class="math inline">\(\gamma=1\)</span>، يُمكن حَلّ المعادلة أعلاه التقريبية للمروج حتى الرتبة الثانية في <span class="math inline">\((k_{AF})^{\mu}\)</span> (<span class="nodecor">CL1</span>):</p>
+  <p>باختيار مقياس فينمان <span class="math inline">\(\gamma=1\)</span>، يمكن حلّ المعادلة أعلاه تقريبيّاً للمُروِّج حتى الرتبة الثانية في <span class="math inline">\((k_{AF})^{\mu}\)</span> (<span class="nodecor">CL1</span>):</p>
   <!-- بقيّة المعادلات تبقى كما هي من دون تعديل -->
 </main>
 </body>
 </html>
-```
-
-**تصحيحات اللاتكس:**
-- أضفت علامة الدولار `\(` و`\)` حول جميع المتغيرات الرياضية داخل النص العربي حيث كان بعضها مفقودًا.
-- أصلحت معادلات العرض بحيث تبدأ وتنتهي بـ `\[ ... \]` فقط (أزلت `\label{...}` من داخل المعادلات لأن MathJax لا يدعمها في HTML افتراضيًا).
-- أضفت أقواس اللاتكس حول جميع المتغيرات الرياضية في الفقرات (مثلاً \(K_F\) بدل K_F).
-- تأكدت أن جميع المعادلات مغلقة بشكل صحيح ولا تحتوي على علامات ناقصة أو زائدة.
-- لم أغير أي كلمة من النص الأصلي.
-
-**النتيجة النهائية:**  
-النص كامل، جميع معادلات اللاتكس ستعمل بشكل صحيح مع MathJax، ولا توجد أخطاء في اللاتكس.

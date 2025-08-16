@@ -1,0 +1,207 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Baldeep Grewal">
+  <meta name="author" content="Bhavya Ailawadhi">
+  <meta name="author" content="Talat Akhunov">
+  <meta name="author" content="Ermanno Borra">
+  <meta name="author" content="Monalisa Dubey">
+  <meta name="author" content="Naveen Dukiya">
+  <meta name="author" content="Jiuyang Fu">
+  <meta name="author" content="Paul Hickson">
+  <meta name="author" content="Kuntal Misra">
+  <meta name="author" content="Brajesh Kumar">
+  <meta name="author" content="Vibhore Negi">
+  <meta name="author" content="Kumar Pranshu">
+  <meta name="author" content="Ethen Sun">
+  <meta name="author" content="Jean Surdej">
+  <title>مسح المتغيرات باستخدام ILMT</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Lateef&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Amiri', 'Lateef', 'Times New Roman', serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #e0e7ef 0%, #f8f9fa 100%);
+      padding: 2.5rem 0 1.5rem 0;
+      text-align: center;
+      border-bottom: 2px solid #d1d5db;
+      margin-bottom: 2rem;
+    }
+    h1.title {
+      font-family: 'Amiri', 'Lateef', 'Times New Roman', serif;
+      font-size: 2.7rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .author {
+      display: inline-block;
+      font-size: 1.1rem;
+      color: #555;
+      margin: 0 0.5rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 8px;
+      background: #e9ecef;
+      margin-bottom: 0.2rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(44,62,80,0.07);
+      padding: 2.5rem 2.2rem 2.5rem 2.2rem;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Amiri', 'Lateef', 'Times New Roman', serif;
+      color: #1a237e;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2rem;
+      border-right: 6px solid #b0bec5;
+      padding-right: 0.7rem;
+      background: linear-gradient(90deg, #e3f2fd 60%, #fff 100%);
+      border-radius: 0 18px 18px 0;
+      margin-bottom: 1.2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      border-right: 4px solid #90caf9;
+      padding-right: 0.6rem;
+      background: linear-gradient(90deg, #e3f2fd 40%, #fff 100%);
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+      font-size: 1.05em;
+    }
+    code, pre {
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      background: #f3f6fa;
+      color: #1a237e;
+      padding: 0.2em 0.5em;
+      border-radius: 6px;
+      font-size: 0.95em;
+    }
+    .nodecor {
+      text-decoration: none;
+      color: #374151;
+      font-weight: bold;
+      font-family: inherit;
+    }
+    /* MathJax equations */
+    .MathJax {
+      direction: ltr !important;
+      unicode-bidi: embed;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      main {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+      }
+      h1.title {
+        font-size: 2rem;
+      }
+      h1, h2 {
+        font-size: 1.2rem;
+        padding-right: 0.3rem;
+      }
+    }
+    /* Section label styling */
+    .section-label {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1976d2;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 0.1em 0.7em;
+      margin-bottom: 0.5em;
+    }
+    /* Footnote style */
+    .footnote {
+      font-size: 0.95em;
+      color: #607d8b;
+      margin-top: 1.5em;
+      border-top: 1px solid #cfd8dc;
+      padding-top: 0.7em;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">مسح المتغيرات باستخدام <span class="nodecor">ILMT</span></h1>
+  <div>
+    <span class="author">Baldeep Grewal</span>
+    <span class="author">Bhavya Ailawadhi</span>
+    <span class="author">Talat Akhunov</span>
+    <span class="author">Ermanno Borra</span>
+    <span class="author">Monalisa Dubey</span>
+    <span class="author">Naveen Dukiya</span>
+    <span class="author">Jiuyang Fu</span>
+    <span class="author">Paul Hickson</span>
+    <span class="author">Kuntal Misra</span>
+    <span class="author">Brajesh Kumar</span>
+    <span class="author">Vibhore Negi</span>
+    <span class="author">Kumar Pranshu</span>
+    <span class="author">Ethen Sun</span>
+    <span class="author">Jean Surdej</span>
+  </div>
+</header>
+<main>
+  <p>latex</p>
+  <h1 id="ملخص">مُلَخَّص</h1>
+  <p>في جبال شمال الهند، يقع تلسكوب المرآة السائلة الدولي (<span class="nodecor">ILMT</span>)، ذو المرآة الدوارة بقطر <span class="nodecor">4</span> أمتار، المصنوع من الزئبق السائل. خلال فترة <span class="nodecor">10</span> سنوات، سيغطي هذا التلسكوب مسحاً ضوئياً لمساحة <span class="nodecor">117</span> درجة مربعة من السماء لدراسة التغيرات الفلكية والضوئية لجميع الأجسام المكتشفة. من البرامج العلمية الرئيسية في هذا المسح رصد النجوم المتغيرة. ستُستخدم البيانات المجمعة لإنشاء فهرس شامل لمنحنيات الضوء، والذي سيكون ضرورياً للفلكيين الذين يدرسون تكوين وتطور النجوم، وبنية وديناميكيات مجرة درب التبانة، وخصائص الكون ككل. سيسهم هذا الفهرس في تقدمنا نحو فهم أعمق للعمليات الأساسية التي تشكل كوننا. في هذا العمل، نصف المسح ونستعرض بعض الأمثلة على النجوم المتغيرة التي ظهرت في بيانات التشغيل المبكرة للتلسكوب.</p>
+  <h1 id="القسم-عنوان-المستوى-الأول-تايمز-نيو-رومان-غامق-14-نقطة">القسم – عنوان المستوى الأول (تايمز نيو رومان، غامق، <span class="nodecor">14</span> نقطة)</h1>
+  <h1 id="مقدمة">مقدمة</h1>
+  <p>تلعب النجوم المتغيرة دوراً أساسياً في مجالات عدة من علم الفلك، بما في ذلك قياس المسافات، ودراسة بنية النجوم وتطورها، والبحث في الأجرام المدمجة والأنظمة الثنائية القريبة. تُعرف النجوم المتغيرة بأنها الأجرام الفلكية التي يتغير سطوعها مع الزمن، فبعضها يظهر دورية منتظمة بينما الآخر يتسم بعدم انتظام. تعتبر النجوم المتغيرة الدورية مهمة بشكل خاص لأنها تتيح التنبؤ بمقدار سطوعها مستقبلاً. تشمل هذه الفئة عدداً من الأجسام مثل النجوم النابضة، والثنائيات الكسوفية، والنجوم الجديدة. توفر هذه المتغيرات معلومات ثمينة حول طبيعة النجوم وتطورها ضمن مجرة درب التبانة. تعمل السييفيدات ونجوم RR Lyrae كشموع معيارية، حيث يمكن حساب المسافات عبر معرفة قدرها المطلق. وتوفر السييفيدات معلومات حاسمة في تحديد امتداد الكون وعمره. كما أن دراسات أقراص الاكتساب في النجوم المتغيرة الكارثية تسهم في فهم النشاط داخل المجرات النشطة التي تحتوي على ثقوب سوداء ضخمة. تمتلك دراسات النجوم المتغيرة (<span class="nodecor">Pietrukowicz_2009</span>) القدرة على إلقاء الضوء على العديد من الظواهر في الفيزياء الفلكية.</p>
+  <p>في شمال الهند، تقع قمة ديفاستال (<span class="nodecor">79^ 41’ 04”</span> شرقاً، <span class="nodecor">29^ 21’ 40”</span> شمالاً) على ارتفاع <span class="nodecor">2450</span> متراً، وتحتضن عدداً من المرافق البصرية، أبرزها تلسكوب المرآة السائلة الدولي (<span class="nodecor">Surdej_2018</span>) المخصص للرصد السمتوي ويبلغ قطر مرآته <span class="nodecor">4</span> أمتار. يُكرّس هذا التلسكوب الفريد لإجراء مسح ضوئي واسع النطاق يركز على دراسات التغيرات. يعتمد التلسكوب على مرآة دوارة مغطاة بالزئبق السائل؛ تدور المرآة بفترة <span class="nodecor">8.02</span> ثانية مع تحكم دقيق يصل إلى بضعة أجزاء في المليون. يقوم التلسكوب بتصوير المنطقة التي تمر فوقه باستخدام جهاز استشعار مقترن بالشحنة (<span class="nodecor">CCD</span>) بدقة <span class="nodecor"><span class="math inline">\(4096 \times 4096\)</span></span> بكسل في وضع التكامل المؤجل (<span class="nodecor">Gibson_1992</span>). يتيح ذلك تصويراً شبه مستمر للسماء التي تمر قبيل وقت تكامل يبلغ <span class="nodecor">102.4</span> ثانية (الزمن الذي يستغرقه جرم فلكي لعبور جهاز الاستشعار بفعل دوران الأرض). يُعالج المصحح البصري المكوّن من خمسة عناصر تشوهات التلسكوب وانحناء مسار النجوم. يمتلك التلسكوب مجال رؤية يبلغ <span class="nodecor"><span class="math inline">\(22.4&#39; \times  22.4&#39;\)</span></span> ومجهزاً بمرشحات (<span class="nodecor">Kumar_2022</span>) لمسح السماء في أطياف Sloan g<span class="math inline">\(&#39;\)</span>، r<span class="math inline">\(&#39;\)</span>، و i<span class="math inline">\(&#39;\)</span>. تتمثل الأهداف العلمية الرئيسية للتلسكوب في دراسة التغيرات الفلكية والضوئية لجميع الأجرام القابلة للكشف ضمن هذه المساحة.</p>
+  <h2 id="عنوان-المستوى-الثاني-تايمز-نيو-رومان-عريض-12-نقطة">عنوان المستوى الثاني – (تايمز نيو رومان، عريض، <span class="nodecor">12</span> نقطة)</h2>
+  <h1 id="الملاحظات-والتحليل">الملاحظات والتحليل</h1>
+  <p>يعد كتالوج البحث الآلي للسماء بأكملها للنجوم المتغيرة (<span class="nodecor">ASAS-SN</span>) (<span class="nodecor">Christy_2022</span>) نقطة انطلاق مفيدة لدراسات المتغيرات. من خلال البيانات المتاحة على موقع <span class="nodecor">ASAS-SN</span> الإلكتروني، تم إنشاء فرع مخصص يضم بيانات جميع الأجسام الواقعة ضمن مجال مسح <span class="nodecor">ILMT</span>. كانت المعايير الرئيسة لاختيار الأجسام هي وقوعها ضمن هذا المجال، مع مراعاة النجوم المتغيرة ذات الفترات الطويلة والقصيرة. بفضل الملاحظات طويلة الأمد لـ <span class="nodecor">ILMT</span>، بات بالإمكان جمع بيانات تغطي عدة دورات. صُنّفت الأجسام حسب نوع المتغير: السييفيدات، <span class="nodecor">RR Lyrae</span>، <span class="nodecor">Mira</span>، المتغيرات الدورانية، الثنائيات الكسوفية، والمتغيرات الشبه منتظمة/غير منتظمة. تتوفر بيانات الفرع بصيغة ملفات مفصولة بفواصل (<span class="nodecor">CSV</span>) تحتوي على: (i) اسم <span class="nodecor">ASAS-SN</span>، (ii) الصعود المستقيم (<span class="nodecor">J2000</span>)، (iii) الميل (<span class="nodecor">J2000</span>)، و (iv) قدر <span class="nodecor">Gaia G</span>. ثم حُوّلت هذه الملفات إلى تنسيق <span class="nodecor">FITS</span> باستخدام مكتبة <span class="nodecor">Astropy</span>.</p>
+  <p>تكوّنت مجموعة البيانات من الصور التي تم الحصول عليها في <span class="nodecor">1</span> و <span class="nodecor">2</span> نوفمبر <span class="nodecor">2022</span>، بالإضافة إلى صور في أوائل مارس <span class="nodecor">2023</span>، خلال مرحلة التشغيل التجريبي. وعلى الرغم من صغر حجم هذه العينة، إلا أنها كافية لتطوير تقنيات التحليل والتحقق من الأداء. خضعت هذه الصور لمعالجة أولية، وتُرجمت إلى معايرة فلكية وضوئية باستخدام نجوم <span class="nodecor">Gaia</span> في المجال. بلغت الدقة الفلكية النموذجية نحو <span class="nodecor">0.3</span> ثانية قوسية، بينما تراوحت الدقة الضوئية بين <span class="nodecor">0.05</span> و <span class="nodecor">0.10</span> قدر في الليالي الصافية.</p>
+  <p>بعد ذلك، استخدمنا برنامج التحليل الضوئي <span class="nodecor">Python</span> <code>SunPhot</code> (<span class="nodecor">SunEProceedings</span>) لاستخراج قدر الأجسام المدرجة في صور <span class="nodecor">ILMT</span>. نُطابِق مواقع الصعود المستقيم والميل للنجوم المدرجة في الكتالوج مع مواقعها في الصور العلمية المعايرة. عند تحديد موقع الجسم، يتم تطبيق فتحة دائرية تركز على النجم، وحلقة متحدة المركز تحيط به لقياس الخلفية المحلية. تُستخدم قيمة الكثافة المتوسطة داخل الحلقة لتقدير خلفية السماء، التي تُطرح من كل بكسل ضمن الفتحة لحساب تدفق النجم. بعد ذلك، يحول التدفق إلى قدر فلكي اعتماداً على نقطة الصفر الضوئية المستخلصة من قياسات نجوم <span class="nodecor">Gaia</span> في الصورة.</p>
+  <h1 id="النتائج">النتائج</h1>
+  <p>يوجد ما يقرب من <span class="nodecor">417</span> نجماً متغيراً معروفاً ضمن مجال رؤية <span class="nodecor">ILMT</span>. في مجموعة البيانات المحدودة لدينا، لوحظ <span class="nodecor">23</span> من متغيرات <span class="nodecor">RR Lyrae</span>، من أصل <span class="nodecor">69</span> في كامل منطقة المسح. تتراوح فترات هذه النجوم عادة بين <span class="nodecor">0.2</span> و <span class="nodecor">2</span> يوم، مما يعرّضها لأخطاء في أخذ العينات عند التكرار اليومي لـ <span class="nodecor">ILMT</span>. مع ذلك، يمكن للمتغيرات الدورية بناء منحنيات ضوئية من بيانات عدة ليالٍ عبر طي البيانات عند فترة النجم. كما يمكن استخدام هذا الأسلوب لتحديد الفترة بدقة عن طريق تقليل تشتت النقاط المطوية. على سبيل المثال، يظهر الشكل <span class="nodecor">3</span> قدرة <span class="nodecor">ILMT</span> على تتبع منحنيات الطور حتى للنجوم ذات الفترات التي تقل عن يوم واحد. لذا، من المتوقع ملاحظة تغير ضئيل في القدر عندما يُراقب النجم في الليلة التالية بعد <span class="nodecor">0.997</span> يوم (يوم نجمي واحد)، حيث يكون النجم في مرحلة شبه متطابقة. ومع ذلك، فإن المراقبة اليومية على مدى أسبوع توفر تغطية كاملة للطور، وستسهم الملاحظات الإضافية في تحسين عينات منحنى الضوء المطوي.</p>
+  <p>سجلنا ما مجموعه <span class="nodecor">73</span> متغيراً دورانياً ضمن منطقة المسح، وقد راقبنا حتى الآن <span class="nodecor">31</span> منها. تمثل هذه المتغيرات فرصة ممتازة لدراسة خصائص أسطح النجوم من خلال متابعة التغيرات الزمنية في سطوعها. علاوة على ذلك، رصد <span class="nodecor">11</span> متغيراً من نوع <span class="nodecor">Mira</span>، وقد تمت متابعة واحد منها حتى الآن.</p>
+  <p>الفئة الأخيرة في هذه الدراسة هي المتغيرات شبه الدورية وغير الدورية، التي تحدث تغيراتها على مدى زمني يتراوح بين أشهر إلى سنوات ولا تظهر نمطاً دورياً واضحاً. حتى الآن، رصد <span class="nodecor">ILMT</span> <span class="nodecor">40</span> من هذه المتغيرات ضمن منطقة المسح، من أصل <span class="nodecor">73</span> نجماً مسجلاً.</p>
+  <h1 id="المناقشة">المناقشة</h1>
+  <p>استُخدمت السييفيدات منذ فترة طويلة في قياسات المسافة بفضل العلاقة المعروفة بين دوراتها وسطوعها الإيشائي. من حيث المبدأ، يمكن لملاحظات <span class="nodecor">ILMT</span> أن توفر قياسات دقيقة للفترات، وبالاقتران مع قياسات البارالاكس من <span class="nodecor">Gaia</span>، سيسمح ذلك بتقليل عدم اليقين في علاقة الفترة–السطوع. تتبع نجوم <span class="nodecor">RR Lyrae</span> أيضاً علاقة بين الفترة واللون والسطوع، وبالتالي تعد مؤشراً بديلاً موثوقاً للمسافة. وعلى الرغم من أنها أقل إشراقاً من السييفيدات، فإنها تبقى أدوات قيمة لتحديد المسافات إلى المجرات القريبة.</p>
+  <p>يتمتع <span class="nodecor">ILMT</span> بقدرة على اكتشاف السييفيدات ونجوم <span class="nodecor">RR Lyrae</span> حتى عند مسافات كبيرة، مع العلم أن حدود الكشف الفعلية تعتمد على عوامل عدة، مثل السطوع الذاتي للنجم وظروف الرصد الجوي.</p>
+  <p>بما أن <span class="nodecor">ILMT</span> لا يزال في مرحلته التجريبية، فإن كمية البيانات المتاحة حالياً محدودة لكنها في تزايد مستمر. أسهمت التحسينات في محاذاة التلسكوب وتوازن المرآة في رفع جودة الصورة إلى <span class="nodecor">1.4</span> ثانية قوسية (العرض الكامل عند نصف الحد الأقصى للكثافة)، مع توقع المزيد من التحسن مع اكتساب الفريق المزيد من الخبرة في تشغيل النظام. لقد عرضنا هنا أداء <span class="nodecor">ILMT</span>، ونتوقع أن يكون هذا المشروع مورداً قيماً لدراسات النجوم المتغيرة والمجرات والكوازارات والعدسات الجاذبية.</p>
+  <p>ينبثق مشروع تلسكوب المرآة السائلة الدولي بقطر <span class="nodecor">4m</span> (<span class="nodecor">ILMT</span>) من تعاون بين معهد علم الفلك والجيوفيزياء (جامعة لييج، بلجيكا)، وجامعات كولومبيا البريطانية، لافال، مونتريال، تورونتو، فيكتوريا ويورك، ومعهد أريابهاتا لعلوم الرصد (<span class="nodecor">ARIES</span>، الهند). يشكر المؤلفون هيتيش كومار، هيمانشو راوات، خوشال سينغ وغيرهم من طاقم الرصد على مساعدتهم في تشغيل تلسكوب <span class="nodecor">ILMT</span>. ويقدّر الفريق مساهمات أعضاء <span class="nodecor">ARIES</span> السابقين والحاليين من العلماء والمهندسين والإداريين في إنجاز هذا المشروع. يود <span class="nodecor">JS</span> أن يشكر خدمة الجمهور وآلوني، <span class="nodecor">F.R.S.–FNRS</span> (بلجيكا) وجامعة لييج على تمويل بناء <span class="nodecor">ILMT</span>. ويقدّر <span class="nodecor">PH</span> الدعم المالي من المجلس الوطني للعلوم والهندسة في كندا (<span class="nodecor">RGPIN-2019-04369</span>)، كما يشكر <span class="nodecor">PH</span> و<span class="nodecor">JS</span> <span class="nodecor">ARIES</span> على حفاوة الاستقبال أثناء زيارتهما إلى ديفاستال. يقدّر <span class="nodecor">BA</span> زمالة مجلس البحوث العلمية والصناعية (<span class="nodecor">CSIR</span>) (<span class="nodecor">09/948(0005)/2020-EMR-I</span>) لهذا العمل، ويقدّر <span class="nodecor">MD</span> جائزة زمالة برنامج الابتكار في متابعة العلوم الملهمة (<span class="nodecor">INSPIRE</span>) (<span class="nodecor">DST/INSPIRE Fellowship/2020/IF200251</span>) لهذا العمل. يدعم هذا العمل الشبكة البلجيكية الهندية للأبحاث الفلكية (<span class="nodecor">BINA</span>) المعتمدة من قبل القسم الدولي بوزارة العلوم والتكنولوجيا (<span class="nodecor">DST</span>، حكومة الهند؛ <span class="nodecor">DST/INT/BELG/P-09/2017</span>) ومكتب السياسة العلمية الفيدرالية البلجيكية (<span class="nodecor">BELSPO</span>، حكومة بلجيكا؛ <span class="nodecor">BL/33/IN12</span>).</p>
+  <p>يأتي هذا العمل نتيجة تعاون طويل الأمد الذي قدم فيه جميع المؤلفين إسهامات جوهرية.</p>
+  <p>يعلن المؤلفون خلوهم من تضارب المصالح.</p>
+</main>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والخلفية وتنسيق العناوين والفقرات.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات.
+- تم التأكد من عدم وجود أخطاء HTML وأن جميع العناصر مغلقة بشكل صحيح.
+- تم تحسين العرض على الشاشات الصغيرة.
+- تم إبراز أسماء المؤلفين والعناوين بشكل جمالي واحترافي.

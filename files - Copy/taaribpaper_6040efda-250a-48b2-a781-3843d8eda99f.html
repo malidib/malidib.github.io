@@ -1,0 +1,249 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Osvaldo Luamba Quinjica David Ifeoluwa Adelani">
+  <title>AngOFA: استغلال تهيئة التضمين OFA والبيانات الاصطناعية لنموذج اللغة الأنغولية</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    html, body {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      font-size: 22px;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    header {
+      background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+      margin-bottom: 2.5rem;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+    .author {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #e0e0e0;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+      padding: 2.5rem 2.2rem 2.5rem 2.2rem;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-weight: 700;
+      color: #2b5876;
+      margin-top: 2.2rem;
+      margin-bottom: 1.1rem;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.3rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      border-right: 4px solid #4e4376;
+      padding-right: 0.7rem;
+      background: #f3f3f7;
+      border-radius: 8px;
+      margin-top: 1.8rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: #4e4376;
+      margin-top: 1.5rem;
+    }
+    h4 {
+      font-size: 1.1rem;
+      color: #444;
+      margin-top: 1.2rem;
+    }
+    p {
+      margin: 1.1rem 0;
+      text-align: justify;
+    }
+    ol, ul {
+      margin: 1.2rem 2.5rem 1.2rem 0;
+      padding-right: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.7rem;
+    }
+    code, pre {
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      background: #f3f3f7;
+      color: #4e4376;
+      border-radius: 5px;
+      padding: 0.2em 0.5em;
+      font-size: 0.95em;
+    }
+    .nodecor {
+      color: #2b5876;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    strong {
+      color: #4e4376;
+    }
+    blockquote {
+      border-right: 5px solid #4e4376;
+      background: #f3f3f7;
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      color: #333;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5rem 0;
+      background: #f9f9fb;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 1rem;
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #e9e9f3;
+      color: #2b5876;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background: #f3f3f7;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #e0e0e0;
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 700px) {
+      main {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+      }
+      header {
+        padding: 1.5rem 0.5rem 1rem 0.5rem;
+      }
+      h1.title {
+        font-size: 1.5rem;
+      }
+      h1, h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">AngOFA: استغلال تهيئة التضمين OFA والبيانات الاصطناعية لنموذج اللغة الأنغولية</h1>
+  <p class="author">
+    <span class="nodecor">Osvaldo Luamba Quinjica</span><br />
+    <span class="nodecor">David Ifeoluwa Adelani</span>
+  </p>
+</header>
+<main>
+  <h1 id="ملخص">مُلَخَّص</h1>
+  <p>في السنوات الأخيرة، شهد تطوير نماذج اللغة المدربة مسبقاً (PLMs) زخماً متزايداً بفضل قدرتها على تجاوز الحواجز اللغوية وتيسير نقل المعرفة عبر لغات متنوعة. ومع ذلك، ركَّز معظم هذا التقدم على اللغات ذات الموارد العالية، فاتسعت فجوة واضحة في المشهد متعدد اللغات. يسعى هذا البحث إلى سد هذه الفجوة من خلال تقديم أربعة نماذج PLMs مصممة خصيصاً وخضعت لتكييف دقيق للغات الأنغولية، وذلك باستخدام نهج التكييف الدقيق متعدد اللغات (MAFT). نُسلط الضوء في هذا العمل على دور تهيئة التضمين المستنير والبيانات الاصطناعية في تعزيز أداء نماذج MAFT في المهام اللاحقة. وحققنا تحسينات بلغت <span class="nodecor">12.3</span> نقطة عند الاعتماد على AfroXLMR-base (مطوّر بواسطة MAFT)، و<span class="nodecor">3.8</span> نقطة عبر OFA (تهيئة التضمين الفعالة).</p>
+
+  <h1 id="تقديم-الأوراق-لورشة-عمل-africanlp-في-iclr2023">تقديم الأوراق البحثية في ورشة عمل AfricaNLP ضمن مؤتمر ICLR<span class="nodecor">2023</span></h1>
+
+  <h1 id="مقدمة">مُقَدِّمَة</h1>
+  <p>لقد شهدت نماذج اللغة ومجموعات التقييم اللغوي تقدماً ملحوظاً عبر لغات العالم (<span class="nodecor">devlin-etal-2019-bert</span>, <span class="nodecor">conneau-etal-2020-unsupervised</span>, <span class="nodecor">workshop2023bloom</span>, <span class="nodecor">xue-etal-2021-mt5</span>). ومع ذلك، غالباً ما غُفلت العديد من اللغات الأفريقية، فأفضى ذلك إلى فجوة واضحة. كما أن معظم النماذج الموجهة لأفريقيا لم تُدمج اللغات الأنغولية ضمن مقاربتها (<span class="nodecor">dossou-etal-2022-afrolm</span>, <span class="nodecor">alabi-etal-2022-adapting</span>, <span class="nodecor">ogueji-etal-2021-small</span>). وتجلى نشاط مجتمع أبحاث معالجة اللغات الطبيعية في أفريقيا مؤخراً في توسيع مجموعات التقييم (<span class="nodecor">adelani-etal-2021-masakhaner</span>, <span class="nodecor">adelani-etal-2022-masakhaner</span>, <span class="nodecor">muhammad-etal-2023-semeval</span>, <span class="nodecor">ma2023taxi1500</span>). ورغم هذه المبادرات، لا تزال اللغات الأنغولية تعاني من نقص التمثيل المناسب.</p>
+  <p>ينطوي النهج الأول على بناء نموذج من الصفر وتدريبه مباشرة على لغات متعددة باستخدام أهداف التعلم الذاتي مثل نمذجة اللغة المقنعة (<span class="nodecor">devlin-etal-2019-bert</span>). أما النهج الثاني، التكييف الدقيق متعدد اللغات (<span class="nodecor">MAFT</span>), فيتضمن تكييف نموذج متعدد اللغات مدرب مسبقاً عبر إضافة مجموعة جديدة من اللغات (<span class="nodecor">alabi-etal-2022-adapting</span>, <span class="nodecor">wang-etal-2022-expanding</span>, <span class="nodecor">imanigooghari-etal-2023-glot500</span>). يتميز MAFT بالكفاءة في استغلال الموارد، لا سيما في ظل ارتفاع التكاليف الحاسوبية ومعدلات نمو حجم النماذج (<span class="nodecor">tay2022scale</span>, <span class="nodecor">gupta2023continual</span>). يمكن أيضاً تعزيز أداء MAFT عبر إضافة رموز مفردات جديدة للغات إضافية واستخدام تهيئة تضمين غير غاوسية (<span class="nodecor">minixhofer-etal-2022-wechsel</span>, <span class="nodecor">dobler-de-melo-2023-focus</span>, <span class="nodecor">liu2023ofa</span>).</p>
+  <p>في هذا البحث، نعرض المجموعة الأولى من نماذج PLM متعددة اللغات المصممة خصيصاً لخمس لغات أنغولية باستخدام نهج MAFT. نقارن النماذج المطورة عبر MAFT مع نظيرتها بدون تهيئة تضمين مستنير، المشار إليهما باسم <span class="nodecor">angofa</span> و <span class="nodecor">angbert</span>، على التوالي. من خلال استثمار نهج OFA لتهيئة التضمين قبل تطبيق MAFT، تكشف نتائجنا أن <span class="nodecor">angofa</span> يتفوق بشكل ملحوظ على <span class="nodecor">angbert</span> وOFA، مما يبرز التحسينات الجوهرية في الأداء الناجمة عن دمج تهيئة التضمين المستنير والبيانات الاصطناعية.</p>
+
+  <h1 id="مفاجأة">نتيجة مفاجئة</h1>
+  <p>أظهرت نتائجنا أن نموذج <span class="nodecor">OFA</span> المطور على أكثر من <span class="nodecor">500</span> لغة يحقق أداءً يقارب أداء <span class="nodecor">AngOFA</span>، مما يؤكد قدرة <span class="nodecor">OFA</span> على التوسع ليشمل لغات إضافية.</p>
+
+  <h1 id="اللغات-الأنغولية">اللغات الأنغولية</h1>
+  <p>يشهد المشهد اللغوي في أنغولا تنوعاً يضم أكثر من <span class="nodecor">40</span> لغة، مع تعداد سكاني يقارب <span class="nodecor">32</span> مليون نسمة. تضم هذه اللغات البرتغالية وبعض لغات الخويسان، وغالبيتها تنتمي إلى عائلة النيجر-الكونغو البانتو. ورغم ذلك، هناك نقص واضح في الأدب والمحتوى الإذاعي والتلفزيوني باللغات الأنغولية الأصلية. تُكتب جميع لغات أنغولا بالأبجدية اللاتينية، ويشترك كثير منها في ديغرافات محددة. وبالنظر إلى ندرة الموارد، سيركز هذا البحث على خمس لغات أنغولية هي الأوسع انتشاراً: أومبوندو، كيمبوندو، كيكونغو، تشوكوي، ولوَبَأ-كاساي. انظر الجدول [table-angola-languages] لمزيد من التفاصيل.</p>
+
+  <h1 id="النهج-لتحسين-maft">النهج لتحسين <span class="nodecor">MAFT</span></h1>
+  <h2 id="vocab-expansion">توسيع المفردات</h2>
+  <p>تميل نماذج اللغة المبرمجة إلى مواجهة رموز خارج المفردات للغات أو النصوص التي لم تُغطَّ أثناء التدريب المسبق. يظهر هذا بشكل أوضح في النصوص غير المرئية (<span class="nodecor">adelani-etal-2021-masakhaner</span>, <span class="nodecor">pfeiffer-etal-2021-unks</span>)، وأحد أكثر الطرق فعالية للتعامل مع ذلك هو توسيع مفردات نموذج اللغة المبرمجة لتغطية الرموز الجديدة (<span class="nodecor">wang-etal-2019-improving</span>). تم إنشاء Glot-500 (<span class="nodecor">imanigooghari-etal-2023-glot500</span>) عن طريق توسيع مفردات XLM-R من <span class="nodecor">250K</span> إلى <span class="nodecor">400K</span> قبل MAFT. ومع ذلك، تم تهيئة الرموز الجديدة المضافة بشكل عشوائي.</p>
+  <h2 id="عامل-التضمين-ofa">عامل التضمين OFA</h2>
+  <p>يعالج OFA مشكلتين في تكييف نماذج اللغة المبرمجة مسبقاً مع لغات جديدة: (١) البدء العشوائي لتضمينات الكلمات الفرعية الجديدة لا يستفيد من المعرفة اللغوية المشفرة في النموذج المصدر، (٢) إدخال معاملات إضافية يشكل عقبات محتملة أمام التدريب الفعال للنموذج المعدل (<span class="nodecor">liu2023ofa</span>). يحل OFA هذه المشكلات من خلال الاستفادة من التضمينات متعددة اللغات الخارجية والتضمينات في نموذج اللغة المبرمجة المصدر لتهيئة تضمينات الكلمات الفرعية الجديدة. في هذا النهج، يقوم OFA بتحليل مصفوفة التضمينات لنموذج اللغة المبرمجة المصدر إلى مصفوفتين أصغر كبدائل. في فضاء ذو أبعاد أقل، يتم التعبير عن تضمينات الكلمات الفرعية الجديدة غير المتداخلة كمجموعات من تضمينات الكلمات الفرعية لنموذج اللغة المبرمجة المصدر. توزن هذه المجموعات بواسطة التشابهات المستمدة من التضمينات متعددة اللغات الخارجية المحاذاة جيداً، أي ColexNet+ (<span class="nodecor">liu2023crosslingual</span>)، التي تغطي أكثر من ألف لغة. تُنسخ تضمينات الكلمات الفرعية المتداخلة مباشرة. يضمن هذا النهج أن تضمينات الكلمات الفرعية المشتركة بين نموذج اللغة المبرمجة المصدر والمفردات الموسعة متكاملة، محافظة على الاستمرارية في التمثيل. لإكمال العملية، يقوم OFA بتكرار جميع المعاملات غير التضمينية من نموذج اللغة المبرمجة المصدر، ويستبدل المحلل اللغوي المصدر بالمحلل اللغوي الهدف بعد توسيع المفردات.</p>
+
+  <h1 id="النماذج-الأساسية">النماذج الأساسية</h1>
+  <h2 id="synthetic-data">البيانات الاصطناعية لنمذجة اللغة</h2>
+  <p>بالنسبة للغات التي تفتقر إلى بيانات كافية قبل التدريب، يمكن توليد بيانات اصطناعية من خلال توسيع القاموس (<span class="nodecor">reid-etal-2021-afromt</span>) أو نموذج الترجمة الآلية (MT) - وهو نهج شائع جداً في بحوث الترجمة الآلية يعرف باسم الترجمة العكسية، وهو طريقة فعالة لتحسين نموذج الترجمة الآلية للغات ذات الموارد المنخفضة (<span class="nodecor">sugiyama-yoshinaga-2019-data</span>, <span class="nodecor">xia-etal-2019-generalized</span>). في هذه الورقة، نستخدم البيانات الاصطناعية التي تم الحصول عليها من خلال الترجمة الآلية كما وصف في (<span class="nodecor">adelani2023sib200</span>). لقد قام المؤلفون بتوليد بيانات مترجمة آلياً لـ <span class="nodecor">34</span> لغة أفريقية (بما في ذلك اللغات الأنغولية) بأقل من <span class="nodecor">10MB</span> من البيانات، باستخدام مجموعة بيانات تعليقات الأخبار الإنجليزية (<span class="nodecor">kocmi-etal-2022-findings</span>)، والتي تحتوي على أكثر من <span class="nodecor">600K</span> جملة.</p>
+
+  <h1 id="البيانات">البيانات</h1>
+  <h2 id="train_data">بيانات التدريب</h2>
+  <p>عتمدنا على مجموعة بيانات NLLB (<span class="nodecor">nllb2022</span>)، مستثنين الترجمات الإنجليزية، وركزنا فقط على لغات كيمبوندو، أومبوندو، كيكونغو، تشوكوي، ولوَبَأ-كاساي. تم دمج هذه اللغات في ملف واحد كمجموعة بيانات أولية للتدريب. بالإضافة إلى ذلك، أضفنا بيانات اصطناعية تم توليدها من خلال NLLB. تعرض التفاصيل بيانات أحادية اللغة.</p>
+  <h2 id="eval_data">بيانات التقييم</h2>
+  <p>في عملنا، قمنا بإجراء التقييم على مجموعة بيانات تصنيف النصوص SIB-<span class="nodecor">200</span> (<span class="nodecor">adelani2023sib200</span>)، التي توفر مجموعات تدريب/تطوير/اختبار وتضم <span class="nodecor">7</span> فئات في أكثر من <span class="nodecor">200</span> لغة ولهجة أفريقية. توزيع الفئات هو: العلوم/التكنولوجيا (<span class="nodecor">252</span>)، السفر (<span class="nodecor">198</span>)، السياسة (<span class="nodecor">146</span>)، الرياضة (<span class="nodecor">122</span>)، الصحة (<span class="nodecor">110</span>)، الترفيه (<span class="nodecor">93</span>)، الجغرافيا (<span class="nodecor">83</span>). SIB-<span class="nodecor">200</span> هي المجموعة الوحيدة التي تغطي اللغات الأنغولية. لقد قمنا بالتقييم فقط على مجموعة اللغات الأنغولية المغطاة في هذا العمل.</p>
+
+  <h1 id="الإعداد-التجريبي">الإعداد التجريبي</h1>
+  <p>استفدنا من قدرات XLM-R متعددة اللغات في مرحلة التدريب، فأنشأنا نماذج جديدة من اللغة المبرمجة: <span class="nodecor">AngBERT</span> و <span class="nodecor">AngOFA</span>. هذه النماذج خضعت لعمليات تهيئة دقيقة مختلفة. على وجه التحديد، خضع <span class="nodecor">AngBERT</span> لعملية تهيئة باستخدام طريقة MAFT كما هو موضح في (<span class="nodecor">alabi-etal-2022-adapting</span>)، بنوعين - أحدهما تم تدريبه فقط على البيانات أحادية اللغة (<span class="nodecor">281.6</span> MB)، والآخر يشمل كلاً من البيانات أحادية اللغة والبيانات الاصطناعية (<span class="nodecor">808.7</span> MB).</p>
+  <p>وبالمثل، خضع <span class="nodecor">AngOFA</span> أيضاً لنوعين من التهيئة، باستخدام مجموعات البيانات بنفس الطريقة كما في <span class="nodecor">AngBERT</span>. ومع ذلك، اتبع <span class="nodecor">AngOFA</span> التكوينات الموضحة لـ <code>ofa-multi-768</code>، كما هو موصوف في (<span class="nodecor">liu2023ofa</span>). اخترنا الحفاظ على <span class="nodecor">768</span> كبعد كامن وحيد في تجاربنا استناداً إلى الرؤى من (<span class="nodecor">imanigooghari-etal-2023-glot500</span>, <span class="nodecor">liu2023ofa</span>) والتي تدعمها أيضاً النتائج الأولية من تجاربنا الخاصة. كشفت هذه النتائج عن دلائل على فقدان المعلومات في الأبعاد الأدنى، وهو ما كان ملحوظاً بشكل خاص في مهام مثل تصنيف النصوص. كان الهدف من هذا النهج في تقسيم البيانات هو استكشاف تأثيرات طرق MAFT وOFA، سواء مع البيانات الاصطناعية أو بدونها، على أداء النموذج.</p>
+  <p>قمنا بمقارنة نماذجنا الجديدة مع النماذج الأساسية التالية:</p>
+  <ol>
+    <li><p>XLM-R (<span class="nodecor">conneau-etal-2020-unsupervised</span>): نموذج يعتمد فقط على المشفر والذي خضع للتدريب المسبق على <span class="nodecor">100</span> لغة من خلال هدف نمذجة اللغة المقنعة. XLM-R لا يغطي أي لغة تم تقييمها في هذا عمل.</p></li>
+    <li><p>Serengeti (<span class="nodecor">adebara-etal-2023-serengeti</span>): تم تدريبه على <span class="nodecor">500</span> لغة أفريقية، بما في ذلك <span class="nodecor">10</span> لغات ذات موارد عالية. يشمل Kimbundu، Umbundu، و Chokwe.</p></li>
+    <li><p>Glot-500 (<span class="nodecor">imanigooghari-etal-2023-glot500</span>): مشتق من XLM-R، تم توسيعه ليغطي <span class="nodecor">500</span> لغة من خلال توسيع مفرداته من <span class="nodecor">250K</span> إلى <span class="nodecor">400K</span>، وبالتالي استيعاب رموز جديدة تمثل <span class="nodecor">400</span> لغة غير موجودة سابقاً في XLM-R. Glot-500 يغطي جميع اللغات الأنغولية المستخدمة في تقييمنا.</p></li>
+    <li><p>AfroXLMR-base (<span class="nodecor">alabi-etal-2022-adapting</span>): تم تطويره باستخدام طريقة MAFT، يغطي <span class="nodecor">20</span> لغة مع مجموعة أحادية اللغة لا تقل عن <span class="nodecor">50MB</span>. اللغات الأنغولية غير مشمولة.</p></li>
+    <li><p>AfroXLMR-base-76L (<span class="nodecor">adelani2023sib200</span>): تم تطويره باستخدام طريقة MAFT، يغطي اللغات التي لديها بيانات على الويب لا تقل عن <span class="nodecor">10MB</span>. يوسع التغطية لتشمل المزيد من اللغات، ولا سيما تلك المدرجة في نموذج NLLB-200 MT. تم إنشاء بيانات اصطناعية أيضاً لحوالي <span class="nodecor">30</span> لغة ذات بيانات محدودة، بما في ذلك جميع اللغات الأنغولية الخمس. في المجمل، يغطي <span class="nodecor">76</span> لغة.</p></li>
+    <li><p>OFA (<span class="nodecor">liu2023ofa</span>): يدمج تهيئة التضمين OFA جنباً إلى جنب مع MAFT باستخدام Glot500-c (<span class="nodecor">imanigooghari-etal-2023-glot500</span>)، وبالتالي يشمل جميع اللغات المعالجة في هذا عمل.</p></li>
+  </ol>
+
+  <h1 id="مهمة-التقييم">مُهِمَّة التقييم</h1>
+
+  <h1 id="النتائج-والمناقشة">النتائج والمناقشة</h1>
+  <p><strong>نتائج المعيار</strong>: مقارنة فعالية (<span class="nodecor">OFA</span>) مع التهيئة العشوائية قبل التكييف الدقيق متعدد اللغات (<span class="nodecor">MAFT</span>)</p>
+  <p>Table[table-1] تُظهر أداء نماذجنا الأساسية باستخدام <strong>مقياس F1 الموزون</strong>. نناقش أهم النتائج أدناه:</p>
+  <h4 id="نماذج-اللغة-المحددة-بالمنطقة-أفضل-من-تلك-المدربة-مسبقا-من-الصفر-بالعديد-من-اللغات">نماذج اللغة المحددة بالمنطقة أفضل من تلك المدربة مسبقاً من الصفر بعدة لغات</h4>
+  <p>أظهرت نتائجنا أن (<span class="nodecor">AngBERT</span>) المنشأ باستخدام (<span class="nodecor">MAFT</span>) أدى أداءً أفضل من (<span class="nodecor">XLM-R</span>)، (<span class="nodecor">AfroXLMR</span>)، (<span class="nodecor">Serengeti</span>) و(<span class="nodecor">Glot-500</span>) بـ <span class="math inline">(+5.5)</span>، <span class="math inline">(+1.2)</span>، <span class="math inline">(+3.6)</span>، <span class="math inline">(+6.6)</span> نقاط على التوالي. لقد تم تدريب آخر نموذجين مسبقاً على أكثر من 500 لغة مع عدد قليل من اللغات الأنغولية ولكن أداؤهما كان أسوأ من (<span class="nodecor">AfroXLMR</span>) (المكيف من خلال (<span class="nodecor">MAFT</span>) إلى 20 لغة)، و(<span class="nodecor">AngBERT</span>) (المكيف إلى خمس لغات أنغولية). هذا يظهر أن نماذج اللغة المحددة بالمنطقة التي تغطي اللغات المتصلة ضمن نفس العائلة اللغوية يمكن أن تكون أكثر فعالية.</p>
+  <h4 id="يمكن-تعزيز-نتائج-maft-من-خلال-الاستفادة-من-البيانات-أحادية-اللغة-الاصطناعية">يمكن تعزيز نتائج (<span class="nodecor">MAFT</span>) من خلال الاستفادة من البيانات أحادية اللغة الاصطناعية</h4>
+  <p>من خلال دمج بيانات اصطناعية إضافية، تحسن أداء (<span class="nodecor">AngBERT</span>) (+<span class="nodecor">SYN</span> data) بـ <span class="math inline">(+5.5)</span> عن (<span class="nodecor">AngBERT</span>) بدون بيانات اصطناعية. ومع ذلك، فشل في تجاوز أداء (<span class="nodecor">AfroXLMR-base-76L</span>) الذي تم تدريبه على 76 لغة أفريقية بما في ذلك جميع اللغات الأنغولية باستثناء لوَبَأ-كاساي مع بيانات أكبر. أظهرت تجربتنا أن النموذج المكيف لـ 76 لغة أدى أداءً أفضل من (<span class="nodecor">Serengeti</span>) المدرب مسبقاً على 500 لغة، مما يظهر أنه يمكننا إنشاء نماذج لغة أفضل لتغطية المزيد من اللغات من خلال التكييف دون العملية المكلفة للتدريب من الصفر.</p>
+  <h4 id="تهيئة-التضمين-ofa-مع-بيانات-أكبر-أكثر-فعالية">تهيئة التضمين (<span class="nodecor">OFA</span>) مع بيانات أكبر أكثر فعالية</h4>
+  <p>أظهرت النماذج المهيأة مع (<span class="nodecor">OFA</span>) تحسناً مستمراً مقارنة بالنماذج الأساسية الأخرى. هذا يشير إلى أن (<span class="nodecor">OFA</span>)، الذي يستفيد صراحة من المعلومات المشفرة في تضمينات النموذج المصدر والتضمينات متعددة اللغات الخارجية، أفضل من التهيئة العشوائية. بشكل ملحوظ، تم تعزيز ميزة (<span class="nodecor">AngOFA</span>) على (<span class="nodecor">OFA</span>) من خلال وصوله إلى مجموعة بيانات أكبر بكثير للغات المعنية من خلال استخدام البيانات الاصطناعية. بدون البيانات الاصطناعية الإضافية، أدى (<span class="nodecor">AngOFA</span>) أداءً أسوأ من (<span class="nodecor">OFA</span>) المدرب مسبقاً على 500 لغة بانخفاض قدره <span class="math inline">(-3.2)</span>. ومع ذلك، عندما تم التدريب على البيانات الاصطناعية، حقق (<span class="nodecor">AngOFA</span>) أفضل أداء شامل بـ <span class="math inline">(+16.6)</span> على (<span class="nodecor">XLM-R</span>)، <span class="math inline">(+12.3)</span> على (<span class="nodecor">AfroXLMR</span>)، و <span class="math inline">(+5.6)</span> على (<span class="nodecor">AngBERT</span>) (مع بيانات اصطناعية).</p>
+
+  <h1 id="الخلاصة-والأعمال-المستقبلية">الخلاصة والأعمال المستقبلية</h1>
+  <p>يقدم هذا البحث أربعة نماذج لغوية متعددة اللغات مصممة خصيصاً للغات الأنغولية. توضح نتائج تجاربنا أن تهيئة التضمين المستنيرة تعزز بشكل كبير أداء نموذج <span class="nodecor">MAFT</span> في المهام اللاحقة. وتُظهر النماذج التي خضعت لتهيئة <span class="nodecor">OFA</span> نتائج متفوقة مقارنة بنظيراتها، حتى عندما تُدرَّب <span class="nodecor">AngBERT</span> على مجموعة بيانات أكبر للغات المعنية، فهي لا تزال تبدو أقل أداءً مقارنة بـ<span class="nodecor">OFA</span> المدربة على مجموعة بيانات أصغر. ومع ذلك، تثير العوامل المحددة التي تؤدي إلى تفوق <span class="nodecor">AngBERT</span> على <span class="nodecor">OFA</span>، ولا سيما في سياق لوَبَأ-كاساي، أسئلة مهمة حول المحددات الأساسية لأداء النماذج في المهام اللاحقة، بما في ذلك الاعتبارات المتعلقة بحجم مجموعة البيانات مقابل تهيئة التضمين المستنيرة. نترك هذه الأسئلة للبحث في المستقبل. كما نخطط لتوسيع تطبيق <span class="nodecor">OFA</span> على مزيد من اللغات الأفريقية لاستكشاف آفاق أوسع.</p>
+
+  <h3 id="الشكر-والتقدير" class="unnumbered">الشكر والتقدير</h3>
+  <p>تم دعم هذا عمل جزئياً بواسطة اعتمادات وموارد <span class="nodecor">Oracle Cloud</span> المقدمة من <span class="nodecor">Oracle</span>. يعترف <span class="nodecor">David Adelani</span> بدعم برنامج <span class="nodecor">DeepMind Academic Fellowship</span>.</p>
+
+  <h1 id="الملحق">المُلْحَق</h1>
+</main>
+</body>
+</html>
+```
+
+**ملاحظات:**
+- تم تصحيح جميع صيغ LaTeX بحيث تكون ضمن عناصر `<span class="math inline">...</span>` أو داخل MathJax بشكل صحيح.
+- تم التأكد من أن جميع المعادلات مثل `(+5.5)`، `(-3.2)`، `(+16.6)`، إلخ، مكتوبة بصيغة رياضية صحيحة: `<span class="math inline">(+5.5)</span>`.
+- لم يتم حذف أو تغيير أي كلمة من النص الأصلي.
+- لا توجد أخطاء LaTeX في النص، وجميع العناصر مغلقة بشكل صحيح.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو الحذف.
+- جميع المعادلات الرياضية ستعرض بشكل صحيح عبر MathJax.

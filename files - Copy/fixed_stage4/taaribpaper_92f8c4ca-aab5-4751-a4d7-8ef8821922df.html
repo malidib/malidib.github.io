@@ -1,0 +1,301 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Koushik Chatterjee, Prashant Kocherlakota, Ziri Younsi, Ramesh Narayan">
+  <title>استخراج الطاقة من الثقوب السوداء الدوارة الناتجة عن الأوتار</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #222;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 22px;
+      line-height: 1.7;
+      direction: rtl;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(90deg, #3a6073 0%, #16222a 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 16px rgba(60,60,60,0.08);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+    .author {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #e0e0e0;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      color: #2d3e50;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid #3a6073;
+      padding-bottom: 0.3rem;
+      background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 2px 8px rgba(60,60,60,0.04);
+    }
+    h1:first-of-type {
+      margin-top: 0;
+    }
+    h2, h3 {
+      color: #3a6073;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    p {
+      margin: 1.2rem 0;
+      text-align: justify;
+    }
+    em {
+      color: #3a6073;
+      font-style: normal;
+      font-weight: 600;
+    }
+    code, pre, .math {
+      background: #f3f6fa;
+      color: #1a237e;
+      font-family: 'Cairo', 'Fira Mono', 'Consolas', monospace;
+      font-size: 1.05em;
+      border-radius: 6px;
+      padding: 0.15em 0.4em;
+    }
+    pre {
+      padding: 1em;
+      overflow-x: auto;
+      background: #f3f6fa;
+      border-radius: 8px;
+      margin: 1.5em 0;
+    }
+    .math.display {
+      display: block;
+      margin: 1.5em auto;
+      background: #f3f6fa;
+      border-radius: 8px;
+      padding: 1em 1.5em;
+      font-size: 1.1em;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+    }
+    .math.inline {
+      background: #f3f6fa;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      font-size: 1em;
+      direction: ltr;
+      display: inline-block;
+    }
+    span.nodecor {
+      color: #1a237e;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    a {
+      color: #3a6073;
+      text-decoration: underline dotted;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #16222a;
+      text-decoration: underline solid;
+    }
+    ul, ol {
+      margin: 1.2em 2em;
+      padding-right: 1.5em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2em 0;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(60,60,60,0.04);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #e0eafc;
+      color: #3a6073;
+      font-weight: 700;
+    }
+    blockquote {
+      border-right: 5px solid #3a6073;
+      background: #f3f6fa;
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      color: #444;
+      font-size: 1.05em;
+    }
+    /* Section navigation (optional) */
+    nav.toc {
+      background: #e0eafc;
+      border-radius: 12px;
+      padding: 1.2em 1.5em;
+      margin: 2em 0;
+      box-shadow: 0 2px 8px rgba(60,60,60,0.04);
+    }
+    nav.toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav.toc li {
+      margin: 0.5em 0;
+    }
+    nav.toc a {
+      color: #3a6073;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav.toc a:hover {
+      color: #16222a;
+      text-decoration: underline;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      body {
+        font-size: 19px;
+      }
+      header {
+        padding: 1.5rem 0.5rem 1rem 0.5rem;
+      }
+      h1.title {
+        font-size: 2rem;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 16px;
+      }
+      header {
+        padding: 1rem 0.2rem 0.7rem 0.2rem;
+      }
+      h1.title {
+        font-size: 1.2rem;
+      }
+      h1 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">استخراج الطاقة من الثقوب السوداء الدوارة الناتجة عن الأوتار</h1>
+  <p class="author">
+    <span class="nodecor">Koushik Chatterjee</span>,
+    <span class="nodecor">Prashant Kocherlakota</span>,
+    <span class="nodecor">Ziri Younsi</span>,
+    <span class="nodecor">Ramesh Narayan</span>
+  </p>
+</header>
+
+<h1 id="ملخص">ملخص</h1>
+<p>نقوم بأول محاكاة عددية تصوّر تدفق البلازما الممغنطة داخل وخارج فضاء <span class="nodecor">Kerr-Sen</span>، الذي يصف الثقوب السوداء الدوارة ضمن إطار نظرية الأوتار. نُظهر أن آلية <span class="nodecor">Blandford-Znajek</span>، المسؤولة عن تغذية النفاثات الفلكية النسبية، تظل فعّالة حتى للثقوب السوداء في نظريات الجاذبية البديلة، بما في ذلك الحالة القريبة من الحد الأقصى. تنتج هذه الآلية تيار بوينتينغ مسيطرًا على التدفق متجهًا إلى الخارج، حيث يلتف المجال المغناطيسي بفعل قوى الجَرّ الإطاري. ومع ذلك، في حالة الثقوب السوداء غير الدوارة حيث يغيب الجَرّ الإطاري، نكتشف آلية بديلة تعتمد على إطلاق الطاقة الجاذبية الكامنة خلال الاستحواذ. قد تتفوق التدفقات الخارجة من الثقوب السوداء غير الدوارة في نظريات الأوتار على تلك الخاصة بالثقب الأسود <span class="nodecor">Schwarzschild</span> بنحو <span class="nodecor">250%</span>، وذلك بفضل أفق حدث أصغر يقترن بتقوس أعلى. أخيرًا، من خلال توليد أول صور اصطناعية للثقوب السوداء غير <span class="nodecor">Kerr</span> القريبة من الحد الأقصى باستخدام محاكاة معتمدة على الزمن، نجد أن هذه النماذج قد تُستبعد بواسطة صور <span class="nodecor">VLBI</span> للأجسام فائقة الكتلة.</p>
+
+<h1 id="secintroمقدمة">[sec:intro] مقدمة</h1>
+<p>مع الكشف الأول عن موجات الجاذبية من اندماج الثقوب السوداء الثنائية (<span class="nodecor">Abbott+2016a</span>) وأول صور للأجسام فائقة الكتلة M87<span class="math inline">\(^{*}\)</span> وSgr A<span class="math inline">\(^{*}\)</span> (<span class="nodecor">EHTC+2019a</span>, <span class="nodecor">EHTC+2022a</span>)، أصبحت الجاذبية التجريبية تدخل مرحلة جديدة على مقاييس الأفق القريب (<span class="nodecor">Abbott+2016b</span>, …). يزال البحث جارياً عن توقيعات انحرافات جاذبية على مقاييس كونية (<span class="nodecor">Abbott+2018b</span>, <span class="nodecor">Abbott+2023</span>)، وكذلك عن وجود حقول أساسية جديدة مرتبطة بالمادة المظلمة أو بفيزياء الكم والطاقة العالية (<span class="nodecor">Cardoso+2017</span>, …).</p>
+<p>رداً على هذه الملاحظات، باتت المحاكاة العددية أداة حاسمة لتفسير الصور والأطياف. فعلى سبيل المثال، أنشأ تعاون تلسكوب أفق الحدث (<span class="nodecor">EHT</span>) مكتبة من محاكاة ديناميكا البلازما الممغنطة الهيدروديناميكية النسبية العامة (<span class="nodecor">GRMHD</span>) لفضاءات ثقوب كير السوداء، مما أتاح تفسير الصور على مقياس الأفق (<span class="nodecor">EHTC+2019e</span>, <span class="nodecor">EHTC+2022e</span>). وقد أثبتت مقارنة الصور الاصطناعية الناتجة عن هذه المحاكاة مع المشاهدات صحة النسبية العامة على مقاييس الأفق (<span class="nodecor">EHTC+2019f</span>, <span class="nodecor">EHTC+2022f</span>).</p>
+<p>كما استُخدمت صور <span class="nodecor">EHT</span> لتقييد نماذج "غير كير" البديلة (<span class="nodecor">Psaltis+2020</span>, …). إلا أن هذه الصور غالبًا ما تُبنى على نماذج شبه تحليلية ثابتة (<span class="nodecor">Broderick+2014</span>, …)، بينما تلتقط المحاكاة العددية الديناميكية المضطربة الفعلية لتدفق الاقتران. نتوقع أن توفر محاكاة زمنية رصداً دقيقاً للتوزيع الزمني والمكاني للانبعاثات على مقياس الأفق، مما يضيق القيود على حجم الظل وهندسة الزمكان (<span class="nodecor">Bardeen1973</span>, …).</p>
+<p>أظهرت محاكاة <span class="nodecor">GRMHD</span> الأخيرة في فضاءات نظريتي الأوتار (<span class="nodecor">Gibbons+1988</span>, <span class="nodecor">Garfinkle+1991</span>) صعوبة تمييز هذه الثقوب السوداء عن نظيراتها في النسبية العامة (<span class="nodecor">Mizuno+2018</span>, …). ومثال آخر هو نجوم البوزون، التي قد تُظهر صوراً أعمق مركزياً شبيهة بـ<em>M87*</em> رغم افتقارها لأفق حدث (<span class="nodecor">Olivares+2020</span>, <span class="nodecor">EHTC+2022f</span>). تشمل الأعمال الأخرى دراسات الغاز البارد في فضاءات "غير كير" المعلمة (<span class="nodecor">Nampalliwar+2022</span>) والمميّزة بمقياس Johannsen-Psaltis (<span class="nodecor">Johannsen+2010</span>, …).</p>
+<p>حتى الآن، ركزت المحاكاة العددية للغاز الساخن في فضاءات "غير كير" على الثقوب السوداء غير الدوارة ونجوم البوزون. لكن الأجسام الفلكية المدمجة تمتلك زخماً زاويّاً غير صفري في العموم؛ وهو ما نتناوله هنا بمحاكاة ثلاثية الأبعاد لـ<em>GRMHD</em> تدور حول ثقوب سوداء "غير كير". كما نولّد لاحقاً الصور الاصطناعية لهذه النماذج. وعلاوة على ذلك، يلعب الزخم الزاوي دوراً أساسياً في إطلاق النفاثات النسبية، وهو محور تركيزنا.</p>
+<p>تعد النفاثات قنوات فعّالة لنقل طاقات هائلة عبر مقاييس كونية، وترتبط بتكوين النجوم وتنظيم المجرات عبر آليات التغذية الراجعة (<span class="nodecor">Harrison+2018</span>). كما تسرع الجسيمات إلى طاقات عالية، وتُفسّر انبعاث الأشعة الكونية والأشعة السينية (<span class="nodecor">Blandford+2019</span>).</p>
+<p>آلية بلاندفورد-زناجك (<span class="nodecor">Blandford+1977</span>)، المبنية على عملية بينروز الكهرومغناطيسية (<span class="nodecor">Penrose1969</span>)، هي الأرجح لتشغيل النفاثات، إذ تستخرج طاقة من دوران الثقب الأسود. وفيما يلي التعبير عن قدرة النفاثة \(P_{\rm BZ}\): <span class="math display">\[\label{eq:etaBZ}
+    P_{\rm BZ}=\eta_{\rm BZ} \dot{M}c^2= \left (\frac{k}{4\pi}\Omega_{\rm H}^2\phi_{\rm H}^2\right )\dot{M}c^2\]</span></p>
+
+<h1 id="الأهداف">الأهداف</h1>
+<p>نسعى إلى توضيح العلاقة بين الزخم الزاوي للثقب الأسود وقوة التدفقات الخارجة، عبر محاكاة <span class="nodecor">GRMHD</span> للغلاف المغناطيسي الساخن حول ثقوب سوداء دوارة في فضاءات "غير كير".</p>
+
+<h1 id="الكميات-المتوسطة-زمنيا">الكميات المتوسطة زمنياً</h1>
+<p>سنركّز على المتوسطات الزمنية لاستخلاص وصف تمثيلي لنماذجنا. نشير هنا إلى أن الأقراص الممغنطة المتوقفة قد تظهر قابليات عابرة مثل طرد المجالات العمودية؛ دراسة هذه الظواهر في فضاءات "غير كير" تظل موضوعاً مستقبلياً مثيراً. قد ترتبط هذه الأحداث البركانية بالوميض متعدد الأطوال الموجية، الذي قد يصل إلى طاقات تيرا إلكترون فولت (<span class="nodecor">Dexter+2020</span>, …).</p>
+
+<h1 id="تنظيم-العمل">تنظيم العمل</h1>
+<p>يُنظّم هذا البحث كما يلي. في القسم [sec:methods] نستعرض خلفية نظرية أينشتاين-ماكسويل-ديلاتون-اكسيون المستخدمة كأساس لمتريتنا. يمكن الرجوع للتفاصيل في الملحق [sec:EMda_Theory]. في القسمين [sec:Dilaton_Axion_BH] و[sec:Dilaton_BH] نعرض نتائجنا الرئيسية حول استخراج الطاقة في فضاءات "غير كير". نختتم في القسم [sec:Conclusions].</p>
+
+<h1 id="sec:methods">الخلفية والمنهجية</h1>
+<p>نبدأ بنظرية أينشتاين-ماكسويل-ديلاتون-اكسيون (<span class="nodecor">EMda</span>)، التي تمثل حدّاً فعالاً منخفض الطاقة لنظرية الأوتار الهيتروتيكية (<span class="nodecor">Polchinski2007</span>). تضيف هذه النظرية حقولاً أساسية جديدة (ديلاتون واكسيون)، وتربطها بالكهرومغناطيسية عبر تفاعل مع حقل الديلاتون، مما ينتهك أحياناً مبدأ التكافؤ الضعيف (<span class="nodecor">Magueijo2003</span>). تختلف حلول الثقوب السوداء غير الفراغية في هذه النظرية عن نظيراتها في النسبية العامة (<span class="nodecor">Plebanski+1976</span>, <span class="nodecor">Garcia+1995</span>).</p>
+<p>نقارن هنا أبسط الثقوب السوداء غير الدوارة للشكل الفراغي وغير الفراغي: ثقب <span class="nodecor">GMGHS</span> في EMda وثقب <span class="nodecor">Reissner–Nordström</span> في GR، إضافة إلى نسختيهما الدورانية (كير-سين وكير-نيومان). سنشير لاحقاً لثقوب GMGHS وKS ببساطة كثقوب ديلاتون وديلاتون-اكسيون.</p>
+<p><em>محاكاة GRMHD</em>. نستخدم الكود <span class="nodecor"><code>H-AMR</code></span> (<span class="nodecor">Liska+2022</span>) المبرمج لتشغيل الحسابات على وحدات معالجة الرسوميات، لحل معادلات الديناميكا الممغنطة النسبية العامة في زمكان ثابت. نعتمد إحداثيات اختراق الأفق لصياغة متري الزمكان (المفصّل في <span class="nodecor">Kocherlakota+2023a</span> والملحق). نستخدم وحدات هندسية (G=c=1) حيث يساوي نصف القطر الجاذبي M.</p>
+<p>لحساب الكفاءة والتدفقات المرتبطة بمعادلة [eq:etaBZ]، نعرّف:
+<span class="math display">\[
+\begin{aligned}
+\eta &= \frac{P}{\dot{M}}=\frac{\dot{M}-\dot{E}}{\dot{M}}, \\
+\Omega_{\rm H} &= -\left(\frac{g_{t\varphi}}{g_{\varphi\varphi}}\right)_{r_{\rm H}}=\frac{a_*}{2r_{\rm H}},\\
+\phi_{\rm H} &= \frac{\sqrt{4\pi}}{2\sqrt{\dot{M}}}\iint_{r_{\rm H}} |B^{r}| \sqrt{-\mathscr{g}}\,d\vartheta\,d\varphi,
+\end{aligned}
+\]</span>
+حيث \(\dot{M}\) معدل الاستحواذ الكتلي، و\(\dot{E}\) تدفق الطاقة، و\(T^{r}{}_{t}\) مكوّن الإجهاد-طاقة (انظر الملحق [sec:numerics]). المتوسطات الزمنية تؤخذ بين 20000M و25000M.</p>
+
+<h1 id="الحسابات-النسبية-العامة-لنقل-الإشعاع">الحسابات النسبية العامة لنقل الإشعاع</h1>
+<p>للمحاكاة الإشعاعية استخدمنا حزمة BOSS (<span class="nodecor">Younsi:2012</span>, …). نفترض إشعاعاً سنكروترونياً من توزيع ماكسويل-يوتنر للإلكترونات، مع ضبط درجة حرارة الإلكترونات نسبةً إلى الأيونات عبر المعاملات \(R_{\rm low}\) و\(R_{\rm high}\) ومعامل البلازما \( \beta\) (<span class="nodecor">Moscibrodzka:16</span>). اخترنا \(R_{\rm low}=R_{\rm high}=1\) لتسليط الضوء على انبعاثات منتصف القرص، مع مطابقة خصائص صورة M87* (<span class="nodecor">EHTC+2019e</span>) وبين 20000M و25000M.</p>
+
+<h1 id="sec:Dilaton_Axion_BH">استخراج الطاقة بالدوران: ثقب ديلاتون-اكسيون</h1>
+<p>أجرينا 42 محاكاة: (i) 11 لثقب كير متغير الزخم الزاوي \(a\)، (ii) 8 لثقب ديلاتون متغير شحنة \(D\)، و(iii) 23 لثقوب ديلاتون-اكسيون دوارة (منها 8 "قريبة من النهائية" \(|a|\approx M-D\)). يوفر الجدول [tab:models] معاملات النماذج.</p>
+<p>نفحص أولاً مدى اتّباع قوة النفاثات لصيغة BZ \(\eta_{\rm BZ}\propto(\Omega_{\rm H}\phi_{\rm H})^2\). يظهر الشكل [fig:BZ] أنه مع ارتفاع \(\Omega_{\rm H}\phi_{\rm H}\)، تهيمن النفاثات المدفوعة بـBZ، حتى في فضاءات ديلاتون-اكسيون (<span class="nodecor">Chatterjee+2023b</span>).</p>
+<p>يبين الجانب الأيسر من الشكل [fig:KS_phibh] أن \(\phi_{\rm H}\) ينمو مع \(a\) وينقص مع زيادة \(D\)، نتيجةً لانكماش الأفق أسرع من تضخّم المجال. كذلك، تزيد النماذج المتوافقة (prograde) من \(\phi_{\rm H}\) لنفس \(|a|\). يتضح أن دوران الثقب وحجم الأفق يؤثران بشكل مستقل على \(\phi_{\rm H}\)، إلى جانب توزيع الغاز وارتفاع القرص (<span class="nodecor">Narayan+2022</span>).</p>
+<p>نقترح نموذجًا تقريبيًا لـ\(\phi_{\rm H}\) كدالة في \(a_*\) ونسبة مساحة الأفق \(\bar A_{\rm H}\):
+<span class="math display">\[
+\phi_{\rm H, fit}(a_*,\bar A_{\rm H})
+=\phi_{\rm H, Schw}\,\phi_a(a_*)\,\phi_A(\bar A_{\rm H}),
+\]</span>
+حيث \(\phi_{\rm H, Schw}=56.05\)، و\(\phi_a\)، \(\phi_A\) تعبران عن تأثير الدوران وحجم الأفق على التوالي.</p>
+<p>وبالتالي، عند نفس \(a\)، تزيد \(\eta\) مع \(D\) (بفضل ارتفاع \(\Omega_{\rm H}\)) حتى مع انخفاض \(\phi_{\rm H}\)، كما يوضح الجانب الأيمن من [fig:KS_phibh]. أعلى كفاءة متوقعة من النموذج التقريبي تصل حتى 187% لثقب قريب من النهائي بـ\(a=0.8M\) و\(D=0.2M\).</p>
+<p>تتفاعل النفاثات مع رياح القرص الأبطأ، فتضخط BZ طاقتها الكهرومغناطيسية إلى هذه الرياح، مما يزيد \(\eta\) الإجمالية خاصةً عند \(a\lesssim0.7M\). في المقابل، يظهر \(\eta\) للثقوب ديلاتون (\(\Omega_{\rm H}=0\)) سلوكًا معاكسًا في الاعتماد على مساحة الأفق، مما يشير إلى آلية مختلفة.</p>
+
+<h1 id="الكفاءة-العالية-لقوة-التدفق">الكفاءة العالية لقوة التدفق</h1>
+<p>ترتبط القيم الأعلى من \(D\) بكفاءات \(\eta\) أكبر، يعود بعضها للضغوط المغناطيسية والحرارية المرتفعة (\(P_{\rm mag}\) و\(P_{\rm gas}\)). نعتمد أيضًا على الطاقة الرابطة (Binding Energy) كمؤشر للطاقة المتاحة خلال الاستحواذ، ونقارن بذلك قيم رياح القرص لثقب كير بـ\(a=0.7M\).</p>
+
+<h1 id="sec:Dilaton_BH">استخراج الطاقة بالتقوس: ثقب ديلاتون غير دوار</h1>
+<p>يمكن ضبط حجم الأفق في ثقب ديلاتون عبر \(D\) مع إبقاء \(a=0\)، مما يسمح بدراسة تأثيرات التقوس العالي (ـ"الجاذبية الكهربائية") بدون جَرّ إطاري. في أقصى الحالات (\(D=0.995M\)) يصبح \(r_{\rm H}=0.01M\)، وأفقر الظل أصغر بمئة الأضعاف مقارنة بثقب شوارزشيلد.</p>
+<p>نلاحظ أن \(\eta\) لثقوب ديلاتون تزيد مع \(D\) وقد تتجاوز \(\eta\) لثقب كير رجعي \(a=-0.3M\)، وحتى رياح القرص لثقب كير بـ\(a=0.7M\). بما أن \(\Omega_{\rm H}=0\)، تستبعد BZ آلية الإطلاق هنا. بدلاً من ذلك، نفحص حدودًا شبيهة ببلاندفورد-باين تعتمد على \(\phi_{\rm H}^2\Omega_{\max}^2\)، حيث \(\Omega_{\max}\) السرعة الزاوية القصوى للغاز عند المداري الدائري المستقر الأدنى.</p>
+<p>الاختلاف الكبير بين \(\eta\) والقوة الشبيهة بـBZ في الشكل يوحي بأن الإطلاق يعتمد أساسًا على تضخم الضغوط (المغناطيسية والحرارية) أو الانفجارات المغناطيسية المتكررة في التدفقات المهيمنة على الحمل (<span class="nodecor">Chatterjee+2022</span>, <span class="nodecor">Begelman+2022</span>). نعرض علاقة الضغوط \(\propto A_{\rm H}^{-1.7}\) بالطاقة الرابطة للمسار الدائري الأدنى، مؤكدين أن تقوسات أعلى تعزز رياحًا أكثر قوة.</p>
+
+<h1 id="sec:Conclusions">ملخص</h1>
+<p>ننفذ 42 محاكاة ثلاثية الأبعاد عالية الدقة لفضاءات d –Axion (Kerr-Sen)، شاملة أول نماذج دوارة وقريبة من الحد الأقصى. تتيح هذه المحاكاة ربط ديناميات GRMHD الأساسية بحلول ثقوب الأوتار. نبيّن أن BZ تظل فعّالة حتى خارج إطار النسبية العامة، بينما تقدم ثقوب ديلاتون غير دوارة آلية استخراج تعتمد على طاقات رابطة أعلى بفعل التقوس.</p>
+<p>في المستقبل، يكتنف فيزياء MAD وتطور الانفجارات المغناطيسية في هذه النماذج مزيد من الدراسة، خاصةً مع تقدم تقنيات <span class="nodecor">VLBI</span> و<span class="nodecor">EHT</span> القائمة على الفضاء، لتقييد انحرافات شكل الظل وزخم الثقب باعتماد قياسات أعلى دقة.</p>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفيات والهوامش لجعل الورقة أكثر أناقة واحترافية.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو المحتوى.
+- تم التأكد من عدم وجود أخطاء HTML، وأن جميع العناصر مغلقة بشكل صحيح.
+- تم تحسين عرض المعادلات والرموز البرمجية.
+- تم تحسين التوافق مع الأجهزة المحمولة.
+- تم الحفاظ على اتجاه النص من اليمين لليسار (rtl) للغة العربية.

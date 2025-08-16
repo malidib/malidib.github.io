@@ -1,0 +1,173 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="L. G. Wilson">
+  <meta name="author" content="V. A. Martinez">
+  <meta name="author" content="J. Schwarz-Linek">
+  <meta name="author" content="J. Tailleur">
+  <meta name="author" content="P. N. Pusey">
+  <meta name="author" content="W. C. K. Poon">
+  <title>المجهرية الديناميكية التفاضلية لحركية البكتيريا</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 1.15em;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #e3f0ff 0%, #f8f9fa 100%);
+      padding: 2.5em 0 1.5em 0;
+      text-align: center;
+      border-bottom: 1px solid #d1e3f8;
+      margin-bottom: 2em;
+    }
+    h1.title {
+      font-size: 2.3em;
+      font-weight: 700;
+      color: #1a237e;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.02em;
+    }
+    .author {
+      display: inline-block;
+      margin: 0 0.5em;
+      font-size: 1.05em;
+      color: #37474f;
+      background: #e3f0ff;
+      border-radius: 1.2em;
+      padding: 0.2em 1em;
+      margin-bottom: 0.2em;
+    }
+    h1, h2, h3, h4 {
+      color: #1a237e;
+      font-weight: 700;
+      margin-top: 1.5em;
+      margin-bottom: 0.7em;
+    }
+    h1 {
+      font-size: 1.7em;
+      border-right: 5px solid #90caf9;
+      padding-right: 0.5em;
+      background: #e3f0ff;
+      border-radius: 0.3em;
+      display: inline-block;
+    }
+    p {
+      margin: 1.2em 2em;
+      text-align: justify;
+      background: #fff;
+      border-radius: 0.5em;
+      padding: 1.1em 1.5em;
+      box-shadow: 0 1px 4px rgba(90,120,180,0.06);
+    }
+    em {
+      color: #1976d2;
+      font-style: normal;
+      font-weight: 600;
+    }
+    code, .math.inline {
+      background: #f1f8e9;
+      color: #2e7d32;
+      padding: 0.1em 0.3em;
+      border-radius: 0.3em;
+      font-size: 0.98em;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+    }
+    .math.display {
+      display: block;
+      background: #f1f8e9;
+      color: #2e7d32;
+      border-radius: 0.4em;
+      padding: 0.7em 1.2em;
+      margin: 1.5em 2em;
+      font-size: 1.08em;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+    }
+    span.nodecor {
+      text-decoration: none;
+      color: #37474f;
+    }
+    @media (max-width: 700px) {
+      body {
+        font-size: 1em;
+      }
+      p, .math.display {
+        margin: 1em 0.3em;
+        padding: 0.8em 0.7em;
+      }
+      header {
+        padding: 1.2em 0 1em 0;
+      }
+      h1.title {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">المجهرية الديناميكية التفاضلية لحركية البكتيريا</h1>
+  <p class="author"><span class="nodecor">L. G. Wilson</span></p>
+  <p class="author"><span class="nodecor">V. A. Martinez</span></p>
+  <p class="author"><span class="nodecor">J. Schwarz-Linek</span></p>
+  <p class="author"><span class="nodecor">J. Tailleur</span></p>
+  <p class="author"><span class="nodecor">P. N. Pusey</span></p>
+  <p class="author"><span class="nodecor">W. C. K. Poon</span></p>
+</header>
+<h1 id="ملخص">مُلخَّص</h1>
+<p>نُبيّن هنا استخدام تقنية "المجهرية الديناميكية التفاضلية" (DDM) كطريقة سريعة وشاملة لوصف ديناميكيات الجسيمات النشطة. على وجه الخصوص، نصف توزيع سرعات السباحة ونسبة الخلايا المتحركة في معلقات بكتيريا <em>Escherichia coli</em>. عبر أخذ المتوسط الحسابي على <span class="math inline">\(\sim 10^4\)</span> خلية، تظهر نتائجنا دقةً عالية مقارنةً بالتتبع التقليدي. كما يتضح أن تشتت الخلايا غير المتحركة يزداد بما يتناسب مع تركيز الخلايا المتحركة.</p>
+<p>يمكن ملاحظة هذه العمليات المتنوعة في الكائنات متعددة الخلايا مثل كيموتاكسيس الحركية (<span class="nodecor">Bray</span>)، كما أنها شائعة أيضاً في الكائنات أحادية الخلية كالبكتيريا، مما يمكّن، على سبيل المثال، العامل الممرض <em>Helicobacter pylori</em> من غزو الظهارة المعدية (<span class="nodecor">MontecuccoRP_NatureMolCellBiol01</span>). وعلى النطاق البيئي، ترتبط حركة البكتيريا غالباً بإعادة تدوير المغذيات في البيئات المائية (<span class="nodecor">Azam01</span>). تُعد بكتيريا <em>Escherichia coli</em> نموذجاً أساسياً لدراسة حركة الخلايا (<span class="nodecor">BergBook</span>). تنتقل الخلية في مسار عشوائي عبر التبديل بين السباحة (أو "الجري") بسرعة متوسطة <span class="math inline">\(\bar{v} \gtrsim 10\,\mu\mathrm{m}/\mathrm{s}\)</span> لمدة <span class="math inline">\(\sim 1\)</span> ثانية والتدحرج لمدة <span class="math inline">\(\sim 0.1\)</span> ثانية.</p>
+<p>في البداية، كانت الدراسات تعتمد على تتبع خلية واحدة أو بضع خلايا فقط (<span class="nodecor">BergDB_Nature72</span>, <span class="nodecor">Schneider74</span>). ومع تطور التقنيات، أصبح بالإمكان اليوم تتبع <span class="math inline">\(\sim 10^2 - 10^3\)</span> خلايا في آن واحد (<span class="nodecor">Worku98</span>, <span class="nodecor">WuJRSKDKMD_ApplEnvMicrobiol06</span>, <span class="nodecor">DouarcheABHSAL_PRL09</span>). يؤدّي التتبع إلى استخراج مجموعة من المعلمات، منها السرعة المتوسطة <span class="math inline">\(\bar{v}\)</span> (مثلاً في محاليل البوليمر <span class="nodecor">Schneider74</span>)، ونسبة الكائنات المتحركة <span class="math inline">\(\alpha\)</span> (مثلاً في البكتيريا البحرية <span class="nodecor">Azam01</span>). ومع ذلك، لا يزال التتبع عملية مرهقة، كما أنّ الحاجة لأخذ المتوسط على بيانات متعددة لتحقيق دقة عالية يقيّد قابلية القياس في الزمن الحقيقي.</p>
+<p>نقدّم هنا طريقة سريعة وعالية الإنتاجية لوصف حركة <em>E. coli</em>، يُمكن تطبيقها بسهولة أيضاً على أنواع أخرى من البكتيريا والكائنات الدقيقة، فضلاً عن الجيل الجديد من الجسيمات النشطة الاصطناعية (<span class="nodecor">Sen10</span>).</p>
+<p>استُخدم تشتت الضوء الديناميكي (DLS)، المستعمل منذ فترة طويلة لقياس التشتت في الغرويات، ومن حيث المبدأ مناسب لوصف البكتيريا المتحركة بسرعة (<span class="nodecor">NossalSCCL_OptComm71</span>). ينتج عن DLS دالة التشتت المتوسطة الزمن (ISF)، <span class="math inline">\(f(q, \tau)\)</span> (حيث <span class="math inline">\(q\)</span> هو متجه التشتت و<span class="math inline">\(\tau\)</span> هو الزمن) (<span class="nodecor">Berne00</span>)، والتي تستكشف عمليات استرخاء الكثافة على مقياس الطول <span class="math inline">\(2\pi/q\)</span>. غير أن أقل زاوية تشتت في DLS التقليدي، <span class="math inline">\(\sim 20^{\circ}\)</span> (أو <span class="math inline">\(q \sim 4.5\,\mu\mathrm{m}^{-1}\)</span>)، تحدد ديناميكيات عند <span class="math inline">\(2\pi/q \lesssim 1.4\,\mu\mathrm{m}\)</span>، حيث يساهم دوران جسم الخلية (<span class="nodecor">BoonRNSC_BiophysJ74</span>) وحركات أخرى في <em>Escherichia coli</em> بشكل كبير في اضمحلال ISF. وبالتالي، وعلى عكس الادعاءات الأولية (<span class="nodecor">NossalSCCL_OptComm71</span>)، لا يمكن وصف سباحة <em>Escherichia coli</em>، التي تحدث على مقياس <span class="math inline">\(\bar{v}/\tau_{\rm run} \sim 10\,\mu\mathrm{m}\)</span>، بشكل واضح باستخدام DLS ما لم نتمكن من الوصول إلى <span class="math inline">\(q \lesssim 2\pi/10\,\mu\mathrm{m} \sim 0.6\,\mu\mathrm{m}^{-1}\)</span> (أو <span class="math inline">\(\lesssim 3^{\circ}\)</span>) (<span class="nodecor">BoonRNSC_BiophysJ74</span>).</p>
+<p>عوضاً عن استخدام DLS بزوايا منخفضة للغاية، نعتمد تقنية المجهرية الديناميكية التفاضلية (DDM) القوية لقياس <span class="math inline">\(f(q,\tau)\)</span> الخاصة بسباحة البكتيريا. استُخدم أحد أشكال DDM لأول مرة لدراسة تقلبات الكثافة في الخلائط الثنائية (<span class="nodecor">Giglio06</span>)، ولاحقاً لقياس التشتت في الغرويات (<span class="nodecor">CerbinoVT_PRL08</span>)، وذلك باستخدام معدات غير متخصصة فقط (مجهر وكاميرا وجهاز حاسوب). إلا أنّ تطبيق DDM الغرواني لم يستفد بعد من قدرته الفريدة على الوصول إلى قيم <span class="math inline">\(q\)</span> منخفضة جداً (<span class="math inline">\(\lesssim 1\,\mu\mathrm{m}^{-1}\)</span>)، وهو الأمر الضروري لاستكشاف سباحة البكتيريا.</p>
+<p>تفاصيل نظرية DDM موضحة في (<span class="nodecor">GiavazziDBVTTBRC_PRE09</span>). نقدم استنتاجاً بديلاً يشرح أيضاً الإجراءات التجريبية. تتألف البيانات الأولية من صور متتابعة زمنياً للبكتيريا، حيث يُوصف كل إطار بكثافة الإضاءة <span class="math inline">\(I(\vec{r},t)\)</span> في مستوى الصورة (<span class="math inline">\(\vec{r}\)</span>). من هذه الصور نحسب صور الفرق عند أزمنة تأخير مختلفة <span class="math inline">\(\tau\)</span> عبر العلاقة <span class="math inline">\(D(\vec{r},\tau) = I(\vec{r},t + \tau) - I(\vec{r},t) = \Delta I(\vec{r},\tau) - \Delta I(\vec{r},0)\)</span>، حيث تُعبّر <span class="math inline">\(\Delta I(\vec{r},t) = I(\vec{r},t) - \langle I \rangle\)</span> عن تقلبات الكثافة. التحويل الفورييه لـ <span class="math inline">\(D(\vec{r},\tau)\)</span> يعطي 
+<span class="math display">\[
+F_D (\vec{q},\tau)  =  \int D(\vec{r},\tau) e^{i\vec{q}\cdot \vec{r}} \, {\rm d}\vec{r}.
+\]</span>
+للأنظمة الثابتة والمتجانسة زمنياً، نقوم بالتوسيط على وقت البدء <span class="math inline">\(t\)</span> وفي فضاء <span class="math inline">\(\vec{q}\)</span> للحصول على دالة الترابط الكثافي التفاضلية (DICF)، <span class="math inline">\(\langle |F_D (q,\tau)|^2 \rangle\)</span> (حيث <span class="math inline">\(q = |\vec{q}|\)</span>).</p>
+<p>نبيّن الآن أن DICF ترتبط ببساطة بـ ISF إذا افترضنا أن تقلبات الكثافة في الصورة تتناسب مع تقلبات كثافة البكتيريا حول الكثافة المتوسطة <span class="math inline">\(\langle \rho \rangle\)</span>:
+<span class="math display">\[
+\Delta I(\vec{r},t) = \kappa\, \Delta \rho(\vec{r},t)\;.
+\]</span>
+هنا، الثابت <span class="math inline">\(\kappa\)</span> يعتمد على آلية التباين و<span class="math inline">\(\Delta \rho(\vec{r},t) = \rho(\vec{r},t) - \langle \rho \rangle\)</span>. من المعادلتين أعلاه نحصل على
+<span class="math display">\[
+\begin{aligned}
+F_D (\vec{q},\tau) & = \kappa [\Delta \rho (\vec{q},\tau ) - \Delta \rho (\vec{q},0)]\;,\\
+\text{حيث}\;\; \Delta \rho (\vec{q},\tau ) & = \int \Delta \rho (\vec{r},t)\,e^{i\vec{q}\cdot \vec{r}}\, {\rm d} \vec{r}\;.
+\end{aligned}
+\]</span>
+ويمكن بعد ذلك التعبير عن DICF كما يلي
+<span class="math display">\[
+\begin{aligned}
+\langle |F_D (q,\tau)|^2 \rangle & = A(q) \left[ 1 - \frac{\langle \Delta \rho (q,0)\Delta \rho (q,\tau)\rangle}{\langle [\Delta \rho (q)]^2 \rangle}\right] \\
+\text{حيث}\;\; A(q) & = 2\kappa^2 \langle [  \Delta  \rho (q)]^2 \rangle\;.
+\end{aligned}
+\]</span>
+وملاحظة أن المصطلح المعتمد على <span class="math inline">\(\tau\)</span> في الجانب الأيمن من المعادلة أعلاه هو ISF، نصل إلى النتيجة الرئيسية:
+<span class="math display">\[
+\langle |F_D (q,\tau)|^2 \rangle = A(q)\left[ 1 - f(q,\tau ) \right] + B(q)\;,
+\]</span>
+حيث أُضيف مصطلح <span class="math inline">\(B(q)\)</span> لتمثيل ضوضاء الكاميرا. وهكذا، ينتج طيف تقلبات كثافة الصور <span class="math inline">\(\langle |F_D (q,\tau)|^2 \rangle\)</span> دالة ISF. عملياً، نعيد بناء <span class="math inline">\(f(q,\tau)\)</span> باستخدام نموذج معلمي لـ ISF لمواءمة DICF المقاسة مع المعادلة أعلاه.</p>
+</body>
+</html>
+```
+**تمت مراجعة جميع المعادلات وضبطها لتكون متوافقة مع LaTeX/MathJax بشكل صحيح:**
+- تم تصحيح جميع الكسور، وحدات القياس، واستخدام الفواصل والفواصل العشرية.
+- تم إزالة أي علامات ترقيم أو أوامر غير قياسية (مثل \label أو أرقام المعادلات) من داخل المعادلات لأن MathJax لا يدعمها في HTML.
+- تم التأكد من أن جميع المعادلات محاطة بشكل صحيح بـ `\[` ... `\]` أو `\( ... \)` حسب السياق.
+- تم التأكد من أن جميع الرموز (مثل \mathrm, \vec, \cdot, \langle, \rangle, إلخ) مكتوبة بشكل صحيح.
+- تم الحفاظ على النص الكامل دون أي تغيير في الكلمات أو المعنى.

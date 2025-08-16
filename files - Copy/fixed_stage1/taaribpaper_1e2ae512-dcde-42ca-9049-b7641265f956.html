@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Ross Street">
+  <title>تَبَايُن حول مَوْضُوع شامِل</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">تَبَايُن حول مَوْضُوع شامِل</h1>
+<p class="author"><span class="nodecor">Ross Street</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>النَتِيجَة الرَئِيسِيَّة تَتَعَلَّق بِنِظام تَحْلِيل ثُنَائِي الفِئات عَلَى ثُنَائِي الفِئة <span class="math inline">\(\mathrm{Cat}\)</span> للفِئات والدوال. كُل دالَّة <span class="math inline">\(A\xra{f} B\)</span> تَتَحَلَّل حتى التَطابُق إلى <span class="math inline">\(A\xra{j}E\xra{p}B\)</span> حيث <span class="math inline">\(j\)</span> ما نُسَمِّيه الدالَّة النِهائِيَّة و<span class="math inline">\(p\)</span> ما نُسَمِّيه تَصْنِيف المَجْمُوعَة. كُل دالَّة مُساعِدة يَمِينِيَّة هي نِهائِيَّة. يُظْهِر أن الدوال التي عامِلها النِهائِي هو دالَّة مُساعِدة يَمِينِيَّة لها تَأْثِير على نَظَرِيَّة الدوال الكَثِيرَة.</p>
+<h1 id="مقدمة" class="unnumbered">مُقَدِّمَة</h1>
+<p>عندما كُنتُ طالِباً جامِعياً، صادفت راسل (<span class="nodecor">Russell</span>) وكُنتُ مُضْطَرِباً بشأن حالة الأُسُس للرِياضِيّات. بدا مُخَطَّط الفَهْم مركزياً كرابط بين الرِياضِيّات واللُغَة. ثم سَعِدتُ بالاِخْتِراق الذي رأيته في الأَوْراق (<span class="nodecor">Law1965, Law1969, Law1970</span>) للوريڤ.</p>
+<p>التَحْلِيل الموصوف هنا هو فِكْرَة قديمة كنتُ أَنْوي التَحقُّق منها بدِقَّة وكِتابتها ولكنّي فقط الآن وجدتُ سبباً للقيام بذلك. السبب يَتَعَلَّق بـ<span class="math inline">\(\mathrm{Cat}\)</span> كمِثال على ثُنَائِي الفِئات الكَثِيرَة في معنى ورقتيَّ الأخيرة (<span class="nodecor">134</span>). نُريد تَعْرِيف خاص لدالَّة من حيث أن أحد عَوامِلها خاص بطريقة ما.</p>
+<p>فِكْرَة الورقة الحالية هي تَغْيِير لِلتَحْلِيل الشامِل لدالَّة <span class="math inline">\(A\xra{f} B\)</span> كمركب <span class="math inline">\(A\xra{j} E\xra{p} B\)</span> حيث <span class="math inline">\(j\)</span> دالَّة نِهائِيَّة (بالمعنى المُسْتَخْدَم في <span class="nodecor">CWM</span> والذي أَسْتَخْدِمه وألترز والمؤلف في <span class="nodecor">6</span> ولكن يُطْلَق عليها أحياناً اسم التَماسُك) و<span class="math inline">\(p\)</span> تَحْلِيل مُنْفَصِل. تم اختيار اسم نِظام التَحْلِيل بسبب علاقته بمُخَطَّط الفَهْم للمَجْمُوعات. هذا هو نِظام التَحْلِيل العَمُودِي بالمعنى المُعتاد على <span class="math inline">\(\mathrm{Cat}\)</span> كفِئة عادية وبالمعنى المُخَصَّب على <span class="math inline">\(\mathrm{Cat}\)</span> كفِئة 2 صارمة. هنا “مُنْفَصِل” يعني، بالطبع، أن ألياف <span class="math inline">\(p\)</span> هي مَجْمُوعات.</p>
+<p>الآن نرغب في التَفْكِير في <span class="math inline">\(\mathrm{Cat}\)</span> كثُنَائِي فِئات ونتساءل عما إذا كنا نحصل على نِظام تَحْلِيل بمعنى ثُنَائِي الفِئات عندما نتصرف بشكل ثُنَائِي الفِئات تماماً ونغلق تَحْلِيلاتنا تحت التكوين مع التَكافُؤات ونطلب أن تكون الألياف الزائِفَة مَجْمُوعات.</p>
+<p>هذا ينجح. يُحاكي دليلنا دليل التَحْلِيل الشامِل المُعتاد كما وصفه فيريتي والمؤلف في <span class="nodecor">104</span>. تم استبدال الدوال النِهائِيَّة بما نُسَمِّيه الدوال النِهائِيَّة والتَحْلِيلات المُنْفَصِلَة بما نُسَمِّيه تَحْلِيلات المَجْمُوعَة. في تطبيقنا، نحن مهتمون بالدوال التي عامِلها النِهائِي هو دالَّة مُساعِدة يَمِينِيَّة.</p>
+<p>أنا ممتن لألكسندر كامبل للإشارة إلى العمل المتعلق بشكل كبير بجويال حيث يتم تَعْرِيف <span class="math inline">\(n\)</span>-النِهائِي، <span class="math inline">\(n\)</span>-التَحْلِيل ونِظام التَحْلِيل الطوبولوجي في سياق الفِئات الشبهية؛ انظر الصفحة <span class="nodecor">170</span> من <span class="nodecor">JoyV1</span> والأقسام <span class="nodecor">A.6-8</span> من <span class="nodecor">JoyV2</span>.</p>
+<h1 id="تصنيفات-الزمر">تَصْنِيفات الزُمَر</h1>
+<p>المفهوم التالي يُسمى “قوي ديكارتي” بواسطة غروتنديك. هذه التَحْوِيلات دائماً ما تكون مُغْلَقَة تحت التَرْكِيب (على عكس تلك التي سماها “ديكارتي”).</p>
+<p>[cartesianmor] لنفترض أن <span class="math inline">\( p : E \to B \)</span> دالَّة. تُسمى التَحْوِيلة <span class="math inline">\( \chi : e&#39; \to e \)</span> في <span class="math inline">\( E \)</span> بأنها ديكارتي بالنسبة لـ <span class="math inline">\( p \)</span> عندما يكون المُرَبَّع سحباً لجميع <span class="math inline">\( k \in E \)</span>. <span class="math display">\[\label{cart}
+\begin{aligned}
+\xymatrix{
+E(k,e&#39;) \ar[rr]^-{E(k,\chi)} \ar[d]_-{p} &amp;&amp; E(k,e) \ar[d]^-{p} \\
+B(pk,pe&#39;) \ar[rr]_-{B(pk,p\chi)} &amp;&amp; B(pk,pe)}
+\end{aligned}\]</span></p>
+<p>بما أن أي مُرَبَّع تبادلي مع زوج من الجوانب المعكوسة يكون سحباً، نرى أن جميع التَحْوِيلات القابلة للعكس في <span class="math inline">\( E \)</span> هي ديكارتي، وإذا كانت <span class="math inline">\( p \)</span> مُخْلِصَة بالكامل، فإن جميع تَحْوِيلات <span class="math inline">\( E \)</span> هي ديكارتي.</p>
+<p>[gpdfib] تُعتَبَر الدالَّة <span class="math inline">\( p : E \to B \)</span> تَصْنِيف زُمَرِي عندما:</p>
+<ul>
+<li><p>لكل <span class="math inline">\( e \in E \)</span> و <span class="math inline">\( \beta : b \to pe \)</span> في <span class="math inline">\( B \)</span>، توجد <span class="math inline">\( \chi : e&#39; \to e \)</span> في <span class="math inline">\( E \)</span> و <span class="math inline">\( b \cong pe&#39; \)</span> قابلة للعكس بحيث <span class="math inline">\( \beta = (b \cong pe&#39; \xra{p\chi} pe) \)</span>، و</p></li>
+<li><p>كل تَحْوِيلة في <span class="math inline">\( E \)</span> هي ديكارتي بالنسبة لـ <span class="math inline">\( p \)</span>.</p></li>
+</ul>
+<p>تَشْمَل تَصْنِيفات الزُمَر لدينا جميع مُكافِئات الفِئات ولذلك ليست بالضرورة تَصْنِيفات في معنى غروتنديك.</p>
+<p>من السُحُب يتبع أن تَصْنِيفات الزُمَر مُحافِظة (أي تعكس القابلية للعكس). لذا فإن أليافها الزائِفَة <span class="math inline">\( E_b \)</span> هي زُمَر.</p>
+<p>بالنسبة للدوال <span class="math inline">\( A\xra{f}C\xla{g}B \)</span>، نكتب <span class="math inline">\( f/g \)</span> لفِئة الفاصِلة (أو الشريحة) لـ <span class="math inline">\( f \)</span> و <span class="math inline">\( g \)</span>؛ وهي الرأس الأعلى الأيسر لمُرَبَّع عالمي <span class="math display">\[\label{commasq}
+\begin{aligned}
+\xymatrix{
+f/g \ar[d]_{s}^(0.5){\phantom{aaaa}}=&quot;1&quot; \ar[rr]^{t}  &amp;&amp; B \ar[d]^{g}_(0.5){\phantom{aaaa}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\lambda}
+\\
+A \ar[rr]_-{f} &amp;&amp; C 
+}
+\end{aligned}\]</span> في الفِئة الثُنائِيَّة <span class="math inline">\(\mathrm{Cat}\)</span>. على وجه الخصوص، فِئة السهم لـ <span class="math inline">\( E \)</span> هي <span class="math inline">\( E^{\mathbf{2}} = 1_E/1_E = E/E \)</span>. لدالَّة <span class="math inline">\( E\xra{p}B \)</span> وكتابة <span class="math inline">\( B/p = 1_B/p \)</span>، يوجد دالَّة قانونية <span class="math inline">\( E^{\mathbf{2}}\xra{r} B/p \)</span> معرفة كما يلي. <span class="math display">\[\xymatrix{
+E^{\mathbf{2}} \ar@/_/[ddr]_{ps} \ar@/^/[drrr]^t
+\ar@{.&gt;}[dr]|-{r} \\
+&amp; B/p \ar[d]_{u}^(0.5){\phantom{aaaa}}=&quot;1&quot; \ar[rr]^h
+&amp;&amp; E \ar[d]^{p}_(0.5){\phantom{aaaa}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\lambda} \\
+&amp; B \ar[rr]_{1_B} &amp;&amp; B } \\
+\quad
+\xymatrix{
+ \\ &amp; &amp; \\
+&amp; \Huge{=} } \\
+\quad
+\xymatrix{
+\\
+E^{\mathbf{2}} \ar[d]_{p s}^(0.5){\phantom{aaaa}}=&quot;1&quot; \ar[rr]^{t}  &amp;&amp; B \ar[d]^{p}_(0.5){\phantom{aaaa}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{p \lambda}
+\\
+B \ar[rr]_-{1_B} &amp;&amp; B 
+}\]</span></p>
+<p>نكتب <span class="math inline">\( f/_{\mathrm{ps}}g \)</span> للفِئة الفرعية الكاملة لفِئة الفاصِلة <span class="math inline">\( f/g \)</span> من التي تتكون من تلك الكائنات التي يكون مُكَوِّن <span class="math inline">\( \lambda \)</span> فيها قابلاً للعكس. تُسمى <span><em>السُحُب الزائِفَة</em></span> أو <span><em>فِئة الإيزوكوما</em></span> للمَجْمُوعَة المُتقاطِعة <span class="math inline">\( A\xra{f}C\xla{g}B \)</span>؛ وهي الرأس الأعلى الأيسر لمُرَبَّع عالمي <span class="math display">\[\label{pspbsq}
+\begin{aligned}
+\xymatrix{
+f/_{\mathrm{ps}}g \ar[d]_{s&#39;}^(0.5){\phantom{aaaa}}=&quot;1&quot; \ar[rr]^{t&#39;}  &amp;&amp; B \ar[d]^{g}_(0.5){\phantom{aaaa}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\lambda&#39;}_{\cong}
+\\
+A \ar[rr]_-{f} &amp;&amp; C 
+}
+\end{aligned}\]</span> في الفِئة الثُنائِيَّة <span class="math inline">\(\mathrm{Cat}\)</span>.</p>
+<p>هنا ثلاث مُلاحَظات سهلة نسبياً.</p>
+<p>[3feo]</p>
+<ul>
+<li><p>دالَّة <span class="math inline">\( E\xra{p}B \)</span> هي تَصْنِيف زُمَرِي إذا وفقط إذا كانت الدالَّة القانونية <span class="math inline">\( E^{\mathbf{2}}\xra{r} B/p \)</span> مُكافِئة.</p></li>
+<li><p>لنَفْتَرِض أن <span class="math inline">\( E\xra{p}B \)</span> تَصْنِيف زُمَرِي. دالَّة <span class="math inline">\( F\xra{q}E \)</span> هي تَصْنِيف زُمَرِي إذا وفقط إذا كان التَرْكِيب <span class="math inline">\( F\xra{q}E\xra{p}B \)</span> كذلك.</p></li>
+<li><p>السُحُب الزائِفَة لتَصْنِيف زُمَرِي على طول أي دالَّة هو تَصْنِيف زُمَرِي. أي، إذا كانت الدالَّة <span class="math inline">\( g \)</span> تَصْنِيف زُمَرِي، فكذلك <span class="math inline">\( s&#39; \)</span>.</p></li>
+</ul>
+<p>هناك فِئة ثُنائِيَّة <span class="math inline">\(\mathrm{GFib}B\)</span> لتَصْنِيفات الزُمَر فوق <span class="math inline">\( B \)</span> معرفة كما يلي: الكائنات هي تَصْنِيفات الزُمَر <span class="math inline">\( E\xra{p}B \)</span> فوق <span class="math inline">\( B \)</span>. فِئات الهوم مُعطاة بواسطة السُحُب الزائِفَة: <span class="math display">\[\begin{aligned}
+\xymatrix{
+\mathrm{GFib}B(p,q) \ar[d]_{}^(0.5){\phantom{AAAAAA}}=&quot;1&quot; \ar[rr]^{}  &amp;&amp; [E,F] \ar[d]^{[E,q]}_(0.5){\phantom{AAAAAA}}=&quot;2&quot; \ar@{&lt;=}&quot;1&quot;;&quot;2&quot;^-{\cong}_-{}
+\\
+\mathbf{1} \ar[rr]_-{\lceil p\rceil} &amp;&amp; [E,B] 
+}
+ </end{aligned}\]</span> فالتَحْوِيلات هي مثلثات مع تَطابُق طبيعي فيها. <span class="math display">\[\label{morphoverB}
+\begin{aligned}
+\xymatrix{
+E \ar[rd]_{p}^(0.5){\phantom{a}}=&quot;1&quot; \ar[rr]^{f}  &amp;&amp; F \ar[ld]^{q}_(0.5){\phantom{a}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\phi}_{\cong}
+\\
+&amp; B 
+}
+\end{aligned}\]</span></p>
+<p>نعتبر أيضاً <span class="math inline">\(\mathrm{Cat}/B\)</span> مع نفس الاتفاق على تَحْوِيلاتها.</p>
+<h1 id="بعض-الدوال-الكاملة-الأمانة-للمساعد-الأيمن">بعض الدوال الكاملة الأمانة للمُساعِد الأيمن</h1>
+<p><span class="math display">\[\label{Fffff}
+\begin{aligned}
+\xymatrix{
+&amp; &amp; \mathrm{Ord} \ar[rd]^-{ \mathrm{incl}}  &amp; &amp;\\
+\mathrm{Set}\ar[r]^-{\sim} &amp;\mathrm{EqR} \ar[ru]^-{\mathrm{incl}} \ar[rd]_-{\mathrm{incl}} &amp; &amp; \mathrm{Cat}\ar[r]^-{\mathrm{nerve}} &amp; [\Delta^{\mathrm{op}},\mathrm{Set}] \\
+&amp; &amp; \mathrm{Gpd} \ar[ru]_-{\mathrm{incl}} &amp; &amp;}
+\end{aligned}\]</span></p>
+<p>جميع الفِئات في الرسم البياني مُغْلَقَة ديكارتيًا. جميع الدوال مُغْلَقَة تحت الأُسُس. الدوال المُساعِدة اليُسرى تُحافِظ جميعها على المُنْتَجات المحدودة (بموجب نَظَرِيَّة الانعكاس اليوم). تركيزنا هنا على الإدراج <span class="math inline">\(\mathrm{Gpd}\xra{\mathrm{incl}}\mathrm{Cat}\)</span> مع المُساعِد الأيسر 2-المُساعِد <span class="math inline">\(\pi_1\)</span> والمُساعِد الأيمن <span class="math inline">\(\upsilon\)</span>. الفِئة الفرعية <span class="math inline">\(\upsilon A\)</span> من الفِئة <span class="math inline">\(A\)</span> تحتوي على جميع التَحْوِيلات القابلة للعكس في <span class="math inline">\(A\)</span> فقط.</p>
+<p>[upsfun] الدالَّة <span class="math inline">\(E\xra{p}B\)</span> هي مُكافِئة إذا وفقط إذا كان كل من <span class="math inline">\(\upsilon E\xra{\upsilon p}\upsilon B\)</span> و <span class="math inline">\(\upsilon (E^{\mathbf{2}})\xra{\upsilon (p^{\mathbf{2}})}\upsilon (B^{\mathbf{2}})\)</span> مُكافِئات.</p>
+<p>الحالة “فقط إذا” واضحة لأن <span class="math inline">\(\upsilon\)</span> هو دالَّة 2-دالَّة. للحالة المعاكسة، لاحظ أولاً أن الشمولية على الكائنات حتى التَطابُق لـ <span class="math inline">\(p\)</span> هي نفسها لـ <span class="math inline">\(\upsilon p\)</span>.</p>
+<p>لذا يبقى أن نستنتج من مُكافِئات الزُمَر أن <span class="math inline">\(p\)</span> كاملة الأمانة. خذ <span class="math inline">\(e, e&#39;\in E\)</span> و <span class="math inline">\(pe \xra{\beta} pe&#39;\)</span> في <span class="math inline">\(B\)</span>. بما أن <span class="math inline">\(\upsilon (B^{\mathbf{2}})\)</span> شاملة على الكائنات حتى التَطابُق، يوجد <span class="math inline">\(e_1 \xra{\xi} e&#39;_1\)</span> في <span class="math inline">\(E\)</span> ومُرَبَّع تبادلي <span class="math display">\[\xymatrix{
+pe_1 \ar[r]^-{\sigma}_{\cong} \ar[d]_-{p\xi} &amp; pe \ar[d]^-{\beta} \\
+pe&#39;_1 \ar[r]_-{\sigma&#39;}^{\cong} &amp; pe&#39; \ .}\]</span> بما أن <span class="math inline">\(\upsilon p\)</span> كاملة، توجد تَحْوِيلات قابلة للعكس <span class="math inline">\(e_1 \xra{\chi} e\)</span> و <span class="math inline">\(e&#39;_1 \xra{\chi&#39;} e&#39;\)</span> في <span class="math inline">\(E\)</span> بحيث <span class="math inline">\(p\chi = \sigma\)</span> و <span class="math inline">\(p\chi&#39; = \sigma&#39;\)</span>. وبالتالي، <span class="math inline">\(\beta = p(\chi&#39; \xi \chi^{-1})\)</span> مما يثبت أن <span class="math inline">\(p\)</span> كاملة.</p>
+<p>بما أن <span class="math inline">\(\upsilon p\)</span> أمينة، فإن التَحْوِيلات الوحيدة في <span class="math inline">\(E\)</span> التي تُؤخذ إلى هُوِيّات بواسطة <span class="math inline">\(p\)</span> هي الهُوِيّات. سنستخدم هذه الحالة الخاصة في برهاننا الآن أن <span class="math inline">\(p\)</span> أمينة. خذ <span class="math inline">\(\xi, \xi&#39; : e\to e_1\)</span> في <span class="math inline">\(E\)</span> مع <span class="math inline">\(p\xi = p\xi&#39;\)</span>. فكّر في هذين التَحْوِيلين ككائنات من <span class="math inline">\(E^{\mathbf{2}}\)</span> التي تُؤخذ إلى كائنين متساويين <span class="math inline">\(p\xi, p\xi&#39; : pe\to pe_1\)</span> من <span class="math inline">\(B^{\mathbf{2}}\)</span>. بما أن <span class="math inline">\(p^{\mathbf{2}}\)</span> كاملة، فإن الكائنين <span class="math inline">\(\xi\)</span> و <span class="math inline">\(\xi&#39;\)</span> متطابقان بتَطابُق في <span class="math inline">\(E^{\mathbf{2}}\)</span> مُكوَّن من تَحْوِيلات ذاتية لـ e و e_1 التي تُؤخذ إلى هُوِيّات بواسطة <span class="math inline">\(p\)</span>. بما أن تلك التَحْوِيلات الذاتية يجب أن تكون هُوِيّات، نستنتج أن <span class="math inline">\(\xi=\xi&#39;\)</span>، كما هو مطلوب.</p>
+<p>[upsgfib] إذا كانت <span class="math inline">\(E\xra{p}B\)</span> تَصْنِيف زُمَرِي و <span class="math inline">\(\upsilon E\xra{\upsilon p}\upsilon B\)</span> مُكافِئة فإن <span class="math inline">\(E\xra{p}B\)</span> هي مُكافِئة.</p>
+<p>بما أن <span class="math inline">\(\upsilon\)</span> هو مُساعِد أيمن، فإنه يُحافِظ على السُحُب الزائِفَة <span class="math display">\[\xymatrix{
+E^{\mathbf{2}} \ar[rr]^-{\mathrm{cod}} \ar[d]_-{p^{\mathbf{2}}} &amp;&amp; E \ar[d]^-{p} \\
+B^{\mathbf{2}}\ar[rr]^-{\mathrm{cod}} &amp;&amp; B}\]</span> بحيث أن كل من <span class="math inline">\(\upsilon p\)</span> و <span class="math inline">\(\upsilon (p^{\mathbf{2}})\)</span> مُكافِئات. النتيجة تتبع من الليما [upsfun].</p>
+<p>البناء العادي “بناء غروتنديك” 2-دالَّة <span class="math display">\[\begin{aligned}
+\wr  :  \mathrm{Hom}(B^{\mathrm{op}},\mathrm{Gpd}) \lra \mathrm{GFib}B\end{aligned}\]</span> هو ثُنَائِي المُكافِئة. إذا كان <span class="math inline">\(\ \wr(T) \simeq (E\xra{p} B)\)</span> فإن <span class="math inline">\(Tb\)</span> مُكافِئ لألياف الزائِفَة <span class="math inline">\(E_b\)</span> لـ <span class="math inline">\(p\)</span> فوق <span class="math inline">\(b\in B\)</span>.</p>
+<p>نتيجة تطبيق <span class="math inline">\(\mathrm{Hom}(B^{\mathrm{op}},-)\)</span> على 2-المُساعِدة <span class="math display">\[\xymatrix @C+5mm{
+ \mathrm{Cat} \ar @&lt;3pt&gt; [r]^{\pi_1}  &amp;  \mathrm{Gpd} \ar @&lt;3pt&gt;[l]^{\mathrm{incl}}}\]</span> تنقل إلى ثُنَائِي المُساعِدة <span class="math display">\[\xymatrix @C+5mm{
+ \mathrm{Fib}B \ar @&lt;3pt&gt; [r]^{\pi_{1 B}}  &amp;  \mathrm{GFib}B \ar @&lt;3pt&gt;[l]^{\mathrm{incl}}
+}\]</span> عبر ثُنَائِيات المُكافِئة <span class="math display">\[\begin{aligned}
+\mathrm{Hom}(B^{\mathrm{op}},\mathrm{Gpd}) \xra{\sim} \mathrm{GFib}B
+\ \text{   و   }  \ \mathrm{Hom}(B^{\mathrm{op}},\mathrm{Cat})  \xra{\sim} \mathrm{Fib}B \ .\end{aligned}\]</span></p>
+<p>[overB] دالَّة الإدراج 2-دالَّة <span class="math inline">\(\mathrm{GFib}B\hookrightarrow \mathrm{Cat}/B\)</span> كاملة الأمانة مع مُساعِد أيسر ثُنَائِي قيمته عند الكائن <span class="math inline">\(A\xra{f}B\)</span> هو التَرْكِيب الزمري <span class="math inline">\(\pi_{1 B} (B/f\xra{\mathrm{dom}}B)\)</span> الذي يتوافق مع الدالَّة الزائِفَة <span class="math inline">\(B^{\mathrm{op}}\to \mathrm{Gpd}\)</span> التي تأخذ <span class="math inline">\(b\in B\)</span> إلى <span class="math inline">\(\pi_{1 } (b/f)\)</span>.</p>
+<p>بناء <span class="math inline">\(\pi_1A\)</span> بواسطة المُوَلِّدات والعَلاقات صعب التعامل معه؛ بدلاً من ذلك نستخدم الخاصية الكونية لبناء المُحَوِّل. أكتب <span class="math inline">\([A,X]_{\cong}\)</span> للفِئة الفرعية الكاملة من <span class="math inline">\([A,X]\)</span> التي تتألف من تلك الدوال <span class="math inline">\(f : A\to X\)</span> التي تعكس جميع التَحْوِيلات في <span class="math inline">\(A\)</span>. وحدة التقابل <span class="math inline">\(A\to \pi_1A\)</span> تحقق تَطابُقاً <span class="math display">\[[\pi_1A,X]\cong [A,X]_{\cong}\]</span> لجميع الفِئات <span class="math inline">\(X\)</span> (ليس فقط الزُمَر).</p>
+<h1 id="المتعاليات-النهائية">المُتَعَالِيَات النِهائِيَّة</h1>
+<p>المُتَعَالِيَة <span class="math inline">\(j : A \to B\)</span> تُعتَبَر <span><em>نِهائِيَّة</em></span> عندما، لكل الكائنات <span class="math inline">\(b\in B\)</span>، المَجْمُوعَة الأَساسِيَّة <span class="math inline">\(\pi_1(b/j)\)</span> لفِئة الفاصِلة <span class="math inline">\(b/j\)</span> مُكافِئة للمَجْمُوعَة النِهائِيَّة: <span class="math display">\[\pi_1(b/j) \simeq \mathbf{1} \ .\]</span></p>
+<p>[erafiu] كل مُتَعَالِيَة مُساعِدة يَمِينِيَّة هي نِهائِيَّة.</p>
+<p>إذا <span class="math inline">\(k\dashv j : A\to B\)</span> فإن <span class="math inline">\(b/j \simeq kb/A \to \mathbf{1}\)</span> لها مُساعِد يسار بفضل العُنْصُر الأول <span class="math inline">\(1_{kb}\)</span> لـ <span class="math inline">\(kb/A\)</span>. تطبيق المُتَعَالِيَة ثُنائِيَّة الأبعاد <span class="math inline">\(\pi_1\)</span> على الاقتران يُنتج اقتران بين المَجْمُوعات.</p>
+<p>[pi1ufequiv] المُتَعَالِيَات النِهائِيَّة يتم أخذها بواسطة <span class="math inline">\(\pi_1\)</span> إلى مُكافِئات.</p>
+<p>لنَفْتَرِض أن <span class="math inline">\(j:A\to B\)</span> نِهائِيَّة. يجب أن نثبت أن <span class="math inline">\(\pi_1A\xra{\pi_1j}\pi_1B\)</span> هي مُكافِئة. ما نثبته هو أنه، لأي فِئة <span class="math inline">\(X\)</span>، إذا كان كل مُتَعَالِيَة قُطْرِيَّة <span class="math inline">\(X\xra{\delta_{b}}[b/j,X]_{\cong}\)</span> هي مُكافِئة فإن <span class="math inline">\([B,X]_{\cong}\xra{[j,1]_{\cong}}[A,X]_{\cong}\)</span> هي مُكافِئة. بما أن <span class="math inline">\(\delta_{b}\)</span> طبيعية ثُنائِيَّة في <span class="math inline">\(b\in B\)</span>، فإن أي اختيار <span class="math inline">\(\gamma_{b}\)</span> لمُكافِئة مُساعِدة هو شبه طبيعي: اختر أيضاً الوحدة <span class="math inline">\(\varepsilon_b : \gamma_b\delta_b \xRa{\cong}1_X\)</span> والتوحيد <span class="math inline">\(\eta_b : 1_A \xRa{\cong}\delta_b\gamma_b\)</span>. سنُظهر أن لدينا مُكافِئة عكسية <span class="math inline">\(\theta\)</span> لـ <span class="math inline">\([j,1]_{\cong}\)</span> معرفة بواسطة <span class="math display">\[\xymatrix{
+\theta(f)b  \ar[d]_-{\theta(f)\beta} &amp; = &amp; \gamma_b(b/j\xra{\mathrm{cod}}A\xra{f}X \ar[d]^-{\gamma_{\beta, f\mathrm{cod}}}) \\
+\theta(f)b&#39;  &amp; = &amp; \gamma_b(b&#39;/j\xra{\beta/j} b/j\xra{\mathrm{cod}}A\xra{f}X) \ .
+}\]</span> لـ <span class="math inline">\(g\in [B,X]_{\cong}\)</span>، لدينا تَطابُقات <span class="math display">\[\begin{aligned}
+(\theta [j,1]_{\cong} g)b &amp; = &amp; \gamma_b(b/j\xra{\mathrm{cod}}A\xra{j}B\xra{g}X) \\
+&amp; \cong &amp; \gamma_b(b/j\xra{!}1\xra{b}B\xra{g}X) \\
+&amp; \cong &amp; \gamma_b\delta_b (gb) \\
+&amp; \xRa{\varepsilon_b \ \cong} &amp; gb \end{aligned}\]</span> طبيعياً في <span class="math inline">\(g\)</span> و <span class="math inline">\(b\)</span>، بينما، لـ <span class="math inline">\(f\in [A,X]_{\cong}\)</span>، لدينا تَطابُقات <span class="math display">\[\begin{aligned}
+([j,1]_{\cong} \theta) (f)a &amp; = &amp; \theta(f) ja \\
+&amp; \cong &amp; \gamma_{ja}(ja/j\xra{\mathrm{cod}}A\xra{f}X) \\
+&amp;  \xRa{\eta^{-1} \ \cong} &amp; (f\mathrm{cod})(ja\xra{1_{ja}}ja, a) \\
+&amp; = &amp; f a \end{aligned}\]</span> طبيعياً في <span class="math inline">\(f\)</span> و <span class="math inline">\(a\)</span>.</p>
+<p>[pspbultimate] مُتَعَالِيَة هي نِهائِيَّة إذا وفقط إذا كان سحبها الزائِف على طول أي (مَجْمُوعَة) تَرْقِيم عمليات يُؤخذ بواسطة <span class="math inline">\(\pi_1\)</span> إلى مُكافِئة.</p>
+<p>السُحُب الزائِفَة <span class="math inline">\(P\xra{\bar{j}} X\)</span> لـ <span class="math inline">\(A\xra{j} B\)</span> على طول تَرْقِيم عمليات <span class="math inline">\(F\xra{q}B\)</span> له <span class="math inline">\(x/\bar{j}\simeq qx/j\)</span>؛ لذا <span class="math inline">\(\bar{j}\)</span> نِهائِيَّة إذا كان <span class="math inline">\(j\)</span> كذلك. لذا <span class="math inline">\(\pi_1\)</span> يأخذ <span class="math inline">\(\bar{j}\)</span> إلى مُكافِئة بموجب الاقتراح [pi1ufequiv]. للباقي، في السُحُب الزائِفَة <span class="math display">\[\xymatrix{
+b/j \ar[rr]^-{} \ar[d]_-{\mathrm{cod}} &amp;&amp; b/B \ar[d]^-{\mathrm{cod}} \\
+A \ar[rr]^-{j} &amp;&amp; B \ ,}\]</span> لاحظ أن <span class="math inline">\(b/B\)</span> له عنصر أول و<span class="math inline">\(\mathrm{cod}\)</span> هو تَرْقِيم عمليات مَجْمُوعَة.</p>
+<p>كل مُحَوِّل عملات (موضعه) هو نِهائِي.</p>
+<p>السُحُب على طول تَرْقِيم عمليات له مُساعِد يمين لذا المُحَوِّلات العملات يتم أخذها إلى مُحَوِّلات عملات. أيضاً، <span class="math inline">\(\pi_1\)</span> يأخذ المُحَوِّلات العملات إلى تَطابُقات لأنه مُساعِد يسار وكل الخلايا ثُنائِيَّة الأبعاد في <span class="math inline">\(\mathrm{Gpd}\)</span> قابلة للعكس بالفعل. الاقتراح [pspbultimate] ينطبق.</p>
+<p>[3for2] افترض أن <span class="math inline">\(A\xra{j} B\)</span> نِهائِيَّة. مُتَعَالِيَة <span class="math inline">\(B\xra{k} C\)</span> هي نِهائِيَّة إذا وفقط إذا كانت المركبة <span class="math inline">\(A\xra{j}B\xra{k}C\)</span> نِهائِيَّة.</p>
+<p>انظر إلى اللصق <span class="math display">\[\xymatrix{
+Q \ar[r]^-{j&#39;} \ar[d]_-{q&#39;&#39;} &amp; P \ar[r]^-{k&#39;}  \ar[d]^-{q&#39;}  &amp; F \ar[d]^-{q} \\
+A \ar[r]_-{j} &amp; B \ar[r]_-{k} &amp; C }\]</span> لسحبين مع <span class="math inline">\(q\)</span> تَرْقِيم عمليات مَجْمُوعَة. بما أن <span class="math inline">\(j\)</span> نِهائِيَّة، <span class="math inline">\(j&#39;\)</span> يتم مُكافِئتها بواسطة <span class="math inline">\(\pi_1\)</span>. لذا <span class="math inline">\(k&#39;j&#39;\)</span> يتم مُكافِئتها بواسطة <span class="math inline">\(\pi_1\)</span> إذا وفقط إذا كان <span class="math inline">\(k&#39;\)</span> كذلك.</p>
+<p>[fibreaspi1] إذا كان <span class="math inline">\(E\xra{p}B\)</span> تَرْقِيم عمليات مَجْمُوعَة و<span class="math inline">\(X\xra{b}B\)</span> مُتَعَالِيَة من مَجْمُوعَة <span class="math inline">\(X\)</span> فإن المركب <span class="math inline">\(E_b\to b/p\to \pi_1(b/p)\)</span> هو مُكافِئة.</p>
+<p><span class="math inline">\(E_b\to b/p\)</span> هو مُساعِد يسار و<span class="math inline">\(E_b\)</span> هو مَجْمُوعَة بالفعل.</p>
+<p>[intersection] تَرْقِيمات عمليات المَجْمُوعات النِهائِيَّة <span class="math inline">\(E\xra{p} B\)</span> هي مُكافِئات.</p>
+<p>لنَفْتَرِض أن <span class="math inline">\(\upsilon B\xra{b} B\)</span> هو الإدراج. بما أن <span class="math inline">\(p\)</span> نِهائِيَّة، فإن السُحُب <span class="math inline">\(b/p\xra{g}b/B\)</span> لـ <span class="math inline">\(p\)</span> على طول <span class="math inline">\(b/B\xra{\mathrm{cod}}B\)</span> يتم مُكافِئته بواسطة <span class="math inline">\(\pi_1\)</span>. بواسطة الليما [fibreaspi1]، <span class="math inline">\(\pi_1(g)\)</span> مُكافِئ لـ <span class="math inline">\(\upsilon (p)\)</span>. بواسطة الليما [upsgfib]، بما أن <span class="math inline">\(p\)</span> تَرْقِيم عمليات مَجْمُوعَة مع <span class="math inline">\(\upsilon (p)\)</span> مُكافِئة، <span class="math inline">\(p\)</span> هي مُكافِئة.</p>
+<h1 id="أنظمة-التحليل-الثنائية-الفئات">أَنْظِمَة التَحْلِيل الثُنائِيَّة الفِئات</h1>
+<p>مفهوم نِظام التَحْلِيل في ثُنَائِي الفِئات ليس جديداً؛ على سبيل المثال، انظر (<span class="nodecor">61, DV</span>). قبل تقديم التَعْرِيف، نراجع النسخة الثُنائِيَّة الفِئات من السُحُب الخلفية.</p>
+<p>[defbipb] يُعتَبَر المُرَبَّع <span class="math display">\[\label{bipbsq}
+\begin{aligned}
+\xymatrix{
+W \ar[d]_{p}^(0.5){\phantom{aaaa}}=&quot;1&quot; \ar[rr]^{q}  &amp;&amp; B \ar[d]^{g}_(0.5){\phantom{aaaa}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\sigma}_{\cong}
+\\
+A \ar[rr]_-{f} &amp;&amp; C 
+}
+\end{aligned}\]</span> في ثُنَائِي الفِئات <span class="math inline">\(\CK\)</span> سحباً خلفياً للمَجْمُوعَة المُتجهة <span class="math inline">\(A\xra{f}C\xla{g}B\)</span> عندما، لجميع الكائنات <span class="math inline">\(K\in \CK\)</span>، الدالَّة <span class="math display">\[\CK(K,W) \xra{(p,\sigma,q)}\CK(K,f)/_{\mathrm{ps}}\CK(K,g) \ ,\]</span> المُستمدة من الخاصية الشاملة للسحب الخلفي الزائِف، تكون مُكافِئة.</p>
+<p>[bipbgpdfib] في المُرَبَّع، إذا كانت <span class="math inline">\(g\)</span> و<span class="math inline">\(p\)</span> تَصْنِيفات مَجْمُوعات، فإن المُرَبَّع يكون سحباً خلفياً إذا وفقط إذا <span class="math display">\[\upsilon(\CK(K,W)) \xra{\upsilon(p,\sigma,q)}\upsilon(\CK(K,f)/_{\mathrm{ps}}\CK(K,g))\]</span> هي مُكافِئة للمَجْمُوعات. هذا لأن الاقتراح [3feo] (ب) و (ج) يُفترض أن <span class="math inline">\((p,\sigma,q)\)</span> هي تَصْنِيف مَجْمُوعات بحيث ينطبق القانون [upsgfib].</p>
+<p>يتألف <span><em>نِظام التَحْلِيل على ثُنَائِي الفِئات</em></span> <span class="math inline">\(\CK\)</span> من زوج <span class="math inline">\((\CE,\CM)\)</span> من مجموعات <span class="math inline">\(\CE\)</span> و<span class="math inline">\(\CM\)</span> للتَحْوِيلات في <span class="math inline">\(\CK\)</span> تلبي:</p>
+<ul>
+<li><p>إذا كان <span class="math inline">\(f\cong mw\)</span> مع <span class="math inline">\(m\in \CM\)</span> و<span class="math inline">\(w\)</span> مُكافِئة فإن <span class="math inline">\(f\in \CM\)</span>، بينما إذا كان <span class="math inline">\(f\cong we\)</span> مع <span class="math inline">\(e\in \CE\)</span> و<span class="math inline">\(w\)</span> مُكافِئة فإن <span class="math inline">\(f\in \CE\)</span>؛</p></li>
+<li><p>لكل <span class="math inline">\(X\xra{e}Y\in \CE\)</span> و<span class="math inline">\(A\xra{m}B\in \CM\)</span>، فإن الرسم البياني <span class="math display">\[\label{psorthog}
+\begin{aligned}
+\xymatrix{
+\CK(Y,A) \ar[d]_-{\CK(Y,m)}^(0.5){\phantom{aaa}}=&quot;1&quot; \ar[rr]^-{\CK(e,A)}  &amp;&amp;  \CK(X,A) \ar[d]^-{\CK(X,m)}_(0.5){\phantom{aaa}}=&quot;2&quot; \ar@{}&quot;1&quot;;&quot;2&quot;^-{\cong}
+\\
+\CK(Y,B) \ar[rr]^-{\CK(e,B)} &amp;&amp; \CK(X,B)}
+\end{aligned}\]</span> (الذي يحتوي على مكونات القيود الترابطية لـ<span class="math inline">\(\CK\)</span>) يكون سحباً خلفياً؛</p></li>
+<li><p>كل تَحْوِيلة <span class="math inline">\(f\)</span> تتحلل <span class="math inline">\(f\cong m\circ e\)</span> مع <span class="math inline">\(e\in \CE\)</span> و<span class="math inline">\(m\in \CM\)</span>.</p></li>
+</ul>
+<p>يترتب على ذلك أن <span class="math inline">\(\CE\)</span> و<span class="math inline">\(\CM\)</span> مُغْلَقَتان تحت التَرْكِيب ويتقاطعان بالضبط في المُكافِئات. علاوة على ذلك، في المُرَبَّع، التَحْوِيلة <span class="math inline">\(m\)</span> تكون في <span class="math inline">\(\CM\)</span> إذا كان المُرَبَّع سحباً خلفياً لجميع <span class="math inline">\(e\in \CE\)</span>، وبالمثل بالعكس. كما لاحظ أنه، إذا كانت جميع التَحْوِيلات في <span class="math inline">\(\CM\)</span> هي تَصْنِيفات مَجْمُوعات فإن القانون [bipbgpdfib] ينطبق لتبسيط التحقق من السحب الخلفي.</p>
+<h1 id="النظرية-الرئيسية">النَظَرِيَّة الرَئِيسِيَّة</h1>
+<p>[main] المُتَعَالِيَات النِهائِيَّة وألياف المَجْمُوعات تُشَكِّل نِظام تَحْلِيل ثُنَائِي الفِئات على <span class="math inline">\(\mathrm{Cat}\)</span>. لذا كل دالَّة <span class="math inline">\(f : A \to B\)</span> تتحلل بشكل شبه دالي كـ <span class="math inline">\(f \cong (A\xra{j} E \xra{p} B)\)</span> حيث <span class="math inline">\(j\)</span> نِهائِيَّة و<span class="math inline">\(p\)</span> ألياف مَجْمُوعَة.</p>
+<p>FS0 واضح. لبناء FS2 نقوم بتشكيل الرسم البياني <span class="math display">\[\xymatrix{
+A \ar[r]^-{i} \ar[d]_-{f} &amp; B/f \ar[r]^-{n}  \ar[d]^-{\mathrm{dom}}  &amp; E \ar[d]^-{p} \\
+B \ar[r]^-{1} &amp; B \ar[r]^-{1} &amp; B }\]</span> حيث <span class="math inline">\((E\xra{p} B) = \pi_{1B}(B/f \xra{\mathrm{dom}}B)\)</span>، المُرَبَّعات تتوافق حتى التَطابُق، <span class="math inline">\(i\)</span> لها متمم أيسر <span class="math inline">\(\mathrm{cod}\)</span>، و<span class="math inline">\(n\)</span> هي مُحَوِّلة عملات.</p>
+<p>يتبقى إثبات FS1. بناءً على ملاحظة [bipbgpdfib]، يجب علينا إثبات أنه، لأي ألياف مَجْمُوعَة <span class="math inline">\(E\xra{p} C\)</span> وأي دالَّة نِهائِيَّة <span class="math inline">\(A\xra{j} B\)</span>، الدالَّة <span class="math display">\[([j,E], [B,p]) : [B,E] \lra [A,p]/_{\mathrm{ps}}[j,C]\]</span> يتم أخذها إلى تَكافُؤ المَجْمُوعات بواسطة <span class="math inline">\(\upsilon\)</span>. بناءً على ملاحظة [overB]، قيمة الضلع الأيسر المتمم لـ <span class="math inline">\(\mathrm{GFib}B\hookrightarrow \mathrm{Cat}/B\)</span> عند الدالَّة النِهائِيَّة <span class="math inline">\(A\xra{j} B\)</span> تعادل <span class="math inline">\(B\xra{1_B} B\)</span>. لذا كل تَحْوِيل <span class="math inline">\(j\xra{(f,\phi)}q\)</span> فوق <span class="math inline">\(B\)</span> مع <span class="math inline">\(q\)</span> ألياف مَجْمُوعَة يتحلل حتى التَطابُق كما يلي <span class="math display">\[\label{reflectultimate}
+\begin{aligned}
+\xymatrix{
+j \ar[rd]_{(f,\phi)}^(0.5){\phantom{a}}=&quot;1&quot; \ar[rr]^{(j,1_j)}  &amp;&amp; 1_B \ar[ld]^{(w,\psi)}_(0.5){\phantom{a}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\sigma}_{\cong}
+\\
+&amp; q 
+}
+\end{aligned}\]</span> بشكل فريد حتى تَطابُق فريد. في هذا، لدينا <span class="math inline">\(f\xRa{\sigma}wj\)</span> و<span class="math inline">\(1_B\xRa{\psi}qw\)</span> بحيث <span class="math inline">\(\psi j = (j\xRa{\phi}qf\xRa{q\sigma}qwj)\)</span>. خذ أي كائن <span class="math inline">\((u,\gamma ,v)\)</span> من <span class="math inline">\([A,p]/_{\mathrm{ps}}[j,C]\)</span>؛ يتكون من دوال <span class="math inline">\(A\xra{u}E, B\xra{v}C\)</span> وتَحْوِيل طبيعي قابل للعكس <span class="math inline">\(pu\xRa{\gamma} vj\)</span>. بموجب الخاصية العالمية للسحب الزائِف <span class="math inline">\(p/_{\mathrm{ps}}v\)</span>، التَطابُق <span class="math inline">\(\gamma\)</span> يساوي التَرْكِيب الماضي <span class="math display">\[\xymatrix{
+A \ar@/_/[ddr]_u \ar@/^/[drrr]^j
+\ar@{.&gt;}[dr]|-{u&#39;} \\
+&amp; p/_{\mathrm{ps}}v \ar[d]_{s&#39;}^(0.5){\phantom{aaaaa}}=&quot;1&quot; \ar[rr]^{t&#39;}
+&amp;&amp; B \ar[d]^{v}_(0.5){\phantom{aaaaa}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\lambda&#39;}_{\cong} \\
+&amp; E \ar[rr]_p &amp;&amp; C \ . }\]</span> بموجب الاقتراح [3feo]، <span class="math inline">\(p/_{\mathrm{ps}}v\xra{t&#39;}B\)</span> هي ألياف مَجْمُوعَة. يمكننا تطبيق مع <span class="math inline">\(f = u&#39;\)</span>، <span class="math inline">\(q = t&#39;\)</span> و<span class="math inline">\(\phi\)</span> هوية <span class="math inline">\(j = t&#39;u&#39;\)</span> للحصول على <span class="math inline">\(u&#39;\xRa{\sigma}wj\)</span> و<span class="math inline">\(1_B\xRa{\psi}t&#39;w\)</span> بحيث <span class="math inline">\(\psi j = (j=t&#39;u&#39;\xRa{t&#39;\sigma}t&#39;wj)\)</span> بشكل فريد حتى تَطابُق فريد من <span class="math inline">\((w,\psi,\sigma)\)</span>. هذا يعطينا <span class="math inline">\(w&#39;=s&#39;w\in [B,E]\)</span> وتَطابُق <span class="math inline">\((u,\gamma, v) \cong (w&#39;j,1_{pw&#39;j},pw&#39;) = ([j,E], [B,p])w&#39;\)</span> محدد بالتَطابُقات <span class="math display">\[u=s&#39;u&#39;\xRa{s&#39;\sigma}s&#39;wj = w&#39;j \ \text{ و } \ v\xRa{v\psi}vt&#39;w = vt&#39;w\xRa{(\lambda&#39;w)^{-1}} ps&#39;w=pw&#39; \ .\]</span> هذا يثبت أن الدالَّة <span class="math inline">\(\upsilon([j,E], [B,p])\)</span> متعددة الكائنات حتى التَطابُق. الآن نفترض أن لدينا أيضاً <span class="math inline">\(h\in [B,E]\)</span> وتَطابُق <span class="math display">\[(\xi,\zeta) : ([j,E], [B,p])h\cong (w&#39;j,1_{pw&#39;j},pw&#39;)\]</span> وهذا يعني أن لدينا قابل للعكس <span class="math inline">\(hj\xRa{\xi}s&#39;wj\)</span> و<span class="math inline">\(ph\xRa{\zeta}ps&#39;w\)</span> بحيث <span class="math inline">\(p\xi = \zeta j\)</span>. بموجب الخاصية العالمية للسحب الزائِف، يوجد <span class="math inline">\(k : B\to p/_{\mathrm{ps}v}\)</span> فريد بحيث <span class="math inline">\(s&#39;k = h\)</span>, <span class="math inline">\(t&#39;k = 1_B\)</span> و<span class="math inline">\(\lambda&#39;k = (ph\xRa{\zeta} ps&#39;w\xRa{\lambda&#39;w}vt&#39;w\xRa{v\psi^{-1}}v)\)</span>، ويوجد أيضاً تَطابُق قابل للعكس <span class="math inline">\(\tau : kj\Ra wj\)</span> بحيث <span class="math inline">\(\xi = (hj=s&#39;kj\xRa{s&#39;\tau}s&#39;wj)\)</span> و<span class="math inline">\(\psi j = (t&#39;kj\xRa{t&#39;\tau}t&#39;wj)\)</span>. لذا لدينا <span class="math display">\[\begin{aligned}
+\xymatrix{
+j \ar[rd]_{(u&#39;,1_j)}^(0.5){\phantom{a}}=&quot;1&quot; \ar[rr]^{(j,1_j)}  &amp;&amp; 1_B \ar[ld]^{(k,1_{1_B})}_(0.5){\phantom{a}}=&quot;2&quot; \ar@{=&gt;}&quot;1&quot;;&quot;2&quot;^-{\tau^{-1}\sigma}_{\cong}
+\\
+&amp; t&#39; 
+}
+\end{aligned}\]</span> وهذا يسمح لنا باستخدام فرادة <span class="math inline">\((w,\psi,\sigma)\)</span> للحصول على تَطابُق فريد <span class="math inline">\(\kappa : k \Ra w\)</span> بحيث <span class="math inline">\(\kappa j = \tau\)</span> و<span class="math inline">\(t&#39;\kappa = \psi\)</span>. ثم <span class="math inline">\(\kappa&#39; = s&#39;\kappa : h\Ra w&#39;\)</span> بحيث <span class="math inline">\(\kappa&#39; j = s&#39;\kappa j = s&#39; \tau = \xi\)</span> و<span class="math inline">\(p\kappa&#39; = p s&#39;\kappa = (\lambda&#39;w)^{-1} (v\psi) (\lambda&#39;k) = \zeta\)</span>. وبالتالي <span class="math inline">\(\upsilon([j,E], [B,p])\)</span> كاملة ويتبقى إثبات أنها أمينة. لذا نفترض أن لدينا تَطابُق قابل للعكس <span class="math inline">\(\delta&#39; : h\Ra w&#39;\)</span> بحيث <span class="math inline">\(\delta&#39; j = \xi\)</span> و<span class="math inline">\(p\delta&#39; = \zeta = (\lambda&#39;w)^{-1} (v\psi) (\lambda&#39;k)\)</span>. الخاصية العالمية للسحب الزائِف تعني وجود <span class="math inline">\(\delta : k\Ra w\)</span> بحيث <span class="math inline">\(s&#39;\delta = \delta&#39;\)</span> و<span class="math inline">\(t&#39;\delta = \psi\)</span>، وتعني أننا نستطيع استنتاج أن <span class="math inline">\(\delta j = \tau\)</span> من المعادلات <span class="math inline">\(s&#39;\delta j = \xi\)</span> و<span class="math inline">\(t&#39;\delta j = \psi j = t&#39;\tau\)</span>. بفرادة <span class="math inline">\(\kappa\)</span>، لدينا <span class="math inline">\(\delta = \kappa\)</span> وبالتالي <span class="math inline">\(\delta&#39; = \kappa&#39;\)</span>، كما هو مطلوب.</p>
+<h1 id="المتغيرات-المحتملة-الأخرى">المُتَغَيِّرات المُحْتَمَلَة الأُخْرَى</h1>
+<p>من الممكن أن تستمر عملية التَحْلِيل لفِئات <span class="math inline">\((\infty,1)\)</span> (المعروفة أيضاً بالفِئات شبه الفِئات أو مُجَمَّعات كان الضعيفة)؛ انظر (<span class="nodecor">JoyV1, JoyV2</span>). بالنسبة لحالة الثلاثي الفِئة <span class="math inline">\((2,1)\text{-}\mathrm{Cat}\)</span> التي تتكون من ثُنائيات الفِئات مع جميع الخلايا الثُنائِيَّة قابلة للعكس، فإن المُكَوِّن الأساسي سيكون الثلاثي التعديل <span class="math display">\[\xymatrix @R-3mm {
+(2,1)\text{-}\mathrm{Cat} \ar@&lt;1.5ex&gt;[rr]^{\pi_1} \ar@{}[rr]|-{\perp} &amp;&amp;(2,0)\text{-}\mathrm{Cat} \ar@&lt;1.5ex&gt;[ll]^{\mathrm{incl}}
+}\]</span> حيث <span class="math inline">\((2,0)\text{-}\mathrm{Cat}\)</span> هي الفِئة الفرعية الثلاثية لـ <span class="math inline">\((2,1)\text{-}\mathrm{Cat}\)</span> مع جميع التَحْوِيلات مُكافِئة. هناك أيضاً نواة واضحة توفر تعديل ثلاثي صحيح أيضاً. هذا يتطلب الارتقاء إلى أَنْظِمَة التَحْلِيل على الفِئات الثلاثية. وبعد كل شيء، حتى الآن تطبيقي يحتاج فقط إلى حالة <span class="math inline">\(\mathrm{Cat}\)</span>.</p>
+<p>من المفترض أن يكون هناك أيضاً نسخة من (التَحْلِيل النِهائِي، تَرابُط المَجْمُوعَة) للفِئات الداخلية لفِئة <span class="math inline">\(\CE\)</span> كما تم في (<span class="nodecor">104</span>) للتَحْلِيل الشامل المعتاد.</p>
+<p>اتجاه آخر يتعلق بالهرمية الأكثر مرونة لمُخَطَّطات الفَهْم المقترحة من قبل جون غراي؛ انظر (<span class="nodecor">JWG99, JWG391</span>). ما أنواع التَحْلِيل التي يوفرونها؟</p>
+<h1 id="تطبيق-على-المتعددات-الحدودية">تَطْبِيق على المُتَعَدِّدات الحُدُودِيَّة</h1>
+<p>في هذا القسم، نستخدم تَحْلِيلنا لفهم تأثيرات الورقة (<span class="nodecor">134</span>) على المُتَعَدِّدات الحُدُودِيَّة في <span class="math inline">\(\mathrm{Cat}\)</span> كثُنائِي الفِئة.</p>
+<p>تُسمى الدالَّة <span class="math inline">\(p : E \to B\)</span> في ثُنائِي الفِئة <span><em>تَصْنِيف مَجْمُوعَة</em></span> عندما، لجميع الكائنات <span class="math inline">\(A\in \CM\)</span>، تكون الدالَّة <span class="math inline">\(\CM(A,p) : \CM(A,E)\to \CM(A,B)\)</span> تَصْنِيف مَجْمُوعَة حسب التَعْرِيف [gpdfib].</p>
+<p>تُسمى الدالَّة <span class="math inline">\(n :Y\to Z\)</span> <span><em>رافِعَة يمنى</em></span> عندما، لكل <span class="math inline">\(u : K\to Z\)</span>، يوجد رفع يميني لـ <span class="math inline">\(u\)</span> من خلال <span class="math inline">\(n\)</span> (بمعنى (<span class="nodecor">12</span>)).</p>
+<p>نتذكر من (<span class="nodecor">134</span>) أن ثُنائِي الفِئة <span class="math inline">\(\CM\)</span> مع السُحُوبات الثُنائِيَّة دائماً ما تكون معيارية بواسطة تَصْنِيفات المَجْمُوعات كالدوال الأنيقة؛ أي أن مثل هذه ثُنائِي الفِئة هي مُتَعَدِّدَة الحُدُود. هذا يسمح ببناء ثُنائِي فِئة من “المُتَعَدِّدات الحُدُودِيَّة” في <span class="math inline">\(\CM\)</span>. بالفعل، التَعْرِيف 8.2 من (<span class="nodecor">134</span>) يعني لهذا الوضع أن <span><em>مُتَعَدِّدَة حُدُودِيَّة</em></span> <span class="math inline">\((m,S,p)\)</span> من <span class="math inline">\(X\)</span> إلى <span class="math inline">\(Y\)</span> في <span class="math inline">\(\CM\)</span> هي مدى <span class="math display">\[X\xla{m}S\xra{p}Y\]</span> في <span class="math inline">\(\CM\)</span> مع <span class="math inline">\(m\)</span> رافِعَة يمنى و<span class="math inline">\(p\)</span> تَصْنِيف مَجْمُوعَة. للحصول على وصف أكثر تحديداً نحتاج إلى تحديد الروافِع اليمنى في <span class="math inline">\(\CM\)</span> المُعطى.</p>
+<p>الدالَّة هي رافِعَة يمنى في <span class="math inline">\(\mathrm{Cat}\)</span> إذا وفقط إذا كانت دالَّة مُساعِدة يمنى.</p>
+<p>الدوال المُساعِدة اليمنى في أي ثُنائِي فِئة هي روافِع يمنى لأن الرفع يتم بالتركيب مع الدالَّة المُساعِدة اليسرى. على العكس، لنفترض أن الدالَّة <span class="math inline">\(Y\xra{n}Z\)</span> هي رافِعَة يمنى. رفع يميني <span class="math inline">\(1\xra{n_*(z)}Y\)</span> لكل كائن <span class="math inline">\(1\xra{z}Z\)</span> من <span class="math inline">\(Z\)</span> يعطي المكونات <span class="math inline">\(nn_*(z) \xra{\epsilon_z}z\)</span> للوحدة المقابلة للتعاون <span class="math inline">\(n_*\dashv n\)</span>؛ كما في أي كتاب يقدم الدوال المُساعِدة، نعلم أن الخاصية العالمية للرافِعَة اليمنى تسمح لنا بتعريف <span class="math inline">\(n_*\)</span> على التَحْوِيلات وهكذا.</p>
+<p>للتَميِيز بين المُتَعَدِّدات الحُدُودِيَّة في ثُنائِي الفِئة المُتَعَدِّدَة الحُدُود <span class="math inline">\(\mathrm{Cat}\)</span> و المُتَعَدِّدات الحُدُودِيَّة في <span class="math inline">\(\mathrm{Cat}\)</span>، بمعنى ويبر (<span class="nodecor">Weber2015</span>)، كفِئة مع السُحُوبات، أستخدم مُصْطَلَح <span><em>مُتَعَدِّدَة حُدُودِيَّة مُجَرَّدة</em></span> للأولى؛ أي أنها مدى <span class="math display">\[A\xla{j_*} E \xra{p} B\]</span> من الدوال، حيث <span class="math inline">\(p\)</span> هي تَصْنِيف مَجْمُوعَة و<span class="math inline">\(j_*\dashv j\)</span>.</p>
+<p>الدالَّة <span class="math inline">\(f : A \to B\)</span> هي <span><em>دالَّة مُتَعَدِّدَة حُدُودِيَّة مُجَرَّدة</em></span> عندما، في تَحْلِيلها <span class="math display">\[f \cong (A\xra{j} E \xra{p} B)\]</span> حسب النَظَرِيَّة [main], تكون الدالَّة النِهائِيَّة <span class="math inline">\(j\)</span> دالَّة مُساعِدة يمنى.</p>
+<p>النتيجة التالية تتبع من العمل في (<span class="nodecor">134</span>)؛ للراحة، سنتضمن دليلاً مباشراً.</p>
+<p>الدوال المُتَعَدِّدَة الحُدُودِيَّة المُجَرَّدة تتكوَّن.</p>
+<p>خذ <span class="math inline">\(A\xra{j} E \xra{p}B\xra{k} F \xra{q}C\)</span> مع <span class="math inline">\(j_*\dashv j\)</span>, <span class="math inline">\(k_*\dashv k\)</span> ومع <span class="math inline">\(p,q\)</span> تَصْنِيفات مَجْمُوعَة. شكل السحب الزائِف <span class="math display">\[\label{bipb}
+ \begin{aligned}
+\xymatrix{
+P \ar[d]_{k&#39;_*}^(0.5){\phantom{aaaa}}=&quot;1&quot; \ar[rr]^{p&#39;}  &amp;&amp; F \ar[d]^{k_*}_(0.5){\phantom{aaaa}}=&quot;2&quot; \ar@{&lt;=}&quot;1&quot;;&quot;2&quot;^-{\theta}_-{\cong}
+\\
+E \ar[rr]_-{p} &amp;&amp; B 
+}
+ \end{aligned}\]</span> للحصول على “قانون التوزيع” المطلوب. من السهل التحقق من وجود <span class="math inline">\(k&#39;_*\dashv k&#39;\)</span>، <span class="math inline">\(p&#39;\)</span> هي تَصْنِيف مَجْمُوعَة وشرط شيفالي-بيك (كما ذكر في الصفحة 150 من (<span class="nodecor">9</span>)) <span class="math display">\[p&#39;\circ k&#39;\cong k\circ p\]</span> يتحقق. لذا <span class="math inline">\(q\circ k\circ p\circ j\cong q\circ p&#39;\circ k&#39;\circ j\)</span> حيث <span class="math inline">\(q\circ p&#39;\)</span> هي تَصْنِيف مَجْمُوعَة و<span class="math inline">\(k&#39;\circ j\)</span> هي دالَّة مُساعِدة يمنى.</p>
+<p>أكتب <span class="math inline">\(\mathrm{Cat}_{\mathrm{apf}}\)</span> للفِئة الفرعية من <span class="math inline">\(\mathrm{Cat}\)</span> المحصورة بتقييد التَحْوِيلات إلى الدوال المُتَعَدِّدَة الحُدُودِيَّة المُجَرَّدة.</p>
+<p>النتيجة التالية هي في الأساس الاقتراح 8.6 من (<span class="nodecor">134</span>).</p>
+<p>إذا كانت ثُنائِي الفِئة <span class="math inline">\(\CM\)</span> معيارية، فإنه لكل <span class="math inline">\(K\in \CM\)</span>، هناك دالَّة شبه وظيفية <span class="math inline">\(\mathbb{H}_K : \mathrm{Poly}\CM \lra \mathrm{Cat}_{\mathrm{apf}}\)</span> تأخذ المُتَعَدِّدَة الحُدُودِيَّة <span class="math inline">\(X\xla{m} S\xra{p} Y\)</span> إلى الدالَّة المُتَعَدِّدَة الحُدُودِيَّة المُجَرَّدة التي هي المركب <span class="math display">\[\CM(K,X)\xra{\mathrm{rif}(m,-)} \CM(K,S) \xra{\CM(K,p)} \CM(K,Y)\]</span> في <span class="math inline">\(\mathrm{Cat}\)</span>.</p>
+<p>الدالَّة الشبه وظيفية <span class="math inline">\(\mathbb{H}_{\mathbf{1}} : \mathrm{Poly}\mathrm{Cat} \lra \mathrm{Cat}_{\mathrm{apf}}\)</span>، التي تأخذ كل مُتَعَدِّدَة حُدُودِيَّة مُجَرَّدة <span class="math inline">\(A\xla{j_*} E \xra{p} B\)</span> إلى دالَّتها المُتَعَدِّدَة الحُدُودِيَّة المُجَرَّدة المرتبطة <span class="math inline">\(A\xra{j} E \xra{p} B\)</span> مع <span class="math inline">\(j_*\dashv j\)</span>، هي تَكافُؤ ثُنائِي.</p>
+<p>بعد محاضرتيَّ حول هذا الموضوع في ورشة العمل حول الدوال المُتَعَدِّدَة الحُدُودِيَّة <a href="https://topos.site/p-func-2021-workshop/" class="uri">https://topos.site/p-func-2021-workshop/</a>, أشار بول تايلور بلطف إلى مُسْبَق طباعة لعام 1988 (<span class="nodecor">Tay1988</span>) الذي ميَّز فيه الدوال المُساعِدة اليمنى المعلمية (أو المحلية) بدافع من نَظَرِيَّة البُرْهان وبالتالي دعاها <span><em>دوال مُسْتَقِرَّة</em></span>. تحليله <span><em>للأثر</em></span> لمثل هذه الدالَّة هو دالَّة مُساعِدة يمنى تليها تَصْنِيف مَجْمُوعَة. أنا ممتن لكليمنس بيرجر لملاحظته أن تَصْنِيفات المَجْمُوعات الناتجة هي فِئة مُقَيَّدة: أليافها الزائِفَة هي جداءات لفِئات مشتتة (فوضوية). ومع ذلك، فإنه يُظهر أن كل دالَّة مُساعِدة يمنى معلمية توفر مثالاً على دالَّة مُتَعَدِّدَة حُدُودِيَّة مُجَرَّدة.</p>
+<p>——————————————————–</p>
+</body>
+</html>

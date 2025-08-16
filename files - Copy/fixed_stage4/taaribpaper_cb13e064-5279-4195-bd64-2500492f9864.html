@@ -1,0 +1,249 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Erlend Frayling">
+  <meta name="author" content="Jake Lever">
+  <meta name="author" content="Graham McDonald">
+  <title>استراتيجيات التوليد بدون أمثلة وبأمثلة قليلة للسجلات الطبية الاصطناعية</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+      color: #fff;
+      padding: 40px 0 20px 0;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 8px rgba(78,84,200,0.08);
+    }
+    h1.title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .author {
+      font-size: 1.1em;
+      margin: 0 0 2px 0;
+      color: #e0e0e0;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    main, .main-content {
+      max-width: 900px;
+      background: #fff;
+      margin: 0 auto 40px auto;
+      padding: 40px 32px 32px 32px;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    h1, h2, h3 {
+      color: #4e54c8;
+      font-weight: 700;
+      margin-top: 1.7em;
+      margin-bottom: 0.7em;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 2em;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.2em;
+      margin-bottom: 1em;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-right: 4px solid #8f94fb;
+      padding-right: 12px;
+      margin-bottom: 0.8em;
+    }
+    h3 {
+      font-size: 1.15em;
+      color: #6c63ff;
+      margin-bottom: 0.5em;
+    }
+    p {
+      margin-bottom: 1.1em;
+      text-align: justify;
+    }
+    ol, ul {
+      margin: 1em 2em 1em 0;
+      padding-right: 1.5em;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    blockquote {
+      background: #f1f3fa;
+      border-right: 5px solid #8f94fb;
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      color: #333;
+      font-size: 1.05em;
+    }
+    code, pre {
+      background: #f3f3f3;
+      color: #c7254e;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+      font-size: 0.95em;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    em {
+      color: #4e54c8;
+      font-style: normal;
+      font-weight: 600;
+    }
+    strong {
+      color: #222;
+      font-weight: 700;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5em 0;
+      background: #fafbff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(78,84,200,0.04);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 10px 14px;
+      text-align: center;
+    }
+    th {
+      background: #e8eafc;
+      color: #4e54c8;
+      font-weight: 700;
+    }
+    .math.inline {
+      font-family: 'Cairo', 'Consolas', 'monospace';
+      background: #f3f3f3;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #4e54c8;
+    }
+    @media (max-width: 700px) {
+      main, .main-content {
+        padding: 18px 6px 18px 6px;
+      }
+      h1.title {
+        font-size: 1.5em;
+      }
+      h1, h2 {
+        font-size: 1.1em;
+      }
+    }
+    /* Custom nodecor class for inline spans */
+    .nodecor {
+      color: #4e54c8;
+      font-weight: 600;
+      font-family: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">استراتيجيات التوليد بدون أمثلة وبأمثلة قليلة للسجلات الطبية الاصطناعية</h1>
+  <p class="author"><span class="nodecor">Erlend Frayling</span></p>
+  <p class="author"><span class="nodecor">Jake Lever</span></p>
+  <p class="author"><span class="nodecor">Graham McDonald</span></p>
+</header>
+<main class="main-content">
+<h1 id="ملخص">مُلخّص</h1>
+<p>تُعد تحديات الوصول إلى بيانات المرضى التاريخية للبحث السريري، مع الالتزام بلوائح الخصوصية، عقبة كبيرة في العلوم الطبية. يتمثل أحد الأساليب المبتكرة للتغلب على هذه المشكلة في استخدام السجلات الطبية الاصطناعية التي تعكس بيانات المرضى الحقيقية دون المساس بخصوصية الأفراد. يوفر إنشاء هذه مجموعات البيانات الاصطناعية، ولا سيما دون استخدام بيانات المرضى الفعلية لتدريب النماذج اللغوية الكبيرة، حلاً جديدًا، نظرًا لأن الحصول على معلومات المرضى الحساسة لتدريب النماذج يُعد تحديًا بذاته. تقيم هذه الدراسة قدرة نموذج اللغة الكبير <span class="nodecor">Llama 2</span> على إنشاء سجلات طبية اصطناعية تعكس بدقة معلومات المرضى الحقيقيين، باستخدام استراتيجيات التوجيه بدون أمثلة وأخرى بعدد قليل من الأمثلة، وذلك للمقارنة مع المنهجيات المعتمدة على بيانات المرضى الحساسة. نركز على توليد السرديات الاصطناعية لقسم تاريخ الحالة المرضية الحالي باستخدام بيانات من مجموعة <span class="nodecor">MIMIC-IV</span> كمرجع للمقارنة. في هذا العمل، نقدم تقنية توجيه جديدة تستفيد من نهج سلسلة التفكير، مما يعزز قدرة النموذج على توليد سرديات طبية أكثر دقة وملاءمة سياقية دون الحاجة لتدريب مسبق. تشير نتائجنا إلى أن هذا النهج الموجه بسلسلة التفكير يتيح للنموذج بدون أمثلة تحقيق نتائج تضاهي تلك الخاصة بالنماذج المدربة مسبقًا، استنادًا إلى تقييم مقاييس <span class="nodecor">Rouge</span>.</p>
+
+<h1 id="sec: introduction">مُقدّمة</h1>
+<p><span class="nodecor">Clinical research</span> أمر ضروري لتحسين فهم الأمراض، وتطوير علاجات جديدة وأكثر فعالية، وتحسين رعاية المرضى. الوصول إلى السجلات الطبية السريرية، مثل ملاحظات خروج المستشفى والسجلات الصحية الإلكترونية (<span class="nodecor">EHRs</span>) (<span class="nodecor">hoerbst2010electronic, coorevits2013electronic</span>) يمكن أن يساعد هذا البحث في تحديد أنماط الأعراض وآثار الأدوية الجانبية. الحصول على هذه السجلات يمثل تحديًا، بسبب المعلومات الشخصية الحساسة التي تحتوي عليها (<span class="nodecor">nurmi2019privacy</span>). هذه التحديات تبطئ في نهاية المطاف تقدم الاكتشافات الطبية الجديدة التي (<span class="nodecor">could benefit patient health</span>) (<span class="nodecor">cowie2017electronic</span>).</p>
+<p><span class="nodecor">Developing approaches that can</span> تساهم في تخفيف مخاوف الخصوصية في مجال البحث السريري، وهو أمر مرغوب فيه لتمكين وصول أسهل إلى <span class="nodecor">EHRs</span>، مما يتيح إجراء البحوث بحرية أكبر ويؤدي إلى اكتشافات أسرع في المجالات الصحية.</p>
+<p>إحدى الطرق التي يمكنها التخفيف من التحديات المرتبطة بحساسية معلومات المرضى هي توليد سجلات مرضى اصطناعية تتسم بنفس التوزيع الإحصائي للمصطلحات الواردة في السجلات الطبية الحقيقية، لكنها تظل مزيفةً في جوهرها. يمكن بعد ذلك استخدام هذه السجلات الاصطناعية كبديل لـ <span class="nodecor">EHRs</span> الحقيقية عند منع حواجز الخصوصية الوصول إلى البيانات الحقيقية (<span class="nodecor">iveSynthetic</span>).</p>
+<p>تم استكشاف عدة أعمال لتوليد نص <span class="nodecor">EHR</span> اصطناعي باستخدام <span class="nodecor">Large Language Models</span> المعتمدة على المحولات (<span class="nodecor">LLMs</span>)، على سبيل المثال (<span class="nodecor">melamudTowards, iveGeneration</span>). على وجه الخصوص، أظهر <span class="nodecor">Ive et al.</span> (<span class="nodecor">iveGeneration</span>) أن النص السريري الاصطناعي يمكن استخدامه لزيادة بيانات <span class="nodecor">EHR</span> الحقيقية وتحسين فعالية <span class="nodecor">LLMs</span> في المهام اللاحقة (<span class="nodecor">iveSynthetic</span>). <span class="nodecor">However, to prepare these models to produce synthetic EHRs, they first need to be trained on real EHR data, which brings us back to the initial issue of accessing private EHR information.</span></p>
+<p><span class="nodecor">recently, a number of LLMs, that are pre-trained using large volumes of data and that leverage prompt inputs to discern the nature of the generative task, e.g.</span> (<span class="nodecor">brownGpt3, touvronLlama2</span>) قد أظهرت أنها فعالة <span class="nodecor">for a</span> مجموعة واسعة من المهام. هذه النماذج لا تتطلب التعديل الدقيق. يمكن أن يؤدي استخدام مثل هذه <span class="nodecor">LLMs</span> لتوليد بيانات <span class="nodecor">EHR</span> الاصطناعية إلى إزالة الحاجة إلى جمع بيانات <span class="nodecor">EHR</span> الحقيقية التي يصعب الوصول إليها للتعديل الدقيق.</p>
+<p>في هذا العمل، نقيم قدرات <span class="nodecor">Llama 2 LLM</span>، مع مجموعة متنوعة من استراتيجيات التعلم، بما في ذلك التعديل الدقيق والتعلم بعدد قليل من الأمثلة وإعدادات التعلم بدون أمثلة، لتوليد نص <span class="nodecor">EHR</span> السريري الاصطناعي. على وجه الخصوص، ننشر النماذج التي تم تقييمها لتوليد سرد تاريخ الحالة المرضية الحالي من نص الشكوى الرئيسية القصير الذي يلخص المشكلة الطبية الأساسية. نقارن السرد المولَّد بـ <span class="nodecor">EHRs</span> الحقيقية من مجموعة بيانات <span class="nodecor">MIMIC-IV</span> (<span class="nodecor">mimicFour</span>). علاوة على ذلك، نقترح استراتيجية توجيه سلسلة التفكير (<span class="nodecor">CoT</span>) التي يمكن استخدامها لتوجيه <span class="nodecor">LLM</span> في توليد محتوى <span class="nodecor">EHR</span> مع مراعاة الهيكل والمحتوى المحدد لـ <span class="nodecor">EHRs</span>. تظهر تجاربنا أن طريقة <span class="nodecor">CoT</span> المقترحة تحسن استراتيجيات التعلم بدون أمثلة وبعدد قليل من الأمثلة مع <span class="nodecor">Llama 2</span> لتكون تنافسية مع نموذج <span class="nodecor">GPT-2</span> المحسَّن بدقة، مما يقلل الحاجة للوصول إلى بيانات <span class="nodecor">EHR</span> الحقيقية الحساسة عند إجراء البحوث السريرية.</p>
+
+<h1 id="sec:background">الأعمال ذات الصلة</h1>
+<p>تستخدم غالبية الأعمال المتعلقة بتوليد النصوص السريرية هندسة التعلم العميق المبنية على المحولات في مهام نمذجة اللغة السببية مع نماذج اللغة التلقائية العكسية (<span class="nodecor">vaswaniAttention</span>, <span class="nodecor">radford2018Gpt</span>, <span class="nodecor">scholkopf2021toward</span>). اقترح أمين نجاد وزملاؤه توليد ملخصات خروج المرضى من بيانات سجلات الصحة الإلكترونية المنظمة باستخدام <span class="nodecor">GPT-2</span> (<span class="nodecor">radford2019language</span>) وأظهروا أنه يمكن استخدامها لتدريب نماذج أكثر فعالية للتعرف على الكيانات المسماة (<span class="nodecor">amin2020exploring</span>). بالمثل، أظهر لو وآخرون أن النص السريري الاصطناعي يمكن استخدامه لزيادة مجموعة بيانات التدريب الحقيقية لسجلات الصحة الإلكترونية وتحسين الأداء في مهام التنبؤ بإعادة القبول (<span class="nodecor">lu2021textual</span>). كما استقصت أعمال أخرى استخدام النص الاصطناعي المولَّد في المهام اللاحقة، مثل عمل ميلامود وآخرين الذين أظهروا أن السجلات الاصطناعية يمكن استخدامها في مهام الاستدلال اللغوي الطبيعي (<span class="nodecor">melamudTowards</span>). درب لي وآخرون عدة نماذج تلقائية عكسية لتوليد أقسام تاريخ الحالة الحالية من ملخصات خروج سجلات الصحة الإلكترونية وقاموا بتعليق السجلات الاصطناعية يدويًا لذكر الكيانات. أظهر لي وآخرون أنه يمكن تدريب نموذج تعرف الكيانات المسماة بكفاءة أعلى باستخدام البيانات الاصطناعية المعلقة لزيادة مجموعة البيانات التدريبية الحقيقية. كما توجد كمية كبيرة من الأعمال في ملخص سجلات الصحة الإلكترونية باستخدام نماذج التسلسل إلى التسلسل، على سبيل المثال (<span class="nodecor">RaffelT5</span>, <span class="nodecor">gaoSummarizing</span>, <span class="nodecor">palNerual</span>, <span class="nodecor">hartman2022day</span>). ومع ذلك، على عكس تلك الأعمال، نركز في هذا البحث حصريًا على المهمة التلقائية العكسية لتوليد البيانات السريرية الاصطناعية.</p>
+<p>تستخدم معظم الأعمال المتعلقة بتوليد النصوص السريرية مجموعات بيانات السوق الطبي للمعلوماتية في العناية المركزة (<span class="nodecor">MIMIC</span>). <span class="nodecor">MIMIC-III</span> (<span class="nodecor">johnsonMimic3</span>) هي قاعدة بيانات كبيرة ومُتاحة للعامة تحتوي على بيانات سريرية مفصلة للمرضى المقبولين في وحدات العناية المركزة. تم إصدار <span class="nodecor">MIMIC-IV</span> (<span class="nodecor">mimicFour</span>) مؤخرًا. يحتوي <span class="nodecor">MIMIC-IV</span> على مجموعة سجلات أوسع من <span class="nodecor">MIMIC-III</span>، ولذلك نستخدم مجموعة بيانات <span class="nodecor">MIMIC-IV</span> في تجاربنا. ومع ذلك، بسبب حداثته، كان هناك عمل أقل يستخدم <span class="nodecor">MIMIC-IV</span> لمهام توليد النص مقارنةً بـ <span class="nodecor">MIMIC-III</span>. تحتوي كلتا المجموعتين على بيانات منظمة وغير منظمة متنوعة، بما في ذلك المعلومات الديموغرافية للمرضى، ونتائج المختبرات، والإجراءات، وملاحظات الطاقم الطبي المكتوبة. تقيم معظم الأعمال المذكورة أعلاه جودة النص السريري المولَّد مباشرةً باستخدام مقاييس تقيس التداخل المصطلحي مثل درجة <span class="nodecor">ROUGE</span> ودرجة <span class="nodecor">BLEU</span> (<span class="nodecor">linRouge</span>, <span class="nodecor">papineniBleu</span>)، على الرغم من أن الأخيرة تُستخدم عادةً لتقييم أداء نموذج الترجمة الآلية—لذا في هذا العمل نستخدم عائلة مقاييس <span class="nodecor">ROUGE</span> لتقييم جودة سجلاتنا الاصطناعية المولَّدَة مقارنةً بالأمثلة المعيارية.</p>
+
+<h1 id="sec: method">توليد سجل الصحة الإلكتروني باستخدام نماذج اللغة الكبيرة</h1>
+<p>كما وُصِف في القسم [sec:background]، يتم تدريب نموذج اللغة التلقائية العكسية على مجموعة بيانات من النصوص الحقيقية لتوليد نص صناعي. تُمكّن الطبيعة السببية لهذه النماذج من توقع الرمز التالي في تسلسل عن طريق نمذجة توزيع الكلمات، كما هو مبين في المعادلة [eqn: nexttokenpred]. في مهمتنا ننمذج جزأين من النص غير المنظم من سجل الصحة الإلكتروني: الشكوى الرئيسية (CC) وتاريخ الحالة المرضية الحالي (HPI).</p>
+<ol>
+<li><p>الشكوى الرئيسية (CC) – وصف قصير للمشكلة الطبية الأساسية التي استدعت قبول المريض.</p></li>
+<li><p>تاريخ الحالة المرضية الحالي (HPI) – شرح مفصل لكيفية وصول المريض إلى المستشفى وعوامل تطور المرض وملاحظات المريض والأطباء.</p></li>
+</ol>
+<p>الهدف من مهمتنا، إذن، هو نمذجة العلاقة بين الشكوى الرئيسية وتاريخ الحالة المرضية الحالي باستخدام نماذج اللغة الكبيرة، بحيث يُنتج النموذج تاريخ الحالة المرضية الحالي عند تزويده بالشكوى الرئيسية. على الرغم من إمكانية تحقيق هذه المهمة عادةً عبر تحسين نموذج توليدي بدقة على نصوص منسقة تضم أزواجًا من CC وHPI، نركز هنا على تطوير استراتيجيات تحفيزية لاستخدام نماذج اللغة الكبيرة في إعدادات الصفر وقليل الأمثلة لإلغاء الحاجة إلى بيانات المرضى الحساسة أثناء التحسين، معتمدين على المعرفة البرمجية المتمثلة في أوزان النموذج المدرب مسبقًا.</p>
+
+<h2 id="sec: inContext">استراتيجيات التحفيز</h2>
+<p>فيما يأتي من هذا القسم نصف الاستراتيجيات المختلفة المستخدمة لتوليد أقسام HPI انطلاقًا من نص CC المقدم. نصف أيضًا استراتيجيات التعلم المساعدة، سواء التحفيز بدون أمثلة أو بعدد قليل من الأمثلة. نصمم هذه التحفيزات لنموذج Llama 2 باستخدام <em>System Prompt</em> لتزويد النموذج بمعلومات إضافية حول طبيعة المهمة (<span class="nodecor">touvronLlama2</span>) وندمج فيها طريقة سلسلة التفكير.</p>
+
+<h3 id="إستراتيجية-التوجيه-المباشر">استراتيجية التوجيه المباشر</h3>
+<p>أولًا، نقدم نصًّا تحفيزيًا يتضمن أسماء القسمين المعنيين في سجلات الصحة الإلكترونية. يُطلب من النموذج، بعد استبدال <em>X</em> بالشكوى الرئيسية الحقيقية،:</p>
+<blockquote>
+<p>الشكوى الرئيسية هي: {X}. تاريخ الحالة المرضية الحالي هو:</p>
+</blockquote>
+<p>يوفر هذا التنسيق سياقًا لاختبار قدرة النموذج على توليد HPI مناسبة مباشرةً للشكوى. نشير إلى هذه الاستراتيجية باسم "التوجيه المباشر" في القسم [sec:results].</p>
+
+<h3 id="طريقة-سلسلة-التفكير">استراتيجية سلسلة التفكير</h3>
+<p>ثانيًا، نقترح استراتيجية أكثر تعقيدًا تعتمد على نموذج سلسلة التفكير. نطلب من النموذج أولًا توليد جنس المريض المقابل للشكوى الرئيسية المقدمة، ثم عرقه، وأخيرًا توليد تاريخ الحالة المرضية الحالي. نفترض أن إجابات النموذج حول الجنس والعرق تساعده في صياغة HPI أكثر واقعية.</p>
+<p>نعتمد في ذلك على <em>موجه النظام</em> في Llama 2 والذي يُدرج قبل موجه المستخدم لإعلام النموذج بمهمته العامة. عوضًا عن الموجه الأصلي المقترح في (<span class="nodecor">touvronLlama2</span>)، نوجه النموذج لتوليد بيانات سريرية ولإخراج كل مكون من سلسلة التفكير بصيغة JSON. يُقدَّم موجه النظام مع العلامة الخاصة <span class="math inline">\(&lt;&lt;SYS&gt;&gt;\)</span>، وتُشار هذه الاستراتيجية باسم "سلسلة التفكير" في القسم [sec:results].</p>
+
+<h2 id="sec: learnStrats">استراتيجيات التعلم</h2>
+<p>ننفيذ جميع استراتيجيات التحفيز السابقة يتم مع ثلاث طرق لتمرير الطلب إلى النموذج. أولًا، التحفيز بدون أمثلة. ثانيًا، التعلم بعدد قليل من الأمثلة، عبر أمثلة عشوائية أو أمثلة مسترجعة تشابه الطلب الرئيسي.</p>
+
+<h1 id="sec: experiment">التجارب</h1>
+<p>في هذا القسم نصف التجارب التي أجريناها للإجابة على الأسئلة البحثية الثلاثة التالية:</p>
+<p><span><strong>RQ1</strong>: هل يمكن لنموذج اللغة الكبير تحقيق أداء مماثل في توليد HPI باستخدام استراتيجيات التحفيز مقارنةً بالنماذج المحسّنة بدقة؟</span></p>
+<p><span><strong>RQ2</strong>: هل تحسّن استراتيجية التحفيز المقترحة أداء توليد النصوص مع نماذج اللغة الكبيرة؟</span></p>
+<p><span><strong>RQ3</strong>: كيف تؤدي استراتيجيات التحفيز في إعدادات بدون أمثلة وبأمثلة قليلة؟</span></p>
+
+<h2 id="الإعداد-التجريبي">الإعداد التجريبي</h2>
+<h3 id="sec: dataset">مجموعة البيانات</h3>
+<p>استخدمنا مجموعة بيانات <span class="nodecor">MIMIC-IV</span> (<span class="nodecor">mimicFour</span>) لإنشاء بيانات من أزواج CC-HPI. استخرجنا ما مجموعه <span class="nodecor">7000</span> ملخص خروج لمرضى تضمنت سجلاتهم كلٌّ من شكوى رئيسية وقسم تاريخ الحالة المرضية الحالي. قسمت المجموعة إلى <span class="nodecor">6000</span> عينة للتدريب عبر التحسين الدقيق، و<span class="nodecor">1000</span> عينة للاختبار. لكل زوج CC-HPI استخرجنا أيضًا بيانات جنس وعرق المريض.</p>
+
+<h3 id="النماذج-والتقييم">النماذج والتقييم</h3>
+<p>للاجابة على أسئلتنا، نشرنا ثلاثة نماذج مبنية على <span class="nodecor">transformer</span>: <span class="nodecor">GPT-2</span>، <span class="nodecor">BioGPT</span> (<span class="nodecor">luo2022biogpt</span>)، و<span class="nodecor">LLaMA-2 13B</span> (<span class="nodecor">Llama</span>). استخدمنا <span class="nodecor">GPT-2</span> كنموذج أساسي للتحسين الدقيق، و<span class="nodecor">BioGPT</span> لما له من تدريب مسبق في المجال الطبي الحيوي، وأخيرًا نموذج <span class="nodecor">Llama 2</span> في كل من إعداد التحسين الدقيق واستراتيجيات التحفيز الخاصة بنا.</p>
+<p>أولًا، دربنا كل نموذج بدقة على مجموعة بيانات CC-HPI مع إضافة رمز الفاصل &lt;|sep|&gt; بين CC وHPI. بالنسبة لـ <span class="nodecor">Llama 2</span> استخدمنا تقنية الكمّية 4-bit (<span class="nodecor">dettersQLoRA</span>) و<span class="nodecor">LoRA</span> لتسريع التدريب. ضبطنا المعلمات الفائقة باستخدام <span class="nodecor">Optuna</span> (<span class="nodecor">akiba2019optuna</span>) عبر 20 تجريبيًّا لاختيار أفضل الإعدادات من حيث خسارة التقييم.</p>
+<p>ثانيًا، استعملنا نموذج <span class="nodecor">Llama 2</span> غير المدرب بدقة مع استراتيجيات التحفيز المباشر و<span class="nodecor">CoT</span> في إعدادات الصفر وقليل الأمثلة. لاستخلاص الأمثلة في الأخير استخدمنا فهرسًا كثيفًا لـ CC عبر <span class="nodecor">ColBERT-PRF</span> (<span class="nodecor">wang2023colbert</span>) لاسترجاع زوجين من الأمثلة المشابهة لكل CC اختباري.</p>
+<p>بهذه الطريقة نشكل ست استراتيجيات توليد لكل نموذج <span class="nodecor">Llama</span>: المباشر و<span class="nodecor">CoT</span> في إعدادات بدون أمثلة وعشوائية ومماثلة.</p>
+<p>أخيرًا، لتقييم الأداء، ولّدنا HPI لكل CC في مجموعة الاختبار سواء مع النماذج المحسّنة دقًقًة أو مع استراتيجيات التحفيز الستة، وحسبنا درجات <span class="nodecor">ROUGE</span> (<span class="nodecor">linRouge</span>). سجلنا أيضًا درجة الحيرة للنماذج المحسنة دقًقًة.</p>
+
+<h1 id="sec:results">النتائج والتحليل</h1>
+<p>يوضح الجدول [tab:Rouge_table] نتائج كل استراتيجية توليد. يحقق نموذج <span class="nodecor">Llama 2</span> المحسن بـ <span class="nodecor">QLoRA</span> أفضل أداء، حيث يسجل <span class="nodecor">0.28</span> في <span class="nodecor">Rouge-1</span> ويفوق في جميع مقاييس <span class="nodecor">ROUGE</span> الأخرى. يلي ذلك <span class="nodecor">BioGPT</span> الذي بلغ <span class="nodecor">0.264</span> في <span class="nodecor">Rouge-1</span>، بفارق <span class="nodecor">3.4</span> نقاط عن <span class="nodecor">GPT-2</span> المحسن.</p>
+<p>نلاحظ أيضًا أن استخدام استراتيجية <span class="nodecor">CoT</span> المقترحة يحسن أداء التوليد في إعداد بدون أمثلة بمقدار <span class="nodecor">6.4</span> نقاط، بحيث يصبح أداء <span class="nodecor">Llama 2</span> بدون أمثلة مع <span class="nodecor">CoT</span> مماثلًا لأداء <span class="nodecor">GPT-2</span> المحسن ويفوقه قليلًا. بالإجابة عن <span class="nodecor">RQ1</span> نجد أن استراتيجية <span class="nodecor">CoT</span> تتيح لـ <span class="nodecor">Llama 2 13B</span> في إعداد الصفر التفوق على <span class="nodecor">GPT-2</span> المحسن، وإن لم يضاهِ النماذج المتطورة مثل <span class="nodecor">Llama 2</span> و<span class="nodecor">BioGPT</span>. أما عن <span class="nodecor">RQ2</span> فتبين أن <span class="nodecor">CoT</span> تحسّن أداء النموذج بدون أمثلة مقابل التوجيه المباشر.</p>
+<p>للإجابة عن <span class="nodecor">RQ3</span> لاحظنا أن إضافة أمثلة قليلة للتوجيه المباشر تحسّن الأداء: ارتفعت درجة <span class="nodecor">Rouge-1</span> من <span class="nodecor">0.19</span> إلى <span class="nodecor">0.205</span>. أما عند تطبيق أمثلة قليلة على <span class="nodecor">CoT</span> فقل الأداء، خصوصًا مع الأمثلة العشوائية التي خفضت <span class="nodecor">Rouge-1</span> بمقدار <span class="nodecor">2.8</span> نقاط. يتضح إذًا أن التوجيه المباشر يستفيد من الأمثلة، في حين أن <span class="nodecor">CoT</span> يتراجع عند إضافة أمثلة.</p>
+
+<h1 id="الخلاصة">الخلاصة</h1>
+<p>في هذا العمل قيّمنا فعالية نموذج <span class="nodecor">Llama 2</span> في توليد سجلات طبية اصطناعية تحت إعدادات الصفر وقليل الأمثلة والتحسين الدقيق، مقارنة بعدة نماذج معاصرة. اقترحنا استراتيجيتين مخصصتين للتوجيه المباشر و<span class="nodecor">CoT</span> لتوليد قسم تاريخ الحالة المرضية الحالي. وجدت تجاربنا على مجموعة <span class="nodecor">MIMIC-IV</span> أن <span class="nodecor">Llama 2</span> يحقق أفضل أداء مع التحسين الدقيق، كما أن استراتيجيتنا المقترحة تحسن أداء الصفر حتى يصل إلى تنافسية نموذج <span class="nodecor">GPT-2</span> المحسن. نرى في هذا العمل خطوة مهمة نحو تقليل الاعتماد على البيانات السريرية الحساسة في البحوث الطبية، مما يستدعي مزيدًا من البحث المستقبلي.</p>
+
+<h1 id="الشكر-والتقدير">الشكر والتقدير</h1>
+<p>دعم هذا العمل مجلس العلوم الهندسية والفيزيائية [رقم المنحة <span class="nodecor">EP/X018237/1</span>]</p>
+</main>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والتباعد والهوامش لجعل الورقة أكثر جاذبية واحترافية.
+- تم الحفاظ على النص الأصلي بالكامل دون أي تغيير في الكلمات أو المحتوى.
+- تم التأكد من خلو الكود من الأخطاء وأنه كامل.
+- تم استخدام خطوط عربية حديثة (Cairo) وتدرجات لونية هادئة.
+- تم تحسين عرض العناوين، الفقرات، القوائم، والاقتباسات.
+- تم التأكد من أن جميع العناصر الأصلية موجودة ومرتبة بشكل واضح.

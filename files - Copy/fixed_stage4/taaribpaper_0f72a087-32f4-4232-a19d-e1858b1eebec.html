@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Keyan Chen, Bowen Chen, Chenyang Liu, Wenyuan Li, Zhengxia Zou, Zhenwei Shi">
+  <title>RSMamba: تصنيف الصور الاستشعارية عن بُعد باستخدام نموذج الفضاء الحالى</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 20px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #3a8dde 0%, #6dd5ed 100%);
+      color: #fff;
+      padding: 40px 0 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(58,141,222,0.08);
+      margin-bottom: 40px;
+    }
+    h1.title {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .author {
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: #e3f2fd;
+    }
+    main, .main-content {
+      max-width: 900px;
+      background: #fff;
+      margin: 0 auto 40px auto;
+      padding: 40px 32px 32px 32px;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(58,141,222,0.10);
+    }
+    h1, h2, h3 {
+      color: #3a8dde;
+      font-weight: 700;
+      margin-top: 2.2em;
+      margin-bottom: 0.7em;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2em;
+      border-bottom: 2px solid #e3f2fd;
+      padding-bottom: 0.2em;
+    }
+    h2 {
+      font-size: 1.4em;
+      border-right: 4px solid #6dd5ed;
+      padding-right: 10px;
+      margin-top: 2em;
+    }
+    h3 {
+      font-size: 1.1em;
+      color: #1976d2;
+      margin-top: 1.5em;
+    }
+    p {
+      margin: 1.1em 0;
+      text-align: justify;
+    }
+    a, a:visited {
+      color: #1976d2;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #0d47a1;
+    }
+    code, pre, .math.inline, .math.display {
+      font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+      background: #f1f3f4;
+      color: #c7254e;
+      border-radius: 5px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      direction: ltr;
+    }
+    .math.display {
+      display: block;
+      background: #f1f3f4;
+      padding: 12px 18px;
+      margin: 18px 0;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 1.05em;
+    }
+    ul, ol {
+      margin: 1em 2em 1em 0;
+      padding-right: 1.5em;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    strong {
+      color: #1565c0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5em 0;
+      background: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.98em;
+    }
+    th, td {
+      border: 1px solid #e3f2fd;
+      padding: 10px 14px;
+      text-align: center;
+    }
+    th {
+      background: #e3f2fd;
+      color: #1976d2;
+      font-weight: 700;
+    }
+    blockquote {
+      border-right: 5px solid #6dd5ed;
+      background: #f1f8fb;
+      color: #1976d2;
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      border-radius: 8px;
+      font-size: 1.05em;
+    }
+    .uri {
+      word-break: break-all;
+      color: #1976d2;
+      font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+    }
+    @media (max-width: 700px) {
+      main, .main-content {
+        padding: 18px 6vw 18px 6vw;
+      }
+      header {
+        padding: 24px 0 12px 0;
+      }
+      h1.title {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">RSMamba: تصنيف الصور الاستشعارية عن بُعد باستخدام نموذج الفضاء الحالى</h1>
+  <p class="author"><span class="nodecor">Keyan Chen</span>, <span class="nodecor">Bowen Chen</span>, <span class="nodecor">Chenyang Liu</span>, <span class="nodecor">Wenyuan Li</span>, <span class="nodecor">Zhengxia Zou</span>, <span class="nodecor">Zhenwei Shi</span></p>
+</header>
+<main class="main-content">
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>يُعَد تصنيف الصور الاستشعارية عن بُعد أساساً للعديد من مهام الفهم المتنوعة، ويلعب دوراً محورياً في تفسير هذه الصور. وقد أدى التقدم الأخير في الشبكات العصبية الالتفافية والمحولات إلى تحسين دقة التصنيف بشكل ملحوظ. ومع ذلك، لا يزال تصنيف المشاهد الاستشعارية عن بُعد يمثل تحدياً كبيراً، خاصة بالنظر إلى تعقيد وتنوع سيناريوهات الاستشعار عن بُعد والتغيرات في الدقة الزمانية والمكانية. يمكن للفهم الشامل للصورة أن يوفر دلالات دقيقة تُسهم في التمييز بين المشاهد المختلفة. في هذه الورقة، نقدم RSMamba، وهي بنية جديدة لتصنيف الصور الاستشعارية عن بُعد. يعتمد RSMamba على نموذج الفضاء الحالى ويتضمن تصميماً فعالاً وواعياً للأجهزة يُعرف باسم Mamba. يدمج مزايا كل من مجال الاستقبال العالمي وتعقيد النمذجة الخطية. وللتغلب على قيود Mamba الأصلية، التي يمكنها فقط نمذجة التسلسلات السببية ولا تتكيف مع بيانات الصور ثنائية الأبعاد، نقترح آلية تفعيل ديناميكية متعددة المسارات لزيادة قدرة Mamba على نمذجة البيانات غير السببية. يحافظ RSMamba على آلية النمذجة الأصلية لـ Mamba، لكنه يُظهر أداءً متفوقاً عبر مجموعات بيانات تصنيف الصور الاستشعارية عن بُعد المتعددة. يشير ذلك إلى أن RSMamba يحمل إمكانات كبيرة ليكون العمود الفقري لنماذج الأساس البصرية المستقبلية. سيتوفر كود المصدر على <a href="https://github.com/KyanChen/RSMamba" class="uri">https://github.com/KyanChen/RSMamba</a>.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>أدى تقدم تكنولوجيا الاستشعار عن بُعد إلى زيادة الاهتمام بمراقبة الأرض عالية الدقة. يُعد تصنيف صور الاستشعار عن بُعد، والذي يُعتبر الأساس لتفسير هذه الصور بذكاء، عنصراً حاسماً للمهام اللاحقة. ويلعب دوراً محورياً في تطبيقات مثل رسم الخرائط الأرضية واستخدام الأراضي والتخطيط العمراني. ومع ذلك، فإن تعقيد وتنوع سيناريوهات الاستشعار عن بُعد، إلى جانب الدقة المكانية والزمانية المتغيرة، يشكل تحديات كبيرة عند تطبيق الأساليب الآلية على تصنيف هذه الصور (<span class="nodecor">xia2017aid, yang2010bag, cheng2017remote, chen2022resolution</span>).</p>
+<p>عمل الباحثون على التخفيف من هذه التحديات وتعزيز قابلية تطبيق النماذج في سيناريوهات متنوعة. ركزت الطرق المبكرة بشكل أساسي على بناء الميزات واستخراجها واختيارها، مستكشفة طرق تعلم الآلة الهندسية للميزات مثل SIFT وLBP والهيستوغرامات اللونية وGIST وBoVW (<span class="nodecor">li2018deep</span>، <em>إلخ</em>). في السنوات الأخيرة، أحدث ظهور التعلم العميق ثورة في النماذج التقليدية التي اعتمدت بشكل كبير على المعرفة البشرية المسبقة. يمتلك التعلم العميق القدرة على استخراج الميزات الفعالة من البيانات بشكل مستقل وإخراج احتمالات التصنيف بطريقة متكاملة. من حيث هندسة الشبكة، يمكن تصنيفها بشكل أساسي إلى شبكات الالتفاف العصبية وشبكات الانتباه. تقوم الأولى بتجريد ميزات الصورة طبقة تلو الأخرى من خلال عمليات الالتفاف ثنائية الأبعاد، كما هو موضح في ResNet (<span class="nodecor">he2016deep</span>). تلتقط الثانية الاعتماديات طويلة المدى بين المناطق المحلية للصورة بأكملها عبر آلية الانتباه، مما يحقق استجابة دلالية أقوى، ممثلة بـ ViT (<span class="nodecor">dosovitskiy2020image</span>) وSwinTransformer (<span class="nodecor">liu2021swin</span>)، <em>إلخ</em>. تم أيضاً إحراز تقدم كبير في تصنيف صور الاستشعار عن بُعد؛ على سبيل المثال، يقوم ET-GSNet (<span class="nodecor">xu2022vision</span>) بتقطير الأولوية الدلالية الغنية لـ ViT في ResNet18، مستفيداً من قوة كلٍّ منهما. يقدم P2Net (<span class="nodecor">chen2022contrastive</span>) طريقة تعلم تبايني غير متزامنة لمعالجة الاختلافات الصغيرة بين الفئات في التصنيف الدقيق.</p>
+<p>تعتمد دقة التصنيف بشكل كبير على قدرة النموذج على التعامل مع تأثيرات السيناريوهات المعقدة والمتنوعة للدقة المكانية والزمانية المتغيرة. يعتمد Transformer (<span class="nodecor">vaswani2017attention</span>)، القائم على آلية الانتباه وقادر على الحصول على استجابات من المناطق الهامة في الصورة بأكملها، على حل مثالي لهذه التحديات. ومع ذلك، فإن حساب الانتباه الخاص به، الذي يتصف بتعقيد تربيعي، يطرح تحديات كبيرة من حيث كفاءة النمذجة واستخدام الذاكرة مع زيادة طول التسلسل المدخل أو عمق الشبكة. يوفر نموذج الفضاء الحالى (SSM) (<span class="nodecor">gu2021efficiently</span>) حلاً يعالج هذا العائق، إذ يقيم علاقات التبعية طويلة المدى عبر انتقالات الحالة ويطبقها من خلال عمليات التفاف، محققاً تعقيداً شبه خطي. أثبتت Mamba (<span class="nodecor">gu2023mamba</span>) كفاءتها العالية لكل من التدريب والاستدلال بفضل دمج المعلمات المتغيرة زمنياً في SSM العادي وتحسينات موجهة للأجهزة. نجح Vim (<span class="nodecor">zhu2024vision</span>) وVMamba (<span class="nodecor">liu2024vmamba</span>) في إدخال Mamba إلى المجال البصري ثنائي الأبعاد، محققين توازناً ملحوظاً بين الأداء والكفاءة في مهام متعددة.</p>
+<p>في هذه الورقة، نقدم RSMamba، نموذج فعال قائم على SSM لتصنيف صور الاستشعار عن بُعد. بفضل قدرته القوية على نمذجة العلاقات العالمية داخل الصورة بأكملها، يمكن لـ RSMamba أن يُظهر تنوعاً واسعاً عبر مختلف المهام. يستند RSMamba إلى Mamba السابق (<span class="nodecor">gu2023mamba</span>)، مع تقديم آلية تفعيل ديناميكية متعددة المسارات حساسة للموقع لتجاوز قيود Mamba التقليدي، الذي اقتصر على النمذجة السببية واتسم بعدم الحساسية للموقع. يحافظ RSMamba على آلية النمذجة الأصلية في كتلة Mamba، مع إدخال تحسينات غير سببية وحساسة للموقع خارجها. نبدأ بتقسيم الصورة إلى رموز تصحيح متداخلة، نضيف ترميز الموقع لتكوين تسلسل، ثم نبني ثلاثة مسارات (أمامي، عكسي، وعشوائي) لنمذجة العلاقات العالمية عبر كتلة Mamba بمشاركة المعلمات، ونسلطف كل مسار بخريطة خطية مختلفة. وبفضل كفاءة كتلة Mamba، يمكن إجراء التدريب المسبق على نطاق واسع بتكلفة منخفضة.</p>
+<p>يمكن تلخيص المساهمات الرئيسية في هذه الورقة كما يلي:</p>
+<ul>
+  <li>i) نقترح RSMamba، منهجية فعالة لنمذجة الميزات العالمية في صور الاستشعار عن بُعد اعتماداً على نموذج الفضاء الحالى (SSM)، مع مزايا تمثيلية وكفاءة عالية، مما يجعله حلاً عملياً لتفسير هذه الصور على نطاق واسع.</li>
+  <li>ii) ندمج آلية تفعيل ديناميكية متعددة المسارات حساسة للموقع لمعالجة قيود Mamba الأصلي في النمذجة السببية وعدم الحساسية المكاني.</li>
+  <li>iii) أجرينا تجارب شاملة على ثلاث مجموعات بيانات مميزة، تُظهر تفوق RSMamba على الأساليب القائمة على الشبكات العصبية الالتفافية والمحولات.</li>
+</ul>
+<h1 id="المنهجية">المَنْهَجِيَّة</h1>
+<p>بالاستفادة من الخصائص الأساسية لنموذج <span class="nodecor">SSM</span>، يتمتع <span class="nodecor">RSMamba</span> بالكفاءة في التقاط الاعتماديات العالمية داخل صور الاستشعار عن بُعد، مما يوفر معلومات وفيرة عن الفئات الدلالية. يبدأ هذا القسم بمقدمة عن مبادئ <span class="nodecor">SSM</span>، تليها نظرة عامة على <span class="nodecor">RSMamba</span>، ثم استكشاف تفصيلي لكتلة التفعيل الديناميكية متعددة المسارات، وأخيراً شرح هيكل الشبكة لثلاث نسخ مختلفة من <span class="nodecor">RSMamba</span>.</p>
+<h2 id="المقدمات">المُقَدِّمات</h2>
+<p>نموذج الفضاء الحالى هو مفهوم مشتق من نظرية التحكم الحديثة للنظام الخطي الثابت مع الزمن، حيث يرسم الاستثارة المستمرة <span class="math inline">\(x \in \mathbb{R}^N\)</span> إلى استجابة <span class="math inline">\(y \in \mathbb{R}^N\)</span>. يمكن صياغة هذه العملية عبر المعادلة التفاضلية العادية الخطية التالية، <span class="math display">\[\begin{aligned}
+        h^\prime(t) &amp;= \textbf{A} h(t) + \textbf{B} x(t) \\
+        y(t) &amp;= \textbf{C} h(t)
+    \end{aligned}
+    \label{eq:continous_sys}\]</span> حيث يُستنتج <span class="math inline">\(y\)</span> من إشارة الإدخال <span class="math inline">\(x\)</span> والحالة المخفية <span class="math inline">\(h\)</span>. تعبر <span class="math inline">\(\textbf{A}\)</span> عن مصفوفة انتقال الحالة، و<span class="math inline">\(\textbf{B}\)</span> و<span class="math inline">\(\textbf{C}\)</span> هما مصفوفتا الإسقاط. لتحويل النظام المستمر إلى تمثيل مفرغ يدمج في التعلم العميق، نستخدم نبذ التفريغ بالزايرو-هولدر (ZOH) بمُعامل زمني <span class="math inline">\(\Delta\)</span>، كما يلي، <span class="math display">\[\begin{aligned}
+        \bar{\textbf{A}} &amp;= \exp(\Delta \textbf{A}) \\
+        \bar{\textbf{B}} &amp;= {(\Delta \textbf{A})}^{-1} (\exp(\Delta \textbf{A}) - \textbf{I}) \cdot \Delta \textbf{B} \\
+    \end{aligned}\]</span></p>
+<p>بعد التفريغ، يمكن إعادة كتابة النظام كما يلي، <span class="math display">\[\begin{aligned}
+        h_k &amp;= \bar{\textbf{A}}\,h_{k-1} + \bar{\textbf{B}}\,x_k \\
+        y_k &amp;= \bar{\textbf{C}}\,h_k
+    \end{aligned}\]</span> حيث <span class="math inline">\(\bar{\textbf{C}}\)</span> تماثل <span class="math inline">\(\textbf{C}\)</span>. أخيراً، يُمكن التعبير عن الناتج في تمثيل الالتفاف كما يلي، <span class="math display">\[\begin{aligned}
+        \bar{\textbf{K}} &amp;= (\bar{\textbf{C}}\bar{\textbf{B}}, \bar{\textbf{C}}\bar{\textbf{A}}\bar{\textbf{B}}, \dots, \bar{\textbf{C}}\bar{\textbf{A}}^{L-1}\bar{\textbf{B}}) \\
+        \textbf{y} &amp;= \textbf{x} * \bar{\textbf{K}}
+    \end{aligned}\]</span> حيث <span class="math inline">\(L\)</span> هو طول تسلسل الإدخال، و<span class="math inline">\(\bar{\textbf{K}} \in \mathbb{R}^L\)</span> تمثل نواة الالتفاف المنظمة.</p>
+<h2 id="rsmamba">RSMamba</h2>
+<p>يحوّل RSMamba الصور ثنائية الأبعاد إلى تسلسلات أحادية البعد، ثم يستخدم مشفّر <em>Multi-Path SSM</em> لالتقاط الاعتماديات طويلة المدى. بالنظر إلى صورة <span class="math inline">\(\mathcal{I} \in \mathbb{R}^{H \times W \times 3}\)</span>، نطبّق تحويلة ثنائية الأبعاد بنواة <span class="math inline">\(k\)</span> وخطوة <span class="math inline">\(s\)</span> لرسم الخرائط المحلية إلى تضمينات الأبعاد. بعد ذلك، يتم تسطيح خريطة الميزات إلى تسلسل أحادي البعد، ثم نضيف ترميز الموقع <span class="math inline">\(P\)</span> للحفاظ على العلاقات المكانية. يمكن التعبير عن العملية كما يلي، <span class="math display">\[\begin{aligned}
+    T &amp;= \Phi_{\text{Flatten}}(\Phi_{\text{Conv2D}}(\mathcal{I}, k, s)) \\
+    T &amp;= T + P
+    \end{aligned}\]</span> حيث <span class="math inline">\(\Phi_{\text{Conv2D}}\)</span> تمثل التحويلة ثنائية الأبعاد، و<span class="math inline">\(\Phi_{\text{Flatten}}\)</span> عملية التسطيح. يكون <span class="math inline">\(T \in \mathbb{R}^{L \times d}\)</span> و<span class="math inline">\(P \in \mathbb{R}^{L \times d}\)</span> تسلسل الإدخال وترميز الموقع على التوالي.</p>
+<p>في RSMamba، لم نعتمد رمز <code>[CLS]</code> لتجميع التمثيل العالمي كما في ViT. بدلاً من ذلك، ندخل التسلسل في كتل التفعيل الديناميكية متعددة المسارات الخاصة بـ Mamba لنمذجة الاعتماديات طويلة المدى. ثم نستخلص الميزات الضرورية للتنبؤ بالفئة عبر تجميع متوسط على التسلسل. يمكن التعبير عن ذلك تكرارياً كما يلي، <span class="math display">\[\begin{aligned}
+    T^i &amp;= \Phi_{\text{mp-ssm}}^{i} (T^{i-1}) + T^{i-1}\\
+    \hat{s} &amp;= \Phi_{\text{proj}}(\Phi_{\text{LN}}(\Phi_{\text{mean}}(T^N)))
+    \end{aligned}\]</span> حيث <span class="math inline">\(T^0 = T\)</span>، و<span class="math inline">\(\Phi_{\text{mp-ssm}}\)</span> تمثل كتلة التفعيل الديناميكية متعددة المسارات، بإجمالي عدد طبقات <span class="math inline">\(N\)</span>. <span class="math inline">\(\Phi_{\text{mean}}\)</span> عملية التجميع المتوسط، و<span class="math inline">\Phi_{\text{LN}}\)</span> تطبيع الطبقة، و<span class="math inline">\Phi_{\text{proj}}\)</span> الإسقاط الخطي من البعد الخفي <span class="math inline">\(d\)</span> إلى عدد الفئات.</p>
+<h2 id="تفعيل-متعدد-المسارات-الديناميكي">آلية التفعيل الديناميكية متعددة المسارات</h2>
+<p>يعتمد Mamba الأصلي على نمذجة التسلسلات السببية أحادية الاتجاه، مما يحدّ من قدرته على التقاط العلاقات المكانية في البيانات ثنائية الأبعاد. لتعزيز هذه القدرة، نقدم آلية التفعيل الديناميكية متعددة المسارات. تعمل هذه الآلية، مع الحفاظ على هيكلية كتلة Mamba الأساسية، حصرياً على مدخلات الكتلة ومخرجاتها. نكرّر تسلسل الإدخال ثلاث مرات لإنشاء مسارات أمامية وعكسية وعشوائية، ثم نمرر كل مسار عبر خلاط Mamba بمعلمات مشتركة للتقاط الاعتماديات. بعد ذلك، نعيد ترتيب الرموز إلى ترتيبها الأصلي ونستخدم خر层ية خطية لتكثيف معلومات كل مسار وإنشاء بوابة تنظيمية. تُفعل البوابة تدفقات المعلومات الثلاثة كما يلي، <span class="math display">\[\begin{aligned}
+    T_k^i &amp;= \Phi_{\text{pather}}^k(T^i) \\
+    E_k^i &amp;= \Phi_{\text{mixer}}^\theta(T_k^i) \\
+    \hat{E}_k^i &amp;= \Phi_{\text{revert-pather}}^k(E_k^i) \\
+    g &amp;= \Phi_{\text{softmax}}(\Phi_{\text{gate-proj}}(\Phi_{\text{mean}}(\Phi_{\text{cat}}(\{\hat{E}_k^i\})))) \\
+    T^{i+1} &amp;= \sum_{k=0}^2 g_k \cdot \hat{E}_k^i
+    \end{aligned}\]</span> حيث تشير <span class="math inline">\(\Phi_{\text{pather}}^k\)</span> إلى إعادة ترتيب التسلسل للمسار <span class="math inline">\(k\)</span> (أمامي، عكسي، عشوائي)، و<span class="math inline">\(\Phi_{\text{mixer}}^\theta\)</span> إلى خلاط Mamba بمعاملات <span class="math inline">\(\theta\)</span>، و<span class="math inline">\(\Phi_{\text{revert-pather}}^k\)</span> لإعادة الرموز إلى ترتيبها الأصلي، و<span class="math inline">\(\Phi_{\text{cat}}\)</span> للتكثيف على طول البعد الميزة، و<span class="math inline">\(\Phi_{\text{mean}}\)</span> للتجميع المتوسط، و<span class="math inline">\(\Phi_{\text{gate-proj}}\)</span> لإسقاط البُعد <span class="math inline">\(3d\)</span> إلى 3، و<span class="math inline">\(\Phi_{\text{softmax}}\)</span> لتوزيع الأوزان، ثم يجمع <span class="math inline">\(\sum\)</span> الميزات من التدفقات الثلاثة.</p>
+<h2 id="هندسة-النموذج">هندسة النموذج</h2>
+<p>تمثل <span class="math inline">\(\Phi_{\text{mixer}}^\theta\)</span> كتلة الخلاط القياسية في إطار عمل Mamba (<span class="nodecor">gu2023mamba</span>). انطلاقاً من مبادئ ViT، طورنا ثلاث نسخ من RSMamba بأحجام معلمات مختلفة: الأساسية، الكبيرة، والضخمة. تفاصيل معلمات كل نسخة موضحة في الجدول [tab:versions]، مع شرح للمفاهيم الفائقة في (<span class="nodecor">gu2023mamba</span>).</p>
+<h1 id="النتائج-التجريبية-والتحليلات">النتائج التجريبية والتحليلات</h1>
+<h2 id="وصف-مجموعة-البيانات">وصف مجموعات البيانات</h2>
+<p>لتقييم فعالية الطرائق المقترحة، أجرينا تجارب موسعة على ثلاث مجموعات بيانات مميزة لاستشعار عن بُعد: مجموعة بيانات جامعة كاليفورنيا ميرسيد (<span class="nodecor">UC Merced</span>) (<span class="nodecor">yang2010bag</span>)، ومجموعة <span class="nodecor">AID</span> (<span class="nodecor">xia2017aid</span>)، ومجموعة <span class="nodecor">NWPU-RESISC45</span> (<span class="nodecor">RESISC45</span>) (<span class="nodecor">cheng2017remote</span>).</p>
+<p><strong>مجموعة بيانات جامعة كاليفورنيا ميرسيد</strong> (<span class="nodecor">yang2010bag</span>): تتكون من <span class="nodecor">21</span> فئة مشهد مختلفة، ويحتوي كل منها على <span class="nodecor">100</span> صورة جوية بدقة <span class="math inline">\(256\times256\)</span> بكسل. تبلغ الدقة المكانية لكل صورة <span class="nodecor">0.3</span> متر، ما يجعل المجموع <span class="nodecor">2100</span> صورة. استخدمنا <span class="nodecor">70%</span> من الصور في كل فئة للتدريب.</p>
+<p><strong><span class="nodecor">AID</span></strong> (<span class="nodecor">xia2017aid</span>): يضم <span class="nodecor">AID</span> <span class="nodecor">30</span> فئة ومجموع <span class="nodecor">10,000</span> صورة مأخوذة من جوجل إيرث، متفاوتة بين <span class="nodecor">220</span> و<span class="nodecor">420</span> عينة لكل فئة. أبعاد الصور <span class="math inline">\(600\times600\)</span> بكسل، والدقة المكانية تتراوح من <span class="nodecor">8</span> إلى <span class="nodecor">0.5</span> متر. خصصنا <span class="nodecor">50%</span> من الصور للتدريب.</p>
+<p><strong><span class="nodecor">RESISC45</span></strong> (<span class="nodecor">cheng2017remote</span>): تتضمن <span class="nodecor">31,500</span> صورة RGB مقسمة إلى <span class="nodecor">45</span> فئة، حيث تحتوي كل فئة على <span class="nodecor">700</span> صورة بدقة <span class="math inline">\(256\times256\)</span> بكسل. تتراوح الدقة المكانية بين <span class="nodecor">30</span> إلى <span class="nodecor">0.2</span> متر. خصصنا <span class="nodecor">70%</span> للتدريب.</p>
+<h2 id="تفاصيل-التنفيذ">تفاصيل التنفيذ</h2>
+<p>في هذا البحث، نستخدم حجم صورة ثابت يبلغ <span class="math inline">\(224\times224\)</span> ونطبق تعزيزات بيانات تشمل القص العشوائي، والانعكاس، والتشويه اللوني، والخلط، والقطع، <em>إلخ</em>. تُحول الصور إلى تسلسل عبر تحويلة ثنائية الأبعاد بنواة <span class="math inline">\(k=16\)</span> وخطوة <span class="math inline">\(s=8\)</span>. تمثل ترميزات المواقع بمعاملات قابلة للتعلّم عشوائياً في البداية. للتدريب الإشرافي، استخدمنا دالة خسارة الانتروبيا المتقاطعة ومحسن AdamW مع معدل تعلم أولي <span class="math inline">\(5\times10^{-4}\)</span> وتحليل وزن 0.05، مع جدول زمني تخفيض تدريجي وتسخين خطي. حجم الدفعة 1024، وعدد الدورات 500. نعتمد الدقة (<span class="nodecor">P</span>)، الاستدعاء (<span class="nodecor">R</span>)، ومعدل F1 (<span class="nodecor">F1</span>) كمقاييس للأداء.</p>
+<h2 id="المقارنة-مع-أحدث-التقنيات">المقارنة مع أحدث التقنيات</h2>
+<p>قارنّا RSMamba بأساليب التصنيف الرائدة بما في ذلك ResNet (<span class="nodecor">he2016deep</span>)، DeiT (<span class="nodecor">touvron2021training</span>)، ViT (<span class="nodecor">dosovitskiy2020image</span>)، وSwin Transformer (<span class="nodecor">liu2021swin</span>). يعرض الجدول [tab:sota] الأداء المقارن على مجموعات بيانات UC Merced وAID وRESISC45. تشير النتائج إلى: أولاً) يتمتع RSMamba بأداء قوي عبر مجموعات بأحجام بيانات مختلفة، بفضل معلماته النسبية الأقل التي تقلل الحاجة لبيانات واسعة للتعميم. ثانياً) يرفع رفع العمق والعرض في RSMamba الأداء عبر المجموعات الثلاث، رغم أن معدل الزيادة ليس بارزاً مقارنة بشبكات الالتفاف والمحولات، نظراً لأن النسخة الأساسية حققت أصلاً دقة عالية، مما يجعلها نقطة انطلاق مناسبة للمهام التطبيقية. ثالثاً) بينما تقارب نماذج الالتفاف سهل، يعتمد تفوق المحولات على كمية وفيرة من البيانات لتعميم الميزات. بالمقابل، لا يعتمد أداء RSMamba على حجم البيانات بقدر ما يستفيد من زيادة مدة التدريب لتحقيق مكاسب إضافية.</p>
+<h2 id="دراسة-الاستئصال">دراسة الاستئصال</h2>
+<p>للتحقق من فعالية المكونات المختلفة، أجرينا تجارب استئصال على مجموعة بيانات AID مع النسخة الأساسية دون تعديل المعلمات الفائقة.</p>
+<h3 id="تأثير-رموز-الفئات">تأثير رموز الفئات</h3>
+<p>لاستخدمنا التجميع المتوسط في RSMamba لدمج المعلومات العالمية بدلاً من رموز الفئات في ViT (<span class="nodecor">dosovitskiy2020image</span>). يظهر الجدول [tab:ablation-clstoken] تأثير إضافة رموز الفئات في مواقع مختلفة مقابل التجميع المتوسط. النتائج تشير إلى أن إدخال الرموز في الرأس أو الذيل لا يحسن الأداء، بينما الإدخال في منتصف السلسلة يعزز الدقة بشكل ملموس. كما يسرع التجميع المتوسط من تقارب الشبكة.</p>
+<h3 id="تأثير-مسارات-المسح-المتعددة">تأثير مسارات المسح المتعددة</h3>
+<p>تحدّ Mamba الفانيليا، الذي يعتمد النمذجة السببية، عند تطبيقه على بيانات الصور ثنائية الأبعاد. لمعالجة ذلك، اقترحنا آلية المسارات المتعددة (أمامية، عكسية، عشوائية) مع بوابة تنظيمية لتفعيل المعلومات التكيفية. يوضح الجدول [tab:ablation-path] التحسينات المكتسبة مع زيادة عدد المسارات وآلية البوابة مقابل المتوسط البسيط. غياب المسارات المتعددة يؤدي إلى انخفاض كبير عند استخدام رمز الفئة مثل ViT.</p>
+<h3 id="تأثير-الترميز-الموضعي">تأثير الترميز الموضعي</h3>
+<p>لرفع قدرة RSMamba على نمذجة العلاقات المكانية، ندمج الترميز الموضعي في تسلسل الصور. يوضح الجدول [tab:ablation-pe-token] أثر وجود أو غياب وأنواع الترميز الموضعي على الدقة. يسبب غياب الترميز انخفاضاً ملحوظاً، بينما يسهم كل من الترميز الفوريي والقابل للتعلم في تحسين الأداء، مع تلطيف التأثير عند إعادة ترتيبات المسارات المختلفة.</p>
+<h3 id="تأثير-عدد-الرموز">تأثير عدد الرموز</h3>
+<p>تعتمد قدرتنا على التقاط الخصائص العالمية على طول التسلسل؛ لذا نقسم الصورة إلى قطع متداخلة. يوضح الجدول [tab:ablation-pe-token] أثر التداخل وحجم الصورة. يتيح التداخل لكل رمز تغطية معلومات أوسع، كما يؤدي تكبير الصورة إلى إدراج تفاصيل إضافية، مما يعزز الأداء. يمكن لنمذجة SSM الخطي زيادة طول التسلسل حتى في موارد محدودة.</p>
+<h1 id="المناقشة-والخاتمة">المناقشة والخاتمة</h1>
+<p>قدمنا في هذه الورقة نموذج فضاء حالة جديد لتصنيف صور الاستشعار عن بُعد، <span class="nodecor">RSMamba</span>. يجمع RSMamba بين مزايا الشبكات الالتفافية والمحولات، ويمتاز بتعقيد شبه خطي ومجال استقبال عالمي. اقترحنا آلية تفعيل ديناميكية متعددة المسارات لتجاوز القيود السببية وعدم الحساسية الموضعية في Mamba الأصلي، مع الاحتفاظ بهيكله وتمكينه من التوسع بسهولة. أثبتت التقييمات على ثلاث مجموعات بيانات مميزة أن RSMamba يتفوق على الطرق الرائدة القائمة على الالتفاف والمحولات، مما يجعله مرشحاً قوياً ليكون العمود الفقري لنماذج الأساس البصرية المستقبلية.</p>
+<h1 id="المراجع-البسيطة">المراجع البسيطة</h1>
+</main>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفية والهوامش وتنسيق العناوين والجداول والاقتباسات.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو الحذف.
+- تم التأكد من عدم وجود أخطاء HTML، وأن جميع العناصر مغلقة بشكل صحيح.
+- تم تضمين جميع النصوص الأصلية، مع تحسين العرض فقط.

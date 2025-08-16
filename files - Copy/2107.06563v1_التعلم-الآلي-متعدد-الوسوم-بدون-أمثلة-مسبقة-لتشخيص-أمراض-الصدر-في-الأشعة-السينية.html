@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التعلم الآلي متعدد الوسوم بدون أمثلة مسبقة لتشخيص أمراض الصدر في الأشعة السينية</title>
+    <!-- MathJax for LaTeX math rendering -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['ams', 'amssymb', 'amsmath', 'amsthm', 'newcommand', 'boldsymbol']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-right: 4px solid #3498db;
+            padding-right: 10px;
+            border-left: none;
+            padding-left: 0;
+        }
+        h3 {
+            color: #5d6d7e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .abstract {
+            background-color: #f8f9fa;
+            border-right: 4px solid #007bff;
+            border-left: none;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        .keywords {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .figure {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        .table {
+            margin: 25px 0;
+        }
+        .reference {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        .meta-info {
+            background-color: #e7f3ff;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            direction: ltr;
+            text-align: left;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-right: 4px solid #6c757d;
+            border-left: none;
+            padding-right: 20px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        .theorem, .lemma, .proposition, .corollary {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .proof {
+            border-right: 2px solid #28a745;
+            border-left: none;
+            padding-right: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="meta-info">
+            <strong>ArXiv ID:</strong> 2107.06563v1<br>
+            <strong>LaTeX الأصلي:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2107.06563v1_extracted/full-paper-template.tex</code><br>
+            <strong>تم التحويل:</strong> 2025-06-06 13:11:45
+        </div>
+        <header id="title-block-header">
+<h1 class="title">التعلم الآلي متعدد الوسوم بدون أمثلة مسبقة لتشخيص أمراض الصدر في الأشعة السينية</h1>
+<p class="author"><br />
+قسم الهندسة<br />
+جامعة نيويورك أبوظبي، أبوظبي، الإمارات العربية المتحدة<br />
+قسم الهندسة<br />
+جامعة نيويورك أبوظبي، أبوظبي، الإمارات العربية المتحدة<br />
+قسم الهندسة<br />
+جامعة نيويورك أبوظبي، أبوظبي، الإمارات العربية المتحدة</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>على الرغم من نجاح الشبكات العصبية العميقة في تشخيص صور الأشعة السينية للصدر (CXR)، إلا أن التعلم الخاضع للإشراف يسمح فقط بتوقع فئات الأمراض التي تم رؤيتها أثناء التدريب. عند الاستدلال، لا يمكن لهذه الشبكات التنبؤ بفئة مرض غير مرئية سابقًا. يتطلب إدراج فئة جديدة جمع بيانات موسومة، وهو أمر ليس سهلاً، خاصة بالنسبة للأمراض النادرة. ونتيجة لذلك، يصبح من غير الممكن بناء نموذج قادر على تشخيص جميع فئات الأمراض المحتملة. في هذا العمل، نقترح شبكة تعلم بدون أمثلة مسبقة معممة ومتعددة الوسوم (CXR-ML-GZSL) قادرة على التنبؤ المتزامن بعدة أمراض مرئية وغير مرئية في صور الأشعة السينية للصدر. عند إدخال صورة، تتعلم الشبكة تمثيلاً بصريًا موجهًا بدلالات مستخرجة من نصوص طبية غنية. لتحقيق هذا الهدف الطموح، نقترح إسقاط كل من التمثيلات البصرية والدلالية إلى فضاء كامن مشترك باستخدام هدف تعلم مبتكر. يضمن هذا الهدف أن (1) يتم ترتيب الوسوم الأكثر صلة بالصورة أعلى من الوسوم غير ذات الصلة، (2) يتعلم النموذج تمثيلاً بصريًا متوافقًا مع دلالاته في الفضاء الكامن، و(3) تحافظ الدلالات المُسقطة على علاقاتها التبادلية الأصلية بين الفئات. الشبكة قابلة للتدريب من البداية إلى النهاية ولا تتطلب تدريبًا مسبقًا مستقلًا لمستخرج السمات البصرية. أظهرت التجارب على مجموعة بيانات NIH للأشعة السينية للصدر أن شبكتنا تتفوق على نموذجين أساسيين قويين من حيث الاسترجاع والدقة ودرجة F1 ومساحة تحت منحنى ROC. الشيفرة متاحة للجمهور على: <a href="https://github.com/nyuad-cai/CXR-ML-GZSL.git" class="uri">https://github.com/nyuad-cai/CXR-ML-GZSL.git</a></p>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction">المقدمة</a></li>
+<li><a href="#generalizable-insights-about-ml-in-the-context-of-healthcare">رؤى عامة حول التعلم الآلي في سياق الرعاية الصحية</a></li>
+<li><a href="#sec:related-work">الأعمال ذات الصلة</a>
+<ul>
+<li><a href="#inductive-transductive-zsl">التعلم بدون أمثلة مسبقة: الاستقرائي والانتقالي</a></li>
+<li><a href="#multi-label-generalized-zero-shot-learning">التعلم بدون أمثلة مسبقة معمّم ومتعدد الوسوم</a></li>
+<li><a href="#deep-learning-for-chest-radiographs">التعلم العميق لصور الأشعة السينية للصدر</a></li>
+</ul></li>
+<li><a href="#sec:methodology">المنهجية</a>
+<ul>
+<li><a href="#problem-formulation">صياغة المشكلة</a></li>
+<li><a href="#network-architecture">معمارية الشبكة</a></li>
+<li><a href="#mathcall_rank-ranking-loss-of-relevance-scores"><span class="math inline">\(\mathcal{L}_{rank}\)</span> خسارة الترتيب لدرجات الصلة</a></li>
+<li><a href="#mathcall_align-alignment-loss-of-visual-semantic-representations"><span class="math inline">\(\mathcal{L}_{align}\)</span> خسارة المحاذاة بين التمثيلات البصرية والدلالية</a></li>
+<li><a href="#mathcall_con-semantics-inter-class-consistency-regularizer"><span class="math inline">\(\mathcal{L}_{con}\)</span> منظم الاتساق بين الفئات الدلالية</a></li>
+<li><a href="#inference">الاستدلال</a></li>
+</ul></li>
+<li><a href="#sec:experiments">الإعدادات التجريبية</a>
+<ul>
+<li><a href="#dataset">مجموعة البيانات</a></li>
+<li><a href="#model-training-and-selection">تدريب النموذج واختياره</a></li>
+<li><a href="#performance-metrics">مقاييس الأداء</a></li>
+</ul></li>
+<li><a href="#sec:results">النتائج</a>
+<ul>
+<li><a href="#comparison-to-baseline-models">المقارنة مع النماذج الأساسية</a></li>
+<li><a href="#ablation-studies">دراسات الاستبعاد</a></li>
+</ul></li>
+<li><a href="#sec:discussion">المناقشة</a>
+<ul>
+<li><a href="#limitations">القيود</a></li>
+</ul></li>
+<li><a href="#conclusion">الخلاصة</a></li>
+</ul>
+</nav>
+<section id="introduction" class="level1">
+<h1>المقدمة</h1>
+<p>مكن التعلم العميق من تطوير أنظمة تشخيصية مدعومة بالحاسوب قادرة على تصنيف الأمراض في الصور الطبية بدقة تقارب مستوى الإنسان <span class="citation" data-cites="Qin2018ComputeraidedDI chexnext chestemerg"></span>. من أبرز القيود في هذه الشبكات حاجتها إلى كميات كبيرة من البيانات الموسومة للتدريب، وهو أمر يتطلب جهدًا وخبرة عالية ويعد مكلفًا. تزداد الصعوبة عند محاولة جمع بيانات كافية للأمراض النادرة أو للأوبئة الجديدة مثل كوفيد-19 <span class="citation" data-cites="covidzsl"></span>. لذا، يصبح من غير العملي توفير بيانات تدريبية موسومة لجميع الأمراض الممكنة لتدريب شبكة تعلم عميق. وبسبب هذا القيد، لا تستطيع الشبكة تصنيف فئات الأمراض غير المرئية أثناء التدريب <span class="citation" data-cites="zsl"></span>. في المقابل، يستطيع أطباء الأشعة التعرف على أمراض جديدة بالاعتماد على معرفتهم بسمات الأمراض المستقاة من الأدبيات الطبية.</p>
+<p>يمتلك <em>التعلم بدون أمثلة مسبقة</em> (ZSL) القدرة على محاكاة سلوك أطباء الأشعة من خلال التعرف على أمراض غير مرئية بالاعتماد على مصادر معرفية أخرى <span class="citation" data-cites="zsl"></span>. ويعد هذا النهج من أكثر حالات التعلم تحت إشراف محدود تطرفًا. باختصار، عند إعطاء صورة استعلام، تبحث طرق ZSL عن التوافق بين التمثيل البصري للصورة وتمثيلها الدلالي <span class="citation" data-cites="xianCVPR17"></span>. وقد حقق ZSL نتائج مبهرة في الصور الطبيعية <span class="citation" data-cites="deeptag"></span>. إلا أن معظم الطرق المقترحة تعطي وسمًا واحدًا فقط لكل صورة، وغالبًا ما يكون الوسم من الفئات المرئية فقط <span class="citation" data-cites="zsl Long_2017_CVPR"></span>. في مهام التصوير الطبي، مثل تصنيف الأمراض في صور الأشعة السينية للصدر، قد تحتوي الصورة على أكثر من مرض واحد، وقد تكون الوسوم من الفئات المرئية أو غير المرئية <span class="citation" data-cites="wang2017chestxray"></span>. هذا يحد من تطبيق طرق ZSL أحادية الوسم في مهام التصنيف الطبي متعددة الوسوم. من ناحية أخرى، يسمح <em>التعلم بدون أمثلة مسبقة متعدد الوسوم</em> (ML-ZSL) بإسناد عدة وسوم لكل صورة. أما في حالة <em>التعلم بدون أمثلة مسبقة معمّم ومتعدد الوسوم</em> (ML-GZSL)، فالهدف هو إسناد عدة وسوم للصورة قد تكون من الفئات المرئية أو غير المرئية <span class="citation" data-cites="gzsl"></span>. تعتمد الطرق الحالية لـ ML-GZSL في الصور الطبيعية على البحث عن الجار الأقرب في الفضاء الدلالي: <span class="math display">\[P^c_x = \langle f_x, \mathcal{W} \rangle,
+  \label{eqn:scores}\]</span> حيث <span class="math inline">\(\langle ,\rangle\)</span> هي دالة التشابه الكوني، <span class="math inline">\(f_x\)</span> تمثل السمات البصرية لصورة الاستعلام <span class="math inline">\(x\)</span>، و<span class="math inline">\(\mathcal{W}\)</span> هي التضمينات الدلالية لجميع الفئات. تحسب هذه المعادلة درجات التشابه بين السمات البصرية والتضمينات الدلالية لكل فئة محتملة، مما يعكس مدى ارتباط الوسم بالصورة. غالبًا ما يتم ذلك عبر إسقاط السمات البصرية المجمعة إلى الفضاء الدلالي <span class="citation" data-cites="deeptag Huynh_2020_CVPR"></span>. إلا أن هذه الطرق تعتمد على تمثيل بصري ثابت مستخرج من مشفر بصري مدرب مسبقًا أو شبكة كشف. كما أن إسقاط هذه السمات البصرية إلى الفضاء الدلالي يقلل من تنوع المعلومات البصرية، مما يؤدي إلى مشكلات جوهرية مثل مشكلة "hubness" <span class="citation" data-cites="hubness"></span>.</p>
+<p>لتجاوز هذه التحديات، نقترح شبكة CXR-ML-GZSL لتصنيف الأمراض في صور الأشعة السينية للصدر. تتكون شبكتنا من مشفر بصري للسمات البصرية ووحدتي إسقاط لكل من السمات البصرية والدلالية، حيث يتم إسقاط كل منهما إلى فضاء كامن مشترك يمكن فيه تحقيق التوافق بينهما. قمنا بتقييم الطريقة المقترحة على مجموعة بيانات NIH للأشعة السينية للصدر <span class="citation" data-cites="wang2017chestxray"></span> وأظهرت النتائج تفوق CXR-ML-GZSL على النماذج الأساسية. نقدم في هذا العمل ثلاث مساهمات رئيسية:</p>
+<ul>
+<li><p>من الناحية التقنية، صممنا شبكة قابلة للتدريب من البداية للنهاية تتعلم التمثيل البصري وتقوم بمحاذاته مع التمثيل الدلالي دون الحاجة لتدريب مسبق مستقل لمشفر السمات البصرية.</p></li>
+<li><p>اقترحنا هدف تعلم جديد لشبكة CXR-ML-GZSL يحقق توزيعًا تنبؤيًا فعالًا، ويضمن تمركز التمثيلات البصرية حول دلالات الفئات في الفضاء الكامن، ويفرض قيدًا للحفاظ على التمثيل الأصلي لدلالات الفئات.</p></li>
+<li><p>من منظور التصوير الطبي، نعد أول من يقترح إطار ML-GZSL لتصنيف الأمراض في صور الأشعة السينية للصدر.</p></li>
+</ul>
+<p>نستعرض الأعمال ذات الصلة في القسم <a href="#sec:related-work" data-reference-type="ref" data-reference="sec:related-work">2</a>، والمنهجية في القسم <a href="#sec:methodology" data-reference-type="ref" data-reference="sec:methodology">3</a>، والتجارب في القسم <a href="#sec:experiments" data-reference-type="ref" data-reference="sec:experiments">4</a>، والنتائج في القسم <a href="#sec:results" data-reference-type="ref" data-reference="sec:results">5</a>، والمناقشة في القسم <a href="#sec:discussion" data-reference-type="ref" data-reference="sec:discussion">6</a>، وأخيرًا الخلاصة في القسم <a href="#sec:conclusion" data-reference-type="ref" data-reference="sec:conclusion">[sec:conclusion]</a>.</p>
+</section>
+<section id="generalizable-insights-about-ml-in-the-context-of-healthcare" class="level1 unnumbered">
+<h1 class="unnumbered">رؤى عامة حول التعلم الآلي في سياق الرعاية الصحية</h1>
+<p>تعاني نماذج تصنيف صور الأشعة السينية للصدر متعددة الوسوم التقليدية من محدودية توافر البيانات ووسمها. يتغلب عملنا على تحدي جمع مجموعات بيانات موسومة واسعة النطاق من خلال الاستفادة من الأدبيات الطبية الغنية، كونها المصدر الرئيسي للمعرفة حول جميع الأمراض المكتشفة من قبل المجتمع الطبي. يبرز ذلك أهمية التعلم متعدد الوسائط في تطبيقات الرعاية الصحية. وعلى الرغم من تركيزنا على صور الأشعة السينية للصدر، إلا أن تصميم الشبكة يمكن تعميمه على أي مهمة تصوير طبي، حيث أن المشفر الدلالي غير مرتبط بمهمة محددة. إن تحسين تشخيص الأمراض غير المرئية أثناء الاستدلال قد ينقذ حياة المرضى.</p>
+</section>
+<section id="sec:related-work" class="level1">
+<h1>الأعمال ذات الصلة</h1>
+<section id="inductive-transductive-zsl" class="level2">
+<h2>التعلم بدون أمثلة مسبقة: الاستقرائي والانتقالي</h2>
+<p>يصنف التعلم بدون أمثلة مسبقة (ZSL) الفئات غير المرئية أثناء التدريب من خلال نقل المعرفة من الفئات المرئية، ويعتمد على دلالات الفئات لسد الفجوة بين الفئات المرئية وغير المرئية. يتم الحصول على الدلالات إما من خلال سمات الفئات الموسومة يدويًا أو من أوصاف نصية مضمنة في فضاء عالي الأبعاد <span class="citation" data-cites="att_zsl ZhangXG16a"></span>، أو عبر استخراج متجهات دلالية للوسوم باستخدام Word2vec أو Glove <span class="citation" data-cites="mikolov2013distributed Elhoseiny"></span>. يمكن تصنيف طرق تدريب ZSL إلى <em>الاستقرائي</em>، الذي يدرب فقط على بيانات الفئات المرئية <span class="citation" data-cites="xianCVPR17"></span>، و<em>الانتقالي</em>، الذي يفترض توفر أمثلة بصرية غير موسومة للفئات غير المرئية أثناء التدريب <span class="citation" data-cites="transductive"></span>. إلا أن التعلم الانتقالي يخالف فرضية عدم رؤية الفئات غير المرئية أثناء التدريب، وهو افتراض غير عملي. لذا، فإن معالجة ZSL في الإعداد الاستقرائي أكثر واقعية ويقدم حلاً عمليًا لتصنيف صور الأشعة السينية للصدر.</p>
+</section>
+<section id="multi-label-generalized-zero-shot-learning" class="level2">
+<h2>التعلم بدون أمثلة مسبقة معمّم ومتعدد الوسوم</h2>
+<p>قليل من الأعمال تناولت التصنيف متعدد الوسوم في الصور الطبيعية. قام <span class="citation" data-cites="Lee_2018_CVPR"></span> ببناء رسوم معرفية منظمة من خلال استغلال العلاقات الدلالية في WordNet <span class="citation" data-cites="wordnet"></span> لإسناد الوسوم للفئات غير المرئية. في عمل حديث، deep0tag <span class="citation" data-cites="deeptag"></span>، تم استخراج مجموعة من الرقع المحلية باستخدام شبكة كشف مدربة مسبقًا، ثم تجميع هذه المقترحات وإسقاطها في الفضاء الدلالي لإيجاد التوافق بين الفئات المرئية وغير المرئية. إلا أن هذا النهج يتطلب مجموعة بيانات كبيرة مع وسوم لمربعات التحديد لتدريب FasterRCNN <span class="citation" data-cites="fasterrcnn zsd"></span>. اقترح <span class="citation" data-cites="Huynh_2020_CVPR"></span> نموذج انتباه مشترك لتعلم سمات انتباه متعددة غير مرتبطة بالفئة عبر استخراج سمات مناطق مقصوصة باستخدام شبكة CNN مدربة مسبقًا. يتم إسقاط هذه السمات إلى الفضاء الدلالي لإيجاد الصلة بين الوسوم. على الرغم من أن هذه الطرق تؤدي أداءً جيدًا في الصور الطبيعية، إلا أنها غالبًا غير قابلة للتطبيق مباشرة على تصنيف صور الأشعة السينية للصدر أو تعتمد على مستخرجات سمات بصرية مدربة مسبقًا على ImageNet <span class="citation" data-cites="ILSVRC15"></span>. كما أظهر <span class="citation" data-cites="raghu2019transfusion"></span> أن نقل المعرفة من ImageNet لا يقدم فائدة كبيرة لتشخيص الأشعة. لذا، من المهم تعلم تمثيل بصري فعال لمشفر الصور في CXR-ML-GZSL. نقترح هنا تعلم التمثيل البصري ومحاذاته مع الدلالات في شبكة قابلة للتدريب من البداية للنهاية.</p>
+</section>
+<section id="deep-learning-for-chest-radiographs" class="level2">
+<h2>التعلم العميق لصور الأشعة السينية للصدر</h2>
+<p>يفترض التصنيف متعدد الوسوم إمكانية ظهور عدة وسوم في صورة واحدة، وهو أمر شائع في تصنيف صور الأشعة السينية للصدر حيث قد تحتوي الصورة على عدة أمراض. قام <span class="citation" data-cites="rajpurkar2017chexnet"></span> سابقًا بتدريب Densenet-121 <span class="citation" data-cites="densenet"></span> عبر صياغة مشكلة تصنيف متعددة الوسوم تقليدية، إلا أن منهجهم لم يلتقط العلاقات بين الفئات المختلفة. استخدم <span class="citation" data-cites="Guan2018DiagnoseLA"></span> آلية انتباه عبر قص مناطق الاهتمام المستخرجة من خرائط انتباه صادرة عن مشفر صورة عالمي، ثم دمج السمات من الفروع المحلية والعالمية لإسناد الدرجات التصنيفية. اعتمد <span class="citation" data-cites="yao2018learning"></span> على DenseNet لتمثيل الصورة عالميًا، واستخدم شبكة LSTM لتعلم الاعتماديات بين الفئات لتحسين التشخيص <span class="citation" data-cites="lstm"></span>. رغم الأداء الواعد لهذه الطرق، إلا أنها تعتمد على كميات كبيرة من البيانات الموسومة، ولا يمكنها عند الاستدلال توقع فئات لم تُرَ أثناء التدريب.</p>
+<p>هناك أعمال محدودة جدًا حول استخدام ZSL في تصوير الصدر. مؤخرًا، اقترح <span class="citation" data-cites="MVSE"></span> إطار GZSL باستخدام مشفر تلقائي ثنائي الفروع يجمع المعرفة الخارجية من ثلاثة مصادر نصية: تقارير الأشعة السينية، تقارير الأشعة المقطعية، وسمات بصرية معرفة يدويًا. إلا أن تصميمهم يعاني من عدة قيود: أولاً، يتنبأ النموذج بوسم واحد فقط رغم أن البيانات متعددة الوسوم؛ ثانيًا، يعتمد على توفر تقارير وصور غير موسومة للفئات غير المرئية أثناء التدريب، مما يخالف فرضية ZSL؛ ثالثًا، يتم تعلم التمثيل الدلالي من تقارير لحالات مرئية فقط ويسترشد بسمات الفئات الموسومة يدويًا، مما يقيد التطبيق بمجموعة مغلقة من الفئات. على عكس ذلك، يمكن لشبكتنا إسناد عدة وسوم للصورة وتعميمها على مجموعة مفتوحة من الفئات غير المرئية دون الاعتماد على تقارير أو وسوم يدوية.</p>
+<figure>
+<embed src="figures/figure.pdf" id="fig:main_fig" />
+<figcaption aria-hidden="true"><span><strong>نظرة عامة على نموذج CXR-ML-GZSL المقترح لتعلم التمثيلات البصرية لصور الأشعة السينية للصدر.</strong> يوضح الشكل نظرة عامة على الشبكة المقترحة، والتي تتضمن مشفرًا بصريًا قابلًا للتدريب وفضاءات بصرية ودلالية بأبعاد <span class="math inline">\(v\)</span> و<span class="math inline">\(d\)</span> على التوالي. بالنسبة لصورة الإدخال <span class="math inline">\(x\)</span> ووسومها <span class="math inline">\(y\)</span>، تتعلم الشبكة تمثيلاً بصريًا موجهًا بدلالات مستخرجة بواسطة BioBert. يتم تدريب المشفر البصري ووحدة الإسقاط البصرية ووحدة الإسقاط الدلالية من البداية للنهاية كما هو موضح بالخط المتقطع الأسود.
+</span></figcaption>
+</figure>
+</section>
+</section>
+<section id="sec:methodology" class="level1">
+<h1>المنهجية</h1>
+<section id="problem-formulation" class="level2">
+<h2>صياغة المشكلة</h2>
+<p>لنعتبر مجموعة <span class="math inline">\(\mathcal{X}^{s}\)</span> التي تحتوي على صور التدريب للفئات المرئية فقط. كل <span class="math inline">\(x \in \mathcal{X}^{s}\)</span> مرتبطة بمجموعة وسوم <span class="math inline">\(\textbf{y}_x\)</span>، حيث <span class="math inline">\(y_x^i \in \mathcal\{0,1\}_{i=1}^S\)</span> و"1" تعني وجود المرض رقم <span class="math inline">\(i\)</span> من بين <span class="math inline">\(S\)</span> فئة مرئية أثناء التدريب. نرمز للفئات المرئية وغير المرئية بـ <span class="math inline">\(\mathcal{Y}^{s} = \{1,\dots, S\}\)</span> و<span class="math inline">\(\mathcal{Y}^{u} = \{S+1,\dots, C\}\)</span> على التوالي، حيث <span class="math inline">\(C\)</span> هو العدد الكلي للفئات. هاتان المجموعتان منفصلتان بحيث <span class="math inline">\(\mathcal{Y}^{s} \cap  \mathcal{Y}^{u} = \emptyset\)</span>. الهدف هو تعلم تمثيل بصري لـ <span class="math inline">\(x\)</span> موجه بدلالات وسومها <span class="math inline">\(\textbf{y}_x\)</span>. عند الاستدلال، وبالنسبة لصورة اختبار <span class="math inline">\(x_{test}\)</span>، الهدف هو توقع <span class="math inline">\(\textbf{y}_{x_{test}}\)</span> حيث <span class="math inline">\(y_{x_{test}}^i\in [ 0,1 ]_{i=1}^{C}\)</span>. في الأقسام التالية، نصف معمارية الشبكة المقترحة وهدف التعلم.</p>
+</section>
+<section id="network-architecture" class="level2">
+<h2>معمارية الشبكة</h2>
+<p>توضح الشكل <a href="#fig:main_fig" data-reference-type="ref" data-reference="fig:main_fig">1</a> نظرة عامة على معمارية الشبكة. تتكون من مشفر بصري قابل للتدريب، ومشفر دلالي ثابت، ووحدات محاذاة. نوضح فيما يلي تفاصيل كل مكون ودالة الخسارة.</p>
+<p><strong>المشفر البصري:</strong> لتعلم التمثيل البصري، نعرف مشفرًا بصريًا <span class="math inline">\(\boldsymbol{\rho}(x): \mathbb{R}^{w \times h \times c}  \mapsto\! \mathbb{R}^{v}\)</span> يحسب <span class="math inline">\(f^v\)</span>، وهو تمثيل بصري بعدد أبعاد <span class="math inline">\(v\)</span> لصورة الإدخال <span class="math inline">\(x\)</span>. بعد ذلك، تعالج وحدة الإسقاط البصرية <span class="math inline">\(\boldsymbol{\psi}(f^v): \mathbb{R}^{v}  \mapsto\! \mathbb{R}^{l}\)</span> التمثيل البصري وتسقطه إلى فضاء كامن <span class="math inline">\(l\)</span> يتم تعلمه مع المعلومات الدلالية.</p>
+<p><strong>الدلالات:</strong> لنفترض أن تضمينات الفئات المرئية هي <span class="math inline">\(\mathcal{W}^{s} = \{w_1, w_2, \cdots ,w_S\}\)</span>، حيث <span class="math inline">\(w_i\)</span> تمثل تمثيلاً دلاليًا بعدد أبعاد <span class="math inline">\(d\)</span> للفئة <span class="math inline">\(i \in \mathcal{Y}^{s}\)</span>، ويتم استخراجها من الطبقة قبل الأخيرة في BioBert <span class="citation" data-cites="Lee_2019"></span> لجميع الوسوم القابلة للتدريب. يعد هذا العمل الأول الذي يستخدم BioBert في مشاكل ZSL في الرعاية الصحية، نظرًا لفعاليته في تعلم تضمينات كلمات سياقية متخصصة في النصوص الطبية الحيوية.</p>
+<p>نعرف <span class="math inline">\(\boldsymbol{\phi}(w^d): \mathbb{R}^{d}  \mapsto\! \mathbb{R}^{l}\)</span> كوحدة إسقاط دلالية تتعلم إسقاط التضمين الدلالي إلى الفضاء الكامن المشترك <span class="math inline">\(l\)</span>.</p>
+<p>بالنسبة للمعمارية المقترحة، نعيد تعريف المعادلة <a href="#eqn:scores" data-reference-type="ref" data-reference="eqn:scores">[eqn:scores]</a> كالتالي: <span class="math display">\[P_x^S = \langle \boldsymbol{\psi} ( \boldsymbol{\rho} (x)),\   \boldsymbol{\phi}(\mathcal{W}^{s}) \rangle,
+  \label{eqn:scoresours}\]</span> حيث <span class="math inline">\(P_x^S\)</span> تمثل درجات الصلة للوسوم التدريبية، أي <span class="math inline">\(P_x^S = \{p_1, p_2, \cdots ,p_S\}\)</span>. تعكس هذه الدرجات مدى التشابه بين الصورة وكل وسم محتمل.</p>
+<p><strong>هدف التدريب:</strong> نصيغ هدف التدريب لتحسين معلمات الشبكة كالتالي: <span class="math display">\[\min_{\boldsymbol{\phi} ,\boldsymbol{\rho} ,\boldsymbol{\psi}} \mathcal{L} = \mathcal{L}_{{rank}} +\gamma_{1} \mathcal{L}_{align} +\gamma_{2} \mathcal{L}_{con},
+    \label{eqn:full_loss}\]</span> حيث <span class="math inline">\(\gamma_1\)</span> و<span class="math inline">\(\gamma_2\)</span> هما معاملا تنظيم لخسارتي <span class="math inline">\(\mathcal{L}_{align}\)</span> و<span class="math inline">\(\mathcal{L}_{con}\)</span> على التوالي. في الأقسام التالية، نعرف كل مكون من مكونات الخسارة.</p>
+</section>
+<section id="mathcall_rank-ranking-loss-of-relevance-scores" class="level2">
+<h2><span class="math inline">\(\mathcal{L}_{rank}\)</span> خسارة الترتيب لدرجات الصلة</h2>
+<p>أثناء التدريب، تعطي الشبكة درجات الصلة <span class="math inline">\(P_x^S = \{p_1, p_2, \cdots ,p_S\}\)</span> لكل من الفئات المرئية <span class="math inline">\(S\)</span> لصورة الإدخال <span class="math inline">\(x\)</span>. بالاعتماد على الوسوم الحقيقية <span class="math inline">\(\textbf{y}_x\)</span>، حيث <span class="math inline">\(y_x^i \in \mathcal\{0,1\}_{i=1}^S\)</span>، نرمز إلى <span class="math inline">\(Y_p\)</span> كمجموعة الوسوم الإيجابية (الأمراض الموجودة في الصورة) و<span class="math inline">\(Y_n\)</span> كمجموعة الوسوم السلبية (الأمراض غير الموجودة). لنفترض أن <span class="math inline">\(p_{y_p}\)</span> و<span class="math inline">\(p_{y_n}\)</span> هما الدرجتان المحسوبتان للوسم الإيجابي والسلبي على التوالي. في التصنيف متعدد الوسوم، نرغب في تحقيق شرطين: أن تكون <span class="math inline">\(p_{y_p}\)</span> أعلى من <span class="math inline">\(p_{y_n}\)</span>، وأن يكون الفرق بينهما على الأقل بقيمة هامشية <span class="math inline">\(\delta\)</span>. لذا نصيغ خسارة ترتيب على مستوى الصورة كالتالي: <span class="math display">\[\mathcal{L}(P_x^S, \textbf{y}_x) = \frac{1}{S}\sum_{y_p \in Y_p } \sum_{y_n \in {Y_n}} \max(\delta + (p_{y_n} - p_{y_p}) ,\ 0).
+    \label{eq:rankingloss}\]</span> تكون الخسارة صفرًا إذا تحقق الشرط بفارق لا يقل عن <span class="math inline">\(\delta\)</span>، وتفرض عقوبة لا تقل عن <span class="math inline">\(\delta\)</span> إذا لم يتحقق. يتم حساب متوسط الخسارة على جميع الصور التدريبية:</p>
+<p><span class="math display">\[\mathcal{L}_{{rank}} = \frac{1}{N} \sum_{\forall x \in \mathcal{X}^{s}} \mathcal{L} (P_x^S, \textbf{y}_x),\]</span> حيث <span class="math inline">\(N\)</span> هو عدد الصور الكلي.</p>
+</section>
+<section id="mathcall_align-alignment-loss-of-visual-semantic-representations" class="level2">
+<h2><span class="math inline">\(\mathcal{L}_{align}\)</span> خسارة المحاذاة بين التمثيلات البصرية والدلالية</h2>
+<p>لمحاذاة التمثيلات البصرية مع الدلالية أثناء التدريب، نصيغ خسارة محاذاة بين النمطين كالتالي: <span class="math display">\[\mathcal{L}_{align} = \frac{1}{N} (1 - \sum_{\forall x \in X^s} \langle \boldsymbol{\psi} (\boldsymbol{\rho} (x)),\  \boldsymbol{\phi}(w_x) \rangle),\]</span> حيث <span class="math inline">\(w_x\)</span> هو التضمين الدلالي المقابل لصورة الإدخال <span class="math inline">\(x\)</span> و<span class="math inline">\(\langle , \rangle\)</span> دالة التشابه الكوني. في حال وجود عدة وسوم للصورة، يتم حساب متوسط التضمينات الدلالية في <span class="math inline">\(w_x\)</span>، مما يسمح بمحاذاة التمثيل البصري مع دلالاته في حالة تعدد الوسوم.</p>
+</section>
+<section id="mathcall_con-semantics-inter-class-consistency-regularizer" class="level2">
+<h2><span class="math inline">\(\mathcal{L}_{con}\)</span> منظم الاتساق بين الفئات الدلالية</h2>
+<p>تنشأ التمثيلات الدلالية والبصرية من نمطين مختلفين. يتم تعلم الدلالات من الأدبيات الطبية النصية، بينما يتم تعلم التمثيلات البصرية من صور الأشعة. لجسر الفجوة بين النمطين، نتعلم دالتين للإسقاط إلى فضاء مشترك. بينما يتم تحسين التمثيلات البصرية أثناء التدريب، تظل الدلالات ثابتة بعد استخراجها من المشفر اللغوي. قد يؤدي إسقاط الدلالات إلى الفضاء الكامن إلى فقدان العلاقات بين الفئات. لذا، نهدف إلى الحفاظ على اتساق الفضاء الدلالي عبر تنظيم يعتمد على العلاقة بين الفئات في الفضاء الأصلي والمُسقط، وذلك عبر تنظيم <span class="math inline">\(L_1\)</span> كالتالي: <span class="math display">\[\mathcal{L}_{con} = \sum_{w_i \in W } \sum_{\substack{w_j \in W \\ j\neq i}} \| \langle {w_i},\   {w_j} \rangle - \langle {\boldsymbol{\phi}(w_i)},\  {\boldsymbol{\phi}(w_j)} \rangle \|\]</span> حيث <span class="math inline">\(w_i\)</span> و<span class="math inline">\(w_j\)</span> هما التمثيلات الدلالية الأصلية لفئتين، و<span class="math inline">\(\boldsymbol{\phi}(.)\)</span> تمثل الإسقاط. من المثالي أن يكون التشابه الكوني بين الفئتين في الفضاء الأصلي مساويًا له في الفضاء المُسقط، وبالتالي تكون الخسارة صفرًا.</p>
+</section>
+<section id="inference" class="level2">
+<h2>الاستدلال</h2>
+<p>بعد تدريب الشبكة، نحصل على مشفر الصور المحسن <span class="math inline">\(\boldsymbol{\rho}(x)\)</span> ووحدات الإسقاط <span class="math inline">\(\boldsymbol\psi(f^v)\)</span> و<span class="math inline">\(\boldsymbol\phi(w^d)\)</span> التي تسقط كل من السمات البصرية والتضمينات الدلالية إلى الفضاء الكامن المشترك. عند الاستدلال، وبالنسبة لصورة اختبار <span class="math inline">\(x \in \mathcal{X}^{C}\)</span>، نقوم بتحديث <span class="math inline">\(\mathcal{W}\)</span> في المعادلة <a href="#eqn:scoresours" data-reference-type="ref" data-reference="eqn:scoresours">[eqn:scoresours]</a> لتشمل التضمينات الدلالية للفئات المرئية وغير المرئية. بخلاف التصنيف التقليدي متعدد الوسوم، يمكننا بعد تعديل <span class="math inline">\(\mathcal{W}\)</span> الحصول على درجات التنبؤ <span class="math inline">\(P_x^c = \{p_1, p_2, \cdots ,p_c\}\)</span> لمجموعة من <span class="math inline">\(C\)</span> فئات تشمل المرئية وغير المرئية، كالتالي: <span class="math display">\[P^C_x = \langle \boldsymbol\psi (\boldsymbol\rho (x)),\  \boldsymbol\phi (\mathcal{W}^{C}) \rangle.
+  \label{eqn:infer}\]</span> حيث <span class="math inline">\(\mathcal{W}^{C}\)</span> تمثل التضمينات الدلالية المحدثة لكافة الفئات.</p>
+</section>
+</section>
+<section id="sec:experiments" class="level1">
+<h1>الإعدادات التجريبية</h1>
+<section id="dataset" class="level2">
+<h2>مجموعة البيانات</h2>
+<p>لتقييم الشبكة المقترحة CXR-ML-GZSL، أجرينا التجارب على مجموعة بيانات NIH للأشعة السينية للصدر <span class="citation" data-cites="wang2017chestxray"></span>. تحتوي المجموعة على 112,120 صورة أمامية من 30,805 مريضًا. تم تقسيم البيانات عشوائيًا إلى مجموعة تدريب (70%)، تحقق (10%)، واختبار (20%). كل صورة مرتبطة بـ 14 فئة محتملة. شملنا جميع الفئات الـ 14 وقمنا بتقسيمها عشوائيًا إلى فئات مرئية (10) وغير مرئية (4). الفئات المرئية: Atelectasis, Effusion, Infiltration, Mass, Nodule, Pneumothorax, Consolidation, Cardiomegaly, Pleural Thickening, Hernia. الفئات غير المرئية: Edema, Pneumonia, Emphysema, Fibrosis. تم استبعاد جميع الصور المرتبطة بأي فئة غير مرئية من مجموعة التدريب، وفقًا للإعداد الاستقرائي. بلغ عدد صور التدريب النهائي 30,758، والتحقق 4,474، والاختبار 10,510.</p>
+</section>
+<section id="model-training-and-selection" class="level2">
+<h2>تدريب النموذج واختياره</h2>
+<p>نوضح هنا إعدادات التجربة لـ CXR-ML-GZSL. لتشفير المعلومات البصرية، صممنا طريقتنا للعمل مع أي شبكة عصبية التفافية متقدمة. أجرينا جميع التجارب باستخدام Densenet-121 نظرًا لأدائه الممتاز في تصنيف صور الأشعة السينية للصدر <span class="citation" data-cites="rajpurkar2017chexnet"></span>. أزلنا الطبقة التصنيفية النهائية واستخدمنا الشبكة الناتجة كمشفر بصري <span class="math inline">\(\boldsymbol\rho(x)\)</span> لإنتاج تمثيل بصري <span class="math inline">\(f^v \in \mathbb{R}^{1024}\)</span>.</p>
+<p>تمت برمجة وحدة الإسقاط البصرية كشبكة عصبية أمامية من ثلاث طبقات: <span class="math inline">\(\boldsymbol{\psi}: f^v \xrightarrow{} \texttt{fc1} \xrightarrow{} \texttt{Relu}  \xrightarrow{} \texttt{fc2} \xrightarrow{} \texttt{Relu} \xrightarrow{} \texttt{fc3} \xrightarrow{} {f^l}\)</span>، حيث <span class="math inline">\(\texttt{fc1}\)</span> طبقة كاملة التوصيل بوزن <span class="math inline">\(\mathbf{W}_{\texttt{fc1}} \in \mathbb{R}^{1024 \times 512}\)</span> وانحياز <span class="math inline">\(\mathbf{b}_{\texttt{fc1}} \in \mathbb{R}^{512}\)</span>. الطبقة التالية بوزن <span class="math inline">\(\mathbf{W}_{\texttt{fc2}} \in \mathbb{R}^{512 \times 256}\)</span> وانحياز <span class="math inline">\(\mathbf{b}_{\texttt{fc2}} \in \mathbb{R}^{256}\)</span>. الطبقة الأخيرة بوزن <span class="math inline">\(\mathbf{W}_{\texttt{fc3}} \in \mathbb{R}^{256 \times 128}\)</span> وانحياز <span class="math inline">\(\mathbf{b}_{\texttt{fc3}} \in \mathbb{R}^{128}\)</span>، ليتم الإسقاط النهائي إلى الفضاء الكامن المشترك مع التضمينات الدلالية. تتبع وحدة الإسقاط الدلالية نفس البنية. يتيح هذا التصميم التعامل مع تضمينات مستخرجة من معماريات مختلفة وإسقاطها إلى فضاء مشترك بغض النظر عن أبعادها الأصلية.</p>
+<p>تم تدريب الشبكة باستخدام خوارزمية Adam <span class="citation" data-cites="kingma2017adam"></span> لـ 100 حقبة، مع تقليل معدل التعلم <span class="math inline">\(lr\)</span> بمقدار 0.01 عند ثبات خسارة التحقق لعشر حقب. استغرق تدريب النموذج الواحد حوالي 8 ساعات على بطاقة NVIDIA Quadro RTX 6000. تم تعيين <span class="math inline">\(\delta=0.5\)</span> في معادلة <a href="#eq:rankingloss" data-reference-type="ref" data-reference="eq:rankingloss">[eq:rankingloss]</a>. لاختيار أفضل القيم لـ <span class="math inline">\(\gamma_1\)</span> و<span class="math inline">\(\gamma_2\)</span> ومعدل التعلم، أجرينا عدة تجارب باختيار عشوائي من <span class="math inline">\(\gamma \in \{0.1, 0.01, 0.05\}\)</span> و<span class="math inline">\(lr \in \{ 0.0001, 0.00005, 0.00001\}\)</span>، ثم اخترنا النموذج الأفضل على مجموعة التحقق بناءً على متوسط AUROC التوافقي. تم تطوير الشيفرة باستخدام مكتبة Pytorch <span class="citation" data-cites="pytorch"></span>.</p>
+</section>
+<section id="performance-metrics" class="level2">
+<h2>مقاييس الأداء</h2>
+<p>استخدمنا مقاييس تقييم شائعة في طرق ML-GZSL <span class="citation" data-cites="Lee_2018_CVPR Huynh_2020_CVPR"></span>. حسبنا الدقة والاسترجاع ودرجة F1 لأفضل <span class="math inline">\(k\)</span> تنبؤات حيث <span class="math inline">\(k \in \{2, 3 \}\)</span> في GZSL. اخترنا قيمة صغيرة لـ <span class="math inline">\(k\)</span> نظرًا لقلة عدد الفئات مقارنة ببيانات الصور الطبيعية <span class="citation" data-cites="nus_wide_civr09 openimages"></span>. كما أبلغنا عن متوسط مساحة تحت منحنى ROC (AUROC) للفئات المرئية وغير المرئية ومتوسطها التوافقي، حيث أن الاسترجاع لأفضل <span class="math inline">\(k\)</span> قد لا يعكس الأداء لكل فئة. من المهم ملاحظة أن المتوسط التوافقي يقيس التحيز الكامن في طرق GZSL تجاه الفئات المرئية.</p>
+<p><span id="tab:recall" label="tab:recall"></span></p>
+<p><span id="tab:class_wise" label="tab:class_wise"></span></p>
+</section>
+</section>
+<section id="sec:results" class="level1">
+<h1>النتائج</h1>
+<section id="comparison-to-baseline-models" class="level2">
+<h2>المقارنة مع النماذج الأساسية</h2>
+<p>قارنّا أداء النهج المقترح (<span class="math inline">\(OUR_{e2e}\)</span>) مع طريقتين متقدمتين في ML-GZSL: LESA <span class="citation" data-cites="Huynh_2020_CVPR"></span> وMLZSL <span class="citation" data-cites="Lee_2018_CVPR"></span>. يلخص الجدول <a href="#tab:recall" data-reference-type="ref" data-reference="tab:recall">[tab:recall]</a> النتائج على مجموعة الاختبار. أظهرت النتائج أن طريقتنا تتفوق في جميع المقاييس، حيث بلغت AUROC للفئات غير المرئية 0.66، والمتوسط التوافقي 0.72 عبر جميع الفئات. حققت LESA الأداء الأضعف، بينما جاءت MLZSL في المرتبة الثانية. تفوقت طريقتنا على MLZSL بفارق كبير، على سبيل المثال بنسبة 73.68% في precision@2.</p>
+<p>يقارن الجدول <a href="#tab:class_wise" data-reference-type="ref" data-reference="tab:class_wise">[tab:class_wise]</a> قيم AUROC لكل فئة مع الطرق المتقدمة. حققت طريقتنا أفضل أداء في جميع الفئات المرئية مقارنة بالنماذج الأساسية، باستثناء Hernia حيث كان الأداء مقاربًا لـ MLZSL (0.90 AUROC). أما في الفئات غير المرئية، فقد حققت أفضل أداء AUROC مقارنة بكلا النموذجين.</p>
+<p>يوضح الشكل <a href="#fig:qual" data-reference-type="ref" data-reference="fig:qual">[fig:qual]</a> أمثلة لتنبؤات الشبكة على 9 صور اختبار. تم اختيار أفضل ثلاثة تنبؤات لكل صورة. نلاحظ أن طريقتنا قادرة على التنبؤ بالفئات غير المرئية حتى عند وجود عدد كبير من الوسوم الحقيقية، مما يبرز فعالية الطريقة في التنبؤ المتزامن بعدة فئات مرئية وغير مرئية.</p>
+<p><img src="visuals_updated/2.png" alt="image" /> <img src="visuals_updated/5.png" alt="image" /> <img src="visuals_updated/3.png" alt="image" /><br />
+<img src="visuals_updated/4.png" alt="image" /> <img src="visuals_updated/9.png" alt="image" /> <img src="visuals_updated/13.png" alt="image" /><br />
+<img src="visuals_updated/14.png" alt="image" /> <img src="visuals_updated/19.png" alt="image" /> <img src="visuals_updated/12.png" alt="image" /></p>
+</section>
+<section id="ablation-studies" class="level2">
+<h2>دراسات الاستبعاد</h2>
+<p>أجرينا دراستين استبعادية باستخدام مجموعة التحقق. في جميع الدراسات، تم تعيين معدل التعلم الابتدائي إلى 0.0001، <span class="math inline">\(\gamma_{1}=0.01\)</span>، و<span class="math inline">\(\gamma_{2}=0.01\)</span>. يوضح الجدول <a href="#tab:ablation" data-reference-type="ref" data-reference="tab:ablation">[tab:ablation]</a> قيم AUROC للفئات المرئية وغير المرئية ومتوسطها التوافقي مع صيغ مختلفة لدالة الهدف. أجرينا تجارب لتقييم مساهمة كل من خسارة المحاذاة ومنظم الاتساق الدلالي. بينما بقي أداء الفئات المرئية ثابتًا (0.783-0.791 AUROC)، لوحظ تحسن في AUROC للفئات غير المرئية عند إضافة خسارة المحاذاة <span class="math inline">\(\mathcal{L}_{{align}}\)</span>، التي تضمن تمركز التمثيلات البصرية حول دلالات الفئات. كما ساهم الحفاظ على اتساق الفضاء الدلالي باستخدام <span class="math inline">\(\mathcal{L}_{{con}}\)</span> في تحسين الأداء للفئات غير المرئية. بناءً عليه، استخدمنا جميع مكونات الخسارة في تدريب النموذج النهائي.</p>
+<p>كما درسنا تأثير استخدام مشفر بصري غير قابل للتدريب مقارنة بالنهج المقترح القابل للتدريب من البداية للنهاية. أجرينا تجارب بتجميد المشفر البصري المدرب مسبقًا على ImageNet لاستخراج السمات البصرية، ثم دربناه بشكل منفصل على مجموعة بيانات NIH للفئات المرئية فقط واستخدمناه لاستخراج سمات ثابتة. يوضح الجدول <a href="#tab:training_approaches" data-reference-type="ref" data-reference="tab:training_approaches">[tab:training_approaches]</a> أداء هذه النهج مقارنة بالنهج القابل للتدريب من البداية للنهاية. من المثير للاهتمام أن النهج الأخير أظهر أداءً جيدًا، مما يؤكد أهمية تعلم تمثيل بصري متوافق مع التضمينات الدلالية، خاصة للفئات غير المرئية حيث تحسن AUROC بشكل ملحوظ.</p>
+<p><span id="tab:ablation" label="tab:ablation"></span></p>
+<p><span id="tab:training_approaches" label="tab:training_approaches"></span></p>
+</section>
+</section>
+<section id="sec:discussion" class="level1">
+<h1>المناقشة</h1>
+<p>تعتمد التطورات الحديثة في مجال التعلم العميق للتصوير الطبي بشكل كبير على توفر مجموعات بيانات واسعة النطاق. في هذا البحث، نقدم نهجًا واعدًا لتطوير شبكة تشخيصية متعددة الوسوم قادرة على تصنيف الفئات غير المرئية باستخدام التعلم بدون أمثلة مسبقة معمّم. تستفيد شبكة CXR-ML-GZSL من الدلالات السياقية المستقاة من الأدبيات الطبية الغنية وتتعلم تمثيلات بصرية موجهة بهذه الدلالات عبر هدف تعلم فريد. دربنا النموذج على مجموعة من الفئات المرئية ثم اختبرناه على فئات مرئية وغير مرئية باستخدام مجموعة بيانات NIH. الفرضية أن الفئات غير المرئية لم تُعرض على النموذج أثناء التدريب لمحاكاة سيناريو واقعي لتصنيف الأمراض النادرة. أظهرت النتائج أن الشبكة تعمم جيدًا على الفئات المرئية وغير المرئية وتحقق مكاسب ملحوظة مقارنة بالطرق السابقة. نوصي في التطبيق السريري بأن يتم عرض قائمة الأمراض مرتبة من الأكثر إلى الأقل احتمالًا بناءً على درجات التنبؤ، ويمكن للأطباء تحديد عتبة لتحويل الدرجات إلى نتائج ثنائية باستخدام تحليل الحساسية والنوعية.</p>
+<p>اقترح <span class="citation" data-cites="MVSE"></span> مؤخرًا طريقة GZSL لتصوير الصدر، شملت 9 فئات من أصل 14 بناءً على توفر تقارير الأشعة المقطعية، واختاروا 6 فئات كمرئية و3 كغير مرئية. إلا أن افتراضهم بتوفر بيانات الفئات غير المرئية أثناء التدريب (بما في ذلك التقارير والصور) يخالف فرضية ZSL، مما قد لا يعطي تقييمًا دقيقًا للأداء على الفئات غير المرئية. لذا، لضمان تقييم متين، حرصنا على عدم استخدام أي بيانات مساعدة للفئات غير المرئية أثناء التدريب. وبسبب اختلاف الافتراضات، لا يمكن مقارنة النتائج مباشرة مع عمل <span class="citation" data-cites="MVSE"></span>.</p>
+<section id="limitations" class="level2 unnumbered">
+<h2 class="unnumbered">القيود</h2>
+<p>اقتصر تقييم الشبكة المقترحة على مجموعة بيانات متاحة، ما يفرض عدة قيود. أولاً، تحتوي المجموعة على عدد فئات أقل من مجموعات الصور الطبيعية. لتقييم متانة الطريقة والأعمال المستقبلية، نؤكد على الحاجة لإنشاء مجموعة بيانات معيارية أكثر تحديًا بعدد فئات أكبر. كما اخترنا الفئات المرئية وغير المرئية عشوائيًا، ويجب تقييم الطريقة على تقسيمات أخرى، وربما على مهام طبية أخرى وأنواع تصوير مختلفة وبيانات من مؤسسات أخرى لاختبار قابلية التعميم، وكذلك على مجموعات بيانات الرؤية الحاسوبية القياسية. بالإضافة إلى ذلك، اقتصرنا في ضبط المعاملات على معدل التعلم ومعاملات <span class="math inline">\(\gamma\)</span> فقط، ونتوقع تحسن النتائج عند ضبط معاملات أخرى مثل حجم الدفعة وأبعاد وحدات الإسقاط.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>الخلاصة</h1>
+<p>في هذا العمل، نقترح شبكة تعلم بدون أمثلة مسبقة معمّم ومتعدد الوسوم (CXR-ML-GZSL) لتصنيف صور الأشعة السينية للصدر. أظهرنا من خلال التجارب أن الشبكة قادرة عند الاستدلال على إسناد عدة وسوم من الفئات المرئية وغير المرئية في آن واحد. ونظرًا لأن التدريب يقتصر على الفئات المرئية فقط دون أي معلومات مساعدة من صور أو تقارير سريرية للفئات غير المرئية، نعتقد أن CXR-ML-GZSL لديها إمكانات كبيرة لتشخيص الفئات غير المرئية عند الاستدلال، خاصة للأمراض النادرة أو الناشئة التي تعاني من نقص البيانات الموسومة. <span id="sec:conclusion" label="sec:conclusion"></span></p>
+</section>
+    </div>
+    <hr style="margin: 40px 0;">
+    <div class="text-muted text-center">
+        <small>
+            تم تحويل هذا الإصدار HTML تلقائيًا من LaTeX.<br>
+            تم عرض المعادلات الرياضية باستخدام MathJax.
+        </small>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

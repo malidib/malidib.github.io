@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Angus Nicolson">
+  <meta name="author" content="Lisa Schut">
+  <meta name="author" content="J. Alison Noble">
+  <meta name="author" content="Yarin Gal">
+  <title>شرح القابلية للتفسير: فهم متجهات تفعيل المفاهيم</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">شرح القابلية للتفسير: فهم متجهات تفعيل المفاهيم</h1>
+<p class="author"><span class="nodecor">Angus Nicolson</span></p>
+<p class="author"><span class="nodecor">Lisa Schut</span></p>
+<p class="author"><span class="nodecor">J. Alison Noble</span></p>
+<p class="author"><span class="nodecor">Yarin Gal</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تقترح أساليب تفسير النماذج الحديثة المبنية على المفاهيم ترجمة التمثيلات الداخلية لنماذج التعلم العميق إلى مصطلحات مفهومة للبشر. يتطلب ذلك فهم المفاهيم المشفَّرة في فضاء التمثيل للشبكة العصبية. من الطرق الشائعة لاكتشاف هذه المفاهيم متجهات تفعيل المفاهيم (<span class="nodecor">CAVs</span>)، التي تُدرَّب باستخدام مجموعة بيانات استكشافية من أمثلة المفهوم. في هذا العمل، ندرس ثلاث خصائص لـ<span class="nodecor">CAVs</span>: (<span class="nodecor">1</span>) عدم الاتساق عبر الطبقات، (<span class="nodecor">2</span>) التشابك مع مفاهيم أخرى، و(<span class="nodecor">3</span>) الاعتماد المكاني. كل خاصية تمثل تحدياً وفرصة لفهم النموذج. نقدم أدوات للكشف عن هذه الخصائص، ونبيّن تأثيرها على التفسيرات، ونقترح توصيات لتقليل آثارها. قد يكون استغلال هذه الخصائص مفيداً: على سبيل المثال، نُعرِّف <span class="nodecor">CAVs</span> معتمدة مكانياً لاختبار الثبات الترجمي للنموذج بالنسبة لمفهوم وفئة معينَين. أجرينا تجاربنا على <span class="nodecor">ImageNet</span> ومجموعة بيانات تركيبية جديدة، <span class="nodecor">Elements</span>، صُممت لالتقاط علاقة معروفة بين المفاهيم والفئات. نُصدر هذه المجموعة لدعم مزيد من الأبحاث في فهم وتقييم طرق التفسير.</p>
+<h1 id="sec: Introduction">مقدمة</h1>
+<p>أصبحت نماذج التعلم العميق شائعة في العديد من المهام، حيث تحقق أداءً مساوياً أو متجاوزاً لخبراء البشر. ومع ذلك، يُعقِّد التعقيد الكامن في هذه النماذج تفسير طريقة اتخاذها للقرارات. ومع توسع نطاق استخدامها في التطبيقات العملية، تزداد الحاجة إلى الشفافية لفهم عملها، مما يسهل اكتشاف الأخطاء وتحديد حدود النموذج.</p>
+<p>تتنوع أشكال تفسير النموذج، فتشمل ميزات الإدخال، النماذج الأولية، أو المفاهيم عالية المستوى. أظهرت الدراسات الحديثة أن أساليب تفسير الميزات منخفضة المستوى قد تعاني من تحيز التأكيد وقلة الإخلاص (<span class="nodecor">adebayo2018sanity</span>). وحتى عندما تكون مخلصة، فإنها تبين فقط «أين» ركز النموذج في الصورة، وليس «ماذا» ركز عليه (<span class="nodecor">achtibat2022where</span>, <span class="nodecor">colin2022what</span>).</p>
+<p>لمعالجة هذه النقائص، توفر الأساليب المبنية على المفاهيم تفسيرات بمصطلحات عالية المستوى مفهومة للبشر. من الطرق الشائعة لذلك متجهات تفعيل المفاهيم (<span class="nodecor">CAVs</span>)، وهي تمثيل خطي لمفهوم في مساحة التفعيل لطبقة معينة، يُستخلص باستعمال مجموعة بيانات استكشافية لأمثلة المفهوم (<span class="nodecor">kim2018interpretability</span>). ومع ذلك، تواجه هذه الطرق تحديات مثل حساسيتها لاختيار مجموعة البيانات الاستكشافية (<span class="nodecor">Ramaswamy2022OverlookedFI</span>, <span class="nodecor">Soni2020AdversarialT</span>).</p>
+<p>في هذا البحث، نركِّز على ثلاث خصائص لمتجهات المفاهيم:</p>
+<ol>
+<li><p><strong>عدم الاتساق</strong> عبر الطبقات،</p></li>
+<li><p><strong>التشابك</strong> مع مفاهيم أخرى،</p></li>
+<li><p><strong>الاعتماد المكاني</strong>.</p></li>
+</ol>
+<p>نوفر أدوات لتحليل كل خاصية ونبيّن تأثيرها على اختبار TCAV (§[sec: layer_stability], §[sec: Entanglement] و§[sec: Spatial]). للتخفيف من هذه الآثار نوصي بـ: بناء <span class="nodecor">CAVs</span> عبر طبقات متعددة، والتأكد من الاعتمادية المتوقعة بين المفاهيم، وتصوير الاعتماد المكاني (§[sec: Recommendations]). لا تعني هذه التحديات التخلّي عن <span class="nodecor">CAVs</span>، بل يمكن استغلالها لفهم سلوك النموذج بشكل أعمق. على سبيل المثال، نقدم نسخاً مكانية من <span class="nodecor">CAVs</span> لاختبار الثبات الترجمي في الشبكات الالتفافية.</p>
+<p>لتسهيل استكشاف هذه الخصائص، أنشأنا مجموعة بيانات تركيبية قابلة للتكوين: <span class="nodecor">Elements</span> (§[sec:elements]). توفر هذه المجموعة تحكماً كاملاً في العلاقات الأساسية بين المفاهيم والفئات، مما يمكّن الباحثين من دراسة إخلاص تفسيرات المفاهيم وتشابكها داخل النموذج.</p>
+<h1 id="sec: Background">الخلفية: متجهات تفعيل المفاهيم</h1>
+<p>متجه تفعيل المفهوم (<span class="nodecor">CAV</span>) هو تمثيل متجهي لمفهوم في فضاء تنشيط طبقة من الشبكة العصبية (<span class="nodecor">NN</span>). نفترض تقسيم الشبكة إلى دالتين: <span class="math inline">\(g_l(\vx) = \va_l \in \R^{m}\)</span> التي تخرِّج التنشيط <span class="math inline">\(\va_l\)</span> من الإدخال <span class="math inline">\(\vx\)</span> في الطبقة <span class="math inline">\(l\)</span>، و<span class="math inline">\(h_l(\va_l)\)</span> التي تُخرِّج نتيجة التصنيف. لإنشاء <span class="nodecor">CAV</span> لمفهوم <span class="math inline">\(c\)</span> في الطبقة <span class="math inline">\(l\)</span>، نحتاج إلى مجموعة بيانات استكشافية <span class="math inline">\(\D_c\)</span>، تضم عينات إيجابية <span class="math inline">\(\X_c^+\)</span> وأخرى سلبية <span class="math inline">\(\X_c^-\)</span>. نجمع التفعيلات المقابلة في الطبقة <span class="math inline">\(l\)</span>:</p>
+<p><span class="math display">\[
+\A_{c,l}^+ = \{ g_l(\vx_i)\;\forall \vx_i \in \X_c^+\},\quad
+\A_{c,l}^- = \{ g_l(\vx_i)\;\forall \vx_i \in \X_c^-\}.
+\]</span></p>
+<p>ثم ندرب مصنفاً خطياً لتمييزهما، فتكون <span class="math inline">\( \vv_{c,l}\)</span> هي المعامل العمودي للمستوى الفاصل:</p>
+<p><span class="math display">\[
+\al \cdot \vv_{c,l} + b_{c,l}>0\;\forall \al\in \A_{c,l}^+,\quad
+\al \cdot \vv_{c,l} + b_{c,l}\le0\;\forall \al\in \A_{c,l}^-.
+\]</span></p>
+<p>لقياس حساسية النموذج تجاه المفهوم، اقترح كيم وآخرون (<span class="nodecor">TCAV</span>):</p>
+<p><span class="math display">\[
+\operatorname{TCAV}_{c,k,l}
+=
+\frac{|\{\vx\in\X_k: S_{c,k,l}(\vx)>0\}|}{|\X_k|},
+\]</span> حيث</p>
+<p><span class="math display">\[
+S_{c,k,l}(\vx)
+=\nabla h_{l,k}(g_l(\vx))\cdot \vv_{c,l}.
+\]</span> هذا يعبر عن نسبة صور الفئة <span class="math inline">\(k\)</span> التي تزيد فيها نتيجة الفئة عندما نضيف مقداراً ضئيلاً في اتجاه <span class="math inline">\(\vv_{c,l}\)</span>.</p>
+<h1 id="sec: CAV properties">افتراضات خصائص متجهات المفاهيم</h1>
+<p>لفهم كيفية عمل <span class="nodecor">CAVs</span> عملياً، ندرس ثلاث خصائص تؤثر على تفسيراتها. نطرح لكل خاصية فرضية صفرية نُبيِّن لاحقاً عدم صحتها. نستعين في الوثيقة بالتنسيق <code>concept</code> للإشارة إلى المفهوم.</p>
+<h2 id="الاتساق">الاتساق عبر الطبقات</h2>
+<p>تركيز <span class="nodecor">CAVs</span> يقتصر على طبقة محددة، مما يثير سؤال أي الطبقات ينبغي تحليلها. نسمي المتجهين لمفهوم <em>محدد</em> في طبقتين مختلفتين <span class="math inline">\(l_1\)</span> و<span class="math inline">\(l_2\)</span> متسقين إذا أثّرا على النموذج بطريقة مكافئة: </p>
+<p><em><strong>الفرضية الصفرية 1 (NH1)</strong>: تمثيلات المفهوم عبر الطبقات متسقة</em></p>
+<p>في §[sec: layer_stability] نحلل هذه الفرضية نظرياً وتجريبياً، ونُظهر أن وظائف التنشيط مثل ReLU أو Sigmoid تمنع وجود <span class="math inline">\( \vv_{c,l_2}\)</span> ثابت مستقل عن التفعيلات <span class="math inline">\( \va_{l_1}\)</span> لتحقيق الاتساق.</p>
+<h2 id="متجهات-المفاهيم-المتشابكه">تشابك المفاهيم</h2>
+<p>قد لا يُعبِّر متجه المفهوم <span class="math inline">\( \vv_{c_1,l}\)</span> عن مثال واحد فقط، بل يشفر معلومات عن مفاهيم أخرى. نسمي هذا <em>تشابك المفاهيم</em>. نصيغ ذلك رياضياً بأن <span class="math inline">\( \vv_{c_1,l}\)</span> يتفاعل أكثر مع تنشيطات صور مفهوم <span class="math inline">\(c_2\)</span> حتى لو لم تُخصَّص لمفهوم <span class="math inline">\(c_1\)</span>:</p>
+<p><span class="math display">\[
+\va_{c_2,l}^+\cdot \vv_{c_1,l}
+>
+\va_{c_2,l}^-\cdot \vv_{c_1,l}
+\quad\forall\,\va_{c_2,l}^+\in\A_{c_2,l}^+,\;\va_{c_2,l}^-\in\A_{c_2,l}^-.
+\]</span></p>
+<p><em><strong>الفرضية الصفرية 2 (NH2)</strong>: متجه المفهوم يعبر فقط عن المفهوم المسسَم به</em></p>
+<p>في §[sec: Entanglement] نقدّم أداة توضيح للتشابك ونبيّن كيف يؤدي هذا إلى تفسيرات مضللة في TCAV.</p>
+<h2 id="الاعتماد-المكاني">الاعتماد المكاني</h2>
+<p>قد يعتمد إنشاء <span class="nodecor">CAVs</span> على موضع ظهور المفهوم في الإدخال. نعبر عن ذلك بوجود تباين بين تنشيطات مجموعة بيانات تستهدف موضعاً <span class="math inline">\(\mu_1\)</span> وأخرى لموضع <span class="math inline">\(\mu_2\)</span>. إذا كان المتجه <span class="math inline">\( \vv_{c,l}\)</span> يتمايز بينهما:</p>
+<p><span class="math display">\[
+\va_{c,l,\mu_1}^+\cdot \vv_{c,l}
+>
+\va_{c,l,\mu_2}^+\cdot \vv_{c,l}
+\quad\forall\,\va_{c,l,\mu_1}^+\in\A_{c,l,\mu_1}^+,\;
+\va_{c,l,\mu_2}^+\in\A_{c,l,\mu_2}^+,
+\]</span></p>
+<p>فنحن نعتبره <em>معتمداً مكانياً</em>. الفرضية:</p>
+<p><em><strong>الفرضية الصفرية 3 (NH3)</strong>: لا يمكن أن تكون متجهات المفاهيم معتمدة مكانياً</em></p>
+<p>في §[sec: Spatial] نرفض NH3 ونقدم طريقة لاستخراج CAVs مكانية لاختبار الثبات الترجمي للنموذج.</p>
+<h1 id="sec:elements">Elements: مجموعة بيانات تركيبية قابلة للتهيئة</h1>
+<p>قدمنا مجموعة البيانات الاصطناعية <span class="nodecor">Elements</span> للتحكم في تركيبات المفاهيم داخل العناصر: اللون، السطوع، الحجم، الشكل، النسيج، تحوُّل النسيج، والإحداثيات. يتيح هذا الاختبار الدقيق لخصائص <span class="nodecor">CAVs</span> (§[app: Elements]).</p>
+<h1 id="sec: related work">الأعمال ذات الصلة</h1>
+<h4 id="الارتباط-والتشابك-بين-المفاهيم">الارتباط والتشابك بين المفاهيم</h4>
+<p>ناقش Chen وآخرون (<span class="nodecor">Chen2020ConceptWF</span>) تشابك <span class="nodecor">CAVs</span> أثناء التدريب، بينما نركّز هنا على تحليله بعد التدريب (§[sec: Entanglement]). استُخدم أيضًا تشابه جيب التمام لمقارنة متجهات المفاهيم (<span class="nodecor">fong2018net2vec</span>) وسنستخدمه كذلك.</p>
+<h4 id="الاعتماد-المكاني-1">الاعتماد المكاني</h4>
+<p>أظهر Biscione وباورز (<span class="nodecor">Biscione2021Invariant</span>) أن الشبكات الالتفافية لا تمتلك بالضرورة ثبات الترجمة، بل يمكن تعلمه تحت شروط معينة. نحن نوفر تحليلًا مكانياً مفصّلاً باستخدام <span class="nodecor">CAVs</span> مكانية (§[sec: Spatial]).</p>
+<h4 id="ما-هي-تمثيلات-المفاهيم-التي-ينطبق-عليها-تحليلنا">تمثيلات المفاهيم المشمولة بتحليلنا</h4>
+<p>يركّز عملنا على المتجهات في فضاء التفعيل لشبكة مدربة (<span class="nodecor">kim2018interpretability, fong2018net2vec, bolei2018ibd, ghorbani2019automating, zhang2020invertible, ramaswamy2022elude, fel2023craft</span>). نستبعد الأساليب التي تمثل المفاهيم بخلايا مفردة أو مناطق تنشيط أو تمثيلات غير خطية (<span class="nodecor">bau2017network, crabbe2022, bai2022concept, li2023emergent</span>).</p>
+<h4 id="كيف-يكون-عملنا-ذا-صلة-عمليا">الأثر العملي لعملنا</h4>
+<p>راجعنا تطبيقات طبية عالية الأهمية (<span class="nodecor">Yan2023SkinCancer, Furbock2022Breast, Pfau2020Robust</span>) وأبحاث على مجموعات بيانات عامة (<span class="nodecor">Krizhevsky2009CIFAR, Tsung2014COCO, Wah2011CUB, Zhou2017Places, Sagawa2020Waterbirds, Deng2009ImageNet</span>). وجدنا أن تقييم الاتساق والتشابك والاعتماد المكاني يمكن أن يفيد هذه الدراسات (§[app: related work]).</p>
+<h4 id="مجموعات-البيانات">مجموعات البيانات</h4>
+<p>تركّز معظم مجموعات البيانات الحالية على ما إذا كان المفهوم ممثلاً في الشبكة فقط. أما مجموعة بياناتنا فتتيح دراسة ما إذا كان المفهوم يؤثر في التنبؤ وكيف تتشابك المفاهيم معاً (§[app: related work]).</p>
+<h1 id="النتائج-استكشاف-خصائص-متجه-المفهوم">النتائج: استكشاف خصائص متجه المفهوم</h1>
+<p>نستكشف NH1 وNH2 وNH3 في §§[sec: layer_stability] و[sec: Entanglement] و[sec: Spatial] على مجموعتي Elements وImageNet (§[app: implementation]).</p>
+<h2 id="sec: layer_stability">استقرار المتجهات عبر الطبقات</h2>
+<h3 id="النظرية">الأساس النظري</h3>
+<p>نحلل الشروط التي تسمح أو تمنع وجود <span class="math inline">\( \vv_{c,l_2}\)</span> متسق مع <span class="math inline">\( \vv_{c,l_1}\)</span> رصدياً، ونظهر أن الإجراءات غير الخطية مثل ReLU أو Sigmoid تجعل الاتساق مستحيلاً (§[app: consistency proof]).</p>
+<h3 id="التجارب">التجارب</h3>
+<p>نقيس خطأ الاتساق بين <span class="math inline">\( \vv_{c,l_1}\)</span> و<span class="math inline">\( \vv_{c,l_2}\)</span> بعد تعديل حجم المتجهين (§[app: Consistency gamma]). نضم في التجارب معيار CAV المحسَّن (للبحث عن أقل خطأ اتساق)، وCAV الموجَّه (مقارنة <span class="math inline">\( f(\vv_{c,l_1})\)</span> مع <span class="math inline">\( \vv_{c,l_2}\)</span>)، ومعايير عشوائية للحد الأعلى.</p>
+<p>نتائجنا تشير إلى أن <span class="nodecor">CAVs</span> في طبقات مختلفة لا تتسم بنفس التأثير، وهو ما ينسجم مع تعقيد التمثيلات الطبقية (<span class="nodecor">olah2017feature</span>, <span class="nodecor">bau2017network</span>).</p>
+<h2 id="sec: Entanglement">تشابك المفاهيم</h2>
+<p>باحتساب متوسط التشابه الزاوي بين متجهات مفاهيم متعددة، نستطيع الكشف عن التشابك في نماذج مدربة على نسخ مختلفة من Elements: </p>
+<ul>
+<li>في <span class="math inline">\(\E_1\)</span> لا ارتباط بين اللون والشكل،</li>
+<li>في <span class="math inline">\(\E_2\)</span> ارتباط جزئي،</li>
+<li>في <span class="math inline">\(\E_3\)</span> ارتباط قوي يقارب التشابه مع المتجه نفسه.</li>
+</ul>
+<p>يظهر أيضاً تشابك سلبي بين ألوان متبادلة الاستبعاد. ثم ندرس أثر هذا التشابك على نتائج TCAV لفئة «مثلثات مخططة»، فنجد في <span class="math inline">\(\E_2\)</span> ظهور إشارة إيجابية لـ«أحمر» كنتيجة جانبية للتشابك<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<h2 id="sec: Spatial">الاعتماد المكاني</h2>
+<p>نعيد تشكيل <span class="math inline">\( \vv_{c,l}\)</span> إلى أبعاد التنشيط الأصلية <span class="math inline">\(H\times W\times D\)</span> ثم نطبق قاعدة <span class="math inline">\(L_2\)</span> على البعد القنوي لاستخراج «القواعد المكانية» <span class="math inline">\( \mathbf{S}_{c,l}\in\R^{H\times W}\)</span>. تفاوت كبير في هذه القواعد يكشف الاعتماد المكاني (§[app: Spatial Norms]).</p>
+<p>بتوليد مجموعات استقصائية مكانية (تظليل أو تقييد مواقع محددة)، نرى أن CAVs الناتجة تحفظ نمط الاعتماد (§[app: Spatially dependent probes]). كما نستخدم هذه CAVs لاختبار ثبات الترجمة: على سبيل المثال، لفئة «مثلثات مخططة على اليسار» تظهر حساسية مرتفعة فقط عند «اليسار»، بينما تكون قرب الصفر عند «اليمين»، مما يثبت اعتماد النموذج على موقع المفهوم (<span class="math inline">TCAV</span>) (§[fig:spatial tcav scores elements]).</p>
+<h1 id="توصيات-الممارسين">توصيات الممارسين</h1>
+<ul>
+<li><p><em>الاتساق</em>: بناء <span class="nodecor">CAVs</span> عبر طبقات متعددة بدلاً من طبقة واحدة.</p></li>
+<li><p><em>التشابك</em>: (1) التحقق من الاعتمادية المتوقعة بين المفاهيم، و(2) الانتباه إلى أن إشارة إيجابية في TCAV قد تنجم عن تشابك المفاهيم.</p></li>
+<li><p><em>الاعتماد المكاني</em>: تصوير القواعد المكانية لـ<span class="nodecor">CAV</span> لتحديد مناطق الاعتماد.</p></li>
+</ul>
+<p>في §[sec: related work] أدرجنا تطبيقات مثل تشخيص سرطان الجلد (<span class="nodecor">Yan2023SkinCancer</span>) كمثال تطبيقي، حيث يمكن للقواعد المكانية والتشابه الزاوي بين المتجهات أن يؤكدوا أو ينفوا الاعتمادات المتوقعة (§[app: Example UseCase]).</p>
+<h1 id="الخلاصة-والأعمال-المستقبلية">الخلاصة والأعمال المستقبلية</h1>
+<p>استكشفنا ثلاث خصائص رئيسية لـ<span class="nodecor">CAVs</span>: الاتساق، التشابك، والاعتماد المكاني. قدمنا أدلة نظرية وتجريبية لغياب الاتساق عبر الطبقات، أداة لتصور التشابك، وطريقة لاكتشاف الاعتماد المكاني. أجرينا التجارب على مجموعة البيانات التركيبية <span class="nodecor">Elements</span> لتسهيل التحكم في المتغيرات. نأمل أن تدعم هذه النتائج أبحاثاً مستقبلية في تقييم طرق أخرى لتمثيل المفاهيم.</p>
+<h1 id="الشكر-والتقدير">الشكر والتقدير</h1>
+<p>نشكر أعضاء مجموعات OATML وNoble لدعمهم ومناقشاتهم، خاصةً أندرو جيسون. كما نقدر بن كيم على أفكاره وتعليقاته. يُدعم عمل A. Nicolson بمنحة EPSRC للتدريب في علوم البيانات الصحية (<span class="nodecor">EP/S02428X/1</span>). تعترف J. A. Noble بمنح EPSRC <span class="nodecor">EP/X040186/1</span> و<span class="nodecor">EP/T028572/1</span>.</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>بافتراض استخدام النموذج الصحيح لكل مفهوم<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>قد تظل بعض <span class="nodecor">CAVs</span> الفردية معتمدة مكانياً لكن يتلاشى هذا عند التعميم عبر التدريب. انظر الملحق [app: Individual Spatial Norms]<a href="#fnref2">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>

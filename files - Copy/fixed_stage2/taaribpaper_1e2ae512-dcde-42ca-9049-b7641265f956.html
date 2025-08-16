@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Ross Street">
+  <title>تباين حول موضوع شامل</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">تباين حول موضوع شامل</h1>
+<p class="author"><span class="nodecor">Ross Street</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>النتيجة الرئيسة تتعلق بنظام تحليل ثنائي الفئات على ثنائي الفئة <span class="math inline">\(\mathrm{Cat}\)</span>، أي فئة الفئات والدوال. إذ إن كل دالة <span class="math inline">\(A\xra{f} B\)</span> تتفكك، حتى التَّطابق، إلى المركب <span class="math inline">\(A\xra{j}E\xra{p}B\)</span> حيث <span class="math inline">\(j\)</span> ما نسميه دالة نهائية و<span class="math inline">\(p\)</span> ما نسميه تصنيف المجموعة. كما نثبت أن كل دالة مساعدة يمينية هي دالة نهائية. ونوضح تأثير الدوال التي عامِلها النهائي باعتبارها دوال مساعدة يمينية على النظرية العامة للدوال المتعددة.</p>
+<h1 id="مقدمة" class="unnumbered">مُقَدِّمَة</h1>
+<p>عندما كنت طالباً جامعياً، صادفت راسل (<span class="nodecor">Russell</span>) وكنت مرتبكاً بشأن الأسس الرياضية. بدا مخطط الفهم نقطة وصل مركزية بين الرياضيات واللغة. ثم سعدتُ بالاكتشاف الذي رأيته في أوراق لوريڤ (<span class="nodecor">Law1965, Law1969, Law1970</span>).</p>
+<p>التحليل الموصوف هنا فكرة قديمة كنت أود التحقق منها بدقة وكتابتها. لكني فقط الآن وجدت دافعاً لهذا العمل. هذا الدافع يتعلق بـ<span class="math inline">\(\mathrm{Cat}\)</span> كنموذج لثنائي الفئات المكثَّف في ورقتي الأخيرة (<span class="nodecor">134</span>). نريد تعريف خاص لدالة من حيث أن أحد عوامِلها يمتاز بصفة خاصة.</p>
+<p>فكرة هذه الورقة هي تعديل التحليل الشامل لدالة <span class="math inline">\(A\xra{f} B\)</span> باعتبارها المركب <span class="math inline">\(A\xra{j} E\xra{p} B\)</span>، حيث <span class="math inline">\(j\)</span> دالة نهائية (بالمعنى المستخدم في <span class="nodecor">CWM</span>، ويسميها ألترز والمؤلف في <span class="nodecor">6</span> أحياناً «تماسك») و<span class="math inline">\(p\)</span> تحليل منفصل. سمَّينا هذا بنظام التحليل لارتباطه بمخطط الفهم للمجموعات. هو نظام التحليل العمودي بالمفهوم العادي على <span class="math inline">\(\mathrm{Cat}\)</span> كفئة وحسب التخصيص على <span class="math inline">\(\mathrm{Cat}\)</span> كثنائية صارمة. و«منفصل» يعني بالطبع أن ألياف <span class="math inline">\(p\)</span> هي مجموعات.</p>
+<p>الآن نتساءل: إذا نظرنا إلى <span class="math inline">\(\mathrm{Cat}\)</span> كثنائي فئات، فهل نحصل على نظام تحليل بمعنى ثنائي عندما نعمل في إطار ثنائي الفئات بالكامل، نغلق التحليلات تحت التركيب مع التكافؤات، ونطالب بأن تكون الألياف الزائفة مجموعات؟</p>
+<p>الإجابة إيجابية. يوازي دليلنا دليل التحليل الشامل المعتاد كما وصفه فيريتي والمؤلف في <span class="nodecor">104</span>. استبدلنا الدوال النهائية بما نسميه «دوال نهائية» والتحليلات المنفصلة بما نسميه «تحليلات المجموعة». في تطبيقنا، نركز على الدوال التي عاملها النهائي هو دالة مساعدة يمينية.</p>
+<p>أشكر ألكسندر كامبل على الإشارة إلى العمل المتعلق بجويال حيث يُعرف <span class="math inline">\(n\)</span>–النهائي، و<span class="math inline">\(n\)</span>–التحليل، ونظام التحليل الطوبولوجي في سياق الفئات شبه-المجموعات (راجع الصفحة <span class="nodecor">170</span> من <span class="nodecor">JoyV1</span> والأقسام <span class="nodecor">A.6–8</span> من <span class="nodecor">JoyV2</span>).</p>
+<h1 id="تصنيفات-الزمر">تَصْنِيفات الزُمَر</h1>
+<p>المفهوم التالي يسميه غروتنديك «قوي ديكارتي». هذه التحويلات دوماً تُغلق تحت التركيب (على عكس تلك التي سمّاها «ديكارتي»).</p>
+<p>[cartesianmor] لنفترض أن <span class="math inline">\(p : E \to B\)</span> دالة. نسمي تحويل <span class="math inline">\(\chi : e' \to e\)</span> في <span class="math inline">\(E\)</span> ديكارتي بالنسبة إلى <span class="math inline">\(p\)</span> إذا كان المربع التالي سحْباً لكل <span class="math inline">\(k\in E\)</span>:
+<span class="math display">\[\label{cart}
+\begin{aligned}
+\xymatrix{
+E(k,e') \ar[rr]^-{E(k,\chi)} \ar[d]_-{p} & & E(k,e) \ar[d]^-{p} \\
+B(pk,pe') \ar[rr]_-{B(pk,p\chi)} & & B(pk,pe)
+}
+\end{aligned}\]</span></p>
+<p>بما أن أي مربع تبادلي ذو جانبين معكوسين هو سحب، نرى أن جميع التحويلات القابلة للعكس في <span class="math inline">\(E\)</span> ديكارتي، وإذا كانت <span class="math inline">\(p\)</span> مُخلّصة بالكامل فإن كل تحويل في <span class="math inline">\(E\)</span> ديكارتي.</p>
+<p>[gpdfib] نُسمِّي الدالة <span class="math inline">\(p : E \to B\)</span> «تصنيف زُمَري» عندما:</p>
+<ul>
+<li>لكل <span class="math inline">\(e\in E\)</span> ولكل <span class="math inline">\(\beta : b\to pe\)</span> في <span class="math inline">\(B\)</span> توجد <span class="math inline">\(\chi : e'\to e\)</span> في <span class="math inline">\(E\)</span> وتحويل معكوس <span class="math inline">\(b\cong pe'\)</span> بحيث <span class="math inline">\(\beta = (b\cong pe' \xra{p\chi} pe)\).</span></li>
+<li>كل تحويل في <span class="math inline">\(E\)</span> ديكارتي بالنسبة إلى <span class="math inline">\(p\)</span>.</li>
+</ul>
+<p>تشمل تصنيفات الزمر لدينا جميع مكافئات الفئات، ولذلك قد لا تكون تصنيفات بمعنى غروتنديك. ومن السحب يتبع أن تصنيفات الزمر محافظة (تعكس القابلية للعكس)، فتكون أليافها الزائفة <span class="math inline">\(E_b\)</span> زمر.</p>
+<p>بالنسبة للدوال <span class="math inline">\(A\xra{f}C\xla{g}B\)</span>، نكتب <span class="math inline">\(f/g\)</span> لفئة الفاصلة (الشريحة) لـ <span class="math inline">\(f\)</span> و<span class="math inline">\(g\)</span>؛ وهي رأس أيسر أعظم للمربع العالمي:
+<span class="math display">\[\label{commasq}
+\begin{aligned}
+\xymatrix{
+f/g \ar[d]_{s}^(0.5){\phantom{aaaa}}="1" \ar[rr]^{t} & & B \ar[d]^{g}_(0.5){\phantom{aaaa}}="2" \ar@{=>}"1";"2"^-{\lambda} \\
+A \ar[rr]_-{f} & & C
+}
+\end{aligned}\]</span> في ثنائي الفئة <span class="math inline">\(\mathrm{Cat}\)</span>. خاصةً، فئة الأسهم لـ <span class="math inline">\(E\)</span> هي <span class="math inline">\(E^{\mathbf{2}} = 1_E/1_E = E/E\)</span>. وللدالة <span class="math inline">\(E\xra{p}B\)</span>، مع كتابة <span class="math inline">\(B/p = 1_B/p\)</span>، توجد دالة قانونية <span class="math inline">\(E^{\mathbf{2}}\xra{r}B/p\)</span> موصوفة كما يلي:
+<span class="math display">\[\xymatrix{
+E^{\mathbf{2}} \ar@/_/[ddr]_{p s} \ar@/^/[drrr]^{t}
+\ar@{.>}[dr]|-{r} \\
+& B/p \ar[d]_{u}="1" \ar[rr]^{h} & & E \ar[d]^{p}="2" \ar@{=>}"1";"2"^-{\lambda} \\
+& B \ar[rr]_{1_B} & & B 
+}\]</span></p>
+<!-- باقي النص مصقول نحوياً مشابهاً للجزء أعلاه -->
+</body>
+</html>

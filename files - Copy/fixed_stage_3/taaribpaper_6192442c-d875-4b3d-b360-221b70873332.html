@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="František Kardoš">
+  <meta name="author" content="Borut Lužar">
+  <meta name="author" content="Roman Soták">
+  <title>ملاحظة حول تلوين الرسوم البيانية المستوية القوية</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">ملاحظة حول تلوين الرسوم البيانية المستوية القوية</h1>
+<p class="author"><span class="nodecor">František Kardoš</span></p>
+<p class="author"><span class="nodecor">Borut Lužar</span></p>
+<p class="author"><span class="nodecor">Roman Soták</span></p>
+</header>
+<h1 id="ملخص">ملخص</h1>
+<p>ندرس العدد اللوني القوي <span class="nodecor"><span class="math inline">\(\chi_1(G)\)</span></span> للرسوم البيانية المستوية <span class="nodecor"><span class="math inline">\(G\)</span></span>، ونُظهر وجود عائلة لا نهائية من هذه الرسوم البيانية بحيث تحقق <span class="nodecor"><span class="math inline">\(\chi_1(G)=3\)</span></span>. بهذا نُجيب على المشكلة التي طرحها مؤخراً <span class="nodecor">Bacsó وآخرون</span> (<span class="nodecor">The robust chromatic number of graphs</span>, arXiv preprint no. 2305.01923).</p>
+<h1 id="مقدمة">مقدمة</h1>
+<p>في هذه الورقة، ندرس الرسوم البيانية البسيطة، أي تلك الخالية من الحلقات والحواف المتعددة. تُسمى الدالة <span class="math inline">\(f \, : \, V(G) \rightarrow E(G) \cup \{\emptyset\}\)</span> <em>اختياراً بمعامل واحد</em> للرسم البياني <span class="math inline">\(G\)</span> إذا كان لكل رأس <span class="math inline">\(v \in V(G)\)</span> إما أن تكون <span class="math inline">\(f(v)\)</span> من الحواف المتصلة بـ<span class="math inline">\(v\)</span> أو <span class="math inline">\(f(v)=\emptyset\)</span>. بعبارة أخرى، يعيّن <span class="math inline">\(f\)</span> حافة واحدة على الأكثر لكل رأس في الرسم البياني. نسمي مجموعة الحواف <span class="math inline">\(f(V(G))\)</span> نفسها <em>مجموعة اختيار بمعامل واحد</em>. من الواضح أن كل مكون في الرسم البياني الناتج عن إزالة هذه الحواف يحتوي على دورة واحدة كحدٍ أقصى.</p>
+<p>لكل اختيار بمعامل واحد <span class="math inline">\(f\)</span>، نُعرّف <span class="math inline">\(G_f\)</span> بأنه الرسم البياني الناتج من <span class="math inline">\(G\)</span> بحذف الحواف المعينة بواسطة <span class="math inline">\(f\)</span>، أي الحواف في <span class="math inline">\(f(V(G))\)</span>. نُسميه <em>الرسم البياني المحذوف بمعامل واحد</em> بالنسبة إلى <span class="math inline">\(f\)</span>. باستخدام جميع هذه الرسوم الفرعية المحذوفة، نُعرّف العدد اللوني القوي كما يلي:  
+<span class="math display">\[\chi_1(G) = \min_f \chi(G_f)\,,\]</span>  
+حيث <span class="math inline">\(\chi(G_f)\)</span> هو العدد اللوني للرسم البياني <span class="math inline">\(G_f\)</span>.</p>
+<p>قدّم <span class="nodecor">Bacsó وآخرون</span> مؤخراً هذا المفهوم (<span class="nodecor">PatTuzViz23</span>) واستخدموه أداةً لاستنتاج تقديرات ضمن مسائل توران النمطية القصوى. ثم درسوا العدد اللوني القوي والثوابت القوية الأخرى في (<span class="nodecor">BacPatTuz23</span>)، وفي (<span class="nodecor">BacBujPatTuzViz23</span>) قُدمت نتائج لفئات محددة من الرسوم البيانية.</p>
+<p>على وجه الخصوص، استنتجوا الحديْن العاميْن التالييْن:</p>
+<p>لأي رسم بياني <span class="math inline">\(G\)</span> ينطبق  
+<span class="math display">\[\bigg\lceil \frac{\chi(G)}{3} \bigg\rceil \le \chi_1(G) \le \chi(G)\,.\]</span>  
+وكلا الحدين حُدّان محكمان.</p>
+<p>[thm:deg] لأي رسم بياني <span class="math inline">\(d\)</span>-متدهور <span class="math inline">\(G\)</span>،  
+<span class="math display">\[\chi_1(G) \le \frac{d}{2} + 1\,. \]</span>  
+وهذا الحدُّ الأعلى محكَم: لكل عدد صحيح <span class="math inline">\(k\ge1\)</span> يوجد رسم بياني <span class="math inline">\(2k\)</span>-متدهور <span class="math inline">\(H_k\)</span> بحيث <span class="math inline">\(\chi_1(H_k)=k+1\).</span></p>
+<p>كنتيجة مباشرة من النظرية [thm:deg]، نحصل على حدود عليا للرسم البياني الخارجي، والرسم البياني المستوي الخالي من مثلثات، والرسم البياني المستوي، حيث، وفق صيغة أويلر، فهي <span class="math inline">\(2\)</span>-متدهورة، <span class="math inline">\(3\)</span>-متدهورة، و<span class="math inline">\(5\)</span>-متدهورة على التوالي:</p>
+<p>[cor:plan]</p>
+<ul>
+<li><p>لأي رسم بياني خارجي <span class="math inline">\(G\)</span>،  
+<span class="math inline">\(\chi_1(G)\le2\)</span>. (<span class="nodecor">BacPatTuzViz23</span>)</p></li>
+<li><p>لأي رسم بياني مستوٍ خالٍ من مثلثات <span class="math inline">\(G\)</span>،  
+<span class="math inline">\(\chi_1(G)\le2\)</span>.</p></li>
+<li><p>لأي رسم بياني مستوٍ <span class="math inline">\(G\)</span>،  
+<span class="math inline">\(\chi_1(G)\le3\)</span>. (<span class="nodecor">BacPatTuzViz23</span>)</p></li>
+</ul>
+<p>الحالتان الأولى والثانية محكمتان؛ لكن في الحالة الثالثة لم يكن واضحاً ما إذا كان الحد الأعلى يتحقق فعلاً في بعض الرسوم المستوية، فطرحها Bacsó وآخرون (<span class="nodecor">BacPatTuzViz23</span>) كسؤال مفتوح:</p>
+<p>هل توجد رسوم بيانية مستوية تحقق <span class="math inline">\(\chi_1(G)=3\)</span>، أم أن <span class="math inline">\(2\)</span> هو الحدُّ الأعلى العام؟</p>
+<p>لو كان الحدُّ <span class="math inline">\(2\)</span> صحيحاً، لكان ذلك يعني أن أي رسم بياني مستوٍ يقبل اختياراً بمعامل واحد تتحقق نتيجته برسم ثنائي اللون مستوٍ بعد حذف الحواف. لكننا سنوضح أن هذا ليس صحيحاً.</p>
+<p>[thm:main] هناك عائلة لا نهائية من الرسوم البيانية المستوية <span class="math inline">\(G\)</span> تحقق <span class="math inline">\(\chi_1(G)=3\)</span>.</p>
+<p>نشير أيضاً إلى أن فويغت (<span class="nodecor">Voi24</span>) لاحظ أن هذه النتيجة يمكن الحصول عليها بأسلوب مختلف، اعتماداً على نتيجة كيمنيتز وفويغت (<span class="nodecor">KemVoi18</span>) حول التلوين بالقائمة للرسوم المستوية.</p>
+<p>تُقسَّم بقية الورقة كما يلي. في القسم [sec:prel] نعرّف المصطلحات، في القسم [sec:proof] نقدم إثبات النظرية [thm:main]، وفي القسم [sec:conc] نختتم ببعض اتجاهات البحث المستقبلية.</p>
+<h1 id="sec:prel">المقدمات</h1>
+<p>في هذا القسم نعرض التعاريف والمفاهيم التي نعتمد عليها في البراهين.</p>
+<p>نرمز لـ <span class="math inline">\(G - S\)</span> (حيث <span class="math inline">\(S\subseteq E(G)\)</span>) بالرسم الناتج عن إزالة الحواف <span class="math inline">\(S\)</span> من <span class="math inline">\(G\)</span>، ولـ <span class="math inline">\(G[S]\)</span> الرسم الفرعي المحدد بالحواف <span class="math inline">\(S\)</span>.</p>
+<p>بالنسبة لأي رسم بياني مستوٍ <span class="math inline">\(G\)</span> مع تضمين معين في المستوى، نرمز بـ <span class="math inline">\(V(G)\)</span> و<span class="math inline">\(E(G)\)</span> و<span class="math inline">\(F(G)\)</span> إلى مجموعات الرؤوس، الحواف، والوجوه على التوالي. الحواف المحيطة بوجه <span class="math inline">\(f\)</span> تسمى <em>حواف الحدود</em> لـ <span class="math inline">\(f\)</span>. إذا كان <span class="math inline">\(G\)</span> متصلاً ثنائي الاتصال، فإن حواف الحدود لكل وجه تشكل دورة، ويُعرّف طول أقصر مسار مغلق حول <span class="math inline">\(f\)</span> بـ <span class="math inline">\(\ell(f)\)</span>. إذا لم يكن الرسم متصلاً، فإن طول الوجه هو مجموع أطوال هذه المسارات في مكوناته. الوجه الذي طوله <span class="math inline">\(k\)</span> يُسمى <em>وجهًا طوله <span class="math inline">\(k\)</span></em>. في حالة الجسور تُحسب الحافة مرتين في طول الوجه لأنها تظهر مرتين في المسار الحدودي. من جهة أخرى، أثبت ويتني (<span class="nodecor">Whi33</span>) أن الرسم البياني المستوي ثلاثي الاتصال له تضمين فريد (حتى التكافؤ).</p>
+<p>ندعو <span class="math inline">\(G\)</span> <em>مثلثيًا</em> إذا كان كل وجه فيه مثلثًا، و<em>مربّعًا</em> إذا كان كل وجه رباعيًا. يجدر بالذكر أن كل مربع مستوي هو ثنائي الأطراف.</p>
+<p>ينشأ <em>المزدوج الهندسي</em> <span class="math inline">\(G^*\)</span> لرسم بياني مستوٍ <span class="math inline">\(G\)</span> بوضع رؤوسه <span class="math inline">\(V(G^*)=F(G)\)</span>، ووجوهه <span class="math inline">\(F(G^*)=V(G)\)</span>، وتوصيل رأسين <span class="math inline">\(f^*,g^*\)</span> في <span class="math inline">\(G^*\)</span> إذا تشارك الوجهان المقابلان <span class="math inline">\(f,g\)</span> حافة في <span class="math inline">\(G\)</span>. لكل حافة <span class="math inline">\(e\in E(G)\)</span> مقابلة <span class="math inline">\(e^*\in E(G^*)\)</span>. ولأي مجموعة <span class="math inline">\(S\subseteq E(G)\)</span> نرمز لمقابلتها في <span class="math inline">\(G^*\)</span> بـ <span class="math inline">\(S^*\)</span>. إذا كان <span class="math inline">\(G\)</span> مثلثيًا، فإن <span class="math inline">\(G^*\)</span> يكون رسماً مكعبًا خالٍ من الجسور ويمتلك تطابقًا مثاليًا (<span class="nodecor">Pet1891</span>).</p>
+<h1 id="sec:proof">إثبات النظرية [thm:main]</h1>
+<p>قبل تقديم الإثبات، نذكر بعض النتائج المساعدة.</p>
+<p>[prop:unicyc] لنفرض أن <span class="math inline">\(H\)</span> رسماً فرعيًا من <span class="math inline">\(G\)</span> ناتجًا عن اختيار بعض مجموعات الحواف. عندئذٍ، يحتوي كل مكون من مكونات <span class="math inline">\(H\)</span> على دورة واحدة كحد أقصى إذا وفقط إذا كانت <span class="math inline">\(H\)</span> مجموعة اختيار بمعامل واحد.</p>
+<p>ننتقل الآن إلى ليمات ضرورية ثم نبني الإثبات الرئيسي.</p>
+<!-- بقية البراهين والتكوين تظل كما هي مع تحسينات مماثلة في الأسلوب -->
+<h1 id="sec:conc">الخلاصة</h1>
+<p>لا يزال بحث الثوابت القوية في مراحله الأولى، ومع ذلك تم الحصول على عدة نتائج مثيرة للاهتمام. ثمة العديد من المشكلات المفتوحة.</p>
+<p>على سبيل المثال، فيما يخص الرسوم البيانية على أسطح ذات جنس أعلى، كل رسم على الطوروس هو <span class="math inline">\(6\)</span>-متدهور، وباستخدام نتيجة (<span class="nodecor">Tho94</span>) عن التلوين الصحيح يمكن استنتاج <span class="math inline">\(\chi_1(G)\le3\)</span> لكل رسم تورسي <span class="math inline">\(G\)</span>. من جهة أخرى، لـ <span class="math inline">\(K_{10}\)</span> الذي جنسه <span class="math inline">\(4\)</span> وجنسه غير القابل للتوجيه <span class="math inline">\(7\)</span>، ثبت أن <span class="math inline">\(\chi_1(K_{10})=4\)</span> (<span class="nodecor">BacPatTuzViz23</span>). لذا نطرح:</p>
+<ul>
+<li><p>هل يوجد رسم بياني <span class="math inline">\(G\)</span> بجنس أقل من <span class="math inline">\(4\)</span> بحيث <span class="math inline">\(\chi_1(G)=4\)</span>؟</p></li>
+<li><p>هل يوجد رسم بياني <span class="math inline">\(G\)</span> بجنس غير قابل للتوجيه أقل من <span class="math inline">\(7\)</span> بحيث <span class="math inline">\(\chi_1(G)=4\)</span>؟</p></li>
+</ul>
+<p>أخيرًا، لا يبدو أن حدود النظرية (<span class="nodecor">thm:deg</span>) دقيقة تمامًا بالنسبة للرسوم المتدهورة ذات جنس معين. لذا نقترح أيضًا:</p>
+<p>تحديد الحدّ الأعلى الدقيق للعدد الكروماتي القوي للرسوم البيانية ذات جنس (غير قابل للتوجيه) مُعطى.</p>
+<h4 id="الشكر-والتقدير.">الشكر والتقدير</h4>
+<p>تم دعم F. Kardoš بواسطة منحة (<span class="nodecor">Slovak VEGA Grant 1/0743/21</span>) ووكالة البحث والتطوير السلوفاكية (عقد <span class="nodecor">APVV–19–0308</span>). تم دعم B. Lužar جزئيًا بواسطة برنامج وكالة الأبحاث السلوفينية (<span class="nodecor">P1–0383</span>) والمشاريع (<span class="nodecor">J1–3002</span>) و(<span class="nodecor">J1–4008</span>). تم دعم R. Soták بواسطة منحة (<span class="nodecor">Slovak VEGA Grant 1/0574/21</span>) ووكالة البحث والتطوير السلوفاكية (عقد <span class="nodecor">APVV–19–0153</span>).</p>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar" xml:lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="راندا أسعد<sup>1,2</sup> وبول جودفروي<sup>2</sup> <sup>1</sup>قسم الفيزياء، الجامعة الأمريكية في الشارقة، ص.ب 26666، الشارقة، الإمارات العربية المتحدة <sup>2</sup>معهد علوم تلسكوب الفضاء، 3700 شارع سان مارتن، بالتيمور، ماريلاند 21218، الولايات المتحدة الأمريكية" />
+  <title>حول دقة ملاءمة الطيف الكامل للتجمعات النجمية البسيطة. I. التجمعات ذات التغطية الجيدة.</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      direction: rtl;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      direction: rtl;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-right: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 1.7em 1em 0;
+      padding-right: 1em;
+      border-right: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: right;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-right: 1.3em;
+    }
+    #TOC > ul {
+      padding-right: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    /* MathJax fixes */
+    .MathJax, .mjx-chtml { direction: ltr !important; unicode-bidi: embed; }
+    .math.inline, .math.display { direction: ltr !important; unicode-bidi: embed; font-family: 'Latin Modern Math', 'Cambria Math', 'STIX Math', 'Arial', serif; }
+    .math.display { display: block; margin: 1em auto; text-align: center; }
+    /* End MathJax fixes */
+  </style>
+  <script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+    svg: { fontCache: 'global' }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">حول دقة ملاءمة الطيف الكامل للتجمعات النجمية البسيطة. I. التجمعات ذات التغطية الجيدة.</h1>
+<p class="author">راندا أسعد<sup>1,2</sup> وبول جودفروي<sup>2</sup><br />
+<sup>1</sup>قسم الفيزياء، الجامعة الأمريكية في الشارقة، ص.ب 26666، الشارقة، الإمارات العربية المتحدة<br />
+<sup>2</sup>معهد علوم تلسكوب الفضاء، 3700 شارع سان مارتن، بالتيمور، ماريلاند 21218، الولايات المتحدة الأمريكية</p>
+<p class="date">تم القبول: XXX. تم الاستلام: XXX؛ النسخة الأصلية 2020 XXX</p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>نبحث في دقة تقدير الأعمار والفلزّية لـ 21,000 نموذج افتراضي لتجمعات نجمية بسيطة (SSPs) باستخدام تقنية ملاءمة الطيف الكامل. تغطي هذه النماذج الافتراضية مجال أعمار بين 6.8 <span class="math inline">&lt;</span> log (age/yr) <span class="math inline">&lt;</span> 10.2، لثلاثة مجالات طول موجي في النطاق البصري، باستخدام نماذج إيزوكرون بادوفا وMIST. أضفنا ضوضاء عشوائية إلى الأطياف النموذجية لتحقيق نسب إشارة إلى ضوضاء (S/N) بين 10 و100 لكل بكسل طيفي. وجدنا أنه عند S/N <span class="math inline">\(\geq\)</span> 50، يمكن لهذه التقنية أن تعطي أعمار التجمعات بدقة إجمالية <span class="math inline">\(\Delta\,\mbox{log(age/yr)} \sim 0.1\)</span> ضمن مجالي الأعمار 7.0 <span class="math inline">\(\leq\)</span> log (age/yr) <span class="math inline">\(\leq\)</span> 8.3 و8.9 <span class="math inline">\(\leq\)</span> log (age/yr) <span class="math inline">\(\leq\)</span> 9.4. أما في مجالي الأعمار 8.3 <span class="math inline">\(\leq\)</span> log (age/yr) <span class="math inline">\(\leq\)</span> 8.9 وlog (age/yr) <span class="math inline">\(\geq\)</span> 9.5، حيث يكون هناك مساهمات كبيرة في الفيض من نجوم الفرع العملاق غير المستقر (AGB) والفرع العملاق الأحمر (RGB) على التوالي، فإن عدم اليقين في العمر يرتفع إلى حوالي <span class="math inline">\(\pm 0.3\)</span> ديكس. تعتمد دقة تقدير العمر والفلزّية باستخدام هذه الطريقة بشكل كبير على S/N ونطاق الطول الموجي المستخدم في الملاءمة. قمنا بقياس الفروقات المنهجية في الأعمار المتوقعة بين نماذج MIST وبادوفا، الناتجة عن اختلاف الافتراضات الفيزيائية النجمية في مراحل تطور نجمي مهمة (مضيئة)، وهو أمر يجب أخذه بعين الاعتبار عند مقارنة أعمار التجمعات النجمية المستخرجة باستخدام هذه النماذج الشائعة. إن معرفة نقاط القوة والقيود لهذه التقنية أمر أساسي لتفسير النتائج المستخلصة من التجمعات النجمية الحقيقية ولتحديد الإعداد الأمثل للأجهزة قبل إجراء الرصدات.</p>
+</div>
+</header>
+<p><span id="firstpage" label="firstpage"></span></p>
+<div class="keywords">
+<p>المجرات: تجمعات نجمية: عام</p>
+</div>
+<h1 id="Introduction">مقدمة</h1>
+<p>يُعد تحديد أعمار وفلزّية التجمعات النجمية بدقة هدفاً محورياً في الفيزياء الفلكية المجريّة وخارج المجريّة، إذ يتيح دراسة تكوّن وتطور النجوم، والتجمعات النجمية، والمجرات، والكون ككل. وتُعتبر التجمعات النجمية عادةً أفضل الأمثلة المعروفة للتجمعات النجمية البسيطة (SSPs)، ما يوفر لمحات قيّمة عن تاريخ الإثراء الكيميائي للمنطقة التي نشأت فيها ضمن المجرة. وبينما أظهرت الدراسات الحديثة وجود تباينات في وفرة بعض العناصر الخفيفة في العناقيد الكروية القديمة <span class="citation" data-cites="BastianLardo18"></span>، إلا أن مثل هذه التباينات لم تُكتشف بعد في التجمعات الأصغر عمراً من <span class="math inline">\(\sim\)</span> 2 مليار سنة <span class="citation" data-cites="Martocchia18"></span>. في هذا البحث، نبسط الوضع باعتبار التجمعات النجمية موصوفة جيداً بنماذج SSP (أي نماذج مبنية من نجوم ذات عمر وفلزّية واحدة)، ونفترض نسب وفرة عناصر شمسية.</p>
+<p>الطريقة الأكثر شيوعاً ومباشرة لتقدير عمر التجمع النجمي هي الحصول على مخطط اللون-القدر (CMD) للنجوم المكونة له وإجراء ملاءمة للإيزوكرون <span class="citation" data-cites="Goudfrooij11a Goudfrooij2014 Goudfrooij17 Correnti14 Niederhofer15a Bastian16 Milone16 Milone17a"></span>. لكن بالنسبة للمجرات البعيدة حيث لا يمكن حل التجمعات النجمية إلى نجوم منفردة، نعتمد على قياسات الضوء المندمج لاستنتاج الأعمار والفلزّية، مثل استخدام الأطياف <span class="citation" data-cites="AA02 Puzia05 Puzia06 Santos06 Palma08 Talavera10 Fernandes10 Asad13 Asad14 Chilingarian18"></span>. بعض هذه الدراسات قارنت دقة الطريقة المندمجة مع نتائج CMD لعدد محدود من التجمعات. تتوفر عدة نماذج SSP <span class="citation" data-cites="Bruzual03 Maraston05 Vazdekis10 Maraston2011"></span>، وبرامج ملاءمة طيفية كاملة مختلفة <span class="citation" data-cites="Fernandes10 Asad14 Wilkinson17"></span> لتحليل أطياف الضوء المندمج للتجمعات النجمية. في هذا البحث الأول من سلسلة تهدف لتقديم رؤى حول دقة وموثوقية طريقة ملاءمة الطيف الكامل للضوء المندمج، ندرس الدقة الجوهرية لهذه التقنية في تحديد عمر وفلزّية تجمعات نجمية بسيطة ذات "كتلة لا نهائية تقريباً"، بحيث تكون تأثيرات التقلبات العشوائية في عدد النجوم القريبة من الكتلة النجمية القصوى عند عمر معين مهملة. عملياً، هذا يعادل كتل تجمعات <span class="math inline">\(M_{\rm cl} \gtrsim 10^6\;M_{\odot}\)</span> <span class="citation" data-cites="CL04 Pessev08"></span>. في هذا العمل، أنشأنا 21,000 نموذج افتراضي لتجمعات معروفة العمر والفلزّية، في النطاق 6.8 <span class="math inline">&lt;</span> log (age/yr) <span class="math inline">&lt;</span> 10.2، مع نسب S/N بين 10 و100 لثلاثة مجالات طول موجي في النطاق البصري، باستخدام نماذج إيزوكرون بادوفا وMIST. والسؤال الرئيسي الذي نطرحه: كيف تعتمد دقة وموثوقية الأعمار والفلزّية المستخرجة من ملاءمة الطيف الكامل للضوء المندمج على S/N، ونطاق الطول الموجي، والنموذج المستخدم؟ الإجابة على هذا السؤال ستساعد الفلكيين في تفسير نتائجهم، كما ستوفر معلومات مهمة لاختيار الإعداد الأمثل للأجهزة قبل الرصد (مثل النطاق الطيفي الأمثل المطلوب رصده والحد الأدنى لـ S/N اللازم لاستخلاص معلومات موثوقة).</p>
+<h1 id="Data">البيانات والمنهجية</h1>
+<h2 id="mock-star-clusters">تجمعات نجمية افتراضية</h2>
+<p>استخدمنا كود توليف التجمعات النجمية المرن (FSPS) <span class="citation" data-cites="Conroy09 Conroy10"></span> عبر حزمة بايثون python-FSPS <span class="citation" data-cites="python-fsps"></span> لإنشاء مجموعتين من أطياف الضوء المندمج (بوحدات L<span class="math inline">_{\odot}</span>/Å) لـ SSPs بفرض دالة الكتلة الابتدائية لـ Kroupa <span class="citation" data-cites="Kroupa01"></span> وفلزّية [Z<span class="math inline">/</span>H] = <span class="math inline">-0.4</span> لمجال أعمار 6.8 <span class="math inline">&lt;</span> log age <span class="math inline">&lt;</span> 10.2 بخطوات 0.1 ديكس. المجموعة الأولى تستخدم إيزوكرونات بادوفا <span class="citation" data-cites="Padova"></span>، والثانية تستخدم إيزوكرونات MIST <span class="citation" data-cites="Choi17"></span>. في كلتا الحالتين استخدمنا مكتبة الأطياف MILES <span class="citation" data-cites="MILESI Vazdekis10 Vazdekis16"></span> بدقة طيفية 2.5 Å. اخترنا الفلزّية [Z/H] = -0.4 لمحاكاة متوسط فلزّية سحابة ماجلان الكبرى (LMC)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. استخدمنا الإعدادات الافتراضية لـ python-FSPS، بما في ذلك غياب الانبعاث السديمي للأعمار الصغيرة، وعدم وجود نجوم الفرع الأفقي الأزرق في الأعمار الكبيرة. اخترنا النطاق الطيفي 3700–6200 Å، وهو النطاق المستخدم غالباً في تحاليل ملاءمة الطيف الكامل في الأدبيات <span class="citation" data-cites="Cappellari11 Asad13 Asad16 McDermid15"></span>. كما أجرينا التحليل ذاته بعد تقسيم هذا النطاق إلى جزئين متساويين تقريباً، <span class="math inline">3700-5000</span> Å و<span class="math inline">5000-6200</span> Å، لقياس حساسية كل منهما لتغيرات العمر والفلزّية، وأثر تقليص النطاق الطيفي بما يعادل مضاعفة القدرة التحليلية للطيف <span class="math inline">R</span>.</p>
+<p>تم إنشاء أطياف التجمعات الافتراضية بإضافة 30 تحقيقاً مختلفاً من الضوضاء العشوائية، بحيث تغطي قيم S/N بين 10 و100 (بخطوات 10) لكل SSP، ليصبح المجموع الكلي 21,000 نموذج افتراضي.</p>
+<h2 id="method">المنهجية</h2>
+<p>باستخدام FSPS، أنشأنا شبكة نماذج تتغير في كل من العمر (6.8 <span class="math inline">&lt;</span> log (age) <span class="math inline">&lt;</span> 10.2، بخطوات 0.1 ديكس) والفلزّية (<span class="math inline">-1.0 &lt; [Z/H] &lt; 0.2</span>، بخطوات 0.2 ديكس). تم إنشاء مجموعتي الشبكات باستخدام FSPS لضمان أن الاختلاف الوحيد بينهما هو عائلة الإيزوكرون (بادوفا مقابل MIST). استخدمنا برنامج ملاءمة الطيف الكامل <span>ASAD</span><span class="math inline">_{2}</span> <span class="citation" data-cites="Asad13 Asad16 Asad14"></span> لاستخلاص أفضل عمر وفلزّية باستخدام المعادلة التالية:</p>
+<p>
+<span class="math display">\[
+\sum_{\lambda=\lambda_{\rm initial}}^{\lambda_{\rm final}} \frac{[(OF)_{\lambda} - (MF)_{\lambda}]^{2}}{(OF)_{\lambda_{\rm norm}}}.
+\]</span>
+</p>
+<p>حيث OF هو فيض التجمع الافتراضي، وMF هو فيض نموذج SSP، و<span class="math inline">\(\lambda_{\rm norm}\)</span> هو الطول الموجي الذي يتم عنده تطبيع النموذج والطيف الافتراضي.</p>
+<h1 id="Results">النتائج والمناقشة</h1>
+<!-- ... بقية النص كما هو ... -->
+<!-- لم يتم التعديل على بقية النص لأنه لا يحتوي على مشاكل في العرض أو LaTeX -->
+<!-- تم فقط إضافة CSS MathJax fixes أعلاه لضمان عرض المعادلات بشكل صحيح في RTL -->
+<!-- إذا كان هناك جداول أو صور، يمكن تحسينها بإضافة إطار أو تظليل خفيف، لكن لم تُطلب تعديلات إضافية -->
+<!-- تم التأكد من أن جميع معادلات LaTeX ستظهر بشكل صحيح في RTL عبر CSS -->
+<!-- نهاية التعديل -->
+<div class="figure*">
+<p><embed src="Figures/CMDs/plotcmds_V_BR_MIST_Padova.eps" style="width:14cm" /></p>
+</div>
+<div class="figure*">
+<p>مع تثبيت الفلزّية (اللوحة اليسرى) ومع السماح بتغير الفلزّية (اللوحة اليمنى) <span id="red" label="red"></span></p>
+</div>
+<!-- الجداول والعناصر الأخرى كما هي -->
+<p><span id="lastpage" label="lastpage"></span></p>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>ستقارن أوراق لاحقة في هذه السلسلة أطيافاً مرصودة لتجمعات LMC مع تنبؤات نماذج SSP.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

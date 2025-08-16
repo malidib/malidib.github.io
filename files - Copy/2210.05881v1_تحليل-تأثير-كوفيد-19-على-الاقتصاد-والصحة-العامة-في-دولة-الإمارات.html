@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنبؤ التدهور باستخدام السلاسل الزمنية لثلاثة مؤشرات حيوية والخصائص السريرية الحالية لدى مرضى كوفيد-19</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+        .container {
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #5d6d7e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .abstract {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        .keywords {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .figure {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        .table {
+            margin: 25px 0;
+        }
+        .reference {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        .meta-info {
+            background-color: #e7f3ff;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-left: 4px solid #6c757d;
+            padding-left: 20px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        .theorem, .lemma, .proposition, .corollary {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .proof {
+            border-left: 2px solid #28a745;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="meta-info">
+            <strong>معرّف ArXiv:</strong> 2210.05881v1<br>
+            <strong>LaTeX الأصلي:</strong> <code>./nyuad_arxiv_papers/nyuad_papers_comprehensive/source_code/2210.05881v1_extracted/main.tex</code><br>
+            <strong>تاريخ التحويل:</strong> 2025-06-06 13:13:50
+        </div>
+        <header id="title-block-header">
+<h1 class="title">تنبؤ التدهور باستخدام السلاسل الزمنية لثلاثة مؤشرات حيوية والخصائص السريرية الحالية لدى مرضى كوفيد-19</h1>
+<p class="author">سرمد مهرداد،<br />
+فرح الشاموت، ياو وانغ، وس. فاروق أتاشزار<span
+class="math inline">\(^*\)</span>، <a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="abstract">
+<div class="abstract-title">الملخص</div>
+<p>إن عدم التعرف المبكر على تدهور حالة المرضى قد يؤدي إلى ارتفاع معدلات المراضة والوفيات. معظم نماذج التنبؤ بالتدهور الحالية تتطلب عدداً كبيراً من المعلومات السريرية، والتي غالباً ما تُجمع في المستشفيات، مثل الصور الطبية أو التحاليل المخبرية الشاملة. هذا الأمر غير عملي في حلول الطب عن بُعد، ويبرز الحاجة إلى نماذج تنبؤ بالتدهور تعتمد على بيانات محدودة يمكن جمعها على نطاق واسع في أي عيادة أو دار رعاية أو حتى في منزل المريض. في هذه الدراسة، نقترح ونطور نموذجاً تنبؤياً يتوقع ما إذا كان المريض سيواجه تدهوراً خلال 3 إلى 24 ساعة قادمة. يعالج النموذج بشكل متسلسل ثلاثة مؤشرات حيوية روتينية: (أ) تشبع الأكسجين، (ب) معدل ضربات القلب، و(ج) درجة الحرارة. كما يُزود النموذج بمعلومات أساسية عن المريض تشمل الجنس، العمر، حالة التطعيم، تاريخ التطعيم، وحالة السمنة أو ارتفاع ضغط الدم أو السكري. قمنا بتدريب وتقييم النموذج باستخدام بيانات جمعت من 37,006 مريض كوفيد-19 في مركز NYU Langone Health في نيويورك، الولايات المتحدة الأمريكية. حقق النموذج مساحة تحت منحنى الاستجابة (AUROC) تتراوح بين 0.808 و0.880 لتنبؤ التدهور خلال 3 إلى 24 ساعة. كما أجرينا تجارب إخفاء لتقييم أهمية كل ميزة مدخلة، وأظهرت النتائج أهمية المراقبة المستمرة لتغيرات المؤشرات الحيوية. تظهر نتائجنا إمكانية التنبؤ الدقيق بالتدهور باستخدام مجموعة ميزات محدودة يمكن الحصول عليها بسهولة نسبياً عبر الأجهزة القابلة للارتداء ومعلومات المريض الذاتية.</p>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#sec:introduction">المقدمة</a></li>
+<li><a href="#methodology">المنهجية</a>
+<ul>
+<li><a href="#dataset">مجموعة البيانات</a></li>
+<li><a href="#dl-based-deterioration-prediction-model">نموذج التنبؤ بالتدهور المعتمد على التعلم العميق</a>
+<ul>
+<li><a href="#svs-net-architecture-details">تفاصيل بنية SVS-Net</a></li>
+<li><a href="#three-phase-training-strategy">استراتيجية التدريب ثلاثية المراحل</a></li>
+<li><a href="#model-training-and-evaluation">تدريب النموذج وتقييمه</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#results-and-discussion">النتائج والمناقشة</a>
+<ul>
+<li><a href="#patient-cohort">مجموعة المرضى</a></li>
+<li><a href="#model-performance">أداء النموذج</a></li>
+<li><a href="#ablation-studies">دراسات الاستبعاد</a></li>
+<li><a href="#occlusion-analysis">تحليل الإخفاء</a></li>
+</ul></li>
+<li><a href="#conclusion">الخلاصة</a></li>
+<li><a href="#acknowledgement">الشكر والتقدير</a></li>
+<li><a href="#appendix-i">الملحق الأول</a></li>
+</ul>
+</nav>
+<div class="IEEEkeywords">
+<p>كوفيد-19، التعلم العميق، التنبؤ بالتدهور، مراقبة المؤشرات الحيوية</p>
+</div>
+<section id="sec:introduction" class="level1">
+<h1>المقدمة</h1>
+<p>لقد فرضت جائحة فيروس كورونا المستجد (كوفيد-19) صدمة كبيرة على أنظمة الرعاية الصحية حول العالم، وأعادت تشكيل أساليب تقديم وإدارة الخدمات الصحية <span class="citation" data-cites="56"></span>. ووفقاً لمنظمة الصحة العالمية، تم تشخيص أكثر من 620 مليون حالة إصابة بكوفيد-19 حتى أكتوبر 2022، مع تسجيل حوالي 6.52 مليون حالة وفاة <span class="citation" data-cites="WHO"></span>. ومنذ مارس 2020، تم إدخال 96.2 مليون مريض إلى أقسام الطوارئ في الولايات المتحدة الأمريكية <span class="citation" data-cites="73"></span>.</p>
+<p>يمكن أن يواجه مرضى كوفيد-19 تدهوراً سريعاً يتطلب تدخلاً طبياً مكثفاً يرتبط بمعدلات مراضة ووفيات مرتفعة <span class="citation" data-cites="57"></span>. خلال الجائحة، كان التنبؤ بمآل المرضى تحدياً كبيراً، خاصة في المراحل الأولى عندما كانت المعرفة بالمرض محدودة، وأي تعديل في بروتوكولات القبول كان من شأنه أن يؤثر بشكل كبير على نتائج المرضى <span class="citation" data-cites="59"></span>. وقد أبرز ذلك أهمية المراقبة الروتينية للمرضى لضمان حصول الأكثر عرضة للتدهور على الرعاية المبكرة <span class="citation" data-cites="58"></span>.</p>
+<p>ونظراً لازدحام أنظمة الرعاية الصحية والخوف من التعرض غير الضروري للعدوى، تم نصح العديد من المرضى الخارجيين أو المقيمين في دور الرعاية بمتابعة أعراضهم عن بُعد والإبلاغ عنها عبر الطب عن بُعد <span class="citation" data-cites="63"></span>. وبذلك، أصبح المرضى يتجنبون زيارة مرافق الطوارئ إلا إذا كانت الأعراض شديدة وتستدعي تدخلاً عاجلاً <span class="citation" data-cites="64"></span>. ورغم أن هذا الإجراء قد يقلل من التعرض للعدوى ويخفف الضغط على خدمات الطوارئ <span class="citation" data-cites="65"></span>، إلا أنه قد يؤدي أيضاً إلى سوء مآل بعض المرضى. ففي بعض الحالات، خاصة لدى من يعانون من أمراض مصاحبة، قد يتبع ظهور الأعراض تدهور مفاجئ وحاد وغير متوقع، حتى بعد الخروج من العيادة <span class="citation" data-cites="66"></span>.</p>
+<p>وبالنظر إلى الكم الهائل من البيانات التي تم جمعها من مرضى كوفيد-19 في أقسام الطوارئ حول العالم، تم تطوير العديد من تقنيات التعلم العميق والتعلم الآلي للتشخيص المبكر <span class="citation" data-cites="60"></span>، وتقييم شدة المرض <span class="citation" data-cites="61"></span>، أو التنبؤ بمآل المرضى <span class="citation" data-cites="62 67"></span>. في الجدول <a href="#tab_1" data-reference-type="ref" data-reference="tab_1">1</a>، نلخص الأعمال ذات الصلة بناءً على نوعية البيانات والنماذج المستخدمة لمهام التنبؤ المختلفة. ونظراً لكثرة الأبحاث في هذا المجال، يقدم الجدول الأول قائمة متوازنة من الدراسات.</p>
+<p>تركز معظم الدراسات السابقة على تشخيص كوفيد-19 أكثر من التنبؤ بمآل المرضى، وتعتمد العديد منها على مجموعات ميزات كبيرة، خاصة الصور الطبية عالية الأبعاد مثل الأشعة المقطعية أو أشعة الصدر، بالإضافة إلى نتائج التحاليل المخبرية. كما أن العديد من النماذج لا تستفيد من التغيرات الزمنية في البيانات. ورغم أن استخدام هذه البيانات في النماذج الحاسوبية أظهر إمكانات كبيرة، إلا أن هناك نقصاً في النماذج القابلة للتوسع بسهولة والتي تعتمد على مجموعات ميزات محدودة تُجمع على مدى الزمن. نركز في هذه الدراسة على البيانات التي يمكن جمعها ليس فقط في المستشفيات، بل أيضاً في دور الرعاية أو منازل المرضى باستخدام أجهزة قابلة للارتداء مثل الساعات الذكية <span class="citation" data-cites="72"></span>.</p>
+<div id="tab_1">
+<table>
+<caption><strong>ملخص للأعمال ذات الصلة.</strong> نظرة عامة على الدراسات المتعلقة بتشخيص مرضى كوفيد-19، وتقييم شدة المرض، والتنبؤ بمآل المرضى.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>الدراسة</strong></th>
+<th style="text-align: left;"><strong>المهمة</strong></th>
+<th style="text-align: left;"><strong>البيانات</strong></th>
+<th style="text-align: left;"><strong>نموذج التعلم الآلي</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="2 3 6 11 12 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36"></span></td>
+<td style="text-align: left;">تشخيص</td>
+<td style="text-align: left;">أشعة الصدر، الأشعة المقطعية، السجلات الطبية الإلكترونية، بيانات سريرية وأمراض مصاحبة</td>
+<td style="text-align: left;">CNN، GBM، VGG19، APACHE، ResNet50، VAE، LSTM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation" data-cites="37 38 39 40 41 48"></span></td>
+<td style="text-align: left;">تقييم الشدة</td>
+<td style="text-align: left;">أشعة الصدر، ميزات سريرية وأمراض مصاحبة</td>
+<td style="text-align: left;">SVM، DenseNet، CNN، MLP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation" data-cites="5 13 15 16 18 47"></span></td>
+<td style="text-align: left;">تنبؤ بالمآل</td>
+<td style="text-align: left;">أشعة الصدر، الأشعة المقطعية</td>
+<td style="text-align: left;">CNN، DenseNet121-FPN، GLM، GBM، XGBoost، DT، AlexNet، Inception-V4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab_1" label="tab_1"></span></p>
+<p>في هذه الدراسة، نقترح شبكة عصبية عميقة لنمذجة السلاسل الزمنية لثلاثة مؤشرات حيوية فقط بهدف التنبؤ بتدهور حالة مرضى كوفيد-19. الهدف النهائي هو توفير نموذج تنبؤي خفيف وقابل للتوسع لدعم اتخاذ القرار السريري لمجموعة واسعة من المرضى على المدى الطويل، بما في ذلك المرضى في المنازل والعيادات الداخلية والخارجية. لتقليل حجم ميزات الإدخال، نركز على ثلاثة مؤشرات حيوية أساسية (تشبع الأكسجين، معدل ضربات القلب، ودرجة الحرارة)، وذلك نظراً لتوفر أجهزة قابلة للارتداء تراقب هذه المؤشرات. استبعدنا مؤشرات أخرى مثل ضغط الدم لصعوبة قياسها عبر الأجهزة القابلة للارتداء المتاحة.</p>
+<p>لتطوير وتقييم النموذج، استخدمنا بيانات حقيقية جمعت في مركز NYU Langone Health بين يناير 2020 وسبتمبر 2022. يتنبأ النموذج بحدوث التدهور خلال أفق زمني يتراوح بين 3 و24 ساعة، باستخدام بيانات السلاسل الزمنية للمؤشرات الحيوية المسجلة خلال 24 ساعة تسبق لحظة التنبؤ (أي بداية أفق التنبؤ)، ويُعرّف التدهور بحدوث الوفاة داخل المستشفى أو الدخول إلى العناية المركزة أو الحاجة للتنبيب. نشير إلى بيانات المؤشرات الحيوية باسم بيانات SEQ في بقية الورقة. كما يُزود النموذج بمجموعة صغيرة من الميزات السريرية (CCC) تشمل الجنس، العمر، حالة التطعيم، تاريخ التطعيم، وحالة السمنة، ارتفاع ضغط الدم، والسكري (وتسمى بيانات non-SEQ). يتضمن النموذج شبكة LSTM <span class="citation" data-cites="68"></span> لمعالجة بيانات SEQ، وشبكة MLP تجمع بين الحالة المخفية الأخيرة للـ LSTM وبيانات non-SEQ. وتستخدم شبكة LSTM التمدد الزمني للوصول إلى ديناميكيات ذاكرة أطول دون زيادة كبيرة في حجم وتعقيد النموذج. لكل أفق تنبؤ، يتم تدريب نموذج منفصل وتحسينه باستخدام دالة فقدان الانتروبيا المتقاطعة عبر استراتيجية تدريب ثلاثية المراحل.</p>
+<div id="tab_2">
+<table>
+<caption><strong>نظرة عامة على مجموعة المرضى.</strong> نلخص في هذا الجدول خصائص المرضى، بما في ذلك المعلومات الديموغرافية وتوزيع المؤشرات الحيوية، للمرضى الذين تعرضوا للتدهور والذين لم يتعرضوا له.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>الخصائص</strong></th>
+<th style="text-align: left;"><strong>تدهور</strong></th>
+<th style="text-align: left;"><strong>بدون تدهور</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>عدد المرضى</strong></td>
+<td style="text-align: left;"><strong>6104</strong></td>
+<td style="text-align: left;"><strong>30902</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">العمر (سنة)، المتوسط (الانحراف المعياري)</td>
+<td style="text-align: left;">(18.4)</td>
+<td style="text-align: left;">(18.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">الجنس (إناث)، عدد (%)</td>
+<td style="text-align: left;">(41.5)</td>
+<td style="text-align: left;">(57.5)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">سكري بدون مضاعفات، عدد (%)</td>
+<td style="text-align: left;">(24.7)</td>
+<td style="text-align: left;">(18.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">سكري مع مضاعفات، عدد (%)</td>
+<td style="text-align: left;">(1.8)</td>
+<td style="text-align: left;">(1.2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ارتفاع ضغط الدم، عدد (%)</td>
+<td style="text-align: left;">(44.5)</td>
+<td style="text-align: left;">(38.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">التطعيم، عدد (%)</td>
+<td style="text-align: left;">(39.1)</td>
+<td style="text-align: left;">(54.2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">المدة منذ آخر تطعيم (شهر)، المتوسط (الانحراف المعياري)</td>
+<td style="text-align: left;">(6.2)</td>
+<td style="text-align: left;">(7.3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">السمنة، عدد (%)</td>
+<td style="text-align: left;">(16.4)</td>
+<td style="text-align: left;">(17.3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>مجموعة ميزات المؤشرات الحيوية</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">تشبع الأكسجين (%)، المتوسط (الانحراف المعياري)</td>
+<td style="text-align: left;">(4.5)</td>
+<td style="text-align: left;">(2.7)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">معدل ضربات القلب (نبضة/دقيقة)، المتوسط (الانحراف المعياري)</td>
+<td style="text-align: left;">(27.1)</td>
+<td style="text-align: left;">(18.57)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">درجة الحرارة (فهرنهايت)، المتوسط (الانحراف المعياري)</td>
+<td style="text-align: left;">(1.6)</td>
+<td style="text-align: left;">(1.4)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab_2" label="tab_2"></span></p>
+<p>أظهرت النتائج أن النموذج المقترح يحقق AUROC بين 0.808 و0.880 ضمن آفاق التنبؤ من 3 إلى 24 ساعة، وذلك باستخدام التحقق المتقاطع ثلاثي الطيات. ورغم أن النتائج ليست قابلة للمقارنة المباشرة مع الدراسات السابقة بسبب اختلاف طرق معالجة البيانات، إلا أن أداء النموذج مماثل. فعلى سبيل المثال، النموذج في <span class="citation" data-cites="10"></span> الذي استخدم صور أشعة الصدر وبيانات سريرية أخرى حقق AUROC بمقدار 0.765 لتنبؤ التدهور خلال 24 ساعة.</p>
+<p>ولفهم أهمية ميزات CCC المختلفة وأهمية التاريخ الزمني للمؤشرات الحيوية، أجرينا أيضاً تحليلاً للحساسية عبر تجربة إخفاء الميزات. بشكل عام، تبرز نتائجنا إمكانية تحقيق أداء عالٍ في التنبؤ بتدهور مرضى كوفيد-19 باستخدام مجموعات ميزات محدودة وسهلة الجمع ليس فقط في المستشفيات، بل أيضاً في دور الرعاية ومنازل المرضى.</p>
+</section>
+<section id="methodology" class="level1">
+<h1>المنهجية</h1>
+<section id="dataset" class="level2">
+<h2>مجموعة البيانات</h2>
+<p>في هذه الدراسة، استخدمنا مجموعة بيانات كوفيد-19 مجهولة الهوية من مركز NYU Langone <span class="citation" data-cites="Dataset"></span> والتي جمعت من المرضى بين يناير 2020 وسبتمبر 2022. تم تحديد معايير شمول واستبعاد واضحة؛ ففي حال وجود عدة زيارات للمريض، تم اختيار أحدث زيارة. شملت العينة المرضى الذين ثبتت إصابتهم بكوفيد-19 في المركز أو تم تشخيصهم عند القبول، بالإضافة إلى المرضى الداخليين الذين لديهم قياسات للمؤشرات الحيوية. تم قياس المؤشرات الحيوية (تشبع الأكسجين، درجة الحرارة، معدل ضربات القلب) بشكل دوري كل 4-5 ساعات تقريباً. كما تم تسجيل العمر، الجنس، حالة وتاريخ التطعيم، ووجود أمراض مصاحبة مثل السمنة، السكري، وارتفاع ضغط الدم.</p>
+<p>وبالاستناد إلى الدراسات السابقة <span class="citation" data-cites="10"></span>، تم تعريف التدهور بحدوث أي من النتائج التالية: الوفاة، الدخول إلى العناية المركزة، أو التنبيب. في حال تعدد الأحداث السلبية، تم اعتبار أول حدث فقط. وإذا تكررت نفس نوعية التدهور (مثلاً دخول العناية المركزة) بفاصل زمني يزيد عن أسبوع، تم اعتبار الحدث الأخير فقط كمرجع. بالنسبة للمرضى الذين تعرضوا للتدهور، تم استخراج بيانات المؤشرات الحيوية خلال 48 ساعة تسبق لحظة التدهور.</p>
+<p>تم استخدام هذه البيانات لتعريف "نوافذ إيجابية" لكل أفق تنبؤ، حيث يمثل <span class="math inline">\(t=0\)</span> نهاية النافذة و<span class="math inline">\(t=-24\)</span> بدايتها، بحيث في أفق تنبؤ 24 ساعة، يحدث التدهور عند <span class="math inline">\(t=24\)</span>. أما المرضى الذين لم يتعرضوا للتدهور وتم إخراجهم، فتم استخدام نافذة 48 ساعة تسبق آخر تسجيل للمؤشرات الحيوية لتعريف "النوافذ السلبية". تم استبعاد جميع العينات التي تحتوي على أقل من 48 ساعة من المراقبة.</p>
+<p>لتحضير بيانات السلاسل الزمنية، تم أولاً إجراء تطبيع باستخدام Z-score لكل مؤشر حيوي. ونظراً لأن القياسات غير منتظمة زمنياً، تم إعادة التعيين الزمني عبر الاستيفاء التكاملي (cubic spline) ثم أخذ عينات منتظمة كل 15 دقيقة. يوضح الشكل <a href="#fig_1_preprocess" data-reference-type="ref" data-reference="fig_1_preprocess">1</a> مخططاً لخطوات معالجة البيانات (بيانات SEQ).</p>
+<p>أما بيانات non-SEQ، فقد تم ترميز الجنس، حالة التطعيم، حالة ارتفاع ضغط الدم والسمنة كثنائية (0 أو 1). أما حالة السكري فتم ترميزها بطريقة one-hot: غير مصاب (<span class="math inline">\([1, 0, 0]\)</span>)، مصاب بدون مضاعفات (<span class="math inline">\([0, 1, 0]\)</span>)، مصاب مع مضاعفات (<span class="math inline">\([0, 0, 1]\)</span>). تم تقسيم العمر إلى 18 فئة عمرية واستبدال كل عمر بالفئة المناسبة (من 1 إلى 18). أما تاريخ التطعيم فتم حساب عدد الأشهر المنقضية منذ الجرعة الثانية حتى لحظة التنبؤ (<span class="math inline">\(t=0\)</span>).</p>
+<figure>
+<embed src="Figures/2.pdf" id="fig_1_preprocess" style="width:50.0%" />
+<figcaption aria-hidden="true"><strong>خطوات معالجة البيانات.</strong> ترميز بيانات non-SEQ ومعالجة بيانات SEQ: (1) تطبيع باستخدام Z-score، (2) استيفاء السلاسل الزمنية، (3) إعادة أخذ العينات كل 15 دقيقة.</figcaption>
+</figure>
+<div class="center">
+<figure>
+<embed src="Figures/7.pdf" id="fig_4" style="width:50.0%" />
+<figcaption aria-hidden="true"><strong>بنية الشبكة العصبية العميقة.</strong> تعالج شبكة المؤشرات الحيوية (SEQ) البيانات عبر شبكة LSTM، بينما تتعامل وحدة non-SEQ مع البيانات السريرية غير الزمنية.</figcaption>
+</figure>
+</div>
+</section>
+<section id="dl-based-deterioration-prediction-model" class="level2">
+<h2>نموذج التنبؤ بالتدهور المعتمد على التعلم العميق</h2>
+<p>يتكون النموذج المقترح من طبقات LSTM وطبقات كاملة الاتصال (FC). توضح الشكل <a href="#fig_4" data-reference-type="ref" data-reference="fig_4">2</a> البنية العامة للشبكة، والتي أطلقنا عليها اسم <em>شبكة المؤشرات الحيوية المتسلسلة (SVS-Net)</em>، وتتكون من وحدتين: وحدة SEQ التي تعالج بيانات المؤشرات الحيوية عبر LSTM وطبقة FC واحدة، ووحدة non-SEQ التي تعالج البيانات السريرية عبر طبقة FC مستقلة. يتم دمج التمثيلات من الوحدتين لإنتاج التنبؤ النهائي.</p>
+<section id="svs-net-architecture-details" class="level3">
+<h3>تفاصيل بنية SVS-Net</h3>
+<p>تُعرف شبكات LSTM بقدرتها على التعلم من البيانات التسلسلية، وقد استُخدمت على نطاق واسع في الدراسات التي تعتمد على السلاسل الزمنية للتنبؤ بالأحداث المستقبلية <span class="citation" data-cites="4 71"></span>. تتكون الوحدة الزمنية من LSTM ممدد زمنياً، يستقبل ثلاثة مؤشرات حيوية في كل خطوة زمنية، ويتكون من ثلاث طبقات كل منها تحتوي على 32 وحدة مخفية. تُمرر الحالة المخفية النهائية (بعدد أبعاد 32) عبر طبقة FC تعطي تمثيلاً بعدد أبعاد 16. أما بيانات non-SEQ (بعدد أبعاد 9) فتمر عبر طبقة FC تعطي تمثيلاً بعدد أبعاد 16.</p>
+<p>يتم بعد ذلك دمج التمثيلين في متجه بعدد أبعاد 32، ويُمرر عبر طبقة دمج FC تعطي 8 أبعاد، ثم طبقة FC نهائية مع تفعيل سيغمويد لإخراج تنبؤ أحادي البعد يمثل احتمال حدوث التدهور خلال الأفق الزمني المحدد. جميع طبقات FC تستخدم تفعيل دالة الظل الزائدي (tanh) باستثناء الطبقة الأخيرة التي تستخدم سيغمويد.</p>
+<div class="figure*">
+<p><embed src="Figures/3_new.pdf" style="width:90.0%" /></p>
+</div>
+<figure>
+<embed src="Figures/9.pdf" id="fig_2_dist" style="width:40.0%" />
+<figcaption aria-hidden="true"><strong>توزيع العينات عبر الزمن.</strong> يوضح الشكل عدد المرضى الذين تعرضوا للتدهور مقابل من لم يتعرضوا له في مجموعة البيانات النهائية (n=37,006).</figcaption>
+</figure>
+</section>
+<section id="three-phase-training-strategy" class="level3">
+<h3>استراتيجية التدريب ثلاثية المراحل</h3>
+<p>لتحسين أداء الشبكة المقترحة، تم اعتماد استراتيجية تدريب من ثلاث مراحل كما يلي:</p>
+<ul>
+<li><p><strong>المرحلة الأولى: <em>تدريب وحدة SEQ فقط</em></strong><br />
+يتم تدريب وحدة SEQ فقط وتجميد باقي الطبقات. يُوصل إخراج طبقة FC في وحدة SEQ بطبقة FC أخرى لإنتاج التنبؤ. بعد هذه المرحلة، تُستخدم الأوزان لتهيئة وحدة SEQ في المرحلة التالية، ويتم إزالة طبقة FC الثانية المستخدمة في التنبؤ المبدئي.</p></li>
+<li><p><strong>المرحلة الثانية: <em>تدريب طبقة الدمج</em></strong><br />
+يتم حساب تمثيلات بيانات SEQ بعد تهيئة الوحدة بالأوزان من المرحلة الأولى، ثم تُجمّد وحدة SEQ. بعد ذلك، يتم تدريب طبقة FC، وطبقة الدمج FC، وطبقة التنبؤ FC باستخدام بيانات non-SEQ.</p></li>
+<li><p><strong>المرحلة الثالثة: <em>ضبط نهائي شامل للشبكة</em></strong><br />
+يتم تهيئة جميع معلمات الشبكة بالأوزان من المرحلتين السابقتين، ثم تُدرّب الشبكة بالكامل بهدف تحسين الأداء الكلي.</p></li>
+</ul>
+</section>
+<section id="model-training-and-evaluation" class="level3">
+<h3>تدريب النموذج وتقييمه</h3>
+<p>تم تدريب وتقييم النموذج باستخدام التحقق المتقاطع ثلاثي الطيات. تم تقسيم مجموعة البيانات عشوائياً إلى ثلاث طيات مع الحفاظ على نفس توزيع العينات الإيجابية والسلبية في كل طية. تم حساب الأداء النهائي بأخذ متوسط نتائج التحقق عبر الطيات الثلاث.</p>
+<p>تم تدريب النموذج في كل طية لمدة 200 حقبة باستخدام استراتيجية التدريب ثلاثية المراحل. في المرحلتين الأولى والثانية، تم اختيار معدل تعلم <span class="math inline">\(0.0001\)</span>، وفي مرحلة الضبط النهائي <span class="math inline">\(0.00001\)</span>. استخدمنا خوارزمية ADAM <span class="citation" data-cites="74"></span> بمعاملات <span class="math inline">\(\beta_1 = 0.9\)</span>، <span class="math inline">\(\beta_2 = 0.999\)</span>، <span class="math inline">\(\epsilon = 10^{-8}\)</span>. لتجنب الإفراط في التكيف، تم اعتماد فترة صبر 100 حقبة لإيقاف التدريب إذا لم يتحسن فقدان التحقق. تم اختيار أفضل نموذج بناءً على أقل فقدان تحقق. استخدمنا دالة فقدان الانتروبيا الثنائية البؤرية <span class="citation" data-cites="69"></span> لمعالجة عدم توازن الفئات. تم تقييم الأداء باستخدام ثلاث مقاييس: الدقة (مع عتبة 0.5)، AUROC، وAUPRC.</p>
+</section>
+</section>
+</section>
+<section id="results-and-discussion" class="level1">
+<h1>النتائج والمناقشة</h1>
+<section id="patient-cohort" class="level2">
+<h2>مجموعة المرضى</h2>
+<p>يوضح الشكل <a href="#fig_3" data-reference-type="ref" data-reference="fig_3">[fig_3]</a>(A) تطبيق معايير الشمول والاستبعاد، حيث تم الحصول على 37,006 عينة مرضى، منها 6,104 عينة إيجابية و30,902 عينة سلبية. يلخص الجدول <a href="#tab_2" data-reference-type="ref" data-reference="tab_2">2</a> خصائص المرضى. في الشكل <a href="#fig_3" data-reference-type="ref" data-reference="fig_3">[fig_3]</a>(B)، تظهر الفروقات في المؤشرات الحيوية بين المجموعتين عند <span class="math inline">\(t=0\)</span>، بينما يوضح الشكل <a href="#fig_3" data-reference-type="ref" data-reference="fig_3">[fig_3]</a>(C) الفروقات عند <span class="math inline">\(t=-24\)</span>. أظهرت اختبارات t-test أن الفروقات بين المجموعتين ذات دلالة إحصائية حتى قبل 24 ساعة من التدهور، مما يدعم استخدام التعلم العميق لاكتشاف الأنماط الخفية. يوضح الشكل <a href="#fig_2_dist" data-reference-type="ref" data-reference="fig_2_dist">3</a> توزيع المرضى عبر الزمن.</p>
+</section>
+<section id="model-performance" class="level2">
+<h2>أداء النموذج</h2>
+<p>يلخص الجدول <a href="#tab_3" data-reference-type="ref" data-reference="tab_3">3</a> والشكل <a href="#fig_5" data-reference-type="ref" data-reference="fig_5">4</a> أداء النموذج بعد استراتيجية التدريب ثلاثية المراحل. عند أفق 24 ساعة، بلغت الدقة 86.4%، وAUROC 0.808، وAUPRC 0.559. رغم اختلاف مجموعات البيانات، إلا أن النتائج مماثلة لتلك المنشورة سابقاً <span class="citation" data-cites="10"></span>. كما لوحظ تحسن الدقة مع تقليل أفق التنبؤ.</p>
+<p>يظهر من الشكل <a href="#fig_5" data-reference-type="ref" data-reference="fig_5">4</a> أن AUROC وAUPRC يتحسنان باستمرار بعد كل مرحلة تدريبية، باستثناء أفق الثلاث ساعات حيث كان التحسن محدوداً. يشير ذلك إلى أن استراتيجية التدريب الثلاثية أكثر فعالية في الآفاق الزمنية الأطول.</p>
+<p>عند مقارنة أداء المراحل الثلاث، يتضح أن الاستراتيجية المعتمدة تعزز أداء النموذج من خلال إجباره على استخراج المعلومات أولاً من بيانات SEQ ثم من دمج SEQ وnon-SEQ، ويظهر ذلك في تحسن الدقة وAUROC وAUPRC.</p>
+<div id="tab_3">
+<table>
+<caption><strong>أداء النموذج.</strong> ملخص أداء الشبكة المقترحة بعد التدريب عبر جميع آفاق التنبؤ.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>أفق التنبؤ (ساعات)</strong></th>
+<th style="text-align: left;"><strong>3</strong></th>
+<th style="text-align: left;"><strong>6</strong></th>
+<th style="text-align: left;"><strong>9</strong></th>
+<th style="text-align: left;"><strong>12</strong></th>
+<th style="text-align: left;"><strong>15</strong></th>
+<th style="text-align: left;"><strong>18</strong></th>
+<th style="text-align: left;"><strong>21</strong></th>
+<th style="text-align: left;"><strong>24</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>الدقة</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>AUROC</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>AUPRC</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab_3" label="tab_3"></span></p>
+<figure>
+<embed src="Figures/4_newer.pdf" id="fig_5" style="width:40.0%" />
+<figcaption aria-hidden="true"><strong>النتائج بعد كل مرحلة تدريبية.</strong> أداء النموذج بعد كل مرحلة عبر جميع آفاق التنبؤ.</figcaption>
+</figure>
+</section>
+<section id="ablation-studies" class="level2">
+<h2>دراسات الاستبعاد</h2>
+<p>لفهم أثر الخيارات التصميمية في بنية النموذج، تمت مقارنة النموذج المقترح مع نموذجين آخرين. النموذج الأول، <em>شبكة المؤشرات الحيوية غير الذاكرية (MLVS-Net)</em>، يعالج بيانات non-SEQ وآخر مجموعة من المؤشرات الحيوية فقط دون أي معلومات زمنية، حيث تُعالج البيانات عبر MLP من طبقتين FC (كل منها 16 بعداً)، ثم تُدمج مع تمثيل non-SEQ. تم تدريب النموذج بنفس الاستراتيجية مع تجميد أوزان MLP في المرحلة الثانية. النموذج الثاني، <em>شبكة الحالة الصحية غير الزمنية (nSHS-Net)</em>، يعتمد فقط على بيانات non-SEQ، حيث تمر عبر طبقتين FC لإنتاج التنبؤ.</p>
+<p>تظهر المقارنة في الشكل <a href="#fig_6" data-reference-type="ref" data-reference="fig_6">5</a>. أولاً، أداء nSHS-Net هو الأضعف، ما يؤكد أهمية المؤشرات الحيوية. عند مقارنة MLVS-Net وSVS-Net، يتفوق الأخير في جميع آفاق التنبؤ وجميع المقاييس، ما يبرز أهمية المعلومات الزمنية في تحسين دقة التنبؤ. النتائج الرقمية موضحة في الملحق الأول، الجدول الرابع.</p>
+<figure>
+<embed src="Figures/5_newer.pdf" id="fig_6" style="width:40.0%" />
+<figcaption aria-hidden="true"><strong>نتائج دراسات الاستبعاد.</strong> أداء كل من SVS-Net (بيانات non-SEQ وبيانات المؤشرات الحيوية الزمنية)، MLVS-Net (non-SEQ وآخر مجموعة مؤشرات حيوية)، وnSHS-Net (non-SEQ فقط).</figcaption>
+</figure>
+<div class="figure*">
+<p><embed src="Figures/6_new.pdf" style="width:90.0%" /></p>
+</div>
+</section>
+<section id="occlusion-analysis" class="level2">
+<h2>تحليل الإخفاء</h2>
+<p>لتقييم تأثير كل متغير مدخل، أجرينا تحليل إخفاء على النموذج النهائي، حيث يتم إخفاء كل ميزة على حدة (بجعل قيمتها صفراً) وتقييم الأداء على مجموعة التحقق. كلما انخفضت مؤشرات الأداء عند إخفاء ميزة معينة، زادت أهميتها في التنبؤ.</p>
+<p>تظهر النتائج في الشكل <a href="#fig_7" data-reference-type="ref" data-reference="fig_7">[fig_7]</a>. كما هو موضح في الشكل <a href="#fig_7" data-reference-type="ref" data-reference="fig_7">[fig_7]</a>(A)، من بين ميزات non-SEQ، كان للعمر التأثير الأكبر على أداء النموذج. أما بقية ميزات CCC فكان تأثيرها أقل وغير ثابت عبر المقاييس وآفاق التنبؤ. يجب التنويه إلى أن الترابط بين الميزات قد يخفي أهمية بعضها في هذا التحليل.</p>
+<p>على سبيل المثال، إذا أثرت إحدى ميزات CCC على تغيرات المؤشرات الحيوية عبر الزمن، فقد يلتقط النموذج هذا التأثير ضمنياً. في هذه الحالة، قد يظهر تحليل الإخفاء أن الميزة غير مهمة، لكن ذلك لا يعني عدم أهميتها الفعلية. أما بين ميزات SEQ، فكان معدل ضربات القلب الأكثر أهمية، يليه تشبع الأكسجين، ثم درجة الحرارة.</p>
+<p>من المهم الإشارة إلى أن الشكل 7 يوضح أن المؤشرات الحيوية أكثر أهمية من الميزات السريرية والأمراض المصاحبة، وأن السلاسل الزمنية للمؤشرات الحيوية تقدم معلومات إضافية مقارنة بالقياسات اللحظية فقط. تتوافق هذه الملاحظة مع التحليل السابق. النتائج الرقمية موضحة في الملحق الأول، الجدول الخامس.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>الخلاصة</h1>
+<p>انطلقت هذه الدراسة من توفر الأجهزة الطبية الشخصية مثل الأنظمة القابلة للارتداء (كالساعات الذكية) التي تسجل بيانات طبية زمنية، وإمكانية الاستفادة منها في الطب عن بُعد للتنبؤ بتدهور الحالة الصحية. باختصار، قمنا باقتراح وتطوير وتقييم نموذج تنبؤ بالتدهور باستخدام مجموعة بيانات كبيرة (n=37,006) جمعت في NYU Langone Health بين يناير 2020 وسبتمبر 2022. حقق النموذج AUROC بين 0.808 و0.880 عبر آفاق التنبؤ من 3 إلى 24 ساعة.</p>
+<p>تتميز الدراسة بعدة نقاط قوة: أولاً، يعتمد النموذج على مجموعة ميزات محدودة تتكون من سلاسل زمنية لثلاثة مؤشرات حيوية روتينية (تشبع الأكسجين، معدل ضربات القلب، ودرجة الحرارة)، بالإضافة إلى معلومات أساسية عن المريض (الجنس، العمر، حالة وتاريخ التطعيم، السمنة، ارتفاع ضغط الدم، والسكري) يمكن جمعها بسهولة. مقارنة بالدراسات السابقة <span class="citation" data-cites="10"></span> التي حققت AUROC بمقدار 0.765، فإن نموذجنا يحقق أداء مماثلاً رغم اختلاف نوعية البيانات. لتقييم أهمية الميزات السريرية والأمراض المصاحبة وأهمية استخدام السلاسل الزمنية، أجرينا تحليلاً للحساسية عبر تجربة الإخفاء ودراسة الاستبعاد. أظهرت النتائج أهمية نمذجة التغيرات الزمنية للمؤشرات الحيوية وإمكانية تحقيق دقة عالية دون الحاجة لصور طبية متقدمة. كما أن الإطار المقترح قابل للتوسع ليشمل آفاق تنبؤ مختلفة ونوافذ زمنية متنوعة.</p>
+<p>هناك بعض القيود: أولاً، تم تحديد نوافذ الإدخال بـ24 ساعة فقط. في الدراسات المستقبلية، نخطط لتغيير طول النوافذ ودراسة أثر ذلك على الأداء بهدف تقليل التعقيد الحسابي إذا أمكن تحقيق نتائج مماثلة بنوافذ أقصر. ثانياً، لم يتم إجراء تحقق خارجي أو مستقبلي للنموذج بسبب عدم توفر بيانات مماثلة. وأخيراً، نعتقد أن النتائج النهائية يمكن تحسينها عبر ضبط المعاملات الفائقة مثل معدل التعلم، وهو ما سنعمل عليه مستقبلاً.</p>
+<p>ختاماً، تبرز هذه الدراسة إمكانية تطوير نموذج تنبؤي سهل الوصول وقابل للتوسع لدعم الكادر الطبي في اتخاذ القرار. وتكمن أهمية النموذج في إمكانية جمع البيانات المستخدمة بسهولة من المرضى عبر أجهزة الاستشعار القابلة للارتداء وبعض البيانات السريرية الذاتية.</p>
+</section>
+<section id="acknowledgement" class="level1">
+<h1>الشكر والتقدير</h1>
+<p><span class="math inline">\(\bullet\)</span> <span> التمويل:</span>
+تم تنفيذ هذا العمل بدعم من المؤسسة الوطنية للعلوم (منحة رقم 2031594).</p>
+<p><span class="math inline">\(\bullet\)</span> <span> تضارب المصالح:</span> س. فاروق أتاشزار وياو وانغ هما مخترعا "جهاز ذكي قابل للارتداء لتتبع الصحة، تتبع المخالطين، وتنبؤ تدهور الحالة الصحية" المرخص لشركة Tactile Robotics, Ltd., كندا.</p>
+</section>
+<section id="appendix-i" class="level1 unnumbered">
+<h1 class="unnumbered">الملحق الأول</h1>
+<p>نقدم هنا النتائج الرقمية المتعلقة بالشكل <a href="#fig_6" data-reference-type="ref" data-reference="fig_6">5</a> في الجدول <a href="#tab_5" data-reference-type="ref" data-reference="tab_5">4</a>، والنتائج المتعلقة بالشكل <a href="#fig_7" data-reference-type="ref" data-reference="fig_7">[fig_7]</a> في الجدول <a href="#tab_6" data-reference-type="ref" data-reference="tab_6">5</a>.</p>
+<div id="tab_5">
+<table>
+<caption>مقارنة رقمية بين SVS-Net وMLVS-Net وnSHS-Net عبر آفاق التنبؤ من 3 إلى 24 ساعة</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>أفق التنبؤ (ساعات)</strong></th>
+<th style="text-align: left;"><strong>3</strong></th>
+<th style="text-align: left;"><strong>6</strong></th>
+<th style="text-align: left;"><strong>9</strong></th>
+<th style="text-align: left;"><strong>12</strong></th>
+<th style="text-align: left;"><strong>15</strong></th>
+<th style="text-align: left;"><strong>18</strong></th>
+<th style="text-align: left;"><strong>21</strong></th>
+<th style="text-align: left;"><strong>24</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>SVS-Net</strong></td>
+<td style="text-align: left;"><strong>0.879</strong></td>
+<td style="text-align: left;"><strong>0.871</strong></td>
+<td style="text-align: left;"><strong>0.866</strong></td>
+<td style="text-align: left;"><strong>0.868</strong></td>
+<td style="text-align: left;"><strong>0.866</strong></td>
+<td style="text-align: left;"><strong>0.865</strong></td>
+<td style="text-align: left;"><strong>0.865</strong></td>
+<td style="text-align: left;"><strong>0.864</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>MLVS-Net</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>nSHS-Net</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>SVS-Net</strong></td>
+<td style="text-align: left;"><strong>0.880</strong></td>
+<td style="text-align: left;"><strong>0.857</strong></td>
+<td style="text-align: left;"><strong>0.843</strong></td>
+<td style="text-align: left;"><strong>0.829</strong></td>
+<td style="text-align: left;"><strong>0.817</strong></td>
+<td style="text-align: left;"><strong>0.817</strong></td>
+<td style="text-align: left;"><strong>0.814</strong></td>
+<td style="text-align: left;"><strong>0.808</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>MLVS-Net</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>nSHS-Net</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>SVS-Net</strong></td>
+<td style="text-align: left;"><strong>0.666</strong></td>
+<td style="text-align: left;"><strong>0.628</strong></td>
+<td style="text-align: left;"><strong>0.601</strong></td>
+<td style="text-align: left;"><strong>0.592</strong></td>
+<td style="text-align: left;"><strong>0.572</strong></td>
+<td style="text-align: left;"><strong>0.574</strong></td>
+<td style="text-align: left;"><strong>0.568</strong></td>
+<td style="text-align: left;"><strong>0.559</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>MLVS-Net</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>nSHS-Net</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab_5" label="tab_5"></span></p>
+<div id="tab_6">
+<table>
+<caption>مقارنة رقمية لجميع عمليات الإخفاء على الميزات السريرية وميزات الأمراض المصاحبة وبيانات المؤشرات الحيوية الزمنية عبر آفاق التنبؤ من 3 إلى 24 ساعة</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>أفق التنبؤ (ساعات)</strong></th>
+<th style="text-align: left;"><strong>3</strong></th>
+<th style="text-align: left;"><strong>6</strong></th>
+<th style="text-align: left;"><strong>9</strong></th>
+<th style="text-align: left;"><strong>12</strong></th>
+<th style="text-align: left;"><strong>15</strong></th>
+<th style="text-align: left;"><strong>18</strong></th>
+<th style="text-align: left;"><strong>21</strong></th>
+<th style="text-align: left;"><strong>24</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>بدون إخفاء</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>الجنس</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>السمنة</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>العمر</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>السكري</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>ارتفاع ضغط الدم</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>مدة التطعيم</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>حالة التطعيم</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>معدل ضربات القلب</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>تشبع الأكسجين</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>درجة الحرارة</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab_6" label="tab_6"></span></p>
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>سرمد مهرداد يعمل في قسم الهندسة الكهربائية وهندسة الحاسوب بجامعة نيويورك (NYU). ياو وانغ تعمل في نفس القسم، بالإضافة إلى قسم الهندسة الطبية الحيوية. فرح الشاموت تعمل في قسم الهندسة بجامعة نيويورك أبوظبي، وأيضاً في علوم الحاسوب والهندسة الطبية الحيوية في NYU Tandon. س. فاروق أتاشزار يعمل في قسم الهندسة الكهربائية وهندسة الحاسوب، وأيضاً في قسم الهندسة الميكانيكية والفضائية بجامعة نيويورك.<br />
+<span><span class="math inline">\(^*\)</span></span> المؤلف المراسل: س. ف. أتاشزار <span><code>(f.atashzar@nyu.edu)</code></span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </div>
+    <hr style="margin: 40px 0;">
+    <div class="text-muted text-center">
+        <small>
+            تم تحويل هذه النسخة تلقائياً من LaTeX.<br>
+            يتم عرض المعادلات الرياضية باستخدام MathJax.
+        </small>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

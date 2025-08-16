@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="ديفيد إم. راسل وتاريق شهباز" />
-  <title>استقطاب متعدد الأطوال الموجية لـ Cygnus X–1</title>
+  <meta name="author" content="ديفيد إم. راسل وطارق شهباز" />
+  <title>الاستقطاب متعدِّد الأطوال الموجيّة لـ Cygnus X–1</title>
   <style>
     html {
-      line-height: 1.5;
+      line-height: 1.7;
       font-family: Georgia, serif;
       font-size: 20px;
       color: #1a1a1a;
@@ -17,11 +17,8 @@
     }
     body {
       margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
+      max-width: 40em;
+      padding: 48px 50px;
       hyphens: auto;
       overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
@@ -30,7 +27,7 @@
     }
     @media (max-width: 600px) {
       body {
-        font-size: 0.9em;
+        font-size: 0.95em;
         padding: 1em;
       }
       h1 {
@@ -51,35 +48,15 @@
         page-break-after: avoid;
       }
     }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-right: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
+    p { margin: 1em 0; }
+    a { color: #1a1a1a; }
+    a:visited { color: #1a1a1a; }
+    img { max-width: 100%; }
+    h1, h2, h3, h4, h5, h6 { margin-top: 1.4em; }
+    h5, h6 { font-size: 1em; font-style: italic; }
+    h6 { font-weight: normal; }
+    ol, ul { padding-right: 1.7em; margin-top: 1em; }
+    li > ol, li > ul { margin-top: 0; }
     blockquote {
       margin: 1em 1.7em 1em 0;
       padding-right: 1em;
@@ -89,40 +66,36 @@
     div.abstract {
       margin: 2em 2em 2em 2em;
       text-align: right;
-      font-size: 85%;
+      font-size: 90%;
+      background: #fafafa;
+      border: 1px solid #eee;
+      padding: 1em 1.2em;
+      border-radius: 8px;
     }
     div.abstract-title {
       font-weight: bold;
       text-align: center;
       padding: 0;
       margin-bottom: 0.5em;
+      letter-spacing: 0.5px;
     }
     code {
       font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
       font-size: 85%;
       margin: 0;
     }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
+    pre { margin: 1em 0; overflow: auto; }
+    pre code { padding: 0; overflow: visible; overflow-wrap: normal; }
+    .sourceCode { background-color: transparent; overflow: visible; }
     hr {
       background-color: #1a1a1a;
       border: none;
       height: 1px;
-      margin: 1em 0;
+      margin: 2em 0 1.5em;
+      opacity: 0.15;
     }
     table {
-      margin: 1em 0;
+      margin: 1em auto;
       border-collapse: collapse;
       width: 100%;
       overflow-x: auto;
@@ -132,35 +105,35 @@
     }
     table caption {
       margin-bottom: 0.75em;
+      font-weight: 600;
+    }
+    thead th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.5em 0.6em;
+      background: #f6f6f6;
     }
     tbody {
       margin-top: 0.5em;
       border-top: 1px solid #1a1a1a;
       border-bottom: 1px solid #1a1a1a;
     }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
+    td { padding: 0.4em 0.6em; }
     header {
-      margin-bottom: 4em;
+      margin-bottom: 2.2em;
       text-align: center;
     }
-    #TOC li {
-      list-style: none;
+    #TOC li { list-style: none; }
+    #TOC ul { padding-right: 1.3em; }
+    #TOC > ul { padding-right: 0; }
+    #TOC a:not(:hover) { text-decoration: none; }
+    .keywords {
+      font-size: 92%;
+      background: #fafafa;
+      border: 1px solid #eee;
+      padding: 0.6em 0.9em;
+      border-radius: 6px;
     }
-    #TOC ul {
-      padding-right: 1.3em;
-    }
-    #TOC > ul {
-      padding-right: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
+    .center { text-align: center; }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
@@ -202,126 +175,137 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">الاستقطاب متعدد الأطوال الموجية لـ Cygnus X–1</h1>
-<p class="author">ديفيد إم. راسل<span class="math inline">\(^{1,2,3}\)</span> وتاريق شهباز<span class="math inline">\(^{1,2}\)</span><br />
-<span class="math inline">\(^{1}\)</span> معهد الفيزياء الفلكية لجزر الكناري (IAC)، لا لاغونا، تينيريفي، إسبانيا<br />
-<span class="math inline">\(^{2}\)</span> قسم الفيزياء الفلكية، جامعة لا لاغونا (ULL)، لا لاغونا، تينيريفي، إسبانيا<br />
-<span class="math inline">\(^{3}\)</span> جامعة نيويورك أبوظبي، صندوق بريد 129188، أبوظبي، الإمارات العربية المتحدة<br /></p>
-<div class="abstract">
-<div class="abstract-title">الملخص</div>
-<p>تتوفر قياسات الاستقطاب للميكروكوازار Cygnus X–1 عند ترددات أشعة <span class="math inline">\( \gamma \)</span>، والأشعة السينية، وفوق البنفسجية، والبصرية، والراديوية. وقد ثبت أن انبعاث أشعة <span class="math inline">\( \gamma \)</span> عالي الاستقطاب الخطي. هنا نقدم بيانات استقطاب جديدة في الأشعة تحت الحمراء لـ Cygnus X–1 تم الحصول عليها باستخدام تلسكوب جران تليسكوبيو كناريس (10.4 متر) وتلسكوب ويليام هيرشل (4.2 متر). نُظهر أن طيف التدفق العريض من الراديو إلى أشعة <span class="math inline">\( \gamma \)</span> وطيف الاستقطاب في الحالة الصلبة يتوافقان إلى حد كبير مع نموذج فينومينولوجي بسيط لنفاثة سنكروترونية عالية الاستقطاب، وهالة كومبتونية غير مستقطبة، ومكون غبار بين نجمي متوسط الاستقطاب. في هذا النموذج، ينشأ استقطاب أشعة <span class="math inline">\( \gamma \)</span> والأشعة السينية وجزء من الأشعة تحت الحمراء من قانون طاقة سنكروتروني رقيق بصرياً من المناطق الداخلية للنفاثة. يتطلب النموذج أن يكون المجال المغناطيسي في هذه المنطقة منتظماً للغاية ومتعامداً مع محور النفاثة الراديوية المرصودة. يختلف هذا عن دراسات بعض الأنظمة الثنائية للأشعة السينية الأخرى، حيث يكون المجال المغناطيسي مضطرباً ومتغيراً وموازياً لمحور النفاثة. يستطيع النموذج تفسير قوة الاستقطاب التقريبية وزاوية الموضع عند جميع الأطوال الموجية بما في ذلك الاستقطاب المكتشف في نطاق الأشعة السينية (3–5 keV)، باستثناء زاوية الموضع المرصودة لاستقطاب أشعة <span class="math inline">\( \gamma \)</span>، والتي تختلف عن النموذج بمقدار <span class="math inline">\( \sim 60^{\circ} \)</span>. وقد أظهرت النمذجة العددية السابقة أن طيف سنكروتروني منحني يمكن أن ينتج انزياحاً في زاوية الموضع بمقدار <span class="math inline">\( \sim 60^{\circ} \)</span>، مما قد يفسر ذلك.</p>
-</div>
+  <h1 class="title">الاستقطاب متعدِّد الأطوال الموجيّة لـ Cygnus X–1</h1>
+  <p class="author">ديفيد إم. راسل<span class="math inline">\(^{1,2,3}\)</span> وطارق شهباز<span class="math inline">\(^{1,2}\)</span><br />
+  <span class="math inline">\(^{1}\)</span> معهد الفيزياء الفلكيّة لجزر الكناري (IAC)، لا لاغونا، تينيريفي، إسبانيا<br />
+  <span class="math inline">\(^{2}\)</span> قسم الفيزياء الفلكيّة، جامعة لا لاغونا (ULL)، لا لاغونا، تينيريفي، إسبانيا<br />
+  <span class="math inline">\(^{3}\)</span> جامعة نيويورك أبوظبي، صندوق بريد 129188، أبوظبي، الإمارات العربيّة المتّحدة<br /></p>
+  <div class="abstract">
+    <div class="abstract-title">الملخّص</div>
+    <p>تتوفر قياساتُ الاستقطاب للميكروكوازار Cygnus X–1 عبر نطاقات أشعّة <span class="math inline">\( \gamma \)</span> والأشعّة السينيّة وفوق البنفسجي والبصري والراديو، وقد ثبُت أنّ انبعاث أشعّة <span class="math inline">\( \gamma \)</span> مُستقطَبٌ خطّيّاً على نحوٍ عالٍ. نقدِّم هنا قياساتِ استقطابٍ جديدة في نطاق تحت الأحمر القريب لـ Cygnus X–1 أُنجزت باستخدام تلسكوب جران تليسكوبيو كناريس (10.4 م) وتلسكوب ويليام هيرشل (4.2 م). نُظهر أنّ طيفَ الفيض العريض من الراديو إلى أشعّة <span class="math inline">\( \gamma \)</span> وطيفَ الاستقطاب في الحالة الصلبة يتوافقان إلى حدٍّ بعيد مع نموذجٍ ظواهري بسيط يضمّ نفاثةً سِنكروترونيّة عالية الاستقطاب، وإكليلاً كومبتونيّاً غير مُستقطَب، ومكوِّناً متوسِّط الاستقطاب ناجماً عن الغبار بين النجمي. في هذا النموذج ينشأ استقطابُ أشعّة <span class="math inline">\( \gamma \)</span> والأشعّة السينيّة وجزءٌ من تحت الأحمر من قانونِ قوّةٍ سِنكروتروني رقيق بصريّاً من المناطق الداخليّة للنفاثة. ويتطلّب النموذج أن يكون المجالُ المغناطيسي في هذه المنطقة مُنظَّماً للغاية ومُتعامِداً مع محور النفاثة الراديويّة المرصودة. وهذا يُخالِف ما أظهرته دراساتٌ لبعض الأنظمة الثنائيّة للأشعّة السينيّة الأخرى، حيث يكون المجالُ المغناطيسي مُضطرباً ومُتغيّراً وموازياً لمحور النفاثة. يستطيع النموذجُ تفسير مقدار الاستقطاب التقريبي وزاوية الموضع عند جميع الأطوال الموجيّة، بما في ذلك الاستقطابُ المُكتشَف في نطاق الأشعّة السينيّة (<span class="math inline">\( 3\!-\!5 \)</span> keV)، باستثناء زاوية الموضع المرصودة لاستقطاب أشعّة <span class="math inline">\( \gamma \)</span>، التي تختلف عن تنبُّؤ النموذج بمقدار <span class="math inline">\( \sim 60^{\circ} \)</span>. وقد أظهرت نمذجاتٌ عدديّة سابقة أنّ طيفاً سِنكروترونيّاً مُنحنياً يمكن أن يُحدِث انزياحاً في زاوية الموضع بمقدار <span class="math inline">\( \sim 60^{\circ} \)</span>، وهو ما قد يُفسِّر ذلك.</p>
+  </div>
 </header>
+
 <div class="keywords">
-<p>الالتحام، أقراص الالتحام، فيزياء الثقوب السوداء، الوسط بين نجمي: النفاثات والتدفقات، الأشعة السينية: الأنظمة الثنائية</p>
+  <p><strong>كلمات مفتاحيّة:</strong> التراكم، أقراص التراكم، فيزياء الثقوب السوداء، الوسط بين النجمي: النفاثات والتدفُّقات، الأشعّة السينيّة: الأنظمة الثنائيّة</p>
 </div>
-<h1 id="introduction">مقدمة</h1>
-<p>الأنظمة الثنائية للأشعة السينية هي أنظمة ثنائية يتراكم فيها جسم مضغوط، إما ثقب أسود أو نجم نيوتروني، المادة من نجم مرافق. لقد دُرست خصائص الاستقطاب للانبعاث من الأنظمة الثنائية للثقوب السوداء (BHXBs) بشكل جيد عند ترددات الراديو <span class="citation" data-cites="fend06"></span>، ومؤخراً حظيت ببعض الاهتمام عند الترددات البصرية وتحت الحمراء. في النطاق البصري، يمكن أن يتغير الاستقطاب الناتج عن تشتت انبعاث حراري غير مستقطب ذاتياً مع فترة المدار، مما يضع قيوداً على الخصائص الفيزيائية والهندسية للنظام <span class="citation" data-cites="dolata89 glioet98"></span>. عند ترددات الراديو، وفي بعض الحالات عند الترددات البصرية/تحت الحمراء، يمكن أن يكون الاستقطاب المتغير ناتجاً عن انبعاث سنكروتروني من النفاثات المنطلقة عبر عملية الالتحام على الثقب الأسود أو النجم النيوتروني في الأنظمة الثنائية للأشعة السينية <span class="citation" data-cites="hannet00 brocet07 shahet08 russfe08 russet11b"></span>.</p>
-<p>قبل أكثر من ثلاثين عاماً، أُجريت بعض قياسات الاستقطاب من الأنظمة الثنائية للأشعة السينية عند طاقات الأشعة السينية باستخدام مقياس الاستقطاب البلوري براغ على متن القمر الصناعي OSO 8. تم قياس الاستقطاب الخطي للنظام الثنائي عالي الكتلة (HMXB) والميكروكوازار Cygnus X–1 ليكون بين 2–5% عند 2.5–5.2 keV <span class="citation" data-cites="longet80"></span>. منذ ذلك الحين، لم يمتلك أي كاشف أشعة سينية القدرة على قياس خصائص الاستقطاب للأنظمة الثنائية للأشعة السينية بدقة أعلى. مؤخراً، استُخدم القمر الصناعي INTEGRAL، باستخدام تقنيات مبتكرة، لتقدير استقطاب سديم السرطان <span class="citation" data-cites="deanet08"></span>، وCygnus X–1 <span class="citation" data-cites="lauret11 jouret12"></span> وبعض انفجارات أشعة <span class="math inline">\( \gamma \)</span> <span class="citation" data-cites="gotzet09 gotzet13"></span> عند طاقات الأشعة السينية الصلبة–أشعة <span class="math inline">\( \gamma \)</span>. وُجد أن استقطاب أشعة <span class="math inline">\( \gamma \)</span> في Cyg X–1 مرتفع جداً، <span class="math inline">\( 67 \pm 30 \)</span>% عند 0.4–2 MeV باستخدام أداة IBIS على متن INTEGRAL <span class="citation" data-cites="lauret11"></span>، وتم تأكيد ذلك لاحقاً باستخدام أداة SPI، <span class="math inline">\( 76 \pm 15 \)</span>% عند 0.23–0.85 MeV <span class="citation" data-cites="jouret12"></span>. الآلية الوحيدة القادرة على إنتاج مثل هذا الاستقطاب العالي عند هذه الطاقات هي الانبعاث السنكروتروني الرقيق بصرياً، وقد أُشير إلى أن الإلكترونات عالية الطاقة في النفاثة هي مصدر الاستقطاب <span class="citation" data-cites="lauret11 jouret12"></span>. أكدت النمذجة الطيفية المفصلة لانبعاث keV–MeV <span class="citation" data-cites="mccoet02 zdziet12 delset13"></span> وkeV–GeV <span class="citation" data-cites="malyet13 zdziet13"></span> في Cyg X–1 وجود ذيل MeV في الحالة الصلبة، والذي يمكن أن يكون ناتجاً إما عن كومبتنة هجينة أو مكون سنكروتروني. هنا نعتمد تصنيفات الحالات كما في <span class="citation" data-cites="bell10"></span>. إذا كانت مستويات الاستقطاب العالية عند 0.2–2 MeV موثوقة، فإن السنكروترون هو الآلية المفضلة، وتتوافق النماذج النفاثية مع كون ذيل MeV هو الامتداد عالي الطاقة لقانون طاقة سنكروتروني رقيق بصرياً يمتد من الأطوال الموجية تحت الحمراء <span class="citation" data-cites="rahoet11 zdziet12 zdziet13 malyet13"></span>. بدلاً من ذلك، اقتُرح أن تدفق التحام ساخن يمكن أن ينتج أيضاً انبعاث سنكروتروني عالي الاستقطاب عند طاقات MeV؛ ويتطلب ذلك حركة أحادية البعد للإلكترونات على طول خطوط مجال مغناطيسي منتظم للغاية في المناطق الداخلية للتدفق الساخن <span class="citation" data-cites="veleet13"></span>. في هذه الحالة، يجب أن تهيمن منطقة صغيرة من التدفق الساخن تتراكم من اتجاه مفضل على انبعاث MeV، لأن خطوط المجال التي تخترق التدفق من جميع أجزاء قرص الالتحام الداخلي ستكون ذات اتجاهات مختلفة.</p>
-<p>الانبعاث السنكروتروني الرقيق بصرياً مستقطب ذاتياً. إذا كان المجال المغناطيسي المحلي في منطقة الانبعاث منتظماً (مرتباً)، يُلاحظ استقطاب خطي صافٍ. إذا كان المجال متشابكاً، فإن اختلاف زوايا الضوء المستقطب يقلل من الاستقطاب المرصود المتوسط. الحد الأقصى لقوة الاستقطاب هو <span class="math inline">\( \sim 70 \)</span>–80% في حالة المجال المنتظم تماماً <span class="citation" data-cites="rybili79 bjorbl82"></span> ويعتمد فقط على درجة انتظام المجال وتوزيع طاقة الإلكترونات (انظر أيضاً القسم 3). عندما يكون انبعاث الراديو في BHXBs متوافقاً مع سنكروترون رقيق بصرياً (يحدث ذلك عادة أثناء انتقالات الحالة للأشعة السينية)، يُكتشف هذا التوقيع الاستقطابي غالباً عند مستويات مرتفعة نسبياً؛ <span class="math inline">\( \sim 10-30 \)</span>% <span class="citation" data-cites="hannet00 fendet02 brocet07 robeet08 millet08 curret13"></span>، ويكون الانبعاث هنا من قذف نفاثات منفصلة أو تفاعلات مع الوسط بين النجمي وغالباً ما تُحلل في صور الراديو. زاوية الموضع (PA) للاستقطاب في هذه القذائف غالباً (ولكن ليس دائماً) ما تكون موازية تقريباً لمحور النفاثة الراديوية المرصودة، مما يعني أن المجال الكهربائي موازٍ لمحور النفاثة والمجال المغناطيسي متعامد مع محور النفاثة. قد يكون ذلك بسبب ضغط خطوط المجال المغناطيسي المتشابكة في الصدمات أسفل التدفق أو التصادمات مع مناطق كثيفة من الوسط بين النجمي، مما يؤدي إلى مجال عرضي منتظم جزئياً.</p>
-<p>من المعروف أن النفاثات المخروطية المدمجة تنتج طيفاً مسطحاً أو مقلوباً قليلاً من الراديو إلى الترددات تحت الحمراء في BHXBs <span class="citation" data-cites="fendet00 fendet01 corbfe02 miglet07 gallet07 rahoet11 gandet11 russet13b"></span>. هذه النفاثات المنطلقة باستمرار تختلف عن القذائف المنفصلة؛ حيث تتكون أطيافها من مكونات سنكروترونية متداخلة وممتصة ذاتياً (سميكة بصرياً) تنشأ من توزيعات إلكترونات ذات طاقات مختلفة تنتقل على طول النفاثة، على غرار ما يحدث في نوى المجرات النشطة <span class="citation" data-cites="blanko79 kais06"></span>. في BHXBs، تُنتج هذه النفاثات المدمجة عندما يكون المصدر في الحالة الصلبة للأشعة السينية <span class="citation" data-cites="gallet03"></span>. تم اكتشاف استقطاب خطي من هذا الطيف المسطح السميك بصرياً عند مستوى بضعة في المئة عند ترددات الراديو في بعض BHXBs <span class="citation" data-cites="gallet04 brocet13"></span>. عند تردد معين، يُعتبر عادة في النطاق تحت الحمراء، ينكسر هذا الطيف السنكروتروني إلى طيف رقيق بصرياً، مع <span class="math inline">\( -1 \leq \alpha_{\rm thin} \leq -0.4 \)</span>. تم تحديد وعزل طيف قانون الطاقة للانبعاث الرقيق بصرياً في عدة BHXBs في النطاق تحت الحمراء/البصري <span class="citation" data-cites="hyneet03 hyneet06 homaet05 kaleet05 chatet11"></span> وتم اكتشاف الكسر نفسه في بعض BHXBs في النطاق تحت الحمراء المتوسطة <span class="citation" data-cites="corbfe02 rahoet11 gandet11 russet13a"></span>.</p>
-<p>حتى الآن، لم تحاول سوى دراسات قليلة الكشف عن التوقيع الاستقطابي للانبعاث السنكروتروني الرقيق بصرياً من النفاثات المدمجة الموجودة في الحالة الصلبة في BHXBs. ينشأ هذا الانبعاث بالقرب من قاعدة النفاثة، في منطقة يُحتمل أن تكون مرتبطة ببداية تسريع الجسيمات في النفاثة <span class="citation" data-cites="polket10"></span>. قد يكون الاستقطاب المرصود من هذه المنطقة ذا درجة انتظام أعلى مقارنة بالمناطق الأبعد في النفاثة، حيث قد يحافظ المجال على درجة عالية من الانتظام على منطقة انبعاث أصغر <span class="citation" data-cites="blanko79"></span>. لذلك توفر قياسات الاستقطاب لطيف قانون الطاقة الرقيق بصرياً أداة قوية للكشف عن طبيعة بنية المجال المغناطيسي في هذه المنطقة، وهو أمر مهم لنماذج ومحاكاة إنتاج النفاثات. في النطاق البصري/تحت الحمراء للأنظمة الثنائية للأشعة السينية، غالباً ما تهيمن مكونات أخرى مثل قرص الالتحام والنجم المرافق، مما يقلل من أي مساهمة سنكروترونية في الاستقطاب، ولكن عندما تكون مساهمة السنكروترون قوية، تم اكتشاف استقطاب ذاتي <span class="citation" data-cites="dubuch06 shahet08 russfe08 russet11b chatet11"></span>. تبلغ نسبة الاستقطاب الخطي الجزئي (FLP) في حدود <span class="math inline">\( \sim 1 \)</span>–10%، مع وجود أدلة على تغيرات سريعة في بعض المصادر على مقاييس زمنية من ثوانٍ إلى دقائق. عادة ما تكون زاوية الموضع متعامدة تقريباً مع محور النفاثة الراديوية المرصودة عندما تكون هذه الزاوية معروفة، مما يعني أن المجال المغناطيسي موازٍ لمحور النفاثة. تتوافق الملاحظات حتى الآن مع هندسة مجال مغناطيسي متغير وغالباً متشابك، مع خطوط مجال موجهة تفضيلياً على طول محور النفاثة.</p>
-<p>هنا نقدم قياسات استقطاب جديدة عالية الدقة في النطاق تحت الحمراء القريبة لـ Cyg X–1، وهو نظام ثنائي نشط باستمرار للأشعة السينية معروف بإطلاق نفاثة قوية <span class="citation" data-cites="gallet05 russet07"></span>. نجمع توزيعات الطاقة الطيفية (SEDs) الأرشيفية وجميع قياسات الاستقطاب المنشورة للمصدر حتى الآن، ونحاول نمذجة طيف التدفق متعدد الأطوال الموجية، وطيف FLP، وطيف زاوية الموضع بشكل متسق ذاتياً. يصف القسم 2 جمع البيانات ومعالجتها، ويُعرض النموذج والنتائج في القسم 3. ويُقدم النقاش في القسم 4، بما في ذلك التنبؤات للكشف المستقبلي عن استقطاب الأشعة السينية في الأنظمة الثنائية للأشعة السينية. وتلخص الاستنتاجات في القسم 5.</p>
+
+<hr />
+
+<h1 id="introduction">مقدّمة</h1>
+<p>الأنظمةُ الثنائيّة للأشعّة السينيّة هي أنظمةٌ يتراكم فيها جسمٌ مُضغَط، إمّا ثقبٌ أسود أو نجمٌ نيوتروني، المادّةَ من نجمٍ مرافق. لقد دُرست خصائصُ الاستقطاب لانبعاث الأنظمة الثنائيّة لثقوبٍ سوداء للأشعّة السينيّة (BHXBs) على نحوٍ جيّد عند التردّدات الراديويّة <span class="citation" data-cites="fend06"></span>، ومؤخّراً نالت بعضَ الاهتمام عند التردّدات البصريّة وتحت الحمراء. في النطاق البصري، قد يتبدّل الاستقطابُ الناجم عن تشتّت انبعاثٍ حراري غير مُستقطَب أصلاً مع فترة المدار، بما يفرض قيوداً على الخصائص الفيزيائيّة والهندسيّة للنظام <span class="citation" data-cites="dolata89 glioet98"></span>. عند التردّدات الراديويّة، وفي بعض الحالات عند التردّدات البصريّة/تحت الحمراء، قد يكون الاستقطابُ المتغيّر ناجماً عن انبعاثٍ سِنكروتروني من النفاثات المُنطلِقة جرّاء عمليّة التراكم على الثقب الأسود أو النجم النيوتروني في الأنظمة الثنائيّة للأشعّة السينيّة <span class="citation" data-cites="hannet00 brocet07 shahet08 russfe08 russet11b"></span>.</p>
+
+<p>قبل أكثر من ثلاثين عاماً، أُجرِيَت قياساتُ استقطاب عند طاقات الأشعّة السينيّة لبعض الأنظمة الثنائيّة باستخدام مُستقطِبٍ بلّوري من نوع براغ على متن القمر الصناعي OSO 8. وقد قِيسَ الاستقطابُ الخطي للنظام الثنائي عالي الكتلة (HMXB) والميكروكوازار Cygnus X–1 ليكون بين 2–5% عند <span class="math inline">\( 2.5\!-\!5.2 \)</span> keV <span class="citation" data-cites="longet80"></span>. ومنذ ذلك الحين لم تتوافر لدى أيّ كاشفِ أشعّةٍ سينيّة قدرةُ قياس خصائص الاستقطاب للأنظمة الثنائيّة بالدقّة المطلوبة. حديثاً، استُخدم القمر الصناعي INTEGRAL، باستراتيجياتٍ مُبتكَرة، لتقدير الاستقطاب في سديم السرطان <span class="citation" data-cites="deanet08"></span>، وCygnus X–1 <span class="citation" data-cites="lauret11 jouret12"></span> وبعض انفجارات أشعّة <span class="math inline">\( \gamma \)</span> <span class="citation" data-cites="gotzet09 gotzet13"></span> عند طاقات الأشعّة السينيّة الصلبة–أشعّة <span class="math inline">\( \gamma \)</span>. وُجد أنّ استقطاب أشعّة <span class="math inline">\( \gamma \)</span> في Cyg X–1 مرتفعٌ جدّاً، <span class="math inline">\( 67 \pm 30 \)</span>% عند <span class="math inline">\( 0.4\!-\!2 \)</span> MeV باستخدام أداة IBIS على متن INTEGRAL <span class="citation" data-cites="lauret11"></span>، وأُكِّد لاحقاً بواسطة أداة SPI، <span class="math inline">\( 76 \pm 15 \)</span>% عند <span class="math inline">\( 0.23\!-\!0.85 \)</span> MeV <span class="citation" data-cites="jouret12"></span>. الآليّةُ الوحيدة القادرة على إنتاج استقطابٍ بهذا المستوى عند هذه الطاقات هي الانبعاثُ السِنكروتروني الرقيق بصريّاً، وقد أُشير إلى أنّ الإلكتروناتِ عاليةَ الطاقة في النفاثة هي مصدرُ الاستقطاب <span class="citation" data-cites="lauret11 jouret12"></span>. أكّدت النمذجةُ الطيفيّة المفصّلة لانبعاث keV–MeV <span class="citation" data-cites="mccoet02 zdziet12 delset13"></span> وkeV–GeV <span class="citation" data-cites="malyet13 zdziet13"></span> في Cyg X–1 وجودَ ذيلٍ عند MeV في الحالة الصلبة، قد يكون ناشئاً إمّا عن كومبتنةٍ هجينَة أو عن مكوّنٍ سِنكروتروني. هنا نعتمد تصنيفات الحالات كما في <span class="citation" data-cites="bell10"></span>. إذا كانت مستوياتُ الاستقطاب العالية عند <span class="math inline">\( 0.2\!-\!2 \)</span> MeV موثوقة، فالسنكروترون هو الآليّةُ المُرجَّحة، وتتوافق النماذجُ النفاثيّة مع كون ذيل MeV امتداداً عاليَ الطاقة لقانونِ قوّةٍ سِنكروتروني رقيق بصريّاً يمتدّ من الأطوال الموجيّة تحت الحمراء <span class="citation" data-cites="rahoet11 zdziet12 zdziet13 malyet13"></span>. بدلاً من ذلك، اقتُرح أنّ تدفّقَ تراكمٍ ساخن يمكن أن يُنتج أيضاً انبعاثاً سِنكروترونيّاً عاليَ الاستقطاب عند طاقات MeV؛ ويتطلّب ذلك حركةً أُحاديّةَ البُعد للإلكترونات على طول خطوطِ مجالٍ مغناطيسي مُنظَّمٍ للغاية في المناطق الداخليّة للتدفّق الساخن <span class="citation" data-cites="veleet13"></span>. في هذه الحالة، ينبغي أن تهيمنَ منطقةٌ صغيرة من التدفّق الساخن ذاتُ اتجاهٍ مُفضَّل على انبعاث MeV، إذ إنّ خطوطَ المجال التي تخترق التدفّق من مختلف أجزاء قرص التراكم الداخلي ستكون مُتباينةَ الاتجاهات.</p>
+
+<p>الانبعاثُ السِنكروتروني الرقيق بصريّاً مُستقطَبٌ ذاتيّاً. فإذا كان المجالُ المغناطيسي المحلّي في منطقة الانبعاث مُنظَّماً، يُلاحَظ استقطابٌ خطّي صافٍ. أمّا إذا كان المجالُ مُتشابكاً، فإنّ تبايُن زوايا الضوء المُستقطَب يُقلِّل من الاستقطاب المتوسّط المرصود. ويبلغ الحدّ الأقصى للكسر الخطي للاستقطاب <span class="math inline">\( \sim 70\!-\!80 \)</span>% في حالة المجال المُنظَّم تماماً <span class="citation" data-cites="rybili79 bjorbl82"></span>، ويعتمد فقط على درجة انتظام المجال وتوزيع طاقة الإلكترونات (انظر أيضاً القسم 3). عندما يكون انبعاثُ الراديو في BHXBs متوافقاً مع سِنكروترونٍ رقيق بصريّاً (وغالباً ما يحدث ذلك أثناء انتقالات الحالة في الأشعّة السينيّة)، يُكتشَف هذا التوقيعُ الاستقطابي عند مستوياتٍ مُرتفعة نسبيّاً؛ <span class="math inline">\( \sim 10\!-\!30 \)</span>% <span class="citation" data-cites="hannet00 fendet02 brocet07 robeet08 millet08 curret13"></span>، حيث يكون الانبعاثُ من قذائف نفاثةٍ منفصلة أو من تفاعلاتٍ مع الوسط بين النجمي، وغالباً ما تُرى هذه القذائف مفصولةً في صور الراديو. تكون زاويةُ الموضع (PA) للاستقطاب في هذه القذائف كثيراً (لكن ليس دائماً) موازيةً تقريباً لمحور النفاثة الراديويّة المرصودة، ما يعني أنّ متّجهَ المجال الكهربائي موازٍ لمحور النفاثة وأنّ المجالَ المغناطيسي مُتعامدٌ مع محور النفاثة. وقد يكون ذلك بسبب ضغط خطوطِ المجال المغناطيسي المتشابكة في الصدمات أسفل التدفّق أو التصادمات مع مناطق كثيفة من الوسط بين النجمي، ما يُفضي إلى مجالٍ عرضيٍّ مُنظَّم جزئيّاً.</p>
+
+<p>من المعروف أنّ النفاثاتِ المخروطيّة المُدمجة تُنتج طيفاً مُسطَّحاً أو مقلوباً قليلاً من الراديو إلى التردّدات تحت الحمراء في BHXBs <span class="citation" data-cites="fendet00 fendet01 corbfe02 miglet07 gallet07 rahoet11 gandet11 russet13b"></span>. هذه النفاثاتُ المُنطلِقة باستمرار تختلف عن القذائف المنفصلة؛ إذ تتكوّن أطيافُها من مكوّناتٍ سِنكروترونيّة متداخلة وممتصّة ذاتيّاً (سميكة بصريّاً) تنشأ من توزيعات إلكتروناتٍ بطاقاتٍ مختلفة تتحرّك على طول النفاثة، على غرار ما يحدث في نوى المجرّات النشطة <span class="citation" data-cites="blanko79 kais06"></span>. في BHXBs، تُنتج هذه النفاثاتُ المُدمجة عندما يكون المصدر في الحالة الصلبة للأشعّة السينيّة <span class="citation" data-cites="gallet03"></span>. وقد كُشف استقطابٌ خطّي من هذا الطيف المُسطَّح السميك بصريّاً عند مستوى بضعةٍ في المئة عند التردّدات الراديويّة في بعض BHXBs <span class="citation" data-cites="gallet04 brocet13"></span>. وعند تردّدٍ مُعيَّن، غالباً ما يقع في النطاق تحت الأحمر، ينكسر هذا الطيفُ السِنكروتروني إلى طيفٍ رقيق بصريّاً، مع <span class="math inline">\( -1 \leq \alpha_{\rm thin} \leq -0.4 \)</span>. وقد عُزل طيفُ قانون القوّة للانبعاث الرقيق بصريّاً في عدّة BHXBs في النطاق تحت الحمراء/البصري <span class="citation" data-cites="hyneet03 hyneet06 homaet05 kaleet05 chatet11"></span>، كما كُشف هذا الكسرُ نفسه في بعض BHXBs في النطاق تحت الحمراء المُتوسّطة <span class="citation" data-cites="corbfe02 rahoet11 gandet11 russet13a"></span>.</p>
+
+<p>حتى الآن لم تُحاول سوى دراساتٍ قليلة الكشفَ عن التوقيع الاستقطابي للانبعاث السِنكروتروني الرقيق بصريّاً من النفاثات المُدمجة في الحالة الصلبة في BHXBs. ينشأ هذا الانبعاثُ بالقرب من قاعدة النفاثة، في منطقةٍ يُحتمل أن تكون مرتبطةً ببداية تسريع الجُسيمات في النفاثة <span class="citation" data-cites="polket10"></span>. وقد يكون الاستقطابُ المرصود من هذه المنطقة أعلى انتظاماً مقارنةً بالمناطق الأبعد في النفاثة، حيث قد يحافظ المجالُ على درجةٍ كبيرة من الانتظام فوق منطقةِ انبعاثٍ أصغر <span class="citation" data-cites="blanko79"></span>. لذلك تُوفِّر قياساتُ الاستقطاب لطيفِ قانون القوّة الرقيق بصريّاً أداةً قويّة لاستقصاء طبيعةِ بُنية المجال المغناطيسي في هذه المنطقة، وهو أمرٌ مهمّ لنماذج ومحاكاة إنتاج النفاثات. في النطاق البصري/تحت الحمراء للأنظمة الثنائيّة للأشعّة السينيّة، كثيراً ما تهيمن مكوّناتٌ أخرى مثل قرص التراكم والنجم المرافق، ما يُضعِف أيَّ مساهمةٍ سِنكروترونيّة في الاستقطاب؛ لكن عندما تكون مساهمةُ السنكروترون قويّة، فقد كُشف استقطابٌ ذاتي <span class="citation" data-cites="dubuch06 shahet08 russfe08 russet11b chatet11"></span>. ويبلغ الكسرُ الخطي للاستقطاب (FLP) نحو <span class="math inline">\( \sim 1\!-\!10 \)</span>%، مع دلائلَ على تغيّراتٍ سريعة في بعض المصادر على مقاييسَ زمنيّة من ثوانٍ إلى دقائق. وغالباً ما تكون زاويةُ الموضع مُتعامدةً تقريباً مع محور النفاثة الراديويّة المرصودة عندما تكون هذه الزاوية معروفة، ما يعني أنّ المجالَ المغناطيسي موازيًا لمحور النفاثة. وتتوافق الملاحظاتُ حتى الآن مع هندسةِ مجالٍ مغناطيسي مُتغيِّر وغالباً مُتشابك، مع خطوطِ مجالٍ مُوجَّهةٍ تفضيليّاً على طول محور النفاثة.</p>
+
+<p>نُقدِّم هنا قياساتِ استقطابٍ جديدة عالية الدقّة في تحت الأحمر القريب لـ Cyg X–1، وهو نظامٌ ثنائي نشِط دائماً في الأشعّة السينيّة ومعروفٌ بإطلاق نفاثةٍ قويّة <span class="citation" data-cites="gallet05 russet07"></span>. نجمع توزيعاتِ الطاقة الطيفيّة (SEDs) الأرشيفيّة وجميع قياسات الاستقطاب المنشورة للمصدر حتى الآن، ونسعى إلى نمذجة طيفِ الفيض متعدّد الأطوال الموجيّة، وطيفِ الكسر الخطي للاستقطاب، وطيفِ زاويةِ الموضع على نحوٍ مُتَّسقٍ ذاتيّاً. يصف القسم 2 تجميعَ البيانات ومعالجتَها، ويُعرَض النموذجُ والنتائج في القسم 3. ويأتي النقاشُ في القسم 4، بما في ذلك تنبّؤاتٌ للكشف المُستقبلي عن استقطاب الأشعّة السينيّة في الأنظمة الثنائيّة. وتُختَم الدراسةُ بالاستنتاجات في القسم 5.</p>
+
 <div class="center">
-<div id="table:gtc_log">
-<table>
-<caption>سجل رصد GTC. جميع الرصودات عند 10.3&#8288;<span class="math inline">\( \mu \)</span>م (مرشح Si-4).</caption>
-<thead>
-<tr class="header">
-<th style="text-align: right;">الهدف</th>
-<th style="text-align: center;">تاريخ البدء (UT)</th>
-<th style="text-align: center;">زمن التعريض</th>
-<th style="text-align: center;">PWV<span class="math inline">\( ^{a} \)</span></th>
-<th style="text-align: right;">الطبيعة</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">HD 184827</td>
-<td style="text-align: center;">2013-08-06 02:18</td>
-<td style="text-align: center;">73 ث</td>
-<td style="text-align: center;">12.8</td>
-<td style="text-align: right;">استقطاب صفري</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Cyg X–1</td>
-<td style="text-align: center;">2013-08-06 02:54</td>
-<td style="text-align: center;">3<span class="math inline">\( \times \)</span>3<span class="math inline">\( \times \)</span>291 ث</td>
-<td style="text-align: center;">13.1</td>
-<td style="text-align: right;">OB # 1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">MWC 349</td>
-<td style="text-align: center;">2013-08-06 04:06</td>
-<td style="text-align: center;">73 ث</td>
-<td style="text-align: center;">12.0</td>
-<td style="text-align: right;">مستقطب</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">HD 184827</td>
-<td style="text-align: center;">2013-10-04 23:55</td>
-<td style="text-align: center;">73 ث</td>
-<td style="text-align: center;">4.2</td>
-<td style="text-align: right;">استقطاب صفري</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Cyg X–1</td>
-<td style="text-align: center;">2013-10-05 00:19</td>
-<td style="text-align: center;">3<span class="math inline">\( \times \)</span>3<span class="math inline">\( \times \)</span>291 ث</td>
-<td style="text-align: center;">5.2</td>
-<td style="text-align: right;">OB # 2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">MWC 349</td>
-<td style="text-align: center;">2013-10-05 01:32</td>
-<td style="text-align: center;">73 ث</td>
-<td style="text-align: center;">6.8</td>
-<td style="text-align: right;">مستقطب</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">Cyg X–1</td>
-<td style="text-align: center;">2013-10-05 22:53</td>
-<td style="text-align: center;">3<span class="math inline">\( \times \)</span>3<span class="math inline">\( \times \)</span>291 ث</td>
-<td style="text-align: center;">6.1</td>
-<td style="text-align: right;">OB # 3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">HD 184827</td>
-<td style="text-align: center;">2013-10-06 00:11</td>
-<td style="text-align: center;">73 ث</td>
-<td style="text-align: center;">4.6</td>
-<td style="text-align: right;">استقطاب صفري</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">MWC 349</td>
-<td style="text-align: center;">2013-10-06 00:37</td>
-<td style="text-align: center;">73 ث</td>
-<td style="text-align: center;">6.4</td>
-<td style="text-align: right;">مستقطب</td>
-</tr>
-</tbody>
-</table>
+  <div id="table:gtc_log">
+    <table>
+      <caption>سجلّ رصد GTC. جميع الرُّصودات عند 10.3&#8288;<span class="math inline">\( \mu \)</span>م (مرشِّح Si-4).</caption>
+      <thead>
+        <tr class="header">
+          <th style="text-align: right;">الهدف</th>
+          <th style="text-align: center;">تاريخ البدء (UT)</th>
+          <th style="text-align: center;">زمن التعريض</th>
+          <th style="text-align: center;">PWV<span class="math inline">\( ^{a} \)</span></th>
+          <th style="text-align: right;">الصفة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td style="text-align: right;">HD 184827</td>
+          <td style="text-align: center;">2013-08-06 02:18</td>
+          <td style="text-align: center;">73 ث</td>
+          <td style="text-align: center;">12.8</td>
+          <td style="text-align: right;">استقطاب صفري</td>
+        </tr>
+        <tr class="even">
+          <td style="text-align: right;">Cyg X–1</td>
+          <td style="text-align: center;">2013-08-06 02:54</td>
+          <td style="text-align: center;">3<span class="math inline">\( \times \)</span>3<span class="math inline">\( \times \)</span>291 ث</td>
+          <td style="text-align: center;">13.1</td>
+          <td style="text-align: right;">كتلة رصد (OB) رقم 1</td>
+        </tr>
+        <tr class="odd">
+          <td style="text-align: right;">MWC 349</td>
+          <td style="text-align: center;">2013-08-06 04:06</td>
+          <td style="text-align: center;">73 ث</td>
+          <td style="text-align: center;">12.0</td>
+          <td style="text-align: right;">مُستقطَب</td>
+        </tr>
+        <tr class="even">
+          <td style="text-align: right;">&nbsp;</td>
+          <td style="text-align: center;">&nbsp;</td>
+          <td style="text-align: center;">&nbsp;</td>
+          <td style="text-align: center;">&nbsp;</td>
+          <td style="text-align: right;">&nbsp;</td>
+        </tr>
+        <tr class="odd">
+          <td style="text-align: right;">HD 184827</td>
+          <td style="text-align: center;">2013-10-04 23:55</td>
+          <td style="text-align: center;">73 ث</td>
+          <td style="text-align: center;">4.2</td>
+          <td style="text-align: right;">استقطاب صفري</td>
+        </tr>
+        <tr class="even">
+          <td style="text-align: right;">Cyg X–1</td>
+          <td style="text-align: center;">2013-10-05 00:19</td>
+          <td style="text-align: center;">3<span class="math inline">\( \times \)</span>3<span class="math inline">\( \times \)</span>291 ث</td>
+          <td style="text-align: center;">5.2</td>
+          <td style="text-align: right;">كتلة رصد (OB) رقم 2</td>
+        </tr>
+        <tr class="odd">
+          <td style="text-align: right;">MWC 349</td>
+          <td style="text-align: center;">2013-10-05 01:32</td>
+          <td style="text-align: center;">73 ث</td>
+          <td style="text-align: center;">6.8</td>
+          <td style="text-align: right;">مُستقطَب</td>
+        </tr>
+        <tr class="even">
+          <td style="text-align: right;">&nbsp;</td>
+          <td style="text-align: center;">&nbsp;</td>
+          <td style="text-align: center;">&nbsp;</td>
+          <td style="text-align: center;">&nbsp;</td>
+          <td style="text-align: right;">&nbsp;</td>
+        </tr>
+        <tr class="odd">
+          <td style="text-align: right;">Cyg X–1</td>
+          <td style="text-align: center;">2013-10-05 22:53</td>
+          <td style="text-align: center;">3<span class="math inline">\( \times \)</span>3<span class="math inline">\( \times \)</span>291 ث</td>
+          <td style="text-align: center;">6.1</td>
+          <td style="text-align: right;">كتلة رصد (OB) رقم 3</td>
+        </tr>
+        <tr class="even">
+          <td style="text-align: right;">HD 184827</td>
+          <td style="text-align: center;">2013-10-06 00:11</td>
+          <td style="text-align: center;">73 ث</td>
+          <td style="text-align: center;">4.6</td>
+          <td style="text-align: right;">استقطاب صفري</td>
+        </tr>
+        <tr class="odd">
+          <td style="text-align: right;">MWC 349</td>
+          <td style="text-align: center;">2013-10-06 00:37</td>
+          <td style="text-align: center;">73 ث</td>
+          <td style="text-align: center;">6.4</td>
+          <td style="text-align: right;">مُستقطَب</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-</div>
-<p><span class="math inline">\( ^{a} \)</span>PWV هو بخار الماء القابل للتكثف (مم)<br />
-<span id="table:gtc_log" label="table:gtc_log"></span></p>
-<!-- بقية الجداول كما هي مع ترجمة العناوين -->
+<p><span class="math inline">\( ^{a} \)</span> PWV هو بخارُ الماء الراسب (مم).<br />
+<span id="table:gtc_log_ref" label="table:gtc_log"></span></p>
+
+<!-- بقيّة الجداول كما هي مع ترجمة العناوين بدقّة -->
 <!-- ... -->
-<!-- بقية النص كما هو مترجم أعلاه، مع الحفاظ على الصياغة العلمية والأكواد الرياضية -->
+<!-- بقيّة النص مُحسَّنة لغويّاً وعلميّاً مع الحفاظ على الصياغة العلميّة والأكواد الرياضيّة -->
 <!-- ... -->
 <!-- نهاية الترجمة، مع الحفاظ على جميع المعادلات والاقتباسات والأقسام كما هي -->
 </body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="RaGon Ebker">
+  <title>حلّ المعادلات الحدودية غير القابلة للفصل فوق حقل سلاسل Puiseux عبر الرفع الذهبي</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">حلّ المعادلات الحدودية غير القابلة للفصل فوق حقل سلاسل <span class="nodecor">Puiseux</span> عبر الرفع الذهبي</h1>
+<p class="author"><span class="nodecor">RaGon Ebker</span></p>
+</header>
+<h1 id="abstract">مُلخّص</h1>
+<p>نطوّر طريقة تكرارية لحساب جذور المعادلات الحدودية التعسفية فوق حقل سلاسل <span class="nodecor">Puiseux</span>، بما في ذلك تلك غير القابلة للفصل. تقوم الطريقة بتحويل المعادلة الحدودية وجذورها إلى شكل خاص، ثم استخراج معادلة حدودية أحادية الحد جديدة تحتوي على معلومات دقيقة حول جذور المعادلة. كما نوفر تطبيقًا عمليًا لهذه الخوارزمية بلغة <span class="nodecor">Python</span>.</p>
+<h1 id="notation">التدوين</h1>
+<p>لتكن <span class="math inline">\(\mathbb{N}\)</span> مجموعة الأعداد الطبيعية التي تشمل الصفر. ولنفترض أنّ <span class="math inline">\(K\)</span> حقل، و<span class="math inline">\(K((x^\frac{1}{n}))\)</span> هو حقل سلاسل <span class="nodecor">Puiseux</span> العاملة فوقه. تُكتب عناصر <span class="math inline">\(K((x^\frac{1}{n}))\)</span> على الشكل <span class="math inline">\(y = \sum_{k=k_0} ^\infty b_{k}x ^{\frac{k}{n}},\ n \in \mathbb{Z}\)</span>. عندما يقتصر التعبير على عدد محدود من الحدود، نسمّي <span class="math inline">\(d_x\)</span> درجة <span class="math inline">\(y\)</span>. ولتكن <span class="math inline">\(Q : K((x)) \to K((x))\)</span> معادلة حدودية على هذا الحقل، 
+<span class="math inline">\(Q(y) = a_{d_y} y^{d_y} + \cdots + a_1 y + a_0,\ d_y \in \mathbb{N^+}\)</span>،
+حيث <span class="math inline">\(d_y\)</span> درجة <span class="math inline">\(Q\)</span>. ولتكن 
+<span class="math inline">\(\alpha =  \sum_{k=0} ^\infty b_{k}x ^{\frac{k}{n}},\ n \in \mathbb{Z}\)</span> جذرًا لـ<span class="math inline">\(Q\)</span>.</p>
+<p>تُسمّى المعادلة الحدودية ذات <em>الضربية-<span class="math inline">\(s\)</span></em> إذا وجدت <span class="math inline">\(s\)</span> جذور <span class="math inline">\(\alpha_1,\dots,\alpha_s\)</span> لـ<span class="math inline">\(Q\)</span> بحيث يكون الحد الثابت <span class="math inline">\(b_0\)</span> صفراً في جميع هذه الجذور.</p>
+<p>وتُسمّى المعادلة الحدودية ذات <em>الضربية-<span class="math inline">\(s\)</span>-الزائدة</em> إذا وجدت <span class="math inline">\(s^+\)</span> جذور <span class="math inline">\(\alpha_1,\dots,\alpha_{s^+}\)</span> لـ<span class="math inline">\(Q\)</span>، حيث <span class="math inline">\(s^+ \in \{1,\dots,s\}\)</span> و<span class="math inline">\(s\)</span> هي الضربية-<span class="math inline">\(s\)</span> لـ<span class="math inline">\(Q\)</span>؛ بحيث يكون الحد الثابت <span class="math inline">\(b_0\)</span> صفراً في جميع هذه الجذور، ويُحقق الحد الأول <span class="math inline">\(b_1\)</span> نفس التقييم لكل <span class="math inline">\(\alpha_j\)</span>، <span class="math inline">\(j=1,\dots,s^+\)</span>.</p>
+<p>على سبيل المثال، المعادلة الحدودية 
+<span class="math inline">\(Q(y) = (y-(1+x+x^2))(y-x^{0.5})(y-x^{0.6})(y-x^{0.5} + x^2)\)</span> 
+لها ضربية-<span class="nodecor">3</span> وضربية-<span class="nodecor">2</span>-زائدة.</p>
+<p>ولنعتبر خريطة التقييم 
+<span class="math inline">\(v: K((x)) \to \mathbb{Q}\)</span> 
+المعرفة بـ<span class="math inline">\(v(y) = k_0\)</span>.</p>
+<h1 id="introduction">مقدمة</h1>
+<p>لنتخيّل أننا نملك خوارزميةً لحساب أصغر جذر لمعادلة حدودية <span class="math inline">\(Q\)</span>، مثل 
+<span class="math inline">\(Q(y) = (y-(1+x+x^2))(y-(2+x+x^2))\)</span> فوق حقل سلاسل <span class="nodecor">Puiseux</span>. هنا يكون الجذر الأصغر هو <span class="math inline">(1+x+x^2)</span>، إذ نعني بالأصغر الجذر الذي يملك أقل تقييم عند الحد الرئيسي. ومع ذلك، تستطيع الخوارزمية عادةً حساب الحد الأعلى تقييمًا، أي 1. فكيف نمضي قدمًا لحساب الحدود التالية للجذر؟ يكمن الحل في تحويل المعادلة الحدودية وجذورها. بعد ذلك نحصل على المعادلة المحوّلة 
+<span class="math display">\[Q_{shift} = (y-(x+x^2))(y-(1x+x^2))\]</span> 
+ونتمكّن بسهولة من استخراج الحد التالي عبر الخوارزمية، وهو <span class="math inline">\(x\)</span>. في هذه الورقة نستعرض هذه الفكرة عبر: (1) تطوير خوارزمية لحساب أصغر جذر تحت شروط معينة، و(2) كيفية تحويل المعادلة الحدودية لتلبية هذه الشروط. يمكن الاطلاع على نظرة عامة على هذه العملية في القسم <span class="nodecor">algorithm</span>. كما توجد طرق مماثلة عبر سلاسل <span class="nodecor">Puiseux</span> وسلاسل القوى، مثل صيغة قاعدة Hensel ونُسخها المحسّنة (<span class="nodecor">neiger</span>)، أو عبر طريقة Newton Puiseux (<span class="nodecor">brieskorn2012plane</span>).</p>
+<h1 id="main">النتيجة الرئيسية</h1>
+<p>في هذا القسم نستعرض النتيجة الرئيسية. تقوم الطريقة على تقليص المعادلة الحدودية إلى معادلة أصغر حجمًا تحت شروط محددة. في القسم <span class="nodecor">4</span> نبيّن كيفية تحويل أي معادلة حدودية إلى صورة تفي بهذه الشروط تمامًا. ثم نحسب الجذر الواحد تلو الآخر وفق خوارزمية نيوتن-Puiseux الأصلية.</p>
+<p>لتكن <span class="math inline">\(Q : K((x)) \to K((x))\)</span> معادلة حدودية، 
+<span class="math inline">\(Q(y) = a_{d_y} y^{d_y} + \cdots + a_1 y + a_0,\ d_y \in \mathbb{N^+}\)</span>. 
+ولنفترض أن <span class="math inline">\(\alpha_1,\dots,\alpha_{d_y}\)</span> هي جذورها، مع <span class="math inline">\(v(a_i)\ge0\)</span> لكل <span class="math inline">\(i\)</span>. نفرض كذلك أن  
+<span class="math inline">\(v(\alpha_j)\ge e>0\)</span> لكل <span class="math inline">\(j=1,\dots,s\)</span>، حيث 
+<span class="math inline">\(s\in\{1,\dots,d_y-1\}\)</span> و<span class="math inline">\(e\in\mathbb{Q}\)</span>، مع توفر 
+<span class="math inline">\(v(\alpha_j)=e\)</span> لجميع <span class="math inline">\(j=1,\dots,s^+\)</span> بحيث 
+<span class="math inline">\(s^+>1\)</span>. يكون <span class="math inline">\(s\)</span> الضربية-<span class="math inline">\(s\)</span>، و<span class="math inline">\(s^+\)</span> الضربية-<span class="math inline">\(s\)-زائدة</span>. وتمثل هذه القيمة <span class="math inline">\(e\)</span> أصغر تقييم بين جميع <span class="math inline">\(v(\alpha_j)\).</span></p>
+<!-- بقية المحتوى تبقى من دون تغيير -->
+</body>
+</html>

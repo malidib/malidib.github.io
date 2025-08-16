@@ -9,10 +9,10 @@
   <meta name="author" content="Aaron C. Birch" />
   <meta name="author" content="Thomas L. Duvall, Jr." />
   <meta name="author" content="S. P. Rajaguru" />
-  <title>الدوران الزوالي الشمسي من واحد وعشرين عامًا من رصد SOHO/MDI و SDO/HMI</title>
+  <title>الدوران الزوالي الشمسي من واحدٍ وعشرينَ عامًا من رصد SOHO/MDI و SDO/HMI</title>
   <style>
     html {
-      line-height: 1.5;
+      line-height: 1.6;
       font-family: Georgia, serif;
       font-size: 20px;
       color: #1a1a1a;
@@ -21,11 +21,8 @@
     }
     body {
       margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
+      max-width: 38em;
+      padding: 50px 50px 50px 50px;
       hyphens: auto;
       overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
@@ -34,7 +31,7 @@
     }
     @media (max-width: 600px) {
       body {
-        font-size: 0.9em;
+        font-size: 0.95em;
         padding: 1em;
       }
       h1 {
@@ -60,6 +57,11 @@
     }
     a {
       color: #1a1a1a;
+      text-decoration: none;
+      border-bottom: 1px dotted #aaa;
+    }
+    a:hover {
+      border-bottom-color: #1a1a1a;
     }
     a:visited {
       color: #1a1a1a;
@@ -69,6 +71,11 @@
     }
     h1, h2, h3, h4, h5, h6 {
       margin-top: 1.4em;
+    }
+    h2 {
+      border-right: 4px solid #e0e0e0;
+      padding-right: 0.5em;
+      margin-top: 1.6em;
     }
     h5, h6 {
       font-size: 1em;
@@ -87,8 +94,9 @@
     blockquote {
       margin: 1em 1.7em 1em 0;
       padding-right: 1em;
-      border-right: 2px solid #e6e6e6;
-      color: #606060;
+      border-right: 3px solid #e6e6e6;
+      color: #555;
+      background: #fafafa;
     }
     code {
       font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
@@ -112,7 +120,7 @@
       background-color: #1a1a1a;
       border: none;
       height: 1px;
-      margin: 1em 0;
+      margin: 2em 0;
     }
     table {
       margin: 1em 0;
@@ -125,6 +133,7 @@
     }
     table caption {
       margin-bottom: 0.75em;
+      font-weight: bold;
     }
     tbody {
       margin-top: 0.5em;
@@ -134,13 +143,19 @@
     th {
       border-top: 1px solid #1a1a1a;
       padding: 0.25em 0.5em 0.25em 0.5em;
+      text-align: right;
     }
     td {
       padding: 0.125em 0.5em 0.25em 0.5em;
     }
     header {
-      margin-bottom: 4em;
+      margin-bottom: 2.5em;
       text-align: center;
+    }
+    header .subtitle {
+      color: #444;
+      font-size: 1.05em;
+      margin-top: 0.2em;
     }
     #TOC li {
       list-style: none;
@@ -163,6 +178,10 @@
     /* MathJax fixes */
     .MathJax, .mjx-chtml { direction: ltr !important; unicode-bidi: embed; }
     .math.inline { font-family: 'Cambria Math', 'STIX Math', 'Arial', serif; font-size: 1em; }
+    .footnotes {
+      font-size: 0.95em;
+      color: #333;
+    }
   </style>
   <script>
     window.MathJax = {
@@ -174,43 +193,51 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">الدوران الزوالي الشمسي من واحد وعشرين عامًا من رصد<br />
-SOHO/MDI و SDO/HMI<a href="#fn1" class="footnote-ref"
-id="fnref1" role="doc-noteref"><sup>1</sup></a> </h1>
-<p class="subtitle">أزمنة انتقال الموجات الشمسية والنمذجة الأمامية في تقريب الأشعة</p>
-<p class="author">تشي-تشاو ليانغ</p>
-<p class="author">لوران جيزون</p>
-<p class="author">آرون سي. بيرش</p>
-<p class="author">توماس إل. دوفال الابن</p>
-<p class="author">إس. بي. راجاجورو</p>
-<p class="date">استلم في 19 يونيو 2018 / قُبل في 21 أغسطس 2018</p>
+  <h1 class="title">الدوران الزوالي الشمسي من واحدٍ وعشرينَ عامًا من رصد<br />SOHO/MDI و SDO/HMI<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+  <p class="subtitle">أزمنة سفر الموجات الشمسية والنمذجة الأمامية في تقريب الأشعة</p>
+  <p class="author">تشي-تشاو ليانغ</p>
+  <p class="author">لوران جيزون</p>
+  <p class="author">آرون سي. بيرش</p>
+  <p class="author">توماس إل. دوفال الابن</p>
+  <p class="author">إس. بي. راجاجورو</p>
+  <p class="date">استُلِمَ في 19 يونيو 2018 / قُبِلَ في 21 أغسطس 2018</p>
 </header>
+
+<h2 id="abstract">الملخّص</h2>
 <p>
-<span>يُعد التدفق الزوالي الشمسي مكونًا أساسيًا في نماذج الدينامو المعتمدة على نقل الفيض المغناطيسي. ومع ذلك، لم يتم التوصل إلى إجماع حول بنيته تحت السطحية.</span>
-<span>قمنا بدمج مجموعتي البيانات من SOHO/MDI و SDO/HMI بهدف تحقيق دقة أعلى في القياسات الهليوزلزالية للتدفق الزوالي تحت السطح.</span>
-<span>تم قياس فروق أزمنة الانتقال جنوب-شمال عبر تطبيق هليوزلزالية المسافة-الزمن على دوبلرجرامات متوسطة الدرجة من MDI و HMI تغطي الفترة من مايو 1996 إلى أبريل 2017. تعالج تحليلاتنا عدة مصادر للتأثيرات النظامية: خطأ زاوية <span class="math inline">\(P\)</span>، تأثيرات الحقل المغناطيسي السطحي، وتغيرات المركز إلى الحافة. بالنسبة لبيانات HMI، استخدمنا تصحيح زاوية <span class="math inline">\(P\)</span> المقدم من فريق HMI استنادًا إلى عبور كوكبي الزهرة وعطارد. أما بيانات MDI، فتم تصحيح زاوية <span class="math inline">\(P\)</span> بناءً على الترابط بين بيانات MDI و HMI خلال فترة التداخل. تم تقدير تأثير المركز إلى الحافة من فروق أزمنة الانتقال شرق-غرب، وهو يختلف بين رصدي MDI و HMI. تم تفسير قياسات أزمنة الانتقال باستخدام منهجية النمذجة الأمامية في تقريب الأشعة.</span>
-<span>في النطاق العرضي 20<span class="math inline">\(^\circ\)</span>–35<span class="math inline">\(^\circ\)</span>، تتشابه فروق أزمنة الانتقال في نصف الكرة الجنوبي بين الدورتين 23 و24، بينما تختلف في نصف الكرة الشمالي بين الدورتين. باستثناء نصف الكرة الشمالي للدورة 24، تفضل القياسات نموذج دوران زوالي أحادي الخلية حيث تستمر التدفقات نحو القطبين حتى عمق يقارب <span class="math inline">\(\sim 0.8\,R_\odot\)</span>، مع تدفقات محلية نحو أحزمة النشاط في الطبقات القريبة من السطح. نصف الكرة الشمالي للدورة 24 يُعد شاذًا: فروق أزمنة الانتقال فيه أصغر بكثير عند المسافات الأكبر من 20<span class="math inline">\(^\circ\)</span>. هذا التباين بين نصفي الكرة خلال الدورة 24 لم يكن ظاهرًا في القياسات السابقة التي اعتمدت تصحيحًا مختلفًا لخطأ زاوية <span class="math inline">\(P\)</span> حيث تم تعيين فروق أزمنة الانتقال جنوب-شمال إلى الصفر عند خط الاستواء لجميع المسافات. في قياساتنا، تكون فروق أزمنة الانتقال عند خط الاستواء صفرية للمسافات الأقل من <span class="math inline">\(\sim 30^\circ\)</span>، لكنها لا تختفي عند المسافات الأكبر. هذا الانحراف الاستوائي للمسافات الكبيرة لا يجب تفسيره كتدفق عميق عابر لخط الاستواء؛ بل قد يكون ناتجًا عن وجود تدفقات محلية غير متناظرة عند السطح قرب نهايات مسارات الأشعة الصوتية.</span>
-<span>تحتوي القياسات الهليوزلزالية المدمجة من MDI و HMI المقدمة هنا على ثروة من المعلومات حول البنية تحت السطحية والتطور الزمني للدوران الزوالي على مدى 21 عامًا. لاستنتاج التدفق الزوالي العميق، سيكون من الضروري نمذجة مساهمة التدفقات المعقدة والمتغيرة زمنيًا في الطبقات القريبة من السطح.</span>
+<span>يُعدّ التدفّق الزوالي الشمسي مكوِّنًا أساسيًا في نماذج الدينامو المعتمدة على نقل الفيض المغناطيسي. ومع ذلك، لم يُتوصَّل بعدُ إلى إجماع حول بُنيته تحت السطحية.</span>
+<span>قمنا بدمج مجموعتَي البيانات من SOHO/MDI و SDO/HMI بهدف تحقيق دقة أعلى في القياسات الزلزالية الشمسية للتدفّق الزوالي تحت السطح.</span>
+<span>قِيسَت فروق أزمنة السفر جنوب–شمال باستخدام طريقة المسافة–الزمن في علم الزلازل الشمسي على دوبلرغرامات متوسطة الدرجة من MDI وHMI تغطي الفترة من مايو 1996 إلى أبريل 2017. تُعالِج تحليلاتُنا عدّة مصادر لتأثيرات نظامية: خطأ زاوية <span class="math inline">\(P\)</span>، وتأثيرات الحقل المغناطيسي السطحي، وتباينات المركز–الحافة. بالنسبة لبيانات HMI، استخدمنا تصحيح زاوية <span class="math inline">\(P\)</span> المقدَّم من فريق HMI استنادًا إلى عبور كوكبَي الزهرة وعُطارد. أمّا بيانات MDI، فصُحِّحت زاوية <span class="math inline">\(P\)</span> بالاستناد إلى الترابط مع بيانات HMI خلال فترة التداخل. وقد قُدِّر تباين المركز–الحافة من فروق أزمنة السفر شرق–غرب، وهو يختلف بين رصدي MDI وHMI. فُسِّرت قياسات أزمنة السفر بمنهجية النمذجة الأمامية في تقريب الأشعة.</span>
+<span>في نطاق العرض 20<span class="math inline">\(^\circ\)</span>–35<span class="math inline">\(^\circ\)</span>، تتشابه فروق أزمنة السفر في نصف الكرة الجنوبي بين الدورتين 23 و24، بينما تختلف في نصف الكرة الشمالي بين الدورتين. باستثناء نصف الكرة الشمالي في الدورة 24، تُفضِّل القياسات نموذج دوران زوالي أحادي الخلية، حيث يستمر التدفّق نحو القطبين حتى عمق يناهز <span class="math inline">\(\sim 0.8\,R_\odot\)</span>، مع تدفّقات محلية مُتّجهة نحو أحزمة النشاط في الطبقات القريبة من السطح.</span>
+<span>نصف الكرة الشمالي في الدورة 24 يُعدّ شاذًا: فروق أزمنة السفر فيه أصغر بكثير عند المسافات الأكبر من 20<span class="math inline">\(^\circ\)</span>. هذا التباين بين نصفي الكرة خلال الدورة 24 لم يظهر في القياسات السابقة التي اعتمدت تصحيحًا مختلفًا لخطأ زاوية <span class="math inline">\(P\)</span>، إذ فُرِض أن فروق أزمنة السفر جنوب–شمال تساوي الصفر عند خط الاستواء لجميع المسافات. في قياساتنا، تكون فروق أزمنة السفر عند خط الاستواء قريبة من الصفر للمسافات الأقل من <span class="math inline">\(\sim 30^\circ\)</span>، لكنها لا تختفي عند المسافات الأكبر. هذه الإزاحةُ الاستوائية عند المسافات الكبيرة لا ينبغي تفسيرها على أنّها تدفّق عميق يعبر خط الاستواء؛ بل قد تنجم عن تدفّقات سطحية محلية غير متناظرة قرب نهايات مسارات الأشعة الصوتية.</span>
+<span>تحتوي القياسات الزلزالية الشمسية المدمجة من MDI وHMI المقدَّمة هنا على ثروة من المعلومات حول البنية تحت السطحية والتطوّر الزمني للدوران الزوالي على مدى 21 عامًا. وللاستدلال على التدفّق الزوالي العميق، سيكون من الضروري نمذجة مساهمة التدفّقات المعقّدة والمتغيرة زمنيًا في الطبقات القريبة من السطح.</span>
 </p>
+
 <h1 id="introduction">مقدمة</h1>
 <p>
-نعرف الدوران الزوالي الشمسي بأنه المكون المتماثل محوريًا للتدفق الزوالي في نظام الإحداثيات الكروية القطبية حيث يتطابق المحور القطبي مع محور دوران الشمس. نفترض في هذا التعريف أن جميع الطبقات تدور حول محور دوران واحد. التدفق الزوالي السطحي، الذي تم قياسه لأول مرة بواسطة <span class="citation" data-cites="Duvall1979"></span>، يتجه نحو القطبين بسرعة قصوى تتراوح بين 10–20 م/ث عند العروض المنخفضة والمتوسطة، ومن المعروف أنه يستمر عبر منطقة الحمل الحراري إلى حد ما <span class="citation" data-cites="Giles1997"></span>. وقد أظهرت عدة طرق أن مقدار وشكل التدفق الزوالي يتغيران مع مستوى النشاط الشمسي <span class="citation" data-cites="Chou2001 Haber2002 Beck2002 Zhao2004 Hathaway2010 Ulrich2010 Liang2015b Komm2015"></span>. بالتوازي، يتطور نمط تدفقات نحو المناطق النشطة <span class="citation" data-cites="Gizon2001 Loeptien2017"></span> ويتحرك نحو خط الاستواء تزامنًا مع أحزمة النشاط مع تقدم الدورة الشمسية. يُعتقد أن هذه التدفقات، التي لها عادة مكون في المستوى الزوالي، تفسر جزءًا كبيرًا من التغير الدوري في التدفق الزوالي <span class="citation" data-cites="Gizon2004b Svanda2008"></span>. بالإضافة إلى ذلك، فإن التدفق الزوالي قادر على نقل الفيض المغناطيسي ويُعتبر آلية محتملة في نماذج الدينامو المعتمدة على نقل الفيض لنقل الحقل المغناطيسي في باطن الشمس <span class="citation" data-cites="Cameron2017"></span>.
+نُعرِّف الدوران الزوالي الشمسي بأنّه المكوّن ذو التماثل المحوري للتدفّق الزوالي في نظام الإحداثيات الكروية القطبية، حيث يتطابق المحور القطبي مع محور دوران الشمس. نفترض في هذا التعريف أنّ جميع الطبقات تدور حول محور دوران واحد. التدفّق الزوالي السطحي، الذي قِيس لأوّل مرّة بواسطة <span class="citation" data-cites="Duvall1979"></span>، يتجه نحو القطبين بسرعات قصوى بين 10–20 م/ث عند العروض المنخفضة والمتوسطة، ومن المعروف أنّه يمتدّ بدرجةٍ ما عبر منطقة الحمل الحراري <span class="citation" data-cites="Giles1997"></span>. وقد أظهرت طرائق عدّة أنّ مقدار وشكل التدفّق الزوالي يتغيّران مع مستوى النشاط الشمسي <span class="citation" data-cites="Chou2001 Haber2002 Beck2002 Zhao2004 Hathaway2010 Ulrich2010 Liang2015b Komm2015"></span>. وبالتوازي، يتطوّر نمطُ تدفّقاتٍ مُتقاربة نحو المناطق النشطة <span class="citation" data-cites="Gizon2001 Loeptien2017"></span> ويتحرّك نحو خط الاستواء تزامنًا مع أحزمة النشاط مع تقدّم الدورة الشمسية. ويُعتَقَد أنّ هذه التدفّقات، التي يكون لها عادةً مُكوِّن في المستوى الزوالي، تُفسِّر جزءًا كبيرًا من التغيّر الدوري في التدفّق الزوالي <span class="citation" data-cites="Gizon2004b Svanda2008"></span>. إضافةً إلى ذلك، فإنّ التدفّق الزوالي قادر على نقل الفيض المغناطيسي ويُعتبَر آليةً رئيسية محتملة في نماذج الدينامو المعتمدة على نقل الفيض لنقل الحقل المغناطيسي في باطن الشمس <span class="citation" data-cites="Cameron2017"></span>.
 </p>
 <p>
-مؤخرًا، تم الإبلاغ عن نتائج هليوزلزالية غير متسقة <span class="citation" data-cites="Zhao2013 Schad2013 Jackiewicz2015 Rajaguru2015 Boening2017 Chen2017 Lin2018"></span>. السبب الرئيسي هو أن القياسات الهليوزلزالية تعاني من مجموعة متنوعة من الأخطاء النظامية مثل سوء محاذاة الأجهزة، وتغير المركز إلى الحافة، وتأثير الحقل المغناطيسي السطحي <span class="citation" data-cites="Beck2005 Duvall2009 Zhao2012 Liang2015a"></span>. علاوة على ذلك، فإن التدفق الزوالي أضعف بأكثر من مرتبة واحدة من التدفقات الرئيسية الأخرى داخل الشمس. باستخدام نموذج الضوضاء لـ<span class="citation" data-cites="Gizon2004"></span>، اقترح <span class="citation" data-cites="Braun2008"></span> و<span class="citation" data-cites="Hanasoge2009"></span> أن تقدير التدفق الزوالي عند قاع منطقة الحمل الحراري بدقة 1 م/ث يتطلب عشرات السنين من البيانات. لذا، فإن قياسات التدفق الزوالي العميق تتطلب سلسلة زمنية رصدية طويلة جدًا.
+في الآونة الأخيرة، أُبلِغ عن نتائج زلزالية شمسية متضاربة <span class="citation" data-cites="Zhao2013 Schad2013 Jackiewicz2015 Rajaguru2015 Boening2017 Chen2017 Lin2018"></span>. والسبب الرئيس هو أنّ القياسات الزلزالية الشمسية تعاني من طيفٍ من الأخطاء النظامية، مثل سوء محاذاة الأجهزة، وتباين المركز–الحافة، وتأثير الحقل المغناطيسي السطحي <span class="citation" data-cites="Beck2005 Duvall2009 Zhao2012 Liang2015a"></span>. علاوةً على ذلك، فإنّ التدفّق الزوالي أضعفُ بأكثر من مرتبةٍ قدريّة واحدة من التدفقات السائدة الأخرى داخل الشمس. باستخدام نموذج الضوضاء لـ<span class="citation" data-cites="Gizon2004"></span>، اقترح <span class="citation" data-cites="Braun2008"></span> و<span class="citation" data-cites="Hanasoge2009"></span> أنّ تقدير التدفّق الزوالي عند قاع منطقة الحمل الحراري بدقّة 1 م/ث يتطلّب عقودًا من البيانات. لذا، فإنّ قياسات التدفّق الزوالي العميق تتطلّب سلسلةً زمنيةً رصدية طويلةً جدًا.
 </p>
 <p>
-لقد جمع جهاز دوبلر ميكلسون على متن مرصد الشمس والهيليوسفير <span class="citation" data-cites="Scherrer1995"></span> وجهاز التصوير الهليوزلزالي والمغناطيسي على متن مرصد ديناميكيات الشمس <span class="citation" data-cites="Scherrer2012 Schou2012"></span> ما يقارب دورتين شمسيتين من الرصدات الكاملة للقرص الشمسي منذ مايو 1996. مؤخرًا <span class="citation" data-cites="Liang2017"></span>، وبعد معالجة معظم التأثيرات النظامية الرئيسية، أُجريت مقارنة مفصلة لقياسات أزمنة الانتقال للتدفق الزوالي من مجموعتي البيانات خلال فترة متزامنة من مايو 2010 إلى أبريل 2011، وأظهرت درجة عالية من الاتساق. استنادًا إلى هذا النجاح السابق، ندمج في هذا العمل مجموعتي البيانات على أمل تثبيت شكل التدفق الزوالي تحت 0.9 <span class="math inline">\(R_\odot\)</span>. في القسم <a href="#sec:data" data-reference-type="ref" data-reference="sec:data">2</a>، نصف إعداد البيانات وتحليلها. في القسم <a href="#sec:obs" data-reference-type="ref" data-reference="sec:obs">3</a>، نعرض أزمنة الانتقال المقاسة. في القسم <a href="#sec:model" data-reference-type="ref" data-reference="sec:model">4</a>، نقوم بنمذجة كل من الدوران الزوالي واسع النطاق الذي يغطي جميع العروض، بالإضافة إلى التدفقات المحلية حول العروض النشطة المتوسطة في الطبقات العليا من منطقة الحمل الحراري كمكون منفصل. تتم مقارنة أزمنة الانتقال المقاسة مع النتائج النمذجية الأمامية في القسم <a href="#sec:cmpr" data-reference-type="ref" data-reference="sec:cmpr">5</a>. نلخص في القسم <a href="#sec:sum" data-reference-type="ref" data-reference="sec:sum">6</a> مع مناقشة لآثار العمل المقدم هنا.
+لقد جمع مِصوِّر دوبلر ميكلسون على متن مرصد الشمس والهيليوسفير <span class="citation" data-cites="Scherrer1995"></span> ومِصوِّر الزلازل الشمسية والمغناطيسية على متن مرصد ديناميكيات الشمس <span class="citation" data-cites="Scherrer2012 Schou2012"></span> ما يقارب دورتين شمسيتين من الرصدات الكاملة للقرص الشمسي منذ مايو 1996. ومؤخرًا <span class="citation" data-cites="Liang2017"></span>، وبعد معالجة معظم التأثيرات النظامية الرئيسية، أُجريت مقارنةٌ تفصيليّة لقياسات أزمنة السفر للتدفّق الزوالي من مجموعتَي البيانات خلال فترة متزامنة من مايو 2010 إلى أبريل 2011، وأظهرت درجةً عاليةً من الاتساق. استنادًا إلى هذا النجاح السابق، نُدمِج في هذا العمل مجموعتَي البيانات على أمل تقييد شكل التدفّق الزوالي تحت 0.9 <span class="math inline">\(R_\odot\)</span> بدقّة أفضل. في القسم <a href="#sec:data" data-reference-type="ref" data-reference="sec:data">2</a>، نصف إعداد البيانات وتحليلها. في القسم <a href="#sec:obs" data-reference-type="ref" data-reference="sec:obs">3</a>، نعرض أزمنة السفر المقاسة. في القسم <a href="#sec:model" data-reference-type="ref" data-reference="sec:model">4</a>، نقوم بنمذجة كلٍّ من الدوران الزوالي واسع النطاق الذي يغطي جميع العروض، إضافةً إلى التدفّقات المحلية حول العروض النشطة المتوسطة في الطبقات العليا من منطقة الحمل الحراري كمكوّن منفصل. وتُقارَن أزمنة السفر المقاسة مع نتائج النمذجة الأمامية في القسم <a href="#sec:cmpr" data-reference-type="ref" data-reference="sec:cmpr">5</a>. ونُلخِّص في القسم <a href="#sec:sum" data-reference-type="ref" data-reference="sec:sum">6</a> مع مناقشةٍ لآثار العمل المقدّم هنا.
 </p>
-<section class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>المتوسطات طويلة الأمد لفروق أزمنة الانتقال المقاسة متوفرة بصيغة إلكترونية في CDS عبر ftp مجهول إلى <code>cdsarc.u-strasbg.fr (130.79.128.5)</code> أو عبر <code>http://cdsweb.u-strasbg.fr/cgi-bin/qcat?J/A+A/</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>مركز العمليات العلمية المشتركة، <code>http://jsoc.stanford.edu/</code><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>نموذج استعلام أحداث MDI،<br />
-<code>http://mditlm.stanford.edu/events/events.html</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
+
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+  <hr />
+  <ol>
+    <li id="fn1" role="doc-endnote">
+      <p>المتوسطات طويلة الأمد لفروق أزمنة السفر المقاسة متوفّرة بصيغة إلكترونية في CDS عبر بروتوكول FTP مجهول إلى <code>cdsarc.u-strasbg.fr (130.79.128.5)</code> أو عبر <code>http://cdsweb.u-strasbg.fr/cgi-bin/qcat?J/A+A/</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
+    </li>
+    <li id="fn2" role="doc-endnote">
+      <p>مركز العمليات العلميّة المشتركة، <code>http://jsoc.stanford.edu/</code><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
+    </li>
+    <li id="fn3" role="doc-endnote">
+      <p>نموذج استعلام أحداث MDI،<br />
+      <code>http://mditlm.stanford.edu/events/events.html</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p>
+    </li>
+  </ol>
 </section>
 </body>
 </html>

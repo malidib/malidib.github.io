@@ -1,0 +1,292 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Avinash Anand">
+  <meta name="author" content="Mohit Gupta">
+  <meta name="author" content="Kritarth Prasad">
+  <meta name="author" content="Ujjwal Goel">
+  <meta name="author" content="Naman Lal">
+  <meta name="author" content="Astha Verma">
+  <meta name="author" content="Rajiv Ratn Shah">
+  <title>KG-CTG: توليد نص الاستشهاد باستخدام نماذج اللغة الكبيرة الموجهة بالرسوم البيانية المعرفية</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    html, body {
+      font-family: 'Cairo', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #3a8dde 0%, #6dd5ed 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 2px 8px rgba(58,141,222,0.08);
+      margin-bottom: 2.5rem;
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+    .author {
+      display: inline-block;
+      margin: 0 0.5rem;
+      font-size: 1.1rem;
+      color: #e3f2fd;
+      font-weight: 500;
+    }
+    h1 {
+      color: #3a8dde;
+      font-size: 2rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid #e3f2fd;
+      padding-bottom: 0.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    h2 {
+      color: #1976d2;
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      border-right: 4px solid #90caf9;
+      padding-right: 0.7rem;
+      background: #e3f2fd;
+      border-radius: 0 12px 12px 0;
+      display: inline-block;
+    }
+    h3 {
+      color: #1565c0;
+      font-size: 1.15rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+    ul, ol {
+      margin: 1.2rem 2.5rem 1.2rem 0;
+      padding-right: 1.5rem;
+    }
+    ul li, ol li {
+      margin-bottom: 0.7rem;
+      font-size: 1.02em;
+    }
+    p {
+      margin: 1.1rem 0;
+      text-align: justify;
+    }
+    strong {
+      color: #1976d2;
+      font-weight: 700;
+    }
+    em {
+      color: #388e3c;
+      font-style: normal;
+      font-weight: 500;
+    }
+    code, .math.inline, .math.display {
+      background: #f1f8e9;
+      color: #2e7d32;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+      font-size: 1em;
+      border-radius: 5px;
+      padding: 0.1em 0.3em;
+    }
+    .math.display {
+      display: block;
+      margin: 1.5em auto;
+      text-align: center;
+      font-size: 1.1em;
+    }
+    a {
+      color: #1976d2;
+      text-decoration: underline dotted;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #0d47a1;
+      text-decoration: underline;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #e3f2fd;
+      margin: 2.5rem 0 1.5rem 0;
+    }
+    section.footnotes {
+      font-size: 0.95em;
+      color: #616161;
+      background: #f1f8e9;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin: 2.5rem 0 1.5rem 0;
+    }
+    /* Table styling if needed in future */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5rem 0;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(58,141,222,0.07);
+    }
+    th, td {
+      border: 1px solid #e3f2fd;
+      padding: 0.7rem 1rem;
+      text-align: center;
+    }
+    th {
+      background: #e3f2fd;
+      color: #1976d2;
+      font-weight: 700;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      html, body {
+        font-size: 17px;
+      }
+      header {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+      }
+      h1.title {
+        font-size: 1.5rem;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 1rem;
+        padding-right: 0.4rem;
+      }
+      ul, ol {
+        margin-right: 1rem;
+        padding-right: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">KG-CTG: توليد نص الاستشهاد باستخدام نماذج اللغة الكبيرة الموجهة بالرسوم البيانية المعرفية</h1>
+  <div>
+    <span class="author">Avinash Anand</span>
+    <span class="author">Mohit Gupta</span>
+    <span class="author">Kritarth Prasad</span>
+    <span class="author">Ujjwal Goel</span>
+    <span class="author">Naman Lal</span>
+    <span class="author">Astha Verma</span>
+    <span class="author">Rajiv Ratn Shah</span>
+  </div>
+</header>
+
+<h1 id="ملخص">ملخص</h1>
+<p>توليد نص الاستشهاد (CTG) هو مهمة في معالجة اللغات الطبيعية (NLP) تهدف إلى إنتاج نص يشير بدقة إلى مستند مرجعي ضمن مستند المصدر. في هذه المهمة، يُولد النص اعتمادًا على إشارات سياقية من كل من الوثيقة المصدر والوثيقة المرجعية، مما يضمن تقديم معلومات استشهادية دقيقة وذات صلة. اعتمدت الأعمال السابقة في مجال توليد نص الاستشهاد بشكل أساسي على تلخيص محتوى الوثائق. وعلى هذا الأساس، يقدم هذا البحث إطارًا ودراسة مقارنة لاستخدام نماذج اللغة الكبيرة (LLMs) في مهمة توليد نص الاستشهاد. وقد أظهرنا تحسينًا في نتائج توليد نص الاستشهاد من خلال دمج الرسوم البيانية المعرفية للأوراق في المطالبة الموجهة إلى النموذج، مما يعزّز فهم العلاقة بين الأوراق. لتقييم أداء نموذجنا، استخدمنا مجموعة فرعية من مجموعة بيانات S2ORC القياسية التي تتكوّن من أوراق بحثية في علوم الحاسوب باللغة الإنجليزية. حقق نموذج Vicuna أفضل أداء في هذه المهمة حيث سجل: <span class="nodecor">14.15</span> في METEOR، <span class="nodecor">12.88</span> في ROUGE-1، <span class="nodecor">1.52</span> في ROUGE-2، و<span class="nodecor">10.94</span> في ROUGE-L. كما حقق Alpaca تحسينًا بنسبة <span class="nodecor">36.98%</span> في ROUGE-1 و<span class="nodecor">33.14%</span> في METEOR عند تضمين الرسوم البيانية المعرفية.</p>
+
+<h1 id="مقدمة">مقدمة</h1>
+<h3 id="ما-هو-توليد-نص-الاستشهاد">ما هو توليد نص الاستشهاد؟</h3>
+<p>توليد النصوص الاستشهادية في المجال العلمي مهمة معقدة تتطلب فهمًا عميقًا للمحتوى ومعرفة متخصصة. يركز توليد نص الاستشهاد على توليد مراجع دقيقة للمستندات المرجعية ضمن مستند المصدر. لتحقيق ذلك، يجب على نماذج التعلم الآلي تلخيص العلاقة بين المستند الأصلي والمستند المرجعي ضمن سياق معيّن، من خلال تحليل المحتوى، وتحديد العلاقات، واستخدام المصطلحات والهياكل المناسبة لنقل المعلومات بوضوح وإيجاز. لقد حظي هذا المجال باهتمام متزايد نظرًا لتقدم نماذج المحولات (<span class="nodecor">vaswani2017attention</span>).</p>
+<p>يمتلك توليد نص الاستشهاد إمكانات واسعة في تطبيقات مثل مساعدي الكتابة العلمية. في التعليم، يمكن استخدامه لتعليم الطلاب طرق الاستشهاد الأكاديمي الصحيحة. كما يمكنه توليد جمّل تلخيصية (<span class="nodecor">agarwal2011scisumm</span>) تلخّص الأفكار الرئيسية من المستند المرجعي. ومن التطبيقات المهمة مساعدة الباحثين في اقتراح الاستشهادات الملائمة وتوليد نص الاستشهاد المقابل، مما يساهم أيضًا في كشف الانتحال عبر مقارنة النص المولّد بالمصدر. تُكمّل هذه المهمة توصية الاستشهاد والتلخيص، إذ تركز على شرح العلاقات بين المستندات أكثر من مجرد تلخيص محتواها (<span class="nodecor">cohan2017scientific,yasunaga2019scisummnet</span>).</p>
+<p>عادةً ما تكون النصوص العلمية أطول بكثير من غيرها من النصوص المدروسة في معالجة اللغات الطبيعية، مما يشكل تحديًا كبيرًا لنماذج التوليد. عالج بعض الباحثين هذه المسألة، مثل Xing وآخرون (<span class="nodecor">xing2020automatic</span>) الذين استخدموا شبكة توليد متعددة المصادر ذات انتباه متقاطع لتوليد نص الاستشهاد تلقائيًا. كما قدم Luu وآخرون (<span class="nodecor">Luu2020CitationTG</span>) نموذج توليد نص الاستشهاد باستخدام زوج من الوثائق، معتمدين في المدخلات على النصوص المقتطفة من الملخصات لتوليد وصف للعلاقة بين المستند المرجعي ومستند المصدر.</p>
+<p>على حد علمنا، اعتمد الباحثون في هذه المهمة على مجموعات فرعية من S2ORC (<span class="nodecor">lo2019s2orc</span>). استخدمنا المجموعة الفرعية التي تضم أوراقًا بحثية في علوم الحاسوب باللغة الإنجليزية فقط، مستخرجة من <span class="math inline">\(abstract\)</span>، <span class="math inline">\(body\_text\)</span>، <span class="math inline">\(paper\_id\)</span>، إلخ. قمنا باستخراج <strong>المقدمة</strong> و<strong>الخاتمة</strong> من <span class="math inline">\(body\_text\)</span>.</p>
+<p>في هذه الورقة، نقترح منهجية لتوليد نص الاستشهاد باستخدام نماذج اللغة الكبيرة. نقحنا ثلاثة نماذج: LLaMA (<span class="nodecor">LLaMA</span>)، Alpaca (<span class="nodecor">alpaca</span>)، وVicuna (<span class="nodecor">vicuna2023</span>) لهذا الغرض. كما أجرينا تجارب دمج الرسم البياني المعرفي في التعليمات لتوفير فهم سياقي أفضل للعلاقة بين المستند المصدر والمستند المرجعي. أظهر الدمج تحسنًا ملحوظًا في جودة النص المولّد. نلخص مساهماتنا الرئيسية فيما يلي:</p>
+<ul>
+  <li>نقترح توظيف قدرات نماذج اللغة الكبيرة في توليد نص الاستشهاد في الكتابة البحثية، بعد تنقيح ثلاثة نماذج اعتمادًا على محتوى الأوراق كمصدر ومرجع.</li>
+  <li>دمجنا الرسوم البيانية المعرفية للورقتين المصدر والمرجعية في المطالبات بهدف تعزيز فهم النموذج للعلاقات بين الأوراق باستخدام <strong>PL-Marker</strong> (<span class="nodecor">ye2022plmarker</span>).</li>
+  <li>أثبتنا أن دمج الرسوم البيانية المعرفية يحسّن الأداء بشكل ملموس، حيث حقق Alpaca زيادة بنسبة <span class="nodecor">33.14%</span> في METEOR و<span class="nodecor">36.98%</span> في ROUGE-1 على S2ORC.</li>
+</ul>
+<p>يأتي هيكل الورقة على النحو التالي: القسم [literature] يستعرض الأعمال ذات الصلة، القسم [methodology] يوضح صياغة المشكلة والطريقة المقترحة، القسم [dataset] يشرح إنشاء ومعالجة البيانات، القسم [experiments] يعرض الإعداد والنتائج، القسم [evaluations] يقدم التقييمات، القسم [conclusion] يستعرض الأفكار المستقبلية، وأخيرًا يناقش القسم [limitations] القيود المعنية.</p>
+
+<h1 id="الأعمال-ذات-الصلةliterature">الأعمال ذات الصلة [literature]</h1>
+<p>ترتبط مهمة توليد نص الاستشهاد ارتباطًا وثيقًا بكل من توصية الاستشهاد، وفهم المحتوى العلمي، والتلخيص. تكمل توصية الاستشهاد مهمة توليد النصوص الاستشهادية عبر اقتراح مصادر مناسبة أو مقتطفات نصية (<span class="nodecor">bornmann2015growth</span>؛ <span class="nodecor">bhagavatula2018content</span>). وتلخص أنظمة التلخيص (<span class="nodecor">yasunaga2019scisummnet</span>) المعلومات لتسريع فهم الأفكار الرئيسية.</p>
+<p>تُستخدم المعلومات الاستشهادية أيضًا في تلخيص الأوراق العلمية (<span class="nodecor">qazvinian2008scientific</span>)، وقد طُوّرت نظم مثل تلك التي قدمها Jaidka وآخرون (<span class="nodecor">jaidka2010imitating</span>) لمراجعة الأدبيات. وتُعدّ مهمة التلخيص متعدد الوثائق في المجال العلمي (<span class="nodecor">chen2014summarization, chen2019automatic</span>) حالة خاصة من تلخيص المحتوى العلمي.</p>
+<p>قام Koncel-Kedziorski وآخرون (<span class="nodecor">koncel2019text</span>) بتوليد نصوص متعددة الجمل عبر دمج المعلومات من الرسم البياني المعرفي باستخدام شبكة الانتباه الرسومية. كما قدم Chen وآخرون (<span class="nodecor">chen2021scixgen</span>) مجموعة بيانات SciXGen لتوليد نصوص علمية مدركة للسياق. واستُخدمت النماذج اللغوية الكبيرة لبناء الرسوم البيانية المعرفية والتفكير فيها في AutoKG (<span class="nodecor">zhu2023llms</span>). بحث Gosangi وآخرون (<span class="nodecor">gosangi2021use</span>) أثر السياق في جمل الاستشهاد داخل النشر الأكاديمي، مما يُكمل مهمة التوليد الاستشهادي.</p>
+<p>أدّى ظهور النماذج اللغوية الكبيرة إلى تعزيز مهام التوليد (<span class="nodecor">10.1007/978-3-031-49601-1_5</span>, <span class="nodecor">10.1007/978-3-031-49601-1_4</span>)، بما في ذلك توليد نصوص الاستشهاد (<span class="nodecor">inbook_context_enhanced</span>)، فاتسعت إمكانات البحث في هذا المجال.</p>
+
+<h1 id="منهجيةmethodology">منهجية [methodology]</h1>
+<p>نوضح في هذا القسم هدف إنشاء نصوص الاستشهاد عبر نماذج اللغة الكبيرة وتفاصيل المنهجية المتبعة (<span class="nodecor">zhao2023survey</span>).</p>
+<ul>
+  <li><strong>تنقيح النماذج:</strong> نقحنا ثلاثة نماذج: LLaMA (<span class="nodecor">LLaMA</span>)، Alpaca (<span class="nodecor">alpaca</span>)، وVicuna (<span class="nodecor">vicuna2023</span>) باستخدام مجموعة فرعية من S2ORC، لتخصيصها لمهمة توليد نص الاستشهاد وتقييم أدائها.</li>
+  <li><strong>إدخال الرسوم البيانية المعرفية:</strong> لتحسين فهم العلاقات والسياق، أدرجنا الرسم البياني المعرفي المولد من الأوراق ضمن المطالبة، مستفيدين من <span class="nodecor">PL-Marker</span> (<span class="nodecor">ye2022plmarker</span>) ونتائج الأبحاث الحديثة (<span class="nodecor">pan2023unifying</span>).</li>
+</ul>
+<p>بهذا النهج، نظهر فعالية النماذج المنقحة ودور الرسوم البيانية المعرفية في تحسين جودة توليد نصوص الاستشهاد.</p>
+
+<h2 id="نماذج-اللغة-الكبيرة"><strong>نماذج اللغة الكبيرة</strong></h2>
+<p>النماذج المحللة تشمل (<span class="nodecor">LLaMA</span>), (<span class="nodecor">alpaca</span>), و(<span class="nodecor">vicuna2023</span>). (<span class="nodecor">LLaMA</span>) متاحة بأحجام: <span class="nodecor">7B</span>, <span class="nodecor">13B</span>, <span class="nodecor">33B</span>, و<span class="nodecor">65B</span> معاملات، واعتمدنا في دراستنا على <span class="nodecor">LLaMA-7B</span>. (<span class="nodecor">alpaca</span>) نسخةٌ من LLaMA حُسّنت بـ<span class="nodecor">52k</span> تعليمات عبر نموذج (<span class="nodecor">OpenAI’s text-davinci-003</span>)، مما أكسبها قدرات توليد نصوص تعليمية متخصصة. (<span class="nodecor">vicuna</span>) نسخةٌ أخرى محسّنة بإشراف، درّبت على <span class="nodecor">70K</span> من محادثات المستخدمين على (<span class="nodecor">ShareGPT.com</span>)، فاستطاعت التقاط سياق الحوار وأسلوبه.</p>
+<p>قمنا بتنقيح جميع النماذج باستخدام بياناتنا الخاصة بتوليد نصوص الاستشهاد لتقييم نقاط القوة والضعف في كل نموذج.</p>
+
+<h2 id="رسوم-المعرفة-والتلميحات"><strong>رسوم المعرفة والتلميحات</strong></h2>
+<p>يُشير رسم المعرفة إلى تمثيل منظم للمعلومات في كيانات وعلاقات (<span class="nodecor">Ji_2022</span>). بنينا الرسوم البيانية للملخصات المصدر والهدف باستخدام <span class="nodecor">PL-Marker</span> (<span class="nodecor">ye2022plmarker</span>)، الذي يجمع بين التعبئة الموضوعية والجوارية لتمثيل أزواج الكيانات. يلتقط الرسم العلاقات والسياق بين الكيانات المختلفة داخل الملخصين.</p>
+<p>بعد توليد الرسم البياني، دمجناه مع الملخص المصدر ثم أدخلناه في قسم <span class="math inline">\(\#input\)</span> من التلميح، كما هو موضح في [eq: equation2].</p>
+
+<h1 id="مجموعة-بيانات-ctgdataset">مجموعة بيانات CTG [dataset]</h1>
+<p>استخدمنا S2ORC (Semantic Scholar Research Corpus) (<span class="nodecor">lo2019s2orc</span>) التي تضم نحو <span class="nodecor">81.1</span> مليون ورقة بحثية باللغة الإنجليزية. تشمل البيانات الملخصات، نصوص الأوراق الكاملة، المراجع الببليوغرافية، والبيانات الوصفية.</p>
+<p>للتركيز على علوم الحاسوب، صفّينا الأوراق ذات مجال الدراسة "علوم الحاسوب"، فقلّصنا العدد إلى نحو <span class="nodecor">6.0</span> مليون ورقة. بعد تنظيف البيانات وإزالة الأوراق التي تفتقر إلى ملخصات أو نص جسم صالح، أصبحت مجموعة البيانات النهائية تتألف من نحو <span class="nodecor">100,000</span> عينة.</p>
+<p>ضمّ نص <em>body_text</em> فقرات مثل المقدمة، المنهجية، الخاتمة، وغيرها. بحثنا داخلها عن <em>cite_spans</em> التي تحتوي على معلومات الاستشهاد واستخراج الجمل الاستشهادية المطابقة. استبعدنا الاستشهادات التي تشير إلى أكثر من ورقة واحدة في جملة واحدة. تفاصيل إحصائية إضافية في الجدول [tab:dataset].</p>
+
+<h1 id="التجاربexperiments"><strong>التجارب</strong> [experiments]</h1>
+<p>نصف في هذا القسم إعدادات التجارب، معايير التقييم، ومقارنات النماذج. نقحنا ثلاثة نماذج على مجموعة بيانات CTG الخاصة بنا، ونعرض النتائج في الجدول [tab:results1]. عند مقارنة LLaMA (<span class="nodecor">LLaMA</span>)، Alpaca (<span class="nodecor">alpaca</span>)، وVicuna (<span class="nodecor">vicuna2023</span>)، برز أداء Vicuna الأفضل.</p>
+<p>ثم دمجنا الرسوم البيانية المعرفية المولدة بواسطة PL-Marker (<span class="nodecor">ye2022plmarker</span>) مع نفس النماذج. عزّز إدراج الرسوم البيانية المعرفية كلًّا من الأداء وجودة النص المولّد، خصوصًا في Alpaca الذي أظهر زيادة بنسبة <span class="nodecor">33.14%</span> في METEOR و<span class="nodecor">36.98%</span> في ROUGE-1. يوضّح الجدول [tab:results2] هذه النتائج، مؤكّدًا أن الرسوم البيانية المعرفية توجه نماذج LLMs بفعالية نحو توليد نص دقيق وملائم سياقيًا.</p>
+
+<h2 id="الإعدادات-التجريبية"><strong>الإعدادات التجريبية</strong></h2>
+<p>قسمنا البيانات إلى <span class="nodecor">79,588</span> عينة تدريب، <span class="nodecor">9,946</span> اختبار، و<span class="nodecor">9,944</span> تحقق. استخدمنا (<span class="nodecor">dettmers2023qlora</span>) لتقليل استهلاك الذاكرة، عبر نقل التدرجات على نموذج مجمّد ومكمم بـ4 بت في محولات منخفضة الرتبة. اعتمدنا محسن (<span class="nodecor">kingma2014adam</span>) مع جدول خطوات، بمعدل تعلم <span class="nodecor">3e-4</span> وتسخين <span class="nodecor">100</span> خطوة، مما مكّننا من تدريب نماذجنا بكفاءة وتقييمها على العينات الاختبارية.</p>
+<p><span class="math display">\[
+k_i = \frac{1}{2}\left(Q_X\left(\frac{i}{2^n + 1}\right) + Q_X\left(\frac{i+1}{2^n + 1}\right)\right)
+\]</span></p>
+<p>حيث <span class="math inline">\(Q_X(.)\)</span> دالة الكميات للتوزيع الطبيعي القياسي <span class="math inline">\(N(0,1)\)</span>. طبقنا <span class="nodecor">4</span>-بت في تجاربنا (<span class="math inline">\(n=4\)</span>).</p>
+<p><strong>مقاييس التقييم:</strong> استخدمنا METEOR وROUGE-N وROUGE-L. يقيس ROUGE-L أطول تسلسل مشترك بين النص المولّد والمرجع، بينما يقيس ROUGE-N تداخل الـn-جرامات. تستفيد METEOR من تشابه الكلمات أثناء التجذيع.</p>
+
+<h1 id="التقييماتevaluations"><strong>التقييمات</strong> [evaluations]</h1>
+<p>تسلط دراستنا الضوء على قدرة نماذج اللغة الكبيرة في توليد نص الاستشهاد للأوراق العلمية. كما تؤكد على أهمية الرسوم البيانية المعرفية لالتقاط العلاقات العميقة والسياق المنظّم بين الورقتين المصدر والمرجعية. أظهر Alpaca تفوقًا في جودة النص ودرجات التقييم مقارنةً بـLLaMA وVicuna، مما يبرز أهمية دمج الرسوم البيانية المعرفية لتحسين الدقة والملاءمة السياقية.</p>
+
+<h1 id="الخلاصةconclusion"><strong>الخلاصة</strong> [conclusion]</h1>
+<p>تستكشف هذه الورقة مهمة توليد نص الاستشهاد للأوراق البحثية. للاستيعاب الدقيق لخصائص الأوراق العلمية، استخدمنا الرسوم البيانية المعرفية كمحفزات. نعرض دليلًا مقنعًا على كفاءة نماذج اللغة الكبيرة عند تقديم الملخص المصدر والملخص الهدف والمقدمة والخاتمة. تؤكد التقييمات الآلية على جودة النص المولّد، وتُظهر أهمية الرسوم البيانية المعرفية في توجيه النماذج. مستقبلًا، نخطط لإدخال تقنيات التفكير المتسلسل لتعزيز منطق النماذج وإنتاج استشهادات أكثر تماسكًا ودقة.</p>
+
+<h1 id="القيودlimitations"><strong>القيود</strong> [limitations]</h1>
+<p>رغم فاعلية الحل المقترح في توليد نص استشهاد بجملة واحدة، إلا أنه محدود عند التعامل مع استشهادات متعددة في فقرة واحدة. يمكن تجاوُز ذلك عبر تضمين أمثلة استشهادية متعددة في بيانات التدريب.</p>
+<p>قيد آخر يتمثل في وجود مصطلحات في نص الاستشهاد لا توجد ضمن القسم المحدود بالرموز للأوراق المصدر والهدف، مما قد يؤثر سلبًا على أداء النموذج.</p>
+
+<h1 id="الشكر">الشكر</h1>
+<p>يتلقى راجيف راتن شاه دعمًا جزئيًا من مركز إنفوسيس للذكاء الاصطناعي، ومركز التصميم والإعلام الجديد، ومركز التميز في الرعاية الصحية في معهد دلهي للتكنولوجيا والمعلومات.</p>
+
+<h1 id="الملحق">الملحق</h1>
+<p>يستعرض هذا القسم أمثلة الاستدلال المستخدمة لاختبار النموذج المعدل وفحص جودة النص المولّد والسياق.</p>
+<p>يوضح نموذج Vicuna المعدل نص الاستشهاد المولَّد من الملخص المصدر والملخص الهدف، والذي أسفر عن نص عالي الجودة متماشي مع سياق الورقتين.</p>
+<p>يُظهر نص الاستشهاد المولَّد غنى سياقيًا أفضل بفضل دمج العلاقات الرسومية المعرفية، مما حسّن الفهم الروابط بين الكلمات في الملخصين.</p>
+
+<section class="footnotes">
+  <hr />
+  <ol>
+    <li id="fn1"><p><a href="https://github.com/openai/gpt-2" class="uri">https://github.com/openai/gpt-2</a><a href="#fnref1">↩</a></p></li>
+  </ol>
+</section>
+</body>
+</html>
+```
+
+**ملاحظات التصحيح:**
+- تم تصحيح معادلة الكميات لتكون محاطة بشكل صحيح بعلامات `\[ ... \]` في صيغة العرض (display math) وليس inline، مع التأكد من إغلاق جميع الأقواس بشكل صحيح:
+  ```latex
+  \[
+  k_i = \frac{1}{2}\left(Q_X\left(\frac{i}{2^n + 1}\right) + Q_X\left(\frac{i+1}{2^n + 1}\right)\right)
+  \]
+  ```
+- تم تصحيح جميع علامات LaTeX الأخرى (`\( ... \)`) لتكون مغلقة بشكل صحيح.
+- تم التأكد من أن جميع المعادلات الرياضية ستعمل بشكل صحيح مع MathJax.
+- لم يتم تغيير أي كلمات أو محتوى نصي.
+- تم الحفاظ على النص كاملاً دون حذف أو اختصار.
+- لا توجد أخطاء LaTeX في النص.

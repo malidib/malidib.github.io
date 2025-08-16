@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تطبيق الذكاء الاصطناعي في تشخيص السرطان من خلال تحليل الصور الطبية</title>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>توزيعات ابتدائية موجَّهة بالبيانات لتحسين تكميم عدم اليقين في النماذج متعددة الأنماط للرعاية الصحية</title>
     <script>
         window.MathJax = {
             tex: {
@@ -20,6 +19,7 @@
             }
         };
     </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -138,6 +138,15 @@
             padding-right: 15px;
             margin: 15px 0;
         }
+        .toc {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 15px;
+        }
+        .toc a {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -148,389 +157,395 @@
             <strong>تاريخ التحويل:</strong> 2025-06-06 13:15:51
         </div>
         <header id="title-block-header">
-<h1 class="title">تطبيق الذكاء الاصطناعي في تشخيص السرطان من خلال تحليل الصور الطبية</h1>
-<p class="author"><span class="math inline">\(^{1,2}\)</span><br />
-<span class="math inline">\(^{2}\)</span><br />
-<span class="math inline">\(^{1,2}\)</span><br />
-<span class="math inline">\(^1\)</span>جامعة نيويورك أبوظبي، أبوظبي، الإمارات العربية المتحدة<br />
-<span class="math inline">\(^2\)</span>جامعة نيويورك، نيويورك، الولايات المتحدة الأمريكية<br /></p>
-<div class="abstract">
-<div class="abstract-title">الملخص</div>
-<p>
-تُعد نظم دعم القرار السريري المعززة بالتعلم الآلي واعدة في تحسين جودة رعاية المرضى بشكل كبير. إلا أن الجهود الحالية في هذا المجال لتكميم عدم اليقين بشكل منهجي تقتصر غالبًا على تطبيق حلول ارتجالية لا تؤدي دائمًا إلى تحسين موثوقية النماذج. في هذا العمل، ندرس الشبكات العصبية العشوائية ونصمم توزيعا ابتدائيا موجها بالبيانات متعددة الأنماط (<span class="smallcaps">m2d2</span>) على معلمات الشبكة. نعتمد على استدلال تقريبي غاوسي بسيط وقابل للتوسع لتدريب شبكة عصبية بايزية باستخدام التوزيع الابتدائي <span class="smallcaps">m2d2</span>. قمنا بتدريب وتقييم المنهج المقترح باستخدام بيانات زمنية سريرية من قاعدة بيانات MIMIC-IV وصور أشعة الصدر من MIMIC-CXR لتصنيف الحالات الحادة. أظهرت نتائجنا التجريبية أن المنهج المقترح ينتج نموذجًا تنبؤيًا أكثر موثوقية مقارنة بالنماذج الحتمية والشبكات العصبية البايزية التقليدية.
-</p>
-</div>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#sec:intro">المقدمة</a></li>
-<li><a href="#sec:background">الأعمال ذات الصلة</a>
-<ul>
-<li><a href="#multimodal-learning-in-healthcare">التعلم متعدد الأنماط في الرعاية الصحية</a></li>
-<li><a href="#variational-inference-in-neural-networks">الاستدلال التقريبي في الشبكات العصبية</a></li>
-</ul></li>
-<li><a href="#sec:method">بناء توزيعات ابتدائية موجهة بالبيانات للنماذج ذات المدخلات متعددة الأنماط</a>
-<ul>
-<li><a href="#sec:context">توزيعات ابتدائية معلوماتية للبيانات متعددة الأنماط</a></li>
-</ul></li>
-<li><a href="#sec:experiments">التقييم التجريبي</a>
-<ul>
-<li><a href="#experimental-setup">إعداد التجارب</a></li>
-<li><a href="#evaluation-metrics">معايير التقييم</a></li>
-<li><a href="#sec:results">النتائج</a></li>
-</ul></li>
-<li><a href="#sec:conclusion">الخلاصة</a></li>
-<li><a href="#sec:acknowledgements">الشكر والتقدير</a></li>
-</ul>
-</nav>
-<div class="keywords">
-<p>تكميم عدم اليقين، بيانات الرعاية الصحية متعددة الأنماط، الاستدلال البايزي</p>
-</div>
-<div class="figure*">
-<p><embed src="drafts/_ml4h2024/figures/main_figure_uq_final.pdf"
-style="width:95.0%" /></p>
-</div>
-<section id="sec:intro" class="level1">
-<h1>المقدمة</h1>
-<p>
-يتطلب التعلم الآلي الموثوق في الرعاية الصحية تكميمًا قويًا لعدم اليقين <span class="citation" data-cites="begoli2019 gruber2023sources"></span>، نظرًا للطبيعة الحساسة للسلامة في الممارسة السريرية. يمكن أن تنشأ مصادر عدم اليقين من معلمات النموذج، أو الضوضاء والتحيز في بيانات المعايرة، أو عند نشر النموذج في سيناريوهات خارج التوزيع <span class="citation" data-cites="miller2014advanced"></span>.
-</p>
-<p>
-للأسف، تجاهلت الأدبيات في مجال التعلم الآلي للرعاية الصحية إلى حد كبير تطوير حلول مخصصة لتحسين تكميم عدم اليقين <span class="citation" data-cites="kompa2021second"></span>، وربما يعود ذلك إلى محدودية النظرية الأساسية حول كيفية تكييف عدم اليقين التنبؤي في المهام السريرية <span class="citation" data-cites="begoli2019"></span>. وتشمل التحديات الأخرى تعقيد توسيع تكميم عدم اليقين في الأنظمة السريرية الفورية، وقلة التقييم التجريبي للطرق المختلفة بسبب نقص التوزيعات الابتدائية المبنية من قبل خبراء طبيين <span class="citation" data-cites="zou2023review"></span>، والانتشار العالي لتحولات البيانات في التطبيقات السريرية الواقعية، مما قد يؤثر سلبًا على الأداء التنبؤي <span class="citation" data-cites="ovadia2019can xia2022benchmarking"></span>، مما يبرز الحاجة إلى نماذج تنبؤية أكثر موثوقية.
-</p>
-<p>
-بالإضافة إلى ذلك، وعلى الرغم من الانتشار الحديث للتعلم متعدد الأنماط، فقد ركزت معظم الأعمال السابقة في تكميم عدم اليقين في الرعاية الصحية على الإعداد أحادي النمط، مع تركيز خاص على تطبيقات التصوير الطبي <span class="citation" data-cites="gawlikowski2021survey"></span>. يشمل ذلك تقسيم أورام الدماغ <span class="citation" data-cites="jungo2018towards"></span>، وتقسيم آفات الجلد <span class="citation" data-cites="devries2018leveraging"></span>، ومهام اكتشاف اعتلال الشبكية السكري <span class="citation" data-cites="filos2019systematic Band2021benchmarking nado2022uncertainty"></span> وغيرها. لذا، يبقى تكميم عدم اليقين التنبؤي بشكل فعال في سياق المشكلات السريرية متعددة الأنماط تحديًا قائمًا وغير محلول <span class="citation" data-cites="Plex22"></span>.
-</p>
-<p>
-نقترح توزيعًا ابتدائيًا موجهًا بالبيانات متعددة الأنماط (<span class="smallcaps">m2d2</span>) على معلمات الشبكات العصبية لتحسين تكميم عدم اليقين في دمج صور أشعة الصدر مع بيانات السلاسل الزمنية السريرية. نقيم فعالية التوزيعات الابتدائية على مكونين أحاديي النمط في شبكة الدمج: شبكة عصبية التفافية للصور وشبكة عصبية متكررة للسلاسل الزمنية السريرية. باختصار، نقدم المساهمات التالية:
-</p>
-<ol>
-<li><p>نصمم توزيعًا ابتدائيًا موجهًا بالبيانات متعددة الأنماط (<span class="smallcaps">m2d2</span>) على معلمات الشبكة العصبية يضع كثافة احتمالية عالية على الدوال التنبؤية المرغوبة.</p></li>
-<li><p>نقيم الطريقة على مجموعات بيانات عامة كبيرة متعددة الأنماط: MIMIC-IV وMIMIC-CXR <span class="citation" data-cites="mimiccxr mimiciv"></span>، لتصنيف الحالات الحادة للمرضى في وحدات العناية المركزة.</p></li>
-<li><p>توضح نتائجنا تحسنًا في الأداء التنبؤي وزيادة في موثوقية التنبؤات الحساسة لعدم اليقين.</p></li>
-</ol>
-</section>
-<section id="sec:background" class="level1">
-<h1>الأعمال ذات الصلة</h1>
-<section id="multimodal-learning-in-healthcare" class="level2">
-<h2>التعلم متعدد الأنماط في الرعاية الصحية</h2>
-<p>
-يهدف التعلم متعدد الأنماط في الرعاية الصحية إلى استغلال المعلومات التكميلية من مصادر بيانات مختلفة لتعزيز القدرات التنبؤية للنماذج. هناك عدة طرق للاستفادة من المعلومات عبر الأنماط المختلفة، وأكثرها شيوعًا هو الدمج متعدد الأنماط <span class="citation" data-cites="huang2020fusion"></span>. على سبيل المثال، درس <span class="citation" data-cites="zhang2020advances"></span> و<span class="citation" data-cites="calhoun2016multimodal"></span> طرق الدمج في تقسيم الصور العصبية من خلال الاستفادة من أنماط تصويرية مختلفة في نفس خط البيانات. كما ركزت دراسة حديثة على تطوير تطبيقات رعاية صحية ذكية من خلال دمج إشارات متعددة الأنماط من أنواع مختلفة من الحساسات الطبية <span class="citation" data-cites="muhammad2021comprehensive"></span>. وأظهرت دراسات أخرى تحسن الأداء التنبؤي عند استخدام أنماط متعددة في مهام التنبؤ بمآل مرضى كوفيد-19 <span class="citation" data-cites="shamout2021artificial jiao2021prognostication"></span>.
-</p>
-<p>
-ورغم الوعود التي يقدمها التعلم متعدد الأنماط في الرعاية الصحية، إلا أن الأبحاث حول تطبيقات تكميم عدم اليقين الموثوقة في هذا السياق لا تزال محدودة. فلا يوجد حتى الآن استخدام عام لطرق تكميم عدم اليقين التي تعالج تحولات التوزيع وتتعامل مع أنماط بيانات متعددة في آن واحد <span class="citation" data-cites="foundationsmultimodal"></span>.
-</p>
-</section>
-<section id="variational-inference-in-neural-networks" class="level2">
-<h2>الاستدلال التقريبي في الشبكات العصبية</h2>
-<p>
-نعتبر شبكة عصبية عشوائية <span class="math inline">\(f(\cdot \,; \Theta)\)</span> معرفة بمعلمات عشوائية <span class="math inline">\(\Theta \in \mathbb{R}^{P}\)</span>. بالنسبة لنموذج الملاحظة <span class="math inline">\(p_{Y | X, \Theta}\)</span> وتوزيع ابتدائي على المعلمات <span class="math inline">\(p_{\Theta}\)</span>، يوفر الاستدلال البايزي إطارًا رياضيًا لإيجاد التوزيع البعدي على المعلمات بعد مشاهدة البيانات <span class="math inline">\(p_{\Theta | \mathcal{D}}\)</span> <span class="citation" data-cites="mckay1992practical neal1996bayesian"></span>. لكن، وبسبب لاخطية الشبكات العصبية في معلماتها، فإن الاستدلال الدقيق على المعلمات العشوائية غير ممكن تحليليًا.
-</p>
-<div class="figure*">
-<p><embed src="drafts/_ml4h2024/figures/figure_2.pdf"
-style="width:80.0%" /></p>
-</div>
-<p>
-الاستدلال التقريبي هو نهج يهدف إلى تجاوز هذه الصعوبة من خلال صياغة الاستدلال البعدي كمشكلة تقريب <span class="math inline">\(q_{\Theta}\)</span> للتوزيع البعدي <span class="math inline">\(p_{\Theta | \mathcal{D}}\)</span> عبر مسألة تحسين تقريبي:
-<span class="math display">\[\begin{aligned}
+            <h1 class="title">توزيعات ابتدائية موجَّهة بالبيانات لتحسين تكميم عدم اليقين في النماذج متعددة الأنماط للرعاية الصحية</h1>
+            <p class="author">
+                <span class="math inline">\(^1\)</span> جامعة نيويورك أبوظبي، أبوظبي، الإمارات العربية المتحدة<br>
+                <span class="math inline">\(^2\)</span> جامعة نيويورك، نيويورك، الولايات المتحدة الأمريكية
+            </p>
+            <div class="abstract">
+                <div class="abstract-title">الملخّص</div>
+                <p>
+                    تُعَدّ نُظُم دعم القرار السريري المُعزَّزة بالتعلُّم الآلي واعدةً في تحسين جودة رعاية المرضى. غير أنّ الجهود الحالية لتكميم عدم اليقين منهجيًّا غالبًا ما تقتصر على حلول ارتجالية لا تُحسِّن موثوقية النماذج على نحوٍ كافٍ. في هذا العمل، ندرس الشبكات العصبية العِشوائية ونصمِّم توزيعًا ابتدائيًّا موجَّهًا بالبيانات مُتعدِّدة الأنماط (<span class="smallcaps">m2d2</span>) على معلمات الشبكة. نعتمد على استدلال تبايني غاوسي بسيط وقابل للتوسّع لتدريب شبكة عصبية بايزية باستخدام التوزيع الابتدائي <span class="smallcaps">m2d2</span>. درَّبنا وقيَّمنا المنهج المقترح على بيانات سلاسل زمنية سريرية من MIMIC-IV وصور أشعة صدر من MIMIC-CXR لتصنيف حالات حادّة متعددة التسميات. تُظهر النتائج التجريبية أنّ منهجنا يُنتج نموذجًا تنبؤيًّا أكثر موثوقية مقارنةً بالنماذج الحتمية والشبكات العصبية البايزية القياسية.
+                </p>
+            </div>
+        </header>
+
+        <nav id="TOC" class="toc" role="doc-toc">
+            <ul>
+                <li><a href="#sec:intro">المقدّمة</a></li>
+                <li><a href="#sec:background">الأعمال ذات الصلة</a>
+                    <ul>
+                        <li><a href="#multimodal-learning-in-healthcare">التعلُّم مُتعدِّد الأنماط في الرعاية الصحية</a></li>
+                        <li><a href="#variational-inference-in-neural-networks">الاستدلال التبايني في الشبكات العصبية</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec:method">بناء توزيعات ابتدائية موجَّهة بالبيانات للنماذج مُتعدِّدة الأنماط</a>
+                    <ul>
+                        <li><a href="#sec:context">توزيعات ابتدائية معلوماتية للبيانات مُتعدِّدة الأنماط</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec:experiments">التقييم التجريبي</a>
+                    <ul>
+                        <li><a href="#experimental-setup">إعداد التجارب</a></li>
+                        <li><a href="#evaluation-metrics">معايير التقييم</a></li>
+                        <li><a href="#sec:results">النتائج</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec:conclusion">الخلاصة</a></li>
+                <li><a href="#sec:acknowledgements">الشكر والتقدير</a></li>
+            </ul>
+        </nav>
+
+        <div class="keywords">
+            <p>تكميم عدم اليقين، بيانات رعاية صحية مُتعدِّدة الأنماط، الاستدلال البايزي</p>
+        </div>
+
+        <div class="figure">
+            <p><embed src="drafts/_ml4h2024/figures/main_figure_uq_final.pdf" style="width:95.0%" /></p>
+        </div>
+
+        <section id="sec:intro" class="level1">
+            <h1>المقدّمة</h1>
+            <p>
+                يتطلّب التعلُّم الآلي الموثوق في الرعاية الصحية تكميمًا قويًّا لعدم اليقين <span class="citation" data-cites="begoli2019 gruber2023sources"></span> نظرًا لحساسية قرارات السلامة في الممارسة السريرية. وقد تنشأ مصادر عدم اليقين من معلمات النموذج، أو الضوضاء والتحيّز في بيانات المعايرة، أو عند نشر النموذج في سيناريوهات خارج التوزيع <span class="citation" data-cites="miller2014advanced"></span>.
+            </p>
+            <p>
+                للأسف، تجاهلت الأدبيات في تعلُّم الآلة للرعاية الصحية بدرجةٍ كبيرة تطوير حلول مخصّصة لتحسين تكميم عدم اليقين <span class="citation" data-cites="kompa2021second"></span>، ويرجع ذلك جزئيًّا إلى محدودية النظرية حول كيفية تكييف عدم اليقين التنبؤي مع المهام السريرية <span class="citation" data-cites="begoli2019"></span>. وتشمل تحدّيات إضافيةً: صعوبة توسيع تكميم عدم اليقين ليعمل في أنظمة سريرية فورية، وقلّة التقييم التجريبي بسبب غياب توزيعات ابتدائية يصوغها خبراء طبيون <span class="citation" data-cites="zou2023review"></span>، والانتشار العالي لتحوّلات البيانات في التطبيقات الواقعية، وهو ما قد يضرّ بالأداء التنبؤي <span class="citation" data-cites="ovadia2019can xia2022benchmarking"></span>؛ لذا تبرز الحاجة إلى نماذج أكثر موثوقية.
+            </p>
+            <p>
+                وعلى الرغم من انتشار التعلُّم مُتعدِّد الأنماط، فقد ركّز معظم العمل السابق على الإعداد أحاديّ النمط، لا سيّما في تطبيقات التصوير الطبي <span class="citation" data-cites="gawlikowski2021survey"></span>، مثل: تقسيم أورام الدماغ <span class="citation" data-cites="jungo2018towards"></span>، وتقسيم آفات الجلد <span class="citation" data-cites="devries2018leveraging"></span>، والكشف عن اعتلال الشبكيّة السُّكّري <span class="citation" data-cites="filos2019systematic Band2021benchmarking nado2022uncertainty"></span> وغيرها. وبالتالي يبقى تكميم عدم اليقين التنبؤي على نحوٍ فعّال في المشكلات السريرية مُتعدِّدة الأنماط تحدّيًا مفتوحًا <span class="citation" data-cites="Plex22"></span>.
+            </p>
+            <p>
+                نقترح توزيعًا ابتدائيًّا موجَّهًا ببيانات مُتعدِّدة الأنماط (<span class="smallcaps">m2d2</span>) على معلمات الشبكات العصبية لتحسين تكميم عدم اليقين عند دمج صور أشعة الصدر مع السلاسل الزمنية السريرية. نقيس فعالية التوزيع الابتدائي على مكوّنين أحاديَّي النمط داخل شبكة الدمج: شبكة التفافات للصور، وشبكة متكرّرة للسلاسل الزمنية. وباختصار، نقدّم الإسهامات التالية:
+            </p>
+            <ol>
+                <li><p>تصميم توزيع ابتدائي موجَّه بالبيانات مُتعدِّدة الأنماط (<span class="smallcaps">m2d2</span>) على معلمات الشبكة العصبية يضع كثافة احتمالية عالية للدوالّ التنبؤية المرغوبة.</p></li>
+                <li><p>تقييم الطريقة على مجموعتَي بيانات عامّتَين كبيرتَين مُتعدِّدتي الأنماط: MIMIC-IV وMIMIC-CXR <span class="citation" data-cites="mimiccxr mimiciv"></span> لتصنيف الحالات الحادّة في وحدات العناية المركّزة.</p></li>
+                <li><p>إظهار تحسّن في الأداء التنبؤي وزيادة موثوقية التنبؤات الحسّاسة لعدم اليقين.</p></li>
+            </ol>
+        </section>
+
+        <section id="sec:background" class="level1">
+            <h1>الأعمال ذات الصلة</h1>
+
+            <section id="multimodal-learning-in-healthcare" class="level2">
+                <h2>التعلُّم مُتعدِّد الأنماط في الرعاية الصحية</h2>
+                <p>
+                    يهدف التعلُّم مُتعدِّد الأنماط في الرعاية الصحية إلى استغلال المعلومات التكميلية من مصادر بيانات مختلفة لتعزيز القدرات التنبؤية للنماذج. ومن أشهر أساليب استغلال هذه المعلومات الدمجُ مُتعدِّد الأنماط <span class="citation" data-cites="huang2020fusion"></span>. على سبيل المثال، درس <span class="citation" data-cites="zhang2020advances"></span> و<span class="citation" data-cites="calhoun2016multimodal"></span> أساليب الدمج في تقسيم الصور العصبية باستثمار أنماط تصويرية متعدِّدة ضمن خطّ البيانات ذاته. كما ركّزت دراسات حديثة على بناء تطبيقات رعاية صحية ذكية بدمج إشارات من حسّاسات طبية متنوّعة <span class="citation" data-cites="muhammad2021comprehensive"></span>. وأظهرت أعمال أخرى تحسّنًا في الأداء عند استخدام أنماط متعدِّدة للتنبؤ بمآلات مرضى كوفيد-19 <span class="citation" data-cites="shamout2021artificial jiao2021prognostication"></span>.
+                </p>
+                <p>
+                    على الرغم من الوعود التي يقدّمها التعلُّم مُتعدِّد الأنماط، لا تزال الأبحاث حول تكميم عدم اليقين الموثوق في هذا السياق محدودة. فلا توجد حتى الآن منهجيات عامة لتكميم عدم اليقين تعالج تحوّلات التوزيع وتعامل أنماط بيانات متعدِّدة في آنٍ واحد <span class="citation" data-cites="foundationsmultimodal"></span>.
+                </p>
+            </section>
+
+            <section id="variational-inference-in-neural-networks" class="level2">
+                <h2>الاستدلال التبايني في الشبكات العصبية</h2>
+                <p>
+                    نعتبر شبكة عصبية عِشوائية <span class="math inline">\(f(\cdot \,; \Theta)\)</span> مُعرَّفةً بمعلمات عِشوائية <span class="math inline">\(\Theta \in \mathbb{R}^{P}\)</span>. لموديل الملاحظة <span class="math inline">\(p_{Y | X, \Theta}\)</span> وتوزيع ابتدائي على المعلمات <span class="math inline">\(p_{\Theta}\)</span>، يقدّم الاستدلال البايزي إطارًا رياضيًّا لاشتقاق التوزيع البَعدي على المعلمات بعد مشاهدة البيانات <span class="math inline">\(p_{\Theta | \mathcal{D}}\)</span> <span class="citation" data-cites="mckay1992practical neal1996bayesian"></span>. وبسبب لاخطية الشبكات العصبية في معلماتها، يتعذّر الاستدلال الدقيق تحليليًّا.
+                </p>
+                <div class="figure">
+                    <p><embed src="drafts/_ml4h2024/figures/figure_2.pdf" style="width:80.0%" /></p>
+                </div>
+                <p>
+                    الاستدلال التبايني يحوِّل الاستدلال البَعدي إلى مسألة تقريبٍ للتوزيع <span class="math inline">\(p_{\Theta | \mathcal{D}}\)</span> بتوزيعٍ تقريبي <span class="math inline">\(q_{\Theta}\)</span> عبر مسألة تحسين:
+                    <span class="math display">\[\begin{aligned}
     \min\nolimits_{q_{\Theta} \in \mathcal{Q}_{\Theta}}
 D_{\text{KL}}\infdivx{q_{\Theta}}{p_{\Theta | \mathcal{D}}}
     \Longleftrightarrow
     \max\nolimits_{q_{\Theta} \in
 \mathcal{Q}_{\Theta}}  \mathcal{F}(q_{\Theta})
 ,\end{aligned}\]</span>
-حيث <span class="math inline">\(\mathcal{F}(q_{\Theta})\)</span> هو الهدف التقريبي:
-<span class="math display">\[\begin{aligned}
+                    حيث هدف الاستدلال التبايني:
+                    <span class="math display">\[\begin{aligned}
     \mathcal{F}(q_{\Theta})
     \,\dot{=}\,
     \mathbb{E}_{q_{\Theta}}[\log p(y_{\mathcal{D}} \,|\,x_{\mathcal{D}},
 \Theta) ] - D_{\text{KL}}\infdivx{q_{\Theta}}{p_{\Theta}} ,
     \label{eq:elbo}\end{aligned}\]</span>
-<span class="math inline">\(\mathcal{Q}_{\Theta}\)</span> هي عائلة التوزيعات التقريبية <span class="citation" data-cites="wainwright2008vi"></span>، و<span class="math inline">\((x_{\mathcal{D}}, y_{\mathcal{D}})\)</span> هي بيانات التدريب. أحد أبسط أنواع الاستدلال التقريبي هو الاستدلال الغاوسي متوسط الحقل <span class="citation" data-cites="blundell2015mfvi graves2011practical"></span>، حيث يُقرب التوزيع البعدي على معلمات الشبكة بتوزيع غاوسي بقطر تباين قطري. يتيح هذا النهج التحسين العشوائي وقابلية التوسع إلى شبكات كبيرة <span class="citation" data-cites="hoffman2013svi"></span>. ومع ذلك، أظهرت الدراسات أن الاستدلال الغاوسي متوسط الحقل قد يكون أداؤه ضعيفًا عند استخدام توزيعات ابتدائية غاوسية غير معلوماتية <span class="citation" data-cites="ovadia2019uncertainty fsvi"></span>.
-</p>
-<p>
-لتحسين الأداء، قمنا بتوسيع النهج المقدم في <span class="citation" data-cites="rudner2023fseb"></span> ليشمل الشبكات العصبية العشوائية، وبنينا توزيعًا ابتدائيًا موجهًا بالبيانات من مدخلات متعددة الأنماط، واستخدمنا هذا التوزيع في الاستدلال الغاوسي متوسط الحقل لتحسين أداء الشبكات العصبية في مهام التنبؤ السريري متعددة الأنماط.
-</p>
-</section>
-</section>
-<section id="sec:method" class="level1">
-<h1>بناء توزيعات ابتدائية موجهة بالبيانات للنماذج ذات المدخلات متعددة الأنماط</h1>
-<p>
-نعتبر مهمة دمج إشارات متعددة الأنماط تحت إشراف على بيانات <span class="math inline">\(\mathcal{D}\doteq\{(x^{1}_n, x^{2}_n,{y}_n^{\textrm{fusion}})\}^{\mathit{N}}_{n=1}=(X^{1}_\mathcal{D},X^{2}_\mathcal{D},{Y}_\mathcal{D})\)</span>. كما هو موضح في الشكل <a href="#fig:fusion_encoder" data-reference-type="ref" data-reference="fig:fusion_encoder">[fig:fusion_encoder]</a>، نعتبر النمط الأول بيانات سلاسل زمنية سريرية مستخرجة من السجلات الطبية الإلكترونية، نرمز لها بـ <span class="math inline">\(X^{\textrm{ehr}}\)</span>، والثاني صور أشعة الصدر <span class="math inline">\(X^{\textrm{cxr}}\)</span>. لكل عينة <span class="math inline">\((x^{\textrm{ehr}}, x^{\textrm{cxr}})\)</span>، تتم معالجة النمطين بواسطة مشفرين <span class="math inline">\(\Phi_{\textrm{ehr}}\)</span> و<span class="math inline">\(\Phi_{\textrm{cxr}}\)</span>، ثم تُدمج التمثيلات وتُمرر إلى مصنف <span class="math inline">\(g(\cdot)\)</span> ودالة تفعيل لحساب التنبؤ النهائي <span class="math inline">\(\hat{y}^{\textrm{fusion}}\)</span>. تُحسب الخسارة بناءً على التنبؤات والتسميات الحقيقية <span class="math inline">\(y^{\textrm{fusion}} \in \mathcal{Y}\)</span>، حيث <span class="math inline">\(\mathcal{Y}\subseteq\{0,1\}^\mathit{Q}\)</span>، و<span class="math inline">\(\mathit{Q}>1\)</span> في حالة التصنيف متعدد التسميات.
-</p>
-<section id="sec:context" class="level2">
-<h2>توزيعات ابتدائية معلوماتية للبيانات متعددة الأنماط</h2>
-<p>
-أحد العناصر الأساسية في تعريف النموذج الاحتمالي لطريقتنا في تكميم عدم اليقين هو تحديد توزيع ابتدائي معبر وقابل للتفسير. في هذا العمل، نبني توزيعًا ابتدائيًا على المعلمات يضع كثافة احتمالية عالية على القيم التي تؤدي إلى دوال تنبؤية ذات عدم يقين مرتفع على نقاط إدخال تختلف جوهريًا عن بيانات التدريب. لتحقيق ذلك، نعتمد على النهج المقترح في <span class="citation" data-cites="rudner2023fseb"></span> ونستخدم معلومات من النمطين لبناء توزيع ابتدائي موجه بالبيانات يساعد في إيجاد توزيع بعدي تقريبي بخصائص مرغوبة (مثل توزيع تنبؤي موثوق في تقدير عدم اليقين). بشكل أكثر تحديدًا، نبني توزيعًا ابتدائيًا على مجموعة من معلمات النموذج <span class="math inline">\(\Psi\)</span> ونجعله مشروطًا بمجموعة من نقاط السياق <span class="math inline">\(\tilde{X}\)</span>، أي <span class="math inline">\(p(\psi | \tilde{x})\)</span>. في ، نوضح أنه يمكننا اشتقاق هدف تقريبي قابل للحساب باستخدام هذا التوزيع الابتدائي. الهدف موضح في .
-</p>
-<p>
-لبناء توزيع ابتدائي معبر، يجب تحديد توزيع على مجموعة نقاط السياق <span class="math inline">\(p_{\tilde{X}}\)</span>. نصمم توزيعًا ابتدائيًا متعدد الأنماط بجعل <span class="math inline">\(\tilde{X}\)</span> مجموعة من نقاط الإدخال متعددة الأنماط المولدة عشوائيًا <span class="math inline">\((\tilde{X}^{\textrm{ehr}}, \tilde{X}^{\textrm{cxr}})\)</span> مصممة لتكون مختلفة عن بيانات التدريب. بالنسبة لبيانات السلاسل الزمنية السريرية، نبني <span class="math inline">\(\tilde{X}^{\textrm{ehr}}\)</span> عبر تطبيق ثلاث تحويلات: حذف البداية، إضافة ضوضاء غاوسية، وعكس السلسلة (أي، لكل <span class="math inline">\(x_i\)</span> من <span class="math inline">\(1,...,n\)</span>، <span class="math inline">\(x_1=x_n\)</span>، <span class="math inline">\(x_2=x_{n-1}\)</span>، وهكذا). أما لصور أشعة الصدر، فنطبق سبع تحويلات تمثل اضطرابات واقعية: القص العشوائي، الانعكاس الأفقي والرأسي العشوائي، التمويه الغاوسي، التشميس العشوائي، العكس العشوائي، وتغيير الألوان.
-</p>
-<p>
-بالتالي، تضم مجموعة السياق هذه نقاطًا متحولة توزيعيًا، حيث نرغب أن يكون عدم يقين النموذج عليها مرتفعًا.
-</p>
-<div class="table*">
-</div>
-</section>
-</section>
-<section id="sec:experiments" class="level1">
-<h1>التقييم التجريبي</h1>
-<p>
-لتقييم المنهج المقترح، جمعنا بيانات السلاسل الزمنية السريرية من MIMIC-IV <span class="citation" data-cites="mimiciv"></span> وصور أشعة الصدر من MIMIC-CXR <span class="citation" data-cites="mimiccxr"></span> لنفس إقامة المريض في وحدة العناية المركزة، وذلك لتصنيف الحالات الحادة متعددة التسميات.
-</p>
-<section id="experimental-setup" class="level2">
-<h2>إعداد التجارب</h2>
-<p>
-اتبعنا خطوات ما قبل المعالجة واستخدمنا نفس بنية الشبكة العصبية (MedFuse) كما في <span class="citation" data-cites="medfuse"></span>. <span class="math inline">\(\Phi_{\textrm{ehr}}\)</span> هي شبكة LSTM بطبقتين <span class="citation" data-cites="lstm"></span>، <span class="math inline">\(\Phi_{\textrm{cxr}}\)</span> هي ResNet-34 <span class="citation" data-cites="resnet50"></span>، <span class="math inline">\(g(\cdot)\)</span> طبقة كاملة الاتصال، و<span class="math inline">\(\hat{y}^{\textrm{fusion}}\)</span> هي احتمالات التصنيف بعد تطبيق دالة سيجمويد على <span class="math inline">\(g\)</span>. استخدمنا مجموعة بيانات مزدوجة بحيث تحتوي كل عينة على كلا النمطين (أي لا توجد أنماط مفقودة). بالتالي، كانت مجموعات التدريب والتحقق والاختبار مكونة من <span class="math inline">\(7756\)</span>، <span class="math inline">\(877\)</span>، و<span class="math inline">\(2161\)</span> عينة على التوالي. تم بناء مجموعة السياق باستخدام مجموعة التدريب.
-</p>
-<p>
-قمنا بتدريب الشبكة متعددة الأنماط لمدة 400 حقبة باستخدام دالة الخسارة الموضحة في ، مع خوارزمية آدم، حجم دفعة <span class="math inline">\(16\)</span>، ومعدل تعلم <span class="math inline">\(2\times10^{-4}\)</span>. يمكن العثور على تفاصيل إضافية حول الإعداد التجريبي وضبط المعاملات في .
-</p>
-</section>
-<section id="evaluation-metrics" class="level2">
-<h2>معايير التقييم</h2>
-<p>
-قمنا بتقييم الأداء الكلي للنماذج على مجموعة الاختبار باستخدام مساحة تحت منحنى الاستقبال (AUROC) ومساحة تحت منحنى الدقة-الاسترجاع (AUPRC) <span class="citation" data-cites="medfuse"></span>.
-</p>
-<p>
-بالإضافة إلى ذلك، حسبنا معايير تقييم التنبؤ الانتقائي لتقييم عدم يقين النماذج بشكل أفضل. كما هو موضح في ، يعدل التنبؤ الانتقائي خط الأنابيب التنبؤي القياسي من خلال إدخال خيار "الرفض" <span class="math inline">\(\bot\)</span> عبر آلية انتقاء تحدد ما إذا كان يجب إصدار تنبؤ لنقطة إدخال معينة <span class="math inline">\(x\in\mathcal{X}\)</span> <span class="citation" data-cites="el2010foundations"></span>. بالنسبة لعتبة رفض <span class="math inline">\(\tau\)</span>، مع <span class="math inline">\(s\)</span> تمثل إنتروبيا <span class="math inline">\(x\)</span>، يكون النموذج:
-<span class="math display">\[\begin{aligned}
+                    و<span class="math inline">\(\mathcal{Q}_{\Theta}\)</span> عائلة التوزيعات التقريبية <span class="citation" data-cites="wainwright2008vi"></span>، و<span class="math inline">\((x_{\mathcal{D}}, y_{\mathcal{D}})\)</span> بيانات التدريب. ومن أبسط الأنواع “الاستدلال التبايني بحقلٍ مُتوسِّط غاوسي” <span class="citation" data-cites="blundell2015mfvi graves2011practical"></span> الذي يُقرِّب التوزيع البَعدي على معلمات الشبكة بتوزيع غاوسي ذي تغايرٍ قطري، ما يُمكّن من تحسينٍ عشوائي وقابلية للتوسّع إلى شبكات كبيرة <span class="citation" data-cites="hoffman2013svi"></span>. غير أنّ دراساتٍ عدّة أظهرت ضعف أدائه عند استخدام توزيعات ابتدائية غاوسية غير معلوماتية <span class="citation" data-cites="ovadia2019uncertainty fsvi"></span>.
+                </p>
+                <p>
+                    لتحسين الأداء، نوسِّع نهج <span class="citation" data-cites="rudner2023fseb"></span> إلى الشبكات العصبية العِشوائية، ونبني توزيعًا ابتدائيًّا موجَّهًا بالبيانات من مدخلات مُتعدِّدة الأنماط، ثم نستخدمه داخل حقلٍ مُتوسِّط غاوسي لتحسين أداء الشبكات العصبية في مهام التنبؤ السريري مُتعدِّد الأنماط.
+                </p>
+            </section>
+        </section>
+
+        <section id="sec:method" class="level1">
+            <h1>بناء توزيعات ابتدائية موجَّهة بالبيانات للنماذج مُتعدِّدة الأنماط</h1>
+            <p>
+                نعتبر مهمّة دمج إشارات مُتعدِّدة الأنماط تحت إشراف على بيانات <span class="math inline">\(\mathcal{D}\doteq\{(x^{1}_n, x^{2}_n,{y}_n^{\textrm{fusion}})\}^{\mathit{N}}_{n=1}=(X^{1}_\mathcal{D},X^{2}_\mathcal{D},{Y}_\mathcal{D})\)</span>. نعدُّ النمط الأوّل سلاسل زمنية سريرية مُستخرَجة من السجلات الطبية الإلكترونية نرمز لها بـ<span class="math inline">\(X^{\textrm{ehr}}\)</span>، والثاني صور أشعة الصدر <span class="math inline">\(X^{\textrm{cxr}}\)</span>. لكلّ عيّنة <span class="math inline">\((x^{\textrm{ehr}}, x^{\textrm{cxr}})\)</span> تُعالج المدخلات بمُشفِّرَين <span class="math inline">\(\Phi_{\textrm{ehr}}\)</span> و<span class="math inline">\(\Phi_{\textrm{cxr}}\)</span>، ثم تُدمَج التمثيلات وتُمرَّر إلى مُصنِّف <span class="math inline">\(g(\cdot)\)</span> ودالّة تفعيل لحساب التنبؤ النهائي <span class="math inline">\(\hat{y}^{\textrm{fusion}}\)</span>. تُحسَب الخسارة بالنظر إلى التنبؤات والتسميات الحقيقية <span class="math inline">\(y^{\textrm{fusion}} \in \mathcal{Y}\)</span>، حيث <span class="math inline">\(\mathcal{Y}\subseteq\{0,1\}^\mathit{Q}\)</span> و<span class="math inline">\(\mathit{Q}>1\)</span> في حالة التصنيف مُتعدِّد التسميات.
+            </p>
+
+            <section id="sec:context" class="level2">
+                <h2>توزيعات ابتدائية معلوماتية للبيانات مُتعدِّدة الأنماط</h2>
+                <p>
+                    عنصرٌ محوريّ في تعريف النموذج الاحتمالي لِتكميم عدم اليقين لدينا هو اختيار توزيع ابتدائي مُعبِّر وقابل للتفسير. نبني توزيعًا ابتدائيًّا على المعلمات يضع كثافة احتمالية عالية على القيم التي تُنتج دوالّ تنبؤية ذات عدم يقين عالٍ عند نقاط إدخال تختلف جوهريًّا عن بيانات التدريب. لتحقيق ذلك، نستند إلى <span class="citation" data-cites="rudner2023fseb"></span> ونستخدم معلوماتٍ من النمطين لبناء توزيع ابتدائي موجَّه بالبيانات يُعين في الوصول إلى توزيعٍ بَعديٍّ تقريبي ذي خصائص مرغوبة (مثل توزيع تنبّؤي موثوق في تقدير عدم اليقين). على نحوٍ أدق، نبني توزيعًا ابتدائيًّا على مجموعةٍ من معلمات النموذج <span class="math inline">\(\Psi\)</span> مُشروطًا بمجموعةٍ من نقاط السياق <span class="math inline">\(\tilde{X}\)</span>، أي <span class="math inline">\(p(\psi \,|\, \tilde{x})\)</span>. كما نبيّن لاحقًا أنّه يمكن اشتقاق هدفٍ تبايني قابلٍ للحساب باستخدام هذا التوزيع الابتدائي.
+                </p>
+                <p>
+                    لبناء توزيع ابتدائي مُعبِّر، يلزم تحديد توزيع على نقاط السياق <span class="math inline">\(p_{\tilde{X}}\)</span>. نصمِّم توزيعًا ابتدائيًّا مُتعدِّد الأنماط بجعل <span class="math inline">\(\tilde{X}\)</span> مجموعةً من نقاط الإدخال المُولّدة عشوائيًّا <span class="math inline">\((\tilde{X}^{\textrm{ehr}}, \tilde{X}^{\textrm{cxr}})\)</span> والمُصمّمة لتكون خارج توزيع التدريب. لبيانات السلاسل الزمنية السريرية، نبني <span class="math inline">\(\tilde{X}^{\textrm{ehr}}\)</span> بتطبيق ثلاث تحويلات: حذف مقطع البداية، وإضافة ضوضاء غاوسية، وعكس ترتيب السلسلة الزمنيّة. أمّا لصور أشعة الصدر فنطبّق سبع تحويلات تمثّل اضطرابات واقعية: الاقتطاع العشوائي، والانعكاس الأفقي/الرأسي العشوائي، والتمويه الغاوسي، والتشميس العشوائي، والعكس اللوني العشوائي، وتذبذب الألوان.
+                </p>
+                <p>
+                    بذلك تضمّ مجموعة السياق نقاطًا متحوِّلة توزيعيًّا ينبغي أن يُظهر النموذج عليها عدم يقين مرتفعًا.
+                </p>
+                <div class="table"></div>
+            </section>
+        </section>
+
+        <section id="sec:experiments" class="level1">
+            <h1>التقييم التجريبي</h1>
+            <p>
+                لتقييم المنهج، جمعنا سلاسل زمنية سريرية من MIMIC-IV <span class="citation" data-cites="mimiciv"></span> وصور أشعة صدر من MIMIC-CXR <span class="citation" data-cites="mimiccxr"></span> لذات إقامة المريض في العناية المركّزة، وأجرينا تصنيفًا مُتعدِّد التسميات للحالات الحادّة.
+            </p>
+
+            <section id="experimental-setup" class="level2">
+                <h2>إعداد التجارب</h2>
+                <p>
+                    اتّبعنا خطوات ما قبل المعالجة وبنية الشبكة (MedFuse) كما في <span class="citation" data-cites="medfuse"></span>. المُشفِّر <span class="math inline">\(\Phi_{\textrm{ehr}}\)</span> شبكة LSTM بطبقتين <span class="citation" data-cites="lstm"></span>، و<span class="math inline">\(\Phi_{\textrm{cxr}}\)</span> شبكة ResNet‑34 <span class="citation" data-cites="resnet50"></span>، و<span class="math inline">\(g(\cdot)\)</span> طبقة كاملة الاتصال، و<span class="math inline">\(\hat{y}^{\textrm{fusion}}\)</span> احتمالات تصنيف بعد سيغمُويد. استخدمنا مجموعة بيانات مُقترَنة بحيث تحتوي كل عيّنة على كلا النمطين (أي لا توجد أنماط مفقودة). كانت أحجام مجموعات التدريب/التحقّق/الاختبار: <span class="math inline">\(7756\)</span>، <span class="math inline">\(877\)</span>، <span class="math inline">\(2161\)</span> عيّنة على التوالي. بُنيت مجموعة السياق من مجموعة التدريب.
+                </p>
+                <p>
+                    درَّبنا الشبكة مُتعدِّدة الأنماط 400 حقبة باستخدام دالّة الخسارة المبينة لاحقًا، مع خوارزمية آدم، وحجم دفعة <span class="math inline">\(16\)</span>، ومعدّل تعلُّم <span class="math inline">\(2\times10^{-4}\)</span>. تفاصيل إضافية حول الإعداد وضبط المعاملات واردة في الملحق.
+                </p>
+            </section>
+
+            <section id="evaluation-metrics" class="level2">
+                <h2>معايير التقييم</h2>
+                <p>
+                    قيَّمنا الأداء الإجمالي على مجموعة الاختبار باستخدام “المساحة تحت منحنى خصائص المُستقبِل” (AUROC) و“المساحة تحت منحنى الدقّة‑الاسترجاع” (AUPRC) <span class="citation" data-cites="medfuse"></span>.
+                </p>
+                <p>
+                    بالإضافة إلى ذلك، حسبنا مقاييس “التنبؤ الانتقائي” لتقييم عدم اليقين على نحوٍ أفضل. يُعدِّل التنبؤ الانتقائي خطّ الأنابيب التنبؤي بإدخال خيار “الرفض” <span class="math inline">\(\bot\)</span> عبر آلية انتقاء تُقرّر ما إذا كان يجب إصدار تنبؤ لنقطة إدخالٍ معيّنة <span class="math inline">\(x\in\mathcal{X}\)</span> <span class="citation" data-cites="el2010foundations"></span>. لعتبة رفضٍ <span class="math inline">\(\tau\)</span> وباستخدام مقياس عدم يقين <span class="math inline">\(s\)</span> (مثل إنتروبيا التنبؤ)، يكون النموذج:
+                    <span class="math display">\[\begin{aligned}
     (p(y\,|\,\cdot,\mathbf{\theta};f),s)(x) =  
     \begin{cases}
           p(y\,|\,x,\mathbf{\theta};f), & \text{إذا كان}\ s\le \tau \\
           \bot, & \text{خلاف ذلك}
     \end{cases}\end{aligned}\]</span>
-لتقييم أداء النموذج <span class="math inline">\((p(y\,|\,\cdot,\mathbf{\theta};f),s)(x)\)</span> مع تسمية واحدة، نحسب AUROC وAUPRC عبر عتبات الرفض <span class="math inline">\(\tau=0\%,...,99\%\)</span>، ثم نأخذ المتوسط عبر جميع العتبات، مما يعطي درجات انتقائية تعكس الأداء التنبؤي وعدم اليقين معًا. في مهمة التصنيف متعدد التسميات، نبلغ عن المتوسط عبر جميع التسميات البالغ عددها 25.
-</p>
-</section>
-<section id="sec:results" class="level2">
-<h2>النتائج</h2>
-<p>
-تلخص النتائج على مجموعة الاختبار. تظهر نتائج إضافية لكل تسمية في الملحق <a href="#appsec:results" data-reference-type="ref" data-reference="appsec:results">9</a>. حققت الشبكة العصبية البايزية مع توزيع ابتدائي <span class="smallcaps">m2d2</span> AUROC وAUPRC أفضل (0.735 و0.514 على التوالي) مقارنة بالنموذج الحتمي (0.726 و0.503). كما حققت انتقائية أعلى (AUROC=0.748 وAUPRC=0.452) مقارنة بالنموذج الحتمي (0.724 و0.439). كما أن منهجنا يحقق انتقائية مماثلة عند استخدام توزيع ابتدائي قياسي.
-</p>
-<p>
-<span> لاحظنا أيضًا انخفاضًا في AUPRC الانتقائي مقارنة بـ AUPRC عند رفض 0%. يمكن أن يحدث ذلك عندما يكون النموذج غير مضبوط جيدًا: إذا كان AUPRC لأي عتبة رفض أقل من قيمة 0%، فقد يكون AUPRC الانتقائي أقل من قيمة 0%. </span> بشكل عام، تعكس درجات التنبؤ الانتقائي قدرة النموذج على تحديد العينات الأكثر عرضة للخطأ والتي ينبغي مراجعتها من قبل الطبيب، وبالتالي فهي ذات قيمة في تقييم موثوقية النماذج في البيئات السريرية.
-</p>
-</section>
-</section>
-<section id="sec:conclusion" class="level1">
-<h1>الخلاصة</h1>
-<p>
-قمنا بتصميم توزيع ابتدائي موجه بالبيانات متعددة الأنماط (<span class="smallcaps">m2d2</span>) لتحسين موثوقية دمج بيانات السلاسل الزمنية السريرية مع صور أشعة الصدر. أظهرنا أن الشبكات العصبية البايزية مع هذا التوزيع تحقق أداءً أفضل من النماذج الحتمية من حيث AUROC وAUPRC ودرجات التنبؤ الانتقائي. في الأعمال المستقبلية، نهدف إلى تقييم المنهج المقترح في حالات وجود أنماط مفقودة، وعلى مهام إضافية مثل التنبؤ بالوفيات داخل المستشفى، وعلى مجموعات بيانات متعددة الأنماط أخرى.
-</p>
-</section>
-<section id="sec:acknowledgements" class="level1">
-<h1>الشكر والتقدير</h1>
-<p>
-تم إجراء هذا البحث باستخدام موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي. كما نشكر الدكتور أليخاندرو غيرا مانزاناريس، الباحث ما بعد الدكتوراه، على المناقشات المفيدة والدعم في إعادة هيكلة الشيفرة من PyTorch إلى JAX.
-</p>
-<div class="appendices">
-<p><span id="appendix-a" label="appendix-a"></span></p>
-<section id="appsec:variational_objective" class="level1">
-<h1>الهدف التقريبي</h1>
-<p>
-ليكن التابع <span class="math inline">\(f\)</span> في نموذج الملاحظة البارامتري <span class="math inline">\(p_{Y | X, \Theta}(y \,|\,x, \theta; f)\)</span> معرفًا بـ <span class="math inline">\(f(\cdot \,; \theta) \,\dot{=}\,h(\cdot \,; \theta_{h}) \theta_{L}\)</span>. في نموذج الشبكة العصبية، <span class="math inline">\(h(\cdot \,; \theta_{h})\)</span> هو ناتج الطبقة قبل الأخيرة بعد التفعيل، <span class="math inline">\(\Theta_{L}\)</span> هي معلمات الطبقة النهائية العشوائية، <span class="math inline">\(\Theta_{h}\)</span> هي معلمات الطبقات غير النهائية، و<span class="math inline">\(\Theta \,\dot{=}\,\{ \Theta_{h} , \Theta_{L}\}\)</span> هي مجموعة المعلمات الكاملة.
-</p>
-<p>
-لاشتقاق توزيع ابتدائي يأخذ في الاعتبار عدم اليقين على مجموعة المعلمات العشوائية <span class="math inline">\(\Theta\)</span>، نبدأ بتحديد مسألة استدلال مساعدة. ليكن <span class="math inline">\(\tilde{x} = \{ x_{1}, ..., x_{M} \}\)</span> مجموعة من نقاط السياق مع التسميات المقابلة <span class="math inline">\(\tilde{y}\)</span>، ونعرّف دالة الاحتمالية <span class="math inline">\(\tilde{p}_{Y | X, \Theta}(\tilde{y} \,|\,\tilde{x} , \theta)\)</span> وتوزيع ابتدائي على معلمات النموذج <span class="math inline">\(p_{\Theta}(\theta)\)</span>. لتبسيط الرموز، سنحذف المؤشرات الفرعية إلا عند الحاجة. باستخدام مبرهنة بايز، يمكننا كتابة التوزيع البعدي تحت نقاط السياق والتسميات كالتالي:
-<span class="math display">\[\begin{aligned}
+                    نقيس AUROC وAUPRC عبر عتبات الرفض <span class="math inline">\(\tau=0\%,\ldots,99\%\)</span> ثم نأخذ المتوسّط عبر العتبات؛ وفي التصنيف مُتعدِّد التسميات نُبلِّغ المتوسّط عبر 25 تسمية.
+                </p>
+            </section>
+
+            <section id="sec:results" class="level2">
+                <h2>النتائج</h2>
+                <p>
+                    نلخِّص النتائج على مجموعة الاختبار كما يلي: حقّقت الشبكة العصبية البايزية مع التوزيع الابتدائي <span class="smallcaps">m2d2</span> أفضل AUROC وAUPRC (0.735 و0.514 على الترتيب) مقارنةً بالنموذج الحتمي (0.726 و0.503). كما حقّقت مقاييس انتقائية أعلى (AUROC=0.748 وAUPRC=0.452) مقابل الحتمي (0.724 و0.439). وكانت الانتقائية مماثلة عند استخدام توزيع ابتدائي قياسي.
+                </p>
+                <p>
+                    لاحظنا كذلك انخفاضًا في AUPRC الانتقائي مقارنةً بـ AUPRC عند رفض 0%، وهو ما قد يحدث عندما يكون النموذج غير مُعايَرٍ جيدًا: إذا كان AUPRC لأيّ عتبة رفضٍ أدنى من قيمته عند 0%، فقد ينخفض المعدّل الانتقائي. عمومًا تعكس درجات التنبؤ الانتقائي قدرة النموذج على تحديد العيّنات الأكثر عُرضةً للخطأ والتي ينبغي مراجعتها من الطبيب، لذا فهي مفيدة لتقييم الموثوقية في البيئات السريرية.
+                </p>
+            </section>
+        </section>
+
+        <section id="sec:conclusion" class="level1">
+            <h1>الخلاصة</h1>
+            <p>
+                صمَّمنا توزيعًا ابتدائيًّا موجَّهًا ببيانات مُتعدِّدة الأنماط (<span class="smallcaps">m2d2</span>) لتحسين موثوقية دمج السلاسل الزمنية السريرية مع صور أشعة الصدر. أظهرنا أنّ الشبكات العصبية البايزية مع هذا التوزيع تُحقق أداءً أفضل من النماذج الحتمية من حيث AUROC وAUPRC ودرجات التنبؤ الانتقائي. في أعمالٍ لاحقة نهدف إلى تقييم المنهج في وجود أنماطٍ مفقودة، وعلى مهامّ إضافية مثل التنبؤ بالوفيات داخل المستشفى، وعلى مجموعات بيانات مُتعدِّدة الأنماط أخرى.
+            </p>
+        </section>
+
+        <section id="sec:acknowledgements" class="level1">
+            <h1>الشكر والتقدير</h1>
+            <p>
+                أُجري هذا البحث باستخدام موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي. كما نشكر الدكتور أليخاندرو غيرا مانزاناريس (باحث ما بعد الدكتوراه) على المناقشات المفيدة ودعمه في إعادة هيكلة الشيفرة من PyTorch إلى JAX.
+            </p>
+
+            <div class="appendices">
+                <section id="appsec:variational_objective" class="level1">
+                    <h1>الهدف التبايني</h1>
+                    <p>
+                        ليكن التابع <span class="math inline">\(f\)</span> في نموذج الملاحظة البارامتري <span class="math inline">\(p_{Y | X, \Theta}(y \,|\,x, \theta; f)\)</span> مُعرَّفًا بـ <span class="math inline">\(f(\cdot \,; \theta) \,\dot{=}\,h(\cdot \,; \theta_{h}) \theta_{L}\)</span>. في الشبكة العصبية، <span class="math inline">\(h(\cdot \,; \theta_{h})\)</span> ناتجُ الطبقة قبل الأخيرة بعد التفعيل، <span class="math inline">\(\Theta_{L}\)</span> معلماتُ الطبقة النهائية العِشوائية، و<span class="math inline">\(\Theta_{h}\)</span> معلماتُ الطبقات السابقة، و<span class="math inline">\(\Theta \,\dot{=}\,\{ \Theta_{h} , \Theta_{L}\}\)</span> مجموعةُ المعلمات الكاملة.
+                    </p>
+                    <p>
+                        لاشتقاق توزيع ابتدائي يأخذ عدم اليقين على مجموعة المعلمات <span class="math inline">\(\Theta\)</span> بالحسبان، نبدأ بمسألة استدلال مساعدة. لتكن <span class="math inline">\(\tilde{x} = \{ x_{1}, \ldots, x_{M} \}\)</span> نقاط السياق مع تسمياتها <span class="math inline">\(\tilde{y}\)</span>، ونُعرِّف دالّة الاحتمال <span class="math inline">\(\tilde{p}_{Y | X, \Theta}(\tilde{y} \,|\,\tilde{x} , \theta)\)</span> وتوزيعًا ابتدائيًّا على المعلمات <span class="math inline">\(p_{\Theta}(\theta)\)</span>. باستخدام بايز يمكن كتابة:
+                        <span class="math display">\[\begin{aligned}
     \tilde{p}(\theta \,|\,\tilde{x}, \tilde{y})
     \propto
-    \tilde{p}(\tilde{y} \,|\,\tilde{x} , \theta_{h}) p(\theta_{h})
-p(\theta_{L}) .\end{aligned}\]</span>
-لتعريف دالة احتمالية تؤدي إلى توزيع بعدي بخصائص مرغوبة، نبدأ من نفس الخطوة كما في <span class="citation" data-cites="rudner2023fseb"></span> ونعتبر النموذج الخطي العشوائي التالي لأي مجموعة نقاط <span class="math inline">\(x \,\dot{=}\,\{ x_{1}, ..., x_{M'} \}\)</span>:
-<span class="math display">\[\begin{aligned}
+    \tilde{p}(\tilde{y} \,|\,\tilde{x} , \theta_{h}) \, p(\theta_{h})
+\, p(\theta_{L}) .
+\end{aligned}\]</span>
+                        لتعريف دالّة احتمالٍ تُنتِج بَعديًّا بخصائص مرغوبة، نتبع <span class="citation" data-cites="rudner2023fseb"></span> ونعتبر النموذج الخطي العِشوائي لأي مجموعة نقاط <span class="math inline">\(x \,\dot{=}\,\{ x_{1}, \ldots, x_{M'} \}\)</span>:
+                        <span class="math display">\[\begin{aligned}
     \tilde{Y}_{k}(x)
     \,\dot{=}\,
-    h(x ; \theta_{h}) \Theta_{k} + \varepsilon
+    h(x ; \theta_{h}) \, \Theta_{k} + \varepsilon,
     \quad
-    \text{حيث} ~~ \Theta_{k} \sim \mathcal{N}(\theta_{L} ; m_{k},
-\tau_{f}^{-1} s_{k}) ~~ \text{و} ~~  \varepsilon \sim
-\mathcal{N}(\mathbf{0}, \tau_{f}^{-1}\beta I)\end{aligned}\]</span>
-لأبعاد الإخراج <span class="math inline">\(k = 1, ..., K\)</span>، حيث <span class="math inline">\(h(\cdot \,; \theta_{h})\)</span> هو التمثيل المميز، <span class="math inline">\(\tau_{f}\)</span> و<span class="math inline">\(\beta\)</span> معاملات التباين، و<span class="math inline">\(m \in \mathbb{R}^{P_{L}}\)</span> و<span class="math inline">\(s \in \mathbb{R}^{P_{L}}\)</span> معاملات ثابتة مؤقتًا. هذا النموذج الخطي العشوائي يولد توزيعًا على الدوال <span class="citation" data-cites="fsvi rudner2022sfsvi klarner2023qsavi rudner2023fsmap"></span>، والذي عند تقييمه على <span class="math inline">\(\tilde{x}\)</span> يُعطى بـ:
-<span class="math display">\[\begin{aligned}
-    \mathcal{N}(\tilde{y}_{k}(\tilde{x}) ; h(\tilde{x} ; \theta_{h})
-m_{k}, \tau_{f}^{-1} K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k} ) ,
+    \Theta_{k} \sim \mathcal{N}\!\big(m_{k}, \,\tau_{f}^{-1} s_{k} I\big),
+    \quad
+    \varepsilon \sim \mathcal{N}(\mathbf{0}, \tau_{f}^{-1}\beta I)
+\end{aligned}\]</span>
+                        لأبعاد الإخراج <span class="math inline">\(k = 1, \ldots, K\)</span>، حيث <span class="math inline">\(h(\cdot \,; \theta_{h})\)</span> تمثيلٌ مميِّز، و<span class="math inline">\(\tau_{f}\)</span> و<span class="math inline">\(\beta\)</span> ثوابت تباين، و<span class="math inline">\(m \in \mathbb{R}^{P_{L}}\)</span> و<span class="math inline">\(s \in \mathbb{R}^{P_{L}}\)</span> معاملاتٌ ثابتة مؤقّتًا. هذا النموذج الخطي يُولِّد توزيعًا على الدوالّ <span class="citation" data-cites="fsvi rudner2022sfsvi klarner2023qsavi rudner2023fsmap"></span> يُعطى عند تقييمه على <span class="math inline">\(\tilde{x}\)</span> بـ:
+                        <span class="math display">\[\begin{aligned}
+    \mathcal{N}\!\big(\tilde{y}_{k}(\tilde{x}) ;\, h(\tilde{x} ; \theta_{h})
+m_{k}, \, \tau_{f}^{-1} K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k} \big) ,
     \label{eq:induced_prior_distribution}\end{aligned}\]</span>
-حيث
-<span class="math display">\[\begin{aligned}
+                        حيث
+                        <span class="math display">\[\begin{aligned}
     K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k}
     \,\dot{=}\,
-     h(\tilde{x} ; \theta_{h}) ( s_{k} I ) h(\tilde{x} ;
+    h(\tilde{x} ; \theta_{h}) ( s_{k} I ) h(\tilde{x} ;
 \theta_{h})^\top + \beta I
     \label{eq:covariance}\end{aligned}\]</span>
-هي مصفوفة التباين. باعتبار هذه الكثافة الاحتمالية على تقييمات الدوال كدالة احتمالية معلمة بـ <span class="math inline">\(\theta\)</span>، نبتعد عن <span class="citation" data-cites="rudner2023fseb"></span> ونعرف:
-<span class="math display">\[\begin{aligned}
+                        مصفوفةُ التغاير. باعتبار هذه الكثافة على تقييمات الدوالّ دالّةَ احتمالٍ مُعلمة بـ<span class="math inline">\(\theta\)</span>، نُعرِّف:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     \tilde{p}(\tilde{y}_{k} \,|\,\tilde{x} , \theta_{h})
     \,\dot{=}\,
-    \mathcal{N}(\tilde{y}_{k} ; h(\tilde{x} ; \theta_{h}) m_{k} ,
-\tau_{f}^{-1} K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k} )
-,\hspace*{-3pt}
+    \mathcal{N}\!\big(\tilde{y}_{k} ;\, h(\tilde{x} ; \theta_{h}) m_{k} ,
+\tau_{f}^{-1} K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k} \big),
     \label{eq:aux_likelihood}
 \end{split}\end{aligned}\]</span>
-حيث لا نفترض <span class="math inline">\(m = \mathbf{0}\)</span> و<span class="math inline">\(s = I\)</span>. إذا عرفنا توزيع التسميات المساعدة كـ <span class="math inline">\(p_{\smash{\tilde{Y} \,|\,\tilde{X}}}(\tilde{y} \,|\,\tilde{x}) \,\dot{=}\,\delta(\{\mathbf{0}, ..., \mathbf{0} \} - \tilde{y})\)</span>، فإن دالة الاحتمالية <span class="math inline">\(\tilde{p}(\tilde{y}_{k} \,|\,\tilde{x} , \theta_{h})\)</span> تفضل المعلمات <span class="math inline">\(\theta_{h}\)</span> التي تجعل التوزيع الناتج على الدوال لديه احتمال عالٍ للتنبؤ بـ <span class="math inline">\(\mathbf{0}\)</span>. بجمع ذلك عبر جميع الأبعاد:
-<span class="math display">\[\begin{aligned}
+                        دون افتراض <span class="math inline">\(m = \mathbf{0}\)</span> أو <span class="math inline">\(s = I\)</span>. إذا عرَّفنا توزيع التسميات المساعدة <span class="math inline">\(p_{\smash{\tilde{Y} \,|\,\tilde{X}}}(\tilde{y} \,|\,\tilde{x}) \,\dot{=}\,\delta(\{\mathbf{0}, \ldots, \mathbf{0} \} - \tilde{y})\)</span>، فإن دالّة الاحتمال تُفضِّل <span class="math inline">\(\theta_{h}\)</span> التي تجعل التوزيع الناتج يُسنِد احتمالًا عاليًا للتنبؤ بـ<span class="math inline">\(\mathbf{0}\)</span>. بجمع الأبعاد:
+                        <span class="math display">\[\begin{aligned}
     \tilde{p}(\tilde{y} \,|\,\tilde{x} , \theta)
     \,\dot{=}\,
     \prod\nolimits_{k = 1}^{K} \tilde{p}(\tilde{y}_{k} \,|\,\tilde{x} ,
-\theta, m_{k}, s_{k}) ,\end{aligned}\]</span>
-وبأخذ اللوغاريتم:
-<span class="math display">\[\begin{aligned}
-    & \log \tilde{p}(\tilde{y} \,|\,\tilde{x} , \theta_{h})
-    \propto
-    -\sum\nolimits_{k = 1}^{K} \frac{\tau_{f}}{2} (h(\tilde{x} ;
-\theta_{h}) m_{k})^\top K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k}^{-1}
-h(\tilde{x} ; \theta_{h}) m_{k} ,
-    \nonumber
+\theta, m_{k}, s_{k}) ,
 \end{aligned}\]</span>
-ونعرف:
-<span class="math display">\[\begin{aligned}
+                        وبأخذ اللوغاريتم:
+                        <span class="math display">\[\begin{aligned}
+    \log \tilde{p}(\tilde{y} \,|\,\tilde{x} , \theta_{h})
+    \propto
+    -\sum\nolimits_{k = 1}^{K} \frac{\tau_{f}}{2} \,\big(h(\tilde{x} ;
+\theta_{h}) m_{k}\big)^\top K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k}^{-1}
+h(\tilde{x} ; \theta_{h}) m_{k} .
+\end{aligned}\]</span>
+                        ونُعرِّف:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     \mathcal{J}(\theta, m, s, \tilde{x}, \tilde{y})
     \,\dot{=}\,
     -\sum\nolimits_{k = 1}^{K}
-    \frac{\tau_{f}}{2} d^{2}_{M}(h(\tilde{x} ; \theta_{h}) m_{k} -
-\tilde{y}, K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k} )
+    \frac{\tau_{f}}{2} \, d^{2}_{M}\!\big(h(\tilde{x} ; \theta_{h}) m_{k} -
+\tilde{y}, \, K(\tilde{x}, \tilde{x} ; \theta_{h}, s)_{k} \big),
     \label{eq:fs_map_regularizer}
 \end{split}\end{aligned}\]</span>
-حيث <span class="math inline">\(d^{2}_{M}(\Delta, K)
-\,\dot{=}\,\Delta^\top K^{-1} \Delta\)</span> هو مربع مسافة ماهالانوبس. بالتالي:
-<span class="math display">\[\begin{aligned}
+                        حيث <span class="math inline">\(d^{2}_{M}(\Delta, K)=\Delta^\top K^{-1} \Delta\)</span> مربعُ مسافة ماهالانوبِس. إذًا
+                        <span class="math display">\[\begin{aligned}
     \mathop{\mathrm{arg\,max}}\nolimits_{\theta} \tilde{p}(\theta
 \,|\,\tilde{x}, \tilde{y})
-    = \mathop{\mathrm{arg\,max}}\nolimits_{\theta}\mathcal{J}(\theta, m,
-s, \tilde{x}, \tilde{y}) + \log p(\theta)
+    =
+    \mathop{\mathrm{arg\,max}}\nolimits_{\theta}\big[\mathcal{J}(\theta, m,
+s, \tilde{x}, \tilde{y}) + \log p(\theta)\big].
 \end{aligned}\]</span>
-وبالتالي، تعظيم <span class="math inline">\(\mathcal{J}(\theta, m, s, \tilde{x}, \tilde{y}) + \log p(\theta)\)</span> بالنسبة لـ <span class="math inline">\(\theta\)</span> يعادل رياضيًا تعظيم التوزيع البعدي <span class="math inline">\(\tilde{p}(\theta \,|\,\tilde{x}, \tilde{y})\)</span> ويؤدي إلى دوال مرجحة تحت التوزيع الناتج عن الشبكة العصبية ومتسقة مع التوزيع الابتدائي.
-</p>
-<p>
-لكن، بما أن المعلمات <span class="math inline">\(m\)</span> و<span class="math inline">\(s\)</span> ثابتة وتظهر في دالة الاحتمالية المساعدة فقط، فإن الهدف أعلاه ليس مناسبًا إذا كان الهدف هو إيجاد معلمات <span class="math inline">\(\theta\)</span> تؤدي إلى دوال ذات عدم يقين مرتفع على نقاط السياق. لمعالجة ذلك، ندرج هذه المعلمات في نموذج الملاحظة كوسيط وتباين للطبقة النهائية في <span class="math inline">\(f(\cdot \,; \theta)\)</span>، ونعاملها كمتغيرات عشوائية <span class="math inline">\(M\)</span> و<span class="math inline">\(S\)</span>، ونضع توزيعات ابتدائية عليها، ونستنتج توزيعًا بعديًا تقريبيًا لكليهما.
-</p>
-<p>
-على وجه التحديد، نعرف توزيعًا ابتدائيًا على معلمات الطبقة النهائية <span class="math inline">\(\Theta_{L}\)</span> كالتالي:
-<span class="math display">\[\begin{aligned}
+                    </p>
+                    <p>
+                        لأن <span class="math inline">\(m\)</span> و<span class="math inline">\(s\)</span> ثابتان ويظهران فقط في دالّة الاحتمال المساعدة، فليس الهدف مناسبًا إذا أردنا معلمات <span class="math inline">\(\theta\)</span> التي تُنتج دوالّ ذات عدم يقين مرتفع على نقاط السياق. لمعالجة ذلك، نُدرج هذين المعلمَين كوسيط وتباين للطبقة النهائية في <span class="math inline">\(f(\cdot \,; \theta)\)</span>، ونعاملهما كمتغيِّراتٍ عِشوائية <span class="math inline">\(M\)</span> و<span class="math inline">\(S\)</span> مع توزيعات فوق‑ابتدائية.
+                    </p>
+                    <p>
+                        على وجه التحديد، نُعرِّف:
+                        <span class="math display">\[\begin{aligned}
     p_{\Theta_{L}}(\theta_{L} \,|\,m, s)
     =
-    \mathcal{N}(\theta_{L} ; m, s I)\end{aligned}\]</span>
-وتوزيعات ابتدائية فائقة:
-<span class="math display">\[\begin{aligned}
+    \mathcal{N}(\theta_{L} ; m, s I)
+\end{aligned}\]</span>
+                        والتوزيعات الفوق‑ابتدائية:
+                        <span class="math display">\[\begin{aligned}
     p_{M}(m)
     & =
-    \mathcal{N}(m ; \mu_{0}, \tau_{0}^{-1} I)
-    \\
+    \mathcal{N}(m ; \mu_{0}, \tau_{0}^{-1} I), \\
     p_{S}(s)
     & =
-    \textrm{Lognormal}(s ; \mathbf{0}, 2 \tau^{-1}_{s} I)
-.\end{aligned}\]</span>
-النموذج الاحتمالي الكامل يصبح:
-<span class="math display">\[\begin{aligned}
+    \textrm{Lognormal}(s ; \mathbf{0}, 2 \tau^{-1}_{s} I).
+\end{aligned}\]</span>
+                        فيصبح النموذج الاحتمالي الكامل:
+                        <span class="math display">\[\begin{aligned}
     p(y \,|\,x, \theta_{h}, \theta_{L}; f) \, p(\theta, m, s
-\,|\,\tilde{x}, \tilde{y}) .\end{aligned}\]</span>
-مع التوزيع الابتدائي:
-<span class="math display">\[\begin{aligned}
+\,|\,\tilde{x}, \tilde{y}) .
+\end{aligned}\]</span>
+                        مع التوزيع الابتدائي:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     p(\theta, m, s \,|\,\tilde{x}, \tilde{y})
     & =
     \tilde{p}(\theta_{h} \,|\,m, s, \smash{\tilde{x}, \tilde{y}}) \,
-p(\theta_{L} \,|\,m, s) \, p(m) \, p(s)
-    \\
+p(\theta_{L} \,|\,m, s) \, p(m) \, p(s) \\
     & \propto
     p(\theta_{L} \,|\,m, s) \, \tilde{p}(\tilde{y} \,|\,\tilde{x} ,
-\theta ; f) \, p(\theta_{h}) \, p(m) \, p(s) ,
+\theta ; f) \, p(\theta_{h}) \, p(m) \, p(s),
 \end{split}\end{aligned}\]</span>
-ويمكن حساب جميعها تحليليًا. باستخدام هذا التوزيع الابتدائي، يمكننا اشتقاق هدف تقريبي وإجراء استدلال تقريبي.
-</p>
-<p>
-نبدأ بتعريف توزيع تقريبي:
-<span class="math display">\[\begin{aligned}
+                        وجميع الحدود قابلة للحساب التحليلي. وباستخدام هذا التوزيع الابتدائي نشتق هدفًا تباينيًّا ونُجري الاستدلال.
+                    </p>
+                    <p>
+                        نبدأ بتوزيع تقريبي:
+                        <span class="math display">\[\begin{aligned}
     q(\theta, m, s, \tilde{x}, \tilde{y})
     \,\dot{=}\,
     q(\theta_{h}) \, q(\theta_{L} \,|\,m, s) \, q(m) \, q(s) \,
-q(\tilde{x}, \tilde{y}) ,\end{aligned}\]</span>
-ونصيغ مسألة الاستدلال كمسألة تحسين:
-<span class="math display">\[\begin{aligned}
+q(\tilde{x}, \tilde{y}) ,
+\end{aligned}\]</span>
+                        ونصوغ المسألة:
+                        <span class="math display">\[\begin{aligned}
     \min_{q_{\Theta, M, S, \tilde{X}, \tilde{Y}} \in \mathcal{Q}}
 D_{\text{KL}}\infdivx{q_{\Theta, M, S, \tilde{X}, \tilde{Y}}}{p_{\Theta,
-M, S, \tilde{X}, \tilde{Y} \,|\,X_{\mathcal{D}}, Y_{\mathcal{D}}}}
-,\end{aligned}\]</span>
-حيث <span class="math inline">\(\mathcal{Q}\)</span> عائلة التوزيعات التقريبية. إذا كان التوزيع البعدي ضمن العائلة، يكون الحل دقيقًا. بتعديل المسألة بتعريف <span class="math inline">\(q(\tilde{x}, \tilde{y}) \,\dot{=}\,p(\tilde{x}, \tilde{y}) = p(\tilde{y} \,|\,\tilde{x}) p(\tilde{x})\)</span>، تتبسط المسألة إلى:
-<span class="math display">\[\begin{aligned}
+M, S, \tilde{X}, \tilde{Y} \,|\,X_{\mathcal{D}}, Y_{\mathcal{D}}}} .
+\end{aligned}\]</span>
+                        بجعل <span class="math inline">\(q(\tilde{x}, \tilde{y}) \,\dot{=}\,p(\tilde{x}, \tilde{y}) = p(\tilde{y} \,|\,\tilde{x}) p(\tilde{x})\)</span> تتبسّط إلى:
+                        <span class="math display">\[\begin{aligned}
     \min_{q_{\Theta, M, S} \in \mathcal{Q}} \mathbb{E}_{p_{\tilde{X},
-\tilde{Y}}} \left[ D_{\text{KL}}\infdivx{q_{\Theta, M, S}}{p_{\Theta, M,
+\tilde{Y}}} \!\left[ D_{\text{KL}}\infdivx{q_{\Theta, M, S}}{p_{\Theta, M,
 S \,|\,\smash{\tilde{X}, \tilde{Y}}, X_{\mathcal{D}}, Y_{\mathcal{D}}}}
-\right] ,\end{aligned}\]</span>
-والتي تعادل تعظيم الهدف التقريبي:
-<span class="math display">\[\begin{aligned}
+\right],
+\end{aligned}\]</span>
+                        وهو ما يعادل تعظيم:
+                        <span class="math display">\[\begin{aligned}
     \bar{\mathcal{F}}(q_{\Theta}, q_{M}, q_{S})
     \,\dot{=}\,
     \mathbb{E}_{q_{\Theta, M, S}} [ \log p(y_{\mathcal{D}}
 \,|\,x_{\mathcal{D}} , \Theta ; f) ]
-    - \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} [
+    - \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} \!\big[
 D_{\text{KL}}\infdivx{q_{\Theta, M, S}}{p_{\Theta, M, S
-\,|\,\smash{\tilde{X}, \tilde{Y}}}} ] .
+\,|\,\smash{\tilde{X}, \tilde{Y}}}} \big].
 \end{aligned}\]</span>
-لحساب الحد التنظيمي، نلاحظ:
-<span class="math display">\[\begin{aligned}
+                        ولحساب الحدّ التنظيمي:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}    
-    \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} [
+    \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} \!\big[
 D_{\text{KL}}\infdivx{q_{\Theta, M, S}}{p_{\Theta, M, S
-\,|\,\smash{\tilde{X}, \tilde{Y}}}}] ]
+\,|\,\smash{\tilde{X}, \tilde{Y}}}} \big]
     =
     \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} \Big[ \mathbb{E}_{q_{\Theta}
 q_{M} q_{S}} [ \log q(\Theta) q(M) q(S) ]
     - \mathbb{E}_{q_{\Theta} q_{M} q_{S}} [ \log p(\Theta, M, S
-\,|\,\smash{\tilde{X}, \tilde{Y}}) ] \Big] ,
-    \label{eq:kl_divergence}
+\,|\,\smash{\tilde{X}, \tilde{Y}}) ] \Big].
 \end{split}\end{aligned}\]</span>
-وباستخدام نفس الأفكار، يمكننا كتابة:
-<span class="math display">\[\begin{aligned}
+                        وبالتماثل:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} [ \mathbb{E}_{q_{\Theta} q_{M}
 q_{S}} [ \log p(\Theta, M, S \,|\,\smash{\tilde{X}, \tilde{Y}}) ] ]
     \propto
     \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}}
-\Big[\mathbb{E}_{q_{\Theta_{h}} q_{M} q_{S}} \left[ \log
-\tilde{p}(\smash{\tilde{Y} \,|\,\tilde{X}} , \Theta_{h}, M, S) \right]
-    + \mathbb{E}_{q_{\Theta}} \left[ \log p(\Theta_{h}) \, p(\Theta_{L}
-\,|\,M, S) \, p(M) \, p(S) \right] \Big] ,
+\Big[\mathbb{E}_{q_{\Theta_{h}} q_{M} q_{S}} \big[ \log
+\tilde{p}(\smash{\tilde{Y} \,|\,\tilde{X}} , \Theta_{h}, M, S) \big]
+    + \mathbb{E}_{q_{\Theta}} \big[ \log p(\Theta_{h}) \, p(\Theta_{L}
+\,|\,M, S) \, p(M) \, p(S) \big] \Big],
 \end{split}\end{aligned}\]</span>
-وبالتالي:
-<span class="math display">\[\begin{aligned}
+                        ومنه:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     D_{\text{KL}}\infdivx{q_{\Theta, M, S}}{p_{\Theta, M, S
 \,|\,\smash{\tilde{X}, \tilde{Y}}}}
     \propto
     -
-    \mathbb{E}_{q_{M} q_{S}} [ \mathbb{E}_{q_{\Theta}} [\log
+    \mathbb{E}_{q_{M} q_{S}} \Big[ \mathbb{E}_{q_{\Theta}} [\log
 \tilde{p}(\tilde{Y} \,|\,\tilde{X} , \Theta_{h}, M, S) ]
     + D_{\text{KL}}\infdivx{q_{\Theta_{L} \,|\,M, S}}{p_{\Theta_{L}
-\,|\,M, S}} ]
+\,|\,M, S}} \Big]
     + D_{\text{KL}}\infdivx{q_{\Theta_{h}}}{p_{\Theta_{h}}}
     + D_{\text{KL}}\infdivx{q_{M}}{p_{M}} +
 D_{\text{KL}}\infdivx{q_{S}}{p_{S}} .
 \end{split}\end{aligned}\]</span>
-وبتحديد العائلة التقريبية:
-<span class="math display">\[\begin{aligned}
+                    </p>
+                    <p>
+                        باختيار العائلة التقريبية:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
-    q(\theta_{L} \,|\,m, s)
-    & =
-    \mathcal{N}(\theta_{L} ; m, s I)
-    \\
-    q(\theta_{h})
-    & =
-    \mathcal{N}(\theta_{h} ; \mu_{h}, \Sigma_{h})
-    \\
-    q(m)
-    & =
-    \mathcal{N}(m ; \mu_{L}, \Sigma_{L})
-    \\
-    q(s)
-    & =
-    \textrm{Lognormal}(s ; \Sigma_{L}, \sigma^{2}_{s} I) .
+    q(\theta_{L} \,|\,m, s) &= \mathcal{N}(\theta_{L} ; m, s I), \\
+    q(\theta_{h})           &= \mathcal{N}(\theta_{h} ; \mu_{h}, \Sigma_{h}), \\
+    q(m)                    &= \mathcal{N}(m ; \mu_{m}, \Sigma_{m}), \\
+    q(s)                    &= \textrm{Lognormal}(s ; \mu_{s}, \sigma^{2}_{s} I),
 \end{split}\end{aligned}\]</span>
-مع معلمات تقريبية قابلة للتعلم <span class="math inline">\(\mu \,\dot{=}\,\{ \mu_{h}, \mu_{m} \}\)</span> و<span class="math inline">\(\Sigma \,\dot{=}\,\{ \Sigma_{L}, \Sigma_{L} \}\)</span> ومعلمات ثابتة <span class="math inline">\(\{ \sigma^{2}_{m}, \sigma^{2}_{s} \}\)</span>، نحصل على <span class="math inline">\(D_{\text{KL}}\infdivx{q_{\Theta_{L} \,|\,M, S}}{p_{\Theta_{L} \,|\,M, S}} = 0\)</span>، ويتبسط الحد التنظيمي إلى:
-<span class="math display">\[\begin{aligned}
+                        نحصل على <span class="math inline">\(D_{\text{KL}}\infdivx{q_{\Theta_{L} \,|\,M, S}}{p_{\Theta_{L} \,|\,M, S}} = 0\)</span>، ويتبسّط الحدّ التنظيمي إلى:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     D_{\text{KL}}\infdivx{q_{\Theta, M, S}}{p_{\Theta, M, S
 \,|\,\smash{\tilde{X}, \tilde{Y}}}}
@@ -540,270 +555,240 @@ D_{\text{KL}}\infdivx{q_{S}}{p_{S}} .
 \,|\,\tilde{X} , \Theta_{h}, M, S) ] +
 D_{\text{KL}}\infdivx{q_{\Theta_{h}}}{p_{\Theta_{h}}}
     + D_{\text{KL}}\infdivx{q_{M}}{p_{M}} +
-D_{\text{KL}}\infdivx{q_{S}}{p_{S}} ,
+D_{\text{KL}}\infdivx{q_{S}}{p_{S}} .
 \end{split}\end{aligned}\]</span>
-ويمكن حساب كل حد تحليليًا، ويمكن تقدير اللوغاريتم السلبي لدالة الاحتمالية باستخدام مونتي كارلو.
-</p>
-<p>
-بما أن <span class="math inline">\(\Theta_{h}\)</span> و<span class="math inline">\(q_{M}\)</span> توزيعات غاوسية، يمكننا كتابة الهدف التقريبي الكامل بشكل مبسط:
-<span class="math display">\[\begin{aligned}
+                        وجميع الحدود قابلة للحساب التحليلي، ويُمكن تقدير لوغاريتم دالّة الاحتمال سالبًا بطريقة مونتي‑كارلو.
+                    </p>
+                    <p>
+                        وبما أنّ <span class="math inline">\(\Theta_{h}\)</span> و<span class="math inline">\(M\)</span> توزيعاتٌ غاوسية، يمكن كتابة الهدف التبايني الكامل بصورةٍ مُدمجة:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     \mathcal{F}(\mu, \Sigma)
     \,\dot{=}\,
     \underbrace{\mathbb{E}_{q_{\Theta} q_{M} q_{S}} [ \log
 p(y_{\mathcal{D}} \,|\,x_{\mathcal{D}} , \Theta ; f)
-]}_{\textrm{متوسط اللوغاريتم الاحتمالي}} -
+]}_{\textrm{متوسِّط لوغاريتم دالّة الاحتمال}} \;-\;
 \underbrace{D_{\text{KL}}\infdivx{q_{\Phi}}{p_{\Phi}}}_{\textrm{تنظيم KL}}
-    + \underbrace{ \mathbb{E}_{q_{\Theta_{h}} q_{M} q_{S}} [
+    \;+\; \underbrace{ \mathbb{E}_{q_{\Theta_{h}} q_{M} q_{S}} [
 \mathbb{E}_{p_{\tilde{X}, \tilde{Y}}} [ \log \tilde{p}(\smash{\tilde{Y}
-\,|\,\tilde{X}} , \Theta_{h}, M, S) ]] - \smash{\tau_{s} \| \Sigma_{L}
-\|_{2}^{2}}}_{\textrm{تنظيم عدم اليقين}}
-    ,
+\,|\,\tilde{X}} , \Theta_{h}, M, S) ]] \;-\; \tau_{s} \,\| \Sigma_{m}
+\|_{2}^{2}}_{\textrm{تنظيم عدم اليقين}} ,
 \end{split}\end{aligned}\]</span>
-حيث <span class="math inline">\(\Phi \,\dot{=}\,\{ \Theta_{h}, M \}\)</span>. يمكن تقدير التوقعات باستخدام مونتي كارلو، وتقدير التدرجات باستخدام إعادة التشكيل كما في <span class="citation" data-cites="blundell2015mfvi"></span>.
-</p>
-<p>
-بجعل <span class="math inline">\(p_{\tilde{Y} |
-\tilde{X}}(\tilde{y} \,|\,\tilde{x}) = \delta(\mathbf{0})\)</span> لتشجيع عدم اليقين العالي في التنبؤات على نقاط السياق، حيث <span class="math inline">\(\delta(\cdot)\)</span> دالة ديراك، نحصل على الهدف المبسط:
-<span class="math display">\[\begin{aligned}
+                        حيث <span class="math inline">\(\Phi \,\dot{=}\,\{ \Theta_{h}, M \}\)</span>. نُقدِّر التوقّعات بمونتي‑كارلو، ونحسب التدرّجات باستخدام “حيلة إعادة المعلمة” <span class="citation" data-cites="blundell2015mfvi"></span>.
+                    </p>
+                    <p>
+                        بجعل <span class="math inline">\(\,p_{\tilde{Y} |
+\tilde{X}}(\tilde{y} \,|\,\tilde{x}) = \delta(\mathbf{0})\,\)</span> لتشجيع عدم يقينٍ عالٍ على نقاط السياق، نحصل على الصيغة المبسّطة:
+                        <span class="math display">\[\begin{aligned}
 \begin{split}
     \mathcal{F}(\mu, \Sigma)
     \,\dot{=}\,
     \underbrace{\mathbb{E}_{q_{\Theta} q_{M} q_{S}} [ \log
 p(y_{\mathcal{D}} \,|\,x_{\mathcal{D}} , \Theta ; f)
-]}_{\textrm{متوسط اللوغاريتم الاحتمالي}} -
+]}_{\textrm{متوسِّط لوغاريتم دالّة الاحتمال}} \;-\;
 \underbrace{D_{\text{KL}}\infdivx{q_{\Phi}}{p_{\Phi}}}_{\textrm{تنظيم KL}}
-    + \underbrace{ \mathbb{E}_{q_{\Theta_{h}} q_{M} q_{S}} [
+    \;+\; \underbrace{ \mathbb{E}_{q_{\Theta_{h}} q_{M} q_{S}} [
 \mathbb{E}_{p_{\tilde{X}}} [ \log \tilde{p}(\smash{\mathbf{0}
-\,|\,\tilde{X}} , \Theta_{h}, M, S) ]] - \smash{\tau_{s} \| \Sigma_{L}
-\|_{2}^{2}}}_{\textrm{تنظيم عدم اليقين}}
+\,|\,\tilde{X}} , \Theta_{h}, M, S) ]] \;-\; \tau_{s} \,\| \Sigma_{m}
+\|_{2}^{2}}_{\textrm{تنظيم عدم اليقين}}
     \label{eq:final_objective}
 \end{split}\end{aligned}\]</span>
-</p>
-</section>
-<section id="app:experimental-setup" class="level1">
-<h1>تفاصيل التجارب</h1>
-<section id="training-details" class="level2">
-<h2>تفاصيل التدريب</h2>
-<p>
-في التدريب، استخدمنا بروتوكول الدمج المشترك كما في <span class="citation" data-cites="medfuse"></span> حيث يتم تدريب الشبكة من البداية بما في ذلك المشفرات الخاصة بكل نمط <span class="math inline">\(\Phi_{cxr}\)</span> و<span class="math inline">\(\Phi_{ehr}\)</span> باستخدام الطبقة الكاملة الاتصال <span class="math inline">\(g(\cdot)\)</span> للحصول على احتمالات التصنيف متعدد التسميات <span class="math inline">\({\hat{y}}_{\textrm{fusion}}\)</span>. يوضح الجدول التالي تفاصيل تقسيم البيانات المستخدمة كمدخلات للشبكة.
-</p>
-<p><span id="table:dataset_sizes" label="table:dataset_sizes"></span></p>
-<div id="table:dataset_sizes">
-<table>
-<caption>ملخص أحجام مجموعات البيانات الأحادية ومتعددة الأنماط. نلاحظ أن حجم مجموعة البيانات متعددة الأنماط ينخفض عند إقران النمطين.</caption>
-<thead>
-<tr class="header">
-<th style="text-align: right;"><strong>مجموعة البيانات</strong></th>
-<th style="text-align: center;"><strong>تدريب</strong></th>
-<th style="text-align: center;"><strong>تحقق</strong></th>
-<th style="text-align: center;"><strong>اختبار</strong></th>
-<th style="text-align: center;"><strong>سياق</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">بيانات السلاسل الزمنية السريرية</td>
-<td style="text-align: center;">124,671</td>
-<td style="text-align: center;">8,813</td>
-<td style="text-align: center;">20,747</td>
-<td style="text-align: center;">124,671</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">صور أشعة الصدر</td>
-<td style="text-align: center;">42,628</td>
-<td style="text-align: center;">4,802</td>
-<td style="text-align: center;">11,914</td>
-<td style="text-align: center;">42,628</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">متعدد الأنماط</td>
-<td style="text-align: center;">7,756</td>
-<td style="text-align: center;">877</td>
-<td style="text-align: center;">2,161</td>
-<td style="text-align: center;">7,756</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>
-استخدمنا دالة خسارة الانتروبيا الثنائية <span class="citation" data-cites="good1952rational"></span>، المعدلة لمهمة التصنيف متعدد التسميات:
-<span class="math display">\[\label{equation:loss}
+                    </p>
+                </section>
+
+                <section id="app:experimental-setup" class="level1">
+                    <h1>تفاصيل التجارب</h1>
+
+                    <section id="training-details" class="level2">
+                        <h2>تفاصيل التدريب</h2>
+                        <p>
+                            استخدمنا بروتوكول الدمج المشترك كما في <span class="citation" data-cites="medfuse"></span> حيث تُدرَّب الشبكة من الصفر، بما في ذلك مُشفِّرا كلّ نمط <span class="math inline">\(\Phi_{\textrm{cxr}}\)</span> و<span class="math inline">\(\Phi_{\textrm{ehr}}\)</span>، مع الطبقة كاملة الاتصال <span class="math inline">\(g(\cdot)\)</span> للحصول على احتمالات التصنيف مُتعدِّد التسميات <span class="math inline">\({\hat{y}}_{\textrm{fusion}}\)</span>. يوضّح الجدول التالي تفاصيل أحجام البيانات:
+                        </p>
+                        <div id="table:dataset_sizes" class="table">
+                            <table class="table table-striped">
+                                <caption>ملخّص أحجام مجموعات البيانات الأحادية ومُتعدِّدة الأنماط. نلاحظ أن حجم مجموعة البيانات مُتعدِّدة الأنماط ينخفض عند إقران النمطين.</caption>
+                                <thead>
+                                    <tr class="header">
+                                        <th style="text-align: right;"><strong>مجموعة البيانات</strong></th>
+                                        <th style="text-align: center;"><strong>تدريب</strong></th>
+                                        <th style="text-align: center;"><strong>تحقّق</strong></th>
+                                        <th style="text-align: center;"><strong>اختبار</strong></th>
+                                        <th style="text-align: center;"><strong>سياق</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd">
+                                        <td style="text-align: right;">السلاسل الزمنية السريرية</td>
+                                        <td style="text-align: center;">124,671</td>
+                                        <td style="text-align: center;">8,813</td>
+                                        <td style="text-align: center;">20,747</td>
+                                        <td style="text-align: center;">124,671</td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td style="text-align: right;">صور أشعة الصدر</td>
+                                        <td style="text-align: center;">42,628</td>
+                                        <td style="text-align: center;">4,802</td>
+                                        <td style="text-align: center;">11,914</td>
+                                        <td style="text-align: center;">42,628</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td style="text-align: right;">مُتعدِّد الأنماط</td>
+                                        <td style="text-align: center;">7,756</td>
+                                        <td style="text-align: center;">877</td>
+                                        <td style="text-align: center;">2,161</td>
+                                        <td style="text-align: center;">7,756</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>
+                            استخدمنا خسارة الإنتروبيا الثنائية <span class="citation" data-cites="good1952rational"></span> المُعدّلة للتصنيف مُتعدِّد التسميات:
+                            <span class="math display">\[\label{equation:loss}
     \log p(y | x, \theta ; f)
     =
-    -\sum_{i=1}^{n}(y_i\log(\hat{y}_i)+(1-y_i)(\log(1-\hat{y}_i)))
+    -\sum_{i=1}^{n}\big(y_i\log(\hat{y}_i)+(1-y_i)\log(1-\hat{y}_i)\big)
 ,\]</span>
-حيث <span class="math inline">\(\hat{y}_{i}
-\,\dot{=}\,\textrm{sigmoid}(f(x_{i} ; \theta))\)</span>. الهدف التقريبي الكلي في طريقتنا يتكون من متوسط اللوغاريتم الاحتمالي، وتنظيم KL، وتنظيم عدم اليقين. في الحالة العشوائية، كما هو موضح في ، ندمج بيانات التدريب والسياق كمدخل لحساب هذه الخسارة.
-</p>
-</section>
-<section id="hyperparameter-tuning" class="level2">
-<h2>ضبط المعاملات</h2>
-<p>
-في البداية، استخدمنا النموذج الحتمي الأساسي لاختيار معدل التعلم عشوائيًا بين <span class="math inline">\(10^{-5}\)</span> و<span class="math inline">\(10^{-3}\)</span>، وتم اختيار النموذج ومعدل التعلم الذي حقق أفضل AUROC على مجموعة التحقق. أفضل معدل تعلم كان <span class="math inline">\(2\times10^{-4}\)</span>، وتم التحقق منه عبر 10 بذور عشوائية.
-</p>
-<p>
-بالنسبة للنموذج العشوائي، أجرينا بحثًا شبكيًا قياسيًا للحصول على أفضل معاملات لتنظيم الدالة. يوضح الجدول التالي نطاق القيم لكل معامل في الشبكة، والتي تتكون من 324 تركيبة مختلفة. <span> نلاحظ أن هذه العملية تتطلب موارد أكثر بسبب العدد الأكبر من المعاملات القابلة للضبط مقارنة بالنموذج الحتمي. بالإضافة إلى ذلك، تحتوي النماذج العشوائية على عدد أكبر من المعلمات القابلة للتعلم (ضعف العدد تقريبًا)، حيث أن النموذج يحتوي على معلمات للمتوسط والتباين، ويتطلب التنظيم إجراء تمرير أمامي على عدد نقاط السياق المأخوذة من توزيع السياق (والذي نختاره ليكون أقل من عدد العينات في كل دفعة). بشكل عام، كما هو الحال في كل توزيع تقريبي متوسط الحقل، لدينا معلمات أكثر من الشبكة الحتمية ونتطلب تمريرات أمامية أكثر لكل خطوة تدرجية.</span>
-</p>
-<p><span id="table:hyperparams" label="table:hyperparams"></span></p>
-<div id="table:hyperparams">
-<table>
-<caption>قيم شبكة البحث عن المعاملات للنموذج العشوائي</caption>
-<thead>
-<tr class="header">
-<th style="text-align: right;"><strong>المعامل</strong></th>
-<th style="text-align: right;"><strong>القيم</strong></th>
-<th style="text-align: center;"><strong>الأفضل</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">تباين التوزيع الابتدائي</td>
-<td style="text-align: right;">[1, 0.1, 0.01]</td>
-<td style="text-align: center;"><strong>0.1</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">مقياس احتمالية التوزيع الابتدائي</td>
-<td style="text-align: right;">[1, 0.1, 10]</td>
-<td style="text-align: center;"><strong>1</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">مقياس f لاحتمالية التوزيع الابتدائي</td>
-<td style="text-align: right;">[0, 1, 10]</td>
-<td style="text-align: center;"><strong>10</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">مقياس تباين احتمالية التوزيع الابتدائي</td>
-<td style="text-align: right;">[0.1, 0.01, 0.001, 0.0001]</td>
-<td style="text-align: center;"><strong>0.1</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">قطر تباين احتمالية التوزيع الابتدائي</td>
-<td style="text-align: right;">[1, 5, 0.5]</td>
-<td style="text-align: center;"><strong>5</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="model-selection" class="level2">
-<h2>اختيار النموذج</h2>
-<p>
-قمنا بتدريب النموذج العشوائي لمدة 400 حقبة. نظرًا لوجود أربعة معايير اهتمام (AUROC، AUPRC، AUROC الانتقائي، وAUPRC الانتقائي)، حسبنا الحجم الفائق باستخدام صيغة حجم الكرة رباعية الأبعاد كمقياس تجميعي رئيسي لاختيار أفضل نقطة تحقق للنموذج أثناء التدريب:
-<span class="math display">\[\textrm{hypervolume}=\frac{\pi^2\textrm{R}^4}{2}\]</span>
-حيث <span class="math inline">\(\textrm{R}\)</span> هو مقدار متجه رباعي الأبعاد. يضمن هذا النهج عدم الإفراط في التخصيص لمعيار واحد أثناء اختيار النموذج الأفضل.
-</p>
-</section>
-<section id="technical-implementation" class="level2">
-<h2>التنفيذ التقني</h2>
-<p>
-تم تنفيذ تحميل البيانات وخطوات ما قبل المعالجة باستخدام PyTorch <span class="citation" data-cites="pytorch"></span> باتباع نفس بنية الشيفرة المستخدمة في <span class="citation" data-cites="medfuse"></span>. ومع ذلك، أعدنا هيكلة النماذج الأحادية ومتعددة الأنماط، ودورات التدريب والتقييم باستخدام JAX <span class="citation" data-cites="jax"></span>. يسهل هذا الإطار تنفيذ الشبكات العصبية البايزية والتدريب العشوائي، وهي أساس طرق تكميم عدم اليقين المستخدمة في هذا العمل. بالإضافة إلى ذلك، حصلنا على تقليل كبير في وقت التدريب الكلي للنماذج باستخدام JAX مقارنة بـ PyTorch.
-</p>
-<p>
-نلاحظ أنه بسبب إجراءات التخزين المؤقت الخاصة بإطار JAX، كان علينا توحيد كل عينة <span class="math inline">\(x_{\textrm{ehr}}\)</span> إلى 300 خطوة زمنية لمشفر LSTM لتجنب مشاكل الذاكرة. يتطلب JAX أن يحدد مشفر LSTM طولًا ثابتًا للتسلسلات التي سيعالجها، ثم يخزن هذا النموذج لزيادة سرعة التدريب. إذا تم استخدام أطوال تسلسلات مختلفة، سيخزن JAX نسخة من المشفر لكل طول محدد، مما يسبب مشاكل في الذاكرة عند التعامل مع بيانات ذات أطوال متغيرة كما في MIMIC-IV <span class="citation" data-cites="mimiciv"></span>. بالمقابل، لا يستخدم PyTorch هذا النهج ويمكنه معالجة تسلسلات بأطوال متغيرة بنسخة واحدة من المشفر، لكن ذلك على حساب سرعة التدريب.
-</p>
-<p>
-تم تنفيذ جميع التجارب باستخدام وحدات معالجة الرسوميات NVIDIA A100 وV100 بسعة 80 جيجابايت.
-</p>
-</section>
-</section>
-<section id="appsec:results" class="level1">
-<h1>نتائج تجريبية إضافية</h1>
-<p>
-في هذا القسم، نقدم نتائج إضافية على مجموعة الاختبار. يعرض الجدول التالي نتائج النموذج العشوائي لقيم مختلفة لحجم دفعة السياق.
-</p>
-<p><span id="table:batch_context_experiments" label="table:batch_context_experiments"></span></p>
-<div id="table:batch_context_experiments">
-<table>
-<caption>نتائج الأداء على مجموعة الاختبار للنموذج العشوائي مع اختلاف حجم دفعة السياق.</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">حجم الدفعة</td>
-<td style="text-align: center;"><strong>AUROC</strong></td>
-<td style="text-align: center;"><strong>AUPRC</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">AUROC</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">AUPRC</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">0.732 (0.725, 0.739)</td>
-<td style="text-align: center;">0.511 (0.502, 0.525)</td>
-<td style="text-align: center;">0.740 (0.728, 0.753)</td>
-<td style="text-align: center;">0.447 (0.432, 0.469)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">32</td>
-<td style="text-align: center;">0.733 (0.725, 0.739)</td>
-<td style="text-align: center;">0.510 (0.500, 0.524)</td>
-<td style="text-align: center;">0.743 (0.733, 0.756)</td>
-<td style="text-align: center;">0.448 (0.435, 0.466)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">64</td>
-<td style="text-align: center;"><strong>0.735</strong> (0.728,
-0.742)</td>
-<td style="text-align: center;"><strong>0.514</strong> (0.504,
-0.528)</td>
-<td style="text-align: center;"><strong>0.748</strong> (0.738,
-0.760)</td>
-<td style="text-align: center;"><strong>0.452</strong> (0.441,
-0.472)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">128</td>
-<td style="text-align: center;">0.733 (0.726, 0.739)</td>
-<td style="text-align: center;">0.512 (0.502, 0.525)</td>
-<td style="text-align: center;">0.728 (0.718, 0.739)</td>
-<td style="text-align: center;">0.401 (0.391, 0.418)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>
-، وتعرض النتائج الموسعة لتجاربنا لكل تسمية للنموذج الحتمي، والنموذج البايزي مع توزيع ابتدائي قياسي، والنموذج البايزي مع توزيع <span class="smallcaps">m2d2</span>، على التوالي.
-</p>
-<div class="table*">
-<p><span id="table:per_label_deterministic" label="table:per_label_deterministic"></span></p>
-</div>
-<div class="table*">
-<p><span id="table:per_label_mfvi" label="table:per_label_mfvi"></span></p>
-</div>
-<div class="table*">
-<p><span id="table:per_label_bnn" label="table:per_label_bnn"></span></p>
-</div>
-</section>
-</div>
-</section>
-</body>
-</html>
-<hr style="margin: 40px 0;">
-<div class="text-muted text-center">
-    <small>
-        تم تحويل هذا الإصدار من LaTeX إلى HTML تلقائيًا.<br>
-        تم عرض المعادلات الرياضية باستخدام MathJax.
-    </small>
-</div>
+                            حيث <span class="math inline">\(\hat{y}_{i}
+\,\dot{=}\,\textrm{sigmoid}(f(x_{i} ; \theta))\)</span>. يتكوّن هدفُنا التبايني من متوسِّط لوغاريتم دالّة الاحتمال، وتنظيم KL، وتنظيمٍ لعدم اليقين. في الحالة العِشوائية نُدرج بيانات التدريب والسياق لحساب الهدف.
+                        </p>
+                    </section>
+
+                    <section id="hyperparameter-tuning" class="level2">
+                        <h2>ضبط المعاملات</h2>
+                        <p>
+                            بدايةً، استخدمنا النموذج الحتمي لاختيار معدّل التعلُّم عشوائيًّا بين <span class="math inline">\(10^{-5}\)</span> و<span class="math inline">\(10^{-3}\)</span>، ثم اخترنا أفضل معدّل وفق AUROC على مجموعة التحقّق. كان الأفضل <span class="math inline">\(2\times10^{-4}\)</span>، وثُبِّت عبر 10 بذور عشوائية.
+                        </p>
+                        <p>
+                            في النموذج العِشوائي، أجرينا بحثًا شبكيًّا على معاملات التنظيم. يبيّن الجدول التالي نطاق القيم لكلّ معامل (324 توليفة). نُشير إلى أنّ العملية تتطلّب موارد أكثر بسبب عدد المعاملات القابل للضبط، كما تحتوي النماذج العِشوائية على عددٍ أكبر من المعلمات القابلة للتعلّم (تقريبًا الضعف) لوجود متوسط وتغاير، ويستلزم التنظيم تمريرًا أماميًّا على نقاط سياق مأخوذة من توزيع السياق (بعددٍ نختاره أقلّ من حجم الدفعة). إجمالًا، وكما في أيّ حقلٍ مُتوسِّط، لدينا معلمات أكثر وتمريرات أمامية أكثر في كلّ خطوة تدرّجية مقارنةً بالشبكة الحتمية.
+                        </p>
+                        <div id="table:hyperparams" class="table">
+                            <table class="table table-striped">
+                                <caption>قيم شبكة البحث عن المعاملات للنموذج العِشوائي</caption>
+                                <thead>
+                                    <tr class="header">
+                                        <th style="text-align: right;"><strong>المعامل</strong></th>
+                                        <th style="text-align: right;"><strong>القيم</strong></th>
+                                        <th style="text-align: center;"><strong>الأفضل</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd">
+                                        <td style="text-align: right;">تباين التوزيع الابتدائي</td>
+                                        <td style="text-align: right;">[1, 0.1, 0.01]</td>
+                                        <td style="text-align: center;"><strong>0.1</strong></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td style="text-align: right;">مقياس احتمالية التوزيع الابتدائي</td>
+                                        <td style="text-align: right;">[1, 0.1, 10]</td>
+                                        <td style="text-align: center;"><strong>1</strong></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td style="text-align: right;">مقياس <span class="math inline">\(f\)</span> لاحتمالية الابتدائي</td>
+                                        <td style="text-align: right;">[0, 1, 10]</td>
+                                        <td style="text-align: center;"><strong>10</strong></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td style="text-align: right;">مقياس تباين احتمالية الابتدائي</td>
+                                        <td style="text-align: right;">[0.1, 0.01, 0.001, 0.0001]</td>
+                                        <td style="text-align: center;"><strong>0.1</strong></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td style="text-align: right;">قطر تغاير احتمالية الابتدائي</td>
+                                        <td style="text-align: right;">[1, 5, 0.5]</td>
+                                        <td style="text-align: center;"><strong>5</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="model-selection" class="level2">
+                        <h2>اختيار النموذج</h2>
+                        <p>
+                            دُرِّب النموذج العِشوائي 400 حقبة. ولوجود أربعة معايير اهتمام (AUROC، AUPRC، AUROC الانتقائي، AUPRC الانتقائي) استخدمنا “الحجم الفائق” كرئيسي لاختيار أفضل نقطة تحقّق أثناء التدريب، وفق حجم الكرة رباعية الأبعاد:
+                            <span class="math display">\[\textrm{hypervolume}=\frac{\pi^2\,\mathrm{R}^4}{2}\]</span>
+                            حيث <span class="math inline">\(\mathrm{R}\)</span> مقدار متجه رباعي الأبعاد. يحدّ ذلك من الإفراط في التخصيص لمعيار واحد.
+                        </p>
+                    </section>
+
+                    <section id="technical-implementation" class="level2">
+                        <h2>التنفيذ التقني</h2>
+                        <p>
+                            نُفِّذت عمليّات التحميل وما قبل المعالجة باستخدام PyTorch <span class="citation" data-cites="pytorch"></span> مع بنية الشيفرة في <span class="citation" data-cites="medfuse"></span>. لكن أعدنا هيكلة النماذج الأحادية ومُتعدِّدة الأنماط ودورات التدريب/التقييم باستخدام JAX <span class="citation" data-cites="jax"></span>، ما يُسهِّل الشبكات العصبية البايزية والتدريب العِشوائي، وهما أساس طرق تكميم عدم اليقين لدينا. كما حقّقنا تقليصًا ملحوظًا في زمن التدريب الكلي باستخدام JAX مقارنةً بـ PyTorch.
+                        </p>
+                        <p>
+                            وبسبب آليات التخزين المؤقّت في JAX، وحّدنا كلّ عيّنة <span class="math inline">\(x_{\textrm{ehr}}\)</span> إلى 300 خطوةٍ زمنية لمُشفِّر LSTM لتجنّب مشاكل الذاكرة. إذ يتطلّب JAX طولًا ثابتًا للتسلسلات ليقوم بالتخزين المُسبق لتسريع التدريب؛ وإذا استُخدمت أطوال مختلفة سيُنشئ نُسَخًا متعدِّدة من المُشفِّر، ما يسبّب ضغطًا على الذاكرة مع بيانات أطوالها متغيِّرة كما في MIMIC‑IV <span class="citation" data-cites="mimiciv"></span>. بالمقابل، يستطيع PyTorch التعامل مع أطوال متغيِّرة بنسخةٍ واحدة من المُشفِّر لكن بسرعةٍ أدنى.
+                        </p>
+                        <p>
+                            نُفِّذت التجارب على وحدات NVIDIA A100 وV100 بسعة 80 جيجابايت.
+                        </p>
+                    </section>
+                </section>
+
+                <section id="appsec:results" class="level1">
+                    <h1>نتائج تجريبية إضافية</h1>
+                    <p>
+                        نعرض نتائج إضافية على مجموعة الاختبار. يوضّح الجدول التالي تأثير حجم دفعة السياق.
+                    </p>
+                    <div id="table:batch_context_experiments" class="table">
+                        <table class="table table-striped">
+                            <caption>نتائج الأداء على مجموعة الاختبار للنموذج العِشوائي مع اختلاف حجم دفعة السياق.</caption>
+                            <tbody>
+                                <tr class="even">
+                                    <td style="text-align: center;">حجم الدفعة</td>
+                                    <td style="text-align: center;"><strong>AUROC</strong></td>
+                                    <td style="text-align: center;"><strong>AUPRC</strong></td>
+                                    <td style="text-align: center;"><strong>AUROC انتقائي</strong></td>
+                                    <td style="text-align: center;"><strong>AUPRC انتقائي</strong></td>
+                                </tr>
+                                <tr class="odd">
+                                    <td style="text-align: center;">16</td>
+                                    <td style="text-align: center;">0.732 (0.725, 0.739)</td>
+                                    <td style="text-align: center;">0.511 (0.502, 0.525)</td>
+                                    <td style="text-align: center;">0.740 (0.728, 0.753)</td>
+                                    <td style="text-align: center;">0.447 (0.432, 0.469)</td>
+                                </tr>
+                                <tr class="even">
+                                    <td style="text-align: center;">32</td>
+                                    <td style="text-align: center;">0.733 (0.725, 0.739)</td>
+                                    <td style="text-align: center;">0.510 (0.500, 0.524)</td>
+                                    <td style="text-align: center;">0.743 (0.733, 0.756)</td>
+                                    <td style="text-align: center;">0.448 (0.435, 0.466)</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td style="text-align: center;">64</td>
+                                    <td style="text-align: center;"><strong>0.735</strong> (0.728, 0.742)</td>
+                                    <td style="text-align: center;"><strong>0.514</strong> (0.504, 0.528)</td>
+                                    <td style="text-align: center;"><strong>0.748</strong> (0.738, 0.760)</td>
+                                    <td style="text-align: center;"><strong>0.452</strong> (0.441, 0.472)</td>
+                                </tr>
+                                <tr class="even">
+                                    <td style="text-align: center;">128</td>
+                                    <td style="text-align: center;">0.733 (0.726, 0.739)</td>
+                                    <td style="text-align: center;">0.512 (0.502, 0.525)</td>
+                                    <td style="text-align: center;">0.728 (0.718, 0.739)</td>
+                                    <td style="text-align: center;">0.401 (0.391, 0.418)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        وتَرِد النتائج الموسّعة لكلّ تسمية على حدة للنموذج الحتمي، والنموذج البايزي مع ابتدائي قياسي، والنموذج البايزي مع <span class="smallcaps">m2d2</span> في الجداول المُلحقة التالية.
+                    </p>
+                    <div class="table"><p><span id="table:per_label_deterministic" label="table:per_label_deterministic"></span></p></div>
+                    <div class="table"><p><span id="table:per_label_mfvi" label="table:per_label_mfvi"></span></p></div>
+                    <div class="table"><p><span id="table:per_label_bnn" label="table:per_label_bnn"></span></p></div>
+                </section>
+            </div>
+        </section>
+
+        <hr style="margin: 40px 0;">
+        <div class="text-muted text-center">
+            <small>
+                تمّ تحويل هذا الإصدار من LaTeX إلى HTML تلقائيًّا.<br>
+                عُرِضت المعادلات الرياضية باستخدام MathJax.
+            </small>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -1,0 +1,188 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Aayush Dhakal, Subash Khanal, Srikumar Sastry, Adeel Ahmad, Nathan Jacobs">
+  <title>GeoBind: ربط النص والصورة والصوت عبر صور الأقمار الصناعية</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    html, body {
+      font-family: 'Cairo', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+      background: #f8fafc;
+      color: #222;
+      font-size: 20px;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    body {
+      max-width: 900px;
+      margin: 40px auto 40px auto;
+      padding: 32px 24px 32px 24px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    h1.title {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 0.2em;
+      margin-top: 0;
+      letter-spacing: 0.01em;
+    }
+    .author {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 0.5em;
+    }
+    h1, h2 {
+      color: #2563eb;
+      font-weight: 700;
+      margin-top: 2.2em;
+      margin-bottom: 0.7em;
+      border-bottom: 2px solid #e0e7ef;
+      padding-bottom: 0.2em;
+      letter-spacing: 0.01em;
+    }
+    h2 {
+      font-size: 1.3em;
+      margin-top: 1.7em;
+    }
+    p {
+      margin-top: 0.7em;
+      margin-bottom: 0.7em;
+      text-align: justify;
+    }
+    code, pre, .math.display {
+      background: #f3f4f6;
+      color: #1e293b;
+      border-radius: 6px;
+      padding: 0.2em 0.5em;
+      font-size: 1em;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+    pre {
+      padding: 1em;
+      overflow-x: auto;
+      font-size: 0.95em;
+    }
+    .math.display {
+      display: block;
+      margin: 1.2em auto;
+      text-align: center;
+      font-size: 1.1em;
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+    span.nodecor {
+      text-decoration: none;
+      color: #0e7490;
+      font-weight: 500;
+    }
+    ul, ol {
+      margin: 1em 2em 1em 0;
+      padding-right: 1.5em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5em 0;
+      background: #f9fafb;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.98em;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 0.7em 1em;
+      text-align: center;
+    }
+    th {
+      background: #e0e7ef;
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+    a {
+      color: #0e7490;
+      text-decoration: underline dotted;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #1e3a8a;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px 2vw 10px 2vw;
+        font-size: 17px;
+      }
+      h1.title {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">GeoBind: ربط النص والصورة والصوت عبر صور الأقمار الصناعية</h1>
+  <p class="author">
+    <span class="nodecor">Aayush Dhakal</span>,
+    <span class="nodecor">Subash Khanal</span>,
+    <span class="nodecor">Srikumar Sastry</span>,
+    <span class="nodecor">Adeel Ahmad</span>,
+    <span class="nodecor">Nathan Jacobs</span>
+  </p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلخَّص</h1>
+<p>في الاستشعار عن بُعد، نهتم بنمذجة وسائط متعددة لموقع جغرافي معيَّن. ركَّزت العديد من الأعمال على تعلم العلاقة بين الموقع وأنواع المناظر الطبيعية وصلاحية السكن والصوت والأوصاف النصية وغيرها. مؤخراً، بات النهج الشائع لمعالجة هذه المشكلات هو تدريب نموذج تعلم عميق يستند إلى صور الأقمار الصناعية لاستنتاج خصائص فريدة للموقع. في هذا العمل، نقدم نموذج تعلم عميق، <span class="nodecor">GeoBind</span>، يمكنه الاستدلال على وسائط متعددة—وتحديداً النص والصورة والصوت—انطلاقاً من صورة قمر صناعي لموقعٍ ما. للقيام بذلك، نعتمد على صور الأقمار الصناعية كعنصر ربط، وننسِّق تباينياً بين وسائطنا المختلفة وتضمينات صور الأقمار الصناعية. يؤدي تدريبنا إلى إنشاء فضاء تضمين مشترك يضم بيانات صور الأقمار الصناعية، وصور مستوى الأرض، والصوت، والنص. علاوة على ذلك، لا يتطلب نهجنا مجموعة بيانات واحدة كاملة تحتوي على جميع هذه الوسائط، بل يكتفي ببيانات مترابطة بصور الأقمار الصناعية. على الرغم من أننا نقوم بمحاذاة ثلاث وسائط فقط في هذه الورقة، فإننا نقدم إطاراً عاماً يمكن تطبيقه لإنشاء فضاء تضمين لأي عدد من الوسائط باستخدام صور الأقمار الصناعية كعنصر ربط. تظهر نتائجنا أن نموذج <span class="nodecor">GeoBind</span> متعدد الاستخدامات ويمكنه التعامل مع وسائط متعددة عند إدخال صورة قمر صناعي.</p>
+<h1 id="sec:intro">مُقَدِّمة</h1>
+<p>استنتاج الخصائص المختلفة المرتبطة بمواقع جغرافية محددة هو مهمة هامة في الاستشعار عن بُعد. تركزت الجهود البحثية السابقة بشكل رئيسي على إقامة علاقات بين الموقع ووسيط واحد مثل استخدام الأرض، أو مقاييس صلاحية السكن، أو خصائص الصوت، أو المناظر الأرضية، أو الوصف النصي (<span class="nodecor">yurui2020towards</span>, <span class="nodecor">zhu2022land</span>, <span class="nodecor">khanal2023learning</span>, <span class="nodecor">basu2021investigating</span>, <span class="nodecor">dhakal2023sat2cap</span>). أدّى ذلك إلى تطوير نماذج تعلم عميق تستنتج خصائص فريدة بناءً على صورة قمر صناعي معينة (<span class="nodecor">greenwell2018goes</span>, <span class="nodecor">zang2021land</span>, <span class="nodecor">9323706</span>, <span class="nodecor">sastry2024birdsat</span>, <span class="nodecor">klemmer2023satclip</span>).</p>
+<p>تهدف هذه الدراسة إلى توسيع هذا النهج عبر إنشاء فضاء تضمين مشترك يربط الوسائط المتعددة بالموقع الجغرافي بسلاسة. المساهمة الرئيسية تتمثل في إنشاء فضاء تضمين مشترك واحد يمكن استخدامه لاستنتاج خصائص مختلفة لموقع اعتماداً على صور الأقمار الصناعية فقط. ولكن تدريب مثل هذا النموذج يواجه تحدياً في تجميع بيانات عالية الأبعاد تغطي جميع الوسائط. فعلى سبيل المثال، لإنشاء فضاء يربط صور الأقمار الصناعية بالنصوص والصوت والصور الأرضية، ستحتاج إلى مجموعة بيانات رباعية كاملة، وهو ما يصعب جمعه مع تزايد عدد الوسائط.</p>
+<p>تناولت أعمال حديثة (مثل <span class="nodecor">girdhar2023imagebind</span>) هذه المشكلة بإثبات إمكانية تعلم فضاء تضمين مشترك للوسائط المتعددة باستخدام الصور لربطها. يستخدم ImageBind مجموعات بيانات متعددة مترابطة بالصور، ثم يقوم بمحاذاة تضمينات كل وسيط مع تضمينات الصور، مما ينتج فضاء تمثيل مشترك يغطي جميع الوسائط. مستوحين من ذلك، نقترح إطار عمل يعتمد على بيانات متعددة مرتبطة بصور الأقمار الصناعية لتعلّم فضاء تضمين مشترك يربط الوسائط المتعددة عبر الجغرافيا. سيكون هذا الفضاء مفيداً لمجموعة واسعة من المهام المكانية. في هذا الإطار، نعتمد على نوعين من البيانات: تسجيلات صوتية مرفقة بصور الأقمار الصناعية، وصور مستوى الأرض المرفقة بصور جوية. نعتبر صور الأقمار الصناعية النقطة المشتركة لربط هذه الوسائط المختلفة. يتكون التدريب من مرحلتين: الأولى لمحاذاة تضمينات الصور الفضائية مع تضمينات الصور الأرضية (وبالتالي الوصف النصي) وفقاً لأسلوب Sat2Cap (<span class="nodecor">dhakal2023sat2cap</span>)، والثانية لمحاذاة تضمينات الصوت مع تضمينات الصور الفضائية التي ناتجة عن المرحلة الأولى.</p>
+<h1 id="sec:method">الطريقة</h1>
+<h2 id="مجموعة-البيانات">مجموعة البيانات</h2>
+<p>نستخدم في عملنا مجموعتين من البيانات مترابطة بصور الأقمار الصناعية. أولاً، مجموعة (<span class="nodecor">dhakal2023sat2cap</span>) التي تضم 6.1 مليون زوج من صور الأقمار الصناعية وصور مستوى الأرض. دقة صور الأقمار الصناعية 0.6 م/بكسل، مأخوذة من خرائط Bing، بحجم 800×800 بكسل لكل صورة. ثانياً، بيانات SoundingEarth (<span class="nodecor">wu2023large</span>) التي تحتوي على 50 ألف تسجيل صوتي معنون جغرافياً، مرفقة بصور أقمار صناعية متمركزة بدقة 0.6 م/بكسل وبحجم 800×800 بكسل مأخوذة أيضاً من خرائط Bing.</p>
+<h2 id="المنهج">المنهج</h2>
+<p>يتكون منهجنا من خطوتين أساسيتين. الأولى لمحاذاة تضمينات الصور الفضائية مع تضمينات الصور الأرضية في فضاء (<span class="nodecor">CLIP</span>)، والثانية لمحاذاة تضمينات الصوت مع تضمينات الصور الفضائية الناتجة.</p>
+<p>في الخطوة الأولى، نتبع إجراء Sat2Cap (<span class="nodecor">dhakal2023sat2cap</span>) لمحاذاة دفعة من الصور الفضائية \(S_i\) وتضميناتها \(O_i\) مع تضمينات CLIP للصور الأرضية \(C_i\). نستخدم خسارة InfoNCE:</p>
+<p><span class="math display">\[L = \frac{1}{k}\sum_{i=0}^{k} -\log\frac{\exp(o_i \cdot c_i / \tau)}{\sum_{j=0}^{k} \exp(o_i \cdot c_j / \tau) }\]</span></p>
+<p>حيث \(\tau\) معامل الحرارة وk حجم الدُفعة. وبما أن فضاء CLIP يوازن بين الصور الطبيعية والنصوص دلالياً، فإن محاذاة الصور الفضائية مع تضمينات CLIP للصور الأرضية تنعكس تلقائياً على الأوصاف النصية للمشاهد الأرضية.</p>
+<p>في المرحلة الثانية، نستخدم بيانات SoundingEarth لتهيئة مشفر الصوت. لدفعة من الصور الفضائية \(S_i\)، نحصل أولاً على تضميناتها \(O_i\) باستخدام المشفر الفضائي المُدرَّب. ثم ندرب مشفر الصوت على دفعة من التسجيلات \(H_i\) لإخراج تضمينات \(A_i\)، مع تجميد المشفر الفضائي، عن طريق خسائر تباينية مزدوجة:</p>
+<p><span class="math display">\[L_1 = \frac{1}{k}\sum_{i=0}^{k} -\log\frac{\exp(o_i \cdot a_i / \tau)}{\sum_{j=0}^{k} \exp(o_i \cdot a_j / \tau) }\]</span></p>
+<p><span class="math display">\[L_2 = \frac{1}{k}\sum_{i=0}^{k} -\log\frac{\exp(a_i \cdot o_i / \tau)}{\sum_{j=0}^{k} \exp(a_i \cdot o_j / \tau) }\]</span></p>
+<p><span class="math display">\[L = \frac{L_1 + L_2}{2}\]</span></p>
+<p>باقتراب تضمينات الصوت من تضمينات الصور الفضائية المقابلة، فإنها تتماشى أيضاً مع الصور الأرضية والنصوص ذات الصلة الدلالية، فتتكون لدينا مساحة تضمين موحدة تمكن الوسائط المختلفة من التفاعل ضمنها.</p>
+<h1 id="sec:exp">التجارب والنتائج</h1>
+<h2 id="تفاصيل-التنفيذ">تفاصيل التنفيذ</h2>
+<p>نستخدم نموذج CLIP ViT-32B المدرب مسبقاً لتوليد تضمينات CLIP. كما نستخدم ViT-32B كمشفّر للصور الفضائية، متهيئاً بمعاملات نموذج CLIP، ومشفّر الصوت CLAP من Hugging Face. نعتمد على RandAugment (<span class="nodecor">cubuk2020randaugment</span>) مع 3 عمليات لزيادة صور الأقمار الصناعية أثناء التدريب. نستخدم محسِّن AdamW (<span class="nodecor">loshchilov2017decoupled</span>) بمعدل تعلم 5e-05، \(\beta_1=0.99\)، \(\beta_2=0.98\)، وجدولة CosineAnnealing مع إعادة تشغيل دافئة (<span class="nodecor">loshchilov2016sgdr</span>). معامل الحرارة \(\tau\) قابل للتعلّم وبدأ بقيمة 0.07.</p>
+<h2 id="استرجاع-متعدد-الوسائط">استرجاع متعدد الوسائط</h2>
+<p>لإثبات أن فضاء التضمين المشترك يجمع البيانات ذات الصلة الدلالية، نجري تجارب استرجاع على مجموعة اختبار محجوزة من 10000 عينة. أولاً، نثبت أن الفضاء يربط الصور الفضائية بالصور الأرضية من نفس المواقع. نحسب تضمينات الصور الفضائية بمشفّرنا وتضمينات الصور الأرضية بمشفّر CLIP، ثم نحسب تشابه الجيب التمامي لجميع الأزواج ونستخلص مقاييس أعلى-k. نظراً لأن التدريب الأولي مطابق لـ Sat2Cap (<span class="nodecor">dhakal2023sat2cap</span>)، نرى في (<span class="nodecor">table:image_retrieval</span>) أداء استرجاع مطابقاً، مع وقوع الصورة الحقيقية ضمن الأعلى-10 في حوالي 56% من الحالات. هذا يدل على توافق الصور الفضائية والأرضية دلالياً في فضاء التضمين المشترك.</p>
+<p>ثانياً، نقيّم استرجاع الصوت بناءً على الصور الفضائية. نحسب تضمينات الصور الفضائية بمشفّرنا وتضمينات الصوت بمشفّر الصوت، ثم نستخلص مقاييس أعلى-k كما في (<span class="nodecor">table:sound_retrieval</span>). نلاحظ أن النتائج أقل من استرجاع الصور الأرضية، وهو متوقع لكون المهمة أصعب بطبيعتها (<span class="nodecor">heidler2023self</span>). مع ذلك، فإن نتائجنا قريبة من النماذج الحالية لهذه المهمة. يشير ذلك إلى أن إطار عمل GeoBind يخلق فضاء تضمين مشترك يربط الصور الفضائية بالأرضية والصوت (وبالتالي النص عبر محاذاة CLIP)، مما يتيح استخدام مشفّرات متعددة لوضع وسائط مختلفة في فضاء واحد دون الحاجة لنموذج لكل مهمة.</p>
+<h1 id="المناقشة-والخلاصة">المناقشة والخلاصة</h1>
+<p>في هذا العمل، قدمنا إطار عمل يمكّن الصور الفضائية من التفاعل مع أنواع متعددة من البيانات. بربط الوسائط المتعددة بصور الأقمار الصناعية، أنشأنا فضاء تضمين مشترك يجمع النصوص الدلالية، والصور الأرضية، والصوت، والصور الفضائية. يمكن توجيه هذه الوسائط إلى فضاء واحد لحل مشكلات متعددة دون الحاجة لنماذج مخصصة لكل وضع.</p>
+<p>يهدف هذا الإطار إلى تشجيع تطوير نماذج تعلم عميق عامة متعددة الاستخدامات للبيانات الفضائية. رغم اعتمادنا على تدريب ثنائي المرحلة، يمكن إضافة مراحل جديدة لأي عدد من الوسائط عبر محاذاتها بصور الأقمار الصناعية. يفتح عملنا الطريق لنماذج أكثر تكاملاً وكفاءة عوضاً عن طرازات أحادية الوضع ضيقة النطاق. في الأعمال المستقبلية، نعتزم استكشاف إضافة وسائط جديدة ودراسة الخصائص الناشئة في فضاء التضمين المشترك.</p>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والتباعد والحدود والظلال لجعل الورقة أكثر جاذبية واحترافية.
+- تم الحفاظ على النص كاملاً دون أي تغيير.
+- تم التأكد من عدم وجود أخطاء HTML وأن جميع العناصر مغلقة بشكل صحيح.
+- تم دعم اتجاه الكتابة من اليمين لليسار (rtl) والخط العربي المناسب.
+- تم تحسين عرض المعادلات البرمجية والرياضية.
+- تم التأكد من أن جميع الأقسام والعناوين واضحة وبارزة.

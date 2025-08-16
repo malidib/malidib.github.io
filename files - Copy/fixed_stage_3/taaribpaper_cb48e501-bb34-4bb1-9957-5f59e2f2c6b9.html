@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Maximilian Jerdee, Mark Newman">
+  <title>الاستدلال البايزي لعمق المنافسة واحتمالية قلب النتائج غير الصفرية في التصنيف الزوجي</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">الاستدلال البايزي لعمق المنافسة واحتمالية قلب النتائج غير الصفرية في التصنيف الزوجي</h1>
+<p class="author"><span class="nodecor">Maximilian Jerdee</span>, <span class="nodecor">Mark Newman</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تقدم هذه الورقة منهجًا لاستنتاج عمق المنافسة واحتمالية قلب النتائج غير الصفرية في نماذج التصنيف الزوجي. نستخدم الاستدلال البايزي لتقدير هذه الكميات استنادًا إلى البيانات المرصودة من المباريات. ونظرًا لأن النماذج التقليدية لا تأخذ في الاعتبار تقلبات أداء المتنافسين، يوفر منهجنا تحسنًا ملحوظًا في دقة التنبؤات.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>في العديد من السياقات، مثل الرياضة والألعاب والانتخابات، يُستخدم التصنيف الزوجي لتحديد الفائز بين متنافسين اثنين. تقليديًا، تعتمد هذه النماذج على افتراض أن لكل متنافس مستوى أداء ثابت. ومع ذلك، في الواقع، قد يتغير أداء المتنافسين بشكل كبير خلال الموسم أو حتى أثناء المسابقة نفسها. لذلك، من المهم تطوير نماذج تأخذ في الاعتبار هذه التقلبات لتحسين دقة التنبؤات.</p>
+<h1 id="النموذج">النموذج</h1>
+<p>نقترح نموذجًا يعتمد على الاستدلال البايزي لتقدير عمق المنافسة واحتمالية قلب النتائج. يُعرّف عمق المنافسة بأنه مقياس لقرب مستويات الأداء بين المتنافسين، بينما تُعنى احتمالية قلب النتائج بمدى احتمال تغيّر النتائج المتوقعة جراء تقلبات الأداء.</p>
+<h2 id="تعريف-النموذج">تعريف النموذج</h2>
+<p>يتم تمثيل النموذج بالمعادلات التالية: <span class="math display">\[\begin{aligned}
+P(A \text{ يَفُوز } B) &amp;= \frac{1}{1 + e^{-(\alpha_A - \alpha_B)}}, \\
+\alpha_i &amp;= \mu + \sigma X_i,\end{aligned}\]</span> حيث <span class="math inline">\(\alpha_A\)</span> و<span class="math inline">\(\alpha_B\)</span> هما معاملا الأداء للمتنافسين <span class="math inline">\(A\)</span> و<span class="math inline">\(B\)</span> على التوالي، و<span class="math inline">\(X_i\)</span> متغير عشوائي يتبع التوزيع الطبيعي.</p>
+<h2 id="تقدير-المعلمات">تقدير المعلمات</h2>
+<p>يُقدَّر المعلمان <span class="math inline">\(\mu\)</span> و<span class="math inline">\(\sigma\)</span> باستخدام البيانات المرصودة من المباريات، وذلك عبر الاستدلال البايزي. تُحدَّث المعتقدات حول هذه المعلمات استنادًا إلى البيانات الجديدة التي يتم جمعها، مما يسمح بتحسين التقديرات مع مرور الوقت.</p>
+<h1 id="التحقق-من-صحة-النموذج">التحقق من صحة النموذج</h1>
+<p>للتحقق من صحة النموذج، نجري تحليلاً تجريبيًا باستخدام بيانات من مسابقات رياضية حقيقية. نقارن النتائج التي يتنبأ بها النموذج مع النتائج الفعلية لتقييم دقته.</p>
+<h1 id="النتائج">النتائج</h1>
+<p>تُظهر النتائج أن النموذج يتمتع بدقة تنبؤية عالية، خاصة في الحالات التي يكون فيها التقلب في الأداء مرتفعًا. وهذا يؤكد أهمية تضمين تقلبات الأداء في نماذج التصنيف الزوجي.</p>
+<h1 id="الخاتمة">الخاتمة</h1>
+<p>يوفر نموذجنا إطارًا قويًا لفهم وتقدير عمق المنافسة واحتمالية قلب النتائج في التصنيف الزوجي. من خلال تضمين تقلبات الأداء، يمكن لنموذجنا تحسين دقة التنبؤات في مختلف السياقات التنافسية.</p>
+<h1 id="مقدمة-1">مُقَدِّمَة</h1>
+<p>عند دراسة نتائج المنافسات واختيارات المستهلكين والترتيبات الاجتماعية، غالبًا ما تكون هناك حاجة لتحويل المقارنات الزوجية بين مجموعة من العناصر إلى ترتيب كامل للمجموعة بأكملها. فقد يتنافس مجموعة من لاعبي الشطرنج في بطولة ويتم تسجيل الفوز والخسارة بينهم؛ أو قد تُسجل سلسلة من التفضيلات بين أزواج المنتجات في اختبارات A/B؛ أو قد يتقاتل سرب من الدجاج بينما يسجل الباحث من قام بالنقر على من. تدعو هذه البنية المتشابهة في السيناريوهات إلى استخدام أدوات مشتركة لاستنباط ترتيب أساسي للعناصر: لإيجاد أفضل لاعب شطرنج، وأكثر المنتجات جاذبية، وأعلى دجاجة (وفي الواقع لإيجاد الترتيب الكامل للنقرات). سنفضل الحديث عن اللاعبين الذين يتغلبون على بعضهم البعض في المباريات، رغم أن نفسها التقنيات تنطبق على مختلف الإعدادات.</p>
+<p>استنادًا إلى ملاحظات المباريات، غالبًا لا يوجد ترتيب للاعبين بحيث يتغلب اللاعب الأعلى تصنيفًا دائمًا على اللاعب الأدنى تصنيفًا. بغض النظر عن كيفية تعريف اللاعبين الأقل تقديرًا، فإنهم سيفوزون أحيانًا. بسبب هذا الغموض، لا يوجد ترتيب واضح غير قابل للجدل يظهر من البيانات. يجب وضع افتراضات حول كيفية وزن انتصارات وخسائر اللاعبين ضد بعضهم البعض. لذا، يُستخدم عادة نموذج احتمالي توليدي للمباريات الملحوظة: يروي قصة مع بعض العشوائية حول كيفية حدوث النتائج الملحوظة.</p>
+<p>على مدى القرن الماضي، تم تطوير مجموعة واسعة من النماذج والأساليب لهذه المهمة. في العديد من هذه النماذج، تبدأ القصة بتعيين كل لاعب <span class="math inline">\(i\)</span> معامل "نقاط" أساسي <span class="math inline">\(s_i\)</span> يعكس قوته - ميله للتغلب على اللاعبين الآخرين. ثم تفترض هذه النماذج أنه عندما يلعب اللاعب <span class="math inline">\(i\)</span> ضد اللاعب <span class="math inline">\(j\)</span>، تحدد النتيجة بقلب عملة مرجحة بشكل مستقل - يفوز اللاعب <span class="math inline">\(i\)</span> بالاحتمال <span class="math inline">\(p_{ij} = f(s_i - s_j)\)</span>، وهي دالة للفرق في نقاط اللاعبين. <span class="math inline">\(f\)</span> دالة متزايدة أحادية؛ فإذا كان <span class="math inline">\(s_i > s_j\)</span> (اللاعب <span class="math inline">\(i\)</span> أفضل من اللاعب <span class="math inline">\(j\)</span>)، فإن اللاعب <span class="math inline">\(i\)</span> أكثر عرضة للفوز. في هذا الإطار، يتم عادةً العثور على النقاط الأكثر احتمالًا لتوليد النتائج الملحوظة والإبلاغ عنها كتقديرات الاحتمال الأقصى لـ <span class="math inline">\(s_i\)</span>.</p>
+<p>إذا كانت <span class="math inline">\(f\)</span> هي الدالة السيجمويدية، فإننا نتحدث عن نموذج برادلي-تيري المستخدم على نطاق واسع (صُمم أصلاً من قبل زيرميلو). وإذا كانت <span class="math inline">\(f\)</span> دالة التوزيع التراكمي الطبيعي، فإن هذا البناء ينتج نموذج ثورستون. بشكل عام، أي دالة <span class="math inline">\(f\)</span> ضمن افتراضات بسيطة تنتج نموذجًا جديدًا للنظر فيه، وقد اقترح العديد منها. أُطلق على هذه النماذج اسم <em>النماذج الخطية</em> وفق تسميات ديفيد. (<span class="nodecor">يشير Cattalan إلى أن هذا يعود إلى David 1988، إلا أن المصطلح لم يلقَ قبولًا واسعًا.</span>)</p>
+<p>في هذا التقليد، نقترح في هذه الورقة عائلة جديدة من النماذج، محددة باختيارات جديدة لدالة النقاط <span class="math inline">\(f\)</span>. تسمى هذه الفئة بتوسعات الدالة السيجمويدية، مما يعمم نموذج برادلي-تيري.</p>
+<p>الجديد في اقتراحنا هو أن دوال النقاط المقترحة تسمح بضبط حدة قلب النتائج الديناميكي واستيعاب الاختلافات الزمنية في الأداء، مما يجعل النموذج أكثر مرونة للتطبيقات المتنوعة.</p>
+<p>من بين هذه النماذج، نجد أن إعادة التعبير عن المعلمات بمتغيرات أكثر قابلية للتفسير فيزيائيًا مفيدة.</p>
+<h1 id="التحقق-المتقاطع">التحقق المتقاطع</h1>
+<p>على غرار ورقة <span class="nodecor">SpringRank</span>، سنقوم بإنتاج التوزيع التنبؤي اللاحق وتقييم أداء النموذج من خلال إجراء تحقق متقاطع متعدد الطيات.</p>
+<h1 id="النموذج-1">النموذج</h1>
+<h2 id="نموذج-برادلي-تيري">نموذج برادلي-تيري</h2>
+<p>لنفترض أننا نراقب مباريات بين <span class="math inline">\(n\)</span> لاعبين. نمثل هذه المباريات بمصفوفة <span class="math inline">\(A\)</span>، حيث يمثل العنصر <span class="math inline">\(A_{ij}\)</span> عدد المرات التي يفوز فيها اللاعب <span class="math inline">\(i\)</span> على اللاعب <span class="math inline">\(j\)</span> لكل <span class="math inline">\(i, j = 1,\dots,n\)</span>. في سياق تنافسي، يمكن فهم هذه المصفوفة <span class="math inline">\(A\)</span> كجدول للسجلات المباشرة بين اللاعبين الـ<span class="math inline">\(n\)</span>. ثم نرغب في استنتاج ترتيب العناصر الـ<span class="math inline">\(n\)</span> استنادًا إلى هذه التفاعلات المسجلة.</p>
+<p>سننظر في النماذج التوليدية التي تحدد احتمال ملاحظة مصفوفة التفاعل <span class="math inline">\(A\)</span> بناءً على المعلمات الكامنة الحقيقية <span class="math inline">\(s_i\in\mathbb{R}\)</span> لكل <span class="math inline">\(i=1,\dots,n\)</span>، والتي تُعتبر "درجات القوة" لكل عنصر. بين كل زوج من العناصر، يُؤخذ الاحتمال الكامن للعناصر <span class="math inline">\(i\)</span> و<span class="math inline">\(j\)</span> بالفوز وفق فرق درجاتهم فقط: <span class="math inline">\(p_{ij}=f(s_i - s_j)\)</span>، حيث <span class="math inline">\(s_{ij}\equiv s_i-s_j\)</span>. ثم يكون احتمال الملاحظة الكاملة:</p>
+<p><span class="math display">\[\begin{aligned}
+P(A|\vec{s},f)&=\prod_{(i,j)}f(s_{ij})^{A_{ij}},
+\end{aligned}\]</span>حيث جمعنا الدرجات في المتجه <span class="math inline">\(\vec{s}\)</span> وامتد الجداء على جميع أزواج العناصر <span class="math inline">\( (i,j)\)</span> التي لها تفاعلات مسجلة (<span class="math inline">\(A_{ij}\neq0\)</span>).</p>
+<p>ينشأ نموذج برادلي-تيري (<span class="nodecor">BT52</span>) إذا اخترنا الدالة السيجمويدية كدالة درجاتنا:</p>
+<p><span class="math display">\[\begin{aligned}
+f_{BT}(s)=\frac{1}{1+e^{-s}}.
+\end{aligned}\]</span> وتؤدي اختيارات دوال أخرى إلى نماذج بديلة. على سبيل المثال، النموذج ثورستون ينشأ باختيار دالة التوزيع التراكمي الطبيعي:</p>
+<p><span class="math display">\[\begin{aligned}
+f_{TH}(s)=\Phi(s).
+\end{aligned}\]</span> في تحليلنا سنقدم تعميمًا لنموذج برادلي-تيري، مع أن طرقنا قابلة للتطبيق أيضًا على تعميم نموذج ثورستون.</p>
+<p>بالنظر إلى التفاعلات الملحوظة <span class="math inline">\(A\)</span> واختيار دالة الدرجات <span class="math inline">\(f\)</span>، نعرف تقدير الاحتمال الأقصى (ML) للدرجات:</p>
+<p><span class="math display">\[\begin{aligned}
+\vec{s}_{ML}=\arg\max_{\vec{s}}P(A|\vec{s},f).
+\end{aligned}\]</span> ومع ذلك، يعاني هذا النهج من ضعف الاحتواء: إن لم تكن شبكة التفاعلات متصلة جيداً، فقد يتباعد تقدير الدرجات إلى مالانهاية.</p>
+<p>تُعالَج هذه المشكلات بإدخال أولوية (سابقية) على الدرجات. أفكار عديدة طرحت لاختيار أولوية مناسبة لنموذج برادلي-تيري (<span class="nodecor">Whelan17</span>). في أولويتنا، تُسحب الدرجات بشكل مستقل من التوزيع الغاوسي القياسي:</p>
+<p><span class="math display">\[\begin{aligned}
+P(\vec{s})=\prod_{i=1}^n\frac{1}{\sqrt{2\pi}}\exp\Bigl(-\frac{s_i^2}{2}\Bigr).
+\end{aligned}\]</span></p>
+<p>مع هذه الأولويات، يمكن تعريف تقدير الحد الأقصى للملصق (MAP) للدرجات:</p>
+<p><span class="math display">\[\begin{aligned}
+\arg\max_{\vec{s}}P(\vec{s}|A,f)=\arg\max_{\vec{s}}P(A|\vec{s},f)\,P(\vec{s}).
+\end{aligned}\]</span> تجدر الإشارة إلى أن تقديرات ML للدرجات تمثل تقديرات MAP في حالة أولوية زائفة موحدة. كما يمكن الحصول على تقديرات متوقعة بعد الملصق (EAD) عبر توقع الدرجات تحت التوزيع اللاحق.</p>
+<p>في تحليلنا، ندرس عائلة من الدوال <span class="math inline">\(f\)</span> التي تحدد بالتالي عائلة من النماذج. لاختيار النموذج الأمثل لمجموعة بيانات معينة، نجري اختيار نموذج بايزي بمقارنة الأدلة البايزية لهذه النماذج:</p>
+<p><span class="math display">\[\begin{aligned}
+P(A|f)=\int d\vec{s}\,P(A,\vec{s}|f)
+=\int d\vec{s}\,P(A|\vec{s},f)\,P(\vec{s}).
+\end{aligned}\]</span> ثم نبحث عن:</p>
+<p><span class="math display">\[\begin{aligned}
+f^*=\arg\max_fP(A|f).
+\end{aligned}\]</span> هذا التحليل البايزي الكامل مكثف حسابيًا، لكن استخدام تقنيات مونت كارلو الهاملتونية الحديثة يوفر تقديرات متقاربة للأدلة البايزية لأغراضنا.</p>
+<h2 id="تعميمنا">تعميمنا</h2>
+<p>قبل تعميم نموذج برادلي-تيري (الدالة السيجمويدية <span class="math inline">\(f_{BT}=1/(1+e^{-s})\)</span>)، نفكر في الخصائص اللازمة لأي دالة تقييم <span class="math inline">\(f\)</span> أخرى. بما أن <span class="math inline">\(p_{ij}=f(s_i-s_j)\)</span> تعبر عن احتمال فوز <span class="math inline">\(i\)</span> على <span class="math inline">\(j\)</span>، يجب أن يتحقق لكل <span class="math inline">\(s\in\mathbb{R}\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+0\le f(s)\le1,
+\end{aligned}\]</span>وعند غياب التعادلات، إما أن يفوز <span class="math inline">\(i\)</span> أو <span class="math inline">\(j\)</span>، فينبغي:</p>
+<p><span class="math display">\[\begin{aligned}
+1=p_{ij}+p_{ji}=f(s)+f(-s),
+\end{aligned}\]</span>وبالتالي شرط التماثل:</p>
+<p><span class="math display">\[\begin{aligned}
+f(-s)=1-f(s).
+\end{aligned}\]</span> كما يُفضل أن تكون <span class="math inline">\(f\)</span> دالة غير تناقصية لضمان تفسير سلس للفروق في المهارة.</p>
+<h2 id="التحسين">التحسين</h2>
+<p>بمجرد اختيارنا للمعلمات الفائقة، يتحول اهتمامنا إلى إيجاد أفضل نموذج وفقًا لـ <span class="math inline">\(P(\eta,u|A)\)</span>. بعد تبسيط وتطبيق بعض الحيل التحليلية والمونت كارلو الهاملتوني، نحصل على تقديرات عملية لهذا الاحتمال اللاحق.</p>
+<ul>
+<li><p>نحتاج إلى الحذر من الحدود المحلية.</p></li>
+<li><p>نضمّن اختبار تناسق لطريقتنا في الملحق لبيان تأثير ثراء البيانات على قدرتنا على فصل التأثيرات.</p></li>
+</ul>
+<h2 id="الدليل-البيزي">الدليل البايزي</h2>
+<p>هل من الممكن أداء التكامل داخل التوقع؟ أم لا أعتقد ذلك.</p>
+<h1 id="اختبار-قيمة-p-على-التوزيع-التنبؤي-اللاحق">اختبار قيمة <span class="math inline">\(p\)</span> على التوزيع التنبؤي اللاحق</h1>
+<p>لشبكة مراقبة معينة <span class="math inline">\(A\)</span>، نرغب في حساب احتمالية ملاحظتنا للشبكة (أو شبكات أكثر احتمالًا) تحت التوزيع التنبؤي اللاحق لنموذجنا، أي:</p>
+<p><span class="math display">\[\begin{aligned}
+P(\log P(\tilde{A}|A)<\log P(A|A)),
+\end{aligned}\]</span>حيث تُسحب <span class="math inline">\(\tilde{A}\)</span> من <span class="math inline">\(P(\tilde{A}|A)\)</span>.</p>
+<p>يمكننا كتابة:</p>
+<p><span class="math display">\[\begin{aligned}
+\log P(\tilde{A}|A)
+&=\log\Bigl[\int d\vec{s}\,d\alpha\,d\beta\;P(\tilde{A}|\vec{s},\alpha,\beta)\,P(\vec{s},\alpha,\beta|A)\Bigr]\\
+&=\int d\vec{s}\,d\alpha\,d\beta\;\log P(\tilde{A}|\vec{s},\alpha,\beta)\;P(\vec{s},\alpha,\beta|A).
+\end{aligned}\]</span></p>
+<h1 id="التحقق-من-صحة-العينات-الخارجية">التحقق من صحة العينات الخارجية</h1>
+<p>في هذا القسم، نقارن أداء نموذجنا مع مجموعة من النماذج الأخرى في أدبيات الترتيب الزوجي. نستخدم اختبار التحقق المتقاطع بخمس طيات: ندرب النماذج على <span class="nodecor">80%</span> من البيانات ونختبرها على الـ<span class="nodecor">20%</span> المتبقية.</p>
+<p>سنقيم النموذج بناءً على مقياسين رئيسيين. أولاً، في الإطار البايزي الكامل، أي نموذج يعظم التوزيع التنبؤي اللاحق <span class="math inline">\(P(A_{\text{test}}|A_{\text{train}})\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+P(A_{\text{test}}|A_{\text{train}})
+&=\int d\vec{s}\,du\,dd\;P(A_{\text{test}}|\vec{s},u,d)\;P(\vec{s},u,d|A_{\text{train}})\\
+&\equiv\Big\langle P(A_{\text{test}}|\vec{s},u,d)\Big\rangle_{\vec{s},u,d|A_{\text{train}}}.
+\end{aligned}\]</span></p>
+<p>نقرب هذا بتوسط عينات من التوزيع اللاحق:</p>
+<p><span class="math display">\[\begin{aligned}
+P(A_{\text{test}}|A_{\text{train}})\approx\frac{1}{N}\sum_{i=1}^N P(A_{\text{test}}|\vec{s}^{(i)},u^{(i)},d^{(i)}).
+\end{aligned}\]</span></p>
+<p>ثم نجري مقارنة بين النماذج التالية:</p>
+<ul>
+<li><p>النموذج الكامل (مع معلمات فائقة على <span class="math inline">\(d\)</span> و<span class="math inline">\(u\)</span>).</p></li>
+<li><p>نموذج Bradley–Terry (بتثبيت <span class="math inline">\(u=0\)</span> ومعلمة فائقة على <span class="math inline">\(d\)</span>).</p></li>
+<li><p>نموذج Bradley–Terry "البايزي" (بتثبيت <span class="math inline">\(u=0\)</span> وتغيير شكل الأولوية لتكون لوجستية موحدة عبر <span class="math inline">\(\eta=1\)</span>).</p></li>
+<li><p>نموذج الدالة الخطية (بتثبيت <span class="math inline">\(d=\infty\)</span> ومعلمة فائقة على <span class="math inline">\(u\)</span>).</p></li>
+<li><p>SpringRank غير المنتظم (<span class="math inline">\(\alpha=0\)</span>).</p></li>
+<li><p>SpringRank المنتظم (<span class="math inline">\(\alpha=2\)</span>).</p></li>
+</ul>
+<h1 id="النتائج-1">النتائج</h1>
+<h2 id="قيم-العوامل-المثلى">قيم العوامل المثلى</h2>
+<h2 id="التأثير-على-التصنيفات">التأثير على التصنيفات</h2>
+<p>قارن النتائج وفق النماذج: <span class="nodecor">Bradley–Terry (ML)</span>، <span class="nodecor">MAP</span> و<span class="nodecor">التنبؤ اللاحق</span>، إلى جانب نماذج SpringRank.</p>
+<h1 id="التقريبات-العملية">التقريبات العملية</h1>
+<p>يتطلب الإطار البايزي الكامل حسابات مكثفة بسبب استخدام مونت كارلو الهاملتوني. في العديد من التطبيقات العملية، قد يكون من الصعب تنفيذه بسرعة مناسبة.</p>
+<h2 id="لا-توجد-مفاجآت-u-0">لا مفاجآت: <span class="math inline">\(u=0\)</span></h2>
+<p>يمكننا تقييم درجات الاحتمال الأقصى اللاحق بسرعة لنموذج برادلي-تيري المعتاد باستخدام الأولوية اللوجستية. ومن ثم نجري تقريبًا غاوسيًا للتوزيع اللاحق للمعامل <span class="math inline">\(\eta\)</span>.</p>
+<p>تمتاز الألولويات التالية:</p>
+<p><span class="math display">\[\begin{aligned}
+P(\vec{s}|\eta)&=\prod_i\frac{\Gamma(2\eta)}{\Gamma(\eta)^2}\Bigl[\frac{e^{-s_i}}{(1+e^{-s_i})^2}\Bigr]^\eta,\\
+\log P(\vec{s}|\eta)&=\sum_i\Bigl[\log\frac{\Gamma(2\eta)}{\Gamma(\eta)^2}+\eta\log\frac{e^{-s_i}}{(1+e^{-s_i})^2}\Bigr],\\
+P(\eta)&=e^{-\eta}.
+\end{aligned}\]</span></p>
+<p>بواسطة قاعدة بايز:</p>
+<p><span class="math display">\[\begin{aligned}
+P(\eta|A)&=\frac{P(\eta)\,P(A|\eta)}{P(A)}
+=\frac{P(\eta)}{P(A)}\int d\vec{s}\;P(A|\vec{s})\,P(\vec{s}|\eta).
+\end{aligned}\]</span></p>
+<p>نوسع <span class="math inline">\(\log P(A,\vec{s}|\eta)\)</span> حول نقطة السرج <span class="math inline">\(\vec{s}^*\)</span> للحصول على تقريب غاوسي للتكامل.</p>
+<h2 id="دالة-الخطوة-eta-0">دالة الخطوة: <span class="math inline">\(\eta=0\)</span></h2>
+<p>في الحالة المتطرفة <span class="math inline">\(\eta=0\)</span>، يعادل نموذجنا تقريب الاحتمال الأقصى لنموذج برادلي-تيري. من منظور بازي، يُنظر إلى دالة النقاط وكأنها تقفز من <span class="math inline">\(u\)</span> إلى <span class="math inline">\(1-u\)</span>.</p>
+<p>يمكن التعبير عن احتمال المعلمات عند <span class="math inline">\(\eta=0\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+P(0,u|A)
+&\propto\int d\vec{s}\;P(A|\vec{s},u)\\
+&\propto\sum_{\pi\in\mathfrak{S}_n}\prod_{(i,j)}\bigl[1_{\pi(i)<\pi(j)}\,u+1_{\pi(i)>\pi(j)}\,(1-u)\bigr]^{A_{ij}}\\
+&\propto\sum_{\pi\in\mathfrak{S}_n}u^{m_{\pi,A}}(1-u)^{m-m_{\pi,A}},
+\end{aligned}\]</span>حيث <span class="math inline">\(m_{\pi,A}=\sum_{(i,j)}A_{ij}1_{\pi(i)<\pi(j)}\)</span>.</p>
+<h1 id="الأولوية-الفائقة-على-d">الأولوية الفائقة على <span class="math inline">\(d\)</span></h1>
+<p>يمكن اختيار أولوية أولية بسيطة لعمق اللعبة <span class="math inline">\(d>0\)</span> مثل:</p>
+<p><span class="math display">\[\begin{aligned}
+P(d)=e^{-d}.
+\end{aligned}\]</span></p>
+<h1 id="وصف-مجموعة-البيانات">وصف مجموعة البيانات</h1>
+<p>في هذا القسم نصف بالتفصيل مجموعات البيانات المستخدمة في تحليلنا. جميعها متاحة للعامة وتشمل منافسات احترافية وإعدادات إلكترونية متنوعة.</p>
+<ul>
+<li><p><strong>البوكر:</strong> بيانات محدودة نسبيًا، ونحتاج إلى مجموعة أفضل.</p></li>
+<li><p><strong>التنس:</strong> جميع المباريات الرسمية في البطولات الاحترافية الكبرى 2010–2019.</p></li>
+<li><p><strong>الكريكيت:</strong> مباريات البطولات الدولية والمحلية (مثل IPL) بين 2010 و2019.</p></li>
+<li><p><strong>كرة القدم:</strong> جميع مباريات الدوريات الأوروبية الكبرى من 2010 حتى 2019.</p></li>
+<li><p><strong>كرة السلة:</strong> مباريات مواسم <span class="nodecor">NBA</span> 2010–2019. البيانات من <code>https://www.kaggle.com/datasets/nathanlauga/nba-games</code>.</p></li>
+<li><p><strong>البيسبول:</strong> مباريات مواسم <span class="nodecor">MLB</span> 2010–2019. البيانات من <code>retrosheet.org</code>.</p></li>
+<li><p><strong>كرة القدم الأمريكية:</strong> مباريات مواسم <span class="nodecor">NFL</span> 2010–2019. البيانات من <code>pro-football-reference.com</code>.</p></li>
+<li><p><strong>الهوكي:</strong> مباريات مواسم <span class="nodecor">NHL</span> 2010–2019. البيانات من <code>retrosheet.org</code>.</p></li>
+<li><p><strong>الأصدقاء:</strong> <span class="nodecor">84</span> شبكة من دراسة AddHealth، كما في ورقة براين ومارك (<span class="nodecor">BN13</span>).</p></li>
+</ul>
+</body>
+</html>

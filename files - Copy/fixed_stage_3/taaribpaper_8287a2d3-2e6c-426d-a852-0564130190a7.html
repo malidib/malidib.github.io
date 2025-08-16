@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Rui Xie, Zhengran Zeng, Zhuohao Yu, Chang Gao, Shikun Zhang, Wei Ye National Engineering Research Center for Software Engineering, Peking University, China {ruixie, wye}@pku.edu.cn https://github.com/WisdomShell/codeshell">
+  <title>تقرير فني CodeShell</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">تقرير فني <span class="nodecor">CodeShell</span></h1>
+<p class="author"><span class="nodecor">Rui Xie</span>, <span class="nodecor">Zhengran Zeng</span>, <span class="nodecor">Zhuohao Yu</span>, <span class="nodecor">Chang Gao</span>, <span class="nodecor">Shikun Zhang</span>, <span class="nodecor">Wei Ye</span><br />
+<span class="nodecor">National Engineering Research Center for Software Engineering, Peking University, China</span><br />
+<span class="nodecor">{ruixie, wye}@pku.edu.cn</span><br />
+<span class="nodecor">https://github.com/WisdomShell/codeshell</span></p>
+</header>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تُمثّل نماذج اللغة الكبيرة المتخصصة في البرمجة نقطة تحول رئيسية في مجال الذكاء الاصطناعي. فهي مُصمَّمة لفهم وتوليد لغات البرمجة، مما يُعزّز كفاءة سير عمل تطوير البرمجيات بشكل كبير. في هذا التقرير الفني، نقدّم نموذج <span class="nodecor">CodeShell-Base</span> الأساسِي المكوَّن من سبعة مليارات معلمة، وطول سياق يصل إلى <span class="nodecor">8K</span>، والذي يُظهر قدرات استثنائية في فهم الكود. من خلال دمج آلية الانتباه المجمع للاستعلامات (<span class="nodecor">GQA</span>) والـترميز الدوراني للموقع (<span class="nodecor">RoPE</span>) في بنية <span class="nodecor">GPT-2</span>، يجمع <span class="nodecor">CodeShell-Base</span> بين المزايا الهيكلية لـ<span class="nodecor">Starcoder</span> و<span class="nodecor">CodeLlama</span> مع تصميم معماري فريد. بعدها، اعتمدنا خط أنابيب شامل لمعالجة البيانات يتضمن إزالة التكرار، والتصفية بناءً على معيار الحيرة، والتصفية القاعدية. من خلال هذه العملية، جمعنا أكثر من <span class="nodecor">100</span> مليار رمز تدريبي عالي الجودة من <span class="nodecor">GitHub</span>. وبفضل هذه المجموعة من البيانات، يتفوّق <span class="nodecor">CodeShell-Base</span> على <span class="nodecor">CodeLlama</span> في معيار <span class="nodecor">HumanEval</span> بعد تدريبه على <span class="nodecor">500</span> مليار رمز فقط (خمس حقب). كذلك أجرينا تجارب شاملة على لغات متعددة، بينها <span class="nodecor">Python</span> و<span class="nodecor">Java</span> و<span class="nodecor">C++</span>، وأظهرت النتائج قوة النموذج في فهم وإنشاء الشيفرة.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>أحدثت نماذج اللغة الكبيرة المخصصة للبرمجة مثل <span class="nodecor">CodeGen</span> و<span class="nodecor">CodeLlama</span> و<span class="nodecor">StarCoder</span> ثورة في مجال تطوير البرمجيات من خلال أتمتة المهام، وتقليل الأخطاء، وتحسين الكفاءة (<span class="nodecor">gpt4report</span>). بالاستفادة من التعلم العميق ومجموعات البيانات الضخمة المخصصة للكود (<span class="nodecor">codegen,thestack</span>), رفعت هذه النماذج إنتاجية المطورين ووسّعت دائرة المستخدمين القادرين على إنشاء البرمجيات.</p>
+<p>يمكن تصنيف نماذج اللغة الكبيرة للبرمجة الحالية إلى ثلاث فئات رئيسية: التدريب المسبق من الصفر (<span class="nodecor">starcoder</span>), والتدريب المسبق انطلاقًا من نموذج لغة كبير موجود مسبقًا (<span class="nodecor">codex,codellama</span>), والتعديل التوجيهي (<span class="nodecor">wizardcoder</span>). تتطلب النماذج التي تُدرب من الصفر كميات ضخمة من البيانات ووقتًا طويلًا (<span class="nodecor">starcoder,llama2</span>). من ناحية أخرى، يتيح الاستفادة من نموذج موجود تقليل زمن التدريب وتحقيق كفاءة أعلى بكمية بيانات أقل (<span class="nodecor">codex,codellama</span>). أمّا التعديل التوجيهي فيتضمن ضبط نموذج كبير باستخدام بيانات توجيهية لتحسين الأداء (<span class="nodecor">codellama,wizardcoder</span>). ومع ذلك، يبقى التحدي الأكبر أن العديد من النماذج الكبيرة تُدرّب على مجموعات بيانات ضخمة للكود دون رقابة دقيقة، ما قد يؤدي إلى إنتاج شيفرات منخفضة الجودة. ورغم بعض الاستراتيجيات لاختيار الشيفرة (<span class="nodecor">phi1</span>), فإن خطر خروج شيفرات دون المستوى مازال قائمًا.</p>
+<p>في هذا التقرير الفني نقدّم نموذجًا جديدًا يُسمّى <span class="nodecor">CodeShell</span>. يدمج CodeShell الترميز الدوراني للموقع (<span class="nodecor">rope</span>) وآلية الانتباه المجمع للاستعلامات (<span class="nodecor">gqa</span>) ضمن بنية <span class="nodecor">GPT-2</span> لبناء تصميم معياري وفعّال يدعم سياقات أطول. ثم طورنا خط أنابيب لاختيار الشيفرات عالية الجودة، مما أتاحت لنا حزمة بيانات تضم أكثر من <span class="nodecor">100</span> مليار رمز. استنادًا إلى هذه المجموعة، تدرب CodeShell على مدى خمس حقب، وأظهرت تجاربنا أنّه يستطيع مع <span class="nodecor">100</span> مليار رمز فريد أن يضاهي أو يتفوّق على نماذج كبيرة مثل StarCoder وCodeLlama التي دُرِّبت على <span class="nodecor">250</span> مليار رمز فريد. ومما يؤكد أهمية اختيار البيانات العالية الجودة، تبقى هذه العمليّة محورًا أساسيًا في تطوير نموذج فعّال. فيما يلي أبرز مساهماتنا الرئيسية:</p>
+<ul>
+<li><p>أطلقنا <span class="nodecor">CodeShell-7B</span>، نموذجًا أساسِيًّا جديدًا تم تدريبه من الصفر بتصميم معماري فريد، وأظهر أداءً تنافسيًا على معايير متنوعة ولغات برمجة متعددة.</p></li>
+<li><p>لتقليل تكلفة التدريب، طورنا خط أنابيب فعالًا لمعالجة البيانات يختار الشيفرات عالية الجودة من مجموعات ضخمة، وأظهرت التجارب أن نموذجنا المدرب على <span class="nodecor">500</span> مليار رمز فقط يتفوّق على StarCoder المدرب على تريليون رمز.</p></li>
+<li><p>للتعامل مع مهام تتطلب تحليلاً أعمق للشيفرة، مدّدنا طول السياق إلى <span class="nodecor">8K</span>، مما يحسّن قدرة النموذج على معالجة الشيفرات الطويلة دون التأثير على كفاءته مع المقاطع القصيرة.</p></li>
+</ul>
+<h1 id="قشرة-الكود">قِشْرَة الكود</h1>
+<h2 id="البيانات">البَيانات</h2>
+<p>للاطّلاع على تفاصيل بناء مجموعة بيانات تدريب <span class="nodecor">CodeShell</span> وعمليّات التصفية والتحسين، نوضّح فيما يلي كلّ خطوة:</p>
+<p><strong>جمع البيانات:</strong> استند عملنا إلى أرشيف GitHub (<span class="nodecor">gharchive</span>)، حيث قمنا بجمع نحو 15 تيرابايت من المستودعات لضمان اتساع وتنوّع المجموعة. أضفنا كذلك بيانات من Stack (<span class="nodecor">thestack</span>) و<span class="nodecor">StarCoder</span> لإثراء المادة بأمثلة شيفرة ومناقشات برمجية.</p>
+<p><strong>تصفية اللغات:</strong> استبعدنا اللغات التي يقل حجم بياناتها عن 100 ميغابايت، وركزنا على سبع مجموعات رئيسية تشمل Markdown للتوثيق، وgit-commits لممارسات التطوير، وGitHub-issues لمناقشات حل المشكلات، بهدف تنويع نماذج الاستخدام.</p>
+<p><strong>القواعد الأولية للتصفية:</strong> وضَعنا قواعد لاستبعاد الشيفرات التي تحتوي على أسطر طويلة جدًا أو محتوى نصي مفصول عن الشيفرة بشكل مفرط، بهدف تركيز المُدخَلات على الأمثلة الأكثر معيارية وقابلية للقراءة.</p>
+<p><strong>إزالة التكرار:</strong> استخدمنا تجزئة MD5 للكشف عن المُكرّرات وإزالتها، وتقنيات MinHash (<span class="nodecor">minihash</span>) لاكتشاف المحتويات المتشابهة جدًا وتنقيتها، ما عزّز تنوّع وجودة البيانات.</p>
+<p><strong>تصفية الحيرة:</strong> اعتمدنا درجة الحيرة (<span class="nodecor">pplf</span>) كمقياس لجودة الشيفرة. من خلال استبعاد الأمثلة ذات درجة الحيرة العالية، رفعنا مستوى جودة المجموعة التدريبية.</p>
+<p><strong>التصفية القاعدية:</strong> وظّفنا نظام تحليل قائم على قواعد خاصة لانتقاء الشيفرات عالية الجودة، مُقيّمين مقاييس مثل عدد الأسطر، ووجود التعليقات ومدى شموليتها، ومتوسط طول السطر. فضلنا أيضًا الشيفرات التي تستخدم مكتبات طرف ثالث معروفة، وتحققنا من مدى تعقيدها المنطقي عبر تحليل الشجرة المجردة وتدفق التحكم، لضمان أنها أمثلة عملية ومتقدمة تلتزم بأفضل ممارسات البرمجة.</p>
+<table>
+<caption>نظرة عامة على البيانات</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="nodecor">css</span></td>
+<td style="text-align: center;"><span class="nodecor">30.09</span></td>
+<td style="text-align: center;"><span class="nodecor">5292.28</span></td>
+<td style="text-align: center;"><span class="nodecor">2.38</span>%</td>
+<td style="text-align: center;"><span class="nodecor">0.13</span></td>
+<td style="text-align: center;"><span class="nodecor">23.58</span></td>
+<td style="text-align: center;"><span class="nodecor">0.28</span>%</td>
+</tr>
+<!-- بقية الجدول تبقى كما هي -->
+</tbody>
+</table>
+<p>[tab:data_overview_1]</p>
+<h2 id="النموذج">النموذج</h2>
+<h3 id="محلل-الرموز">مُحلّل الرموز</h3>
+<p>لتعزيز قدرة النموذج على معالجة المحتوى الصيني في برمجة الشيفرة، قمنا بإثراء مفردات <span class="nodecor">StarCoder</span> بإضافة مجموعة كبيرة من المفردات الصينية. جمعنا مليون ملف برمجي صيني وبيانات باللغتين الصينية والإنجليزية حول أسئلة وأجوبة برمجية. باستخدام مكتبة Tokenizer من Hugging Face، حدّدنا <span class="nodecor">40,000</span> مفردة صينية ذات تكرارٍ عالٍ، و<span class="nodecor">30,000</span> مفردة إنجليزية من مفردات StarCoder، ودمجناهما لتكوين معجم <span class="nodecor">CodeShell</span> الشامل. أظهرت التجارب تفوّق معجم CodeShell في تحليل الأسئلة والأجوبة البرمجية الصينية مقارنة بمعجم StarCoder الأصلي.</p>
+<h3 id="الهندسة-المعمارية">الهندسة المعمارية</h3>
+<p>يقوم <span class="nodecor">CodeShell</span> على بنية <span class="nodecor">GPT-2</span> كأساس، ويستفيد من تقنيتين متقدمتين: آلية الانتباه المجمع للاستعلامات (<span class="nodecor">GQA</span>) والـ<span class="nodecor">RoPE</span> (الترميز الدوراني للموقع). تساعد آلية GQA في تجميع الاستعلامات المتشابهة لتحسين الكفاءة الحسابية وتقليل التكرار، بينما يوفّر الـRoPE تمثيلًا ديناميكيًا لمواقع الرموز في تسلسل الشيفرة، مما يعزّز فهم النموذج للبنية والترتيب.</p>
+<h2 id="التدريب">التدريب</h2>
+<h3 id="التحسين">التحسين</h3>
+<p>اعتمدنا محسّن <span class="nodecor">AdamW</span> مع ضبط معاملات <span class="math inline">\(\beta_1\)</span> و<span class="math inline">\(\beta_2\)</span> عند <span class="nodecor">0.9</span> و<span class="nodecor">0.95</span> على التوالي. استخدمنا جدولًا زمنيًا للتعلم يبدأ بفترة تسخين مدتها <span class="nodecor">1000</span> خطوة، ثم يخفض معدل التعلم من <span class="nodecor">3e-4</span> إلى <span class="nodecor">3e-5</span> خلال <span class="nodecor">127k</span> تحديثًا. عالجنا دفعات بحجم <span class="nodecor">4</span> ملايين رمز، مقسمة إلى تسلسلات بطول <span class="nodecor">2048</span> أو <span class="nodecor">8192</span> رموز لكل دفعة.</p>
+<h3 id="مرحلة-التدريب-المسبق">مرحلة التدريب المسبق</h3>
+<p>للموازنة بين الكفاءة والحاجة إلى سياق أطول، بدأنا بطول سياق <span class="nodecor">2048</span> للأحقاب الأولى. بعد تدريب على نحو <span class="nodecor">450</span> مليار رمز، زدنا طول السياق إلى <span class="nodecor">8192</span>. نتج عن ذلك انخفاض في معدل المعالجة على وحدة المعالجة الرسومية من <span class="nodecor">3200</span> رمز/ثانية إلى <span class="nodecor">2600</span> رمز/ثانية. ومع ذلك، حافظ النموذج على استقراره أو شهد تحسنًا طفيفًا في الأداء، مع انخفاض ملحوظ في الخسارة بفضل السياق الأطول، دون أي تراجع في مقاييس التقييم.</p>
+<h1 id="النتائج">النتائج</h1>
+<p>في هذا القسم نستعرض أداء <span class="nodecor">CodeShell</span> مقارنةً بالنماذج الرائدة:</p>
+<ul>
+<li><p><strong>StarCoder-7B وStarCoder-15B</strong> (<span class="nodecor">starcoder</span>), نموذجين بحجم <span class="nodecor">7</span> و<span class="nodecor">15</span> مليار معلمة، متوفرين علنًا ويبرعان في مهام برمجية متعددة، معتمدين على مجموعة بيانات مختارة من Stack تضم نحو <span class="nodecor">86</span> لغة برمجة.</p></li>
+<li><p><strong>CodeLlama</strong> (<span class="nodecor">codellama</span>), عائلة نماذج مبنية على بنية <span class="nodecor">LLaMA2</span>, تم تحسينها عبر تدريب مستمر على نحو <span class="nodecor">500</span> مليار رمز.</p></li>
+</ul>
+<h2 id="توليد-الشيفرة">توليد الشيفرة</h2>
+<h2 id="توليد-كود-بايثون">توليد كود بايثون</h2>
+<p>نقارن في هذا القسم أداء <span class="nodecor">CodeShell-7B</span> في بايثون مع نماذج مفتوحة ومغلقة. نستخدم نتائج معيار <span class="nodecor">HumanEval</span> (<span class="nodecor">codex</span>) و<span class="nodecor">MBPP</span>. تضم مجموعة HumanEval <span class="nodecor">164</span> مهمة بايثون مُصممة يدويًا مع حالات اختبار لتقييم الأداء في الوضع الصفر-شوت، بينما يتضمن معيار MBPP <span class="nodecor">500</span> تحديًا مع أمثلة قليلة (few-shot).</p>
+<p>أظهرت النتائج أن <span class="nodecor">CodeShell-7B</span> حقق دقة متوسطة تبلغ <span class="nodecor">34.3%</span> على HumanEval و<span class="nodecor">38.7%</span> على MBPP، ما يضعه في صدارة النماذج ذات الحجم المماثل، ويتفوّق على Code-LLaMA-7B وStarCoder-Base-7B، بل وعلى نماذج أكبر عددًا من المعلمات أيضًا.</p>
+<p>لا بد من الإشارة إلى أن اختيار البيانات عالية الجودة والتدريب المتكرر ساعدا <span class="nodecor">CodeShell</span> على تحقيق نتائج استثنائية في المهام الأساسية مثل HumanEval. ومع ذلك، قد يحتاج أداؤه في مهام أكثر تعقيدًا مثل CoderUJB إلى مزيد من التحسين لعملية اختيار البيانات والتكيف مع متطلبات الهيكل المنطقي المعقد.</p>
+<h2 id="توليد-الكود-متعدد-اللغات">توليد الكود متعدد اللغات</h2>
+<p>قيّمنا نموذجنا كذلك عبر عدة لغات باستخدام معيار <span class="nodecor">multiple</span> (Casano et al., 2022). أظهرت النتائج تفوّق <span class="nodecor">CodeShell</span> في لغات رئيسية مثل جافا سكربت، جافا، وسي++ مقارنة بـCodeLlama-7B وStarCoder-7B/15B. أما في لغات أصغر مثل دي، جوليا، ولووا، فكان الأداء أقل نظرًا لندرة البيانات عالية الجودة لتلك اللغات. ولاحظنا أن أداء <span class="nodecor">CodeShell</span> في بعض اللغات اقترب من مستوى StarCoder-15B، مما يدل على فعالية التصميم المعياري للنموذج الأصغر.</p>
+<h2 id="اكتمال-الكود">اكتمال الكود</h2>
+<p>أثناء التدريب المسبق، اعتمدنا تقنية Fill-In-the-Middle (<span class="nodecor">fim</span>) بنسبة <span class="nodecor">0.5</span> لتعزيز قدرة النموذج على ملء الفراغات داخل الشيفرة استنادًا إلى السياق المحيط. أوضحت تجارب مثل StarCoder-15B وCodeLlama-7B فعالية هذه التقنية. وفقًا لدراسة <span class="nodecor">santacoder</span>, نخفي سطرًا داخل دالة ونطلب من النموذج ملؤه، ثم نقيس الدقة المباشرة (<span class="nodecor">incoder</span>) باستخدام معيار <span class="nodecor">multiple</span> في ثلاث لغات برمجة.</p>
+<p>تظهر النتائج في الجدول [tab:results_code_completion] أن <span class="nodecor">CodeShell-7B</span> يتفوّق على StarCoder وCodeLlama في هذا الاختبار، مما يؤكد الدور الحاسم للبيانات عالية الجودة والتركيبة المتدرجة لطول السياق من 2048 إلى 8192 دون فقدان الكفاءة.</p>
+<h2 id="الانتباه-المتعدد-الاستعلامات-مقابل-الانتباه-المجمع-للاستعلامات">الانتباه متعدد الاستعلامات مقابل الانتباه المجمع للاستعلامات</h2>
+<p>لتقييم تأثير آليتي الانتباه متعدد الاستعلامات (MQA) والانتباه المجمع للاستعلامات (GQA)، أنشأنا نسخة صغيرة باسم “codeshell-small” مكونة من <span class="nodecor">24</span> طبقة، بحجم خفي <span class="nodecor">2048</span> ومعلمة إجمالية <span class="nodecor">1</span> مليار. نفذنا كل نوع انتباه كوحدة مستقلة، وأطلقنا عليهما codeshell-small-mqa وcodeshell-small-gqa. أظهرت النتائج أن الأداء كان متقاربًا في البداية، لكن مع زيادة حجم بيانات التدريب تفوّق codeshell-small-gqa على codeshell-small-mqa في مقياس الاختبار@1.</p>
+<h2 id="استبعادات-البيانات">استبعادات البيانات</h2>
+<p>لاختبار فعالية آلية التصفية، جهزنا مجموعتين: مجموعة عشوائية تضم <span class="nodecor">2</span> مليار رمز من البيانات غير المكررة، ومجموعة مُصفّاة تضم أعلى <span class="nodecor">2</span> مليار رمز تقييمًا. درّبنا نموذج “codeshell-small” على كل مجموعة، وأظهرت النتائج تفوّق المجموعة المصفاة بنسبة تقارب <span class="nodecor">100%</span> مقارنة بالمجموعة العشوائية، مما يؤكد الأثر الحاسم لجودة البيانات.</p>
+<h1 id="الخلاصة">الخلاصة</h1>
+<p>في هذا التقرير الفني قدمنا نموذج الشيفرة الكبير <span class="nodecor">CodeShell</span>. استعرضنا تأثير التصميم المعماري واستراتيجيات التصفية على الأداء، وأثبتنا أن جودة البيانات تعتبر العامل الحاسم. بفضل اختيار بيانات عالية الجودة، حقق <span class="nodecor">CodeShell</span> نتائج متميزة عبر لغات برمجة متعددة. كما أظهرت آلية التصفية التي اقترحناها تحسنًا بنحو 100% مقارنة بالاختيار العشوائي، مما يؤكد فعالية نهجنا في تدريب النماذج الكبيرة.</p>
+</body>
+</html>

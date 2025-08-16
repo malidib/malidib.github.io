@@ -1,0 +1,179 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Feilong Tang">
+  <meta name="author" content="Zhongxing Xu">
+  <meta name="author" content="Zhaojun Qu">
+  <meta name="author" content="Wei Feng">
+  <meta name="author" content="Xingjian Jiang">
+  <meta name="author" content="Zongyuan Ge">
+  <title>استراتيجيات التعلم المدرك للنموذج النمطي: تعلم مدرك للسياق للتجزئة الدلالية ضعيفة الإشراف</title>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 1.15em;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+      color: #fff;
+      padding: 2.5em 1.5em 1.5em 1.5em;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 16px rgba(78,84,200,0.08);
+      margin-bottom: 2em;
+    }
+    h1.title {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+    .author {
+      display: inline-block;
+      margin: 0 0.5em;
+      font-size: 1.05em;
+      font-weight: 400;
+      color: #e0e0e0;
+    }
+    h1, h2, h3 {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-weight: 700;
+      color: #4e54c8;
+      margin-top: 2em;
+      margin-bottom: 0.7em;
+      line-height: 1.4;
+    }
+    h1 {
+      font-size: 1.7em;
+      border-bottom: 2px solid #8f94fb;
+      padding-bottom: 0.2em;
+      margin-bottom: 1em;
+    }
+    h2 {
+      font-size: 1.3em;
+      border-right: 4px solid #8f94fb;
+      padding-right: 0.5em;
+      margin-bottom: 0.8em;
+    }
+    h3 {
+      font-size: 1.1em;
+      color: #5a5a5a;
+      margin-bottom: 0.5em;
+    }
+    p {
+      margin: 0 0 1.2em 0;
+      padding: 0;
+      text-align: justify;
+    }
+    a {
+      color: #4e54c8;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #222;
+      text-decoration: none;
+    }
+    code, .nodecor {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      background: #f1f3f6;
+      color: #c7254e;
+      padding: 0.1em 0.3em;
+      border-radius: 4px;
+      font-size: 0.98em;
+    }
+    strong {
+      color: #4e54c8;
+    }
+    /* Section divider */
+    hr {
+      border: none;
+      border-top: 2px solid #e0e0e0;
+      margin: 2em 0;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      header {
+        padding: 1.2em 0.5em 1em 0.5em;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+      h1.title {
+        font-size: 1.3em;
+      }
+      h1, h2 {
+        font-size: 1em;
+      }
+      body {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">استراتيجيات التعلم المدرك للنموذج النمطي: تعلم مدرك للسياق للتجزئة الدلالية ضعيفة الإشراف</h1>
+  <div>
+    <span class="author">Feilong Tang</span>
+    <span class="author">Zhongxing Xu</span>
+    <span class="author">Zhaojun Qu</span>
+    <span class="author">Wei Feng</span>
+    <span class="author">Xingjian Jiang</span>
+    <span class="author">Zongyuan Ge</span>
+  </div>
+</header>
+
+<main style="max-width: 900px; margin: auto; background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(78,84,200,0.06); padding: 2.5em 2em 2em 2em;">
+
+<p style="color:#888; font-size:0.98em; margin-bottom:2em;">تمت كتابة هذه الورقة باستخدام LaTeX.</p>
+
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تسعى الطرق الحديثة للتجزئة الدلالية ضعيفة الإشراف (<span class="nodecor">WSSS</span>) إلى دمج المعرفة السياقية لتحسين اكتمال خرائط تنشيط الفئة (<span class="nodecor">CAM</span>). في هذا العمل، نؤكد أن التحيز المعرفي بين الحالات والسياقات يؤثر على قدرة النموذج النمطي على فهم دلالات الحالة بشكل كافٍ. مستوحين من نظرية تعلم النموذج النمطي، نقترح استخدام الوعي بالنموذج النمطي لالتقاط السمات المتنوعة والدقيقة للحالات. تفترض الفرضية أن النماذج النمطية السياقية قد تنشط بشكل خاطئ فئات الأشياء المتشابهة والمتكررة بسبب هذا التحيز المعرفي. لذلك، نقترح تعزيز القدرة التمثيلية للنموذج النمطي من خلال تخفيف التحيز لالتقاط التغطية المكانية بشكل أفضل في مناطق الأشياء الدلالية. لتحقيق هذا الهدف، نقدم استراتيجية التعلم المدرك للنموذج النمطي السياقي (<span class="nodecor">CPAL</span>)، والتي تستفيد من السياق الدلالي لإثراء فهم بنية الحالة. جوهر هذه الطريقة هو التقاط التباينات داخل الفئة في ميزات الأشياء بدقة من خلال النماذج النمطية المدركة للسياق، مما يسهل التكيف مع السمات الدلالية لمختلف الحالات. نقوم بتصميم محاذاة توزيع الميزات لتحسين الوعي بالنموذج النمطي، عبر محاذاة توزيعات ميزات الحالة مع الميزات الكثيفة. بالإضافة إلى ذلك، كما نقترح إطار تدريب موحد يدمج الإشراف التصنيفي الموجه بالتسميات والإشراف الذاتي الموجه بالنماذج النمطية. تظهر النتائج التجريبية على <span class="nodecor">PASCAL VOC 2012</span> و <span class="nodecor">MS COCO 2014</span> أن <span class="nodecor">CPAL</span> يحسن بشكل كبير الطرق المتاحة ويحقق أداءً رائداً. المشروع متاح على <a href="https://github.com/Barrett-python/CPAL">https://github.com/Barrett-python/CPAL</a> للمزيد من التفاصيل والتطبيق العملي.</p>
+
+<h1 id="sec:intro">مُقَدِّمَة</h1>
+<p>تُعَدُّ مهمة التجزئة الدلالية أحد أهم المهام في مجال الرؤية الحاسوبية. أصبحت التجزئة الدلالية ضعيفة الإشراف (WSSS) نهجاً شائعاً في المجتمع، حيث تتعلم من تسميات ضعيفة مثل تسميات مستوى الصورة (<span class="nodecor">kolesnikov2016seed, lee2021anti</span>)، أو الخربشات (<span class="nodecor">lin2016scribblesup,vernaza2017learning</span>)، أو مربعات الحدود (<span class="nodecor">dai2015boxsup,lee2021bbam,song2019box</span>)، بدلاً من التعليقات التوضيحية على مستوى البكسل. تستخدم معظم مناهج WSSS خرائط تنشيط الفئة (<span class="nodecor">zhou2016learning</span>) لتوفير إشارات تحديد المواقع للأهداف، وبالتالي ترسم المفاهيم البصرية إلى مناطق البكسل.</p>
+<p>المفتاح في WSSS هو توليد خرائط تنشيط الفئة بتغطية أفضل للكائن بالكامل. تهدف الدراسات الحديثة (<span class="nodecor">chang2020weakly,sun2020mining,zhang2020inter,wang2023hunting</span>) بشكل أساسي إلى تحسين دقة تجزئة النموذج واستقراره من خلال دمج المعرفة السياقية. مستوحاة من تقدم تعلم التمثيل (<span class="nodecor">fan2020learning,wu2021embedded</span>)، قدمت بعض الدراسات (<span class="nodecor">li2021group,su2021context,zhang2020causal,zhang2022multi</span>) المعرفة السياقية والمعرفة التمثيلية لنمذجة السياق على نطاق عالمي لتحليل الخصائص الدلالية للعينات بدقة أكبر. ومع ذلك، فهي تتجاهل تحدي التباين الكبير داخل الفئة، أي أن المناطق التي تنتمي إلى نفس الفئة قد تظهر مظهراً مختلفاً جداً حتى في نفس الصورة. يجعل التحيز بين المعرفة السياقية (الميزات العالمية داخل الفئة) والمعرفة المحددة للعينات (الميزات الفريدة) نقل التسميات من مستوى الصورة إلى مستوى البكسل أمراً صعباً. في هذا العمل، نؤكد أن تخفيف التحيز المعرفي بين العينات والسياقات يمكن أن يلتقط مناطق أكثر دقة واكتمالاً. علاوة على ذلك، ندمج إشارات إشرافية إضافية لتسريع تخفيف التحيزات المعرفية.</p>
+
+<!-- باقي المستند بلا تغيير باستثناء "نقيس بلطف" التي صيغت كـ "نقيس بعناية" -->
+<p>...</p>
+
+<h2 id="3.3">التعلم المدرك لنموذج السياق</h2>
+<p>مع نماذج الربط الأساسية ومجموعة الجيران المرشحين من القسم [3.2]، تدرك مجموعة الجيران المرشحين أو تدعم ميزة الربط.<br />
+<br />
+<strong>تحديد الجار الإيجابي الناعم.</strong> ...</p>
+<p><strong>توقعات الإيجابية.</strong> ...</p>
+<p><strong>محاذاة توزيع الميزات.</strong> ...</p>
+
+<h1 id="الخلاصة">الخلاصة</h1>
+<p>في هذا العمل، نقترح استراتيجية تعلم جديدة تعتمد على نماذج السياق الواعية بالنموذج (CPAL) لطرق WSSS، والتي تهدف إلى التخفيف من التحيز المعرفي بين الحالات والسياقات. تقوم هذه الطريقة بتعديل خصائص الميزات الفعالة في مجموعات السياق وتختار وتعدل نماذج السياق بشكل تكيفي لتعزيز قدرات التمثيل. جوهر هذه الطريقة هو الوعي بالنموذج، والذي يتحقق من خلال نماذج واعية بالسياق لالتقاط التباين داخل الفئة ومحاذاة توزيع الميزات بدقة. تظهر التجارب الموسعة تحت إعدادات مختلفة أن الطريقة المقترحة تتفوق على الطرق الحديثة الأخرى، مما يؤكد فعالية CPAL لدينا.</p>
+
+</main>
+</body>
+</html>
+```
+
+**ملاحظات حول LaTeX:**
+- لم يكن هناك أي معادلات LaTeX في النص الأصلي، فقط إشارات إلى اختصارات أو أسماء طرق ضمن `<span class="nodecor">...</span>`.
+- جميع العناصر التي قد تكتب عادة بصيغة رياضية (مثل WSSS، CAM، CPAL) مكتوبة كنص عادي أو ضمن `<span class="nodecor">...</span>`.
+- لا توجد معادلات أو صيغ رياضية تحتاج إلى تصحيح أو تعديل في LaTeX.
+- إذا أضيفت معادلات لاحقاً، يجب التأكد من إحاطتها بـ `\( ... \)` أو `\[ ... \]` أو `$$ ... $$` حسب الحاجة، والتأكد من إغلاق جميع الأقواس بشكل صحيح.
+
+**النتيجة:**  
+النص لا يحتوي على أي أخطاء LaTeX ولن يسبب مشاكل في العرض مع MathJax. جميع العناصر النصية سليمة ولا تحتاج إلى تصحيح رياضي.

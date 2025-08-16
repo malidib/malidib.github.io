@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Sumit Soman وَ Sujoy Roychowdhury">
+  <title>ملاحظات حول بناء أنظمة RAG للوثائق الفنية</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">ملاحظات حول بناء أنظمة <span class="nodecor">RAG</span> للوثائق الفنية</h1>
+<p class="author"><span class="nodecor">Sumit Soman</span> وَ <span class="nodecor">Sujoy Roychowdhury</span></p>
+</header>
+<p>LaTeX</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>تطرح عملية الاسترجاع المعزز (<span class="nodecor">RAG</span>) للوثائق الفنية تحدياتٍ جمة، إذ إنَّ التضمينات غالباً ما لا تلتقط المعلومات الخاصة بالمجال بدقة. نراجع الأعمال السابقة المتعلقة بالعوامل المهمة التي تؤثر على <span class="nodecor">RAG</span>، ونُجري تجارب لتسليط الضوء على أفضل الممارسات والتحديات المحتملة في بناء أنظمة <span class="nodecor">RAG</span> للوثائق الفنية.</p>
+<h1 id="مقدمة">مقدمة</h1>
+<p>يتطلب التعامل مع الأسئلة المطولة توليد استجابات فقرية من نماذج اللغة الكبيرة.</p>
+<p>تحديات الاسترجاع المعزز للوثائق الفنية متعددة الأبعاد (<span class="nodecor">xu2023retrieval</span>, <span class="nodecor">toro2023dynamic</span>). سبق تقييم العوامل التي تؤثر على أداء الاسترجاع، مثل تضمين الوثائق في السياق، ونماذج اللغة الكبيرة، وأنواع المقاييس المختلفة (<span class="nodecor">chen2023understanding</span>). لتطوير هذا العمل، نجري تجارب على الوثائق الفنية التي تتعلق بمصطلحات الاتصالات والبطاريات لفحص تأثير طول القطعة، والبحث المعتمد على الكلمات الرئيسية، وترتيب النتائج المسترجعة في خط أنابيب الاسترجاع المعزز.</p>
+<h1 id="الإعداد-التجريبي">الإعداد التجريبي</h1>
+<p>تعتمد تجاربنا على مواصفات طبقة التحكم في الوصول للوسائط (Medium Access Control) والطبقة الفيزيائية (Physical Layer) لشبكة IEEE اللاسلكية (<span class="nodecor">9363693</span>)، ومعجم المصطلحات القياسي للبطاريات الثابتة من IEEE (<span class="nodecor">7552407</span>). نعالج معجم التعريفات والوثيقة بالكامل بشكل منفصل، إذ تعتمد العديد من الأسئلة المتوقعة على التعريفات. نستخرج الأسئلة بناءً على المعرفة المجالية، ونقدم تقارير عن النتائج التجريبية لـ <span class="nodecor">42</span> استفساراً تمثيلياً عبر الوثائق. يمكن استخدام نماذج تضمين متعددة (<span class="nodecor">reimers2019sentence</span>)، ونستخدم نموذج MPNET (<span class="nodecor">song2020mpnet</span>) للوثيقة كاملةً - باستثناء الجداول والتعليقات التوضيحية. بالنسبة للمعجم، نقسم المصطلح والتعريف ونولد تضمينات منفصلة لكل منهما، بالإضافة إلى الفقرة الكاملة التي تحتوي على المصطلح والتعريف معاً. راجع (<span class="nodecor">soman2023observations</span>) لمراجعة نماذج اللغة الكبيرة الأخرى في قطاع الاتصالات، لكننا اخترنا نموذج llama2-7b-chat (<span class="nodecor">touvron2023llama</span>) لأنه مجاني ويحمل ترخيصاً متوافقاً مع الاستخدام التجاري. نقيم عدة أسئلة ونقدم تقارير عن الأسئلة المختارة للتحقق من ملاحظاتنا. للرجوع إليها، يتم توفير الأوامر المستخدمة لنموذج اللغة الكبيرة في الملحق [app:appA].</p>
+<h1 id="الملاحظات">الملاحظات</h1>
+<p>لاحظنا أولاً أن تضمين الجمل يصبح أقل موثوقية مع زيادة طول القطعة. يوضح الملحق [app:appB] الرسم البياني لتقدير الكثافة النوية (KDE) لدرجات التشابه الكوزيني عبر أطوال الجمل المختلفة. أخذنا <span class="nodecor">10,970</span> جملة وفحصنا التشابه الزوجي بينها. لوحظ تشابه عالي عندما تكون الجمل طويلة نسبياً. وتشير توزيعات التشابه الأعلى للأطوال الأكبر إلى وجود تطابقات زائفة، تحققنا منها يدوياً لبعض العينات. وجدنا أنه عندما يحتوي كل من الاستعلام والوثيقة المستعلم عنها على أكثر من <span class="nodecor">200</span> كلمة، يظهر توزيع التشابه ثنائي القمم، بينما عندما يتجاوز أحدهما ذلك فقط، يظهر ارتفاع طفيف ولكنه أقل وضوحاً عند الدرجات العليا.</p>
+<h1 id="ملخص-الملاحظات">ملخص الملاحظات</h1>
+<p>يُلخص الجدول [tab:observations] فرضياتنا والملاحظات الرئيسية؛ تستعرض الملحق [app:appC] استعلامات العينة ونتائجها. نفترض أن تقسيم التعريفات عن المصطلحات يمكن أن يحسِّن النتائج (H1)، وأن درجات التشابه تشكل مقياساً جيداً (H2)، وأن موقع الكلمات الرئيسية يؤثر في النتائج (H3)، وأن حساب التشابه على مستوى الجمل يعزز الاسترجاع (H4) وجودة التوليد (H5)، إضافةً إلى أن الإجابات المبنية على الاختصارات تخضع لتأثيرات معينة (H6)، كما يؤثر ترتيب النتائج المسترجعة في أداء المولد (H7). استندت H2 إلى نتائج توزيعات التشابه المشار إليها سابقاً، واستندت H7 إلى (<span class="nodecor">chen2023understanding</span>)، والبقية استنتجناها من تجاربنا الخاصة.</p>
+<p>وجدنا أن الاسترجاع بناءً على اختيار النتائج حسب درجات التشابه ليس مفيداً دائماً. بالنسبة للاستعلامات <span class="nodecor">1</span> و <span class="nodecor">2</span> و <span class="nodecor">5</span>، عندما توجد عبارة الاستعلام في المصطلح أو التعريف، تتحقق أعلى درجات التشابه. بالنسبة للاستعلام <span class="nodecor">3</span>، تُسترجع النتيجة الصحيحة في المرتبة الثانية باستخدام تضمين التعريف، بينما في الحالات الأخرى لا تُسترجع النتيجة وتكون درجات التشابه متقاربة. أما بالنسبة للاستعلامين <span class="nodecor">4</span> و <span class="nodecor">6</span>، فلا نتمكن من استرجاع النتيجة الصحيحة رغم أن الدرجات توحي بخلاف ذلك. وبناءً عليه، قد يؤدي اختيار النتائج بناءً على درجات التشابه إلى تحسين أداء المولد الثانوي. نقيم أداء المولد على استعلاماتنا بناءً على النتائج المسترجعة باستخدام أعلى <span class="math inline">\(k\)</span> تعريفات مسترجعة ومصطلحاتها وتعريفاتها، حيث يوفر السياق الأفضل استجابات مولدة أدق. بالنسبة للاختصارات وتوسعاتها، لا يضيف المولد أي قيمة إضافية.</p>
+<p>لاسترجاع الوثيقة الكاملة، ندرس البحث عن التشابه على مستوى الجمل والفقرات بشكل مستقل. في الحالة الأولى، نسترجع الفقرة التي تنتمي إليها الجملة ونختار أعلى <span class="math inline">\(k\)</span> فقرات مميزة من الجمل الأكثر تشابهاً. نلاحظ أن البحث عن التشابه على مستوى الجمل مع استخدام الفقرات في التوليد يوفر أداء استرجاع وتوليد أفضل. يذكر المؤلفون في (<span class="nodecor">chen2023understanding</span>) أن ترتيب المعلومات المقدمة مهم، لكننا لم نلاحظ فروقاً عند تبديل الفقرات المسترجعة. كما نلاحظ أن استجابات المولد تفشل أحياناً بسبب الاسترجاع الخاطئ أو المعلومات الوهمية أو التوليف غير الدقيق، كما هو موضح في (<span class="nodecor">chen2023understanding</span>).</p>
+<p>نوصي بتطبيق هذه الأساليب في نظم الأسئلة والأجوبة، وخصوصاً مع الأسئلة الطويلة.</p>
+<h1 id="الاستنتاجات-والأعمال-المستقبلية">الاستنتاجات والأعمال المستقبلية</h1>
+<p>أظهرنا أن طول القطعة يؤثر على تضمينات أداة الاسترجاع، وأن تعزيز المولد عبر اختيار نتائج أداة الاسترجاع بناءً على درجات التشابه قد لا يكون موثوقاً في بعض الحالات. ومع ذلك، فإن استخدام الاختصارات وإدراج عدد كبير من الفقرات المرتبطة بالموضوع يجعل ملاحظاتنا ذات صلة خاصةً في سياق الأسئلة المطولة حول الوثائق الفنية. كأعمال مستقبلية، نرغب في استخدام مقاييس (<span class="nodecor">es2023ragas, chen2023benchmarking</span>) لاختيار استراتيجيات الاسترجاع، كما ستكون الطرق ومقاييس التقييم للإجابة على الأسئلة التالية موضوعاً يستحق الاهتمام.</p>
+<h2 id="الأسلوب">الأسلوب</h2>
+<h2 id="استرجاع-ملفات-النمط">استرجاع ملفات النمط</h2>
+<h1 id="تعليمات-التنسيق-العامة">تعليمات التنسيق العامة</h1>
+<h1 id="العناوين-المستوى-الأول">العناوين: المستوى الأول</h1>
+<h2 id="العناوين-المستوى-الثاني">العناوين: المستوى الثاني</h2>
+<h3 id="العناوين-المستوى-الثالث">العناوين: المستوى الثالث</h3>
+<h1 id="الاقتباسات-الأشكال-الجداول-المراجع">الاقتباسات، الأشكال، الجداول، المراجع</h1>
+<h2 id="الاستشهادات-داخل-النص">الاستشهادات داخل النص</h2>
+<p>يجب أن تستند الاستشهادات داخل النص إلى حزمة <code>natbib</code> وتتضمن أسماء عائلات المؤلفين والسنة (مع استخدام بناء الجملة “وآخرون” لأكثر من مؤلفين اثنين). عندما يتم ذكر المؤلفين أو النشر داخل الجملة، يجب ألا يكون الاستشهاد بين قوسين باستخدام <code>\citet{}</code> (كما في “انظر (<span class="nodecor">Hinton06</span>) لمزيد من المعلومات.”). وإلا، يجب أن يكون الاستشهاد بين قوسين باستخدام <code>\citep{}</code> (كما في “تظهر التعلم العميق وعداً لتحقيق تقدم نحو الذكاء الاصطناعي (<span class="nodecor">Bengio+chapter2007</span>).”).</p>
+<p>يجب أن تدرج المراجع المقابلة بترتيب أبجدي لأسماء المؤلفين، في قسم <span style="font-variant: small-caps;">المراجع</span>. بالنسبة لتنسيق المراجع نفسها، أي أسلوب مقبول طالما أنه مستخدم بشكل متسق.</p>
+<h2 id="الحواشي-السفلية">الحواشي السفلية</h2>
+<h2 id="الأشكال">الأشكال</h2>
+<h2 id="الجداول">الجداول</h2>
+<p>جميع الجداول يجب أن تكون مركزة، نظيفة، وواضحة. لا تستخدم جداول مرسومة باليد. يجب أن يظهر رقم الجدول وعنوانه قبل الجدول. انظر الجدول <span class="nodecor"> [sample-table]</span>.</p>
+<p>ضع مسافة سطر واحدة قبل عنوان الجدول، ومسافة سطر واحدة بعد عنوان الجدول، ومسافة سطر واحدة بعد الجدول. يجب أن يكون عنوان الجدول بأحرف صغيرة (ما عدا الكلمة الأولى والأسماء الخاصة)؛ ويتم ترقيم الجداول بشكل متسلسل.</p>
+<h1 id="التدوين-الافتراضي">التدوين الافتراضي</h1>
+<p>في محاولة لتشجيع التدوين الموحد، قمنا بتضمين ملف التدوين من الكتاب المدرسي، <em>التعلم العميق</em> (<span class="nodecor">goodfellow2016deep</span>) المتاح على <a href="https://github.com/goodfeli/dlbook_notation/" class="uri">https://github.com/goodfeli/dlbook_notation/</a>. استخدام هذا الأسلوب ليس إلزامياً ويمكن تعطيله بتعليق <code>math_commands.tex</code>.</p>
+<p><strong>الأعداد والمصفوفات</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle a\)</span></td>
+<td style="text-align: left;">عدد نسبي (صحيح أو حقيقي)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \va\)</span></td>
+<td style="text-align: left;">متجه</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mA\)</span></td>
+<td style="text-align: left;">مصفوفة</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \tA\)</span></td>
+<td style="text-align: left;">تنسور</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mI_n\)</span></td>
+<td style="text-align: left;">مصفوفة الهوية ب<span class="nodecor">n</span> صفوف و<span class="nodecor">n</span> أعمدة</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mI\)</span></td>
+<td style="text-align: left;">مصفوفة الهوية بأبعاد يفترض من السياق</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \ve^{(i)}\)</span></td>
+<td style="text-align: left;">متجه الأساس القياسي <span class="math inline">\([0,\dots,0,1,0,\dots,0]\)</span> بواحد في الموضع <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \text{diag}(\va)\)</span></td>
+<td style="text-align: left;">مصفوفة مربعة قطرية بمدخلات قطرية معطاة بواسطة <span class="math inline">\(\va\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \ra\)</span></td>
+<td style="text-align: left;">متغير عشوائي نسبي</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \rva\)</span></td>
+<td style="text-align: left;">متغير عشوائي متجهي</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \rmA\)</span></td>
+<td style="text-align: left;">متغير عشوائي مصفوفي</td>
+</tr>
+</tbody>
+</table>
+<p><strong>المجموعات والرسومات</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sA\)</span></td>
+<td style="text-align: left;">مجموعة</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \R\)</span></td>
+<td style="text-align: left;">مجموعة الأعداد الحقيقية</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \{0, 1\}\)</span></td>
+<td style="text-align: left;">المجموعة التي تحتوي على 0 و1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \{0, 1, \dots, n \}\)</span></td>
+<td style="text-align: left;">مجموعة جميع الأعداد الصحيحة بين <span class="math inline">\(0\)</span> و<span class="math inline">\(n\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle [a, b]\)</span></td>
+<td style="text-align: left;">الفترة الحقيقية التي تشمل <span class="math inline">\(a\)</span> و<span class="math inline">\(b\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle (a, b]\)</span></td>
+<td style="text-align: left;">الفترة الحقيقية التي تستثني <span class="math inline">\(a\)</span> لكنها تشمل <span class="math inline">\(b\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sA \backslash \sB\)</span></td>
+<td style="text-align: left;">طرح المجموعات، أي المجموعة التي تحتوي على عناصر <span class="math inline">\(\sA\)</span> التي ليست في <span class="math inline">\(\sB\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \gG\)</span></td>
+<td style="text-align: left;">رسم بياني</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \parents_\gG(\ervx_i)\)</span></td>
+<td style="text-align: left;">الآباء لـ <span class="math inline">\(\ervx_i\)</span> في <span class="math inline">\(\gG\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>الفهرسة</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \eva_i\)</span></td>
+<td style="text-align: left;">العنصر <span class="math inline">\(i\)</span> من المتجه <span class="math inline">\(\va\)</span>، حيث تبدأ الفهرسة من 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \eva_{-i}\)</span></td>
+<td style="text-align: left;">جميع عناصر المتجه <span class="math inline">\(\va\)</span> باستثناء العنصر <span class="math inline">\(i\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \emA_{i,j}\)</span></td>
+<td style="text-align: left;">العنصر <span class="math inline">\(i, j\)</span> من المصفوفة <span class="math inline">\(\mA\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mA_{i, :}\)</span></td>
+<td style="text-align: left;">الصف <span class="math inline">\(i\)</span> من المصفوفة <span class="math inline">\(\mA\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mA_{:, i}\)</span></td>
+<td style="text-align: left;">العمود <span class="math inline">\(i\)</span> من المصفوفة <span class="math inline">\(\mA\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \etA_{i, j, k}\)</span></td>
+<td style="text-align: left;">العنصر <span class="math inline">\((i, j, k)\)</span> من تنسور ثلاثي الأبعاد <span class="math inline">\(\tA\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \tA_{:, :, i}\)</span></td>
+<td style="text-align: left;">شريحة ثنائية الأبعاد من تنسور ثلاثي الأبعاد</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \erva_i\)</span></td>
+<td style="text-align: left;">العنصر <span class="math inline">\(i\)</span> من المتجه العشوائي <span class="math inline">\(\rva\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>التفاضل والتكامل</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle\frac{d y} {d x}\)</span></td>
+<td style="text-align: left;">مشتقة <span class="math inline">\(y\)</span> بالنسبة لـ <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[2ex] <span class="math inline">\(\displaystyle \frac{\partial y} {\partial x} \)</span></td>
+<td style="text-align: left;">المشتقة الجزئية لـ <span class="math inline">\(y\)</span> بالنسبة لـ <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\vx y \)</span></td>
+<td style="text-align: left;">التدرج لـ <span class="math inline">\(y\)</span> بالنسبة لـ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\mX y \)</span></td>
+<td style="text-align: left;">مشتقات المصفوفة لـ <span class="math inline">\(y\)</span> بالنسبة لـ <span class="math inline">\(\mX\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\tX y \)</span></td>
+<td style="text-align: left;">تنسور يحتوي على مشتقات <span class="math inline">\(y\)</span> بالنسبة لـ <span class="math inline">\(\tX\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \frac{\partial f}{\partial \vx} \)</span></td>
+<td style="text-align: left;">مصفوفة جاكوبي <span class="math inline">\(\mJ \in \R^{m\times n}\)</span> لـ <span class="math inline">\(f: \R^n \rightarrow \R^m\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \nabla_\vx^2 f(\vx)\text{ or }\mH( f)(\vx)\)</span></td>
+<td style="text-align: left;">مصفوفة هيسيان لـ <span class="math inline">\(f\)</span> في نقطة الإدخال <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \int f(\vx) d\vx \)</span></td>
+<td style="text-align: left;">التكامل المحدد على كامل نطاق <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \int_\sS f(\vx) d\vx\)</span></td>
+<td style="text-align: left;">التكامل المحدد بالنسبة لـ <span class="math inline">\(\vx\)</span> على المجموعة <span class="math inline">\(\sS\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>نظرية الاحتمالات والمعلومات</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle P(\ra)\)</span></td>
+<td style="text-align: left;">توزيع احتمالي على متغير متقطع</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle p(\ra)\)</span></td>
+<td style="text-align: left;">توزيع احتمالي على متغير مستمر، أو على متغير لم يتم تحديد نوعه</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \ra \sim P\)</span></td>
+<td style="text-align: left;">المتغير العشوائي <span class="math inline">\(\ra\)</span> له التوزيع <span class="math inline">\(P\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle  \E_{\rx\sim P} [ f(x) ]\text{ or } \E f(x)\)</span></td>
+<td style="text-align: left;">توقع <span class="math inline">\(f(x)\)</span> بالنسبة لـ <span class="math inline">\(P(\rx)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \Var(f(x)) \)</span></td>
+<td style="text-align: left;">التباين لـ <span class="math inline">\(f(x)\)</span> تحت <span class="math inline">\(P(\rx)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \Cov(f(x),g(x)) \)</span></td>
+<td style="text-align: left;">التغاير بين <span class="math inline">\(f(x)\)</span> و<span class="math inline">\(g(x)\)</span> تحت <span class="math inline">\(P(\rx)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle H(\rx) \)</span></td>
+<td style="text-align: left;">إنتروبيا شانون للمتغير العشوائي <span class="math inline">\(\rx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \KL ( P \Vert Q ) \)</span></td>
+<td style="text-align: left;">تباعد كولباك-لايبلر بين P وQ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathcal{N} ( \vx ; \vmu , \mSigma)\)</span></td>
+<td style="text-align: left;">التوزيع الطبيعي على <span class="math inline">\(\vx\)</span> بمتوسط <span class="math inline">\(\vmu\)</span> وتباين <span class="math inline">\(\mSigma\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>الدوال</strong></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle f: \sA \rightarrow \sB\)</span></td>
+<td style="text-align: left;">الدالة <span class="math inline">\(f\)</span> بمجال <span class="math inline">\(\sA\)</span> ومدى <span class="math inline">\(\sB\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle f \circ g \)</span></td>
+<td style="text-align: left;">تركيب الدالتين <span class="math inline">\(f\)</span> و<span class="math inline">\(g\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle f(\vx ; \vtheta) \)</span></td>
+<td style="text-align: left;">دالة في <span class="math inline">\(\vx\)</span> بمعامل <span class="math inline">\(\vtheta\)</span>. (أحياناً نكتب <span class="math inline">\(f(\vx)\)</span> ونحذف الوسيط <span class="math inline">\(\vtheta\)</span> لتبسيط التدوين)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \log x\)</span></td>
+<td style="text-align: left;">اللوغاريتم الطبيعي لـ <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sigma(x)\)</span></td>
+<td style="text-align: left;">سيجمويد لوجستي، <span class="math inline">\(\displaystyle \frac{1} {1 + \exp(-x)}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \zeta(x)\)</span></td>
+<td style="text-align: left;">سوفت بلس، <span class="math inline">\(\log(1 + \exp(x))\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle || \vx ||_p \)</span></td>
+<td style="text-align: left;">القيمة <span class="math inline">\(\normlp\)</span> لـ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle || \vx || \)</span></td>
+<td style="text-align: left;">القيمة <span class="math inline">\(\normltwo\)</span> لـ <span class="math inline">\(\vx\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle x^+\)</span></td>
+<td style="text-align: left;">الجزء الموجب من <span class="math inline">\(x\)</span>، أي <span class="math inline">\(\max(0,x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \1_\mathrm{condition}\)</span></td>
+<td style="text-align: left;">تساوي 1 إذا كان الشرط صحيحاً، و0 خلاف ذلك</td>
+</tr>
+</tbody>
+</table>
+<h1 id="التعليمات-النهائية">التعليمات النهائية</h1>
+<h1 id="إعداد-ملفات-بوست-سكريبت-أو-بي-دي-إف">إعداد ملفات بوست سكريبت أو بي دي إف</h1>
+<h2 id="هوامش-في-latex">هوامش في LaTeX</h2>
+<h3 id="بيان-urm" class="unnumbered">بيان URM</h3>
+<p>يقر الكتاب بأن على الأقل مؤلف رئيسي واحد في هذا العمل يلبي معايير URM لمسار الأوراق الصغيرة في ICLR <span class="nodecor">2024</span>.</p>
+<h1 id="app:appA">الملحق أ</h1>
+<p>الأوامر المستخدمة لنموذج اللغة الكبير في تجاربنا هي كما يلي:</p>
+<ul>
+<li><p>أمر النظام: أجب عن الأسئلة استناداً إلى الفقرات المقدمة هنا. لا تستخدم أي معلومات أخرى باستثناء تلك الموجودة في الفقرات. اجعل الإجابات قصيرة قدر الإمكان. فقط قدم الإجابة. لا مقدمة مطلوبة.</p></li>
+<li><p>أمر المستخدم: “الفقرات: ”+context + “الأسئلة: ”+ query</p></li>
+</ul>
+<h1 id="الملحق-ب">الملحق ب</h1>
+<h1 id="app:appC">الملحق C - المواد التكميلية</h1>
+<p>نوفر <a href="https://anonymous.4open.science/r/RAG_ICLR-55CB/README.md">مستودع Git مجهول</a> يحتوي على:</p>
+<ul>
+<li><p>شفرة مصدرية مجهولة</p></li>
+<li><p>جدولة التجربة مقابل الفرضية (للنتائج الكمية الموحدة)</p></li>
+<li><p>تفاصيل التجارب عبر <span class="nodecor">42</span> استفسار و<span class="nodecor">7</span> فرضيات</p></li>
+</ul>
+<p>بالإضافة إلى ذلك، نقدم تفاصيل بالنسبة للفرضيات في الجدول [tab:observations] من خلال تقديم استفسارات نموذجية والنتائج المسترجعة والمولدة.</p>
+</body>
+</html>

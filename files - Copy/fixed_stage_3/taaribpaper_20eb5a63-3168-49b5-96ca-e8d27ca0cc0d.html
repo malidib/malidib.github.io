@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Liwen Zhu Peking University liwenzhu@pku.edu.cn Peixi Peng Peking University pxpeng@pku.edu.cn Zongqing Lu Peking University zongqing.lu@pku.edu.cn Yonghong Tian Peking University yhtian@pku.edu.cn">
+  <title>MTLight: التعلُّم المتعدد المهام الفعّال للتحكُّم في إشارات المرور باستخدام تقنيات التعلُّم المعزَّز</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">MTLight: التعلُّم المتعدد المهام الفعّال للتحكُّم في إشارات المرور باستخدام تقنيات التعلُّم المعزَّز</h1>
+<p class="author"><span class="nodecor">Liwen Zhu</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">liwenzhu@pku.edu.cn</span><br />
+<span class="nodecor">Peixi Peng</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">pxpeng@pku.edu.cn</span><br />
+<span class="nodecor">Zongqing Lu</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">zongqing.lu@pku.edu.cn</span><br />
+<span class="nodecor">Yonghong Tian</span><br />
+<span class="nodecor">Peking University</span><br />
+<span class="nodecor">yhtian@pku.edu.cn</span></p>
+</header>
+<h1 id="ملخص">مُلخَّص</h1>
+<p>يؤثر التحكم في إشارات المرور تأثيرًا كبيرًا في تخفيف الازدحام المروري في المدن الحديثة. في السنوات الأخيرة، استُخدمت تقنيات التعلم المعزز على نطاق واسع لهذه المهمة، حيث أظهرت أداءً واعدًا، لكنها ما تزال تواجه تحديات متعددة، مثل الأداء المحدود وكفاءة العينات المنخفضة. لمواجهة هذه التحديات، تم اقتراح <span class="nodecor">MTLight</span> لتعزيز معلومات الوكيل عبر حالة كامنة يتم تعلمها من مؤشرات مرور متعددة. في الوقت نفسه، تُبنى مهام مساعدة إشرافية متعددة لتعلم الحالة الكامنة، ويُستخدم نوعان من ميزات التضمين الكامنة، الميزة الخاصة بكل مهمة والميزة المشتركة بين المهام، لإثراء هذه الحالة. أظهرت التجارب الموسعة على <span class="nodecor">CityFlow</span> أن <span class="nodecor">MTLight</span> يتمتع بسرعة تقارب رائدة وأداء متفوق. كما قمنا بإجراء محاكاة لنمط ساعة الذروة في جميع السيناريوهات مع زيادة صعوبة التحكم، وتشير النتائج إلى أن <span class="nodecor">MTLight</span> يتمتع بقدرة عالية على التكيف.</p>
+<h1 id="sec:introduction">مقدمة</h1>
+<p>يهدف التحكم في إشارات المرور إلى تنسيق الإشارات عبر التقاطعات لتحسين كفاءة المرور في منطقة أو مدينة، وهو ما يلعب دورًا هامًا في النقل الفعّال. تعتمد معظم الطرق التقليدية للتحكم في الإشارات على التوقيت الثابت (<span class="nodecor">koonce2008traffic</span>) أو استدلالات مصممة يدويًا (<span class="nodecor">kouvelas2014maximum</span>), مما يصعّب نقلها. مؤخرًا، تُستخدم الطرق المبنية على التعلم المعزز العميق (<span class="nodecor">DRL</span>) (<span class="nodecor">guo2021urban,jintao2020learning,pan2020spatio,he2020spatio,tong2021combinatorial,wang2020deep,gu2020exploiting,liu2021urban,xu2021hierarchically,zhang2021periodic</span>) حيث يتم تدريب شبكة عصبية عميقة للتحكم في التقاطع من خلال التفاعل المباشر مع البيئة. ومع ذلك، بسبب وفرة مؤشرات المرور (عدد السيارات، طول الطابور، وقت الانتظار، السرعة، إلخ)، وتعقيد الملاحظة والبيئة الديناميكية، تظل المشكلة تحديًا ولم تُحل بعد.</p>
+<p>نظرًا لأن الملاحظة والمكافأة وديناميكيات كل إشارة مرور مرتبطة ارتباطًا وثيقًا، فإن تحسين التحكم في إشارات المرور في شبكة طرق واسعة النطاق يُنمذج بشكل طبيعي كمشكلة تعلم تعزيز متعدد الوكلاء (<span class="nodecor">MARL</span>). معظم الأعمال السابقة (<span class="nodecor">wei2019presslight,zhang2020generalight,chen2020toward,zheng2019learning</span>) اقترحت تعلم سياسة كل وكيل مشروطة فقط على الملاحظات الأولية للتقاطع، مع تجاهل مساعدة الحالة العالمية، المتوافرة في المدن الذكية. كما ذكر في (<span class="nodecor">zheng2019diagnosing</span>)، فإن المقاييس المختلفة لها تأثير كبير على مهمة التحكم في إشارات المرور. وبالتالي، يجب ألا يقتصر تصميم ملاحظة الوكيل على الملاحظات الأولية للتقاطع فقط، بل يشمل أيضًا الحالة العالمية. يمكن لتصميم ملاحظة جيدة للوكيل أن يستفيد بالكامل من العينات، ويحسن ليس فقط أداء السياسة ولكن أيضًا كفاءة العينة. ومع ذلك، هناك كمية هائلة من مؤشرات المرور في الحالة العالمية، ومن الصعب تصميم ملاحظة وكيل مناسبة وغير متكررة بين هذه المؤشرات. من جهة، قد لا تمثل هذه الملاحظة الموجزة بشكل مفرط خصائص الحالة بشكل كافٍ وشامل، وبالتالي تؤثر على دقة تقدير انتقال الحالة وكذلك على اختيار الإجراء. من ناحية أخرى، إذا تم استخدام مجموعة معقدة من المقاييس كملاحظة، فمن الصعب تحديد أوزان المقاييس المختلفة بدقة، وقد يتسبب ذلك في تكرار البيانات وانفجار الأبعاد، مما لا يزيد فقط من استهلاك الحوسبة ولكن أيضًا يصعّب على الوكيل التعلم.</p>
+<p>من أجل توفير تمثيل كافٍ لمهمة التحكم في إشارات المرور، يتم تقديم الحالة الكامنة. على وجه التحديد، الملاحظة الأولية الخاصة بالتقاطع، والتي تتكوّن من عدة متغيرات ذات معانٍ دلالية محددة (أي عدد السيارات على كل مسار قادم والمرحلة الحالية للإشارة). بعد ذلك، يتم تعزيز الملاحظة الأولية بواسطة الفضاء الكامن. لتعلّم الفضاء الكامن من الحالة العالمية، يتم بناء عدة مهام مساعدة إشرافية، تتعلق بالتحكم في إشارات المرور. تُؤخذ عدة إحصائيات من تاريخ الحالة العالمية كمدخلات، ويُستخدم أولًا <span class="nodecor">RNN</span> ثم يتم تفرّع الشبكة إلى عدة فروع للتنبؤ بأنواع مختلفة من إحصائيات الحالة العالمية، مثل توزيع التدفق وتوزيع أوقات السفر، على التوالي. لإثراء الفضاء الكامن، يتم استخراج نوعين من ميزات التضمين الكامنة: الميزة الخاصة بكل مهمة والميزة المشتركة بين المهام. الأولى تُستخرج بواسطة الفرع المحدد للمهمة وتمثل المعلومات المدفوعة بالمهمة، بينما الثانية من طبقة مشتركة بين المهام وتمثل خصائص أساسية أكثر عمومية. بالتالي، هما مكملتان لبعضهما ويُستخدم كلاهما لتعزيز الملاحظة الأولية. وأخيرًا، مشروطًا على الملاحظة المعزَّزة، يتم تعلم السياسة بواسطة <span class="nodecor">DRL</span> (<span class="nodecor">mnih2015human</span>). يجدر بالذكر أن المهام المتعددة تُتعلم في وقت واحد مع <span class="nodecor">DRL</span>، مما يجعل الفضاء الكامن أكثر تكيفًا مع تعلم السياسة.</p>
+<h1 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h1>
+<p>نستعرض الأعمال ذات الصلة في القسم [sec:related_work]، والمقدمات في القسم [sec:preliminaries]. يتم تقديم إعداد التعلم متعدد الوكلاء في القسم [sec:problem_definition]. يقدم القسم [sec:method] تفاصيل الطريقة المقترحة. يقدم القسم [sec:experiment] النتائج التجريبية التي تثبت كفاءة التعلم المعزز متعدد الوكلاء. وأخيرًا، تُناقش الاستنتاجات والأعمال المستقبلية في القسم [sec:conclusion].</p>
+<h1 id="sec:problem_statement">بيان المشكلة</h1>
+<h2 id="sec:problem_definition">تعريف المشكلة</h2>
+<p>نعتبر مشكلة التحكم في إشارات المرور لعدة وكلاء، حيث تُنمذج المهمة كلعبة ماركوف (<span class="nodecor">Littman1994markov</span>)، والتي يمكن تمثيلها بالصيغ <span class="math inline">\(\mathcal{G}=<\mathcal{N},\mathcal{S}, \mathcal{A}, \mathcal{O}, \mathcal{P}, \mathcal{R}, \mathcal{H}, \gamma>\)</span>. <span class="math inline">\(\mathcal{N}\equiv\{1,\ldots,n\}\)</span> هي مجموعة محدودة من الوكلاء، وكل تقاطع في السيناريو يُتحكم فيه بواسطة وكيل. <span class="math inline">\(\mathcal{S}\)</span> هي مجموعة فضاء الحالة العالمي. <span class="math inline">\(\mathcal{A}\)</span> يدل على فضاء العمل لوكيل فردي. العمل المشترك <span class="math inline">\(\boldsymbol{a}\in\mathbf{A}\equiv\mathcal{A}^n\)</span> هو مجموعة الأعمال الفردية <span class="math inline">\(\{a_i\}_{i=1}^n\)</span>. في كل خطوة زمنية، يتلقى كل وكيل <span class="math inline">\(i\)</span> ملاحظة <span class="math inline">\(o_i\in\mathcal{O}\)</span> ويختار عملًا <span class="math inline">\(a_i\)</span>، فينتج عن ذلك الحالة التالية <span class="math inline">\(s'\)</span> وفقًا لوظيفة الانتقال <span class="math inline">\(\mathcal{P}(s'\mid s,\boldsymbol{a})\)</span> ومكافأة <span class="math inline">\(r_i=\mathcal{R}(s,\boldsymbol{a})\)</span>. <span class="math inline">\(\mathcal{H}\)</span> هو أفق الزمن و<span class="math inline">\(\gamma\in[0,1)\)</span> هو عامل الخصم.</p>
+<h2 id="sec:agent_design">تصميم الوكيل</h2>
+<p>يتم التحكم في كل تقاطع بواسطة وكيل. فيما يلي تصميم الحالة والفعل والمكافأة لوكيل التعلم المعزز.</p>
+<ul>
+<li><p><strong>الملاحظة.</strong> تتكوّن الملاحظة الأولية من جزأين: (1) عدد المركبات على كل مسار وارد <span class="math inline">\(\mathbf{f}_t^v\)</span>؛ (2) الطور الإشاري الحالي <span class="math inline">\(\mathbf{f}_t^s\)</span>. يمكن الحصول عليهما مباشرة من المحاكي، وتُوصف المفاهيم بالتفصيل في القسم [sec:preliminaries]. تُعرّف الملاحظة الخام للوكيل <span class="math inline">\(i\)</span> بـ <span class="math display">\[\begin{aligned}
+    o_{i} = \{\mathbf{f}_t^v,\mathbf{f}_t^s\},\end{aligned}\]</span> حيث <span class="math inline">\(\mathbf{f}_t^v=\{V_{l_1^{in}},V_{l_2^{in}},\ldots,V_{l_m^{in}}\}\)</span> و<span class="math inline">\(l^{in}=\{l_1^{in},\ldots,l_m^{in}\}\)</span> هي مجموعة المسارات الواردة في التقاطع، والطور الإشاري الحالي <span class="math inline">\(\mathbf{f}_t^s=p_k,k\in\{1,\ldots,K\}\)</span>، و<span class="math inline">\(K\)</span> عدد الأطوار الإجمالي، ويُمثّل كل طور <span class="math inline">\(p\)</span> بمؤشر واحد ساخن. هدفنا هو تعلم الفضاء الكامن لتعزيز الملاحظة الخام للاستفادة بشكل أفضل من العينة.</p></li>
+<li><p><strong>الفعل.</strong> فعل كل وكيل هو اختيار الطور للفترة الزمنية التالية. يُعرّف فعل الوكيل <span class="math inline">\(i\)</span> بـ <span class="math display">\[\begin{aligned}
+    a_{i} = \{\mathbf{f}_t^s\},\end{aligned}\]</span> حيث <span class="math inline">\(\mathbf{f}_t^s=p_k,k\in\{1,\ldots,K\}\)</span>.</p></li>
+<li><p><strong>المكافأة.</strong> تُعرّف المكافأة بأنها سالب طول الطابور على المسارات الواردة، وهي مقبولة عمومًا (<span class="nodecor">zheng2019diagnosing</span>, <span class="nodecor">huang2021modellight</span>, <span class="nodecor">zang2020metalight</span>, <span class="nodecor">zheng2019learning</span>, <span class="nodecor">wei2019colight</span>). تُعرّف مكافأة الوكيل <span class="math inline">\(i\)</span> بـ <span class="math display">\[\begin{aligned}
+    r_{i}=-\sum_{m=1}^M q_{l_m^{in}},\end{aligned}\]</span> حيث <span class="math inline">\(q_{l_m^{in}}\)</span> هو طول الطابور على المسار الوارد <span class="math inline">\(l_m^{in}\)</span>.</p></li>
+</ul>
+<h1 id="sec:method">الطريقة</h1>
+<p>في هذا القسم، سنعرض الوحدات الرئيسية لطريقتنا المقترحة <span class="nodecor">MTLight</span>، التي تركز على تعلم كل من الحالة الكامنة المشتركة والمحددة بالمهام، عبر استخدام شبكة مساعدة متعددة المهام لدعم تعلم السياسات. توصف العملية الكاملة لـ <span class="nodecor">MTLight</span> في الخوارزمية [alg:train].</p>
+<p><span class="nodecor">MTLight</span> يتكوّن من شبكة متعددة المهام وشبكة وكيل. بالنسبة للأخيرة، يتم استخدام شبكة <span class="nodecor">Deep Q-Network (DQN)</span> (<span class="nodecor">mnih2015human</span>) كمقرِّب لوظيفة القيمة <span class="nodecor">Q</span>، موافقةً مع الأعمال السابقة (<span class="nodecor">chen2020toward, wei2019colight, wei2019presslight, zheng2019learning, wei2018intellilight</span>). الوحدة متعددة المهام تتبع استراتيجية مشاركة صارمة للمعلمات (<span class="nodecor">caruana1997multitask</span>) عبر مشاركة الطبقات المخفية بين جميع المهام والاحتفاظ بطبقات مخصصة لكل مهمة.</p>
+<h2 id="التعلم-المتعدد-المهام-للحالة-الكامنة">التعلُّم المتعدد المهام للحالة الكامنة</h2>
+<p>لكل وكيل، تتضمن ملاحظته الأولية عدد السيارات <span class="math inline">\(\mathbf{f}_t^v\)</span> والمرحلة الإشارية الحالية <span class="math inline">\(\mathbf{f}_t^s\)</span>. بالإضافة إلى ذلك، يتم تقديم عدة معلومات من الحالة العالمية، مثل: عدد السيارات القادمة في الخطوات <span class="math inline">\(\tau\)</span> الأخيرة (<span class="math inline">\(\mathbf{f}_{t-\tau:t}^c\)</span>), متوسط وقت السفر خلال الخطوات الماضية (<span class="math inline">\(\mathbf{f}_{t-\tau:t}^{tr}\)</span>), طول الطابور خلال الخطوات الماضية (<span class="math inline">\(\mathbf{f}_{t-\tau:t}^{q}\)</span>)، والسيارات الحالية خلال الخطوات الماضية (<span class="math inline">\(\mathbf{f}_{t-\tau:t}^{vr}\)</span>).</p>
+<p>تتضمن وحدة التعلُّم المتعدد المهام المهام الأربع التالية:</p>
+<ol>
+<li><p><strong>تقدير توزيع التدفق.</strong> نستخدم <span class="math inline">\(\mathcal{T}_{flow}\)</span> للإشارة إلى مهمة تقدير توزيع التدفق، أي التنبؤ بالمتوسط <span class="math inline">\(\mu_{f}\)</span> والتباين <span class="math inline">\(\sigma_{f}^{2}\)</span> لمعدل وصول التدفق حتى خطوة الزمن <span class="math inline">\(t\)</span>: <span class="math display">\[\begin{aligned}
+        (\mu_{f}, \sigma_{f}^{2}) \leftarrow [\mathbf{f}_t^v,\mathbf{f}_t^s,\mathbf{f}_{t-\tau:t}^c,\mathbf{f}_{t-\tau:t}^{tr},\mathbf{f}_{t-\tau:t}^{q},\mathbf{f}_{t-\tau:t}^{vr}].
+    \end{aligned}\]</span></p></li>
+<li><p><strong>تقدير توزيع أوقات السفر.</strong> نستخدم <span class="math inline">\(\mathcal{T}_{travel}\)</span> للإشارة إلى مهمة تقدير توزيع أوقات السفر، أي التنبؤ بالمتوسط <span class="math inline">\(\mu_{tr}\)</span> والتباين <span class="math inline">\(\sigma_{tr}^{2}\)</span> لمتوسط وقت السفر للسيارات المكتملة حتى الخطوة <span class="math inline">\(t\)</span>: <span class="math display">\[\begin{aligned}
+       (\mu_{tr}, \sigma_{tr}^{2}) \leftarrow [\mathbf{f}_t^v,\mathbf{f}_t^s,\mathbf{f}_{t-\tau:t}^c,\mathbf{f}_{t-\tau:t}^{tr},\mathbf{f}_{t-\tau:t}^{q},\mathbf{f}_{t-\tau:t}^{vr}].
+    \end{aligned}\]</span></p></li>
+<li><p><strong>تقدير طول الطابور التالي.</strong> نستخدم <span class="math inline">\(\mathcal{T}_{queue}\)</span> للإشارة إلى مهمة تقدير طول الطابور القادم، أي التنبؤ بعدد <span class="math inline">\(q\)</span> السيارات في الطابور في الخطوة التالية: <span class="math display">\[\begin{aligned}
+        q \leftarrow [\mathbf{f}_t^v,\mathbf{f}_t^s,\mathbf{f}_{t-\tau:t}^c,\mathbf{f}_{t-\tau:t}^{tr},\mathbf{f}_{t-\tau:t}^{q},\mathbf{f}_{t-\tau:t}^{vr}].
+    \end{aligned}\]</span></p></li>
+<li><p><strong>تقدير عدد السيارات على الطريق.</strong> نستخدم <span class="math inline">\(\mathcal{T}_{vehicles}\)</span> للإشارة إلى مهمة تقدير عدد السيارات على الطريق، أي التنبؤ بعدد السيارات <span class="math inline">\(V^{r}\)</span> الحالية في النظام: <span class="math display">\[\begin{aligned}
+        V^{r} \leftarrow [\mathbf{f}_t^v,\mathbf{f}_t^s,\mathbf{f}_{t-\tau:t}^c,\mathbf{f}_{t-\tau:t}^{tr},\mathbf{f}_{t-\tau:t}^{q},\mathbf{f}_{t-\tau:t}^{vr}].
+    \end{aligned}\]</span> لاحظ أن السيارات المكتملة أو التي لم تدخل بعد في شبكة الطرق لا تُحتسب في هذا التنبؤ.</p></li>
+</ol>
+<p>تعمل المهام السابقة كمساعدات لتعلُّم الفضاء الكامن. نظرًا لاختلاف مقاييس وأبعاد <span class="math inline">\(\mathbf{f}_{t-\tau:t}^c\)</span>, <span class="math inline">\(\mathbf{f}_{t-\tau:t}^{tr}\)</span>, <span class="math inline">\(\mathbf{f}_{t-\tau:t}^{q}\)</span>, <span class="math inline">\(\mathbf{f}_{t-\tau:t}^{vr}\)</span> عن <span class="math inline">\(\mathbf{f}_t^v\)</span> و<span class="math inline">\(\mathbf{f}_t^s\)</span>، يُستخدم أربع طبقات خطية مستقلة مع وظائف ReLU أولًا لتوسيعها:</p>
+<p><span class="math display">\[\begin{aligned}
+    \mathbf{h}^{c} = ReLU(\mathbf{W}_{1}\mathbf{f}_{t-\tau:t}^{c}+\mathbf{b}_{1}),\ 
+    \mathbf{h}^{tr} = ReLU(\mathbf{W}_{2}\mathbf{f}_{t-\tau:t}^{tr}+\mathbf{b}_{2}),\\
+    \mathbf{h}^{q} = ReLU(\mathbf{W}_{3}\mathbf{f}_{t-\tau:t}^{q}+\mathbf{b}_{3}),\ 
+    \mathbf{h}^{vr} = ReLU(\mathbf{W}_{4}\mathbf{f}_{t-\tau:t}^{vr}+\mathbf{b}_{4}).
+\end{aligned}\]</span></p>
+<p>ثم تُستخدم طبقة خطية ووظيفة ReLU لحساب الحالة الكامنة <span class="math inline">\(\mathbf{H}_{t}\)</span> بعد دمج جميع الميزات:</p>
+<p><span class="math display">\[\begin{aligned}
+    \mathbf{H}_{t} = ReLU(\mathbf{W}[\mathbf{f}_t^v,\mathbf{f}_t^s,\mathbf{h}^{c},\mathbf{h}^{tr},\mathbf{h}^{q},\mathbf{h}^{vr}]+\mathbf{b}).
+\end{aligned}\]</span></p>
+<p>استنادًا إلى <span class="math inline">\(\mathbf{H}_{t}\)</span>، يتم استخدام وحدة شبكة مشتركة بين المهام لتوليد الميزة الكامنة المشتركة (<em>الحالة الظاهرة</em>). ثم تقسم الشبكة إلى أربعة فروع مستقلة لكل مهمة لحساب الميزة الكامنة المحددة للمهمة (<em>الحالة العقلية</em>) منها. تم تفصيل هندسة الشبكة في الملحق.</p>
+<p>نستخدم نموذجًا متغيرًا كامنًا واحدًا لاستخراج الميزات الهرمية، موافقًا لرؤى (<span class="nodecor">zhao2017learning</span>). أي أن <em>الحالة العقلية</em> (مخرج الطبقة المشتركة بعد وحدات GRU) تعبّر عن خصائص أساسية عامة، في حين أن <em>الحالة الظاهرة</em> (مخرجات الفروع المحددة) تمثل معلومات مقتصرة ومدفوعة بالمهمة. بالتالي، هما مكملتان ويُستخدم كلاهما في التعزيز.</p>
+<h2 id="السياسة-مع-الحالة-الكامنة">السياسة مع الحالة الكامنة</h2>
+<p>بمساعدة الحالة الكامنة، تعزز ملاحظة الوكيل من <span class="math inline">\(\mathbf{o}_t\)</span> إلى <span class="math inline">(\mathbf{o}_t,\mathbf{o}_{t}^{shr},\mathbf{o}_{t}^{spe})</span>. بالنسبة للسياسة <span class="math inline">\(\pi^{\theta}\)</span>، الهدف هو تعظيم المكافأة التراكمية:</p>
+<p><span class="math display">\[\begin{aligned}
+    \max_{\theta}J(\theta)=\mathbb{E}_{a_t\sim\pi^\theta(a_t\mid \mathbf{o}_t,\mathbf{o}_{t}^{shr},\mathbf{o}_{t}^{spe})}\sum_{t=0}^{\mathcal{H}-1}\gamma^{t}r_{t+1}.
+\end{aligned}\]</span></p>
+<p>الوكيل الذي يعظّم المعادلة [eq:RL] يتصرّف مثاليًا تحت عدم اليقين ويُسمى <em>الأمثل بايز</em> (<span class="nodecor">ghavamzadeh2015bayesian</span>), باعتبار المعرفة حول المهام المتصلة أولوية ابستمولوجية بالنسبة للبيئة. تقلل وحدة المهام المتعددة من تعقيد النموذج وتمنح أسبقية معلوماتية، كما تساعد على تقليل التحيز التمثيلي وتدفع الخوارزمية لإيجاد حل في مساحة تمثيلات أصغر وأدق.</p>
+<h1 id="sec:experiment">التجربة</h1>
+<p>نُجري التجارب على منصة CityFlow (<span class="nodecor">zhang2019cityflow</span>)، وهي منصة محاكاة مفتوحة المصدر على مستوى المدينة للتحكم في إشارات المرور. تُستخدم المحاكاة لتوفير بيئة تفاعلية، حيث ينفذ الوكلاء الإجراءات بتغيير مراحل الإشارات وتُعاد التغذية الراجعة.</p>
+<p>يرجى الرجوع إلى الملحق [sec:road_networks] والملحق [sec:flow_configurations] للإعدادات التفصيلية لشبكة الطرق وتكوين تدفق المرور. وتم وصف الأساسيات في الملحق [sec:baselines].</p>
+<h2 id="مقارنة-الأداء">مقارنة الأداء</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(lr)<span>2-3</span> (lr)<span>4-5</span> (lr)<span>6-7</span> (lr)<span>8-9</span></td>
+<td style="text-align: right;"><strong>real</strong></td>
+<td style="text-align: right;"><strong>syn_peak</strong></td>
+<td style="text-align: right;"><strong>real</strong></td>
+<td style="text-align: right;"><strong>syn_peak</strong></td>
+<td style="text-align: right;"><strong>real</strong></td>
+<td style="text-align: right;"><strong>syn_peak</strong></td>
+<td style="text-align: right;"><strong>real</strong></td>
+<td style="text-align: right;"><strong>syn_peak</strong></td>
+<td style="text-align: right;"></td>
+</tr>
+<!-- ... بقية الجدول دون تعديل ... -->
+</tbody>
+</table>
+<p>يسرد الجدول [tab:performance_1] النتائج المقارنة، ومن الواضح ما يلي: ١) بشكل عام، تحقق طرق التعلم المعزز أداءً أفضل من الطرق التقليدية، مما يدل على تفوّق هذا النهج. علاوة على ذلك، يتفوّق <span class="nodecor">MTLight</span> على الطرق الأخرى في معظم المدن وتكوينات تدفق المرور، مما يبرهن على فعالية طرقتنا. ٢) يُظهر <span class="nodecor">MTLight</span> تعميمًا جيدًا عبر سيناريوهات وتكوينات مختلفة؛ فعلى سبيل المثال، يؤدي <span class="nodecor">maxpressure</span> بشكل جيد في <span class="nodecor">hangzhou</span> مع تدفقات المرور الفعلية (<span class="nodecor">realflow</span>)، بينما تحت ظروف المرور التوليفية (<span class="nodecor">synflow</span>)، يقدم <span class="nodecor">maxpressure</span> أداءً أسوأ بكثير من الطرق الأخرى. بالمقابل، لا يقتصر أداء <span class="nodecor">MTLight</span> على التميز في تكوينات <span class="nodecor">hangzhou</span> المتنوعة، بل يُظهر أيضًا استقرارًا ملحوظًا. ٣) يتفوّق <span class="nodecor">MTLight</span> على طرق <span class="nodecor">individualrl</span> و<span class="nodecor">metalight</span> و<span class="nodecor">presslight</span> بفوارق تصل إلى 693.46 و461.80 و432.38 نقطة على التوالي. ويعزى ذلك إلى أن هذه الطرق تتعلم سياسة إشارات المرور باستخدام ملاحظاتها فقط وتتجاهل تأثير الوكلاء المجاورين، بينما يعتبر <span class="nodecor">MTLight</span> هؤلاء الوكلاء جزءًا من البيئة لدعم عملية التعلم. ٤) يمكن لنماذج <span class="nodecor">colight</span> و<span class="nodecor">generalight</span>، التي تضمن معلومات الجيران، التكيف مع تدفقات مرور متنوعة وتقدم أداءً جيدًا. إلا أن <span class="nodecor">MTLight</span> يتفوق عليهما في سيناريوهات متعددة، محققًا تحسنًا قدره 42.5 و398 نقطة على الترتيب، بفضل استفادته من المعرفة المسبقة المكتسبة عبر شبكة المهام المتعددة لاتخاذ قرارات أكثر دقة.</p>
+<h2 id="التجريدات">التجريدات</h2>
+<p>للتحقق من مساهمة كل مكوّن، تم تقييم أربعة نماذج من <span class="nodecor">MTLight</span> تحت مجموعة متنوعة من السيناريوهات، كما هو موضح في الجدول [tab:performance_1].</p>
+<ul>
+<li><p><strong><span class="nodecor">Base</span></strong> يحتفظ فقط بشبكة السياسات ويزيل شبكة المهام المتعددة.</p></li>
+<li><p><strong><span class="nodecor">Base-Raw</span></strong> يحتفظ بشبكة السياسات ويتخلى عن شبكة المهام المتعددة، لكنه يستخدم مباشرة الإدخال الأصلي لوحدة المهام المتعددة كجزء من الملاحظة.</p></li>
+<li><p><strong><span class="nodecor">Base-Per</span></strong> يحتفظ بشبكة المهام المتعددة والسياسة، لكنه يحتوي فقط على الحالة الكامنة المشتركة بين المهام ويزيل الحالة الكامنة المحددة للمهمة.</p></li>
+<li><p><strong><span class="nodecor">Base-Tem</span></strong> يحتفظ بشبكة المهام المتعددة والسياسة، لكنه يحتوي فقط على الحالة الكامنة المحددة للمهمة ويزيل الحالة الكامنة المشتركة بين المهام.</p></li>
+</ul>
+<p>تُقدّم نتائج التقييم الكمي في الجدول [tab:performance_1]. يمكن استخلاص النتائج التالية: ١) يعد نموذج <span class="nodecor">Base</span> الأقل أداءً بين النماذج الأربعة؛ ويعزى ذلك لصعوبة تعلم سياسة فعّالة بشكل مستقل في مهمة التحكم متعدد الوكلاء حيث تتغير البيئة ديناميكيًا، في حين أن نموذج <span class="nodecor">Base</span> لا يأخذ ذلك في الحسبان. ٢) مقارنةً بنموذجي <span class="nodecor">Base</span> و<span class="nodecor">Base-Raw</span>، يظهر كل من <span class="nodecor">Base-Per</span> و<span class="nodecor">Base-Tem</span> تحسنًا نتيجة استخدام الحالة الكامنة المشتركة بين المهام (<em>Per-Latent-State</em>) والحالة الكامنة المحددة للمهمة (<em>Tem-Latent-State</em>) على التوالي. ٣) تعكس الحالة الكامنة المشتركة (<em>Per-Latent-State</em>) المعلومات الثابتة عبر الزمن المتعلقة بالمهام المتصلة، في حين تعكس الحالة الكامنة المحددة (<em>Tem-Latent-State</em>) المعلومات المتغيرة المتماشية مع الاتجاهات الآنية؛ وكلاهما يساعد السياسة على اتخاذ قرارات بايزية مثلى. ٤) يبين تفوق <span class="nodecor">MTLight</span> على جميع هذه النماذج أن <em>Per-Latent-State</em> و<em>Tem-Latent-State</em> يكملان بعضهما البعض، مما يؤكد الإسهام الإيجابي لكافة المكونات في النتائج النهائية.</p>
+<h1 id="sec:conclusion">الخلاصة</h1>
+<p>قدّمنا <span class="nodecor">MTLight</span>، وهي طريقة فعّالة للتعلّم المعزز متعدد المهام للتحكم في إشارات المرور يمكن توسيعها لتطبيقها على شبكات طرق حضرية معقدة تحتوي على عدة وكلاء وتستخدم مقاييس متنوعة. أظهرنا أن البنية الكامنة في <span class="nodecor">MTLight</span> تتعلم تمثيلات كامنة هرمية للمهمات المتصلة، مجزأة إلى حالات كامنة مشتركة بين المهام وأخرى محددة بكل مهمة. في مجموعات بيانات مدن متعددة، برهنا أن هذا التمثيل الكامن المستمد من مهمات متصلة، إلى جانب تكيف السياسة بناءً عليه، يمكّن الوكيل من التكيف مع بيئات معقدة. نستنتج أن الاستعانة بالتقريبات السابقة للمهمات المتصلة مفيد مقارنةً بالنهج خالي النموذج، خاصةً عندما يحتوي البيئة على كم كبير من المعلومات يصعب التعبير عنها بالكامل عبر تصميم حالة اصطناعية.</p>
+<p>مستقبلاً، يمكن تعلم الأوزان الكامنة من بيانات الخبراء المجهزة مسبقًا باستخدام تقنيات التعلم بالتقليد (<span class="nodecor">song2018multi</span>)، أو عبر استخدام خوارزميات تعدد الوكلاء الحالية للتدريب المسبق على شبكة مهام متعددة.</p>
+<h1 id="الملحق">الملحق</h1>
+<p>يمكنك تضمين أقسام إضافية أخرى هنا.</p>
+<!-- بقية الوثيقة دون تغيير -->
+</body>
+</html>

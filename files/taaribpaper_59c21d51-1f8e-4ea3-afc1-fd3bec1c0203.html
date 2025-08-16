@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="RaGon Ebker">
-  <title>حلّ المعادلات الحدودية غير القابلة للفصل فوق حقل سلاسل Puiseux عبر الرفع الذهبي</title>
+  <title>حلّ المعادلات الحدودية غير القابلة للفصل فوق حقل سلاسل <span class="nodecor">Puiseux</span> عبر الرفع الهنسلي</title>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -41,6 +40,11 @@
       font-size: 1.3rem;
       color: #444;
       margin-bottom: 0;
+    }
+    main.container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem 1rem;
     }
     h1 {
       font-size: 2rem;
@@ -117,75 +121,74 @@
       h1.title { font-size: 1.5rem; }
       h1 { font-size: 1.2rem; }
       header { padding: 1.2rem 0 0.7rem 0; }
+      main.container { padding: 0 0.8rem 2rem 0.8rem; }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1 class="title">حلّ المعادلات الحدودية غير القابلة للفصل فوق حقل سلاسل <span class="nodecor">Puiseux</span> عبر الرفع الذهبي</h1>
+  <h1 class="title">حلّ المعادلات الحدودية غير القابلة للفصل فوق حقل سلاسل <span class="nodecor">Puiseux</span> عبر الرفع الهنسلي</h1>
   <p class="author"><span class="nodecor">RaGon Ebker</span></p>
 </header>
 
+<main class="container">
+
 <h1 id="abstract">مُلخّص</h1>
 <p>
-نطوّر طريقة تكرارية لحساب جذور المعادلات الحدودية التعسفية فوق حقل سلاسل <span class="nodecor">Puiseux</span>، بما في ذلك تلك غير القابلة للفصل. تقوم الطريقة بتحويل المعادلة الحدودية وجذورها إلى شكل خاص، ثم استخراج معادلة حدودية أحادية الحد جديدة تحتوي على معلومات دقيقة حول جذور المعادلة. كما نوفر تطبيقًا عمليًا لهذه الخوارزمية بلغة <span class="nodecor">Python</span>.
+نُطوِّر طريقةً تكراريّةً لحساب جذور كثيرات الحدود التعسّفيّة فوق حقل سلاسل <span class="nodecor">Puiseux</span>، بما في ذلك غيرُ القابلةِ للفصل. تقوم الطريقة على تحويل كثيرةِ الحدود وجذورها إلى هيئةٍ خاصّة، ثمّ استخراج كثيرةِ حدودٍ مُساعِدة تُشفِّر معلوماتٍ دقيقةً عن جذور المعادلة. كما نوفِّر تطبيقًا عمليًّا لهذه الخوارزميّة بلغة <span class="nodecor">Python</span>.
 </p>
 
 <h1 id="notation">التدوين</h1>
 <p>
-لتكن <span class="math inline">\(\mathbb{N}\)</span> مجموعة الأعداد الطبيعية التي تشمل الصفر. ولنفترض أنّ <span class="math inline">\(K\)</span> حقل، و<span class="math inline">\(K((x^{\frac{1}{n}}))\)</span> هو حقل سلاسل <span class="nodecor">Puiseux</span> العاملة فوقه. تُكتب عناصر <span class="math inline">\(K((x^{\frac{1}{n}}))\)</span> على الشكل <span class="math inline">\(y = \sum_{k=k_0} ^\infty b_{k}x ^{\frac{k}{n}},\ n \in \mathbb{Z}\)</span>. عندما يقتصر التعبير على عدد محدود من الحدود، نسمّي <span class="math inline">\(d_x\)</span> درجة <span class="math inline">\(y\)</span>. ولتكن <span class="math inline">\(Q : K((x)) \to K((x))\)</span> معادلة حدودية على هذا الحقل، 
-<span class="math inline">\(Q(y) = a_{d_y} y^{d_y} + \cdots + a_1 y + a_0,\ d_y \in \mathbb{N}^+\)</span>،
-حيث <span class="math inline">\(d_y\)</span> درجة <span class="math inline">\(Q\)</span>. ولتكن 
-<span class="math inline">\(\alpha =  \sum_{k=0} ^\infty b_{k}x ^{\frac{k}{n}},\ n \in \mathbb{Z}\)</span> جذرًا لـ<span class="math inline">\(Q\)</span>.
+لتكن <span class="math inline">\(\mathbb{N}\)</span> مجموعة الأعداد الطبيعيّة التي تشمل الصفر. ولنفترض أنّ <span class="math inline">\(K\)</span> حقل، و<span class="math inline">\(K\bigl((x^{\frac{1}{n}})\bigr)\)</span> هو حقل سلاسل <span class="nodecor">Puiseux</span> العاملة فوقه. تُكتب عناصر <span class="math inline">\(K\bigl((x^{\frac{1}{n}})\bigr)\)</span> على الشكل <span class="math inline">\(y = \sum_{k=k_0}^{\infty} b_{k}\,x ^{\frac{k}{n}},\ n \in \mathbb{N}^+\)</span>. وإذا اقتصر المجموع على عددٍ متناهٍ من الحدود نُسمّي <span class="math inline">\(d_x\)</span> درجة <span class="math inline">\(y\)</span> بالنسبة إلى <span class="math inline">\(x\)</span> (أي أعلى أُسٍّ في <span class="math inline">\(x\)</span> يظهر في <span class="math inline">\(y\)</span>).
 </p>
 <p>
-تُسمّى المعادلة الحدودية ذات <em>الضربية-<span class="math inline">\(s\)</span></em> إذا وجدت <span class="math inline">\(s\)</span> جذور <span class="math inline">\(\alpha_1,\dots,\alpha_s\)</span> لـ<span class="math inline">\(Q\)</span> بحيث يكون الحد الثابت <span class="math inline">\(b_0\)</span> صفراً في جميع هذه الجذور.
+ولتكن كثيرة الحدود
+<span class="math inline">\(Q(y) = a_{d_y} y^{d_y} + \cdots + a_1 y + a_0,\ d_y \in \mathbb{N}^+\)</span>
+ذات معاملات في <span class="math inline">\(K\bigl((x^{\frac{1}{n}})\bigr)\)</span>، أي <span class="math inline">\(Q(y)\in K\bigl((x^{\frac{1}{n}})\bigr)[y]\)</span>. ولتكن
+<span class="math inline">\(\alpha =  \sum_{k=0}^{\infty} b_{k}\,x ^{\frac{k}{n}},\ n \in \mathbb{N}^+\)</span> جذرًا لـ<span class="math inline">\(Q\)</span>.
 </p>
 <p>
-وتُسمّى المعادلة الحدودية ذات <em>الضربية-<span class="math inline">\(s\)</span>-الزائدة</em> إذا وجدت <span class="math inline">\(s^+\)</span> جذور <span class="math inline">\(\alpha_1,\dots,\alpha_{s^+}\)</span> لـ<span class="math inline">\(Q\)</span>، حيث <span class="math inline">\(s^+ \in \{1,\dots,s\}\)</span> و<span class="math inline">\(s\)</span> هي الضربية-<span class="math inline">\(s\)</span> لـ<span class="math inline">\(Q\)</span>؛ بحيث يكون الحد الثابت <span class="math inline">\(b_0\)</span> صفراً في جميع هذه الجذور، ويُحقق الحد الأول <span class="math inline">\(b_1\)</span> نفس التقييم لكل <span class="math inline">\(\alpha_j\)</span>، <span class="math inline">\(j=1,\dots,s^+\)</span>.
+نقول إنّ لـ<span class="math inline">\(Q\)</span> <em>تعدُّدًا مقداره <span class="math inline">\(s\)</span> عند الصفر</em> إذا وُجدت <span class="math inline">\(s\)</span> جذور <span class="math inline">\(\alpha_1,\dots,\alpha_s\)</span> لـ<span class="math inline">\(Q\)</span> بحيث يكون الحدّ الثابت <span class="math inline">\(b_0=0\)</span> في جميع هذه الجذور (أي أنّ <span class="math inline">\(v(\alpha_j)&gt;0\)</span> لكلّ <span class="math inline">\(j\)</span>).
 </p>
 <p>
-على سبيل المثال، المعادلة الحدودية 
-<span class="math inline">\(Q(y) = (y-(1+x+x^2))(y-x^{0.5})(y-x^{0.6})(y-x^{0.5} + x^2)\)</span> 
-لها ضربية-<span class="nodecor">3</span> وضربية-<span class="nodecor">2</span>-زائدة.
+ونقول إنّ لـ<span class="math inline">\(Q\)</span> <em>تعدُّدًا زائدًا مقداره <span class="math inline">\(s^+\)</span></em> إذا وُجدت جذور <span class="math inline">\(\alpha_1,\dots,\alpha_{s^+}\)</span> بحيث <span class="math inline">\(s^+ \in \{1,\dots,s\}\)</span>، و<span class="math inline">\(s\)</span> هو التعدُّد عند الصفر لـ<span class="math inline">\(Q\)</span>، وتكون الحدود الأُولى غير الصفرية في كلّ <span class="math inline">\(\alpha_j\)</span> ذات التقييم نفسه؛ أي إنّ <span class="math inline">\(v(\alpha_1)=\cdots=v(\alpha_{s^+})\)</span>.
 </p>
 <p>
-ولنعتبر خريطة التقييم 
-<span class="math inline">\(v: K((x)) \to \mathbb{Q}\)</span> 
-المعرفة بـ<span class="math inline">\(v(y) = k_0\)</span>.
+على سبيل المثال، كثيرة الحدود
+<span class="math inline">\(Q(y) = (y-(1+x+x^2))(y-x^{0.5})(y-x^{0.6})(y-x^{0.5} + x^2)\)</span>
+لها تعدُّدٌ <span class="nodecor">3</span> عند الصفر، وتعدُّدٌ زائدٌ مقداره <span class="nodecor">2</span>.
+</p>
+<p>
+ولنعتبر خريطة التقييم
+<span class="math inline">\(v: K\bigl((x^{\frac{1}{n}})\bigr) \to \mathbb{Q}\)</span>
+المُعرَّفة بـ<span class="math inline">\(v(y) = k_0\)</span>، حيث <span class="math inline">\(k_0\)</span> هو أصغر أُسٍّ يظهر في سلسلة <span class="math inline">\(y\)</span>.
 </p>
 
-<h1 id="introduction">مقدمة</h1>
+<h1 id="introduction">مقدّمة</h1>
 <p>
-لنتخيّل أننا نملك خوارزميةً لحساب أصغر جذر لمعادلة حدودية <span class="math inline">\(Q\)</span>، مثل 
-<span class="math inline">\(Q(y) = (y-(1+x+x^2))(y-(2+x+x^2))\)</span> فوق حقل سلاسل <span class="nodecor">Puiseux</span>. هنا يكون الجذر الأصغر هو <span class="math inline">\(1+x+x^2\)</span>، إذ نعني بالأصغر الجذر الذي يملك أقل تقييم عند الحد الرئيسي. ومع ذلك، تستطيع الخوارزمية عادةً حساب الحد الأعلى تقييمًا، أي 1. فكيف نمضي قدمًا لحساب الحدود التالية للجذر؟ يكمن الحل في تحويل المعادلة الحدودية وجذورها. بعد ذلك نحصل على المعادلة المحوّلة 
-<span class="math display">\[Q_{\text{shift}} = (y-(x+x^2))(y-(1x+x^2))\]</span> 
-ونتمكّن بسهولة من استخراج الحد التالي عبر الخوارزمية، وهو <span class="math inline">\(x\)</span>. في هذه الورقة نستعرض هذه الفكرة عبر: (1) تطوير خوارزمية لحساب أصغر جذر تحت شروط معينة، و(2) كيفية تحويل المعادلة الحدودية لتلبية هذه الشروط. يمكن الاطلاع على نظرة عامة على هذه العملية في القسم <span class="nodecor">algorithm</span>. كما توجد طرق مماثلة عبر سلاسل <span class="nodecor">Puiseux</span> وسلاسل القوى، مثل صيغة قاعدة Hensel ونُسخها المحسّنة (<span class="nodecor">neiger</span>)، أو عبر طريقة Newton Puiseux (<span class="nodecor">brieskorn2012plane</span>).
+لنتخيّل أنّ لدينا خوارزميّةً لحساب أصغر جذرٍ لكثيرة الحدود <span class="math inline">\(Q\)</span> (من حيث التقييم)، مثل
+<span class="math inline">\(Q(y) = (y-(1+x+x^2))(y-(2+x+x^2))\)</span> فوق حقل سلاسل <span class="nodecor">Puiseux</span>. هنا، عندما نقول «الأصغر» نقصد الجذر ذا التقييم الأدنى عند الحدّ الرئيسي. غالبًا ما تستخرج الخوارزميّة بادئ الأمر الحدّ الأوّل للجذر، أي المعامل الرئيس 1. فكيف نمضي قُدُمًا لحساب الحدود التالية في الجذر؟ يكمن الحلّ في تحويل (إزاحة) كثيرة الحدود وجذورها. بعد ذلك نحصل على الكثيرة المُحوَّلة
+</p>
+<p class="math display">\[Q_{\text{shift}} = (y-(x+x^2))(y-(1+x+x^2))\]</p>
+<p>
+ونتمكّن بسهولة من استخراج الحدّ التالي عبر الخوارزميّة، وهو <span class="math inline">\(x\)</span>. في هذه الورقة نستعرض هذه الفكرة عبر: (1) تطوير خوارزميّةٍ لحساب أصغر جذر تحت شروطٍ مُعيَّنة، و(2) بيان كيفيّة تحويل كثيرة الحدود لتلبية هذه الشروط. يمكن الاطّلاع على نظرة عامّة على العملية في القسم <span class="nodecor">algorithm</span>. توجد أيضًا طرائق مُشابهة في سياق سلاسل <span class="nodecor">Puiseux</span> وسلاسل القوى، مثل رفع هنسل ونُسخه المُحسَّنة (<span class="nodecor">neiger</span>)، وكذلك طريقة نيوتن–بويزو (<span class="nodecor">brieskorn2012plane</span>).
 </p>
 
-<h1 id="main">النتيجة الرئيسية</h1>
+<h1 id="main">النتيجة الرئيسيّة</h1>
 <p>
-في هذا القسم نستعرض النتيجة الرئيسية. تقوم الطريقة على تقليص المعادلة الحدودية إلى معادلة أصغر حجمًا تحت شروط محددة. في القسم <span class="nodecor">4</span> نبيّن كيفية تحويل أي معادلة حدودية إلى صورة تفي بهذه الشروط تمامًا. ثم نحسب الجذر الواحد تلو الآخر وفق خوارزمية نيوتن-Puiseux الأصلية.
+في هذا القسم نستعرض النتيجة الرئيسيّة. تقوم الطريقة على تقليص الكثيرة إلى أُخرى أدنى درجةً تحت شروطٍ محدّدة. في القسم <span class="nodecor">4</span> نُبيّن كيفيّة تحويل أيّ كثيرة حدود إلى صورةٍ تُحقّق هذه الشروط تمامًا، ثمّ نحسب الجذور واحدًا تلوَ الآخر وفق خوارزميّة نيوتن–بويزو القياسيّة.
 </p>
 <p>
-لتكن <span class="math inline">\(Q : K((x)) \to K((x))\)</span> معادلة حدودية، 
-<span class="math inline">\(Q(y) = a_{d_y} y^{d_y} + \cdots + a_1 y + a_0,\ d_y \in \mathbb{N}^+\)</span>. 
-ولنفترض أن <span class="math inline">\(\alpha_1,\dots,\alpha_{d_y}\)</span> هي جذورها، مع <span class="math inline">\(v(a_i)\ge0\)</span> لكل <span class="math inline">\(i\)</span>. نفرض كذلك أن  
-<span class="math inline">\(v(\alpha_j)\ge e>0\)</span> لكل <span class="math inline">\(j=1,\dots,s\)</span>، حيث 
-<span class="math inline">\(s\in\{1,\dots,d_y-1\}\)</span> و<span class="math inline">\(e\in\mathbb{Q}\)</span>، مع توفر 
-<span class="math inline">\(v(\alpha_j)=e\)</span> لجميع <span class="math inline">\(j=1,\dots,s^+\)</span> بحيث 
-<span class="math inline">\(s^+>1\)</span>. يكون <span class="math inline">\(s\)</span> الضربية-<span class="math inline">\(s\)</span>، و<span class="math inline">\(s^+\)</span> الضربية-<span class="math inline">\(s\)</span>-زائدة. وتمثل هذه القيمة <span class="math inline">\(e\)</span> أصغر تقييم بين جميع <span class="math inline">\(v(\alpha_j)\)</span>.
+لتكن <span class="math inline">\(Q(y) = a_{d_y} y^{d_y} + \cdots + a_1 y + a_0,\ d_y \in \mathbb{N}^+\)</span> كثيرة حدود في <span class="math inline">\(y\)</span> ذات معاملات في <span class="math inline">\(K\bigl((x^{\frac{1}{n}})\bigr)\)</span>، بحيث <span class="math inline">\(Q(y)\in K\bigl((x^{\frac{1}{n}})\bigr)[y]\)</span>. ولنفترض أنّ <span class="math inline">\(\alpha_1,\dots,\alpha_{d_y}\)</span> هي جذورها في حقل سلاسل <span class="nodecor">Puiseux</span>، وأنّ <span class="math inline">\(v(a_i)\ge 0\)</span> لكلّ <span class="math inline">\(i\)</span>. نفرضُ كذلك أنّ
+<span class="math inline">\(v(\alpha_j)\ge e&gt;0\)</span> لكلّ <span class="math inline">\(j=1,\dots,s\)</span>، حيث
+<span class="math inline">\(s\in\{1,\dots,d_y-1\}\)</span> و<span class="math inline">\(e\in\mathbb{Q}\)</span>، مع توافر
+<span class="math inline">\(v(\alpha_j)=e\)</span> لجميع <span class="math inline">\(j=1,\dots,s^+\)</span> بحيث
+<span class="math inline">\(s^+&gt;1\)</span>. هنا يُمثّل <span class="math inline">\(s\)</span> عدد الجذور ذات <span class="math inline">\(b_0=0\)</span> (التعدُّد عند الصفر)، و<span class="math inline">\(s^+\)</span> «التعدُّد الزائد» عند أصغر تقييمٍ مشترك <span class="math inline">\(e\)</span>، وهو أصغرُ تقييمٍ بين جميع قيم <span class="math inline">\(v(\alpha_j)\)</span>.
 </p>
+
 <!-- بقية المحتوى تبقى من دون تغيير -->
+
+</main>
 </body>
 </html>
-```
-
-**تصحيحات اللاتكس:**
-- تم تصحيح جميع مواضع الأسس والكسور في LaTeX إلى الصيغة الصحيحة: `x^{\frac{1}{n}}` بدلاً من `x^\frac{1}{n}`، و`d_y \in \mathbb{N}^+` بدلاً من `d_y \in \mathbb{N^+}`.
-- تم تصحيح جميع مواضع الأقواس في المعادلات.
-- تم تصحيح موضع الجذر الأصغر ليكون `1+x+x^2` بدلاً من `(1+x+x^2)` (بدون أقواس زائدة).
-- تم تصحيح جميع مواضع الأقواس في المعادلات المعروضة.
-- تم التأكد من أن جميع المعادلات مغلقة بشكل صحيح ولا تحتوي على أخطاء في LaTeX.
-- لم يتم تغيير أي كلمة من النص الأصلي.
-- تم التأكد من أن جميع المعادلات ستعمل بشكل صحيح مع MathJax.

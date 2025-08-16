@@ -1,0 +1,199 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="E. Aristidi وَ B. Carry وَ K. Minker وَ J.-L. Prieur وَ M. Scardia وَ J.-P. Rivet وَ P. Bendjoya وَ L. Abe وَ R.-W. Argyle وَ L. Koechlin وَ J.F. Ling وَ L. Maccarini وَ L. Pansecchi وَ L. Piccotti وَ J. Sérot وَ D. Vernet">
+  <title>ملاحظات سبيكل للكويكب الثنائي (22) Kalliope باستخدام C2PU/PISCO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    body {
+      direction: rtl;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-size: 22px;
+      background: #f8f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(90deg, #3a6073 0%, #16222a 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 16px rgba(60,60,60,0.08);
+    }
+    h1.title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+    .author {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #e0e0e0;
+      letter-spacing: 0.01em;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-top: 2.2rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 2rem;
+      border-right: 6px solid #3a6073;
+      padding-right: 0.7rem;
+      background: #eaf0f6;
+      border-radius: 0 20px 20px 0;
+      display: inline-block;
+      margin-right: 0;
+    }
+    h1.unnumbered {
+      border-right: 6px solid #b2bec3;
+      background: #f5f6fa;
+      color: #636e72;
+    }
+    p {
+      margin: 1.2em 0;
+      text-align: justify;
+    }
+    .nodecor {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 700;
+    }
+    em {
+      color: #3a6073;
+      font-style: normal;
+      font-weight: 600;
+    }
+    a {
+      color: #1565c0;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #0d47a1;
+    }
+    code, .math.inline {
+      background: #f1f3f4;
+      color: #c0392b;
+      font-size: 0.95em;
+      border-radius: 4px;
+      padding: 0.1em 0.3em;
+      font-family: 'Cairo', 'Consolas', 'monospace';
+    }
+    .math.inline {
+      font-family: 'Cairo', 'Consolas', 'monospace';
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #b2bec3;
+      margin: 2.5em 0 1.5em 0;
+    }
+    section.footnotes {
+      font-size: 0.95em;
+      color: #555;
+      background: #f5f6fa;
+      border-radius: 12px;
+      padding: 1.2em 1.5em;
+      margin: 2em 0 1em 0;
+      box-shadow: 0 2px 8px rgba(180,180,180,0.07);
+    }
+    .footnoteRef {
+      font-size: 0.9em;
+      vertical-align: super;
+      color: #3a6073;
+      text-decoration: none;
+      margin: 0 0.1em;
+    }
+    ol {
+      padding-right: 1.5em;
+      margin: 0.5em 0 0.5em 0;
+    }
+    li {
+      margin-bottom: 0.7em;
+    }
+    @media (max-width: 700px) {
+      body {
+        font-size: 18px;
+        padding: 0 0.5em;
+      }
+      header {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+      }
+      h1.title {
+        font-size: 1.3rem;
+      }
+      h1 {
+        font-size: 1.1rem;
+        padding-right: 0.4rem;
+      }
+      section.footnotes {
+        padding: 0.7em 0.7em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="title">ملاحظات سبيكل للكويكب الثنائي (22) <span class="nodecor">Kalliope</span> باستخدام <span class="nodecor">C2PU/PISCO</span></h1>
+  <p class="author"><span class="nodecor">E. Aristidi</span> وَ <span class="nodecor">B. Carry</span> وَ <span class="nodecor">K. Minker</span> وَ <span class="nodecor">J.-L. Prieur</span> وَ <span class="nodecor">M. Scardia</span> وَ <span class="nodecor">J.-P. Rivet</span> وَ <span class="nodecor">P. Bendjoya</span> وَ <span class="nodecor">L. Abe</span> وَ <span class="nodecor">R.-W. Argyle</span> وَ <span class="nodecor">L. Koechlin</span> وَ <span class="nodecor">J.F. Ling</span> وَ <span class="nodecor">L. Maccarini</span> وَ <span class="nodecor">L. Pansecchi</span> وَ <span class="nodecor">L. Piccotti</span> وَ <span class="nodecor">J. Sérot</span> وَ <span class="nodecor">D. Vernet</span></p>
+</header>
+<main style="max-width: 900px; margin: 0 auto; background: #fff; border-radius: 18px; box-shadow: 0 2px 16px rgba(60,60,60,0.07); padding: 2.5em 2.2em 2em 2.2em;">
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>نُقَدِّم قياسات سبيكل جديدة لموقع <span class="nodecor">Linus</span>، القمر الصناعي للكويكب (22) <span class="nodecor">Kalliope</span>، والتي تم الحصول عليها باستخدام تلسكوب <span class="nodecor">C2PU-Epsilon</span> بقطر 1 متر في <span class="nodecor">Plateau de Calern</span>، فرنسا. أُجريت الملاحظات في النطاق المرئي باستخدام كاميرا السبيكل <span class="nodecor">PISCO</span>. حصلنا على 122 قياسًا في فبراير - مارس 2022 وأبريل 2023، بمتوسط دقة يقترب من 10 ميلي ثانية قوسية للفصل الزاوي.</p>
+<h1 id="par:intro">مُقَدِّمَة</h1>
+<p>يُصنَّف الكويكب الرئيسي (22) كاليوبي ضمن النوع M، ويُعتقَد ارتباطه بالنيازك الحديدية (<span class="nodecor">1989aste.conf.1139T</span>, <span class="nodecor">2022A&amp;A...665A..26M</span>). وله قمر صغير يُسمى لينوس، وقد اكتُشف عام 2001 (<span class="nodecor">Merline2001</span>, <span class="nodecor">Margot2001</span>) باستخدام البصريات التكيفية على التلسكوبات الأرضية الكبيرة (مرصد CFHT بقطر 3.6 م وتلسكوب Keck بقطر 10 م). منذ ذلك الحين، جُمعت مواضع لينوس الفلكية من عدة دراسات استُخدمت فيها تقنيات مختلفة (التصوير بالتكيف البصري، الاحتجاب النجمي، التداخل النقطي)، ما أسفر عن رصد 188 موضعًا (<span class="nodecor">Ferrais2022</span>). وقد دُرس مدار لينوس جزئيًا باستخدام نماذج وطرق متعددة لتحليل الحركة (<span class="nodecor">2008Icar..196..578D</span>, <span class="nodecor">2008Icar..196...97M</span>, <span class="nodecor">Vachier2012</span>). أما أحدث تحليل، المستند إلى المجموعة الكاملة من الملاحظات، فتم نشره في (<span class="nodecor">Ferrais2022</span>)، حيث أُحسِن المدار باستخدام خوارزميتين مختلفتين (<span class="nodecor">Vachier2012</span> و<span class="nodecor">2021A&amp;A...653A..56B</span>). رغم أن شكل (22) كاليوبي مُنمذج جيدًا ويختلف عن الشكل الكروي بشكل ملحوظ، فإن المدار المحسوب يتوافق مع حركة كبلرية خالصة، وهو ما يوحي بإمكانية تمايز باطن الكويكب (<span class="nodecor">Ferrais2022</span>). علاوةً على ذلك، يتماشى المدار أيضًا مع نموذج متعدد الأقطاب لشكل كاليوبي، ما يشير إلى تكوين داخلي متجانس (<span class="nodecor">Ferrais2022</span>). ونظرًا إلى أن البنية الداخلية لـ(22) كاليوبي لا تزال غامضة، فإن رصد مدار لينوس يحمل أهمية كبيرة، إذ يمكن للديناميكيات طويلة الأجل للنظام أن تكشف عن اضطرابات دقيقة ناتجة عن البنية الداخلية للكويكب.</p>
+<p>في هذه الدراسة، نقدم ملاحظات نقطية جديدة لـ(22) كاليوبي باستخدام تلسكوب إبسيلون (قطر 104 سم) التابع لمركز التعليم الكوكبي والكوني (<span class="nodecor">C2PU</span>) في مرصد كاليرن (مرصد كوت دازور، فرنسا، رمز الاتحاد الفلكي الدولي: 010). يُجهز هذا التلسكوب بكاميرا التداخل النقطي والكورونوغراف (PISCO) التي توفر ملاحظات فلكية عالية الدقة في النطاق المرئي، كما وُصفت في (<span class="nodecor">Scardia2019</span>). خلال الثلاثين عامًا الماضية، حققت كاميرا PISCO آلاف القياسات الفلكية للنجوم الثنائية بدقة ميلي ثانية قوسية، مع أقل فصل زاوي قابل للكشف حوالي 130 mas والحد الأقصى للقدر الظاهري <span class="math inline">\(V\simeq 15\)</span> في ظروف رؤية جيدة (رؤية أقل من 1″).</p>
+<p>أُجريت الملاحظات بين ديسمبر 2021 وأبريل 2023، وتزامنت هذه الفترة مع أفضل ظروف رؤية لكاليوبي في كاليرن، إذ كان في معارضته وعند أكبر انحراف سماوي (<span class="math inline">\(\delta\simeq +34^\circ\)</span>) مطلع 2022. تشكل الزوج كاليوبي-لينوس هدفًا صعبًا للتصوير النقطي على تلسكوب بقطر 1.04 م بسبب قدره الظاهري (<span class="math inline">\(V>11\)</span>) والفارق في القدر مع قمره (<span class="math inline">\(\Delta V\simeq 4\)</span>). رغم ذلك، ظل القدر الظاهري بالقرب من <span class="math inline">\(V\simeq 11\)</span> خلال هذه الفترة، والفصل الزاوي المتوقع (100 mas &lt; ρ &lt; 700 mas) جعله متاحًا للمراقبة بكاميرا PISCO.</p>
+<p>أُجريت أربع جولات رصد في 30–31 ديسمبر 2021، 10–20 فبراير 2022، 21–25 مارس 2022، و5–19 أبريل 2023. أفضت الجولة الأولى إلى 19 قياسًا فلكيًا لموضع لينوس بالنسبة لكاليوبي نُشرت في (<span class="nodecor">Ferrais2022</span>)، وهي أولى الملاحظات الناجحة للزوج كاليوبي-لينوس باستخدام PISCO، ما يجعل <span class="nodecor">C2PU</span> أصغر تلسكوب يحقق قياسًا فلكيًا مباشرًا لقمر كويكب. نقدم هنا نتائج الجولات الثلاث المتبقية والقياسات الفلكية الجديدة للينوس.</p>
+<h1 id="الملاحظات-ومعالجة-البيانات">الملاحظات ومعالجة البيانات</h1>
+<p>أُجريت الملاحظات باستخدام جهاز PISCO المزود بمستشعر EMCCD مضاء من الخلف من ANDOR (iXon Ultra 897 في 2022، وiXon Ultra 888 في 2023). سجلنا مكعبات مكونة من <span class="math inline">\(\sim 15\,000\)</span> صورة بزمن تعرّض قصير (100 ms) لتجميد اضطرابات الجو. تم التصوير بدون مرشح عبر النطاق المرئي الكامل (λ₀=550 nm، Δλ=500 nm). اخترنا زمن التعرض هذا كحل وسط بين الإشارة المنخفضة عند الأطر القصيرة وفقدان التفاصيل عند التعريض الطويل. كانت العينة المكانية 54.8 ± 0.4 mas/بكسل في 2022، و44.3 ± 0.3 mas/بكسل في 2023.</p>
+<p>بلغ إجمالي عدد الملاحظات 151 للنظام، منها 122 ملاحظة ناجحة قدمت قياسات فلكية دقيقة لموضع لينوس. كان موقع كاليوبي في السماء مثالياً (كتلة الهواء أقل من 1.5 في معظم الأوقات)، لكننا واجهنا أحياناً رياحًا قويةً ورؤية سيئة (أكبر من 2″)، مما صعّب اكتشاف لينوس أو حذفه أحياناً. كما أثر القمر البدر في فبراير 2022 وبداية أبريل 2023 على خلفية السماء، مما قلل الحساسية في رصد الرفيق.</p>
+<p>يتم تقديم القياسات الفلكية الدقيقة للينوس بالنسبة لكاليوبي في فبراير–مارس 2022 وأبريل 2023 في الجدول الملحق. يبلغ الانحراف الرسمي المتوسط لتحديد موضع لينوس نحو 10 mas (≈0.2 بكسل)، مستمدًا من دقة تحديد مراكز قمم الترابط الذاتي (<span class="nodecor">Scardia2007</span>). لاحظ أن قرص كاليوبي لم يكن محلولًا وقت الملاحظات (قطره الزاوي ≤100 mas).</p>
+<p>نقدم بقايا القياسات مقارنةً بالتنبؤات من المدار الكبلري في (<span class="nodecor">Ferrais2022</span>). القيم المتوسطة الحسابية هي <span class="math inline">\(\langle X_{O-C}\rangle=-2.6\)</span> mas و<span class="math inline">\(\langle Y_{O-C}\rangle=-1.8\)</span> mas، حيث تمثل <span class="math inline">\(X\)</span> و<span class="math inline">\(Y\)</span> الإحداثيات الفارقية (“لينوس ناقص كاليوبي”) على طول خط الاستواء والميل على الترتيب، و<em>O</em> و<em>C</em> المواقع الملحوظة والمحسوبة. تُظهر هذه القيم توافقًا جيدًا جدًا مع حل المدار المنشور، حيث تتدنَّى درجة تفاوتها (σₓ=17.9 mas، σᵧ=13.8 mas) مقارنة بعدم اليقين في القياس. مع أن هذه الانحرافات تبدو أكبر من بقايا RMS لتلسكوبات 8 م (الجدول 2 في Ferrais2022)، إلا أن نتائجنا تبقى أصغر بكثير من الدقة الزاوية لتلسكوب 1 م في النطاق المرئي (130 mas) ومقياس البكسل (~45–50 mas/بكسل).</p>
+<p>تُظهر الإحداثيات المقاسة <span class="math inline">\(X\)</span> و<span class="math inline">\(Y\)</span> توافقًا جيدًا مع الشكل المداري المتوقع خلال جولات 2022 و2023. في عام 2022، بدا المدار تحت زاوية منخفضة من المستوى فلم يُحلَّ الزوج عندما اقترب لينوس من الحضيض (≈100 mas). لذا أُجريت معظم القياسات عند ذروة الفصل الزاوي. أما في 2023، فشوهد المدار تقريبًا من المنظر القطبي، فاستقر الفصل الزاوي وسهلت القياسات الفلكية. يتوافق المدار مع نقاط البيانات في اتجاه <span class="math inline">\(Y\)</span> (ميل المدار)، ويظل جيدًا أيضًا في اتجاه <span class="math inline">\(X\)</span> (خط الاستواء)، رغم بعض التباينات في مارس 2022، وهو ما يفسر الانحراف المعياري الأكبر في <span class="math inline">\(X\)</span>. قد تعود هذه إلى تلوث قمم الترابط الذاتي بالضوضاء أو إلى حاجة حل المدار لمزيد من التحسين، وهو ما يتطلب ملاحظات مستقبلية. ستتوفر ظروف ملائمة لرصد كاليوبي مجددًا في النصف الشمالي من الكرة الأرضية بارتفاع عالٍ في أعوام 2026 و2031، ثم تقريبًا كل خمس سنوات بعدها.</p>
+<h1 id="par:concl">الخُلاصَة</h1>
+<p>نُقدِّم ملاحظات فلكية جديدة للقمر لينوس، التابع لـ(22) كاليوبي، باستخدام التداخل الضوئي عبر تلسكوب C2PU بقطر <span class="nodecor">1.04</span> متر. تُكمِل هذه السلسلة المكونة من <span class="nodecor">122</span> قياسًا البيانات المنشورة (188 قياسًا؛ <span class="nodecor">Ferrais2022</span>)، وتضيف 16 شهرًا إلى التغطية الزمنية. النتائج متوافقة مع الحل الفلكي المنشور، حيث يبلغ متوسط البقايا أقل من <span class="nodecor">3mas</span>، مما يؤكد جدوى استخدام التداخل النقطي مع تلسكوب صغير لتتبع أقمار الكويكبات.</p>
+<p>تمثل مراقبة قمر صناعي لكويكب باستخدام تلسكوب بقطر <span class="nodecor">1m</span> تحديًا تقنيًا وعلميًا كبيرًا. ومع ذلك، أثبتنا أنها ممكنة، مما يشجع على متابعة هذا المنهج في المستقبل. الفائدة الرئيسية من تلسكوب صغير مثل C2PU هي القدرة على إجراء رصد مستمر وطويل الأمد، ما يتيح متابعة القياسات الفلكية للكويكبات الثنائية بانتظام. وفي حالة (22) كاليوبي، يُتيح ذلك فتح آفاق لدراسة ديناميات النظام على المدى البعيد وتقييد بنية الكويكب الداخلية بشكل أدق.</p>
+<h1 id="الشكر-والتقدير" class="unnumbered">الشكر والتقدير</h1>
+<p>يود المؤلفون أن يشكروا P. Tanga من مختبر لاغرانج (<em>مرصد كوت دازور</em>) على إتاحة استخدام كاميرا Andor iXon Ultra 897 عبر PISCO. كما نثمن مساهمات F. Vachier من IMCCE (<em>مرصد باريس</em>) في المناقشات حول الحل الفلكي، وD. Bonneau (<em>مرصد كوت دازور</em>) على اقتراحاته القيمة للمخطوطة. استُخدمت في هذا العمل أدوات المرصد الافتراضي <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> (<span class="nodecor">2009-EPSC-Berthier</span>) و<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> (<span class="nodecor">2023A&amp;A...671A.151B</span>) و<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>، بالإضافة إلى حزمة astropy (<span class="nodecor">astropy:2013</span>, <span class="nodecor">astropy:2018</span>, <span class="nodecor">astropy:2022</span>). شكرًا لجميع المطورين والمحافظين.</p>
+<h1 id="بيان-توافر-البيانات" class="unnumbered">بيان توافر البيانات</h1>
+<p>البيانات الأساسية لهذه الدراسة متاحة في الجدول <span class="nodecor">1</span> ضمن هذه المقالة.</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://ssp.imcce.fr/webservices/miriade/" class="uri">https://ssp.imcce.fr/webservices/miriade/</a><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="https://ssp.imcce.fr/webservices/ssodnet" class="uri">https://ssp.imcce.fr/webservices/ssodnet</a><a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="http://www.astropy.org" class="uri">http://www.astropy.org</a><a href="#fnref3">↩</a></p></li>
+</ol>
+</section>
+</main>
+</body>
+</html>
+```
+**ملاحظات:**
+- تم تحسين الخطوط والألوان والخلفيات والهوامش لجعل الورقة أكثر أناقة واحترافية.
+- تم الحفاظ على النص كاملاً دون أي تغيير في الكلمات أو الحذف.
+- تم التأكد من عدم وجود أخطاء HTML، وأن جميع العناصر مغلقة بشكل صحيح.
+- تم تحسين عرض المعادلات والروابط والهوامش السفلية.
+- تم جعل التصميم متجاوبًا مع الشاشات الصغيرة.
+- تم الحفاظ على اتجاه النص من اليمين لليسار (rtl) للغة العربية.

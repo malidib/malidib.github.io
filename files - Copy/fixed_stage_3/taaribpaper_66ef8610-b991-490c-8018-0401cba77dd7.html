@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Naoufal El Bekri, Lucas Drumetz, Franck Vermet">
+  <title>تَدَفُّقات التَطْبِيعِ المُعَدَّلة زَمَنِيًّا لنمذجة المعادلات التفاضلية العشوائية بدقة</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>body { direction: rtl; font-size: 22px; }</style>
+</head>
+<body>
+<header>
+<h1 class="title">تَدَفُّقات التَطْبِيعِ المُعَدَّلة زَمَنِيًّا لنمذجة المعادلات التفاضلية العشوائية بدقة</h1>
+<p class="author"><span class="nodecor">Naoufal El Bekri</span>, <span class="nodecor">Lucas Drumetz</span>, <span class="nodecor">Franck Vermet</span></p>
+</header>
+<p>latex</p>
+<h1 id="ملخص">مُلَخَّص</h1>
+<p>أَصْبَحَت النماذج التوليدية ذات أهمية متزايدة في مجال تعلم الآلة والتعلم العميق. من بين هذه النماذج، تتّسم تدفقات التطبيع بقدرتها على تقدير الاحتمال بدقة عبر تحويل توزيع أساسي بواسطة تحويلات قابلة للعكس. وقد توسّع إطار عمل تدفقات التطبيع ليشمل نسخًا مفهرسة زمنيًا، مما أدى إلى ظهور تدفقات التطبيع الديناميكية كنموذج قوي لمُعالجة السلاسل الزمنية والعمليات العشوائية والمعادلات التفاضلية العشوائية العصبية. في هذا العمل، نقدّم نوعًا جديدًا من تدفقات التطبيع الديناميكية، نُسميه تدفق التطبيع المتغيّر زمنيًا (<span class="nodecor">TCNF</span>)، المعتمد على تشويه زمني للحركة البراونية، ليكوِّن عائلة غاوسية عامة. يتيح هذا النهج نمذجة معادلات تفاضلية عشوائية لا يمكن التقاطها بواسطة النماذج السابقة، بما في ذلك المعادلة الكلاسيكية لعملية أورنشتاين–أولينبك، ويُفضي إلى تحسينات في القدرة على الاستدلال والتنبؤ.</p>
+<h1 id="مقدمة">مُقَدِّمَة</h1>
+<p>تُستخدم النظم الديناميكية في مجالات علمية متعددة مثل المالية وعلوم الأرض والفيزياء. وعادةً ما يُمثَّل سلوك هذه النظم بمعادلات تفاضلية عادية أو عشوائية (<span class="nodecor">oksendal2013stochastic</span>) لإدراج تأثير الضوضاء إلى جانب المكون الحتمي. تشمل تطبيقاتها نمذجة التقلبات في البيانات المالية وتقييم الشكوك في علوم الأرض. وقد أصبح نمذجة هذه الأنظمة عبر السلاسل الزمنية والتعلم الآلي شائعًا، خاصةً باستخدام النماذج التوليدية لأغراض التنبؤ والتصفية والاستيفاء مع مراعاة حالة الشك.</p>
+<p>أشهر النماذج التوليدية تشمل الشبكات العصبية التوليدية الخصمية (<span class="nodecor">conf/nips/GoodfellowPMXWOCB14</span>) والمشفرات التلقائية الاختلافية (<span class="nodecor">journals/corr/KingmaW13</span>)، وأيضًا تدفقات التطبيع (<span class="nodecor">jmlr/PapamakariosNRM21, journals/pami/KobyzevPB21</span>) ونماذج الانتشار (<span class="nodecor">conf/nips/SongE19</span>). على الرغم من قابليتها لتوليد السلاسل الزمنية، فإنها عادةً تعالج البيانات كمتجهات في <span class="math inline">\(\mathbb{R}^T\)</span> دون استغلال البنية السببية. وقد طُوِّرت تكييفات لهذه النماذج للسلاسل الزمنية في (<span class="nodecor">conf/nips/YoonJS19, kidger2021neural</span>), (<span class="nodecor">li2020scalable, zeng2023latent</span>), (<span class="nodecor">mehrasa2019point, conf/iclr/ShchurBG20</span>). في عملنا نركّز على تدفقات التطبيع نظرًا لقدرتها على توفير احتمالات صريحة، وهو أمر أساسي لتقدير الشكوك وكشف الشذوذ.</p>
+<p>تعتمد تدفقات التطبيع على صيغة تغيير المتغيرات المعروفة، التي تعطي دالة الكثافة الاحتمالية لتحويل ديفيومورفي قابل للعكس. بالاختيار الدقيق لهذه التحويلات، إذا كان التوزيع الأساسي غاوسيًا (أخذ عينات وسهل الحساب)، فيمكن التعامل بسهولة مع الكثافة المحوّلة وأخذ عينات منها بشرط حساب دالة الدلتا (اليعقوبي) بكفاءة. وفي حدها النظري حيث يتوالى عددٌ لا نهائي من هذه التحويلات، نحصل على تدفق التطبيع المستمر (<span class="nodecor">DBLP:conf/iclr/GrathwohlCBSD19</span>)، الذي يوصف بمعادلة تفاضلية عادية يمكن دمجها للحصول على الكثافة النهائية، مما يقلل من تكلفة حساب اليعقوبي إلى التكامل الزمني.</p>
+<p>لاحقًا، تم تعميم تدفقات التطبيع في الإطار الديناميكي باستبدال التوزيع الأساسي بعملية عشوائية قابلة للتعامل، أي حركة براونية (<span class="nodecor">deng2020modeling</span>)، ما جعل النماذج أكثر كفاءة في توليد السلاسل الزمنية. غير أن (<span class="nodecor">deng2021continuous</span>) أظهرت نظريًا عجز هذه النماذج عن تقليد بعض العمليات الأساسية مثل عملية أورنشتاين–أولينبك الكلاسيكية.</p>
+<p>بالتالي، نقترح هنا تعميمًا لهذا الإطار باستخدام عائلة واسعة من العمليات الغاوسية كعمليات أساسية بدل الحركة البراونية التقليدية. يتم ذلك عبر تغيير زمني للحركة البراونية المعيارية، فنحصل على نموذج تدفق التطبيع المتغيّر زمنيًا (<span class="nodecor">TCNF</span>) الذي يمتاز بمرونة رياضية تصف ديناميكيات ومعادلات تفاضلية عشوائية لا تستطيع النماذج السابقة التقاطها. نُثبت فعالية هذا النموذج عبر تجارب على عدة عمليات معروفة.</p>
+<p>تنقسم بقية الورقة كما يلي: في القسم [background] نراجع معادلات التفاضل العشوائية العصبية ونهج تدفق التطبيع الديناميكي وقيوده. في القسم [tcnf] نقدّم نموذج TCNF وخصائصه وخوارزمية التدريب. ثم نعرض في القسم [quantResults] النتائج الكمية ومقارنتها بغيرها، ونختم في القسم [conclusion].</p>
+<h1 id="الخَلْفِيَّةِ">الخَلْفِيَّة</h1>
+<h2 id="الأعمال-ذات-الصلة">الأعمال ذات الصلة</h2>
+<h2 id="معادلات-التفاضل-العشوائية-العصبية">معادلات التفاضل العشوائية العصبية</h2>
+<p>نعتبر فضاءً احتمالياً مفلترًا <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> وأفقًا زمنيًا <span class="math inline">\(T\)</span>. تُعرف عملية الانتشار <span class="math inline">\(X = \{X_t\}_{t\in [0, T]}\)</span> بمعادلة إيتو SDE:</p>
+<p><span class="math display">\[\label{eq:EDS_X}
+    dX_t = \mu(X_t, t)\,dt + \sigma(X_t,t)\,dW_t,\quad t\in [0, T]\]</span></p>
+<p>حيث <span class="math inline">\(W = \{W_t\}_{t\in [0, T]}\)</span> هي عملية واينر معيارية متكيفة بأبعاد <span class="math inline">\(m\)</span>. الدالتان <span class="math inline">\(\mu:\mathbb{R}^d\times[0,T]\to\mathbb{R}^d\)</span> و<span class="math inline">\(\sigma:\mathbb{R}^d\times[0,T]\to\mathbb{R}^{d\times m}\)</span> هما معاملا الانجراف والانتشار. عندما يُمثَّلان بالشبكات العصبية، تُعرف SDE باسم SDE عصبي (<span class="nodecor">tzen2019neural</span>, <span class="nodecor">liu2019neural</span>).</p>
+<p>طُرحت العديد من الطرق لتعلُّم SDEs عصبية باستخدام أطر توليدية مثل الـ VAEs (<span class="nodecor">li2020scalable</span>, <span class="nodecor">zeng2023latent</span>) وGANs (<span class="nodecor">kidger2021neural</span>). في هذا العمل نركّز على نموذج تدفق التطبيع.</p>
+<h2 id="تدفقات-التطبيع">تدفقات التطبيع</h2>
+<p>تدفق التطبيع (<span class="nodecor">jmlr/PapamakariosNRM21</span>, <span class="nodecor">journals/pami/KobyzevPB21</span>, <span class="nodecor">DBLP:conf/iclr/GrathwohlCBSD19</span>) هو تحويل للعينة العشوائية <span class="math inline">\(X\)</span> يتيح نمذجة الكثافة المعقدة <span class="math inline">\(p_X\)</span> بواسطة توزيع أساسي <span class="math inline">\(p_Z\)</span> ودالة قابلة للعكس <span class="math inline">\(f:\mathbb{R}^d\to\mathbb{R}^d\)</span>. باستخدام صيغة تغيير المتغير:</p>
+<p><span class="math display">\[\log p_X(x) = \log p_Z(z) - \log\bigl|\det J_f(z)\bigr|\]</span></p>
+<p>حيث <span class="math inline">\(J_f(z) = \bigl[\partial f_i/\partial z_j\bigr]_{i,j}\)</span> هي المصفوفة اليعقوبية.</p>
+<p>سوّقت الأعمال السابقة هذا الإطار للسلاسل الزمنية باستخدام تحويل مستمر مفهرس بالزمن <span class="math inline">\(F(\cdot,t)\)</span> وحركة براونية كعملية أساسية:</p>
+<p><span class="math display">\[X_t = F(W_t,t)\quad(\text{CTFP})\]</span></p>
+<p>واقترح آخرون دمج ديناميكيات أورنشتاين–أولينبك مع تدفق التطبيع (<span class="nodecor">deng2021continuous</span>)، فأظهرت تدفقات التطبيع الديناميكية كفاءةً عالية في التقاط سلوك العمليات العشوائية. مع ذلك، ثبُت نظريًا أن CTFP لا تستطيع نمذجة عملية أورنشتاين–أولينبك الكلاسيكية.</p>
+<p>في القسم التالي ننقّح هذا القيد مقدمين نموذجًا يغطيه ويحقق دقة أعلى.</p>
+<h1 id="tcnf">تدفق التطبيع المتغيّر بالزمن</h1>
+<h2 id="تدفق-التطبيع-المتغير-بالزمن">تعريف النموذج</h2>
+<p>نقترح نمذجة العملية العشوائية المرصودة <span class="math inline">\(X=\{X_t\}_{t\in[0,T]}\)</span> عبر دمج تدفق التطبيع ودالة تغيير الزمن لتحريك الحركة البراونية، اعتمادًا على البيانات المرصودة <span class="math inline">\(\{(x_{t_i},t_i)\}_{i=1}^n\)</span>. في هذا العمل نعرض الحالة أحادية البعد، مع إشارة إلى أن الإطار يتوسع بسهولة لأبعاد متعددة عبر تغيير زمني لكل بُعد. يُعرَّف نموذج تدفق التطبيع المتغيّر زمنيًا (<span class="nodecor">TCNF</span>) كما يلي:</p>
+<p><span class="math display">\[X_t = f_\theta\bigl(W_{\phi(t)},\,\phi(t)\bigr),\quad t\in[0,T],\]</span></p>
+<p>حيث <span class="math inline">\(f_\theta(\cdot,t):\mathbb{R}\to\mathbb{R}\)</span> دالة قابلة للتفاضل بمعاملات <span class="math inline">\(\theta\)</span>، و<span class="math inline">\(W_{\phi(t)}\)</span> حركة براونية بتغيير زمني تحدده الدالة <span class="math inline">\(\phi:\mathbb{R}^+\to\mathbb{R}^+\)</span>، وهي موجبة ومتزايدة وقابلة للقياس لضمان صحة العملية البراونية.</p>
+<p>باختيار التغيير الزمني المناسب، يمكن نمذجة معادلة أورنشتاين–أولينبك المحلولة بالعبارة:</p>
+<p><span class="math display">\[Y_t = Y_0e^{-at}+b(1-e^{-at})+\frac{\sigma e^{-at}}{\sqrt{2a}}\,W_{e^{2at}-1},\]</span></p>
+<p>مما يبيّن مرونة TCNF في التقاط العمليات الغاوسية المختلفة، بما في ذلك العمليات ذات التقلب الزمني أو العملية الهندسية. وعندما <span class="math inline">\(\phi(t)=t\)</span>، يستعيد النموذج إعداد CTFP التقليدي.</p>
+<h2 id="دالة-تغيير-الوقت">تعلم دالة تغيير الزمن</h2>
+<p>لضمان خروج موجب ومتزايد، نمثل دالة تغيير الزمن بشبكة عصبية محدبة (<span class="nodecor">M-MGN</span>) (<span class="nodecor">chaudhari2023learning</span>) مبنية على K وحدات:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde t_k &= W_k\,t + b_k,\\
+\mathrm{M\text{-}MGN}(t) &= a + V^\top V\,t \;+\;\sum_{k=1}^K s_k(\tilde t_k)\,\bigl(W_k^\top\,\sigma_k(\tilde t_k)\bigr),
+\end{aligned}
+\]</span></p>
+<p>حيث <span class="math inline">\(W_k,b_k\in\mathbb{R}^{l\times1}\)</span> أوزان وانحياز الطبقة k، و<span class="math inline">\(\sigma_k:\mathbb{R}^l\to\mathbb{R}^l\)</span> دالة تنشيط، و<span class="math inline">\(s_k\)</span> مشتقتها العكسية. و<span class="math inline">\(a\in\mathbb{R}\), \(V\in\mathbb{R}^{l\times1}\)</span> معاملات إضافية. نطبق بعد ذلك تحويلاً لضمان أن الإخراج موجب.</p>
+<h2 id="خوارزميه-التدريب">خوارزمية التدريب</h2>
+<p>نهدف إلى تدريب <span class="nodecor">TCNF</span> لتعظيم اللوغاريتم لدالة الاحتمال المشتركة للبيانات المرصودة <span class="math inline">\(\{(x_{t_i},t_i)\}\)</span>:</p>
+<p><span class="math display">\[\label{eq:LL}
+L = \log p_{X_{t_1},\dots,X_{t_n}}(x_{t_1},\dots,x_{t_n}).\]</span></p>
+<p>باستخدام صيغة تغيير المتغير واستقلالية الزيادات <span class="math inline">\(W_{\phi(t_i)}-W_{\phi(t_{i-1})}\)</span>، يُعطى اللوغاريتم كما يلي:</p>
+<p><span class="math display">\[
+\begin{aligned}
+L = \sum_{i=1}^n &\Bigl[\log p_{W_{\phi(t_i)}\mid W_{\phi(t_{i-1})}}\bigl(w_{\phi(t_i)}\bigr)\;-\;\log\Bigl|\det\tfrac{\partial f_\theta(w_{\phi(t_i)},\phi(t_i))}{\partial W_{\phi(t_i)}}\Bigr|\Bigr],
+\end{aligned}
+\]</span></p>
+<p>حيث <span class="math inline">\(w_{\phi(t_i)}=f_\theta^{-1}(x_{t_i};\phi(t_i))\)</span>، وتكون الزيادة الشرطية غاوسية بمتوسط <span class="math inline">\(W_{\phi(t_{i-1})}\)</span> وتباين <span class="math inline">\(\phi(t_i)-\phi(t_{i-1})\)</span>. يختلف هذا عن CTFP إذ يستخدم تبايناً \(t_i-t_{i-1}\).</p>
+<h1 id="quantResults">التجارب</h1>
+<h2 id="مجموعات-البيانات-التجريبية">مجموعات البيانات التجريبية</h2>
+<p>لتقييم النموذج المقترح، أجرينا اختبارات على ثلاث مجموعات بيانات أحادية البعد (بدون وحدات)، نُولت عبر عينات من ثلاث عمليات عشوائية. واعتمدنا هيكلية تشابه هيكلية نموذج النقل المستمر للوقت.</p>
+<p>المجموعة الأولى (<strong>Toy-SDE1</strong>) مشتقة من عملية أورنشتاين–أولينبك المجزأة:</p>
+<p><span class="math inline">\(dX_t = -\theta(X_t-\mu)\,dt + \sigma\,dW_t\)</span>, حيث تمثل المعاملات <span class="math inline">\(\mu,\sigma,\theta\)</span> الانجراف والتقلب وسرعة التقارب على التوالي. تختبر هذه المجموعة قدرة النموذج على التقاط ديناميكيات التغير الزمني.</p>
+<p>المجموعة الثانية (<strong>Toy-SDE2</strong>) مبنية على:</p>
+<p><span class="math inline">\(dX_t = -\theta(X_t-\mu)\,dt + \sigma\sqrt{t}\,dW_t\)</span>, وهو أورنشتاين–أولينبك بتقلب زمني، لاختبار القدرة على تمثل التعقيد الزمني المتزايد.</p>
+<p>المجموعة الثالثة (<strong>Toy-SDE3</strong>) هي حركة براونية هندسية:</p>
+<p><span class="math inline">\(dX_t = \mu X_t\,dt + \sigma X_t\,dW_t\)</span>, لتبيان أن النموذج يستعيد الحالة التقليدية دون تغيير زمن (<span class="math inline">\(\phi(t)=t\)</span>).</p>
+<p>من الناحية الكمية نقارن المتوسط <span class="math inline">\(m_{X_t}\)</span>، الانحراف المعياري <span class="math inline">\(\sigma_{X_t}\)</span>، المدى الربيعي IQR، والكثافة <span class="math inline">\(p_{X_t}\)</span>، مع الأخطاء المطلقة المتوسطة (MAE) مقابل القيم الحقيقية. استُخدمت 1000 مسارًا و500 نقطة زمنية و1000 نقطة مكانية ضمن الفترة <span class="math inline">\([0,1.5]\)</span>. تُظهر النتائج في الجدول [tab:quant_error_toy12] أن نموذج النقل المستمر للوقت لا يفقد العمومية عند عدم الحاجة إلى تغيير زمني، في حين يتفوّق نموذجنا في التقاط السلوك الزمني المعقد.</p>
+<h2 id="مجموعات-البيانات-الواقعية">مجموعات البيانات الواقعية</h2>
+<p>للتدقيق في التعقيد، درّبنا النموذج على مجموعتي بيانات واقعية: تنبؤات العملات المشفرة (<strong>Crypto</strong>) (<span class="nodecor">g-research-crypto-forecasting</span>) واستهلاك الطاقة الكهربائية (<strong>ECL</strong>) (<span class="nodecor">zhou2021informer</span>). ركّزنا على عوائد إيثريوم في 2020 لبيانات Crypto، واستهلاك العميل «200» بفواصل 15 دقيقة لبيانات ECL.</p>
+<p>نبلغ عن MAE لتقدير المتوسط والانحراف المعياري في Crypto، وMRE في ECL. وتظهر النتائج في الجدول [tab:real-world] مع مقارنة نموذجنا بـ CTFP.</p>
+<h1 id="conclusion">الخلاصة</h1>
+<p>عرضنا إطارًا معمّمًا لنمذجة المعادلات التفاضلية العشوائية عبر الشبكات العصبية الديناميكية مع تغيير الزمن. بتحويل الحركة البراونية عبر دالة زمنية، نولّد عمليات غاوسية متنوعة نربطها بالبيانات المرصودة عبر دالة ربط أحادية الاتجاه. يحافظ هذا التوسيع على مزايا تدفقات التطبيع—تقدير دقيق للكثافة وأخذ عينات فعّال—مع قدرة جديدة على نمذجة معادلات لم تكن قابلة للتعبير عنها سابقًا.</p>
+<p>أثبتت التجارب تفوّق نموذجنا وقدرته على التعميم. نعتقد أن تخصيص وظائف تغيير زمنية لكل بُعد سيمكّن التوسّع إلى أبعاد أعلى، وأن تحسين معايير هذه الدوال عبر ربطها بلحظات العملية أو بتباينها التربيعي سيزيد من الأداء المستقبلي.</p>
+</body>
+</html>

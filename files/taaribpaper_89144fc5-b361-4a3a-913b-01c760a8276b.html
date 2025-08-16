@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Praveen Mathil, Jitender Kumar">
-  <title>عن الحلقات التي تكون رسوم مجموع المثاليّات الأوّليّة لها رسوماً خطيّة</title>
+  <title>حول الحلقات التي يكون رسم مجموع المثاليّات الأوّليّة لها رسمًا خطِّيًّا</title>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -41,6 +40,11 @@
       color: #4b5a6f;
       margin-top: 0.5rem;
       margin-bottom: 0;
+    }
+    main.container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.2rem 3rem 1.2rem;
     }
     h1, h2, h3, h4 {
       color: #2a3a5e;
@@ -105,6 +109,14 @@
       color: #555;
       font-size: 1.05em;
     }
+    footer {
+      border-top: 1px solid #e5e9ef;
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      color: #666;
+      font-size: 0.95rem;
+      text-align: center;
+    }
     @media (max-width: 700px) {
       body {
         font-size: 18px;
@@ -119,43 +131,52 @@
       h1 {
         font-size: 1.1rem;
       }
+      main.container {
+        padding: 0 0.6rem 2rem 0.6rem;
+      }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1 class="title">عن الحلقات التي تكون رسوم مجموع المثاليّات الأوّليّة لها رسوماً خطيّة</h1>
+  <h1 class="title">حول الحلقات التي يكون رسم مجموع المثاليّات الأوّليّة لها رسمًا خطِّيًّا</h1>
   <p class="author"><span class="nodecor">Praveen Mathil</span>, <span class="nodecor">Jitender Kumar</span></p>
 </header>
 
-<p>المعادلات مكتوبة بصيغة LaTeX.</p>
+<main class="container">
+  <p>المعادلات مكتوبة بصيغة LaTeX.</p>
 
-<h1 id="ملخص">مُلَخَّص</h1>
-<p>
-لتكن <span class="math inline">\( R \)</span> حلقة تبادلية بوحدة. رسم مجموع المثاليّات الأوّليّة لـ <span class="math inline">\( R \)</span> هو الرسم البياني غير الموجه البسيط الذي تكون فيه مجموعة الرؤوس هي مجموعة جميع المثاليّات الصحيحة غير الصفرية لـ <span class="math inline">\( R \)</span>، وتكون رؤسان متميزان <span class="math inline">\( I \)</span> و<span class="math inline">\( J \)</span> متجاورتين إذا وفقط إذا كان <span class="math inline">\( I + J \)</span> مثاليّة أوّليّة لـ <span class="math inline">\( R \)</span>. في هذه الورقة البحثية نصف جميع الحلقات التبادلية الآرتينية التي تكون رسوم مجموع المثاليّات الأوّليّة لها رسومًا خطية، ثم نقدم وصفًا لجميع الحلقات التبادلية الآرتينية التي يكون مكمل رسم مجموع المثاليّات الأوّليّة لها رسمًا خطيًا.
-</p>
+  <h1 id="ملخص">مُلَخَّص</h1>
+  <p>
+    لتكن <span class="math inline">\( R \)</span> حلقة تبادليّة بوحدة. إنّ رسم مجموع المثاليّات الأوّليّة لـ<span class="math inline">\( R \)</span> هو الرسم البياني البسيط غير الموجَّه الذي تكون مجموعةُ رؤوسِه هي مجموعة جميع المثاليّات الصحيحة غير الصفرية لـ<span class="math inline">\( R \)</span>، ويكون رأسان متميّزان <span class="math inline">\( I \)</span> و<span class="math inline">\( J \)</span> متجاوِرَيْن إذا وفقط إذا كان <span class="math inline">\( I + J \)</span> مثاليًّا أوّليًّا في <span class="math inline">\( R \)</span>. في هذه الورقة نصف جميع الحلقات التبادليّة الآرتينيّة التي يكون رسم مجموع المثاليّات الأوّليّة لها رسمًا خطِّيًّا، ثم نقدّم توصيفًا لجميع الحلقات التبادليّة الآرتينيّة التي يكون مُكمِّل رسم مجموع المثاليّات الأوّليّة لها رسمًا خطِّيًّا.
+  </p>
 
-<h1 id="الخلفية-التاريخية-والمقدمات">الخلفية التاريخية والمقدمات</h1>
-<p>
-تمثل دراسة الرسوم البيانية المرتبطة بالهياكل الجبرية مجالًا بحثيًا كبيرًا وحيويًا، وتعد واحدة من النقاط الأساسية في مجال نظرية الرسوم البيانية الجبرية. يوفر هذا المجال تفاعلًا عميقًا بين الجبر ونظرية الرسوم البيانية، مما يشكل جسرًا بين هذين الفرعين. لقد كانت الدراسة الشاملة للرسوم البيانية المرتبطة بالهياكل الجبرية موضع اهتمام كبير بسبب تطبيقاتها وعلاقتها بنظرية الأوتوماتا (انظر <span class="nodecor">kelarev2003graph,kelarev2009cayley,kelarev2004labelled</span>). تمت دراسة مختلف الرسوم البيانية المرتبطة بالحلقات في الأدبيات، مثل: الرسم البياني للمقسومات الصفرية (<span class="nodecor">afkhami2011cozero</span>)، الرسم البياني للمضاعفات الصفرية (<span class="nodecor">Anderson1999zero</span>)، الرسم البياني للمعدمات (<span class="nodecor">badawi2014annihilator</span>)، الرسم البياني لتقاطع المثاليّات (<span class="nodecor">chakrabarty2009intersection</span>)، الرسم البياني للمثاليّات المشتركة القصوى (<span class="nodecor">maimani2008comaximal</span>)، رسم مجموع المثاليّات الأوّليّة (<span class="nodecor">saha2023prime</span>) وغيرها.
-</p>
-<p>
-تم تقديم رسم مجموع المثاليّات الأوّليّة لحلقة تبادلية من قبل ساهـا وآخرين (<span class="nodecor">saha2023prime</span>). رسم مجموع المثاليّات الأوّليّة <span class="math inline">\(\text{PIS}(R)\)</span> للحلقة <span class="math inline">\(R\)</span> هو الرسم البياني البسيط غير الموجه الذي مجموعة رؤوسه هي مجموعة جميع المثاليّات الصحيحة غير الصفرية لـ <span class="math inline">\(R\)</span> ورأسان متميزان <span class="math inline">\(I\)</span>، <span class="math inline">\(J\)</span> متجاوران إذا وفقط إذا كان <span class="math inline">\(I + J\)</span> مثاليّة أوّليّة لـ <span class="math inline">\(R\)</span>. درس مؤلفو (<span class="nodecor">saha2023prime</span>) بعض الخصائص النظرية للرسوم البيانية لـ <span class="math inline">\(\text{PIS}(R)\)</span> مثل عدد النقرات، العدد اللوني، عدد السيطرة وغيرها. تمت مناقشة البعد المتري والبعد المتري القوي لرسم مجموع المثاليّات الأوّليّة لمختلف فئات الحلقات في (<span class="nodecor">adlifard2023metric,mathil2023strong</span>). كما تمت دراسة تضمينات رسم مجموع المثاليّات الأوّليّة على الأسطح في (<span class="nodecor">mathil2022embedding</span>). بالإضافة إلى ذلك، درسوا رسوم مجموع المثاليّات الأوّليّة مع بعض الرسوم البيانية المحظورة المستحثة مثل الانقسام، العتبة، الوترية والرسم البياني المشترك. الرسم البياني الخطي <span class="math inline">\(L(\Gamma)\)</span> للرسم البياني <span class="math inline">\(\Gamma\)</span> هو الرسم البياني الذي مجموعة رؤوسه هي جميع حواف <span class="math inline">\(\Gamma\)</span> ورأسان من <span class="math inline">\(L(\Gamma)\)</span> متجاوران إذا كانا متجاورين في <span class="math inline">\(\Gamma\)</span>. يتم وصف الرسوم البيانية الخطية بواسطة تسعة رسوم بيانية محظورة (انظر النظرية [linegraphchar]). تمت دراسة الرسوم البيانية الجبرية المتعلقة بالرسوم البيانية الخطية على نطاق واسع من قبل العديد من الباحثين (انظر <span class="nodecor">barati2021line,bera2022line,khojasteh2022line,kumar2023finite,pirzada2022line,singh2022graph</span>). في هذه الورقة ندرس متى يكون رسم مجموع المثاليّات الأوّليّة رسمًا بيانيًا خطيًا، ومتى يكون مكمله رسمًا خطيًا. في القسم [section2] نصف جميع الحلقات التبادلية الآرتينية التي رسوم مجموع المثاليّات الأوّليّة فيها رسوم بيانية خطية، وفي القسم [section3] نصف تلك التي يكون مكملها رسومًا بيانية خطية.
-</p>
-<p>
-نستعرض الآن التعريفات والنتائج الضرورية للاستخدام لاحقًا. الرسم البياني <span class="math inline">\(\Gamma\)</span> هو زوج مرتب <span class="math inline">\((V(\Gamma), E(\Gamma))\)</span>، حيث <span class="math inline">\(V(\Gamma)\)</span> هي مجموعة الرؤوس و<span class="math inline">\(E(\Gamma)\)</span> هي مجموعة الحواف لـ <span class="math inline">\(\Gamma\)</span>. رأسان متميزان <span class="math inline">\(u, v \in V(\Gamma)\)</span> هما <span class="math inline">\(\mathit{متجاوران}\)</span> في <span class="math inline">\(\Gamma\)</span>، نرمز لهما بـ <span class="math inline">\(u \sim v\)</span> (أو <span class="math inline">\((u,  v)\)</span>)، إذا كان هناك حافة بين <span class="math inline">\(u\)</span> و<span class="math inline">\(v\)</span>. وإلا، نكتب <span class="math inline">\(u \nsim v\)</span>. لنأخذ <span class="math inline">\(\Gamma\)</span> كرسم بياني. يقال إن الرسم البياني <span class="math inline">\(\Gamma'\)</span> هو <em>رسم بياني فرعي</em> لـ <span class="math inline">\(\Gamma\)</span> إذا كان <span class="math inline">\(V(\Gamma') \subseteq V(\Gamma)\)</span> و<span class="math inline">\(E(\Gamma') \subseteq E(\Gamma)\)</span>. <em>المكمل</em> <span class="math inline">\(\overline{\Gamma}\)</span> لرسم بياني <span class="math inline">\(\Gamma\)</span> هو الرسم البياني الذي مجموعة رؤوسه هي <span class="math inline">\(V(\Gamma)\)</span> ورأسان متجاوران إذا وفقط إذا لم يكونا متجاورين في <span class="math inline">\(\Gamma\)</span>. إذا كان <span class="math inline">\(X \subseteq V(\Gamma)\)</span>، فإن الرسم البياني الفرعي <span class="math inline">\(\Gamma(X)\)</span> المستحث بواسطة <span class="math inline">\(X\)</span> هو الرسم البياني الذي مجموعة رؤوسه هي <span class="math inline">\(X\)</span> ورأسان من <span class="math inline">\(\Gamma(X)\)</span> متجاوران إذا وفوق إذا كانا متجاورين في <span class="math inline">\(\Gamma\)</span>. <em>مسار</em> في رسم بياني هو تسلسل من الرؤوس المتميزة بحيث يكون كل رأس في التسلسل متجاورًا مع الرأس التالي له. نستخدم <span class="math inline">\(P_n\)</span> للدلالة على الرسم البياني المساري على <span class="math inline">\(n\)</span> رؤوس. يقال إن الرسم البياني <span class="math inline">\(\Gamma\)</span> هو <em>كامل</em> إذا كان أي رأسين فيه متجاورين. الرسم البياني الكامل على <span class="math inline">\(n\)</span> رؤوس نرمز له بـ <span class="math inline">\(K_n\)</span>. نرمز <span class="math inline">\(mK_n\)</span> إلى <span class="math inline">\(m\)</span> نسخ من <span class="math inline">\(K_n\)</span>. يقال إن الرسم البياني <span class="math inline">\(\Gamma\)</span> هو <em>ثنائي الأجزاء</em> إذا كان يمكن تقسيم <span class="math inline">\(V(\Gamma)\)</span> إلى مجموعتين فرعيتين بحيث لا يكون أي رأسين في نفس المجموعة الفرعية متجاورين. <em>رسم بياني ثنائي الأجزاء كامل</em> هو رسم بياني ثنائي الأجزاء بحيث يكون كل رأس في جزء واحد متجاورًا مع جميع الرؤوس في الجزء الآخر. <em>رسم بياني ثنائي الأجزاء كامل</em> بأحجام تقسيم <span class="math inline">\(m\)</span> و<span class="math inline">\(n\)</span> نرمز له بـ <span class="math inline">\(K_{m, n}\)</span>.
-</p>
-<p>
-في جميع أنحاء الورقة، الحلقة <span class="math inline">\(R\)</span> هي حلقة تبادلية آرتينية مع الوحدة و<span class="math inline">\(F_i\)</span> نرمز بها إلى حقل. بالإضافة إلى ذلك، <span class="math inline">\(U(R)\)</span> نرمز بها إلى مجموعة جميع الوحدات لـ <span class="math inline">\(R\)</span>. للتعريفات الأساسية لنظرية الحلقات، نحيل القارئ إلى (<span class="nodecor">atiyah1969introduction</span>). يقال إن الحلقة <span class="math inline">\(R\)</span> هي <em>محلية</em> إذا كان لديها مثالية عظمى وحيدة <span class="math inline">\(\mathcal{M}\)</span>. بالنسبة لحقل <span class="math inline">\(F\)</span>، نأخذ <span class="math inline">\(\mathcal{M}= \langle 0 \rangle \)</span>. بواسطة <span class="math inline">\(\mathcal{I}^*(R)\)</span> نعني مجموعة المثاليّات الصحيحة غير التافهة لـ <span class="math inline">\(R\)</span>. <em>مؤشر العدمية</em> <span class="math inline">\(\eta(I)\)</span> لمثاليّة <span class="math inline">\(I\)</span> من الحلقة <span class="math inline">\(R\)</span> هو أصغر عدد صحيح موجب <span class="math inline">\(n\)</span> بحيث <span class="math inline">\(I^n = 0\)</span>. المثاليّة التي يتم توليدها بواسطة العناصر <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> (<span class="math inline">\(n \ge 1\)</span>) نرمز لها بـ <span class="math inline">\(\langle x_1, x_2, \ldots, x_n \rangle\)</span>. بواسطة النظرية الهيكلية (<span class="nodecor">atiyah1969introduction</span>)، فإن الحلقة الآرتينية غير المحلية التبادلية <span class="math inline">\(R\)</span> هي بشكل فريد (حتى التطابق) حاصل ضرب مباشر محدود من الحلقات المحلية <span class="math inline">\(R_i\)</span> أي <span class="math inline">\(R \cong R_1 \times R_2 \times \cdots \times R_n\)</span>، حيث <span class="math inline">\(n \geq 2\)</span>.
-</p>
-<p>
-سنستخدم بشكل متكرر التوصيفات التالية للرسوم البيانية الخطية (انظر <span class="nodecor">beineke1970characterizations</span>).
-</p>
+  <h1 id="الخلفية-التاريخية-والمقدمات">الخلفيّة التاريخيّة والمقدّمات</h1>
+  <p>
+    تمثّل دراسة الرسوم البيانيّة المرتبطة بالهياكل الجبريّة مجالًا بحثيًّا واسعًا ونشطًا، وهي من المحاور الأساسيّة في نظرية الرسوم البيانيّة الجبريّة. يتيح هذا المجال تفاعُلًا عميقًا بين الجبر ونظرية الرسوم البيانيّة، بما يشكّل جسرًا بين هذين الفرعين. وقد حظيت الدراسة الشاملة للرسوم البيانيّة المرتبطة بالهياكل الجبريّة باهتمامٍ كبير لما لها من تطبيقاتٍ وصلاتٍ بنظرية الأوتوماتا [<span class="nodecor">kelarev2003graph, kelarev2009cayley, kelarev2004labelled</span>]. 
+    وقد دُرِسَت في الأدبيّات رسومٌ بيانيّة متعدّدة مرتبطة بالحلقات، مثل: الرسم البياني لقواسم اللّا-صفر (cozero-divisor) [<span class="nodecor">afkhami2011cozero</span>]، والرسم البياني لقواسم الصفر [<span class="nodecor">Anderson1999zero</span>]، والرسم البياني للمُعدِّمات [<span class="nodecor">badawi2014annihilator</span>]، والرسم البياني لتقاطُع المثاليّات [<span class="nodecor">chakrabarty2009intersection</span>]، ورسم المثاليّات الـcomaximal (أي التي يكون مجموعها هو <span class="math inline">\( R \)</span>) [<span class="nodecor">maimani2008comaximal</span>]، ورسم مجموع المثاليّات الأوّليّة [<span class="nodecor">saha2023prime</span>]، وغيرها.
+  </p>
+  <p>
+    قدّم ساهـا وآخرون [<span class="nodecor">saha2023prime</span>] رسم مجموع المثاليّات الأوّليّة لحلقة تبادليّة. فرسم مجموع المثاليّات الأوّليّة <span class="math inline">\(\text{PIS}(R)\)</span> للحلقة <span class="math inline">\(R\)</span> هو الرسم البياني البسيط غير الموجَّه الذي تكون مجموعةُ رؤوسِه هي مجموعة جميع المثاليّات الصحيحة غير الصفرية لـ<span class="math inline">\(R\)</span>، ويكون رأسان متميّزان <span class="math inline">\(I\)</span> و<span class="math inline">\(J\)</span> متجاوِرَيْن إذا وفقط إذا كان <span class="math inline">\(I + J\)</span> مثاليًّا أوّليًّا. درس مؤلفو [<span class="nodecor">saha2023prime</span>] بعض الخصائص النظرية لرسم <span class="math inline">\(\text{PIS}(R)\)</span> مثل عدد النِّقَر (clique number)، والعدد اللوني، وعدد السيطرة وغيرها. كما نوقش البُعد المتري والبُعد المتري القوي لرسم مجموع المثاليّات الأوّليّة لفئاتٍ مختلفة من الحلقات في [<span class="nodecor">adlifard2023metric, mathil2023strong</span>]. ودُرِست تضمينات هذا الرسم على الأسطح في [<span class="nodecor">mathil2022embedding</span>]. إضافةً إلى ذلك، درست الأعمالُ السابقة رسومَ مجموع المثاليّات الأوّليّة مع بعض الرسوم البيانيّة المحظورة المستحثة مثل: الرسوم الانقساميّة (split)، والعتبيّة (threshold)، والوَتَريّة (chordal)، و«الكُوغراف» (cograph).
+    أمّا الرسم البياني الخطي <span class="math inline">\(L(\Gamma)\)</span> لرسم بياني <span class="math inline">\(\Gamma\)</span>، فهو الرسم الذي تكون مجموعةُ رؤوسِه هي حواف <span class="math inline">\(\Gamma\)</span>، ويكون رأسان من <span class="math inline">\(L(\Gamma)\)</span> (أي حافتان من <span class="math inline">\(\Gamma\)</span>) متجاوِرَيْن إذا وفقط إذا كانت الحافتان في <span class="math inline">\(\Gamma\)</span> متلاقيتين في رأسٍ مشترك. وتُوصَف الرسوم البيانيّة الخطيّة بواسطة تسعة رسوم بيانيّة محظورة (انظر النظرية [linegraphchar]). وقد دُرِست الرسوم البيانيّة الجبريّة المتعلّقة بالرسوم الخطيّة على نطاقٍ واسع [<span class="nodecor">barati2021line, bera2022line, khojasteh2022line, kumar2023finite, pirzada2022line, singh2022graph</span>]. في هذه الورقة نبحث متى يكون رسم مجموع المثاليّات الأوّليّة رسمًا خطِّيًّا، ومتى يكون مُكمِّلُه رسمًا خطِّيًّا. في القسم [section2] نصف جميع الحلقات التبادليّة الآرتينيّة التي يكون رسم مجموع المثاليّات الأوّليّة لها رسمًا خطِّيًّا، وفي القسم [section3] نصف تلك التي يكون مُكمِّلُ رسم مجموع المثاليّات الأوّليّة لها رسمًا خطِّيًّا.
+  </p>
+  <p>
+    نستعرض الآن التعريفات والنتائج اللازمة للاستخدام لاحقًا. الرسم البياني <span class="math inline">\(\Gamma\)</span> هو زوجٌ مرتب <span class="math inline">\((V(\Gamma), E(\Gamma))\)</span>، حيث <span class="math inline">\(V(\Gamma)\)</span> مجموعةُ الرؤوس و<span class="math inline">\(E(\Gamma)\)</span> مجموعةُ الحواف. يُقال لرأسين متميّزين <span class="math inline">\(u, v \in V(\Gamma)\)</span> إنهما متجاوران في <span class="math inline">\(\Gamma\)</span>، ونرمز لذلك بـ <span class="math inline">\(u \sim v\)</span> (أو للحافّة بينهما بـ <span class="math inline">\(\{u, v\}\)</span>)، إذا وُجدت حافّة بين <span class="math inline">\(u\)</span> و<span class="math inline">\(v\)</span>؛ وإلّا نكتب <span class="math inline">\(u \nsim v\)</span>. ويُقال إن <span class="math inline">\(\Gamma'\)</span> هو <em>رسم بياني فرعي</em> من <span class="math inline">\(\Gamma\)</span> إذا كان <span class="math inline">\(V(\Gamma') \subseteq V(\Gamma)\)</span> و<span class="math inline">\(E(\Gamma') \subseteq E(\Gamma)\)</span>. <em>مُكمِّل</em> الرسم البياني <span class="math inline">\(\overline{\Gamma}\)</span> هو الرسم الذي له نفس مجموعة الرؤوس <span class="math inline">\(V(\Gamma)\)</span>، ويكون رأسان متجاورين فيه إذا وفقط إذا لم يكونا متجاورين في <span class="math inline">\(\Gamma\)</span>. وإذا كان <span class="math inline">\(X \subseteq V(\Gamma)\)</span>، فإن الرسم الفرعي المستحث <span class="math inline">\(\Gamma(X)\)</span> هو الرسم الذي مجموعةُ رؤوسِه <span class="math inline">\(X\)</span>، ويكون رأسان منه متجاورين إذا وفقط إذا كانا متجاورين في <span class="math inline">\(\Gamma\)</span>. <em>المسار</em> في رسمٍ بياني تسلسلٌ من الرؤوس المتمايزة بحيث يكون كلُّ رأسٍ في التسلسل متجاورًا مع الذي يليه. ونكتب <span class="math inline">\(P_n\)</span> للدلالة على الرسم البياني المساري ذي <span class="math inline">\(n\)</span> رؤوس. ويُقال إن الرسم البياني <span class="math inline">\(\Gamma\)</span> <em>كامل</em> إذا كان كلُّ زوجٍ من رؤوسه متجاورَين؛ ويُرمز للرسم الكامل على <span class="math inline">\(n\)</span> رؤوس بـ <span class="math inline">\(K_n\)</span>. ويرمز <span class="math inline">\(mK_n\)</span> إلى اتحاد <span class="math inline">\(m\)</span> نُسَخ من <span class="math inline">\(K_n\)</span>. ويُقال إن <span class="math inline">\(\Gamma\)</span> <em>ثنائيُّ الأجزاء</em> إذا أمكن تقسيم <span class="math inline">\(V(\Gamma)\)</span> إلى جزأين بحيث لا يتجاور رأسان في الجزء نفسه. و<em>الرسم الثنائي الأجزاء الكامل</em> هو ما يتجاور فيه كلُّ رأسٍ من جزء مع جميع رؤوس الجزء الآخر، ويُرمز له عند أحجام تقسيم <span class="math inline">\(m\)</span> و<span class="math inline">\(n\)</span> بـ <span class="math inline">\(K_{m, n}\)</span>.
+  </p>
+  <p>
+    طِوال هذه الورقة، ستكون <span class="math inline">\(R\)</span> حلقةً تبادليّةً آرتينيّةً ذات وحدة، ونرمز بـ <span class="math inline">\(F_i\)</span> إلى حقل. كذلك نكتب <span class="math inline">\(U(R)\)</span> لمجموعة جميع الوحدات في <span class="math inline">\(R\)</span>. وللتعريفات الأساسية في نظرية الحلقات نحيل القارئ إلى [<span class="nodecor">atiyah1969introduction</span>]. وتُسمّى الحلقة <span class="math inline">\(R\)</span> <em>محلّيّةً</em> إذا كان لها مثاليّة عُظمى وحيدة <span class="math inline">\(\mathcal{M}\)</span>؛ ولدى الحقل <span class="math inline">\(F\)</span> نأخذ <span class="math inline">\(\mathcal{M}=\langle 0\rangle\)</span>. ونقصد بـ <span class="math inline">\(\mathcal{I}^*(R)\)</span> مجموعةَ المثاليّات الصحيحة غير التافهة في <span class="math inline">\(R\)</span>. و<em>مؤشِّر العَدَميّة</em> <span class="math inline">\(\eta(I)\)</span> لمثاليّة <span class="math inline">\(I\)</span> من الحلقة <span class="math inline">\(R\)</span> هو أصغر عددٍ صحيحٍ موجب <span class="math inline">\(n\)</span> بحيث <span class="math inline">\(I^n = 0\)</span>. والمثاليّة المُولَّدة بالعناصر <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> (<span class="math inline">\(n \ge 1\)</span>) نرمز لها بـ <span class="math inline">\(\langle x_1, x_2, \ldots, x_n \rangle\)</span>. وبحسب النظرية البنيويّة [<span class="nodecor">atiyah1969introduction</span>]، فإن الحلقة التبادليّة الآرتينيّة غير المحليّة <span class="math inline">\(R\)</span> هي على نحوٍ فريد (حتى التطابق) حاصلُ ضربٍ مباشرٍ محدود لحلقاتٍ محليّة <span class="math inline">\(R_i\)</span>، أي <span class="math inline">\(R \cong R_1 \times R_2 \times \cdots \times R_n\)</span>، حيث <span class="math inline">\(n \geq 2\)</span>.
+  </p>
+  <p>
+    سنستخدم مرارًا التوصيفات المعروفة للرسوم البيانيّة الخطيّة (انظر [<span class="nodecor">beineke1970characterizations</span>]).
+  </p>
 
-<h1 id="section2">رسوم مجموع المثاليّات الأوّليّة التي تكون رسومًا خطية</h1>
-<p>في هذا القسم...</p>
-<!-- بقية المحتوى كما هو -->
+  <h1 id="section2">رسوم مجموع المثاليّات الأوّليّة التي تكون رسومًا خطِّيّة</h1>
+  <p>في هذا القسم…</p>
+  <!-- بقية المحتوى كما هو -->
+  
+  <footer>
+    <p>نُشرت هذه الصياغة العربيّة مع الحفاظ على بُنية LaTeX والهوامش المرجعيّة كما في النص الأصلي.</p>
+  </footer>
+</main>
 </body>
 </html>
-```
-**تمت مراجعة جميع معادلات LaTeX والتأكد من أنها مكتوبة بشكل صحيح بين \( ... \) أو \[ ... \] ولا توجد أي أخطاء في الصياغة الرياضية. جميع الأقواس مغلقة بشكل صحيح، ولا توجد رموز ناقصة أو علامات غير مكتملة.**

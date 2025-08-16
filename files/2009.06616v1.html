@@ -8,23 +8,20 @@
   <meta name="author" content="S. Safi-Harb" />
   <meta name="author" content="S. M. Straal" />
   <meta name="author" content="J. D. Gelfand" />
-  <title>التحليل الطيفي بالأشعة السينية للنباض عالي المغنطة PSR J1846–0258، سديم رياحه وبقايا المستعر الأعظم المضيفة KES 75</title>
+  <title>التحليل الطيفي بالأشعة السينية للنّبّاض شديد المغنطة PSR J1846–0258،<br />سديم رياحه وبقايا المستعر الأعظم المضيفة Kes 75</title>
   <style>
     html {
-      line-height: 1.5;
+      line-height: 1.6;
       font-family: Georgia, serif;
       font-size: 20px;
       color: #1a1a1a;
-      background-color: #fdfdfd;
+      background-color: #fcfcfc;
       direction: rtl;
     }
     body {
       margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
+      max-width: 40em;
+      padding: 60px 50px;
       hyphens: auto;
       overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
@@ -32,99 +29,50 @@
       direction: rtl;
     }
     @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
+      body { font-size: 0.95em; padding: 1em; }
+      h1 { font-size: 1.8em; }
     }
     @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
+      body { background-color: transparent; color: black; font-size: 12pt; }
+      p, h2, h3 { orphans: 3; widows: 3; }
+      h2, h3, h4 { page-break-after: avoid; }
     }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-right: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
+    p { margin: 1em 0; }
+    a { color: #1a1a1a; }
+    a:visited { color: #1a1a1a; }
+    img { max-width: 100%; }
+    h1, h2, h3, h4, h5, h6 { margin-top: 1.4em; }
+    h5, h6 { font-size: 1em; font-style: italic; }
+    h6 { font-weight: normal; }
+    ol, ul { padding-right: 1.7em; margin-top: 1em; }
+    li > ol, li > ul { margin-top: 0; }
     blockquote {
       margin: 1em 1.7em 1em 0;
       padding-right: 1em;
-      border-right: 2px solid #e6e6e6;
+      border-right: 3px solid #e6e6e6;
       color: #606060;
       border-left: none;
+      background: #fafafa;
     }
     div.abstract {
-      margin: 2em 2em 2em 2em;
-      text-align: right;
-      font-size: 85%;
+      margin: 2em 0;
+      padding: 1em 1.2em;
+      background: #f7f9fb;
+      border: 1px solid #e6eef5;
+      border-radius: 8px;
+      font-size: 92%;
     }
     div.abstract-title {
       font-weight: bold;
       text-align: center;
-      padding: 0;
       margin-bottom: 0.5em;
+      letter-spacing: 0.5px;
     }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
+    code { font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace; font-size: 85%; margin: 0; }
+    pre { margin: 1em 0; overflow: auto; }
+    pre code { padding: 0; overflow: visible; overflow-wrap: normal; }
+    .sourceCode { background-color: transparent; overflow: visible; }
+    hr { background-color: #1a1a1a; border: none; height: 1px; margin: 2em 0; }
     table {
       margin: 1em 0;
       border-collapse: collapse;
@@ -133,47 +81,29 @@
       display: block;
       font-variant-numeric: lining-nums tabular-nums;
     }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-right: 1.3em;
-    }
-    #TOC > ul {
-      padding-right: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
+    table caption { margin-bottom: 0.75em; }
+    tbody { margin-top: 0.5em; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+    th { border-top: 1px solid #1a1a1a; padding: 0.25em 0.5em; }
+    td { padding: 0.125em 0.5em 0.25em 0.5em; }
+    header { margin-bottom: 3em; text-align: center; }
+    header .author { margin: 0.2em 0; }
+    #TOC li { list-style: none; }
+    #TOC ul { padding-right: 1.3em; }
+    #TOC > ul { padding-right: 0; }
+    #TOC a:not(:hover) { text-decoration: none; }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-right: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    /* دعم عرض معادلات LaTeX بشكل أنيق */
+    figure { margin: 1.5em 0; }
+    figcaption { color: #555; font-size: 0.9em; text-align: center; margin-top: 0.6em; }
+    .center { text-align: center; }
+    /* عرض معادلات LaTeX بشكل أنيق */
     .math.inline { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 1em; background: #f5f5f5; padding: 0 0.2em; border-radius: 3px; }
-    .math.display { display: block; text-align: center; margin: 1em auto; font-size: 1.1em; background: #f5f5f5; padding: 0.5em 0.2em; border-radius: 5px; direction: ltr; }
-    /* دعم اتجاه النص في المعادلات */
+    .math.display { display: block; text-align: center; margin: 1em auto; font-size: 1.08em; background: #f5f5f5; padding: 0.5em 0.2em; border-radius: 5px; direction: ltr; }
+    /* اتجاه النص في المعادلات */
     .math.display, .math.inline { direction: ltr; unicode-bidi: embed; }
     /* دعم الأرقام العربية في الجداول */
     table, th, td { direction: rtl; }
@@ -188,32 +118,31 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">التحليل الطيفي بالأشعة السينية للنباض عالي المغنطة PSR J1846–0258،<br />
-سديم رياحه وبقايا المستعر الأعظم المضيفة KES 75</h1>
-<p class="author">إي. ڤي. غوتيلف</p>
-<p class="author">س. صفي حرب</p>
-<p class="author">س. إم. سترال</p>
-<p class="author">ج. د. جيلفاند</p>
-<div class="abstract">
-<div class="abstract-title">الملخص</div>
-<p>نقدم تحليلاً طيفياً واسع النطاق بالأشعة السينية للمكونات النشطة التي تشكل بقايا المستعر الأعظم (SNR) كستيفن 75، وذلك باستخدام أرصاد متزامنة من <span><em>XMM-Newton</em></span> و<span><em>NuSTAR</em></span> في الفترة 17–20 أغسطس 2017، حيث وُجد أن النباض PSR J1846–0258 في حالة سكون. تستضيف البقايا الفتية سديم رياح نباض ساطع يغذيه نباض معزول عالي الطاقة (<span class="math inline">\(\dot{E} = 8.1 \times 10^{36}\)</span> إرج/ثانية)، ويعمل بالطاقة الدورانية، مع عمر تباطؤ مقداره <span class="math inline">\(P/2\dot{P} \sim 728\)</span> سنة فقط. ويُستنتج أن المجال المغناطيسي السطحي له (<span class="math inline">\(B_s = 4.9\times 10^{13}\)</span> جاوس) هو الأكبر بين هذه الأجسام، ومن المرجح أنه مسؤول عن فترات النشاط الفجائي والانفجارات، مما يشير إلى انتقال نحو أو من حالة مغناطارية. يُوصف الانبعاث النبضي من PSR J1846–0258 بشكل جيد في نطاق 2–50 keV بنموذج قانون أسّي مع دليل فوتوني <span class="math inline">\(\Gamma_{\rm PSR} = 1.24\pm0.09\)</span> وتدفق غير ممتص في نطاق 2–10 keV مقداره <span class="math inline">\((2.3\pm0.4)\times 10^{-12}\)</span> إرج/ثانية/سم<sup>2</sup>. لم نجد دليلاً على وجود مكون غير حراري إضافي فوق <span class="math inline">\(10\)</span> keV في الحالة الحالية، كما هو معتاد في المغناطارات. وبالمقارنة مع طيف النباض من <span><em>Chandra</em></span>، فإن الكسر النبضي الداخلي هو <span class="math inline">\(71\pm16\)</span>% في نطاق 2–10 keV. يعطي طيف سديم الرياح قانون أسّي بدليل <span class="math inline">\(\Gamma_{\rm PWN} = 2.03\pm0.02\)</span> في نطاق 1–55 keV، دون وجود دليل على انحناء في هذا النطاق، وتدفق غير ممتص في نطاق 2–10 keV مقداره <span class="math inline">\((2.13\pm0.02)\times 10^{-11}\)</span> إرج/ثانية/سم<sup>2</sup>. تكشف بيانات <span><em>NuSTAR</em></span> عن وجود مكون صلب للأشعة السينية يهيمن على طيف البقايا فوق 10 keV، ننسبه إلى مكون سديم الرياح المتناثر بالغبار. قمنا بنمذجة التطور الديناميكي والإشعاعي لمنظومة Kes 75 لتقدير خصائص ولادة النجم النيوتروني، وطاقات السلف، وخصائص سديم الرياح. تشير النتائج إلى أن سلف Kes 75 كان في الأصل ضمن نظام ثنائي نقل معظم كتلته إلى رفيقه قبل الانفجار.</p>
-</div>
+  <h1 class="title">التحليل الطيفي بالأشعة السينية للنّبّاض شديد المغنطة PSR J1846–0258،<br />سديم رياحه وبقايا المستعر الأعظم المضيفة Kes 75</h1>
+  <p class="author">إي. ڤي. غوتِلف</p>
+  <p class="author">س. صفي-حرب</p>
+  <p class="author">س. إم. سترال</p>
+  <p class="author">ج. د. جيلفاند</p>
+  <div class="abstract">
+    <div class="abstract-title">الملخّص</div>
+    <p>نُقدِّم تحليلاً طيفيّاً واسع النطاق بالأشعة السينية للمكوّنات النشطة التي تُشكِّل بقايا المستعر الأعظم (SNR) Kes 75، بالاعتماد على أرصاد متزامنة من <span><em>XMM-Newton</em></span> و<span><em>NuSTAR</em></span> خلال 17–20 آب/أغسطس 2017، حين كان النّبّاض PSR J1846–0258 في حالة سكون. تستضيف البقية الفتيّة سديمَ رياح نَبّاض ساطعاً يُغذّيه نَبّاض معزول عالي الطاقة (<span class="math inline">\(\dot{E} = 8.1 \times 10^{36}\)</span> إرج/ثانية) يعمل بالطاقة الدورانية، مع عُمر مُميَّز <span class="math inline">\(P/2\dot{P} \sim 728\)</span> سنة فقط. والمجال المغناطيسي السطحي له (<span class="math inline">\(B_s = 4.9\times 10^{13}\)</span> غاوس) هو الأقوى بين هذه الأجسام المعروفة، ومن المُرجَّح أنّه مسؤول عن فترات النشاط الفُجائي والانفجارات، ما يشير إلى انتقالٍ نحو أو من حالةٍ مغناطارية. يُوصَف الانبعاث النبضي من PSR J1846–0258 بدقّة في نطاق 2–50 keV بنموذج قانون قوّة (Power-law) بدليل فوتوني <span class="math inline">\(\Gamma_{\rm PSR} = 1.24\pm0.09\)</span> وتدفّق غير ممتص في نطاق 2–10 keV مقداره <span class="math inline">\((2.3\pm0.4)\times 10^{-12}\)</span> إرج/ثانية/سم<sup>2</sup>. لم نجد دليلاً على مكوّن غير حراري إضافي فوق <span class="math inline">\(10\)</span> keV في الحالة الساكنة الحالية، على خلاف ما هو شائع في المغناطارات. وبمقارنة طيف النّبّاض مع قياسات <span><em>Chandra</em></span>، فإن الكسر النبضي هو <span class="math inline">\(71\pm16\)</span>% في نطاق 2–10 keV. يُوصَف طيف سديم الرياح بقانون قوّة بدليل <span class="math inline">\(\Gamma_{\rm PWN} = 2.03\pm0.02\)</span> في نطاق 1–55 keV دون دليل على انحناء، مع تدفّق غير ممتص في نطاق 2–10 keV مقداره <span class="math inline">\((2.13\pm0.02)\times 10^{-11}\)</span> إرج/ثانية/سم<sup>2</sup>. تكشف بيانات <span><em>NuSTAR</em></span> عن مكوّن قاسي للأشعة السينية يهيمن على طيف البقية فوق 10 keV، ننسبه إلى هالة متناثرة بالغبار لسديم الرياح. قمنا بنمذجة التطوّر الديناميكي والإشعاعي لمنظومة Kes 75 لتقدير خصائص ولادة النجم النيتروني، وطاقة السلف، وخصائص سديم الرياح. تشير النتائج إلى أنّ سلف Kes 75 كان في الأصل ضمن نظام ثنائي نقل معظم كتلته إلى رفيقه قبل الانفجار.</p>
+  </div>
 </header>
 
-<h1 id="sec:intro">مقدمة</h1>
-<p>حتى الآن، تم اكتشاف أكثر من 2000 نباض عادي يعمل بالطاقة الدورانية (RPPs)، معظمها كنباضات راديوية. ينبع انبعاثها الموجه من فقدان الطاقة الدورانية من ثنائي قطب مغناطيسي مشع للنجم النيوتروني (NS) أثناء تباطؤه التدريجي <span class="citation" data-cites="sha83"></span>. غالباً ما تظهر النباضات الفتية النشطة والمعزولة سديم رياح نباض (PWN) في الراديو و/أو الأشعة السينية. ويُعتقد أن تحويل الطاقة الدورانية إلى إشعاع كهرومغناطيسي ورياح جسيمية هو ما يغذي هذه السدم السنكروترونية <span class="citation" data-cites="gaensler06"></span>.</p>
-<p>وعلى النقيض من ذلك، فإن المغناطارات <span class="citation" data-cites="tur15"></span> هي أيضاً نجوم نيوترونية فتية ومعزولة، لكنها تفتقر عادةً إلى الانبعاث الراديوي المستمر والسدم السنكروترونية الخاصة بالنباضات الدورانية. في حالة السكون، تصدر هذه النباضات البطيئة الدوران (<span class="math inline">2-12</span> ثانية) بشكل فريد في نطاق الأشعة السينية. والأهم من ذلك، أن انبعاثها الحراري بالأشعة السينية يتجاوز بكثير معدل فقدان طاقتها الحركية الدورانية (<span class="math inline">\(\dot{E}\)</span>)، ويُعتقد أن مصدر طاقتها هو اضمحلال مجالها المغناطيسي الهائل، الذي يتجاوز القيمة الحرجة الكمومية <span class="math inline">\(B_{\rm QED}\equiv m_e^2c^3/e\hbar = 4.4 \times 10^{13}\)</span> جاوس <span class="citation" data-cites="dun92"></span>.</p>
-<p>ظهرت في السنوات الأخيرة استثناءات لخصائص كل من النباضات الدورانية والمغناطارات، مما ألقى ضوءاً جديداً على تطورها وآليات انبعاثها: 1) تم اكتشاف عدد متزايد من المغناطارات ذات الحقول المغناطيسية المنخفضة، والتي تقع حقولها على حدود تلك الخاصة بالنباضات الدورانية <span class="citation" data-cites="rea14"></span>، 2) المغناطارات العابرة التي تظهر انبعاثاً راديوياً متقطعاً أثناء انفجاراتها <span class="citation" data-cites="cam08"></span>، 3) الدليل الحديث على أول اكتشاف لسديم رياح حول مغناطار <span class="citation" data-cites="you16"></span>، و4) اكتشاف تغيرات في سديم رياح يحيط بنباض راديوي عالي المغنطة J1119–6127 أظهر سلوكاً شبيهاً بالمغناطارات <span class="citation" data-cites="blu17"></span>.</p>
-<p>ومن النتائج اللافتة اكتشاف انفجارات قصيرة شبيهة بالمغناطارات من النباض PSR J1846–0258 في Kes 75 <span class="citation" data-cites="gav08 kum08 ng08"></span>. هذا النباض عالي الطاقة (<span class="math inline">\(\dot{E} = 8.3 \times 10^{36}\)</span> إرج/ثانية)، ذو فترة 325 مللي ثانية، ويعمل بالطاقة الدورانية <span class="citation" data-cites="got00"></span>، مع سديم رياح ساطع، يقع في مركز بقايا المستعر الأعظم الفتية Kes 75 <span class="citation" data-cites="hel03 su09 tem12"></span>. تم رصد النباض بالصدفة عام 2006 في حالة توهج، مع تليين ملحوظ في طيفه وتغير في شكل سديم الرياح. ومؤخراً، بعد 14 عاماً، تم الإبلاغ عن نشاط متجدد من النباض <span class="citation" data-cites="kim20"></span>. ومع ذلك، فإن الخصائص الطاقية والطيفية لهذا النباض تميّزه بوضوح عن المغناطارات. قد نكون أمام حالة تطورية فريدة ونادرة، وربما نشهد انكشاف مجال مغناطيسي مدفون بقوة مغناطارية (انظر <span class="citation" data-cites="hal10"></span>).</p>
-<div class="figure*">
-<p><embed src="./kes75_snr_xmm_epn_1000_10000_img_corr_fixed.eps" />
-<embed src="./nu40301004002_35_460_corr.eps" /></p>
+<h1 id="sec:intro">مقدّمة</h1>
+<p>حتى الآن، كُشف عن أكثر من 2000 نَبّاض عادي يعمل بالطاقة الدورانية (RPPs)، معظمها نَبّاضات راديوية. يُستمدّ انبعاثها المُوجَّه من فقدان الطاقة الدورانية لثنائي قطب مغناطيسي مُشِعّ في النجم النيتروني (NS) أثناء تباطؤه التدريجي <span class="citation" data-cites="sha83"></span>. وغالباً ما تُظهِر النّبّاضات الفتية المعزولة والفعّالة سُدُماً لرياح نَبّاضية (PWN) في الراديو و/أو الأشعة السينية. ويُعتقَد أنّ تحويل طاقة الدوران إلى إشعاع كهرومغناطيسي ورياح جسيمية هو ما يُغذّي هذه السدم السنكروترونية <span class="citation" data-cites="gaensler06"></span>.</p>
+<p>وعلى النقيض من ذلك، فإنّ المغناطارات <span class="citation" data-cites="tur15"></span> هي أيضاً نجوم نيترونية فتية ومعزولة، لكنها تفتقر عادةً إلى الانبعاث الراديوي المستمر وإلى السدم السنكروترونية الخاصة بالنّبّاضات الدورانية. في حالة السكون، تصدر هذه النّبّاضات بطيئة الدوران (<span class="math inline">2\text{–}12</span> ثانية) بوضوح في نطاق الأشعة السينية. والأهم أنّ لمعانها بالأشعة السينية يتجاوز بكثير معدّل فقدان طاقة دورانها (<span class="math inline">\(\dot{E}\)</span>)، ويُعتقَد أنّ مصدر الطاقة هو اضمحلال مجالها المغناطيسي الهائل الذي يتجاوز القيمة الحرجة الكمومية <span class="math inline">\(B_{\rm QED}\equiv m_e^2c^3/e\hbar = 4.4 \times 10^{13}\)</span> غاوس <span class="citation" data-cites="dun92"></span>.</p>
+<p>ظهرت في السنوات الأخيرة استثناءات لخصائص كلٍّ من النّبّاضات الدورانية والمغناطارات، ما ألقى ضوءاً جديداً على تطوّرها وآليات انبعاثها: 1) اكتُشف عدد متزايد من المغناطارات ذات الحقول المغناطيسية المنخفضة، والتي تقع قيم حقولها على تخوم تلك الخاصة بالنّبّاضات الدورانية <span class="citation" data-cites="rea14"></span>، 2) مغناطارات عابرة تُظهِر انبعاثاً راديوياً متقطعاً أثناء انفجاراتها <span class="citation" data-cites="cam08"></span>، 3) دليل حديث على أول اكتشاف لسديم رياح حول مغناطار <span class="citation" data-cites="you16"></span>، و4) اكتشاف تغيّرات في سديم رياح يحيط بنَبّاض راديوي شديد المغنطة J1119–6127 أظهر سلوكاً شبيهاً بالمغناطارات <span class="citation" data-cites="blu17"></span>.</p>
+<p>ومن النتائج اللافتة اكتشاف انفجارات قصيرة شبيهة بالمغناطارات من النّبّاض PSR J1846–0258 في Kes 75 <span class="citation" data-cites="gav08 kum08 ng08"></span>. هذا النّبّاض عالي الطاقة (<span class="math inline">\(\dot{E} = 8.3 \times 10^{36}\)</span> إرج/ثانية)، ذو فترة قدرها 325 مللي ثانية، ويعمل بالطاقة الدورانية <span class="citation" data-cites="got00"></span>، مع سديم رياح ساطع يقع في مركز بقايا المستعر الأعظم الفتية Kes 75 <span class="citation" data-cites="hel03 su09 tem12"></span>. رُصِد النّبّاض صُدفةً عام 2006 في حالة توهّج، مع تليين ملحوظ في طيفه وتغيّر في شكل سديم الرياح. ومؤخراً، بعد 14 عاماً، أُبلِغ عن نشاط مُتجدِّد من النّبّاض <span class="citation" data-cites="kim20"></span>. ومع ذلك، فإن خصائصه الطاقية والطيفية تُميّزه بوضوح عن المغناطارات. قد نكون أمام حالة تطورية فريدة ونادرة، وربما نشهد انكشاف مجال مغناطيسي مدفون بقوّة مغناطارية (انظر <span class="citation" data-cites="hal10"></span>).</p>
+<div class="figure* center">
+  <p><embed src="./kes75_snr_xmm_epn_1000_10000_img_corr_fixed.eps" />
+  <embed src="./nu40301004002_35_460_corr.eps" /></p>
 </div>
-<p>لقد حصلنا على أرصاد جديدة متزامنة من <span><em>XMM-Newton</em></span> و<span><em>NuSTAR</em></span> لمنظومة Kes 75 لدراسة الخصائص الطيفية لمكوناتها بشكل أفضل، واستنتاج تفاعلاتها وتطورها. في القسم 2، نصف مجموعات البيانات هذه، التي تم تحليلها بالتزامن مع بيانات أرشيفية حديثة من <span><em>Chandra</em></span>. وجدنا أن نموذج قانون أسّي بسيط يكفي لوصف طيف النباض، دون وجود دليل على مكون طيفي أكثر تسطحاً فوق <span class="math inline">\(\sim 10\)</span> keV، وهو ما يميز المغناطارات. كما أن طيف سديم الرياح، الذي يُوصف أيضاً بقانون أسّي واحد، لا يظهر أي دليل على الانحناء. قمنا بقياس هالة متناثرة بالغبار تظهر كمكون طيفي صلب <span class="math inline">&gt;10</span> keV لطيف البقايا.</p>
-<p>استناداً إلى هذه النتائج الطيفية، نطبق في القسم 3 نموذجاً ديناميكياً وإشعاعياً على توزيع الطاقة الطيفية (SED) لمنظومة Kes 75. وأخيراً، في القسم 4، نناقش دلالات نتائجنا الطيفية الواسعة النطاق ونمذجة التطور. إن اكتشاف نشاط شبيه بالمغناطارات من نباض فتٍ يعمل بالطاقة الدورانية يوفر فرصة فريدة لدراسة العلاقة بين الطبيعة المميزة للنباضات الدورانية والمغناطارات، ونشأتها وتطورها المبكر.</p>
+<p>حصلنا على أرصاد متزامنة جديدة من <span><em>XMM-Newton</em></span> و<span><em>NuSTAR</em></span> لمنظومة Kes 75 لدراسة الخصائص الطيفية لمكوّناتها بدقّة أكبر واستنتاج تفاعلاتها وتطوّرها. في القسم 2 نصف مجموعات البيانات هذه، والتي حُلِّلت بالتزامن مع بيانات أرشيفية حديثة من <span><em>Chandra</em></span>. وجدنا أنّ نموذج قانون قوّة بسيط يكفي لوصف طيف النّبّاض، دون دليل على مكوّنٍ طيفي أكثر تسطّحاً فوق <span class="math inline">\(\sim 10\)</span> keV، وهو ما يميّز المغناطارات عادةً. كما أنّ طيف سديم الرياح، الموصوف أيضاً بقانون قوّة أحادي، لا يُظهِر أي دليل على الانحناء. قمنا بقياس هالة متناثرة بالغبار تظهر كمكوّن طيفي قاسٍ <span class="math inline">&gt;10</span> keV في طيف البقية.</p>
+<p>استناداً إلى هذه النتائج الطيفية، نُطبّق في القسم 3 نموذجاً ديناميكياً وإشعاعياً على توزيع الطاقة الطيفية (SED) لمنظومة Kes 75. وأخيراً، في القسم 4، نناقش دلالات نتائجنا الطيفية واسعة النطاق ونمذجة التطوّر. إن اكتشاف نشاط شبيه بالمغناطارات من نَبّاض فتيّ يعمل بالطاقة الدورانية يوفّر فرصة فريدة لدراسة العلاقة بين الطبيعة المميِّزة للنّبّاضات الدورانية والمغناطارات، ونشأتها وتطوّرها المبكر.</p>
 
 <h1 id="pwn-snr-modeling">نمذجة سديم الرياح وبقايا المستعر الأعظم<span id="sec:modeling" label="sec:modeling"></span></h1>
-<p>حالياً، أفضل طريقة لتحديد طاقة سلف Kes 75، وخصائص ولادة النباض PSR J1846–0258، ورياحه النباضية، هي تركيب الخصائص المرصودة لسديم الرياح بنموذج لتطوره الديناميكي والإشعاعي (انظر <span class="citation" data-cites="gelfand17"></span> لمراجعة حديثة). استناداً إلى تحليلنا السابق لـKes 75 <span class="citation" data-cites="gelfand14"></span> وأنظمة SNR/PWN المماثلة (مثلاً G54.1+0.3، <span class="citation" data-cites="gelfand15"></span>؛ HESS J1640–465، <span class="citation" data-cites="gotthelf14"></span>)، استخدمنا خوارزمية ماركوف تشين مونتي كارلو لتحديد مجموعة المعلمات المدخلة للنموذج (استناداً إلى <span class="citation" data-cites="gelfand09"></span>) التي تعطي أفضل تطابق (<span class="math inline">\(\chi^2\)</span> الأدنى) مع الخصائص المرصودة لـKes 75 في الجدول <a href="#tab:obsprop" data-reference-type="ref" data-reference="tab:obsprop">[tab:obsprop]</a>. المعلمات المدخلة موضحة في الجدول <a href="#tab:modprop" data-reference-type="ref" data-reference="tab:modprop">[tab:modprop]</a>، مع اختيار العمر <span class="math inline">\(t_{\rm age}\)</span> واللمعان الابتدائي <span class="math inline">\(\dot{E}_0\)</span> بحيث، لمعامل كبح <span class="math inline">p</span> وزمن تباطؤ <span class="math inline">\(\tau_{\rm sd}\)</span> معينين، يعيدان إنتاج العمر المميز الحالي <span class="math inline">\(t_{\rm ch}\)</span> ولمعان التباطؤ <span class="math inline">\(\dot{E}\)</span> للنباض:</p>
+<p>حالياً، أفضل وسيلة لتحديد طاقة سلف Kes 75، وخصائص ولادة النّبّاض PSR J1846–0258 ورياحه النبضية، هي مواءمة الخصائص المرصودة لسديم الرياح بنموذجٍ لتطوّره الديناميكي والإشعاعي (انظر <span class="citation" data-cites="gelfand17"></span> لمراجعة حديثة). استناداً إلى تحليلنا السابق لـKes 75 <span class="citation" data-cites="gelfand14"></span> وأنظمة SNR/PWN المماثلة (مثلاً G54.1+0.3، <span class="citation" data-cites="gelfand15"></span>؛ HESS J1640–465، <span class="citation" data-cites="gotthelf14"></span>)، استخدمنا خوارزمية ماركوف تشين مونتي كارلو لتحديد مجموعة معلمات الإدخال للنموذج (استناداً إلى <span class="citation" data-cites="gelfand09"></span>) التي تُنتِج أفضل تطابق (أدنى <span class="math inline">\(\chi^2\)</span>) مع الخصائص المرصودة لـKes 75 في الجدول <a href="#tab:obsprop" data-reference-type="ref" data-reference="tab:obsprop">[tab:obsprop]</a>. معلمات الإدخال موضّحة في الجدول <a href="#tab:modprop" data-reference-type="ref" data-reference="tab:modprop">[tab:modprop]</a>، مع اختيار العُمر <span class="math inline">\(t_{\rm age}\)</span> واللمعان الابتدائي <span class="math inline">\(\dot{E}_0\)</span> بحيث، لمؤشِّر الكبح <span class="math inline">p</span> وزمن التباطؤ <span class="math inline">\(\tau_{\rm sd}\)</span> معيّنين، يُعيدان إنتاج العُمر المُميَّز الحالي <span class="math inline">\(t_{\rm ch}\)</span> ولمعان الفقد الدوراني <span class="math inline">\(\dot{E}\)</span> للنّبّاض:</p>
 <div class="math display">
 \[
 \begin{aligned}
@@ -222,7 +151,7 @@
 \end{aligned}
 \]
 </div>
-<p>انبعاث كومبتون العكسي لسديم الرياح هو نتيجة تصادم الإلكترونات مع الخلفية الكونية الميكروية وحقل فوتوني إضافي بدرجة حرارة <span class="math inline">\(T_{\rm ic}\)</span> وتطبيع <span class="math inline">\(K_{\rm ic}\)</span>، بحيث تكون كثافة الطاقة <span class="math inline">\(u_{\rm ic}\)</span> لهذا الحقل:</p>
+<p>انبعاث كومبتون العكسي لسديم الرياح ينشأ من تصادم الإلكترونات مع الخلفية الكونية الميكروية ومع حقل فوتوني إضافي بدرجة حرارة <span class="math inline">\(T_{\rm ic}\)</span> وتطبيع <span class="math inline">\(K_{\rm ic}\)</span>، بحيث تكون كثافة الطاقة <span class="math inline">\(u_{\rm ic}\)</span> لهذا الحقل:</p>
 <div class="math display">
 \[
 \begin{aligned}
@@ -230,7 +159,7 @@
 \end{aligned}
 \]
 </div>
-<p>حيث <span class="math inline">\(a_{\rm bb} = 7.5657\times10^{-15}~\frac{\rm erg}{\rm cm^3~K^4}\)</span>، مع افتراض أن طيف الجسيمات المحقونة في سديم الرياح عند الصدمة النهائية يوصف جيداً بقانون أسّي مكسور:</p>
+<p>حيث <span class="math inline">\(a_{\rm bb} = 7.5657\times10^{-15}~\frac{\rm erg}{\rm cm^3~K^4}\)</span>، مع افتراض أنّ طيف الجسيمات المحقونة في سديم الرياح عند الصدمة النهائية يُوصَف جيّداً بقانون قوّة مكسور:</p>
 <div class="math display">
 \[
 \frac{d\dot{N}_{e^\pm}}{dE}(E) = 
@@ -240,36 +169,36 @@
 \end{cases}
 \]
 </div>
-<p>حيث <span class="math inline">\(\dot{N}_{e^\pm}\)</span> هو معدل حقن الإلكترونات والبوزيترونات في سديم الرياح و<span class="math inline">\(\dot{N}_{\rm break}\)</span> يُحسب بحيث:</p>
+<p>حيث <span class="math inline">\(\dot{N}_{e^\pm}\)</span> هو معدّل حقن الإلكترونات والبوزيترونات في سديم الرياح و<span class="math inline">\(\dot{N}_{\rm break}\)</span> يُحسب بحيث:</p>
 <div class="math display">
 \[
 (1-\eta_{\rm B})\dot{E} \equiv \int_{E_{\rm min}}^{E_{\rm max}} E \frac{d\dot{N}_{e^\pm}}{dE} dE,
 \]
 </div>
-<p>حيث <span class="math inline">\(\eta_{\rm B}\)</span> هو نسبة طاقة الرياح النباضية المحقونة كساحة مغناطيسية. للأسف، عدد معلمات النموذج أكبر بواحد من عدد الكميات المرصودة لهذا النظام، ومجموعة المعلمات التي أعطت أقل <span class="math inline">\(\chi^2\)</span> (<span class="math inline">\(\chi^2 = 0.93\)</span>) موضحة في الجدول <a href="#tab:modprop" data-reference-type="ref" data-reference="tab:modprop">[tab:modprop]</a> مع التوزيع الطيفي للطاقة المرصود والمتوقع في الشكل <a href="#fig:bestspec" data-reference-type="ref" data-reference="fig:bestspec">3</a>. ستتم مناقشة أهمية وحدود هذه النتائج أدناه.</p>
+<p>وحيث <span class="math inline">\(\eta_{\rm B}\)</span> هي نسبة طاقة الرياح النبضية المحقونة كمجال مغناطيسي. وللأسف، فإن عدد معلمات النموذج أكبر بواحد من عدد الكميات المرصودة لهذا النظام. مجموعة المعلمات التي أعطت أقل <span class="math inline">\(\chi^2\)</span> (<span class="math inline">\(\chi^2 = 0.93\)</span>) موضّحة في الجدول <a href="#tab:modprop" data-reference-type="ref" data-reference="tab:modprop">[tab:modprop]</a>، مع التوزيع الطيفي للطاقة المرصود والمتوقّع في الشكل <a href="#fig:bestspec" data-reference-type="ref" data-reference="fig:bestspec">3</a>. ستتم مناقشة أهمية وحدود هذه النتائج أدناه.</p>
 <div class="center">
-<figure>
-<embed src="bestfit_spectrum_v42_20200828.eps" id="fig:bestspec" style="width:47.5%" />
-<figcaption aria-hidden="true">التوزيع الطيفي للطاقة المرصود (ملون) والمتوقع (خط أسود) لسديم الرياح في Kes 75. الكميات المرصودة والمتوقعة موضحة في الجدول <a href="#tab:obsprop" data-reference-type="ref" data-reference="tab:obsprop">[tab:obsprop]</a>، ومعلمات النموذج في الجدول <a href="#tab:modprop" data-reference-type="ref" data-reference="tab:modprop">[tab:modprop]</a>.</figcaption>
-</figure>
+  <figure>
+    <embed src="bestfit_spectrum_v42_20200828.eps" id="fig:bestspec" style="width:47.5%" />
+    <figcaption aria-hidden="true">التوزيع الطيفي للطاقة المرصود (مُلوّن) والمتوقّع (خط أسود) لسديم الرياح في Kes 75. الكميات المرصودة والمتوقّعة موضّحة في الجدول <a href="#tab:obsprop" data-reference-type="ref" data-reference="tab:obsprop">[tab:obsprop]</a>، ومعلمات النموذج في الجدول <a href="#tab:modprop" data-reference-type="ref" data-reference="tab:modprop">[tab:modprop]</a>.</figcaption>
+  </figure>
 </div>
 
 <h1 id="discussion-and-conclusions">المناقشة والاستنتاجات<span id="sec:discussion" label="sec:discussion"></span></h1>
-<p>استناداً إلى أرصاد <span><em>Chandra</em></span> لعام 2016 و<span><em>XMM-Newton</em></span> و<span><em>NuSTAR</em></span> لعام 2017 للنباض PSR J1846–0258 المقدمة هنا، عاد النباض إلى حالته الساكنة المدفوعة بالدوران بعد آخر حدث مغناطاري معروف عام 2006. في هذه الحالة، أظهرنا أنه لا يوجد دليل في الانبعاث النبضي على وجود مكون طيفي أكثر تسطحاً فوق 10 keV، كما هو مذكور في العديد من المغناطارات (<span class="citation" data-cites="den08"></span>؛ انظر المراجعات <span class="citation" data-cites="mer15 kas17"></span>). وُجد أن النباض عالي التعديل في نطاق 2–10 keV بنسبة لا تقل عن 64%، وهو أمر غير غير معتاد للنباضات الفتية ذات المنحنيات النبضية الجيبية. تؤكد القياسات الطيفية الجديدة عالية الجودة العلاقة بين دلائل القانون الأسّي للنباض PSR J1846–0258 وسديم الرياح الخاص به، بما يتوافق مع ما هو متوقع للنباضات الدورانية عالية الطاقة <span class="citation" data-cites="got03"></span>. تدفق سديم الرياح متوافق مع ما ذكره <span class="citation" data-cites="reynolds18"></span> ولم نجد دليلاً على انحناء في طيفه الواسع 1–55 keV.</p>
-<p>كفاءة تغذية سديم الرياح من فقدان الطاقة الدورانية (<span class="math inline">\(L_x/\dot{E} \approx 1\%\)</span>)، المقدرة من اللمعان في نطاق 2–10 keV عند مسافة 6 كيلو فرسخ <span class="citation" data-cites="lea07 kum08"></span>، من بين الأعلى المعروفة للنباضات الدورانية. يشير اكتشاف النشاط المغناطاري إلى أن جزءاً من لمعان النباض قد يكون من انبعاث سطحي، ومع ذلك، فإن طيف النباض في الحالة الساكنة يختلف بوضوح عن المتوقع من مغناطار، الذي يتميز عادة بانبعاث جسم أسود ساخن (0.5 keV) ومكون غير حراري حاد <span class="math inline">\(\Gamma \sim 4\)</span> <span class="citation" data-cites="par98 mar01"></span>. من الممكن أن يكون جزء من التدفق، متوافق مع الكسر النبضي، ناتجاً عن تبريد النجم النيوتروني بعد النشاط المغناطاري. قد يكون الانبعاث غير النبضي الناعم مسؤولاً عن كثافة العمود الأقل المقاسة للنباض مقارنة بسديم الرياح، <span class="math inline">\(N_{\rm H} \sim 4 \times 10^{22}\)</span> سم<sup>−2</sup> و<span class="math inline">\(\sim 6 \times 10^{22}\)</span> سم<sup>−2</sup> على التوالي. ومع ذلك، فإن الكثافة العالية للعمود وحدود نطاق الأجهزة تحد من قدرتنا على دراسة ذلك بشكل أعمق.</p>
-<p>تكشف الأطياف الواسعة النطاق بالأشعة السينية لبقايا Kes 75 لأول مرة أن المكون الصلب يهيمن فوق 10 keV، وهو مستقل بوضوح عن الانبعاث الحراري. تم اكتشاف مكونات غير حرارية مماثلة في عدة أصداف بقايا مستعرات عظمى، كما في التحليل الطيفي المكاني لـSN 1006 <span class="citation" data-cites="koy95"></span>. يوصف هذا الانبعاث عادة في نطاق الأشعة السينية بقانون أسّي بدليل فوتوني أكثر حدة <span class="math inline">\(\sim 2.5–3\)</span> <span class="citation" data-cites="rey08"></span> ويمكن أن يؤدي إلى تسريع الجسيمات حتى طاقات تيرا إلكترون فولت <span class="citation" data-cites="rey11"></span>.</p>
-<p>بالنسبة لـKes 75، يدعم الطيف الأكثر تسطحاً والانخفاض الشعاعي للانبعاث الصلب تفسيره كهالة متناثرة بالغبار ناتجة عن النباض/سديم الرياح الساطع والممتص بشدة <span class="citation" data-cites="hel03 su09 tem12"></span>. تم اكتشاف هالات مماثلة حول مغناطارات أو نجوم نيوترونية عالية المغنطة أظهرت انفجارات مغناطارية <span class="citation" data-cites="esp13 saf13"></span>. في حالة Kes 75، لوحظ سطوع الهالة بعد توهج 2006 <span class="citation" data-cites="reynolds18"></span>. يبين العمل الحالي أن انبعاث الهالة يمكن رصده حتى أثناء حالة السكون للنباض. وقد لوحظت هالة مماثلة من G21.5–0.9، سديم رياح فتٍ وساطع وممتص بشدة <span class="citation" data-cites="mat10 boc05"></span>.</p>
-<p>استفدنا من النتائج الجديدة للأشعة السينية لـKes 75 لإعادة تقييم تطور سديم الرياح في البقايا باستخدام النموذج الديناميكي والإشعاعي الموضح في القسم <a href="#sec:modeling" data-reference-type="ref" data-reference="sec:modeling">[sec:modeling]</a>. قلة درجات الحرية في هذا النموذج تجعل من الصعب استخلاص نتائج إحصائية قوية من التركيب، ومع ذلك، توفر المعلمات المفضلة رؤى حول أصل وفيزياء هذا النظام. تشير نتائج النمذجة بقوة إلى أن Kes 75 نشأت من انفجار منخفض الطاقة (<span class="math inline">\(E_{\rm sn} \ll 10^{51}~{\rm ergs}\)</span>) وكتلة مقذوفات منخفضة (<span class="math inline">\(M_{\rm ej} < 1~{\rm M}_\odot\)</span>). تم تحديد هذه الكميات جزئياً من معدل التمدد العالي المرصود لسديم الرياح (الجدول <a href="#tab:obsprop" data-reference-type="ref" data-reference="tab:obsprop">[tab:obsprop]</a>)، الذي، كما ناقش <span class="citation" data-cites="reynolds18"></span>، يشير إلى أن سديم الرياح يتمدد في مقذوفات مستعر أعظم منخفضة الكثافة. أحد الاحتمالات، كما ذكر <span class="citation" data-cites="reynolds18"></span>، هو أن سديم الرياح حالياً مغمور في فقاعة منخفضة الكثافة ناتجة عن اضمحلال <span class="math inline">\(^{56}\mathrm{Ni}\)</span> في المقذوفات الداخلية (<span class="citation" data-cites="li93 chevalier05"></span>). ومع ذلك، فإن نمذجتنا تعيد أيضاً إنتاج الحجم المرصود لسديم الرياح والبقايا، وهو أقل اعتماداً على الظروف المحلية حول السديم.</p>
-<p>إذا أخذنا القيم كما هي، فإن القيم المنخفضة لـ<span class="math inline">\(M_{\rm ej}\)</span> و<span class="math inline">\(E_{\rm sn}\)</span> لها دلالات قوية على سلف النظام. قيمة <span class="math inline">\(M_{\rm ej}\)</span> أقل مما هو متوقع لسلف نجم ضخم معزول (مثلاً <span class="citation" data-cites="sukhbold16 raithel18"></span>)، حتى مع فقدان كتلة كبير قبل الانفجار كمستعر أعظم انهيار نواة (مثلاً <span class="citation" data-cites="dessart11"></span>). ومع ذلك، هذه القيم مماثلة لما وجد في محاكاة ثلاثية الأبعاد حديثة لانفجارات انهيار نواة الهيليوم <span class="citation" data-cites="muller19"></span> – مما يشير إلى أن سلف Kes 75 كان في الأصل ضمن نظام ثنائي نقل معظم كتلته إلى رفيقه قبل الانفجار، مما يدل على كتلة ابتدائية عالية.</p>
-<p>يفضل النموذج التطوري درجة حرارة منخفضة لحقل فوتونات IC <span class="math inline">\(T = 32\,\mathrm{K}\)</span>. وهذا يتفق مع النتائج الحديثة لانبعاث الغبار عند درجة حرارة <span class="math inline">\(T = 33 \pm 5\,\mathrm{K}\)</span> (لحبيبات السيليكات) <span class="citation" data-cites="tem19"></span>، والتي استنتجوا أنها على الأرجح غبار تشكل بفعل المستعر الأعظم ويتم تسخينه بالصدمة من سديم الرياح.</p>
-<p>علاوة على ذلك، بما أن فترة الدوران الابتدائية <span class="math inline">\(P_0\)</span> للنباض يمكن حسابها باستخدام (مثلاً <span class="citation" data-cites="pacini73 gaensler06 slane17"></span>):</p>
+<p>استناداً إلى أرصاد <span><em>Chandra</em></span> لعام 2016 وأرصاد <span><em>XMM-Newton</em></span> و<span><em>NuSTAR</em></span> لعام 2017 للنبّاض PSR J1846–0258 المقدَّمة هنا، عاد النّبّاض إلى حالته الساكنة المدفوعة بالدوران بعد آخر حدث مغناطاري معروف عام 2006. في هذه الحالة، أظهرنا أنّه لا يوجد دليل في الانبعاث النبضي على وجود مكوّن طيفي أكثر تسطّحاً فوق 10 keV، كما وُثِّق في العديد من المغناطارات (<span class="citation" data-cites="den08"></span>؛ انظر المراجعتين <span class="citation" data-cites="mer15 kas17"></span>). وُجد أنّ النّبّاض عالي التعديل في نطاق 2–10 keV بنسبة لا تقل عن 64%، وهو أمر غير معتاد للنّبّاضات الفتية ذات المنحنيات النبضية القريبة من الجيب. تؤكّد القياسات الطيفية الجديدة عالية الجودة العلاقة بين دلائل قانون القوّة للنّبّاض PSR J1846–0258 ولسديم الرياح الخاص به، بما يتوافق مع المتوقَّع للنّبّاضات الدورانية عالية الطاقة <span class="citation" data-cites="got03"></span>. تدفّق سديم الرياح متوافق مع ما ذكره <span class="citation" data-cites="reynolds18"></span> ولم نجد دليلاً على انحناء في طيفه العريض 1–55 keV.</p>
+<p>كفاءة تغذية سديم الرياح من فقدان الطاقة الدورانية (<span class="math inline">\(L_x/\dot{E} \approx 1\%\)</span>)، المقدَّرة من اللمعان في نطاق 2–10 keV عند مسافة 6 كيلوفرسخ <span class="citation" data-cites="lea07 kum08"></span>، من بين الأعلى المعروفة للنّبّاضات الدورانية. يشير اكتشاف النشاط المغناطاري إلى أنّ جزءاً من لمعان النّبّاض قد يكون من انبعاث سطحي؛ ومع ذلك، فإن طيف النّبّاض في الحالة الساكنة يختلف بوضوح عن المتوقَّع من مغناطار، الذي يتميّز عادةً بانبعاث جسم أسود ساخن (~0.5 keV) ومكوّن غير حراري ذي دليل فوتوني حاد <span class="math inline">\(\Gamma \sim 4\)</span> <span class="citation" data-cites="par98 mar01"></span>. من الممكن أن يكون جزء من التدفّق، بما يتوافق مع الكسر النبضي، ناتجاً عن تبريد النجم النيتروني بعد النشاط المغناطاري. وقد يكون الانبعاث غير النبضي الناعم مسؤولاً عن كثافة العمود الأقل المقاسة للنّبّاض مقارنةً بسديم الرياح، <span class="math inline">\(N_{\rm H} \sim 4 \times 10^{22}\)</span> سم<sup>−2</sup> و<span class="math inline">\(\sim 6 \times 10^{22}\)</span> سم<sup>−2</sup> على التوالي. ومع ذلك، فإن الكثافة العالية للعمود وحدود نطاق الأجهزة تحدّ من قدرتنا على استقصاء ذلك بشكلٍ أعمق.</p>
+<p>تكشف الأطياف واسعة النطاق بالأشعة السينية لبقايا Kes 75 للمرّة الأولى أنّ المكوّن القاسي يهيمن فوق 10 keV، وهو مستقلّ بوضوح عن الانبعاث الحراري. وقد كُشفت مكوّنات غير حرارية مماثلة في عدة أصداف لبقايا مستعرات عظمى، كما في التحليل الطيفي المكاني لـSN 1006 <span class="citation" data-cites="koy95"></span>. ويُوصَف هذا الانبعاث عادةً في نطاق الأشعة السينية بقانون قوّة بدليل فوتوني أكثر حِدّة <span class="math inline">\(\sim 2.5\text{–}3\)</span> <span class="citation" data-cites="rey08"></span>، ويمكن أن يقترن بتسريع الجسيمات حتى طاقات تيرا إلكترون فولت <span class="citation" data-cites="rey11"></span>.</p>
+<p>بالنسبة لـKes 75، يدعم الطيف الأكثر تسطّحاً والتناقص الشعاعي للانبعاث القاسي تفسيره كهالة متناثرة بالغبار ناتجة عن النّبّاض/سديم الرياح الساطع والممتص بشدّة <span class="citation" data-cites="hel03 su09 tem12"></span>. وقد اكتُشفت هالات مماثلة حول مغناطارات أو نجوم نيترونية شديدة المغنطة أظهرت انفجارات مغناطارية <span class="citation" data-cites="esp13 saf13"></span>. وفي حالة Kes 75، لوحظ سطوع الهالة بعد توهّج عام 2006 <span class="citation" data-cites="reynolds18"></span>. ويُبيّن العمل الحالي أنّ انبعاث الهالة يمكن رصده حتى أثناء حالة السكون للنّبّاض. وقد لوحظت هالة مماثلة من G21.5–0.9، وهو سديم رياح فتيّ وساطع وممتصّ بشدّة <span class="citation" data-cites="mat10 boc05"></span>.</p>
+<p>استفدنا من النتائج الجديدة بالأشعة السينية لـKes 75 لإعادة تقييم تطوّر سديم الرياح في البقية باستخدام النموذج الديناميكي والإشعاعي الموضّح في القسم <a href="#sec:modeling" data-reference-type="ref" data-reference="sec:modeling">[sec:modeling]</a>. إن قلّة درجات الحرية في هذا النموذج تجعل من الصعب استخلاص نتائج إحصائية قوية من المواءمة، غير أنّ المعلمات المُفضَّلة تُوفّر رؤى حول أصل وفيزياء هذا النظام. تشير نتائج النمذجة بقوّة إلى أنّ Kes 75 نشأت من انفجار منخفض الطاقة (<span class="math inline">\(E_{\rm sn} \ll 10^{51}~{\rm ergs}\)</span>) وكتلة مقذوفات منخفضة (<span class="math inline">\(M_{\rm ej} < 1~{\rm M}_\odot\)</span>). وقد جرى تحديد هاتين الكميّتين جزئياً من معدل التمدّد العالي المرصود لسديم الرياح (الجدول <a href="#tab:obsprop" data-reference-type="ref" data-reference="tab:obsprop">[tab:obsprop]</a>)، الذي—as ناقش <span class="citation" data-cites="reynolds18"></span>—يشير إلى أنّ سديم الرياح يتمدّد في مقذوفات مستعر أعظم منخفضة الكثافة. أحد الاحتمالات، كما ذكر <span class="citation" data-cites="reynolds18"></span>، هو أنّ سديم الرياح مُغمور حالياً في فقاعة منخفضة الكثافة ناتجة عن اضمحلال <span class="math inline">\(^{56}\mathrm{Ni}\)</span> في المقذوفات الداخلية (<span class="citation" data-cites="li93 chevalier05"></span>). ومع ذلك، فإن نمذجتنا تُعيد أيضاً إنتاج الحجم المرصود لكلٍّ من سديم الرياح والبقية، وهو أقل اعتماداً على الظروف المحلية حول السديم.</p>
+<p>إذا أخذنا القيم كما هي، فإن انخفاض <span class="math inline">\(M_{\rm ej}\)</span> و<span class="math inline">\(E_{\rm sn}\)</span> يحمل دلالات قويّة على سلف النظام. فقيمة <span class="math inline">\(M_{\rm ej}\)</span> أدنى ممّا هو متوقّع لسلفٍ نجميّ ضخم معزول (مثلاً <span class="citation" data-cites="sukhbold16 raithel18"></span>)، حتى مع فقدان كتلة كبير قبل الانفجار في إطار مستعرٍ أعظم لانهيار النواة (مثلاً <span class="citation" data-cites="dessart11"></span>). ومع ذلك، فإن هذه القيم مماثلة لما وجد في محاكاة ثلاثية الأبعاد حديثة لانفجارات انهيار نواة الهيليوم <span class="citation" data-cites="muller19"></span>—ما يشير إلى أنّ سلف Kes 75 كان في الأصل ضمن نظام ثنائي نقل معظم كتلته إلى رفيقه قبل الانفجار، بما يتّسق مع كتلة ابتدائية عالية.</p>
+<p>ويُفضّل النموذج التطوّري درجة حرارة منخفضة لحقل فوتونات IC مقدارها <span class="math inline">\(T = 32\,\mathrm{K}\)</span>. وهذا يتّسق مع النتائج الحديثة لانبعاث الغبار عند <span class="math inline">\(T = 33 \pm 5\,\mathrm{K}\)</span> (لحبيبات السيليكات) <span class="citation" data-cites="tem19"></span>، والتي استُنتِج أنّها على الأرجح غبارٌ متكوّن بفعل المستعر الأعظم ويُسخَّن بالصدمة من سديم الرياح.</p>
+<p>علاوة على ذلك، بما أنّ فترة الدوران الابتدائية <span class="math inline">\(P_0\)</span> للنّبّاض يمكن حسابها باستخدام (مثلاً <span class="citation" data-cites="pacini73 gaensler06 slane17"></span>):</p>
 <div class="math display">
 \[
 P_0 = P\left(1+\frac{t_{\rm age}}{\tau_{\rm sd}} \right)^{-\frac{1}{p-1}},
 \]
 </div>
-<p>فإن التشابه بين زمن التباطؤ المستنتج <span class="math inline">\(\tau_{\rm sd}\)</span> والعمر <span class="math inline">\(t_{\rm age}\)</span> من النمذجة يشير إلى أن <span class="math inline">\(P_0 \approx 0.618 P \approx 200~{\rm ms}\)</span> (مثلاً <span class="citation" data-cites="got00 livingstone11"></span>). هذا أطول بكثير من <span class="math inline">\(P_0 \approx 2~{\rm ms}\)</span> اللازمة لتفسير شدة المجال المغناطيسي السطحي المستنتج من التباطؤ <span class="math inline">\(B_{\rm ns} \approx 5\times10^{13}~{\rm G}\)</span> إذا كان ناتجاً عن دينامو <span class="math inline">\(\alpha-\Omega\)</span> في النجم النيوتروني البدائي (مثلاً <span class="citation" data-cites="tho93"></span>) – كما يُفترض غالباً لهذا النجم ونجوم نيوترونية مماثلة (مثلاً <span class="citation" data-cites="granot17"></span>). ومع ذلك، فإن الكتلة العالية للسلف المستنتجة أعلاه تتفق مع فكرة أن مثل هذه النجوم تنتج نجوم نيوترونية عالية المغنطة (مثلاً <span class="citation" data-cites="gaensler05"></span>).</p>
-<p>أخيراً، خصائص رياح النباض غير معتادة نوعاً ما لهذه الفئة من المصادر. المغنطة <span class="math inline">\(\eta_{\rm B} \sim 0.07\)</span> المستنتجة من النمذجة أعلى بحوالي مرتين من القيم المستنتجة من تحليلات سابقة (<span class="math inline">\(\eta_{\rm B} \sim 0.005\)</span>؛ <span class="citation" data-cites="bucciantini11"></span>، <span class="math inline">\(\eta_{\rm B} \sim 0.008 - 0.03\)</span>؛ <span class="citation" data-cites="torres14"></span>)، رغم أن ذلك قد يكون نتيجة استكشاف محدود لمجال المعلمات أو إعادة إنتاج مجموعة مختلفة من الخصائص المرصودة. من الأمور المثيرة للاهتمام قيمة <span class="math inline">\(E_{\rm max}\)</span>. تشير النظريات الحالية إلى أن <span class="math inline">\(E_{\rm max,\Phi}\approx e \Phi\)</span> (مثلاً <span class="citation" data-cites="bucciantini11"></span>)، حيث <span class="math inline">\(e\)</span> شحنة الإلكترون و<span class="math inline">\(\Phi\)</span> الجهد بالقرب من قطب النباض (مثلاً <span class="citation" data-cites="goldreich69 bucciantini11 slane17"></span>):</p>
+<p>فإن التشابه بين زمن التباطؤ <span class="math inline">\(\tau_{\rm sd}\)</span> والعُمر <span class="math inline">\(t_{\rm age}\)</span> المستنتجين من النمذجة يشير إلى أنّ <span class="math inline">\(P_0 \approx 0.618 P \approx 200~{\rm ms}\)</span> (مثلاً <span class="citation" data-cites="got00 livingstone11"></span>). وهذه قيمة أطول بكثير من <span class="math inline">\(P_0 \approx 2~{\rm ms}\)</span> اللازمة لتفسير شدّة المجال المغناطيسي السطحي المستنتج من التباطؤ <span class="math inline">\(B_{\rm ns} \approx 5\times10^{13}~{\rm G}\)</span> إذا كان منشؤه دينامو <span class="math inline">\(\alpha-\Omega\)</span> في النجم النيتروني البدائي (مثلاً <span class="citation" data-cites="tho93"></span>)—كما يُفترض غالباً لهذا النجم ونجوم نيترونية مماثلة (مثلاً <span class="citation" data-cites="granot17"></span>). ومع ذلك، فإن الكتلة العالية للسلف المستنتجة أعلاه تتّسق مع فكرة أنّ مثل هذه النجوم تُنتِج نجومًا نيترونية شديدة المغنطة (مثلاً <span class="citation" data-cites="gaensler05"></span>).</p>
+<p>أخيراً، تبدو خصائص رياح النّبّاض غير مألوفة نوعاً ما لهذه الفئة من المصادر. فالمغنطة <span class="math inline">\(\eta_{\rm B} \sim 0.07\)</span> المستنتجة من النمذجة أعلى بنحو مرّتين من القيم المستخلَصة في تحليلات سابقة (<span class="math inline">\(\eta_{\rm B} \sim 0.005\)</span>؛ <span class="citation" data-cites="bucciantini11"></span>، و<span class="math inline">\(\eta_{\rm B} \sim 0.008 - 0.03\)</span>؛ <span class="citation" data-cites="torres14"></span>)، رغم أنّ ذلك قد يُعزى إلى استكشاف محدود لفضاء المعلمات أو إلى إعادة إنتاج مجموعة مختلفة من الخصائص المرصودة. ومن الجوانب اللافتة قيمة <span class="math inline">\(E_{\rm max}\)</span>. إذ تشير النظريات الحالية إلى أنّ <span class="math inline">\(E_{\rm max,\Phi}\approx e \Phi\)</span> (مثلاً <span class="citation" data-cites="bucciantini11"></span>)، حيث <span class="math inline">\(e\)</span> شحنة الإلكترون و<span class="math inline">\(\Phi\)</span> الجهد بالقرب من قطب النّبّاض (مثلاً <span class="citation" data-cites="goldreich69 bucciantini11 slane17"></span>):</p>
 <div class="math display">
 \[
 \begin{split}
@@ -278,7 +207,7 @@ P_0 = P\left(1+\frac{t_{\rm age}}{\tau_{\rm sd}} \right)^{-\frac{1}{p-1}},
 \end{split}
 \]
 </div>
-<p>أي <span class="math inline">\(E_{\rm max,\Phi} \approx 5~{\rm PeV}\)</span>. على الرغم من أن هذه القيمة ليست محددة جيداً في نمذجتنا، بسبب نقص المعلومات حول انبعاث MeV من سديم الرياح، تشير نتائجنا إلى أن <span class="math inline">\(E_{\rm max}\)</span> متوافقة مع <span class="citation" data-cites="bucciantini11"></span>.</p>
-<p>خلاصة القول، تقدم الأرصاد بالأشعة السينية نافذة جديدة لدراسة نظام نباض–بقايا مستعر أعظم فريد يمثل جسراً انتقالياً بين النباضات الدورانية والمغناطارات. ستساعد الأرصاد المستمرة خلال فترات التوهج والسكون في الإجابة عن أسئلة تتعلق بأصله وما يميز PSR J1846–0258 عن النباضات النمطية في فئتي النجوم النيوترونية.</p>
+<p>أي <span class="math inline">\(E_{\rm max,\Phi} \approx 5~{\rm PeV}\)</span>. وعلى الرغم من أنّ هذه القيمة ليست محدَّدة جيداً في نمذجتنا—بسبب نقص المعلومات حول انبعاث MeV من سديم الرياح—فإن نتائجنا تشير إلى أنّ <span class="math inline">\(E_{\rm max}\)</span> متوافقة مع <span class="citation" data-cites="bucciantini11"></span>.</p>
+<p>خلاصة القول، توفّر الأرصاد بالأشعة السينية نافذة جديدة لدراسة نظام نَبّاض–بقايا مستعر أعظم فريد يمثّل جسراً انتقالياً بين النّبّاضات الدورانية والمغناطارات. وستساعد الأرصاد المستمرة خلال فترات التوهّج والسكون على الإجابة عن أسئلة تتعلّق بأصل هذا النظام وما يميّز PSR J1846–0258 عن النّبّاضات النمطية في فئتي النجوم النيترونية.</p>
 </body>
 </html>
