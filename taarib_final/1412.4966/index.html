@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4</title>
+<!--Generated on Fri May  1 19:46:38 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line" lang="en-GB">
+<h1 class="ltx_title ltx_title_document">التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">K. I. I. Koljonen<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup>Aalto University Metsähovi Radio Observatory, Metsähovintie 114, FIN-02540 Kylmälä, Finland 
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup>New York University Abu Dhabi, PO Box 129188, Abu Dhabi, UAE
+</span><span class="ltx_author_notes">email: karri.koljonen@nyu.edu</span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">في هذا البحث نستكشف طرائق التفكيك الطيفي غير الخاضع للإشراف لتمييز أثر المكونات الطيفية المختلفة في مجموعة من الأطياف المتتابعة المأخوذة من ثنائي أشعة سينية. ونستخدم للتفكيك طرائق خطية راسخة، هي تحليل المكونات الرئيسية، وتحليل المكونات المستقلة، وتفكيك المصفوفات غير السالب (NMF). وعند تطبيق هذه الطرائق على مجموعة بيانات محاكاة تتألف من جسم أسود قرصي متعدد الألوان متغير وقانون قدرة ذي قطع، نجد أن NMF يتفوق على الطريقتين الأخريين في تمييز المكونات الطيفية. إضافة إلى ذلك، وبسبب الطبيعة غير السالبة لـ NMF، يمكن ملاءمة المكونات الناتجة كل على حدة، بما يكشف تطور المعلمات المنفردة. ولاختبار طريقة NMF على مصدر حقيقي، نحلل بيانات من ثنائي الأشعة السينية منخفض الكتلة GX 339–4، ونجد أن النتائج توافق نتائج الدراسات السابقة. كما وجدنا أن نصف القطر الداخلي لقرص التراكم يقع عند المدار الدائري المستقر الأعمق في الحالة المتوسطة مباشرة بعد ذروة الفوران. وتبين هذه الدراسة أن استخدام طرائق التفكيك الطيفي غير الخاضع للإشراف يؤدي إلى كشف تدفقات المكونات المنفصلة حتى عند مستويات تدفق منخفضة. وتوفر هذه الطرائق أيضًا سبيلًا بديلًا لكشف المكونات الطيفية من دون إجراء ملاءمة طيفية فعلية، وهو ما قد يثبت جدواه عند التعامل مع مجموعات بيانات كبيرة.</p>
+</div>
+<div class="ltx_classification">
+<h6 class="ltx_title ltx_title_classification">keywords: </h6>
+التراكم، أقراص التراكم – الطرق: تحليل البيانات – النجوم: الثقوب السوداء – الأشعة السينية: الثنائيات – الأشعة السينية: مصدر منفرد: GX 339–4 – الأشعة السينية: النجوم.
+
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_pagerange"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pagerange: </span><span class="ltx_ref ltx_ref_self"><span class="ltx_text ltx_ref_title">التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4</span></span>–<a class="ltx_ref" href="#bib" title="References ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_title">References</span></a></span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_pubyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pubyear: </span>2014</span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">يقضي التوافق العلمي بأن أطياف الأشعة السينية لثنائيات الأشعة السينية ذات الثقوب السوداء (XRBs) وللنوى المجرية النشطة (AGNs) تمثل بثلاثة مكونات طيفية: مكون جسم أسود متعدد الألوان يمثل الانبعاث الصادر من قرص التراكم في الأشعة السينية اللينة، وقانون قدرة مع قطع أو من دونه يمثل كومتنة الفوتونات اللينة حراريًا أو لا حراريًا بفعل تجمع من الإلكترونات الساخنة في الأشعة السينية الصلبة، ومكون انعكاس يمثل الانبعاث المعاد تجهيزه للأشعة السينية الصلبة من قرص التراكم، أي الانبعاث الممتص كهروضوئيًا أو المشتت بتأثير كومبتون، في الطاقات المتوسطة، ويتجلى بأوضح صورة في هيئة خط حديد. غير أن مقدار هذه المكونات عند زمن معطى يظل مجهولًا. فعلى سبيل المثال، يكون مقدار المكون اللين في الحالة الصلبة صعب التحديد عادة. ومع ذلك، فإن معرفة هندسة قرص التراكم في الحالة الصلبة، ولا سيما موضع الحافة الداخلية لقرص التراكم، أمر حاسم لخصائص جميع نماذج أقراص التراكم أو لصحتها. وتكتسب هذه المعرفة أهمية خاصة في النماذج غير الكفؤة إشعاعيًا، مثل تدفق التراكم المسيطر عليه بالحمل
+<cite class="ltx_cite ltx_citemacro_citep">(ADAF، Ichimaru, <a class="ltx_ref" href="#bib.bib21" title="">1977</a>; Narayan &amp; Yi, <a class="ltx_ref" href="#bib.bib36" title="">1994</a>)</cite>. وكثيرًا ما يستشهد بالخصائص الساكنة العابرة للثقوب السوداء بوصفها دليلًا على ADAFs وعلى آفاق أحداث الثقوب السوداء <cite class="ltx_cite ltx_citemacro_citep">(Narayan et al., <a class="ltx_ref" href="#bib.bib37" title="">1997</a>; Garcia et al., <a class="ltx_ref" href="#bib.bib13" title="">2001</a>; McClintock et al., <a class="ltx_ref" href="#bib.bib31" title="">2003</a>)</cite>. غير أنه لكي يكون نموذج ADAF ملائمًا، لا بد أن تزداد الحافة الداخلية لقرص التراكم برتب قدرية بين حالتي الفوران والسكون. ولذلك من المهم تحديد مقدار مكوني قرص التراكم والانعكاس في الحالة الصلبة، وهي مهمة صعبة بسبب انخفاض التدفق مقارنة بمكون الكومتنة. وفي الواقع، حتى الآلية الفيزيائية لانبعاث الأشعة السينية في الحالة الصلبة ما زالت موضع تساؤل، مع مساهمات محتملة من الانبعاث السنكروتروني المباشر من النفاثة <cite class="ltx_cite ltx_citemacro_citep">(Falcke &amp; Biermann, <a class="ltx_ref" href="#bib.bib10" title="">1999</a>; Markoff et al., <a class="ltx_ref" href="#bib.bib29" title="">2001</a>; Russell et al., <a class="ltx_ref" href="#bib.bib44" title="">2010</a>)</cite> أو من إشعاع السنكروترون الذاتي كومبتون من قاعدة النفاثة <cite class="ltx_cite ltx_citemacro_citep">(Markoff et al., <a class="ltx_ref" href="#bib.bib30" title="">2005</a>)</cite>. وينطبق هذا النوع من الانحلال الطيفي بوجه خاص على XRBs المجرية، ويمكن رؤية مثال لافت عليه مثلًا في <cite class="ltx_cite ltx_citemacro_citet">Nowak et al. (<a class="ltx_ref" href="#bib.bib40" title="">2011</a>)</cite>، حيث تلائم ثلاثة نماذج مختلفة جدًا مجموعة البيانات نفسها لـ Cyg X-1 بجودة متساوية، على الرغم من الجودة الممتازة للبيانات التي حصلت عليها جميع سواتل الأشعة السينية العاملة في المدار آنذاك. إضافة إلى ذلك، يصعب تحديد مقادير المكونات المختلفة في الحالات المتوسطة للأشعة السينية لأن جميع المكونات تكون مضيئة. وتنشأ تعقيدات إضافية في تفسير أطياف الأشعة السينية من توهين المادة بين النجمية في XRBs المجرية ومن الممتصات الدافئة المسماة كذلك، التي قد ترتبط برياح أقراص التراكم، في AGNs. ومن ثم فإن نمذجة أطياف الأشعة السينية للثقوب السوداء المتراكمة تؤدي غالبًا إلى مشكلة انحلال، أي إن عدة نماذج متمايزة تلائم البيانات المرصودة بالجودة نفسها. وحتى إذا حصلنا على ملاءمة تبدو جيدة بين البيانات والنموذج، فإن ذلك لا يعني بالضرورة تطابقًا بين النظرية والواقع الفيزيائي.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">نبين في هذا البحث استخدام طرائق تفكيك خطية غير خاضعة للإشراف في فصل مجموعة من السلاسل الزمنية لأطياف الأشعة السينية إلى مكونات فرعية تقابل مكونات طيفية متميزة صادرة من القرص ومن تجمع الإلكترونات الساخنة. في القسم <a class="ltx_ref" href="#S2" title="2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2</span></a> سنقارن ثلاث طرائق تفكيك مختلفة، هي تحليل المكونات الرئيسية (PCA)، وتحليل المكونات المستقلة (ICA)، وتفكيك المصفوفات غير السالب (NMF)، باستخدام أطياف محاكاة تحاكي السلوك الطيفي لثنائي أشعة سينية نموذجي. ويوفر هذا التحليل تقديرًا أفضل لنماذج استمرارية الأشعة السينية اللازمة لملاءمة أطياف الأشعة السينية في XRBs، وذلك بأخذ التغير الطيفي في الحسبان إلى جانب ملاءمة الأطياف المتوسطة زمنيًا. في القسم <a class="ltx_ref" href="#S3" title="3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">3</span></a> نطبق NMF على مجموعة أطياف من ثنائي الأشعة السينية ذي الثقب الأسود النجمي الكتلة GX 339–4. وبالاستناد إلى مجموعة رصد طويلة بما يكفي على امتداد مخطط الصلابة-الشدة (HID) للمصدر GX 339<math alttext="-" class="ltx_Math" dir="ltr" display="inline" id="S1.p2.m1"><mo>−</mo></math>4، ندرس كيف يكشف التفكيك الطيفي تغير المكونات الطيفية في HID. وفي القسم <a class="ltx_ref" href="#S4" title="4 الاستنتاجات ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">4</span></a> نقدم استنتاجات هذا البحث ونقترح استخدامات مستقبلية لطرائق التفكيك الطيفي في سياق XRBs.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>التفكيك الطيفي غير الخاضع للإشراف</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">يمكن تفكيك أطياف الأشعة السينية بطرائق تفكيك المصفوفات. وبوجه عام، تندرج هذه المسألة ضمن فئة فصل المصادر الأعمى (BSS)، حيث تقدر مجموعة من إشارات المصدر من مجموعة من الإشارات المختلطة من دون معلومات عن إشارات المصدر أو عن عملية المزج. في هذه الحالة تكون مصفوفة البيانات مجموعة من أطياف الأشعة السينية المتقطعة، <math alttext="X_{ji}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m1"><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math>، وتتألف من قيم تدفق ذات طاقة <math alttext="j" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m2"><mi>j</mi></math> مقيسة عند الزمن <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m3"><mi>i</mi></math>. وتؤخذ هذه المصفوفة على أنها تتألف من مزيج من بضع إشارات مصدرية منفصلة <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m4"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math>، حتى العدد <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m5"><mi>k</mi></math>، موزونة عبر نطاقات الطاقة بمصفوفة أوزان <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m6"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math>. ويمكن في الجوهر النظر إلى أعمدة مصفوفة الأوزان على أنها تمثل مكونًا طيفيًا ثابتًا ذا مطال متغير تحدده صفوف مصفوفة إشارة المصدر لكل <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m7"><mi>k</mi></math>. عمليًا، يكون <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m8"><mi>k</mi></math> أصغر بكثير من <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m9"><mi>i</mi></math> أو <math alttext="j" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m10"><mi>j</mi></math>، لأن المقصود هو وصف المعلومات في <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m11"><mi>X</mi></math> بإيجاز. وبعد ذلك يقدر <math alttext="S" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m12"><mi>S</mi></math> و<math alttext="W" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m13"><mi>W</mi></math> بطريقة تجعل <math alttext="X\approx WS" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m14"><mrow><mi>X</mi><mo>≈</mo><mrow><mi>W</mi><mo>⁢</mo><mi>S</mi></mrow></mrow></math>، أي</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="X_{ji}\approx\sum_{k}W_{jk}S_{ki}." class="ltx_Math" dir="ltr" display="block" id="S2.E1.m1"><mrow><mrow><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo rspace="0.111em">≈</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>k</mi></munder><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">مسألة BSS ناقصة التحديد إلى حد كبير، إذ توجد حلول متعددة صحيحة بالقدر نفسه. غير أن فرض شروط ذكية على التفكيك يمكن أن يخفض عدد الحلول الممكنة ويعطي نتائج ذات معنى. فـ PCA، مثلًا، يفترض أن إشارات المصدر ذات ارتباط أدنى بعضها ببعض، في حين يفترض ICA أن إشارات المصدر مستقلة بعضها عن بعض إلى أقصى حد. ويقدم NMF نهجًا مختلفًا قليلًا إذ يفرض قيودًا بنيوية، أي لا سلبية المصفوفتين المكونتين <math alttext="S" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m1"><mi>S</mi></math> و<math alttext="W" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m2"><mi>W</mi></math>. وفيما يلي ننشئ مجموعة بيانات محاكاة تحاكي الآثار الطيفية الموجودة في بيانات الأشعة السينية المعتادة لـ XRBs، ونعالجها بالطرائق المبينة أعلاه.</p>
+</div>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>المحاكاة</h3>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S2.F1.g1" src="x1.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>المعلمات والتدفقات وأطياف الأشعة السينية الناتجة لبيانات المحاكاة المستخدمة في اختبار طرائق تفكيك المصفوفات المختلفة. تعرض اللوحات الخمس في الجانب العلوي الأيسر من الشكل تغير معلمات المكونات الطيفية المنفردة: اللوحتان العلويتان للجسم الأسود القرصي متعدد الألوان (موجة جيبية لمعايرة القرص وخط مائل لدرجة حرارة القرص)، واللوحات الثلاث السفلى لقانون القدرة ذي القطع (موجة منشارية لمعايرة قانون القدرة، وخط مائل للمعامل الطيفي، وموجة جيبية لطاقة القطع). وتعرض اللوحتان في الجانب العلوي الأيمن من الشكل قيم التدفق المقابلة من مكوني القرص وقانون القدرة. أما اللوحة السفلى فتعرض أطياف الأشعة السينية الناتجة المصطنعة باستخدام النماذج الموصوفة أعلاه.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">لتقدير مدى ملاءمة طريقة تفكيك ما (PCA/ICA/NMF)، أنشأنا مجموعة بيانات محاكاة تحاكي الآثار الطيفية الموجودة في بيانات الأشعة السينية المعتادة لـ XRBs: أطياف جسم أسود قرصي (<span class="ltx_text ltx_font_smallcaps">diskbb</span>) ممتصة (<span class="ltx_text ltx_font_smallcaps">phabs</span>) بقيم معايرة ودرجة حرارة متغيرة، وأطياف قانون قدرة ذي قطع (<span class="ltx_text ltx_font_smallcaps">cutoffpl</span>) بقيم معايرة ومعامل طيفي وقطع متغيرة. وبالنسبة إلى “المسارات الطيفية” نستخدم دوالًا قابلة للتمييز مثل الموجات الجيبية والمنشارية. إضافة إلى ذلك، نغير درجة حرارة القرص ومعامل قانون القدرة بحيث ننتج حالات أشعة سينية لينة وصلبة. ونستخدم <span class="ltx_text ltx_font_smallcaps">isis</span> <cite class="ltx_cite ltx_citemacro_citep">(Houck &amp; Denicola, <a class="ltx_ref" href="#bib.bib16" title="">2000</a>)</cite> لتصنيع 200 طيفًا بزمن تعريض قدره 5 ks، مع تغيير معايرة الجسم الأسود جيبيًا من 500 إلى 2500، ودرجة حرارة الجسم الأسود خطيًا من 0.3 keV إلى 1.3 keV ثم عودة، ومعايرة قانون القدرة في صورة موجة منشارية من 1.0 إلى 2.0، ومعامل قانون القدرة خطيًا من 1.5 إلى 2.5 ثم عودة، وقطع قانون القدرة جيبيًا من 40 keV إلى 120 keV (الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 المحاكاة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>). استخدمنا دالة استجابة <span class="ltx_text ltx_font_italic">RXTE</span> من الرصد الموجه إلى GX 339–4، 70110–01–04–00، ثم بسطنا الأطياف باستخدام <span class="ltx_text ltx_font_smallcaps">isis</span> إلى وحدات التدفق (keV photons s<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup> cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup> keV<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>). ونود أن نشير إلى أن استخدام أطياف “مصححة للتدفق” يدخل سمات مصفوفة الاستجابة إضافة إلى العمليات الفيزيائية، وهو ما قد يكون له أثر في أنظمة التدفق المنخفض.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">بما أن PCA وICA وNMF كلها طرائق تعتمد على التفكيك <span class="ltx_text ltx_font_italic">الخطي</span>، فإنها أنسب ما تكون لإيجاد تغير معايرات المكونات الطيفية، وقد تسلك سلوكًا مضطربًا عند التعامل مع آثار أعقد مثل تغير العمق البصري ودرجة حرارة الإلكترونات، اللذين يغيران القطع والميل الطيفي لأطياف الأشعة السينية. ومع ذلك، عندما تقدم إليها بيانات تتغير على نحو غير خطي، يمكن استخدام الطرائق الخطية لأن اللاخطية يمكن تقريبها بوصفها مجموعة من عدة مكونات خطية. لذلك لا نتوقع أن يعيد التفكيك تغير المعلمات نفسها، بل تدفقات المكونات الطيفية التي تنتجها المعلمات المتغيرة مجتمعة. ومن ثم تقاس جودة التفكيك بمدى قدرته على إعادة إنتاج تدفقات القرص وقانون القدرة. وفيما يلي نستعرض طرائق التفكيك الطيفي المختلفة وكيف تستطيع إعادة إنتاج التدفقات الأصلية للمكونات الطيفية في المحاكاة.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>تحليل المكونات الرئيسية</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">يعد PCA <cite class="ltx_cite ltx_citemacro_citep">(للمراجعة مثلًا Jolliffe, <a class="ltx_ref" href="#bib.bib22" title="">2002</a>)</cite> أحد الأدوات المعيارية في تحليل السلاسل الزمنية، وقد استعمل في علم الفلك أساسًا في التصنيف الطيفي النجمي <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Whitney, <a class="ltx_ref" href="#bib.bib50" title="">1983</a>)</cite>، والتصنيف الطيفي للمجرات <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Connolly et al., <a class="ltx_ref" href="#bib.bib4" title="">1995</a>)</cite>، والتصنيف الطيفي للكوازارات <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Francis et al., <a class="ltx_ref" href="#bib.bib12" title="">1992</a>)</cite>. ولدراسة أطياف الأشعة السينية المتغيرة، استعمل PCA في AGNs مثلًا بواسطة <cite class="ltx_cite ltx_citemacro_citet">Vaughan &amp; Fabian (<a class="ltx_ref" href="#bib.bib49" title="">2004</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Parker et al. (<a class="ltx_ref" href="#bib.bib42" title="">2014</a>)</cite>، وفي XRBs بواسطة <cite class="ltx_cite ltx_citemacro_citet">Malzac et al. (<a class="ltx_ref" href="#bib.bib27" title="">2006</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Koljonen et al. (<a class="ltx_ref" href="#bib.bib23" title="">2013</a>)</cite>. غير أن أحد عيوب استخدام PCA في تفكيك الأطياف هو ميله إلى إلغاء المكونات لأنه يعمل على أطياف مطروح منها المتوسط. وينتج عن ذلك مكونات يكون أثرها في أطياف الأشعة السينية إما مبالغًا فيه أو مخفضًا تبعًا لقيم معايرتها. كذلك، إذا كانت للمتجهات الذاتية للمكونات الرئيسية قيم موجبة وسالبة معًا، فإن ذلك يؤدي إلى سلوك دوران محوري في الأطياف؛ أي عندما تزداد معايرة ذلك المكون يزداد أثر المكون في الجزء الموجب وينخفض في الجزء السالب من المتجه الذاتي. ومع ذلك، يتبين أن هذا وكيل جيد لمعامل قانون القدرة <cite class="ltx_cite ltx_citemacro_citep">(Parker et al., <a class="ltx_ref" href="#bib.bib42" title="">2014</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">استخدمنا تفكيك القيم المفردة (SVD) في حساب مكونات الأطياف المنفردة المطروح منها المتوسط التي تؤلف <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p2.m1"><mi>X</mi></math> في الطرف الأيسر من المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>. ويمكن العثور على وصف أكثر تفصيلًا للطريقة مثلًا في <cite class="ltx_cite ltx_citemacro_citet">Malzac et al. (<a class="ltx_ref" href="#bib.bib27" title="">2006</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Koljonen et al. (<a class="ltx_ref" href="#bib.bib23" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Parker et al. (<a class="ltx_ref" href="#bib.bib42" title="">2014</a>)</cite>.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS2.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.2.1 </span>اختيار درجة التفكيك</h4>
+<figure class="ltx_figure" id="S2.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="166" id="S2.F2.g1" src="x2.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>تحديد درجة التفكيك في PCA. <span class="ltx_text ltx_font_italic">اليسار:</span> مخطط القيمة الذاتية اللوغاريتمية (LEV) لمجموعة بيانات المحاكاة. <span class="ltx_text ltx_font_italic">اليمين:</span> مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m7"><msup><mi>χ</mi><mn>2</mn></msup></math> لمجموعة بيانات المحاكاة. بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m8"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> يستقر LEV على خط مستقيم مشيرًا إلى بداية الضجيج. وبالمثل، في مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m9"><msup><mi>χ</mi><mn>2</mn></msup></math> تبلغ <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m10"><mi>k</mi></math> القيمة التي يؤدي بعدها المزيد من إضافة المكونات إلى خفض قيمة <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m11"><msup><mi>χ</mi><mn>2</mn></msup></math> المختزلة بمقدار صغير فقط بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m12"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="166" id="S2.F3.g1" src="x3.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>أثر أخذ عينة من البيانات في عدد المكونات المفككة المهمة الواقعة فوق مستوى الضجيج في مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m4"><msup><mi>χ</mi><mn>2</mn></msup></math>. <span class="ltx_text ltx_font_italic">اليسار:</span> عدد مكونات <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m5"><mi>k</mi></math> الواقعة فوق مستوى الضجيج عندما تختار البيانات بحيث تكون دون عتبة تدفق معينة. <span class="ltx_text ltx_font_italic">اليمين:</span> عدد مكونات <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m6"><mi>k</mi></math> الواقعة فوق مستوى الضجيج عندما تختار البيانات بحيث تمتد على عدد معين من الرصود من بداية المحاكاة.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS2.SSS1.p1">
+<p class="ltx_p">بوجه عام، نتوقع أن تكون جودة التفكيك، أي مدى مشابهته للبيانات الأصلية، دالة متزايدة في درجة التفكيك <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m1"><mi>k</mi></math>. ولن تكون القيمة “الجيدة” لـ <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m2"><mi>k</mi></math> عظمى محلية للجودة، بل نقطة تتغير عندها استجابة الجودة لـ <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m3"><mi>k</mi></math> من شديدة الانحدار إلى ضحلة (أي إن قيمة “جيدة” لـ <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m4"><mi>k</mi></math> توفر تقريبًا أفضل بكثير من القيم الأصغر القريبة، لكنها أسوأ قليلًا فقط من القيم الأكبر القريبة). إحدى طرائق اختيار درجة التفكيك في PCA هي مخطط القيمة الذاتية اللوغاريتمية (LEV) <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Jolliffe, <a class="ltx_ref" href="#bib.bib22" title="">2002</a>; Koljonen et al., <a class="ltx_ref" href="#bib.bib23" title="">2013</a>)</cite>. وفي مخطط LEV يمكن تمييز المكونات المهمة عن الضجيج بانحرافها عن المتوالية الهندسية، أي عن الخط المستقيم في المخطط. إضافة إلى ذلك، نبتكر طريقة مشابهة لمخطط LEV لقياس جودة الأطياف المفككة باستخدام وسيط قيم <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m5"><msup><mi>χ</mi><mn>2</mn></msup></math> المختزلة للتفكيك الناتج عند مقارنته بمجموعة بيانات المحاكاة. وتحسب هذه الطريقة قيم <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m6"><msup><mi>χ</mi><mn>2</mn></msup></math> المختزلة بين كل طيف منفرد من التفكيك <math alttext="WS" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m7"><mrow><mi>W</mi><mo>⁢</mo><mi>S</mi></mrow></math>، في الطرف الأيمن من المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>، بدرجات تفكيك مختلفة، وبين الأطياف من مجموعة بيانات المحاكاة مع أخطائها المصاحبة، ثم تأخذ وسيط هذه القيم، منتجة بذلك مقياس جودة يبين مدى جودة ملاءمة التفكيك ذي الدرجة <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m8"><mi>k</mi></math> للبيانات، ومخفضة عدد المكونات إلى تلك التي تتغير فوق مستوى الضجيج. وكما ذكر أعلاه، ينبغي أن تكون درجة التفكيك المختارة نقطة ينتقل عندها وسيط قيمة <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m9"><msup><mi>χ</mi><mn>2</mn></msup></math> المختزلة من شديد الانحدار إلى ضحل. إضافة إلى ذلك، ينبغي أن تكون القيمة قريبة من 1 كي تمثل الأطياف الأصلية بأمانة. ولنسم هذه الطريقة مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m10"><msup><mi>χ</mi><mn>2</mn></msup></math>، ويمكن صياغتها كما يلي:</p>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS1.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\chi^{2}_{red}(k)=\mathrm{Mdn}\Bigg{\{}\frac{\sum_{i}[(X_{ji}-\sum_{k}W_{jk}S_%
+{ki})/\sigma_{ji}]^{2}}{\mathrm{max}(j)-k}\Bigg{\}}." class="ltx_Math" dir="ltr" display="block" id="S2.E2.m1"><mrow><mrow><mrow><msubsup><mi>χ</mi><mrow><mi>r</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>d</mi></mrow><mn>2</mn></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Mdn</mi><mo>⁢</mo><mrow><mo maxsize="260%" minsize="260%">{</mo><mfrac><mrow><msub><mo>∑</mo><mi>i</mi></msub><msup><mrow><mo lspace="0em" stretchy="false">[</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo rspace="0.055em">−</mo><mrow><msub><mo>∑</mo><mi>k</mi></msub><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><msub><mi>σ</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow><mo stretchy="false">]</mo></mrow><mn>2</mn></msup></mrow><mrow><mrow><mi>max</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mi>k</mi></mrow></mfrac><mo maxsize="260%" minsize="260%">}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS1.p3">
+<p class="ltx_p">سيستخدم مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p3.m1"><msup><mi>χ</mi><mn>2</mn></msup></math> أيضًا لنتائج ICA وNMF لتسهيل المقارنة بين الطرائق المختلفة. ويرجع ذلك إلى أن مخطط LEV لا يمكن استخدامه مع ICA وNMF، إذ يجب في هاتين الطريقتين تحديد عدد مكونات التفكيك قبل بدء التحليل نفسه.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS1.p4">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.2.1 اختيار درجة التفكيك ‣ 2.2 تحليل المكونات الرئيسية ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2</span></a> مخطط LEV ومخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m1"><msup><mi>χ</mi><mn>2</mn></msup></math> لمجموعة بيانات المحاكاة بدرجات تفكيك مختلفة. ويشير مخطط LEV في الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.2.1 اختيار درجة التفكيك ‣ 2.2 تحليل المكونات الرئيسية ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2</span></a> إلى بداية الضجيج بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m2"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math>، مما يدل على أن ستة مكونات كافية لتفسير أطياف الأشعة السينية في المحاكاة. وبالمثل، لا يبدو في مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m3"><msup><mi>χ</mi><mn>2</mn></msup></math> بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m4"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> أي تحسن في قيمة <math alttext="\chi^{2}_{red}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m5"><msubsup><mi>χ</mi><mrow><mi>r</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>d</mi></mrow><mn>2</mn></msubsup></math> عند إضافة مكونات أخرى، ولذلك يكفي أخذ ستة مكونات في الحسبان. وهذا يبين أيضًا أن مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m6"><msup><mi>χ</mi><mn>2</mn></msup></math> يقود إلى الاستنتاج نفسه الذي يقود إليه مخطط LEV. واستنادًا إلى هاتين الطريقتين يكفي أخذ ستة مكونات رئيسية في الحسبان لتفسير أطياف الأشعة السينية في المحاكاة.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS1.p5">
+<p class="ltx_p">ودرسنا أيضًا كيف يتغير عدد <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p5.m1"><mi>k</mi></math> فوق مستوى الضجيج في مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p5.m2"><msup><mi>χ</mi><mn>2</mn></msup></math> في عينة محدودة بالتدفق أو محدودة زمنيًا. وفي هذه الحالة نستخدم إعداد المحاكاة والنماذج ومجالات المعلمات نفسها، لكننا نزيد عدد الأطياف خمسة أضعاف لزيادة الدقة. يبين الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.2.1 اختيار درجة التفكيك ‣ 2.2 تحليل المكونات الرئيسية ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">3</span></a> كيف يتغير <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p5.m3"><mi>k</mi></math> إذا قيدت العينة بما دون عتبة تدفق ما (اللوحة اليسرى)، أو إذا قيدت العينة بحيث تمتد على عدد من الرصود من بداية المحاكاة (اللوحة اليمنى). وللحصول على <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p5.m4"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math>، نرى أن استخدام مجموعة البيانات كاملة ليس ضروريًا، وإن كان لا يزال يمثل مقدارًا كبيرًا (فمستوى التدفق 0.7 photons s<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup> cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup> يقسم البيانات تقريبًا إلى مجموعتين متساويتين). ومع ذلك، حتى في العينات الأصغر يكون عدد المكونات المهمة أصغر قليلًا فقط.</p>
+</div>
+<figure class="ltx_figure" id="S2.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S2.F4.g1" src="x4.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>المكونات الستة من PCA الكافية لتفسير معظم التغير في أطياف الأشعة السينية لمجموعة بيانات المحاكاة. تعرض اللوحات الست العليا إشارات المصدر <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.F4.m3"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> للمكونات الرئيسية، وتعرض اللوحة السفلى أوزان <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S2.F4.m4"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> للمكونات الرئيسية، مع إطار داخلي يعرض الخمسة الأخيرة بمجال مكبر للمحور y.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsubsection" id="S2.SS2.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.2.2 </span>بيانات المحاكاة</h4>
+<div class="ltx_para" id="S2.SS2.SSS2.p1">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.2.1 اختيار درجة التفكيك ‣ 2.2 تحليل المكونات الرئيسية ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">4</span></a> المكونات الرئيسية الستة؛ إشارات المصدر <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS2.p1.m1"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> والأوزان <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS2.p1.m2"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> عبر الطاقات، المشتقة من مجموعة بيانات المحاكاة. ومن الواضح أن المكون الأول (<math alttext="k=1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS2.p1.m3"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math>) يقابل التغيرات في مكون القرص، وأن المكون الثاني (<math alttext="k=2" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS2.p1.m4"><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow></math>) يقابل التغيرات في مكون قانون القدرة. غير أنه ليس واضحًا كيف تساهم المكونات المتبقية في مكوني القرص وقانون القدرة؛ ويرجح أنها تنتج تصحيحات سالبة وموجبة عشوائية لمكون القرص أو مكون قانون القدرة أو كليهما. وتعرض مقارنة أول مكونين مع تدفقي القرص وقانون القدرة من المحاكاة في القسم <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">9</span></a>.</p>
+</div>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.3 </span>تحليل المكونات المستقلة</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p">يمثل ICA <cite class="ltx_cite ltx_citemacro_citep">(للمراجعة، انظر مثلًا Hyvärinen et al., <a class="ltx_ref" href="#bib.bib20" title="">2001</a>)</cite> حلًا خطيًا لـ BSS شبيهًا بـ PCA، لكنه يعتمد على الاستقلال الإحصائي للمكونات المكونة بدلًا من انعدام الارتباط والتعامد. وعلى غرار PCA، استعمل ICA في علم الفلك أساسًا للتصنيف الطيفي للمجرات <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Lu et al., <a class="ltx_ref" href="#bib.bib26" title="">2006</a>; Allen et al., <a class="ltx_ref" href="#bib.bib1" title="">2013</a>)</cite>. والاستقلال الإحصائي شرط أشد صرامة من انعدام الارتباط، إذ إن انعدام الارتباط يترتب على الاستقلال لكن العكس غير صحيح. ويعتمد ICA على مبرهنة النهاية المركزية التي تنص على أن متوسط العمليات العشوائية يقترب دائمًا من توزيع غاوسي. لذلك يبحث ICA عن مكونات غير غاوسية. ويعاني ICA من المشكلات نفسها التي يعانيها PCA في التفكيك الطيفي، لأنه يعمل أيضًا على الأطياف المطروح منها المتوسط، مما ينتج أوزانًا موجبة وسالبة وأطياف مصدرية ذات سلوك دوران محوري.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p2">
+<p class="ltx_p">استخدمنا خوارزمية <span class="ltx_text ltx_font_smallcaps">fastica</span> <cite class="ltx_cite ltx_citemacro_citep">(Hyvärinen, <a class="ltx_ref" href="#bib.bib19" title="">1999</a>)</cite> في حساب مكونات الأطياف المنفردة المبيضة مسبقًا التي تؤلف <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m1"><mi>X</mi></math>، في الطرف الأيسر من المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>، وذلك باستخدام الإنتروبيا السالبة للبحث عن المكونات غير الغاوسية.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS3.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.3.1 </span>اختيار درجة التفكيك</h4>
+<div class="ltx_para" id="S2.SS3.SSS1.p1">
+<p class="ltx_p">لـ ICA عيب مقارنة بـ PCA، وهو أنه لا يرتب المكونات وفق حصتها من التباين. كذلك، ينبغي تحديد درجة التفكيك قبل تشغيل الخوارزمية. وكما في PCA، نستخدم الطريقة نفسها لتحديد جودة التفكيك باستعمال مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p1.m1"><msup><mi>χ</mi><mn>2</mn></msup></math> كما شرح في القسم <a class="ltx_ref" href="#S2.SS2.SSS1" title="2.2.1 اختيار درجة التفكيك ‣ 2.2 تحليل المكونات الرئيسية ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2.2.1</span></a>. يبين الشكل <a class="ltx_ref" href="#S2.F5" title="Figure 5 ‣ 2.3.1 اختيار درجة التفكيك ‣ 2.3 تحليل المكونات المستقلة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">5</span></a> مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p1.m2"><msup><mi>χ</mi><mn>2</mn></msup></math> لدرجات مختلفة من التفكيك. وعلى غرار نتائج PCA، لا يبدو بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p1.m3"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> أي تحسن في قيمة <math alttext="\chi^{2}_{red}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p1.m4"><msubsup><mi>χ</mi><mrow><mi>r</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>d</mi></mrow><mn>2</mn></msubsup></math> بإضافة مزيد من المكونات، ولذلك يكفي أخذ ستة مكونات في الحسبان لتحليل ICA.</p>
+</div>
+<figure class="ltx_figure" id="S2.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="277" id="S2.F5.g1" src="x5.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>تحديد درجة التفكيك في ICA. يبين الشكل مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F5.m5"><msup><mi>χ</mi><mn>2</mn></msup></math> لمجموعة بيانات المحاكاة. بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.F5.m6"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> يبلغ مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F5.m7"><msup><mi>χ</mi><mn>2</mn></msup></math> القيمة التي يؤدي بعدها المزيد من إضافة المكونات إلى خفض قيمة <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F5.m8"><msup><mi>χ</mi><mn>2</mn></msup></math> المختزلة بمقدار صغير فقط؛ ولذلك يكفي أخذ ستة مكونات في الحسبان لتفكيك المصفوفات.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S2.F6.g1" src="x6.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>المكونات الستة من تحليل المكونات المستقلة، وهي كافية لتفسير معظم التغير وأطياف الأشعة السينية لمجموعة بيانات المحاكاة. تعرض اللوحات الست العليا إشارات المصدر <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.F6.m3"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math>، وتعرض اللوحة السفلى أوزان <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S2.F6.m4"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> للمكونات المستقلة.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsubsection" id="S2.SS3.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.3.2 </span>بيانات المحاكاة</h4>
+<div class="ltx_para" id="S2.SS3.SSS2.p1">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S2.F6" title="Figure 6 ‣ 2.3.1 اختيار درجة التفكيك ‣ 2.3 تحليل المكونات المستقلة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">6</span></a> المكونات المستقلة الستة، مقسمة كما سبق إلى إشارات المصدر والأوزان، والمشتقة من مجموعة بيانات المحاكاة. وعلى خلاف PCA، تبدو جميع المكونات ذات صلة بمكون القرص أو مكون قانون القدرة أو كليهما. واستنادًا إلى مجال طاقة الأوزان والتدفقات المحاكاة في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 المحاكاة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>، يبدو أن مكونات ICA المستقلة <math alttext="k=3,5,6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p1.m1"><mrow><mi>k</mi><mo>=</mo><mrow><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn></mrow></mrow></math> تمثل القرص وأن المكونات المستقلة <math alttext="k=1,2,4" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p1.m2"><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn></mrow></mrow></math> تمثل المكونات الطيفية لقانون القدرة. غير أنه يمكن أن نرى أنه عندما يكون تدفق قانون القدرة منخفضًا، يتسرب تدفق القرص إلى جميع المكونات المستقلة. وتعرض مقارنة مكوني القرص وقانون القدرة كما تمثلهما المكونات المستقلة المقابلة مع تدفقي القرص وقانون القدرة من المحاكاة في القسم <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">9</span></a>.</p>
+</div>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.4 </span>تفكيك المصفوفات غير السالب</h3>
+<div class="ltx_para" id="S2.SS4.p1">
+<p class="ltx_p">يوفر NMF <cite class="ltx_cite ltx_citemacro_citep">(Paatero &amp; Tapper, <a class="ltx_ref" href="#bib.bib41" title="">1994</a>; Lee &amp; Seung, <a class="ltx_ref" href="#bib.bib24" title="">1999</a>)</cite> بديلًا مثيرًا لطرائق اختزال الأبعاد التقليدية. ففي NMF، تمثل العينات بتركيبات غير سالبة من مكونات معيارية. ومن ثم فإن البنية التي تجدها طرائق NMF غالبًا ما تكون مختلفة جدًا عن بنية الطرائق التقليدية المعتمدة على المتجهات الذاتية، مثل PCA، وأسهل منها تفسيرًا بالحدس. ومن خلال بناء العينات بوصفها تركيبات موجبة، يمتلك NMF أيضًا قدرة على فك تشابك المكونات المعيارية التي كثيرًا ما تتراكب لتكوين عينات مجتمعية بعينها. وثمن هذا التفكيك الأيسر تفسيرًا هو أن التفكيك تقريبي، أي ليس وحيدًا كما في PCA، وأن المكونات تعتمد على بعد التفكيك، مما يتطلب مزيدًا من العناية في التفسير.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p2">
+<p class="ltx_p">في NMF توجد المصفوفتان <math alttext="W" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p2.m1"><mi>W</mi></math> و<math alttext="S" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p2.m2"><mi>S</mi></math> بتصغير دالة كلفة تحت قيد أن تكونا غير سالبتين. ويمكن بناء دالة الكلفة هذه باستخدام مقياس مسافة ما <math alttext="D" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p2.m3"><mi>D</mi></math> بين <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p2.m4"><mi>X</mi></math> و<math alttext="WS" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p2.m5"><mrow><mi>W</mi><mo>⁢</mo><mi>S</mi></mrow></math>. في هذا البحث نستخدم تباعد Kullback-Leibler (KL) المعمم،</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="D_{KL}(X||M)=\sum_{ji}\Big{(}X_{ji}\mathrm{log}\frac{X_{ji}}{M_{ji}}-X_{ji}+M_%
+{ji}\Big{)}," class="ltx_math_unparsed" dir="ltr" display="block" id="S2.E3.m1"><mrow><msub><mi>D</mi><mrow><mi>K</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mrow><mo stretchy="false">(</mo><mi>X</mi><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><mo rspace="0.111em">=</mo><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></munder><mrow><mo maxsize="160%" minsize="160%">(</mo><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mi>log</mi><mfrac><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><msub><mi>M</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mfrac><mo>−</mo><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo>+</mo><msub><mi>M</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo maxsize="160%" minsize="160%">)</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.SS4.p4">
+<p class="ltx_p">حيث <math alttext="M_{ji}=\sum_{k}W_{jk}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m1"><mrow><msub><mi>M</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>k</mi></msub><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow></math>. يقيس تباعد KL المعلومات المفقودة عندما تستخدم <math alttext="M" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m2"><mi>M</mi></math> لتقريب <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m3"><mi>X</mi></math>، ومن ثم فإن تصغيره يؤدي إلى تعظيم معلومات <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m4"><mi>X</mi></math> في <math alttext="M" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m5"><mi>M</mi></math>. إضافة إلى ذلك، بينت <cite class="ltx_cite ltx_citemacro_citet">Sajda et al. (<a class="ltx_ref" href="#bib.bib45" title="">2003</a>)</cite> أن تصغير دالة الكلفة أعلاه يكافئ تعظيم احتمال توليد <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m6"><mi>X</mi></math> من <math alttext="M" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m7"><mi>M</mi></math> عندما يفترض أن <math alttext="X" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m8"><mi>X</mi></math> موزع وفق بواسون بمتوسط <math alttext="M" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p4.m9"><mi>M</mi></math>. ولذلك فإن تباعد KL دالة كلفة ملائمة للاستخدام مع بيانات عد الأشعة السينية.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p5">
+<p class="ltx_p">في هذا البحث نستخدم حزمة <span class="ltx_text ltx_font_smallcaps">nmf</span> <cite class="ltx_cite ltx_citemacro_citep">(Gaujoux &amp; Seoighe, <a class="ltx_ref" href="#bib.bib14" title="">2010</a>)</cite> التي تحسب NMF القياسي <cite class="ltx_cite ltx_citemacro_citep">(Brunet et al., <a class="ltx_ref" href="#bib.bib2" title="">2004</a>)</cite> باختيار قيم ابتدائية عشوائية لـ <math alttext="W" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p5.m1"><mi>W</mi></math> و<math alttext="S" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p5.m2"><mi>S</mi></math> من توزيع منتظم <math alttext="[0,\rm{max}(X)]" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p5.m3"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mi>max</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">X</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></math>، ثم تحدثها تكراريًا 10000 مرة لإيجاد حد أدنى محلي لدالة الكلفة بقاعدة ضرب من <cite class="ltx_cite ltx_citemacro_citet">Lee &amp; Seung (<a class="ltx_ref" href="#bib.bib25" title="">2001</a>)</cite>:</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p6">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="W_{jk}\leftarrow W_{jk}\Big{(}\sum_{i}\frac{S_{ki}X_{ji}}{M_{ji}}\Big{)}\Big{(%
+}\sum_{i}S_{ki}\Big{)}^{-1}," class="ltx_Math" dir="ltr" display="block" id="S2.E4.m1"><mrow><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo stretchy="false">←</mo><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><mrow><mo maxsize="160%" minsize="160%">(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>i</mi></munder><mfrac><mrow><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo>⁢</mo><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow><msub><mi>M</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mfrac></mrow><mo maxsize="160%" minsize="160%">)</mo></mrow><mo>⁢</mo><msup><mrow><mo maxsize="160%" minsize="160%">(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>i</mi></munder><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow><mo maxsize="160%" minsize="160%">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.SS4.p7">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="S_{ki}\leftarrow S_{ki}\Big{(}\sum_{j}\frac{W_{jk}X_{ji}}{M_{ji}}\Big{)}\Big{(%
+}\sum_{j}W_{jk}\Big{)}^{-1}." class="ltx_Math" dir="ltr" display="block" id="S2.E5.m1"><mrow><mrow><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo stretchy="false">←</mo><mrow><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo>⁢</mo><mrow><mo maxsize="160%" minsize="160%">(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>j</mi></munder><mfrac><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>X</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow><msub><mi>M</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mfrac></mrow><mo maxsize="160%" minsize="160%">)</mo></mrow><mo>⁢</mo><msup><mrow><mo maxsize="160%" minsize="160%">(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>j</mi></munder><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></mrow><mo maxsize="160%" minsize="160%">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.SS4.p8">
+<p class="ltx_p">ولضمان عدم توقف الخوارزمية عند حد أدنى محلي، كررنا عملية التصغير من 50 نقاط ابتدائية مختلفة (تعد 30–50 نقطة ابتدائية كافية في <cite class="ltx_cite ltx_citemacro_citet">Hutchins et al. <a class="ltx_ref" href="#bib.bib17" title="">2008</a></cite> و<cite class="ltx_cite ltx_citemacro_citet">Brunet et al. <a class="ltx_ref" href="#bib.bib2" title="">2004</a></cite> للحصول على تقدير متين لدرجة التفكيك <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p8.m1"><mi>k</mi></math>) لكل قيمة من <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p8.m2"><mi>k</mi></math>، ومن 300 نقطة ابتدائية مختلفة لدرجة التفكيك المختارة، واستخدمنا التفكيك الذي صغر دالة الكلفة في المعادلة <a class="ltx_ref" href="#S2.E3" title="In 2.4 تفكيك المصفوفات غير السالب ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">3</span></a>.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS4.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.4.1 </span>اختيار درجة التفكيك</h4>
+<div class="ltx_para" id="S2.SS4.SSS1.p1">
+<p class="ltx_p">NMF ليس طريقة هرمية؛ فكل مكون يعتمد على اختيار الدرجة <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS1.p1.m1"><mi>k</mi></math>، ولذلك ينبغي اتخاذ هذا الاختيار بعناية. وعلى غرار PCA وICA أعلاه، نستخدم مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS1.p1.m2"><msup><mi>χ</mi><mn>2</mn></msup></math> كما شرح في القسم <a class="ltx_ref" href="#S2.SS2.SSS1" title="2.2.1 اختيار درجة التفكيك ‣ 2.2 تحليل المكونات الرئيسية ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2.2.1</span></a>. يبين الشكل <a class="ltx_ref" href="#S2.F7" title="Figure 7 ‣ 2.4.1 اختيار درجة التفكيك ‣ 2.4 تفكيك المصفوفات غير السالب ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">7</span></a> مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS1.p1.m3"><msup><mi>χ</mi><mn>2</mn></msup></math> لدرجات مختلفة من التفكيك. بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS1.p1.m4"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> لا يبدو أن هناك أي تحسن في قيمة <math alttext="\chi^{2}_{red}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS1.p1.m5"><msubsup><mi>χ</mi><mrow><mi>r</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>d</mi></mrow><mn>2</mn></msubsup></math> عند إضافة مكونات أخرى، ولذلك يكفي أخذ ستة مكونات في الحسبان لتحليل NMF.</p>
+</div>
+<figure class="ltx_figure" id="S2.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="277" id="S2.F7.g1" src="x7.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>تحديد درجة التفكيك في NMF. يبين الشكل مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F7.m5"><msup><mi>χ</mi><mn>2</mn></msup></math> لمجموعة بيانات المحاكاة. بعد <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.F7.m6"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> يبلغ مخطط <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F7.m7"><msup><mi>χ</mi><mn>2</mn></msup></math> القيمة التي يؤدي بعدها المزيد من إضافة المكونات إلى خفض قيمة <math alttext="\chi^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F7.m8"><msup><mi>χ</mi><mn>2</mn></msup></math> المختزلة بمقدار صغير فقط.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsubsection" id="S2.SS4.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.4.2 </span>بيانات المحاكاة</h4>
+<figure class="ltx_figure" id="S2.F8"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S2.F8.g1" src="x8.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>المكونات الستة من تحليل NMF، وهي كافية لتفسير معظم التغير وأطياف الأشعة السينية لمجموعة بيانات المحاكاة. تعرض اللوحات الست العليا إشارات المصدر <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.F8.m3"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> لمكونات NMF، وتعرض اللوحة السفلى أوزان <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S2.F8.m4"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> لمكونات NMF.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS4.SSS2.p1">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S2.F8" title="Figure 8 ‣ 2.4.2 بيانات المحاكاة ‣ 2.4 تفكيك المصفوفات غير السالب ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">8</span></a> المكونات المشتقة بواسطة NMF من مجموعة بيانات المحاكاة. وتنقسم المكونات بوضوح إلى ما يمثل مكون القرص (<math alttext="k=3,6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m1"><mrow><mi>k</mi><mo>=</mo><mrow><mn>3</mn><mo>,</mo><mn>6</mn></mrow></mrow></math>) وما يمثل مكون قانون القدرة (<math alttext="k=1,2,4,5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m2"><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></math>). والمكونان الممثلان للقرص يحتفظان حتى ببعض معلومات المعلمات الأصلية؛ إذ يظهر <math alttext="k=6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m3"><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow></math> ازدياد درجة حرارة القرص وانخفاضها، ويظهر <math alttext="k=3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m4"><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow></math> المعايرة المتغيرة جيبيًا، وإن كان يظهر بوضوح قدر من المزج بين كلا المكونين. أما المكونات التي تمثل قانون القدرة فهي أكثر امتزاجًا بعضها ببعض، لكن يمكن تمييز بعض التشابه بين معايرة قانون القدرة والمكونين <math alttext="k=2" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m5"><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow></math> و<math alttext="k=5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m6"><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow></math>، وبين معامل قانون القدرة والمكون <math alttext="k=1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m7"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math>، وبين القطع والمكون <math alttext="k=4" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.SSS2.p1.m8"><mrow><mi>k</mi><mo>=</mo><mn>4</mn></mrow></math>. وينبغي أن يؤخذ في الاعتبار أن المطابقة واحدًا لواحد مع معلمات النموذج غير متوقعة لأن آثارها في الأطياف لاخطية، إلا أن NMF يؤدي أداءً جيدًا جدًا في تمييز مكوني القرص وقانون القدرة أحدهما عن الآخر وفي التعامل مع الآثار اللاخطية. وفيما يلي سنقارن جميع التفكيكات من PCA وICA وNMF بالتدفقات المشتقة من مكوني القرص وقانون القدرة في مجموعة بيانات المحاكاة.</p>
+</div>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS5">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.5 </span>مقارنة التفكيكات</h3>
+<div class="ltx_para" id="S2.SS5.p1">
+<p class="ltx_p">من اللافت أن جميع الطرائق تتقارب إلى درجة التفكيك نفسها، وإن كان ذلك بمكونات تبدو مختلفة. ويبين هذا أن المكونات المنفردة في التفكيكات لا تمثل على الأرجح أي معلمات ذات معنى في النموذج الطيفي، وهذا متوقع لأن المعلمات تتغير على نحو لاخطي. غير أنه يمكن تجميع مكون القرص ومكون قانون القدرة من مجموعة من مكونات التفكيك. ويعرض الشكل <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">9</span></a> الارتباط بين قيم تدفق النموذج (انظر الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 المحاكاة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>) وبين مكونات <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m1"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> منفردة أو تراكيب مختلفة منها تمثل مكون القرص أو قانون القدرة في طرائق التفكيك المختلفة الموصوفة أعلاه. يستطيع PCA تمييز تدفق القرص تمييزًا جيدًا إلى حد معقول. أما إنتاج تدفق قانون القدرة فأكثر صعوبة، ومكون <math alttext="k=2" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m2"><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow></math> هو الأقرب إلى ذلك. وليس واضحًا كيف يمكن للمكونات التصحيحية (<math alttext="k=3,4,5,6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m3"><mrow><mi>k</mi><mo>=</mo><mrow><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn></mrow></mrow></math>) أن تحسن المطابقة إذا أضيفت إلى هذه المكونات “الرئيسية” أو طرحت منها. إضافة إلى ذلك، يبدو أن المكونات لا تشبه تغيرات معلمات النموذج المنفردة. ويؤدي ICA أداءً أفضل قليلًا في تمييز مكونات التدفق. فالمكونات <math alttext="k=3,5,6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m4"><mrow><mi>k</mi><mo>=</mo><mrow><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn></mrow></mrow></math> تتجمع لتطابق تدفق القرص، والمكونات <math alttext="k=1,2,4" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m5"><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn></mrow></mrow></math> لتطابق تدفق قانون القدرة. غير أنه، كما في PCA، ينهار الارتباط عند تدفقات قانون القدرة المنخفضة. ويؤدي NMF أفضل أداء في تمييز مكوني التدفق. فالمكونات التي تمثل تدفق القرص (<math alttext="k=3,6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m6"><mrow><mi>k</mi><mo>=</mo><mrow><mn>3</mn><mo>,</mo><mn>6</mn></mrow></mrow></math>) جيدة بالقدر نفسه كما في PCA وICA. أما المكونات التي تمثل تدفق قانون القدرة (<math alttext="k=1,2,4,5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m7"><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></math>) فهي تميز تدفق قانون القدرة في بيانات المحاكاة على أفضل وجه بين الطرائق الثلاث، مع تشتت أصغر واستمرار للارتباط حتى عند تدفقات قانون القدرة المنخفضة أيضًا.</p>
+</div>
+<figure class="ltx_figure" id="S2.F9"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S2.F9.g1" src="x9.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>جودة التفكيكات. تعرض اللوحات الارتباط بين التدفقات المفترضة للقرص وقانون القدرة من تحليلات PCA (يسارًا) وICA (وسطًا) وNMF (يمينًا) وبين تدفقات القرص (أعلى) وقانون القدرة (أسفل) في المحاكاة (انظر أيضًا الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 المحاكاة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>).</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS5.p2">
+<p class="ltx_p">إن السمة الفريدة في NMF، التي لا تسمح إلا بالقيم الموجبة للتفكيك، تتيح توحيد <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m1"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> و<math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m2"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> الناتجين لتكوين أطياف المكونات المنفردة. لذلك نختار <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m3"><mi>k</mi></math> الذي يقابل مكوني القرص وقانون القدرة المذكورين أعلاه، ونكون طيفي القرص وقانون القدرة على الصورة <math alttext="X_{disc}=\sum_{k=3,6}W_{jk}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m4"><mrow><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mrow><mn>3</mn><mo>,</mo><mn>6</mn></mrow></mrow></msub><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow></math> و<math alttext="X_{PL}=\sum_{k=1,2,4,5}W_{jk}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m5"><mrow><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></msub><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow></math>، على الترتيب. ثم تدخل الأطياف الناتجة إلى <span class="ltx_text ltx_font_smallcaps">isis</span><span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+            يتم ذلك عبر دالة <span class="ltx_text ltx_font_smallcaps">isis</span> ‏<span class="ltx_text ltx_font_smallcaps">load_data</span>، التي تستطيع تحميل الملفات الطيفية بصيغة ASCII كما يصفها توثيق <span class="ltx_text ltx_font_smallcaps">isis</span>. وبما أن الأطياف مصححة للتدفق أصلًا، يفترض لأغراض الملاءمة وجود استجابة قطرية فقط بمساحة 1 cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup> وزمن تكامل اسمي قدره 1 sec. وينبغي أن تكون وحدات أطياف ASCII هي photons s<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup> cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup>، ومن ثم يضرب <math alttext="X_{disc}" class="ltx_Math" dir="ltr" display="inline" id="footnote1.m4"><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub></math> و<math alttext="X_{PL}" class="ltx_Math" dir="ltr" display="inline" id="footnote1.m5"><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></math> في عروض حاويات الطاقة ويقسمان على طاقة الحاوية. ومن المهم أيضًا ضبط المتغير <span class="ltx_text ltx_font_smallcaps">minimum_stat_err</span> على قيمة أدنى من اللايقينيات المدخلة لمنع <span class="ltx_text ltx_font_smallcaps">isis</span> من تعديلها.</span></span></span> وتلائم بنموذج <span class="ltx_text ltx_font_smallcaps">diskbb</span> أو <span class="ltx_text ltx_font_smallcaps">cutoffpl</span> من أجل <math alttext="X_{disc}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m6"><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub></math> و<math alttext="X_{PL}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m7"><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></math>، على الترتيب. ثم تقارن معلمات الملاءمات (انظر الشكل <a class="ltx_ref" href="#S2.F10" title="Figure 10 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">10</span></a>) بالمعلمات الأصلية في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 المحاكاة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>. ومن الواضح أنه لا تتحقق مسارات معلمات متماثلة تمامًا، لكن ذلك مدفوع أساسًا بقيم التدفق المنخفضة التي تزيد انحلال معلمات النموذج.</p>
+</div>
+<figure class="ltx_figure" id="S2.F10"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S2.F10.g1" src="x10.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>المعلمات الطيفية (النقاط الحمراء) لأطياف NMF الملائمة استقلاليًا لمكوني القرص وقانون القدرة، مقارنة بقيم معلمات المحاكاة (الخطوط المتصلة).</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>تطبيق على GX 339–4</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">GX 339–4 هو ثنائي أشعة سينية منخفض الكتلة يضم ثقبًا أسود، اكتشف في أوائل سبعينيات القرن 1970 <cite class="ltx_cite ltx_citemacro_citep">(Markert et al., <a class="ltx_ref" href="#bib.bib28" title="">1973</a>)</cite>. وتبلغ كتلة الثقب الأسود <math alttext="\geq" class="ltx_Math" dir="ltr" display="inline" id="S3.p1.m1"><mo>≥</mo></math> 5.8<math alttext="M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S3.p1.m2"><msub><mi>M</mi><mo>⊙</mo></msub></math> <cite class="ltx_cite ltx_citemacro_citep">(Hynes et al., <a class="ltx_ref" href="#bib.bib18" title="">2003</a>; Muñoz-Darias et al., <a class="ltx_ref" href="#bib.bib35" title="">2008</a>)</cite> عند مسافة قدرها 7–9 kpc <cite class="ltx_cite ltx_citemacro_citep">(Zdziarski et a., <a class="ltx_ref" href="#bib.bib51" title="">2004</a>)</cite>. أما الميل فغير مؤكد، وإن كان على الأرجح أقل من 60<sup class="ltx_sup">∘</sup> <cite class="ltx_cite ltx_citemacro_citep">(Cowley et al., <a class="ltx_ref" href="#bib.bib7" title="">2002</a>)</cite>. ويظهر GX 339–4 فورانات متكررة، وهو أحد أكثر XRBs رصدًا، مما يجعله جرمًا ملائمًا جدًا لكشف التغيرات الزمنية في أطيافه من الأشعة السينية. إضافة إلى ذلك، يمكن عادة ملاءمة أطياف الأشعة السينية لـ GX 339–4 بنموذج بسيط نسبيًا يتألف من مكون جسم أسود قرصي متعدد الألوان ممتص أو مكون قانون قدرة ذي قطع أو كليهما، ومن خط حديد <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Dunn et al., <a class="ltx_ref" href="#bib.bib9" title="">2008</a>)</cite>. وغالبًا ما يستخدم GX 339–4 مثالًا رئيسيًا على مصدر يظهر تباطؤًا في أطياف الأشعة السينية، أي إن الانتقال من الحالة الصلبة التي يهيمن عليها قانون القدرة إلى الحالة اللينة التي يهيمن عليها القرص يحدث عند لمعان أعلى من الانتقال من الحالة اللينة عائدًا إلى الحالة الصلبة في الفوران نفسه <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Miyamoto et al., <a class="ltx_ref" href="#bib.bib33" title="">1995</a>; Nowak, <a class="ltx_ref" href="#bib.bib38" title="">1995</a>; Nowak et al., <a class="ltx_ref" href="#bib.bib39" title="">2002</a>)</cite>. كما تربط فورانات GX 339–4 الرصود الراديوية بالتطور الطيفي، بحيث يرتبط تدفق الأشعة السينية بالتدفق الراديوي في الحالة الصلبة <cite class="ltx_cite ltx_citemacro_citep">(Hannikainen et al., <a class="ltx_ref" href="#bib.bib15" title="">1998</a>; Corbel et al., <a class="ltx_ref" href="#bib.bib5" title="">2000</a>, <a class="ltx_ref" href="#bib.bib6" title="">2013</a>)</cite>، ويظهر التدفق الراديوي فورانات قوية عابرة قبل أن يخمد عندما ينتقل المصدر إلى الحالة اللينة، ثم يرصد التدفق الراديوي مرة أخرى عند عودة المصدر إلى الحالة الصلبة ولكن من دون فورانات قوية <cite class="ltx_cite ltx_citemacro_citep">(Fender et al., <a class="ltx_ref" href="#bib.bib11" title="">2004</a>)</cite>. وتجعل هذه الخصائص GX 339–4 مصدرًا جيدًا لسبر فيزياء التراكم وصلة القرص بالنفاثة. وتشمل الرصود الأخرى المثيرة للاهتمام اكتشافات محتملة لقرص التراكم في الحالة الصلبة <cite class="ltx_cite ltx_citemacro_citep">(Miller et al., <a class="ltx_ref" href="#bib.bib32" title="">2006</a>; Tomsick et al., <a class="ltx_ref" href="#bib.bib48" title="">2008</a>; Reis et al., <a class="ltx_ref" href="#bib.bib43" title="">2010</a>)</cite>، وهي ذات آثار على هندسة التراكم وإنتاج النفاثة المدمجة.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">لذلك اخترنا GX 339–4 مصدرًا لاختبار أفضل طريقة تفكيك طيفي غير خاضع للإشراف وجدناها في هذا البحث، وهي تحليل NMF (انظر القسم <a class="ltx_ref" href="#S2" title="2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2</span></a>)، وذلك بسبب كمية البيانات المتاحة، وسهولة ملاءمة أطياف الأشعة السينية بنماذج بسيطة، والتباطؤ الواضح الذي يظهره المصدر وما له من دلالات في فيزياء التراكم.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>الرصود</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">حللنا رصود <span class="ltx_text ltx_font_italic">RXTE</span> المؤرشفة لـ GX 339–4 من عام 2002 إلى عام 2010، وتشمل بيانات <span class="ltx_text ltx_font_italic">RXTE</span>/PCA وتجربة توقيت الأشعة السينية عالية الطاقة (<span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE) بمجموع 934 رصدًا موجهًا. واستبعدنا أيضًا الرصود الموجهة التي تظهر فجوات بيانات كبيرة في طيف <span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE. أما فجوات البيانات الصغيرة (<math alttext="&lt;" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m1"><mo>&lt;</mo></math>3 قنوات طاقة) فتملأ باستيفاء البيانات من النقاط المجاورة. وتشمل مجموعة البيانات الكاملة أربعة فورانات من 2002 و2004 و2007 و2010. ويمكن العثور على نظرة شاملة إلى هذه الفورانات مثلًا في <cite class="ltx_cite ltx_citemacro_citet">Dunn et al. (<a class="ltx_ref" href="#bib.bib9" title="">2008</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Motta et al. (<a class="ltx_ref" href="#bib.bib34" title="">2011</a>)</cite> والمراجع الواردة فيهما. ويخفض كل رصد موجه على حدة بالطريقة المعيارية كما ترد في دليل <span class="ltx_text ltx_font_italic">RXTE</span> باستخدام <span class="ltx_text ltx_font_smallcaps">heasoft</span> 6.13. وتعد الأطياف المنفردة للتحليل على النحو الآتي: يستخرج طيف <span class="ltx_text ltx_font_italic">RXTE</span>/PCA من الطبقة العليا للوحدة PCU–2، التي كانت عاملة في جميع الرصود الموجهة المختارة. ويستخرج طيف <span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE من العنقود B للبيانات السابقة لـ 14 ديسمبر 2009، حين توقف العنقود عن التأرجح وترك بصورة دائمة في وضع توجيه خارج المصدر. وبعد ذلك استخدمنا العنقود A لبيانات المصدر، وقدرنا الخلفية باستخدام العنقود B (بسبب توقف العنقود A عن التأرجح وثباته في وضع توجيه نحو المصدر). ثم تبسط أطياف <span class="ltx_text ltx_font_italic">RXTE</span>/PCA و<span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE وتستخرج قيم التدفق من 3–25 keV لـ <span class="ltx_text ltx_font_italic">RXTE</span>/PCA ومن 20–200 keV لـ <span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE. وبعد ذلك تطبع أطياف <span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE إلى <span class="ltx_text ltx_font_italic">RXTE</span>/PCA بحيث يصبح مجال الطاقة المتداخل من 20–25 keV متماثلًا لكلا الكاشفين. ومع ذلك، تستخدم بيانات <span class="ltx_text ltx_font_italic">RXTE</span>/PCA في هذه المنطقة ضمن الأطياف النهائية.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>النتائج</h3>
+<figure class="ltx_figure" id="S3.F11"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="415" id="S3.F11.g1" src="x11.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 11: </span><span class="ltx_text ltx_font_italic">أعلى:</span> جودة درجات التفكيك. اخترنا <math alttext="k=5" class="ltx_Math" dir="ltr" display="inline" id="S3.F11.m7"><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow></math> لدرجة تحليل NMF (انظر النص لمزيد من التفاصيل). <span class="ltx_text ltx_font_italic">أسفل:</span> قيم <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S3.F11.m8"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> المنفردة للتفكيك لكل <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S3.F11.m9"><mi>k</mi></math>. ويعرض الإطار الداخلي المخطط نفسه لكن لمجال أصغر من <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S3.F11.m10"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> لإظهار المكونات عند الطاقات الأعلى بصورة أوضح. ويمكن نسبة المكونات عند <math alttext="k=2,3" class="ltx_Math" dir="ltr" display="inline" id="S3.F11.m11"><mrow><mi>k</mi><mo>=</mo><mrow><mn>2</mn><mo>,</mo><mn>3</mn></mrow></mrow></math> إلى القرص، وعند <math alttext="k=1,4,5" class="ltx_Math" dir="ltr" display="inline" id="S3.F11.m12"><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></math> إلى خط الحديد وقانون القدرة.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">استخدمنا الطريقة نفسها تمامًا كما وصفت في القسم <a class="ltx_ref" href="#S2.SS4" title="2.4 تفكيك المصفوفات غير السالب ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2.4</span></a> لتحليل البيانات الطيفية من GX 339–4. يبين الشكل <a class="ltx_ref" href="#S3.F11" title="Figure 11 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">11</span></a> درجة التفكيك في اللوحة العليا لبيانات GX 339–4. ونختار <math alttext="k=5" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m1"><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow></math> للدرجة لأنها توفر تقريبًا أفضل بكثير من الدرجات الأصغر، وأسوأ قليلًا فقط من الدرجات الأكبر، كما شرح في القسم <a class="ltx_ref" href="#S2.SS4.SSS1" title="2.4.1 اختيار درجة التفكيك ‣ 2.4 تفكيك المصفوفات غير السالب ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">2.4.1</span></a>. وتعرض اللوحة السفلى من الشكل <a class="ltx_ref" href="#S3.F11" title="Figure 11 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">11</span></a> قيم <math alttext="W_{jk}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m2"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub></math> المنفردة للتفكيك. ومن هذه القيم يمكننا أن نرى أن <math alttext="k=2,3" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m3"><mrow><mi>k</mi><mo>=</mo><mrow><mn>2</mn><mo>,</mo><mn>3</mn></mrow></mrow></math> يقابل القرص، وأن <math alttext="k=1,4,5" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m4"><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></math> يقابل خط الحديد وقانون القدرة ذي القطع. كما يظهر المكون <math alttext="W_{j5}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m5"><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mn>5</mn></mrow></msub></math> سمات شبيهة بالخطوط عند الطاقات العالية، تنشأ من خطوط خلفية <span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE الموجودة في أطياف <span class="ltx_text ltx_font_italic">RXTE</span>/HEXTE بعد 2010.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p2">
+<p class="ltx_p">وكما بين في القسم <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">9</span></a>، نستطيع تكوين تدفقي القرص وقانون القدرة بجمع قيم <math alttext="S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p2.m1"><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></math> المناسبة، وهي هنا <math alttext="S_{disc}=\sum_{k=2,3}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p2.m2"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mrow><mn>2</mn><mo>,</mo><mn>3</mn></mrow></mrow></msub><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></math> و<math alttext="S_{PL}=\sum_{k=1,4,5}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p2.m3"><mrow><msub><mi>S</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></msub><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></math> على الترتيب، مع أخذ تدفق خط الحديد في الحسبان ضمن الأخير. وكما ذكر في القسم <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">9</span></a>، فإن هذه القيم تقابل تدفقات المكونات الطيفية الفعلية على نحو جيد إلى حد معقول. ولذلك، <span class="ltx_text ltx_font_italic">يمكن تتبع تطور تدفقي القرص وقانون القدرة من دون إجراء أي ملاءمة طيفية للبيانات</span>.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p3">
+<p class="ltx_p">إضافة إلى ذلك، يمكن بناء مخطط كسر القرص-اللمعان (DFLD) ومخطط كسر قانون القدرة-اللمعان (PFLD) باستخدام <math alttext="S_{disc}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m1"><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub></math> و<math alttext="S_{PL}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m2"><msub><mi>S</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></math>. وهنا نستخدم PFLD معرفًا على أنه التدفق الكلي، <math alttext="S_{disc}+S_{PL}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m3"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>+</mo><msub><mi>S</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow></math>، بوصفه دالة في <math alttext="S_{PL}/(S_{disc}+S_{PL})" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m4"><mrow><msub><mi>S</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>+</mo><msub><mi>S</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>، الذي يساوي 1 عندما يكون التدفق الكلي مكونًا فقط من تدفق قانون القدرة، ويساوي 0 عندما يكون التدفق الكلي مكونًا فقط من تدفق القرص.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p4">
+<p class="ltx_p">إذا أخذنا النتائج أعلاه على أنها تمثل مكوني القرص وقانون القدرة الفعليين، فيمكننا تكوين طيفي القرص وقانون القدرة على الصورة <math alttext="X_{disc}=\sum_{k=2,3}W_{jk}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m1"><mrow><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mrow><mn>2</mn><mo>,</mo><mn>3</mn></mrow></mrow></msub><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow></math> و<math alttext="X_{PL}=\sum_{k=1,4,5}W_{jk}S_{ki}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m2"><mrow><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn></mrow></mrow></msub><mrow><msub><mi>W</mi><mrow><mi>j</mi><mo>⁢</mo><mi>k</mi></mrow></msub><mo>⁢</mo><msub><mi>S</mi><mrow><mi>k</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow></mrow></mrow></math>، على الترتيب، وإدخالهما إلى <span class="ltx_text ltx_font_smallcaps">isis</span> للملاءمة الطيفية. ونستخدم أخطاء البيانات الأصلية في ملاءمة طيفي <math alttext="X_{disc}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m3"><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub></math> و<math alttext="X_{PL}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m4"><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></math>، ولا نضيف أي خطأ نظامي إلى الأطياف. ولائمت أطياف <math alttext="X_{disc}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m5"><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub></math> بنموذج <span class="ltx_text ltx_font_smallcaps">phabs<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m6"><mo>×</mo></math>diskbb</span> باستخدام مجال طاقة 3–15 keV، و<math alttext="X_{PL}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m7"><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></math> بنموذج <span class="ltx_text ltx_font_smallcaps">phabs<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m8"><mo>×</mo></math>cutoffpl</span> باستخدام مجال طاقة 10–140 keV، وبذلك تركت منطقة خط الحديد جانبًا للتبسيط وللتركيز بصورة أفضل على استمرارية قانون القدرة. يبين الشكل <a class="ltx_ref" href="#S3.F12" title="Figure 12 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">12</span></a> نتائج النمذجة مرسومة على PFLD. وقد فعل ذلك لإظهار تطور المعلمات لا لتقديم قيم حاسمة. وبما أنه ليس واضحًا كيف ستقسم أخطاء البيانات بين مكوني <math alttext="X_{disc}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m9"><msub><mi>X</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub></math> و<math alttext="X_{PL}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p4.m10"><msub><mi>X</mi><mrow><mi>P</mi><mo>⁢</mo><mi>L</mi></mrow></msub></math>، فإن المعلمات الناتجة لها أخطاء أكبر مما لو لائمت بالأطياف الكاملة. ولذلك تكون قيم المعلمات في هذا العرض أكثر متانة عندما تتغير تدريجيًا، ولا تمثل على الأرجح القيمة الفعلية عندما تكون في منطقة تتغير فيها قيمة المعلمة فجأة عبر مجال المعلمة كله (أي مزيج من الألوان في الشكل <a class="ltx_ref" href="#S3.F12" title="Figure 12 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">12</span></a>). إضافة إلى ذلك، تزال قيم المعلمات التي تكون قيم أخطائها مساوية للقيمة الدنيا أو القصوى المسموح بها.</p>
+</div>
+<figure class="ltx_figure" id="S3.F12"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_portrait" height="1038" id="S3.F12.g1" src="x12.png" width="830"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 12: </span>تغير المعلمات على امتداد مخطط كسر قانون القدرة-اللمعان. تقابل اللوحات العليا معلمات القرص: المعايرة ودرجة الحرارة، وتقابل اللوحات الوسطى والسفلى معلمات قانون القدرة (رسمت معايرة قانون القدرة بمقياسين خطي ولوغاريتمي من أجل تمييز تطور المعلمة بصورة أفضل في أنظمة المعايرة العالية والمنخفضة).</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p5">
+<p class="ltx_p">من الشكل <a class="ltx_ref" href="#S3.F12" title="Figure 12 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">12</span></a> يمكننا أن نرى ما يلي:</p>
+<ol class="ltx_enumerate" id="S3.I1">
+<li class="ltx_item" id="S3.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S3.I1.i1.p1">
+<p class="ltx_p">تزداد معايرة قانون القدرة مع اللمعان الكلي، ويزداد معامل قانون القدرة مع كسر قانون القدرة، باستثناء الحالة التي يكون فيها كسر قانون القدرة دون 0.01. ويبدو أن التشتت في الجزء السفلي من الحالة الصلبة يرجع إلى تغير قيمة معامل قانون القدرة من <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S3.I1.i1.p1.m1"><mo>∼</mo></math>1–1.5.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S3.I1.i2.p1">
+<p class="ltx_p">عندما يبدأ كسر قانون القدرة في الانخفاض في الحالة الصلبة، تبدأ معايرة القرص في الازدياد.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S3.I1.i3.p1">
+<p class="ltx_p">تنخفض طاقة القطع مع اللمعان في الحالة الصلبة. وحتى اللمعان الحرج (كما نوقش أعلاه) يكون القطع أعلى من 100 keV، لكنه يبدأ بالانخفاض بعد اللمعان الحرج إلى <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S3.I1.i3.p1.m1"><mo>∼</mo></math>30–40 keV.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S3.I1.i4.p1">
+<p class="ltx_p">يبدو أن الفرق بين تدفقي الانتقال عند الانتقال إلى الحالة اللينة ينشأ من اختلاف في معايرة القرص ومعايرة قانون القدرة (ويمكن كذلك رؤية مؤشر إلى اختلاف في طاقة القطع)، في حين تتغير درجة حرارة القرص ومعامل قانون القدرة على نحو مماثل في كل انتقال.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span>
+<div class="ltx_para" id="S3.I1.i5.p1">
+<p class="ltx_p">يسخن القرص عند الانتقال إلى الحالة اللينة، وهناك مؤشر إلى سخونة أخرى أيضًا عند الانتقال عائدًا إلى الحالة الصلبة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i6" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">6.</span>
+<div class="ltx_para" id="S3.I1.i6.p1">
+<p class="ltx_p">في الحالة اللينة تنخفض كل من معايرة القرص ودرجة حرارته ببطء.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S3.SS2.p6">
+<p class="ltx_p">تتوافق هذه النتائج جيدًا مع النتائج التي وجدت في دراسات سابقة <cite class="ltx_cite ltx_citemacro_citep">(مثلًا في Dunn et al., <a class="ltx_ref" href="#bib.bib9" title="">2008</a>; Del Santo et al., <a class="ltx_ref" href="#bib.bib8" title="">2008</a>; Motta et al., <a class="ltx_ref" href="#bib.bib34" title="">2011</a>; Stiele et al., <a class="ltx_ref" href="#bib.bib47" title="">2011</a>; Cadolle Bel et al., <a class="ltx_ref" href="#bib.bib3" title="">2011</a>)</cite>. إضافة إلى ذلك، يستطيع تحليل NMF تتبع تغيرات مكون القرص في نظام كسر القرص المنخفض. وتقابل هذه المناطق الحالات التي يكون فيها مكون القرص ضعيفًا وغير مطلوب إحصائيًا في الملاءمات الطيفية التي أجريت سابقًا. غير أن من الممكن أن يكون الذيل منخفض الطاقة لمصفوفات الاستجابة، الناشئ من قمم الهروب والفلورة، يحاكي مكون القرص في الحالات الطيفية الخافتة. لكن هذه القمم ناجمة على الأرجح عن فوتونات تأتي من المكون الطيفي الصلب، ومن ثم تمتلك التغير نفسه منتجة فائضًا لينًا للمكون الصلب المفكك، لا للمكون اللين. ويبين هذا قوة تحليل NMF في الحالات التي يصعب فيها كشف مكون القرص باستخدام الملاءمة الطيفية وحدها. وبينما يمكن تمييز تدفقات مكوني القرص وقانون القدرة على نحو جيد إلى حد معقول في تحليل NMF (الشكل <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">9</span></a>)، ينبغي توخي الحذر في قيم المكونات الطيفية في أنظمة التدفق المنخفض، إذ إنها على الأرجح منحلة (انظر الشكل <a class="ltx_ref" href="#S2.F10" title="Figure 10 ‣ 2.5 مقارنة التفكيكات ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">10</span></a> وقارنه بالشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 المحاكاة ‣ 2 التفكيك الطيفي غير الخاضع للإشراف ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">1</span></a>).</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p7">
+<p class="ltx_p">كما وجد في دراسات سابقة، فإن لمعان القرص في الحالة اللينة تحكمه علاقة <math alttext="S_{disc}\sim R_{in}^{2}T^{4}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m1"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>∼</mo><mrow><msubsup><mi>R</mi><mrow><mi>i</mi><mo>⁢</mo><mi>n</mi></mrow><mn>2</mn></msubsup><mo>⁢</mo><msup><mi>T</mi><mn>4</mn></msup></mrow></mrow></math> التي تحاكي الانبعاث من جسم أسود بنصف قطر <math alttext="R_{in}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m2"><msub><mi>R</mi><mrow><mi>i</mi><mo>⁢</mo><mi>n</mi></mrow></msub></math> ودرجة حرارة <math alttext="T" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m3"><mi>T</mi></math>. ويفترض عادة أن العلاقة أعلاه تتحقق عندما يكون القرص الداخلي واقعًا عند المدار الدائري المستقر الأعمق (ISCO)، رغم أن عوامل متعددة يمكن أن تؤثر في هذا التحجيم (انظر مناقشة أكمل للاختلاف بين هذه العوامل في <cite class="ltx_cite ltx_citemacro_citet">Salvesen et al. <a class="ltx_ref" href="#bib.bib46" title="">2013</a></cite>). يبين الشكل <a class="ltx_ref" href="#S3.F13" title="Figure 13 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">13</span></a> مخطط اللمعان-درجة الحرارة لمجموعة من النقاط المختارة مع خط أفضل ملاءمة بالأسود، ويعرض الإطار الداخلي PFLD كاملًا مع النقاط المختارة بالأحمر. ويتبع خط أفضل ملاءمة تقريبًا العلاقة <math alttext="S_{disc}\sim T^{7}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m4"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>∼</mo><msup><mi>T</mi><mn>7</mn></msup></mrow></math>، التي تختلف عن العلاقة المعتادة. غير أن <span class="ltx_text ltx_font_italic">RXTE</span> حساس فقط للطاقات 3 keV فما فوق، ولذلك فإن تدفق الأشعة السينية الأكثر لينًا المفقود، فضلًا عن الامتصاص، يؤثران في مخطط اللمعان-درجة الحرارة كما نوقش في <cite class="ltx_cite ltx_citemacro_citet">Dunn et al. (<a class="ltx_ref" href="#bib.bib9" title="">2008</a>)</cite> (حيث كان ارتباطهم الأصلي <math alttext="S_{3-10keV}\sim T^{9.44}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m5"><mrow><msub><mi>S</mi><mrow><mn>3</mn><mo>−</mo><mrow><mn>10</mn><mo>⁢</mo><mi>k</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>V</mi></mrow></mrow></msub><mo>∼</mo><msup><mi>T</mi><mn>9.44</mn></msup></mrow></math> والمصحح <math alttext="S_{disc}\sim T^{4.75}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m6"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>∼</mo><msup><mi>T</mi><mn>4.75</mn></msup></mrow></math>). ونحن هنا معنيون بتحجيم القرص-درجة الحرارة بالمعنى الواسع، ونفترض أنه عند أخذ البيانات دون 3 keV وأثر الامتصاص في الحسبان على نحو سليم، ينبغي أن يكون التحجيم قريبًا من <math alttext="S_{disc}\sim T^{4}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m7"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>∼</mo><msup><mi>T</mi><mn>4</mn></msup></mrow></math>. ومن الشكل <a class="ltx_ref" href="#S3.F13" title="Figure 13 ‣ 3.2 النتائج ‣ 3 تطبيق على GX 339–4 ‣ التفكيك الطيفي غير الخاضع للإشراف لثنائيات الأشعة السينية مع تطبيق على GX 339–4"><span class="ltx_text ltx_ref_tag">13</span></a> يمكن أن نرى أن <span class="ltx_text ltx_font_italic">GX 339–4 يظهر علاقة القرص-درجة الحرارة في مكون القرص مباشرة بعد أن يبدأ الانتقال إلى الحالة اللينة</span>، أي إن القرص الداخلي يبدو أنه عند ISCO بالفعل في بداية الحالة المتوسطة مباشرة بعد ذروة الفوران. وتنكسر هذه العلاقة في الحالة اللينة عندما يحقق كسر قانون القدرة قيمًا قريبة من <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p7.m8"><mo>∼</mo></math>0.3–0.4.</p>
+</div>
+<figure class="ltx_figure" id="S3.F13"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_portrait" height="519" id="S3.F13.g1" src="x13.png" width="415"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 13: </span>مخطط درجة الحرارة-اللمعان لمجموعة مختارة من نقاط البيانات مع خط أفضل ملاءمة بالأسود. ويعرض الإطار الداخلي مخطط كسر قانون القدرة-اللمعان كاملًا مع تمييز النقاط المختارة بالأحمر. ويتبع خط أفضل ملاءمة تقريبًا <math alttext="S_{disc}\sim T^{7}" class="ltx_Math" dir="ltr" display="inline" id="S3.F13.m2"><mrow><msub><mi>S</mi><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>c</mi></mrow></msub><mo>∼</mo><msup><mi>T</mi><mn>7</mn></msup></mrow></math>، وهو ما يختلف عن العلاقة النظرية المتوقعة (انظر النص للأسباب المحتملة).</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>الاستنتاجات</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">بيننا في هذا البحث أن طرائق التفكيك الطيفي الخطية غير الخاضعة للإشراف يمكن أن تستخدم لتتبع تطور مكونات طيفية متميزة. ويمكن أخذ اللاخطيات الموجودة في المكونات الطيفية الأصلية في الحسبان بجمع مكونات خطية متعددة استنادًا إلى أوزانها عبر الطاقات الطيفية. وتستطيع هذه الطرائق فصل مكونات طيفية تتغير بطرق مختلفة، بشرط أن تظهر أثرًا قابلًا للقياس في التدفقات. ومن بين الطرائق الثلاث المستخدمة لمعالجة مجموعة بيانات محاكاة، بينا أن تفكيك المصفوفات غير السالب يؤدي أفضل من تحليل المكونات الرئيسية وتحليل المكونات المستقلة. كما يتميز تفكيك المصفوفات غير السالب بفائدة إضافية، هي أن التفكيكات الناتجة تكون موجبة دائمًا، ومن ثم يمكن استخدام مكونات هذه التفكيكات لملاءمة النماذج الطيفية كل على حدة. وتتبع تغيرات المعلمات الطيفية المنفردة ليس متينًا بقدر تتبع التدفقات، لكنه يمكن أن يتم على نحو معقول مع أطياف جيدة الجودة وقيم تدفق عالية. وهذا يمتلك ميزة على الملاءمة الطيفية العادية، حيث تلائم نماذج مختلفة الأطياف نفسها، أو حيث لا يكون مكون طيفي بعينه مطلوبًا إحصائيًا في الملاءمات.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">طبقنا تفكيك المصفوفات غير السالب على مجموعة من أطياف <span class="ltx_text ltx_font_italic">RXTE</span> لثنائي الأشعة السينية المجري ذي الثقب الأسود GX 339–4، التي تشمل أربعة فورانات من المصدر. ووجدنا أن خمسة مكونات مطلوبة لتمثيل الأطياف بدقة، وأن هذه المكونات يمكن تقسيمها إلى مكونات قرص وقانون قدرة مع أخذ خط الحديد في الحسبان ضمن الأخير. وتؤيد ملاءمة مكوني القرص وقانون القدرة المفككين كل على حدة بنموذج طيفي مناسب الرأي القائل إن الحافة الداخلية للقرص تقع عند المدار الدائري المستقر الأعمق في بداية الحالة المتوسطة التي تعقب ذروة الفوران. غير أن هذا التحليل ينبغي أن يصقل بإدراج بيانات دون حد <span class="ltx_text ltx_font_italic">RXTE</span> للأشعة السينية اللينة.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">نتصور مستقبلًا أن طرائق التفكيك الطيفي الخطية غير الخاضعة للإشراف ستستخدم في أوضاع متعددة تتضمن كشف مكونات طيفية منفصلة. ولكي نوسع هذه الدراسات الأولية في كشف قرص التراكم في حالات تدفق القرص المنخفض، كما يرى مثلًا في الحالة الصلبة، فسنحتاج إلى الوصول إلى بيانات من مصادر متعددة وإلى كواشف أكثر حساسية لنطاقات الأشعة السينية الأكثر لينًا. ومن أجل كشف المكون الطيفي المسؤول عن التذبذبات شبه الدورية في XRBs، يمكن اختبار مقاييس توقيت مختلفة. وأخيرًا، توفر هذه الطرائق سبيلًا بديلًا لكشف المكونات الطيفية من دون إجراء ملاءمة طيفية فعلية، وهو ما قد يثبت أنه أداة لا تقدر بثمن عند التعامل مع مجموعات بيانات كبيرة.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">أشكر المحكم على القراءة المتأنية للمخطوطة وعلى الاقتراحات الممتازة التي حسنت البحث. وأشكر Diana Hannikainen وThomas Maccarone على النقاشات المفيدة. وأعرب بامتنان عن تقديري للدعم المقدم من Emil Aaltonen säätiö. وقد استفاد هذا البحث من بيانات حصل عليها من مركز أبحاث أرشيف علوم الفيزياء الفلكية عالية الطاقة (HEASARC)، الذي يوفره مركز غودارد لرحلات الفضاء التابع لـ NASA.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Allen et al. (2013)</span>
+<span class="ltx_bibblock"> Allen J.T., Hewett P.C., Richardson C.T., Ferland G.J., Baldwin J.A., 2013, MNRAS, 430, 3510
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Brunet et al. (2004)</span>
+<span class="ltx_bibblock"> Brunet J.-P., Tamayo P., Golub T.R., Mesirov J.P., 2004, PNAS, 101, 4164
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cadolle Bel et al. (2011)</span>
+<span class="ltx_bibblock"> Cadolle Bel, M. et al., 2011, A&amp;A, 534, A119
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Connolly et al. (1995)</span>
+<span class="ltx_bibblock"> Connolly A. J. et al., 1995, AJ, 110, 2655
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Corbel et al. (2000)</span>
+<span class="ltx_bibblock"> Corbel S., Fender R.P., Tzioumis A.K., Nowak M., McIntyre V., Durouchoux P., Sood, R., 2000, A&amp;A, 359, 251
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Corbel et al. (2013)</span>
+<span class="ltx_bibblock"> Corbel S., Coriat M., Brocksopp C., Tzioumis A.K., Fender R.P., Tomsick J.A., Buxton M.M., Bailyn C.D., 2013, MNRAS, 428, 2500
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cowley et al. (2002)</span>
+<span class="ltx_bibblock"> Cowley A.P., Schmidtke P.C., Hutchings J.B., Crampton D., 2002, AJ, 123, 1741
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Del Santo et al. (2008)</span>
+<span class="ltx_bibblock"> Del Santo M., Malzac J., Jourdain E., Belloni T.M., Ubertini P., 2008, MNRAS, 390, 227
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dunn et al. (2008)</span>
+<span class="ltx_bibblock"> Dunn R.J.H., Fender R.P., Körding E.G., Cabanac C., Belloni T., 2008, MNRAS, 387, 545
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Falcke &amp; Biermann (1999)</span>
+<span class="ltx_bibblock"> Falcke H., Biermann P. L., 1999, A&amp;A, 342, 49
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Fender et al. (2004)</span>
+<span class="ltx_bibblock"> Fender R.P., Belloni T.M., Gallo E., 2004, MNRAS, 355, 1105
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Francis et al. (1992)</span>
+<span class="ltx_bibblock"> Francis P.J., Hewett P.C., Foltz C.B., Chaffee F.H., 1992, ApJ, 398, 476
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Garcia et al. (2001)</span>
+<span class="ltx_bibblock"> Garcia M.R., McClintock J.E., Narayan R., Callanan P., Barret D., Murray S.S., 2001, ApJ, 553, L47
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gaujoux &amp; Seoighe (2010)</span>
+<span class="ltx_bibblock"> Gaujoux R., Seoighe C., 2010, BMC Bioinformatics, 11, 367
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hannikainen et al. (1998)</span>
+<span class="ltx_bibblock"> Hannikainen D.C., Hunstead R.W., Campbell-Wilson D., Sood R.K., 1998, A&amp;A, 337, 460
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Houck &amp; Denicola (2000)</span>
+<span class="ltx_bibblock"> Houck J.C., Denicola L.A., 2000, in Manset N., Veillet C., Crabtree D., eds., ASP Conf. Ser. 216, Astronomical Data Analysis Software and Systems IX, p. 591
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hutchins et al. (2008)</span>
+<span class="ltx_bibblock"> Hutchins L.N., Murphy S.M., Singh P., Graber J.H., 2008, Bioinformatics, 24(23), 2684
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hynes et al. (2003)</span>
+<span class="ltx_bibblock"> Hynes R.I., Steeghs D., Casares J., Charles P.A., O’Brien K., 2003, ApJ, 583, L95
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hyvärinen (1999)</span>
+<span class="ltx_bibblock"> Hyvärinen A., 1999, IEEE Transactions on Neural Networks 10(3), 626
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hyvärinen et al. (2001)</span>
+<span class="ltx_bibblock"> Hyvärinen A., Karhunen J., Oja E., 2001, Independent Component Analysis, 2nd ed., John Wiley &amp; Sons
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ichimaru (1977)</span>
+<span class="ltx_bibblock"> Ichimaru S., 1977, ApJ, 214, 840
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Jolliffe (2002)</span>
+<span class="ltx_bibblock"> Jolliffe I.T., 2002, Principal Component Analysis, 2nd ed., Springer-Verlag, New York
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Koljonen et al. (2013)</span>
+<span class="ltx_bibblock"> Koljonen K.I.I., McCollough M.L., Hannikainen D.C., Droulans R., 2013, MNRAS, 429, 1173
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Lee &amp; Seung (1999)</span>
+<span class="ltx_bibblock"> Lee D.D., Seung H.S., 1999, Nat, 401, 788
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Lee &amp; Seung (2001)</span>
+<span class="ltx_bibblock"> Lee D.D., Seung H.S., 2001, in Leen T.K., Dietterich T.G., Tresp V., eds., Advances in neural information processing systems 13: Algorithms for Non-negative Matrix Factorization. MIT Press, Cambridge, MA, p. 556
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Lu et al. (2006)</span>
+<span class="ltx_bibblock"> Lu H., Zhou H., Wang J., Wang T., Dong X., Zhuang Z., Li C., 2006, AJ, 131, 790
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Malzac et al. (2006)</span>
+<span class="ltx_bibblock"> Malzac J. et al., 2006, A&amp;A, 448, 1125
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Markert et al. (1973)</span>
+<span class="ltx_bibblock"> Markert T.H., Canizares C.R., Clark G.W., Lewin W.H.G., Schnopper H.W., Sprott G.F., 1973, ApJ, 184, L67
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Markoff et al. (2001)</span>
+<span class="ltx_bibblock"> Markoff S., Falcke H., Fender R., 2001, A&amp;A, 372, L25
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Markoff et al. (2005)</span>
+<span class="ltx_bibblock"> Markoff S., Nowak M.A., Wilms J., 2005, ApJ, 635, 1203
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">McClintock et al. (2003)</span>
+<span class="ltx_bibblock"> McClintock J.E., Narayan R., Garcia M.R., Orosz J.A., Remillard R.A., Murray S.S., 2003, ApJ, 593, 435
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Miller et al. (2006)</span>
+<span class="ltx_bibblock"> Miller J.M., Homan J., Steeghs D., Rupen M., Hunstead R.W., Wijnands R., Charles P.A., Fabian A.C., 2006, ApJ, 653, 525
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Miyamoto et al. (1995)</span>
+<span class="ltx_bibblock"> Miyamoto S., Kitamoto S., Hayashida K., Egoshi W., 1995, ApJ, 442, L13
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Motta et al. (2011)</span>
+<span class="ltx_bibblock"> Motta S., Muñoz-Darias T., Casella P., Belloni T., Homan J., 2011, MNRAS, 418, 2292
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Muñoz-Darias et al. (2008)</span>
+<span class="ltx_bibblock"> Muñoz-Darias T., Casares J., Martínez-Pais I.G., 2008, MNRAS, 385, 2205
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Narayan &amp; Yi (1994)</span>
+<span class="ltx_bibblock">Narayan R., Yi I., 1994, ApJ, 428, L13
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Narayan et al. (1997)</span>
+<span class="ltx_bibblock"> Narayan R., Garcia M.R., McClintock J.E., 1997, ApJ, 478, L79
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nowak (1995)</span>
+<span class="ltx_bibblock"> Nowak M.A., 1995, PASP, 107, 1207
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nowak et al. (2002)</span>
+<span class="ltx_bibblock"> Nowak M.A., Wilms J., Dove J.B., 2002, MNRAS, 332, 856
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nowak et al. (2011)</span>
+<span class="ltx_bibblock"> Nowak M.A. et al., 2011, ApJ, 728, 13
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Paatero &amp; Tapper (1994)</span>
+<span class="ltx_bibblock"> Paatero P., Tapper U., 1994, Environmetrics, 5(2), 111
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Parker et al. (2014)</span>
+<span class="ltx_bibblock"> Parker M.L., Marinucci A., Brenneman L., Fabian A.C., Kara E., Matt G., Walton D.J., 2014, MNRAS, 437, 721
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Reis et al. (2010)</span>
+<span class="ltx_bibblock"> Reis R.C., Fabian A.C., Miller J.M., 2010, MNRAS, 402, 836
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Russell et al. (2010)</span>
+<span class="ltx_bibblock"> Russell D.M., Maitra D., Dunn R.J.H., Markoff S., 2010, MNRAS, 405, 1759
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sajda et al. (2003)</span>
+<span class="ltx_bibblock"> Sajda P., Shuyan D., Parra L.C, 2003, in Unser M.A, Aldroubi A., Laine A.F., eds, Proc. SPIE 5207, Wavelets: Applications in Signal and Image Processing X, San Diego, p. 321
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Salvesen et al. (2013)</span>
+<span class="ltx_bibblock"> Salvesen G., Miller J.M., Reis R.C., Begelman M.C., MNRAS, 431, 3510
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib47">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stiele et al. (2011)</span>
+<span class="ltx_bibblock"> Stiele H., Motta S., Muñoz-Darias T., Belloni T.M., 2011, MNRAS, 418, 1746
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib48">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tomsick et al. (2008)</span>
+<span class="ltx_bibblock"> Tomsick J.A. et al., 2008, ApJ, 680, 593
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib49">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Vaughan &amp; Fabian (2004)</span>
+<span class="ltx_bibblock"> Vaughan S., Fabian A.C., 2004, MNRAS, 348, 1415
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib50">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Whitney (1983)</span>
+<span class="ltx_bibblock"> Whitney C.A., 1983, A&amp;AS, 51, 443
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib51">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Zdziarski et a. (2004)</span>
+<span class="ltx_bibblock"> Zdziarski A.A., Gierliński M., Mikołajewska J., Wardziński G., Smith D.M., Harmon B.A., MNRAS, 351, 791
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Fri May  1 19:46:38 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>
