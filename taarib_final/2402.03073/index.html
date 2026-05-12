@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><title> </title>
+<meta charset="utf-8"/>
+<meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="main.css" rel="stylesheet" type="text/css"/>
+<meta content="main.tex" name="src"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head><body dir="rtl"><main class="paper-arabizer-article">
+<section class="abstract" role="doc-abstract">
+<h3 class="abstracttitle">
+<span class="cmbx-9">Abstract</span>
+</h3>
+<!-- l. 147 --><p class="noindent">حساسات حافة الانتقال فائقة التوصيل <span class="cmr-9">(TESs) </span>نوع من الحساسات الكمومية المعروفة بكفاءتها العالية في كشف الفوتونات المفردة وبخلفيتها المنخفضة<span class="cmr-9">. </span>وهذا يجعلها مثالية لتجارب فيزياء الجسيمات التي تبحث عن أحداث نادرة<span class="cmr-9">. </span>في هذا العمل، نقدم توصيفا شاملا للخلفية في حساسات <span class="cmr-9">TES </span>البصرية، مع التمييز بين ثلاثة أنواع من الأحداث<span class="cmr-9">: </span>الضجيج الكهربائي، والأحداث العالية الطاقة، والأحداث الشبيهة بالفوتونات<span class="cmr-9">. </span>ونقدم طرائق حاسوبية لأتمتة تصنيف الأحداث<span class="cmr-9">. </span>وللمرة الأولى، نتحقق تجريبيا ونحاكي مصدر الأحداث العالية الطاقة<span class="cmr-9">. </span>كما نعزل الأحداث الشبيهة بالفوتونات، وهي الإشارة المتوقعة في
+     الهالوسكوبات العازلة الباحثة عن الفوتونات المظلمة بوصفها مادة مظلمة، ونحقق معدلا قياسيا منخفضا للعدّ المظلم الشبيه بالفوتونات مقداره <span class="cmr-9">3</span><span class="cmmi-9">.</span><span class="cmr-9">6</span><span class="cmmi-9">d </span><span class="cmsy-9">− </span><span class="cmr-9">4 Hz</span> في مجال الطاقة <span class="cmr-9">0</span><span class="cmmi-9">.</span><span class="cmr-9">8–3</span><span class="cmmi-9">.</span><span class="cmr-9">2 eV.</span>
+</p>
+</section>
+<div class="maketitle">
+<span class="cmr-9">FERMILAB-PUB-24-0025-T</span>
+<h2 class="titleHead">العدّات المظلمة  في  حساسات  حافة  الانتقال  فائقة  التوصيل  البصرية  في  عمليات  البحث  عن  الأحداث  النادرة</h2>
+<span class="cmbx-10">Laura Manenti
+</span><span class="cmtt-9">laura.manenti@nyu.edu
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Carlo Pepe
+</span><span class="cmr-9">Dipartimento di Elettronica Telecomunicazioni Politecnico di Torino, Corso Duca
+degli Abruzzi 24, 10129 Torino, Italy
+INRiM, Istituto Nazionale di Ricerca Metrologica, Strada delle Cacce, 91 </span>– <span class="cmr-9">10135
+Torino, Italy
+INFN Sezione di Torino - Torino, Italy
+</span><span class="cmbx-10">Isaac Sarnoff
+</span><span class="cmtt-9">sarnoff@nyu.edu
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Tengiz Ibrayev
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Panagiotis Oikonomou
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Artem Knyazev
+                                                                  
+
+                                                                  
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Eugenio Monticone
+</span><span class="cmr-9">INRiM, Istituto Nazionale di Ricerca Metrologica, Strada delle Cacce, 91 </span>– <span class="cmr-9">10135
+Torino, Italy
+</span><span class="cmbx-10">Hobey Garrone
+</span><span class="cmr-9">Dipartimento di Elettronica Telecomunicazioni Politecnico di Torino, Corso Duca
+degli Abruzzi 24, 10129 Torino, Italy
+INRiM, Istituto Nazionale di Ricerca Metrologica, Strada delle Cacce, 91 </span>– <span class="cmr-9">10135
+Torino, Italy
+</span><span class="cmbx-10">Fiona Alder
+</span><span class="cmr-9">Dept. of Physics and Astronomy, University College London, Gower Street, London,
+United Kingdom
+</span><span class="cmbx-10">Osama Fawwaz
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Alexander J. Millar
+</span><span class="cmr-9">Theoretical Physics Division, Fermi National Accelerator Laboratory, Batavia, IL
+60510, USA
+Fermi National Accelerator Laboratory, Batavia, IL 60510, USA
+</span><span class="cmbx-10">Knut Dundas Mor</span>å
+<span class="cmr-9">Physics Department, Columbia University, New York, New York 10027, USA
+</span><span class="cmbx-10">Hamad Shams
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Francesco Arneodo
+</span><span class="cmr-9">Division of Science, New York University Abu Dhabi, United Arab Emirates
+Center for Astrophysics and Space Science (CASS), New York University Abu
+Dhabi, United Arab Emirates
+</span><span class="cmbx-10">Mauro Rajteri
+</span><span class="cmr-9">INRiM, Istituto Nazionale di Ricerca Metrologica, Strada delle Cacce, 91 </span>– <span class="cmr-9">10135
+Torino, Italy</span>
+<div class="date"><span class="cmr-9">May 12, 2026</span></div>
+</div>
+<h3 class="sectionHead"><span class="titlemark">1   </span> <a id="x1-10001"></a>مقدمة</h3>
+<!-- l. 156 --><p class="noindent">حساسات حافة الانتقال فائقة التوصيل (TESs) هي ميكروكالوريمترات بالغة الحساسية، قادرة على كشف أحداث الفوتون المفرد والمتعدد بكفاءة قريبة من الواحد <span class="cite">[<a href="#Xirwin1995application">Irwin(1995)</a>]</span>. تعمل معظم حساسات TES دون <span class="cmsy-10">𝒪</span>(1K)، عند نقطة الانتقال بين حالتيها فائقة التوصيل والعادية، ويمكن تكييفها مع مجالات أطوال موجية مختلفة، تمتد من الأشعة السينية إلى الأشعة تحت
+الحمراء.
+                                                                  
+
+                                                                  
+</p><!-- l. 159 --><p class="indent">   تستخدم عدة تجارب في فيزياء الجسيمات، أو تخطط لاستخدام، حساسات TES في عمليات البحث عن الأحداث النادرة في المجال <span class="cmsy-10">𝒪</span>(0.1–10) eV بسبب خلفيتها المنخفضة وكفاءة كشفها العالية. وتسمى حساسات TES الحساسة للفوتونات في هذا المجال الطاقي حساسات TES بصرية. تشمل أمثلة التجارب التي تستخدم حساسات TES بصرية تجربة
+PTOLEMY <span class="cite">[<a href="#XCocco2007Jun">Cocco <span class="cmti-10">et al.</span>(2007)Cocco, Mangano, and Messina</a>, <a href="#XPTOLEMYCollaboration2022Sep">PTOLEMY
+Collaboration <span class="cmti-10">et al.</span>(2022)PTOLEMY Collaboration, Apponi, Betti, Borghesi, Boyarsky,
+Canci, Cavoto, Chang, Cheianov, Cheipesh, Chung, Cocco, Colijn, D’Ambrosio,
+de Groot, Esposito, Faverzani, Ferella, Ferri, Ficcadenti, Frederico, Gariazzo, Gatti,
+Gentile, Giachero, Hochberg, Kahn, Lisanti, Mangano, Marcucci, Mariani, Marques,
+Menichetti, Messina, Mikulenko, Monticone, Nucciotti, Orlandi, Pandolfi, Parlati,
+Pepe, Pérez de los Heros, Pisanti, Polini, Polosa, Puiu, Rago, Raitses, Rajteri, Rossi,
+Rozwadowska, Rucandio, Ruocco, Strid, Tan, Teles, Tozzini, Tully, Viviani,
+Zeitler, and Zhao</a>]</span>، التي تستهدف النيوترينوات المتبقية، وتجربة ALPS II التي تركز على البوزونات الخفيفة الجديدة وجسيمات أخرى دون إلكترون فولت ضعيفة التآثر <span class="cite">[<a href="#Xgimeno2023tes">Gimeno <span class="cmti-10">et al.</span>(2023)Gimeno, Isleif,
+Januschek, Lindner, Meyer, Othman, Schott, Shah, and Sohl</a>]</span>. إن فهم خلفية حساسات TES أمر أساسي لهذا النوع
+من عمليات البحث عن الأحداث النادرة. درست دراسة سابقة <span class="cite">[<a href="#Xdreyling2015characterization">Dreyling-Eschweiler <span class="cmti-10">et al.</span>(2015)Dreyling-Eschweiler, Bastidon,
+Döbrich, Horns, Januschek, and Lindner</a>]</span> الخلفية، التي يشار إليها أيضا بمعدل العدّ المظلم (DCR)، لحساس TES تحت أحمر محسن لطول موجي قدره 1064nm. وعلى الرغم من
+أن المؤلفين حددوا أنواعا متعددة من الأحداث التي تسهم في معدل DCR الذاتي (عدّات يرصدها حساس TES من دون أي بصريات إدخال)، فإنهم لم يدرسوا طبيعة هذه الإشارات المحددة. ومع ذلك، درسوا معدل DCR لحساس TES موصول بليف، حيث كان طرف الليف “الدافئ” موجودا خارج المبرّد (انظر القسم 5.2 من
+المرجع <span class="cite">[<a href="#Xdreyling2015characterization">Dreyling-Eschweiler <span class="cmti-10">et al.</span>(2015)Dreyling-Eschweiler, Bastidon, Döbrich, Horns,
+Januschek, and Lindner</a>]</span>). ومن المهم ملاحظة أن هذه الحالة الأخيرة تمثل معدل العدّ المظلم الكلي للجهاز كما يعرّفه المرجع <span class="cite">[<a href="#Xdictionary">Bienfang <span class="cmti-10">et al.</span>(2023)Bienfang, Gerrits, Kuo,
+Migdall, Polyakov, and Slattery</a>]</span>، وهو يختلف عن معدل DCR الذاتي الذي تركز عليه دراستنا الحالية.
+</p><!-- l. 164 --><p class="indent">   في عملنا، ندرس طبيعة الإشارات عندما لا يكون أي ليف بصري موصولا بحساس TES. إضافة إلى ذلك، نقيس معدل DCR على مجال أطوال موجية أوسع، يمتد من 390 إلى 1550nm. ولتقييم طبيعة أحداث الخلفية المرصودة، صممنا ترتيبات تجريبية متميزة تستخدم مصادر مشعة ومنظومة مصادفة للأشعة الكونية.
+</p><!-- l. 166 --><p class="indent">   ستكون حساسات TES أيضا حساسات ضوئية مثالية في كواشف الهالوسكوب العازلة لكشف المادة المظلمة (DM) على هيئة فوتونات مظلمة (DPs) <span class="cite">[<a href="#Xmillar2017dielectric">Millar <span class="cmti-10">et al.</span>(2017)Millar, Raffelt,
+Redondo, and Steffen</a>]</span>. وقد كانت تجربتان رائدتين حديثا في استخدام الهالوسكوبات العازلة للبحث عن الفوتونات المظلمة بوصفها مادة مظلمة: LAMPOST <span class="cite">[<a href="#Xchiles2022new">Chiles <span class="cmti-10">et al.</span>(2022)Chiles, Charaev,
+Lasenby, Baryakhtar, Huang, Roshko, Burton, Colangelo, Van Tilburg, Arvanitaki
+<span class="cmti-10">et al.</span></a>]</span> في الولايات المتحدة، وMuDHI <span class="cite">[<a href="#Xmanenti2022search">Manenti <span class="cmti-10">et al.</span>(2022)Manenti, Mishra, Bruno, Roberts,
+Oikonomou, Pasricha, Sarnoff, Weston, Arneodo, Di Giovanni <span class="cmti-10">et al.</span></a>]</span> في الإمارات العربية المتحدة. استخدمت تجربة
+LAMPOST كاشفا فائقا للتوصيل بسلك نانوي للفوتونات المفردة (SNSPD) حساسا ضوئيا، في حين استخدمت MuDHI صماما ثنائيا انهياريا للفوتونات المفردة (SPAD). صمم حساس TES في الدراسة الحالية لاستخدامه في الترقية المستقبلية لتجربة MuDHI، وهي هالوسكوب عازل متعدد الطبقات يستهدف DPs ذات كتلة تقارب
+1<span class="cmmi-10">.</span>5eV<span class="cmmi-10">∕</span>c<sup><span class="cmr-7">2</span></sup>. لقد قسنا معدل DCR لمثل هذا الحساس TES البصري وطورنا مجموعة من الطرائق التجريبية وطرائق معالجة البيانات لتوصيف معدل خلفيته وخفضه والتخفيف منه. وباستخدام هذه الطرائق، حصلنا على معدل DCR مقداره 6<span class="cmmi-10">d</span><span class="cmsy-10">− </span>5 Hz عند 1<span class="cmmi-10">.</span>5 <span class="cmsy-10">± </span>0<span class="cmmi-10">.</span>2 eV. ويمثل هذا تحسنا بنحو 7 مراتب قدرية مقارنة بـ SPAD
+المستخدم في إعداد MuDHI السابق. وعلاوة على ذلك، حددنا وفسرنا المساهمات الرئيسية في العدّات المظلمة لحساس TES البصري، وربطناها بتآثرات أشعة غاما الكونية والبيئية مع ركيزة حساس TES.
+</p><!-- l. 172 -->
+<h3 class="sectionHead"><span class="titlemark">2   </span> <a id="x1-20002"></a>حساسات <br class="newline"/>حافة الانتقال فائقة التوصيل</h3>
+<!-- l. 174 -->
+<h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a id="x1-30002.1"></a>التصميم ومبدأ التشغيل</h4>
+<!-- l. 176 --><p class="noindent">حساس TES هو غشاء رقيق فائق التوصيل يعمل عند الانتقال بين حالته فائقة التوصيل وحالته العادية حيث يكون أكثر حساسية للتغيرات في درجة الحرارة. وتثبت نقطة عمل حساس TES على الانتقال بفعل تغذية راجعة كهروحرارية سالبة <span class="cite">[<a href="#Xirwin1995application">Irwin(1995)</a>]</span> تتحقق بتطبيق انحياز جهدي. ويعني ذلك أن أي زيادة في درجة الحرارة نتيجة امتصاص الطاقة تؤدي إلى زيادة في المقاومة، ما يسبب بدوره انخفاضا في التيار. وهذا الانخفاض في التيار يقلل التسخين بجول، فيبرّد الحساس ويعيده إلى نقطة العمل. ويعمل جهاز تداخل كمي فائق التوصيل للتيار المستمر
+(dc SQUID) موصول بحساس TES كمضخم تحويل مقاومة <span class="cite">[<a href="#Xmartinis1985signal">Martinis and Clarke(1985)</a>]</span>. فهو يحول هبوط التيار الناتج عن تآثر الجسيم إلى هبوط جهدي قابل للقياس. ويمكن بعد ذلك تضخيم هذا الجهد بمضخمات إلكترونية قياسية، وقياس الأشكال الموجية وتسجيلها بواسطة راسم ذبذبات. ويكون هبوط الجهد الناتج عن dc
+SQUID متناسبا مع ترسيب الطاقة في حساس TES ضمن مجال تشغيله <span class="cite">[<a href="#Xirwin1995application">Irwin(1995)</a>]</span>.
+</p><!-- l. 179 --><p class="indent">   صُنّع وشُغّل حسّاسا TES فائقَا التوصيل المستخدمان في هذا العمل في Istituto Nazionale di Ricerca Metrologica (INRiM) في تورينو (إيطاليا). وهما مصنوعان من طبقة ثنائية من التيتانيوم، وهو المادة فائقة التوصيل، والذهب، وهو فلز عادي يخفض درجة الحرارة الحرجة،
+<span class="cmmi-10">T</span><sub><span class="cmmi-7">c</span></sub>، للتيتانيوم (نحو 400 mK) بفعل تأثير القرب <span class="cite">[<a href="#Xrajteri2020tes">Rajteri <span class="cmti-10">et al.</span>(2020)Rajteri, Biasotti, Faverzani, Ferri, Filippo,
+Gatti, Giachero, Monticone, Nucciotti, and Puiu</a>]</span>. ويظهر كلا الحساسين TES قيمة <span class="cmmi-10">T</span><sub><span class="cmmi-7">c</span></sub> تقارب 90mK، ويعملان داخل ثلاجة إزالة مغنطة أدياباتية
+(ADR). ونظرا إلى حساسية حساسات TES وdc SQUIDs للحقول المغناطيسية، بما فيها الحقل المغنطيسي الأرضي، يثبّت درع مغناطيسي منخفض الحرارة داخل ADR حول منطقة العمل لقمع أي تداخل مغناطيسي قد يضعف أداء الحساس. والدرع المغناطيسي غلاف أسطواني مصنوع من سبيكة نيكل-حديد عالية النفاذية، صنعتها Amuneal، ويوفر قدرات
+حجب <span class="cite">[<a href="#Xamumetal">amu(2024)</a>]</span>.
+                                                                  
+
+                                                                  
+</p><!-- l. 182 --><p class="indent">   رُسّب حساسا TES بمساحة 20<span class="cmsy-10">×</span>20<span class="cmmi-10">μ</span>m<sup><span class="cmr-7">2</span></sup> على ركائز من السيليكون. ونشير إلى الحساسين باسم “TES E” و“TES B.” وقد جُمعت معظم البيانات من TES E، مما يجعله محور دراستنا الأساسي. وما لم يذكر خلاف ذلك، ينبغي افتراض أن الإشارات
+إلى بيانات TES تخص TES E. في الملحقين <a href="#x1-12000A">A<!-- tex4ht:ref: appendix_TES_fabrication  --></a> و<a href="#x1-15000D">D<!-- tex4ht:ref: appendix_TESB  --></a>، نقدم تفاصيل عن تصنيع حساس TES وبعض المعلومات عن توصيف ومعدل العدّ المظلم لحساس TES B. بالنسبة إلى كل من TES E وTES B، حوفظ على درجة حرارة الحمام عند
+43mK باستمرار، وضبطت نقطة العمل عند 15% من مقاومتهما العادية. وكان راسم الذبذبات المستخدم لاكتساب البيانات من نوع LeCroy Wave Runner. وقد ضُخمت إشارة TES فقط بواسطة مصفوفة تسلسلية من 16-SQUID ذات مرحلة
+واحدة <span class="cite">[<a href="#Xdrung2007highly">Drung <span class="cmti-10">et al.</span>(2007)Drung, Abmann, Beyer, Kirste, Peters, Ruede, and Schurig</a>]</span>، باستخدام إلكترونيات
+XXF-1 Magnicon <span class="cite">[<a href="#XMagnicon">Mag(2024)</a>]</span>.
+</p><!-- l. 187 -->
+<h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a id="x1-40002.2"></a>المعايرة</h4>
+<!-- l. 189 --><p class="noindent">لمعايرة حساس TES، وصلناه بثلاثة ليزرات أحادية اللون مخففة مختلفة عند 1540، و850، و406nm باستخدام ليف بصري موضوع على بعد نحو مليمتر واحد من الحساس. يتيح التوهين حصر عدد الفوتونات الواصلة إلى حساس TES وتجنب تشبع الإشارة، مع التركيز على المنطقة التي تحتوي بين فوتون واحد وثمانية فوتونات. في الشكل <a href="#x1-40011">1<!-- tex4ht:ref: fig:Calibration_TESE  --></a>، يبيّن منحنى المعايرة في اليمين، حيث نرسم مطال الإشارة المقاسة من حساس TES مقابل الطاقة المعروفة للفوتون
+أو الفوتونات الساقطة. ويعرض الجانب الأيسر من الشكل المدرجات التكرارية للعدّات مقابل المطال لكل طول موجي ليزري مستخدم. اتخذنا قيمة الحد الأدنى المطلق مطالا للنبضة من الأشكال الموجية غير المرشحة. لذلك، حتى في غياب ترسيب الطاقة في حساس TES، تكون قيمة الحد الأدنى غير صفرية، لأن تقلبات إشارة خط الأساس حول الصفر تحدث. وينتج من ذلك تقاطع غير صفري لمنحنى المعايرة. وقد تعمدنا عدم تطبيق أي ترشيح أثناء عملية المعايرة كي تطابق شروط راسم الذبذبات غير المرشحة أثناء اكتساب
+البيانات.
+</p>
+<figure class="figure">
+<a id="x1-40011"></a>
+<!-- l. 197 --><p class="noindent"><img alt="PIC" height="345" src="Calibration_TESE.png" width="345"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 1: </span><span class="content">معايرة TES E باستخدام ثنائيات ليزر مخففة ومقترنة بصريا. اليمين: منحنى المعايرة، حيث يرسم مطال الإشارة (V) مقابل طاقة الفوتون (eV). ترمز نقاط البيانات بالألوان حسب الطول الموجي لليزر: الأزرق لـ 406nm، والأخضر لـ 850nm، والبرتقالي لـ 1540nm. اليسار: مدرجات
+تكرارية تبين توزيع العدّات مقابل المطال لكل طول موجي. وطُبّع العدد الكلي للعدّات في كل مدرج إلى 100. ويظهر ملاءمة متعددة الغاوسيات (خط متصل) فوق البيانات الخام (خط منقط). وتقابل القمم تعدديات فوتونية مختلفة عند كل طول موجي، مع اتساق قيمها المتوسطة مع نقاط البيانات في مخطط المعايرة. وتكون استجابة TES خطية من 0 إلى 5eV، بما يطابق مجال التشغيل لحساس TES. وبعد 5eV تصبح الاستجابة لاخطية. كما تعرض
+ملاءمة متعددة حدود من الدرجة الثانية للطيف الطاقي الكامل.</span></figcaption><!-- tex4ht:label?: x1-40011  -->
+</figure>
+<h3 class="sectionHead"><span class="titlemark">3   </span> <a id="x1-50003"></a>تصنيف الأحداث</h3>
+<figure class="figure">
+<a id="x1-50012"></a>
+<!-- l. 208 --><p class="noindent"><img alt="PIC" height="322" src="PCA.png" width="310"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 2: </span><span class="content">اللوحة اليسرى: تجميع K-المتوسطات لإشارات من تشغيل الخلفية بعد تحليل المكونات الرئيسية. ويكبر الشكل الداخلي العنقودين 8 و9، اللذين أعيد تحليلهما لتحسين فصل الضجيج عن الأحداث الشبيهة بالفوتونات. اللوحة اليمنى: أشكال موجية نموذجية للإشارات من كل عنقود من العناقيد المنقحة. وفي قياسات TES وحده مثل هذه، سجلنا 2.5k نقطة أخذ عينات بمعدل 25MHz لكل أثر من راسم الذبذبات، مما أدى إلى نافذة قياس
+قدرها 100<span class="cmmi-10">μ</span>s.</span></figcaption><!-- tex4ht:label?: x1-50012  -->
+</figure>
+<!-- l. 214 --><p class="indent">   تسمى الإشارات التي يرصدها حساس TES من دون أي بصريات إدخال “عدّات مظلمة ذاتية للكاشف” في المرجع <span class="cite">[<a href="#Xdictionary">Bienfang <span class="cmti-10">et al.</span>(2023)Bienfang, Gerrits, Kuo, Migdall,
+Polyakov, and Slattery</a>]</span>. غير أننا في هذه الورقة نحذف الصفة “ذاتية”، لأننا حددنا مصادر خارجية تسهم في هذه العدّات بحيث لا تأتي كل العدّات المظلمة من داخل الحساس (أي إنها ليست ذاتية له). وتقع الإشارات المرصودة في ثلاث فئات متميزة: أحداث شبيهة بالفوتونات، وأحداث عالية الطاقة، وأحداث ضجيج كهربائي. ومع أن الأنواع الثلاثة من النبضات مميزة بصريا، فقد أتمتنا التصنيف باستخدام المسار الآتي المطور في <span class="cmcsc-10"><span class="small-caps">python</span></span>.
+بعد تطبيق مرشح Butterworth، نحسب مجموعة من المتغيرات لكل شكل موجي (مثل العرض الكامل عند نصف القيمة العظمى، والمطال الأعظمي، ومساحة النبضة، وغيرها). ونستخدم تحليل المكونات الرئيسية (PCA) لإيجاد التركيبين الخطيين للمتغيرات اللذين يعظمان تباين النقاط <span class="cite">[<a href="#Xwold1987pca">Wold <span class="cmti-10">et al.</span>(1987)Wold,
+Esbensen, and Geladi</a>]</span>. ثم يطبق تجميع <span class="cmmi-10">k</span>-المتوسطات على فضاء الطور ثنائي الأبعاد الناتج لتحديد عناقيد من الأحداث المتشابهة <span class="cite">[<a href="#XArthur2007kmeans">Arthur and Vassilvitskii(2007)</a>]</span>. ولضمان دقة هذا الفرز الآلي، أجرينا مراجعة يدوية للعناقيد. وقد سهلت عملية المراجعة هذه واجهة مستخدم رسومية
+(GUI) تتيح اختيار مركز عنقود، ثم تعرض جميع الأشكال الموجية المرتبطة بذلك العنقود للتحقق السريع من التصنيف. وفي بعض الحالات، كما هو مبين في الشكل <a href="#x1-50012">2<!-- tex4ht:ref: fig:PCA  --></a>، كان من الضروري إعادة تطبيق خوارزمية التجميع على مجموعة جزئية من البيانات لفصل المجموعات الثلاث فصلا كاملا.
+</p><!-- l. 218 --><p class="indent">   الأحداث الشبيهة بالفوتونات هي النقاط الخضراء في المجموعة A في الشكل <a href="#x1-50012">2<!-- tex4ht:ref: fig:PCA  --></a>، وقد حُصل عليها بإعادة تشغيل خوارزمية التصنيف على العنقودين 8 و9. وتتميز هذه الإشارات بزمن صعود حاد <span class="msam-10">≲</span>1<span class="cmmi-10">μ</span>s وتبدو مطابقة للإشارات التي نراها عندما نضيء حساس TES بضوء من ثنائي ليزري مخفف.
+</p><!-- l. 220 --><p class="indent">   تتميز الإشارات في العناقيد 1–7 في الشكل <a href="#x1-50012">2<!-- tex4ht:ref: fig:PCA  --></a> بزمني صعود واضمحلال طويلين، مما يشير إلى أن هذه الأحداث ناجمة عن ترسيبات طاقة كبيرة في ركيزة حساس TES، ويرجح أن تأتي من جسيمات ثانوية للأشعة الكونية أو من اضمحلالات مشعة طبيعية. لذلك نشير إليها باسم “أحداث عالية الطاقة.” ويتسق هذا التصنيف مع زمن الصعود الطويل المرصود، الذي يمكن نسبته إلى الانتشار البطيء للطاقة من الركيزة إلى حساس TES.
+</p><!-- l. 222 --><p class="indent">   تظهر أحداث الضجيج الكهربائي (العنقود البرتقالي B في الشكل <a href="#x1-50012">2<!-- tex4ht:ref: fig:PCA  --></a>، الذي حُصل عليه بإعادة تحليل العنقودين 8 و9) قمما جهدية تتذبذب بين قيم موجبة وسالبة، وتتميز بمساحة نبضة قريبة من الصفر. ونعزو هذه الأحداث إلى تداخل كهرومغناطيسي مع جهاز القراءة. وحقيقة أنها تبقى قابلة للكشف حتى عندما يكون حساس TES في حالة فائقة التوصيل بالكامل، وهي حالة لا يكون فيها حساسا لترسيبات الطاقة، تشير إلى أن السبب ليس حساس
+TES.
+</p>
+<h3 class="sectionHead"><span class="titlemark">4   </span> <a id="x1-60004"></a>التشغيلات التجريبية</h3>
+<!-- l. 229 --><p class="noindent">الأحداث الشبيهة بالفوتونات هي الإشارة المتوقعة للهالوسكوبات العازلة التي تبحث عن الفوتونات المظلمة بوصفها مادة مظلمة. لذلك، من الضروري قياس معدل DCR الشبيه بالفوتونات في حساس TES عندما يعمل الحساس في الظلام، من دون وصلة بصرية إلى المحيط وفي غياب المصادر المشعة، لأن ذلك يشكل الخلفية التي يعمل الهالوسكوب العازل في مقابلها.
+</p><!-- l. 231 --><p class="indent">   في بداية دراستنا، توقعنا رؤية معدل DCR شبيه بالفوتونات من رتبة 10<sup><span class="cmsy-7">−</span><span class="cmr-7">4</span></sup> Hz، بما يتسق مع نتائج المرجع <span class="cite">[<a href="#Xdreyling2015characterization">Dreyling-Eschweiler <span class="cmti-10">et al.</span>(2015)Dreyling-Eschweiler,
+Bastidon, Döbrich, Horns, Januschek, and Lindner</a>]</span>، وهي الدراسة السابقة الوحيدة ذات الطبيعة المماثلة. وكان هناك أيضا سؤال عما إذا كانت الأشعة الكونية أو الاضمحلالات المشعة الطبيعية، المتفاعلة مع حساس TES أو ركيزته، يمكن أن تفسر بعض هذه الأحداث الشبيهة بالفوتونات كما اقترح المؤلفون أنفسهم.
+ولاستكشاف هذه الإمكانية، وللحصول على فهم أعمق لطبيعة الأحداث العالية الطاقة، التي لم تدرس على نطاق واسع سابقا في حساسات TES البصرية، أجرينا أربعة اختبارات محددة موضحة أدناه. ومن المهم ملاحظة أن جميع التشغيلات التجريبية أجريت في غياب مصدر ضوئي ومن دون ليف بصري موصول بحساس TES، الذي كان محاطا بالكامل بصندوق نحاسي مقترن حراريا بمرحلة 30 mK (انظر الشكل <a href="#x1-60013">3<!-- tex4ht:ref: fig:photo  --></a>). وعلى الرغم من وجود ثلاثة ألياف في المبرّد لإتاحة إجراءات المعايرة الأولية، فقد ثبتت نهاياتها على الجانب الخارجي لمرحلة 3 K داخل
+ADR.
+</p>
+<figure class="figure">
+<a id="x1-60013"></a>
+<!-- l. 237 --><p class="noindent"><img alt="PIC" height="276" src="bondature_zoomedin.jpg" width="276"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 3: </span><span class="content">الصندوق النحاسي، المثبت عموديا على صفيحة النحاس في مرحلة 30 mK، ظاهر هنا من دون الغطاء ويحتوي على حساسي TES. وعلى الرغم من أن حساسي TES صغيران جدا بحيث لا يمكن رؤيتهما، فإن الركائز، المظللة بالحدود الحمراء، مرئية، والركيزة في أعلى اليمين (TES E) تكاد تكون ضعف حجم الركيزة في أسفل اليسار
+(TES B). وعلى اليمين تكبير مجهري للمنطقة داخل لوحة الدارة المطبوعة الخضراء، مع الإشارة إلى حساسي TES (اللذين لا يزالان غير مرئيين) بسهمين أحمرين.</span></figcaption><!-- tex4ht:label?: x1-60013  -->
+</figure>
+<!-- l. 242 --><p class="indent">   كان التشغيل الأول اختبار خلفية (التشغيل 1) بهدف قياس معدل DCR الشبيه بالفوتونات. وبالإضافة إلى ذلك، قسنا في التشغيل نفسه معدل DCR العالي الطاقة، الذي افترضنا أنه ناجم عن الأشعة الكونية أو الاضمحلالات المشعة الطبيعية المتفاعلة مع ركيزة حساس TES.
+</p><!-- l. 244 --><p class="indent">   في التشغيلين 2 و3، استخدمنا مصدرين مشعين، <sup><span class="cmr-7">232</span></sup>Th و<sup><span class="cmr-7">22</span></sup>Na، على التوالي. وُضعت هذه المصادر ملاصقة لخارج ADR ومحاذاة عموديا مع ركيزة حساس TES، التي كانت مركبة عموديا داخل ADR (انظر الشكل <a href="#x1-60013">3<!-- tex4ht:ref: fig:photo  --></a>). كان هدف هذه الاختبارات فحص استجابة حساس TES لأحداث غاما باستخدام مصادر مشعة. وتوقعنا أن تؤدي أشعة غاما البيئية إلى استجابة مماثلة في الحساس. في التشغيل 2، استخدم
+مصدر <sup><span class="cmr-7">232</span></sup>Th بنشاط مقاس يقارب 10kBq. أما في التشغيل 3، فاستخدمنا مصدر <sup><span class="cmr-7">22</span></sup>Na، وكان نشاطه نحو 32kBq. يتميز طيف انبعاث <sup><span class="cmr-7">22</span></sup>Na بقمتين كهروضوئيتين بارزتين. ومن اللافت أن إحدى هاتين القمتين تقابل الانبعاث المتزامن لفوتونين بطاقة 511 keV في اتجاهين متعاكسين، وهي ظاهرة تحدث بسبب إفناء الإلكترون-البوزيترون عقب اضمحلال <span class="cmmi-10">β</span><sup><span class="cmr-7">+</span></sup>. وقد حُصر هذا المصدر بين
+ADR وومياض بلاستيكي موصول بأنبوب مضاعف ضوئي (PMT)، نسميه “سابر.” أتاح هذا الإعداد قياس المصادفات الثنائية لأشعة غاما المتعاكسة الاتجاه، ملتقطا هذه الوقائع بكل من سابر وحساس TES.
+</p><!-- l. 249 --><p class="indent">   أما الاختبار الرابع (التشغيل 4)، فبغرض البرهنة على أن الأشعة الكونية يمكنها أيضا إحداث أحداث عالية الطاقة في حساس TES، نفذنا نظام مصادفة للأشعة الكونية، بوضع ثلاثة كواشف سابر، جنبا إلى جنب، مباشرة تحت ADR (انظر الشكل <a href="#x1-60024">4<!-- tex4ht:ref: fig:cryo_muon_coincidence  --></a>). وكان التقداح المتزامن لحساس TES وجميع كواشف سابر يشير إلى زخّة أشعة كونية أو حدث حزمة ميونات. وشغّلت كواشف سابر الثلاثة عند الكسب نفسه ضمن لايقين قدره 10%. وضُبطت العتبة عند
+120mV على الثلاثة جميعا، وهو ما يقابل 250keV (لمزيد من التفاصيل حول معايرة كواشف سابر، انظر الملحق <a href="#x1-17000F">F<!-- tex4ht:ref: appendix_saber_calibration  --></a>). </p><figure class="figure">
+<a id="x1-60024"></a>
+<!-- l. 252 --><p class="noindent"><img alt="PIC" height="276" src="cryo_muon_coincidence.jpg" width="276"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 4: </span><span class="content">الإعداد التجريبي أثناء اختبار مصادفة الأشعة الكونية. وتوجد كواشف سابر الثلاثة، الموضوعة جنبا إلى جنب، مباشرة أسفل ADR.</span></figcaption><!-- tex4ht:label?: x1-60024  -->
+</figure>
+<!-- l. 256 --><p class="indent">   أجري اكتساب البيانات بنمطين: في التشغيل 4A، الذي استمر نحو 19 ساعة، ضُبط راسم الذبذبات على التقداح عند إشارة AND لكواشف سابر الثلاثة، مع تسجيل إشارة TES في الوقت نفسه. وضبطت المصادفة في التشغيل 4A باستخدام وظيفة التقداح الذكي في راسم الذبذبات، بحيث تتطلب تجاوز الإشارة للعتبة في جميع قنوات سابر عبر نافذة 10<span class="cmmi-10">μ</span>s كاملة. وفي التشغيل 4B، الممتد نحو
+14 ساعة، ضُبط التقداح على حساس TES للإشارات الأكبر من 0<span class="cmmi-10">.</span>8eV، مع تسجيل مخارج كواشف سابر الثلاثة كلها. وقد أعطى التشغيل 4A نسبة المصادفات الرباعية (الأحداث المسجلة في كل من TES وكواشف سابر الثلاثة) إلى المصادفات الثلاثية (الأحداث التي كشفتها كواشف سابر فقط)، بينما أتاح التشغيل 4B تقدير نسبة المصادفات الرباعية إلى العدد الكلي للأحداث العالية الطاقة التي كشفها حساس
+TES.
+</p>
+<h3 class="sectionHead"><span class="titlemark">5   </span> <a id="x1-70005"></a>محاكاة GEANT4</h3>
+<!-- l. 263 --><p class="noindent">تشير الحسابات الأولية إلى أن تآثرات الأشعة الكونية المباشرة مع حساس TES وحده لا يمكن أن تفسر العدد المرصود من الأحداث العالية الطاقة. ولتقدير أقصى مساهمة مباشرة ممكنة للأشعة الكونية، نظرنا في سيناريو يكون فيه حساس TES موجها أفقيا، بحيث تعظم مساحة تعرضه. عند مستوى سطح البحر، يبلغ متوسط تدفق الميونات نحو 120m<sup><span class="cmsy-7">−</span><span class="cmr-7">2</span></sup>s<sup><span class="cmsy-7">−</span><span class="cmr-7">1</span></sup> (انظر، على سبيل
+المثال، <span class="cite">[<a href="#XArneodo_2019">Arneodo <span class="cmti-10">et al.</span>(2019)Arneodo, Benabderrahmane, Bruno, Di Giovanni, Fawwaz,
+Messina, and Mussolini</a>]</span>). وحتى عند مضاعفة هذه القيمة بصورة محافظة لاحتساب جسيمات الأشعة الكونية غير الميونات، فإن حساس TES بمساحة 20<span class="cmsy-10">×</span>20<span class="cmmi-10">μ</span>m<sup><span class="cmr-7">2</span></sup> لن يتلقى إلا نحو 10<sup><span class="cmsy-7">−</span><span class="cmr-7">2</span></sup> إصابات مباشرة في اليوم. وفي المقابل، ستتعرض ركيزتنا الأكبر ذات المساحة 6.7<span class="cmsy-10">×</span>2<span class="cmmi-10">.</span>7mm<sup><span class="cmr-7">2</span></sup>
+والسماكة 500 µm لنحو 400 جسيم أشعة كونية يوميا. وبما أننا نرصد نحو ألف حدث عالي الطاقة يوميا في قياساتنا، وهو عدد يتجاوز بكثير الإصابات المباشرة المقدرة في حساس TES، فإننا نستنتج أن هذه الأحداث لا بد أن تنشأ أساسا من ترسيبات طاقة داخل الركيزة، وليس من تآثرات مباشرة مع المساحة الفعالة لحساس TES. وفي الواقع، كما سنرى لاحقا، تنشأ هذه الأحداث العالية الطاقة من تآثر الأشعة الكونية وأشعة غاما البيئية مع
+الركيزة.
+</p><!-- l. 268 --><p class="indent">   طورنا محاكاة مبنية على <span class="cmcsc-10"><span class="small-caps">geant</span>4 </span>للتحقق من فهمنا للأحداث العالية الطاقة التي يراها الحساس. شغّلنا المحاكاة في ثلاث تهيئات تسمى المحاكاة 2، و3، و4، وهي تحاكي الإعدادات التجريبية للتشغيلات 2، و3، و4، على التوالي. وقد استخدمت جميع المحاكاة الركيزة ككاشف حساس بدلا من حساس TES نفسه.
+</p><!-- l. 270 --><p class="indent">   في المحاكاة 2، نمذجنا مصدر <sup><span class="cmr-7">232</span></sup>Th كما في التشغيل 2، وحاكينا مليار حدث اضمحلال. وافترضت المحاكاة أن المصدر في توازن علماني. ويدعم هذا النهج بيانات تجريبية حُصل عليها من تحليل مصدر الثوريوم بكاشف جرمانيوم عالي النقاوة (HPGe) في NYUAD، وقدمت معلومات عن مستوى النشاط والطيف متسقة مع هذا الافتراض. واستخدم النشاط المستخلص من هذه القياسات، وهو نحو 10kBq، أيضا لتحويل عدد الاضمحلالات المحاكى إلى زمن (أي نحو
+100000s لكل 1billion اضمحلال).
+</p><!-- l. 272 --><p class="indent">   في المحاكاة 3، وُضع مصدر <sup><span class="cmr-7">22</span></sup>Na وكاشف سابر كما في التشغيل 3، وحوكي مليار اضمحلال. وبالطريقة نفسها المتبعة مع الثوريوم، استخدمنا النشاط المعروف البالغ 32kBq لتحويل العدد المحاكى من الاضمحلالات إلى زمن.
+</p><!-- l. 274 --><p class="indent">   في المحاكاة 4، نمذجنا كواشف سابر الثلاثة جنبا إلى جنب، تحت ADR، وولدنا عشرة مليارات جسيم ثانوي من الأشعة الكونية باستخدام Cosmic-ray Shower Library (حزمة CRY <span class="cite">[<a href="#XHagmann2007cry">Hagmann <span class="cmti-10">et al.</span>(2007)Hagmann,
+Lange, and Wright</a>]</span>). وقد اصطدمت هذه الجسيمات الكونية، وكذلك الجسيمات التي تنتجها تآثراتها مع الإعداد، بالركيزة وبكواشف سابر. وأُهملت إصابات كواشف سابر إذا كان ترسيب الطاقة فيها أقل من 250keV، وهو ما يقابل عتبة التقداح المستخدمة في التشغيل 4A.
+</p><!-- l. 276 --><p class="indent">   إضافة إلى الأشعة الكونية، حاكينا أيضا أشعة غاما البيئية الناشئة من النشاط الإشعاعي لمواد البناء ومصادر الإشعاع الطبيعي الأخرى. وولدت أشعة غاما هذه وفقا لطيف أشعة غاما الفعلي المقاس في المختبر، باستخدام بلورة NaI موصولة بأنبوب مضاعف ضوئي. وأشارت قياساتنا إلى متوسط تدفق غاما مقداره 1–2 gamma cm<sup><span class="cmsy-7">−</span><span class="cmr-7">2</span></sup> s<sup><span class="cmsy-7">−</span><span class="cmr-7">1</span></sup>.
+</p><!-- l. 278 --><p class="indent">   من المحاكاة 4، حصلنا على معدل DCR عال الطاقة محاكى، ثم قورن بمعدل DCR العالي الطاقة المرصود في التشغيل 1 (انظر النقطتين العلويتين الخضراء والبرتقالية في الشكل <a href="#x1-70026">6<!-- tex4ht:ref: fig:rate_BKG_Th_Na  --></a>). ولتحقيق ذلك، جمعنا معدل الأحداث المكتشفة في ركيزة TES أثناء محاكاة أشعة غاما البيئية والمعدل المحصل عليه أثناء محاكاة الأشعة الكونية. ولتحويل العدّات المحاكاة (خرج المحاكاة) إلى معدل محاكى، استخدمنا معدل المصادفات الثلاثية من التشغيل 4A ومعدل غاما البيئي من كاشف NaI كعوامل تحويل
+زمنية. وبالإضافة إلى ذلك، مكنتنا المحاكاة 4 من حساب نسب المصادفات الثلاثية إلى الرباعية، وإصابات TES العالية الطاقة إلى المصادفات الرباعية. وتقابل هذه النسب تلك المقاسة في التشغيلين 4A و4B، على التوالي.
+</p>
+<figure class="figure">
+<a id="x1-70015"></a>
+<!-- l. 282 --><p class="noindent"><img alt="PIC" height="345" src="DCR_TESE.png" width="345"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 5: </span><span class="content">مدرج تكراري للعدّات المظلمة الشبيهة بالفوتونات مقابل المطال (محور <span class="cmti-10">x </span>السفلي) والطاقة (محور <span class="cmti-10">x </span>العلوي) أثناء تشغيل الخلفية: سُجل 40 حدثا شبيها بالفوتونات على مدى 31 ساعة مع عتبة تقداح قدرها 0<span class="cmmi-10">.</span>8eV. ويبين محور <span class="cmti-10">y </span>الأيمن المعدل بالميكروهرتز لكل خانة. وينتج التقسيم إلى خانات 5 mV من الانحراف المعياري لتقلب خط الأساس.</span></figcaption><!-- tex4ht:label?: x1-70015  -->
+</figure>
+<figure class="figure">
+<a id="x1-70026"></a>
+<!-- l. 289 --><p class="noindent"><img alt="PIC" height="1462" src="BKG_Th_Na_1.png" width="310"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 6: </span><span class="content">معدلات عدّ TES تحت تهيئات تجريبية مختلفة، أي عند غياب مصدر مشع (الخلفية)، ومع <sup><span class="cmr-7">232</span></sup>Th، ومع <sup><span class="cmr-7">22</span></sup>Na. وتعرض المعدلات الشبيهة بالفوتونات المقاسة بالأزرق، في حين تعرض معدلات العدّ العالية الطاقة المقاسة والمحاكاة بالبرتقالي والأخضر، على التوالي. ولم يكن بالإمكان محاكاة المعدلات الشبيهة بالفوتونات بسبب مجهولية منشئها. تأتي بيانات الخلفية من التشغيل 1، أما بيانات <sup><span class="cmr-7">232</span></sup>Th
+و<sup><span class="cmr-7">22</span></sup>Na فتأتي من التشغيلين 2 و3. وتأتي معدلات الأحداث العالية الطاقة المحاكاة من المحاكاة 4، و2، و3، المقابلة للأشعة الكونية وأشعة غاما البيئية (التي يفترض، مجتمعة، أنها السبب الغالب لأحداث الخلفية العالية الطاقة)، و<sup><span class="cmr-7">232</span></sup>Th، و<sup><span class="cmr-7">22</span></sup>Na، على التوالي. ونظرا إلى أن المحاكاة لا تتضمن زمنا مضمنا، فقد استخدمنا عوامل تحجيم زمنية مختلفة لتحويل عدّات المحاكاة إلى معدلات. وهذه العوامل هي معدل المصادفات الثلاثية من التشغيل 4A، ومعدل غاما البيئي من قياس
+NaI، ونشاطا الثوريوم والصوديوم. وتمثل اللايقينات المرتبطة بكل نقطة بيانات مقاسة مجال ثقة 90% من إحصاءات بواسون. وبالنظر إلى أننا رصدنا 0 عدّات في التشغيل 3، نستخدم مجالات الثقة لفيلدمان وكازنز <span class="cite">[<a href="#XFeldman1998Apr">Feldman and Cousins(1998)</a>]</span> لشريط الخطأ الخاص بتلك النقطة. أما في المعدلات المحاكاة، فتأتي الأخطاء من انتشار اللايقين في عوامل التحجيم الزمني.
+وللقيم الدقيقة للنقاط، انظر الجدول <a href="#x1-180014">4<!-- tex4ht:ref: tab:sim_data  --></a> في الملحق <a href="#x1-18000G">G<!-- tex4ht:ref: appendix_table_sim_data  --></a>.</span></figcaption><!-- tex4ht:label?: x1-70026  -->
+</figure>
+<!-- l. 300 --><p class="indent">   لدراسة مساهمة الاضمحلالات المشعة في عدد الأحداث العالية الطاقة التي يراها حساس TES، أجرينا تحليلا بمطيافية الكتلة بالبلازما المقترنة حثيا (ICP-MS) في Laboratori Nazionali del Gran Sasso (LNGS،
+L’Aquila، إيطاليا). واستخدم ذلك لتقييم النشاط الإشعاعي الذاتي للمواد المحيطة بحساس TES، وتحديدا الركيزة والصندوق النحاسي الحاوي لحساس TES. وركز التحليل على اليورانيوم والثوريوم، اللذين اشتبهنا في أنهما المساهمان الرئيسيان في الاضمحلالات المشعة. في الركيزة، وُجد أن تركيزي اليورانيوم والثوريوم أقل من 3ppb (أجزاء في المليار) و7ppb، على التوالي. وبالنسبة إلى الصندوق النحاسي، كانت تراكيز كلا النظيرين دون
+1ppb. وبعد إدراج النشاط الإشعاعي المقاس للصندوق النحاسي والركيزة في محاكاتنا <span class="cmcsc-10"><span class="small-caps">geant</span>4</span>، تبين أن حساس TES سيسجل نحو إصابة واحدة كل 500 يوم (21nHz). وتشير هذه النتيجة إلى أن النشاط الإشعاعي الذاتي للمواد القريبة جدا من حساس TES يسهم إسهاما مهملا في معدل العدّ المظلم العالي الطاقة
+له.
+</p>
+<h3 class="sectionHead"><span class="titlemark">6   </span> <a id="x1-80006"></a>النتائج والمناقشة</h3>
+<!-- l. 306 --><p class="noindent">النتيجة الأساسية من التشغيل 1 هي أن معدل DCR الشبيه بالفوتونات يبلغ 3<span class="cmmi-10">.</span>6<span class="cmmi-10">d </span><span class="cmsy-10">− </span>4 Hz ضمن مجال الطاقة 0.8–3.2 eV. ومن اللافت أنه عند 1<span class="cmmi-10">.</span>5 <span class="cmsy-10">± </span>0<span class="cmmi-10">.</span>2 eV، وهو مجال الطاقة الذي يستهدفه كاشف هالوسكوب MuDHI للفوتونات المظلمة بوصفها مادة
+مظلمة <span class="cite">[<a href="#Xmanenti2022search">Manenti <span class="cmti-10">et al.</span>(2022)Manenti, Mishra, Bruno, Roberts, Oikonomou, Pasricha,
+Sarnoff, Weston, Arneodo, Di Giovanni <span class="cmti-10">et al.</span></a>]</span>، يكون معدل DCR الشبيه بالفوتونات 6<span class="cmmi-10">d</span><span class="cmsy-10">− </span>5 Hz. في الشكل <a href="#x1-70015">5<!-- tex4ht:ref: fig:DCR_TESE  --></a>، نعرض معدل DCR الشبيه بالفوتونات لحساس TES بدلالة طاقة
+الفوتون ومطال الإشارة.
+</p>
+<figure class="figure">
+<a id="x1-80017"></a>
+<!-- l. 310 --><p class="noindent"><img alt="PIC" height="-1908" src="Quad_Coincidences.png" width="345"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 7: </span><span class="content">مخططات تبين جميع أحداث المصادفة الرباعية من التشغيلين 4A (8 على مدى 19 ساعة) و4B (3 على مدى 14 ساعة). ولكل حدث متزامن كشف عبر سابر 1، و2، و3، وTES، يستخدم اللون نفسه في المخططات الأربعة المقابلة لتمثيل ذلك الحدث المحدد. في التشغيل 4A كان التقداح على إشارة AND لكواشف
+سابر الثلاثة. وبسبب زمن صعود TES الأطول والأكثر تغيرا وتأخره بالنسبة إلى كواشف سابر، تبدو نبضات سابر متراكبة. وفي التشغيل 4B، تمتد النافذة الزمنية إلى قيم سالبة لالتقاط نبضات سابر التي تحدث قبل تقداح TES.</span></figcaption><!-- tex4ht:label?: x1-80017  -->
+</figure>
+<!-- l. 315 --><p class="indent">   على خلاف التوقعات الأولية، ظل معدل DCR الشبيه بالفوتونات في مجال الطاقة 0.8–3.2 eV ثابتا (ضمن اللايقينات) عبر جميع التشغيلات (انظر النقاط الزرقاء في الشكل <a href="#x1-70026">6<!-- tex4ht:ref: fig:rate_BKG_Th_Na  --></a>)، رغم إدخال مصادر مشعة في التشغيلين 2 و3. ويشير هذا الاتساق في معدل DCR الشبيه بالفوتونات، بصرف النظر عن وجود مصادر مشعة، إلى أن أشعة غاما لا تسهم في معدل الأحداث الشبيهة بالفوتونات المرصود. ورغم تضمين حزمة الفيزياء البصرية في محاكاتنا
+<span class="cmcsc-10"><span class="small-caps">geant</span>4</span>، لم تسجل أي فوتونات بصرية تدل على عمليات التلألؤ حول حساسات TES.
+</p><!-- l. 318 --><p class="indent">   أحد التفسيرات المحتملة لمعدل DCR الشبيه بالفوتونات المرصود هو وجود فوتونات بصرية شاردة داخل المبرّد، ربما من الضوء المحيط الخارجي. غير أن احتمال دخول هذه الفوتونات عبر الليف البصري يبدو ضئيلا، لأن أي ضوء محيط يدخل الليف سيمتص عند مرحلة 3 K المثبت بها. ويدعم ذلك بحث سابق يبين أن وجود أو غياب ليف داخل المبرّد، من دون أن يكون مقترنا مباشرة بحساس TES، لا يؤثر تأثيرا معنويا في معدل
+DCR الشبيه بالفوتونات (انظر الشكل 4.13 في المرجع <span class="cite">[<a href="#Xdreyling2014superconducting">Dreyling-Eschweiler(2014)</a>]</span>). ويدل ذلك على أن مصدر هذه الإشارات الشبيهة بالفوتونات لا يزال مجهولا، ومن ثم غياب نقاط المحاكاة في الشكل <a href="#x1-70026">6<!-- tex4ht:ref: fig:rate_BKG_Th_Na  --></a> لمعدل DCR الشبيه بالفوتونات، ويستلزم مزيدا من
+البحث.
+</p><!-- l. 321 --><p class="indent">   في التشغيل 1، اخترنا الإشارات العالية الطاقة لحساب معدل العدّ المظلم العالي الطاقة. وينتج هذا المعدل من تآثرات الأشعة الكونية وأشعة غاما البيئية مع ركيزة حساس TES، كما تؤكد محاكياتنا. ومن اللافت أنه بالنسبة إلى TES B، التي تبلغ مساحة ركيزتها نصف مساحة ركيزة TES E، لاحظنا أن معدل DCR العالي الطاقة كان نصف معدل TES E، مما يدعم العلاقة بين حجم الركيزة ومعدل
+DCR العالي الطاقة (لمزيد من التفاصيل، انظر الملحق <a href="#x1-16000E">E<!-- tex4ht:ref: appendix_sensitive volume  --></a>).
+</p><!-- l. 324 --><p class="indent">   عند إدخال المصادر المشعة، لوحظت زيادة واضحة في معدل الإشارات العالية الطاقة في حساس TES على راسم الذبذبات. وكان ذلك مرئيا بصورة خاصة مع مصدر <sup><span class="cmr-7">22</span></sup>Na. وتبين محاكاتنا أننا نستطيع نمذجة الأحداث العالية الطاقة بدقة في وجود مصدر مشع، مع نتائج متوافقة لتشغيلي <sup><span class="cmr-7">232</span></sup>Th و<sup><span class="cmr-7">22</span></sup>Na كليهما. وتشير المحاكاة إلى أن الركيزة تمتص الطاقة ثم تنقلها إلى حساس TES، حيث تكشف. ومن اللافت أن تغيير مساحة الركيزة يغير معدل DCR خطيا،
+مما يؤكد آلية التآثر هذه أكثر.
+</p><!-- l. 326 --><p class="indent">   قدم التشغيل 4 تأكيدا على أن زخات الأشعة الكونية قادرة على إنتاج أحداث عالية الطاقة في حساس TES، كما يتضح من المصادفات الرباعية المرصودة بين الحساس وكواشف سابر الثلاثة أسفل ADR (انظر الشكل <a href="#x1-80017">7<!-- tex4ht:ref: fig:Quad_Coincidences  --></a>). وتبالغ النسبة المحاكاة للمصادفات الثلاثية إلى المصادفات الرباعية، التي تمثل كسر أحداث الأشعة الكونية التي كشفها نظام سابر والتي أودعت أيضا طاقة في حساس TES، في تقدير النسبة المرصودة في التشغيل 4A بمعامل 5. وبالمثل، تبالغ النسبة المحاكاة لإصابات TES العالية
+الطاقة إلى المصادفات الرباعية في تقدير التشغيل 4B بمعامل 1.7. ويرجح أن ترجع هذه الفروق إلى نظاميات في محاكاة الأشعة الكونية. يبين الجدول <a href="#x1-80021">1<!-- tex4ht:ref: tab:Run4  --></a> العدّات الخام للمصادفات الثلاثية والرباعية في المحاكاة والواقع.
+</p>
+<div class="table">
+<!-- l. 329 --><figure class="float">
+<figcaption class="caption"><span class="id">Table 1: </span><span class="content">يقارن الجدول نسبة أحداث المصادفة الثلاثية (t) إلى الرباعية (q) بين المحاكاة (Sim) والبيانات التجريبية (Exp) للتشغيل 4A، ونسبة إصابات TES العالية الطاقة (h) إلى المصادفات الرباعية بين المحاكاة والبيانات التجريبية للتشغيل 4B. في التشغيل 4A، تتنبأ المحاكاة بنسبة ثلاثية إلى رباعية أعلى بكثير، أكبر بنحو 5 مرة مما
+رُصد في البيانات التجريبية. وفي التشغيل 4B، تبالغ المحاكاة في تقدير نسبة إصابات TES العالية الطاقة إلى المصادفات الرباعية، وإن بدرجة أصغر، إذ تتنبأ بقيمة أعلى بمقدار 1.7 مرة من القيمة المقاسة تجريبيا.</span></figcaption><!-- tex4ht:label?: x1-80021  -->
+<div class="tabular"> <div class="paper-arabizer-table-wrap"><table class="tabular" dir="ltr" id="TBL-1"><colgroup id="TBL-1-1g"><col id="TBL-1-1"/></colgroup><colgroup id="TBL-1-2g"><col id="TBL-1-2"/><col id="TBL-1-3"/><col id="TBL-1-4"/></colgroup><tr id="TBL-1-1-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-1-1" style="white-space:nowrap; text-align:left;"> </td><td class="td11" id="TBL-1-1-2" style="white-space:nowrap; text-align:left;">  Sim           </td><td class="td11" id="TBL-1-1-3" style="white-space:nowrap; text-align:left;">  Exp      </td><td class="td11" id="TBL-1-1-4" style="white-space:nowrap; text-align:left;">  Ratio Sim/Exp  </td>
+</tr><tr class="hline"><td></td><td></td><td></td><td></td></tr><tr id="TBL-1-2-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-2-1" style="white-space:nowrap; text-align:left;">  Run 4A t/q   </td><td class="td11" id="TBL-1-2-2" style="white-space:nowrap; text-align:left;">  107524/46  </td><td class="td11" id="TBL-1-2-3" style="white-space:nowrap; text-align:left;">  3818/8  </td><td class="td11" id="TBL-1-2-4" style="white-space:nowrap; text-align:left;">  5                     </td>
+</tr><tr id="TBL-1-3-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-3-1" style="white-space:nowrap; text-align:left;">  Run 4B h/q  </td><td class="td11" id="TBL-1-3-2" style="white-space:nowrap; text-align:left;">  24906/46    </td><td class="td11" id="TBL-1-3-3" style="white-space:nowrap; text-align:left;">  963/3    </td><td class="td11" id="TBL-1-3-4" style="white-space:nowrap; text-align:left;">  1.7                   </td>
+</tr></table></div> </div>
+</figure>
+</div>
+<h3 class="sectionHead"><span class="titlemark">7   </span> <a id="x1-90007"></a>الاستنتاجات</h3>
+<!-- l. 342 --><p class="noindent">لقد وصفنا معدل العدّ المظلم لحساس حافة انتقال فائق التوصيل من Ti/Au. ومن خلال استخدام تفكيك القيم المفردة، وتحليل المكونات الرئيسية، وتجميع <span class="cmti-10">k</span>-المتوسطات، رشحنا الضجيج والأحداث العالية الطاقة بفعالية لعزل الإشارات الشبيهة بالفوتونات. وتحظى هذه الإشارات الشبيهة بالفوتونات باهتمام خاص لأنها تشبه إشارة الفوتون المظلم المتوقعة في هالوسكوب عازل. وقد حققنا معدل DCR شبيها بالفوتونات مقداره 3<span class="cmmi-10">.</span>6<span class="cmmi-10">d</span><span class="cmsy-10">− </span>4 Hz في مجال 0<span class="cmmi-10">.</span>8–3<span class="cmmi-10">.</span>2 eV. إن إزالة الوصلات البصرية بين حساس
+TES والمحيط ضرورية لتحقيق معدلات DCR منخفضة جدا. وما يزال مصدر الأحداث الشبيهة بالفوتونات المتبقية المرصودة غير مفسر، مما يستلزم مزيدا من البحث.
+</p><!-- l. 344 --><p class="indent">   وفيما يخص الأحداث العالية الطاقة، فإن تشغيلاتنا باستخدام مصدري <sup><span class="cmr-7">232</span></sup>Th و<sup><span class="cmr-7">22</span></sup>Na، مع قياسات المصادفة بين حساس TES وكاشف خارجي للأشعة الكونية، مقترنة بمحاكاة <span class="cmcsc-10"><span class="small-caps">geant</span>4 </span>مفصلة، أتاحت لنا إسناد هذه الأحداث إلى اصطدامات جسيمات عالية الطاقة في ركيزة حساس TES. وقد افترضت دراسات سابقة أن هذه الأحداث العالية الطاقة ناتجة من تآثر الإشعاع والأشعة الكونية مع الركيزة، لكنها افتقرت إلى تحقق تجريبي ومحاكاة. وإضافة إلى ذلك، يبدو أن الإشعاع الطبيعي من المواد القريبة جدا من حساس
+TES له أثر مهمل في معدل DCR العالي الطاقة لحساس TES. وبدلا من ذلك، فإن المساهمين الرئيسيين في هذا المعدل هما جسيمات الأشعة الكونية وأشعة غاما البيئية التي تصطدم بالركيزة. وجميع الشيفرات المستخدمة في المحاكاة متاحة في مستودعنا على GitHub <span class="cite">[<a href="#Xgithub">git(2024a)</a>]</span>.
+</p><!-- l. 346 -->
+<h3 class="likesectionHead"><a id="x1-10000"></a>شكر وتقدير</h3>
+<!-- l. 347 --><p class="noindent">أُنجز جزء من هذا العمل في QR Lab-Micro&amp;Nanolaboratories، Istituto Nazionale di Ricerca Metrologica
+(INRiM). نشكر Stefano Nisi وFrancesco Ferella في Laboratori Nazionali del Gran Sasso
+(LNGS) على قياسات ICP-MS. أُجري هذا البحث على موارد الحوسبة عالية الأداء في New York University Abu Dhabi. ونحن ممتنون لبرنامج NYUAD
+Kawader Research Assistantship Program. وقد أصبح هذا العمل ممكنا أيضا بمساهمة منحة (62313) من John Templeton
+Foundation. وتُشغّل Fermilab بواسطة Fermi Research Alliance, LLC بموجب العقد رقم DE-AC02-07CH11359 مع وزارة الطاقة
+الأمريكية.
+</p><!-- l. 355 -->
+<h3 class="likesectionHead"><a id="x1-11000"></a>الملحق</h3>
+<!-- l. 359 -->
+<h3 class="sectionHead"><span class="titlemark">A   </span> <a id="x1-12000A"></a>تصنيع TES</h3>
+<!-- l. 362 --><p class="noindent">صُنّع كل من TES B وTES E في INRiM. ويتكونان من غشاء Ti بسماكة 15 nm تحت غشاء Au بسماكة 30 nm مرسبين على ركيزة <span class="cite">[<a href="#Xmonticone2021ti">Monticone <span class="cmti-10">et al.</span>(2021)Monticone,
+Castellino, Rocci, and Rajteri</a>]</span>. صُنعت الركيزة بترسيب كيميائي بخاري منخفض الضغط (LPCVC)، وتتكون من ركيزة Si (بسماكة 525<span class="cmsy-10">±</span>25<span class="cmmi-10">μ</span>m)، محصورة بين طبقتين ثنائيتين تتكونان من نيتريد السيليكون SiN<sub><span class="cmmi-7">x</span></sub> (بسماكة
+500nm) والأكسيد الحراري SiO<sub><span class="cmr-7">2</span></sub> (بسماكة 150nm)، مع نيتريد السيليكون بوصفه الطبقة الخارجية.
+</p><!-- l. 364 --><p class="indent">   أجريت الترسيبات في حجرة ترسيب مخصصة ذات فراغ فائق (UHV) عند ضغط أقل من 5<span class="cmmi-10">d </span><span class="cmsy-10">− </span>6 Pa، وهو أمر أساسي لمنع أكسدة Ti وتحقيق سطح بيني أملس بين التيتانيوم والذهب. وقد حُددت حدود حساسات TES بتقنية الرفع باستخدام كاتب ليزري Heidelberg <span class="tcrm-1000">µ</span>PG101.
+</p><!-- l. 367 --><p class="indent">   قبل الترسيب، خضعت الركيزة لحفر بالرش لمدة 15 s عند 400V. ثم نُقلت العينة إلى حجرة UHV لترسيب Ti وAu. واشتمل ذلك على ترسيب Ti بواسطة حزمة <span class="cmmi-10">e </span>بمعدل 0<span class="cmmi-10">.</span>25nm<span class="cmmi-10">∕</span>s، ثم، بعد نحو 30s، ترسيب Au بواسطة خلية إفاضة بمعدل 0<span class="cmmi-10">.</span>07nm<span class="cmmi-10">∕</span>s. ورُوقبت السماكات المترسبة باستمرار
+بواسطة حساس بلورة كوارتز.
+</p><!-- l. 369 --><p class="indent">   صُنعت التوصيلات بعملية رفع لـ 50nm من Nb مرشوش. واستُخدم الحفر بالرش قبل عملية التوصيل لتقليل مقاومة التلامس بين Nb وحساسات TES.
+</p><!-- l. 372 -->
+<h3 class="sectionHead"><span class="titlemark">B   </span> <a id="x1-13000B"></a>خوارزمية التصنيف</h3>
+<!-- l. 375 --><p class="noindent">لتصنيف نوع الحدث لكل شكل موجي، نطبق أولا مرشح SciPy Butterworth بنمط تمرير منخفض، من الرتبة 2، وبتردد 1/30، وهو، عند تطبيقه على بيانات TES المولدة بالتقداح والمأخوذة عيناتها عند 25MHz، يقابل 417kHz. ثم نحسب مجموعة من المتغيرات تشمل المطال الأعظمي، والمساحة، والعرض الكامل عند نصف القيمة العظمى، والانحراف المعياري، ومتوسط التدرج الموجب والسالب، والترابط المتصالب مع حدث
+شبيه بالفوتونات مرجعي. وهذا يعطينا نقطة في فضاء ذي <span class="cmti-10">n </span>أبعاد لكل نبضة TES سجلها راسم الذبذبات.
+</p><!-- l. 377 --><p class="indent">   ثم نجري PCA على المصفوفة التي تحتوي النقاط ذات الأبعاد n المذكورة أعلاه <span class="cite">[<a href="#Xwold1987pca">Wold <span class="cmti-10">et al.</span>(1987)Wold, Esbensen, and Geladi</a>]</span>. وباستخدام هذه التقنية، يمكننا تحديد المحورين في هذا الفضاء ذي الأبعاد n اللذين يعظمان التباين بين هذه النقاط. وعادة ما يؤدي
+رسم النبضات على هذين المحورين إلى عناقيد متميزة. وتمكن هذه التمثيلة من التمييز البصري بين الأحداث الشبيهة بالفوتونات، والعالية الطاقة، وأحداث الضجيج الكهربائي.
+</p><!-- l. 379 --><p class="indent">   وعلاوة على ذلك، يتيح تطبيق تجميع <span class="cmti-10">k</span>-المتوسطات جمع النبضات التي تقع متقاربة في الفضاء ذي الأبعاد n بسهولة <span class="cite">[<a href="#XArthur2007kmeans">Arthur and Vassilvitskii(2007)</a>]</span>. إن الاستخدام المشترك لهذه الأدوات، ومعه، عند الضرورة، إعادة تحليل مجموعات جزئية مختارة من النبضات، يتيح تمييزا فعالا لأشكال النبضات في مجموعات بيانات تتكون من آلاف إلى عشرات الآلاف من النبضات في نحو
+10 min.
+</p><!-- l. 381 --><p class="indent">   طُور البرنامج بلغة Python باستخدام وحدة SciPy <span class="cite">[<a href="#X2020SciPy">Virtanen <span class="cmti-10">et al.</span>(2020)Virtanen, Gommers, Oliphant,
+Haberland, Reddy, Cournapeau, Burovski, Peterson, Weckesser, Bright, van der
+Walt, Brett, Wilson, Millman, Mayorov, Nelson, Jones, Kern, Larson, Carey, Polat,
+Feng, Moore, VanderPlas, Laxalde, Perktold, Cimrman, Henriksen, Quintero, Harris,
+Archibald, Ribeiro, Pedregosa, van Mulbregt, and SciPy 1.0 Contributors</a>]</span>، وهو متاح في
+المرجع <span class="cite">[<a href="#Xgithub2">git(2024b)</a>]</span>.
+</p><!-- l. 384 -->
+<h3 class="sectionHead"><span class="titlemark">C   </span> <a id="x1-14000C"></a>GEANT4</h3>
+<!-- l. 387 --><p class="noindent">استخدمنا برنامج <span class="cmcsc-10"><span class="small-caps">geant</span>4 </span>v.11.1.2، وهو إطار كائني التوجه مكتوب بلغة C++ ويستخدم طرائق مونت كارلو <span class="cite">[<a href="#Xagostinelli2003geant4">Agostinelli <span class="cmti-10">et al.</span>(2003)Agostinelli, Allison, Amako,
+Apostolakis, Araujo, Arce, Asai, Axen, Banerjee, Barrand <span class="cmti-10">et al.</span></a>]</span>. في محاكياتنا، فعّلنا وحدة فيزياء الطاقة المنخفضة EmLiverMore، مع
+تمكين معامل الانبعاث السيني المستحث بالجسيمات (PIXE).
+</p><!-- l. 389 --><p class="indent">   خلال كل حدث محاكاة، جُمعت بيانات عن خصائص الجسيم، بما فيها الموضع، والطاقة الابتدائية، والرأس الأولي، والحجم أو الأحجام الحساسة التي يصيبها، والطاقة المترسبة. ولمحاكاة جسيمات الأشعة الكونية، التي تشمل النيوترونات، والبروتونات، وأشعة غاما، والإلكترونات، والبيونات، والميونات، استخدمنا Cosmic Ray Shower Library
+(CRY) <span class="cite">[<a href="#XHagmann2007cry">Hagmann <span class="cmti-10">et al.</span>(2007)Hagmann, Lange, and Wright</a>]</span>. ولمحاكاة النشاط الإشعاعي البيئي استخدمنا طيف غاما المقاس في المختبر بواسطة كاشف NaI. وولدت أشعة غاما نظيريا على سطح أسطواني يحيط بـ
+ADR.
+</p><!-- l. 391 --><p class="indent">   في المحاكيات التي تتضمن الثوريوم والصوديوم، استخدمنا وحدة Radioactive Decay مع General Particle Source. ولتحسين زمن الحوسبة، قصرنا تحليلنا على النواتج الثانوية ذات Track ID يساوي 50 أو أقل. وتحققنا من صحة هذا النهج بمقارنة طيف
+<sup><span class="cmr-7">232</span></sup>Th من محاكاتنا مع قياسات كاشف الجرمانيوم عالي النقاوة في NYUAD (الشكل <a href="#x1-140018">8<!-- tex4ht:ref: fig:SimulationSpectrumArgument  --></a>).
+</p><!-- l. 393 --><p class="indent">   عُرّفت هندسة الكاشف باستخدام ملفات Geometry Description Markup Language (GDML)، والتي، عند دمجها مع ملفات ماكرو، أتاحت الضبط الديناميكي لمعاملات محاكاة مختلفة. وبالنسبة إلى المحاكيات المكثفة حسابيا، استخدمنا واجهة تمرير الرسائل (MPI) على حاسوب عالي الأداء، مما أتاح لنا
+استخدام نحو 8000 ساعة CPU لكل محاكاة.
+</p>
+<figure class="figure">
+<a id="x1-140018"></a>
+<!-- l. 397 --><p class="noindent"><img alt="PIC" height="345" src="SimulationSpectrumArgument.png" width="345"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 8: </span><span class="content">مقارنة بين أطياف <sup><span class="cmr-7">232</span></sup>Th: محاكاة <span class="cmcsc-10"><span class="small-caps">geant</span>4 </span>وقياس مصدر الثوريوم بكاشف HPGe. وقد خُفضت عدّات <span class="cmcsc-10"><span class="small-caps">geant</span>4 </span>بمقياس مناسب لتسهيل المقارنة مع العدّات المقاسة.</span></figcaption><!-- tex4ht:label?: x1-140018  -->
+</figure>
+<h3 class="sectionHead"><span class="titlemark">D   </span> <a id="x1-15000D"></a>TES B</h3>
+<!-- l. 406 --><p class="noindent">في الشكل <a href="#x1-150019">9<!-- tex4ht:ref: fig:Calibration_TESB  --></a>، نعرض منحنى معايرة الطاقة لـ TES B.
+</p><!-- l. 408 --><p class="indent">   أسفر تشغيل خلفية مدته 14 ساعة و45 دقيقة عن سبع عدّات شبيهة بالفوتونات و370 عدّة عالية الطاقة. ومعدل العدّ المظلم العالي الطاقة يساوي نصف معدل TES E، الذي تبلغ ركيزته ضعف حجم ركيزة TES B. ويتسق ذلك مع الفرضية القائلة إن الأحداث العالية الطاقة ناجمة عن تآثرات جسيمات الأشعة الكونية داخل الركيزة. غير أن معدل DCR الشبيه بالفوتونات هو فعليا نفسه كما في TES E، مما يعني
+أن الأحداث الشبيهة بالفوتونات لا تنشأ في الركيزة، ومن ثم لا تتأثر بالاختلاف في حجم الركيزة.
+</p><!-- l. 412 --><p class="indent">   إن اتساق النتائج من كلا الحساسين TES يشير إلى أن تقنيات التصنيع التي نستخدمها موثوقة وتؤدي إلى حساسات قابلة للاستنساخ.
+</p>
+<figure class="figure">
+<a id="x1-150019"></a>
+<!-- l. 416 --><p class="noindent"><img alt="PIC" height="345" src="Calibration_TESB.png" width="345"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 9: </span><span class="content">معايرة الطاقة لـ TES B.</span></figcaption><!-- tex4ht:label?: x1-150019  -->
+</figure>
+<h3 class="sectionHead"><span class="titlemark">E   </span> <a id="x1-16000E"></a>الحجم الحساس</h3>
+<!-- l. 425 --><p class="noindent">لتقييم ما إذا كانت حساسات TES حساسة فقط لترسيبات الطاقة في الركيزة أم أيضا لترسيبات الطاقة في قاعدة الصندوق النحاسي الذي يستضيفها، أجريت تجربة مصدر ثوريوم تشمل كلا الحساسين TES. كما أجريت محاكاة <span class="cmcsc-10"><span class="small-caps">geant</span>4 </span>(انظر الشكل <a href="#x1-1600210">10<!-- tex4ht:ref: fig:GEANT4_Snapshot  --></a>).
+</p>
+<div class="table">
+<!-- l. 427 --><figure class="float">
+<figcaption class="caption"><span class="id">Table 2: </span><span class="content">بيانات تشغيل ثوريوم مع تشغيل حساسي TES في الوقت نفسه على مدى 17.5 ساعة، مع مقارنة بالمحاكاة.</span></figcaption><!-- tex4ht:label?: x1-160012  -->
+<div class="tabular"> <div class="paper-arabizer-table-wrap"><table class="tabular" dir="ltr" id="TBL-2"><colgroup id="TBL-2-1g"><col id="TBL-2-1"/></colgroup><colgroup id="TBL-2-2g"><col id="TBL-2-2"/><col id="TBL-2-3"/><col id="TBL-2-4"/><col id="TBL-2-5"/><col id="TBL-2-6"/></colgroup><tr id="TBL-2-1-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-1-1" style="white-space:nowrap; text-align:left;"> </td><td class="td11" id="TBL-2-1-2" style="white-space:nowrap; text-align:left;">  TES E   </td><td class="td11" id="TBL-2-1-3" style="white-space:nowrap; text-align:left;">  TES B   </td><td class="td11" id="TBL-2-1-4" style="white-space:nowrap; text-align:left;">  Both   </td></tr><tr class="hline"><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id="TBL-2-2-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-2-1" style="white-space:nowrap; text-align:left;"> Experiment </td><td class="td11" id="TBL-2-2-2" style="white-space:nowrap; text-align:left;"> 687 </td><td class="td11" id="TBL-2-2-3" style="white-space:nowrap; text-align:left;"> 464 </td><td class="td11" id="TBL-2-2-4" style="white-space:nowrap; text-align:left;"> 7</td>
+</tr><tr id="TBL-2-3-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-3-1" style="white-space:nowrap; text-align:left;">  Simulation    </td><td class="td11" id="TBL-2-3-2" style="white-space:nowrap; text-align:left;">  563        </td><td class="td11" id="TBL-2-3-3" style="white-space:nowrap; text-align:left;">  472        </td><td class="td11" id="TBL-2-3-4" style="white-space:nowrap; text-align:left;">  5        </td>
+</tr></table></div> </div>
+</figure>
+</div>
+<figure class="figure">
+<a id="x1-1600210"></a>
+<!-- l. 442 --><p class="noindent"><img alt="PIC" height="276" src="Thorium_run.png" width="276"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 10: </span><span class="content">خرج <span class="cmcsc-10"><span class="small-caps">geant</span>4 GUI </span>للمحاكاة 4. ويتضمن ADR، وصفيحة 30 mK، والدرع المغناطيسي، والصندوق النحاسي الحاوي لركائز TES، وبالرمادي كواشف سابر الثلاثة أسفل الثلاجة.</span></figcaption><!-- tex4ht:label?: x1-1600210  -->
+</figure>
+<!-- l. 447 --><p class="indent">   تلخص نتائجنا في الجدول <a href="#x1-160012">2<!-- tex4ht:ref: tab:ThoriumSummerRun  --></a>. وتظهر كل من البيانات التجريبية والمحاكاة نسبا متقاربة بين عدّات TES E وTES B، وكذلك أعدادا مماثلة من المصادفات الثنائية. وتعزز هذه النتائج اعتقادنا بأن الركيزة، وهي الحجم الحساس في المحاكاة، هي الحجم الوحيد الذي تؤدي فيه ترسيبات الطاقة إلى كشوف في حساسات TES.
+</p><!-- l. 450 --><p class="indent">   وبما أن قاعدة الصندوق النحاسي ليست حجما حساسا في المحاكاة، فإذا كانت الطاقة المترسبة في النحاس قابلة للكشف بواسطة حساسات TES في الواقع، لتوقعنا أن تقلل المحاكاة تقدير إصابات TES. وعلاوة على ذلك، بما أن قاعدة الصندوق النحاسي تصل بين حساسي TES، فإذا كان النحاس قادرا على نشر الحرارة إلى الحساسين، لرأينا مصادفات ثنائية أكثر بكثير في الواقع مما في المحاكاة. وبما أننا لم نرصد أيا من الأمرين، نستنتج أن الطاقة المترسبة في النحاس لا تسهم في إصابات
+TES.
+</p><!-- l. 452 --><p class="indent">   ولدراسة طبيعة المصادفات الثنائية بمزيد من التفصيل، حسبنا معدل المصادفات العشوائية باستخدام الصيغة <span class="cmmi-10">N</span><sub><span class="cmmi-7">EB</span></sub> = 2<span class="cmmi-10">N</span><sub><span class="cmmi-7">E</span></sub><span class="cmmi-10">N</span><sub><span class="cmmi-7">B</span></sub> <span class="cmsy-10">⋅</span><img align="middle" alt="T-
+t" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main0x.png"/>، حيث <span class="cmmi-10">N</span><sub><span class="cmmi-7">EB</span></sub> هو عدد المصادفات الثنائية، و<span class="cmmi-10">N</span><sub><span class="cmmi-7">E</span></sub> و<span class="cmmi-10">N</span><sub><span class="cmmi-7">B</span></sub> هما عدد الإصابات في TES E وTES B، على التوالي، وT زمن البوابة، وt زمن القياس الكلي. وبالنسبة إلى إعدادنا المحدد، الذي تضمن زمن بوابة
+قدره 100<span class="cmmi-10">μ</span>s وزمنا كليا قدره 17.5 ساعة، فإن العدد المتوقع للمصادفات الثنائية العشوائية هو 0.001. وهذا العدد أقل بوضوح من الوقائع السبع التي رصدناها على مدى 17.5 ساعة. ويؤكد ذلك أن المصادفات الثنائية مترابطة ويرجح أن تكون ناجمة عن اضمحلال <sup><span class="cmr-7">232</span></sup>Th الأولي نفسه. ومن خلال المحاكاة، تبين أن المصدر الرئيسي لمثل هذه المصادفات هو الإلكترونات الثانوية، الناشئة في الصندوق النحاسي من أحداث اضمحلال <sup><span class="cmr-7">232</span></sup>Th، التي تصطدم بالركائز في الوقت
+نفسه.
+</p><!-- l. 455 --><p class="indent">   وللتحقق أكثر من أن ترسيبات الطاقة المسببة للأحداث العالية الطاقة تحدث فقط داخل الركيزة، أجرينا سلسلة من المحاكيات نغير فيها كلا من حجم الركيزة وبعدها عن المصدر المشع. وتتفق هذه المحاكيات مع الواقع أفضل ما يكون عندما يطابق الحجم الحساس حجم الركيزة الحقيقي وموضعها، وتكشف عن علاقة قانون تربيعي بين معدل العدّ والمسافة من المصدر المشع.
+</p>
+<figure class="figure">
+<a id="x1-1600311"></a>
+<!-- l. 459 --><p class="noindent"><img alt="PIC" height="345" src="Saber_calibration.png" width="345"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 11: </span><span class="content">معايرة الطاقة لكواشف سابر الثلاثة عند مكاسب PMT متشابهة. وضبط التقداح على راسم الذبذبات أثناء اكتساب البيانات عند 120mV. وتقابل الخطوط ملاءمات متعددة حدود من الدرجة الثانية لنقاط البيانات لكل كاشف سابر.</span></figcaption><!-- tex4ht:label?: x1-1600311  -->
+</figure>
+<h3 class="sectionHead"><span class="titlemark">F   </span> <a id="x1-17000F"></a>معايرة كواشف سابر</h3>
+<!-- l. 467 --><p class="noindent">أجريت معايرة كواشف سابر في NYUAD باستخدام مصادر مشعة مختلفة. ولكل مصدر، حددنا حافة كومبتون المميزة وقسنا ارتفاع القمة المقابل في طيف المطال المكتشف (بالملي فولت). في الشكل <a href="#x1-1600311">11<!-- tex4ht:ref: fig:Saber_calibration  --></a>، نعرض منحنى المعايرة لكواشف سابر الثلاثة كلها مع تشغيل PMTs عند مكاسب متشابهة، بينما ندرج في الجدول <a href="#x1-170013">3<!-- tex4ht:ref: tab:pmt_calibration  --></a> البيانات الخام.
+                                                                  
+
+                                                                  
+</p><!-- l. 470 --><figure class="float">
+<figcaption class="caption"><span class="id">Table 3: </span><span class="content">بيانات المعايرة من كواشف سابر باستخدام مصادر مشعة متنوعة. ونظرا إلى أن احتمال حدوث التأثير الكهروضوئي أقل مقارنة بتشتت كومبتون في الومياضات البلاستيكية، فإننا نستخدم حافة كومبتون لمعايرة كواشف سابر.</span></figcaption><!-- tex4ht:label?: x1-170013  -->
+<div class="tabular"> <div class="paper-arabizer-table-wrap"><table class="tabular" dir="ltr" id="TBL-3"><colgroup id="TBL-3-1g"><col id="TBL-3-1"/></colgroup><colgroup id="TBL-3-2g"><col id="TBL-3-2"/></colgroup><colgroup id="TBL-3-3g"><col id="TBL-3-3"/></colgroup><colgroup id="TBL-3-4g"><col id="TBL-3-4"/></colgroup><colgroup id="TBL-3-5g"><col id="TBL-3-5"/></colgroup><tr id="TBL-3-1-" style="vertical-align:baseline;"><td class="td11" id="TBL-3-1-1" style="white-space:nowrap; text-align:center;"> </td><td class="td11" id="TBL-3-1-2" style="white-space:nowrap; text-align:left;">  Saber 1 [mV]   </td><td class="td11" id="TBL-3-1-3" style="white-space:nowrap; text-align:left;">  Saber 2 [mV]   </td><td class="td11" id="TBL-3-1-4" style="white-space:nowrap; text-align:left;">  Saber 3 [mV]   </td><td class="td11" id="TBL-3-1-5" style="white-space:nowrap; text-align:left;">  Compton edge [keV]   </td>
+</tr><tr class="hline"><td></td><td></td><td></td><td></td><td></td></tr><tr id="TBL-3-2-" style="vertical-align:baseline;"><td class="td11" id="TBL-3-2-1" style="white-space:nowrap; text-align:center;"> <sup><span class="cmr-7">133</span></sup>Ba    </td><td class="td11" id="TBL-3-2-2" style="white-space:nowrap; text-align:left;">  78                 </td><td class="td11" id="TBL-3-2-3" style="white-space:nowrap; text-align:left;">  115                </td><td class="td11" id="TBL-3-2-4" style="white-space:nowrap; text-align:left;">  116                </td><td class="td11" id="TBL-3-2-5" style="white-space:nowrap; text-align:left;">  207                         </td>
+</tr><tr id="TBL-3-3-" style="vertical-align:baseline;"><td class="td11" id="TBL-3-3-1" style="white-space:nowrap; text-align:center;"> <sup><span class="cmr-7">137</span></sup>Cs    </td><td class="td11" id="TBL-3-3-2" style="white-space:nowrap; text-align:left;">  240                </td><td class="td11" id="TBL-3-3-3" style="white-space:nowrap; text-align:left;">  310                </td><td class="td11" id="TBL-3-3-4" style="white-space:nowrap; text-align:left;">  270                </td><td class="td11" id="TBL-3-3-5" style="white-space:nowrap; text-align:left;">  478                         </td>
+</tr><tr id="TBL-3-4-" style="vertical-align:baseline;"><td class="td11" id="TBL-3-4-1" style="white-space:nowrap; text-align:center;"> <sup><span class="cmr-7">22</span></sup>Na    </td><td class="td11" id="TBL-3-4-2" style="white-space:nowrap; text-align:left;">  550                </td><td class="td11" id="TBL-3-4-3" style="white-space:nowrap; text-align:left;">  620                </td><td class="td11" id="TBL-3-4-4" style="white-space:nowrap; text-align:left;">  604                </td><td class="td11" id="TBL-3-4-5" style="white-space:nowrap; text-align:left;">  1062                        </td>
+</tr><tr id="TBL-3-5-" style="vertical-align:baseline;"><td class="td11" id="TBL-3-5-1" style="white-space:nowrap; text-align:center;"> <sup><span class="cmr-7">232</span></sup>Th    </td><td class="td11" id="TBL-3-5-2" style="white-space:nowrap; text-align:left;">  980                </td><td class="td11" id="TBL-3-5-3" style="white-space:nowrap; text-align:left;">  945                </td><td class="td11" id="TBL-3-5-4" style="white-space:nowrap; text-align:left;">  935                </td><td class="td11" id="TBL-3-5-5" style="white-space:nowrap; text-align:left;">  2381                        </td>
+</tr><tr id="TBL-3-6-" style="vertical-align:baseline;"><td class="td11" id="TBL-3-6-1" style="white-space:nowrap; text-align:center;">  Muons   </td><td class="td11" id="TBL-3-6-2" style="white-space:nowrap; text-align:left;">  1400              </td><td class="td11" id="TBL-3-6-3" style="white-space:nowrap; text-align:left;">  1300              </td><td class="td11" id="TBL-3-6-4" style="white-space:nowrap; text-align:left;">  1210              </td><td class="td11" id="TBL-3-6-5" style="white-space:nowrap; text-align:left;">  3760                        </td></tr></table></div></div>
+</figure>
+<h3 class="sectionHead"><span class="titlemark">G   </span> <a id="x1-18000G"></a>بيانات المحاكاة والتجربة</h3>
+<!-- l. 497 --><p class="noindent">في الجدول <a href="#x1-180014">4<!-- tex4ht:ref: tab:sim_data  --></a>، نورد القيم المحصلة في المحاكاة وفي الواقع لمعدل DCR الشبيه بالفوتونات والعالي الطاقة أثناء تشغيلات الخلفية والثوريوم والصوديوم.
+                                                                  
+
+                                                                  
+</p><!-- l. 498 --><figure class="float">
+<figcaption class="caption"><span class="id">Table 4: </span><span class="content">قيم المخطط المبين في الشكل <a href="#x1-70026">6<!-- tex4ht:ref: fig:rate_BKG_Th_Na  --></a> مع لايقيناتها.</span></figcaption><!-- tex4ht:label?: x1-180014  -->
+<div class="tabular"> <div class="paper-arabizer-table-wrap"><table class="tabular" dir="ltr" id="TBL-4"><colgroup id="TBL-4-1g"><col id="TBL-4-1"/></colgroup><colgroup id="TBL-4-2g"><col id="TBL-4-2"/></colgroup><colgroup id="TBL-4-3g"><col id="TBL-4-3"/></colgroup><colgroup id="TBL-4-4g"><col id="TBL-4-4"/></colgroup><tr id="TBL-4-1-" style="vertical-align:baseline;"><td class="td11" id="TBL-4-1-1" style="white-space:nowrap; text-align:center;"> </td><td class="td11" id="TBL-4-1-2" style="white-space:nowrap; text-align:left;">  Photonlike [mHz]   </td><td class="td11" id="TBL-4-1-3" style="white-space:nowrap; text-align:left;">  High-energy [mHz]   </td><td class="td11" id="TBL-4-1-4" style="white-space:nowrap; text-align:left;">  High-energy Sim [mHz]   </td>
+</tr><tr class="hline"><td></td><td></td><td></td><td></td></tr><tr id="TBL-4-2-" style="vertical-align:baseline;"><td class="td11" id="TBL-4-2-1" style="white-space:nowrap; text-align:center;">  Background   </td><td class="td11" id="TBL-4-2-2" style="white-space:nowrap; text-align:left;">  0.36 <sub><span class="cmsy-7">−</span><span class="cmr-7">0</span><span class="cmmi-7">.</span><span class="cmr-7">09</span></sub><sup><span class="cmr-7">+0</span><span class="cmmi-7">.</span><span class="cmr-7">11</span></sup> </td><td class="td11" id="TBL-4-2-3" style="white-space:nowrap; text-align:left;">  12.10 <sub><span class="cmsy-7">−</span><span class="cmr-7">0</span><span class="cmmi-7">.</span><span class="cmr-7">54</span></sub><sup><span class="cmr-7">+0</span><span class="cmmi-7">.</span><span class="cmr-7">56</span></sup> </td><td class="td11" id="TBL-4-2-4" style="white-space:nowrap; text-align:left;">  12.83 <sub><span class="cmsy-7">−</span><span class="cmr-7">0</span><span class="cmmi-7">.</span><span class="cmr-7">33</span></sub><sup><span class="cmr-7">+0</span><span class="cmmi-7">.</span><span class="cmr-7">39</span></sup> </td>
+</tr><tr id="TBL-4-3-" style="vertical-align:baseline;"><td class="td11" id="TBL-4-3-1" style="white-space:nowrap; text-align:center;"> <sup><span class="cmr-7">232</span></sup>Th       </td><td class="td11" id="TBL-4-3-2" style="white-space:nowrap; text-align:left;">  0.52 <sub><span class="cmsy-7">−</span><span class="cmr-7">0</span><span class="cmmi-7">.</span><span class="cmr-7">14</span></sub><sup><span class="cmr-7">+0</span><span class="cmmi-7">.</span><span class="cmr-7">18</span></sup> </td><td class="td11" id="TBL-4-3-3" style="white-space:nowrap; text-align:left;">  34.00 <sub><span class="cmsy-7">−</span><span class="cmr-7">1</span><span class="cmmi-7">.</span><span class="cmr-7">25</span></sub><sup><span class="cmr-7">+1</span><span class="cmmi-7">.</span><span class="cmr-7">28</span></sup> </td><td class="td11" id="TBL-4-3-4" style="white-space:nowrap; text-align:left;">  39.20 <sub><span class="cmsy-7">−</span><span class="cmr-7">3</span><span class="cmmi-7">.</span><span class="cmr-7">44</span></sub><sup><span class="cmr-7">+3</span><span class="cmmi-7">.</span><span class="cmr-7">44</span></sup> </td>
+</tr><tr id="TBL-4-4-" style="vertical-align:baseline;"><td class="td11" id="TBL-4-4-1" style="white-space:nowrap; text-align:center;"> <sup><span class="cmr-7">22</span></sup>Na        </td><td class="td11" id="TBL-4-4-2" style="white-space:nowrap; text-align:left;">  0.00 <sub><span class="cmsy-7">−</span><span class="cmr-7">0</span><span class="cmmi-7">.</span><span class="cmr-7">00</span></sub><sup><span class="cmr-7">+0</span><span class="cmmi-7">.</span><span class="cmr-7">75</span></sup> </td><td class="td11" id="TBL-4-4-3" style="white-space:nowrap; text-align:left;">  131.00 <sub><span class="cmsy-7">−</span><span class="cmr-7">9</span><span class="cmmi-7">.</span><span class="cmr-7">25</span></sub><sup><span class="cmr-7">+9</span><span class="cmmi-7">.</span><span class="cmr-7">79</span></sup> </td><td class="td11" id="TBL-4-4-4" style="white-space:nowrap; text-align:left;">  129.00 <sub><span class="cmsy-7">−</span><span class="cmr-7">4</span><span class="cmmi-7">.</span><span class="cmr-7">02</span></sub><sup><span class="cmr-7">+4</span><span class="cmmi-7">.</span><span class="cmr-7">02</span></sup> </td>
+</tr></table></div> </div>
+</figure>
+<h3 class="likesectionHead"><a id="x1-19000"></a>References</h3>
+<!-- l. 9 --><div class="thebibliography">
+<p class="bibitem"><span class="biblabel">
+ [Irwin(1995)]<span class="bibsp">   </span></span><a id="Xirwin1995application"></a>K. Irwin,  <a href="https://doi.org/10.1063/1.113674">Applied Physics Letters <span class="cmbx-10">66</span>, 1998 (1995)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Cocco <span class="cmti-10">et al.</span>(2007)Cocco, Mangano, and Messina]<span class="bibsp">   </span></span><a id="XCocco2007Jun"></a>A. G. Cocco,
+    G. Mangano, and M. Messina,  <a href="https://doi.org/10.1088/1475-7516/2007/06/015">Journal of Cosmology and Astroparticle
+    Physics <span class="cmbx-10">2007 </span>(06), 015</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [PTOLEMY Collaboration <span class="cmti-10">et al.</span>(2022)PTOLEMY Collaboration, Apponi, Betti, Borghesi, Boyarsky, Canci, Cavoto, Chang, Cheianov, Cheipesh, Chung, Cocco, Colijn, D’Ambrosio, de Groot, Esposito, Faverzani, Ferella, Ferri, Ficcadenti, Frederico, Gariazzo, Gatti, Gentile, Giachero, Hochberg, Kahn, Lisanti, Mangano, Marcucci, Mariani, Marques, Menichetti, Messina, Mikulenko, Monticone, Nucciotti, Orlandi, Pandolfi, Parlati, Pepe, Pérez de los Heros, Pisanti, Polini, Polosa, Puiu, Rago, Raitses, Rajteri, Rossi, Rozwadowska, Rucandio, Ruocco, Strid, Tan, Teles, Tozzini, Tully, Viviani, Zeitler, and Zhao]<span class="bibsp">   </span></span>
+<a id="XPTOLEMYCollaboration2022Sep"></a>PTOLEMY   Collaboration,   A. Apponi,   M. G. Betti,   M. Borghesi,
+    A. Boyarsky,     N. Canci,     G. Cavoto,     C. Chang,     V. Cheianov,
+    Y. Cheipesh,  W. Chung,  A. G. Cocco,  A. P. Colijn,  N. D’Ambrosio,
+    N. de Groot,     A. Esposito,     M. Faverzani,     A. Ferella,     E. Ferri,
+    L. Ficcadenti,    T. Frederico,    S. Gariazzo,    F. Gatti,    C. Gentile,
+    A. Giachero,    Y. Hochberg,    Y. Kahn,    M. Lisanti,    G. Mangano,
+    L. E. Marcucci,        C. Mariani,        M. Marques,        G. Menichetti,
+    M. Messina,  O. Mikulenko,  E. Monticone,  A. Nucciotti,  D. Orlandi,
+    F. Pandolfi,  S. Parlati,  C. Pepe,  C. Pérez  de los  Heros,  O. Pisanti,
+    M. Polini,  A. D. Polosa,  A. Puiu,  I. Rago,  Y. Raitses,  M. Rajteri,
+    N. Rossi,   K. Rozwadowska,   I. Rucandio,   A. Ruocco,   C. F. Strid,
+    A. Tan,      L. K. Teles,      V. Tozzini,      C. G. Tully,      M. Viviani,
+    U. Zeitler, and F. Zhao,  <a href="https://doi.org/10.1103/PhysRevD.106.053002">Physical Review D <span class="cmbx-10">106</span>, 053002 (2022)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Gimeno <span class="cmti-10">et al.</span>(2023)Gimeno, Isleif, Januschek, Lindner, Meyer, Othman, Schott, Shah, and Sohl]<span class="bibsp">   </span></span>
+<a id="Xgimeno2023tes"></a>J. A. R. Gimeno,  K.-S. Isleif,  F. Januschek,  A. Lindner,  M. Meyer,
+    G. Othman, M. Schott, R. Shah, and L. Sohl, Nuclear Instruments and
+    Methods  in  Physics  Research  Section  A:  Accelerators,  Spectrometers,
+    Detectors and Associated Equipment <span class="cmbx-10">1046</span>, 167588 (2023).
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Dreyling-Eschweiler <span class="cmti-10">et al.</span>(2015)Dreyling-Eschweiler, Bastidon, Döbrich, Horns, Januschek, and Lindner]<span class="bibsp">   </span></span>
+<a id="Xdreyling2015characterization"></a>J. Dreyling-Eschweiler,       N. Bastidon,       B. Döbrich,       D. Horns,
+    F. Januschek, and A. Lindner,   <a href="https://doi.org/10.1080/09500340.2015.1021723">Journal  of  Modern  Optics <span class="cmbx-10">62</span>, 1132
+    (2015)</a>.
+                                                                  
+
+                                                                  
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Bienfang <span class="cmti-10">et al.</span>(2023)Bienfang, Gerrits, Kuo, Migdall, Polyakov, and Slattery]<span class="bibsp">   </span></span>
+<a id="Xdictionary"></a>J. Bienfang,             T. Gerrits,             P. Kuo,             A. Migdall,
+    S. Polyakov, and O. Slattery,         <a href="https://doi.org/10.6028/NIST.IR.8486"><span class="cmti-10">Single-Photon       Sources       and
+    Detectors   Dictionary</span></a>   (2023), NIST   Internal   Report   IR   8486,   
+<a class="url" href="https://nvlpubs.nist.gov/nistpubs/ir/2023/NIST.IR.8486.pdf"><span class="cmtt-10">https://nvlpubs.nist.gov/nistpubs/ir/2023/NIST.IR.8486.pdf</span></a>
+    [online, accessed 10 Aug 2024].
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Millar <span class="cmti-10">et al.</span>(2017)Millar, Raffelt, Redondo, and Steffen]<span class="bibsp">   </span></span>
+<a id="Xmillar2017dielectric"></a>A. J. Millar, G. G. Raffelt, J. Redondo, and F. D. Steffen,  <a href="https://doi.org/10.1088/1475-7516/2017/01/061">Journal of
+    Cosmology and Astroparticle Physics <span class="cmbx-10">2017 </span>(01), 061</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Chiles <span class="cmti-10">et al.</span>(2022)Chiles, Charaev, Lasenby, Baryakhtar, Huang, Roshko, Burton, Colangelo, Van Tilburg, Arvanitaki <span class="cmti-10">et al.</span>]<span class="bibsp">   </span></span>
+<a id="Xchiles2022new"></a>J. Chiles, I. Charaev, R. Lasenby, M. Baryakhtar, J. Huang, A. Roshko,
+    G. Burton,   M. Colangelo,   K. Van Tilburg,   A. Arvanitaki,   <span class="cmti-10">et al.</span>, 
+    <a href="https://doi.org/https://doi.org/10.1103/PhysRevLett.128.231802">Physical Review Letters <span class="cmbx-10">128</span>, 231802 (2022)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Manenti <span class="cmti-10">et al.</span>(2022)Manenti, Mishra, Bruno, Roberts, Oikonomou, Pasricha, Sarnoff, Weston, Arneodo, Di Giovanni <span class="cmti-10">et al.</span>]<span class="bibsp">   </span></span>
+<a id="Xmanenti2022search"></a>L. Manenti,    U. Mishra,    G. Bruno,    H. Roberts,    P. Oikonomou,
+    R. Pasricha, I. Sarnoff, J. Weston, F. Arneodo, A. Di Giovanni, <span class="cmti-10">et al.</span>, 
+    <a href="https://doi.org/https://doi.org/10.1103/PhysRevD.105.052010">Physical Review D <span class="cmbx-10">105</span>, 052010 (2022)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Martinis and Clarke(1985)]<span class="bibsp">   </span></span><a id="Xmartinis1985signal"></a>J. M. Martinis and J. Clarke,   <a href="https://doi.org/https://link.springer.com/article/10.1007/BF00681633">Journal  of
+    low temperature physics <span class="cmbx-10">61</span>, 227 (1985)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Rajteri <span class="cmti-10">et al.</span>(2020)Rajteri, Biasotti, Faverzani, Ferri, Filippo, Gatti, Giachero, Monticone, Nucciotti, and Puiu]<span class="bibsp">   </span></span>
+<a id="Xrajteri2020tes"></a>M. Rajteri,  M. Biasotti,  M. Faverzani,  E. Ferri,  R. Filippo,  F. Gatti,
+    A. Giachero, E. Monticone, A. Nucciotti, and A. Puiu,  <a href="https://doi.org/https://link.springer.com/article/10.1007/s10909-019-02271-x">Journal of Low
+    Temperature Physics <span class="cmbx-10">199</span>, 138 (2020)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [amu(2024)]<span class="bibsp">   </span></span><a id="Xamumetal"></a> <a href="https://www.amuneal.com/magnetic-shielding/magnetic-shielding-materials-2">Magnetic Shielding Materials - Amuneal: Magnetic Shielding
+    &amp; Custom Fabrication</a> (2024), [Online; accessed 22. Apr. 2024].
+                                                                  
+
+                                                                  
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Drung <span class="cmti-10">et al.</span>(2007)Drung, Abmann, Beyer, Kirste, Peters, Ruede, and Schurig]<span class="bibsp">   </span></span>
+<a id="Xdrung2007highly"></a>D. Drung,       C. Abmann,       J. Beyer,       A. Kirste,       M. Peters,
+    F. Ruede, and T. Schurig, IEEE       Transactions       on       Applied
+    Superconductivity <span class="cmbx-10">17</span>, 699 (2007).
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Mag(2024)]<span class="bibsp">   </span></span><a id="XMagnicon"></a>XXF-1   SQUID  Electronics   data   sheet   (2024), Magnicon
+    website, <a class="url" href="{http://www.magnicon.com/fileadmin/user_upload/downloads/datasheets/Magnicon_XXF-1.pdf}"><span class="cmtt-10">{http://www.magnicon.com/fileadmin/user_upload/downloads/datasheets/Magnicon_XXF-1.pdf}</span></a>,
+    [online, accessed 10 Aug 2024].
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Wold <span class="cmti-10">et al.</span>(1987)Wold, Esbensen, and Geladi]<span class="bibsp">   </span></span>
+<a id="Xwold1987pca"></a>S. Wold,  K. Esbensen, and P. Geladi,   <a href="https://doi.org/https://doi.org/10.1016/0169-7439(87)80084-9">Chemometrics  and  Intelligent
+    Laboratory   Systems <span class="cmbx-10">2</span>, 37   (1987)</a>, proceedings   of   the   Multivariate
+    Statistical Workshop for Geologists and Geochemists.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Arthur and Vassilvitskii(2007)]<span class="bibsp">   </span></span>
+<a id="XArthur2007kmeans"></a>D. Arthur and S. Vassilvitskii, in  <a href="https://api.semanticscholar.org/CorpusID:1782131"><span class="cmti-10">ACM-SIAM Symposium on Discrete
+    Algorithms</span></a> (2007) Society   for   Industrial   and   Applied   Mathematic,
+    Philadelphia.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Arneodo <span class="cmti-10">et al.</span>(2019)Arneodo, Benabderrahmane, Bruno, Di Giovanni, Fawwaz, Messina, and Mussolini]<span class="bibsp">   </span></span>
+<a id="XArneodo_2019"></a>F. Arneodo,     M. Benabderrahmane,     G. Bruno,     A. Di Giovanni,
+    O. Fawwaz,  M. Messina, and C. Mussolini,   <a href="https://doi.org/10.1016/j.nima.2018.09.112">Nuclear  Instruments  and
+    Methods  in  Physics  Research  Section  A:  Accelerators,  Spectrometers,
+    Detectors and Associated Equipment <span class="cmbx-10">936</span>, 242–243 (2019)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Hagmann <span class="cmti-10">et al.</span>(2007)Hagmann, Lange, and Wright]<span class="bibsp">   </span></span>
+<a id="XHagmann2007cry"></a>C. Hagmann, D. Lange, and D. Wright, in  <a href="https://doi.org/10.1109/NSSMIC.2007.4437209"><span class="cmti-10">2007 IEEE Nuclear Science
+    Symposium Conference Record</span></a>, Vol. 2 (2007) pp. 1143–1146.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Feldman and Cousins(1998)]<span class="bibsp">   </span></span><a id="XFeldman1998Apr"></a>G. J. Feldman and R. D. Cousins, 
+    <a href="https://doi.org/10.1103/PhysRevD.57.3873">Physical Review D <span class="cmbx-10">57</span>, 3873 (1998)</a>.
+                                                                  
+
+                                                                  
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Dreyling-Eschweiler(2014)]<span class="bibsp">   </span></span><a id="Xdreyling2014superconducting"></a>J. Dreyling-Eschweiler, 
+    <a href="https://s3.cern.ch/inspire-prod-files-8/8fc2b9ec1681bd3b17857ec9052acbbe"><span class="cmti-10">A superconducting microcalorimeter for low-flux detection of near-infrared
+    single     photons</span></a>, Tech.      Rep. (Deutsches      Elektronen-Synchrotron
+    (DESY), 2014).
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [git(2024a)]<span class="bibsp">   </span></span><a id="Xgithub"></a>nyuad         astroparticle:         tes         geant         (2024a), 
+<a class="url" href="https://github.com/nyuad-astroparticle/tes-geant"><span class="cmtt-10">https://github.com/nyuad-astroparticle/tes-geant</span></a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Monticone <span class="cmti-10">et al.</span>(2021)Monticone, Castellino, Rocci, and Rajteri]<span class="bibsp">   </span></span>
+<a id="Xmonticone2021ti"></a>E. Monticone,     M. Castellino,     R. Rocci, and M. Rajteri,      <a href="https://doi.org/10.1109/TASC.2021.3069903">IEEE
+    Transactions on Applied Superconductivity <span class="cmbx-10">31</span>, 1 (2021)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Virtanen <span class="cmti-10">et al.</span>(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy, Cournapeau, Burovski, Peterson, Weckesser, Bright, van der Walt, Brett, Wilson, Millman, Mayorov, Nelson, Jones, Kern, Larson, Carey, Polat, Feng, Moore, VanderPlas, Laxalde, Perktold, Cimrman, Henriksen, Quintero, Harris, Archibald, Ribeiro, Pedregosa, van Mulbregt, and SciPy 1.0 Contributors]<span class="bibsp">   </span></span>
+<a id="X2020SciPy"></a>P. Virtanen,       R. Gommers,       T. E. Oliphant,       M. Haberland,
+    T. Reddy,  D. Cournapeau,  E. Burovski,  P. Peterson,  W. Weckesser,
+    J. Bright,  S. J. van  der  Walt,  M. Brett,  J. Wilson,  K. J. Millman,
+    N. Mayorov,     A. R. J. Nelson,     E. Jones,     R. Kern,     E. Larson,
+    C. J. Carey,     İ. Polat,     Y. Feng,     E. W. Moore,     J. VanderPlas,
+    D. Laxalde,  J. Perktold,  R. Cimrman,  I. Henriksen,  E. A. Quintero,
+    C. R. Harris,  A. M. Archibald,  A. H. Ribeiro,  F. Pedregosa,  P. van
+    Mulbregt, and SciPy 1.0 Contributors,  <a href="https://doi.org/10.1038/s41592-019-0686-2">Nature Methods <span class="cmbx-10">17</span>, 261 (2020)</a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [git(2024b)]<span class="bibsp">   </span></span><a id="Xgithub2"></a>nyuad        astroparticle:        tes        analysis        (2024b), 
+<a class="url" href="https://github.com/nyuad-astroparticle/TES-analysis"><span class="cmtt-10">https://github.com/nyuad-astroparticle/TES-analysis</span></a>.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [Agostinelli <span class="cmti-10">et al.</span>(2003)Agostinelli, Allison, Amako, Apostolakis, Araujo, Arce, Asai, Axen, Banerjee, Barrand <span class="cmti-10">et al.</span>]<span class="bibsp">   </span></span>
+<a id="Xagostinelli2003geant4"></a>S. Agostinelli,   J. Allison,   K. a. Amako,   J. Apostolakis,   H. Araujo,
+    P. Arce,  M. Asai,  D. Axen,  S. Banerjee,  G. Barrand,  <span class="cmti-10">et al.</span>,   <a href="https://doi.org/https://doi.org/10.1016/S0168-9002(03)01368-8">Nuclear
+    instruments  and  methods  in  physics  research  section  A:  Accelerators,
+    Spectrometers, Detectors and Associated Equipment <span class="cmbx-10">506</span>, 250 (2003)</a>.</p></div>
+</main></body>
+</html>

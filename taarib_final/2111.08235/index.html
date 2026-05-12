@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988</title>
+<!--Generated on Sat May  2 14:19:49 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on   %سيملأ␣الناشر␣هذه␣التواريخ .-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_fleqn">
+<h1 class="ltx_title ltx_title_document">ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Nikolaos Georgakarakos,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup>Division of Science, New York University Abu Dhabi, PO Box 129188, Saadiyat Island, Abu Dhabi, United Arab Emirates
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup>Center for Astro, Particle and Planetary Physics (CAP3),
+New York University Abu Dhabi, PO Box 129188, Saadiyat Island, Abu Dhabi, United Arab Emirates
+<br class="ltx_break"/>
+</span><span class="ltx_author_notes">E-mail: georgakarakos@hotmail.com</span></span>
+</div>
+<div class="ltx_dates">(قُبل في XXX. استُلم في YYY؛ بصيغته الأصلية في ZZZ)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">اكتشف TESS مؤخرا كوكبين محيطين بثنائي نجمي.
+والهدف الرئيس من هذا العمل هو استكشاف ما إذا كان ممكنا، إلى جانب الكوكب المكتشف المحيط بالثنائي، وجود كوكب شبيه بالأرض داخل المنطقة القابلة للسكن في النظام.
+نجري محاكاة عددية على كامل مدى المنطقتين القابلتين للسكن لمعرفة ما إذا كان يمكن لكوكب ذي كتلة أرضية أن يوجد هناك. ونجد أن كلا النظامين يبدو قادرا على استضافة كوكب إضافي في منطقته القابلة للسكن. ونبني مناطق قابلة للسكن مستندة إلى الديناميات، ونجد أن نسبة كبيرة من المنطقة القابلة للسكن يمكن أن تكون ملائمة لكوكب كي يحتفظ بالماء السائل على سطحه، أيا كان تطوره المداري. وعلاوة على ذلك، نبحث إمكانية كشف كوكب شبيه بالأرض في المنطقة القابلة للسكن للنظامين. ونجد أنه في كلا النظامين، لو وجد مثل هذا الكوكب، فإن إشارات السرعة الشعاعية والقياس الفلكي ستكون صغيرة إلى حد يجعل كشفها بأدواتنا الحالية صعبا. كما نقدم بعض النقاش حول التطور الديناميكي للكوكب الموجود.</p>
+</div>
+<div class="ltx_classification">
+<h6 class="ltx_title ltx_title_classification">keywords: </h6>
+الثنائيات: عامة، الكواكب والأقمار: التطور الديناميكي والاستقرار، الكواكب والأقمار: الكشف، الكواكب والأقمار: الكواكب الأرضية، الطرائق: عددية
+
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_pubyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pubyear: </span>2015</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_pagerange"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pagerange: </span><span class="ltx_ref ltx_ref_self"><span class="ltx_text ltx_ref_title">ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988</span></span>–<a class="ltx_ref" href="#A1" title="Appendix A الجداول ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">A</span></a></span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">يستمر عدد الكواكب الخارجية المكتشفة في الازدياد طوال الوقت. ويعثر على كثير من هذه الكواكب في ثنائيات نجمية أو في أنظمة ذات تعددية نجمية أعلى. ويتمثل فهمنا الحالي في أن عددا مهما من النجوم يوجد في أنظمة نجمية ثنائية أو متعددة <cite class="ltx_cite ltx_citemacro_citep">(انظر مثلا Bonavita &amp;
+Desidera, <a class="ltx_ref" href="#bib.bib3" title="">2020</a>, والمراجع الواردة هناك)</cite>. وهناك عدة أسئلة معلقة تتعلق بتشكل الكواكب وتطورها في الثنائيات <cite class="ltx_cite ltx_citemacro_citep">(Marzari &amp;
+Thebault, <a class="ltx_ref" href="#bib.bib27" title="">2019</a>)</cite>. وسيقدم ازدياد عدد الكواكب المكتشفة في الثنائيات معلومات قيمة للإجابة عن كثير من هذه الأسئلة.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">بعد دخوله الخدمة قبل بضع سنوات، أثبت القمر الصناعي لمسح الكواكب الخارجية العابرة (TESS) أنه مورد ثمين في سعينا إلى العثور على كواكب خارج نظامنا الشمسي. وحتى الآن، كانت معظم اكتشافاتنا في السنوات الأخيرة للكواكب المحيطة بثنائي نجمي قد تحققت بوساطة بعثة <span class="ltx_text ltx_font_italic">Kepler</span> <cite class="ltx_cite ltx_citemacro_citep">(Borucki
+et al., <a class="ltx_ref" href="#bib.bib4" title="">2010</a>; Koch
+et al., <a class="ltx_ref" href="#bib.bib22" title="">2010</a>)</cite>، وكان أحدثها Kepler-1661b في 2020 <cite class="ltx_cite ltx_citemacro_citep">(Socia
+et al., <a class="ltx_ref" href="#bib.bib31" title="">2020</a>)</cite>. وفي العام الماضي أُعلن عن TOI-1338b، وهو أول كوكب محيط بثنائي نجمي يكتشفه TESS <cite class="ltx_cite ltx_citemacro_citep">(Kostov
+et al., <a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite>. وتلا ذلك اكتشاف آخر <cite class="ltx_cite ltx_citemacro_citep">(Kostov
+et al., <a class="ltx_ref" href="#bib.bib25" title="">2021</a>)</cite>، هو TIC-172900988، ليصبح عدد الكواكب المحيطة بثنائي نجمي التي عثر عليها TESS اثنين.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">لم تعد الكواكب بحجم الأرض حقيقة رصدية منذ مدة فحسب، بل إن بعضا منها يوجد في ما يسمى المنطقة القابلة للسكن حول النجم المضيف <cite class="ltx_cite ltx_citemacro_citep">(مثلا Gillon
+et al., <a class="ltx_ref" href="#bib.bib19" title="">2016</a>; Rodriguez
+et al., <a class="ltx_ref" href="#bib.bib30" title="">2020</a>; Gilbert
+et al., <a class="ltx_ref" href="#bib.bib18" title="">2020</a>)</cite>.
+والمنطقة القابلة للسكن هي الإقليم المحيط بنجم حيث يستطيع كوكب أرضي على مدار دائري الاحتفاظ بالماء السائل على سطحه <cite class="ltx_cite ltx_citemacro_citep">(Kasting et al., <a class="ltx_ref" href="#bib.bib21" title="">1993</a>)</cite>. في هذا العمل نستكشف إمكانية وجود كوكب شبيه بالأرض في المنطقة القابلة للسكن للنظامين المحيطين بثنائي نجمي اللذين اكتشفهما TESS مؤخرا. وعن طريق المحاكاة العددية، نتحقق مما إذا كان كوكب بكتلة أرضية في المنطقة القابلة للسكن للنظامين يستطيع أن ينجو من الاضطرابات الجذبية الناشئة عن الثنائية النجمية والكوكب الموجود المحيط بها على مدى زمني كاف. ونستخدم أيضا مفهوم المناطق القابلة للسكن المستندة إلى الديناميات (DIHZs فيما يلي) <cite class="ltx_cite ltx_citemacro_cite">(e.g. Georgakarakos et al., <a class="ltx_ref" href="#bib.bib17" title="">2021</a>)</cite> بغية تقييم قدرة ذلك الكوكب المحتملة على دعم الماء السائل على سطحه. وأخيرا، نحاول وضع بعض القيود على شدة إشارة الكشف التي قد يولدها مثل هذا الكوكب.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">تأتي بنية الورقة على النحو الآتي: في القسم 2 نحلل النظامين من منظور التطور الديناميكي. وفي القسم 3 نبحث استقرار المنطقة القابلة للسكن في النظامين، بينما نستخدم في القسم 4 مناطق DIHZs لاستخلاص مزيد من المعلومات عن المنطقة القابلة للسكن. وفي القسم 5 نناقش قابلية كشف الكواكب الشبيهة بالأرض في المنطقة القابلة للسكن في النظامين، بينما نقدم في القسم 6 ملخصا لنتائجنا وبعض النقاش.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>ديناميات كواكب TESS المحيطة بثنائي نجمي</h2>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>TOI-1338b</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">TOI-1338b كوكب ذو كتلة <math alttext="30M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m1"><mrow><mn>30</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></math> يدور حول ثنائية غير متساوية الكتلة ذات شذوذ مداري منخفض نسبيا. ويدور الكوكب حول الثنائية في 95 يوم مع شذوذ أقل من 0.1.
+ويبدو أن الميل المداري المتبادل للنظام هو <math alttext="\sim 1^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m2"><mrow><mi></mi><mo>∼</mo><msup><mn>1</mn><mo>∘</mo></msup></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Kostov
+et al., <a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite>.
+يمكن العثور على جميع العناصر المدارية والمعلمات الفيزيائية للنظام في الجدول <a class="ltx_ref" href="#A1.T2" title="Table 2 ‣ Appendix A الجداول ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">2</span></a> في الملحق.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">وفقا لـ <cite class="ltx_cite ltx_citemacro_citet">Holman &amp;
+Wiegert (<a class="ltx_ref" href="#bib.bib20" title="">1999</a>)</cite>، فإن نصف المحور الأكبر الحرج لهذا النظام قبل أن يصبح غير مستقر هو 0.370 وحدة فلكية. أما نصف المحور الأكبر للكوكب TOI-1338b فهو <math alttext="a_{p}=0.4491au" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m1"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.4491</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math>.
+لذلك يبدو النظام مستقرا إلى حد معقول. وتدعم ذلك أيضا نتائج <cite class="ltx_cite ltx_citemacro_citet">Georgakarakos (<a class="ltx_ref" href="#bib.bib12" title="">2013</a>)</cite>، مع افتراض مدارات دائرية. ونسبة الفترات في النظام هي 6.51، مما يعني أن من المرجح أن نظامنا يقع في منطقة مستقرة من فضاء المعلمات بين رنينات غير مستقرة، على نحو مشابه لما يحدث في عدد من كواكب Kepler المحيطة بثنائي نجمي <cite class="ltx_cite ltx_citemacro_cite">(e.g. see Chavez
+et al., <a class="ltx_ref" href="#bib.bib5" title="">2015</a>; Popova &amp;
+Shevchenko, <a class="ltx_ref" href="#bib.bib29" title="">2016</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p3">
+<p class="ltx_p">في <cite class="ltx_cite ltx_citemacro_citet">Georgakarakos &amp;
+Eggl (<a class="ltx_ref" href="#bib.bib13" title="">2015</a>)</cite> طورنا إطارا تحليليا لوصف حركة الكواكب المحيطة بثنائي نجمي والقريبة من الاستواء المشترك، على المقاييس الزمنية المدارية وكذلك طويلة الأمد. وقد غطت الطريقة جميع قيم شذوذ الثنائية، وتضمنت أيضا تصحيحا لما بعد نيوتن لمدار الثنائية. وكان النموذج يصبح أقل موثوقية مع اكتساب الكوكب بعض الشذوذ (<math alttext="\gtrapprox 0.2" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m1"><mrow><mi></mi><mo>⪆</mo><mn>0.2</mn></mrow></math>.).</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p4">
+<p class="ltx_p">وفقا للنموذج التحليلي، يتوقع أن يسبب الكوكب تقدما في حضيض الثنائية بمعدل</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="K_{3}=\frac{3}{4}\frac{\sqrt{G}m_{p}a^{\frac{3}{2}}_{b}\sqrt{1-e^{2}_{b}}}{(m_%
+{1}+m_{2})^{\frac{1}{2}}a^{3}_{p}}," class="ltx_Math" dir="ltr" display="block" id="S2.E1.m1"><mrow><mrow><msub><mi>K</mi><mn>3</mn></msub><mo>=</mo><mrow><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>⁢</mo><mfrac><mrow><msqrt><mi>G</mi></msqrt><mo>⁢</mo><msub><mi>m</mi><mi>p</mi></msub><mo>⁢</mo><msubsup><mi>a</mi><mi>b</mi><mfrac><mn>3</mn><mn>2</mn></mfrac></msubsup><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>−</mo><msubsup><mi>e</mi><mi>b</mi><mn>2</mn></msubsup></mrow></msqrt></mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></msup><mo>⁢</mo><msubsup><mi>a</mi><mi>p</mi><mn>3</mn></msubsup></mrow></mfrac></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن
+<math alttext="G" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m1"><mi>G</mi></math> هو ثابت الجذب العام، و<math alttext="m_{1}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m2"><msub><mi>m</mi><mn>1</mn></msub></math> و<math alttext="m_{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m3"><msub><mi>m</mi><mn>2</mn></msub></math> هما كتلتا النجمين، و<math alttext="m_{p}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m4"><msub><mi>m</mi><mi>p</mi></msub></math> هي كتلة الكوكب، و<math alttext="a" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m5"><mi>a</mi></math> يدل على نصف المحور الأكبر بينما يدل <math alttext="e" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m6"><mi>e</mi></math> على الشذوذ. وتشير الفهارس <math alttext="b" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m7"><mi>b</mi></math> و<math alttext="p" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m8"><mi>p</mi></math> إلى الثنائية والكوكب على الترتيب. إضافة إلى ذلك، يتقدم حضيض الثنائية بفعل النسبية العامة بمعدل (إلى الرتبة القائدة):</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="K_{3GR}=\frac{3G^{\frac{3}{2}}(m_{1}+m_{2})^{\frac{3}{2}}}{c^{2}a_{b}^{\frac{5%
+}{2}}(1-e^{2}_{b})}" class="ltx_Math" dir="ltr" display="block" id="S2.E2.m1"><mrow><msub><mi>K</mi><mrow><mn>3</mn><mo>⁢</mo><mi>G</mi><mo>⁢</mo><mi>R</mi></mrow></msub><mo>=</mo><mfrac><mrow><mn>3</mn><mo>⁢</mo><msup><mi>G</mi><mfrac><mn>3</mn><mn>2</mn></mfrac></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mfrac><mn>3</mn><mn>2</mn></mfrac></msup></mrow><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msubsup><mi>a</mi><mi>b</mi><mfrac><mn>5</mn><mn>2</mn></mfrac></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><msubsup><mi>e</mi><mi>b</mi><mn>2</mn></msubsup></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="c" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m9"><mi>c</mi></math> هي سرعة الضوء في الفراغ.
+ومن ثم، فإن معدل تقدم حضيض الثنائية هو <math alttext="K_{3}+K_{3GR}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m10"><mrow><msub><mi>K</mi><mn>3</mn></msub><mo>+</mo><msub><mi>K</mi><mrow><mn>3</mn><mo>⁢</mo><mi>G</mi><mo>⁢</mo><mi>R</mi></mrow></msub></mrow></math>. وبالنسبة إلى ثنائية TOI-1338، تساوي الكمية أعلاه 0.0005404 درجة خلال فترة ثنائية واحدة؛ 0.0004272 درجة من النظرية الكلاسيكية و0.0001132 درجة من النسبية. وتتفق هذه الأعداد جيدا مع <cite class="ltx_cite ltx_citemacro_citep">(Kostov
+et al., <a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite>، حيث يعطي أفضل نموذج ملائم إجمالا 0.0005715 درجة في كل دورة. وتشمل هذه القيمة مساهمة المد والجزر في تقدم حجة الحضيض، وهي أصغر بمرتبتين تقريبا من المساهمتين الأخريين.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p5">
+<p class="ltx_p">يعطى الشذوذ القسري للكوكب المحيط بالثنائية بالعلاقة</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="e_{pf}=\frac{K_{2}}{K_{1}-K_{3}}," class="ltx_Math" dir="ltr" display="block" id="S2.E3.m1"><mrow><mrow><msub><mi>e</mi><mrow><mi>p</mi><mo>⁢</mo><mi>f</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>K</mi><mn>2</mn></msub><mrow><msub><mi>K</mi><mn>1</mn></msub><mo>−</mo><msub><mi>K</mi><mn>3</mn></msub></mrow></mfrac></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">مع</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="K_{1}=\frac{3}{8}\frac{\sqrt{GM}m_{1}m_{2}a^{2}_{b}}{(m_{1}+m_{2})^{2}a^{\frac%
+{7}{2}}_{p}}(2+3e^{2}_{b})" class="ltx_Math" dir="ltr" display="block" id="S2.E4.m1"><mrow><msub><mi>K</mi><mn>1</mn></msub><mo>=</mo><mrow><mfrac><mn>3</mn><mn>8</mn></mfrac><mo>⁢</mo><mfrac><mrow><msqrt><mrow><mi>G</mi><mo>⁢</mo><mi>M</mi></mrow></msqrt><mo>⁢</mo><msub><mi>m</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>m</mi><mn>2</mn></msub><mo>⁢</mo><msubsup><mi>a</mi><mi>b</mi><mn>2</mn></msubsup></mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>⁢</mo><msubsup><mi>a</mi><mi>p</mi><mfrac><mn>7</mn><mn>2</mn></mfrac></msubsup></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msubsup><mi>e</mi><mi>b</mi><mn>2</mn></msubsup></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">و</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="K_{2}=\frac{15}{64}\frac{\sqrt{GM}m_{1}m_{2}(m_{1}-m_{2})a^{3}_{b}}{(m_{1}+m_{%
+2})^{3}a^{\frac{9}{2}}_{p}}e_{b}(4+3e^{2}_{b})." class="ltx_Math" dir="ltr" display="block" id="S2.E5.m1"><mrow><mrow><msub><mi>K</mi><mn>2</mn></msub><mo>=</mo><mrow><mfrac><mn>15</mn><mn>64</mn></mfrac><mo>⁢</mo><mfrac><mrow><msqrt><mrow><mi>G</mi><mo>⁢</mo><mi>M</mi></mrow></msqrt><mo>⁢</mo><msub><mi>m</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>m</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>−</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>a</mi><mi>b</mi><mn>3</mn></msubsup></mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mn>3</mn></msup><mo>⁢</mo><msubsup><mi>a</mi><mi>p</mi><mfrac><mn>9</mn><mn>2</mn></mfrac></msubsup></mrow></mfrac><mo>⁢</mo><msub><mi>e</mi><mi>b</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>4</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msubsup><mi>e</mi><mi>b</mi><mn>2</mn></msubsup></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">بالنسبة إلى TOI-1338b، تعطي المعادلة (<a class="ltx_ref" href="#S2.E3" title="In 2.1 TOI-1338b ‣ 2 ديناميات كواكب TESS المحيطة بثنائي نجمي ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a>) القيمة <math alttext="e_{pf}=0.0305" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p5.m1"><mrow><msub><mi>e</mi><mrow><mi>p</mi><mo>⁢</mo><mi>f</mi></mrow></msub><mo>=</mo><mn>0.0305</mn></mrow></math>. وبالنسبة إلى كوكب محيط بثنائي نجمي على مدار دائري ابتدائيا، سيكون الشذوذ طويل الأمد الأقصى <math alttext="2e_{pf}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p5.m2"><mrow><mn>2</mn><mo>⁢</mo><msub><mi>e</mi><mrow><mi>p</mi><mo>⁢</mo><mi>f</mi></mrow></msub></mrow></math>. وإذا أخذنا في الحسبان المساهمة من المقاييس الزمنية الأقصر، فإن الشذوذ الأقصى للكوكب TOI-1338b المتوقع من النموذج التحليلي هو 0.098، وهو متسق مع الشذوذ 0.0928 الذي قدمه <cite class="ltx_cite ltx_citemacro_cite">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite>. وبطبيعة الحال، إذا كان الكوكب في البداية على مدار ذي شذوذ طفيف، فسيؤثر ذلك أيضا في القيمة القصوى للشذوذ. أما الفترة طويلة الأمد لتذبذب الشذوذ
+وفترة تقدم طول الحضيض فتبلغ نحو 23.5 سنة، وهو ما يتفق على نحو ممتاز مع ما وجده <cite class="ltx_cite ltx_citemacro_cite">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>TIC-172900988</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">TIC-172900988b <cite class="ltx_cite ltx_citemacro_citep">(Kostov
+et al., <a class="ltx_ref" href="#bib.bib25" title="">2021</a>)</cite> هو أحدث كوكب محيط بثنائي نجمي اكتشفه TESS.
+وعلى الرغم من أن المعلمات المدارية وكتلة الكوكب لا يمكن تحديدها تحديدا وحيدا (إذ وُجدت للنظام ستة حلول ذات أرجحية شبه متساوية - انظر الجدول <a class="ltx_ref" href="#A1.T3" title="Table 3 ‣ Appendix A الجداول ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a> في الملحق)، فإن كتلة الكوكب تقع ضمن المجال <math alttext="822.4M_{\oplus}\leq m_{p}\leq 981M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m1"><mrow><mrow><mn>822.4</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow><mo>≤</mo><msub><mi>m</mi><mi>p</mi></msub><mo>≤</mo><mrow><mn>981</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math>. إنه كوكب كبير نسبيا، كتلته لا تقل عن ضعف كتلة المشتري، وله فترة مدارية تقارب 200 يوم على مدار شبه دائري. وتتكون الثنائية نفسها من نجمين ذوي كتلتين متشابهتين على مدار متوسط الشذوذ <math alttext="(e_{b}\sim 0.45)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m2"><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>∼</mo><mn>0.45</mn></mrow><mo stretchy="false">)</mo></mrow></math> وفترته المدارية تقل قليلا عن 20 يوم. وأعلى ميل متبادل بين الحلول المدارية المقترحة هو <math alttext="\sim 2.5^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m3"><mrow><mi></mi><mo>∼</mo><msup><mn>2.5</mn><mo>∘</mo></msup></mrow></math>. ويشبه النظام Kepler-34 <cite class="ltx_cite ltx_citemacro_citep">(Welsh
+et al., <a class="ltx_ref" href="#bib.bib32" title="">2012</a>)</cite> في هذا الجانب. كما أن نسب الفترات في النظامين متشابهة: 10.39 بالنسبة إلى Kepler 34، بينما بالنسبة إلى TIC-172900988، ووفقا للحل المستخدم، تتراوح نسبة الفترات من 9.60 إلى 10.38.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">يبدو النظام مستقرا إلى حد معقول. ويعطي المعيار التجريبي لـ <cite class="ltx_cite ltx_citemacro_cite">Holman &amp;
+Wiegert (<a class="ltx_ref" href="#bib.bib20" title="">1999</a>)</cite> القيمة 0.675 وحدة فلكية لنصف المحور الأكبر الحرج. وأصغر نصف محور أكبر كوكبي بين جميع الحلول هو
+0.86733 وحدة فلكية. وبناء على البيانات الرصدية، يعطي <cite class="ltx_cite ltx_citemacro_cite">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib25" title="">2021</a>)</cite> دورة مقدارها <math alttext="0.00288^{\circ}/" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS2.p2.m1"><mrow><msup><mn>0.00288</mn><mo>∘</mo></msup><mo>/</mo></mrow></math> للحركة الأبسيدية للثنائية.
+وتسهم النسبية العامة بمقدار <math alttext="0.00017^{\circ}/" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS2.p2.m2"><mrow><msup><mn>0.00017</mn><mo>∘</mo></msup><mo>/</mo></mrow></math> دورة، بينما تمثل <math alttext="0.0000232^{\circ}/" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS2.p2.m3"><mrow><msup><mn>0.0000232</mn><mo>∘</mo></msup><mo>/</mo></mrow></math> دورة المساهمة المتوقعة بسبب الانتفاخات المدية. ومن ثم
+يستنتجون أن بقية التقدم ناتجة عن الكوكب المحيط بالثنائية. وتدعم هذه الفرضية بوضوح الصيغة التحليلية لـ
+<cite class="ltx_cite ltx_citemacro_citet">Georgakarakos &amp;
+Eggl (<a class="ltx_ref" href="#bib.bib13" title="">2015</a>)</cite>. وعند تقييم المعادلة (<a class="ltx_ref" href="#S2.E2" title="In 2.1 TOI-1338b ‣ 2 ديناميات كواكب TESS المحيطة بثنائي نجمي ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">2</span></a>) لأي من الحلول الستة، نحصل على قيمة قدرها <math alttext="0.00017^{\circ}/" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS2.p2.m4"><mrow><msup><mn>0.00017</mn><mo>∘</mo></msup><mo>/</mo></mrow></math> دورة كما ورد في <cite class="ltx_cite ltx_citemacro_cite">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib25" title="">2021</a>)</cite>. ووفقا للمعادلة (<a class="ltx_ref" href="#S2.E2" title="In 2.1 TOI-1338b ‣ 2 ديناميات كواكب TESS المحيطة بثنائي نجمي ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">2</span></a>)،
+تتنبأ النظرية التحليلية بقيمة بين <math alttext="0.0025^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p2.m5"><msup><mn>0.0025</mn><mo>∘</mo></msup></math> و<math alttext="0.0027^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p2.m6"><msup><mn>0.0027</mn><mo>∘</mo></msup></math>، تبعا للحل المستخدم، لتقدم خط الأوج والحضيض للثنائية بفعل وجود كوكب. ويبدو أن هذا يدعم وجود جسم كوكبي في النظام.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p3">
+<p class="ltx_p">الشذوذ القسري للنظام كما تعطيه المعادلة (<a class="ltx_ref" href="#S2.E3" title="In 2.1 TOI-1338b ‣ 2 ديناميات كواكب TESS المحيطة بثنائي نجمي ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a>)
+هو <math alttext="e_{pf}=0.0015-0.0016" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p3.m1"><mrow><msub><mi>e</mi><mrow><mi>p</mi><mo>⁢</mo><mi>f</mi></mrow></msub><mo>=</mo><mrow><mn>0.0015</mn><mo>−</mo><mn>0.0016</mn></mrow></mrow></math>. وهذا الشذوذ القسري المنخفض متوقع، إذ على الرغم من شذوذ الثنائية المتوسط، فإن الفرق في كتلتي النجمين يبلغ نحو <math alttext="3\%" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p3.m2"><mrow><mn>3</mn><mo>%</mo></mrow></math>، ومن ثم يصبح <math alttext="K_{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p3.m3"><msub><mi>K</mi><mn>2</mn></msub></math> صغيرا في (<a class="ltx_ref" href="#S2.E3" title="In 2.1 TOI-1338b ‣ 2 ديناميات كواكب TESS المحيطة بثنائي نجمي ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a>).
+لذلك لا نتوقع أن يظهر الكوكب تغيرات كبيرة في عناصره المدارية على المقاييس الزمنية طويلة الأمد. وإذا ضممنا التأثيرات الجذبية على المقاييس الزمنية الأقصر، فإن النموذج التحليلي يعطي قيمة 0.0510-0.0580 للشذوذ الكوكبي الأقصى عندما يكون الكوكب على مدار دائري ابتدائيا. ويتسق نطاق القيم هذا مع الشذوذ الكوكبي في حلين من الحلول المقترحة كما يظهر في الجدول (<a class="ltx_ref" href="#A1.T3" title="Table 3 ‣ Appendix A الجداول ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a>). أما بقية الحلول فلها <math alttext="e_{p}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p3.m4"><msub><mi>e</mi><mi>p</mi></msub></math> أعلى، وقد يمكن مطابقتها إذا افترضنا شذوذا ابتدائيا غير صفري.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>استقرار المنطقة القابلة للسكن</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">في هذا القسم نبحث الاستقرار الديناميكي
+للمنطقة القابلة للسكن في نظامي TESS الثنائيين اللذين وُجد أنهما يستضيفان كوكبا محيطا بالثنائية. والهدف هو التحقق مما إذا كان جسم ذو كتلة أرضية
+يمكنه النجاة من الاضطرابات الجذبية للثنائية النجمية
+والكوكب الموجود داخل المنطقة القابلة للسكن في النظام.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>الطريقة</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">لتحقيق ذلك أجرينا سلسلة من التجارب العددية.
+وضعنا كوكبا بكتلة أرضية داخل المنطقة القابلة للسكن لكل نظام
+وكاملنا عدديا معادلات الحركة الكاملة لمدة زمنية
+اعتبرت كافية لحدوث كل أنواع التأثيرات الديناميكية (مثل الرنينات) وليكون لها أثر محتمل في استقرار النظام. وبالنسبة إلى TOI-1338
+حُدد ذلك الزمن بـ <math alttext="1" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m1"><mn>1</mn></math> مليون سنة، بينما كان زمن التكامل بالنسبة إلى TIC-172900988 هو <math alttext="1.5" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m2"><mn>1.5</mn></math> مليون سنة. وكشفت بعض المحاكاة العددية الاختبارية أن الفترة الطويلة لتطور الأجسام الشبيهة بالأرض عند الحافة الخارجية للمنطقة القابلة للسكن كانت
+نحو 10000 سنة بالنسبة إلى TOI-1338 ونحو 15000 سنة بالنسبة إلى TIC-172900988 (انظر الشكل
+<a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ 3.1 الطريقة ‣ 3 استقرار المنطقة القابلة للسكن ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">1</span></a>). ومن ثم اخترنا زمن التكامل ليكون أطول بنحو 100 مرة من تلك الفواصل الزمنية. ومن الواضح أن تلك الفترات الطويلة تقصر كلما
+انتقلنا نحو الحافة الداخلية للمنطقة القابلة للسكن.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<p class="ltx_p">وُضعت الأجسام الشبيهة بالأرض على امتداد المنطقة القابلة للسكن في مئة وموضع واحد متباعد بالتساوي (بما في ذلك حدود المنطقة القابلة للسكن). وبالنسبة إلى نظام TOI-1338 كانت الخطوة 0.00992 وحدة فلكية، وبالنسبة إلى
+TIC-172900988 كانت الخطوة 0.0146 وحدة فلكية. وعند كل موضع اختبر استقرار الكوكب لثماني قيم مختلفة للشذوذ المتوسط له (<math alttext="0^{\circ}-270^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m1"><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>−</mo><msup><mn>270</mn><mo>∘</mo></msup></mrow></math> بخطوة مقدارها <math alttext="45^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m2"><msup><mn>45</mn><mo>∘</mo></msup></math>). وصنف المدار الكوكبي على أنه غير مستقر إذا أصبح شذوذه مساويا لـ 1 أو أكبر منها، أو إذا سجل نصف المحور الأكبر قيمة لا تقل عن <math alttext="10au" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m3"><mrow><mn>10</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></math>. وإذا تحقق أي من المعيارين أعلاه لقيمة واحدة على الأقل من الشذوذ المتوسط عند نصف محور أكبر معين، فقد صنف النظام على أنه غير مستقر عند قيمة نصف المحور الأكبر تلك. وكان الكوكب الشبيه بالأرض يبدأ دائما على مدار دائري. وكانت جميع الأجسام في مستوى الحركة نفسه.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p3">
+<p class="ltx_p">في تجاربنا العددية استخدمنا مكامل Gauss-Radau من
+<cite class="ltx_cite ltx_citemacro_cite">Eggl &amp;
+Dvorak (<a class="ltx_ref" href="#bib.bib7" title="">2010</a>)</cite>. وفيما يتعلق بـ TOI-1338، حاكينا حل الملاءمة الأفضل كما ورد في <cite class="ltx_cite ltx_citemacro_cite">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite>. إضافة إلى ذلك، تحققنا
+من استقرار حل الملاءمة الأفضل ولكن مع <math alttext="m_{p}=50.5M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m1"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>50.5</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math>، وهي
+كتلة الكوكب في حل الملاءمة الأفضل مضافا إليها خطأ <math alttext="1\sigma" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m2"><mrow><mn>1</mn><mo>⁢</mo><mi>σ</mi></mrow></math>.
+وكانت الأخطاء في بقية المعلمات بحيث لا يتوقع أن تحدث أي فرق في نتيجة المحاكاة.
+وبالنسبة إلى TIC-172900988 حاكينا الحلول الستة جميعها كما وردت في <cite class="ltx_cite ltx_citemacro_cite">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib25" title="">2021</a>)</cite>.</p>
+</div>
+<figure class="ltx_figure" id="S3.F1">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S3.F1.g1" src="x1.png" width="463"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S3.F1.g2" src="x2.png" width="463"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>تطور الشذوذ لكوكب ذي كتلة أرضية عند الحافة الخارجية للمنطقة القابلة للسكن. بالنسبة إلى TOI-1338 يقع ذلك الموضع عند 2.31 وحدة فلكية، بينما يقع بالنسبة إلى TIC-172900988 عند 3.4 وحدة فلكية.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>النتائج</h3>
+</section>
+<section class="ltx_subsection" id="S3.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.3 </span>TOI-1338b</h3>
+<div class="ltx_para" id="S3.SS3.p1">
+<p class="ltx_p">لم تظهر المحاكاة العددية لنظام TOI-1338 أي علامة على عدم الاستقرار للكوكب الافتراضي ذي الكتلة الأرضية على كامل مدى المنطقة القابلة للسكن
+(<math alttext="1.31au-2.31au" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p1.m1"><mrow><mrow><mn>1.31</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow><mo>−</mo><mrow><mn>2.31</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math>). وخلال التجارب العددية راقبنا نصف المحور الأكبر وشذوذ الكوكب الشبيه بالأرض. وكان نصف المحور الأكبر شبه ثابت. وكان ذلك صحيحا حتى عندما رُفعت كتلة TOI-1338b إلى <math alttext="m_{p}=50.5M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p1.m2"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>50.5</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math>. ولم يظهر الشذوذ أي زيادة مهمة على كامل طول المنطقة القابلة للسكن. وسجلت قيم أعلى كلما اقتربنا من الحافة الداخلية للمنطقة القابلة للسكن.
+ويمثل الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3.3 TOI-1338b ‣ 3 استقرار المنطقة القابلة للسكن ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">2</span></a> تمثيلا بيانيا للنتائج أعلاه. إذ يبين أكبر نصف محور أكبر وأكبر شذوذ سُجلا لقيم مختلفة من الشذوذ المتوسط للكوكب الشبيه بالأرض عند كل موضع داخل المنطقة القابلة للسكن وضع فيه ذلك الجسم.</p>
+</div>
+<figure class="ltx_figure" id="S3.F2">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S3.F2.g1" src="x3.png" width="463"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S3.F2.g2" src="x4.png" width="463"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>أكبر نصف محور أكبر وأكبر شذوذ لكوكب ذي كتلة أرضية في المنطقة القابلة للسكن لـ TOI-1338.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S3.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.4 </span>TIC-172900988</h3>
+<div class="ltx_para" id="S3.SS4.p1">
+<p class="ltx_p">كانت نتائج TIC-172900988 مشابهة لنتائج TOI-1338. ففي أي من الحلول الستة
+المكاملة عدديا لم يكن الكوكب الافتراضي غير مستقر في أي من المواضع التي وضع فيها ابتداء داخل المنطقة القابلة للسكن (<math alttext="1.94au-3.40au" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m1"><mrow><mrow><mn>1.94</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow><mo>−</mo><mrow><mn>3.40</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math>). وكان نصف المحور الأكبر شبه ثابت،
+بينما كانت قيم الشذوذ العظمى المسجلة صغيرة جدا. وفيما يتعلق بالأخيرة، وعلى غرار ما لوحظ في TOI-1338، وجدت قيم أعلى كلما اقتربنا من الحد الداخلي للمنطقة القابلة للسكن، ولكن ليس بالحدة نفسها كما في ذلك النظام.
+ويمثل الشكل <a class="ltx_ref" href="#S3.F3" title="Figure 3 ‣ 3.4 TIC-172900988 ‣ 3 استقرار المنطقة القابلة للسكن ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a> تمثيلا بيانيا للنتائج أعلاه.</p>
+</div>
+<figure class="ltx_figure" id="S3.F3">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S3.F3.g1" src="x5.png" width="463"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S3.F3.g2" src="x6.png" width="463"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>أكبر نصف محور أكبر وأكبر شذوذ لكوكب ذي كتلة أرضية في المنطقة القابلة للسكن لـ TIC-172900988. ومن المحتمل أن تكون القفزة في الشذوذ الأقصى ناجمة
+عن الرنين 4:1 بين الكوكبين.</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>المناطق القابلة للسكن المستندة إلى الديناميات</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">تعد المناطق القابلة للسكن المستندة إلى الديناميات (DIHZs) أداة مفيدة في البحث عن كواكب قابلة للسكن. وتبنى DIHZs بطريقة تأخذ في الحسبان حقيقة أن العناصر المدارية للكواكب في الأنظمة الثنائية
+تتغير بمرور الزمن بسبب التفاعلات الجذبية بين جميع الأجسام.
+وينطوي هذا التغير المعتمد على الزمن في مدار الكوكب على تغير في الإشعاع الوارد. وقد تستجيب كواكب مختلفة بطرائق مختلفة لذلك التغير المعتمد على الزمن في التشمس، أي إنها قد تظهر درجات مختلفة من «العطالة المناخية». وهذا ما تتعامل معه DIHZs أيضا.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">قُدمت المناطق القابلة للسكن المستندة إلى الديناميات واستخدمت أول مرة في دراسة قابلية السكن للكواكب حول نجم واحد في الأنظمة الثنائية <cite class="ltx_cite ltx_citemacro_citep">(Eggl et al., <a class="ltx_ref" href="#bib.bib8" title="">2012</a>; Eggl
+et al., <a class="ltx_ref" href="#bib.bib9" title="">2013a</a>; Georgakarakos &amp;
+Eggl, <a class="ltx_ref" href="#bib.bib14" title="">2019</a>)</cite>. ولاحقا، استخدمت DIHZs في أنظمة نجمية مفردة ذات كواكب عملاقة <cite class="ltx_cite ltx_citemacro_citep">(Georgakarakos et al., <a class="ltx_ref" href="#bib.bib16" title="">2018</a>)</cite>.
+وأخيرا، طبقت المنهجية على أنظمة كوكبية محيطة بثنائي نجمي <cite class="ltx_cite ltx_citemacro_citep">(Eggl, <a class="ltx_ref" href="#bib.bib6" title="">2018</a>; Eggl et al., <a class="ltx_ref" href="#bib.bib11" title="">2020</a>; Georgakarakos et al., <a class="ltx_ref" href="#bib.bib17" title="">2021</a>)</cite>. وهناك ثلاثة أنواع من DIHZs: المنطقة القابلة للسكن دائما (PHZ)، حيث يبقى الكوكب دوما ضمن حدود التشمس القابل للسكن؛ والمنطقة القابلة للسكن المتوسطة (AHZ)، حيث يكون التشمس في المتوسط ضمن القيم القابلة للسكن؛ وأخيرا المنطقة القابلة للسكن الممتدة (EHZ)، وهي الإقليم الذي يبقى فيه الكوكب
+في المتوسط زائد أو ناقص انحراف معياري واحد ضمن
+حدود التشمس القابل للسكن. وتعد PHZ مثالية للكواكب ذات العطالة المناخية المنخفضة. ومن ناحية أخرى، تفترض AHZ قدرات تخميد غير محدودة في غلاف الكوكب الجوي، بينما تقع EHZ بين المنطقتين الأخريين.
+ويمكن العثور على مزيد من التفاصيل عن الأنواع الثلاثة للمناطق في مواضع أخرى <cite class="ltx_cite ltx_citemacro_citep">(مثلا Georgakarakos et al., <a class="ltx_ref" href="#bib.bib16" title="">2018</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">ننتقل الآن إلى حساب المناطق القابلة للسكن للنظامين المحيطين بثنائي نجمي من TESS قيد البحث. وللقيام بذلك، نستخدم المنهجية الموصوفة تفصيلا في <cite class="ltx_cite ltx_citemacro_cite">Georgakarakos et al. (<a class="ltx_ref" href="#bib.bib17" title="">2021</a>)</cite>. وباستخدام المعادلات
+المشتقة في ذلك العمل، نحصل على حدود المنطقة القابلة للسكن الكلاسيكية (CHZ) والمناطق القابلة للسكن المستندة إلى الديناميات للحلين الخاصين بـ TOI-1338 والحلول الستة الخاصة بـ TIC-172900988.
+وبالنسبة إلى الأنظمة المكونة من نجم وكوكب على مدار دائري ثابت، تعطى حدود CHZ بالعلاقة</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E6">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="r_{I,O}=\sqrt{\left(\frac{L}{S_{I,O}}\right)}," class="ltx_Math" dir="ltr" display="block" id="S4.E6.m1"><mrow><mrow><msub><mi>r</mi><mrow><mi>I</mi><mo>,</mo><mi>O</mi></mrow></msub><mo>=</mo><msqrt><mrow><mo>(</mo><mfrac><mi>L</mi><msub><mi>S</mi><mrow><mi>I</mi><mo>,</mo><mi>O</mi></mrow></msub></mfrac><mo>)</mo></mrow></msqrt></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S4.p3.m1"><mi>r</mi></math> هي مسافة الكوكب إلى النجم المضيف بالوحدات الفلكية، و<math alttext="L" class="ltx_Math" dir="ltr" display="inline" id="S4.p3.m2"><mi>L</mi></math> هي اللمعانية النجمية باللمعانيات الشمسية. أما <math alttext="S_{I}" class="ltx_Math" dir="ltr" display="inline" id="S4.p3.m3"><msub><mi>S</mi><mi>I</mi></msub></math> و<math alttext="S_{O}" class="ltx_Math" dir="ltr" display="inline" id="S4.p3.m4"><msub><mi>S</mi><mi>O</mi></msub></math>
+فهما قيمتا التشمس الفعال <cite class="ltx_cite ltx_citemacro_citep">(Kasting et al., <a class="ltx_ref" href="#bib.bib21" title="">1993</a>)</cite>، اللتان تقابلان عدد الثوابت الشمسية المطلوبة لإطلاق عملية احتباس حراري جامحة تبخر محيطات السطح (الرمز السفلي <math alttext="I" class="ltx_Math" dir="ltr" display="inline" id="S4.p3.m5"><mi>I</mi></math>)، أو حالة كرة ثلجية تجمد المحيطات على نطاق عالمي (الرمز السفلي <math alttext="O" class="ltx_Math" dir="ltr" display="inline" id="S4.p3.m6"><mi>O</mi></math>). ويمكن حسابهما من التعبيرات الواردة في <cite class="ltx_cite ltx_citemacro_citep">(Kopparapu
+et al., <a class="ltx_ref" href="#bib.bib23" title="">2014</a>)</cite>.
+وبالنسبة إلى نجم ثنائي، نستخدم النسخة المعدلة الآتية من المعادلة (<a class="ltx_ref" href="#S4.E6" title="In 4 المناطق القابلة للسكن المستندة إلى الديناميات ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">6</span></a>) لحساب حدود CHZ <cite class="ltx_cite ltx_citemacro_citep">(Eggl, <a class="ltx_ref" href="#bib.bib6" title="">2018</a>; Georgakarakos et al., <a class="ltx_ref" href="#bib.bib17" title="">2021</a>)</cite>:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E7">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="r_{I,O}=\sqrt{\left(\frac{L_{1}}{S1_{I,O}}+\frac{L_{2}}{S2_{I,O}}\right)}," class="ltx_Math" dir="ltr" display="block" id="S4.E7.m1"><mrow><mrow><msub><mi>r</mi><mrow><mi>I</mi><mo>,</mo><mi>O</mi></mrow></msub><mo>=</mo><msqrt><mrow><mo>(</mo><mrow><mfrac><msub><mi>L</mi><mn>1</mn></msub><mrow><mi>S</mi><mo>⁢</mo><msub><mn>1</mn><mrow><mi>I</mi><mo>,</mo><mi>O</mi></mrow></msub></mrow></mfrac><mo>+</mo><mfrac><msub><mi>L</mi><mn>2</mn></msub><mrow><mi>S</mi><mo>⁢</mo><msub><mn>2</mn><mrow><mi>I</mi><mo>,</mo><mi>O</mi></mrow></msub></mrow></mfrac></mrow><mo>)</mo></mrow></msqrt></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث تشير الفهارس 1 و2 إلى النجمين. ويمكن العثور على قيم جميع المناطق في الجدول <a class="ltx_ref" href="#S4.T1" title="Table 1 ‣ 4 المناطق القابلة للسكن المستندة إلى الديناميات ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">1</span></a>. ولحساب حدود DIHZs استخدمنا قيم الشذوذ الأعظم والشذوذ التربيعي المتوسط التي حصلنا عليها من محاكاة استقرار الكوكب الشبيه بالأرض.</p>
+</div>
+<div class="ltx_para" id="S4.p4">
+<p class="ltx_p">كما رأينا في القسم السابق، فإن كامل المنطقة الكلاسيكية القابلة للسكن
+مستقرة ديناميكيا في الأساس لكل من TOI-1338 وTIC-172900988.
+وبسبب خصائص النظامين (الكتل والمعلمات المدارية)،
+لا يكتسب الكوكب الشبيه بالأرض شذوذا مداريا مهما.
+وتنعكس هذه الحقيقة في قيم DIHZs، ولا سيما في قيم
+حدود PHZ التي تعتمد على الشذوذ الأعظم. وبالنسبة إلى أي من
+حلّي TOI-1338 اللذين بحثناهما، يبلغ طول PHZ نحو <math alttext="70\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p4.m1"><mrow><mn>70</mn><mo>%</mo></mrow></math>
+من طول المنطقة الكلاسيكية القابلة للسكن. وهذا يعني أن كوكبا يحتمل
+أن يكون قابلا للسكن وذا عطالة مناخية منخفضة يمكن أن يبقى قابلا للسكن في معظم
+المنطقة الكلاسيكية القابلة للسكن. وإذا كان لدى الكوكب بعض قدرات التخميد المحدودة
+عند حدوث تغير في التشمس الوارد، فيمكن لذلك الكوكب أن يحتفظ
+بالماء السائل على سطحه في جزء أكبر حتى من CHZ (نحو <math alttext="88\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p4.m2"><mrow><mn>88</mn><mo>%</mo></mrow></math> كما تشير حدود EHZ).</p>
+</div>
+<div class="ltx_para" id="S4.p5">
+<p class="ltx_p">يظهر TIC-172900988 أيضا قدرة جيدة جدا على استضافة عوالم قابلة للسكن.
+ومن بين الحلول الستة للمدارات والمعلمات المقترحة لذلك النظام والمتسقة مع الأرصاد، نلاحظ تنوعا أكبر فيما يتعلق بإمكان وجود كواكب قابلة للسكن. توفر الحلول 1 و4 أصغر PHZ: إذ يمكن أن تكون <math alttext="68\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p5.m1"><mrow><mn>68</mn><mo>%</mo></mrow></math> و<math alttext="71\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p5.m2"><mrow><mn>71</mn><mo>%</mo></mrow></math> على الترتيب من CHZ ملائمة لكوكب لدعم الماء السائل على سطحه، أيا كان تطوره المداري. وفي الطرف الآخر، لدينا الحلان 5 و6 اللذان يوفران أوسع مناطق PHZ (<math alttext="\sim 90\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p5.m3"><mrow><mi></mi><mo>∼</mo><mrow><mn>90</mn><mo>%</mo></mrow></mrow></math>). ويرجع ذلك إلى أن هذين الحلين يعطيان أصغر شذوذين <math alttext="e_{p}" class="ltx_Math" dir="ltr" display="inline" id="S4.p5.m4"><msub><mi>e</mi><mi>p</mi></msub></math> للكوكب TIC-172900988b. وتعني الشذوذات الصغيرة للكوكب العملاق أنه لا يتوقع لكوكب أرضي على مدار دائري ابتدائيا أن يبلغ قيما عالية من شذوذه المداري <cite class="ltx_cite ltx_citemacro_citep">(انظر مثلا Georgakarakos et al., <a class="ltx_ref" href="#bib.bib15" title="">2016</a>)</cite>. ويظهر ذلك في الرسم السفلي من الشكل <a class="ltx_ref" href="#S3.F3" title="Figure 3 ‣ 3.4 TIC-172900988 ‣ 3 استقرار المنطقة القابلة للسكن ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">3</span></a>. وتعطي الحلول 2 و3 أطوال PHZ تقع بين مجموعتي الحلول الأخريين. وأخيرا، إذا كان لعالمنا المحتمل القابل للسكن قدرة متوسطة على تخميد تغيرات الإشعاع الوارد، فيمكن للكوكب أن يقيم في جزء أكبر حتى من CHZ، يتراوح من <math alttext="86\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p5.m5"><mrow><mn>86</mn><mo>%</mo></mrow></math> إلى <math alttext="95\%" class="ltx_Math" dir="ltr" display="inline" id="S4.p5.m6"><mrow><mn>95</mn><mo>%</mo></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S4.p6">
+<p class="ltx_p">يمثل الشكل <a class="ltx_ref" href="#S4.F4" title="Figure 4 ‣ 4 المناطق القابلة للسكن المستندة إلى الديناميات ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">4</span></a> تمثيلا بيانيا لـ DIHZs في النظامين الثنائيين.
+وفي هذه الرسوم سمحنا للشذوذ <math alttext="e_{p}" class="ltx_Math" dir="ltr" display="inline" id="S4.p6.m1"><msub><mi>e</mi><mi>p</mi></msub></math> للكوكبين TOI-1338b وTIC-172900988b
+بأن يتغير حتى قيم أعلى بكثير، بحيث يستطيع القارئ أن يتصور على نحو أفضل أثر تلك الكمية في طول المناطق المختلفة القابلة للسكن.</p>
+</div>
+<figure class="ltx_figure" id="S4.F4">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S4.F4.g1" src="x7.png" width="463"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="327" id="S4.F4.g2" src="x8.png" width="463"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>المناطق القابلة للسكن المستندة إلى الديناميات لـ TOI-1338 وTIC-172900988. اللوحة العلوية للحالة ذات <math alttext="m_{p}=50.5M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S4.F4.m2"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>50.5</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math>، بينما اللوحة السفلية لـ TIC-172900988 (S4). وتمثل الخطوط السوداء الرأسية حدود المنطقة الكلاسيكية. ويشير القرص الأسود إلى الموضع الحالي للكوكب الموجود، أما الخط الأبيض الأفقي فهو مؤشر لقيمة شذوذه. اللون الأزرق: PHZ، اللون الأصفر: AHZ، اللون الأخضر: EHZ، اللون الأحمر: غير قابل للسكن، اللون الأرجواني: منطقة غير مستقرة (تأثير الثنائية - استنادا إلى المعيار التجريبي لـ <cite class="ltx_cite ltx_citemacro_cite">Holman &amp;
+Wiegert (<a class="ltx_ref" href="#bib.bib20" title="">1999</a>)</cite>)، اللون البنفسجي: منطقة غير مستقرة (تأثير الكوكب الموجود - استنادا إلى المعيار التجريبي لـ <cite class="ltx_cite ltx_citemacro_cite">Petrovich (<a class="ltx_ref" href="#bib.bib28" title="">2015</a>)</cite>).</figcaption>
+</figure>
+<figure class="ltx_table" id="S4.T1">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 1: </span>حدود المنطقة القابلة للسكن لـ TOI-1338 وTIC-172900988.</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">System</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">CHZ (au)</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">PHZ (au)</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">EHZ (au)</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">AHZ (au)</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">TOI-1338 (<math alttext="m_{p}=30.2M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S4.T1.m1"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>30.2</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math>)</td>
+<td class="ltx_td ltx_align_left ltx_border_t">1.31 - 2.31</td>
+<td class="ltx_td ltx_align_left ltx_border_t">1.46 - 2.16 (70%)</td>
+<td class="ltx_td ltx_align_left ltx_border_t">1.37 - 2.25 (88%)</td>
+<td class="ltx_td ltx_align_left ltx_border_t">1.31 - 2.31 (100%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">TOI-1338 (<math alttext="m_{p}=50.5M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S4.T1.m2"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>50.5</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math>)</td>
+<td class="ltx_td ltx_align_left">1.31 - 2.31</td>
+<td class="ltx_td ltx_align_left">1.45 - 2.17 (72%)</td>
+<td class="ltx_td ltx_align_left">1.37 - 2.25 (88%)</td>
+<td class="ltx_td ltx_align_left">1.32 - 2.30 (98%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">TIC-172900988 (S1)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40</td>
+<td class="ltx_td ltx_align_left">2.22 - 3.21 (68%)</td>
+<td class="ltx_td ltx_align_left">2.03 - 3.30 (87%)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40 (100%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">TIC-172900988 (S2)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40</td>
+<td class="ltx_td ltx_align_left">2.11 - 3.25 (78%)</td>
+<td class="ltx_td ltx_align_left">2.01 - 3.32 (90%)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40 (100%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">TIC-172900988 (S3)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40</td>
+<td class="ltx_td ltx_align_left">2.13 - 3.23 (75%)</td>
+<td class="ltx_td ltx_align_left">2.02 - 3.31 (88%)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40 (100%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">TIC-172900988 (S4)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40</td>
+<td class="ltx_td ltx_align_left">2.16 - 3.19 (71%)</td>
+<td class="ltx_td ltx_align_left">2.04 - 3.29 (86%)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40 (100%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">TIC-172900988 (S5)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40</td>
+<td class="ltx_td ltx_align_left">2.02 - 3.33 (90%)</td>
+<td class="ltx_td ltx_align_left">1.97 - 3.36 (95%)</td>
+<td class="ltx_td ltx_align_left">1.94 - 3.40 (100%)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_b">TIC-172900988 (S6)</td>
+<td class="ltx_td ltx_align_left ltx_border_b">1.94 - 3.40</td>
+<td class="ltx_td ltx_align_left ltx_border_b">2.02 - 3.33 (90%)</td>
+<td class="ltx_td ltx_align_left ltx_border_b">1.97 - 3.36 (95%)</td>
+<td class="ltx_td ltx_align_left ltx_border_b">1.94 - 3.39 (100%)</td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>قابلية كشف الكواكب الشبيهة بالأرض</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">رأينا في القسم السابق أن المنطقتين القابلتين للسكن لكل من TOI-1338
+وTIC-172900988 جيدتان بما يكفي لدعم كوكب يحوي ماء سائلا على سطحه.
+غير أن سؤالا مشروعا هو ما إذا كان يمكن كشف مثل هذا الكوكب ضمن مدى المنطقة القابلة للسكن. وفي هذا القسم نقدم بعض التقديرات للإجابة عن السؤال أعلاه.</p>
+</div>
+<div class="ltx_para" id="S5.p2">
+<p class="ltx_p">اقتُرح أن الكواكب في الثنائيات قد تكون أسهل كشفا مقارنة بأنظمة النجم المفرد، لأن التفاعلات الجذبية بين الكوكب والنجم الثاني يمكن أن تعزز إشارات السرعة الشعاعية والقياس الفلكي <cite class="ltx_cite ltx_citemacro_citep">(مثلا Eggl et al., <a class="ltx_ref" href="#bib.bib10" title="">2013b</a>)</cite>.
+واتباعا لـ <cite class="ltx_cite ltx_citemacro_cite">Eggl et al. (<a class="ltx_ref" href="#bib.bib10" title="">2013b</a>)</cite> ومع تعديل نصف سعة RV تبعا لذلك لنظام محيط بثنائي نجمي <cite class="ltx_cite ltx_citemacro_citep">(Martin
+et al., <a class="ltx_ref" href="#bib.bib26" title="">2019</a>)</cite>، فإن القيمة العظمى للسرعة الشعاعية المتحققة هي</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S5.E8">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="V_{r}^{max}=\frac{\sqrt{G}m_{EL}\sin{i}\sqrt{1+e_{EL}^{max}}}{\sqrt{a_{EL}(m_{%
+1}+m_{2}+m_{EL})(1-e_{EL}^{max})}}," class="ltx_Math" dir="ltr" display="block" id="S5.E8.m1"><mrow><mrow><msubsup><mi>V</mi><mi>r</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><msqrt><mi>G</mi></msqrt><mo>⁢</mo><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>i</mi><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>+</mo><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></mrow></msqrt></mrow></mrow></mrow><msqrt><mrow><msub><mi>a</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></mrow><mo stretchy="false">)</mo></mrow></mrow></msqrt></mfrac></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m1"><mi>i</mi></math> هو الميل بالنسبة إلى مستوى السماء. ويشير الرمز السفلي <span class="ltx_text ltx_font_italic">EL</span> إلى الكوكب الشبيه بالأرض.</p>
+</div>
+<div class="ltx_para" id="S5.p3">
+<p class="ltx_p">نقيم الآن المعادلة (<a class="ltx_ref" href="#S5.E8" title="In 5 قابلية كشف الكواكب الشبيهة بالأرض ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">8</span></a>) لنظام TOI-1338 على مدى منطقته القابلة للسكن. وبالنسبة إلى <math alttext="e_{EL}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m1"><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math> استخدمنا القيم المكتسبة خلال تجربة الاستقرار التي أجريناها. كما نفترض أن <math alttext="\sin{i}=0^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m2"><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>i</mi></mrow><mo>=</mo><msup><mn>0</mn><mo>∘</mo></msup></mrow></math>. وبالنسبة إلى كلا حلّي TOI-1338b، لا تتجاوز <math alttext="V_{r}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m3"><msubsup><mi>V</mi><mi>r</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math> القيمة <math alttext="7cm/s" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m4"><mrow><mrow><mn>7</mn><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mi>m</mi></mrow><mo>/</mo><mi>s</mi></mrow></math> عند الحافة الداخلية للمنطقة القابلة للسكن. وكلما اقتربنا من الطرف الآخر للمنطقة القابلة للسكن تصبح تلك القيمة أصغر. وبطبيعة الحال، فهذا أمر متوقع. فالأرض عند مسافة 1 وحدة فلكية من الشمس لها نصف سعة RV قدره <math alttext="\sim 9cm/s" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m5"><mrow><mi></mi><mo>∼</mo><mrow><mrow><mn>9</mn><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mi>m</mi></mrow><mo>/</mo><mi>s</mi></mrow></mrow></math>. ومن ناحية أخرى،
+لدى TOI-1338 كتلة نجمية كلية مقدارها <math alttext="\sim 1.3M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m6"><mrow><mi></mi><mo>∼</mo><mrow><mn>1.3</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math>، وتبدأ المنطقة القابلة للسكن حول 1.3 وحدة فلكية. وكما يظهر من المعادلة (<a class="ltx_ref" href="#S5.E8" title="In 5 قابلية كشف الكواكب الشبيهة بالأرض ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">8</span></a>)، فإن زيادة الكتل النجمية ونصف المحور الأكبر للكوكب الشبيه بالأرض ستؤدي إلى قيم أصغر لـ <math alttext="V_{r}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m7"><msubsup><mi>V</mi><mi>r</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math>.
+وعلاوة على ذلك، كما رأينا في الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3.3 TOI-1338b ‣ 3 استقرار المنطقة القابلة للسكن ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">2</span></a>، يبقى الشذوذ الأعظم للكوكب الأرضي <math alttext="e_{EL}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m8"><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math>
+صغيرا جدا في جميع أنحاء المنطقة القابلة للسكن، ولذلك فهذا سبب آخر يجعل <math alttext="V_{r}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m9"><msubsup><mi>V</mi><mi>r</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math>، وهي دالة متزايدة في <math alttext="e_{EL}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m10"><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math>، ذات قيم منخفضة.</p>
+</div>
+<div class="ltx_para" id="S5.p4">
+<p class="ltx_p">عموما، قد لا تكون القيمة العظمى <math alttext="V_{r}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m1"><msub><mi>V</mi><mi>r</mi></msub></math> للسرعة الشعاعية أفضل مؤشر
+لنا من أجل تقييم قابلية كشف كوكب محتملة عند مدى معين. ويرجع ذلك إلى أنه ليس مؤكدا أننا سنتمكن من رصد الكوكب عندما يكون قد بلغ شذوذه المداري الأقصى أو قيمة قريبة منه. وتبعا لنظامنا، قد يظهر الكوكب فترة طويلة الأمد جدا مع سعة شذوذ مهمة. ومن ثم قد يكون من الأنسب استخدام مؤشرات مختلفة، مثل الجذر التربيعي لمتوسط المربعات (rms) لقياسات السرعة الشعاعية. ويأخذ التعبير الصيغة الآتية <cite class="ltx_cite ltx_citemacro_citep">(Eggl et al., <a class="ltx_ref" href="#bib.bib10" title="">2013b</a>)</cite>:</p>
+</div>
+<div class="ltx_para" id="S5.p5">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S5.E9">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="V_{r}^{rms}=\frac{\sqrt{G}m_{EL}|\sin{i}|}{\sqrt{2a_{EL}(m_{1}+m_{2}+m_{EL})}}" class="ltx_Math" dir="ltr" display="block" id="S5.E9.m1"><mrow><msubsup><mi>V</mi><mi>r</mi><mrow><mi>r</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>s</mi></mrow></msubsup><mo>=</mo><mfrac><mrow><msqrt><mi>G</mi></msqrt><mo>⁢</mo><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>i</mi></mrow><mo stretchy="false">|</mo></mrow></mrow><msqrt><mrow><mn>2</mn><mo>⁢</mo><msub><mi>a</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></msqrt></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S5.p6">
+<p class="ltx_p">بالنسبة إلى TOI-1338، تكون <math alttext="V_{r}^{rms}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m1"><msubsup><mi>V</mi><mi>r</mi><mrow><mi>r</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>s</mi></mrow></msubsup></math> أقل بقليل من <math alttext="4.8cm/s" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m2"><mrow><mrow><mn>4.8</mn><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mi>m</mi></mrow><mo>/</mo><mi>s</mi></mrow></math> عند الحافة الداخلية للمنطقة القابلة للسكن، ثم تنخفض كلما اتجهنا نحو الحد الخارجي
+للمنطقة القابلة للسكن. ويقدم الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5 قابلية كشف الكواكب الشبيهة بالأرض ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">5</span></a> (اللوحتان العلويتان) تطور
+<math alttext="V_{r}^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m3"><msubsup><mi>V</mi><mi>r</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></math> و<math alttext="V_{r}^{rms}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m4"><msubsup><mi>V</mi><mi>r</mi><mrow><mi>r</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>s</mi></mrow></msubsup></math> داخل المنطقة القابلة للسكن لحل الملاءمة الأفضل لـ TOI-1338.</p>
+</div>
+<div class="ltx_para" id="S5.p7">
+<p class="ltx_p">إذا نظرنا الآن إلى القياس الفلكي باعتباره طريقة الكشف، فهناك تعبيرات مشابهة لطريقة RV تتعلق بالسعة الفلكية العظمى وrms الفلكي. وتعطى هذه بالعلاقات <cite class="ltx_cite ltx_citemacro_citep">(Eggl et al., <a class="ltx_ref" href="#bib.bib10" title="">2013b</a>)</cite>:</p>
+</div>
+<div class="ltx_para" id="S5.p8">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S5.E10">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\rho^{max}=\frac{m_{EL}a_{EL}(1+e_{EL}^{max})}{(m_{1}+m_{2}+m_{EL})d}" class="ltx_Math" dir="ltr" display="block" id="S5.E10.m1"><mrow><msup><mi>ρ</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msup><mo>=</mo><mfrac><mrow><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>⁢</mo><msub><mi>a</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msubsup></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>d</mi></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">و</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table" dir="ltr" id="A1.EGx1">
+<tbody id="S5.E11">
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\rho^{rms}" class="ltx_Math" dir="ltr" display="inline" id="S5.Ex1.m1"><msup><mi>ρ</mi><mrow><mi>r</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>s</mi></mrow></msup></math></td>
+<td class="ltx_td ltx_align_center ltx_eqn_cell"><math alttext="\displaystyle=" class="ltx_Math" dir="ltr" display="inline" id="S5.Ex1.m2"><mo>=</mo></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle\frac{1}{2}\frac{m_{EL}a_{EL}}{(m_{1}+m_{2}+m_{EL})d}\left[3+%
+\frac{9}{2}&lt;e_{EL}^{2}&gt;+\left(1+\right.\right." class="ltx_math_unparsed" dir="ltr" display="inline" id="S5.Ex1.m3"><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mstyle displaystyle="true"><mfrac><mrow><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub><mo>⁢</mo><msub><mi>a</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>d</mi></mrow></mfrac></mstyle><mrow><mo>[</mo><mn>3</mn><mo>+</mo><mstyle displaystyle="true"><mfrac><mn>9</mn><mn>2</mn></mfrac></mstyle><mo>&lt;</mo><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mn>2</mn></msubsup><mo rspace="0em">&gt;</mo><mo lspace="0em">+</mo><mrow><mo>(</mo><mn>1</mn><mo>+</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="2"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td>
+</tr>
+<tr class="ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_center ltx_eqn_cell"><math alttext="\displaystyle+" class="ltx_Math" dir="ltr" display="inline" id="S5.E11.m1"><mo>+</mo></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle\left.\left.\frac{3}{2}&lt;e_{EL}^{2}&gt;\right)\cos{2i}\right]^{1/2}," class="ltx_math_unparsed" dir="ltr" display="inline" id="S5.E11.m2"><mrow><mrow><mstyle displaystyle="true"><mfrac><mn>3</mn><mn>2</mn></mfrac></mstyle><mo>&lt;</mo><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mn>2</mn></msubsup><mo rspace="0em">&gt;</mo><mo rspace="0.167em">)</mo></mrow><mi>cos</mi><mn>2</mn><mi>i</mi><mo>]</mo><msup><mi></mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+</tr>
+</tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="d" class="ltx_Math" dir="ltr" display="inline" id="S5.p8.m1"><mi>d</mi></math> هي المسافة (بالوحدات الفلكية) بين الراصد والنظام المرصود، و<math alttext="&lt;e_{EL}^{2}&gt;" class="ltx_Math" dir="ltr" display="inline" id="S5.p8.m2"><mrow><mo fence="true" rspace="0em">&lt;</mo><msubsup><mi>e</mi><mrow><mi>E</mi><mo>⁢</mo><mi>L</mi></mrow><mn>2</mn></msubsup><mo fence="true" lspace="0em">&gt;</mo></mrow></math> هو الشذوذ التربيعي المتوسط على الشذوذ المتوسط وحجة الحضيض.
+وينبغي للقارئ أن يلاحظ هنا أن <math alttext="\rho^{max}" class="ltx_Math" dir="ltr" display="inline" id="S5.p8.m3"><msup><mi>ρ</mi><mrow><mi>m</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></msup></math> مستقل عن الميل <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S5.p8.m4"><mi>i</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S5.p9">
+<p class="ltx_p">بالنسبة إلى TOI-1338، فإن الإشارة الفلكية العظمى لكوكب ذي كتلة أرضية في المنطقة القابلة للسكن للنظام صغيرة جدا، أي أصغر من 0.014 <math alttext="\mu as" class="ltx_Math" dir="ltr" display="inline" id="S5.p9.m1"><mrow><mi>μ</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>s</mi></mrow></math>.
+والإشارة المتوسطة أدنى من ذلك بمرتبة مقدار واحدة. وتؤكد اللوحتان السفليتان من الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5 قابلية كشف الكواكب الشبيهة بالأرض ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">5</span></a> ذلك.</p>
+</div>
+<div class="ltx_para" id="S5.p10">
+<p class="ltx_p">يعرض TIC-172900988 أيضا إشارات كشف صغيرة في منطقته القابلة للسكن. فإشارة السرعة الشعاعية أقل من نظيراتها في TOI-1338، بينما مؤشرات القياس الفلكي أكبر. والكتلة الكلية للثنائية النجمية أكبر بنحو الضعف من كتلة TOI-1338. إضافة إلى ذلك، تقع الحافة الداخلية للمنطقة القابلة للسكن أبعد بنحو <math alttext="50\%" class="ltx_Math" dir="ltr" display="inline" id="S5.p10.m1"><mrow><mn>50</mn><mo>%</mo></mrow></math> من الحد الداخلي
+للمنطقة القابلة للسكن في TOI-1338. وأخيرا، كما ذكر سابقا، فإن الشذوذ الأعظم الذي يكتسبه الكوكب الأرضي الافتراضي عبر المنطقة القابلة للسكن أصغر في نظام TIC-172900988. ومن ناحية أخرى، فإن الإشارات الفلكية لـ TOI-1338 أصغر، ويرجع ذلك أساسا إلى أن مسافته <math alttext="d" class="ltx_Math" dir="ltr" display="inline" id="S5.p10.m2"><mi>d</mi></math> عنا هي <math alttext="399.017pc" class="ltx_Math" dir="ltr" display="inline" id="S5.p10.m3"><mrow><mn>399.017</mn><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mi>c</mi></mrow></math>، وهي أكبر بكثير من <math alttext="246.263pc" class="ltx_Math" dir="ltr" display="inline" id="S5.p10.m4"><mrow><mn>246.263</mn><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mi>c</mi></mrow></math> الخاصة بـ TIC-172900988. ويمثل الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5 قابلية كشف الكواكب الشبيهة بالأرض ‣ ديناميات وقابلية السكن في نظامي TESS المحيطين بثنائي نجمي TOI-1338 وTIC-172900988"><span class="ltx_text ltx_ref_tag">6</span></a> تمثيلا بيانيا لإشارات السرعة الشعاعية والقياس الفلكي لـ TIC-172900988.</p>
+</div>
+<figure class="ltx_figure" id="S5.F5">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F5.g1" src="x9.png" width="436"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F5.g2" src="x10.png" width="436"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F5.g3" src="x11.png" width="436"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F5.g4" src="x12.png" width="436"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>قيم قابلية الكشف لحل الملاءمة الأفضل لـ TOI-1338.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F6">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F6.g1" src="x13.png" width="436"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F6.g2" src="x14.png" width="436"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F6.g3" src="x15.png" width="436"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="300" id="S5.F6.g4" src="x16.png" width="436"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>قيم قابلية الكشف لـ TIC-172900988 (S4).</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>ملخص ومناقشة</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">استكشفنا الديناميات وقابلية السكن المحتملة للنظامين المحيطين بثنائي نجمي
+اللذين اكتشفا باستخدام TESS حتى الآن. يستضيف النظام الثنائي TOI-1338 كوكبا تبلغ كتلته نحو ضعف كتلة نبتون، بينما لدى TIC-170900988 كوكب كتلته نحو ثلاث كتل مشتري. وقد استكشفنا المناطق القابلة للسكن في كلا النظامين من حيث استقرارها الديناميكي. ووضعنا كوكبا افتراضيا بكتلة أرضية على امتداد المنطقتين القابلتين للسكن للتحقق مما إذا كان مداره مستقرا ديناميكيا، وأجرينا عددا من المحاكاة العددية على مدى زمني كاف. ومن نظريات تشكل الكواكب، من الممكن وجود هذا النوع من الأنظمة <cite class="ltx_cite ltx_citemacro_citep">(مثلا Barbosa et al., <a class="ltx_ref" href="#bib.bib1" title="">2020</a>, <a class="ltx_ref" href="#bib.bib2" title="">2021</a>)</cite>. ووجدنا أنه بالنسبة إلى الحلول المدارية المختلفة لـ TOI-1338 وTIC-172900988 التي بحثناها، أظهر مدار الكوكب ذي الكتلة الأرضية تغيرات طفيفة في نصف المحور الأكبر وبعض التغيرات الصغيرة في الشذوذ. ومن ثم تبين أن جميع التهيئات مستقرة. وبما أن المنطقة القابلة للسكن في النظام وُجدت مستقرة ديناميكيا، فقد حسبنا المناطق القابلة للسكن المستندة إلى الديناميات للحصول على تقييم للخصائص النوعية للمنطقة القابلة للسكن. ووجدنا في جميع الحالات أن المنطقة القابلة للسكن دائما تغطي جزءا كبيرا من المنطقة الكلاسيكية القابلة للسكن.
+وفي بعض الحالات بلغ ذلك الجزء نحو <math alttext="90\%" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m1"><mrow><mn>90</mn><mo>%</mo></mrow></math> من الأخيرة، مما يعني أن النظام الثنائي مناسب لاستضافة كواكب أرضية ذات عطالة مناخية منخفضة. وقد عثر على هذا النوع من النتائج في أنظمة أخرى محيطة بثنائي نجمي، مثل Kepler-38 أو Kepler-64 على سبيل المثال <cite class="ltx_cite ltx_citemacro_citep">(Georgakarakos et al., <a class="ltx_ref" href="#bib.bib17" title="">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">بعد ذلك، تحققنا من مقدار إشارة الكشف المتوقعة لكوكب
+ذي كتلة أرضية في المنطقة القابلة للسكن للثنائيتين. وباستخدام طريقتي الكشف بالسرعة الشعاعية والقياس الفلكي، أجرينا بعض التقديرات التي تغطي كامل مدى المنطقة القابلة للسكن. وأظهرت النتائج أن مثل هذا الاكتشاف غير ممكن في ضوء مرافق الكشف الحالية لدينا، ولا سيما إذا حاولنا استخدام القياس الفلكي لكشف الكوكب.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">شكر وتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">أود أن أشكر Siegfried Eggl الذي قدم الشيفرة التي
+استخدمت في تجاربنا العددية. وأود أيضا أن أشكر
+المحكم O.C. Winter على تعليقاته التي ساعدتني على تحسين
+المخطوطة.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx2">
+<h2 class="ltx_title ltx_title_section">إتاحة البيانات</h2>
+<div class="ltx_para" id="Sx2.p1">
+<p class="ltx_p">البيانات المعروضة والمناقشة في هذه الورقة متاحة
+بناء على طلب معقول إلى المؤلف المراسل.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Barbosa et al. (2020)</span>
+<span class="ltx_bibblock">
+Barbosa G. O., Winter O. C., Amarante A., Izidoro A., Domingos
+R. C., Macau E. E. N., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa757" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.494.1045B" title="">494, 1045</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Barbosa et al. (2021)</span>
+<span class="ltx_bibblock">
+Barbosa G. O., Winter O. C., Amarante A., Macau E. E. N., 2021,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab1165" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.504.6144B" title="">504, 6144</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bonavita &amp;
+Desidera (2020)</span>
+<span class="ltx_bibblock">
+Bonavita M., Desidera S., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3390/galaxies8010016" title="">Galaxies</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020Galax...8...16B" title="">8, 16</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Borucki
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Borucki W. J., et al., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1126/science.1185402" title="">Science</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2010Sci...327..977B" title="">327, 977</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chavez
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Chavez C. E., Georgakarakos N., Prodan S., Reyes-Ruiz M., Aceves
+H., Betancourt F., Perez-Tijerina E., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu2142" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.446.1283C" title="">446, 1283</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eggl (2018)</span>
+<span class="ltx_bibblock">
+Eggl S., 2018, Habitability of Planets in Binary Star Systems.
+p. 61, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1007/978-3-319-55333-7_61" title="">doi:10.1007/978-3-319-55333-7_61</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eggl &amp;
+Dvorak (2010)</span>
+<span class="ltx_bibblock">
+Eggl S., Dvorak R., 2010, An Introduction to Common Numerical
+Integration Codes Used in Dynamical Astronomy.
+pp 431–480, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1007/978-3-642-04458-8_9" title="">doi:10.1007/978-3-642-04458-8_9</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eggl et al. (2012)</span>
+<span class="ltx_bibblock">
+Eggl S., Pilat-Lohinger E., Georgakarakos N., Gyergyovits M.,
+Funk B., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/752/1/74" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2012ApJ...752...74E" title="">752, 74</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eggl
+et al. (2013a)</span>
+<span class="ltx_bibblock">
+Eggl S., Pilat-Lohinger E., Funk B., Georgakarakos N.,
+Haghighipour N., 2013a, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sts257" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2013MNRAS.428.3104E" title="">428, 3104</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eggl et al. (2013b)</span>
+<span class="ltx_bibblock">
+Eggl S., Haghighipour N., Pilat-Lohinger E., 2013b, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/764/2/130" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2013ApJ...764..130E" title="">764, 130</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eggl et al. (2020)</span>
+<span class="ltx_bibblock">
+Eggl S., Georgakarakos N., Pilat-Lohinger E., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3390/galaxies8030065" title="">Galaxies</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020Galax...8...65E" title="">8, 65</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Georgakarakos (2013)</span>
+<span class="ltx_bibblock">
+Georgakarakos N., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1016/j.newast.2013.02.004" title="">New Astron.</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2013NewA...23...41G" title="">23, 41</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Georgakarakos &amp;
+Eggl (2015)</span>
+<span class="ltx_bibblock">
+Georgakarakos N., Eggl S., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/802/2/94" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015ApJ...802...94G" title="">802, 94</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Georgakarakos &amp;
+Eggl (2019)</span>
+<span class="ltx_bibblock">
+Georgakarakos N., Eggl S., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnrasl/slz082" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487L..58G" title="">487, L58</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Georgakarakos et al. (2016)</span>
+<span class="ltx_bibblock">
+Georgakarakos N., Dobbs-Dixon I., Way M. J., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stw1378" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.461.1512G" title="">461, 1512</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Georgakarakos et al. (2018)</span>
+<span class="ltx_bibblock">
+Georgakarakos N., Eggl S., Dobbs-Dixon I., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/aaaf72" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...856..155G" title="">856, 155</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Georgakarakos et al. (2021)</span>
+<span class="ltx_bibblock">
+Georgakarakos N., Eggl S., Dobbs-Dixon I., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3389/fspas.2021.640830" title="">Frontiers
+in Astronomy and Space Sciences</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021FrASS...8...44G" title="">8, 44</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gilbert
+et al. (2020)</span>
+<span class="ltx_bibblock">
+Gilbert E. A., et al., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/aba4b2" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020AJ....160..116G" title="">160, 116</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gillon
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Gillon M., et al., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/nature17448" title="">Nature</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016Natur.533..221G" title="">533, 221</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Holman &amp;
+Wiegert (1999)</span>
+<span class="ltx_bibblock">
+Holman M. J., Wiegert P. A., 1999, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/300695" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1999AJ....117..621H" title="">117, 621</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kasting et al. (1993)</span>
+<span class="ltx_bibblock">
+Kasting J. F., Whitmire D. P., Reynolds R. T., 1993, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1006/icar.1993.1010" title="">Icarus</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1993Icar..101..108K" title="">101, 108</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Koch
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Koch D. G., et al., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/2041-8205/713/2/L79" title="">ApJ</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2010ApJ...713L..79K" title="">713, L79</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kopparapu
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Kopparapu R. K., Ramirez R. M., SchottelKotte J., Kasting J. F.,
+Domagal-Goldman S., Eymet V., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/2041-8205/787/2/L29" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014ApJ...787L..29K" title="">787, L29</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kostov
+et al. (2020)</span>
+<span class="ltx_bibblock">
+Kostov V. B., et al., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/ab8a48" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020AJ....159..253K" title="">159, 253</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kostov
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Kostov V. B., et al., 2021, arXiv e-prints, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021arXiv210508614K" title="">p. arXiv:2105.08614</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Martin
+et al. (2019)</span>
+<span class="ltx_bibblock">
+Martin D. V., et al., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/201833669" title="">A&amp;A</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019A&amp;A...624A..68M" title="">624, A68</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Marzari &amp;
+Thebault (2019)</span>
+<span class="ltx_bibblock">
+Marzari F., Thebault P., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3390/galaxies7040084" title="">Galaxies</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019Galax...7...84M" title="">7, 84</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Petrovich (2015)</span>
+<span class="ltx_bibblock">
+Petrovich C., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/808/2/120" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015ApJ...808..120P" title="">808, 120</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Popova &amp;
+Shevchenko (2016)</span>
+<span class="ltx_bibblock">
+Popova E. A., Shevchenko I. I., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1134/S1063773716060050" title="">Astronomy Letters</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016AstL...42..474P" title="">42, 474</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Rodriguez
+et al. (2020)</span>
+<span class="ltx_bibblock">
+Rodriguez J. E., et al., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/aba4b3" title="">AJ</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020AJ....160..117R" title="">160, 117</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Socia
+et al. (2020)</span>
+<span class="ltx_bibblock">
+Socia Q. J., et al., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/ab665b" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020AJ....159...94S" title="">159, 94</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Welsh
+et al. (2012)</span>
+<span class="ltx_bibblock">
+Welsh W. F., et al., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/nature10768" title="">Nature</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2012Natur.481..475W" title="">481, 475</a>
+</span>
+</li>
+</ul>
+</section>
+<section class="ltx_appendix" id="A1">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix A </span>الجداول</h2>
+<figure class="ltx_table" id="A1.T2">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 2: </span>المعلمات الفيزيائية والعناصر المدارية لـ TOI-1338 كما وردت في <cite class="ltx_cite ltx_citemacro_citet">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib24" title="">2020</a>)</cite> (<span class="ltx_text ltx_font_italic">الحل الأفضل</span>). تشير <math alttext="m" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m9"><mi>m</mi></math> و<math alttext="R" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m10"><mi>R</mi></math> و<math alttext="T_{eff}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m11"><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi></mrow></msub></math> و<math alttext="P" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m12"><mi>P</mi></math> و<math alttext="a" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m13"><mi>a</mi></math> و<math alttext="e" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m14"><mi>e</mi></math> و<math alttext="\omega" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m15"><mi>ω</mi></math> و<math alttext="M" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m16"><mi>M</mi></math> إلى الكتلة، ونصف القطر الفيزيائي، ودرجة الحرارة الفعالة، والفترة المدارية، ونصف المحور الأكبر، والشذوذ، وحجة الحضيض، والشذوذ المتوسط، على الترتيب.</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">Stellar binary</th>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_t"></th>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_t"></th>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_t"></th>
+<th class="ltx_td ltx_th ltx_th_column ltx_border_t"></th>
+<td class="ltx_td ltx_border_t"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t"><math alttext="m_{1}=1.038M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m17"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.038</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math alttext="m_{2}=0.2974M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m18"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>0.2974</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math alttext="R_{1}=1.299R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m19"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.299</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math alttext="R_{2}=0.3015R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m20"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>0.3015</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math alttext="T_{eff1}=5990.7K" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m21"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>5990.7</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math alttext="T_{eff2}=3317.1K" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m22"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>3317.1</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=14.608561d" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m23"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>14.608561</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.1288au" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m24"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.1288</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.15601" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m25"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.15601</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=117.561^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m26"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>117.561</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=93.882^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m27"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>93.882</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">Planet</td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_t"><math alttext="m_{p}=30.2M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m28"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>30.2</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_t"><math alttext="P_{p}=95.141d" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m29"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>95.141</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_t"><math alttext="a_{p}=0.4491au" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m30"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.4491</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_t"><math alttext="e_{p}=0.0928" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m31"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0928</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_t"><math alttext="\omega_{p}=263.3^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m32"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>263.3</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_t"><math alttext="M_{p}=128.3^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T2.m33"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>128.3</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_table" id="A1.T3">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 3: </span>المعلمات الفيزيائية والعناصر المدارية لـ TIC-172900988 كما وردت في <cite class="ltx_cite ltx_citemacro_citet">Kostov
+et al. (<a class="ltx_ref" href="#bib.bib25" title="">2021</a>)</cite>. وللرموز المعنى نفسه الوارد في الجدول A1.</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">Stellar binary</td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">Solution 1</td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{1}=1.2382M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m1"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.2382</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="m_{2}=1.2025M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m2"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.2025</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{1}=1.3844R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m3"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.3844</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{2}=1.3169R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m4"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.3169</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff1}=6050K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m5"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>6050</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff2}=5983K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m6"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>5983</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=19.657473d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m7"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>19.657473</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.191920au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m8"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.191920</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.44803" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m9"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.44803</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=69.603^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m10"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>69.603</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=254.498^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m11"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>254.498</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 2</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{1}=1.2381M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m12"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.2381</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="m_{2}=1.2024M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m13"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.2024</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{1}=1.3829R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m14"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.3829</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{2}=1.3156R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m15"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.3156</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff1}=6050K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m16"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>6050</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff2}=5983K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m17"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>5983</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=19.658073d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m18"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>19.658073</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.191920au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m19"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.191920</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.44806" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m20"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.44806</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=69.617^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m21"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>69.617</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=254.491^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m22"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>254.491</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 3</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{1}=1.2382M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m23"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.2382</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="m_{2}=1.2025M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m24"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.2025</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{1}=1.3833R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m25"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.3833</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{2}=1.3150R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m26"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.3150</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff1}=6050K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m27"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>6050</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff2}=5983K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m28"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>5983</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=19.658150d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m29"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>19.658150</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.191926au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m30"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.191926</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.44812" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m31"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.44812</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=69.618^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m32"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>69.618</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=254.489^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m33"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>254.489</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 4</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{1}=1.2380M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m34"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.2380</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="m_{2}=1.2023M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m35"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.2023</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{1}=1.3824R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m36"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.3824</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{2}=1.3159R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m37"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.3159</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff1}=6050K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m38"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>6050</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff2}=5983K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m39"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>5983</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=19.656660d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m40"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>19.656660</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.191907au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m41"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.191907</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.44822" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m42"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.44822</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=69.594^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m43"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>69.594</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=254.504^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m44"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>254.504</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 5</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{1}=1.2377M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m45"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.2377</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="m_{2}=1.2021M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m46"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.2021</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{1}=1.3827R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m47"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.3827</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{2}=1.3141R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m48"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.3141</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff1}=6050K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m49"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>6050</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff2}=5983K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m50"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>5983</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=19.658175d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m51"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>19.658175</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.191902au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m52"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.191902</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.44819" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m53"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.44819</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=69.621^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m54"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>69.621</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=254.481^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m55"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>254.481</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 6</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{1}=1.2378M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m56"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.2378</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="m_{2}=1.2021M_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m57"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.2021</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{1}=1.3825R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m58"><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><mrow><mn>1.3825</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="R_{2}=1.3127R_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m59"><mrow><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mrow><mn>1.3127</mn><mo>⁢</mo><msub><mi>R</mi><mo>⊙</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff1}=6050K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m60"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mn>6050</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="T_{eff2}=5983K" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m61"><mrow><msub><mi>T</mi><mrow><mi>e</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mn>2</mn></mrow></msub><mo>=</mo><mrow><mn>5983</mn><mo>⁢</mo><mi>K</mi></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="P_{b}=19.658014d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m62"><mrow><msub><mi>P</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>19.658014</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{b}=0.191905au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m63"><mrow><msub><mi>a</mi><mi>b</mi></msub><mo>=</mo><mrow><mn>0.191905</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{b}=0.44814" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m64"><mrow><msub><mi>e</mi><mi>b</mi></msub><mo>=</mo><mn>0.44814</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{b}=69.616^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m65"><mrow><msub><mi>ω</mi><mi>b</mi></msub><mo>=</mo><msup><mn>69.616</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{b}=254.487^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m66"><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>=</mo><msup><mn>254.487</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">Planet</td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">Solution 1</td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_border_t"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{p}=822.4M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m67"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>822.4</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="P_{p}=188.763d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m68"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>188.763</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{p}=0.86733au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m69"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.86733</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{p}=0.0890" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m70"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0890</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{p}=196.6^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m71"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>196.6</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{p}=143.8^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m72"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>143.8</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 2</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{p}=844.1M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m73"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>844.1</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="P_{p}=190.388d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m74"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>190.388</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{p}=0.87231au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m75"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.87231</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{p}=0.0664" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m76"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0664</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{p}=184.4^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m77"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>184.4</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{p}=328.1^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m78"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>328.1</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 3</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{p}=835.3M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m79"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>835.3</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="P_{p}=193.995d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m80"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>193.995</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{p}=0.88333au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m81"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.88333</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{p}=0.0767" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m82"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0767</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{p}=176.9^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m83"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>176.9</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{p}=276.7^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m84"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>276.7</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 4</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{p}=869.1M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m85"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>869.1</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="P_{p}=199.001d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m86"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>199.001</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{p}=0.89843au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m87"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.89843</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{p}=0.0904" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m88"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0904</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{p}=200.1^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m89"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>200.1</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{p}=13.9^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m90"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>13.9</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 5</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math alttext="m_{p}=942.1M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m91"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>942.1</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="P_{p}=200.452d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m92"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>200.452</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="a_{p}=0.90274au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m93"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.90274</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="e_{p}=0.0271" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m94"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0271</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="\omega_{p}=161.1^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m95"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>161.1</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left"><math alttext="M_{p}=157.1^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m96"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>157.1</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Solution 6</td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_b"><math alttext="m_{p}=981.0M_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m97"><mrow><msub><mi>m</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>981.0</mn><mo>⁢</mo><msub><mi>M</mi><mo>⊕</mo></msub></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b"><math alttext="P_{p}=204.051d" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m98"><mrow><msub><mi>P</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>204.051</mn><mo>⁢</mo><mi>d</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b"><math alttext="a_{p}=0.91355au" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m99"><mrow><msub><mi>a</mi><mi>p</mi></msub><mo>=</mo><mrow><mn>0.91355</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>u</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b"><math alttext="e_{p}=0.0265" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m100"><mrow><msub><mi>e</mi><mi>p</mi></msub><mo>=</mo><mn>0.0265</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b"><math alttext="\omega_{p}=138.3^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m101"><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>=</mo><msup><mn>138.3</mn><mo>∘</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b"><math alttext="M_{p}=11.8^{\circ}" class="ltx_Math" dir="ltr" display="inline" id="A1.T3.m102"><mrow><msub><mi>M</mi><mi>p</mi></msub><mo>=</mo><msup><mn>11.8</mn><mo>∘</mo></msup></mrow></math></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Sat May  2 14:19:49 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

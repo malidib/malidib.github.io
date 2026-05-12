@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية</title>
+<!--Generated on Tue May 12 01:04:32 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-ulem.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="الشمس: المجالات المغناطيسية — طرائق: تحليل البيانات — طرائق: متنوعة — طرائق: إحصائية" lang="ar" name="keywords"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_multiline">
+<h1 class="ltx_title ltx_title_document" style="font-size:144%;">إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Dattaraj B. Dhuri
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">Department of Astronomy and Astrophysics, Tata Institute of Fundamental Research, Mumbai, India 400005
+</span>
+<span class="ltx_contact ltx_role_affiliation">Center for Space Science, New York University Abu Dhabi, Abu Dhabi, UAE
+</span></span></span>
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Shamik Bhattacharjee
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">Department of Astronomy and Astrophysics, Tata Institute of Fundamental Research, Mumbai, India 400005
+</span></span></span>
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Shravan M. Hanasoge
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">Department of Astronomy and Astrophysics, Tata Institute of Fundamental Research, Mumbai, India 400005
+</span>
+<span class="ltx_contact ltx_role_affiliation">Center for Space Science, New York University Abu Dhabi, Abu Dhabi, UAE
+</span></span></span>
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Sashi Kiran Mahapatra
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">Department of Astronomy and Astrophysics, Tata Institute of Fundamental Research, Mumbai, India 400005
+</span></span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">ينتج النشاط المغناطيسي الشمسي توهجات شمسية قصوى وانبعاثات كتلية إكليلية، وهي تشكل تهديدات جسيمة للبنية التحتية الإلكترونية ويمكن أن تعطل النشاط الاقتصادي تعطيلًا كبيرًا. ومن ثم فمن المهم فهم محفزات النشاط الشمسي الانفجاري وتطوير تنبؤ موثوق بالطقس الفضائي. تلتقط بيانات الحقول المغناطيسية المتجهة في الغلاف الضوئي تعقيد الحقول المغناطيسية للبقع الشمسية، ولذلك يمكنها تحسين جودة التنبؤ بالطقس الفضائي. غير أن أحدث رصدات الحقول المتجهة لا تتوافر بصورة منتظمة إلا من مرصد Solar Dynamics Observatory/Helioseismic and Magnetic Imager (SDO/HMI) منذ 2010، في حين لا تسجل معظم المهمات والمرافق الرصدية الحالية والسابقة الأخرى، مثل Global Oscillations Network Group (GONG)، إلا حقول خط البصر (LOS). هنا، وباستخدام شبكة عصبية التفافية قائمة على وحدات inception، نعيد بناء خصائص الحقول المتجهة للبقع الشمسية من HMI من مغناطوغرامات LOS الخاصة بكل من HMI وGONG بدقة عالية (ارتباط <img alt="$\sim 90\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 90\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0001.svg"/>) ومع دقة مستمرة في التنبؤ بالتوهجات. ونعيد بناء خصائص الحقول المتجهة أثناء عواصف الهالوين في 2003، التي لا تتوافر لها إلا رصدات حقل LOS، وتلتقط لولبية التيار الكهربائي المقدرة بواسطة CNN بدقة الدوران المرصود للبقعة الشمسية المرتبطة بها قبل التوهجات القصوى، مظهرة زيادة لافتة. وبذلك تمهد دراستنا الطريق لإعادة بناء بيانات الحقول المتجهة لما يعادل ثلاث دورات شمسية من قياسات LOS السابقة، وهي ذات فائدة كبيرة في تحسين نماذج التنبؤ بالطقس الفضائي واكتساب رؤى جديدة حول النشاط الشمسي.</p>
+</div>
+<div class="ltx_keywords">الشمس: المجالات المغناطيسية — طرائق: تحليل البيانات — طرائق: متنوعة — طرائق: إحصائية
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>المقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">تتولد الحقول المغناطيسية للبقع الشمسية داخل باطن الشمس، ثم تغدو طافية عبر منطقة الحمل الشمسي وتظهر في الغلاف الضوئي والإكليل على هيئة بنى واسعة النطاق من البقع الشمسية والمناطق النشطة (ARs) في صورة حلقات عملاقة <cite class="ltx_cite ltx_citemacro_citep">(Cheung &amp; Isobe, <a class="ltx_ref" href="#bib.bib10" title="">2014</a>)</cite>. والحلقات الإكليلية ديناميكية، إذ يقودها ظهور الفيض المغناطيسي والتيار الكهربائي والتدفقات المضطربة. وتتحرر الطاقة المغناطيسية الحرة المخزنة في هذه الحلقات أحيانًا عبر إعادة الاتصال المغناطيسي على شكل انفجارات مثل التوهجات والانبعاثات الكتلية الإكليلية (CMEs) <cite class="ltx_cite ltx_citemacro_citep">(Shibata &amp; Magara, <a class="ltx_ref" href="#bib.bib37" title="">2011</a>; Su et al., <a class="ltx_ref" href="#bib.bib40" title="">2013</a>)</cite>. ويمكن أن يؤدي الإشعاع والجسيمات المشحونة المنبعثة في هذه الانفجارات إلى طقس فضائي شديد، بما يعطل حياتنا على الأرض بدرجة كبيرة <cite class="ltx_cite ltx_citemacro_citep">(Pulkkinen et al., <a class="ltx_ref" href="#bib.bib31" title="">2005</a>; Eastwood et al., <a class="ltx_ref" href="#bib.bib14" title="">2017</a>; Boteler, <a class="ltx_ref" href="#bib.bib7" title="">2019</a>)</cite>. ففي الماضي، تسببت العاصفة الجيومغناطيسية في 1989، الناتجة عن توهج من الفئة X15 وانبعاث CME لاحق، في فصل قواطع الدارة في شبكة كهرباء Hydro-Quebec، مما أحدث انقطاعًا واسع النطاق للكهرباء في Quebec <cite class="ltx_cite ltx_citemacro_citep">(Boteler, <a class="ltx_ref" href="#bib.bib7" title="">2019</a>)</cite>. وأنتجت عاصفة الهالوين في 2003 توهجات قصوى تسببت في عطل محولات وانقطاعات للكهرباء في السويد، وألحقت أضرارًا بعدة أقمار اصطناعية لمهمات علمية <cite class="ltx_cite ltx_citemacro_citep">(Pulkkinen et al., <a class="ltx_ref" href="#bib.bib31" title="">2005</a>)</cite>. وفي مجتمع اليوم، يمكن لعاصفة شمسية كبيرة المقدار أن تؤدي، على نحو محتمل، إلى خسائر اقتصادية بقيمة تريليونات الدولارات الأمريكية، مع زمن تعاف قد يصل إلى عقد كامل <cite class="ltx_cite ltx_citemacro_citep">(Eastwood et al., <a class="ltx_ref" href="#bib.bib14" title="">2017</a>)</cite>. لذلك فإن تحسين فهمنا للحقول المغناطيسية في ARs مهم لتحديد محفزات هذه الانفجارات وتحقيق تنبؤ موثوق بالطقس الفضائي.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">الحقول المغناطيسية الإكليلية والفوتوسفيرية في ARs غير جهدية، وتتكون من أنابيب فيض ملتوية كما تكشفه رصدات SDO عالية الدقة وعالية الوتيرة <cite class="ltx_cite ltx_citemacro_citep">(Pesnell et al., <a class="ltx_ref" href="#bib.bib30" title="">2012</a>)</cite> منذ 2010. ومن المعروف أن ARs الكبيرة وديناميكياتها المعقدة، مثل الالتواء والدوران، ترتبط بالنشاط الشمسي الانفجاري <cite class="ltx_cite ltx_citemacro_citep">(Toriumi &amp; Wang, <a class="ltx_ref" href="#bib.bib44" title="">2019</a>)</cite>. وتيسر رصدات SDO/HMI للحقول المغناطيسية المتجهة في الغلاف الضوئي حساب خصائص AR <cite class="ltx_cite ltx_citemacro_citep">(Leka &amp; Barnes, <a class="ltx_ref" href="#bib.bib22" title="">2007</a>)</cite>، مثل الفيض المغناطيسي الكلي غير الموقّع، وكثافة الطاقة الحرة، ولولبية التيار الكهربائي، وقوى Lorentz، التي تميز ديناميكيات الحقول المغناطيسية في AR. وهذه الخصائص متاحة للعموم بوصفها منتج بيانات HMI المعروف باسم Space-weather HMI Active Region Patches (SHARPs) <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>. وتستخدم خصائص SHARPs على نطاق واسع في الدراسات الإحصائية لتطور الحقل المغناطيسي قبل التوهج وتراكم الطاقة <cite class="ltx_cite ltx_citemacro_citep">(Dhuri et al., <a class="ltx_ref" href="#bib.bib13" title="">2019</a>)</cite> ولتحسين التنبؤ بالطقس الفضائي باستخدام التعلم الآلي (ML) <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Couvidat, <a class="ltx_ref" href="#bib.bib3" title="">2015</a>; Bobra &amp; Ilonidis, <a class="ltx_ref" href="#bib.bib4" title="">2016</a>; Chen et al., <a class="ltx_ref" href="#bib.bib9" title="">2019</a>)</cite>. وتقتصر رصدات HMI على دورة شمسية كاملة واحدة فقط (الدورة 24)، ولذلك فإن نماذج التنبؤ الإحصائي بالطقس الفضائي القائمة على SHARPs محدودة.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">ترتبط صعوبات متعددة بقياس المركبة المستعرضة للحقل المغناطيسي في الغلاف الضوئي <cite class="ltx_cite ltx_citemacro_citep">(Stenflo, <a class="ltx_ref" href="#bib.bib39" title="">2013</a>)</cite>، ولذلك فإن الأجهزة الأرضية والفضائية التي ترصد الشمس منذ عقد 1970 لا تقدم إلا رصدات للمركبة الطولية، أي مركبة خط البصر (LOS). وتتوفر رصدات مستمرة لحقول LOS على كامل القرص من خلال تلسكوب Kitt Peak الأرضي التابع لوكالة NASA/National Solar Observatory (NSO) (1974 - الحاضر) <cite class="ltx_cite ltx_citemacro_citep">(Livingston et al., <a class="ltx_ref" href="#bib.bib24" title="">1976</a>)</cite>، ومن خلال Michelson and Doppler Imager الفضائي (MDI,1996 - 2011) <cite class="ltx_cite ltx_citemacro_citep">(Scherrer et al., <a class="ltx_ref" href="#bib.bib34" title="">1995</a>)</cite>، ومن خلال Global Oscillations Network Group الأرضية (GONG,1995-الحاضر). ومع أن قياسات حقل LOS هذه لا تكفي لتكميم تعقيد البقع الشمسية من حيث الطاقة غير الجهدية واللولبية، فقد كانت مفيدة في تقديم تقييم نوعي لمورفولوجيا AR عبر مخططات تصنيف البقع الشمسية، مثل تصنيف McIntosh <cite class="ltx_cite ltx_citemacro_citep">(McIntosh, <a class="ltx_ref" href="#bib.bib25" title="">1990</a>)</cite> وتصنيف Mount Wilson، اللذين يشكلان أساس تنبؤات الطقس الفضائي التشغيلية <cite class="ltx_cite ltx_citemacro_citep">(Crown, <a class="ltx_ref" href="#bib.bib12" title="">2012</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">إن تحسين هذه التصنيفات النوعية لـ ARs ووضع طريقة رسمية لتكميم خصائص الحقول المتجهة من حقول LOS أمر بالغ الفائدة، وذلك (i) لأنه يتيح «تحسين» مجموعات بيانات رصدات LOS السابقة وفهم كيفية تطور خصائص الحقول المتجهة عبر دورات شمسية متعددة، و(ii) لأن التقدير الموثوق لخصائص الحقول المتجهة خلال العقود القليلة الماضية يمكن استخدامه لبناء نماذج إحصائية أكثر متانة للتنبؤ بالطقس الفضائي، و(iii) لأنه في المهمات المستقبلية التي لا تكتسب إلا بيانات LOS، يمكن أن تكون خصائص الحقول المتجهة، بل حتى إنشاء الحقول المتجهة الكاملة، جزءًا من خط معالجة بيانات أرضي. وقد أثبتت طرائق ML، مثل الشبكات العصبية الالتفافية (CNN) المطورة خلال العقد الماضي، نجاحًا كبيرًا في تحديد الأنماط والارتباطات في مجموعات البيانات الكبيرة وعالية الأبعاد، ولا سيما الصور <cite class="ltx_cite ltx_citemacro_citep">(LeCun et al., <a class="ltx_ref" href="#bib.bib21" title="">2015</a>; Goodfellow et al., <a class="ltx_ref" href="#bib.bib15" title="">2016</a>)</cite>. هنا، نستكشف الاعتماديات بين مغناطوغرامات LOS والحقول المتجهة الكاملة المقابلة في ARs من خلال نموذج CNN مطور لتقدير خصائص SHARPs للحقول المتجهة باستخدام قياسات مغناطوغرامات LOS من SDO/HMI الفضائي وكذلك من GONG الأرضي.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>البيانات </h2>
+<figure class="ltx_table" id="S2.T1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_tt" colspan="3">Data</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_t"></th>
+<td class="ltx_td ltx_align_center ltx_border_t">Train &amp; Val</td>
+<td class="ltx_td ltx_align_center ltx_border_t">Test</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row"></th>
+<td class="ltx_td ltx_align_center">May’10 - Sep’15</td>
+<td class="ltx_td ltx_align_center">Oct’15 - Aug’18</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"># HMI ARs</th>
+<td class="ltx_td ltx_align_center ltx_border_t">848</td>
+<td class="ltx_td ltx_align_center ltx_border_t">194</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"># HMI Samples</th>
+<td class="ltx_td ltx_align_center">124633</td>
+<td class="ltx_td ltx_align_center">26820</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"># GONG ARs</th>
+<td class="ltx_td ltx_align_center ltx_border_t">848</td>
+<td class="ltx_td ltx_align_center ltx_border_t">145</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb"># GONG Samples</th>
+<td class="ltx_td ltx_align_center ltx_border_bb">114443</td>
+<td class="ltx_td ltx_align_center ltx_border_bb">13454</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 1: </span>بيانات Helioseismic Magnetic Imager (HMI) وGlobal Oscillation Network Group (GONG) المستخدمة لتدريب CNN بغرض الحصول على خصائص الحقول المتجهة من Space-Weather HMI Active Region Patches (SHARPs) <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="271" id="S2.F1.g1" src="x1.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span><span class="ltx_text ltx_font_bold">بنية CNN.</span> (a) بنية الشبكة العصبية الالتفافية (CNN) المستخدمة للحصول على خصائص الحقول المتجهة من مغناطوغرامات LOS. تدمج هذه البنية وحدات inception شبيهة بتلك الموجودة في GoogleNet <cite class="ltx_cite ltx_citemacro_cite">Szegedy et al. (<a class="ltx_ref" href="#bib.bib43" title="">2015</a>)</cite>. تأخذ CNN مدخلين: i) مغناطوغرامات LOS ii) خط عرض مركز AR (<img alt="$\lambda_c$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\lambda_c$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0002.svg"/>) وخط طوله (<img alt="$\phi_c$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\phi_c$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0003.svg"/>). لا توجد طبقات مترابطة بالكامل تعالج دخل المغناطوغرام مباشرة، ولذلك تستطيع CNN معالجة رقع مغناطوغرامات بأحجام متغيرة. (b) وحدة inception المستخدمة في CNN.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">نستخدم بيانات مغناطوغرامات LOS للغلاف الضوئي التي يوفرها HMI وGONG. لا يوفر GONG إلا مغناطوغرامات LOS. وتتضمن SHARPs المشتقة من HMI (سلسلة بيانات hmi.sharp_cea_720s <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>) مغناطوغرامات متجهة ومغناطوغرامات LOS لرقع AR تُكتشف وتُتتبع آليًا أثناء دورانها عبر القرص الشمسي المرئي <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>. وتتوفر مغناطوغرامات HMI بمقياس صفيحي قدره <img alt="$0.5\,{\rm arcsecs}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.5\,{\rm arcsecs}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0004.svg"/>، أي <img alt="$\sim 380\,{\rm km}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 380\,{\rm km}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0005.svg"/> عند مركز القرص. وتتوفر مغناطوغرامات GONG بمقياس صفيحي قدره <img alt="$2.5\,{\rm arcsecs}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$2.5\,{\rm arcsecs}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0006.svg"/>. وتقع المغناطوغرامات المتاحة في سلسلة hmi.sharp_cea_720s على شبكة أسطوانية متساوية المساحة (CEA)، وبذلك تُزال آثار الإسقاط. وبالمثل، نعيد إسقاط مغناطوغرامات AR من GONG على شبكة CEA. وندرب CNN للحصول على خصائص SHARPs مباشرة من مغناطوغرامات LOS الخاصة بكل من HMI وGONG. ولا ننظر إلا في أبرز خصائص SHARPs التي تنتج أقصى دقة للتنبؤ بالتوهجات في نموذج تعلم آلي (ML) <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Couvidat, <a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite>. وهذه الخصائص واردة في الجدول <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">تتأثر قياسات HMI بظروف الرصد وبالسرعة النسبية بين SDO والشمس <cite class="ltx_cite ltx_citemacro_citep">(Hoeksema et al., <a class="ltx_ref" href="#bib.bib18" title="">2014</a>)</cite>. وتدل راية QUALITY على ظروف الرصد، وننظر في القياسات التي تكون فيها متجهات Stokes موثوقة (QUALITY <img alt="$\leq$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\leq$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0007.svg"/> 10000 بالنظام الست عشري) وعندما تكون السرعة النسبية بين SDO والشمس <img alt="$&lt; 3500\,{\rm m/s}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&lt; 3500\,{\rm m/s}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0008.svg"/> <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Ilonidis, <a class="ltx_ref" href="#bib.bib4" title="">2016</a>)</cite>. وتكون البيانات الأقرب إلى الحافة أكثر ضجيجًا بسبب السرعات النسبية الأعلى وكذلك آثار الإسقاط. لذلك نقصر الرصدات على نطاق <img alt="$\pm 45 \degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm 45 \degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0009.svg"/> من خط الزوال المركزي. وعلاوة على ذلك، لا ندرج من سلسلة بيانات SHARPs إلا ARs التي تنمو إلى مساحة عظمى قدرها <img alt="$&gt;25\,{\rm Mm}^2$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt;25\,{\rm Mm}^2$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0010.svg"/>. وهذا يستبعد عددًا كبيرًا من ARs الصغيرة التي لا تنتج توهجات كبرى (من الفئة M أو X). ويأخذ حساب خصائص SHARPs باستخدام رصدات الحقول المتجهة من HMI في الاعتبار تلك البكسلات في مغناطوغرامات AR التي يكون حل التباس 180<img alt="$\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0011.svg"/> فيها موثوقًا <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">تُستخدم الرصدات بين مايو 2010 وأغسطس 2018 لتدريب CNN؛ إذ يُستخدم نحو <img alt="$80\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$80\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0012.svg"/> من البيانات للتدريب والتحقق من CNN، بينما تشكل البقية بيانات غير مرئية أو بيانات اختبار. ونقسم ARs زمنيًا إلى أقسام للتدريب والتحقق والاختبار: ARs في الفترة مايو 2010 - سبتمبر 2015 للتدريب والتحقق، والفترة أكتوبر 2015 - أغسطس 2018 للاختبار. وتُسحب عينات كل ست ساعات من السلسلة الزمنية لكل AR. وتنتمي جميع العينات من AR معين حصريًا إلى مجموعة التدريب أو مجموعة التحقق أو مجموعة الاختبار، لتجنب الانحيازات الناشئة من الترابط الزمني لرصدات AR واحد <cite class="ltx_cite ltx_citemacro_citep">(Ahmadzadeh et al., <a class="ltx_ref" href="#bib.bib1" title="">2021</a>)</cite>. وترد أعداد ARs ورصدات المغناطوغرامات المستخدمة للتدريب والتحقق والاختبار في الجدول <a class="ltx_ref" href="#S2.T1" title="Table 1 ‣ 2 البيانات ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">1</span></a>. وبما أن النشاط الشمسي يعتمد على طور الدورة، فقد يسبب التقسيم الزمني انحيازًا في تدريب CNN. وبالفعل، فإن نسبة ARs المنتجة للتوهجات إلى غير المنتجة لها في بيانات الاختبار تساوي تقريبًا نصف قيمتها في مجموعة بيانات التدريب والتحقق <cite class="ltx_cite ltx_citemacro_citep">(Bhattacharjee et al., <a class="ltx_ref" href="#bib.bib2" title="">2020</a>)</cite>. ومع ذلك، فإن التقسيم الزمني ملائم لأدوات التنبؤ التشغيلي بالطقس الفضائي.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>الطرائق </h2>
+<figure class="ltx_figure" id="S3.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="269" id="S3.F2.g1" src="x2.png" width="479"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span><span class="ltx_text ltx_font_bold">مخطط نماذج ML.</span> (<span class="ltx_text ltx_font_italic">اليسار:</span>) تعالج نماذج الشبكة العصبية الالتفافية (CNN) مغناطوغرامات LOS بوصفها دخلًا وتنتج خصائص الحقول المتجهة SHARPs بوصفها خرجًا. تتجمع خصائص SHARPs في أربع مجموعات استنادًا إلى ارتباطاتها المتبادلة كما هو موضح. ونطور أربعة نماذج CNN مختلفة لتقدير SHARPs من أربع مجموعات مختلفة. تمتلك جميع نماذج CNN بنية متماثلة موصوفة في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2 البيانات ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">1</span></a> باستثناء طبقة الخرج النهائية، حيث يساوي عدد عصبونات الخرج عدد خصائص SHARPs المراد تقديرها من المجموعة المعنية. (<span class="ltx_text ltx_font_italic">اليمين:</span>) نماذج مرجعية تستخدم الانحدار الخطي (LR) لتقدير مجموعتين من خصائص SHARPs تعتمدان على التيار الكهربائي والطاقة الحرة، على التوالي، باستخدام خصائص SHARPs الممتدة وقيمة Schrijver المسماة R_value <cite class="ltx_cite ltx_citemacro_citep">(Schrijver, <a class="ltx_ref" href="#bib.bib35" title="">2007</a>)</cite> بوصفها دخلًا.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">تُعد CNNs شبكات عصبية مزودة بمرشحات التفاف (نوى) تمسح بيانات الدخل، وهي عادة بيانات ثنائية الأبعاد 2D للصور، وتكتشف الأنماط المكانية لمهام مثل التصنيف والتعرف <cite class="ltx_cite ltx_citemacro_citep">(LeCun et al., <a class="ltx_ref" href="#bib.bib21" title="">2015</a>; Goodfellow et al., <a class="ltx_ref" href="#bib.bib15" title="">2016</a>)</cite>. ومرشحات الالتفاف هي عصبونات <img alt="${\rm K \times K}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="${\rm K \times K}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0013.svg"/> تنزلق فوق الصور وتكتشف أنماطًا مختلفة. وتمتلك مرشحات الالتفاف معاملات حرة؛ فلكل عصبون وزن <img alt="$w$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$w$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0014.svg"/> ولكل مرشح التفاف انحياز <img alt="$b$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$b$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0015.svg"/>. وتعالج العصبونات بكسلات المدخلات (أو المخرجات من الطبقات السابقة) <img alt="$\bf{x_i}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\bf{x_i}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0016.svg"/> بإجراء العملية <img alt="$f\left(\sum_i{w_i x_i + b}\right)$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$f\left(\sum_i{w_i x_i + b}\right)$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0017.svg"/>، حيث إن <img alt="$f$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$f$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0018.svg"/> هي دالة التنشيط <cite class="ltx_cite ltx_citemacro_citep">(Hastie et al., <a class="ltx_ref" href="#bib.bib17" title="">2001</a>)</cite>. وتمتلك CNNs أيضًا طبقات تجميع تُستخدم لتقليل حجم الدخل مع تقدمه إلى مستويات أعمق من CNN. ويختار مرشح التجميع الأعظمي/المتوسط القيمة العظمى أو المتوسطة من خريطة الخصائص <img alt="${\rm N \times N}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="${\rm N \times N}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0019.svg"/> المعطاة. وتتبع طبقات التجميع عادةً طبقة التفاف في CNN لتقليل الأبعاد.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">نستخدم بنية CNN مع وحدات inception مشابهة لوحدات inception V1 من GoogleNet <cite class="ltx_cite ltx_citemacro_citep">(Szegedy et al., <a class="ltx_ref" href="#bib.bib43" title="">2015</a>)</cite>. ففي طبقة الالتفاف النموذجية، نستخدم مرشحات ذات حجم ثابت تعمل على أفضل نحو للمسألة المحددة. غير أن وحدات inception مصممة لاكتشاف أنماط على مقاييس طولية متنوعة قد تكون موجودة في الدخل. وهي تتضمن مرشحات التفاف بأحجام مختلفة في طبقة واحدة. وتُضم مخرجات جميع طبقات الالتفاف في وحدة inception وتُقدَّم بوصفها دخلًا إلى الطبقة اللاحقة. وتتألف وحدة inception المستخدمة هنا من ثلاثة مرشحات التفاف بأحجام <img alt="$3\times3$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$3\times3$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0020.svg"/> و<img alt="$5\times5$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$5\times5$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0021.svg"/> و<img alt="$7\times7$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$7\times7$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0022.svg"/>، ومن مرشح تجميع أعظمي واحد <img alt="$3\times3$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$3\times3$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0023.svg"/>.</p>
+</div>
+<div class="ltx_para" id="S3.p3">
+<p class="ltx_p">تظهر بنية CNN في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2 البيانات ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">1</span></a>. وتأخذ CNN مدخلين: i) مغناطوغرامات LOS لرقع AR، وii) خط عرض (<img alt="$\lambda_c$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\lambda_c$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0024.svg"/>) وخط طول (<img alt="$\phi_c$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\phi_c$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0025.svg"/>) مركز رقع AR. وتتكون CNN من طبقتي التفاف عاديتين تتبعهما وحدتا inception تعالجان مغناطوغرامات LOS. أما خطا العرض والطول فتتم معالجتهما بطبقة عصبونات مترابطة بالكامل. وتُخفض مخرجات طبقتي الالتفاف العاديتين ووحدة inception الأولى بواسطة طبقة تجميع أعظمي. وتُخفض مخرجات وحدة inception النهائية بواسطة طبقة تجميع أعظمي شاملة وكذلك طبقة تجميع متوسط شاملة. ثم تُضم هذه المخرجات إلى خرج الطبقة المترابطة بالكامل التي تعالج خطي الطول والعرض. وترتبط الطبقة المضمومة بطبقة خرج من العصبونات. ويساوي عدد العصبونات في طبقات الخرج عدد خصائص SHARPs التي يجري تقديرها (انظر الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3 الطرائق ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>). نستخدم دالة تنشيط <span class="ltx_text ltx_font_italic">خطية</span> لطبقات الالتفاف، وهي تتعامل صراحةً مع القيم الموجبة والسالبة للبكسلات في مغناطوغرامات LOS على نحو متناظر. كما تمتلك طبقة العصبونات المترابطة بالكامل دالة تنشيط <span class="ltx_text ltx_font_italic">tanh</span> للتعامل صراحةً مع القيم الموجبة والسالبة لخط العرض وخط الطول، بعد تطبيعها بين <img alt="$\pm 1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm 1$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0026.svg"/>، على نحو متناظر. وتمتلك طبقة الخرج النهائية من العصبونات دالة تنشيط <span class="ltx_text ltx_font_italic">sigmoid</span> <cite class="ltx_cite ltx_citemacro_citep">(Han &amp; Moraga, <a class="ltx_ref" href="#bib.bib16" title="">1995</a>; Hastie et al., <a class="ltx_ref" href="#bib.bib17" title="">2001</a>)</cite> لإعطاء القيمة المطبعة لخصائص SHARPs المقدرة بين <img alt="$0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0027.svg"/> و<img alt="$1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$1$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0028.svg"/>.</p>
+</div>
+<div class="ltx_para" id="S3.p4">
+<p class="ltx_p">إن غياب الطبقات المترابطة بالكامل في الشبكة التي تعالج دخل مغناطوغرامات LOS يعني أن بنية CNN تستطيع تحليل مغناطوغرامات LOS ذات أحجام اعتباطية. وبما أن رقع AR ذات أبعاد متنوعة، فإن المغناطوغرامات في بيانات التدريب والتحقق والاختبار تكون كذلك ذات أحجام مختلفة تبعًا لذلك. ومن ثم لا تتطلب CNN الخاصة بنا معالجة مسبقة لتحويل المغناطوغرامات إلى حجم ثابت، وبذلك فهي خالية من الانحيازات التي قد تنشأ نتيجة إعادة التحجيم <cite class="ltx_cite ltx_citemacro_citep">(Bhattacharjee et al., <a class="ltx_ref" href="#bib.bib2" title="">2020</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S3.p5">
+<p class="ltx_p">نستخدم تحققًا بأسلوب الحجز المتكرر 10 مرات لتدريب CNN <cite class="ltx_cite ltx_citemacro_citep">(Hastie et al., <a class="ltx_ref" href="#bib.bib17" title="">2001</a>)</cite>. نقسم ARs عشوائيًا في مجموعتي التدريب والتحقق إلى ثلاثة أجزاء، ونستخدم بيانات جزأين للتدريب والجزء المتبقي للتحقق. وتُكرر هذه العملية تسع مرات مع ضمان أن تكون بيانات AR ما جزءًا من التدريب أو التحقق لا كليهما. ويُقارن خرج CNN بقيم خصائص SHARPs الأصلية. وتقع طبقة الخرج ذات دالة <span class="ltx_text ltx_font_italic">sigmoid</span> في CNN ضمن مجال مستمر بين 0 و1. وتُطبّع خصائص SHARPs الأصلية بقسمتها على قيمها العظمى المعنية. ونقسم الخصائص المطبعة (ضمن المجال من 0 إلى 1) في مجموعة التدريب إلى عشرة صناديق متساوية العرض (0.1)، ونزيد عينات البيانات في كل صندوق لتطابق عدد العينات في الصندوق الأكبر تعدادًا. وتُقيَّس مغناطوغرامات الدخل، أي يُطرح متوسط ثم يُقسم المغناطوغرام الناتج على انحراف معياري لقيم الحقل المغناطيسي. ويُحسب المتوسط والانحراف المعياري المستخدمان في التقييس على جميع بكسلات جميع المغناطوغرامات في بيانات التدريب والتحقق للأداة المعنية. ويُقارن خرج CNN بقيم SHARPs الأصلية وتُحسب دالة الخسارة، المعرفة بأنها متوسط مربع الخطأ. وندرب CNN لتقليل متوسط مربع الخطأ عبر حقب مختلفة باستخدام الانحدار المتدرج العشوائي <cite class="ltx_cite ltx_citemacro_citep">(Bottou, <a class="ltx_ref" href="#bib.bib8" title="">1991</a>; Hastie et al., <a class="ltx_ref" href="#bib.bib17" title="">2001</a>)</cite> مع معدل تعلم قدره 0.00007. وقد طُورت CNN باستخدام مكتبة Python المسماة <span class="ltx_text ltx_font_italic">keras</span>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>النتائج</h2>
+<figure class="ltx_table" id="S4.T2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2">10-times Repeated-Holdout Validation</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2">Test</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">SHARPs Features</th>
+<td class="ltx_td ltx_align_center">HMI</td>
+<td class="ltx_td ltx_align_center">GONG</td>
+<td class="ltx_td ltx_align_center">HMI</td>
+<td class="ltx_td ltx_align_center">GONG</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Total unsigned flux</th>
+<td class="ltx_td ltx_align_center ltx_border_t">95.14 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m1"><mo>±</mo></math> 00.62</td>
+<td class="ltx_td ltx_align_center ltx_border_t">90.87 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m2"><mo>±</mo></math> 01.96</td>
+<td class="ltx_td ltx_align_center ltx_border_t">89.73 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m3"><mo>±</mo></math> 02.70</td>
+<td class="ltx_td ltx_align_center ltx_border_t">87.42 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m4"><mo>±</mo></math> 01.39</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area</th>
+<td class="ltx_td ltx_align_center">95.87 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m5"><mo>±</mo></math> 00.49</td>
+<td class="ltx_td ltx_align_center">95.06 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m6"><mo>±</mo></math> 00.84</td>
+<td class="ltx_td ltx_align_center">92.00 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m7"><mo>±</mo></math> 01.70</td>
+<td class="ltx_td ltx_align_center">92.88 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m8"><mo>±</mo></math> 00.88</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned vertical current</th>
+<td class="ltx_td ltx_align_center">94.78 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m9"><mo>±</mo></math> 00.71</td>
+<td class="ltx_td ltx_align_center">91.80 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m10"><mo>±</mo></math> 01.69</td>
+<td class="ltx_td ltx_align_center">88.86 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m11"><mo>±</mo></math> 02.57</td>
+<td class="ltx_td ltx_align_center">89.00 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m12"><mo>±</mo></math> 01.76</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned current helicity</th>
+<td class="ltx_td ltx_align_center">95.74 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m13"><mo>±</mo></math> 00.50</td>
+<td class="ltx_td ltx_align_center">91.65 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m14"><mo>±</mo></math> 01.76</td>
+<td class="ltx_td ltx_align_center">88.33 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m15"><mo>±</mo></math> 02.65</td>
+<td class="ltx_td ltx_align_center">83.31 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m16"><mo>±</mo></math> 02.28</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total free energy density</th>
+<td class="ltx_td ltx_align_center">96.19 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m17"><mo>±</mo></math> 00.80</td>
+<td class="ltx_td ltx_align_center">92.60 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m18"><mo>±</mo></math> 01.60</td>
+<td class="ltx_td ltx_align_center">90.17 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m19"><mo>±</mo></math> 02.37</td>
+<td class="ltx_td ltx_align_center">91.22 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m20"><mo>±</mo></math> 01.25</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total Lorentz force</th>
+<td class="ltx_td ltx_align_center">96.64 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m21"><mo>±</mo></math> 00.47</td>
+<td class="ltx_td ltx_align_center">94.94 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m22"><mo>±</mo></math> 00.98</td>
+<td class="ltx_td ltx_align_center">90.63 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m23"><mo>±</mo></math> 02.46</td>
+<td class="ltx_td ltx_align_center">92.71 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m24"><mo>±</mo></math> 00.87</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center ltx_border_t">90.37 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m25"><mo>±</mo></math> 03.28</td>
+<td class="ltx_td ltx_align_center ltx_border_t">63.76 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m26"><mo>±</mo></math> 03.65</td>
+<td class="ltx_td ltx_align_center ltx_border_t">57.83 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m27"><mo>±</mo></math> 08.84</td>
+<td class="ltx_td ltx_align_center ltx_border_t">57.60 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m28"><mo>±</mo></math> 06.97</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center">89.51 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m29"><mo>±</mo></math> 02.53</td>
+<td class="ltx_td ltx_align_center">64.58 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m30"><mo>±</mo></math> 03.08</td>
+<td class="ltx_td ltx_align_center">61.93 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m31"><mo>±</mo></math> 07.63</td>
+<td class="ltx_td ltx_align_center">59.09 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m32"><mo>±</mo></math> 06.96</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Mean free energy density</th>
+<td class="ltx_td ltx_align_center ltx_border_t">95.10 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m33"><mo>±</mo></math> 01.00</td>
+<td class="ltx_td ltx_align_center ltx_border_t">89.92 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m34"><mo>±</mo></math> 00.79</td>
+<td class="ltx_td ltx_align_center ltx_border_t">92.13 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m35"><mo>±</mo></math> 01.80</td>
+<td class="ltx_td ltx_align_center ltx_border_t">91.73 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m36"><mo>±</mo></math> 00.54</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m37"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center">95.02 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m38"><mo>±</mo></math> 00.81</td>
+<td class="ltx_td ltx_align_center">90.00 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m39"><mo>±</mo></math> 01.19</td>
+<td class="ltx_td ltx_align_center">90.59 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m40"><mo>±</mo></math> 01.57</td>
+<td class="ltx_td ltx_align_center">90.48 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m41"><mo>±</mo></math> 00.46</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_t">Flux near polarity inversion line</th>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">90.54 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m42"><mo>±</mo></math> 00.56</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">76.28 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m43"><mo>±</mo></math> 01.83</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">77.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m44"><mo>±</mo></math> 00.79</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">70.43 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T2.m45"><mo>±</mo></math> 00.79</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 2: </span><span class="ltx_text ltx_font_bold">ارتباطات Pearson بين خصائص الحقول المتجهة SHARPs المقدرة بواسطة CNN وقيمها الحقيقية.</span> تُحسب خصائص SHARPs (Space-weather HMI Active Region Patches) من رصدات الحقول المتجهة من HMI <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>. وقيم p لجميع الارتباطات هي <img alt="$\sim 0.0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 0.0$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0029.svg"/>. وترتبط خصائص SHARPs بعضها ببعض <cite class="ltx_cite ltx_citemacro_citep">(Dhuri et al., <a class="ltx_ref" href="#bib.bib13" title="">2019</a>)</cite>، ولذلك رُتبت في أربع مجموعات بوصفها خصائص تعتمد على (i) مساحة AR، و(ii) التيار الكهربائي، و(iii) متوسط كثافة الطاقة الحرة، و(iv) قيمة R، أي مجموع الفيض قرب خط انعكاس القطبية <cite class="ltx_cite ltx_citemacro_citep">(Schrijver, <a class="ltx_ref" href="#bib.bib35" title="">2007</a>)</cite>.</figcaption>
+</figure>
+<figure class="ltx_table" id="S4.T3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2">10-times Repeated-Holdout Validation</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2">Test</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">SHARPs Features</th>
+<td class="ltx_td ltx_align_center">HMI</td>
+<td class="ltx_td ltx_align_center">GONG</td>
+<td class="ltx_td ltx_align_center">HMI</td>
+<td class="ltx_td ltx_align_center">GONG</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Total unsigned flux</th>
+<td class="ltx_td ltx_align_center ltx_border_t">86.92 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m1"><mo>±</mo></math> 01.13</td>
+<td class="ltx_td ltx_align_center ltx_border_t">86.27 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m2"><mo>±</mo></math> 01.75</td>
+<td class="ltx_td ltx_align_center ltx_border_t">81.19 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m3"><mo>±</mo></math> 01.74</td>
+<td class="ltx_td ltx_align_center ltx_border_t">77.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m4"><mo>±</mo></math> 02.20</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area</th>
+<td class="ltx_td ltx_align_center">89.57 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m5"><mo>±</mo></math> 01.10</td>
+<td class="ltx_td ltx_align_center">92.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m6"><mo>±</mo></math> 00.75</td>
+<td class="ltx_td ltx_align_center">87.10 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m7"><mo>±</mo></math> 01.33</td>
+<td class="ltx_td ltx_align_center">86.91 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m8"><mo>±</mo></math> 01.21</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned vertical current</th>
+<td class="ltx_td ltx_align_center">86.82 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m9"><mo>±</mo></math> 01.41</td>
+<td class="ltx_td ltx_align_center">87.34 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m10"><mo>±</mo></math> 01.38</td>
+<td class="ltx_td ltx_align_center">81.22 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m11"><mo>±</mo></math> 02.10</td>
+<td class="ltx_td ltx_align_center">79.07 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m12"><mo>±</mo></math> 02.52</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned current helicity</th>
+<td class="ltx_td ltx_align_center">87.37 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m13"><mo>±</mo></math> 01.41</td>
+<td class="ltx_td ltx_align_center">87.49 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m14"><mo>±</mo></math> 01.48</td>
+<td class="ltx_td ltx_align_center">82.61 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m15"><mo>±</mo></math> 02.24</td>
+<td class="ltx_td ltx_align_center">79.40 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m16"><mo>±</mo></math> 02.69</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total free energy density</th>
+<td class="ltx_td ltx_align_center">84.23 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m17"><mo>±</mo></math> 01.46</td>
+<td class="ltx_td ltx_align_center">85.53 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m18"><mo>±</mo></math> 02.17</td>
+<td class="ltx_td ltx_align_center">81.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m19"><mo>±</mo></math> 03.27</td>
+<td class="ltx_td ltx_align_center">80.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m20"><mo>±</mo></math> 02.42</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total Lorentz force</th>
+<td class="ltx_td ltx_align_center">90.63 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m21"><mo>±</mo></math> 01.04</td>
+<td class="ltx_td ltx_align_center">92.78 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m22"><mo>±</mo></math> 00.98</td>
+<td class="ltx_td ltx_align_center">86.96 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m23"><mo>±</mo></math> 01.51</td>
+<td class="ltx_td ltx_align_center">86.49 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m24"><mo>±</mo></math> 01.66</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center ltx_border_t">59.61 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m25"><mo>±</mo></math> 05.26</td>
+<td class="ltx_td ltx_align_center ltx_border_t">59.35 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m26"><mo>±</mo></math> 03.36</td>
+<td class="ltx_td ltx_align_center ltx_border_t">57.70 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m27"><mo>±</mo></math> 06.29</td>
+<td class="ltx_td ltx_align_center ltx_border_t">2.27 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m28"><mo>±</mo></math> 02.73</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center">60.02 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m29"><mo>±</mo></math> 03.95</td>
+<td class="ltx_td ltx_align_center">65.75 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m30"><mo>±</mo></math> 02.95</td>
+<td class="ltx_td ltx_align_center">57.51 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m31"><mo>±</mo></math> 02.58</td>
+<td class="ltx_td ltx_align_center">7.85 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m32"><mo>±</mo></math> 02.79</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Mean free energy density</th>
+<td class="ltx_td ltx_align_center ltx_border_t">92.02 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m33"><mo>±</mo></math> 00.97</td>
+<td class="ltx_td ltx_align_center ltx_border_t">91.59 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m34"><mo>±</mo></math> 00.92</td>
+<td class="ltx_td ltx_align_center ltx_border_t">93.02 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m35"><mo>±</mo></math> 01.42</td>
+<td class="ltx_td ltx_align_center ltx_border_t">92.58 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m36"><mo>±</mo></math> 00.35</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m37"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center">93.19 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m38"><mo>±</mo></math> 00.98</td>
+<td class="ltx_td ltx_align_center">90.08 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m39"><mo>±</mo></math> 00.54</td>
+<td class="ltx_td ltx_align_center">91.63 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m40"><mo>±</mo></math> 00.65</td>
+<td class="ltx_td ltx_align_center">89.96 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m41"><mo>±</mo></math> 00.37</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_t">Flux near polarity inversion line</th>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">91.69 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m42"><mo>±</mo></math> 00.47</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">76.63 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m43"><mo>±</mo></math> 02.60</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">83.00 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m44"><mo>±</mo></math> 00.85</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">75.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m45"><mo>±</mo></math> 00.92</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 3: </span><span class="ltx_text ltx_font_bold">ارتباطات Spearman بين خصائص الحقول المتجهة SHARPs المقدرة بواسطة CNN وقيمها الحقيقية.</span> قيم p لجميع الارتباطات هي <img alt="$\sim 0.0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 0.0$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0030.svg"/>.</figcaption>
+</figure>
+<figure class="ltx_table" id="S4.T4">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2">10-times Repeated-Holdout Validation</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2">Test</th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row">SHARPs Features</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column">Pearson</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column">Spearman</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column">Pearson</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column">Spearman</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="70.99\pm 06.08" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m1"><mrow><mn>70.99</mn><mo>±</mo><mn>06.08</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="68.21\pm 02.25" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m2"><mrow><mn>68.21</mn><mo>±</mo><mn>02.25</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="67.10\pm 03.94" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m3"><mrow><mn>67.10</mn><mo>±</mo><mn>03.94</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="70.32\pm 00.56" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m4"><mrow><mn>70.32</mn><mo>±</mo><mn>00.56</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center"><math alttext="71.83\pm 03.79" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m5"><mrow><mn>71.83</mn><mo>±</mo><mn>03.79</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="70.51\pm 02.23" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m6"><mrow><mn>70.51</mn><mo>±</mo><mn>02.23</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="57.97\pm 02.90" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m7"><mrow><mn>57.97</mn><mo>±</mo><mn>02.90</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="67.07\pm 00.55" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m8"><mrow><mn>67.07</mn><mo>±</mo><mn>00.55</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Mean free energy density</th>
+<td class="ltx_td ltx_align_center"><math alttext="72.11\pm 04.87" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m9"><mrow><mn>72.11</mn><mo>±</mo><mn>04.87</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="79.63\pm 04.49" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m10"><mrow><mn>79.63</mn><mo>±</mo><mn>04.49</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="74.41\pm 01.90" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m11"><mrow><mn>74.41</mn><mo>±</mo><mn>01.90</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="81.91\pm 00.66" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m12"><mrow><mn>81.91</mn><mo>±</mo><mn>00.66</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m13"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center ltx_border_bb"><math alttext="67.89\pm 02.93" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m14"><mrow><mn>67.89</mn><mo>±</mo><mn>02.93</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_bb"><math alttext="69.16\pm 03.41" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m15"><mrow><mn>69.16</mn><mo>±</mo><mn>03.41</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_bb"><math alttext="70.83\pm 00.39" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m16"><mrow><mn>70.83</mn><mo>±</mo><mn>00.39</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_bb"><math alttext="77.86\pm 00.20" class="ltx_Math" dir="ltr" display="inline" id="S4.T4.m17"><mrow><mn>77.86</mn><mo>±</mo><mn>00.20</mn></mrow></math></td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 4: </span><span class="ltx_text ltx_font_bold">الارتباط بين خصائص SHARPs المقدرة باستخدام النماذج المرجعية وقيمها الحقيقية.</span> طُور نموذجان مرجعيان للانحدار الخطي (LR) (الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3 الطرائق ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>) يأخذان خصائص SHARPs الممتدة وقيمة Schrijver المسماة R_value بوصفها دخلًا وينتجان خصائص SHARPs التي تعتمد على التيار الكهربائي ومتوسط الطاقة غير الجهدية بوصفها خرجًا. وقيم p لجميع الارتباطات هي <img alt="$\sim 0.0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 0.0$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0031.svg"/>.</figcaption>
+</figure>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN</h3>
+<figure class="ltx_figure" id="S4.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="580" id="S4.F3.g1" src="x3.png" width="509"/>
+<br class="ltx_break ltx_centering"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span><span class="ltx_text ltx_font_bold">مقارنة خصائص الحقول المتجهة SHARPs الحقيقية والمقدرة بواسطة CNN.</span> مخططات مبعثرة لتوزيع قيم HMI المقدرة بواسطة CNN والحقيقية لكل من الفيض الكلي غير الموقّع، واللولبية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة، المستحصل عليها من مغناطوغرامات LOS من HMI وGONG. وُضع خط <img alt="$45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0032.svg"/> مرجعًا.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S4.F4">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F4.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F4.sf1.g1" src="x4.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F4.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F4.sf2.g1" src="x5.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F4.sf3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F4.sf3.g1" src="x6.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(c) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F4.sf4"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F4.sf4.g1" src="x7.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(d) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F4.sf5"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F4.sf5.g1" src="x8.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(e) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F4.sf6"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F4.sf6.g1" src="x9.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(f) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span> <span class="ltx_text ltx_font_bold">متوسط الخطأ المطلق لخصائص الحقول المتجهة المعاد بناؤها بواسطة CNN.</span> قُسمت القيم المقدرة بواسطة CNN للفيض الكلي غير الموقّع، واللولبية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة لكل من HMI وGONG إلى 10 صناديق منتظمة وفقًا للقيم الحقيقية المعنية. ويُعرض متوسط الخطأ المطلق بدلالة متوسط القيم الحقيقية لكل صندوق سكاني. كما تُعرض أشرطة خطأ 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0033.svg"/> لكل صندوق. وينطبق المفتاح في اللوحة العلوية اليسرى على جميع اللوحات.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S4.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="375" id="S4.F5.g1" src="x10.png" width="449"/>
+<br class="ltx_break ltx_centering"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span><span class="ltx_text ltx_font_bold">مقارنة خصائص الحقول المتجهة SHARPs الحقيقية والمقدرة بواسطة CNN.</span> مقارنات للتطور الزمني للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة المقدرة بواسطة CNN مع القيم الحقيقية لـ ARs التي تنتج توهجات من الفئة M5 أو أكبر. ولا تُؤخذ في الاعتبار إلا رصدات AR الواقعة ضمن <img alt="$\pm 45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm 45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0034.svg"/> من خط الزوال المركزي. يبين المخطط الأيسر نتيجة نموذجية (انظر شكل الملحق <a class="ltx_ref" href="#A1.F9" title="Figure 9 ‣ Appendix A التطور الزمني للخصائص المقدرة بواسطة CNN في جميع ARs التي تنتج توهجات من الفئة M5 أو أكبر. ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">9</span></a> لكل ARs ذات التوهجات الكبرى). ويبين المخطط الأيمن حدثًا متطرفًا مع أكبر توهج رُصد في الدورة 24. وتقابل الفجوات الرصدات المفقودة، وتُعرض أشرطة خطأ 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0035.svg"/>. وينطبق المفتاح في أعلى اليسار على جميع المخططات. وقد مُلست المخططات بمتوسط جار مدته ست ساعات.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S4.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="482" id="S4.F6.g1" src="x11.png" width="479"/>
+<br class="ltx_break ltx_centering"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span><span class="ltx_text ltx_font_bold">عواصف الهالوين 2003</span>. <span class="ltx_text ltx_font_italic">(أعلى)</span> تُظهر مغناطوغرامات MDI للمنطقة AR NOAA 10486 ديناميكيات AR المؤدية إلى أحداث التوهج القصوى X17.0 وX10.0 وX28.0 (خارج <img alt="$\pm 45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm 45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0036.svg"/> من خط الزوال المركزي، غير معروضة)، المميزة بدوران البقعة ذات القطبية الموجبة <cite class="ltx_cite ltx_citemacro_citep">(Zhang et al., <a class="ltx_ref" href="#bib.bib46" title="">2008</a>; Kazachenko et al., <a class="ltx_ref" href="#bib.bib19" title="">2010</a>)</cite>، والمبرزة داخل الدائرة الحمراء. وتُشبَّع القطبيات الموجبة (الأبيض) والسالبة (الأسود) عند 1000 G. <span class="ltx_text ltx_font_italic">(أسفل)</span> الفيض الكلي غير الموقّع، ومتوسط كثافة الطاقة الحرة، واللولبية الصافية المطلقة للتيار المقدرة بواسطة CNN أثناء هذه العواصف، مظهرة ارتفاعًا منهجيًا يؤدي إلى التوهجات. وتلتقط CNN بدقة حقن اللولبية الناتج عن دوران البقعة الشمسية، مظهرة زيادة مهمة في متوسط كثافة الطاقة الحرة ولولبية التيار الكهربائي. وتقابل الفجوات الرصدات المفقودة، وتُعرض أشرطة خطأ 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0037.svg"/>. وقد مُلست المخططات بمتوسط جار مدته ست ساعات.</figcaption>
+</figure>
+<figure class="ltx_table" id="S4.T5">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<th class="ltx_td ltx_th ltx_th_column ltx_th_row ltx_border_tt"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2">Total unsigned flux</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2">Absolute net current helicity</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2">Mean free energy density</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row"></th>
+<th class="ltx_td ltx_th ltx_th_row"></th>
+<td class="ltx_td ltx_align_center">Spline Fit</td>
+<td class="ltx_td ltx_align_center">Time Derivative</td>
+<td class="ltx_td ltx_align_center">Spline Fit</td>
+<td class="ltx_td ltx_align_center">Time Derivative</td>
+<td class="ltx_td ltx_align_center">Spline Fit</td>
+<td class="ltx_td ltx_align_center">Time Derivative</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_t">Validation</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_t">HMI</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">97.41 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m1"><mo>±</mo></math> 00.37</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">84.46 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m2"><mo>±</mo></math> 02.75</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">94.99 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m3"><mo>±</mo></math> 02.02</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">77.70 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m4"><mo>±</mo></math> 12.16</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">98.54 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m5"><mo>±</mo></math> 00.38</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">89.68 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m6"><mo>±</mo></math> 02.50</th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row">GONG</th>
+<td class="ltx_td ltx_align_center">91.62 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m7"><mo>±</mo></math> 01.94</td>
+<td class="ltx_td ltx_align_center">25.51 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m8"><mo>±</mo></math> 08.68</td>
+<td class="ltx_td ltx_align_center">66.12 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m9"><mo>±</mo></math> 03.73</td>
+<td class="ltx_td ltx_align_center">33.23 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m10"><mo>±</mo></math> 05.40</td>
+<td class="ltx_td ltx_align_center">92.12 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m11"><mo>±</mo></math> 07.77</td>
+<td class="ltx_td ltx_align_center">75.52 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m12"><mo>±</mo></math> 02.29</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_b ltx_border_t" rowspan="2">Test</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_t">HMI</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">90.50 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m13"><mo>±</mo></math> 02.60</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">75.18 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m14"><mo>±</mo></math> 06.81</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">60.21 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m15"><mo>±</mo></math> 09.21</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">32.44 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m16"><mo>±</mo></math> 18.33</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">94.14 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m17"><mo>±</mo></math> 01.52</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t">82.06 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m18"><mo>±</mo></math> 03.06</th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b">GONG</th>
+<td class="ltx_td ltx_align_center ltx_border_b">88.63 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m19"><mo>±</mo></math> 01.48</td>
+<td class="ltx_td ltx_align_center ltx_border_b">18.07 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m20"><mo>±</mo></math> 06.22</td>
+<td class="ltx_td ltx_align_center ltx_border_b">59.72 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m21"><mo>±</mo></math> 07.14</td>
+<td class="ltx_td ltx_align_center ltx_border_b">27.03 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m22"><mo>±</mo></math> 07.81</td>
+<td class="ltx_td ltx_align_center ltx_border_b">93.69 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m23"><mo>±</mo></math> 00.49</td>
+<td class="ltx_td ltx_align_center ltx_border_b">70.52 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T5.m24"><mo>±</mo></math> 01.91</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 5: </span><span class="ltx_text ltx_font_bold">مقارنة الاتجاهات بين خصائص SHARPs المقدرة بواسطة CNN والحقيقية.</span> ارتباطات Pearson بين المشتقة الزمنية للقيم الحقيقية والقيم المقدرة بواسطة CNN للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة. وتُستحصل المشتقة الزمنية للخصائص الحقيقية والمقدرة بواسطة CNN لكل AR بعد ملاءمة السلسلة الزمنية المعنية بمنحنى spline تكعيبي. وللمرجعية، تُعرض أيضًا ارتباطات Pearson بين قيم ملاءمة spline للخصائص الحقيقية والمقدرة بواسطة CNN. لاحظ أن هذه القيم متسقة مع القيم في الجدول <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>.</figcaption>
+</figure>
+<figure class="ltx_table" id="S4.T6">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt">Feature</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">accuracy</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">recall(+)</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">recall(-)</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">TSS</th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_tt" colspan="5">True SHARPs</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Total unsigned flux</th>
+<td class="ltx_td ltx_align_center ltx_border_t">87.04 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m1"><mo>±</mo></math> 02.36</td>
+<td class="ltx_td ltx_align_center ltx_border_t">51.16 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m2"><mo>±</mo></math> 18.79</td>
+<td class="ltx_td ltx_align_center ltx_border_t">88.99 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m3"><mo>±</mo></math> 02.95</td>
+<td class="ltx_td ltx_align_center ltx_border_t">40.16 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m4"><mo>±</mo></math> 17.15</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area</th>
+<td class="ltx_td ltx_align_center">85.27 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m5"><mo>±</mo></math> 02.16</td>
+<td class="ltx_td ltx_align_center">58.78 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m6"><mo>±</mo></math> 17.32</td>
+<td class="ltx_td ltx_align_center">86.67 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m7"><mo>±</mo></math> 02.71</td>
+<td class="ltx_td ltx_align_center">45.45 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m8"><mo>±</mo></math> 15.55</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned vertical current</th>
+<td class="ltx_td ltx_align_center">88.19 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m9"><mo>±</mo></math> 02.75</td>
+<td class="ltx_td ltx_align_center">64.39 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m10"><mo>±</mo></math> 07.67</td>
+<td class="ltx_td ltx_align_center">89.50 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m11"><mo>±</mo></math> 03.00</td>
+<td class="ltx_td ltx_align_center">53.89 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m12"><mo>±</mo></math> 07.14</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned current helicity</th>
+<td class="ltx_td ltx_align_center">89.81 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m13"><mo>±</mo></math> 02.82</td>
+<td class="ltx_td ltx_align_center">66.17 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m14"><mo>±</mo></math> 05.76</td>
+<td class="ltx_td ltx_align_center">91.15 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m15"><mo>±</mo></math> 02.99</td>
+<td class="ltx_td ltx_align_center">57.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m16"><mo>±</mo></math> 06.20</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total free energy density</th>
+<td class="ltx_td ltx_align_center">89.77 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m17"><mo>±</mo></math> 02.04</td>
+<td class="ltx_td ltx_align_center">52.17 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m18"><mo>±</mo></math> 11.96</td>
+<td class="ltx_td ltx_align_center">91.84 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m19"><mo>±</mo></math> 02.33</td>
+<td class="ltx_td ltx_align_center">44.01 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m20"><mo>±</mo></math> 11.07</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total Lorentz force</th>
+<td class="ltx_td ltx_align_center">87.68 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m21"><mo>±</mo></math> 02.47</td>
+<td class="ltx_td ltx_align_center">52.39 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m22"><mo>±</mo></math> 16.75</td>
+<td class="ltx_td ltx_align_center">89.60 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m23"><mo>±</mo></math> 02.90</td>
+<td class="ltx_td ltx_align_center">41.99 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m24"><mo>±</mo></math> 15.55</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center">91.01 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m25"><mo>±</mo></math> 02.17</td>
+<td class="ltx_td ltx_align_center">58.29 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m26"><mo>±</mo></math> 08.63</td>
+<td class="ltx_td ltx_align_center">92.92 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m27"><mo>±</mo></math> 02.40</td>
+<td class="ltx_td ltx_align_center">51.21 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m28"><mo>±</mo></math> 08.32</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center">90.96 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m29"><mo>±</mo></math> 01.99</td>
+<td class="ltx_td ltx_align_center">60.64 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m30"><mo>±</mo></math> 08.29</td>
+<td class="ltx_td ltx_align_center">92.72 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m31"><mo>±</mo></math> 02.30</td>
+<td class="ltx_td ltx_align_center">53.37 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m32"><mo>±</mo></math> 07.56</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Mean free energy density</th>
+<td class="ltx_td ltx_align_center">76.56 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m33"><mo>±</mo></math> 02.94</td>
+<td class="ltx_td ltx_align_center">70.16 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m34"><mo>±</mo></math> 04.95</td>
+<td class="ltx_td ltx_align_center">76.92 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m35"><mo>±</mo></math> 03.09</td>
+<td class="ltx_td ltx_align_center">47.08 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m36"><mo>±</mo></math> 05.98</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m37"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center">67.15 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m38"><mo>±</mo></math> 03.32</td>
+<td class="ltx_td ltx_align_center">74.55 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m39"><mo>±</mo></math> 04.39</td>
+<td class="ltx_td ltx_align_center">66.72 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m40"><mo>±</mo></math> 03.54</td>
+<td class="ltx_td ltx_align_center">41.27 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m41"><mo>±</mo></math> 05.54</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Log of flux near polarity inversion line</th>
+<td class="ltx_td ltx_align_center">67.57 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m42"><mo>±</mo></math> 03.83</td>
+<td class="ltx_td ltx_align_center">97.98 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m43"><mo>±</mo></math> 01.63</td>
+<td class="ltx_td ltx_align_center">65.83 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m44"><mo>±</mo></math> 04.05</td>
+<td class="ltx_td ltx_align_center">63.81 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m45"><mo>±</mo></math> 05.06</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="5">CNN:HMI</th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Total unsigned flux</th>
+<td class="ltx_td ltx_align_center ltx_border_t">85.01 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m46"><mo>±</mo></math> 02.69</td>
+<td class="ltx_td ltx_align_center ltx_border_t">69.52 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m47"><mo>±</mo></math> 08.66</td>
+<td class="ltx_td ltx_align_center ltx_border_t">85.87 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m48"><mo>±</mo></math> 02.99</td>
+<td class="ltx_td ltx_align_center ltx_border_t">55.39 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m49"><mo>±</mo></math> 07.65</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area</th>
+<td class="ltx_td ltx_align_center">83.54 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m50"><mo>±</mo></math> 01.84</td>
+<td class="ltx_td ltx_align_center">70.88 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m51"><mo>±</mo></math> 06.98</td>
+<td class="ltx_td ltx_align_center">84.23 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m52"><mo>±</mo></math> 02.17</td>
+<td class="ltx_td ltx_align_center">55.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m53"><mo>±</mo></math> 05.36</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned vertical current</th>
+<td class="ltx_td ltx_align_center">85.51 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m54"><mo>±</mo></math> 02.59</td>
+<td class="ltx_td ltx_align_center">71.04 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m55"><mo>±</mo></math> 07.54</td>
+<td class="ltx_td ltx_align_center">86.30 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m56"><mo>±</mo></math> 02.94</td>
+<td class="ltx_td ltx_align_center">57.34 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m57"><mo>±</mo></math> 06.02</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned current helicity</th>
+<td class="ltx_td ltx_align_center">86.39 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m58"><mo>±</mo></math> 02.23</td>
+<td class="ltx_td ltx_align_center">69.81 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m59"><mo>±</mo></math> 06.28</td>
+<td class="ltx_td ltx_align_center">87.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m60"><mo>±</mo></math> 02.46</td>
+<td class="ltx_td ltx_align_center">57.13 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m61"><mo>±</mo></math> 05.36</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total free energy density</th>
+<td class="ltx_td ltx_align_center">88.02 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m62"><mo>±</mo></math> 02.00</td>
+<td class="ltx_td ltx_align_center">61.87 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m63"><mo>±</mo></math> 08.08</td>
+<td class="ltx_td ltx_align_center">89.48 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m64"><mo>±</mo></math> 02.30</td>
+<td class="ltx_td ltx_align_center">51.35 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m65"><mo>±</mo></math> 06.68</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total Lorentz force</th>
+<td class="ltx_td ltx_align_center">86.04 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m66"><mo>±</mo></math> 02.74</td>
+<td class="ltx_td ltx_align_center">68.47 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m67"><mo>±</mo></math> 09.26</td>
+<td class="ltx_td ltx_align_center">87.03 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m68"><mo>±</mo></math> 02.94</td>
+<td class="ltx_td ltx_align_center">55.50 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m69"><mo>±</mo></math> 08.97</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center">88.70 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m70"><mo>±</mo></math> 02.03</td>
+<td class="ltx_td ltx_align_center">72.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m71"><mo>±</mo></math> 06.77</td>
+<td class="ltx_td ltx_align_center">89.62 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m72"><mo>±</mo></math> 02.14</td>
+<td class="ltx_td ltx_align_center">61.73 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m73"><mo>±</mo></math> 06.52</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center">88.82 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m74"><mo>±</mo></math> 02.22</td>
+<td class="ltx_td ltx_align_center">73.94 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m75"><mo>±</mo></math> 08.13</td>
+<td class="ltx_td ltx_align_center">89.64 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m76"><mo>±</mo></math> 02.42</td>
+<td class="ltx_td ltx_align_center">63.58 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m77"><mo>±</mo></math> 07.50</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Mean free energy density</th>
+<td class="ltx_td ltx_align_center">76.33 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m78"><mo>±</mo></math> 02.68</td>
+<td class="ltx_td ltx_align_center">69.17 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m79"><mo>±</mo></math> 05.34</td>
+<td class="ltx_td ltx_align_center">76.72 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m80"><mo>±</mo></math> 02.87</td>
+<td class="ltx_td ltx_align_center">45.89 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m81"><mo>±</mo></math> 05.40</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m82"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center">71.55 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m83"><mo>±</mo></math> 02.72</td>
+<td class="ltx_td ltx_align_center">70.73 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m84"><mo>±</mo></math> 08.44</td>
+<td class="ltx_td ltx_align_center">71.57 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m85"><mo>±</mo></math> 03.00</td>
+<td class="ltx_td ltx_align_center">42.30 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m86"><mo>±</mo></math> 07.84</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Log of flux near polarity inversion line</th>
+<td class="ltx_td ltx_align_center">76.62 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m87"><mo>±</mo></math> 02.80</td>
+<td class="ltx_td ltx_align_center">91.88 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m88"><mo>±</mo></math> 03.58</td>
+<td class="ltx_td ltx_align_center">75.72 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m89"><mo>±</mo></math> 03.16</td>
+<td class="ltx_td ltx_align_center">67.59 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m90"><mo>±</mo></math> 02.28</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="5">CNN:GONG</th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Total unsigned flux</th>
+<td class="ltx_td ltx_align_center ltx_border_t">87.01 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m91"><mo>±</mo></math> 02.44</td>
+<td class="ltx_td ltx_align_center ltx_border_t">53.17 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m92"><mo>±</mo></math> 11.56</td>
+<td class="ltx_td ltx_align_center ltx_border_t">88.87 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m93"><mo>±</mo></math> 02.84</td>
+<td class="ltx_td ltx_align_center ltx_border_t">42.05 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m94"><mo>±</mo></math> 10.34</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area</th>
+<td class="ltx_td ltx_align_center">84.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m95"><mo>±</mo></math> 02.57</td>
+<td class="ltx_td ltx_align_center">60.14 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m96"><mo>±</mo></math> 12.87</td>
+<td class="ltx_td ltx_align_center">85.62 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m97"><mo>±</mo></math> 02.98</td>
+<td class="ltx_td ltx_align_center">45.76 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m98"><mo>±</mo></math> 11.51</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned vertical current</th>
+<td class="ltx_td ltx_align_center">87.06 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m99"><mo>±</mo></math> 02.43</td>
+<td class="ltx_td ltx_align_center">54.33 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m100"><mo>±</mo></math> 11.78</td>
+<td class="ltx_td ltx_align_center">88.87 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m101"><mo>±</mo></math> 02.83</td>
+<td class="ltx_td ltx_align_center">43.20 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m102"><mo>±</mo></math> 10.66</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned current helicity</th>
+<td class="ltx_td ltx_align_center">88.15 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m103"><mo>±</mo></math> 02.42</td>
+<td class="ltx_td ltx_align_center">49.19 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m104"><mo>±</mo></math> 13.78</td>
+<td class="ltx_td ltx_align_center">90.30 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m105"><mo>±</mo></math> 02.83</td>
+<td class="ltx_td ltx_align_center">39.49 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m106"><mo>±</mo></math> 12.85</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total free energy density</th>
+<td class="ltx_td ltx_align_center">89.44 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m107"><mo>±</mo></math> 01.69</td>
+<td class="ltx_td ltx_align_center">41.35 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m108"><mo>±</mo></math> 17.17</td>
+<td class="ltx_td ltx_align_center">92.11 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m109"><mo>±</mo></math> 02.34</td>
+<td class="ltx_td ltx_align_center">33.45 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m110"><mo>±</mo></math> 15.85</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total Lorentz force</th>
+<td class="ltx_td ltx_align_center">86.96 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m111"><mo>±</mo></math> 02.39</td>
+<td class="ltx_td ltx_align_center">48.25 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m112"><mo>±</mo></math> 19.33</td>
+<td class="ltx_td ltx_align_center">89.06 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m113"><mo>±</mo></math> 02.82</td>
+<td class="ltx_td ltx_align_center">37.30 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m114"><mo>±</mo></math> 18.34</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center">91.26 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m115"><mo>±</mo></math> 02.18</td>
+<td class="ltx_td ltx_align_center">54.50 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m116"><mo>±</mo></math> 11.18</td>
+<td class="ltx_td ltx_align_center">93.39 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m117"><mo>±</mo></math> 02.34</td>
+<td class="ltx_td ltx_align_center">47.89 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m118"><mo>±</mo></math> 11.16</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center">90.79 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m119"><mo>±</mo></math> 01.77</td>
+<td class="ltx_td ltx_align_center">52.30 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m120"><mo>±</mo></math> 10.90</td>
+<td class="ltx_td ltx_align_center">93.02 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m121"><mo>±</mo></math> 02.06</td>
+<td class="ltx_td ltx_align_center">45.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m122"><mo>±</mo></math> 10.61</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Mean free energy density</th>
+<td class="ltx_td ltx_align_center">77.19 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m123"><mo>±</mo></math> 03.73</td>
+<td class="ltx_td ltx_align_center">67.10 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m124"><mo>±</mo></math> 07.69</td>
+<td class="ltx_td ltx_align_center">77.76 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m125"><mo>±</mo></math> 04.08</td>
+<td class="ltx_td ltx_align_center">44.86 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m126"><mo>±</mo></math> 07.50</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m127"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center">70.50 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m128"><mo>±</mo></math> 04.47</td>
+<td class="ltx_td ltx_align_center">73.21 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m129"><mo>±</mo></math> 07.29</td>
+<td class="ltx_td ltx_align_center">70.32 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m130"><mo>±</mo></math> 04.84</td>
+<td class="ltx_td ltx_align_center">43.53 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m131"><mo>±</mo></math> 07.77</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb">Log of flux near polarity inversion line</th>
+<td class="ltx_td ltx_align_center ltx_border_bb">78.22 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m132"><mo>±</mo></math> 04.06</td>
+<td class="ltx_td ltx_align_center ltx_border_bb">84.98 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m133"><mo>±</mo></math> 03.89</td>
+<td class="ltx_td ltx_align_center ltx_border_bb">77.82 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m134"><mo>±</mo></math> 04.38</td>
+<td class="ltx_td ltx_align_center ltx_border_bb">62.80 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T6.m135"><mo>±</mo></math> 04.83</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 6: </span><span class="ltx_text ltx_font_bold">مقارنة بين خصائص SHARPs المقدرة بواسطة CNN والحقيقية للتنبؤ بالتوهجات باستخدام تحليل التمييز الخطي (LDA) لكل خاصية.</span> يُعرض انحراف معياري 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0038.svg"/>.</figcaption>
+</figure>
+<figure class="ltx_table" id="S4.T7">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="5"><span class="ltx_text ltx_font_bold">Flare forecasting using CNN obtained SHARPs features</span></th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="5">Number of observations</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t"># Positives</th>
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="4">338</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row"># Negatives</th>
+<td class="ltx_td ltx_align_center" colspan="4">6011</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_t"></th>
+<td class="ltx_td ltx_align_center ltx_border_t">accuracy</td>
+<td class="ltx_td ltx_align_center ltx_border_t">recall(+)</td>
+<td class="ltx_td ltx_align_center ltx_border_t">recall(-)</td>
+<td class="ltx_td ltx_align_center ltx_border_t">TSS</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t">True SHARPs</th>
+<td class="ltx_td ltx_align_center ltx_border_t">0.842 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m1"><mo>±</mo></math> 0.030</td>
+<td class="ltx_td ltx_align_center ltx_border_t">0.856 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m2"><mo>±</mo></math> 0.044</td>
+<td class="ltx_td ltx_align_center ltx_border_t">0.841 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m3"><mo>±</mo></math> 0.033</td>
+<td class="ltx_td ltx_align_center ltx_border_t">0.697 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m4"><mo>±</mo></math> 0.045</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row">CNN:HMI</th>
+<td class="ltx_td ltx_align_center">0.812 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m5"><mo>±</mo></math> 0.028</td>
+<td class="ltx_td ltx_align_center">0.869 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m6"><mo>±</mo></math> 0.056</td>
+<td class="ltx_td ltx_align_center">0.809 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m7"><mo>±</mo></math> 0.031</td>
+<td class="ltx_td ltx_align_center">0.677 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m8"><mo>±</mo></math> 0.046</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row">CNN:GONG</th>
+<td class="ltx_td ltx_align_center">0.818 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m9"><mo>±</mo></math> 0.031</td>
+<td class="ltx_td ltx_align_center">0.801 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m10"><mo>±</mo></math> 0.064</td>
+<td class="ltx_td ltx_align_center">0.819 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m11"><mo>±</mo></math> 0.035</td>
+<td class="ltx_td ltx_align_center">0.621 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m12"><mo>±</mo></math> 0.056</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b">True SHARPs <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Couvidat, <a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite>
+</th>
+<td class="ltx_td ltx_align_center ltx_border_b">0.924 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m13"><mo>±</mo></math> 0.007</td>
+<td class="ltx_td ltx_align_center ltx_border_b">0.832 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m14"><mo>±</mo></math> 0.042</td>
+<td class="ltx_td ltx_align_center ltx_border_b">0.929 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m15"><mo>±</mo></math> 0.008</td>
+<td class="ltx_td ltx_align_center ltx_border_b">0.761 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S4.T7.m16"><mo>±</mo></math> 0.039</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 7: </span><span class="ltx_text ltx_font_bold">أداء خصائص الحقول المتجهة المعاد بناؤها بواسطة CNN في التنبؤ بالتوهجات.</span> أداء التنبؤ بالتوهجات لآلة متجهات الدعم <cite class="ltx_cite ltx_citemacro_citep">(Cortes &amp; Vapnik, <a class="ltx_ref" href="#bib.bib11" title="">1995</a>; Hastie et al., <a class="ltx_ref" href="#bib.bib17" title="">2001</a>)</cite> المدربة باستخدام خصائص SHARPs المقدرة بواسطة CNN (الجدول <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>). دُربت SVM للتنبؤ بتوهجات الفئتين M وX قبل 24h، على غرار Bobra وCouvidat (2015) <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Couvidat, <a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite>. ويُعرض انحراف معياري 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0039.svg"/>.</figcaption>
+</figure>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p">إن خصائص SHARPs المدروسة (الواردة في الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3 الطرائق ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a> والجدول <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>) مترابطة فيما بينها، وتنقسم إلى أربع مجموعات استنادًا إلى ارتباطات Pearson المتبادلة <cite class="ltx_cite ltx_citemacro_citep">(Dhuri et al., <a class="ltx_ref" href="#bib.bib13" title="">2019</a>)</cite>: (i) خصائص تعتمد على مساحة ARs، أي خصائص ممتدة تشمل مساحة AR، والفيض الكلي غير الموقّع، والتيار الرأسي الكلي غير الموقّع، ولولبية التيار الكلية غير الموقعة، وكثافة الطاقة الحرة الكلية، وقوة Lorentz الكلية؛ و(ii) خصائص تعتمد على التيار الكهربائي في ARs، أي اللولبية الصافية المطلقة للتيار ومجموع التيار الصافي لكل قطبية؛ و(iii) خصائص تعتمد فقط على الطاقة غير الجهدية في ARs، أي متوسط كثافة الطاقة الحرة والمساحة ذات القص <img alt="$&gt;45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt;45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0040.svg"/>؛ وأخيرًا (iv) قيمة Schrijver المسماة R_value <cite class="ltx_cite ltx_citemacro_citep">(Schrijver, <a class="ltx_ref" href="#bib.bib35" title="">2007</a>)</cite>، أي مجموع الفيض على خط انعكاس القطبية. وبوجه عام، نطور أربع CNNs مختلفة (الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3 الطرائق ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>) لتقدير خصائص SHARPs من هذه المجموعات الأربع المعنية. ولكل CNN، تتألف طبقة الخرج من <img alt="$\rm K$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\rm K$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0041.svg"/> عصبونات لتقدير <img alt="$\rm K$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\rm K$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0042.svg"/> من خصائص SHARPs المقابلة لكل من المجموعات الأربع.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p2">
+<p class="ltx_p">ترتبط الخصائص الممتدة بقوة بالفيض الكلي غير الموقّع في AR، الذي يعتمد فقط على المركبة الشعاعية للحقل المغناطيسي. وتُقدّر المركبة الشعاعية تقليديًا من حقل LOS المغناطيسي في AR باستخدام تقريب الحقل الجهدي <cite class="ltx_cite ltx_citemacro_citep">(Leka et al., <a class="ltx_ref" href="#bib.bib23" title="">2017</a>)</cite>. وباستخدام CNN، نقدّر هذه الخصائص الممتدة مباشرة من غير الحاجة أولًا إلى تقدير الحقل المغناطيسي الشعاعي. وتعتمد R_value فقط على حقل LOS المغناطيسي ويمكن حسابها مباشرة باستخدام مغناطوغرامات GONG LOS. غير أنه لمطابقة R_value الخاصة بـ HMI SHARPs، تحتاج حقول GONG LOS المغناطيسية إلى معايرة تبادلية. ومن المتوقع أن تتعلم نماذج CNN ضمنيًا المعايرة بين الأدوات أثناء التدريب <cite class="ltx_cite ltx_citemacro_citep">(Munoz-Jaramillo et al., <a class="ltx_ref" href="#bib.bib27" title="">2022</a>)</cite>، كما يُتوقع أن تكون قيم SHARPs المقدرة معايرة تبادليًا تلقائيًا.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p3">
+<p class="ltx_p">على خلاف الخصائص الممتدة، يتطلب التقدير الدقيق لـ SHARPs التي تعتمد على التيار الكهربائي ومتوسط الطاقة الحرة معرفة صريحة بالحقول المغناطيسية المتجهة الكاملة. وهذه الخصائص مهمة لفهم محفزات العواصف الشمسية، وتُقدر عادة بافتراض نماذج للحقل المغناطيسي، مثل نماذج الحقل الخطي وغير الخطي الخالي من القوة <cite class="ltx_cite ltx_citemacro_citep">(Régnier &amp; Priest, <a class="ltx_ref" href="#bib.bib33" title="">2007</a>)</cite>. هنا، نقدم تقديرًا قائمًا على البيانات بالكامل لهذه الخصائص باستخدام CNN. ومن أجل تقييم أداء CNN، نستخدم نماذج الانحدار الخطي (LR) بوصفها مرجعًا. ونطور نموذجين منفصلين من LR، أحدهما للخصائص التي تعتمد على التيار الكهربائي والآخر للخصائص التي تعتمد على الطاقة الحرة، على التوالي. ويكون دخل نماذج LR هو الخصائص الممتدة وR_Value. وينتج نموذج LR الأول اللولبية الصافية المطلقة للتيار ومجموع التيار الصافي لكل قطبية بوصفهما خرجًا، في حين ينتج الثاني متوسط كثافة الطاقة الحرة والمساحة ذات القص <img alt="$&gt; 45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt; 45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0043.svg"/> بوصفهما خرجًا. ويعرض الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3 الطرائق ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a> مخططًا لنماذج CNN وكذلك للنماذج المرجعية.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p4">
+<p class="ltx_p">نستخدم ارتباطي Pearson وSpearman لقياس أداء CNN والنماذج المرجعية. يقيس ارتباط Pearson ارتباطًا خطيًا بين القيم الحقيقية والمقدرة لخصائص الحقول المغناطيسية المتجهة. أما ارتباط Spearman فهو ارتباط رتب يلتقط العلاقة الرتيبة بين القيم الحقيقية والمقدرة إضافة إلى العلاقة الخطية التي يقيسها ارتباط Pearson. وترد ارتباطات Pearson وSpearman لخصائص الحقول المغناطيسية المتجهة المقدرة بواسطة CNN في الجدولين <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a> و <a class="ltx_ref" href="#S4.T3" title="Table 3 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">3</span></a> على التوالي. أما بالنسبة إلى النماذج المرجعية، فترد هذه الارتباطات في الجدول <a class="ltx_ref" href="#S4.T4" title="Table 4 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">4</span></a>.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p5">
+<p class="ltx_p">من الجدول <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>، تبدو ارتباطات Pearson لخصائص الحقول المتجهة المقدرة بواسطة CNN أعلى في HMI منها في GONG، ومن ثم يبدو أنها تعتمد على الدقة المكانية لمغناطوغرامات LOS. بالنسبة إلى HMI، تعطي الخصائص الممتدة المقدرة بواسطة CNN ارتباط Pearson قدره <img alt="$\sim 95\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 95\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0044.svg"/> لبيانات التحقق و<img alt="$\sim 90\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 90\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0045.svg"/> لبيانات الاختبار. أما بالنسبة إلى بيانات GONG، فالارتباط المقابل هو <img alt="$\sim 90\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 90\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0046.svg"/>. ولا تبلغ ارتباطات Pearson للقيم المقدرة بواسطة CNN للخصائص الممتدة القيمة المثالية <img alt="$\sim 100\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 100\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0047.svg"/>، لأن حساب SHARPs لا يأخذ في الاعتبار جميع البكسلات، بل لا يأخذ إلا تلك التي يكون فيها إزالة الالتباس عن المركبة السمتية للحقل المغناطيسي موثوقًا <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib5" title="">2014</a>)</cite>. ومن الجدول <a class="ltx_ref" href="#S4.T3" title="Table 3 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">3</span></a>، فإن ارتباطات Spearman للخصائص الممتدة أقل قليلًا فقط من ارتباطات Pearson المقابلة، ما يعني أن ترتيب الخصائص المقدرة متسق عمومًا مع الترتيب الحقيقي.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p6">
+<p class="ltx_p">إن قيم ارتباطي Pearson وSpearman للخصائص التي تعتمد على الطاقة غير الجهدية مرتفعة بدرجة ملحوظة <img alt="$&gt;90\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt;90\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0048.svg"/> عبر مجموعات بيانات التحقق والاختبار. كما أن قيم الارتباط هذه أعلى <img alt="$\sim 10\%-20\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 10\%-20\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0049.svg"/> مقارنة بنموذج الانحدار الخطي المرجعي (الجدول <a class="ltx_ref" href="#S4.T4" title="Table 4 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">4</span></a>). وهذه الخصائص، وهي متوسط كثافة الطاقة الحرة والمساحة ذات القص <img alt="$&gt; 45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt; 45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0050.svg"/>، تعتمد صراحة على الحقل المغناطيسي المتجه الكامل.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p7">
+<p class="ltx_p">بالنسبة إلى الخصائص التي تعتمد على التيار الكهربائي، أي اللولبية الصافية المطلقة للتيار ومجموع التيار الصافي لكل قطبية، لا يتفوق أداء CNN على النموذج المرجعي. فبينما تكون ارتباطات Pearson للتحقق أعلى <img alt="$20\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$20\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0051.svg"/> مقارنة بالمرجع البالغ <img alt="$70\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$70\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0052.svg"/>، فإن ارتباطات Spearman متساوية تقريبًا (ضمن حدود أشرطة الخطأ) عند <img alt="$60\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$60\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0053.svg"/>. كما تفشل CNN في التعميم إلى بيانات الاختبار، إذ تحقق درجات ارتباط Pearson وSpearman منخفضة مقدارها <img alt="$60\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$60\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0054.svg"/> لكل منهما.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p8">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S4.F3" title="Figure 3 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">3</span></a> تمثيلات بمخططات مبعثرة للارتباط بين خصائص SHARPs الحقيقية والمقدرة بواسطة CNN لكل من HMI وGONG من مجموعات التحقق العشر. وبالنسبة إلى HMI، تتطابق القيم الحقيقية والمشتقة من CNN غالبًا على نحو وثيق نسبيًا، باستثناء القيم الصغيرة جدًا فقط (<img alt="$&lt; 200~G^2~-~m^{-1}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&lt; 200~G^2~-~m^{-1}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0055.svg"/>) للولبية الصافية المطلقة للتيار حيث تكون تقديرات CNN أكبر بكثير. وبالنسبة إلى بيانات اختبار HMI وكذلك بيانات GONG، فإن تقدير CNN للولبية الصافية المطلقة للتيار عند القيم الكبيرة (<img alt="$&gt; 1000~G^2~-~m^{-1}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt; 1000~G^2~-~m^{-1}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0056.svg"/>) يكون باستمرار على الجانب الأدنى (<img alt="$\sim 500~G^2~-~m^{-1}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 500~G^2~-~m^{-1}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0057.svg"/>). ويبين الشكل <a class="ltx_ref" href="#S4.F4" title="Figure 4 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">4</span></a> صراحةً متوسط الأخطاء المطلقة في تقدير CNN بدلالة القيم الحقيقية لـ HMI وGONG. وتُظهر متوسطات الأخطاء المطلقة في القيم المقدرة بواسطة CNN من مغناطوغرامات GONG اعتمادًا أعلى على القيم الحقيقية مقارنة بـ HMI، وتزداد بدرجة كبيرة مع زيادة القيم الحقيقية للخصائص المعنية، ولا سيما في بيانات التحقق. وبالنسبة إلى الفيض الكلي غير الموقّع، تكون متوسطات الأخطاء المطلقة للخصائص المقدرة بواسطة CNN لكل من HMI وGONG أعلى بكثير عند القيم المتطرفة <img alt="$15-20~\times~10^{22}~{\rm Mx}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$15-20~\times~10^{22}~{\rm Mx}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0058.svg"/>. وبالنسبة إلى بيانات اختبار HMI وبيانات GONG، تكون متوسطات الأخطاء المطلقة أعلى بأكثر من 12 مرات عند المقادير الكبيرة (<img alt="$&gt; 1000~G^2~-~m^{-1}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt; 1000~G^2~-~m^{-1}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0059.svg"/>) للولبية الصافية المطلقة للتيار مقارنة ببيانات تحقق HMI. ومتوسط الأخطاء النسبية لكل من GONG وHMI قابل للمقارنة عند <img alt="$\approx80 \pm 10 \%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\approx80 \pm 10 \%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0060.svg"/> و<img alt="$900 \pm 100\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$900 \pm 100\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0061.svg"/> و<img alt="$25 \pm 2\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$25 \pm 2\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0062.svg"/> للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة على التوالي. وتعني الأخطاء النسبية المتوسطة العالية أن تقديرات CNN بعيدة عن القيم الحقيقية، ولا سيما بالنسبة إلى خصائص SHARPs ذات القيم الحقيقية المنخفضة. وتُظهر خصائص SHARPs من ARs التي تنتج توهجًا كبيرًا واحدًا على الأقل (M5 أو أكبر) انخفاضًا مهمًا في متوسط الأخطاء النسبية، عند نحو <img alt="$30 \pm 15 \%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$30 \pm 15 \%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0063.svg"/> و<img alt="$300 \pm 80\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$300 \pm 80\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0064.svg"/> و<img alt="$16 \pm 2\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$16 \pm 2\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0065.svg"/> على التوالي.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>التطور الزمني للخصائص المشتقة من CNN في المناطق النشطة المنتجة للتوهجات </h3>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">من أجل فهم ديناميكيات الحقول المغناطيسية في AR وتحسين التنبؤ بالعواصف الشمسية، من المهم أن تكون التغيرات الزمنية لـ SHARPs المقدرة بواسطة CNN مطابقة بأمانة لـ SHARPs الحقيقية. نقيس الاتجاهات في التطور الزمني لخصائص SHARPs في AR ما بملاءمة القيم المرصودة والمقدرة بواسطة CNN بمنحنيات spline ملساء وحساب المشتقات الزمنية عدديًا. ويورد الجدول <a class="ltx_ref" href="#S4.T5" title="Table 5 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">5</span></a> ارتباطات Pearson بين المشتقات الزمنية لمنحنيات spline الملائمة للقيم الحقيقية والقيم المقدرة بواسطة CNN للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة. ونجد أن ارتباطات Pearson عالية، <img alt="$\sim 80\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 80\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0066.svg"/>، بالنسبة إلى HMI، باستثناء قيم اللولبية الصافية المطلقة للتيار من بيانات الاختبار. أما بالنسبة إلى GONG، فإن ارتباطات Pearson لمتوسط كثافة الطاقة الحرة وحدها عالية بما يكفي، <img alt="$\sim 70\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 70\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0067.svg"/>، لتشير إلى أن الاتجاهات المقابلة ملتقطة بدقة معقولة في الخصائص المقدرة بواسطة CNN. ويبدو أن هذه التباينات بين اتجاهات القيم المقدرة بواسطة CNN من GONG والقيم الحقيقية هي نتيجة للدقة الأقل لمغناطوغرامات GONG.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p2">
+<p class="ltx_p">تُعرض في الشكل <a class="ltx_ref" href="#S4.F5" title="Figure 5 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">5</span></a> مقارنة للتطور الزمني للخصائص الحقيقية والمقدرة بواسطة CNN المستحصل عليها من HMI وGONG لمناطق ARs مفردة تنتج توهجًا كبيرًا واحدًا على الأقل (M5 أو أكبر). وتتفق القيم الحقيقية والمقدرة بواسطة CNN للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة، ولا سيما بالنسبة إلى HMI، إذ تلتقط تطور هذه الخصائص قبل التوهجات وبعدها. ولا تحدث الاختلافات بين الخصائص الحقيقية والمقدرة بواسطة CNN إلا عند القيم المتطرفة لهذه الخصائص. فمثلًا، بالنسبة إلى توهج X9.3 في NOAA 12673 في سبتمبر 2017، الذي كان أكبر توهج في الدورة 24، تقدّر CNN بدقة ارتفاع الفيض الكلي غير الموقّع وكذلك متوسط كثافة الطاقة الحرة قبل التوهج. وترتفع اللولبية الصافية المطلقة للتيار إلى قيم عالية على نحو غير معتاد قبل توهج X9.3 (<img alt="$30\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$30\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0068.svg"/> أكثر من القيم العظمى الموجودة في بيانات التدريب)، ولذلك تكون تقديرات CNN المقابلة غير دقيقة. وترد أمثلة أخرى لمقارنات التطور الزمني بين الخصائص الحقيقية والمقدرة بواسطة CNN من ARs التي تنتج توهجًا واحدًا على الأقل من فئة M5 أو أكبر في شكل الملحق <a class="ltx_ref" href="#A1.F9" title="Figure 9 ‣ Appendix A التطور الزمني للخصائص المقدرة بواسطة CNN في جميع ARs التي تنتج توهجات من الفئة M5 أو أكبر. ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">9</span></a>.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p3">
+<p class="ltx_p">ومن ثم فإن تقدير CNN لخصائص SHARPs في ARs المنتجة للتوهجات مفيد لفهم تطور الحقل المغناطيسي في AR المؤدي إلى عواصف شمسية عنيفة بوجه خاص في الماضي. فقد أنتجت عواصف الهالوين في أكتوبر 2003 توهجات قصوى من AR NOAA 10486 بمقادير X17.0 وX10.0 وأكبر توهج مسجل X28.0 <cite class="ltx_cite ltx_citemacro_citep">(Pulkkinen et al., <a class="ltx_ref" href="#bib.bib31" title="">2005</a>)</cite>. وقد تميز تطور الحقل المغناطيسي المؤدي إلى هذه التوهجات القصوى بدوران قطبية موجبة كبرى في البقعة الشمسية من النوع delta كما هو مبين في اللوحة العلوية من الشكل <a class="ltx_ref" href="#S4.F6" title="Figure 6 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">6</span></a> <cite class="ltx_cite ltx_citemacro_citep">(Zhang et al., <a class="ltx_ref" href="#bib.bib46" title="">2008</a>)</cite>. ومن دون معرفة الحقول المغناطيسية المتجهة، سبق نمذجة الطاقة الحرة ولولبية التيار أثناء هذه العواصف اعتمادًا على مبرهنة virial المغناطيسية <cite class="ltx_cite ltx_citemacro_citep">(Metcalf et al., <a class="ltx_ref" href="#bib.bib26" title="">2005</a>; Régnier &amp; Priest, <a class="ltx_ref" href="#bib.bib33" title="">2007</a>)</cite>، واستقراء الحقول الخطية/غير الخطية الخالية من القوة <cite class="ltx_cite ltx_citemacro_citep">(Régnier &amp; Priest, <a class="ltx_ref" href="#bib.bib33" title="">2007</a>)</cite>، ونموذج Minimum Current Corona <cite class="ltx_cite ltx_citemacro_citep">(Kazachenko et al., <a class="ltx_ref" href="#bib.bib19" title="">2010</a>)</cite>. ونحصل على تقديرات CNN خالية من النماذج وقائمة على البيانات بالكامل للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة أثناء هذه العواصف باستخدام مغناطوغرامات LOS. غير أن رصدات HMI غير متاحة لهذه الفترة. لذلك نستخدم CNN المدربة بمغناطوغرامات HMI لمعالجة رصدات LOS من MDI أثناء عواصف الهالوين لتقدير التطور الزمني للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة. واستُبعد توهج X28.0 لأنه حدث خارج <img alt="$45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0069.svg"/> من خط الزوال المركزي. وعلى وجه الخصوص، ترتفع اللولبية الصافية المطلقة للتيار المقدرة بواسطة CNN للمنطقة NOAA 10486 باستمرار بمقدار <img alt="$25\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$25\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0070.svg"/> بين توهج X1.2 وتوهج X17.0، بما يقابل دوران البقعة الشمسية المرصود. وقد أُبلغ عن ارتفاع تدريجي مماثل في فيض اللولبية المنمذج بمقدار <img alt="$50\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$50\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0071.svg"/> بين توهج X1.2 وتوهج X17.0 <cite class="ltx_cite ltx_citemacro_citep">(Kazachenko et al., <a class="ltx_ref" href="#bib.bib19" title="">2010</a>)</cite>، ناجم أساسًا عن حقن اللولبية من دوران البقعة الشمسية. وتُظهر تقديرات CNN أن اللولبية الصافية المطلقة للتيار تبقى مرتفعة وصولًا إلى توهج X10.0 ثم تنخفض بعد ذلك. كما يرتفع متوسط كثافة الطاقة الحرة المقدر بواسطة CNN وصولًا إلى توهجي X17.0 وX10.0.
+لاحظ أن هذه القيم المقدرة بواسطة CNN من مغناطوغرامات MDI لا يُتوقع أن تكون مصححة للمعايرة المتبادلة بين أداتي MDI وHMI، لأن CNN دُربت بمغناطوغرامات HMI فقط. ويورد الجدول <a class="ltx_ref" href="#A3.T8" title="Table 8 ‣ Appendix C ارتباطات MDI ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">8</span></a> في الملحق ارتباطات Pearson وSpearman بين القيم الحقيقية والقيم المقدرة بواسطة CNN باستخدام مغناطوغرامات خط البصر من MDI، خلال فترة التداخل بين MDI وHMI. وهذه القيم الارتباطية أدنى بكثير مقارنة بتلك المقدرة من مغناطوغرامات HMI (الجدولان <a class="ltx_ref" href="#S4.T2" title="Table 2 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a> و<a class="ltx_ref" href="#S4.T3" title="Table 3 ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">3</span></a>). لذلك يتطلب التقدير الصارم أولًا تقييس مغناطوغرامات MDI وHMI (مثلًا، باستخدام مقاربات أخرى كالدقة الفائقة <cite class="ltx_cite ltx_citemacro_citep">(Munoz-Jaramillo et al., <a class="ltx_ref" href="#bib.bib27" title="">2022</a>)</cite>). كما استخدمنا مغناطوغرامات GONG لتقدير خصائص الحقول المتجهة أثناء العواصف باستخدام CNN المدربة مع GONG (انظر شكل الملحق <a class="ltx_ref" href="#A2.F10" title="Figure 10 ‣ Appendix B مقارنة الخصائص المقدرة بواسطة CNN أثناء عواصف الهالوين 2003 ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">10</span></a>). وتقع قيم خصائص الحقول المتجهة المقدرة باستخدام مغناطوغرامات GONG ضمن المجال المتطرف، كما هو متوقع أثناء العواصف. غير أن حساسية هذه القيم المقدرة للتغيرات في الحقل المغناطيسي قبل التوهج وبعده أقل مقارنة بالخصائص المقدرة من MDI.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.3 </span>التنبؤ بالتوهجات باستخدام الخصائص المشتقة من CNN</h3>
+<figure class="ltx_figure" id="S4.F7">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F7.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F7.sf1.g1" src="x12.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F7.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F7.sf2.g1" src="x13.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F7.sf3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="132" id="S4.F7.sf3.g1" src="x14.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(c) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span><span class="ltx_text ltx_font_bold">تفسير نموذج CNN المدرّب.</span> مخططات صندوقية تبين الأوزان في الطبقة قبل الأخيرة من CNN المدربة لإعادة بناء الفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة. وتُعرض أكبر خمسة أوزان من مكونات الطبقة قبل الأخيرة، أي التجميع بالمتوسط الشامل، والتجميع الأعظمي الشامل، والطبقة المترابطة بالكامل التي تعالج موقع AR (انظر الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2 البيانات ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">1</span></a>)، لنماذج التحقق العشرة. ويشير الخط الأحمر إلى وسيط مجتمعات الأوزان.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S4.F8">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="176" id="S4.F8.g1" src="x15.png" width="407"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="176" id="S4.F8.g2" src="x16.png" width="407"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="176" id="S4.F8.g3" src="x17.png" width="407"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="176" id="S4.F8.g4" src="x18.png" width="407"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span><span class="ltx_text ltx_font_bold">خرائط الإسناد بالتدرج المتكامل (IG).</span> تبرز مخططات الكنتور لخرائط الإسناد IG المناطق من المغناطوغرامات ذات أعلى إسنادات لتقدير CNN لخصائص SHARPs، وهي الفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة. وتقابل الكنتورات الحمراء/الزرقاء المناطق ذات الإسنادات الصافية الموجبة/السالبة للمغناطوغرامات في الصفوف السفلية نسبة إلى المغناطوغرامات المرجعية في الصفوف العلوية. وتمثل قيم <img alt="$\Delta$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\Delta$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0072.svg"/> النسبة المئوية للتغير في القيم المطبعة للخصائص المعنية بين الرصد الحالي والرصد المرجعي. وشريط الألوان للمغناطوغرامات مشبع عند <img alt="$\rm{\pm~500~G}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\rm{\pm~500~G}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0073.svg"/>. وقد مُلست خرائط الإسناد IG بمرشح Gaussian ذي انحراف معياري 10 بكسلات قبل الحصول على الكنتورات.</figcaption>
+</figure>
+<div class="ltx_para" id="S4.SS3.p1">
+<p class="ltx_p">استُخدمت خصائص SHARPs على نطاق واسع في بناء نماذج التنبؤ بالتوهجات باستخدام ML <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Couvidat, <a class="ltx_ref" href="#bib.bib3" title="">2015</a>; Bobra &amp; Ilonidis, <a class="ltx_ref" href="#bib.bib4" title="">2016</a>; Nishizuka et al., <a class="ltx_ref" href="#bib.bib28" title="">2017</a>; Dhuri et al., <a class="ltx_ref" href="#bib.bib13" title="">2019</a>; Chen et al., <a class="ltx_ref" href="#bib.bib9" title="">2019</a>; Ahmadzadeh et al., <a class="ltx_ref" href="#bib.bib1" title="">2021</a>)</cite>. ومن أجل تقييم فائدة SHARPs المقدرة بواسطة CNN في مهام التنبؤ بالتوهجات، نقارن أداءها في التنبؤ بالتوهجات مع SHARPs الحقيقية. ونصوغ مسألة التنبؤ بتوهجات الفئتين M/X مع إنذار مسبق قدره 24h على نحو مشابه لـ <cite class="ltx_cite ltx_citemacro_citet">Bobra &amp; Couvidat (<a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite>. ونستخدم مقاربتين للمقارنة. أولًا، نبني نماذج تصنيف بتحليل التمييز الخطي (LDA) باستخدام خاصية واحدة من SHARPs في كل مرة. وهذا يتيح مقارنة مباشرة بين القيم الحقيقية والقيم المقدرة بواسطة CNN لكل خاصية من خصائص SHARPs في التنبؤ بالتوهجات. ثانيًا، نستخدم جميع خصائص SHARPs معًا لتدريب آلة متجهات الدعم (SVM) على التنبؤ بالتوهجات. ونقيس أداء التنبؤ بالتوهجات باستخدام الدقة، والاستدعاء، ودرجة إحصاء المهارة الحقيقية (TSS) <cite class="ltx_cite ltx_citemacro_citep">(Peirce, <a class="ltx_ref" href="#bib.bib29" title="">1884</a>)</cite>. غير أن المقياسين الأخيرين وحدهما متينان تجاه عدم توازن الفئات السائد في مسألة التنبؤ بالتوهجات <cite class="ltx_cite ltx_citemacro_citep">(Bobra &amp; Couvidat, <a class="ltx_ref" href="#bib.bib3" title="">2015</a>; Ahmadzadeh et al., <a class="ltx_ref" href="#bib.bib1" title="">2021</a>)</cite>، ولذلك فهما موثوقان للمقارنة. وتعريفاتنا للفئات الموجبة والسالبة مطابقة للمقاربة التشغيلية الموصوفة في <cite class="ltx_cite ltx_citemacro_citet">Bobra &amp; Couvidat (<a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite>. إضافة إلى ذلك، نستخدم تحقق الحجز المتكرر 10 مرات الموصوف في القسم <a class="ltx_ref" href="#S3" title="3 الطرائق ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">3</span></a>. وخلافًا لـ <cite class="ltx_cite ltx_citemacro_citet">Bobra &amp; Couvidat (<a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite>، نضمن صراحة ألا تُخلط العينات من AR معين بين مجموعتي التدريب والتحقق <cite class="ltx_cite ltx_citemacro_citep">(Ahmadzadeh et al., <a class="ltx_ref" href="#bib.bib1" title="">2021</a>)</cite>. وكذلك، كما ذُكر في القسم <a class="ltx_ref" href="#S2" title="2 البيانات ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>، لا ننظر إلا في ARs ذات مساحة عظمى <img alt="$&gt;25~{\rm Mm^2}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt;25~{\rm Mm^2}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0074.svg"/>. ونُفذ كل من LDA وSVM باستخدام مكتبة scikit-learn في Python.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p2">
+<p class="ltx_p">يورد الجدول <a class="ltx_ref" href="#S4.T6" title="Table 6 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">6</span></a> مقاييس الأداء لتصنيف توهجات الفئتين M/X باستخدام LDA لخاصية واحدة من SHARPs في كل مرة. وتتسق قيم الدقة والاستدعاء وTSS المستحصلة باستخدام كل من الخصائص المقدرة بواسطة CNN من مغناطوغرامات HMI وGONG مع قيم خصائص SHARPs الحقيقية ضمن أشرطة خطأ التحقق. ونلاحظ أن قيمة Schrijver المسماة R_value <cite class="ltx_cite ltx_citemacro_citep">(Schrijver, <a class="ltx_ref" href="#bib.bib35" title="">2007</a>)</cite> تعطي أعلى قيم TSS للتنبؤ بالتوهجات باستخدام خصائص منفردة.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p3">
+<p class="ltx_p">يورد الجدول <a class="ltx_ref" href="#S4.T7" title="Table 7 ‣ 4.1 تقدير خصائص الحقول المغناطيسية المتجهة في AR باستخدام CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">7</span></a> مقاييس الأداء لتصنيف SVM لتوهجات الفئتين M/X باستخدام جميع خصائص SHARPs معًا. إن قيم TSS (<img alt="$\sim 68\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 68\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0075.svg"/>) والاستدعاء (<img alt="$\sim 86\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 86\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0076.svg"/>) المستحصلة باستخدام SVM مدربة بالخصائص المقدرة بواسطة CNN من HMI متسقة مع تلك المستحصلة باستخدام SHARPs الحقيقية. أما قيم TSS (<img alt="$\sim 62\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 62\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0077.svg"/>) والاستدعاء (<img alt="$\sim 80\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 80\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0078.svg"/>) من SVM مدربة بالخصائص المقدرة بواسطة CNN من GONG فهي أدنى قليلًا. وللمقارنة، نورد قيم TSS (<img alt="$\sim 76\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 76\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0079.svg"/>) والاستدعاء (<img alt="$\sim 83\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 83\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0080.svg"/>) من <cite class="ltx_cite ltx_citemacro_citet">Bobra &amp; Couvidat (<a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite> وهي أعلى. ويعود الانخفاض المنهجي في TSS الخاصة بـ SVM في التنبؤ بالتوهجات عند استخدام قيم SHARPs الحقيقية هنا مقارنة بـ <cite class="ltx_cite ltx_citemacro_citet">Bobra &amp; Couvidat (<a class="ltx_ref" href="#bib.bib3" title="">2015</a>)</cite> إلى استبعاد الرصدات من ARs ذات مساحة عظمى <img alt="$&lt;25~{\rm Mm^2}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&lt;25~{\rm Mm^2}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0081.svg"/> (كلها غير منتجة للتوهجات) وإلى القيد الصريح بأن تكون عينات AR ما جزءًا من مجموعات التدريب أو التحقق. وتشير مقاييس الأداء المتسقة إلى حد كبير للتنبؤ بالتوهجات باستخدام SHARPs المقدرة بواسطة CNN إلى أنه رغم الأخطاء النسبية العالية، يمكن أن تكون الخصائص المقدرة بواسطة CNN مفيدة لبناء أدوات التنبؤ بالطقس الفضائي. وهذا نتيجة لتغير قيم خصائص SHARPs (الحقيقية) عبر عدة رتب مقدار، ومن ثم اختلافها بدرجة ملحوظة بين ARs المنتجة للتوهجات وغير المنتجة لها في التنبؤ بالتوهجات <cite class="ltx_cite ltx_citemacro_citep">(Dhuri et al., <a class="ltx_ref" href="#bib.bib13" title="">2019</a>)</cite>. وقد تتحسن دقة خصائص SHARPs المقدرة بواسطة CNN بزيادة دقة مغناطوغرامات LOS بدرجة كبيرة، من GONG مثلًا، باستخدام تقنيات مثل الدقة الفائقة <cite class="ltx_cite ltx_citemacro_citep">(Munoz-Jaramillo et al., <a class="ltx_ref" href="#bib.bib27" title="">2022</a>)</cite>. لذلك فإن طريقتنا مناسبة لإعادة بناء خصائص الحقول المتجهة من مغناطوغرامات LOS التاريخية، وهي مفيدة في نهاية المطاف للتنبؤ الموثوق بالطقس الفضائي.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.4 </span>تفسير CNN</h3>
+<div class="ltx_para" id="S4.SS4.p1">
+<p class="ltx_p">تتمتع CNNs، والتعلم العميق عمومًا، بكفاءة بالغة في تحديد الارتباطات في البيانات. وفي هذه الحالة، تبني CNN نموذجًا مفيدًا للحقول المغناطيسية المتجهة في AR من مغناطوغرامات LOS المرصودة. وعلى وجه الخصوص، يمكن استخدام خصائص SHARPs المقدرة بواسطة CNN على نحو موثوق لدراسة تراكم الطاقة والتطور الزمني للحقول المغناطيسية في ARs المنتجة للتوهجات. ومع ذلك، فمن الصعب جدًا فتح الشبكة المدربة وفهم CNN لكشف المعلومات التي امتصتها. وعلى الرغم من ذلك، يمكن للأوزان التي تعلمتها CNN أن تلقي بعض الضوء على آلية عملها. وتوجد أيضًا طرائق إسناد لتكميم إسهام أجزاء مختلفة من صورة الدخل في خرج CNN. هنا، نحلل أوزان CNN ونحصل كذلك على خرائط إسناد لمغناطوغرامات الدخل لتفسير CNN المدربة.</p>
+</div>
+<div class="ltx_para" id="S4.SS4.p2">
+<p class="ltx_p">تتألف بنية CNN (الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2 البيانات ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">1</span></a>) من شبكة التفافية بالكامل لمعالجة مغناطوغرامات LOS وطبقة عصبونات مترابطة بالكامل لمعالجة معلومات موقع ARs على القرص الشمسي. وتتألف طبقة الضم قبل الأخيرة من طبقة تجميع بالمتوسط الشامل، وطبقة تجميع أعظمي شامل تعالجان مغناطوغرامات LOS، وطبقة مترابطة بالكامل تعالج موقع ARs. وتكون عصبونات التجميع بالمتوسط الشامل حساسة للامتداد المكاني الكامل لمغناطوغرامات LOS، في حين تكون عصبونات التجميع الأعظمي الشامل حساسة للأنماط المكانية المحلية. أما العصبونات المترابطة بالكامل فهي حساسة لإحداثيات AR على القرص. ويوضح الشكل <a class="ltx_ref" href="#S4.F7" title="Figure 7 ‣ 4.3 التنبؤ بالتوهجات باستخدام الخصائص المشتقة من CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">7</span></a> توزع الأوزان العليا لكل من المكونات الثلاثة في الطبقات قبل الأخيرة بوصفها إسهامها في خرج CNN التي تقدّر الفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة. وتسهم العصبونات المرتبطة بالتجميع بالمتوسط الشامل على نحو مهيمن في الفيض الكلي غير الموقّع ومتوسط الطاقة الحرة، ما يعني أن تقديرهما يعتمد على أخذ مغناطوغرامات LOS كاملة في الحسبان. وبالنسبة إلى اللولبية الصافية المطلقة للتيار، فإن المساهمين الرئيسيين هم عصبونات من طبقة التجميع الأعظمي الشامل، ويكون تقديرها حساسًا للأنماط المكانية المحلية من مغناطوغرامات LOS. ومن دون طبقة التجميع الأعظمي الشامل، تُظهر اللولبية الصافية المطلقة للتيار وخصائص SHARPs ذات الصلة المقدرة بواسطة CNN ارتباط Pearson أقل بمقدار <img alt="$\sim 30\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim 30\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0082.svg"/> مع القيم الحقيقية. أما أوزان العصبونات المرتبطة بموقع AR على القرص الشمسي فهي <img alt="$\sim$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0083.svg"/> 0، ولذلك لا يعتمد تقدير CNN بقوة على موقع AR. وبالفعل، يمكن تدريب CNN بدرجة جودة مماثلة من دون الدخل الإضافي الخاص بموقع AR. وقد يكون ذلك نتيجة النظر في رقع AR فقط ضمن <img alt="$\pm 45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm 45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0084.svg"/> حيث لا تكون آثار الإسقاط مهمة.</p>
+</div>
+<div class="ltx_para" id="S4.SS4.p3">
+<p class="ltx_p">رغم وجود العديد من طرائق الإسناد، تُفضل الطرائق القائمة على التدرج مثل خرائط saliency <cite class="ltx_cite ltx_citemacro_citep">(Simonyan et al., <a class="ltx_ref" href="#bib.bib38" title="">2013</a>)</cite>، وgrad-CAMs <cite class="ltx_cite ltx_citemacro_citep">(Selvaraju et al., <a class="ltx_ref" href="#bib.bib36" title="">2017</a>)</cite>، والتدرجات المتكاملة (IG) <cite class="ltx_cite ltx_citemacro_citep">(Sundararajan et al., <a class="ltx_ref" href="#bib.bib42" title="">2017</a>)</cite> وغيرها، على الطرائق القائمة على الاضطراب مثل أقنعة الحجب <cite class="ltx_cite ltx_citemacro_citep">(Zeiler &amp; Fergus, <a class="ltx_ref" href="#bib.bib45" title="">2014</a>)</cite> بسبب الكفاءة الحاسوبية وخرائط الإسناد الأعلى دقة. وخرائط الإسناد IG لها الدقة نفسها لمغناطوغرامات الدخل، ومن ثم فهي أفضل من grad-CAMs المستحصلة من خرائط خصائص CNN. كذلك، وخلافًا لخرائط saliency، تُحسب خرائط الإسناد IG باستخدام صورة دخل مرجعية تسهل إسناد سبب للإسناد، مثلًا بمقارنة تطور الحقل المغناطيسي <cite class="ltx_cite ltx_citemacro_citep">(Sun et al., <a class="ltx_ref" href="#bib.bib41" title="">2022</a>)</cite>. ولذلك نستخدم هنا خرائط الإسناد IG لتحديد البكسلات، ومن ثم خصائص الحقل المغناطيسي في الدخل، المهمة لخرج CNN. وتُحسب خريطة الإسناد IG لصورة دخل معينة بتكامل التدرجات في خرج CNN على طول المسار من صورة مرجعية. وصوريًا،</p>
+</div>
+<div class="ltx_para" id="S4.SS4.p4">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S4.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation}
+L^{f} \left(x,x_{0}\right) = \left(x-x_{0}\right) \times \int_{\alpha=0}^{1} \frac{\partial Y^{f}\left(x_{0} + \alpha \times \left(x-x_{0}\right)\right)}{\partial x}d\alpha,
+ \end{equation}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-equation-number="1" data-latex="\begin{equation}
+L^{f} \left(x,x_{0}\right) = \left(x-x_{0}\right) \times \int_{\alpha=0}^{1} \frac{\partial Y^{f}\left(x_{0} + \alpha \times \left(x-x_{0}\right)\right)}{\partial x}d\alpha,
+ \end{equation}" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0085.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <img alt="$x_{0}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_{0}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0086.svg"/> هي الصورة المرجعية، و<img alt="$Y^{f}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$Y^{f}$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0087.svg"/> هو خرج CNN لخاصية الحقول المتجهة SHARPs ‏<img alt="$f$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$f$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0088.svg"/>.</p>
+</div>
+<div class="ltx_para" id="S4.SS4.p5">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S4.F8" title="Figure 8 ‣ 4.3 التنبؤ بالتوهجات باستخدام الخصائص المشتقة من CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">8</span></a> مخططات كنتور لخرائط إسناد IG نموذجية لعدد من المغناطوغرامات المثال من ARs منتجة للتوهجات (<span class="ltx_text ltx_font_italic">الصفوف السفلية</span>). وتضم الكنتورات الحمراء/الزرقاء مناطق الإسهام الصافي الموجب/السالب باتجاه خرج CNN. وتُعرض خرائط الإسناد IG للخصائص الثلاث من SHARPs، وهي الفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة، كل على حدة مع المغناطوغرامات المرجعية (<span class="ltx_text ltx_font_italic">الصفوف العلوية</span>) المستخدمة. وعمومًا، يقابل ازدياد/انخفاض فيض القطبية الموجبة إسنادًا صافيًا موجبًا/سالبًا. وبالنسبة إلى الفيض الكلي غير الموقّع، فإن جميع مناطق الحقل المغناطيسي تقريبًا، حتى المناطق الأصغر نسبيًا ذات الحقول المغناطيسية الأضعف، تشكل إسنادًا موجبًا/سالبًا. وعلى النقيض من ذلك، بالنسبة إلى اللولبية الصافية المطلقة للتيار ومتوسط كثافة الطاقة الحرة، لا تشكل إلا المناطق الأكبر نسبيًا والأقوى في الحقل المغناطيسي إسنادًا موجبًا/سالبًا. وبالنسبة إلى متوسط الطاقة الحرة، تقابل مناطق الإسناد الموجب/السالب عادة ازدياد/انخفاض الفيض الموجب على نحو منتظم. وفي حالة اللولبية الصافية المطلقة للتيار، تقابل الإسنادات مناطق ذات حقول مغناطيسية «مختلطة» من قطبيات موجبة وسالبة متقاربة مكانيًا. وظهور خط انعكاس قطبية (PIL) مغناطيسي زائف هو أثر معروف في مغناطوغرامات خط البصر كلما تجاوز ميل الحقل المغناطيسي بالنسبة إلى خط البصر <math alttext="{\textrm{9}0\degree}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p5.m1"><mrow><mtext>9</mtext><mo>⁢</mo><mn>0</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Leka et al., <a class="ltx_ref" href="#bib.bib23" title="">2017</a>)</cite>. ونجد أنه في كثير من الحالات (مثل HARPs 407 و3291 و3311)، عندما يوجد أثر PIL للحقول المغناطيسية داخل أشباه الظل، فإنه يشكل خطأً إسنادًا مهمًا. وينتج هذا الإسناد الخاطئ من فشل CNN في تعلم أثر PIL <cite class="ltx_cite ltx_citemacro_citep">(Sun et al., <a class="ltx_ref" href="#bib.bib41" title="">2022</a>)</cite>، ونتيجة لذلك يحد من دقة خصائص الحقول المتجهة المعاد بناؤها.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>المناقشة</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">لقد طورنا بذلك نموذج CNN لتكميم خصائص الحقول المتجهة، أي الخصائص الممتدة مثل الفيض الكلي غير الموقّع وكذلك الخصائص التي تعتمد صراحة على مركبة الحقل المغناطيسي المستعرضة مثل كثافة الطاقة الحرة ولولبية التيار، باستخدام مغناطوغرامات LOS مأخوذة من أداة HMI الفضائية وأداة GONG الأرضية. وترتبط الخصائص المقدرة بواسطة CNN بقوة (<img alt="$&gt; 90\%$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$&gt; 90\%$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0090.svg"/>) مع قياساتها الحقيقية من HMI SHARPs، ولا سيما لمغناطوغرامات LOS عالية الدقة من HMI. ويحاكي التطور الزمني للخصائص المقدرة بواسطة CNN تطور الحقل المغناطيسي الحقيقي في AR بصورة موثوقة، ولا سيما في ARs التي تنتج توهجات كبرى (M5 أو أكبر). وقبل HMI، كانت رصدات الحقول المغناطيسية المتجهة المتاحة من أدوات مثل Imaging Vector Magnetograph وHinode/Spectro Polarimeter <cite class="ltx_cite ltx_citemacro_citep">(Kosugi et al., <a class="ltx_ref" href="#bib.bib20" title="">2007</a>)</cite> محدودة في التغطية المكانية والزمانية. وعلى النقيض من ذلك، تتوفر رصدات شبه مستمرة لمغناطوغرامات LOS منذ عقد 1970 من مهمات مثل تلسكوب Kitt Peak (KP)، وMDI، وGONG. وتختلف مغناطوغرامات LOS من هذه الأدوات في دقتها المكانية، وهي أدنى من دقة HMI. ومع ذلك، تتداخل فترات رصد هذه الأدوات مع HMI (KP:2010-الحاضر، MDI:2010-2011، GONG:2010-الحاضر)، ويمكن استخدام الرصدات المصاحبة لتدريب نموذج CNN أو ضبطه الدقيق لتقدير خصائص الحقول المتجهة SHARPs. ونبين صراحة أن أداء الخصائص المقدرة بواسطة CNN في التنبؤ بالتوهجات قابل للمقارنة مع SHARPs الحقيقية. لذلك، تستطيع الحقول المتجهة المقدرة من رصدات LOS السابقة لما يقرب من خمسة عقود باستخدام CNN أن توفر بيانات عن العواصف الشمسية أكثر بنحو أربعة أضعاف مما هو متاح حاليًا، وهي مفيدة لبناء نماذج إحصائية متينة للتنبؤ بالطقس الفضائي باستخدام ML. كما ييسر حجم العينة الأكبر من العواصف الشمسية بناء خوارزميات ML قائمة على السلاسل الزمنية لرصدات AR، ما قد يحسن أداء التنبؤ بدرجة كبيرة <cite class="ltx_cite ltx_citemacro_citep">(Dhuri et al., <a class="ltx_ref" href="#bib.bib13" title="">2019</a>)</cite>. وتوفر الحقول المتجهة المقدرة بواسطة CNN أيضًا منظورًا جديدًا لفهم ديناميكيات الحقول المغناطيسية وتكميمها أثناء الأحداث المتطرفة السابقة مثل عواصف الهالوين 2003 كما أظهرنا هنا.</p>
+</div>
+<div class="ltx_para" id="S5.p2">
+<p class="ltx_p">إن تقديرات CNN لدينا موثوقة لدراسات العواصف الشمسية، ومع ذلك فهناك مجال كبير للتحسين. فتقديراتنا لخصائص الحقول المتجهة باستخدام مغناطوغرامات HMI أدق باستمرار مقارنة بتلك المقدرة باستخدام مغناطوغرامات GONG ذات الدقة الأقل. وقد يؤدي استخدام مغناطوغرامات LOS من GONG وأدوات أخرى معايرة صراحةً بصورة متبادلة مع مغناطوغرامات HMI LOS إلى تحسين دقة أدوات الحقول المتجهة المقابلة بدرجة كبيرة. كما يجري بنجاح تطوير تقنيات قائمة على التعلم العميق لتحسين دقة المغناطوغرامات، وهي الدقة الفائقة <cite class="ltx_cite ltx_citemacro_citep">(Rahman et al., <a class="ltx_ref" href="#bib.bib32" title="">2020</a>; Munoz-Jaramillo et al., <a class="ltx_ref" href="#bib.bib27" title="">2022</a>)</cite>. ويعد استخدام مغناطوغرامات LOS فائقة الدقة بوصفها دخلًا إلى CNN بإنتاج تقديرات CNN أكثر دقة لخصائص الحقول المتجهة. وتستند تقديراتنا أيضًا إلى بيانات التدريب من طور الصعود في الدورة 24 فقط. وباستخدام البيانات الجديدة المتاحة من HMI وكذلك من أدوات أحدث، يصبح تحقيق انحدار CNN متين أمرًا ممكنًا. وبتمديد طريقتنا، قد تكون التقديرات المعقولة القائمة على البيانات حتى للحقل المغناطيسي المتجه الكامل في الغلاف الضوئي من مغناطوغرامات LOS فقط ممكنة، مما يفتح مقاربة جديدة في دراسة ونمذجة الحقول المغناطيسية في AR باستخدام ML.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">تقر S.M.H بالحصول على تمويل من منحة Department of Atomic Energy رقم RTI4002 وبرنامج Max-Planck Partner Group. ويقر D.B.D وS.M.H. بمناقشات مع Mark C. M. Cheung وMarc DeRosa. كما يود المؤلفون شكر المراجع المجهول والمحرر العلمي Manolis K. Georgoulis على تعليقاتهما واقتراحاتهما التي ساعدت في تحسين وضوح المخطوطة. ويعلن المؤلفون أنه لا توجد لديهم مصالح متنافسة. صمم D.B.D. وS.M.H. البحث. وحلل D.B.D. وS.B. وS.K.M. البيانات. وفسر D.B.D. وS.M.H. النتائج. وكتب D.B.D. المخطوطة مع مساهمات من S.M.H.. إن مغناطوغرامات HMI LOS والمتجهة، ومغناطوغرامات MDI LOS، وبيانات SHARPs متاحة للعموم على خادم بيانات JSOC في <a class="ltx_ref ltx_href" href="http://jsoc.stanford.edu/" title="">http://jsoc.stanford.edu/</a>، بفضل فريقي HMI وMDI العلميين. كما أن مغناطوغرامات GONG LOS متاحة للعموم في <a class="ltx_ref ltx_href" href="https://gong.nso.edu/" title="">https://gong.nso.edu/</a>، وقد اكتسبتها أدوات GONG التي يشغلها NISP/NSO/AURA/NSF بمساهمة من NOAA.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ahmadzadeh et al. (2021)</span>
+<span class="ltx_bibblock">
+Ahmadzadeh, A., Aydin, B., Georgoulis, M. K., et al. 2021, The Astrophysical
+Journal Supplement Series, 254, 23, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.3847/1538-4365/abec88" title=""><span class="ltx_ref ltx_nolink">10.3847/1538-4365/abec88</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bhattacharjee et al. (2020)</span>
+<span class="ltx_bibblock">
+Bhattacharjee, S., Alshehhi, R., Dhuri, D. B., &amp; Hanasoge, S. M. 2020, The
+Astrophysical Journal, 898, 98, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.3847/1538-4357/ab9c29" title=""><span class="ltx_ref ltx_nolink">10.3847/1538-4357/ab9c29</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bobra &amp; Couvidat (2015)</span>
+<span class="ltx_bibblock">
+Bobra, M. G., &amp; Couvidat, S. 2015, The Astrophysical Journal, 798, 135.
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="http://stacks.iop.org/0004-637X/798/i=2/a=135" title="">http://stacks.iop.org/0004-637X/798/i=2/a=135</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bobra &amp; Ilonidis (2016)</span>
+<span class="ltx_bibblock">
+Bobra, M. G., &amp; Ilonidis, S. 2016, The Astrophysical Journal, 821, 127,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.3847/0004-637X/821/2/127" title=""><span class="ltx_ref ltx_nolink">10.3847/0004-637X/821/2/127</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bobra et al. (2014)</span>
+<span class="ltx_bibblock">
+Bobra, M. G., Sun, X., Hoeksema, J. T., et al. 2014, Solar Physics, 289,
+3549, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s11207-014-0529-3" title=""><span class="ltx_ref ltx_nolink">10.1007/s11207-014-0529-3</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bobra et al. (2021)</span>
+<span class="ltx_bibblock">
+Bobra, M. G., Wright, P. J., Sun, X., &amp; Turmon, M. J. 2021, The Astrophysical
+Journal Supplement Series, 256, 26, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.3847/1538-4365/ac1f1d" title=""><span class="ltx_ref ltx_nolink">10.3847/1538-4365/ac1f1d</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Boteler (2019)</span>
+<span class="ltx_bibblock">
+Boteler, D. H. 2019, Space Weather, 17, 1427, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1029/2019SW002278" title=""><span class="ltx_ref ltx_nolink">10.1029/2019SW002278</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bottou (1991)</span>
+<span class="ltx_bibblock">
+Bottou, L. 1991, in Proceedings of Neuro-Nimes, 687–706
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chen et al. (2019)</span>
+<span class="ltx_bibblock">
+Chen, Y., Manchester, W. B., Hero, A. O., et al. 2019, Space Weather, 17,
+1404, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1029/2019SW002214" title=""><span class="ltx_ref ltx_nolink">10.1029/2019SW002214</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cheung &amp; Isobe (2014)</span>
+<span class="ltx_bibblock">
+Cheung, M. C. M., &amp; Isobe, H. 2014, Living Reviews in Solar Physics, 11, 3,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.12942/lrsp-2014-3" title=""><span class="ltx_ref ltx_nolink">10.12942/lrsp-2014-3</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cortes &amp; Vapnik (1995)</span>
+<span class="ltx_bibblock">
+Cortes, C., &amp; Vapnik, V. 1995, Machine learning, 20, 273
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Crown (2012)</span>
+<span class="ltx_bibblock">
+Crown, M. D. 2012, Space Weather, 10, 1, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1029/2011SW000760" title=""><span class="ltx_ref ltx_nolink">10.1029/2011SW000760</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dhuri et al. (2019)</span>
+<span class="ltx_bibblock">
+Dhuri, D. B., Hanasoge, S. M., &amp; Cheung, M. C. M. 2019, Proceedings of the
+National Academy of Sciences, 116, 11141, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1073/pnas.1820244116" title=""><span class="ltx_ref ltx_nolink">10.1073/pnas.1820244116</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eastwood et al. (2017)</span>
+<span class="ltx_bibblock">
+Eastwood, J. P., Biffis, E., Hapgood, M. A., et al. 2017, Risk Analysis, 37,
+206, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1111/risa.12765" title=""><span class="ltx_ref ltx_nolink">10.1111/risa.12765</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Goodfellow et al. (2016)</span>
+<span class="ltx_bibblock">
+Goodfellow, I., Bengio, Y., &amp; Courville, A. 2016, Deep Learning (The MIT
+Press)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Han &amp; Moraga (1995)</span>
+<span class="ltx_bibblock">
+Han, J., &amp; Moraga, C. 1995, in From Natural to Artificial Neural Computation,
+ed. J. Mira &amp; F. Sandoval (Berlin, Heidelberg: Springer Berlin Heidelberg),
+195–201
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hastie et al. (2001)</span>
+<span class="ltx_bibblock">
+Hastie, T., Tibshirani, R., &amp; Friedman, J. 2001, The Elements of Statistical
+Learning, Springer Series in Statistics (New York, NY, USA: Springer New York
+Inc.)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hoeksema et al. (2014)</span>
+<span class="ltx_bibblock">
+Hoeksema, J. T., Liu, Y., Hayashi, K., et al. 2014, Solar Physics, 289, 3483,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s11207-014-0516-8" title=""><span class="ltx_ref ltx_nolink">10.1007/s11207-014-0516-8</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kazachenko et al. (2010)</span>
+<span class="ltx_bibblock">
+Kazachenko, M. D., Canfield, R. C., Longcope, D. W., &amp; Qiu, J. 2010, The
+Astrophysical Journal, 722, 1539, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1088/0004-637x/722/2/1539" title=""><span class="ltx_ref ltx_nolink">10.1088/0004-637x/722/2/1539</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kosugi et al. (2007)</span>
+<span class="ltx_bibblock">
+Kosugi, T., Matsuzaki, K., Sakao, T., et al. 2007, Solar Physics, 243, 3,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s11207-007-9014-6" title=""><span class="ltx_ref ltx_nolink">10.1007/s11207-007-9014-6</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">LeCun et al. (2015)</span>
+<span class="ltx_bibblock">
+LeCun, Y., Bengio, Y., &amp; Hinton, G. 2015, Nature, 521, 436 EP .
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="https://doi.org/10.1038/nature14539" title="">https://doi.org/10.1038/nature14539</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Leka &amp; Barnes (2007)</span>
+<span class="ltx_bibblock">
+Leka, K. D., &amp; Barnes, G. 2007, The Astrophysical Journal, 656, 1173.
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="http://stacks.iop.org/0004-637X/656/i=2/a=1173" title="">http://stacks.iop.org/0004-637X/656/i=2/a=1173</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Leka et al. (2017)</span>
+<span class="ltx_bibblock">
+Leka, K. D., Barnes, G., &amp; Wagner, E. L. 2017, Solar Physics, 292, 36,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s11207-017-1057-8" title=""><span class="ltx_ref ltx_nolink">10.1007/s11207-017-1057-8</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Livingston et al. (1976)</span>
+<span class="ltx_bibblock">
+Livingston, W. C., Harvey, J., Pierce, A. K., et al. 1976, Appl. Opt., 15,
+33, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1364/AO.15.000033" title=""><span class="ltx_ref ltx_nolink">10.1364/AO.15.000033</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">McIntosh (1990)</span>
+<span class="ltx_bibblock">
+McIntosh, P. S. 1990, Solar Physics, 125, 251, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/BF00158405" title=""><span class="ltx_ref ltx_nolink">10.1007/BF00158405</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Metcalf et al. (2005)</span>
+<span class="ltx_bibblock">
+Metcalf, T. R., Leka, K. D., &amp; Mickey, D. L. 2005, The Astrophysical Journal,
+623, L53, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1086/429961" title=""><span class="ltx_ref ltx_nolink">10.1086/429961</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Munoz-Jaramillo et al. (2022)</span>
+<span class="ltx_bibblock">
+Munoz-Jaramillo, A., Jungbluth, A., Gitiaux, X., et al. 2022, Nature
+Portfolio, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.21203/rs.3.rs-713430/v1" title=""><span class="ltx_ref ltx_nolink">10.21203/rs.3.rs-713430/v1</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nishizuka et al. (2017)</span>
+<span class="ltx_bibblock">
+Nishizuka, N., Sugiura, K., Kubo, Y., et al. 2017, The Astrophysical Journal,
+835, 156.
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="http://stacks.iop.org/0004-637X/835/i=2/a=156" title="">http://stacks.iop.org/0004-637X/835/i=2/a=156</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Peirce (1884)</span>
+<span class="ltx_bibblock">
+Peirce, C. S. 1884, Science, ns-4, 453, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1126/science.ns-4.93.453-a" title=""><span class="ltx_ref ltx_nolink">10.1126/science.ns-4.93.453-a</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pesnell et al. (2012)</span>
+<span class="ltx_bibblock">
+Pesnell, W. D., Thompson, B. J., &amp; Chamberlin, P. C. 2012, Solar Physics, 275,
+3, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s11207-011-9841-3" title=""><span class="ltx_ref ltx_nolink">10.1007/s11207-011-9841-3</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pulkkinen et al. (2005)</span>
+<span class="ltx_bibblock">
+Pulkkinen, A., Lindahl, S., Viljanen, A., &amp; Pirjola, R. 2005, Space Weather,
+3, 1, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1029/2004SW000123" title=""><span class="ltx_ref ltx_nolink">10.1029/2004SW000123</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Rahman et al. (2020)</span>
+<span class="ltx_bibblock">
+Rahman, S., Moon, Y.-J., Park, E., et al. 2020, The Astrophysical Journal,
+897, L32, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.3847/2041-8213/ab9d79" title=""><span class="ltx_ref ltx_nolink">10.3847/2041-8213/ab9d79</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Régnier &amp; Priest (2007)</span>
+<span class="ltx_bibblock">
+Régnier, S., &amp; Priest, E. R. 2007, The Astrophysical Journal, 669, L53,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1086/523269" title=""><span class="ltx_ref ltx_nolink">10.1086/523269</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Scherrer et al. (1995)</span>
+<span class="ltx_bibblock">
+Scherrer, P. H., Bogart, R. S., Bush, R. I., et al. 1995, Solar Physics, 162,
+129, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/BF00733429" title=""><span class="ltx_ref ltx_nolink">10.1007/BF00733429</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schrijver (2007)</span>
+<span class="ltx_bibblock">
+Schrijver, C. J. 2007, The Astrophysical Journal Letters, 655, L117.
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="https://iopscience.iop.org/article/10.1086/511857" title="">https://iopscience.iop.org/article/10.1086/511857</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Selvaraju et al. (2017)</span>
+<span class="ltx_bibblock">
+Selvaraju, R. R., Cogswell, M., Das, A., et al. 2017, 2017 IEEE International
+Conference on Computer Vision (ICCV), 1, 618
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Shibata &amp; Magara (2011)</span>
+<span class="ltx_bibblock">
+Shibata, K., &amp; Magara, T. 2011, Living Reviews in Solar Physics, 8, 6,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.12942/lrsp-2011-6" title=""><span class="ltx_ref ltx_nolink">10.12942/lrsp-2011-6</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Simonyan et al. (2013)</span>
+<span class="ltx_bibblock">
+Simonyan, K., Vedaldi, A., &amp; Zisserman, A. 2013, CoRR, abs/1312.6034, 1
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stenflo (2013)</span>
+<span class="ltx_bibblock">
+Stenflo, J. O. 2013, The Astronomy and Astrophysics Review, 21, 66,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s00159-013-0066-3" title=""><span class="ltx_ref ltx_nolink">10.1007/s00159-013-0066-3</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Su et al. (2013)</span>
+<span class="ltx_bibblock">
+Su, Y., Veronig, A. M., Holman, G. D., et al. 2013, Nature Physics, 9, 489 EP
+.
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="http://dx.doi.org/10.1038/nphys2675" title="">http://dx.doi.org/10.1038/nphys2675</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sun et al. (2022)</span>
+<span class="ltx_bibblock">
+Sun, Z., Bobra, M. G., Wang, X., et al. 2022, The Astrophysical Journal, 931,
+163, doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.3847/1538-4357/ac64a6" title=""><span class="ltx_ref ltx_nolink">10.3847/1538-4357/ac64a6</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sundararajan et al. (2017)</span>
+<span class="ltx_bibblock">
+Sundararajan, M., Taly, A., &amp; Yan, Q. 2017, in Proceedings of Machine Learning
+Research, Vol. 70, Proceedings of the 34th International Conference on
+Machine Learning, ed. D. Precup &amp; Y. W. Teh (PMLR), 3319–3328.
+
+</span>
+<span class="ltx_bibblock"><a class="ltx_ref ltx_url ltx_font_typewriter" href="https://proceedings.mlr.press/v70/sundararajan17a.html" title="">https://proceedings.mlr.press/v70/sundararajan17a.html</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Szegedy et al. (2015)</span>
+<span class="ltx_bibblock">
+Szegedy, C., Wei Liu, Yangqing Jia, et al. 2015, in 2015 IEEE
+Conference on Computer Vision and Pattern Recognition (CVPR), 1–9,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1109/CVPR.2015.7298594" title=""><span class="ltx_ref ltx_nolink">10.1109/CVPR.2015.7298594</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Toriumi &amp; Wang (2019)</span>
+<span class="ltx_bibblock">
+Toriumi, S., &amp; Wang, H. 2019, Living Reviews in Solar Physics, 16, 3,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s41116-019-0019-7" title=""><span class="ltx_ref ltx_nolink">10.1007/s41116-019-0019-7</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Zeiler &amp; Fergus (2014)</span>
+<span class="ltx_bibblock">
+Zeiler, M., &amp; Fergus, R. 2014, in Lecture Notes in Computer Science (including
+subseries Lecture Notes in Artificial Intelligence and Lecture Notes in
+Bioinformatics), Vol. 8689 LNCS, Computer Vision, ECCV 2014 - 13th European
+Conference, Proceedings, part 1 edn. (Springer Verlag), 818–833,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/978-3-319-10590-1_53" title=""><span class="ltx_ref ltx_nolink">10.1007/978-3-319-10590-1_53</span></a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Zhang et al. (2008)</span>
+<span class="ltx_bibblock">
+Zhang, Y., Liu, J., &amp; Zhang, H. 2008, Solar Physics, 247, 39,
+doi: <a class="ltx_ref ltx_href" href="http://doi.org/10.1007/s11207-007-9089-0" title=""><span class="ltx_ref ltx_nolink">10.1007/s11207-007-9089-0</span></a>
+</span>
+</li>
+</ul>
+</section>
+<section class="ltx_appendix" id="A1">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix A </span>التطور الزمني للخصائص المقدرة بواسطة CNN في جميع ARs التي تنتج توهجات من الفئة M5 أو أكبر.</h2>
+<figure class="ltx_figure" id="A1.F9">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="A1.F9.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="130" id="A1.F9.sf1.g1" src="x19.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="A1.F9.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="130" id="A1.F9.sf2.g1" src="x20.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="A1.F9.sf3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="130" id="A1.F9.sf3.g1" src="x21.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(c) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9: </span><span class="ltx_text ltx_font_bold">التطور الزمني لخصائص الحقول المتجهة المقدرة بواسطة CNN في المناطق النشطة المنتجة للتوهجات.</span> تُعرض مقارنة القيم المقدرة بواسطة CNN، باستخدام مغناطوغرامات LOS من HMI (الأزرق) وGONG (الأسود)، للفيض الكلي غير الموقّع، واللولبية الصافية المطلقة للتيار، ومتوسط كثافة الطاقة الحرة، مع القيم الحقيقية (الأحمر) المحسوبة من مغناطوغرامات HMI المتجهة، وذلك لـ HARP 750. ولا تُؤخذ إلا الرصدات ضمن <img alt="$\pm 45\degree$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm 45\degree$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0091.svg"/> في الاعتبار. وتُعرض أشرطة خطأ 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0092.svg"/>. وتشير الفجوات إلى الرصدات المفقودة. وتتوفر مجموعة الأشكال الكاملة (28 صور) للمناطق النشطة التي أنتجت توهجًا واحدًا على الأقل من الفئة M5 أو أكبر في المجلة الإلكترونية.</figcaption>
+</figure>
+</section>
+<section class="ltx_appendix" id="A2">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix B </span>مقارنة الخصائص المقدرة بواسطة CNN أثناء عواصف الهالوين 2003</h2>
+<figure class="ltx_figure" id="A2.F10">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="A2.F10.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="130" id="A2.F10.sf1.g1" src="x22.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="A2.F10.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="130" id="A2.F10.sf2.g1" src="x23.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="A2.F10.sf3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="130" id="A2.F10.sf3.g1" src="x24.png" width="198"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(c) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 10: </span><span class="ltx_text ltx_font_bold">مقارنة للتطور الزمني لخصائص الحقول المتجهة المقدرة بواسطة CNN أثناء عواصف الهالوين 2003 باستخدام مغناطوغرامات LOS من MDI وGONG.</span> تُستخدم CNN المدربة بمغناطوغرامات HMI للتقدير من مغناطوغرامات MDI، في حين تُستخدم CNN المدربة بمغناطوغرامات GONG للتقدير من مغناطوغرامات GONG. لاحظ أن رصدات HMI غير متاحة قبل 2010. وقيم خصائص CNN:GONG مرتفعة عمومًا مقارنة بـ CNN:MDI، ولا تُظهر إلا تغيرًا طفيفًا طوال العواصف. ويبدو أن خصائص CNN:MDI تلتقط تغير هذه الخصائص أثناء العواصف كما هو متوقع من النمذجة النظرية، مثلًا <cite class="ltx_cite ltx_citemacro_citep">(Kazachenko et al., <a class="ltx_ref" href="#bib.bib19" title="">2010</a>)</cite>. وتُعرض أخطاء 1-<img alt="$\sigma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma$" data-paper-arabizer-equation-image="true" data-source-file="main.tex" dir="ltr" src="equations/eq_0093.svg"/>. وتشير الفجوات إلى الرصدات المفقودة. وينطبق المفتاح في اللوحة أقصى اليمين على جميع اللوحات. </figcaption>
+</figure>
+</section>
+<section class="ltx_appendix" id="A3">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix C </span>ارتباطات MDI</h2>
+<figure class="ltx_table" id="A3.T8">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt">SHARPs Features</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">Pearson correlation</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">Spearman correlation</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Total unsigned flux</th>
+<td class="ltx_td ltx_align_center ltx_border_t">82.49 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m1"><mo>±</mo></math> 21.01</td>
+<td class="ltx_td ltx_align_center ltx_border_t">68.09 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m2"><mo>±</mo></math> 37.73</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area</th>
+<td class="ltx_td ltx_align_center">85.55 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m3"><mo>±</mo></math> 23.82</td>
+<td class="ltx_td ltx_align_center">74.59 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m4"><mo>±</mo></math> 17.72</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned vertical current</th>
+<td class="ltx_td ltx_align_center">74.83 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m5"><mo>±</mo></math> 45.39</td>
+<td class="ltx_td ltx_align_center">64.60 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m6"><mo>±</mo></math> 46.31</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total unsigned current helicity</th>
+<td class="ltx_td ltx_align_center">75.22 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m7"><mo>±</mo></math> 45.28</td>
+<td class="ltx_td ltx_align_center">65.80 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m8"><mo>±</mo></math> 47.14</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total free energy density</th>
+<td class="ltx_td ltx_align_center">84.18 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m9"><mo>±</mo></math> 12.15</td>
+<td class="ltx_td ltx_align_center">76.40 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m10"><mo>±</mo></math> 19.94</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Total Lorentz force</th>
+<td class="ltx_td ltx_align_center">89.13 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m11"><mo>±</mo></math> 11.33</td>
+<td class="ltx_td ltx_align_center">75.37 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m12"><mo>±</mo></math> 29.10</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Absolute net current helicity</th>
+<td class="ltx_td ltx_align_center ltx_border_t">51.62 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m13"><mo>±</mo></math> 27.28</td>
+<td class="ltx_td ltx_align_center ltx_border_t">48.97 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m14"><mo>±</mo></math> 23.21</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sum of net current per polarity</th>
+<td class="ltx_td ltx_align_center">42.84 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m15"><mo>±</mo></math> 35.65</td>
+<td class="ltx_td ltx_align_center">38.69 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m16"><mo>±</mo></math> 32.27</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Mean free energy density</th>
+<td class="ltx_td ltx_align_center ltx_border_t">92.60 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m17"><mo>±</mo></math> 04.02</td>
+<td class="ltx_td ltx_align_center ltx_border_t">89.26 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m18"><mo>±</mo></math> 07.80</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Area with shear <math alttext="&gt;45\degree" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m19"><mrow><mi></mi><mo>&gt;</mo><mrow><mn>45</mn><mo>⁢</mo><mi mathvariant="normal">°</mi></mrow></mrow></math>
+</th>
+<td class="ltx_td ltx_align_center">91.78 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m20"><mo>±</mo></math> 03.32</td>
+<td class="ltx_td ltx_align_center">89.63 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m21"><mo>±</mo></math> 03.32</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_t">Flux near polarity inversion line</th>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">62.64 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m22"><mo>±</mo></math> 14.63</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t">59.09 <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="A3.T8.m23"><mo>±</mo></math> 21.23</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 8: </span><span class="ltx_text ltx_font_bold">ارتباطات Pearson وSpearman بين خصائص الحقول المتجهة SHARPs المقدرة بواسطة CNN باستخدام مغناطوغرامات خط البصر من MDI وقيمها الحقيقية.</span> تُقدر خصائص SHARPs باستخدام CNN المدربة بمغناطوغرامات خط البصر من HMI. وتُؤخذ رقع AR لمغناطوغرامات خط البصر من MDI من منتج البيانات المتاح للعموم Space-Weather MDI Active Region Patches (SMARPs) <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib6" title="">2021</a>)</cite>. وتتداخل بيانات SMARPs وSHARPs بين 1 مايو 2010 و28 أكتوبر 2010 <cite class="ltx_cite ltx_citemacro_citep">(Bobra et al., <a class="ltx_ref" href="#bib.bib6" title="">2021</a>)</cite>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="A3.F11">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="127" id="A3.F11.g1" src="x25.png" width="293"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="127" id="A3.F11.g2" src="x26.png" width="293"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="127" id="A3.F11.g3" src="x27.png" width="293"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="127" id="A3.F11.g4" src="x28.png" width="293"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="127" id="A3.F11.g5" src="x29.png" width="293"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="127" id="A3.F11.g6" src="x30.png" width="293"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="168" id="A3.F11.g7" src="x31.png" width="389"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="168" id="A3.F11.g8" src="x32.png" width="389"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 11: </span><span class="ltx_text ltx_font_bold">أمثلة إضافية لخرائط الإسناد بالتدرج المتكامل (IG) (الشكل <a class="ltx_ref" href="#S4.F8" title="Figure 8 ‣ 4.3 التنبؤ بالتوهجات باستخدام الخصائص المشتقة من CNN ‣ 4 النتائج ‣ إعادة بناء الحقول المغناطيسية المتجهة للبقع الشمسية بالتعلم العميق للتنبؤ بالعواصف الشمسية"><span class="ltx_text ltx_ref_tag">8</span></a>).</span></figcaption>
+</figure>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue May 12 01:04:32 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

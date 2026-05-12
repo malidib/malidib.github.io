@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية</title>
+<!--Generated on Mon May 11 15:54:39 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-ulem.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="التوهجات الشمسية — المريخ — جرعة الإشعاع" lang="ar" name="keywords"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_multiline">
+<h1 class="ltx_title ltx_title_document">نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Dimitra Atri
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">Center for Space Science 
+<br class="ltx_break"/>New York University Abu Dhabi 
+<br class="ltx_break"/>PO Box 129188, Saadiyat Island, Abu Dhabi, UAE
+</span>
+<span class="ltx_contact ltx_role_affiliation">Blue Marble Space Institute of Science
+<br class="ltx_break"/>1001 4th Ave, Suite 3201
+<br class="ltx_break"/>Seattle, WA 98154, USA
+</span></span></span>
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Caitlin MacArthur
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">Victoria University of Wellington
+<br class="ltx_break"/>Kelburn, Wellington 6012, New Zealand
+</span>
+<span class="ltx_contact ltx_role_affiliation">Blue Marble Space Institute of Science
+<br class="ltx_break"/>1001 4th Ave, Suite 3201
+<br class="ltx_break"/>Seattle, WA 98154, USA
+</span></span></span>
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Ian Dobbs-Dixon
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation"> New York University Abu Dhabi 
+<br class="ltx_break"/>PO Box 129188, Saadiyat Island, Abu Dhabi, UAE
+</span>
+<span class="ltx_contact ltx_role_affiliation">Center for Space Science 
+<br class="ltx_break"/>New York University Abu Dhabi 
+<br class="ltx_break"/>PO Box 129188, Saadiyat Island, Abu Dhabi, UAE
+</span>
+<span class="ltx_contact ltx_role_affiliation">Center for Astro, Particle and Planetary Physics (CAP3) 
+<br class="ltx_break"/>New York University Abu Dhabi
+</span></span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">يمكن أن تسبب أحداث البروتونات الشمسية (SPEs) زيادات مفاجئة وكبيرة في جرعة الإشعاع على سطح المريخ. وتتوفر أرصاد لتأثير SPEs في سطح المريخ من الأقمار الاصطناعية والكواشف السطحية، غير أن مجموعة البيانات محدودة جداً زمنياً (<img alt="$\sim$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0001.svg"/>20 سنة)، كما أن نطاق الطاقة محدود الاتساع، مما يجعلها غير كافية لتقدير أثر الأحداث الكبرى على سطح المريخ. ومن جهة أخرى، تتوافر على نطاق واسع بيانات طويلة الأمد عن SPEs المؤثرة في الأرض والممتدة عبر مجال واسع من الطاقة، ويمكن استخدامها لتقدير أثر الأحداث الكبرى على المريخ على مقاييس زمنية طويلة. في هذا العمل، نأخذ SPEs كبرى رُصدت خلال العقود القليلة الماضية على الأرض (1956 - 2014)، إلى جانب أرصاد PAMELA (2006 - 2014)، ونستخدم شيفرة مونت كارلو GEANT4 لحساب جرعة الإشعاع على سطح المريخ. ندرس مساهمة فيض البروتونات والشكل الطيفي للأحداث في جرعة الإشعاع السطحية، ونقدّر أثر SPEs كبرى محتملة على سطح المريخ في المستقبل. لهذه النتائج آثار مهمة في الاستكشاف البشري المخطط للمريخ. وبوجه عام نجد أن جرعة الإشعاع من الأحداث المتطرفة يمكن أن يكون لها تأثير كبير في صحة رواد الفضاء، وفي سيناريوهات نادرة تمثل أسوأ الحالات يمكن أن تبلغ الجرعة المقدرة حتى مستويات قاتلة.</p>
+</div>
+<div class="ltx_keywords">التوهجات الشمسية — المريخ — جرعة الإشعاع
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">يؤثر طقس الفضاء في الغلاف الجوي للمريخ بتغيير كيميائه والتسبب في تعريته <cite class="ltx_cite ltx_citemacro_citep">(Jakosky<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib20" title="MAVEN observations of the response of mars to an interplanetary coronal mass ejection">2015</a>; Atri, <a class="ltx_ref" href="#bib.bib16" title="Did high-energy astrophysical sources contribute to martian atmospheric loss?">2016a</a>)</cite>. ويكتسب التعرض الإشعاعي الناجم عن طقس الفضاء للأقمار الاصطناعية وربما لرواد الفضاء أهمية كبيرة في استكشاف الفضاء، ولا سيما الاستكشاف البشري المخطط للمريخ <cite class="ltx_cite ltx_citemacro_citep">(Cucinotta<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib17" title="Space radiation cancer risks and uncertainties for mars missions">2001</a>)</cite>. خلال السنوات القليلة الماضية، ازداد التركيز على إمكانية إرسال بعثات مأهولة إلى المريخ، ويتمثل أحد العوائق الرئيسة في مثل هذه البعثات في الآثار الضارة للإشعاع المؤين (الجسيمات المشحونة) في صحة رواد الفضاء <cite class="ltx_cite ltx_citemacro_citep">(Hellweg and Baumstark-Khan, <a class="ltx_ref" href="#bib.bib24" title="Getting ready for the manned mission to mars: the astronauts’ risk from space radiation">2007</a>)</cite>. وخلافاً للأرض، يمتلك المريخ غلافاً جوياً رقيقاً (نحو 2% من الكثافة العمودية مقارنة بالأرض) ولا يمتلك مجالاً مغناطيسياً عالمياً ذاتياً يقيه من الجسيمات المشحونة. ويؤدي اجتماع هذين العاملين إلى تعريض سطح المريخ لجرعة إشعاعية عالية من الفيض الخلفي للأشعة الكونية المجرية (GCRs) <cite class="ltx_cite ltx_citemacro_citep">(Saganti<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib23" title="Radiation climate map for analyzing risks to astronauts on the mars surface from galactic cosmic rays">2004</a>; Gronoff<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib21" title="Computation of cosmic ray ionization and dose at mars. i: a comparison of hzetrn and planetocosmics for proton and alpha particles">2015</a>)</cite> ومن الأحداث الشمسية المتقطعة <cite class="ltx_cite ltx_citemacro_citep">(Townsend<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib22" title="Estimates of carrington-class solar particle event radiation exposures on mars">2011</a>)</cite>. لذلك فإن فهم بيئة الإشعاع المريخية طويلة الأمد في سياق أحداث طقس الفضاء أمر حيوي لتخطيط أنشطة الاستكشاف البشري على الكوكب.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">وفي حين يمكن حجب الانبعاث الشمسي في نطاق الأشعة فوق البنفسجية القصوى (XUV) بسهولة بواسطة صفيحة واقية رقيقة، فإن الجسيمات المشحونة النشطة (<img alt="$\geq$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\geq$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0002.svg"/> 1 GeV) قادرة على اختراق الدرع، والخضوع لتفاعلات هادرونية، وإنتاج جسيمات ثانوية مثل الإلكترونات والميونات والنيوترونات. ومن بين جميع الجسيمات الثانوية الناتجة من هذه التفاعلات، تُعد النيوترونات من أخطرها على صحة الإنسان <cite class="ltx_cite ltx_citemacro_citep">(Mountford and Temperton, <a class="ltx_ref" href="#bib.bib3" title="Recommendations of the international commission on radiological protection (icrp) 1990">1992</a>)</cite>. ويمكن للجسيمات الثانوية، تبعاً لجرعتها، أن تسبب أضراراً بيولوجية غير قابلة للإصلاح لرواد الفضاء، وأن تُلحق أيضاً ضرراً بإلكترونيات المركبات الفضائية. ومن ثم فمن المهم نمذجة أثر أحداث طقس الفضاء في جرعة الإشعاع على سطح المريخ وتبعاتها على الاستكشاف البشري للفضاء. ومن أهم الأدوات لهذا الغرض كاشف تقييم الإشعاع (RAD) <cite class="ltx_cite ltx_citemacro_cite">Hassler<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib19" title="The radiation assessment detector (rad) investigation">2012</a>)</cite> على متن العربة الجوالة Curiosity التابعة لمختبر علوم المريخ (MSL)، الذي يقيس الجرعات الإشعاعية على سطح المريخ منذ 2012. ومع أنه لم تقع أحداث بروتونات شمسية (SPEs) كبرى كثيرة منذ تشغيل RAD بسبب انخفاض النشاط الشمسي، فإن قياساته للجرعة الإشعاعية الخلفية من GCRs ذات قيمة عالية. ويمكن استخدام حساب جرعة الإشعاع الناجمة عن GCRs المقابلة لفيض GCR المقاس والجرعة المقاسة للتحقق من صحة النماذج العددية، التي يمكن استخدامها بعد ذلك لنمذجة أثر SPEs على سطح المريخ بدقة.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">توجد أرصاد لعدة SPEs صغيرة خلال العقد الماضي من مدار المريخ وسطحه <cite class="ltx_cite ltx_citemacro_citep">(Larson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib7" title="The maven solar energetic particle investigation">2015</a>; Guo<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib8" title="Modeling the variations of dose rate measured by rad during the first msl martian year: 2012–2014">2015</a>)</cite>. وقد كانت هذه البيانات قيّمة في فهم أثر SPEs في سطح المريخ واستُخدمت في عدد من الدراسات المهمة؛ فعلى سبيل المثال استخدم <cite class="ltx_cite ltx_citemacro_cite">Matthiä<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib1" title="The martian surface radiation environment–a comparison of models and msl/rad measurements">2016</a>)</cite> GEANT4 لنمذجة جرعة الإشعاع من الفيض الخلفي لـ GCRs ونجح في مطابقتها مع قياسات RAD. واستخدم <cite class="ltx_cite ltx_citemacro_cite">Guo<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib6" title="A generalized approach to model the spectra and radiation dose rate of solar particle events on the surface of mars">2018</a>)</cite> بيانات أقمار اصطناعية امتدت 20 سنة (SOHO/EPIN) عن SPEs أرضية ونمذج جرعة الإشعاع على سطح المريخ. وعلى الرغم من أن هذا النهج مفيد لتقدير البيئة الإشعاعية السطحية للأحداث الصغيرة، فإن عيبه الرئيس هو غياب أرصاد الأحداث الكبرى التي تحدث عادة على مقاييس زمنية أطول. ولا تلتقط هذه النافذة الزمنية الأصغر الاتساع الكامل للأحداث من حيث الشدة والمدة وأطياف الجسيمات. إضافة إلى ذلك، تقاس أطياف الطاقة على هذه الأقمار ضمن مجال طاقة محدود بدرجة ملحوظة (مثلاً يقيس EPHIN البروتونات بين 4 - 50 MeV)، ولا يغطي الطيف الكامل للجسيمات المشحونة المقدّر انبعاثها في SPEs (10 MeV - 10 GeV) <cite class="ltx_cite ltx_citemacro_citep">(Usoskin<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib18" title="Ionization effect of solar particle gle events in low and middle atmosphere">2011</a>)</cite>. ومن جهة أخرى، دُرست الأحداث الكبرى بتفصيل كبير على الأرض خلال العقود العديدة الماضية. وتتوفر بيانات التحسينات عند مستوى سطح الأرض (GLEs) لفترات زمنية أطول، وتمتد أيضاً عبر مجال طاقة أوسع بكثير يغطي طيف الحدث بأكمله، بخلاف بيانات الأقمار الاصطناعية <cite class="ltx_cite ltx_citemacro_citep">(Tylka and Dietrich, <a class="ltx_ref" href="#bib.bib30" title="A new and comprehensive analysis of proton spectra in ground-level enhanced (gle) solar particle events">2009</a>)</cite>. في هذا العمل نستخدم بيانات أرضية وبيانات أقمار اصطناعية عن SPEs من 1956 إلى 2014، وننمذج تفاعلها مع الغلاف الجوي للمريخ.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">في القسم التالي، نصف منهجية النمذجة العددية، وتفاصيل التحقق من صحة الشيفرة، وحسابات جرعة الإشعاع السطحية. وفي قسم النتائج، نناقش كيف درسنا التغير في أطياف الأحداث بتطبيع فيض الحدث. ثم نستخدم علاقة تحجيم لتقدير الجرعة الإشعاعية في حالة أحداث شبيهة بحدث كارينغتون والتوهجات الفائقة. وفي الاستنتاجات نناقش كيف يؤثر التعرض الإشعاعي المعزز من SPEs في صحة رواد الفضاء في البعثات المأهولة المستقبلية إلى المريخ.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>النمذجة العددية</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">نستخدم في حساباتنا الأطياف المقاسة بواسطة بعثة حمولة استكشاف المادة المضادة والمادة والفيزياء الفلكية للنوى الخفيفة (PAMELA) <cite class="ltx_cite ltx_citemacro_citep">(Bruno<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib2" title="Solar energetic particle events observed by the pamela mission">2018</a>)</cite>، والأطياف المقدرة من SPEs تاريخية <cite class="ltx_cite ltx_citemacro_citep">(Tylka and Dietrich, <a class="ltx_ref" href="#bib.bib30" title="A new and comprehensive analysis of proton spectra in ground-level enhanced (gle) solar particle events">2009</a>)</cite>، وحدثاً واحداً قيس بواسطة كاشف تقييم الإشعاع (سبتمبر 2017). وقد حُللت أحداث عددها 30 قاستها PAMELA بين يوليو 2006 وسبتمبر 2014، وعُرضت بصيغة بارامترية لبروتونات ذات طاقات تمتد من 80 MeV إلى 3 GeV في <cite class="ltx_cite ltx_citemacro_cite">Bruno<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib2" title="Solar energetic particle events observed by the pamela mission">2018</a>)</cite>. يُعطى طيف قانون القدرة بالعلاقة:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation}
+    \Phi_{sep}(E) = A \times (E/E_{S})^{-\gamma} \times e^{-E/E_{0}},
+\end{equation}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-equation-number="1" data-latex="\begin{equation}
+    \Phi_{sep}(E) = A \times (E/E_{S})^{-\gamma} \times e^{-E/E_{0}},
+\end{equation}" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0003.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0004.svg"/> هو الدليل الطيفي، وتُضبط طاقة التحجيم E<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">S</span></sub> على 80 MeV، وهي عتبة طاقة PAMELA، و E<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">0</span></sub> هي طاقة الانقلاب، أما A فهي ثابت التطبيع. وقد نُمذجت أطياف البروتونات لـ SPEs التاريخية من 1956 إلى 2012 بصيغة بارامترية بواسطة <cite class="ltx_cite ltx_citemacro_cite">Tylka and Dietrich (<a class="ltx_ref" href="#bib.bib30" title="A new and comprehensive analysis of proton spectra in ground-level enhanced (gle) solar particle events">2009</a>)</cite>. وتمثل الأطياف المتوسطة على الحدث على هيئة دوال Band، لبروتونات ذات طاقات تمتد من 10 MeV إلى 10 GeV. ويُعطى الفيض المتكامل على الحدث، J (بروتونات/cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup>)، كما يلي <cite class="ltx_cite ltx_citemacro_citep">(Usoskin<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib18" title="Ionization effect of solar particle gle events in low and middle atmosphere">2011</a>)</cite>:</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\begin{split}&amp;J(&gt;R)=J_{0}\times R^{-\gamma_{1}}e^{-R/R_{0}},\hskip 5.69046pt%
+\hskip 2.84544ptR\leq(\gamma_{2}-\gamma_{1})R_{0},\\
+&amp;J(&gt;R)=J_{0}\times B\times R^{-\gamma_{2}},\hskip 5.69046pt\hskip 2.84544ptR&gt;(%
+\gamma_{2}-\gamma_{1})R_{0},\end{split}" class="ltx_Math" dir="ltr" display="block" id="S2.E2.m1"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mrow><mrow><mi>J</mi><mspace width="0.3888888888888889em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi></mi><mo>&gt;</mo><mi>R</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>J</mi><mn>0</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>R</mi><mrow><mo>−</mo><msub><mi>γ</mi><mn>1</mn></msub></mrow></msup></mrow><mo>⁢</mo><msup><mi>e</mi><mrow><mo>−</mo><mrow><mi>R</mi><mo>/</mo><msub><mi>R</mi><mn>0</mn></msub></mrow></mrow></msup></mrow></mrow><mo rspace="1.017em">,</mo><mrow><mi>R</mi><mo>≤</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>γ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>R</mi><mn>0</mn></msub></mrow></mrow></mrow><mo>,</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mrow><mrow><mi>J</mi><mspace width="0.3888888888888889em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi></mi><mo>&gt;</mo><mi>R</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>J</mi><mn>0</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><mi>B</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>R</mi><mrow><mo>−</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow></msup></mrow></mrow><mo rspace="1.017em">,</mo><mrow><mi>R</mi><mo>&gt;</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>γ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>R</mi><mn>0</mn></msub></mrow></mrow></mrow><mo>,</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\begin{split}&amp;B=[(\gamma_{2}-\gamma_{1})R_{0}]^{(\gamma_{2}-\gamma_{1})}\times
+e%
+^{(\gamma_{1}-\gamma_{2})},\\
+&amp;R=\sqrt{T^{2}+2T_{0}T}\end{split}" class="ltx_Math" dir="ltr" display="block" id="S2.E3.m1"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>B</mi><mo>=</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>γ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>R</mi><mn>0</mn></msub></mrow><mo rspace="0.055em" stretchy="false">]</mo></mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>γ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></msup><mo rspace="0.222em">×</mo><msup><mi>e</mi><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></msup></mrow></mrow><mo>,</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>R</mi><mo>=</mo><msqrt><mrow><msup><mi>T</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>T</mi><mn>0</mn></msub><mo>⁢</mo><mi>T</mi></mrow></mrow></msqrt></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">حيث R هي الصلابة بوحدة GV، و T هي الطاقة الحركية بوحدة GeV، و J<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">0</span></sub> للتطبيع، و T<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">0</span></sub> هي طاقة كتلة السكون للبروتون، 0.938 GeV. وتُستمد قيم المعاملات J<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">0</span></sub> و R<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">0</span></sub> و <img alt="$\gamma_{1}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma_{1}$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0014.svg"/> و <img alt="$\gamma_{2}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma_{2}$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0015.svg"/> من <cite class="ltx_cite ltx_citemacro_cite">Tylka and Dietrich (<a class="ltx_ref" href="#bib.bib30" title="A new and comprehensive analysis of proton spectra in ground-level enhanced (gle) solar particle events">2009</a>)</cite>، وهي مبنية على ملاءمات لبيانات SPE. استُبعدت الأحداث ذات التعزيزات الجسيمية المتأخرة، وكذلك تلك المنتجة بآليات أخرى مثل جسيمات العواصف النشطة (ESPs)، واستخدمنا في هذا العمل الأحداث المتبقية وعددها 59 من أصل 70، وكانت كلها أحداثاً فورية. تنتج الأحداث الفورية كلها بالآلية نفسها، إذ تتسارع الجسيمات في الصدمة وتنتقل مباشرة على طول خطوط المجال. وهناك حدثان مشتركان في العينتين، ديسمبر 13 2006 ومايو 17 2012.</p>
+</div>
+<div class="ltx_para" id="S2.p4">
+<p class="ltx_p">نلاحظ أن الحدث نفسه المرصود على الأرض سينتج طيفاً مختلفاً على المريخ بسبب النقل في الوسط بين الكواكب، وهو أمر يعتمد على عدد من العوامل (الرياح الشمسية، والمجال المغناطيسي بين الكواكب، وغير ذلك). غير أننا نفترض، لغرض هذه المخطوطة، أن الشكل الطيفي لا يتغير، ومن ثم نستخدم أطياف الأرض، بعد تحجيمها إلى مدار المريخ، في حساباتنا. ونظراً إلى أن نقل الجسيمات المشحونة في الوسط بين الكواكب عملية معقدة تتطلب بيانات عن تغيرات المجالات المغناطيسية والكثافة وغير ذلك، وهي بيانات غير متاحة لمعظم الأحداث التاريخية، فقد كان هذا هو النهج الأكثر معقولية. وقد اتبع <cite class="ltx_cite ltx_citemacro_cite">Guo<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib6" title="A generalized approach to model the spectra and radiation dose rate of solar particle events on the surface of mars">2018</a>)</cite> نهجاً مشابهاً ولكن لعدد محدود من الأحداث، وضمن نطاق طاقة أقصر، وهو يمثل الحد الأعلى للتعرض الإشعاعي. ومن العناصر الحيوية أيضاً لهذا الحساب نموذج الغلاف الجوي للمريخ، الذي حصلنا عليه من قاعدة بيانات مناخ المريخ (MCD) <cite class="ltx_cite ltx_citemacro_citep">(Forget<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib27" title="Improved general circulation models of the martian atmosphere from the surface to above 80 km">1999</a>; Millour<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib28" title="The mars climate database (mcd version 5.2)">2015</a>)</cite>. ويتضمن النموذج عدداً من الكميات المهمة مثل درجة الحرارة والضغط والكثافة والتركيب الجوي. واستخدمنا النموذج الجوي العام عند مستوى السطح المتوسط في محاكياتنا. ولأغراض التحقق، استخدمنا النموذج الجوي الواقع عند فوهة Gale (موقع RAD)، التي تقع على عمق يقارب 4 km دون مستوى السطح المتوسط، وبعمق عمودي قدره 22 g cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup>.</p>
+</div>
+<div class="ltx_para" id="S2.p5">
+<p class="ltx_p">استخدمنا النموذج العددي GEANT4 لمحاكاة انتشار الجسيمات في الغلاف الجوي للمريخ <cite class="ltx_cite ltx_citemacro_citep">(Agostinelli<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib29" title="GEANT4—a simulation toolkit">2003</a>)</cite>. وهو نموذج مونت كارلو واسع الاستخدام لنمذجة انتشار الجسيمات المشحونة في أوساط متعددة في فيزياء الطاقة العالية والعلوم الطبية والكوكبية وعلوم الفضاء. ويحاكي النموذج تفاعلات الجسيمات المشحونة مع المادة، بما في ذلك التفاعلات الهادرونية والكهرومغناطيسية، والتبعثر، واضمحلالات الجسيمات. وبسبب شيوع الشيفرة، فقد عُيرت بواسطة تجارب عديدة حول العالم، مما يجعلها عالية الاعتمادية في الحسابات. وقد استخدمنا GEANT4 سابقاً في حسابات مشابهة لنمذجة جرعة الإشعاع السطحية الناجمة عن الجسيمات المشحونة على الكواكب الخارجية الأرضية <cite class="ltx_cite ltx_citemacro_citep">(Atri<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib14" title="Galactic cosmic ray–induced radiation dose on terrestrial exoplanets">2013</a>; Atri, <a class="ltx_ref" href="#bib.bib12" title="On the possibility of galactic cosmic ray-induced radiolysis-powered life in subsurface environments in the universe">2016b</a>, <a class="ltx_ref" href="#bib.bib31" title="Stellar proton event-induced surface radiation dose as a constraint on the habitability of terrestrial exoplanets">2020</a>)</cite> وجرعة الإشعاع تحت السطحية على المريخ <cite class="ltx_cite ltx_citemacro_citep">(Atri, <a class="ltx_ref" href="#bib.bib13" title="Modelling stellar proton event-induced particle radiation dose on close-in exoplanets">2017</a>)</cite>. وكما ذُكر سابقاً، لما كان <cite class="ltx_cite ltx_citemacro_cite">Matthiä<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib1" title="The martian surface radiation environment–a comparison of models and msl/rad measurements">2016</a>)</cite> قد بيّنوا دقة GEANT4 في نمذجة جرعة الإشعاع الناجمة عن GCR بمقارنتها مع قياسات RAD <cite class="ltx_cite ltx_citemacro_citep">(Hassler<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib4" title="Mars’ surface radiation environment measured with the mars science laboratory’s curiosity rover">2014</a>)</cite>، فقد كان من الطبيعي أن نختار تهيئة نموذجهم لمحاكياتنا. وكانت قوائم الفيزياء التي استخدمناها هي emstandard-opt3 و G4HadronPhysicsQGSP-BERT-HP، وكانت النماذج BertiniCascade و QGSP و FTFP للبروتونات، و NeutronHPInelastic و BertiniCascade و QGSP و FTFP للنيوترونات. تحققنا من صحة طريقتنا بحساب جرعة الإشعاع الخلفية الناجمة عن GCR عند فوهة Gale، التي قاسها RAD. استخدمنا نموذج BON10 <cite class="ltx_cite ltx_citemacro_citep">(O’Neill, <a class="ltx_ref" href="#bib.bib5" title="Badhwar–o’neill 2010 galactic cosmic ray flux model—revised">2010</a>)</cite> للحصول على طيف GCR الخلفي، مع 87% بروتونات، و 12% جسيمات ألفا، و 1% حديد (بديلاً للجسيمات الأثقل). ونعرض النتائج في القسم التالي. كما أجرينا مقارنة لنتائج SPE لدينا مع أعمال مشابهة عن SPEs، وهذا ما يُناقش أيضاً في القسم التالي.</p>
+</div>
+<div class="ltx_para" id="S2.p6">
+<p class="ltx_p">لكل SPE، حاكينا التفاعل الجوي لعدد 10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">9</span></sup> من البروتونات الأولية في مجال الطاقة 10 MeV - 10 GeV. وبسبب غياب مجال مغناطيسي، كانت الجسيمات واردة عشوائياً من كامل نصف الكرة في كل حالة. وحُصل على طيف الطاقة للجسيمات الثانوية على السطح من GEANT4 لكل حالة. حسبنا معدل الجرعة المكافئة على السطح لجميع الأحداث باستخدام كرة ICRU القياسية المكافئة للأنسجة (اللجنة الدولية لوحدات وقياسات الإشعاع) بقطر 30 cm وكثافة 1 g cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-3</span></sup> <cite class="ltx_cite ltx_citemacro_citep">(ICRU, <a class="ltx_ref" href="#bib.bib9" title="Radiation quantities and units">1980</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>النتائج</h2>
+<figure class="ltx_figure" id="S3.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="489" id="S3.F1.g1" src="x1.png" width="830"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>الجسيمات الثانوية الناجمة عن GCR على سطح المريخ عند فوهة Gale كما نُمذجت باستخدام GEANT4. شدة الجسيمات، dI/dE (cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup>sr<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>s<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>MeV<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>)؛ e<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-</span></sup> (أسود متصل)، e<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">+</span></sup> (أحمر منقط)، <img alt="$\mu$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0046.svg"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">+</span></sup> (تركوازي متقطع)، <img alt="$\mu$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0050.svg"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-</span></sup> (أزرق متقطع). استُخدم نموذج BON 10 لحساب طيف GCR الوارد <cite class="ltx_cite ltx_citemacro_citep">(O’Neill, <a class="ltx_ref" href="#bib.bib5" title="Badhwar–o’neill 2010 galactic cosmic ray flux model—revised">2010</a>)</cite>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="691" id="S3.F2.g1" src="x2.png" width="830"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>جرعة الإشعاع السطحية الناجمة عن SPE من جميع الأحداث بدلالة فيض البروتونات على سطح المريخ.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="557" id="S3.F3.g1" src="x3.png" width="830"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>طيف الطاقة للحدثين 7 (يناير 23، 2012) و 25 (سبتمبر 1، 2014) من PAMELA <cite class="ltx_cite ltx_citemacro_citep">(Bruno<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib2" title="Solar energetic particle events observed by the pamela mission">2018</a>)</cite>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="557" id="S3.F4.g1" src="x4.png" width="830"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>طيف الطاقة للحدثين 7 (يناير 23، 2012) و 25 (سبتمبر 1، 2014) بعد تطبيعه إلى فيض قدره 10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">8</span></sup> بروتون cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="489" id="S3.F5.g1" src="x5.png" width="830"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>جرعة الإشعاع المكافئة على سطح المريخ المقابلة لشدة التوهج في الأشعة السينية. يمثل الخط المنقط سيناريو أسوأ الحالات، ويمثل الخط المتصل السيناريو الوسيط، ويمثل الخط المتقطع سيناريو أفضل الحالات. أما 1 Sv، الممثل بالخط الأفقي الأحمر، فهو الحد الأعلى للجرعة المكافئة الكلية التي تُعد آمنة لرائد فضاء طوال مسيرته المهنية.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">نعرض أولاً نتائج محاكاة تفاعل GCRs مع الغلاف الجوي للمريخ، التي استخدمناها لأغراض المعايرة. ثم نعرض نتائج جرعة الإشعاع السطحية الناجمة عن SPE من جميع الأحداث. وبعد ذلك نبيّن كيف تعتمد الجرعة الإشعاعية على طيف الجسيمات، ثم نحسب الجرعة الكلية بدلالة شدة الأشعة السينية للتوهج. يوضح الشكل <a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">1</span></a> طيف الطاقة للجسيمات الثانوية على سطح المريخ استناداً إلى طيف GCR من نموذج BON10 <cite class="ltx_cite ltx_citemacro_citep">(O’Neill, <a class="ltx_ref" href="#bib.bib5" title="Badhwar–o’neill 2010 galactic cosmic ray flux model—revised">2010</a>)</cite>، بعد نمذجته باستخدام GEANT4. ويتضح أن الطرف المنخفض الطاقة للجسيمات تهيمن عليه الإلكترونات والبوزيترونات، بينما تهيمن الميونات على الطرف الأعلى طاقة. ويرجع ذلك إلى أن الإلكترونات تفقد الطاقة بسهولة خلافاً للميونات بسبب كتلتها الصغيرة. وكما نوقش سابقاً، تحققنا من صحة محاكياتنا أولاً بحساب الفيض الخلفي لـ GCRs ومقارنته بقياسات RAD. نستخدم طيف الطاقة للجسيمات الثانوية لحساب ترسيب الطاقة لكل وحدة كتلة في النسيج للحصول على الجرعة الإشعاعية <cite class="ltx_cite ltx_citemacro_citep">(Matthiä<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib1" title="The martian surface radiation environment–a comparison of models and msl/rad measurements">2016</a>)</cite>. ونحسب الجرعة المكافئة بوحدة Sievert باستخدام توصيات ICRU و ICRP (اللجنة الدولية للوقاية الإشعاعية) <cite class="ltx_cite ltx_citemacro_cite">Mountford and Temperton (<a class="ltx_ref" href="#bib.bib3" title="Recommendations of the international commission on radiological protection (icrp) 1990">1992</a>)</cite> التي تسند عوامل وزن مختلفة إلى أنواع إشعاعية مختلفة. فقد أُسند لكل من الإلكترونات والفوتونات عامل قدره 1، في حين يتراوح عامل النيوترونات من 8 إلى 20 تبعاً لطاقتها. ويمكن للتعرض التراكمي لجرعة تزيد على 1 Sv أن يسبب مرض الإشعاع ويحدث عيوباً مسرطنة، لذلك فإن جرعة 1 Sv هي حد المسيرة المهنية لرائد فضاء في NASA. والحد الأعلى للتعرض الإشعاعي للعامل في الولايات المتحدة هو 50 mSv سنوياً. أما الجرعة الخلفية السنوية من المصادر الطبيعية فهي <img alt="$\sim$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0029.svg"/> 1 mSv، وتبلغ جرعة تصوير نموذجي للصدر بالأشعة السينية 0.1 mSv <cite class="ltx_cite ltx_citemacro_cite">Schauer and Linton (<a class="ltx_ref" href="#bib.bib26" title="NCRP report no. 160, ionizing radiation exposure of the population of the united states, medical exposure—are we doing less with more, and is there a role for health physicists?">2009</a>)</cite>. وقد أعطت محاكياتنا معدل الجرعة المكافئة من GCRs الخلفية مساوياً لـ 0.59 mSv/day، وهو متسق مع قياس RAD البالغ 0.64 <img alt="$\pm$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0030.svg"/> 0.12 mSv/day <cite class="ltx_cite ltx_citemacro_citep">(Hassler<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib4" title="Mars’ surface radiation environment measured with the mars science laboratory’s curiosity rover">2014</a>)</cite> ضمن لايقينات الأجهزة.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">تُعرض جرعة الإشعاع السطحية لجميع الأحداث بدلالة الفيض في الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">2</span></a>. وقد سجلت بيانات الأقمار الاصطناعية فيضاً أقل بسبب نطاق الطاقة المحدود مقارنة بالبيانات الأرضية، وهي تقديرات بين 10 MeV و 10 GeV. ومع ذلك فإنها تتبع الاتجاه نفسه الذي يمكن رؤيته بوضوح في الشكل. ونستطيع اشتقاق علاقة تجريبية لحساب جرعة الإشعاع السطحية من هذا المخطط.</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S3.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation}
+    D = F^{p1} \times 10^{p0} 
+\end{equation}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-equation-number="4" data-latex="\begin{equation}
+    D = F^{p1} \times 10^{p0} 
+\end{equation}" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0031.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S3.p3">
+<p class="ltx_p">حيث D هي الجرعة الإشعاعية (Sv)، و F هو فيض الجسيمات، و p0 = -7.849 <img alt="$\pm$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0032.svg"/> 0.1667، و p1 = 0.7908 <img alt="$\pm$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\pm$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0033.svg"/> 0.02269.
+يعكس هذا التباين الكبير في جرعة الإشعاع السطحية أيضاً التباين في تسريع الجسيمات في الأحداث المختلفة. وتعتمد الجرعة الإشعاعية على كل من الفيض والشكل الطيفي للجسيمات في حدث معين. وتسهم الجسيمات الأعلى طاقة في جرعة الإشعاع السطحية أكثر من الجسيمات المنخفضة الطاقة. ويُعرض طيف الطاقة للحدثين 7 (يناير 23، 2012) و 25 (سبتمبر 1، 2014) في الشكل <a class="ltx_ref" href="#S3.F3" title="Figure 3 ‣ 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">3</span></a>، وتبلغ الجرعة الإشعاعية المقابلة 8.52<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0034.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-7</span></sup> Sv و 7.99<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0036.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-6</span></sup> Sv على التوالي. طبّعنا الحدثين إلى الفيض نفسه، وقدره 10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">8</span></sup> بروتون cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup>، فوجدنا أن الجرعة الإشعاعية هي 4.88<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0040.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-4</span></sup> و 1.35<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0042.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup> Sv على التوالي. ويعود هذا الفرق في الجرعة الإشعاعية، وهو يقارب عاملاً قدره 28، إلى الفرق في الأشكال الطيفية، كما يظهر بوضوح في الشكل <a class="ltx_ref" href="#S3.F4" title="Figure 4 ‣ 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">4</span></a>.</p>
+</div>
+<div class="ltx_para" id="S3.p4">
+<p class="ltx_p">تتسق نتائجنا أيضاً مع <cite class="ltx_cite ltx_citemacro_cite">Guo<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib6" title="A generalized approach to model the spectra and radiation dose rate of solar particle events on the surface of mars">2018</a>)</cite>؛ إذ بالنسبة إلى SPE في سبتمبر 29، 1989، تبلغ جرعتنا 2.21<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0044.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4</span></sup> <img alt="$\mu$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0054.svg"/>Gy day<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>، مقارنة بـ 2.12<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0048.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4</span></sup> <img alt="$\mu$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0058.svg"/>Gy day<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup> لدى <cite class="ltx_cite ltx_citemacro_cite">Guo<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib6" title="A generalized approach to model the spectra and radiation dose rate of solar particle events on the surface of mars">2018</a>)</cite>، وبالنسبة إلى SPE في أكتوبر 19، 1989، تبلغ جرعتنا 3.20<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0052.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">3</span></sup> <img alt="$\mu$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0046.svg"/>Gy day<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>، مقارنة بـ 3.13<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0056.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">3</span></sup> <img alt="$\mu$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0050.svg"/>Gy day<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup> لدى <cite class="ltx_cite ltx_citemacro_cite">Guo<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib6" title="A generalized approach to model the spectra and radiation dose rate of solar particle events on the surface of mars">2018</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S3.p5">
+<p class="ltx_p">من أجل تقدير الجرعة الإشعاعية من SPEs على مقاييس زمنية طويلة، من المهم إدماج معدل وقوع التوهجات الكبرى على النجوم من النوع G. وقد أظهرت أرصاد حديثة من <span class="ltx_text ltx_font_italic">Kepler</span> و <span class="ltx_text ltx_font_italic">Gaia</span> أن توهجاً بطاقة 5<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0060.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">34</span></sup> ergs يحدث مرة كل 2000-3000 سنة على نجوم شبيهة بالشمس <cite class="ltx_cite ltx_citemacro_citep">(Notsu<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib15" title="Do kepler superflare stars really include slowly rotating sun-like stars?—results using apo 3.5 m telescope spectroscopic observations and gaia-dr2 data">2019</a>)</cite>. وهذه الأحداث أكبر بأكثر من 3 رتب مقدارية من حدث كارينغتون، أكبر حدث شمسي مسجل في التاريخ. وعلى الرغم من أن التوهجات تُرصد في نطاقي الأشعة السينية وفوق البنفسجية، فلم تُكتشف بروتونات من نجوم أخرى. ولمعالجة هذه المسألة، نستخدم العلاقة بين شدة الأشعة السينية وفيض الجسيمات، وهي علاقة تجريبية مشتقة من أرصاد واسعة للتوهجات <cite class="ltx_cite ltx_citemacro_citep">(Herbst<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib10" title="From solar to stellar flare characteristics-on a new peak size distribution for g-, k-, and m-dwarf star flares">2019</a>)</cite>. وتوفر هذه العلاقة التجريبية فيضاً بروتونياً مقدراً يقابل فيض الفوتونات من توهج.</p>
+</div>
+<div class="ltx_para" id="S3.p6">
+<p class="ltx_p">حُسبت الجرعة الإشعاعية بدلالة شدة توهج الأشعة السينية استناداً إلى المعادلة 4 والعلاقة التجريبية المذكورة أعلاه، وتُعرض في الشكل <a class="ltx_ref" href="#S3.F5" title="Figure 5 ‣ 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">5</span></a>، وقد استُقرئت إلى ما هو أبعد بكثير من شدة التوهجات المرصودة على الشمس. إن الأحداث عند الطرف الأعلى طاقة مستبعدة للغاية ضمن المقياس الزمني للسنوات الـ 100 المقبلة، لكنها معروضة للحصول على تقدير لسيناريو أسوأ الحالات، المتوقع حدوثه على مقاييس زمنية قدرها 100s من Myr. ويقابل الخط المنقط سيناريو أسوأ الحالات، وهو توليفة من الحد الأعلى لتقدير فيض البروتونات والجرعة المحسوبة من المعادلة 4. أما الخط الشمسي فهو الوسيط، ويقابل الخط المتقطع سيناريو أفضل الحالات. ويقابل الخط الأحمر المتقطع جرعة مكافئة قدرها 1 Sv، وهي حد المسيرة المهنية لرواد الفضاء. إن حدثاً شبيهاً بكارينغتون، وكان حدثاً من الصنف X45، أو 4.5<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0062.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-3</span></sup> Wm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup> على الأرض و <img alt="$\sim$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sim$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0065.svg"/>2<img alt="$\times$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\times$" data-paper-arabizer-equation-image="true" data-source-file="hspe_mars.tex" dir="ltr" src="equations/eq_0066.svg"/>10<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-3</span></sup> Wm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup> على المريخ، سيعرّض رواد الفضاء لجرعة مكافئة أقل من 1 Sv، حتى في سيناريو أسوأ الحالات. وفي حالة حدث فائق الكارينغتونية، أو حدث من الصنف X450، تقترب الجرعة من مستويات قاتلة في سيناريو أسوأ الحالات، غير أن الحالة الوسيطة تظل آمنة لرواد الفضاء.</p>
+</div>
+<div class="ltx_para" id="S3.p7">
+<p class="ltx_p">ينبغي أن نلاحظ أن هذه الجرعات تخص أحداثاً منفردة، وأن التعرض الإشعاعي الكلي سيتضمن أيضاً الإشعاع الخلفي من GCRs طوال مدة البعثة. ويبلغ معدل الجرعة المكافئة خلال مرحلة الرحلة 1.9 mSv day<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup>، وعلى سطح المريخ 0.7 mSv day<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-1</span></sup> <cite class="ltx_cite ltx_citemacro_cite">Hassler<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib4" title="Mars’ surface radiation environment measured with the mars science laboratory’s curiosity rover">2014</a>)</cite>. وخلال رحلة مدتها 180 يوم إلى المريخ، سيكون التعرض للجرعة المكافئة 340 mSv، ومثل ذلك في العودة، فيصبح المجموع 680 mSv. وبالنسبة إلى بعثة سطحية مدتها 450 و 600 يوم، ستكون الجرعة الخلفية الكلية بما في ذلك العبور بين 1.02 و 1.1 Sv على التوالي <cite class="ltx_cite ltx_citemacro_cite">Hassler<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib4" title="Mars’ surface radiation environment measured with the mars science laboratory’s curiosity rover">2014</a>)</cite>. وكما بيّنا، فإن مزيج الجرعة الإشعاعية من GCRs و SPEs يمكن أن يكون ضاراً برواد الفضاء، وهو ما نصفه في القسم التالي. لذلك من الضروري اعتماد استراتيجيات تدريع فعالة لمواجهة الآثار الضارة في صحة رواد الفضاء.</p>
+</div>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>المناقشة والاستنتاجات</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">يُعد التعرض لـ SPEs و GCRs أحد المصادر الرئيسة للمخاطر الصحية التي يواجهها رواد الفضاء في البعثات والمستوطنات المأهولة المستقبلية على المريخ. ويتيح غياب تدريع جوي معتبر وغياب مجال مغناطيسي كوكبي أقصى تعرض للجسيمات المشحونة النشطة على سطح المريخ. وعلى الرغم من أن بيانات الأقمار الاصطناعية أدق، فإن لها نطاق طاقة محدوداً. ومن جهة أخرى، تمتد البيانات الأرضية عبر نطاق طاقة أوسع، لكن الأطياف مبنية على بيانات مراصد النيوترونات، وهي أقل دقة. وتمثل بيانات GLE الأرضية الممتدة على مدى عدة عقود مورداً مفيداً لدراسة التباين في جرعة الإشعاع السطحية بين الأحداث، وقد ساعدت على تحسين تقدير أثر أحداث أعلى طاقة من تلك المتاحة في السجلات التاريخية. وتحكم جرعة الإشعاع السطحية عاملان رئيسان: فيض الجسيمات، والصلادة الطيفية. وتستند حساباتنا إلى طائفة متنوعة من GLEs من أرصاد أرضية وأرصاد أقمار اصطناعية خلال العقود العديدة الماضية، من أحداث منخفضة الفيض وناعمة الطيف إلى أحداث عالية الفيض وصلبة الطيف.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">في سيناريوهات أسوأ الحالات، يمكن لحدث من نوع كارينغتون أن يشكل خطراً صحياً متوسطاً على رواد الفضاء، ويمكن لحدث أكثر تطرفاً شبيه بحدث فائق الكارينغتونية أن يكون قاتلاً. غير أن الجرعة الوسيطة أصغر بكثير في الحدث الشبيه بكارينغتون، ولن تشكل أي خطر صحي ملحوظ إضافة إلى الخطر الناجم عن التعرض لـ GCRs <cite class="ltx_cite ltx_citemacro_cite">Schauer and Linton (<a class="ltx_ref" href="#bib.bib26" title="NCRP report no. 160, ionizing radiation exposure of the population of the united states, medical exposure—are we doing less with more, and is there a role for health physicists?">2009</a>)</cite>. ومع ذلك، عندما تُجمع مع جرعة الإشعاع من GCRs، تُظهر نتائجنا أن جرعة الإشعاع السطحية تتجاوز حد المسيرة المهنية لرواد الفضاء (1 Sv) حتى في أكثر السيناريوهات تحفظاً. ويأتي قدر كبير من معرفتنا عن تأثير التعرض الإشعاعي في جسم الإنسان من الآثار الجانبية للعلاج الإشعاعي. وبما أن العلاج الإشعاعي لا يستخدم تعرضاً للنيوترونات، فإن 1 Sv يكافئ تقريباً 1 Gy لدى المرضى الخاضعين للعلاج. وبالمثل، بما أن معظم الدراسات التجريبية تستخدم طاقة فوتونية منخفضة كمصدر للإشعاع، فإن 1 Sv يكافئ تقريباً 1 Gy في منشورات البيولوجيا الإشعاعية <cite class="ltx_cite ltx_citemacro_citep">(Dainiak<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib47" title="The hematologist and radiation casualties">2003</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">تُظهر دراسات مرضى سرطان الدماغ الذين يتلقون العلاج الإشعاعي أن الإرهاق أثر جانبي شائع. ويُعد احتمال حدوث إرهاق ناجم عن الإشعاع مصدر قلق لرواد الفضاء الذين يحتاجون إلى البقاء في حالة يقظة عند خوض استكشاف فضائي خطر. ويمتاز الإرهاق الناجم عن الإشعاع بأنه لا يخف عادة بالراحة. وتُعد الحمامى الجلدية وتساقط الشعر من الآثار الجانبية الأخرى المرصودة لدى مرضى سرطان الدماغ الذين يتلقون العلاج الإشعاعي <cite class="ltx_cite ltx_citemacro_citep">(Butler<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib33" title="Managing the cognitive effects of brain tumor radiation therapy">2006</a>)</cite>. وتمثل جسيمات HZE مكوناً عالي الوفرة من الإشعاع الكوني المجري، ولها القدرة على إتلاف عصبونات الدماغ مسببة تلفاً في DNA. وتمتلك العصبونات معدل تجدد بطيئاً جداً، مما يسمح لتلف DNA بالتراكم مع الزمن. وقد تؤثر النتائج المترتبة مثل الشيخوخة المبكرة وضعف القدرة المعرفية في رواد الفضاء المعرضين <cite class="ltx_cite ltx_citemacro_citep">(Craven and Rycroft, <a class="ltx_ref" href="#bib.bib34" title="Fluxes of galactic iron nuclei and associated hze secondaries, and resulting radiation doses, in the brain of an astronaut">1994</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p4">
+<p class="ltx_p">يتأثر الجهاز الهيكلي أيضاً بالتشعيع، إذ تبيّن أن الجرعات الإشعاعية ذات الصلة برحلات الفضاء تُحدث فقداناً عظمياً يستمر حتى أربعة أشهر بعد التعرض. كما أن تلف العظام أثر جانبي للعلاج الإشعاعي. وتظهر لدى مريضات سرطان الثدي اللواتي يتلقين العلاج الإشعاعي معدلات كسر في الأضلاع تصل إلى 19% كأثر جانبي متأخر للعلاج <cite class="ltx_cite ltx_citemacro_citep">(Willey<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib35" title="Ionizing radiation and bone loss: space exploration and clinical therapy applications">2011</a>)</cite>. وكانت النساء فوق سن 65 اللواتي تلقين العلاج الإشعاعي لسرطان عنق الرحم أكثر تعرضاً لخطر نسبي زائد لكسر الورك بنسبة 65% <cite class="ltx_cite ltx_citemacro_citep">(Baxter<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib36" title="Risk of pelvic fractures in older women following pelvic irradiation">2005</a>)</cite>. وأجرى <cite class="ltx_cite ltx_citemacro_citep">(Kook<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib37" title="">2015</a>)</cite> تجربة عُرضت فيها خلايا MC3T3-E1 لجرعات إشعاعية تراوحت من 0-8 Gy. والحد الأعلى لهذا المجال قابل للمقارنة مع سيناريو أسوأ الحالات للتعرض الإشعاعي من حدث فائق الكارينغتونية. و MC3T3-E1 خط خلوي من طلائع بانيات العظم في Mus musculus (فأر المنزل). وبانيات العظم خلايا تؤدي وظيفة تخليق العظم. وقد أدى تشعيع خلايا MC3T3-E1 هذه إلى إضعاف قدرتها على التمايز إلى بانيات عظم ناضجة لتنفيذ تخليق العظم، ومن ثم قد يكون مساهماً محتملاً في الفقد العظمي الكلي.</p>
+</div>
+<div class="ltx_para" id="S4.p5">
+<p class="ltx_p">إن جرعة تراكمية قدرها 1-2 Sv، وهي ما نتوقعه من بعثة نموذجية، ستلحق الضرر بكريات الدم البيضاء (WBCs). وتُعد WBCs مكونات رئيسة في الجهاز المناعي، وهي عرضة للتلف الإشعاعي بسبب معدل التجدد العالي، مما يسمح للطفرات الضارة بالظهور في وقت أبكر. أجرى <cite class="ltx_cite ltx_citemacro_cite">Gridley<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib38" title="Dose and dose rate effects of whole-body proton irradiation on leukocyte populations and lymphoid organs: part i">2002</a>)</cite> تجارب عرّضت خلايا مناعية (WBCs) في الفئران للتشعيع بالبروتونات. وعُرضت الخلايا المناعية لجرعات إشعاعية مقدارها 0.5 Gy و 1.5 Gy و 3.0 Gy على جرعات جزئية قدرها 1 cGy أو 80 cGy في الدقيقة. ورصدت التجربة انخفاضاً معتمداً على الجرعة في تجمعات كريات الدم البيضاء، وضعفاً في وظيفة WBCs المعرضة. ويمكن أن يتوسط ذلك جهازاً مناعياً مختلاً ذا قدرة أضعف على مكافحة العدوى، وهو مصدر قلق لرواد الفضاء.</p>
+</div>
+<div class="ltx_para" id="S4.p6">
+<p class="ltx_p">درس <cite class="ltx_cite ltx_citemacro_cite">Delp<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib39" title="Apollo lunar astronauts show higher cardiovascular disease mortality: possible deep space radiation effects on the vascular endothelium">2016</a>)</cite> معدل الوفيات الناجمة عن المرض القلبي الوعائي المحرّض بالإشعاع (RICVD) في ثلاث مجموعات مختلفة من رواد الفضاء: رواد فضاء حلقوا في مدار أرضي منخفض، ورواد فضاء لم يحلقوا قط في مدار أرضي منخفض، ورواد Apollo القمريون. ورواد Apollo القمريون هم البشر الوحيدون الذين سافروا خارج حماية المجال المغناطيسي للأرض، وقد أظهروا معدل وفيات بسبب المرض القلبي الوعائي أعلى بـ 4-5 مرات من مجموعات رواد الفضاء الأخرى. وقد عزز ذلك الخطر المتزايد للتعرض لإشعاع الفضاء العميق، مقارنة بما يُختبر داخل حماية المجال المغناطيسي الأرضي. والمرض القلبي الوعائي هو السبب الرئيس للوفاة عالمياً. وقد أظهرت دراسات الناجين من كارثة Chernobyl أن التعرض لجرعة إشعاعية منخفضة قدرها 0.15 Gy يمكن أن يزيد خطر الإصابة بمرض قلبي وعائي محرّض بالإشعاع. وبالمثل، لوحظ أن مرض القلب وارتفاع ضغط الدم هما الأثران الجانبيان المتأخران الأكثر شيوعاً للتعرض الإشعاعي لدى الناجين من القصفين الذريين على Hiroshima و Nagasaki في 1945 <cite class="ltx_cite ltx_citemacro_citep">(Hughson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib40" title="Heart in space: effect of the extraterrestrial environment on the cardiovascular system">2018</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p7">
+<p class="ltx_p">من الآثار الجانبية المتأخرة للعلاج الإشعاعي لسرطان الرئة غير صغير الخلايا تطور التليف الرئوي المحرّض بالإشعاع. والتليف عملية مرضية يُستبدل فيها النسيج المصاب أثناء ترميمه بنسيج ندبي بدلاً من نسيج وظيفي سليم. ويمكن أن يؤدي التليف الرئوي المحرّض بالإشعاع إلى أعراض سريرية مثل القصور التنفسي والسعال الجاف وضيق النفس (صعوبة التنفس) <cite class="ltx_cite ltx_citemacro_citep">(Ding<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib42" title="Molecular mechanisms and treatments of radiation-induced lung fibrosis">2013</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p8">
+<p class="ltx_p">أظهرت الدراسات على الجهازين التناسليين الذكري والأنثوي أن التعرض لجرعة إشعاعية تزيد على 0.35 Gy للخصية الذكرية يمكن أن يؤدي إلى انعدام المني (غياب السائل المنوي في القذف). ويمكن أن يحدث انعدام مني دائم عند التعرض لجرعة إشعاعية تزيد على 2 Gy. أما لدى الإناث، فقد لوحظ أن تشعيع المبيضين بجرعة إشعاعية مقدارها 4 Gy ينتج حدوث عقم بنسبة 30% لدى النساء دون سن 40 سنة، وحدوث عقم بنسبة 100% لدى النساء فوق سن 40 سنة <cite class="ltx_cite ltx_citemacro_citep">(Ogilvy-Stuart and Shalet, <a class="ltx_ref" href="#bib.bib43" title="Effect of radiation on the human reproductive system">1993</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p9">
+<p class="ltx_p">متلازمة الإشعاع الحادة (ARS) مرض قصير الأمد شديد ناجم عن التعرض للإشعاع. وتصنف مراكز مكافحة الأمراض والوقاية منها (CDC) جرعة 0.7 Gy عتبةً للتعرض الإشعاعي التي يحدث عندها ARS، لكنها تفيد بأن أعراضاً خفيفة تُلاحظ عند جرعات منخفضة تصل إلى 0.3 Gy <cite class="ltx_cite ltx_citemacro_citep">(Jones<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib32" title="Radiation and radiation disorders">2020</a>)</cite>. وتظهر ARS في ثلاثة أنماط سريرية مميزة: متلازمة تكوّن الدم، والمتلازمة المعدية المعوية، والمتلازمة الوعائية العصبية. وتظهر متلازمة تكوّن الدم عند جرعات إشعاعية قدرها 0.3-5 Gy، ولذلك فهي الأكثر صلة بمستويات التعرض الإشعاعي المتوقعة لرواد الفضاء الزائرين للمريخ. وتؤثر متلازمة تكوّن الدم في تكوّن كريات الدم الحمراء والبيضاء، ويمكن أن تترتب عليها عواقب مثل زيادة القابلية للإصابة بالعدوى وفقر الدم.</p>
+</div>
+<div class="ltx_para" id="S4.p10">
+<p class="ltx_p">يُعد ازدياد خطر السرطان الذي قد يختبره رواد الفضاء استجابة للتعرض الإشعاعي مصدر قلق ملحوظاً. يفيد <cite class="ltx_cite ltx_citemacro_cite">Hall and Wuu (<a class="ltx_ref" href="#bib.bib48" title="Radiation-induced second cancers: the impact of 3d-crt and imrt">2003</a>)</cite> بأن الناجين من القصف الذري يظهرون زيادة في حدوث تطورات السرطانة في أنسجة مختلفة بعلاقة معتمدة على الجرعة الإشعاعية حتى نحو 2.5 Sv. وقد وضعت NASA حدوداً إشعاعية لرواد الفضاء بحيث يكون الحد الأعلى للخطر المقبول زيادة قدرها 3% في معدل وفيات السرطان بسبب التعرض الإشعاعي. أجرى <cite class="ltx_cite ltx_citemacro_cite">Cucinotta (<a class="ltx_ref" href="#bib.bib44" title="Space radiation risks for astronauts on multiple international space station missions">2014</a>)</cite> تحليلاً لخطر السرطان لدى رواد الفضاء في محطة الفضاء الدولية (أي في مدار أرضي منخفض)، ووجدوا أن رائدات الفضاء في مدار أرضي منخفض قد يتجاوزن حد NASA الإشعاعي خلال 18 أشهر، وأن رواد الفضاء الذكور قد يتجاوزونه خلال 24 أشهر. وناقش <cite class="ltx_cite ltx_citemacro_cite">Straume (<a class="ltx_ref" href="#bib.bib45" title="Medical concerns with space radiation and radiobiological effects">2015</a>)</cite> أيضاً كيف سيتجاوز الحد الإشعاعي في بعثة إلى المريخ. وقد ثبت أن جسيمات HZE، الوفيرة في إشعاع الفضاء العميق، تحرض أوراماً أعلى فتكاً مقارنة بأشعة غاما الأرضية <cite class="ltx_cite ltx_citemacro_citep">(Cucinotta, <a class="ltx_ref" href="#bib.bib44" title="Space radiation risks for astronauts on multiple international space station missions">2014</a>)</cite>. وإلى جانب الخطر الذي تطرحه SPEs، يمكن أن ينتج ازدياد خطر السرطان أيضاً من حدوث التهاب ناجم عن الأشعة فوق البنفسجية. وقد أظهرت تجارب على فئران المختبر أن الالتهاب الناتج عن التشعيع بالأشعة فوق البنفسجية أنتج زيادة في تكوّن الأوعية (تشكّل أوعية دموية جديدة) وزيادة في النقائل (انتشار السرطان في أنحاء الجسم) <cite class="ltx_cite ltx_citemacro_citep">(Bald<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib46" title="Ultraviolet-radiation-induced inflammation promotes angiotropism and metastasis in melanoma">2014</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.p11">
+<p class="ltx_p">وفرت أرصاد <span class="ltx_text ltx_font_italic">Kepler</span> و <span class="ltx_text ltx_font_italic">Gaia</span> و <span class="ltx_text ltx_font_italic">TESS</span> للنجوم من النوع G معدل حدوث الأحداث النشطة على مقاييس زمنية طويلة <cite class="ltx_cite ltx_citemacro_cite">Notsu<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib15" title="Do kepler superflare stars really include slowly rotating sun-like stars?—results using apo 3.5 m telescope spectroscopic observations and gaia-dr2 data">2019</a>)</cite>. واستناداً إلى هذه الأرصاد، يمكن تقدير أن احتمال وقوع أحداث شبيهة بكارينغتون وموجهة نحو المريخ صغير جداً لبعثة إلى المريخ مدتها 3 سنة. غير أن مثل هذا الحدث مرجح جداً على مقاييس زمنية أطول قدرها 50-100 سنة، وهي ذات صلة بالمستوطنات البشرية على الكوكب. ومن المرجح أن تحدث أحداث فائقة الكارينغتونية على مقاييس زمنية قدرها 1000 سنة، وهي أقل احتمالاً في أي من السيناريوهين أعلاه. ويمكن تحسين تقديراتنا بفهم أفضل للعلاقة بين طاقة التوهج وفيض الجسيمات عند الطاقات الأعلى، وبنماذج أفضل لنقل الجسيمات في الوسط بين الكواكب.</p>
+</div>
+<div class="ltx_acknowledgements">يدعم هذا العمل منحة بحثية من معهد NYUAD رقم G1502. نشكر أعضاء تعاون GEANT4 الذين طوروا البرمجية (<a class="ltx_ref ltx_url ltx_font_typewriter" href="geant4.cern.ch" title="">geant4.cern.ch</a>) المستخدمة في هذا العمل. أُجري هذا البحث على موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي.
+
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib29">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. Agostinelli, J. Allison, K. a. Amako, J. Apostolakis, H. Araujo, P. Arce, M. Asai, D. Axen, S. Banerjee, G. 2. Barrand, <span class="ltx_text ltx_bib_etal">et al.</span> (2003)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">GEANT4—a simulation toolkit</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Nuclear instruments and methods in physics research section A: Accelerators, Spectrometers, Detectors and Associated Equipment</span> <span class="ltx_text ltx_bib_volume">506</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 250–303</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib14">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Atri, B. Hariharan, and J. Grießmeier (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Galactic cosmic ray–induced radiation dose on terrestrial exoplanets</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Astrobiology</span> <span class="ltx_text ltx_bib_volume">13</span> (<span class="ltx_text ltx_bib_number">10</span>), <span class="ltx_text ltx_bib_pages"> pp. 910–919</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib16">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Atri (2016a)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Did high-energy astrophysical sources contribute to martian atmospheric loss?</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Monthly Notices of the Royal Astronomical Society: Letters</span> <span class="ltx_text ltx_bib_volume">463</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. L64–L68</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib12">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Atri (2016b)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">On the possibility of galactic cosmic ray-induced radiolysis-powered life in subsurface environments in the universe</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of The Royal Society Interface</span> <span class="ltx_text ltx_bib_volume">13</span> (<span class="ltx_text ltx_bib_number">123</span>), <span class="ltx_text ltx_bib_pages"> pp. 20160459</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib13">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Atri (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Modelling stellar proton event-induced particle radiation dose on close-in exoplanets</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Monthly Notices of the Royal Astronomical Society: Letters</span> <span class="ltx_text ltx_bib_volume">465</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. L34–L38</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib31">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Atri (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Stellar proton event-induced surface radiation dose as a constraint on the habitability of terrestrial exoplanets</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Monthly Notices of the Royal Astronomical Society: Letters</span> <span class="ltx_text ltx_bib_volume">492</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. L28–L33</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib46">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Bald, T. Quast, and J. e. a. Landsberg (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Ultraviolet-radiation-induced inflammation promotes angiotropism and metastasis in melanoma</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Nature</span> <span class="ltx_text ltx_bib_volume">507</span>, <span class="ltx_text ltx_bib_pages"> pp. 109–113</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p10" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib36">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. N. Baxter, E. B. Habermann, J. E. Tepper, S. B. Durham, and B. A. Virnig (2005)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Risk of pelvic fractures in older women following pelvic irradiation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">JAMA</span> <span class="ltx_text ltx_bib_volume">294</span>, <span class="ltx_text ltx_bib_pages"> pp. 2587–2593</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p4" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib2">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Bruno, G. Bazilevskaya, M. Boezio, E. Christian, G. de Nolfo, M. Martucci, M. Merge, V. Mikhailov, R. Munini, I. Richardson, <span class="ltx_text ltx_bib_etal">et al.</span> (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Solar energetic particle events observed by the pamela mission</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The Astrophysical Journal</span> <span class="ltx_text ltx_bib_volume">862</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 97</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p1" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S3.F3" title="In 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">Figure 3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib33">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. M. Butler, S. R. Rapp, and E. G. Shaw (2006)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Managing the cognitive effects of brain tumor radiation therapy</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Current Treatment Options in Oncology</span> <span class="ltx_text ltx_bib_volume">7</span>, <span class="ltx_text ltx_bib_pages"> pp. 517–523</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p3" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib34">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P.A. Craven and M. Rycroft (1994)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Fluxes of galactic iron nuclei and associated hze secondaries, and resulting radiation doses, in the brain of an astronaut</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Advances in Space Research</span> <span class="ltx_text ltx_bib_volume">14</span>, <span class="ltx_text ltx_bib_pages"> pp. 873–878</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p3" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib17">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. A. Cucinotta, W. Schimmerling, J. W. Wilson, L. E. Peterson, G. D. Badhwar, P. B. Saganti, and J. F. Dicello (2001)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Space radiation cancer risks and uncertainties for mars missions</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Radiation research</span> <span class="ltx_text ltx_bib_volume">156</span> (<span class="ltx_text ltx_bib_number">5</span>), <span class="ltx_text ltx_bib_pages"> pp. 682–688</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib44">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. A. Cucinotta (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Space radiation risks for astronauts on multiple international space station missions</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">PLoS One</span> <span class="ltx_text ltx_bib_volume">9</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p10" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib47">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Dainiak, J. O. Waselenko, J. O. Armitage, T. J. MacVittie, and A. M. Farese (2003)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The hematologist and radiation casualties</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Hematology Am Soc Hematol Educ Program</span> <span class="ltx_text ltx_bib_volume">2003</span>, <span class="ltx_text ltx_bib_pages"> pp. 473–496</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p2" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib39">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. D. Delp, J. M. Charvat, C. L. Limoli, R. K. Globus, and P. Ghosh (2016)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Apollo lunar astronauts show higher cardiovascular disease mortality: possible deep space radiation effects on the vascular endothelium</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Scientific Reports</span> <span class="ltx_text ltx_bib_volume">6</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p6" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib42">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Ding, J. J. Li, and L. Sun (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Molecular mechanisms and treatments of radiation-induced lung fibrosis</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Current Drug Targets</span> <span class="ltx_text ltx_bib_volume">14</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p7" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib27">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. Forget, F. Hourdin, R. Fournier, C. Hourdin, O. Talagrand, M. Collins, S. R. Lewis, P. L. Read, and J. Huot (1999)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Improved general circulation models of the martian atmosphere from the surface to above 80 km</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Geophysical Research: Planets</span> <span class="ltx_text ltx_bib_volume">104</span> (<span class="ltx_text ltx_bib_number">E10</span>), <span class="ltx_text ltx_bib_pages"> pp. 24155–24175</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p4" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib38">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Gridley, M. J. Pecaut, R. Dutta-Roy, and G. Nelson (2002)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Dose and dose rate effects of whole-body proton irradiation on leukocyte populations and lymphoid organs: part i</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Immunology Letters</span> <span class="ltx_text ltx_bib_volume">80</span>, <span class="ltx_text ltx_bib_pages"> pp. 55–66</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p5" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib21">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">G. Gronoff, R. B. Norman, and C. J. Mertens (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Computation of cosmic ray ionization and dose at mars. i: a comparison of hzetrn and planetocosmics for proton and alpha particles</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Advances in Space Research</span> <span class="ltx_text ltx_bib_volume">55</span> (<span class="ltx_text ltx_bib_number">7</span>), <span class="ltx_text ltx_bib_pages"> pp. 1799–1805</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib6">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Guo, C. Zeitlin, R. F. Wimmer-Schweingruber, T. McDole, P. Kühl, J. C. Appel, D. Matthiä, J. Krauss, and J. Köhler (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A generalized approach to model the spectra and radiation dose rate of solar particle events on the surface of mars</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The Astronomical Journal</span> <span class="ltx_text ltx_bib_volume">155</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 49</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.p4" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S3.p4" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib8">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Guo, C. Zeitlin, R. F. Wimmer-Schweingruber, S. Rafkin, D. M. Hassler, A. Posner, B. Heber, J. Köhler, B. Ehresmann, J. K. Appel, <span class="ltx_text ltx_bib_etal">et al.</span> (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Modeling the variations of dose rate measured by rad during the first msl martian year: 2012–2014</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The Astrophysical Journal</span> <span class="ltx_text ltx_bib_volume">810</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 24</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib48">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. J. Hall and C. Wuu (2003)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Radiation-induced second cancers: the impact of 3d-crt and imrt</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">International Journal of Radiation Oncology*Biology*Physics</span> <span class="ltx_text ltx_bib_volume">56</span>, <span class="ltx_text ltx_bib_pages"> pp. 83–88</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p10" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib19">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Hassler, C. Zeitlin, R. Wimmer-Schweingruber, S. Böttcher, C. Martin, J. Andrews, E. Böhm, D. Brinza, M. Bullock, S. Burmeister, <span class="ltx_text ltx_bib_etal">et al.</span> (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The radiation assessment detector (rad) investigation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Space science reviews</span> <span class="ltx_text ltx_bib_volume">170</span> (<span class="ltx_text ltx_bib_number">1-4</span>), <span class="ltx_text ltx_bib_pages"> pp. 503–558</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib4">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. M. Hassler, C. Zeitlin, R. F. Wimmer-Schweingruber, B. Ehresmann, S. Rafkin, J. L. Eigenbrode, D. E. Brinza, G. Weigle, S. Böttcher, E. Böhm, <span class="ltx_text ltx_bib_etal">et al.</span> (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Mars’ surface radiation environment measured with the mars science laboratory’s curiosity rover</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Science</span> <span class="ltx_text ltx_bib_volume">343</span> (<span class="ltx_text ltx_bib_number">6169</span>), <span class="ltx_text ltx_bib_pages"> pp. 1244797</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S3.p1" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>,
+<a class="ltx_ref" href="#S3.p7" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib24">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">C. E. Hellweg and C. Baumstark-Khan (2007)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Getting ready for the manned mission to mars: the astronauts’ risk from space radiation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Naturwissenschaften</span> <span class="ltx_text ltx_bib_volume">94</span> (<span class="ltx_text ltx_bib_number">7</span>), <span class="ltx_text ltx_bib_pages"> pp. 517–526</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib10">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">K. Herbst, A. Papaioannou, S. Banjac, and B. Heber (2019)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">From solar to stellar flare characteristics-on a new peak size distribution for g-, k-, and m-dwarf star flares</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Astronomy &amp; Astrophysics</span> <span class="ltx_text ltx_bib_volume">621</span>, <span class="ltx_text ltx_bib_pages"> pp. A67</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S3.p5" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib40">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">R. L. Hughson, A. Helm, and M. Durante (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Heart in space: effect of the extraterrestrial environment on the cardiovascular system</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Nature Reviews Cardiology</span> <span class="ltx_text ltx_bib_volume">15</span>, <span class="ltx_text ltx_bib_pages"> pp. 167–180</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p6" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_book" id="bib.bib9">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">ICRU (1980)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Radiation quantities and units</span>.
+</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_bib_publisher">International Commission on Radiation</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p6" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib20">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">B. M. Jakosky, J. M. Grebowsky, J. G. Luhmann, J. Connerney, F. Eparvier, R. Ergun, J. Halekas, D. Larson, P. Mahaffy, J. Mcfadden, <span class="ltx_text ltx_bib_etal">et al.</span> (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">MAVEN observations of the response of mars to an interplanetary coronal mass ejection</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Science</span> <span class="ltx_text ltx_bib_volume">350</span> (<span class="ltx_text ltx_bib_number">6261</span>), <span class="ltx_text ltx_bib_pages"> pp. aad0210</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib32">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. A. Jones, F. Karouia, L. Pinsky, and O. Cristea (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Radiation and radiation disorders</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Principles of Clinical Medicine for Space Flight</span>, <span class="ltx_text ltx_bib_pages"> pp. 39–108</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p9" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib37">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. Kook, K. Kim, H. Ji, D. Lee, and J. Lee (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Molecular and Cellular Biochemistry</span> <span class="ltx_text ltx_bib_volume">410</span>, <span class="ltx_text ltx_bib_pages"> pp. 255–266</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p4" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib7">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. E. Larson, R. J. Lillis, C. O. Lee, P. A. Dunn, K. Hatch, M. Robinson, D. Glaser, J. Chen, D. Curtis, C. Tiu, <span class="ltx_text ltx_bib_etal">et al.</span> (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The maven solar energetic particle investigation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Space Science Reviews</span> <span class="ltx_text ltx_bib_volume">195</span> (<span class="ltx_text ltx_bib_number">1-4</span>), <span class="ltx_text ltx_bib_pages"> pp. 153–172</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib1">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Matthiä, B. Ehresmann, H. Lohf, J. Köhler, C. Zeitlin, J. Appel, T. Sato, T. Slaba, C. Martin, T. Berger, <span class="ltx_text ltx_bib_etal">et al.</span> (2016)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The martian surface radiation environment–a comparison of models and msl/rad measurements</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Space Weather and Space Climate</span> <span class="ltx_text ltx_bib_volume">6</span>, <span class="ltx_text ltx_bib_pages"> pp. A13</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S3.p1" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib28">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. Millour, F. Forget, A. Spiga, T. Navarro, J. Madeleine, L. Montabone, A. Pottier, F. Lefèvre, F. Montmessin, J. Chaufray, <span class="ltx_text ltx_bib_etal">et al.</span> (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The mars climate database (mcd version 5.2)</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">European Planetary Science Congress</span>,
+</span>
+<span class="ltx_bibblock">Vol. <span class="ltx_text ltx_bib_volume">10</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p4" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib3">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. Mountford and D. Temperton (1992)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Recommendations of the international commission on radiological protection (icrp) 1990</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">European Journal of Nuclear Medicine and Molecular Imaging</span> <span class="ltx_text ltx_bib_volume">19</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 77–79</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p1" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib15">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">Y. Notsu, H. Maehara, S. Honda, S. L. Hawley, J. R. Davenport, K. Namekata, S. Notsu, K. Ikuta, D. Nogami, and K. Shibata (2019)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Do kepler superflare stars really include slowly rotating sun-like stars?—results using apo 3.5 m telescope spectroscopic observations and gaia-dr2 data</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The Astrophysical Journal</span> <span class="ltx_text ltx_bib_volume">876</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 58</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S3.p5" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>,
+<a class="ltx_ref" href="#S4.p11" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib5">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. M. O’Neill (2010)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Badhwar–o’neill 2010 galactic cosmic ray flux model—revised</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">IEEE Transactions on Nuclear Science</span> <span class="ltx_text ltx_bib_volume">57</span> (<span class="ltx_text ltx_bib_number">6</span>), <span class="ltx_text ltx_bib_pages"> pp. 3148–3153</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p5" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S3.F1" title="In 3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">Figure 1</span></a>,
+<a class="ltx_ref" href="#S3.p1" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib43">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. L. Ogilvy-Stuart and S. M. Shalet (1993)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Effect of radiation on the human reproductive system</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Environmental Health Perspectives</span> <span class="ltx_text ltx_bib_volume">101</span>, <span class="ltx_text ltx_bib_pages"> pp. 109–116</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p8" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_incollection" id="bib.bib23">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. B. Saganti, F. A. Cucinotta, J. W. Wilson, L. C. Simonsen, and C. Zeitlin (2004)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Radiation climate map for analyzing risks to astronauts on the mars surface from galactic cosmic rays</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">2001 Mars Odyssey</span>,
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages"> pp. 143–156</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib26">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. A. Schauer and O. W. Linton (2009)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NCRP report no. 160, ionizing radiation exposure of the population of the united states, medical exposure—are we doing less with more, and is there a role for health physicists?</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Health physics</span> <span class="ltx_text ltx_bib_volume">97</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1–5</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S3.p1" title="3 النتائج ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§3</span></a>,
+<a class="ltx_ref" href="#S4.p2" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib45">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Straume (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Medical concerns with space radiation and radiobiological effects</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Handbook of Cosmic Hazards and Planetary Defense</span>, <span class="ltx_text ltx_bib_pages"> pp. 259–293</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p10" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib22">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">L. Townsend, M. PourArsalan, M. Hall, J. Anderson, S. Bhatt, N. DeLauder, and A. Adamczyk (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Estimates of carrington-class solar particle event radiation exposures on mars</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Acta Astronautica</span> <span class="ltx_text ltx_bib_volume">69</span> (<span class="ltx_text ltx_bib_number">7-8</span>), <span class="ltx_text ltx_bib_pages"> pp. 397–405</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib30">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. J. Tylka and W. F. Dietrich (2009)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A new and comprehensive analysis of proton spectra in ground-level enhanced (gle) solar particle events</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">31st International Cosmic Ray Conference, Łódź (Poland)</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.p1" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S2.p3" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib18">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">I. Usoskin, G. Kovaltsov, I. Mironova, A. Tylka, and W. Dietrich (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Ionization effect of solar particle gle events in low and middle atmosphere</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Atmospheric Chemistry and Physics</span> <span class="ltx_text ltx_bib_volume">11</span> (<span class="ltx_text ltx_bib_number">5</span>), <span class="ltx_text ltx_bib_pages"> pp. 1979–1988</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.p1" title="2 النمذجة العددية ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib35">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. S. Willey, S. A. J. Lloyd, G. A. Nelson, and T. A. Bateman (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Ionizing radiation and bone loss: space exploration and clinical therapy applications</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Clinical reviews in bone and mineral metabolism</span> <span class="ltx_text ltx_bib_volume">9</span>, <span class="ltx_text ltx_bib_pages"> pp. 54–62</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.p4" title="4 المناقشة والاستنتاجات ‣ نمذجة جرعة الإشعاع على سطح المريخ الناجمة عن أحداث البروتونات الشمسية"><span class="ltx_text ltx_ref_tag">§4</span></a>.
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Mon May 11 15:54:39 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

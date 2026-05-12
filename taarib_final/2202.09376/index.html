@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات</title>
+<!--Generated on Mon May 11 21:10:25 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on   %سيملأ␣الناشر␣هذه␣التواريخ .-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_fleqn">
+<h1 class="ltx_title ltx_title_document">استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Andrea V. Macciò<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2,3</span></sup>,
+Mohamad Ali-Dib<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,1</span></sup>, Pavle Vulanović<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>, Hind Al Noori<sup class="ltx_sup">1</sup>,
+Fabian Walter<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">3</span></sup>, Nico Krieger<sup class="ltx_sup">3</sup>, Tobias Buck<sup class="ltx_sup">4</sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup>New York University Abu Dhabi, PO Box 129188, Abu Dhabi, United Arab Emirates 
+<br class="ltx_break"/><sup class="ltx_sup">2</sup>Center for Astro, Particle and Planetary Physics (CAP<sup class="ltx_sup">3</sup>), New York University Abu Dhabi
+<br class="ltx_break"/><sup class="ltx_sup">3</sup>Max-Planck-Institut für Astronomie, Königstuhl 17, 69117 Heidelberg, Germany 
+<br class="ltx_break"/><sup class="ltx_sup">4</sup>Leibniz-Institut für Astrophysik Potsdam (AIP), An der Sternwarte 16, D-14482 Potsdam, Germany
+<br class="ltx_break"/>
+</span><span class="ltx_author_notes">E-mail: maccio@nyu.edu</span></span>
+</div>
+<div class="ltx_dates">(قُبل XXX. استُلم YYY؛ بصيغته الأصلية ZZZ)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">ما تزال محاكاة تشكل المجرات الكونية محدودة بدقتها المكانية والكتلية، ولا تستطيع نمذجة بعض العمليات من المبادئ الأولى، مثل تشكل النجوم، وهي عمليات أساسية في دفع تطور المجرات. ونتيجة لذلك، لا تزال تعتمد على مجموعة من «المعلمات الفعالة» التي تحاول تمثيل المقاييس والعمليات الفيزيائية التي لا يمكن حلها مباشرة في المحاكاة. نبيّن في هذه الدراسة أن من الممكن استخدام تقنيات تعلم الآلة المطبقة على صور حقيقية ومحاكاة للمجرات للتمييز بين قيم مختلفة لهذه المعلمات، وذلك باستعمال كامل المحتوى المعلوماتي للصورة الفلكية بدلا من اختزاله إلى مجموعة محدودة من القيم مثل الحجم أو الكتل النجمية/الغازية.
+في هذا العمل نطبق طريقتنا على محاكاة NIHAO وعلى أرصاد THINGS و VLA-ANGST لخرائط HI في المجرات القريبة لاختبار قدرة قيم مختلفة لعتبة كثافة تشكل النجوم <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="m13"><mi>n</mi></math> على إعادة إنتاج خرائط HI المرصودة. نبيّن أن الأرصاد تشير إلى الحاجة إلى قيمة عالية مقدارها <math alttext="n\mathrel{\hbox{\hbox to0.0pt{\hbox{\lower 4.0pt\hbox{$\sim$}}\hss}\hbox{$&gt;$}}%
+}80" class="ltx_Math" dir="ltr" display="inline" id="m14"><mrow><mi>n</mi><mrow><mpadded voffset="-4.0pt" width="0.0pt"><mo>∼</mo></mpadded><mo>&gt;</mo></mrow><mn>80</mn></mrow></math> cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-3</span></sup> (مع أن القيمة العددية تعتمد على النموذج)، وهو ما تترتب عليه نتائج مهمة لتوزيع المادة المظلمة في المجرات. وتظهر دراستنا أنه باستخدام طرائق مبتكرة يمكن الإفادة الكاملة من المحتوى المعلوماتي لصور المجرات ومقارنة المحاكاة بالأرصاد بطريقة قابلة للتفسير، لا معلمية، وكمية.</p>
+</div>
+<div class="ltx_classification">
+<h6 class="ltx_title ltx_title_classification">keywords: </h6>
+علم الكونيات: النظرية – المادة المظلمة – المجرات: التكوّن – المجرات: الحركيات والديناميكيات – المناهج: العددية
+
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_pubyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pubyear: </span>2021</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_pagerange"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pagerange: </span><span class="ltx_ref ltx_ref_self"><span class="ltx_text ltx_ref_title">استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات</span></span>–<a class="ltx_ref" href="#A1" title="Appendix A قائمة مجرات THINGS و VLA-ANGST المستخدمة في هذا العمل ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">A</span></a></span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">في السنوات الأخيرة أصبحت المحاكاة العددية الهيدروديناميكية واحدة من أقوى الأدوات لدراسة تشكل المجرات وتطورها عبر الزمن الكوني.
+وباتت المحاكاة الحديثة قادرة الآن على إعادة إنتاج طيف واسع من خصائص المجرات، بما في ذلك (على سبيل المثال لا الحصر) وفرتها، وكتلها النجمية، وسرعات دورانها، وألوانها، وعلاقات التحجيم، وغير ذلك <cite class="ltx_cite ltx_citemacro_citep">(مثلا Vogelsberger<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib360" title="Introducing the Illustris Project: simulating the coevolution of dark and visible matter in the Universe">2014</a>; Stinson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib338" title="Making Galaxies In a Cosmological Context: the need for early stellar feedback">2013</a>; Dubois<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib195" title="The HORIZON-AGN simulation: morphological diversity of galaxies promoted by AGN feedback">2016</a>; Schaye<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib326" title="The EAGLE project: simulating the evolution and assembly of galaxies and their environments">2015a</a>; Wang<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib365" title="NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations">2015</a>; Tremmel<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib349" title="The Romulus cosmological simulations: a physical approach to the formation, dynamics and accretion models of SMBHs">2017</a>; Dutton<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib191" title="NIHAO XII: galactic uniformity in a ΛCDM universe">2017</a>; Pillepich<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib292" title="Simulating galaxy formation with the IllustrisTNG model">2018</a>; Nelson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib275" title="First results from the IllustrisTNG simulations: the galaxy colour bimodality">2018</a>; Buck, <a class="ltx_ref" href="#bib.bib1" title="On the origin of the chemical bimodality of disc stars: a tale of merger and migration">2020</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">وبفضل ازدياد القدرة الحاسوبية وكثير من الجهود التي بذلتها مجموعات مختلفة لتحسين نمذجة العمليات الفيزيائية الداخلة في تشكل المجرات، أنتجت عدة مجموعات تشغيلات فائقة الدقة لأجسام منفردة ولبيئتنا المحلية بعشرات الملايين من العناصر لوصف تطور المادة المظلمة والغاز والنجوم <cite class="ltx_cite ltx_citemacro_citep">(مثلا Aumer<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib147" title="Towards a more realistic population of bright spiral galaxies in cosmological simulations">2013</a>; Marinacci<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib258" title="The formation of disc galaxies in high-resolution moving-mesh cosmological simulations">2014</a>; Hopkins<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib218" title="Galaxies on FIRE (Feedback In Realistic Environments): stellar feedback explains cosmologically inefficient star formation">2014</a>; Grand<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib394" title="The Auriga Project: the properties and formation mechanisms of disc galaxies across cosmic time">2017</a>; Buck<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib97" title="NIHAO XV: the environmental impact of the host galaxy on galactic satellite and field dwarf galaxies">2019b</a>; Gutcke<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib210" title="LYRA II: Cosmological dwarf galaxy formation with inhomogeneous Population III enrichment">2021</a>; Arora<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib79" title="NIHAO-LG: The uniqueness of Local Group dwarf galaxies">2021</a>; Agertz<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib80" title="VINTERGATAN - I. The origins of chemically, kinematically, and structurally distinct discs in a simulated Milky Way-mass galaxy">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">وعلى الرغم من هذه التطورات، فإن الطبيعة متعددة المقاييس لتشكل المجرات، الممتدة من السحب الجزيئية إلى البيئة واسعة النطاق (الكونية)، ما تزال تحول دون القدرة على حل بعض الظواهر الأساسية التي تشكل المجرات في الكتلة والفضاء، ولذلك تحتاج المحاكاة إلى اللجوء إلى «وصف فعال» لبعض هذه العمليات.
+<cite class="ltx_cite ltx_citemacro_citep">(مثلا Somerville and Davé, <a class="ltx_ref" href="#bib.bib310" title="Physical Models of Galaxy Formation in a Cosmological Framework">2015</a>; Vogelsberger<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib355" title="Cosmological simulations of galaxy formation">2020</a>, والمراجع الواردة فيه)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">أحد الأمثلة الممكنة على «الوصف الفعال» هو تمثيل تشكل النجوم بمعلمات في المحاكاة الكونية.
+فالنموذج الكامل لتشكل النجوم يتطلب،
+من حيث المبدأ، حل المقياس المكاني النموذجي للسحب الجزيئية (فرسخ فلكي واحد وما دونه) وفي الوقت نفسه تتبع تدفق الغاز المجري من المقاييس الكونية البالغة عدة Mpc، وبذلك يربط نحو ست رتب مقدار في المقاييس المكانية.
+ولتجاوز المشكلات المرتبطة بهذا المجال الديناميكي الصعب، تميل المحاكاة العددية الكونية إلى اعتماد مجموعة من الوصفات، تتضمن معلمات وعتبات، لوصف الفيزياء دون حد الدقة <cite class="ltx_cite ltx_citemacro_citep">(مثلا Springel and Hernquist, <a class="ltx_ref" href="#bib.bib311" title="Cosmological smoothed particle hydrodynamics simulations: a hybrid multiphase model for star formation">2003</a>)</cite>.
+فعلى سبيل المثال، يُنظَّم تشكل النجوم عادة بعتبة كثافة (حرارة)، تكون جسيمات الغاز فوقها (دونها) مؤهلة لتكوين النجوم. وعند اختيار القيمة الفعلية لهذه العتبة الكثافية (<math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m1"><mi>n</mi></math>)، تتبع المجموعات المختلفة مقاربات مختلفة. تميل بعض المجموعات إلى استخدام قيم لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m2"><mi>n</mi></math> حول 0.1-1 عند قياسها بعدد الجسيمات لكل cm<sup class="ltx_sup">3</sup> <cite class="ltx_cite ltx_citemacro_citep">(مثلا Schaye<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib326" title="The EAGLE project: simulating the evolution and assembly of galaxies and their environments">2015a</a>; Vogelsberger<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib360" title="Introducing the Illustris Project: simulating the coevolution of dark and visible matter in the Universe">2014</a>; Nelson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib275" title="First results from the IllustrisTNG simulations: the galaxy colour bimodality">2018</a>)</cite>، بينما تفضل مجموعات أخرى استخدام قيم أعلى لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m4"><mi>n</mi></math>، عادة في المجال <math alttext="10-100" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m5"><mrow><mn>10</mn><mo>−</mo><mn>100</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Governato<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib205" title="Bulgeless dwarf galaxies and dark matter cores from supernova-driven outflows">2010b</a>; Oñorbe<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib280" title="Forged in FIRE: cusps, cores and baryons in low-mass dwarf galaxies">2015</a>; Brook and Di Cintio, <a class="ltx_ref" href="#bib.bib157" title="Signatures of dark matter halo expansion in galaxy populations">2015</a>; Wang<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib365" title="NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations">2015</a>)</cite>. وتجدر الملاحظة أن الكثافة المتوقعة في أنوية السحب الجزيئية العملاقة ينبغي أن تتجاوز <math alttext="10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m6"><msup><mn>10</mn><mn>5</mn></msup></math> جسيم لكل سنتيمتر مكعب <cite class="ltx_cite ltx_citemacro_citep">(McKee and Ostriker, <a class="ltx_ref" href="#bib.bib263" title="Theory of Star Formation">2007</a>)</cite>، إلا أن هذه القيم لا تزال بعيدة المنال حتى بالنسبة إلى أعلى محاكاة للمجرات الحلزونية دقة أُنتجت حتى الآن <cite class="ltx_cite ltx_citemacro_citep">(انظر Vogelsberger<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib355" title="Cosmological simulations of galaxy formation">2020</a>, لمراجعة حديثة)</cite>.
+ومع أن كلا النهجين (<math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m7"><mi>n</mi></math> المنخفض والمرتفع) ينجحان بدرجة متقاربة في إعادة إنتاج الخصائص المرئية للمجرة، فإنهما يميلان إلى الاختلاف بقوة في تنبؤاتهما بخصائصها المظلمة.
+فعلى سبيل المثال، توجد فروق جوهرية في الاستجابة المتوقعة لتوزيع المادة المظلمة لتشكل المجرات في محاكاة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m8"><mi>n</mi></math> المنخفضة والعالية <cite class="ltx_cite ltx_citemacro_citep">(Benítez-Llambay<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib119" title="The properties of ‘dark’ ΛCDM haloes in the Local Group">2017</a>; Dutton<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib191" title="NIHAO XII: galactic uniformity in a ΛCDM universe">2017</a>)</cite>، وهي فروق قد تدفعنا أو لا تدفعنا إلى إعادة النظر في نماذجنا الحالية لطبيعة المادة المظلمة، كما نوقش في <cite class="ltx_cite ltx_citemacro_cite">Bullock and Boylan-Kolchin (<a class="ltx_ref" href="#bib.bib160" title="Small-Scale Challenges to the ΛCDM Paradigm">2017</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">إن النهج العام لضبط هذه المعلمات الحرة (إلى حد ما) في النمذجة العددية هو اختبار الناتج النهائي للمحاكاة، أي المجرات عادة، في مقابل الأرصاد. وفي هذا الصدد، توفر علاقات التحجيم بين المجرات، مثل علاقة تالي-فيشر <cite class="ltx_cite ltx_citemacro_citep">(Tully and Fisher, <a class="ltx_ref" href="#bib.bib351" title="Reprint of 1977A&amp;amp;A….54..661T. A new method of determining distance to galaxies.">1977</a>)</cite>، وعلاقة الحجم بالكتلة <cite class="ltx_cite ltx_citemacro_citep">(Courteau<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib175" title="Scaling Relations of Spiral Galaxies">2007</a>)</cite>، أو علاقة الكتلة بالمعدنية <cite class="ltx_cite ltx_citemacro_citep">(Tremonti<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib343" title="The Origin of the Mass-Metallicity Relation: Insights from 53,000 Star-forming Galaxies in the Sloan Digital Sky Survey">2004</a>; Gallazzi<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib202" title="The ages and metallicities of galaxies in the local universe">2005</a>; Kirby<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib84" title="Spectroscopic Confirmation of the Dwarf Galaxies Hydra II and Pisces II and the Globular Cluster Laevens 1">2015</a>)</cite>، أداة تشخيصية جيدة جدا لاختيار المعلمات «الجيدة» من المعلمات «غير الجيدة كثيرا»؛ بمعنى أن المحاكاة القادرة وحدها على إعادة إنتاج عدة علاقات تحجيم تُعد موثوقة.</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">ومع أن لهذا النهج فوائده، فإنه يفرض اختزال الكم الكبير من المعلومات الموجودة في المحاكاة إلى مجموعة من أعداد قليلة تُقارَن بالأعداد القليلة نفسها المستخلصة أيضا من أرصاد معقدة. وبهذا النهج يُهمل قدر كبير من المعلومات الرصدية لأنه لا يمكن بسهولة صوغه في عدد واحد.
+ومن ثم يجدر التساؤل عما إذا كان من الممكن مقارنة خرائط المجرات المحاكاة والحقيقية (مثل الخرائط النجمية أو الغازية) مباشرة، بغرض استخدام المحتوى المعلوماتي الكامل لكل من المحاكاة والأرصاد للمساعدة في تحديد أي المعلمات أنسب لتمثيل الفيزياء العاملة في تشكل المجرات.</p>
+</div>
+<div class="ltx_para" id="S1.p7">
+<p class="ltx_p">ومع ظهور التعلم العميق، طوّر مجال تعلم الآلة (ML) مهام التعرف على الصور وتصنيفها وتجزئتها <cite class="ltx_cite ltx_citemacro_citep">(مثلا Ronneberger<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib59" title="U-Net: Convolutional Networks for Biomedical Image Segmentation">2015</a>)</cite>، مما أفاد كثيرا مهمة معالجة الصور. وقد طُبقت تقنيات ML هذه في عدد كبير من الاستخدامات الفلكية المتعلقة بخصائص المجرات
+<cite class="ltx_cite ltx_citemacro_citep">(مثلا Dieleman<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib55" title="Rotation-invariant convolutional neural networks for galaxy morphology prediction">2015</a>; Beck<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib53" title="Integrating human and machine intelligence in galaxy morphology classification tasks">2018</a>; Hocking<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib52" title="An automatic taxonomy of galaxy morphology using unsupervised machine learning">2018</a>; Dawson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib24" title="Using machine learning to study the kinematics of cold gas in galaxies">2020</a>; Buck and Wolf, <a class="ltx_ref" href="#bib.bib2" title="Predicting resolved galaxy properties from photometric images using convolutional neural networks">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p8">
+<p class="ltx_p">كما استُخدمت طرائق التعلم غير الخاضع للإشراف لتعريف البنى الحركية للمجرات <cite class="ltx_cite ltx_citemacro_citep">(Doménech-Moral<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib67" title="Formation of galaxies in Λcold dark matter cosmologies - I. The fine structure of disc galaxies">2012</a>; Obreja<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib6" title="Introducing galactic structure finder: the multiple stellar kinematic structures of a simulated Milky Way mass galaxy">2018</a>, <a class="ltx_ref" href="#bib.bib5" title="NIHAO XVI: the properties and evolution of kinematically selected discs, bulges, and stellar haloes">2019</a>; Buck<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib4" title="Stars Behind Bars. I. The Milky Way’s Central Stellar Populations">2018</a>, <a class="ltx_ref" href="#bib.bib96" title="An observational test for star formation prescriptions in cosmological hydrodynamical simulations">2019a</a>)</cite> أو لتحديد النجوم الملتقطة من أقمار MW المتعطلة في بيانات مسح GALAH <cite class="ltx_cite ltx_citemacro_citep">(Buder<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib61" title="The GALAH+ survey: Third data release">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p9">
+<p class="ltx_p">ومن الأعمال ذات الصلة بسياق ورقتنا العمل الحديث جدا لـ <cite class="ltx_cite ltx_citemacro_citet">Zanisi<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib69" title="A deep learning approach to test the small-scale galaxy morphology and its relationship with star formation activity in hydrodynamical simulations">2021</a>)</cite>، الذي يقارن السمات المورفولوجية صغيرة المقياس للمجرات المحاكاة من مشروع Illustris-TNG <cite class="ltx_cite ltx_citemacro_citep">(Pillepich<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib292" title="Simulating galaxy formation with the IllustrisTNG model">2018</a>)</cite> بمجموعة بيانات SDSS. ويجد أولئك المؤلفون عدم اتفاق قوي بين مورفولوجيات المحاكاة والمجرات المرصودة من حيث السمات المورفولوجية للمجرات.</p>
+</div>
+<div class="ltx_para" id="S1.p10">
+<p class="ltx_p">نهدف في هذه الورقة إلى استخدام تعلم الآلة والذكاء الاصطناعي لمقارنة خرائط الغاز (HI) من مسح THINGS
+<cite class="ltx_cite ltx_citemacro_citep">(Walter<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib364" title="THINGS: The H I Nearby Galaxy Survey">2008</a>)</cite> ومسح VLA-ANGST <cite class="ltx_cite ltx_citemacro_citep">(Ott<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib282" title="VLA-ANGST: A High-resolution H I Survey of Nearby Dwarf Galaxies">2012</a>)</cite> كميا مع خرائط مماثلة أُنشئت من حزمة محاكاة NIHAO <cite class="ltx_cite ltx_citemacro_citep">(Wang<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib365" title="NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations">2015</a>)</cite>، وذلك لتقييد القيمة العددية لعتبة الكثافة الخاصة بتشكل النجوم، <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S1.p10.m1"><mi>n</mi></math>، المستخدمة في المحاكاة.</p>
+</div>
+<div class="ltx_para" id="S1.p11">
+<p class="ltx_p">تنظم هذه الورقة على النحو الآتي: في القسم <a class="ltx_ref" href="#S2" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">2</span></a> نعرض المحاكاة العددية وتحليلها، وفي القسمين <a class="ltx_ref" href="#S3" title="3 البيانات الرصدية ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">3</span></a> و<a class="ltx_ref" href="#S4" title="4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">4</span></a> نصف البيانات الرصدية وخوارزمية تعلم الآلة (ML) التي نستخدمها على الترتيب، أما القسم <a class="ltx_ref" href="#S5" title="5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">5</span></a> فيُخصص لعرض نتائجنا التي تُناقش بعد ذلك في القسم <a class="ltx_ref" href="#S6" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">6</span></a>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>المحاكاة</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">تعتمد حزمة NIHAO (الاستقصاء العددي لمئة جرم فيزيائي فلكي) من المحاكاة الهيدروديناميكية الكونية <cite class="ltx_cite ltx_citemacro_citep">(Wang<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib365" title="NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations">2015</a>; Blank<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib153" title="NIHAO - XXII. Introducing black hole formation, accretion, and feedback into the NIHAO simulation suite">2019</a>)</cite>
+على كود 
+<span class="ltx_text ltx_font_smallcaps">gasoline2</span> <cite class="ltx_cite ltx_citemacro_citep">(Wadsley<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib90" title="Gasoline2: a modern smoothed particle hydrodynamics code">2017</a>)</cite>،
+وتتضمن تبريد كومبتون، والتأين الضوئي والتسخين بفعل الخلفية فوق البنفسجية تبعا لـ <cite class="ltx_cite ltx_citemacro_citet">Haardt and Madau (<a class="ltx_ref" href="#bib.bib212" title="Radiative Transfer in a Clumpy Universe. IV. New Synthesis Models of the Cosmic UV/X-Ray Background">2012</a>)</cite>، وتبريد المعادن، والإغناء الكيميائي، وتشكل النجوم، والتغذية الراجعة من المستعرات العظمى والنجوم الضخمة <cite class="ltx_cite ltx_citemacro_citep">(ما يسمى التغذية الراجعة النجمية المبكرة، Stinson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib338" title="Making Galaxies In a Cosmological Context: the need for early stellar feedback">2013</a>)</cite>.
+وتُضبط المعلمات الكونية وفق نتائج أقمار Planck <cite class="ltx_cite ltx_citemacro_citep">(Ade and others, <a class="ltx_ref" href="#bib.bib395" title="Planck 2013 results. XVI. Cosmological parameters">2014</a>)</cite>. وتتغير الدقة الكتلية والمكانية عبر العينة كلها، من كتلة جسيم مادة مظلمة قدرها
+<math alttext="m_{\rm dm}=3.4\times 10^{3}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m1"><mrow><msub><mi>m</mi><mi>dm</mi></msub><mo>=</mo><mrow><mn>3.4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>3</mn></msup></mrow></mrow></math> <math alttext="{\rm M}_{\astrosun}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m2"><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></math> (وتليين قوة قدره <math alttext="\epsilon=100" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m3"><mrow><mi>ϵ</mi><mo>=</mo><mn>100</mn></mrow></math> pc) للمجرات القزمة إلى <math alttext="m_{\sc dm}=1.4\times 10^{7}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m4"><mrow><msub><mi>m</mi><mi class="ltx_font_smallcaps">dm</mi></msub><mo>=</mo><mrow><mn>1.4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>7</mn></msup></mrow></mrow></math> <math alttext="{\rm M}_{\astrosun}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m5"><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></math> و<math alttext="\epsilon=1.8" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m6"><mrow><mi>ϵ</mi><mo>=</mo><mn>1.8</mn></mrow></math> kpc للمجرات الأعلى كتلة <cite class="ltx_cite ltx_citemacro_citep">(انظر Wang<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib365" title="NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations">2015</a>; Blank<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib153" title="NIHAO - XXII. Introducing black hole formation, accretion, and feedback into the NIHAO simulation suite">2019</a>, لمزيد من التفاصيل)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">ثبت أن محاكاة NIHAO ناجحة جدا في إعادة إنتاج عدة علاقات تحجيم مرصودة للمجرات، مثل علاقة الكتلة النجمية بكتلة الهالة <cite class="ltx_cite ltx_citemacro_citep">(Wang<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib365" title="NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations">2015</a>)</cite>، وعلاقة كتلة غاز القرص بحجم القرص <cite class="ltx_cite ltx_citemacro_citep">(Macciò<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib254" title="NIHAO X: reconciling the local galaxy velocity function with cold dark matter via mock H I observations">2016</a>)</cite>، وعلاقة تالي-فيشر <cite class="ltx_cite ltx_citemacro_citep">(Dutton<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib191" title="NIHAO XII: galactic uniformity in a ΛCDM universe">2017</a>)</cite>، وتنوع منحنيات دوران المجرات <cite class="ltx_cite ltx_citemacro_citep">(Santos-Santos<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib306" title="NIHAO - XIV. Reproducing the observed diversity of dwarf galaxy rotation curve shapes in ΛCDM">2018</a>)</cite> فضلا عن علاقة الكتلة بالمعدنية <cite class="ltx_cite ltx_citemacro_citep">(Buck<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib94" title="The challenge of simultaneously matching the observed diversity of chemical abundance patterns in cosmological hydrodynamical simulations">2021</a>)</cite>.</p>
+</div>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>تشكل النجوم</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">يُنفذ تشكل النجوم كما وصفه <cite class="ltx_cite ltx_citemacro_citet">Stinson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib336" title="Star formation and feedback in smoothed particle hydrodynamic simulations - I. Isolated galaxies">2006</a>, <a class="ltx_ref" href="#bib.bib338" title="Making Galaxies In a Cosmological Context: the need for early stellar feedback">2013</a>)</cite>.
+تتكون النجوم من غاز بارد (<math alttext="T&lt;15000" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m1"><mrow><mi>T</mi><mo>&lt;</mo><mn>15000</mn></mrow></math>K) وكثيف (<math alttext="\rho&gt;n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m2"><mrow><mi>ρ</mi><mo>&gt;</mo><mi>n</mi></mrow></math>)، حيث تُقاس عتبة الكثافة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m3"><mi>n</mi></math> بعدد الجسيمات لكل سنتيمتر مكعب.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">في محاكاة NIHAO المرجعية نعتمد
+<math alttext="n=10" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m1"><mrow><mi>n</mi><mo>=</mo><mn>10</mn></mrow></math> [cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-3</span></sup>] <math alttext="\sim 50m_{\rm gas}/\epsilon^{3}_{\rm gas}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m3"><mrow><mi></mi><mo>∼</mo><mrow><mrow><mn>50</mn><mo>⁢</mo><msub><mi>m</mi><mi>gas</mi></msub></mrow><mo>/</mo><msubsup><mi>ϵ</mi><mi>gas</mi><mn>3</mn></msubsup></mrow></mrow></math>.
+هنا، 50 هو عدد جسيمات الغاز المستخدمة في نواة التنعيم SPH، و<math alttext="m_{\rm gas}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m4"><msub><mi>m</mi><mi>gas</mi></msub></math> هي الكتلة الابتدائية لجسيمات الغاز، و<math alttext="\epsilon_{\rm gas}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m5"><msub><mi>ϵ</mi><mi>gas</mi></msub></math> هو تليين قوة الجاذبية لجسيم الغاز.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p3">
+<p class="ltx_p">نعيد تشغيل كل محاكاة عند عتبتي تشكل نجوم إضافيتين: <math alttext="n=0.1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m1"><mrow><mi>n</mi><mo>=</mo><mn>0.1</mn></mrow></math> و<math alttext="n=1.0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m2"><mrow><mi>n</mi><mo>=</mo><mn>1.0</mn></mrow></math>، من دون تغيير أي معلمة أخرى، ثم عند عتبة كثافة أعلى <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m3"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> باستخدام نصف التليين، بغرض الحفاظ على التحجيم نفسه بين <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m4"><mi>n</mi></math> و<math alttext="\epsilon_{\rm gas}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m5"><msub><mi>ϵ</mi><mi>gas</mi></msub></math> كما في تشغيلات NIHAO الأصلية، ولضمان أن الكثافات الغازية الناتجة يمكن حلها عدديا على نحو ملائم.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>حساب كسر HI وبناء الخرائط</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">لحساب كسر الهيدروجين المحايد HI، اتبعنا <cite class="ltx_cite ltx_citemacro_citet">Macciò<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib254" title="NIHAO X: reconciling the local galaxy velocity function with cold dark matter via mock H I observations">2016</a>)</cite> واستخدمنا تقريب التدريع الذاتي الموصوف في <cite class="ltx_cite ltx_citemacro_citet">Rahmati<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib297" title="On the evolution of the H I column density distribution in cosmological simulations">2013</a>)</cite>، استنادا
+إلى محاكاة انتقال إشعاعي كاملة عرضها <cite class="ltx_cite ltx_citemacro_citet">Pawlik and Schaye (<a class="ltx_ref" href="#bib.bib285" title="Multifrequency, thermally coupled radiative transfer with TRAPHIC: method and tests">2011</a>)</cite>.
+الأثر الكلي لهذا النهج في التدريع الذاتي هو زيادة كمية HI
+(بالنسبة إلى الحساب المرجعي في 
+<span class="ltx_text ltx_font_smallcaps">gasoline2</span>)، مما يجعل المحاكاة أكثر توافقا مع الأرصاد <cite class="ltx_cite ltx_citemacro_citep">(Rahmati<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib297" title="On the evolution of the H I column density distribution in cosmological simulations">2013</a>; Gutcke<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib209" title="NIHAO VIII: Circum-galactic medium and outflows - The puzzles of HI and OVI gas distributions">2016</a>)</cite>.
+تملك خرائط HI دقة قدرها 500x500 بكسل، وحجما فيزيائيا يساوي 0.4 أضعاف نصف القطر الفيروسي للمجرة.
+يعرض الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">1</span></a> تجميعة لخرائط HI للمجرة نفسها الشبيهة من حيث الكتلة بمجرة MW (منظورا إليها وجها لوجه)، لكنها محاكاة بقيم مختلفة لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m1"><mi>n</mi></math>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="431" id="S2.F1.g1" src="n_comparison_clockwise.jpeg" width="574"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>خرائط كثافة سطح HI لـ g8.26e11، وهي مجرة شبيهة من حيث الكتلة بمجرة MW، حوكيت بقيم مختلفة لعتبة تشكل النجوم: <math alttext="n=0.1,1.0,10" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m3"><mrow><mi>n</mi><mo>=</mo><mrow><mn>0.1</mn><mo>,</mo><mn>1.0</mn><mo>,</mo><mn>10</mn></mrow></mrow></math>، و<math alttext="80" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m4"><mn>80</mn></math>، باتجاه عقارب الساعة بدءا من أعلى اليسار.
+</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>البيانات الرصدية</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">استُخرجت خرائط HI المرصودة من مسح HI للمجرات القريبة (THINGS) <cite class="ltx_cite ltx_citemacro_citep">(Walter<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib364" title="THINGS: The H I Nearby Galaxy Survey">2008</a>)</cite> ومن مسح VLA-ANGST لمجرات خزانة مسح المجرات القريبة بكاميرا ACS <cite class="ltx_cite ltx_citemacro_citep">(Ott<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib282" title="VLA-ANGST: A High-resolution H I Survey of Nearby Dwarf Galaxies">2012</a>)</cite>. وفي هذا العمل استخدمنا ما مجموعه 16 خريطة HI لمجرات تمتد من القزمية غير المنتظمة إلى الحلزونيات المنتظمة البنية.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">تتراوح أحجام البكسلات في خرائط THINGS بين <math alttext="\sim 20" class="ltx_Math" dir="ltr" display="inline" id="S3.p2.m1"><mrow><mi></mi><mo>∼</mo><mn>20</mn></mrow></math> و<math alttext="\sim 100" class="ltx_Math" dir="ltr" display="inline" id="S3.p2.m2"><mrow><mi></mi><mo>∼</mo><mn>100</mn></mrow></math>pc، اعتمادا على المسافة. وهذا قابل للمقارنة مع إخراج المحاكاة لصورة ذات 500x500 بكسل تغطي 0.4 من نصف القطر الفيروسي البالغ نحو 200 kpc.
+رصد THINGS عادة قرص HI كاملا حتى كثافات مقدارها بضع مرات <math alttext="10^{19}" class="ltx_Math" dir="ltr" display="inline" id="S3.p2.m3"><msup><mn>10</mn><mn>19</mn></msup></math> cm<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-2</span></sup>، وهو ما يغطي عادة مساحة مشابهة لـ 40 في المئة من نصف القطر الفيروسي. استخدمنا خرائط الشدة المتكاملة ذات الترجيح الطبيعي (العزم 0) من THINGS و VLA-ANGST.</p>
+</div>
+<div class="ltx_para" id="S3.p3">
+<p class="ltx_p">في هذه الدراسة الاستطلاعية نستخدم فقط عينة فرعية من 16 من أصل 62 خريطة مرصودة، لأن بقية المجرات إما صغيرة جدا (أو بعيدة جدا) أو تُرى من الحافة أكثر مما يلائم أغراضنا.
+وتُعطى قائمة مجرات THINGS و VLA-ANGST المستخدمة في هذا العمل في الملحق <a class="ltx_ref" href="#A1" title="Appendix A قائمة مجرات THINGS و VLA-ANGST المستخدمة في هذا العمل ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">A</span></a>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>نماذج تعلم الآلة</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">استُخدمت في هذا العمل شبكتان عصبونيتان التفافيتان عميقتان مختلفتان ومستقلتان تماما. الأولى كاشف للفوهات القمرية دُرّب على صور سطح القمر، والثانية مصنّف صور دُرّب على صور من العالم الطبيعي وصور مجرات محاكاة. ولهذين النموذجين المختلفين بنيتان مختلفتان ودُرّبا على مجموعتي بيانات مختلفتين، وبذلك يقدمان رؤيتين مستقلتين تماما للمشكلة.</p>
+</div>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>كاشف البنى الدائرية</h3>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p">النموذج الأول الذي نستخدمه هو كاشف الفوهات المعروض في <cite class="ltx_cite ltx_citemacro_cite">Ali-Dib<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib71" title="Automated crater shape retrieval using weakly-supervised deep learning">2020</a>)</cite>،
+وهو نموذج شبكة عصبونية التفافية عميقة، يستند إلى إطار التجزئة الدلالية <cite class="ltx_cite ltx_citemacro_citep">(He<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib76" title="Mask r-cnn">2017</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p2">
+<p class="ltx_p">بما أن الفوهات في صورة ما ليست إلا تباينات سطوع شبه دائرية داخل خلفية محلية أكثر تجانسا، نجد أن هذا النموذج المدرّب قادر على كشف «قمم» عالية الكثافة متعددة المقاييس و«ثقوب» تكاد تخلو من الغاز في المجرات. ولتحسين الأداء العام للنموذج وقابليته للانتقال بين المجالات، نعيد تدريبه على <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m1"><mo>∼</mo></math> صورة 10<sup class="ltx_sup">5</sup> قمرية ومريخية وعطاردية تتوافر لها فهارس فوهات. ونستخدم كذلك تعزيز الصور؛ فإضافة إلى الدورانات والانعكاسات القياسية، نضيف ضجيجا غاوسيا عشوائيا، ونضبط مخطط سطوع البكسلات بعامل عشوائي، ونضيف زاوية ميل كبيرة إلى الصور على نحو مماثل للمجرات شبه المرئية من الحافة. ويتبين أن هذا مهم جدا في تحسين أداء النموذج، إذ إن معظم الصور البصرية مثلا لها زوايا إضاءة محددة مترابطة قد يستخدمها النموذج سمات، مما يعيق قابليته للانتقال.
+لهذا النموذج نستخدم النموذج نفسه كما في <cite class="ltx_cite ltx_citemacro_cite">Ali-Dib<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib71" title="Automated crater shape retrieval using weakly-supervised deep learning">2020</a>)</cite>: تنفيذ <span class="ltx_text ltx_font_italic">Matterport</span> لـ MaskRCNN مع العمود الفقري <span class="ltx_text ltx_font_italic">ResNet101</span>. دُرّب النموذج باستخدام الانحدار المتدرج العشوائي كما هو موصوف في <cite class="ltx_cite ltx_citemacro_cite">Ali-Dib<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib71" title="Automated crater shape retrieval using weakly-supervised deep learning">2020</a>)</cite> وباستخدام المعلمات نفسها (<span class="ltx_text ltx_font_typewriter">LEARNING<math alttext="\_" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m3"><mi mathvariant="normal">_</mi></math>RATE</span> = <math alttext="10^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m4"><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></math>، 80 حقبة، )، و<span class="ltx_text ltx_font_typewriter">RPN<math alttext="\_" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m5"><mi mathvariant="normal">_</mi></math>ANCHOR<math alttext="\_" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m6"><mi mathvariant="normal">_</mi></math>SCALES</span> = (4، 8، 16، 32، 64)، و<span class="ltx_text ltx_font_typewriter">RPN<math alttext="\_" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m7"><mi mathvariant="normal">_</mi></math>NMS<math alttext="\_" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m8"><mi mathvariant="normal">_</mi></math>THRESHOLD</span> = 0.7) لكن على مجموعة بيانات أكثر تعقيدا بكثير. وتشمل صورا من DEM العالمي LRO/LOLA للقمر والفسيفساء البصرية العالمية LRO/LROC WAC، ومن الفسيفساء العالمية و DEM العالمي MESSENGER/MDIS لعطارد، وأخيرا DEM MGS/MOLA للمريخ وفسيفساء Viking العالمية V2. وقد عززنا فهارس الفوهات القمرية التي استخدمها <cite class="ltx_cite ltx_citemacro_cite">Ali-Dib<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib71" title="Automated crater shape retrieval using weakly-supervised deep learning">2020</a>)</cite> بفهرس <cite class="ltx_cite ltx_citemacro_cite">Robbins (<a class="ltx_ref" href="#bib.bib75" title="A New Global Database of Lunar Impact Craters &gt;1-2 km: 1. Crater Locations and Sizes, Comparisons With Published Databases, and Global Analysis">2019</a>)</cite>. واستخدمنا فهرس <cite class="ltx_cite ltx_citemacro_cite">Robbins and Hynek (<a class="ltx_ref" href="#bib.bib74" title="A new global database of Mars impact craters ≥1 km: 1. Database creation, properties, and parameters">2012</a>)</cite> للمريخ، وأخيرا فهرس <cite class="ltx_cite ltx_citemacro_cite">Herrick<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib73" title="Observations From a Global Database of Impact Craters on Mercury With Diameters Greater than 5 km">2018</a>)</cite> لعطارد.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p3">
+<p class="ltx_p">لا يُدرَّب النموذج قط على أي صور متعلقة بالمجرات. ومن ثم فإن الاستدلال على هذه الصور هو صورة خالصة من التعلم بالنقل<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+              
+            ملاحظة: لا يلزم إعادة تدريب أوزان الشبكة على صور المجرات، كما أن ذلك لن يعمل بسهولة لأن MaskRCNN يحتاج إلى بيانات مجرات موسومة. وهذا يعني أن إعادة التدريب على صور المجرات تتطلب من MaskRCNN سلسلة من الأقنعة الهدفية. وفي كل الأحوال، عند إعادة التدريب، سيحتاج المرء إلى القلق بشأن فرط الملاءمة، وهو ليس مشكلة في حالة الاستخدام المستكشفة هنا.</span></span></span>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>مصنف الصور</h3>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">النموذج الثاني هو مصنف صور دُرّب باستخدام خرائط HI مجرية محاكاة مع كثافة الغاز بوصفها هدفا فئويا.
+النموذج الذي استخدمناه هو <span class="ltx_text ltx_font_typewriter">VGG16</span> <cite class="ltx_cite ltx_citemacro_citep">(Simonyan and Zisserman, <a class="ltx_ref" href="#bib.bib72" title="Very deep convolutional networks for large-scale image recognition">2014</a>)</cite>، ونهيئه بأوزان <span class="ltx_text ltx_font_typewriter">imagenet</span> المدربة مسبقا. نستبدل رأس النموذج بطبقات متصلة بالكامل: Dense(128, ReLu)-Dropout-Dense(128, ReLu)-Dense(4, softmax).</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p2">
+<p class="ltx_p">تُعرض بنية نموذجنا في الجدول. <a class="ltx_ref" href="#S4.SS2" title="4.2 مصنف الصور ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">4.2</span></a>. نستخدم الانتظام <math alttext="L2" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p2.m1"><mrow><mi>L</mi><mo>⁢</mo><mn>2</mn></mrow></math> مع <math alttext="\lambda=0.01" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p2.m2"><mrow><mi>λ</mi><mo>=</mo><mn>0.01</mn></mrow></math>. ويُدرَّب النموذج باستخدام المحسن <span class="ltx_text ltx_font_typewriter">Adam</span>، بمعدل تعلم قدره <math alttext="10^{-5}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p2.m3"><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></math>. وبما أننا نستخدم مخطط تحقق متقاطع 5-طي، يُدرَّب النموذج 5 مرات على عينات فرعية مختلفة من البيانات، مع إبقاء 20% منها لدرجة التحقق في كل مرة. وتُهيأ طبقات <span class="ltx_text ltx_font_typewriter">VGG16</span> بأوزان <span class="ltx_text ltx_font_typewriter">imagenet</span>، ثم يُسمح بإعادة تدريبها. وتُستخدم <span class="ltx_text ltx_font_italic">ReLu</span> دالة تنشيط في كل مكان باستثناء طبقة الخرج، التي نستخدم لها دالة <span class="ltx_text ltx_font_italic">softmax</span>.
+
+<br class="ltx_break"/></p>
+</div>
+<div class="ltx_para ltx_noindent" id="S4.SS2.p3">
+<div class="ltx_inline-block ltx_transformed_outer" style="width:371.4pt;height:118.1pt;vertical-align:-56.5pt;"><span class="ltx_transformed_inner" style="transform:translate(-32.8pt,5.4pt) scale(0.85,0.85) ;">
+<div class="ltx_logical-block ltx_minipage ltx_align_middle" style="width:433.6pt;">
+<figure class="ltx_table" id="S4.T1">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 1: </span>وصف طبقة بطبقة لنموذج التصنيف، يبين نوع الطبقات وشكل الخرج وعدد المعلمات القابلة للتدريب. </figcaption>
+</figure>
+<div class="ltx_para" id="S4.SS2.p3.p1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">Layer (type)</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">Output Shape</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_t">Param #</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">vgg16 (Model)</td>
+<td class="ltx_td ltx_align_left ltx_border_t">(None, 16, 16, 512)</td>
+<td class="ltx_td ltx_align_left ltx_border_t">14,714,688</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">global_average_pooling2d_1</td>
+<td class="ltx_td ltx_align_left">(None, 512)</td>
+<td class="ltx_td ltx_align_left">0</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">dense_1 (Dense)</td>
+<td class="ltx_td ltx_align_left">(None, 128)</td>
+<td class="ltx_td ltx_align_left">65,664</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">dropout_1 (Dropout)</td>
+<td class="ltx_td ltx_align_left">(None, 128)</td>
+<td class="ltx_td ltx_align_left">0</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">dense_2 (Dense)</td>
+<td class="ltx_td ltx_align_left">(None, 128)</td>
+<td class="ltx_td ltx_align_left">16,512</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_b">dense_3 (Dense)</td>
+<td class="ltx_td ltx_align_left ltx_border_b">(None, 4)</td>
+<td class="ltx_td ltx_align_left ltx_border_b">516</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</span></div>
+</div>
+<div class="ltx_para" id="S4.SS2.p4">
+<p class="ltx_p">تقابل فئات الخرج الأربع أربع فئات من صور المجرات ذات <math alttext="n=0.1,1,10,80" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p4.m1"><mrow><mi>n</mi><mo>=</mo><mrow><mn>0.1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>80</mn></mrow></mrow></math>. وتُعاد تدريب جميع الطبقات، بما فيها طبقات <span class="ltx_text ltx_font_typewriter">VGG16</span>، باستخدام <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p4.m2"><mo>∼</mo></math> صورة مجرية محاكاة 3000. ونظرا إلى أن <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p4.m3"><mo>∼</mo></math> محاكاة 100 فقط متاحة، نستخدم روتين تعزيز الصور نفسه الخاص بالنموذج 1 لزيادة حجم مجموعة بياناتنا بدرجة كبيرة. وتجدر الإشارة إلى أن فئات التدريب موزعة بالتساوي، ومن ثم لا ينبغي أن يتأثر الاستدلال بمشكلات أخذ العينات للأقليات.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p5">
+<p class="ltx_p">يُقيَّم أداء الخوارزمية عبر تحقق متقاطع 5-طي وتُدرَّب لمدة 10 حقبة. ويبلغ النموذج المدرَّب النهائي دقة فئوية مقدارها 94.6% في المتوسط عبر جميع الطيات. لم تتعرض هذه الخوارزمية قط لصور الفوهات، ومن ثم فهي مستقلة تماما عن النموذج 1 أعلاه. وأخيرا يُستخدم النموذج في نمط الاستدلال على مجموعة صور المجرات المرصودة، التي لم يتعرض لها أيضا من قبل. ويكون خرجه، لكل صورة إدخال، مصفوفة بحجم 4 حيث تقابل كل قيمة احتمالا لفئة.</p>
+</div>
+<figure class="ltx_figure" id="S4.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="192" id="S4.F2.g1" src="obs_final_corr.png" width="521"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>يسارا: أمثلة من النموذج 1 تبين السمات المكتشفة (المناطق الخضراء و(عند التداخل) البرتقالية في الصورة) لمجرات محاكاة ذات <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m6"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math>، مقارنة بـ <math alttext="n=1" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m7"><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow></math> (الوسط). لاحظ الوفرة الأعلى للسمات الأصغر مقياسا قرب النواة المجرية عند <math alttext="n=1" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m8"><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow></math>. يمينا: كما سبق لكن للمجرة المرصودة NGC628. نلاحظ أننا في الأمثلة الثلاثة كلها عكسنا الألوان مقارنة بالشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">1</span></a> لتحسين الرؤية: المناطق الأغمق منخفضة الكثافة بالنسبة إلى المناطق اللامعة. ويرجع المركز المعتم للمجرة المرصودة إلى ثقب HI كبير معروف جيدا.
+العدد الكلي للسمات المكتشفة هو: 40، و95، و47، من اليسار إلى اليمين (<math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m9"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math>، و<math alttext="n=1" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m10"><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow></math>، والأرصاد).</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>النتائج</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">في هذا القسم نستخدم شبكتينا العصبونيتين المستقلتين لمقارنة خرائط HI من المجرات المحاكاة إحصائيا بنظيراتها المرصودة، بهدف تقييد ما إذا كانت قيمة محددة لكثافة العتبة <span class="ltx_text ltx_font_italic">الفعالة</span> <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m1"><mi>n</mi></math> تعيد إنتاج الأرصاد على نحو أفضل. تُقرأ الصور المحاكاة والمرصودة في البداية من <math alttext="x,y" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m2"><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow></math> وملفات الفيض، ثم يُعاد تشكيل شبكتها لوغاريتميا وتُستوفى استيفاء ثلاثي الخطية إلى دقة معينة مقدارها 10<sup class="ltx_sup">4</sup> نقطة في كل من <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m4"><mi>x</mi></math> و<math alttext="y" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m5"><mi>y</mi></math> لتوليد صورة نحولها بعد ذلك إلى صورة رمادية من نوع <span class="ltx_text ltx_font_typewriter">uint8</span>. وأخيرا تُخفض عينة الصورة إلى 512<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m6"><mo>×</mo></math>512 بكسل، وهو حجم الإدخال الذي يتوقعه النموذج. ونلاحظ أن توزيع الفيض الخام يتبع قانونا أسيا، في حين يتبع الفيض النهائي بعد المعالجة توزيعا غاوسيا منحرفا. وعلى الرغم من أن غاوسية البيانات ليست شرطا صارما للتعلم العميق، فإنها عادة مفيدة في تدريب النموذج. تحققنا من أن كلا من صور المحاكاة والرصد يتبعان توزيعات متقاربة كما يظهر في الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">3</span></a>. ونلاحظ أخيرا أننا أجرينا تحليلا فوريريا لبياناتنا، ووجدنا أن البيانات الرصدية وجميع البيانات المحاكاة لها أطياف فورييه تكاد لا تتميز بعضها من بعض، مما يبرز الحاجة إلى تقنيات تعلم الآلة للمقارنة بينهما.</p>
+</div>
+<figure class="ltx_figure" id="S5.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="300" id="S5.F3.g1" src="x1.png" width="360"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>توزيع سطوع بكسلات الصورة الكامل، متوسطا على نماذج مختلفة وعلى المجرات المرصودة.</figcaption>
+</figure>
+<section class="ltx_subsection" id="S5.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.1 </span>السمات في خرائط HI</h3>
+<div class="ltx_para" id="S5.SS1.p1">
+<p class="ltx_p">نشغّل نموذج ML الأول لدينا (انظر <a class="ltx_ref" href="#S4.SS1" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">4.1</span></a>) على خرائط HI المحاكاة التي أُنشئت
+لجميع المجرات عند قيم مختلفة لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p1.m1"><mi>n</mi></math>، وهي عتبة الكثافة لتشكل النجوم.
+يعرض الشكل <a class="ltx_ref" href="#S4.F2" title="Figure 2 ‣ 4.2 مصنف الصور ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">2</span></a> خريطة كثافة HI للمجرة نفسها
+المعروضة في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">1</span></a> والمحاكاة عند <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p1.m2"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> (اللوحة اليسرى)، مع إسقاط
+السمات التي اكتشفها النموذج 1 عليها. نستخدم هنا كلمة <span class="ltx_text ltx_font_italic">سمة</span> للدلالة
+على جميع المناطق المرتفعة والمنخفضة الكثافة (القمم والفوهات) التي تحددها خوارزمية ML؛ ولا نميز السمات بحسب الحجم، لأن ذلك يستلزم معايرة مختلف عمليات المحاكاة والأرصاد إلى مقياس حجم مشترك.
+وجدير بالتكرار أن هذا النموذج لم يواجه قط
+خرائط HI مجرية من قبل، لأنه دُرّب على خرائط كوكبية، ومع ذلك
+فهو قادر على تحديد الغالبية العظمى من السمات الموجودة في الخرائط
+تحديدا صحيحا.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p2">
+<p class="ltx_p">ثم نتابع بتشغيل نموذجنا الأول على كل جسم محاكى لحساب متوسط عدد السمات المكتشفة لكل مجرة ولكل فئة كثافة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p2.m1"><mi>n</mi></math>. وتعرض النتائج في الشكل <a class="ltx_ref" href="#S5.F4" title="Figure 4 ‣ 5.1 السمات في خرائط HI ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">4</span></a>، حيث يُرسم متوسط عدد السمات (لكل مجرة) بدلالة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p2.m2"><mi>n</mi></math>. والنتيجة المهمة الأولى هي وجود ارتباط سالب واضح بين عدد السمات وقيمة عتبة تشكل النجوم. ويمكن تفسير ذلك بالنظر إلى الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">1</span></a>: فالخرائط ذات القيم العالية لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p2.m3"><mi>n</mi></math> تميل إلى امتلاك عدد أقل من السمات الكبرى (مثل أذرع حلزونية واضحة إلى جانب مناطق منخفضة الكثافة بين الأذرع)، في حين أن التشغيلات المنجزة بقيم منخفضة لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p2.m4"><mi>n</mi></math> تملك خرائط أكثر انتشارا، بعدد أكبر من المناطق الصغيرة والموزعة بانتظام، المرتفعة والمنخفضة الكثافة، بما يقابل بنية حلزونية أكثر تلبدا. نلاحظ أن الثقوب المجرية صغيرة المقياس تهيمن على عدد السمات عند n=0.1، لكن الأعداد عند n=80 صغيرة جدا بما لا يسمح بمقارنة حاسمة.
+وبصورة أوضح، يبين الشكل <a class="ltx_ref" href="#S5.F4" title="Figure 4 ‣ 5.1 السمات في خرائط HI ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">4</span></a> أنه من الممكن فعلا، باستخدام التعلم الآلي بالنقل، كشف سمات الصور والفصل بطريقة كمية بين قيم <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p2.m5"><mi>n</mi></math> المختلفة، بما يتجاوز التفقد البصري البسيط للخرائط، ومن ثم يمكن استخدامه للمقارنة الكمية بين المحاكاة والأرصاد بصورة كلية <cite class="ltx_cite ltx_citemacro_citep">(انظر أيضا Zanisi<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib69" title="A deep learning approach to test the small-scale galaxy morphology and its relationship with star formation activity in hydrodynamical simulations">2021</a>)</cite>، مما يتيح تقييد معلمات نموذجية كانت ستكون حرة لولا ذلك.</p>
+</div>
+<figure class="ltx_figure" id="S5.F4"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="260" id="S5.F4.g1" src="x2.png" width="343"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>تمثل النقاط ذات أشرطة الخطأ متوسط عدد السمات لكل مجرة محاكاة اكتشفها النموذج 1، بدلالة عتبة كثافة المجرات <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.F4.m2"><mi>n</mi></math>. ويمثل الخط الأفقي المتقطع متوسط عدد السمات المسترجعة في خرائط المجرات المرصودة.</figcaption>
+</figure>
+<div class="ltx_para" id="S5.SS1.p3">
+<p class="ltx_p">أخيرا نشغّل النموذج على خرائط HI المرصودة البالغ عددها 16 والمقدمة من THINGS و VLA-ANGST (والتي، مرة أخرى، لم يواجهها النموذج من قبل)، فنحصل تقريبا على متوسط قدره 50 سمة مكتشفة لكل مجرة (الخط الأحمر المتقطع في الرسم)، وهو أيضا متوسط عدد السمات نفسه للمجرات المحاكاة ذات <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p3.m1"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p4">
+<p class="ltx_p">تشير نتائجنا إلى أن زيادة كثافة العتبة تضيف إلى الصور المحاكاة معلومات قابلة للتقييد رصديا. ومع ذلك نشدد على أن قيمة التقاطع <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p4.m1"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> لا ينبغي أخذها بحرفية، لأنها ناتجة عن عتبة تشكل النجوم الجوهرية (الحقيقية) <cite class="ltx_cite ltx_citemacro_citep">(<math alttext="\sim 10^{4}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p4.m2"><mrow><mi></mi><mo>∼</mo><msup><mn>10</mn><mn>4</mn></msup></mrow></math> جسيم لكل سنتيمتر مكعب McKee and Ostriker, <a class="ltx_ref" href="#bib.bib263" title="Theory of Star Formation">2007</a>)</cite> ملتفة مع دقة كل من الأرصاد والمحاكاة. لكنها تبين بوضوح أنه إذا كانت الدقة العددية عالية بما يكفي، فإن عتبة أعلى لتشكل النجوم (أي وسط بين نجمي متعدد الأطوار) تكون مفضلة رصديا. ونخلص إلى أن هناك حاجة قوية إلى أن تحسّن المحاكاة الكونية نماذجها الحالية من أجل توفير نماذج مجرية واقعية يمكن الوثوق بها. ونلاحظ أيضا أن دقة الصور المرصودة (أو على نحو مكافئ الانزياح الأحمر) قد تؤثر في قيمة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p4.m3"><mi>n</mi></math> التي يتقاطع عندها المنحنيان، لكن ذلك لا يؤثر في استنتاجنا المركزي بأن <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p4.m4"><mi>n</mi></math> يؤثر تأثيرا معتبرا في عدد السمات في الصور المحاكاة، ومن ثم يجب أن يلتقي المنحنيان عند قيمة ما لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p4.m5"><mi>n</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p5">
+<p class="ltx_p">وبالمثل، قد توجد تغيرات ثانوية مع خصائص مجرية أخرى مثل الكتلة النجمية أو كتلة الغاز، لكن بما أننا لم ندرب نموذجنا على المجرات (بل على الفوهات الكوكبية!) فإن هذا
+ينبغي ألا يؤثر (تأثيرا جوهريا) في استنتاجاتنا،
+ونتوقع أن يكون نموذجنا قابلا للنقل إلى درجات دقة وكتل وانزياحات حمراء مختلفة.
+ومع ذلك، قد يكون من المفيد في عمل مستقبلي استكشاف ذلك بمزيد من التفصيل. وأخيرا، بما أنه لا توجد حقيقة مرجعية لعدد سمات الكثافة، فليس من الممكن تقييم أداء هذا النموذج كميا. ولهذا السبب نستخدم نموذجا آخر أدناه لتعزيز استنتاجاتنا.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S5.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.2 </span>تصنيف المجرات وفقا لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.m1"><mi>n</mi></math>
+</h3>
+<div class="ltx_para" id="S5.SS2.p1">
+<p class="ltx_p">نؤكد نتائج النموذج 1 باستخدام النموذج المستقل 2. دُرّب هذا النموذج على تصنيف صور المجرات المحاكاة بحسب قيمة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p1.m1"><mi>n</mi></math> الخاصة بها.
+ونستخدمه الآن لتصنيف المجرات المرصودة، وهي أجسام لم يتعرض لها النموذج قط من قبل.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p2">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5.2 تصنيف المجرات وفقا لـ 𝑛 ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">5</span></a>، نعرض احتمال الانتماء إلى فئة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m1"><mi>n</mi></math> معينة للمجرات المرصودة، استنادا إلى خرائط HI الخاصة بها.
+يستنتج النموذج باحتمال عال جدا (<math alttext="\geq" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m2"><mo>≥</mo></math> 93%) قيمة <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m3"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> لـ 13 من أصل صور HI المرصودة البالغ عددها 16، بينما يصنف اثنتين أيضا على أن لهما <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m4"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> لكن بيقين <math alttext="\sim 66\%" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m5"><mrow><mi></mi><mo>∼</mo><mrow><mn>66</mn><mo>%</mo></mrow></mrow></math>. وتُصنف مجرة واحدة فقط على أنها <math alttext="n=10" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m6"><mrow><mi>n</mi><mo>=</mo><mn>10</mn></mrow></math>.
+وعند النظر إليها مجتمعة، يجد النموذج أن الغالبية العظمى (أكبر من 85 في المئة) من خرائط HI المرصودة تقع في فئة <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p2.m7"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math>، بدرجة عالية جدا من الثقة الخوارزمية،
+ولا سيما بالنظر إلى أن مجموعة التدريب كانت متوازنة تماما ومن ثم لم تُفضَّل أي فئة بعينها (انظر القسم <a class="ltx_ref" href="#S4.SS2" title="4.2 مصنف الصور ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">4.2</span></a>).</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p3">
+<p class="ltx_p">ومع ذلك نشدد على أن هذه الاحتمالات ليست توزعات لاحقة، بل هي ببساطة ثقة النموذج عبر خرج softmax. لذلك نحسب درجة ROC-AUC، فنجد أن قيمتها <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p3.m1"><mo>∼</mo></math> 0.9. وهذا يعني أن النموذج يستطيع التمييز بدقة بين نقاط الفئات المختلفة.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p4">
+<p class="ltx_p">وكفحص إضافي للمتانة، نغير النموذج لصوغ المسألة على أنها تصنيف ثنائي من خلال دمج فئتي n=0.1 و n=1؛ وفئتي n=10 و n=80 <cite class="ltx_cite ltx_citemacro_citep">(Governato<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib65" title="Bulgeless dwarf galaxies and dark matter cores from supernova-driven outflows">2010a</a>; Schaye<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib64" title="The EAGLE project: simulating the evolution and assembly of galaxies and their environments">2015b</a>)</cite>. ووجدنا أن ذلك يزيد تفضيل الشبكة العصبونية للقيم الأعلى لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p4.m1"><mi>n</mi></math>، إذ صُنفت جميع المجرات المرصودة الآن على أنها n=10/80.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p5">
+<p class="ltx_p">تتسق هذه النتائج مع استنتاجات النموذج 1، وتعزز منهجيته ونتائجه، ولا سيما أن النموذجين يستخدمان خوارزميات مختلفة جدا و لا يشتركان في شيء، ودُرّبا على مجموعات بيانات مختلفة جدا.
+وفوق ذلك، يحاول النموذجان المختلفان الإجابة عن سؤالين مختلفين جدا: فالنموذج 1 يجيب عن <span class="ltx_text ltx_font_italic">أي محاكاة تطابق الأرصاد إحصائيا؟</span>، بينما يجيب النموذج 2 عن <span class="ltx_text ltx_font_italic">لو كانت الأرصاد محاكاة، فأي محاكاة ستكون؟</span>، مما يبرز الرؤى المتكاملة للمشكلة التي يقدمها النموذجان.</p>
+</div>
+<figure class="ltx_figure" id="S5.F5"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="276" id="S5.F5.g1" src="x3.png" width="339"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>احتمال انتماء خرائط المجرات المرصودة إلى فئات <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.F5.m3"><mi>n</mi></math> المختلفة. يوجد تفضيل واضح لـ <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S5.F5.m4"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math>.</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>المناقشة والاستنتاجات</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">تمثل المحاكاة العددية لتشكل المجرات أداة قوية إلى حد مذهل لدراسة الشبكة المعقدة من التأثيرات والعلاقات التي تؤدي إلى نشوء المجرة وتطورها في كون تهيمن عليه المادة المظلمة والطاقة المظلمة.
+وعلى الرغم من التقدم المثير للإعجاب في السنوات الأخيرة <cite class="ltx_cite ltx_citemacro_citep">(مثلا Pillepich<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib292" title="Simulating galaxy formation with the IllustrisTNG model">2018</a>; Buck<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib95" title="NIHAO-UHD: the properties of MW-like stellar discs in high-resolution cosmological simulations">2020</a>; Agertz<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib81" title="EDGE: the mass-metallicity relation as a critical test of galaxy formation physics">2020</a>)</cite>، لا تزال المحاكاة تعتمد
+على مجموعة من المعلمات التي يلزم معايرتها في مقابل الأرصاد.</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">نعرض في هذه الورقة محاولة أولى لاستخدام صور (أي خرائط 2D) لمجرات محاكاة وحقيقية مباشرة من أجل تقييد معلمات المحاكاة، من دون الحاجة إلى «استخراج» معلمات مجرية مثل الكتلة والحجم واللمعان وغير ذلك من هذه الصور.</p>
+</div>
+<div class="ltx_para" id="S6.p3">
+<p class="ltx_p">في دراستنا الاستطلاعية استخدمنا خوارزميتين مستقلتين تماما من خوارزميات تعلم الآلة، مطبقتين على خرائط HI لمجرات حقيقية ومحاكاة، لتقييد قيمة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S6.p3.m1"><mi>n</mi></math>، وهي عتبة الكثافة لتشكل النجوم، باستخدام مجموعة من القيم الشائعة الاستخدام في المحاكاة العددية <cite class="ltx_cite ltx_citemacro_citep">(Dutton<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib192" title="NIHAO XX: the impact of the star formation threshold on the cusp-core transformation of cold dark matter haloes">2019</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S6.p4">
+<p class="ltx_p">دُرّب نموذج ML الأول على تحديد الفوهات في الخرائط القمرية والكوكبية، وهو يُستخدم هنا للعثور على قمم الغاز مرتفعة الكثافة و«ثقوب» الغاز منخفضة الكثافة في خرائط HI وعدّها (ويشار إليها عموما باسم السمات). وتظهر المجرات المحاكاة، من مشروع NIHAO، ارتباطا سالبا قويا بين عدد السمات وقيمة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S6.p4.m1"><mi>n</mi></math>، مما يتيح تكميم الفروق بين النماذج المختلفة. وعند تطبيق خوارزمية ML على خرائط حقيقية مرصودة، تكتشف عددا من السمات قريبا جدا من عدد سمات نموذج <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S6.p4.m2"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> (جسيم لكل سنتيمتر مكعب)، مؤكدة الحاجة إلى قيم كبيرة لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S6.p4.m3"><mi>n</mi></math> لإعادة إنتاج الأرصاد بصورة صحيحة <cite class="ltx_cite ltx_citemacro_citep">(Buck<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib96" title="An observational test for star formation prescriptions in cosmological hydrodynamical simulations">2019a</a>)</cite>. وبسبب غياب مقياس أداء غير متحيز للنموذج الأول، نستخدم طريقة أخرى لتعزيز نتائجنا.</p>
+</div>
+<div class="ltx_para" id="S6.p5">
+<p class="ltx_p">النموذج الثاني، المستقل عن الأول، هو مصنف صور دربناه للتنبؤ بقيمة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S6.p5.m1"><mi>n</mi></math> لخرائط HI.
+وعندما يُطبق هذا النموذج على الخرائط المرصودة التي لم يواجهها النموذج من قبل، فإنه يستنتج باحتمال عال جدا (<math alttext="\geq" class="ltx_Math" dir="ltr" display="inline" id="S6.p5.m2"><mo>≥</mo></math> 86%) قيمة <math alttext="n=80" class="ltx_Math" dir="ltr" display="inline" id="S6.p5.m3"><mrow><mi>n</mi><mo>=</mo><mn>80</mn></mrow></math> لجميع صور HI الحقيقية.</p>
+</div>
+<div class="ltx_para" id="S6.p6">
+<p class="ltx_p">هذان النموذجان، عند أخذهما معا، لا يعززان فقط الحاجة إلى استخدام قيمة كبيرة (<math alttext="n\geq 10" class="ltx_Math" dir="ltr" display="inline" id="S6.p6.m1"><mrow><mi>n</mi><mo>≥</mo><mn>10</mn></mrow></math>) لـ
+عتبة الكثافة، بل يبيّنان، وهذا أهم، أن من الممكن الإفادة من الكمية الكبيرة من المعلومات الموجودة في خرائط المجرات الحقيقية والمحاكاة لتقييد المحاكاة العددية، من دون الحاجة إلى اختزالها إلى مجموعة محدودة من المعلمات العالمية مثل الكتلة النجمية والكتلة الكلية واللون وغير ذلك.</p>
+</div>
+<div class="ltx_para" id="S6.p7">
+<p class="ltx_p">يجدر التأكيد على أنه رغم أن المعلمة المستخدمة في هذه الدراسة، <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S6.p7.m1"><mi>n</mi></math>، معلمة عددية وليست فيزيائية، فإن النهج المختبر هنا يمكن تطبيقه أيضا على النماذج التي تتجاوز الحاجة إلى عتبة كثافة وتربط نموذج تشكل النجوم بكسر H<sub class="ltx_sub">2</sub> المحلي أو بالمعلمة الفيروسية للغاز. وبهذا المعنى، يقدم النهج المعروض هنا طريقة شاملة وغير متحيزة وآلية لتقييد/معايرة/تمييز نماذج صالحة لتشكل المجرات (لا تقتصر فقط على عملية تشكل النجوم).</p>
+</div>
+<div class="ltx_para" id="S6.p8">
+<p class="ltx_p">وبالنظر إلى العدد الكبير من مسوح المجرات الحالية والقادمة، التي ستنتج صورا جديدة مذهلة للمجرات القريبة والبعيدة <cite class="ltx_cite ltx_citemacro_citep">(مثلا Emsellem<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib197" title="The PHANGS-MUSE survey – Probing the chemo-dynamical evolution of disc galaxies">2021</a>)</cite>، فإن النهج المعروض في هذا العمل يمتلك قدرة على تقديم رؤى جديدة حول كيفية تمثيل العمليات الفيزيائية المعقدة في المحاكاة العددية على نحو صحيح.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">توافر البيانات</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">ستُتاح البيانات التي يستند إليها هذا المقال عند طلب معقول يوجه إلى المؤلف المراسل.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx2">
+<h2 class="ltx_title ltx_title_section">شكر وتقدير</h2>
+<div class="ltx_para" id="Sx2.p1">
+<p class="ltx_p">تستند هذه المادة إلى عمل مدعوم من Tamkeen في إطار منحة معهد الأبحاث في NYU Abu Dhabi رقم CAP<sup class="ltx_sup">3</sup>.
+ويعرب المؤلفون عن امتنانهم لمركز Gauss للحوسبة الفائقة e.V. (www.gauss-centre.eu) على تمويل هذا المشروع عبر توفير وقت حوسبة على حاسوب GCS الفائق SuperMUC في مركز Leibniz
+للحوسبة الفائقة (www.lrz.de)، وكذلك لموارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib395">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. A. R. Ade <span class="ltx_text ltx_bib_etal">et al.</span> (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Planck 2013 results. XVI. Cosmological parameters</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Astron. Astrophys.</span> <span class="ltx_text ltx_bib_volume">571</span>, <span class="ltx_text ltx_bib_pages"> pp. A16</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1051/0004-6361/201321591" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1303.5076</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p1" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib81">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">O. Agertz, A. Pontzen, J. I. Read, M. P. Rey, M. Orkney, J. Rosdahl, R. Teyssier, R. Verbeke, M. Kretschmer, and S. Nickerson (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">EDGE: the mass-metallicity relation as a critical test of galaxy formation physics</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">491</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 1656–1672</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz3053" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1904.02723</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S6.p1" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§6</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib80">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">O. Agertz, F. Renaud, S. Feltzing, J. I. Read, N. Ryde, E. P. Andersson, M. P. Rey, T. Bensby, and D. K. Feuillet (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">VINTERGATAN - I. The origins of chemically, kinematically, and structurally distinct discs in a simulated Milky Way-mass galaxy</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">503</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 5826–5845</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stab322" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">2006.06008</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib71">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Ali-Dib, K. Menou, A. P. Jackson, C. Zhu, and N. Hammond (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Automated crater shape retrieval using weakly-supervised deep learning</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Icarus</span> <span class="ltx_text ltx_bib_volume">345</span>, <span class="ltx_text ltx_bib_pages"> pp. 113749</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1016/j.icarus.2020.113749" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1906.08826</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS1.p1" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.1</span></a>,
+<a class="ltx_ref" href="#S4.SS1.p2" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib79">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Arora, A. V. Macció, S. Courteau, T. Buck, N. I. Libeskind, J. G. Sorce, C. B. Brook, Y. Hoffman, G. Yepes, and E. Carlesi (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO-LG: The uniqueness of Local Group dwarf galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">arXiv e-prints</span>, <span class="ltx_text ltx_bib_pages"> pp. arXiv:2109.07487</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">2109.07487</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib147">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Aumer, S. D. M. White, T. Naab, and C. Scannapieco (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Towards a more realistic population of bright spiral galaxies in cosmological simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">434</span>, <span class="ltx_text ltx_bib_pages"> pp. 3142–3164</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1304.1559</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stt1230" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib53">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. R. Beck, C. Scarlata, L. F. Fortson, C. J. Lintott, B. D. Simmons, M. A. Galloway, K. W. Willett, H. Dickinson, K. L. Masters, P. J. Marshall, and D. Wright (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Integrating human and machine intelligence in galaxy morphology classification tasks</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">476</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 5516–5534</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/sty503" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1802.08713</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p7" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib119">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Benítez-Llambay, J. F. Navarro, C. S. Frenk, T. Sawala, K. Oman, A. Fattahi, M. Schaller, J. Schaye, R. A. Crain, and T. Theuns (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The properties of ‘dark’ <math alttext="\Lambda" class="ltx_Math" dir="ltr" display="inline" id="bib.bib119.m1a"><mi mathvariant="normal">Λ</mi></math>CDM haloes in the Local Group</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">465</span>, <span class="ltx_text ltx_bib_pages"> pp. 3913–3926</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1609.01301</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stw2982" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib153">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Blank, A. V. Macciò, A. A. Dutton, and A. Obreja (2019)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO - XXII. Introducing black hole formation, accretion, and feedback into the NIHAO simulation suite</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">487</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 5476–5489</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz1688" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1906.06955</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p1" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib157">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">C. B. Brook and A. Di Cintio (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Signatures of dark matter halo expansion in galaxy populations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">453</span>, <span class="ltx_text ltx_bib_pages"> pp. 2133–2143</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1506.01019</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stv1699" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib4">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck, M. K. Ness, A. V. Macciò, A. Obreja, and A. A. Dutton (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Stars Behind Bars. I. The Milky Way’s Central Stellar Populations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ApJ</span> <span class="ltx_text ltx_bib_volume">861</span>, <span class="ltx_text ltx_bib_pages"> pp. 88</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1711.04765</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.3847/1538-4357/aac890" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p8" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib96">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck, A. A. Dutton, and A. V. Macciò (2019a)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">An observational test for star formation prescriptions in cosmological hydrodynamical simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">486</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1481–1487</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz969" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1812.05613</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p8" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S6.p4" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§6</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib97">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck, A. V. Macciò, A. A. Dutton, A. Obreja, and J. Frings (2019b)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO XV: the environmental impact of the host galaxy on galactic satellite and field dwarf galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">483</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1314–1341</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/sty2913" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1804.04667</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib95">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck, A. Obreja, A. V. Macciò, I. Minchev, A. A. Dutton, and J. P. Ostriker (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO-UHD: the properties of MW-like stellar discs in high-resolution cosmological simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">491</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 3461–3478</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz3241" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1909.05864</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S6.p1" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§6</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib94">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck, J. Rybizki, S. Buder, A. Obreja, A. V. Macciò, C. Pfrommer, M. Steinmetz, and M. Ness (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The challenge of simultaneously matching the observed diversity of chemical abundance patterns in cosmological hydrodynamical simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">508</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 3365–3387</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stab2736" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">2103.03884</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p2" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib2">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck and S. Wolf (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Predicting resolved galaxy properties from photometric images using convolutional neural networks</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">arXiv e-prints</span>, <span class="ltx_text ltx_bib_pages"> pp. arXiv:2111.01154</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">2111.01154</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p7" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib1">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Buck (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">On the origin of the chemical bimodality of disc stars: a tale of merger and migration</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">491</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 5435–5446</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz3289" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1909.09162</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib61">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. Buder, S. Sharma, J. Kos, A. M. Amarsi, T. Nordlander, K. Lind, S. L. Martell, M. Asplund, J. Bland-Hawthorn, A. R. Casey, G. M. de Silva, V. D’Orazi, K. C. Freeman, M. R. Hayden, G. F. Lewis, J. Lin, K. J. Schlesinger, J. D. Simpson, D. Stello, D. B. Zucker, T. Zwitter, K. L. Beeson, T. Buck, L. Casagrande, J. T. Clark, K. Čotar, G. S. da Costa, R. de Grijs, D. Feuillet, J. Horner, P. R. Kafle, S. Khanna, C. Kobayashi, F. Liu, B. T. Montet, G. Nandakumar, D. M. Nataf, M. K. Ness, L. Spina, T. Tepper-García, Y. Ting, G. Traven, R. Vogrinčič, R. A. Wittenmyer, R. F. G. Wyse, M. Žerjal, M. Žerjal, and Galah Collaboration (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The GALAH+ survey: Third data release</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">506</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 150–201</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stab1242" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">2011.02505</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p8" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib160">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. S. Bullock and M. Boylan-Kolchin (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Small-Scale Challenges to the <math alttext="\Lambda" class="ltx_Math" dir="ltr" display="inline" id="bib.bib160.m1a"><mi mathvariant="normal">Λ</mi></math>CDM Paradigm</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Ann. Rev. Astron. Astrophys.</span> <span class="ltx_text ltx_bib_volume">55</span>, <span class="ltx_text ltx_bib_pages"> pp. 343–387</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1146/annurev-astro-091916-055313" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1707.04256</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib175">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. Courteau, A. A. Dutton, F. C. van den Bosch, L. A. MacArthur, A. Dekel, D. H. McIntosh, and D. A. Dale (2007)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Scaling Relations of Spiral Galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The Astrophysical Journal</span> <span class="ltx_text ltx_bib_volume">671</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 203–225</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1086/522193" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">0708.0422</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib24">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. M. Dawson, T. A. Davis, E. L. Gomez, J. Schock, N. Zabel, and T. G. Williams (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Using machine learning to study the kinematics of cold gas in galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">491</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 2506–2519</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz3097" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1911.00291</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p7" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib55">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. Dieleman, K. W. Willett, and J. Dambre (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Rotation-invariant convolutional neural networks for galaxy morphology prediction</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">450</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 1441–1459</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stv632" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1503.07077</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p7" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib67">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Doménech-Moral, F. J. Martínez-Serrano, R. Domínguez-Tenreiro, and A. Serna (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Formation of galaxies in <math alttext="\Lambda" class="ltx_Math" dir="ltr" display="inline" id="bib.bib67.m1a"><mi mathvariant="normal">Λ</mi></math>cold dark matter cosmologies - I. The fine structure of disc galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">421</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 2510–2530</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1111/j.1365-2966.2012.20534.x" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1201.2641</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p8" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib195">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">Y. Dubois, S. Peirani, C. Pichon, J. Devriendt, R. Gavazzi, C. Welker, and M. Volonteri (2016)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The HORIZON-AGN simulation: morphological diversity of galaxies promoted by AGN feedback</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">463</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 3948–3964</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stw2265" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1606.03086</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib192">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. A. Dutton, A. V. Macciò, T. Buck, K. L. Dixon, M. Blank, and A. Obreja (2019)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO XX: the impact of the star formation threshold on the cusp-core transformation of cold dark matter haloes</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">486</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 655–671</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz889" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1811.10625</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S6.p3" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§6</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib191">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. A. Dutton, A. Obreja, L. Wang, T. A. Gutcke, T. Buck, S. M. Udrescu, J. Frings, G. S. Stinson, X. Kang, and A. V. Macciò (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO XII: galactic uniformity in a <math alttext="\Lambda" class="ltx_Math" dir="ltr" display="inline" id="bib.bib191.m1a"><mi mathvariant="normal">Λ</mi></math>CDM universe</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">467</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 4937–4950</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx458" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1610.06375</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.p2" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib197">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. Emsellem, E. Schinnerer, F. Santoro, F. Belfiore, I. Pessa, R. McElroy, G. A. Blanc, E. Congiu, B. Groves, I. Ho, K. Kreckel, A. Razza, P. Sanchez-Blazquez, O. Egorov, C. Faesi, R. S. Klessen, A. K. Leroy, S. Meidt, M. Querejeta, E. Rosolowsky, F. Scheuermann, G. S. Anand, A. T. Barnes, I. Bešlić, F. Bigiel, M. Boquien, Y. Cao, M. Chevance, D. A. Dale, C. Eibensteiner, S. C. O. Glover, K. Grasha, J. D. Henshaw, A. Hughes, E. W. Koch, J. M. D. Kruijssen, J. Lee, D. Liu, H. Pan, J. Pety, T. Saito, K. M. Sandstrom, A. Schruba, J. Sun, D. A. Thilker, A. Usero, E. J. Watkins, and T. G. Williams (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The PHANGS-MUSE survey – Probing the chemo-dynamical evolution of disc galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">arXiv e-prints</span>, <span class="ltx_text ltx_bib_pages"> pp. arXiv:2110.03708</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">2110.03708</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S6.p8" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§6</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib202">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Gallazzi, S. Charlot, J. Brinchmann, S. D. M. White, and C. A. Tremonti (2005)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The ages and metallicities of galaxies in the local universe</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">362</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 41–58</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1111/j.1365-2966.2005.09321.x" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">astro-ph/0506539</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib65">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. Governato, C. Brook, L. Mayer, A. Brooks, G. Rhee, J. Wadsley, P. Jonsson, B. Willman, G. Stinson, T. Quinn, and P. Madau (2010a)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Bulgeless dwarf galaxies and dark matter cores from supernova-driven outflows</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Nature</span> <span class="ltx_text ltx_bib_volume">463</span> (<span class="ltx_text ltx_bib_number">7278</span>), <span class="ltx_text ltx_bib_pages"> pp. 203–206</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1038/nature08640" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">0911.2237</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S5.SS2.p4" title="5.2 تصنيف المجرات وفقا لـ 𝑛 ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§5.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib205">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. Governato, C. Brook, L. Mayer, A. Brooks, G. Rhee, J. Wadsley, P. Jonsson, B. Willman, G. Stinson, T. Quinn, and P. Madau (2010b)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Bulgeless dwarf galaxies and dark matter cores from supernova-driven outflows</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Nature</span> <span class="ltx_text ltx_bib_volume">463</span>, <span class="ltx_text ltx_bib_pages"> pp. 203–206</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">0911.2237</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1038/nature08640" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib394">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">R. J. J. Grand, F. A. Gómez, F. Marinacci, R. Pakmor, V. Springel, D. J. R. Campbell, C. S. Frenk, A. Jenkins, and S. D. M. White (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The Auriga Project: the properties and formation mechanisms of disc galaxies across cosmic time</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">467</span>, <span class="ltx_text ltx_bib_pages"> pp. 179–207</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1610.01159</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx071" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib209">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. A. Gutcke, G. S. Stinson, A. V. Macciò, L. Wang, and A. A. Dutton (2016)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO VIII: Circum-galactic medium and outflows - The puzzles of HI and OVI gas distributions</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ArXiv e-prints, 1602.06956</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1602.06956</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p1" title="2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib210">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. A. Gutcke, R. Pakmor, T. Naab, and V. Springel (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">LYRA II: Cosmological dwarf galaxy formation with inhomogeneous Population III enrichment</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">arXiv e-prints</span>, <span class="ltx_text ltx_bib_pages"> pp. arXiv:2110.06233</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">2110.06233</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib212">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. Haardt and P. Madau (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Radiative Transfer in a Clumpy Universe. IV. New Synthesis Models of the Cosmic UV/X-Ray Background</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ApJ</span> <span class="ltx_text ltx_bib_volume">746</span>, <span class="ltx_text ltx_bib_pages"> pp. 125</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1105.2039</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1088/0004-637X/746/2/125" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p1" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib76">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">K. He, G. Gkioxari, P. Dollár, and R. B. Girshick (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Mask r-cnn</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">2017 IEEE International Conference on Computer Vision (ICCV)</span>, <span class="ltx_text ltx_bib_pages"> pp. 2980–2988</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS1.p1" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib73">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">R. R. Herrick, E. M. Bateman, W. G. Crumpacker, and D. Bates (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Observations From a Global Database of Impact Craters on Mercury With Diameters Greater than 5 km</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Geophysical Research (Planets)</span> <span class="ltx_text ltx_bib_volume">123</span> (<span class="ltx_text ltx_bib_number">8</span>), <span class="ltx_text ltx_bib_pages"> pp. 2089–2109</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1029/2017JE005516" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS1.p2" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib52">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Hocking, J. E. Geach, Y. Sun, and N. Davey (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">An automatic taxonomy of galaxy morphology using unsupervised machine learning</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">473</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1108–1129</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx2351" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1709.05834</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p7" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib218">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. F. Hopkins, D. Kereš, J. Oñorbe, C.-A. Faucher-Giguère, E. Quataert, N. Murray, and J. S. Bullock (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Galaxies on FIRE (Feedback In Realistic Environments): stellar feedback explains cosmologically inefficient star formation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">445</span>, <span class="ltx_text ltx_bib_pages"> pp. 581–603</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1311.2073</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stu1738" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib84">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. N. Kirby, J. D. Simon, and J. G. Cohen (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Spectroscopic Confirmation of the Dwarf Galaxies Hydra II and Pisces II and the Globular Cluster Laevens 1</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ApJ</span> <span class="ltx_text ltx_bib_volume">810</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 56</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1088/0004-637X/810/1/56" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1506.01021</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib254">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. V. Macciò, S. M. Udrescu, A. A. Dutton, A. Obreja, L. Wang, G. R. Stinson, and X. Kang (2016)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO X: reconciling the local galaxy velocity function with cold dark matter via mock H I observations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">463</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. L69–L73</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnrasl/slw147" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p1" title="2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2.2</span></a>,
+<a class="ltx_ref" href="#S2.p2" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib258">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. Marinacci, R. Pakmor, and V. Springel (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The formation of disc galaxies in high-resolution moving-mesh cosmological simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">437</span>, <span class="ltx_text ltx_bib_pages"> pp. 1750–1775</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1305.5360</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stt2003" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib263">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">C. F. McKee and E. C. Ostriker (2007)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Theory of Star Formation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ARA&amp;A</span> <span class="ltx_text ltx_bib_volume">45</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 565–687</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1146/annurev.astro.45.051806.110602" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">0707.3514</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S5.SS1.p4" title="5.1 السمات في خرائط HI ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§5.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib275">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Nelson, A. Pillepich, V. Springel, R. Weinberger, L. Hernquist, R. Pakmor, S. Genel, P. Torrey, M. Vogelsberger, G. Kauffmann, F. Marinacci, and J. Naiman (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">First results from the IllustrisTNG simulations: the galaxy colour bimodality</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">475</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 624–647</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx3040" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1707.03395</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib5">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Obreja, A. A. Dutton, A. V. Macciò, B. Moster, T. Buck, G. van de Ven, L. Wang, G. S. Stinson, and L. Zhu (2019)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO XVI: the properties and evolution of kinematically selected discs, bulges, and stellar haloes</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">487</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 4424–4456</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stz1563" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1804.06635</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p8" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib6">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Obreja, A. V. Macciò, B. Moster, A. A. Dutton, T. Buck, G. S. Stinson, and L. Wang (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Introducing galactic structure finder: the multiple stellar kinematic structures of a simulated Milky Way mass galaxy</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">477</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 4915–4930</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/sty1022" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1804.05576</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p8" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib280">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Oñorbe, M. Boylan-Kolchin, J. S. Bullock, P. F. Hopkins, D. Kereš, C. Faucher-Giguère, E. Quataert, and N. Murray (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Forged in FIRE: cusps, cores and baryons in low-mass dwarf galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">454</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 2092–2106</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stv2072" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1502.02036</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib282">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Ott, A. M. Stilp, S. R. Warren, E. D. Skillman, J. J. Dalcanton, F. Walter, W. J. G. de Blok, B. Koribalski, and A. A. West (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">VLA-ANGST: A High-resolution H I Survey of Nearby Dwarf Galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">AJ</span> <span class="ltx_text ltx_bib_volume">144</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 123</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1088/0004-6256/144/4/123" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1208.3737</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p10" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p1" title="3 البيانات الرصدية ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib285">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. H. Pawlik and J. Schaye (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Multifrequency, thermally coupled radiative transfer with TRAPHIC: method and tests</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">412</span>, <span class="ltx_text ltx_bib_pages"> pp. 1943–1964</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1008.1071</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1111/j.1365-2966.2010.18032.x" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p1" title="2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib292">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Pillepich, V. Springel, D. Nelson, S. Genel, J. Naiman, R. Pakmor, L. Hernquist, P. Torrey, M. Vogelsberger, R. Weinberger, and F. Marinacci (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Simulating galaxy formation with the IllustrisTNG model</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">473</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 4077–4106</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx2656" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1703.02970</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p9" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S6.p1" title="6 المناقشة والاستنتاجات ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§6</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib297">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Rahmati, A. H. Pawlik, M. Raicevic, and J. Schaye (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">On the evolution of the H I column density distribution in cosmological simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">430</span>, <span class="ltx_text ltx_bib_pages"> pp. 2427–2445</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1210.7808</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stt066" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p1" title="2.2 حساب كسر HI وبناء الخرائط ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib74">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. J. Robbins and B. M. Hynek (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A new global database of Mars impact craters <math alttext="\geq" class="ltx_Math" dir="ltr" display="inline" id="bib.bib74.m1a"><mo>≥</mo></math>1 km: 1. Database creation, properties, and parameters</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Geophysical Research (Planets)</span> <span class="ltx_text ltx_bib_volume">117</span> (<span class="ltx_text ltx_bib_number">E5</span>), <span class="ltx_text ltx_bib_pages"> pp. E05004</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1029/2011JE003966" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS1.p2" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib75">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. J. Robbins (2019)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A New Global Database of Lunar Impact Craters &gt;1-2 km: 1. Crater Locations and Sizes, Comparisons With Published Databases, and Global Analysis</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Geophysical Research (Planets)</span> <span class="ltx_text ltx_bib_volume">124</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 871–892</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1029/2018JE005592" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS1.p2" title="4.1 كاشف البنى الدائرية ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib59">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">O. Ronneberger, P. Fischer, and T. Brox (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">U-Net: Convolutional Networks for Biomedical Image Segmentation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">arXiv e-prints</span>, <span class="ltx_text ltx_bib_pages"> pp. arXiv:1505.04597</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1505.04597</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p7" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib306">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">I. M. Santos-Santos, A. Di Cintio, C. B. Brook, A. Macciò, A. Dutton, and R. Domínguez-Tenreiro (2018)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO - XIV. Reproducing the observed diversity of dwarf galaxy rotation curve shapes in <math alttext="\Lambda" class="ltx_Math" dir="ltr" display="inline" id="bib.bib306.m1a"><mi mathvariant="normal">Λ</mi></math>CDM</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">473</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 4392–4403</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx2660" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1706.04202</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p2" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib326">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Schaye, R. A. Crain, R. G. Bower, M. Furlong, M. Schaller, T. Theuns, C. Dalla Vecchia, C. S. Frenk, I. G. McCarthy, J. C. Helly, A. Jenkins, Y. M. Rosas-Guevara, S. D. M. White, M. Baes, C. M. Booth, P. Camps, J. F. Navarro, Y. Qu, A. Rahmati, T. Sawala, P. A. Thomas, and J. Trayford (2015a)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The EAGLE project: simulating the evolution and assembly of galaxies and their environments</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">446</span>, <span class="ltx_text ltx_bib_pages"> pp. 521–554</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1407.7040</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stu2058" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib64">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Schaye, R. A. Crain, R. G. Bower, M. Furlong, M. Schaller, T. Theuns, C. Dalla Vecchia, C. S. Frenk, I. G. McCarthy, J. C. Helly, A. Jenkins, Y. M. Rosas-Guevara, S. D. M. White, M. Baes, C. M. Booth, P. Camps, J. F. Navarro, Y. Qu, A. Rahmati, T. Sawala, P. A. Thomas, and J. Trayford (2015b)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The EAGLE project: simulating the evolution and assembly of galaxies and their environments</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">446</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 521–554</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stu2058" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1407.7040</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S5.SS2.p4" title="5.2 تصنيف المجرات وفقا لـ 𝑛 ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§5.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib72">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">K. Simonyan and A. Zisserman (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Very deep convolutional networks for large-scale image recognition</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">CoRR</span> <span class="ltx_text ltx_bib_volume">abs/1409.1556</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="http://arxiv.org/abs/1409.1556" title="">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS2.p1" title="4.2 مصنف الصور ‣ 4 نماذج تعلم الآلة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§4.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib310">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">R. S. Somerville and R. Davé (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Physical Models of Galaxy Formation in a Cosmological Framework</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ARA&amp;A</span> <span class="ltx_text ltx_bib_volume">53</span>, <span class="ltx_text ltx_bib_pages"> pp. 51–113</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1146/annurev-astro-082812-140951" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1412.2712</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib311">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">V. Springel and L. Hernquist (2003)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Cosmological smoothed particle hydrodynamics simulations: a hybrid multiphase model for star formation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">339</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 289–311</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1046/j.1365-8711.2003.06206.x" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">astro-ph/0206393</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib338">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">G. S. Stinson, C. Brook, A. V. Macciò, J. Wadsley, T. R. Quinn, and H. M. P. Couchman (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Making Galaxies In a Cosmological Context: the need for early stellar feedback</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">428</span>, <span class="ltx_text ltx_bib_pages"> pp. 129–140</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1208.0002</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/sts028" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.SS1.p1" title="2.1 تشكل النجوم ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2.1</span></a>,
+<a class="ltx_ref" href="#S2.p1" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib336">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">G. Stinson, A. Seth, N. Katz, J. Wadsley, F. Governato, and T. Quinn (2006)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Star formation and feedback in smoothed particle hydrodynamic simulations - I. Isolated galaxies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">373</span>, <span class="ltx_text ltx_bib_pages"> pp. 1074–1090</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">astro-ph/0602350</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1111/j.1365-2966.2006.11097.x" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS1.p1" title="2.1 تشكل النجوم ‣ 2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib349">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Tremmel, M. Karcher, F. Governato, M. Volonteri, T. R. Quinn, A. Pontzen, L. Anderson, and J. Bellovary (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The Romulus cosmological simulations: a physical approach to the formation, dynamics and accretion models of SMBHs</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">470</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1121–1139</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx1160" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1607.02151</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib343">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">C. A. Tremonti, T. M. Heckman, G. Kauffmann, J. Brinchmann, S. Charlot, S. D. M. White, M. Seibert, E. W. Peng, D. J. Schlegel, A. Uomoto, M. Fukugita, and J. Brinkmann (2004)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The Origin of the Mass-Metallicity Relation: Insights from 53,000 Star-forming Galaxies in the Sloan Digital Sky Survey</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ApJ</span> <span class="ltx_text ltx_bib_volume">613</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 898–913</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1086/423264" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">astro-ph/0405537</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib351">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">R. B. Tully and J. R. Fisher (1977)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Reprint of 1977A&amp;amp;A….54..661T. A new method of determining distance to galaxies.</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Astronomy and Astrophysics</span> <span class="ltx_text ltx_bib_volume">500</span>, <span class="ltx_text ltx_bib_pages"> pp. 105–117</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib360">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Vogelsberger, S. Genel, V. Springel, P. Torrey, D. Sijacki, D. Xu, G. Snyder, D. Nelson, and L. Hernquist (2014)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Introducing the Illustris Project: simulating the coevolution of dark and visible matter in the Universe</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">444</span>, <span class="ltx_text ltx_bib_pages"> pp. 1518–1547</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1405.2921</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stu1536" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib355">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Vogelsberger, F. Marinacci, P. Torrey, and E. Puchwein (2020)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Cosmological simulations of galaxy formation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Nature Reviews Physics</span> <span class="ltx_text ltx_bib_volume">2</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 42–66</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1038/s42254-019-0127-2" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">1909.07976</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib90">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. W. Wadsley, B. W. Keller, and T. R. Quinn (2017)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Gasoline2: a modern smoothed particle hydrodynamics code</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">471</span>, <span class="ltx_text ltx_bib_pages"> pp. 2357–2369</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stx1643" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p1" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib364">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">F. Walter, E. Brinks, W. J. G. de Blok, F. Bigiel, Jr. Kennicutt, M. D. Thornley, and A. Leroy (2008)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">THINGS: The H I Nearby Galaxy Survey</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">AJ</span> <span class="ltx_text ltx_bib_volume">136</span> (<span class="ltx_text ltx_bib_number">6</span>), <span class="ltx_text ltx_bib_pages"> pp. 2563–2647</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1088/0004-6256/136/6/2563" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">0810.2125</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p10" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p1" title="3 البيانات الرصدية ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib365">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">L. Wang, A. A. Dutton, G. S. Stinson, A. V. Macciò, C. Penzo, X. Kang, B. W. Keller, and J. Wadsley (2015)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">NIHAO project - I. Reproducing the inefficiency of galaxy formation across cosmic time with a large sample of cosmological hydrodynamical simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">454</span>, <span class="ltx_text ltx_bib_pages"> pp. 83–94</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">1503.04818</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/stv1937" title="">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p10" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p4" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.p1" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#S2.p2" title="2 المحاكاة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib69">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">L. Zanisi, M. Huertas-Company, F. Lanusse, C. Bottrell, A. Pillepich, D. Nelson, V. Rodriguez-Gomez, F. Shankar, L. Hernquist, A. Dekel, B. Margalef-Bentabol, M. Vogelsberger, and J. Primack (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A deep learning approach to test the small-scale galaxy morphology and its relationship with star formation activity in hydrodynamical simulations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">MNRAS</span> <span class="ltx_text ltx_bib_volume">501</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 4359–4382</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1093/mnras/staa3864" title="">Document</a>,
+<span class="ltx_text ltx_bib_external">2007.00039</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p9" title="1 مقدمة ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S5.SS1.p2" title="5.1 السمات في خرائط HI ‣ 5 النتائج ‣ استخدام الذكاء الاصطناعي وصور المجرات الحقيقية لتقييد المعلمات في محاكاة تشكل المجرات"><span class="ltx_text ltx_ref_tag">§5.1</span></a>.
+</span>
+</li>
+</ul>
+</section>
+<section class="ltx_appendix" id="A1">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix A </span>قائمة مجرات THINGS و VLA-ANGST المستخدمة في هذا العمل</h2>
+<div class="ltx_para" id="A1.p1">
+<p class="ltx_p">NGC3184, NGC3521, NGC3621, NGC404, NGC4214, HoII, IC2574, NGC5055, NGC5194, NGC5236, NGC5457, NGC628, NGC6946, NGC2403, NGC925, NGC2903.</p>
+</div>
+<figure class="ltx_table" id="A1.tab1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Name</td>
+<td class="ltx_td ltx_align_left">Included</td>
+<td class="ltx_td ltx_align_left">Name</td>
+<td class="ltx_td ltx_align_left">Included</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">AO0952+69</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3031</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">BK3N</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3077</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO125</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3109</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO154</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC3184</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO181</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3198</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO183</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3351</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO187</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC3521</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO190</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC3621</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO53</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3627</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO6</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC3741</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO82</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC404</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">DDO99</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC4163</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">GR8</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC4190</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">HoI</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC4214</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">HoII</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+<td class="ltx_td ltx_align_left">NGC4449</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">IC2574</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+<td class="ltx_td ltx_align_left">NGC4736</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">KDG73</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC4826</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">KK230</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC5055</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">KKH86</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC5194</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">KKH98</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC5236</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">M81_DwA</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC5457</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">M81_DwB</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC628</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">MCG9-20-131</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC6946</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">NGC1569</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC7331</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">NGC2366</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">NGC7793</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC2403</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC925</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">NGC247</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">SextansA</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">NGC2841</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">SextansB</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">NGC2903</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold">Yes</span></td>
+<td class="ltx_td ltx_align_left">UGC4483</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">NGC2976</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">UGC8508</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">UGCA292</td>
+<td class="ltx_td ltx_align_left">No</td>
+<td class="ltx_td ltx_align_left">UGC8833</td>
+<td class="ltx_td ltx_align_left">No</td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Mon May 11 21:10:25 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

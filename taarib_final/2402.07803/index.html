@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH</title>
+<!--Generated on Tue May 12 04:40:07 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on استُلم xxxx؛ قُبل yyyy، نُشر zzzz.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-ulem.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="" lang="ar" name="keywords"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line"><span class="ltx_note ltx_role_institutetext"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_note_type">institutetext: </span>
+Department of Physics, New York University Abu Dhabi, PO Box 129188, Abu Dhabi, UAE
+</span></span></span><span class="ltx_note ltx_role_institutetext"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_note_type">institutetext: </span>Center for Astrophysics and Space Science (CASS), New York University
+Abu Dhabi, PO Box 129188, Abu Dhabi, UAE
+</span></span></span><span class="ltx_note ltx_role_institutetext"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_note_type">institutetext: </span>Center for Space Science, NYUAD Research Institute, New York University Abu Dhabi, PO Box 129188, Abu Dhabi, UAE
+</span></span></span>
+<h1 class="ltx_title ltx_title_document">تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">S. Crespi
+<sup class="ltx_sup">,</sup>
+</span><span class="ltx_author_notes">1122
+<span class="ltx_contact ltx_role_email"><a href="mailto:sc6459@nyu.edu">sc6459@nyu.edu</a>
+</span></span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">M. Ali-Dib
+</span><span class="ltx_author_notes">22</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">I. Dobbs-Dixon
+</span><span class="ltx_author_notes">112233</span></span>
+</div>
+<div class="ltx_dates">(استُلم xxxx؛ قُبل yyyy، نُشر zzzz)</div>
+<div class="ltx_abstract">
+<p class="ltx_p">تتمثل إحدى المقاربات الشائعة لحل تصادمات الكواكب الأولية في محاكيات تكوّن الكواكب في استخدام قوانين قياس تحليلية.
+وقد طوّر <cite class="ltx_cite ltx_citemacro_cite">Leinhardt &amp; Stewart (<a class="ltx_ref" href="#bib.bib33" title="">2012</a>)</cite> أكثر هذه القوانين استعمالا انطلاقا من فهرس يضم <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="m2"><mo>∼</mo></math>180 محاكاة N-body لتصادمات أجسام من نوع أكوام الأنقاض.
+في هذا العمل، نستخدم فهرسا جديدا يضم أكثر من 20,000 محاكاة SPH لاختبار صلاحية قوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_cite">Leinhardt &amp; Stewart (<a class="ltx_ref" href="#bib.bib33" title="">2012</a>)</cite> وقدرتها التنبؤية.
+نجد أن هذه القوانين تبالغ في تقدير كفاءة التفتت في نظام الاندماج، وأنها لا تستطيع إعادة إنتاج نواتج التصادم في النظام الفائق الكارثي على نحو ملائم.
+وفي نظام الاندماج، نلاحظ أيضا اعتمادا معنويا بين ناتج التصادم، من حيث كتلة أكبر البقايا، والكتلة النسبية للكواكب الأولية المتصادمة.
+نقدم هنا مجموعة جديدة من قوانين القياس القادرة على التنبؤ بناتج التصادم بصورة أفضل في جميع الأنظمة، كما تستطيع إعادة إنتاج الاعتماد المرصود على نسبة الكتلة.
+نقارن قوانين القياس الجديدة لدينا بمقاربة قائمة على التعلم الآلي، ونحصل على كفاءة تنبؤية مماثلة.</p>
+</div>
+<div class="ltx_keywords">
+<h6 class="ltx_title ltx_title_keywords">Key Words.: </h6>
+<span class="ltx_text ltx_font_sansserif ltx_font_bold">
+قواعد البيانات الفلكية: متفرقات –
+الميكانيكا السماوية –
+الكواكب الصغيرة، الكويكبات: عام –
+الكواكب والأقمار: التكوّن –
+الكواكب والأقمار: التطور الفيزيائي –
+الكواكب والأقمار: الكواكب الأرضية
+</span>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">تُعد التصادمات الزوجية الآلية الرئيسة التي تقود نمو الكويكبات الكوكبية (أجسام صخرية بحجم <math alttext="\sim 100" class="ltx_Math" dir="ltr" display="inline" id="S1.p1.m1"><mrow><mi></mi><mo>∼</mo><mn>100</mn></mrow></math> كم) إلى كواكب أرضية، وخصوصا داخل خط جليد الماء (مثلا: <cite class="ltx_cite ltx_citemacro_citet">Wetherill <a class="ltx_ref" href="#bib.bib59" title="">1980</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Kokubo &amp; Ida <a class="ltx_ref" href="#bib.bib29" title="">1996</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Chambers <a class="ltx_ref" href="#bib.bib7" title="">2001</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Izidoro et al. <a class="ltx_ref" href="#bib.bib25" title="">2017</a></cite>).
+غير أن تضمين التصادمات في محاكيات تكوّن الكواكب الأرضية ثبت أنه تحد صعب على نحو خاص لسببين رئيسين.
+أولا، إن المقاييس الزمنية النموذجية المتضمنة في التصادمات أقصر برتب مقدار من الفترة المدارية للكويكبات الكوكبية (<cite class="ltx_cite ltx_citemacro_citet">Benz et al. <a class="ltx_ref" href="#bib.bib3" title="">2007</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Kegerreis et al. <a class="ltx_ref" href="#bib.bib27" title="">2020</a></cite>).
+ثانيا، من الصعب حاسوبيا حلّ تطور كل المادة المقذوفة أثناء التصادم وتكامله بالكامل، إذ تمتد من مادة غازية، مثل الغلاف الجوي والصخر والماء المتبخرين، إلى شظايا صلبة بحجم كويكبات كبيرة (<cite class="ltx_cite ltx_citemacro_citet">Leinhardt &amp; Stewart <a class="ltx_ref" href="#bib.bib33" title="">2012</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Kegerreis et al. <a class="ltx_ref" href="#bib.bib27" title="">2020</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Crespi et al. <a class="ltx_ref" href="#bib.bib14" title="">2021</a></cite>).</p>
+</div>
+<figure class="ltx_table" id="S1.T1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r">Reference</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r">SPH algorithm</th>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="N_{\mathrm{sim}}" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m1"><msub><mi>N</mi><mi>sim</mi></msub></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="M_{\mathrm{t}}/\mathrm{M}_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m2"><mrow><msub><mi>M</mi><mi mathvariant="normal">t</mi></msub><mo>/</mo><msub><mi mathvariant="normal">M</mi><mo>⊕</mo></msub></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="M_{\mathrm{p}}/M_{\mathrm{t}}" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m3"><mrow><msub><mi>M</mi><mi mathvariant="normal">p</mi></msub><mo>/</mo><msub><mi>M</mi><mi mathvariant="normal">t</mi></msub></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">composition</td>
+<td class="ltx_td ltx_align_center">EoS</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_tt"><cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_tt"><span class="ltx_text ltx_font_typewriter">GADGET<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">†</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">122</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">
+<math alttext="3.27" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m5"><mn>3.27</mn></math>, <math alttext="6.26" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m6"><mn>6.26</mn></math>, <math alttext="10.5" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m7"><mn>10.5</mn></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><math alttext="0.04-0.92" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m8"><mrow><mn>0.04</mn><mo>−</mo><mn>0.92</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">Fe, silicate and H (gas)</td>
+<td class="ltx_td ltx_align_center ltx_border_tt">MANEOS</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Gabriel et al. (<a class="ltx_ref" href="#bib.bib20" title="">2020</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">SPHLATCH<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">⋆</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r">1401</td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="6\cdot 10^{-3}-0.9" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m10"><mrow><mrow><mn>6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><mo>−</mo><mn>0.9</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="0.1-0.7" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m11"><mrow><mn>0.1</mn><mo>−</mo><mn>0.7</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">Fe, quartz and H<sub class="ltx_sub">2</sub>0</td>
+<td class="ltx_td ltx_align_center">not specified</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">Gasoline<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">∙</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r">10662</td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="0.05-1.8" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m14"><mrow><mn>0.05</mn><mo>−</mo><mn>1.8</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="0.1-1" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m15"><mrow><mn>0.1</mn><mo>−</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">Fe and granite</td>
+<td class="ltx_td ltx_align_center">Tillotson</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">miluphcuda<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">∗</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r">9980</td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="6\cdot 10^{-4}-1.8" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m17"><mrow><mrow><mn>6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow><mo>−</mo><mn>1.8</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="7\cdot 10^{-5}-1" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m18"><mrow><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow><mo>−</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">Fe, silicate and H<sub class="ltx_sub">2</sub>0</td>
+<td class="ltx_td ltx_align_center">Tillotson</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Crespi et al. (<a class="ltx_ref" href="#bib.bib14" title="">2021</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">miluphcuda<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">∗</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r">858</td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="1.6\cdot 10^{-4}-1.8" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m21"><mrow><mrow><mn>1.6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow><mo>−</mo><mn>1.8</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">0.1, 0.5, 1</td>
+<td class="ltx_td ltx_align_center ltx_border_r">80-90% basalt, 10-20% H<sub class="ltx_sub">2</sub>0</td>
+<td class="ltx_td ltx_align_center">Tillotson</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">miluphcuda<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">∗</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r">10164</td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="2.6\cdot 10^{-4}-1.9" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m24"><mrow><mrow><mn>2.6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow><mo>−</mo><mn>1.9</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="0.05-1" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m25"><mrow><mn>0.05</mn><mo>−</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">Fe, silicate and H<sub class="ltx_sub">2</sub>0</td>
+<td class="ltx_td ltx_align_center">Tillotson</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t"><cite class="ltx_cite ltx_citemacro_cite">Benz et al. (<a class="ltx_ref" href="#bib.bib3" title="">2007</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t">generic SPH<sup class="ltx_sup">‡</sup>
+</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">17</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.1375</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1/10, 1/6, 1/5</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">33% Fe, 66% dunite</td>
+<td class="ltx_td ltx_align_center ltx_border_t">ANEOS</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Marcus et al. (<a class="ltx_ref" href="#bib.bib35" title="">2009</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">GADGET<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">†</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="\sim 60" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m29"><mrow><mi></mi><mo>∼</mo><mn>60</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">1, 5, 10</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1/4, 1/2, 3/4</td>
+<td class="ltx_td ltx_align_center ltx_border_r">33% Fe, 66% fosterite</td>
+<td class="ltx_td ltx_align_center">MANEOS</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r"><cite class="ltx_cite ltx_citemacro_cite">Marcus et al. (<a class="ltx_ref" href="#bib.bib34" title="">2010</a>)</cite></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><span class="ltx_text ltx_font_typewriter">GADGET<sup class="ltx_sup"><span class="ltx_text ltx_font_serif">†</span></sup></span></th>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="\sim 100" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m31"><mrow><mi></mi><mo>∼</mo><mn>100</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r">0.5-5</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1/4, 1/2, 1</td>
+<td class="ltx_td ltx_align_center ltx_border_r">50% serpentine, 50% H<sub class="ltx_sub">2</sub>0</td>
+<td class="ltx_td ltx_align_center">MANEOS</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 1: </span>تُدرج الفهارس الثلاثة المستخدمة في هذه الدراسة في الجزء العلوي من الجدول، في حين تُدرج الفهارس المستخدمة في <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> للأجسام التي تهيمن عليها الجاذبية في الجزء السفلي. تبين الأعمدة (من اليسار إلى اليمين) الورقة المرجعية التي عُرضت فيها مجموعة البيانات، وخوارزمية SPH المستخدمة لإجراء المحاكيات، والعدد الكلي للمحاكيات (<math alttext="N_{\mathrm{sim}}" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m41"><msub><mi>N</mi><mi>sim</mi></msub></math>)، والكتل المعاينة للجسم الهدف بوحدة كتلة الأرض (<math alttext="M_{t}/\mathrm{M}_{\oplus}" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m42"><mrow><msub><mi>M</mi><mi>t</mi></msub><mo>/</mo><msub><mi mathvariant="normal">M</mi><mo>⊕</mo></msub></mrow></math>)، وكتلة المقذوفة مقيسة بكتلة الهدف (<math alttext="M_{\mathrm{p}}/M_{\mathrm{t}}" class="ltx_Math" dir="ltr" display="inline" id="S1.T1.m43"><mrow><msub><mi>M</mi><mi mathvariant="normal">p</mi></msub><mo>/</mo><msub><mi>M</mi><mi mathvariant="normal">t</mi></msub></mrow></math>)، وتركيب الأجسام المتصادمة، ومعادلة الحالة (EoS) المستخدمة في المحاكيات. وعلى وجه الخصوص، تُستخدم في عمود EoS التسميات الآتية: <span class="ltx_text ltx_font_italic">Tillotson</span> للمعادلات غير الخطية للحالة التي صاغها <cite class="ltx_cite ltx_citemacro_cite">Tillotson (<a class="ltx_ref" href="#bib.bib55" title="">1962</a>)</cite>، و<span class="ltx_text ltx_font_italic">ANEOS</span> لمجموعة معادلات الحالة التحليلية التي طورها <cite class="ltx_cite ltx_citemacro_cite">Thompson &amp; Lauson (<a class="ltx_ref" href="#bib.bib54" title="">1972</a>)</cite>، و<span class="ltx_text ltx_font_italic">MANEOS</span> لمجموعة معادلات الحالة التحليلية التي تأخذ أيضا في الحسبان التأثيرات الطاقية لتكوّن العناقيد الجزيئية، كما طورها <cite class="ltx_cite ltx_citemacro_cite">Melosh (<a class="ltx_ref" href="#bib.bib36" title="">2007</a>)</cite> استنادا إلى عمل <cite class="ltx_cite ltx_citemacro_cite">Thompson &amp; Lauson (<a class="ltx_ref" href="#bib.bib54" title="">1972</a>)</cite>. <sup class="ltx_sup">†</sup><cite class="ltx_cite ltx_citemacro_cite">Springel (<a class="ltx_ref" href="#bib.bib51" title="">2005</a>)</cite>. <sup class="ltx_sup">⋆</sup><cite class="ltx_cite ltx_citemacro_cite">Reufer (<a class="ltx_ref" href="#bib.bib48" title="">2011</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Emsenhuber et al. (<a class="ltx_ref" href="#bib.bib17" title="">2018</a>)</cite>.
+<sup class="ltx_sup">∙</sup><cite class="ltx_cite ltx_citemacro_cite">Wadsley et al. (<a class="ltx_ref" href="#bib.bib57" title="">2004</a>)</cite>، <cite class="ltx_cite ltx_citemacro_cite">Chau et al. (<a class="ltx_ref" href="#bib.bib10" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Reinhardt et al. (<a class="ltx_ref" href="#bib.bib47" title="">2020</a>)</cite>. <sup class="ltx_sup">‡</sup><cite class="ltx_cite ltx_citemacro_cite">Monaghan (<a class="ltx_ref" href="#bib.bib37" title="">1992</a>)</cite>.
+<sup class="ltx_sup">∗</sup><cite class="ltx_cite ltx_citemacro_cite">Schäfer et al. (<a class="ltx_ref" href="#bib.bib49" title="">2016</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Schäfer et al. (<a class="ltx_ref" href="#bib.bib50" title="">2020</a>)</cite>.</figcaption>
+</figure>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">يمكن تجاوز التحدي الأول باستخدام مكاملات سيمبلكتية وهجينة سيمبلكتية مثل <span class="ltx_text ltx_font_typewriter">SyMBA</span> <cite class="ltx_cite ltx_citemacro_citep">(Duncan et al., <a class="ltx_ref" href="#bib.bib16" title="">1998</a>)</cite> و<span class="ltx_text ltx_font_typewriter">MERCURY</span> <cite class="ltx_cite ltx_citemacro_citep">(Chambers, <a class="ltx_ref" href="#bib.bib6" title="">1999</a>)</cite>، وهي قادرة على تكامل الاقترابات القريبة والتصادمات من دون التأثير معنويا في دقة التكامل.
+أما التحدي الثاني فما يزال موضوعا بحثيا مفتوحا.
+وقد اختُبرت مقاربات متعددة خلال العقدين الماضيين.
+أبسط هذه المقاربات هو اعتبار أن جميع التصادمات تؤدي إلى اندماج غير مرن بين الجسمين المتصادمين.
+وقد تمكن هذا التقريب من إعادة إنتاج الخصائص الأساسية للنظام الشمسي بكفاءة، مبينا أهمية الدور الذي تؤديه التصادمات بين الكواكب الأولية في تطور الأنظمة الكوكبية (<cite class="ltx_cite ltx_citemacro_citet">Wetherill <a class="ltx_ref" href="#bib.bib60" title="">1994</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Chambers &amp; Wetherill <a class="ltx_ref" href="#bib.bib9" title="">1998</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Quintana et al. <a class="ltx_ref" href="#bib.bib44" title="">2002</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Raymond et al. <a class="ltx_ref" href="#bib.bib45" title="">2004</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">O’Brien et al. <a class="ltx_ref" href="#bib.bib40" title="">2006</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Raymond et al. <a class="ltx_ref" href="#bib.bib46" title="">2006</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Quintana et al. <a class="ltx_ref" href="#bib.bib43" title="">2016</a></cite>).
+إلا أن دراسات حديثة أظهرت أنه عندما يُفترض أن التصادمات غير مرنة، فإن زمن تكوّن الكواكب الأرضية ينخفض بدرجة ملحوظة، ويُبالغ في تقدير كل من الكتلة ومحتوى الماء في الجماعة النهائية من الكواكب (<cite class="ltx_cite ltx_citemacro_citet">Chambers <a class="ltx_ref" href="#bib.bib8" title="">2013</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Leinhardt et al. <a class="ltx_ref" href="#bib.bib30" title="">2015</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Burger et al. <a class="ltx_ref" href="#bib.bib5" title="">2018</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Burger et al. <a class="ltx_ref" href="#bib.bib4" title="">2020</a></cite>).
+ومن جهة أخرى، ما يزال أثر التفتت في تطور الكواكب الأرضية موضوع نقاش، ولا سيما عند دراسة تكوّن الكواكب القريبة في الجماعة المرصودة (مثلا <cite class="ltx_cite ltx_citemacro_citet">Mustill et al. <a class="ltx_ref" href="#bib.bib38" title="">2018</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Poon et al. <a class="ltx_ref" href="#bib.bib42" title="">2020</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Esteves et al. <a class="ltx_ref" href="#bib.bib18" title="">2022</a></cite>).</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">تتمثل مقاربة أكثر تقدما في السماح بالتفتت أثناء التصادمات وتقدير خصائص الأجسام الرئيسة بعد التصادم بالرجوع إلى قوانين القياس (مثلا <cite class="ltx_cite ltx_citemacro_citet">Chambers <a class="ltx_ref" href="#bib.bib8" title="">2013</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Quintana et al. <a class="ltx_ref" href="#bib.bib43" title="">2016</a></cite>,
+<cite class="ltx_cite ltx_citemacro_citet">Wallace et al. <a class="ltx_ref" href="#bib.bib58" title="">2017</a></cite>,
+<cite class="ltx_cite ltx_citemacro_citet">Mustill et al. <a class="ltx_ref" href="#bib.bib38" title="">2018</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Clement et al. <a class="ltx_ref" href="#bib.bib11" title="">2019a</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Clement et al. <a class="ltx_ref" href="#bib.bib13" title="">2019b</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Poon et al. <a class="ltx_ref" href="#bib.bib42" title="">2020</a></cite>,
+<cite class="ltx_cite ltx_citemacro_citet">Ishigaki et al. <a class="ltx_ref" href="#bib.bib24" title="">2021</a></cite>,
+<cite class="ltx_cite ltx_citemacro_citet">Clement et al. <a class="ltx_ref" href="#bib.bib12" title="">2022</a></cite>)
+.
+وباستخدام محاكيات N-body مباشرة لتصادمات بين كواكب أولية متمايزة من نوع أكوام الأنقاض <cite class="ltx_cite ltx_citemacro_citep">(Leinhardt et al., <a class="ltx_ref" href="#bib.bib32" title="">2000</a>)</cite>، اشتق <cite class="ltx_cite ltx_citemacro_cite">Kokubo &amp; Genda (<a class="ltx_ref" href="#bib.bib28" title="">2010</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Leinhardt &amp; Stewart (<a class="ltx_ref" href="#bib.bib33" title="">2012</a>)</cite> صِيغا تجريبية يمكن من خلالها تقدير كتلة البقايا التصادمية الرئيسة.
+وعلى وجه الخصوص، تتيح قوانين القياس الواسعة الاستخدام من العمل الرائد لـ <cite class="ltx_cite ltx_citemacro_cite">Leinhardt &amp; Stewart (<a class="ltx_ref" href="#bib.bib33" title="">2012</a>)</cite>، المشار إليه فيما يلي بـ LS12، تقدير كتلة أكبر وثاني أكبر بقايا مباشرة انطلاقا من خواص التصادم.
+غير أن مجموعة البيانات المستخدمة لاشتقاق قوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، التي تضم نحو 180 محاكاة، اقتصرت على ما مجموعه 23 نقاط بيانات في مدى الكتلة <math alttext="10^{-3}-10" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m1"><mrow><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>−</mo><mn>10</mn></mrow></math> M<sub class="ltx_sub">⊕</sub>، منها 3 نقاط بيانات فقط في النظام الفائق الكارثي.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">خلال السنوات القليلة الماضية، أُنجزت فهارس واسعة من محاكيات الهيدروديناميكا الجسيمية الملساء<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+            
+            
+          لمزيد من التفاصيل حول محاكيات الهيدروديناميكا الجسيمية الملساء (SPH)، نحيل القارئ إلى أعمال <cite class="ltx_cite ltx_citemacro_cite">Benz (<a class="ltx_ref" href="#bib.bib2" title="">1990</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Monaghan (<a class="ltx_ref" href="#bib.bib37" title="">1992</a>)</cite>.</span></span></span> (SPH) للتصادمات، وأصبحت متاحة الآن.
+وعلى وجه الخصوص، أجرى <cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite> سلسلة من 48 محاكاة لاستكشاف تكوّن الكواكب الأرضية، مع تضمين محاكيات SPH أثناء التنفيذ لنمذجة التصادمات. وأسفر هذا الجهد عن مجموعة تضم 9,980 محاكاة لتصادمات بين كواكب أولية. وبالإضافة إلى ذلك، زاد <cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite> فهرسهم السابق المؤلف من 858 محاكاة SPH (المعروض في <cite class="ltx_cite ltx_citemacro_citet">Crespi et al. <a class="ltx_ref" href="#bib.bib14" title="">2021</a></cite>) بأكثر من عشرة أضعاف، وذلك بإجراء 10,164 محاكاة جديدة أخذت أيضا في الحسبان الزخم الدوراني للأجسام المتصادمة.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">في هذا العمل، نستخدم هذه الفهارس الجديدة من محاكيات SPH لاختبار قوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> وتحسينها. ونقترح صيغة جديدة من نموذجهم تكون أكثر دقة في التنبؤ بكتلة أكبر بقايا بعد التصادم.
+وعلاوة على ذلك، نتحقق من صلاحية هذه المجموعة الجديدة من قوانين القياس بمقارنة كفاءتها التنبؤية بمقاربة قائمة على التعلم الآلي.
+في القسم 2، نعرض (i) معاملات أفضل ملاءمة جديدة لقوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، و(ii) مجموعة جديدة من قوانين القياس، و(iii) نموذج التعلم الآلي المستخدم لاختبار قانون القياس الجديد والتحقق منه.
+ويُخصص القسم الأخير لمناقشة نتائجنا والاستنتاجات الرئيسة.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>ملاءمات محسّنة لمجموعة بيانات SPH الجديدة</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">تمتد مجموعة البيانات الأصلية التي استخدمها <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> لاشتقاق قانون القياس لديهم من أجسام بحجم كيلومترات إلى أجسام بكتلة 10 من كتلة الأرض.
+وبفضل هذا المدى الواسع من الكتل، تمكن المؤلفون من رصد انتقال بين تصادمات تشمل أجساما صغيرة ضعيفة وتصادمات بين أجسام أكبر تهيمن عليها الجاذبية، مع نقطة انتقال قرب <math alttext="\sim 10^{-2}" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m1"><mrow><mi></mi><mo>∼</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math> M<sub class="ltx_sub">⊕</sub>.
+ومع أن قوانين القياس هي نفسها في النظامين، فإن المعاملات التي تحكم قانون القياس تختلف.
+هنا، قررنا التركيز على التصادمات بين الأجسام التي تهيمن عليها الجاذبية فقط، لأن مجموعة البيانات الجديدة من محاكيات SPH المستخدمة في هذه الدراسة تتضمن أساسا أجساما تهيمن عليها الجاذبية.
+نحيل القارئ إلى أعمال <cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Crespi et al. (<a class="ltx_ref" href="#bib.bib14" title="">2021</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite> لمزيد من التفاصيل عن الفهارس الثلاثة لمحاكيات SPH.
+ويُعرض ملخص لهذه الفهارس، إلى جانب مجموعات البيانات التي استخدمها <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، في الجدول <a class="ltx_ref" href="#S1.T1" title="Table 1 ‣ 1 مقدمة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a> تيسيرا للرجوع.</p>
+</div>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>ملاءمات تحليلية</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">استنادا إلى النموذج المعتمد في <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، يمكن التعبير عن كتلة أكبر بقايا بعد التصادم (<math alttext="M_{\mathrm{lr}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m1"><msub><mi>M</mi><mi>lr</mi></msub></math>)، مقيسة بالكتلة الكلية الداخلة في التصادم (<math alttext="M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m2"><msub><mi>M</mi><mi>tot</mi></msub></math>)، بوصفها دالة في طاقة الاصطدام النسبية (<math alttext="Q_{\mathrm{R}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m3"><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></math>) مقيسة بمعيار الاضطراب الكارثي (<math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m4"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>).
+ويمكن كتابة هذه العلاقة على النحو الآتي:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\frac{M_{\mathrm{lr}}}{M_{\mathrm{tot}}}=\left\{\begin{array}[]{ll}1-0.5\frac{%
+Q_{\mathrm{R}}}{Q_{\mathrm{RD}}^{\star}}&amp;\text{ for }\frac{Q_{\mathrm{R}}}{Q_{%
+\mathrm{RD}}^{\star}}&lt;1.8\\
+\frac{0.1}{1.8^{\eta}}\left(\frac{Q_{\mathrm{R}}}{Q_{\mathrm{RD}}^{\star}}%
+\right)^{\eta}&amp;\text{ for }\frac{Q_{\mathrm{R}}}{Q_{\mathrm{RD}}^{\star}}&gt;1.8%
+\end{array}\right." class="ltx_Math" dir="ltr" display="block" id="S2.E1.m1"><mrow><mfrac><msub><mi>M</mi><mi>lr</mi></msub><msub><mi>M</mi><mi>tot</mi></msub></mfrac><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mn>1</mn><mo>−</mo><mrow><mn>0.5</mn><mo>⁢</mo><mstyle displaystyle="false"><mfrac><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mfrac></mstyle></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext> for </mtext><mo>⁢</mo><mstyle displaystyle="false"><mfrac><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mfrac></mstyle></mrow><mo>&lt;</mo><mn>1.8</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mstyle displaystyle="false"><mfrac><mn>0.1</mn><msup><mn>1.8</mn><mi>η</mi></msup></mfrac></mstyle><mo>⁢</mo><msup><mrow><mo>(</mo><mstyle displaystyle="false"><mfrac><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mfrac></mstyle><mo>)</mo></mrow><mi>η</mi></msup></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext> for </mtext><mo>⁢</mo><mstyle displaystyle="false"><mfrac><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mfrac></mstyle></mrow><mo>&gt;</mo><mn>1.8</mn></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">في الفرع الأول، الذي غالبا ما يشار إليه بالقانون الكوني، يفترض <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> وجود علاقة خطية بين طاقة الاصطدام وكتلة أكبر البقايا، مع تعريف معيار الاضطراب الكارثي (<math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m1"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>) بأنه الطاقة التي يتشتت عندها نصف الكتلة الكلية.
+ويمثل افتراض الخطية، المعروض أيضا في أعمال سابقة (<cite class="ltx_cite ltx_citemacro_citet">Stewart &amp; Leinhardt <a class="ltx_ref" href="#bib.bib52" title="">2009</a></cite> و<cite class="ltx_cite ltx_citemacro_citet">Leinhardt et al. <a class="ltx_ref" href="#bib.bib31" title="">2009</a></cite>)، نموذجا جيدا للتصادمات ذات الطاقة القريبة من معيار الاضطراب الكارثي. غير أن هذا الافتراض يفشل فعليا في تمثيل التصادمات ذات طاقة الاصطدام المنخفضة (<math alttext="Q_{\mathrm{R}}/Q^{\star}_{\mathrm{RD}}\lesssim 0.1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m2"><mrow><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow><mo>≲</mo><mn>0.1</mn></mrow></math>) وكذلك التصادمات ذات طاقة الاصطدام العالية (<math alttext="Q_{\mathrm{R}}/Q^{\star}_{\mathrm{RD}}\gtrsim 1.8" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m3"><mrow><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow><mo>≳</mo><mn>1.8</mn></mrow></math>) تمثيلا ملائما، كما هو مبين في <cite class="ltx_cite ltx_citemacro_cite">Housen &amp; Holsapple (<a class="ltx_ref" href="#bib.bib23" title="">1999</a>)</cite>.
+ولمعالجة هذه المسألة، أضاف <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> الفرع الثاني، المشار إليه بالنظام الفائق الكارثي، الذي ينمذج بصورة أفضل الخطية في فضاء log-log التي رصدها مؤلفون متعددون ولُخصت في <cite class="ltx_cite ltx_citemacro_cite">Holsapple et al. (<a class="ltx_ref" href="#bib.bib21" title="">2002</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p3">
+<p class="ltx_p">أما نموذج معيار الاضطراب الكارثي (<math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m1"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>) في نظام الجاذبية، فقد اشتقه <cite class="ltx_cite ltx_citemacro_cite">Housen &amp; Holsapple (<a class="ltx_ref" href="#bib.bib22" title="">1990</a>)</cite> باستخدام نظرية قياس <math alttext="\pi" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m2"><mi>π</mi></math>، وأعاد <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> ترتيبه كما يأتي:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="Q_{\mathrm{RD}}^{\star}=c^{*}\frac{4}{5}\pi\rho_{1}GR^{2}_{\mathrm{C1}}\left[%
+\frac{1}{4}\frac{(1+\gamma)^{2}}{\gamma}\right]^{-1+\left[2/(3\bar{\mu})\right%
+]}\,," class="ltx_Math" dir="ltr" display="block" id="S2.E2.m1"><mrow><mrow><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup><mo>=</mo><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mfrac><mn>4</mn><mn>5</mn></mfrac><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msub><mi>ρ</mi><mn>1</mn></msub><mo>⁢</mo><mi>G</mi><mo>⁢</mo><msubsup><mi>R</mi><mi>C1</mi><mn>2</mn></msubsup><mo>⁢</mo><msup><mrow><mo>[</mo><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>⁢</mo><mfrac><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>γ</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mi>γ</mi></mfrac></mrow><mo>]</mo></mrow><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>+</mo><mrow><mo>[</mo><mrow><mn>2</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>⁢</mo><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></msup></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m3"><msup><mi>c</mi><mo>∗</mo></msup></math> ثابت قياس يكافئ الإزاحة بالنسبة إلى طاقة الربط الجذبي، و<math alttext="G" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m4"><mi>G</mi></math> ثابت الجاذبية، و<math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m5"><msub><mi>R</mi><mi>C1</mi></msub></math> نصف القطر الموافق لجسم كروي كتلته <math alttext="M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m6"><msub><mi>M</mi><mi>tot</mi></msub></math> وكثافته <math alttext="\rho_{1}=1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m7"><mrow><msub><mi>ρ</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow></math> g/cm<sup class="ltx_sup">3</sup>، و<math alttext="\gamma=M_{\mathrm{p}}/M_{\mathrm{t}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m9"><mrow><mi>γ</mi><mo>=</mo><mrow><msub><mi>M</mi><mi mathvariant="normal">p</mi></msub><mo>/</mo><msub><mi>M</mi><mi mathvariant="normal">t</mi></msub></mrow></mrow></math> النسبة بين كتلتي المقذوفة والهدف، و<math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m10"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> ثابت مادي عديم الأبعاد يرتبط باقتران الطاقة والزخم بين المقذوفة والهدف.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p4">
+<p class="ltx_p">لا يعمل هذا النموذج إلا للتصادمات المباشرة.
+وعندما تتجاوز زاوية التصادم (<math alttext="\theta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m1"><mi>θ</mi></math>) القيمة الحدية <math alttext="\sin\theta_{\mathrm{crit}}=(R_{\mathrm{t}}-R_{\mathrm{p}})/(R_{\mathrm{t}}+R_{%
+\mathrm{p}})" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m2"><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><msub><mi>θ</mi><mi>crit</mi></msub></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>R</mi><mi mathvariant="normal">t</mi></msub><mo>−</mo><msub><mi>R</mi><mi mathvariant="normal">p</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>R</mi><mi mathvariant="normal">t</mi></msub><mo>+</mo><msub><mi>R</mi><mi mathvariant="normal">p</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>، حيث يمثل <math alttext="R_{\mathrm{t}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m3"><msub><mi>R</mi><mi mathvariant="normal">t</mi></msub></math> و<math alttext="R_{\mathrm{p}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m4"><msub><mi>R</mi><mi mathvariant="normal">p</mi></msub></math> نصفي قطر الهدف والمقذوفة على التوالي، لا تتفاعل كتلة المقذوفة كلها مع الهدف أثناء التصادم.
+ومع ذلك، يمكن تطبيق نموذج <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> على الاصطدامات المائلة باعتبار التصادم المكافئ الذي تُستخدم فيه فقط الكتلة المتفاعلة من المقذوفة.
+ونظرا إلى اتساع مجموعة البيانات الجديدة، قررنا النظر في التصادمات المباشرة فقط، أي جميع التصادمات التي تحقق <math alttext="\theta&lt;\theta_{\mathrm{crit}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p4.m5"><mrow><mi>θ</mi><mo>&lt;</mo><msub><mi>θ</mi><mi>crit</mi></msub></mrow></math>.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS1.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.1.1 </span>قانون القياس LS12 - الملاءمات الأصلية</h4>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="282" id="S2.F1.g1" src="figures/definitive_plot_CB.png" width="658"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>الكتلة المقيسة لأكبر البقايا (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m7"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math>) بالنسبة إلى طاقة الاصطدام المقيسة بمعيار الاضطراب الكارثي (<math alttext="Q_{\mathrm{R}}/Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m8"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow></math>). تُمثل مجموعات البيانات الست المستخدمة في هذه الدراسة برموز مختلفة: مربع لبيانات <cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite>، ومثلث مقلوب لبيانات <cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite>، ورمز زائد لبيانات <cite class="ltx_cite ltx_citemacro_cite">Gabriel et al. (<a class="ltx_ref" href="#bib.bib20" title="">2020</a>)</cite>، ورمز نجمة لـ <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite>، ودوائر لبيانات <cite class="ltx_cite ltx_citemacro_cite">Crespi et al. (<a class="ltx_ref" href="#bib.bib14" title="">2021</a>)</cite>، ومثلثات لبيانات <cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite>. تشير الألوان إلى نسبة الكتلة <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m9"><mi>γ</mi></math>. يقابل الخط الأسود القانون الكوني (المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>)، وتمثل المنطقة الرمادية التشتت <math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m10"><mi>δ</mi></math>. ويمثل مدى الميل الممكن <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m11"><mi>η</mi></math> من <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> بخطوط متقطعة في النظام الفائق الكارثي. وتُعرض المناطق الأكثر ازدحاما بتكبير في اللوحتين A (نظام الاندماج) وB (النظام الفائق الكارثي). أما المنطقة الواقعة فوق الخط الأحمر المنقط عند <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}=0.95" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m12"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>=</mo><mn>0.95</mn></mrow></math> فلا تُدرج في تحليل MCMC.
+</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS1.SSS1.p1">
+<p class="ltx_p">تتيح المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>، بالاقتران مع المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>، تقدير كتلة أكبر بقايا بعد التصادم، عند معرفة طاقة الاصطدام (<math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p1.m1"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>) ونصف القطر المركب (<math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p1.m2"><msub><mi>R</mi><mi>C1</mi></msub></math>).
+ويتضمن النموذج ثلاثة معاملات حرة: ثابت القياس <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p1.m3"><msup><mi>c</mi><mo>∗</mo></msup></math>، والثابت المادي <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p1.m4"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>، والميل <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p1.m5"><mi>η</mi></math> للنظام الفائق الكارثي.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS1.p2">
+<p class="ltx_p">في المقاربة الأصلية التي استخدمها <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، أجروا ثلاث ملاءمات. أولا، وباستخدام بيانات من أعمال <cite class="ltx_cite ltx_citemacro_cite">Benz et al. (<a class="ltx_ref" href="#bib.bib3" title="">2007</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Marcus et al. (<a class="ltx_ref" href="#bib.bib35" title="">2009</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Marcus et al. (<a class="ltx_ref" href="#bib.bib34" title="">2010</a>)</cite>، قدّروا معيار الاضطراب الكارثي <math alttext="Q_{\mathrm{RD}}^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m1"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> للتصادمات المباشرة من خلال استيفاء خطي لمحاكيات ذات معاملات تصادم متشابهة.
+ثم لائموا المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a> مع التوزيع الناتج لـ <math alttext="Q_{\mathrm{RD}}^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m2"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> بوصفه دالة في <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m3"><msub><mi>R</mi><mi>C1</mi></msub></math>، فحصلوا على القيمتين <math alttext="c^{*}=1.9\pm 0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m4"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mrow><mn>1.9</mn><mo>±</mo><mn>0.3</mn></mrow></mrow></math> و<math alttext="\bar{\mu}=0.36\pm 0.01" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m5"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mrow><mn>0.36</mn><mo>±</mo><mn>0.01</mn></mrow></mrow></math> لمعاملات النموذج.
+وأخيرا، قدّروا الميل <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m6"><mi>η</mi></math> من نقاط البيانات في النظام الفائق الكارثي (الفرع الثاني من المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>).
+غير أنه، بسبب العدد المحدود من نقاط البيانات في هذا النظام، لم يكن المعامل <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m7"><mi>η</mi></math> مضبوطا جيدا. ونتيجة لذلك، أوصى <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> باستخدام القيمة <math alttext="\eta=-1.5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS1.p2.m8"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><mn>1.5</mn></mrow></mrow></math> استنادا إلى دراسات مخبرية (<cite class="ltx_cite ltx_citemacro_citet">Kato et al. <a class="ltx_ref" href="#bib.bib26" title="">1995</a></cite> و<cite class="ltx_cite ltx_citemacro_citet">Fujiwara et al. <a class="ltx_ref" href="#bib.bib19" title="">1977</a></cite>).</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS1.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.1.2 </span>قانون القياس LS12 - ملاءمة جديدة</h4>
+<div class="ltx_para" id="S2.SS1.SSS2.p1">
+<p class="ltx_p">على خلاف الإجراء الذي طبقه <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، والمتمثل في تقدير <math alttext="c^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m1"><msup><mi>c</mi><mo>⋆</mo></msup></math> و<math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m2"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> أولا من الاستيفاء الخطي لـ <math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m3"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>، ثم تقييم معامل النموذج المتبقي <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m4"><mi>η</mi></math> عند معرفة <math alttext="Q_{\mathrm{R}}/Q_{\mathrm{RD}}^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m5"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup></mrow></math> و<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m6"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math>، قررنا استخدام بيانات المحاكاة كلها (<math alttext="Q_{\mathrm{R}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m7"><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></math>، <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m8"><msub><mi>R</mi><mi>C1</mi></msub></math>، <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m9"><mi>γ</mi></math>، <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m10"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math>) لتقدير جميع معاملات النموذج مباشرة (<math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m11"><msup><mi>c</mi><mo>∗</mo></msup></math>، <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m12"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>، <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m13"><mi>η</mi></math>) دفعة واحدة.
+وعلاوة على ذلك، أدخلنا معاملا جديدا <math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m14"><mi>δ</mi></math> يتيح تقدير تشتت البيانات.
+وعلى وجه الخصوص، يُفترض أن يرتبط التشتت بالقيمة <math alttext="Q/Q_{\mathrm{RD}}^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m15"><mrow><mi>Q</mi><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow></math> وأن يُنمذج، في فضاء اللوغاريتم، بتوزيع طبيعي ذي انحراف معياري ثابت (<math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m16"><mi>δ</mi></math>).
+وبعبارة أخرى، تُعطى القيمة المقاسة لـ <math alttext="Q_{\mathrm{R}}/Q_{\mathrm{RD}}^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m17"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow></math> بالعلاقة</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\log\left[\frac{Q_{\mathrm{R}}}{Q_{\mathrm{RD}}^{\star}}\right]_{\mathrm{data}%
+}=\log\left[\frac{Q_{\mathrm{R}}}{Q_{\mathrm{RD}}^{\star}}\right]_{\mathrm{%
+model}}+\mathcal{N}(\mu=0;\,\delta)\," class="ltx_math_unparsed" dir="ltr" display="block" id="S2.E3.m1"><mrow><mi>log</mi><msub><mrow><mo>[</mo><mfrac><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mfrac><mo>]</mo></mrow><mi>data</mi></msub><mo>=</mo><mi>log</mi><msub><mrow><mo>[</mo><mfrac><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mfrac><mo>]</mo></mrow><mi>model</mi></msub><mo>+</mo><mi class="ltx_font_mathcaligraphic">𝒩</mi><mrow><mo stretchy="false">(</mo><mi>μ</mi><mo>=</mo><mn>0</mn><mo rspace="0.337em">;</mo><mi>δ</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="\mathcal{N}(\mu;\,\delta)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m18"><mrow><mi class="ltx_font_mathcaligraphic">𝒩</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>μ</mi><mo rspace="0.337em">;</mo><mi>δ</mi><mo stretchy="false">)</mo></mrow></mrow></math> هو التوزيع الطبيعي المتمركز عند <math alttext="\mu" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m19"><mi>μ</mi></math> بانحراف معياري <math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p1.m20"><mi>δ</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p2">
+<p class="ltx_p">أجرينا تحليل MCMC بهدف الحصول على الاحتمالات البعدية لمعاملات النموذج الثلاثة إضافة إلى <math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p2.m1"><mi>δ</mi></math> بوصفه معاملا حرا إضافيا.
+وبالنظر إلى نموذج التشتت، افترضنا أن دالة الاحتمال (<math alttext="\mathcal{L}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p2.m2"><mi class="ltx_font_mathcaligraphic">ℒ</mi></math>) تُعرّف كما يأتي:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\log\mathcal{L}=-\frac{N}{2}\log(2\pi\delta^{2})+\sum_{i}\left[\frac{\log\left%
+(\frac{\left[Q_{\mathrm{R}}/Q_{\mathrm{RD}}^{\star}\right]_{i}}{\left[Q_{%
+\mathrm{R}}/Q_{\mathrm{RD}}^{\star}\right]_{\mathrm{model}}}\right)}{\delta}%
+\right]^{2}\,," class="ltx_Math" dir="ltr" display="block" id="S2.E4.m1"><mrow><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi class="ltx_font_mathcaligraphic">ℒ</mi></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mrow><mfrac><mi>N</mi><mn>2</mn></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>log</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><msup><mi>δ</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mi>i</mi></munder><msup><mrow><mo>[</mo><mfrac><mrow><mi>log</mi><mo>⁡</mo><mrow><mo>(</mo><mfrac><msub><mrow><mo>[</mo><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow><mo>]</mo></mrow><mi>i</mi></msub><msub><mrow><mo>[</mo><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow><mo>]</mo></mrow><mi>model</mi></msub></mfrac><mo>)</mo></mrow></mrow><mi>δ</mi></mfrac><mo>]</mo></mrow><mn>2</mn></msup></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث يمتد الجمع على جميع بيانات <math alttext="N" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p2.m3"><mi>N</mi></math>، وتحصل <math alttext="\left[Q_{\mathrm{R}}/Q_{\mathrm{RD}}^{\star}\right]_{\mathrm{model}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p2.m4"><msub><mrow><mo>[</mo><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow><mo>]</mo></mrow><mi>model</mi></msub></math> بعكس المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>.
+افترضنا قبليات منتظمة لجميع المعاملات الحرة ضمن مجال واسع حول القيم التي قدّرها <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p3">
+<p class="ltx_p">شغلنا تحليل MCMC على مجموعة البيانات كاملة، ووجدنا أن الحل ينحاز بقوة إلى التصادمات في نظام الاندماج (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}\gtrsim 0.9" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p3.m1"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>≳</mo><mn>0.9</mn></mrow></math>).
+ومن بين جميع التصادمات المباشرة، أكثر من الثلث لها <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}&gt;0.95" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p3.m2"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>&gt;</mo><mn>0.95</mn></mrow></math>.
+يسبب هذا الاختلال في توزيع مجموعة البيانات تقارب MCMC إلى حل يفضل النمذجة الدقيقة لنظام الاندماج على حساب بقية مجموعة البيانات.
+وكما يتضح من التجارب المخبرية (مثلا <cite class="ltx_cite ltx_citemacro_citet">Takagi et al. <a class="ltx_ref" href="#bib.bib53" title="">1984</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Housen &amp; Holsapple <a class="ltx_ref" href="#bib.bib22" title="">1990</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Nagaoka et al. <a class="ltx_ref" href="#bib.bib39" title="">2014</a></cite>, <cite class="ltx_cite ltx_citemacro_citet">Arakawa et al. <a class="ltx_ref" href="#bib.bib1" title="">2022</a></cite>)، يميل النموذج في المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a> إلى التقليل من تقدير كتلة أكبر البقايا عند طاقة منخفضة جدا.
+لذلك قررنا استبعاد جميع التصادمات ذات <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}&gt;0.95" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p3.m3"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>&gt;</mo><mn>0.95</mn></mrow></math> من إجراء ملاءمة MCMC.</p>
+</div>
+<figure class="ltx_figure" id="S2.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="277" id="S2.F2.g1" src="figures/all_Qstar_combined.png" width="646"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span><span class="ltx_text ltx_font_italic">أعلى</span>: معيار الاضطراب الكارثي للتصادمات متساوية الكتلة (<math alttext="Q^{\star}_{\mathrm{RD,\gamma=1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m15"><msubsup><mi>Q</mi><mrow><mrow><mi>RD</mi><mo>,</mo><mi>γ</mi></mrow><mo>=</mo><mn>1</mn></mrow><mo>⋆</mo></msubsup></math>) بالنسبة إلى نصف القطر المركب (<math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m16"><msub><mi>R</mi><mi>C1</mi></msub></math>). تُستحصل القيمة <math alttext="Q^{\star}_{\mathrm{RD,\gamma=1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m17"><msubsup><mi>Q</mi><mrow><mrow><mi>RD</mi><mo>,</mo><mi>γ</mi></mrow><mo>=</mo><mn>1</mn></mrow><mo>⋆</mo></msubsup></math> من المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a> بقسمة <math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m18"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> على المركبة المعتمدة على <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m19"><mi>γ</mi></math>، وهي <math alttext="\left[(1+\gamma)^{2}/4\gamma\right]^{2/(3\bar{\mu})-1}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m20"><msup><mrow><mo>[</mo><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>γ</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>γ</mi></mrow><mo>]</mo></mrow><mrow><mrow><mn>2</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>⁢</mo><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow></msup></math>. <span class="ltx_text ltx_font_italic">أسفل</span>: معيار الاضطراب الكارثي للتصادمات متساوية الكتلة مقيسا بمربع نصف القطر المركب (<math alttext="Q^{\star}_{\mathrm{RD,\gamma=1}}/R_{\mathrm{C1}}^{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m21"><mrow><msubsup><mi>Q</mi><mrow><mrow><mi>RD</mi><mo>,</mo><mi>γ</mi></mrow><mo>=</mo><mn>1</mn></mrow><mo>⋆</mo></msubsup><mo>/</mo><msubsup><mi>R</mi><mi>C1</mi><mn>2</mn></msubsup></mrow></math>) بالنسبة إلى نسبة الكتلة (<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m22"><mi>γ</mi></math>). الرموز هي نفسها كما في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>. تشير الألوان إلى نسبة الكتلة <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m23"><mi>γ</mi></math> في الرسم العلوي، وإلى نصف القطر المركب <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m24"><msub><mi>R</mi><mi>C1</mi></msub></math> في الرسم السفلي. يقابل الخط الأحمر المتصل أفضل ملاءمة من هذا العمل، أي <math alttext="c^{*}=2.661" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m25"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mn>2.661</mn></mrow></math> و<math alttext="\bar{\mu}=0.4797" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m26"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mn>0.4797</mn></mrow></math>، في حين يقابل الخط الأسود المنقط أفضل ملاءمة من <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، أي <math alttext="c^{*}=1.9" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m27"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mn>1.9</mn></mrow></math> و<math alttext="\bar{\mu}=0.36" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m28"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mn>0.36</mn></mrow></math>. وتُعرض طاقة الربط (الخط الأسود المتقطع) مرجعا في اللوحة العليا.
+</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS1.SSS2.p4">
+<p class="ltx_p">استخدمنا قبليات منتظمة لمعاملات نموذج 4، وتحديدا <math alttext="\mathcal{U}(0,100)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m1"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>100</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m2"><msup><mi>c</mi><mo>∗</mo></msup></math>، و<math alttext="\mathcal{U}(1/3,2/3)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m3"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m4"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>،
+و<math alttext="\mathcal{U}(-100,0)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m5"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>100</mn></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m6"><mi>η</mi></math>، و
+<math alttext="\mathcal{U}(0,2)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m7"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m8"><mi>δ</mi></math>. هنا، تمثل <math alttext="\mathcal{U}(a,b)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m9"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math> التوزيع المنتظم، بكثافة مقدارها <math alttext="1/(b-a)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m10"><mrow><mn>1</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> في المجال <math alttext="a\leq x&lt;b" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m11"><mrow><mi>a</mi><mo>≤</mo><mi>x</mi><mo>&lt;</mo><mi>b</mi></mrow></math> وصفر خارجه.
+يعطي تحليل التوزيعات البعدية النتائج الآتية: <math alttext="c^{*}=3.20\pm 0.05" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m12"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mrow><mn>3.20</mn><mo>±</mo><mn>0.05</mn></mrow></mrow></math>، <math alttext="\bar{\mu}=0.486\pm 0.007" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m13"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mrow><mn>0.486</mn><mo>±</mo><mn>0.007</mn></mrow></mrow></math>، <math alttext="\eta=-11.4^{+0.7}_{-0.8}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m14"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><msubsup><mn>11.4</mn><mrow><mo>−</mo><mn>0.8</mn></mrow><mrow><mo>+</mo><mn>0.7</mn></mrow></msubsup></mrow></mrow></math>، و<math alttext="\delta=0.162\pm-0.003" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m15"><mrow><mi>δ</mi><mo>=</mo><mn>0.162</mn><mo rspace="0em">±</mo><mo lspace="0em">−</mo><mn>0.003</mn></mrow></math>.
+وتختلف هذه القيم اختلافا كبيرا عما قدّره <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>. وعلى وجه الخصوص، ينحرف الميل <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m16"><mi>η</mi></math> للنظام الفائق الكارثي عن القيمة <math alttext="-1.5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p4.m17"><mrow><mo>−</mo><mn>1.5</mn></mrow></math> بأكثر من 14 سيغما.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p5">
+<p class="ltx_p">اشتُقت القيمة <math alttext="\eta=-1.5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p5.m1"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><mn>1.5</mn></mrow></mrow></math> التي اقترحها <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> من دراستين مخبريتين لتصادمات بين جليد صلب <cite class="ltx_cite ltx_citemacro_citep">(Kato et al., <a class="ltx_ref" href="#bib.bib26" title="">1995</a>)</cite> وتصادمات مقذوفات بولي كربونات بكتل غرانيتية <cite class="ltx_cite ltx_citemacro_citep">(Fujiwara et al., <a class="ltx_ref" href="#bib.bib19" title="">1977</a>)</cite>.
+وقد يكمن التباين القوي بين تجارب التفتت المخبرية هذه والمحاكيات في مجموعات البيانات المعروضة هنا في الطبيعة المختلفة اختلافا كبيرا للأجسام المتصادمة أكثر مما يكمن في المنهجية (محاكيات مقابل تجارب مخبرية).
+فتصادمات الجليد والغرانيت تقع في نظام المقاومة، حيث يكون أكبر البقايا شظية واحدة من أكبر جسم، في حين تقع تصادمات الكواكب الأولية في نظام الجاذبية.
+ومن المتوقع أن يكون هذا السلوك المختلف أوضح في النظام الكارثي، حيث تتشتت معظم الكتلة المتصادمة.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p6">
+<p class="ltx_p">تُعرض نقاط البيانات المشتقة عبر المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a> ونموذج أفضل ملاءمة للمعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a> في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>.
+وكما هو متوقع، يؤدي القانون الكوني لـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> أداء جيدا للطاقات القريبة من <math alttext="Q^{*}_{RD}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p6.m1"><msubsup><mi>Q</mi><mrow><mi>R</mi><mo>⁢</mo><mi>D</mi></mrow><mo>∗</mo></msubsup></math>، وبفضل التقدير الجديد لـ <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p6.m2"><mi>η</mi></math> ينجح أيضا في التنبؤ بناتج التصادم في النظام الفائق الكارثي (الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a> B).</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p7">
+<p class="ltx_p">ما يزال هناك تباين معنوي واضح بين نموذج <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> والمحاكيات في نظام الاندماج.
+تميل قوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> إلى المبالغة في تقدير كفاءة التفتت للتصادمات ذات طاقة الاصطدام الصغيرة (<math alttext="Q_{\mathrm{R}}/Q_{\mathrm{RD}}^{*}\lesssim 0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p7.m1"><mrow><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup></mrow><mo>≲</mo><mn>0.3</mn></mrow></math>)، كما هو مبين في اللوحة A من الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>.
+وفضلا عن ذلك، لاحظنا أيضا ارتباطا قويا بين هذا التباين ونسبة الكتلة <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p7.m2"><mi>γ</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p8">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>، يُلاحظ أنه قد يوجد اعتماد على مجموعة البيانات، ولا سيما في النظام الفائق الكارثي (اللوحة B). وتميل التصادمات التي حاكاها <cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite> إلى التجمع على الجانب الأيمن من نتيجة أفضل ملاءمة، مما يشير إلى أن تفكيك الكواكب الأولية المتصادمة يتطلب طاقة أكبر. وعلى العكس من ذلك، تبدي التصادمات من عمل <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite> اتجاها معاكسا.
+ولمزيد من بحث هذا السلوك المحتمل، أجرينا تحليلات MCMC منفصلة لكل مجموعة بيانات.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p9">
+<p class="ltx_p">وجدنا أن المعاملين <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m1"><msup><mi>c</mi><mo>∗</mo></msup></math> و<math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m2"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> يتوافقان عموما عبر مجموعات البيانات الست، إذ يختلفان عادة بأقل من 2<math alttext="\sigma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m3"><mi>σ</mi></math>، مع استثناءات قليلة فقط. واللافت أن قيمة <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m4"><msup><mi>c</mi><mo>∗</mo></msup></math> المستحصلة من مجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Crespi et al. (<a class="ltx_ref" href="#bib.bib14" title="">2021</a>)</cite>، وهي <math alttext="c^{*}=3.82\pm 0.25" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m5"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mrow><mn>3.82</mn><mo>±</mo><mn>0.25</mn></mrow></mrow></math>، تتجاوز القيم المستحصلة من مجموعات البيانات الأخرى، التي تقع ضمن المدى <math alttext="c^{*}=3.03-3.40" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m6"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mrow><mn>3.03</mn><mo>−</mo><mn>3.40</mn></mrow></mrow></math>. وبالإضافة إلى ذلك، تتجاوز قيمة <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m7"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> المستحصلة من مجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite>، وهي <math alttext="\bar{\mu}=0.59\pm 0.04" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m8"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mrow><mn>0.59</mn><mo>±</mo><mn>0.04</mn></mrow></mrow></math>، القيمتين <math alttext="\bar{\mu}=0.47^{+0.02}_{-0.01}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m9"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><msubsup><mn>0.47</mn><mrow><mo>−</mo><mn>0.01</mn></mrow><mrow><mo>+</mo><mn>0.02</mn></mrow></msubsup></mrow></math> و<math alttext="\bar{\mu}=0.46\pm 0.02" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p9.m10"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mrow><mn>0.46</mn><mo>±</mo><mn>0.02</mn></mrow></mrow></math> المستحصلتين من مجموعتي بيانات <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite>، على التوالي.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p10">
+<p class="ltx_p">رصدنا سلوكا ثنائي النمط في المعامل <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m1"><mi>η</mi></math>، إذ تعطي مجموعات البيانات إما قيما منخفضة جدا ضمن المدى من <math alttext="-57" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m2"><mrow><mo>−</mo><mn>57</mn></mrow></math> إلى <math alttext="-74" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m3"><mrow><mo>−</mo><mn>74</mn></mrow></math> مع أخطاء كبيرة، أو تعطي مجموعات بيانات أخرى قيما عالية لـ <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m4"><mi>η</mi></math> بين -7 و-2 مع أخطاء أصغر. ومن المثالين البارزين اللذين يوضحان هذين السلوكين مجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite>، التي أعطت <math alttext="\eta=-74^{+21}_{-18}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m5"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><msubsup><mn>74</mn><mrow><mo>−</mo><mn>18</mn></mrow><mrow><mo>+</mo><mn>21</mn></mrow></msubsup></mrow></mrow></math>، ومجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite>، التي أسفرت عن <math alttext="\eta=-7.0\pm 0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m6"><mrow><mi>η</mi><mo>=</mo><mrow><mrow><mo>−</mo><mn>7.0</mn></mrow><mo>±</mo><mn>0.3</mn></mrow></mrow></math>. وكلتا المجموعتين ممثلتان جيدا داخل النظام الفائق الكارثي، إذ تضم كل منهما أكثر من 200 نقطة بيانات. غير أن مجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite> تتركز حول <math alttext="M\mathrm{lr}/M_{\mathrm{tot}}\lesssim 0.1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m7"><mrow><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>lr</mi></mrow><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>≲</mo><mn>0.1</mn></mrow></math>، في حين تتمركز مجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite> حول <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}\sim 10^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p10.m8"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>∼</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p11">
+<p class="ltx_p">والجدير بالملاحظة أن نموذج <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> (المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>) يفرض مرور الملاءمة عبر <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}=0.1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p11.m1"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>=</mo><mn>0.1</mn></mrow></math> عندما <math alttext="Q_{\mathrm{R}}/Q^{*}_{\mathrm{RD}}=1.8" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p11.m2"><mrow><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup></mrow><mo>=</mo><mn>1.8</mn></mrow></math>، في حين أن القيمة الفعلية أقرب إلى <math alttext="Q_{\mathrm{R}}/Q^{*}_{\mathrm{RD}}\sim 1.3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p11.m3"><mrow><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup></mrow><mo>∼</mo><mn>1.3</mn></mrow></math>. وينتج عن هذا التباين تقديران مختلفان كثيرا لـ <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS2.p11.m4"><mi>η</mi></math> لمجموعتي بيانات <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p12">
+<p class="ltx_p">وبالإضافة إلى ذلك، رصدنا درجات متفاوتة من التشتت بين مجموعات البيانات المختلفة، ولا سيما في المحاكيات التي تدمج دوران الكواكب الأولية المتصادمة، كما يُرى في مجموعتي بيانات <cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite>. ويكون هذا التشتت ملحوظا بصورة خاصة في النظام الفائق الكارثي، حيث يمكن لوجود زخم زاوي إضافي أن يساعد على تشتت المادة المتفتتة أو يعيقه.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS2.p13">
+<p class="ltx_p">ينشأ عامل تمييز آخر بين مجموعات البيانات من الاختلافات في روتينات المحاكاة وتركيب الكواكب الأولية المتصادمة. ومع ذلك، يبدو أن لهذه المعاملات تأثيرا ثانويا مقارنة بعوامل تصادمية أخرى مثل طاقة الاصطدام، والكتل الداخلة، وزاوية الاصطدام. ويتجاوز الفحص الشامل لكيفية تأثير التركيب في نواتج التصادم نطاق هذه الدراسة.</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS1.SSS3">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.1.3 </span>قانون قياس جديد</h4>
+<div class="ltx_para" id="S2.SS1.SSS3.p1">
+<p class="ltx_p">إن الحاجة إلى نمذجة الإزاحة المعتمدة على <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m1"><mi>γ</mi></math> بين البيانات وقوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> عند طاقات الاصطدام المنخفضة، إلى جانب السعي إلى دالة تنتقل بسلاسة من نظام الاندماج إلى النظام الفائق الكارثي الخطي في فضاء log-log من دون تثبيت نقطة الانتقال، هما محوران بنينا حولهما النموذج الجديد للقانون الكوني.
+والنموذج الجيد القادر على تلبية هذين المطلبين هو حاصل ضرب دالة أسية (لنمذجة النظام الفائق الكارثي) ودالة كسرية (لنمذجة نظام الاندماج).
+وتوصف هذه الصيغة الجديدة من القانون الكوني بالعلاقة</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="Q_{\mathrm{R}}=c_{1}Q_{\mathrm{RD}}^{\star}\left(2\frac{M_{\mathrm{lr}}}{M_{%
+\mathrm{tot}}}\right)^{1/\eta}\frac{\left[1-\left(\frac{M_{\mathrm{lr}}}{M_{%
+\mathrm{tot}}}\right)^{3/2}\right]^{\alpha(\gamma)}}{1+c_{2}\left(2\frac{M_{%
+\mathrm{lr}}}{M_{\mathrm{tot}}}\right)^{2}}\,," class="ltx_Math" dir="ltr" display="block" id="S2.E5.m1"><mrow><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>=</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><mn>2</mn><mo>⁢</mo><mfrac><msub><mi>M</mi><mi>lr</mi></msub><msub><mi>M</mi><mi>tot</mi></msub></mfrac></mrow><mo>)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mi>η</mi></mrow></msup><mo>⁢</mo><mfrac><msup><mrow><mo>[</mo><mrow><mn>1</mn><mo>−</mo><msup><mrow><mo>(</mo><mfrac><msub><mi>M</mi><mi>lr</mi></msub><msub><mi>M</mi><mi>tot</mi></msub></mfrac><mo>)</mo></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><mo>]</mo></mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow></mrow></msup><mrow><mn>1</mn><mo>+</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><mn>2</mn><mo>⁢</mo><mfrac><msub><mi>M</mi><mi>lr</mi></msub><msub><mi>M</mi><mi>tot</mi></msub></mfrac></mrow><mo>)</mo></mrow><mn>2</mn></msup></mrow></mrow></mfrac></mrow></mrow><mo lspace="0.170em">,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث يمكن الحصول على <math alttext="Q_{\mathrm{RD}}^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m2"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> من المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>، و<math alttext="c_{1}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m3"><msub><mi>c</mi><mn>1</mn></msub></math> و<math alttext="c_{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m4"><msub><mi>c</mi><mn>2</mn></msub></math> ثابتان، والأس <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m5"><mi>α</mi></math> دالة في نسبة الكتلة <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m6"><mi>γ</mi></math>.
+رصدنا اعتمادا خطيا بين الأس <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m7"><mi>α</mi></math> و<math alttext="\log\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m8"><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>γ</mi></mrow></math>.
+لذلك قررنا نمذجة <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m9"><mi>α</mi></math> على صورة <math alttext="\alpha(\gamma)=\alpha_{0}+\sigma\cdot\log\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m10"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>α</mi><mn>0</mn></msub><mo>+</mo><mrow><mi>σ</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>γ</mi></mrow></mrow></mrow></mrow></math>، حيث إن <math alttext="\alpha_{0}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m11"><msub><mi>α</mi><mn>0</mn></msub></math> و<math alttext="\sigma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m12"><mi>σ</mi></math> معاملان حران إضافيان.
+كما بحثنا إمكانية اعتماد <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m13"><mi>α</mi></math> على نصف القطر المركب <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m14"><msub><mi>R</mi><mi>C1</mi></msub></math>، لكن لم يُعثر على ارتباط معنوي.
+نلاحظ أن القانون الكوني الجديد غير قابل للعكس تحليليا، ومن أجل الحصول على <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m15"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math> عند معرفة (<math alttext="Q_{\mathrm{R}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m16"><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></math>، <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m17"><mi>γ</mi></math>، <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p1.m18"><msub><mi>R</mi><mi>C1</mi></msub></math>)، يلزم استخدام خوارزمية بسيطة لإيجاد الجذور.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS3.p2">
+<p class="ltx_p">يعتمد النموذج في المعادلة <a class="ltx_ref" href="#S2.E5" title="In 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">5</span></a> على ثلاثة متغيرات (<math alttext="Q_{\mathrm{R}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m1"><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></math>، <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m2"><mi>γ</mi></math>، <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m3"><msub><mi>R</mi><mi>C1</mi></msub></math>) وستة معاملات، ينشأ اثنان منها (<math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m4"><msup><mi>c</mi><mo>∗</mo></msup></math>، <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m5"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>) من النموذج الفيزيائي لـ <math alttext="Q_{\mathrm{RD}}^{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m6"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> (المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>)، وتنشأ المعاملات الخمسة الأخرى (<math alttext="c_{1}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m7"><msub><mi>c</mi><mn>1</mn></msub></math>، <math alttext="c_{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m8"><msub><mi>c</mi><mn>2</mn></msub></math>، <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m9"><mi>η</mi></math>، <math alttext="\alpha_{0}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m10"><msub><mi>α</mi><mn>0</mn></msub></math>، <math alttext="\sigma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m11"><mi>σ</mi></math>) من النموذج التحليلي الجديد (المعادلة <a class="ltx_ref" href="#S2.E5" title="In 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">5</span></a>).
+قررنا بحث هاتين المجموعتين من المعاملات بصورة منفصلة حتى لا يؤثر التقريب الملازم للنموذج التحليلي في تقدير المعاملين الفيزيائيين <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m12"><msup><mi>c</mi><mo>∗</mo></msup></math> و<math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p2.m13"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="282" id="S2.F3.g1" src="figures/my_model.png" width="658"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>الكتلة المقيسة لأكبر البقايا (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m4"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math>) بالنسبة إلى طاقة الاصطدام المقيسة بمعيار الاضطراب الكارثي (<math alttext="Q_{\mathrm{R}}/Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m5"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow></math>). الرموز والألوان هي نفسها كما في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">1</span></a>. تقابل الخطوط الملونة قانون القياس الجديد في المعادلة <a class="ltx_ref" href="#S2.E5" title="In 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">5</span></a>، حيث يمثل كل لون قيمة مختلفة لنسبة الكتلة (<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m6"><mi>γ</mi></math>)، كما تشير إليها المربعات على شريط الألوان. وتمثل الخطوط السوداء المتقطعة القانون الكوني الأصلي لـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> (القسم <a class="ltx_ref" href="#S2.SS1.SSS1" title="2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2.1.1</span></a>). وتُعرض المناطق الأكثر ازدحاما بتكبير في اللوحتين A (نظام الاندماج) وB (النظام الفائق الكارثي).
+</figcaption>
+</figure>
+<figure class="ltx_table" id="S2.T2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_r">Model</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r"><math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m1"><msup><mi>c</mi><mo>∗</mo></msup></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r"><math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m2"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r"><math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m3"><mi>η</mi></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r"><math alttext="c_{1}" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m4"><msub><mi>c</mi><mn>1</mn></msub></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r"><math alttext="\alpha_{0}" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m5"><msub><mi>α</mi><mn>0</mn></msub></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column"><math alttext="\sigma" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m6"><mi>σ</mi></math></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_tt"><cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><math alttext="1.9\pm 0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m7"><mrow><mn>1.9</mn><mo>±</mo><mn>0.3</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><math alttext="0.36\pm 0.01" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m8"><mrow><mn>0.36</mn><mo>±</mo><mn>0.01</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">-1.5</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">-</td>
+<td class="ltx_td ltx_align_center ltx_border_tt">-</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t">
+<cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> - new fit</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="3.20\pm 0.05" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m9"><mrow><mn>3.20</mn><mo>±</mo><mn>0.05</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="0.486\pm 0.007" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m10"><mrow><mn>0.486</mn><mo>±</mo><mn>0.007</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="-11.4^{+0.7}_{-0.8}" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m11"><mrow><mo>−</mo><msubsup><mn>11.4</mn><mrow><mo>−</mo><mn>0.8</mn></mrow><mrow><mo>+</mo><mn>0.7</mn></mrow></msubsup></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_t">-</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t">new model</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="2.66\pm 0.04" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m12"><mrow><mn>2.66</mn><mo>±</mo><mn>0.04</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="0.480\pm 0.006" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m13"><mrow><mn>0.480</mn><mo>±</mo><mn>0.006</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="-10.18\pm 0.02" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m14"><mrow><mrow><mo>−</mo><mn>10.18</mn></mrow><mo>±</mo><mn>0.02</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="1.707\pm 0.001" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m15"><mrow><mn>1.707</mn><mo>±</mo><mn>0.001</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="0.1755\pm 0.0004" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m16"><mrow><mn>0.1755</mn><mo>±</mo><mn>0.0004</mn></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="-0.3252\pm 0.0002" class="ltx_Math" dir="ltr" display="inline" id="S2.T2.m17"><mrow><mrow><mo>−</mo><mn>0.3252</mn></mrow><mo>±</mo><mn>0.0002</mn></mrow></math></td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 2: </span>معاملات أفضل ملاءمة والأخطاء المرتبطة بها. <span class="ltx_text ltx_font_italic">السطر الأول</span>: ملاءمة قانون القياس الخاص بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> مع مجموعة البيانات الأصلية المعروضة في <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> (القيم من <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>). <span class="ltx_text ltx_font_italic">السطر الثاني</span>: ملاءمة قانون القياس الخاص بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> مع مجموعة البيانات المعروضة في هذا العمل. <span class="ltx_text ltx_font_italic">السطر الثالث</span>: ملاءمة قانون القياس الجديد (المعادلة <a class="ltx_ref" href="#S2.E5" title="In 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">5</span></a>) مع مجموعة البيانات المعروضة في هذا العمل.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS1.SSS3.p3">
+<p class="ltx_p">للحصول على معيار الاضطراب الكارثي (<math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m1"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>)، اخترنا جميع التصادمات ذات <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m2"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math> في المدى <math alttext="0.4-0.6" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m3"><mrow><mn>0.4</mn><mo>−</mo><mn>0.6</mn></mrow></math>.
+في هذا الجوار، يتدرج <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m4"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math> خطيا مع لوغاريتم طاقة الاصطدام <math alttext="\log Q_{\mathrm{R}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m5"><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></mrow></math> بميل -0.97، وقد حُصل عليه بملاءمة نقاط البيانات بدالة خطية في الفضاء نصف اللوغاريتمي.
+استخدمنا هذه العلاقة الخطية للتنبؤ بـ <math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m6"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> لكل تصادم بافتراض
+<math alttext="\log Q^{\star}_{\mathrm{RD}}=\log Q_{\mathrm{R}}-0.97\cdot\left(M_{\mathrm{lr}%
+}/M_{\mathrm{tot}}-0.5\right)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m7"><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow><mo>=</mo><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></mrow><mo>−</mo><mrow><mn>0.97</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>−</mo><mn>0.5</mn></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math>.
+نلاحظ أن تقدير <math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m8"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math>، في المتوسط، لا يتأثر بالقيمة المختارة للميل لأن البيانات موزعة تجانسيا حول <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}=0.5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m9"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>=</mo><mn>0.5</mn></mrow></math>.
+وبعبارة أخرى، فإن اختيارا مختلفا للميل لن يؤدي إلا إلى زيادة (أو نقصان) تشتت <math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p3.m10"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> حول القيمة الحقيقية.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS3.p4">
+<p class="ltx_p">أخيرا، استخدمنا القيم المشتقة <math alttext="Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m1"><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></math> في دالتي <math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m2"><msub><mi>R</mi><mi>C1</mi></msub></math> و<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m3"><mi>γ</mi></math> لتحديد المعاملين <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m4"><msup><mi>c</mi><mo>∗</mo></msup></math> و<math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m5"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> من المعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>.
+ويعطي تحليل التوزيعات البعدية النتائج الآتية: <math alttext="c^{*}=2.661^{+0.037}_{-0.036}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m6"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><msubsup><mn>2.661</mn><mrow><mo>−</mo><mn>0.036</mn></mrow><mrow><mo>+</mo><mn>0.037</mn></mrow></msubsup></mrow></math>، و<math alttext="\bar{\mu}=0.4797^{+0.0061}_{-0.0059}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m7"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><msubsup><mn>0.4797</mn><mrow><mo>−</mo><mn>0.0059</mn></mrow><mrow><mo>+</mo><mn>0.0061</mn></mrow></msubsup></mrow></math>، مع ضبط القبليات إلى <math alttext="\mathcal{U}(0,100)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m8"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>100</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m9"><msup><mi>c</mi><mo>∗</mo></msup></math> و<math alttext="\mathcal{U}(1/3,2/3)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m10"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn>2</mn><mo>/</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p4.m11"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>.
+وتُعرض البيانات ونموذج أفضل ملاءمة في الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.1.2 قانون القياس LS12 - ملاءمة جديدة ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>، إلى جانب نتائج <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> للمقارنة.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS3.p5">
+<p class="ltx_p">يعتمد القانون الكوني الجديد (المعادلة <a class="ltx_ref" href="#S2.E5" title="In 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">5</span></a>) على 5 معاملات نموذجية. غير أنه يمكن خفض درجات الحرية إلى 4 بفرض <math alttext="Q^{*}_{\mathrm{RD}}=Q_{\mathrm{R}}|_{M_{\mathrm{lr}}/M_{\mathrm{tot}}=0.5}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m1"><mrow><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup><mo>=</mo><msub><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo stretchy="false">|</mo></mrow><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>=</mo><mn>0.5</mn></mrow></msub></mrow></math>.
+وبناء على ذلك، يمكننا إعادة كتابة <math alttext="c_{2}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m2"><msub><mi>c</mi><mn>2</mn></msub></math> على النحو الآتي:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E6">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="c_{2}=c_{1}\left(1-2^{-3/2}\right)^{\alpha(\gamma)}-1\,." class="ltx_Math" dir="ltr" display="block" id="S2.E6.m1"><mrow><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>=</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><msup><mn>2</mn><mrow><mo>−</mo><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></mrow></msup></mrow><mo>)</mo></mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow></mrow></msup></mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo lspace="0.170em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">للحصول على المعاملات 4 المتبقية، شغلنا خوارزمية MCMC افترضنا فيها <math alttext="c^{*}=2.661" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m3"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mn>2.661</mn></mrow></math> و<math alttext="\bar{\mu}=0.4797" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m4"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mn>0.4797</mn></mrow></math>.
+اعتمدنا دالة الاحتمال في المعادلة <a class="ltx_ref" href="#S2.E4" title="In 2.1.2 قانون القياس LS12 - ملاءمة جديدة ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">4</span></a> حيث تُشتق <math alttext="\delta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m5"><mi>δ</mi></math> بنشر الأخطاء على <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m6"><msup><mi>c</mi><mo>∗</mo></msup></math> و<math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m7"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math>.
+تُعرض نتيجة أفضل ملاءمة في الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">3</span></a>، في حين يعطي تحليل التوزيعات البعدية النتائج الآتية: <math alttext="c_{1}=1.7074^{+0.0011}_{-0.0012}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m8"><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>=</mo><msubsup><mn>1.7074</mn><mrow><mo>−</mo><mn>0.0012</mn></mrow><mrow><mo>+</mo><mn>0.0011</mn></mrow></msubsup></mrow></math>، <math alttext="\eta=-10.179^{+0.021}_{-0.022}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m9"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><msubsup><mn>10.179</mn><mrow><mo>−</mo><mn>0.022</mn></mrow><mrow><mo>+</mo><mn>0.021</mn></mrow></msubsup></mrow></mrow></math>، <math alttext="\alpha_{0}=0.1754729^{+0.00038}_{-0.00039}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m10"><mrow><msub><mi>α</mi><mn>0</mn></msub><mo>=</mo><msubsup><mn>0.1754729</mn><mrow><mo>−</mo><mn>0.00039</mn></mrow><mrow><mo>+</mo><mn>0.00038</mn></mrow></msubsup></mrow></math>، <math alttext="\sigma=-0.32516^{+0.00020}_{-0.00019}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m11"><mrow><mi>σ</mi><mo>=</mo><mrow><mo>−</mo><msubsup><mn>0.32516</mn><mrow><mo>−</mo><mn>0.00019</mn></mrow><mrow><mo>+</mo><mn>0.00020</mn></mrow></msubsup></mrow></mrow></math>.
+وفضلا عن ذلك، قدّرنا تشتت البيانات على طول <math alttext="\log Q_{\mathrm{R}}/Q^{*}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m12"><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup></mrow></mrow></math> وحصلنا على تشتت ثابت ومتناظر تقريبا مقداره 0.11.
+ويُعزى التشتت إلى عوامل متعددة لا يأخذها نموذجنا في الحسبان، منها، على سبيل المثال لا الحصر، التركيب الكيميائي للأجسام المتصادمة، ودورانها، والزخم الزاوي للتصادم.
+واستخدمنا في تحليل MCMC القبليات الآتية لمعاملات الملاءمة: <math alttext="\mathcal{U}(0,100)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m13"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>100</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="c_{1}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m14"><msub><mi>c</mi><mn>1</mn></msub></math>، و<math alttext="\mathcal{U}(-100,0)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m15"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>100</mn></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\eta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m16"><mi>η</mi></math>، و<math alttext="\mathcal{U}(0,10)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m17"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\alpha_{0}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m18"><msub><mi>α</mi><mn>0</mn></msub></math>، و<math alttext="\mathcal{U}(-10,0)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m19"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>10</mn></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> لـ <math alttext="\sigma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p5.m20"><mi>σ</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS3.p6">
+<p class="ltx_p">لاحظنا أن القانون الكوني الجديد تقاربي عند <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}\rightarrow 1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p6.m1"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo stretchy="false">→</mo><mn>1</mn></mrow></math>. وهذا السلوك غير فيزيائي، ولا بد من استخدام تقريبات.
+من تحليل MCMC، وجدنا أن نموذجنا يبدأ في الانحراف عن القيم المقاسة لـ <math alttext="Q_{\mathrm{R}}/Q^{*}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p6.m2"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>∗</mo></msubsup></mrow></math> عندما <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}&gt;0.999" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p6.m3"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>&gt;</mo><mn>0.999</mn></mrow></math>.
+نقترح افتراض أن التصادمات في هذا النظام تمثل اندماجا مثاليا للجسمين (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}=1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.SSS3.p6.m4"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>=</mo><mn>1</mn></mrow></math>).</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS3.p7">
+<p class="ltx_p">باتباع المقاربة الموضحة في القسم السابق، أجرينا تحليلا منفصلا لمجموعات البيانات. وبوجه عام، تُظهر النتائج من مجموعات البيانات المختلفة اتساقا، ويمكن عزو أي اختلافات مرصودة إلى الفروق بين مجموعات البيانات كما هو موضح في القسم <a class="ltx_ref" href="#S2.SS1.SSS2" title="2.1.2 قانون القياس LS12 - ملاءمة جديدة ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2.1.2</span></a>. ولوحظ أكبر انحراف في مجموعة البيانات من <cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite>. ففي حالة هذه المجموعة المحددة، لاحظنا أن نموذجنا يميل إلى المبالغة في تقدير كتلة أكبر البقايا أثناء أحداث الاندماج (اللوحة A من الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">3</span></a>). ويمكن عزو هذا الانحراف إلى وجود غلاف جوي في مجموعة بيانات <cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite>، وهي خاصية غير موجودة في مجموعات البيانات الأخرى التي أخذناها في الاعتبار</p>
+</div>
+<div class="ltx_para" id="S2.SS1.SSS3.p8">
+<p class="ltx_p">كما لاحظ <cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite>، تؤدي الاصطدامات منخفضة الطاقة أساسا إلى فقدان الغلاف الجوي، في حين تتطلب تجزئة كل من الوشاح واللب في الأجسام المتصادمة اصطدامات أعلى طاقة. لذلك ينبغي توخي الحذر عند تطبيق نموذجنا على تصادمات تتضمن كواكب ذات غلاف جوي كبير، إذ قد لا يمثل النواتج في مثل هذه السيناريوهات تمثيلا دقيقا.</p>
+</div>
+<figure class="ltx_figure" id="S2.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="282" id="S2.F4.g1" src="figures/ML_model.png" width="658"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>الكتلة المقيسة لأكبر البقايا (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F4.m3"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math>) بالنسبة إلى طاقة الاصطدام المقيسة بمعيار الاضطراب الكارثي (<math alttext="Q_{\mathrm{R}}/Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F4.m4"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow></math>). وتمثل المعينات الفارغة الكتلة المقيسة التي تنبأ بها نموذج ML. أما الرموز والخطوط الملونة فهي نفسها كما في الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">3</span></a>. وتمثل الخطوط السوداء المتقطعة القانون الكوني الأصلي لـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> (القسم <a class="ltx_ref" href="#S2.SS1.SSS1" title="2.1.1 قانون القياس LS12 - الملاءمات الأصلية ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2.1.1</span></a>).</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>مقارنة النماذج</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">نقارن هنا أداء 3 نماذج مختلفة: النموذج التحليلي من <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> بمعاملات أفضل ملاءمة الجديدة، والنموذج التحليلي الجديد المعروض في هذا العمل، ونموذج بسيط للتعلم الآلي (ML) يوفر معيارا نقارن به نموذجنا التحليلي الجديد. ولذلك دربنا <span class="ltx_text ltx_font_typewriter">Random Forest Regressor</span> كلاسيكيا <cite class="ltx_cite ltx_citemacro_citep">(Pedregosa et al., <a class="ltx_ref" href="#bib.bib41" title="">2011</a>)</cite> باستخدام معاملاته الفائقة الافتراضية و3 سمات فقط: طاقة الاصطدام (<math alttext="Q_{\mathrm{R}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m1"><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub></math>)، ونصف القطر المركب (<math alttext="R_{\mathrm{C1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m2"><msub><mi>R</mi><mi>C1</mi></msub></math>)، ونسبة الكتلة (<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m3"><mi>γ</mi></math>). كما حصرنا مجموعة البيانات في حالات التصادم المباشر.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">تُعرض القيم المتنبأ بها من نموذج ML، وكذلك البيانات الأصلية، في الشكل <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">4</span></a>، مقارنة بالنموذج الأصلي من LS12 (القسم <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">4</span></a>) والنموذج الجديد المقدم في هذه الدراسة (القسم <a class="ltx_ref" href="#S2.SS1.SSS3" title="2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2.1.3</span></a>).</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p3">
+<p class="ltx_p">نلاحظ أن نموذج ML يلتقط بفعالية التشتت حول متوسط الكمية المتنبأ بها، وهي خاصية لا يمكن بلوغها بسهولة بالنماذج التحليلية. ومع ذلك، تجدر الإشارة إلى أننا نلاحظ في النظام الفائق الكارثي انحرافات في النواتج المتنبأ بها من نموذج ML، ولا سيما في الحالات التي تتضمن أجساما عالية الدوران من مجموعة بيانات Timpe et al. (2020). وقد يُعزى هذا التباين إلى العدد المحدود من المعاملات التي دُرب عليها نموذج ML.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p4">
+<p class="ltx_p">إن إدخال الدوران بوصفه معاملا في نموذج ML يمكن أن يعزز كفاءته التنبؤية. ومع ذلك، فإن ذلك يقع خارج نطاق دراستنا الحالية، التي تركز أساسا على تقييم القدرات التنبؤية لنموذجنا التحليلي ومقارنتها بقدرات نموذج ML يعمل من دون الاعتماد على افتراضات تحليلية.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p5">
+<p class="ltx_p">كميا، تُلخص درجات المقاييس للنماذج المختلفة في الجدول <a class="ltx_ref" href="#S2.T3" title="Table 3 ‣ 2.2 مقارنة النماذج ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">3</span></a>. نحسب الجذر التربيعي لمتوسط مربع الخطأ <math alttext="\text{RMSE}(y,\hat{y})=\sqrt{\frac{\sum_{i=0}^{N-1}(y_{i}-\hat{y}_{i})^{2}}{N}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p5.m1"><mrow><mrow><mtext>RMSE</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msqrt><mfrac><mrow><mstyle displaystyle="false"><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msubsup></mstyle><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mi>N</mi></mfrac></msqrt></mrow></math>، والخطأ المطلق الوسيط:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\text{Med. Abs Err}(y,\hat{y})=\text{median}(\mid y_{1}-\hat{y}_{1}\mid,\ldots%
+,\mid y_{n}-\hat{y}_{n}\mid)" class="ltx_Math" dir="ltr" display="block" id="S2.Ex1.m1"><mrow><mrow><mtext>Med. Abs Err</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mtext>median</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mn>1</mn></msub></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi>n</mi></msub></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">، والخطأ النسبي الوسيط:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\text{Med. Rel Err}(y,\hat{y})=\text{median}(\mid y_{1}-\hat{y}_{1}\mid/\mid y%
+_{1}\mid,\ldots,\mid y_{n}-\hat{y}_{n}\mid/\mid y_{n}\mid)" class="ltx_Math" dir="ltr" display="block" id="S2.Ex2.m1"><mrow><mrow><mtext>Med. Rel Err</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mtext>median</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mn>1</mn></msub></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo></mrow><mo>/</mo><mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><msub><mi>y</mi><mn>1</mn></msub><mo fence="true" lspace="0em" rspace="0em">∣</mo></mrow></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi>n</mi></msub></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo></mrow><mo>/</mo><mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><msub><mi>y</mi><mi>n</mi></msub><mo fence="true" lspace="0em" rspace="0em">∣</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">بين الكتلة المقيسة الفعلية والمتنبأ بها لأكبر البقايا.
+نجد أنه، في حين أن نماذج 3 لها جذور تربيعية لمتوسطات مربعات الأخطاء متقاربة لأن هذا المقياس تهيمن عليه قيم <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p5.m2"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math> الكبيرة، فإن النموذج التحليلي الجديد يتفوق على <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> بعوامل قدرها على التوالي <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p5.m3"><mo>∼</mo></math> 6 و4 في الخطأين المطلق والنسبي الوسيطين الأكثر حساسية. أما أخطاء نموذج ML، المأخوذة متوسطا لتحقق متقاطع 10-طي، فهي كلها قريبة جدا من نموذجنا التحليلي الجديد، مما يعكس حقيقة أن النماذج المعقدة ليست مطلوبة للمسائل البسيطة منخفضة الأبعاد.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p6">
+<p class="ltx_p">لم يؤد تدريب النموذج من جديد باستخدام جميع المعاملات المتاحة، مثل الكتلة والتركيب ودوران الأجسام المتصادمة، إلى تحسين أدائه الكلي على نحو معنوي في الحالات المباشرة.
+وتؤكد هذه النتيجة أن ناتج التصادم يعتمد بقوة على معاملات 3 المستخدمة في قوانين القياس.</p>
+</div>
+<figure class="ltx_table" id="S2.T3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r">Metric</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r">LS12</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r">new model</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column">ML</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_tt">RMSE</td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_tt">0.111</td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_tt">0.116</td>
+<td class="ltx_td ltx_align_left ltx_border_tt">0.11</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_r">Med. Abs. Err.</td>
+<td class="ltx_td ltx_align_left ltx_border_r">0.0223</td>
+<td class="ltx_td ltx_align_left ltx_border_r">0.0054</td>
+<td class="ltx_td ltx_align_left">0.004</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_r">Med. Rel. Err.</td>
+<td class="ltx_td ltx_align_left ltx_border_r">0.158</td>
+<td class="ltx_td ltx_align_left ltx_border_r">0.059</td>
+<td class="ltx_td ltx_align_left">0.098</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 3: </span>مقاييس الدقة لمقارنة النماذج التحليلية لـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> وهذا العمل، إضافة إلى نموذج ML المقيد لدينا. RMSE هو الجذر التربيعي لمتوسط مربع الخطأ، وMed. Abs Err هو الخطأ المطلق الوسيط، وMed. Rel Err هو الخطأ النسبي الوسيط. </figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>ملخص واستنتاجات</h2>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>مقارنة قوانين القياس LS12 بالبيانات الجديدة</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">في هذا العمل، راجعنا النموذجين التحليليين الرئيسين اللذين تقوم عليهما قوانين القياس الواسعة الاستخدام من <cite class="ltx_cite ltx_citemacro_cite">Leinhardt &amp; Stewart (<a class="ltx_ref" href="#bib.bib33" title="">2012</a>)</cite>، وهما تحديدا: معيار الاضطراب الكارثي، الذي يتيح لنا تقدير طاقة التصادم اللازمة لتشتيت نصف الكتلة الكلية الداخلة في التصادم، والقانون الكوني، الذي يتيح لنا التنبؤ بكتلة أكبر بقايا بعد التصادم (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m1"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math>).
+استخدمنا ست مجموعات بيانات من محاكيات SPH للتصادمات من أعمال <cite class="ltx_cite ltx_citemacro_cite">Burger et al. (<a class="ltx_ref" href="#bib.bib4" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Denman et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Gabriel et al. (<a class="ltx_ref" href="#bib.bib20" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Timpe et al. (<a class="ltx_ref" href="#bib.bib56" title="">2020</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Crespi et al. (<a class="ltx_ref" href="#bib.bib14" title="">2021</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Winter et al. (<a class="ltx_ref" href="#bib.bib61" title="">2023</a>)</cite>، بإجمالي يتجاوز 32000 محاكاة.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<p class="ltx_p">وبمقارنة قوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> مع مجموعات البيانات الجديدة، لاحظنا أن هذه القوانين تميل إلى التقليل من تقدير كتلة أكبر البقايا في نظام التراكم (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}\gtrsim 0.9" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m1"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>≳</mo><mn>0.9</mn></mrow></math>).
+وفي هذا النظام، لاحظنا أيضا اعتمادا قويا بين <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m2"><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow></math> ونسبة كتلة الأجسام المتصادمة (<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m3"><mi>γ</mi></math>). وعلى وجه الخصوص، تميل التصادمات ذات طاقة الاصطدام المقيسة نفسها (<math alttext="Q_{\mathrm{R}}/Q^{\star}_{\mathrm{RD}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m4"><mrow><msub><mi>Q</mi><mi mathvariant="normal">R</mi></msub><mo>/</mo><msubsup><mi>Q</mi><mi>RD</mi><mo>⋆</mo></msubsup></mrow></math>) ولكن بنسبة كتلة أصغر بين الأجسام المتصادمة إلى أن تؤدي إلى تراكم/اندماج أقل كفاءة من التصادمات ذات نسبة الكتلة الأكبر.
+وفي النظام الكارثي (<math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}\gtrsim 0.9" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m5"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>≳</mo><mn>0.9</mn></mrow></math>)، رصدنا تباينا قويا بين قوانين القياس الخاصة بـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> ومجموعة بياناتنا.
+وعلى وجه الخصوص، حصلنا على ميل مقداره <math alttext="\eta=-11.4^{+0.7}_{-0.8}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m6"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><msubsup><mn>11.4</mn><mrow><mo>−</mo><mn>0.8</mn></mrow><mrow><mo>+</mo><mn>0.7</mn></mrow></msubsup></mrow></mrow></math> عند ملاءمة نموذج <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> مع مجموعة بياناتنا، مقارنة بـ <math alttext="\eta=-1.2\sim-1.5" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m7"><mrow><mi>η</mi><mo>=</mo><mrow><mo>−</mo><mn>1.2</mn></mrow><mo>∼</mo><mrow><mo>−</mo><mn>1.5</mn></mrow></mrow></math> الذي تنبأ به <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>قوانين قياس جديدة</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">طورنا قانون قياس تحليليا يمكن، على غرار القانون الكوني لـ <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، استخدامه للتنبؤ بكتلة أكبر بقايا لتصادم بين أجسام تهيمن عليها الجاذبية. ويتمكن نموذجنا (المعادلة <a class="ltx_ref" href="#S2.E5" title="In 2.1.3 قانون قياس جديد ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">5</span></a>) من إعادة إنتاج التوزيع المعتمد على <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m1"><mi>γ</mi></math> المرصود في النظام التراكمي، وكذلك الانخفاض الأسي في النظام الكارثي. وهو صالح من أجل <math alttext="M_{\mathrm{lr}}/M_{\mathrm{tot}}&lt;0.999" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m2"><mrow><mrow><msub><mi>M</mi><mi>lr</mi></msub><mo>/</mo><msub><mi>M</mi><mi>tot</mi></msub></mrow><mo>&lt;</mo><mn>0.999</mn></mrow></math>، وبعد ذلك نقترح افتراض أن التصادم أدى إلى اندماج غير مرن.
+واتباعا لعمل <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، افترضنا أن معيار الاضطراب الكارثي في نظام الجاذبية يُنمذج بالمعادلة <a class="ltx_ref" href="#S2.E2" title="In 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>، ووجدنا معاملات أفضل ملاءمة <math alttext="c^{*}=2.661^{+0.037}_{-0.036}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m3"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><msubsup><mn>2.661</mn><mrow><mo>−</mo><mn>0.036</mn></mrow><mrow><mo>+</mo><mn>0.037</mn></mrow></msubsup></mrow></math>، و<math alttext="\bar{\mu}=0.4797^{+0.0061}_{-0.0059}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m4"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><msubsup><mn>0.4797</mn><mrow><mo>−</mo><mn>0.0059</mn></mrow><mrow><mo>+</mo><mn>0.0061</mn></mrow></msubsup></mrow></math>.
+وقدّر <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> هذين المعاملين بأنهما <math alttext="c^{*}=1.9\pm 0.3" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m5"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>=</mo><mrow><mn>1.9</mn><mo>±</mo><mn>0.3</mn></mrow></mrow></math>، <math alttext="\bar{\mu}=0.36\pm 0.01" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m6"><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>=</mo><mrow><mn>0.36</mn><mo>±</mo><mn>0.01</mn></mrow></mrow></math>.
+يقع تقديرنا لمعامل الإزاحة <math alttext="c^{*}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m7"><msup><mi>c</mi><mo>∗</mo></msup></math> على حد التوافق مع ما حصل عليه <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>. غير أن من اللافت أن تقدير <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite>، بكونه أصغر بنسبة 30% مما رصدناه، يؤدي إلى تفتت أكثر كفاءة للجسم المتصادم الرئيس، ومن ثم إلى مبالغة في تقدير إنتاج الحطام.
+تشير قيمة <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m8"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> التي حصل عليها <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> إلى قياس زخم شبه خالص للأجسام التي تهيمن عليها الجاذبية، في حين تشير قيمتنا إلى مزيج متوازن بين اقتران الزخم والطاقة. ومع ذلك، يجب توخي الحذر عند اشتقاق أي استنتاج فيزيائي ذي شأن بشأن اقتران الطاقة والزخم، لأن تقديري <cite class="ltx_cite ltx_citemacro_citealias"><a class="ltx_ref" href="#bib.bib33" title="">LS12</a></cite> وتقديرنا لـ <math alttext="\bar{\mu}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m9"><mover accent="true"><mi>μ</mi><mo>¯</mo></mover></math> يقعان جيدا داخل تشتت البيانات (انظر الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.1.2 قانون القياس LS12 - ملاءمة جديدة ‣ 2.1 ملاءمات تحليلية ‣ 2 ملاءمات محسّنة لمجموعة بيانات SPH الجديدة ‣ تصادمات الكواكب الأولية: قوانين قياس جديدة من محاكيات SPH"><span class="ltx_text ltx_ref_tag">2</span></a>). وأخيرا، وجدنا أن نماذج ML مثل <span class="ltx_text ltx_font_typewriter">Random Forest Regressor</span> لا تؤدي أداء أفضل من النموذج التحليلي الجديد، مما يؤكد الكفاءة التنبؤية للأخير.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">شكر وتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">نود أن نعرب عن امتناننا لـ Christoph Schäfer على تعليقاته وملاحظاته القيّمة على هذه المخطوطة. فقد حسّنت اقتراحاته ونقده جودة عملنا بدرجة كبيرة. تستند هذه المادة إلى عمل مدعوم من Tamkeen بموجب منحة CASS من معهد البحوث في جامعة نيويورك أبوظبي.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Arakawa et al. (2022)</span>
+<span class="ltx_bibblock">
+Arakawa, M., Okazaki, M., Nakamura, M., et al. 2022, Icarus, 373,
+114777
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Benz (1990)</span>
+<span class="ltx_bibblock">
+Benz, W. 1990, in Numerical Modelling of Nonlinear Stellar Pulsations
+Problems and Prospects, ed. J. R. Buchler, 269
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Benz et al. (2007)</span>
+<span class="ltx_bibblock">
+Benz, W., Anic, A., Horner, J., &amp; Whitby, J. A. 2007, Space Sci. Rev., 132, 189
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Burger et al. (2020)</span>
+<span class="ltx_bibblock">
+Burger, C., Bazsó, Á., &amp; Schäfer, C. M. 2020, A&amp;A, 634, A76
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Burger et al. (2018)</span>
+<span class="ltx_bibblock">
+Burger, C., Maindl, T. I., &amp; Schäfer, C. M. 2018, Celestial
+Mechanics and Dynamical Astronomy, 130, 2
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chambers (1999)</span>
+<span class="ltx_bibblock">
+Chambers, J. E. 1999, MNRAS, 304, 793
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chambers (2001)</span>
+<span class="ltx_bibblock">
+Chambers, J. E. 2001, Icarus, 152, 205
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chambers (2013)</span>
+<span class="ltx_bibblock">
+Chambers, J. E. 2013, Icarus, 224, 43
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chambers &amp; Wetherill (1998)</span>
+<span class="ltx_bibblock">
+Chambers, J. E. &amp; Wetherill, G. W. 1998, Icarus, 136, 304
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chau et al. (2018)</span>
+<span class="ltx_bibblock">
+Chau, A., Reinhardt, C., Helled, R., &amp; Stadel, J. 2018, ApJ, 865, 35
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Clement et al. (2019a)</span>
+<span class="ltx_bibblock">
+Clement, M. S., Kaib, N. A., Raymond, S. N., Chambers, J. E., &amp;
+Walsh, K. J. 2019a, Icarus, 321, 778
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Clement et al. (2022)</span>
+<span class="ltx_bibblock">
+Clement, M. S., Quintana, E. V., &amp; Quarles, B. L. 2022, ApJ, 928, 91
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Clement et al. (2019b)</span>
+<span class="ltx_bibblock">
+Clement, M. S., Raymond, S. N., &amp; Kaib, N. A. 2019b, AJ,
+157, 38
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Crespi et al. (2021)</span>
+<span class="ltx_bibblock">
+Crespi, S., Dobbs-Dixon, I., Georgakarakos, N., et al. 2021, MNRAS,
+508, 6013
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Denman et al. (2020)</span>
+<span class="ltx_bibblock">
+Denman, T. R., Leinhardt, Z. M., Carter, P. J., &amp; Mordasini, C. 2020,
+MNRAS, 496, 1166
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Duncan et al. (1998)</span>
+<span class="ltx_bibblock">
+Duncan, M. J., Levison, H. F., &amp; Lee, M. H. 1998, AJ, 116, 2067
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Emsenhuber et al. (2018)</span>
+<span class="ltx_bibblock">
+Emsenhuber, A., Jutzi, M., &amp; Benz, W. 2018, Icarus, 301, 247
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Esteves et al. (2022)</span>
+<span class="ltx_bibblock">
+Esteves, L., Izidoro, A., Bitsch, B., et al. 2022, MNRAS, 509, 2856
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Fujiwara et al. (1977)</span>
+<span class="ltx_bibblock">
+Fujiwara, A., Kamimoto, G., &amp; Tsukamoto, A. 1977, Icarus, 31, 277
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gabriel et al. (2020)</span>
+<span class="ltx_bibblock">
+Gabriel, T. S. J., Jackson, A. P., Asphaug, E., et al. 2020, ApJ, 892,
+40
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Holsapple et al. (2002)</span>
+<span class="ltx_bibblock">
+Holsapple, K., Giblin, I., Housen, K., Nakamura, A., &amp; Ryan, E.
+2002, in Asteroids III, 443–462
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Housen &amp; Holsapple (1990)</span>
+<span class="ltx_bibblock">
+Housen, K. R. &amp; Holsapple, K. A. 1990, Icarus, 84, 226
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Housen &amp; Holsapple (1999)</span>
+<span class="ltx_bibblock">
+Housen, K. R. &amp; Holsapple, K. A. 1999, Icarus, 142, 21
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ishigaki et al. (2021)</span>
+<span class="ltx_bibblock">
+Ishigaki, Y., Kominami, J., Makino, J., Fujimoto, M., &amp; Iwasawa, M.
+2021, PASJ[<span class="ltx_text ltx_font_typewriter">arXiv:2007.15432</span>]
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Izidoro et al. (2017)</span>
+<span class="ltx_bibblock">
+Izidoro, A., Ogihara, M., Raymond, S. N., et al. 2017, MNRAS, 470,
+1750
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kato et al. (1995)</span>
+<span class="ltx_bibblock">
+Kato, M., Iijima, Y.-I., Arakawa, M., et al. 1995, Icarus, 113, 423
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kegerreis et al. (2020)</span>
+<span class="ltx_bibblock">
+Kegerreis, J. A., Eke, V. R., Catling, D. C., et al. 2020, ApJ, 901,
+L31
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kokubo &amp; Genda (2010)</span>
+<span class="ltx_bibblock">
+Kokubo, E. &amp; Genda, H. 2010, ApJ, 714, L21
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kokubo &amp; Ida (1996)</span>
+<span class="ltx_bibblock">
+Kokubo, E. &amp; Ida, S. 1996, Icarus, 123, 180
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Leinhardt et al. (2015)</span>
+<span class="ltx_bibblock">
+Leinhardt, Z. M., Dobinson, J., Carter, P. J., &amp; Lines, S. 2015, ApJ,
+806, 23
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Leinhardt et al. (2009)</span>
+<span class="ltx_bibblock">
+Leinhardt, Z. M., Richardson, D. C., Lufkin, G., &amp; Haseltine, J. 2009,
+MNRAS, 396, 718
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Leinhardt et al. (2000)</span>
+<span class="ltx_bibblock">
+Leinhardt, Z. M., Richardson, D. C., &amp; Quinn, T. 2000, Icarus, 146, 133
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Leinhardt &amp; Stewart (2012)</span>
+<span class="ltx_bibblock">
+Leinhardt, Z. M. &amp; Stewart, S. T. 2012, ApJ, 745, 79
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Marcus et al. (2010)</span>
+<span class="ltx_bibblock">
+Marcus, R. A., Sasselov, D., Stewart, S. T., &amp; Hernquist, L. 2010,
+ApJ, 719, L45
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Marcus et al. (2009)</span>
+<span class="ltx_bibblock">
+Marcus, R. A., Stewart, S. T., Sasselov, D., &amp; Hernquist, L. 2009,
+ApJ, 700, L118
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Melosh (2007)</span>
+<span class="ltx_bibblock">
+Melosh, H. J. 2007, Meteoritics and Planetary Science, 42, 2079
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Monaghan (1992)</span>
+<span class="ltx_bibblock">
+Monaghan, J. J. 1992, ARA&amp;A, 30, 543
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Mustill et al. (2018)</span>
+<span class="ltx_bibblock">
+Mustill, A. J., Davies, M. B., &amp; Johansen, A. 2018, MNRAS, 478, 2896
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nagaoka et al. (2014)</span>
+<span class="ltx_bibblock">
+Nagaoka, H., Takasawa, S., Nakamura, A. M., &amp; Sangen, K. 2014,
+Meteoritics and Planetary Science, 49, 69
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">O’Brien et al. (2006)</span>
+<span class="ltx_bibblock">
+O’Brien, D. P., Morbidelli, A., &amp; Levison, H. F. 2006, Icarus, 184, 39
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pedregosa et al. (2011)</span>
+<span class="ltx_bibblock">
+Pedregosa, F., Varoquaux, G., Gramfort, A., et al. 2011, Journal of Machine
+Learning Research, 12, 2825
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Poon et al. (2020)</span>
+<span class="ltx_bibblock">
+Poon, S. T. S., Nelson, R. P., Jacobson, S. A., &amp; Morbidelli, A. 2020,
+MNRAS, 491, 5595
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Quintana et al. (2016)</span>
+<span class="ltx_bibblock">
+Quintana, E. V., Barclay, T., Borucki, W. J., Rowe, J. F., &amp;
+Chambers, J. E. 2016, ApJ, 821, 126
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Quintana et al. (2002)</span>
+<span class="ltx_bibblock">
+Quintana, E. V., Lissauer, J. J., Chambers, J. E., &amp; Duncan, M. J.
+2002, ApJ, 576, 982
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Raymond et al. (2004)</span>
+<span class="ltx_bibblock">
+Raymond, S. N., Quinn, T., &amp; Lunine, J. I. 2004, Icarus, 168, 1
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Raymond et al. (2006)</span>
+<span class="ltx_bibblock">
+Raymond, S. N., Quinn, T., &amp; Lunine, J. I. 2006, Icarus, 183, 265
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib47">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Reinhardt et al. (2020)</span>
+<span class="ltx_bibblock">
+Reinhardt, C., Chau, A., Stadel, J., &amp; Helled, R. 2020, MNRAS, 492,
+5336
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib48">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Reufer (2011)</span>
+<span class="ltx_bibblock">
+Reufer, A. 2011, University of Bern
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib49">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schäfer et al. (2016)</span>
+<span class="ltx_bibblock">
+Schäfer, C., Riecker, S., Maindl, T. I., et al. 2016, A&amp;A, 590,
+A19
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib50">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schäfer et al. (2020)</span>
+<span class="ltx_bibblock">
+Schäfer, C. M., Wandel, O. J., Burger, C., et al. 2020, Astronomy
+and Computing, 33, 100410
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib51">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Springel (2005)</span>
+<span class="ltx_bibblock">
+Springel, V. 2005, MNRAS, 364, 1105
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib52">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stewart &amp; Leinhardt (2009)</span>
+<span class="ltx_bibblock">
+Stewart, S. T. &amp; Leinhardt, Z. M. 2009, ApJ, 691, L133
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib53">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Takagi et al. (1984)</span>
+<span class="ltx_bibblock">
+Takagi, Y., Mizutani, H., &amp; Kawakami, S.-I. 1984, Icarus, 59, 462
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib54">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Thompson &amp; Lauson (1972)</span>
+<span class="ltx_bibblock">
+Thompson, S. L. &amp; Lauson, H. S. 1972, Improvements in the Chart D
+Radiation-Hydrodynamic Code. III: Revised Analytic Equations of State,
+Albuquerque, New Mexico: Sandia National Laboratory. 1972. Technical Report
+SC-RR-71-0714
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib55">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tillotson (1962)</span>
+<span class="ltx_bibblock">
+Tillotson, J. H. 1962, Metallic Equations of State For Hypervelocity
+Impact, General Atomic Report GA-3216. 1962. Technical Report
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib56">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Timpe et al. (2020)</span>
+<span class="ltx_bibblock">
+Timpe, M. L., Han Veiga, M., Knabenhans, M., Stadel, J., &amp; Marelli,
+S. 2020, Computational Astrophysics and Cosmology, 7, 2
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib57">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wadsley et al. (2004)</span>
+<span class="ltx_bibblock">
+Wadsley, J. W., Stadel, J., &amp; Quinn, T. 2004, New A, 9, 137
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib58">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wallace et al. (2017)</span>
+<span class="ltx_bibblock">
+Wallace, J., Tremaine, S., &amp; Chambers, J. 2017, AJ, 154, 175
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib59">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wetherill (1980)</span>
+<span class="ltx_bibblock">
+Wetherill, G. W. 1980, ARA&amp;A, 18, 77
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib60">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wetherill (1994)</span>
+<span class="ltx_bibblock">
+Wetherill, G. W. 1994, Geochim. Cosmochim. Acta., 58, 4513
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib61">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Winter et al. (2023)</span>
+<span class="ltx_bibblock">
+Winter, P. M., Burger, C., Lehner, S., et al. 2023, MNRAS, 520, 1224
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue May 12 04:40:07 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ</title>
+<!--Generated on Tue May 12 06:30:07 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on قُبل في 2024 فبراير 19. استُلم في 2024 فبراير 13؛ وبصيغته الأصلية في 2023 مايو 15.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_fleqn">
+<h1 class="ltx_title ltx_title_document">تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+Zehao Jin<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>,
+Andrea V. Macciò<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2,3</span></sup>,
+Nicholas Faucher<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4</span></sup>,
+Mario Pasquato<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2,5,6,7</span></sup>,
+Tobias Buck<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">8,9</span></sup>,
+Keri L. Dixon<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>,
+Nikhil Arora<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2,10</span></sup>,
+Marvin Blank<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>,
+Pavle Vulanović<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup>New York University Abu Dhabi, PO Box 129188, Saadiyat Island, Abu Dhabi, United Arab Emirates
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup>Center for Astrophysics and Space Science (CASS), New York University Abu Dhabi
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">3</span></sup>Max-Planck-Institut für Astronomie, Königstuhl 17, 69117 Heidelberg, Germany
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4</span></sup>Center for Cosmology and Particle Physics, Department of Physics, New York University, 726 Broadway, New York, New York 10003, USA
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">5</span></sup>Physics and Astronomy Department Galileo Galilei, University of Padova, Vicolo dell’Osservatorio 3, I–35122, Padova
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">6</span></sup> Dèpartement de Physique, Universitè de Montrèal, 1375 Ave. Thérèse-Lavoie-Roux, Montréal, QC H2V 0B3, Canada
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">7</span></sup> Mila - Quebec Artificial Intelligence Institute, 6666 Rue Saint-Urbain, Montréal, QC H2S3H1, Canada
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">8</span></sup>Universität Heidelberg, Interdisziplinäres Zentrum für Wissenschaftliches Rechnen, Im Neuenheimer Feld 205, 
+<br class="ltx_break"/>D-69120 Heidelberg, Germany
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">9</span></sup>Universität Heidelberg, Zentrum für Astronomie, Institut für Theoretische Astrophysik, Albert-Ueberle-Straße 2, 
+<br class="ltx_break"/>D-69120 Heidelberg, Germany
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">10</span></sup>Department of Physics, Engineering Physics &amp; Astronomy, Queen’s University, Kingston, ON K7L 3N6, Canada
+<br class="ltx_break"/>
+</span><span class="ltx_author_notes">E-mail: zj448@nyu.edu</span></span>
+</div>
+<div class="ltx_dates">(قُبل في 2024 فبراير 19. استُلم في 2024 فبراير 13؛ وبصيغته الأصلية في 2023 مايو 15)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">تُعد محاكاة تشكّل المجرات في الإطار الكوني أدوات قوية لفهم العمليات المعقدة التي تحكم تشكّل المجرات وتطورها. ومع ذلك، لا يزال تقييم واقعية هذه المحاكاة تحديًا قائمًا. ويتمثل النهجان الشائعان لتقييم محاكاة المجرات إما في استخدام علاقات القياس المبنية على عدد قليل من الخواص الفيزيائية الأساسية للمجرات، وإما في استخدام مجموعة من المعاملات المورفولوجية المحددة مسبقًا بالاعتماد على صور المجرات. تقترح هذه الورقة طريقة جديدة، قائمة على الصور، لتقييم جودة محاكاة المجرات باستخدام تقنيات كشف الشذوذ بالتعلم العميق غير الخاضع للإشراف. ومن خلال مقارنة صور المجرات الكاملة، يستطيع نهجنا تحديد الفروق بين المجرات المحاكاة والمرصودة وقياسها كميًا. وكتطبيق توضيحي، نطبق هذه الطريقة على تصوير SDSS ومحاكاة NIHAO بنماذج فيزيائية ومعاملات ودقات مختلفة. كما نقارن مقياس طريقتنا بعلاقات القياس وبالمعاملات المورفولوجية. ونبيّن أن كشف الشذوذ قادر على التقاط أوجه التشابه والاختلاف بين الأجسام الحقيقية والمحاكاة التي تعجز علاقات القياس والمعاملات المورفولوجية عن تغطيتها، ومن ثم فإنه يقدّم بالفعل منظورًا جديدًا للتحقق من صحة المحاكاة الكونية ومعايرتها في ضوء البيانات المرصودة.</p>
+</div>
+<div class="ltx_classification">
+<h6 class="ltx_title ltx_title_classification">keywords: </h6>
+المجرات: التشكّل، المجرات: التطور، الطرائق: تحليل البيانات،
+الطرائق: عددية، الطرائق: إحصائية، الكوازارات: الثقوب السوداء فائقة الكتلة
+
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_pubyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pubyear: </span>2024</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_pagerange"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pagerange: </span><span class="ltx_ref ltx_ref_self"><span class="ltx_text ltx_ref_title">تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ</span></span>–<a class="ltx_ref" href="#A1.F16" title="Figure 16 ‣ Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">16</span></a></span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>المقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">تُعد المحاكاة الكونية إحدى أقوى الأدوات لاختبار فهمنا للكون <cite class="ltx_cite ltx_citemacro_citep">(Vogelsberger et al., <a class="ltx_ref" href="#bib.bib105" title="">2020</a>)</cite>. وبفضل التطور المزدهر في القدرة الحاسوبية، أصبحت المحاكاة الهيدروديناميكية عالية الدقة قادرة على نمذجة تشكّل المجرات وتطورها، مع تتبع كل من المادة المظلمة والباريونات عبر الزمن الكوني. وقد نجحت المحاكاة الحديثة إلى حد كبير في إعادة إنتاج طيف واسع من خواص المجرات، مثل الكتلة النجمية، ومنحنيات الدوران، والوفرة الكيميائية، والألوان، وعلاقات القياس <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Vogelsberger
+et al., <a class="ltx_ref" href="#bib.bib104" title="">2014</a>; Stinson et al., <a class="ltx_ref" href="#bib.bib96" title="">2012</a>; Dubois et al., <a class="ltx_ref" href="#bib.bib42" title="">2016</a>; Schaye
+et al., <a class="ltx_ref" href="#bib.bib88" title="">2015</a>; Wang et al., <a class="ltx_ref" href="#bib.bib107" title="">2015</a>; Tremmel
+et al., <a class="ltx_ref" href="#bib.bib101" title="">2017</a>; Dutton
+et al., <a class="ltx_ref" href="#bib.bib44" title="">2017</a>; Pillepich
+et al., <a class="ltx_ref" href="#bib.bib82" title="">2018</a>; Nelson
+et al., <a class="ltx_ref" href="#bib.bib74" title="">2017</a>; Buck, <a class="ltx_ref" href="#bib.bib17" title="">2019</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">إن فحص مدى الاتفاق بين الأرصاد الحقيقية والمحاكاة هو أفضل وسيلة لتقييم جودة المحاكاة، وهو أمر حاسم لاختبار الفيزياء الممثلة في المحاكاة وتحسينها. وبوجه عام، كانت المقارنة بين توزيع خواص المجرات المستخرجة من المحاكاة ومن الأرصاد تُستخدم أداة تشخيصية.
+وفي فضاء معاملات متعدد الأبعاد، يُجرى هذا التشخيص عبر علاقات قياس المجرات. ومن أمثلة ذلك علاقة Tully-Fisher <cite class="ltx_cite ltx_citemacro_citep">(Tully &amp;
+Fisher, <a class="ltx_ref" href="#bib.bib103" title="">1977</a>)</cite>، وعلاقة الحجم بالكتلة <cite class="ltx_cite ltx_citemacro_citep">(Courteau
+et al., <a class="ltx_ref" href="#bib.bib34" title="">2007</a>)</cite>، وعلاقة الكتلة النجمية بكتلة الهالة <cite class="ltx_cite ltx_citemacro_citep">(Moster et al., <a class="ltx_ref" href="#bib.bib72" title="">2010</a>; Moster
+et al., <a class="ltx_ref" href="#bib.bib73" title="">2018</a>)</cite>، وعلاقة الكتلة بالمعدنية <cite class="ltx_cite ltx_citemacro_citep">(Tremonti
+et al., <a class="ltx_ref" href="#bib.bib102" title="">2004</a>; Gallazzi et al., <a class="ltx_ref" href="#bib.bib51" title="">2005</a>; Kirby
+et al., <a class="ltx_ref" href="#bib.bib62" title="">2015</a>)</cite>، على سبيل المثال لا الحصر. وغالبًا ما يُستخدم الاتفاق بين هذه العلاقات في المجرات الحقيقية والمجرات المحاكاة مقياسًا للحكم على ما إذا كانت المحاكاة «جيدة».</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">وعلى الرغم من أن علاقات القياس من أكثر الطرق شيوعًا لتقييم صلاحية المحاكاة الكونية، فإنها «تضغط» مليارات نقاط البيانات التي تولدها المحاكاة إلى مجموعة من بضعة أرقام تُقارن بالأرقام القليلة نفسها المستخلصة بدورها من كمية هائلة من بيانات الأرصاد. ولا مفر من ضياع قدر كبير من المعلومات الموجودة في المحاكاة والأرصاد معًا خلال هذه العملية. ونتيجة لذلك، قد تلائم محاكاة ما مجموعة من علاقات القياس المرصودة، بينما تنحرف في الوقت نفسه عن مجموعة أخرى من علاقات القياس. والأشد صعوبة هو تحديد أي مجموعة من علاقات القياس أكثر أهمية تحديدًا كميًا عندما تظهر تناقضات فيما بينها. ومن الطبيعي عندئذ البحث عن طرائق بديلة للمقارنة بين البيانات والنموذج، من أجل الاستفادة الكاملة من الدقة (المكانية) الكبيرة التي بلغها كل من الطرفين حديثًا.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">وبالفعل، بُذلت جهود كبيرة في تحليل صور المجرات باستخدام مقاييس وإحصاءات متنوعة، منها ما هو معلمي مثل معاملات Sérsic <cite class="ltx_cite ltx_citemacro_citep">(Sérsic, <a class="ltx_ref" href="#bib.bib90" title="">1963</a>)</cite>، ومنها ما هو غير معلمي مثل معامل Gini، و<math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m1"><msub><mi>M</mi><mn>20</mn></msub></math>، وإحصاءات الانتفاخ <cite class="ltx_cite ltx_citemacro_citep">(نظام Gini-<math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S1.p4.m2"><msub><mi>M</mi><mn>20</mn></msub></math>، Lotz
+et al., <a class="ltx_ref" href="#bib.bib65" title="">2004</a>)</cite>، والتركيز، واللاتناظر، والنعومة <cite class="ltx_cite ltx_citemacro_citep">(إحصاءات CAS، Conselice, <a class="ltx_ref" href="#bib.bib33" title="">2003</a>)</cite>، وتعدد الأنماط، والشدة، والانحراف <cite class="ltx_cite ltx_citemacro_citep">(إحصاءات MID، Freeman et al., <a class="ltx_ref" href="#bib.bib49" title="">2013</a>)</cite>. وقد بدأت المقارنة بين توزيع هذه المعاملات القائمة على الصور في الصور الصورية وبين نظيراتها في الصور الحقيقية تؤدي الآن دور إحدى الأدوات الحاسمة في معايرة المحاكاة الحديثة <cite class="ltx_cite ltx_citemacro_citep">(Snyder
+et al., <a class="ltx_ref" href="#bib.bib92" title="">2015</a>; Bottrell et al., <a class="ltx_ref" href="#bib.bib13" title="">2017a</a>, <a class="ltx_ref" href="#bib.bib14" title="">b</a>; Rodriguez-Gomez
+et al., <a class="ltx_ref" href="#bib.bib85" title="">2019</a>; Bignone et al., <a class="ltx_ref" href="#bib.bib9" title="">2020</a>; de Graaff et al., <a class="ltx_ref" href="#bib.bib113" title="">2022</a>)</cite>. وعلى مر السنين، ورغم اقتراح المزيد من المعاملات المورفولوجية وتحسن فهمنا لصور المجرات، لا يزال من الصعب استغلال فضاء المعاملات بالكامل لوصف صورة مجرة بطريقة خاضعة للإشراف وموجّهة بشريًا.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">كان التعرف على الصور وتوليدها من أبرز إنجازات مجال التعلم العميق، بدءًا من المحاولات المبكرة للتمييز بين القطط والكلاب، وصولًا إلى مولدات الوجوه بالذكاء الاصطناعي (AI)، وحديثًا جدًا إلى شقيق ChatGPT، وهو ذكاء اصطناعي مذهل للرسم يُسمى DALL-E. وقد حاول الفيزيائيون الفلكيون أيضًا تطبيق تقنيات التعلم الآلي
+لمعالجة مسائلهم العلمية، ولا سيما تلك المرتبطة بصور المجرات <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Dieleman
+et al., <a class="ltx_ref" href="#bib.bib38" title="">2015</a>; Storey-Fisher
+et al., <a class="ltx_ref" href="#bib.bib97" title="">2021</a>; Buck &amp;
+Wolf, <a class="ltx_ref" href="#bib.bib18" title="">2021</a>; Obreja et al., <a class="ltx_ref" href="#bib.bib76" title="">2018</a>; Buder
+et al., <a class="ltx_ref" href="#bib.bib25" title="">2021</a>; Cheng
+et al., <a class="ltx_ref" href="#bib.bib29" title="">2021</a>; Smith et al., <a class="ltx_ref" href="#bib.bib91" title="">2022</a>)</cite>. ويُظهر عمل حديث جدًا لـ <cite class="ltx_cite ltx_citemacro_citep">(Tohill et al., <a class="ltx_ref" href="#bib.bib99" title="">2023</a>)</cite> كذلك أن التعلم غير الخاضع للإشراف المدرَّب على صور المجرات يستطيع ترميز الصور في سمات، يرتبط بعضها بمعاملات مورفولوجية معروفة مثل دليل Sérsic، واللاتناظر، والتركيز (انظر <cite class="ltx_cite ltx_citemacro_citet">Tohill et al. <a class="ltx_ref" href="#bib.bib99" title="">2023</a></cite> الجدول 3).</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">وعلى وجه الخصوص، تملك خوارزميات كشف الشذوذ بالتعلم العميق إمكانية أن تكون قوية جدًا عند مقارنة صور المجرات المحاكاة والحقيقية. في مثل هذه الدراسات، تُعامل صور المجرات المرصودة الحقيقية بوصفها صورًا «طبيعية»، وتُسند شبكة عصبية «درجات شذوذ» إلى صور المجرات المحاكاة، بحيث تقيس كميًا مدى واقعية هذه الصور المحاكاة. استخدم <cite class="ltx_cite ltx_citemacro_cite">Margalef-Bentabol et al. (<a class="ltx_ref" href="#bib.bib69" title="">2020</a>)</cite> شبكة Wasserstein التوليدية التنافسية (WGANs) <cite class="ltx_cite ltx_citemacro_citep">(Arjovsky
+et al., <a class="ltx_ref" href="#bib.bib3" title="">2017</a>)</cite> للعثور على القيم الشاذة في محاكاة Horizon-AGN <cite class="ltx_cite ltx_citemacro_citep">(Dubois
+et al., <a class="ltx_ref" href="#bib.bib41" title="">2014</a>)</cite>، مع صور CANDELS في نطاق H <cite class="ltx_cite ltx_citemacro_citep">(Grogin
+et al., <a class="ltx_ref" href="#bib.bib54" title="">2011</a>; Koekemoer
+et al., <a class="ltx_ref" href="#bib.bib64" title="">2011</a>)</cite> بوصفها «المعيار الطبيعي»، وخسارة WGAN بوصفها درجة الشذوذ. كما حسّن <cite class="ltx_cite ltx_citemacro_cite">Zanisi
+et al. (<a class="ltx_ref" href="#bib.bib111" title="">2021</a>)</cite> أداء خوارزمية كشف الشذوذ من خلال الجمع بين مخرجات شبكتين منفصلتين من PixelCNN <cite class="ltx_cite ltx_citemacro_citep">(Oord
+et al., <a class="ltx_ref" href="#bib.bib77" title="">2016</a>)</cite> لتوليد درجة شذوذ على مستوى البكسل من دون تلوث بخلفية السماء. وفي عملهم، قورنت محاكاة Illustris <cite class="ltx_cite ltx_citemacro_citep">(Vogelsberger
+et al., <a class="ltx_ref" href="#bib.bib104" title="">2014</a>)</cite> وIllustrisTNG <cite class="ltx_cite ltx_citemacro_citep">(Nelson
+et al., <a class="ltx_ref" href="#bib.bib74" title="">2017</a>)</cite> بصور Sloan Digital Sky Survey (SDSS) في نطاق <math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S1.p6.m1"><mi>r</mi></math>، ورُصدت أوجه عدم اتفاق في التفاصيل المورفولوجية الصغيرة المقياس. وفي هذا العمل سنستخدم GANomaly <cite class="ltx_cite ltx_citemacro_citep">(Akcay
+et al., <a class="ltx_ref" href="#bib.bib2" title="">2019</a>)</cite>، الذي يتميز ببنية مولِّد من نوع مُرمِّز-مُفكِّك-مُرمِّز وبدرجة شذوذ أفضل تعريفًا، لمقارنة محاكاة NIHAO (Numerical Investigation of Hundred Astrophysical Objects) <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib107" title="">2015</a>)</cite> بصور مجرات SDSS RGB ثلاثية الألوان (نطاقات <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S1.p6.m2"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S1.p6.m3"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S1.p6.m4"><mi>g</mi></math>). ويُعد GANomaly طريقة مباشرة وموجزة وفعالة لاشتقاق درجات شذوذ لا ترتبط إلا بسمات المجرات لا بضجيج الخلفية، مع تحديد موضع الشذوذ في الوقت نفسه<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+            
+            
+            
+          النموذج متاح للعموم في <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://github.com/ZehaoJin/Rate-galaxy-simulation-with-Anomaly-Detection" title="">https://github.com/ZehaoJin/Rate-galaxy-simulation-with-Anomaly-Detection</a></span></span></span>.</p>
+</div>
+<div class="ltx_para" id="S1.p7">
+<p class="ltx_p">تُنظم هذه الورقة كما يأتي: في القسم <a class="ltx_ref" href="#S2" title="2 المحاكاة ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">2</span></a> سنعرض مجموعات مختلفة من محاكاة NIHAO التي سيقيّمها GANomaly لاحقًا. وفي القسم <a class="ltx_ref" href="#S3" title="3 البيانات الرصدية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">3</span></a> نستعرض مجموعة التدريب المستخدمة في هذا العمل، وهي صور مجرات SDSS. ويعرض القسم <a class="ltx_ref" href="#S4" title="4 GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">4</span></a> كيفية عمل GANomaly ودرجة الشذوذ. وتقدم الأقسام <a class="ltx_ref" href="#S5" title="5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">5</span></a> و<a class="ltx_ref" href="#S6" title="6 علاقات القياس ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">6</span></a> و<a class="ltx_ref" href="#S7" title="7 المعاملات المورفولوجية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">7</span></a> و<a class="ltx_ref" href="#S8" title="8 الخلفية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">8</span></a> النتائج الرئيسة لهذه الورقة، والمقارنة بعلاقات القياس والمعاملات المورفولوجية، إضافة إلى نقاش وتفسير إضافيين لدرجات الشذوذ. ونختتم في القسم <a class="ltx_ref" href="#S9" title="9 الاستنتاجات ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">9</span></a>، ونستكشف فضاء السمات الكامن وراء GANomaly في الملحق <a class="ltx_ref" href="#A1" title="Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">A</span></a> بمحاولة تفسير الفضاء الكامن باستخدام تحليل المركبات الرئيسة (PCA) وإسناد معنى فيزيائي إليه.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>المحاكاة</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">نستخدم النسخة «الأساسية» من محاكاة NIHAO (ويشار إليها فيما بعد باسم ‘NIHAO NoAGN’) وتنوعاتها NIHAO AGN وNIHAO n80 وNIHAO UHD لإجراء مقارنة عبر نماذج فيزياء تشكّل المجرات ومعاملاتها ودقاتها المختلفة. ثم تُرصد هذه المجرات المحاكاة رصدًا صوريًا في هيئة صور RGB على نمط SDSS. وأخيرًا يقيّم GANomaly الصور المرصودة صوريًا من حيث درجات الشذوذ. وتُعرض أدناه تفاصيل محاكاة NIHAO ومخطط الرصد الصوري.</p>
+</div>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>NIHAO NoAGN</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">محاكاة NIHAO (Numerical Investigation of Hundred Astrophysical Objects) <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib107" title="">2015</a>; Blank et al., <a class="ltx_ref" href="#bib.bib10" title="">2019</a>)</cite> هي حزمة من المحاكاة الكونية الهيدروديناميكية المكبرة، وتعمل بشيفرة <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">GASOLINE2</span> <cite class="ltx_cite ltx_citemacro_citep">(Wadsley
+et al., <a class="ltx_ref" href="#bib.bib106" title="">2017</a>)</cite>. وتعتمد NIHAO كوسمولوجيا <math alttext="\Lambda" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m1"><mi mathvariant="normal">Λ</mi></math>CDM مسطحة ومعاملات مستمدة من نتائج القمر الصناعي Planck <cite class="ltx_cite ltx_citemacro_citep">(Planck
+Collaboration et al., <a class="ltx_ref" href="#bib.bib83" title="">2014</a>)</cite>. وتتضمن NIHAO تبريد Compton، والتأين الضوئي بفعل الخلفية فوق البنفسجية وفقًا لـ <cite class="ltx_cite ltx_citemacro_cite">Haardt &amp;
+Madau (<a class="ltx_ref" href="#bib.bib56" title="">2012</a>)</cite>، وتشكّل النجوم والتغذية الراجعة من المستعرات العظمى <cite class="ltx_cite ltx_citemacro_citep">(Stinson et al., <a class="ltx_ref" href="#bib.bib95" title="">2006</a>)</cite> والنجوم الضخمة <cite class="ltx_cite ltx_citemacro_citep">(Stinson et al., <a class="ltx_ref" href="#bib.bib96" title="">2012</a>)</cite>، وتبريد المعادن، والإثراء الكيميائي. وقد أثبتت سلسلة من الأعمال السابقة أن مجرات NIHAO المحاكاة تعيد إنتاج علاقات قياس المجرات بصورة جيدة جدًا، بما في ذلك علاقة الكتلة النجمية بكتلة الهالة <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib107" title="">2015</a>)</cite>، وعلاقة كتلة غاز القرص وحجم القرص <cite class="ltx_cite ltx_citemacro_citep">(Macciò et al., <a class="ltx_ref" href="#bib.bib68" title="">2016</a>)</cite>، وعلاقة Tully-Fisher <cite class="ltx_cite ltx_citemacro_citep">(Dutton
+et al., <a class="ltx_ref" href="#bib.bib44" title="">2017</a>)</cite>، وتنوع منحنيات دوران المجرات <cite class="ltx_cite ltx_citemacro_citep">(Santos-Santos
+et al., <a class="ltx_ref" href="#bib.bib86" title="">2017</a>)</cite>، وعلاقة الكتلة بالمعدنية <cite class="ltx_cite ltx_citemacro_citep">(Buck
+et al., <a class="ltx_ref" href="#bib.bib24" title="">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">نشير إلى هذه النسخة الأساسية (المفصلة في <cite class="ltx_cite ltx_citemacro_cite">Wang et al. (<a class="ltx_ref" href="#bib.bib107" title="">2015</a>)</cite>) من محاكاة NIHAO باسم ‘NIHAO NoAGN’. وتمثل NIHAO NoAGN الأساس الذي تقوم عليه التنوعات الأخرى من NIHAO الموصوفة في الأقسام الفرعية أدناه.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>NIHAO AGN</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">كما يوحي الاسم، لا تحتوي ‘NIHAO NoAGN’ على فيزياء النوى المجرية النشطة (AGN). وبما أنه من المقبول على نطاق واسع أن التغذية الراجعة للثقوب السوداء حاسمة في إخماد المجرات الإهليلجية <cite class="ltx_cite ltx_citemacro_citep">(مثلًا Croton
+et al., <a class="ltx_ref" href="#bib.bib35" title="">2006</a>; Dutton et al., <a class="ltx_ref" href="#bib.bib43" title="">2015</a>)</cite> فقد أدخل <cite class="ltx_cite ltx_citemacro_cite">Blank et al. (<a class="ltx_ref" href="#bib.bib10" title="">2019</a>)</cite> تشكّل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مشروع NIHAO. في NIHAO AGN تُزرع بذرة ثقب أسود عندما تتجاوز الهالة المركزية عتبة كتلة معينة، ثم تتبع نموذج التراكم <cite class="ltx_cite ltx_citemacro_citep">(Bondi, <a class="ltx_ref" href="#bib.bib12" title="">1952</a>)</cite> والتغذية الراجعة الذي قدمه <cite class="ltx_cite ltx_citemacro_cite">Springel et al. (<a class="ltx_ref" href="#bib.bib94" title="">2005</a>)</cite>، وهو أحد أكثر النماذج استخدامًا ومن ثم اختبارًا. ويمكن العثور على مزيد من التفاصيل بشأن تطبيق AGN في NIHAO في <cite class="ltx_cite ltx_citemacro_cite">Blank et al. (<a class="ltx_ref" href="#bib.bib10" title="">2019</a>)</cite>، وكذلك في <cite class="ltx_cite ltx_citemacro_cite">Waterval
+et al. (<a class="ltx_ref" href="#bib.bib109" title="">2022</a>)</cite> للاطلاع على ملخص جيد.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">عمليًا، NIHAO AGN هي إعادة تشغيل لـ NIHAO NoAGN، بالشروط الابتدائية والمعاملات والفيزياء نفسها تمامًا، باستثناء إضافة تطبيق AGN، وبذلك توفر النظير المزود بـ AGN لكل مجرات NIHAO الأساسية. وهي مثالية لاختبار أثر نموذج AGN المطبق من خلال مقارنة نظائر AGN وNoAGN بعلاقات القياس<cite class="ltx_cite ltx_citemacro_citep">(Frosst et al., <a class="ltx_ref" href="#bib.bib50" title="">2022</a>; Waterval
+et al., <a class="ltx_ref" href="#bib.bib109" title="">2022</a>)</cite>، أو الآن على نحو أفضل، بدرجات الشذوذ لدينا.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.3 </span>NIHAO n80</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p">ينطوي تشكّل المجرات على مجال ديناميكي هائل، من السحب الجزيئية إلى البيئة واسعة النطاق، مما يجعل حل بعض العمليات الأساسية بالكامل أمرًا مستحيلًا. وعادة ما تُعتمد نماذج فعالة، غالبًا ذات معاملات وعتبات، في المحاكاة العددية الكونية لمعالجة مشكلة ما دون الدقة هذه <cite class="ltx_cite ltx_citemacro_citep">(Springel &amp;
+Hernquist, <a class="ltx_ref" href="#bib.bib93" title="">2003</a>)</cite>. فعلى سبيل المثال، يُنمذج تشكّل النجوم عادة بعتبة كثافة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m1"><mi>n</mi></math>، بوحدات الجسيمات لكل <math alttext="\textup{cm}^{3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m2"><msup><mtext>cm</mtext><mn>3</mn></msup></math>. ولا تبدأ جسيمات الغاز بالتحول إلى جسيمات نجمية، أي تكوين النجوم، إلا عندما تُبلغ هذه العتبة. ورغم أن قيمة <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m3"><mi>n</mi></math> «المتوقعة» في الكون الحقيقي تتجاوز <math alttext="10^{5}\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m4"><mrow><msup><mn>10</mn><mn>5</mn></msup><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(McKee &amp;
+Ostriker, <a class="ltx_ref" href="#bib.bib70" title="">2007</a>)</cite>، فإن هذه الكثافة خارج نطاق المنال حتى لأعلى محاكاة لمجرة حلزونية دقة، كما استعرض <cite class="ltx_cite ltx_citemacro_cite">Vogelsberger et al. (<a class="ltx_ref" href="#bib.bib105" title="">2020</a>)</cite>. وفي الواقع، تميل المحاكاة الكونية الرائدة حاليًا إلى استخدام <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m5"><mi>n</mi></math> حول <math alttext="0.1-1\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m6"><mrow><mn>0.1</mn><mo>−</mo><mrow><mn>1</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> في الطرف الأدنى، مثل EAGLE <cite class="ltx_cite ltx_citemacro_citep">(Schaye
+et al., <a class="ltx_ref" href="#bib.bib87" title="">2014</a>)</cite> وIllustris <cite class="ltx_cite ltx_citemacro_citep">(Vogelsberger
+et al., <a class="ltx_ref" href="#bib.bib104" title="">2014</a>)</cite> وIllustrisTNG <cite class="ltx_cite ltx_citemacro_citep">(Nelson
+et al., <a class="ltx_ref" href="#bib.bib74" title="">2017</a>)</cite>، وحول <math alttext="10-100\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m7"><mrow><mn>10</mn><mo>−</mo><mrow><mn>100</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> في الطرف الأعلى، مثل <cite class="ltx_cite ltx_citemacro_cite">Governato
+et al. (<a class="ltx_ref" href="#bib.bib53" title="">2010</a>)</cite> وFIRE <cite class="ltx_cite ltx_citemacro_citep">(Oñorbe et al., <a class="ltx_ref" href="#bib.bib75" title="">2015</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Brook &amp;
+Di Cintio (<a class="ltx_ref" href="#bib.bib16" title="">2015</a>)</cite> وVINTERGATAN <cite class="ltx_cite ltx_citemacro_cite">Agertz
+et al. (<a class="ltx_ref" href="#bib.bib1" title="">2021</a>)</cite> وNIHAO <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib107" title="">2015</a>)</cite>. وتُضبط القيمة الدقيقة لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m8"><mi>n</mi></math> عادةً باستخدام علاقات قياس المجرات.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p2">
+<p class="ltx_p">تستخدم كل محاكاة NIHAO الأخرى الموصوفة في هذا العمل، وهي NIHAO NoAGN وNIHAO AGN وNIHAO UHD، القيمة <math alttext="n=10\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m1"><mrow><mi>n</mi><mo>=</mo><mrow><mn>10</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math>. ولاستكشاف قيم أخرى لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m2"><mi>n</mi></math>، أنتج <cite class="ltx_cite ltx_citemacro_cite">Macciò  et al. (<a class="ltx_ref" href="#bib.bib67" title="">2022</a>)</cite> بضع عمليات إعادة تشغيل لمجرات NIHAO NoAGN باستخدام <math alttext="n=80\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m3"><mrow><mi>n</mi><mo>=</mo><mrow><mn>80</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math>. وللتوضيح، لا تتضمن مجرات NIHAO n80 هذه فيزياء AGN، ولها دقة (كتلية) مماثلة لدقة NIHAO NoAGN وNIHAO AGN، لكن <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m4"><mi>n</mi></math> فيها مضبوط على 80 <math alttext="\textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m5"><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></math> بدلًا من 10 <math alttext="\textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p2.m6"><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></math>. وللاطلاع على دراسة موسعة لأثر عتبة تشكّل النجوم في خواص مجرات NIHAO، انظر <cite class="ltx_cite ltx_citemacro_cite">Dutton et al. (<a class="ltx_ref" href="#bib.bib45" title="">2019</a>); Buck
+et al. (<a class="ltx_ref" href="#bib.bib21" title="">2019b</a>); Dutton et al. (<a class="ltx_ref" href="#bib.bib46" title="">2020</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.4 </span>NIHAO UHD</h3>
+<div class="ltx_para" id="S2.SS4.p1">
+<p class="ltx_p">تمتلك NIHAO NoAGN أصلًا دقة جيدة إلى حد بعيد: إذ تمتد كتلة جسيم المادة المظلمة من <math alttext="m_{\textup{dm}}=3.4\times 10^{3}\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m1"><mrow><msub><mi>m</mi><mtext>dm</mtext></msub><mo>=</mo><mrow><mrow><mn>3.4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>3</mn></msup></mrow><mo>⁢</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></mrow></math> للمجرات القزمة إلى <math alttext="m_{\textup{dm}}=1.4\times 10^{7}\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m2"><mrow><msub><mi>m</mi><mtext>dm</mtext></msub><mo>=</mo><mrow><mrow><mn>1.4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>7</mn></msup></mrow><mo>⁢</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></mrow></math> لأضخم المجرات. وتكون النسبة بين كتل جسيمات المادة المظلمة والغاز في البداية مساوية لنسبة كتلة المادة المظلمة إلى الباريونات الكونية، <math alttext="\Omega_{\textup{dm}}/\Omega_{\textup{b}}\approx 5.48" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m3"><mrow><mrow><msub><mi mathvariant="normal">Ω</mi><mtext>dm</mtext></msub><mo>/</mo><msub><mi mathvariant="normal">Ω</mi><mtext>b</mtext></msub></mrow><mo>≈</mo><mn>5.48</mn></mrow></math>. وتُضبط أطوال تليين القوة لجسيمات الغاز والنجوم لتكون أصغر بنحو 2.34 مرات من أطوال تليين جسيمات المادة المظلمة <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib107" title="">2015</a>)</cite>. وإضافة إلى ذلك، اختير عدد قليل من المجرات الشبيهة بدرب التبانة لإعادة محاكاتها بدقة أعلى (<math alttext="m_{\textup{dm}}\approx 10^{5}\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m4"><mrow><msub><mi>m</mi><mtext>dm</mtext></msub><mo>≈</mo><mrow><msup><mn>10</mn><mn>5</mn></msup><mo>⁢</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></mrow></math>). يقدم <cite class="ltx_cite ltx_citemacro_cite">Buck et al. (<a class="ltx_ref" href="#bib.bib23" title="">2020</a>)</cite> حزمة NIHAO UHD (Ultra High Definition)، التي تحتوي على نظائر أعلى دقة لست مجرات من NIHAO NoAGN، بالشروط الابتدائية نفسها والمعاملات نفسها (<math alttext="n=10\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m5"><mrow><mi>n</mi><mo>=</mo><mrow><mn>10</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math>) والفيزياء نفسها (من دون AGN). وتُظهر تلك المجرات تقاربًا ممتازًا لمحاكاة NIHAO، وتبين توافقًا جيدًا بين دالة كتلة التوابع في MW وM31 <cite class="ltx_cite ltx_citemacro_citep">(Buck et al., <a class="ltx_ref" href="#bib.bib20" title="">2019a</a>)</cite> وخواص انتفاخ MW <cite class="ltx_cite ltx_citemacro_citep">(Buck et al., <a class="ltx_ref" href="#bib.bib19" title="">2018</a>, <a class="ltx_ref" href="#bib.bib22" title="">2019c</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS5">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.5 </span>صور الرصد الصوري</h3>
+<div class="ltx_para" id="S2.SS5.p1">
+<p class="ltx_p">في هذا العمل، نستخدم 77 مجرة NIHAO NoAGN، و77 مجرة NIHAO AGN، و12 مجرة NIHAO n80، و6 مجرة NIHAO UHD، مع إسقاط كل مجرة على طول 20 محاور موجهة عشوائيًا. ثم تُرصد هذه المحاكاة المجرية رصدًا صوريًا في نطاقات SDSS <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m1"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m2"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m3"><mi>g</mi></math> كصور مجرات <math alttext="64\times 64\times 3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p1.m4"><mrow><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math>، أولًا عبر انتقال إشعاعي باستخدام <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">SKIRT</span> <cite class="ltx_cite ltx_citemacro_citep">(Camps &amp;
+Baes, <a class="ltx_ref" href="#bib.bib27" title="">2020</a>)</cite> باتباع المنهجية نفسها الواردة في <cite class="ltx_cite ltx_citemacro_cite">Faucher
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2023</a>)</cite>، ثم تُعالج لاحقًا بالاعتماد على <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">RealSim</span> <cite class="ltx_cite ltx_citemacro_citep">(Bottrell et al., <a class="ltx_ref" href="#bib.bib13" title="">2017a</a>, <a class="ltx_ref" href="#bib.bib14" title="">b</a>; Bottrell
+et al., <a class="ltx_ref" href="#bib.bib15" title="">2019</a>)</cite> للحصول على صور صورية واقعية.</p>
+</div>
+<div class="ltx_para" id="S2.SS5.p2">
+<p class="ltx_p">يُعد <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">SKIRT</span> من أكثر شيفرات الانتقال الإشعاعي استخدامًا لإنتاج صور مجرات تركيبية مثالية من المحاكاة. ولكل جسيم نجمي، وبافتراض دالة كتلة ابتدائية (IMF) من Chabrier <cite class="ltx_cite ltx_citemacro_citep">(Chabrier, <a class="ltx_ref" href="#bib.bib28" title="">2003</a>)</cite>، نسند توزيع طاقة طيفي (SED) من FSPS <cite class="ltx_cite ltx_citemacro_citep">(Conroy
+et al., <a class="ltx_ref" href="#bib.bib31" title="">2009</a>; Conroy et al., <a class="ltx_ref" href="#bib.bib32" title="">2010</a>; Foreman-Mackey et al., <a class="ltx_ref" href="#bib.bib48" title="">2015</a>)</cite> باستخدام متساويات العمر MIST <cite class="ltx_cite ltx_citemacro_citep">(Paxton et al., <a class="ltx_ref" href="#bib.bib79" title="">2011</a>; Paxton
+et al., <a class="ltx_ref" href="#bib.bib80" title="">2013</a>, <a class="ltx_ref" href="#bib.bib81" title="">2015</a>; Choi et al., <a class="ltx_ref" href="#bib.bib30" title="">2016</a>; Dotter, <a class="ltx_ref" href="#bib.bib40" title="">2016</a>)</cite> ومكتبة MILES الطيفية <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_ref ltx_missing_citation ltx_ref_self">Sánchez-Blázquez_2006</span>)</cite> وفق عمره ومعدنيته وكتلته. تُؤخذ عينات الفوتونات من SED، وتُطلق على نحو متساوي الخواص في إطار سكون الجسيم ثم تُزاح لاحقًا بفعل دوبلر. ولتقليل العشوائية في تواريخ تشكّل النجوم الناتجة عن نمذجة تجمعات النجوم كجسيمات مفردة، نطبق وصفة تحت شبكية تُنعّم فعليًا تواريخ تشكّل النجوم المحاكاة بحيث يكون الفرق النموذجي في العمر بين جسيمين نجميين شابين متجاورين (بالمعنى الزمني) أقل من <math alttext="\sim 1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p2.m1"><mrow><mi></mi><mo>∼</mo><mn>1</mn></mrow></math> Myr، وهي المدة الزمنية التي تُظهر خلالها أطياف التجمعات النجمية تغيرًا ملحوظًا. وبالنسبة إلى الجسيمات النجمية الأصغر عمرًا من 10 Myr، نحتاج أيضًا إلى احتساب الامتصاص والإصدار بواسطة الغبار داخل مناطق التفكك الضوئي (PDRs) الناتجة عن بقايا سحب الميلاد للنجوم المتشكلة حديثًا. ولأن هذه المناطق تقع دون الدقة المكانية للمحاكاة، نعتمد الطريقة الشائعة الاستخدام <cite class="ltx_cite ltx_citemacro_citep">(Groves
+et al., <a class="ltx_ref" href="#bib.bib55" title="">2008</a>; Jonsson
+et al., <a class="ltx_ref" href="#bib.bib60" title="">2010</a>; Hayward &amp;
+Smith, <a class="ltx_ref" href="#bib.bib58" title="">2015</a>; Trayford
+et al., <a class="ltx_ref" href="#bib.bib100" title="">2017</a>; <span class="ltx_ref ltx_missing_citation ltx_ref_self">Trčka_2020</span>; Kapoor
+et al., <a class="ltx_ref" href="#bib.bib61" title="">2021</a>; Faucher
+et al., <a class="ltx_ref" href="#bib.bib47" title="">2023</a>)</cite> المتمثلة في إسناد SEDs من MAPPINGS-III، والتي تتضمن مسبقًا آثار التأين الضوئي والحجب داخل هذه السحب الجزيئية الكثيفة. ويتميز هذا النموذج بمعامل حر واحد يصف زمن إزالة السحب الجزيئية، ويؤخذ مساويًا لـ 2.5 Myrs وفقًا لـ <cite class="ltx_cite ltx_citemacro_cite">Faucher
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2023</a>)</cite>. وبما أن محاكاة NIHAO لا تنمذج تجمع الغبار مباشرة، نفترض أن كل جسيم غازي يحتوي على كتلة غبار مقدارها 10% من كتلته في المعادن. كما نفترض عدم وجود غبار في الغاز فوق درجة حرارة قصوى تبلغ 16,000K. ولإجراء حسابات الانتقال الإشعاعي، نُجزئ الفضاء باستخدام شبكة مكانية من نوع OctTree نقسمها حتى تحتوي كل خلية شبكية على جسيم غازي واحد على الأكثر. ويُحدد الحجم الظاهري الفيزيائي لكل صورة مجرة من توزيع جسيمات المادة المظلمة المنتمية إلى الهالة الرئيسة للمجرة، كما يحدده كاشف الهالات AHF<cite class="ltx_cite ltx_citemacro_citep">(Knollmann &amp;
+Knebe, <a class="ltx_ref" href="#bib.bib63" title="">2009</a>)</cite>. ويتراوح مقياس البكسل في صور NIHAO الصورية حول 0.58 - 3.74 kpc/pixel. ويمكن العثور على مزيد من التفاصيل ومخرجات نموذجية لإجرائنا في الانتقال الإشعاعي في <cite class="ltx_cite ltx_citemacro_cite">Faucher
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2023</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS5.p3">
+<p class="ltx_p">نضيف بعد ذلك واقعية رصدية تشمل الالتفاف بدالة انتشار النقطة (PSF)، وضجيج اللقطات، وضجيج السماء الغاوسي، وتمديد <span class="ltx_text ltx_font_typewriter">arcsinh</span> بالاعتماد على شيفرة <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">RealSim</span> الخاصة بـ <cite class="ltx_cite ltx_citemacro_cite">Bottrell et al. (<a class="ltx_ref" href="#bib.bib13" title="">2017a</a>, <a class="ltx_ref" href="#bib.bib14" title="">b</a>); Bottrell
+et al. (<a class="ltx_ref" href="#bib.bib15" title="">2019</a>)</cite>. وللالتفاف مع PSF الخاصة بـ SDSS، نعتمد PSF غاوسية بعرض كامل عند نصف القيمة العظمى (FWHM) يساوي متوسط الرؤية في جميع مجرات SDSS Legacy (<math alttext="1.286^{\prime\prime}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p3.m1"><msup><mn>1.286</mn><mo>′′</mo></msup></math> و<math alttext="1.356^{\prime\prime}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p3.m2"><msup><mn>1.356</mn><mo>′′</mo></msup></math> و<math alttext="1.496^{\prime\prime}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p3.m3"><msup><mn>1.496</mn><mo>′′</mo></msup></math> لنطاقات SDSS <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p3.m4"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p3.m5"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S2.SS5.p3.m6"><mi>g</mi></math>). وتُحوّل العروض الفيزيائية للمجرات المحاكاة إلى أحجام زاوية بوضعها افتراضيًا عند مسافة انزياح أحمر 0.109، وهو متوسط الانزياح الأحمر لعينة التدريب من SDSS لدينا. أما ضجيج اللقطات فهو ضجيج Poisson تحدده نقاط الصفر، والكتلة الهوائية، والانطفاء، وكسب CCD في حقول المسح. ويُستحصل ضجيج السماء الغاوسي من متوسط ضجيج السماء عبر جميع مجرات Legacy. وأخيرًا، يُطبق تمديد <span class="ltx_text ltx_font_typewriter">arcsinh</span> الذي اقترحه <cite class="ltx_cite ltx_citemacro_cite">Lupton et al. (<a class="ltx_ref" href="#bib.bib66" title="">2004</a>)</cite> لاتباع مخطط التصوير القياسي في SDSS.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>البيانات الرصدية</h2>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>قصاصات صور مجرات SDSS</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">يُعد SDSS <cite class="ltx_cite ltx_citemacro_citep">(Blanton
+et al., <a class="ltx_ref" href="#bib.bib11" title="">2017</a>)</cite> أحد أكبر المسوح الجارية لرسم خريطة كوننا. وتتيح أداة قص الصور في SDSS الحصول على شرائح صور RGB عند الموضع والعرض المطلوبين. ويأتي اللون الأحمر في صور SDSS من مرشح SDSS القريب من تحت الأحمر (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m1"><mi>i</mi></math>) (<math alttext="7625\textup{\AA}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m2"><mrow><mn>7625</mn><mo>⁢</mo><mtext>Å</mtext></mrow></math>)، واللون الأخضر من مرشح SDSS الأحمر (<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m3"><mi>r</mi></math>) (<math alttext="6231\textup{\AA}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m4"><mrow><mn>6231</mn><mo>⁢</mo><mtext>Å</mtext></mrow></math>)، واللون الأزرق من مرشح SDSS الأخضر (<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m5"><mi>g</mi></math>) (<math alttext="4770\textup{\AA}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m6"><mrow><mn>4770</mn><mo>⁢</mo><mtext>Å</mtext></mrow></math>). وللحصول على صور المجرات، نستخدم فهرس المجرات الذي أعده <cite class="ltx_cite ltx_citemacro_cite">Meert
+et al. (<a class="ltx_ref" href="#bib.bib71" title="">2014</a>)</cite>، والذي يوفر الإحداثيات والكتل النجمية لـ 670,722 مجرة. ومن خلال أداة قص الصور في SDSS<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+              
+              
+              
+            نوفر السكربت اللازم لتنزيل مجموعة بيانات SDSS كاملة في <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://github.com/ZehaoJin/Rate-galaxy-simulation-with-Anomaly-Detection/blob/main/SDSS_cutouts/download_cutouts.py" title="">https://github.com/ZehaoJin/Rate-galaxy-simulation-with-Anomaly-Detection/blob/main/SDSS_cutouts/download_cutouts.py</a>.</span></span></span>، نقتطع <math alttext="64\times 64" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m7"><mrow><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>64</mn></mrow></math> بكسل حول إحداثيات كل مجرة بمقياس بكسل كاميرا SDSS (<math alttext="0.396^{\prime\prime}/\textup{pix}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m8"><mrow><msup><mn>0.396</mn><mo>′′</mo></msup><mo>/</mo><mtext>pix</mtext></mrow></math>). ويمكن العثور على أمثلة لصور SDSS في الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5.1 نظرة عامة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">3</span></a>.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<p class="ltx_p">نضع كذلك حدًا على الكتلة النجمية عند <math alttext="10^{9}\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p2.m1"><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>⁢</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></math> لتجنب التلوث من النجوم. وتملك عينات SDSS هذه انزياحًا أحمر من 0.005 - 0.395، بمتوسط انزياح أحمر يبلغ 0.109، لتُقارن بلقطات NIHAO عند انزياح أحمر 0. وأخيرًا، تُقسم هذه الصور إلى مجموعة تدريب تضم 579,197 صورة، ومجموعة اختبار تضم 64,356 صورة. وخلال مرحلة التدريب، لا ترى الشبكة العصبية إلا صور مجموعة التدريب. وبعد اكتمال تدريب GANomaly، ستُستخدم مجموعة الاختبار للتحقق من أداء التدريب وستُستخدم في التحليل المعروض في هذه الورقة.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>إحصاءات عينة NIHAO مقابل SDSS</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">اختيرت كل مجرات NIHAO المعروضة في هذا العمل بحيث تكون لها كتلة نجمية <math alttext="\mathrm{M_{*}}&gt;10^{9}\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m1"><mrow><msub><mi mathvariant="normal">M</mi><mo>∗</mo></msub><mo>&gt;</mo><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>⁢</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></mrow></math>، بما يتوافق مع حد الكتلة النجمية المفروض على مجرات SDSS<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup>
+<span class="ltx_tag ltx_tag_note">3</span>
+              
+              
+              
+            نجا 77 من أصل 127 أزواج من مجرات NIHAO NoAGN/AGN، و12 من أصل 20 مجرات NIHAO n80، و6 من أصل 6 مجرات NIHAO UHD من حد الكتلة النجمية.</span></span></span>. يبين الشكل <a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ 3.2 إحصاءات عينة NIHAO مقابل SDSS ‣ 3 البيانات الرصدية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">1</span></a> توزيع الكتلة النجمية لمجرات NIHAO وSDSS. وتشترك العينات الثلاث كلها في نطاق مشابه من الكتلة النجمية، لكن التوزيع الدقيق على امتداد نطاق الكتلة يختلف. وتوزيع الكتلة في NIHAO NoAGN وNIHAO AGN متماثل إلى حد ما، ولا سيما عند الطرف الأدنى، لأن AGN لا يؤدي دورًا رئيسًا في المجرات الأقل كتلة مقارنة بالمجرات عالية الكتلة. وبحكم البناء، تملك عينتا NIHAO توزيعًا متقارب الانتظام ضمن نطاق الكتلة، مع عدد أعلى قليلًا من المجرات الأعلى كتلة، في حين تملك SDSS قمة في حاوية الكتلة المتوسطة ونقصًا في حاويتي الكتلة المنخفضة والعالية. وبما أن GANomaly تعلّم اعتمادًا على صور SDSS فقط، فمن المعقول أن تتعرف الشبكة العصبية إلى المجرات متوسطة الكتلة على نحو أفضل قليلًا من المجرات منخفضة وعالية الكتلة. نحن ندرك أثر الاختيار هذا، وسنقارن المجرات الواقعة في حاويات الكتلة نفسها للتغلب على هذه المسألة. ويمكن العثور على مزيد من النقاش حول كيفية تأثير الكتلة النجمية في درجة الشذوذ في القسم <a class="ltx_ref" href="#S5" title="5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">5</span></a>. وسنتعامل مع مجرات NIHAO UHD وNIHAO n80 كلًا على حدة لاحقًا في هذه الورقة، لأن تعدادها محدود. وكتلتها النجمية مشابهة جدًا لكتلة نظيرتها في NIHAO NoAGN.</p>
+</div>
+<figure class="ltx_figure" id="S3.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="345" id="S3.F1.g1" src="plot/stellarmass.png" width="509"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>توزيع الكتلة النجمية المطبّع لكل من SDSS (تظليل أخضر)، وNIHAO NoAGN (خط أزرق)، وNIHAO AGN (خط برتقالي). وسيُستخدم مخطط الألوان نفسه في جميع أنحاء هذه الورقة. وتحيط الخطوط الرأسية الحمراء المتقطعة الأربعة كل عينة بثلاث حاويات كتلية (منخفضة، متوسطة، عالية). وستُقارن المجرات الواقعة في حاوية الكتلة نفسها بعضها ببعض في التحليل اللاحق. ومن الواضح أن توزيع الكتلة في SDSS يبلغ ذروته حول <math alttext="10^{11}\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S3.F1.m2"><mrow><msup><mn>10</mn><mn>11</mn></msup><mo>⁢</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></math>، بينما يكون توزيع الكتلة في NIHAO، بحكم البناء، أكثر تسطحًا على امتداد الكتل كلها، مع فائض طفيف عند الطرف الأعلى.</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>GANomaly</h2>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>كشف الشذوذ بإعادة البناء</h3>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p">GANomaly <cite class="ltx_cite ltx_citemacro_citep">(Akcay
+et al., <a class="ltx_ref" href="#bib.bib2" title="">2019</a>)</cite> هو نموذج لكشف الشذوذ قائم على شبكة توليدية تنافسية (GAN) <cite class="ltx_cite ltx_citemacro_citep">(Goodfellow
+et al., <a class="ltx_ref" href="#bib.bib52" title="">2014</a>)</cite>، مستوحى من AnoGAN <cite class="ltx_cite ltx_citemacro_citep">(Schlegl et al., <a class="ltx_ref" href="#bib.bib89" title="">2017</a>)</cite> وBiGAN <cite class="ltx_cite ltx_citemacro_citep">(Donahue
+et al., <a class="ltx_ref" href="#bib.bib39" title="">2016</a>)</cite> وEGBAD <cite class="ltx_cite ltx_citemacro_citep">(Zenati
+et al., <a class="ltx_ref" href="#bib.bib112" title="">2018</a>)</cite>. يكشف GANomaly الشذوذ من خلال إعادة بناء الصور. ويُدرّب GANomaly على إعادة بناء الصور الطبيعية (غير الشاذة) بتعلّم السمات المشتركة شيوعًا في مجموعة الصور الطبيعية. وبعد انتهاء التدريب، ينبغي أن يكون GANomaly قادرًا فقط على إعادة بناء الصور الطبيعية، وأن يفشل في إعادة بناء أي شذوذ. ومن ثم تكشف المقارنة بين الصورة الأصلية والمعاد بناؤها عن الشذوذ.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>بنية الشبكة</h3>
+<figure class="ltx_figure" id="S4.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="286" id="S4.F2.g1" src="plot/ganomaly.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>بنية GANomaly، المعتمدة من <cite class="ltx_cite ltx_citemacro_cite">Akcay
+et al. (<a class="ltx_ref" href="#bib.bib2" title="">2019</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Di Mattia et al. (<a class="ltx_ref" href="#bib.bib37" title="">2019</a>)</cite>. يتكون GANomaly أساسًا من شبكة مولِّد (المُرمِّز <math alttext="G_{\textup{E}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m21"><msub><mi>G</mi><mtext>E</mtext></msub></math> والمُفكِّك <math alttext="G_{\textup{D}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m22"><msub><mi>G</mi><mtext>D</mtext></msub></math>)، ومُرمِّز <math alttext="E" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m23"><mi>E</mi></math>، وشبكة مميِّز <math alttext="D" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m24"><mi>D</mi></math>. تُرمَّز صورة الدخل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m25"><mi>x</mi></math> أولًا بواسطة <math alttext="G_{\textup{E}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m26"><msub><mi>G</mi><mtext>E</mtext></msub></math> إلى <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m27"><mi>z</mi></math>، وهو تمثيل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m28"><mi>x</mi></math> في الفضاء الكامن/فضاء السمات، ثم تُعاد عبر <math alttext="G_{\textup{D}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m29"><msub><mi>G</mi><mtext>D</mtext></msub></math> إلى <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m30"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math>. وتُرسل <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m31"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math> المعاد بناؤها لاحقًا إلى <math alttext="E" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m32"><mi>E</mi></math> وتُرمَّز في <math alttext="\hat{z}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m33"><mover accent="true"><mi>z</mi><mo>^</mo></mover></math>، وهو تمثيل السمات للصورة المعاد بناؤها <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m34"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math>. وفي الوقت نفسه، يأخذ المميِّز <math alttext="D" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m35"><mi>D</mi></math> بصورة مجهولة كلًا من صورة الدخل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m36"><mi>x</mi></math> والصورة المعاد بناؤها <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m37"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math>، ويحاول التمييز بينهما. يهدف تدريب GANomaly إلى تقليل خسارة التنافس <math alttext="\mathcal{L}_{\textup{adv}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m38"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>adv</mtext></msub></math>، والخسارة السياقية <math alttext="\mathcal{L}_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m39"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></math>، وخسارة المُرمِّز <math alttext="\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S4.F2.m40"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></math>.</figcaption>
+</figure>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">على وجه التحديد، يوضح الشكل <a class="ltx_ref" href="#S4.F2" title="Figure 2 ‣ 4.2 بنية الشبكة ‣ 4 GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">2</span></a> بنية GANomaly. وبصفته تنويعًا على GAN، يتكون GANomaly من شبكة مولِّد (المُرمِّز <math alttext="G_{\textup{E}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m1"><msub><mi>G</mi><mtext>E</mtext></msub></math> والمُفكِّك <math alttext="G_{\textup{D}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m2"><msub><mi>G</mi><mtext>D</mtext></msub></math>) وشبكة مميِّز <math alttext="D" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m3"><mi>D</mi></math>، مع مُرمِّز إضافي <math alttext="E" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m4"><mi>E</mi></math>. تمر صورة الدخل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m5"><mi>x</mi></math> (<math alttext="64\times 64\times 3" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m6"><mrow><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math> في هذا العمل) أولًا عبر جزء المُرمِّز من المولِّد <math alttext="G_{\textup{E}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m7"><msub><mi>G</mi><mtext>E</mtext></msub></math> وتُرمَّز، أو تُلخّص في صورة <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m8"><mi>z</mi></math> (<math alttext="1\times 128" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m9"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>128</mn></mrow></math> في هذا العمل)، أي تمثيل فضاء السمات للصورة <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m10"><mi>x</mi></math>. ثم تصبح <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m11"><mi>z</mi></math> دخلًا للمُفكِّك <math alttext="G_{\textup{D}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m12"><msub><mi>G</mi><mtext>D</mtext></msub></math> الذي يخرج <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m13"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math> (<math alttext="64\times 64\times 3" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m14"><mrow><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math>)، وهي النسخة المعاد بناؤها من <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m15"><mi>x</mi></math>. وأخيرًا، تُرسل <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m16"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math> المعاد بناؤها إلى مُرمِّز آخر <math alttext="E" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m17"><mi>E</mi></math> وتُرمَّز في <math alttext="\hat{z}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m18"><mover accent="true"><mi>z</mi><mo>^</mo></mover></math> (<math alttext="1\times 128" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m19"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>128</mn></mrow></math>)، وهو تمثيل السمات للصورة المعاد بناؤها <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m20"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math>. وفي الأثناء، يأخذ المميِّز بصورة مجهولة كلًا من صورة الدخل الأصلية <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m21"><mi>x</mi></math> والصورة المعاد بناؤها <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m22"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math>، ويحاول تحديد أيهما صورة الدخل الحقيقية وأيهما الصورة الزائفة التي ولّدها المولِّد. وهكذا يكون المولِّد <math alttext="G" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m23"><mi>G</mi></math> والمميِّز <math alttext="D" class="ltx_Math" dir="ltr" display="inline" id="S4.SS2.p1.m24"><mi>D</mi></math> في حالة تنافس ويتطوران معًا: إذ يحاول المولِّد خداع المميِّز بتوليد صور أكثر فأكثر واقعية، بينما يتعلم المميِّز أن يبقى حادًا ويميز الصور المولدة من الصور الحقيقية.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.3 </span>الخسارة ودرجة الشذوذ</h3>
+<div class="ltx_para" id="S4.SS3.p1">
+<p class="ltx_p">لبلوغ هدف إعادة بناء الصور بنجاح، تُعرَّف ثلاث دوال خسارة ويجري تقليلها أثناء التدريب.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p2">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">خسارة التنافس</em>، <math alttext="\mathcal{L}_{\textup{adv}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m1"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>adv</mtext></msub></math>: تحرك خسارة التنافس المنافسة بين المولِّد والمميِّز من خلال بيان ما إذا كان المميِّز قد نجح في التمييز بين الصور الحقيقية والمولدة. وبخلاف GAN الأساسية حيث تكون خسارة التنافس ثنائية ببساطة، صحيحة أو خاطئة<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup>
+<span class="ltx_tag ltx_tag_note">4</span>
+              
+              
+              
+            يمكن أن تعمل خسارة تنافس ثنائية بسيطة في GANomaly أيضًا</span></span></span>، فإن خسارة التنافس هنا، تبعًا لـ <cite class="ltx_cite ltx_citemacro_cite">Schlegl et al. (<a class="ltx_ref" href="#bib.bib89" title="">2017</a>)</cite> و<cite class="ltx_cite ltx_citemacro_cite">Zenati
+et al. (<a class="ltx_ref" href="#bib.bib112" title="">2018</a>)</cite>، تعتمد على التمثيل الداخلي للمميِّز <math alttext="D" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m2"><mi>D</mi></math>.</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\mathcal{L}_{\textup{adv}}=||f(x)-f(\hat{x})||_{2}," class="ltx_Math" dir="ltr" display="block" id="S4.E1.m1"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>adv</mtext></msub><mo>=</mo><msub><mrow><mo stretchy="false">‖</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">‖</mo></mrow><mn>2</mn></msub></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="f" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m3"><mi>f</mi></math> طبقة وسيطة داخل المميِّز D. وتحسب دالة الخسارة هذه مسافة <math alttext="\mathcal{L}_{2}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m4"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mn>2</mn></msub></math> بين تمثيل السمات للصورة الأصلية والصورة المولدة. لاحظ أنه على الرغم من أن <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m5"><mi>x</mi></math> و<math alttext="f(x)" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m6"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> كلاهما تمثيل سمات لـ <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m7"><mi>z</mi></math>، فإنهما مختلفان. تأتي <math alttext="f(x)" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m8"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> من طبقة في المميِّز، وستُدرَّب السمات كي تساعد على أفضل وجه في التمييز بين الصور الحقيقية والمولدة؛ أما <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m9"><mi>z</mi></math> فتأتي من المُرمِّز، وستخدم السمات على أفضل وجه إعادة بناء <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p2.m10"><mi>x</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p3">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">الخسارة السياقية</em>، <math alttext="\mathcal{L}_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p3.m1"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></math>: تقارن الخسارة السياقية مباشرة بين صورة الدخل والصورة المولدة باستخدام مسافة <math alttext="\mathcal{L}_{1}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p3.m2"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mn>1</mn></msub></math>،</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\mathcal{L}_{\textup{con}}=||x-\hat{x}||_{1}" class="ltx_Math" dir="ltr" display="block" id="S4.E2.m1"><mrow><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub><mo>=</mo><msub><mrow><mo stretchy="false">‖</mo><mrow><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo>^</mo></mover></mrow><mo stretchy="false">‖</mo></mrow><mn>1</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">إن تقليل <math alttext="\mathcal{L}_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p3.m3"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></math> يدفع ببساطة الدخل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p3.m4"><mi>x</mi></math> والبناء <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p3.m5"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math> إلى أن يكونا متطابقين قدر الإمكان، وبذلك تُتعلّم المعلومات السياقية للصور الطبيعية.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p4">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">خسارة المُرمِّز</em>، <math alttext="\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p4.m1"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></math>: خسارة المُرمِّز هي مسافة <math alttext="\mathcal{L}_{2}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p4.m2"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mn>2</mn></msub></math> بين تمثيل السمات المُرمَّز للأصل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p4.m3"><mi>x</mi></math> والمعاد بناؤه <math alttext="\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p4.m4"><mover accent="true"><mi>x</mi><mo>^</mo></mover></math>.</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\mathcal{L}_{\textup{enc}}=||z-\hat{z}||_{2}" class="ltx_Math" dir="ltr" display="block" id="S4.E3.m1"><mrow><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub><mo>=</mo><msub><mrow><mo stretchy="false">‖</mo><mrow><mi>z</mi><mo>−</mo><mover accent="true"><mi>z</mi><mo>^</mo></mover></mrow><mo stretchy="false">‖</mo></mrow><mn>2</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">يسمح تقليل <math alttext="\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p4.m5"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></math> للمولِّد بتعلّم كيفية التقاط سمات صورة غير شاذة.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p5">
+<p class="ltx_p">وبوجه عام، يتمثل هدف تدريب GANomaly في تقليل المجموع الموزون للخسائر الثلاث:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\mathcal{L}=w_{\textup{adv}}\mathcal{L}_{\textup{adv}}+w_{\textup{con}}%
+\mathcal{L}_{\textup{con}}+w_{\textup{enc}}\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="block" id="S4.E4.m1"><mrow><mi class="ltx_font_mathcaligraphic">ℒ</mi><mo>=</mo><mrow><mrow><msub><mi>w</mi><mtext>adv</mtext></msub><mo>⁢</mo><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>adv</mtext></msub></mrow><mo>+</mo><mrow><msub><mi>w</mi><mtext>con</mtext></msub><mo>⁢</mo><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></mrow><mo>+</mo><mrow><msub><mi>w</mi><mtext>enc</mtext></msub><mo>⁢</mo><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث تتيح <math alttext="w_{\textup{adv}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p5.m1"><msub><mi>w</mi><mtext>adv</mtext></msub></math> و<math alttext="w_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p5.m2"><msub><mi>w</mi><mtext>con</mtext></msub></math> و<math alttext="w_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p5.m3"><msub><mi>w</mi><mtext>enc</mtext></msub></math> ضبط أهمية الخسائر الثلاث.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p6">
+<p class="ltx_p">أما درجة شذوذ الدخل <math alttext="x" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p6.m1"><mi>x</mi></math>، أي <math alttext="\mathcal{A}(x)" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p6.m2"><mrow><mi class="ltx_font_mathcaligraphic">𝒜</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>، فلن تستخدم دالة الخسارة الكلية، بل تستخدم فقط الفرق في فضاء السمات <math alttext="\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p6.m3"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></math>. ويمكن استخدام الخسارة السياقية <math alttext="\mathcal{L}_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS3.p6.m4"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></math>، رغم أنها غير مرتبطة مباشرة بدرجة الشذوذ، لاستنتاج موضع الشذوذ.</p>
+</div>
+<div class="ltx_para" id="S4.SS3.p7">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S4.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\mathcal{A}(x)=\mathcal{L}_{\textup{enc}}=||z-\hat{z}||_{2}" class="ltx_Math" dir="ltr" display="block" id="S4.E5.m1"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒜</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub><mo>=</mo><msub><mrow><mo stretchy="false">‖</mo><mrow><mi>z</mi><mo>−</mo><mover accent="true"><mi>z</mi><mo>^</mo></mover></mrow><mo stretchy="false">‖</mo></mrow><mn>2</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.4 </span>التدريب</h3>
+<div class="ltx_para" id="S4.SS4.p1">
+<p class="ltx_p">يُدرَّب GANomaly فقط على مجموعة التدريب المؤلفة من 579,197 صورة SDSS حقيقية. وتُضبط أبعاد الدخل/الخرج (<math alttext="x,\hat{x}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m1"><mrow><mi>x</mi><mo>,</mo><mover accent="true"><mi>x</mi><mo>^</mo></mover></mrow></math>) على <math alttext="64\times 64\times 3" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m2"><mrow><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math>، وتُختار أبعاد فضاء السمات (<math alttext="z,\hat{z}" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m3"><mrow><mi>z</mi><mo>,</mo><mover accent="true"><mi>z</mi><mo>^</mo></mover></mrow></math>) لتكون <math alttext="1\times 128" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m4"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>128</mn></mrow></math>. لاحظ أن بعد فضاء السمات أحد المعاملات الفائقة التي تتسم بقدر من الاعتباطية ويمكن ضبطها. وليست «السمات» مستقلة تمامًا ومتعامدة بعضها مع بعض، ولذلك يصعب تفسير فضاء السمات. يستطيع المُرمِّز تلخيص صورة في 128 بتًا، لكنه يستطيع أيضًا تلخيص الصورة نفسها بالكامل في 64 بتًا أو 256 بتًا. دُرّبت الشبكة العصبية على مدى 50 تكرار على مجموعة التدريب، بأوزان خسارة <math alttext="w_{\textup{adv}}=1" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m5"><mrow><msub><mi>w</mi><mtext>adv</mtext></msub><mo>=</mo><mn>1</mn></mrow></math> و<math alttext="w_{\textup{con}}=50" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m6"><mrow><msub><mi>w</mi><mtext>con</mtext></msub><mo>=</mo><mn>50</mn></mrow></math> و<math alttext="w_{\textup{enc}}=1" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m7"><mrow><msub><mi>w</mi><mtext>enc</mtext></msub><mo>=</mo><mn>1</mn></mrow></math><span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup>
+<span class="ltx_tag ltx_tag_note">5</span>
+              
+              
+              
+            أوزان الخسارة نفسها المستخدمة في <cite class="ltx_cite ltx_citemacro_cite">Akcay
+et al. (<a class="ltx_ref" href="#bib.bib2" title="">2019</a>)</cite>. تبدو <math alttext="w_{\textup{con}}=50" class="ltx_Math" dir="ltr" display="inline" id="footnote5.m1"><mrow><msub><mi>w</mi><mtext>con</mtext></msub><mo>=</mo><mn>50</mn></mrow></math> مرتفعة لأن <math alttext="\mathcal{L}_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="footnote5.m2"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></math> يُوسَّط على <math alttext="64\times 64\times 3" class="ltx_Math" dir="ltr" display="inline" id="footnote5.m3"><mrow><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>64</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3</mn></mrow></math> بكسلًا. وسيُخفف التباين السياقي المحلي بعد التوسيط، مما يتطلب وزنًا أعلى.</span></span></span>، وحجم دفعة 64، ومعدل تعلم <math alttext="\alpha=0.0002" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m8"><mrow><mi>α</mi><mo>=</mo><mn>0.0002</mn></mrow></math>، ومُحسِّن Adam <math alttext="\beta_{1}=0.5" class="ltx_Math" dir="ltr" display="inline" id="S4.SS4.p1.m9"><mrow><msub><mi>β</mi><mn>1</mn></msub><mo>=</mo><mn>0.5</mn></mrow></math>. استغرق التدريب كله نحو 150 ساعات على وحدة GPU مزدوجة من نوع NVIDIA Quadro P1000 بذاكرة تقارب 4GB.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>النتائج</h2>
+<section class="ltx_subsection" id="S5.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.1 </span>نظرة عامة</h3>
+<div class="ltx_para" id="S5.SS1.p1">
+<p class="ltx_p">بعد التدريب على مجموعة تدريب SDSS، نطبق GANomaly على مجموعة اختبار SDSS وعلى صور NIHAO لدينا. لاحظ أن صور مجموعة اختبار SDSS لم تُعرض قط على GANomaly خلال مرحلة التدريب، ومن الآن فصاعدًا فإن كل صور SDSS المذكورة مأخوذة من مجموعة اختبار SDSS. وتُعرض مجموعة من مخرجات GANomaly النموذجية في الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5.1 نظرة عامة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">3</span></a> بصيغة [الأصلية، المعاد بناؤها، المتبقي]، مع درجة الشذوذ <math alttext="\mathcal{A}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p1.m1"><mi class="ltx_font_mathcaligraphic">𝒜</mi></math> في الأعلى. لاحظ أن درجة الشذوذ طُبِّعت اعتمادًا على أدنى الدرجات وأعلاها في عينة SDSS، ومن ثم فهي تتراوح بين 0 و1 بالنسبة إلى SDSS (حالة أعلى درجة شذوذ، 1، هي حالة «الرؤية السوداء» في SDSS). ويمكن لصورة غير SDSS أن تحصل على درجات أعلى من 1 إذا كانت أشد غرابة حتى من حالة «الرؤية السوداء»، مثل التفاحة في الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5.1 نظرة عامة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">3</span></a>. وتعني درجة شذوذ أقل أن الصورة تحتوي على شذوذ أقل في فضاء السمات، أو بصورة مبسطة أن صورة المجرة ذات درجة الشذوذ الأقل أكثر واقعية. وكما يظهر في المعرض، تُعاد بناء صور مجرات SDSS بصورة جيدة، مع متبقيات ضئيلة جدًا ودرجة شذوذ منخفضة للغاية. غير أن GANomaly يفشل في إعادة بناء أي شذوذ أو أي مجرة غير SDSS، مثل التفاحة، والرؤية السوداء، وحالة الشعاع الكوني (الصف السفلي في الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5.1 نظرة عامة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">3</span></a>). وتُعاد بناء مجرات NIHAO المحاكاة بصورة جيدة إلى حد معقول وفق خريطة المتبقيات ودرجة الشذوذ. ويُعرض توزيع درجات الشذوذ لجميع صور مجموعة اختبار SDSS مقابل جميع صور NIHAO NoAGN وNIHAO AGN في الشكل <a class="ltx_ref" href="#S5.F4" title="Figure 4 ‣ 5.1 نظرة عامة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">4</span></a>. يتداخل توزيعا NIHAO NoAGN وNIHAO AGN مع توزيع SDSS بنحو <math alttext="70" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p1.m2"><mn>70</mn></math> في المئة، لكن كليهما لا يستطيع بلوغ الدرجة المنخفضة جدًا التي يبلغ عندها توزيع SDSS ذروته، وكلاهما يملك ذيلًا أكبر من ذيل توزيع SDSS. ويشير ذلك إلى أن محاكاة NIHAO هي عمومًا محاكاة واقعية للمجرات، لكنها لا تزال تملك مجالًا للتحسين. وسيُعرض أدناه تفسير أدق لدرجات الشذوذ عبر مجموعات مختلفة من محاكاة NIHAO.</p>
+</div>
+<figure class="ltx_figure" id="S5.F3">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g1" src="plot/SDSSlow1.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g2" src="plot/SDSSlow2.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g3" src="plot/SDSSlow3.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g4" src="plot/SDSSmid1.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g5" src="plot/SDSSmid2.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g6" src="plot/SDSSmid3.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g7" src="plot/SDSShigh1.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g8" src="plot/SDSShigh2.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g9" src="plot/SDSShigh3.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g10" src="plot/NoAGNlow.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g11" src="plot/NoAGNmid.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g12" src="plot/NoAGNhigh.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g13" src="plot/AGNlow.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g14" src="plot/AGNmid.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g15" src="plot/AGNhigh.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g16" src="plot/n801.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g17" src="plot/n802.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g18" src="plot/UHD.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g19" src="plot/apple.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g20" src="plot/SDSSabnormal1.png" width="180"/></div>
+<div class="ltx_flex_cell ltx_flex_size_3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="77" id="S5.F3.g21" src="plot/SDSSabnormal2.png" width="180"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>معرض لأداء GANomaly. في كل لوحة مؤلفة من ثلاث صور، تكون اليسرى هي صورة الدخل الأصلية، والوسطى هي الصورة التي أعاد GANomaly بناءها، واليمنى هي المتبقي بين الدخل والصورة المعاد بناؤها. وفي الأعلى تظهر درجة الشذوذ. تأتي درجة الشذوذ من خسارة المُرمِّز المطبّعة <math alttext="\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m7"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></math>، بينما يكون المتبقي في اللوحة اليمنى هو الخسارة السياقية على مستوى البكسل. وتشير درجة شذوذ أصغر إلى أن صورة المجرة أكثر واقعية مقارنة بصور مجرات SDSS. وتلمح المتبقيات في اللوحات اليمنى إلى موضع الشذوذ، لكن لاحظ أنه لا توجد علاقة واحد إلى واحد بين المتبقي ودرجة الشذوذ (انظر القسم <a class="ltx_ref" href="#S8" title="8 الخلفية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">8</span></a>). اختيرت جميع الصور عشوائيًا. الصف <math alttext="1^{st}\sim 3^{rd}" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m8"><mrow><msup><mn>1</mn><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi></mrow></msup><mo>∼</mo><msup><mn>3</mn><mrow><mi>r</mi><mo>⁢</mo><mi>d</mi></mrow></msup></mrow></math>: صور مجرات مجموعة اختبار SDSS من حاويات الكتلة المنخفضة والمتوسطة والعالية؛ الصف <math alttext="4^{th}" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m9"><msup><mn>4</mn><mrow><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msup></math>: مجرات NIHAO NoAGN في كل حاوية كتلية؛ الصف <math alttext="5^{th}" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m10"><msup><mn>5</mn><mrow><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msup></math>: مجرات NIHAO AGN في كل حاوية كتلية؛ الصف <math alttext="6^{th}" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m11"><msup><mn>6</mn><mrow><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msup></math>: مجرات NIHAO n80 وNIHAO UHD؛ الصف <math alttext="7^{th}" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m12"><msup><mn>7</mn><mrow><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msup></math>: فحص سلامة باستخدام تفاحة وصورتين شاذتين من مجموعة اختبار SDSS. إحداهما عندما لا تُرصد أي مجرة ويكون مجال الرؤية كله أسود، والأخرى عندما يضرب شعاع كوني الكاميرا.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="361" id="S5.F4.g1" src="plot/SDSSnihao.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>توزيع درجات الشذوذ لأرصاد SDSS ومحاكاة NIHAO. تُسقط كل مجرة من NIHAO في 20 اتجاهات عشوائية، وتُعد كل واحدة من هذه الاتجاهات 20 صورة مستقلة عند حساب توزيع درجة الشذوذ. تمتلك التوزيعات مساحة تداخل كبيرة، لكن NIHAO لا تعيد إنتاج قمة SDSS ولها ذيل أكبر.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S5.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.2 </span>NIHAO NoAGN مقابل NIHAO AGN في حاويات الكتلة</h3>
+<div class="ltx_para" id="S5.SS2.p1">
+<p class="ltx_p">لأن الكتلة النجمية لا تتوزع بانتظام في مجموعة تدريب SDSS (الشكل <a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ 3.2 إحصاءات عينة NIHAO مقابل SDSS ‣ 3 البيانات الرصدية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">1</span></a>)، ولأن اختلاف الكتلة النجمية يمكن أن يؤدي إلى مورفولوجيات مجرية متمايزة، فإن GANomaly سيفضل المجرات ذات كتل نجمية معينة، كما يبين الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5.2 NIHAO NoAGN مقابل NIHAO AGN في حاويات الكتلة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">5</span></a>. فالمجرات الأقل كتلة، بسبب جهدها الثقالي الأضعف، تكون بطبيعتها أكثر لاانتظامًا أو شذوذًا من حيث المورفولوجيا مقارنة بالمجرات الأعلى كتلة في حاويات الكتلة المتوسطة والعالية. ويؤدي الشذوذ الذاتي وتعداد الكتلة النجمية غير المتوازن في مجموعة التدريب معًا إلى جعل مجرات SDSS في حاوية الكتلة المنخفضة ذات درجات شذوذ أعلى من نظيراتها في حاويتي الكتلة المتوسطة والعالية. ولتحقيق مقارنة عادلة، نضع مجرات SDSS وNIHAO في حاويات كتلة منخفضة ومتوسطة وعالية، ونقارن التوزيع ضمن النطاق الكتلي نفسه.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p2">
+<p class="ltx_p">يُعتقد أن التغذية الراجعة لـ AGN أساسية في إخماد المجرات الضخمة، ومن ثم يتوقع المرء فرقًا ضئيلًا في درجة الشذوذ بين NIHAO NoAGN وNIHAO AGN في حاوية الكتلة المنخفضة، بينما ينبغي لدرجة شذوذ NIHAO AGN أن تتفوق على NIHAO NoAGN كلما اتجهنا إلى كتل نجمية أعلى، إذا كان تطبيق AGN واقعيًا. يبين الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5.2 NIHAO NoAGN مقابل NIHAO AGN في حاويات الكتلة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">6</span></a> توزيع درجات الشذوذ لكل من NIHAO NoAGN وNIHAO AGN وSDSS في كل واحدة من حاويات الكتلة الثلاث. وتبلغ مساحة التداخل (بالنسبة المئوية من مساحة SDSS) بين NIHAO وSDSS لكل من AGN مقابل NoAGN في حاويات الكتلة المنخفضة والمتوسطة والعالية 62 في المئة مقابل 68 في المئة، و66 في المئة مقابل 59 في المئة، و74 في المئة مقابل 63 في المئة<span class="ltx_note ltx_role_footnote" id="footnote6"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup>
+<span class="ltx_tag ltx_tag_note">6</span>
+              
+              
+              
+            لاحظ أن مساحة التداخل تعتمد على اختيار التقسيم إلى حاويات، ولذلك فهي لا تقيس مباشرة جودة NIHAO NoAGN أو NIHAO AGN إحداهما على الأخرى.</span></span></span>. يبين الرسم أن لا NoAGN ولا AGN يتفوق على الآخر تفوقًا ملحوظًا في أي من حاويات الكتلة. وتشير مساحة التداخل إلى أنه في حاوية الكتلة المنخفضة لا يوجد فرق يذكر بين NIHAO NoAGN وNIHAO AGN لأن الثقوب السوداء لا تؤدي دورًا رئيسًا هناك، كما هو متوقع. أما في حاوية الكتلة المتوسطة، ولا سيما في حاوية الكتلة العالية، فيبدأ AGN بإظهار أفضلية طفيفة على NoAGN. وبصريًا، تأتي أفضلية AGN في حاوية الكتلة العالية من أن AGN يعيد إنتاج القمة الثانية حول درجة شذوذ 0.01 - 0.03 أفضل قليلًا مما يفعل NoAGN.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p3">
+<p class="ltx_p">وباختصار، يلمح GANomaly إلى تحسن طفيف في نمذجة المجرات الأعلى كتلة عند تطبيق AGN، لكنه عمومًا يعلن تعادلًا بين الأداء الكلي مع AGN ومن دونه. وبالمثل، عند استخدام PixelCNN وتوزيع نسبة اللوغاريتم الاحتمالي (LLR) الخاص بها (وهو شبيه بتوزيع درجة الشذوذ هنا) لمقارنة صور SDSS في نطاق <math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p3.m1"><mi>r</mi></math>، وجد <cite class="ltx_cite ltx_citemacro_cite">Zanisi
+et al. (<a class="ltx_ref" href="#bib.bib111" title="">2021</a>)</cite> تحسنًا هامشيًا فقط للمجرات الساكنة من Illustris إلى IllustrisTNG رغم اختلاف تطبيق التغذية الراجعة لـ AGN فيهما. يأخذ GANomaly صور مجرات مرصودة صوريًا، أي خرائط توزيع الضوء المطبّعة في نطاقات SDSS <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p3.m2"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p3.m3"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p3.m4"><mi>g</mi></math>، ولذلك يبدو أن تطبيقات AGN الحالية في NIHAO لا تملك «أثرًا صافيًا» في خرائط توزيع ضوء المجرات المطبّعة وفقًا لـ GANomaly. وفي القسم <a class="ltx_ref" href="#S7" title="7 المعاملات المورفولوجية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">7</span></a> سنعرض مزيدًا حول كيف تبدو درجات الشذوذ «غير حساسة» لنماذج AGN الحالية في NIHAO.</p>
+</div>
+<figure class="ltx_figure" id="S5.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="361" id="S5.F5.g1" src="plot/SDSSmass.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>التوزيع المطبّع لدرجات الشذوذ لحاويات الكتلة النجمية المختلفة في مجموعة اختبار SDSS. تشير الخطوط الملونة إلى حاويات الكتلة الثلاث، ويُظهر المدرج التكراري المظلل بالأخضر مجموعة البيانات المجمعة. تفضل درجة الشذوذ مجرات SDSS المتوسطة والعالية الكتلة على المجرات الأقل كتلة.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_portrait" height="994" id="S5.F6.g1" src="plot/NIHAONoAGNAGN.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>NIHAO NoAGN (بالأزرق) مقابل NIHAO AGN (بالبرتقالي) مقابل SDSS (بالأخضر) في حاويات الكتلة المنخفضة والمتوسطة والعالية (من الأعلى إلى الأسفل). تُعامل الإسقاطات 20 لمجرة NIHAO بوصفها صورًا مستقلة عند حساب توزيع درجة الشذوذ. لا نرى تفضيلًا ذا دلالة لـ NIHAO AGN أو NIHAO NoAGN في أي من حاويات الكتلة.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S5.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.3 </span>أثر عتبة تشكّل النجوم</h3>
+<div class="ltx_para" id="S5.SS3.p1">
+<p class="ltx_p">من بين 81 مجرة NIHAO NoAGN مستخدمة في هذا العمل، لدينا 12 مجرات لها نظائر NIHAO n80. لا تتضمن مجرات NIHAO n80 هذه تطبيق AGN، ولها عتبة كثافة لتشكّل النجوم مقدارها <math alttext="n=80\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m1"><mrow><mi>n</mi><mo>=</mo><mrow><mn>80</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> بدلًا من <math alttext="n=10\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m2"><mrow><mi>n</mi><mo>=</mo><mrow><mn>10</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> كما في NIHAO NoAGN (انظر القسم <a class="ltx_ref" href="#S2.SS3" title="2.3 NIHAO n80 ‣ 2 المحاكاة ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">2.3</span></a>). وفي هذا القسم، سنشير إلى المقارنة بين هذه الأزواج 12 من المجرات باسم NIHAO n80 مقابل NIHAO n10 توخيًا للوضوح. ولاستقصاء هذا <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m3"><mi>n</mi></math>، نقارن أداء درجة الشذوذ لـ <math alttext="n=80\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m4"><mrow><mi>n</mi><mo>=</mo><mrow><mn>80</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> مقابل <math alttext="n=10\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m5"><mrow><mi>n</mi><mo>=</mo><mrow><mn>10</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> مجرة مجرةً، كما يظهر في الشكل <a class="ltx_ref" href="#S5.F7" title="Figure 7 ‣ 5.3 أثر عتبة تشكّل النجوم ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">7</span></a>. وبالنسبة إلى هذه الأزواج 12 من المجرات، لا تُظهر المجرات الأقل كتلة (<math alttext="&lt;10^{10}\mathrm{M_{*}}/\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m6"><mrow><mi></mi><mo>&lt;</mo><mrow><mrow><msup><mn>10</mn><mn>10</mn></msup><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mo>∗</mo></msub></mrow><mo>/</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></mrow></math>) فرقًا واضحًا بين n80 وn10 في درجة الشذوذ، بينما تُظهر المجرات الأعلى كتلة (<math alttext="&gt;10^{10}\mathrm{M_{*}}/\textup{M}_{\odot}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m7"><mrow><mi></mi><mo>&gt;</mo><mrow><mrow><msup><mn>10</mn><mn>10</mn></msup><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mo>∗</mo></msub></mrow><mo>/</mo><msub><mtext>M</mtext><mo>⊙</mo></msub></mrow></mrow></math>) درجة شذوذ أفضل (أدنى) في NIHAO n10. وهذا يعني أن <math alttext="n=10\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m8"><mrow><mi>n</mi><mo>=</mo><mrow><mn>10</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> تبدو خيارًا أفضل من <math alttext="n=80\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m9"><mrow><mi>n</mi><mo>=</mo><mrow><mn>80</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> في إعداد شبيه بـ NIHAO NoAGN للمجرات عالية الكتلة. وهذه نتيجة مثيرة للاهتمام تختلف عن <cite class="ltx_cite ltx_citemacro_cite">Macciò  et al. (<a class="ltx_ref" href="#bib.bib67" title="">2022</a>)</cite>، الذي يبين أن <math alttext="n=80\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m10"><mrow><mi>n</mi><mo>=</mo><mrow><mn>80</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> خيار أفضل اعتمادًا على فحص خريطة الغاز بدلًا من خريطة الضوء النجمي المدروسة في هذا العمل. وتشير النتائج المتباينة المستخلصة من منظورات متنوعة إلى أن مقياسًا واحدًا لا يكفي لضبط المعاملات أو العتبات الفعالة في المحاكاة الكونية، وأن القيمة المثلى لـ <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS3.p1.m11"><mi>n</mi></math> تستحق مزيدًا من الدراسة في أعمال مستقبلية.</p>
+</div>
+<figure class="ltx_figure" id="S5.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="361" id="S5.F7.g1" src="plot/n80score.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>درجة الشذوذ لنظائر 12 من NIHAO n10 وNIHAO n80. تُسقط كل مجرة n10 وn80 في 20 دورانات مختلفة، مما يعطي 20 صورة مجرية (انظر القسم <a class="ltx_ref" href="#S2.SS5" title="2.5 صور الرصد الصوري ‣ 2 المحاكاة ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">2.5</span></a>). في هذا الرسم تمثل كل نقطة متوسط درجة الشذوذ لكل 20 صورة مجرية على المحور y، ويشير شريط خطأ y إلى الانحراف المعياري لدرجات الشذوذ 20. أما المحور x فهو الكتلة النجمية لمجرة NIHAO n10، وذلك فقط لتجميع كل نظير. تفضل درجة الشذوذ <math alttext="n=10\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.F7.m3"><mrow><mi>n</mi><mo>=</mo><mrow><mn>10</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> على <math alttext="n=80\ \textup{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S5.F7.m4"><mrow><mi>n</mi><mo>=</mo><mrow><mn>80</mn><mo lspace="0.500em">⁢</mo><msup><mtext>cm</mtext><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> في المجرات الأعلى كتلة.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S5.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.4 </span>أثر الدقة</h3>
+<div class="ltx_para" id="S5.SS4.p1">
+<p class="ltx_p">بطريقة مشابهة لحالة n80، نقارن 6 أزواج من مجرات NIHAO NoAGN (ويشار إليها في هذا القسم باسم ‘NIHAO HD’) ومجرات NIHAO UHD. وللتذكير، فإن الفرق الوحيد بينها هو أن NIHAO UHD أعلى دقة من NIHAO HD. يبين الشكل <a class="ltx_ref" href="#S5.F8" title="Figure 8 ‣ 5.4 أثر الدقة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">8</span></a> أنه في جميع المجرات 6 تكون درجات الشذوذ شبه متطابقة عبر الدقات المختلفة. ويرجع ذلك إلى أن كلًا من HD وUHD ستكون لهما فعليًا صور صورية بالدقة نفسها بعد الالتفاف مع PSF. ويبين المستوى نفسه من أداء درجة الشذوذ أن NIHAO HD قادرة على إنتاج صور مجرات على نمط SDSS بجودة NIHAO HUD نفسها وبكلفة حاسوبية أدنى بكثير.</p>
+</div>
+<div class="ltx_para" id="S5.SS4.p2">
+<p class="ltx_p">كما نعرض صورة المجرة المواجهة وإعادة بناء GANomaly لمجرتين من NIHAO لهما نظائر في جميع عينات NoAGN وAGN وn80 وUHD في الشكل <a class="ltx_ref" href="#S5.F9" title="Figure 9 ‣ 5.4 أثر الدقة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">9</span></a>. ويُعرض متوسط درجة الشذوذ لكل مجرة NIHAO ولكل مجرة اختبار SDSS في الشكل <a class="ltx_ref" href="#S5.F10" title="Figure 10 ‣ 5.4 أثر الدقة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">10</span></a>. ومرة أخرى، من حيث درجات الشذوذ، تنتهي مقارنة NIHAO AGN مقابل NIHAO AGN إلى تعادل مع أفضلية هامشية لـ NIHAO AGN عند الكتل الأعلى، ويتفوق NIHAO n10 على NIHAO n80 (أي NIHAO NoAGN) عند الكتل الأعلى، وتنتهي مقارنة NIHAO UHD مقابل NIHAO HD (أي NIHAO NoAGN) إلى تعادل.</p>
+</div>
+<figure class="ltx_figure" id="S5.F8"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="361" id="S5.F8.g1" src="plot/UHDscore.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>درجة الشذوذ لنظائر 6 من NIHAO HD وNIHAO UHD. كما في الشكل <a class="ltx_ref" href="#S5.F7" title="Figure 7 ‣ 5.3 أثر عتبة تشكّل النجوم ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">7</span></a>، تمثل كل نقطة متوسط درجة الشذوذ لكل إسقاطات مجرية 20 على المحور y، ويمثل شريط خطأ y الانحراف المعياري لدرجات الشذوذ 20. ويعرض المحور x الكتلة النجمية لمجرات NIHAO HD لتجميع كل نظير. درجات الشذوذ في HD وUHD شبه متماثلة، نتيجة تنعيم PSF.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F9">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g1" src="plot/g7.08e11NoAGN.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g2" src="plot/g8.26e11NoAGN.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g3" src="plot/g7.08e11AGN.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g4" src="plot/g8.26e11AGN.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g5" src="plot/g7.08e11n80.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g6" src="plot/g8.26e11n80.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g7" src="plot/g7.08e11UHD.png" width="269"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="116" id="S5.F9.g8" src="plot/g8.26e11UHD.png" width="269"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>مجرتا NIHAO المسميتان <math alttext="g7.08e11" class="ltx_Math" dir="ltr" display="inline" id="S5.F9.m3"><mrow><mi>g</mi><mo>⁢</mo><mn>7.08</mn><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mn>11</mn></mrow></math> و<math alttext="g8.26e11" class="ltx_Math" dir="ltr" display="inline" id="S5.F9.m4"><mrow><mi>g</mi><mo>⁢</mo><mn>8.26</mn><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mn>11</mn></mrow></math> معروضتان في نسخ NoAGN وAGN وn80 وUHD. في كل مجموعة من الصور، تكون اليسرى هي صورة المجرة الأصلية، والوسطى هي إعادة البناء بواسطة GANomaly، واليمنى هي المتبقي بين الأصلية والمعاد بناؤها، وفي الأعلى الاسم ودرجة الشذوذ. لاحظ أن محاور الإسقاط مختلفة عبر كل نسخة، ولذلك فإن المقارنة المباشرة لدرجات الشذوذ بين هذه الصور هنا ليست عادلة. وإضافة إلى ذلك، لا يرتبط المتبقي في اللوحات اليمنى بالضرورة بدرجة الشذوذ، ولذلك فإن متبقي إعادة بناء كبيرًا لا يفسر شذوذًا كبيرًا كما هو موضح في القسم <a class="ltx_ref" href="#S4.SS3" title="4.3 الخسارة ودرجة الشذوذ ‣ 4 GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">4.3</span></a>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F10"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="430" id="S5.F10.g1" src="plot/grandscore.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>متوسط درجة الشذوذ لكل مجرة NIHAO عبر إسقاطاتها 20، إلى جانب توزيع درجات الشذوذ لجميع مجرات اختبار SDSS، مرسومًا بدلالة كتلتها النجمية. الأخضر - SDSS؛ الأزرق - NIHAO NoAGN؛ البرتقالي - NIHAO AGN؛ الرمادي - NIHAO n80؛ الأحمر - NIHAO UHD.</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>علاقات القياس</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">إن الالتزام بعلاقات القياس معيار شائع الاستخدام لتقييم المجرات المحاكاة، ومن الطبيعي أن نتساءل عما إذا كان معيار علاقات القياس يتفق مع درجات الشذوذ في GANomaly. ومن منظور قائم على علاقات القياس، يقارن <cite class="ltx_cite ltx_citemacro_cite">Arora et al. (<a class="ltx_ref" href="#bib.bib5" title="">2023</a>)</cite> مجرات NIHAO المحاكاة مع <math alttext="\sim 2600" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m1"><mrow><mi></mi><mo>∼</mo><mn>2600</mn></mrow></math> مجرة من النوع المتأخر من مسح Mapping Nearby Galaxy at Apache point (MaNGA) <cite class="ltx_cite ltx_citemacro_citep">(Bundy
+et al., <a class="ltx_ref" href="#bib.bib26" title="">2015</a>)</cite>. وتُجرى المقارنات باستخدام علاقات قياس بنيوية متعددة الأبعاد تتضمن كميات مثل الحجم (R)، والكتلة النجمية (<math alttext="\mathrm{M_{*}}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m2"><msub><mi mathvariant="normal">M</mi><mo>∗</mo></msub></math>)، والسرعة الدورانية (V)، والكثافة السطحية النجمية داخل 1 kpc (<math alttext="\Sigma_{1}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m3"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>). حيث تُقدر R و<math alttext="\mathrm{M_{*}}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m4"><msub><mi mathvariant="normal">M</mi><mo>∗</mo></msub></math> و<math alttext="\Sigma_{1}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m5"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math> باستخدام قياسات ضوئية بصرية <span class="ltx_text ltx_font_italic">grz</span> من مسح DESI<span class="ltx_note ltx_role_footnote" id="footnote7"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup>
+<span class="ltx_tag ltx_tag_note">7</span>
+            
+            
+            
+          Dark Energy Sky Instrument <cite class="ltx_cite ltx_citemacro_citep">(DESI
+Collaboration et al., <a class="ltx_ref" href="#bib.bib36" title="">2016</a>)</cite></span></span></span> <cite class="ltx_cite ltx_citemacro_citep">(Arora et al., <a class="ltx_ref" href="#bib.bib4" title="">2021</a>)</cite>، بينما تمثل قياسات السرعة ملاءمات نموذج <span class="ltx_text ltx_font_typewriter">tanh</span> لخرائط السرعة من MaNGA <cite class="ltx_cite ltx_citemacro_citep">(انظر Arora et al., <a class="ltx_ref" href="#bib.bib5" title="">2023</a>, لمزيد من التفاصيل)</cite>. وفي المقارنات، تُقاس جميع الكميات، باستثناء <math alttext="\Sigma_{1}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m6"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>، عند نصف قطر يقابل كثافة سطحية للكتلة النجمية مقدارها <math alttext="10\,{\rm M_{\odot}\,pc^{-2}}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m7"><mrow><mn>10</mn><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mo>⊙</mo></msub><mo>⁢</mo><msup><mi>pc</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math>. ويتيح اختيار مقياس حجم ذي دافع فيزيائي مقارنة موحدة بين محاكاة المجرات وأرصادها (بعد أخذ أخطاء الرصد في الحسبان).</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S6.F11" title="Figure 11 ‣ 6 علاقات القياس ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">11</span></a>، نستخدم 30 مجرة NIHAO AGN مشتركة بين التحليل المعروض هنا والتحليل في <cite class="ltx_cite ltx_citemacro_cite">Arora et al. (<a class="ltx_ref" href="#bib.bib5" title="">2023</a>)</cite>. وتتفق مجرات NIHAO عمومًا مع أرصاد MaNGA جيدًا من حيث علاقات القياس، ولا تملك أي من المجرات درجة شذوذ استثنائية الارتفاع. غير أنه يتبين أن درجة شذوذ المجرة لا ترتبط بكون هذه المجرة تتبع أيًا من علاقات القياس: فمجرة محاكاة تقع مباشرة على علاقة قياس يمكن أن تكون لها درجة شذوذ أعلى من مجرة تبدو بعيدة عن علاقة القياس. وبصورة مبسطة، قد يفترض المرء أن المجرة الأقرب ملاءمة لعلاقة قياس أكثر واقعية من مجرة أبعد عنها، لكن درجة الشذوذ تشير إلى أن هذا الافتراض ليس صحيحًا دائمًا. وبعبارة أخرى، فإن GANomaly ودرجة الشذوذ ليسا موازيين لعلاقات القياس، بل مكملان لها. يفحص GANomaly صور المجرات الكاملة، أو خرائط توزيع الضوء، ومن ثم التوزيع المشترك لمواضع النجوم وأعمارها ومعدنيتها وكتلتها، وهو ما لا يمكن اختباره عبر علاقات القياس التقليدية. كما يوحي ذلك بأنه على الرغم من قدرة محاكاة المجرات الحديثة على إعادة إنتاج كثير من علاقات القياس المرصودة، فإن هذا النجاح في بضع كميات إحصائية لا يضمن صورة مجرة واقعية. ولتقييم جودة محاكاة مجرة، قد يكون تصحيح خريطة الضوء مهمًا بقدر تصحيح علاقات القياس التقليدية. ومع سعينا إلى محاكاة أدق على نحو متزايد وصورة أكمل لنماذج تشكّل المجرات، يصبح من الضروري استخدام كل من علاقات القياس التقليدية وتقنيات كشف شذوذ الصور المدفوعة بالتعلم العميق للحصول على فهم أفضل للمحاكاة، ومن ثم تعلّم صورة أكمل عن كوننا.</p>
+</div>
+<figure class="ltx_figure" id="S6.F11"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="666" id="S6.F11.g1" src="plot/nikall2.png.png" width="592"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 11: </span>علاقات قياس المجرات مرسومة لمجرات NIHAO AGN وللمجرات الحقيقية المرصودة في MaNGA. رُمّزت مجرات NIHAO AGN لونيًا حسب متوسط درجة الشذوذ عبر 20 اتجاهات مختلفة. تُقاس جميع الكميات عند نصف قطر يقابل كثافة سطحية للكتلة النجمية مقدارها <math alttext="10\,{\rm M_{\odot}\,pc^{-2}}" class="ltx_Math" dir="ltr" display="inline" id="S6.F11.m3"><mrow><mn>10</mn><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mo>⊙</mo></msub><mo>⁢</mo><msup><mi>pc</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math>، باستثناء <math alttext="\Sigma_{1}" class="ltx_Math" dir="ltr" display="inline" id="S6.F11.m4"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>، وهي الكثافة السطحية النجمية داخل 1 kpc. لا توجد علاقة واضحة بين درجة الشذوذ والالتزام بعلاقات القياس في أي من علاقات القياس المعروضة.</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S7">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7 </span>المعاملات المورفولوجية</h2>
+<div class="ltx_para" id="S7.p1">
+<p class="ltx_p">علاقات القياس مكملة لدرجات الشذوذ، لكن من المتوقع أن تكون المعاملات المورفولوجية أكثر اتساقًا مع درجات الشذوذ، إذ إن كليهما مشتق من صور المجرات. نستقصي هنا ما قد يتعلمه نموذج التعلم الآلي إضافة إلى الطرائق التقليدية التي طُبقت حتى الآن في دراسات الصور الصورية. وننظر هنا أساسًا في إحصاءات Gini-<math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S7.p1.m1"><msub><mi>M</mi><mn>20</mn></msub></math> <cite class="ltx_cite ltx_citemacro_citep">(معامل gini، و<math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S7.p1.m2"><msub><mi>M</mi><mn>20</mn></msub></math>، وإحصاءات الانتفاخ، Lotz
+et al., <a class="ltx_ref" href="#bib.bib65" title="">2004</a>)</cite>، وإحصاءات CAS <cite class="ltx_cite ltx_citemacro_citep">(التركيز، واللاتناظر، والنعومة، Conselice, <a class="ltx_ref" href="#bib.bib33" title="">2003</a>)</cite>، وإحصاءات MID <cite class="ltx_cite ltx_citemacro_citep">(تعدد الأنماط، والشدة، والانحراف، Freeman et al., <a class="ltx_ref" href="#bib.bib49" title="">2013</a>)</cite>. ويمكن العثور على مراجعة جيدة لتعريف هذه المعاملات في <cite class="ltx_cite ltx_citemacro_cite">Rodriguez-Gomez
+et al. (<a class="ltx_ref" href="#bib.bib85" title="">2019</a>)</cite>. نحسب المعاملات المورفولوجية لمجرات NIHAO NoAGN وNIHAO AGN ومجموعة اختبار SDSS باستخدام شيفرة <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">statmorph</span> المبينة أيضًا في <cite class="ltx_cite ltx_citemacro_cite">Rodriguez-Gomez
+et al. (<a class="ltx_ref" href="#bib.bib85" title="">2019</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S7.p2">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S7.F12" title="Figure 12 ‣ 7 المعاملات المورفولوجية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">12</span></a> نقارن درجات الشذوذ بالمعاملات المورفولوجية عبر NIHAO وSDSS. تتفق كثير من المعاملات المورفولوجية مع درجة الشذوذ، كما في إحصاءات MID. ففي هذه الحالات تحصل مجرات NIHAO على درجة شذوذ أفضل عندما يطابق توزيع معاملاتها المورفولوجية توزيع مجرات SDSS على نحو أفضل. وعلاوة على ذلك، فإن الأداء العام لـ NIHAO NoAGN وNIHAO AGN متشابه تمامًا من حيث معظم المعاملات المورفولوجية، وهو ما يتفق مع ما وُجد في القسم <a class="ltx_ref" href="#S5.SS2" title="5.2 NIHAO NoAGN مقابل NIHAO AGN في حاويات الكتلة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">5.2</span></a> اعتمادًا على درجات الشذوذ. غير أن درجات الشذوذ تبدو غير متفقة مع بعض المعاملات المورفولوجية الأخرى. فعلى سبيل المثال، في حالتي اللاتناظر والنعومة<span class="ltx_note ltx_role_footnote" id="footnote8"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup>
+<span class="ltx_tag ltx_tag_note">8</span>
+            
+            
+            
+          قد تكون قيم اللاتناظر والنعومة العالية عند الطرف منخفض الكتلة من تجمع المجرات ناجمة، على نحو محتمل، عن اختيار PSF غاوسية مفردة بدلًا من PSF غير الغاوسية في صور SDSS الحقيقية<cite class="ltx_cite ltx_citemacro_citep">(Stoughton
+et al., <a class="ltx_ref" href="#bib.bib98" title="">2002</a>; Xin et al., <a class="ltx_ref" href="#bib.bib110" title="">2018</a>)</cite>، لأن مناطق تشكّل النجوم المتكتلة غالبًا ما تكون مدمجة الحجم، كما هو مبين في <cite class="ltx_cite ltx_citemacro_cite">Bignone et al. (<a class="ltx_ref" href="#bib.bib9" title="">2020</a>); de Graaff et al. (<a class="ltx_ref" href="#bib.bib113" title="">2022</a>)</cite>. ومن الممكن أن تؤثر القيمة المتزايدة للاتناظر أيضًا في درجة الشذوذ، وهي مقياس كلي يتكون من 128 سمة. وسنستكشف الأوزان بين السمات المختلفة في عمل لاحق.</span></span></span>، توجد أدنى درجات الشذوذ لـ NIHAO AGN عند أعلى الكتل، حيث يتباعد توزيع اللاتناظر والنعومة بين NIHAO AGN وSDSS. وإضافة إلى ذلك، في حالة <math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m1"><msub><mi>M</mi><mn>20</mn></msub></math>، على الرغم من أن توزيع <math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m2"><msub><mi>M</mi><mn>20</mn></msub></math> بين NIHAO وSDSS يتطابق جيدًا إلى حد معقول عبر جميع حاويات الكتلة، فإن درجة الشذوذ يمكن أن تظل متغيرة. ويُظهر الاتفاق بين المعاملات المورفولوجية ودرجات الشذوذ وجود بعض التداخلات بين هذين النهجين، بينما يشير الاختلاف بين المعاملات المورفولوجية ودرجات الشذوذ إلى أن النهجين غير متكافئين.</p>
+</div>
+<div class="ltx_para" id="S7.p3">
+<p class="ltx_p">وبخلاف علاقات القياس المبنية على الخواص الفيزيائية، فإن المعاملات المورفولوجية ودرجات الشذوذ تستندان كلتاهما إلى صور المجرات. لذلك ليس مفاجئًا أن تكون علاقات القياس ودرجات الشذوذ متكاملة، في حين تتقارب المعاملات المورفولوجية ودرجات الشذوذ أكثر وتتشارك كثيرًا من مواطن التداخل. غير أن المعاملات المورفولوجية مقاييس خاضعة للإشراف لوصف صور المجرات، بينما يمثل GANomaly نهجًا غير خاضع للإشراف يلخص صورة المجرة في 128 سمة. ويضمن النهج الخاضع للإشراف بحكم بنائه قابلية أكبر للتفسير، بينما يهدف النهج غير الخاضع للإشراف إلى استغلال كامل معلومات صور المجرات قدر الإمكان. ويمكن لـ GANomaly، المحسَّن لاستخراج سمات قادرة على إعادة بناء صورة مجرة على نمط SDSS بالكامل، أن يستغل معلومات من صورة المجرة أكثر مما تستغله مجموعة من المعاملات المورفولوجية المحددة بشريًا. ويمكن استكشاف الصلة الدقيقة بين درجة الشذوذ والمعاملات المورفولوجية بربط فضاء سمات GANomaly بالمعاملات المورفولوجية. غير أن حجم فضاء سمات GANomaly الحالي البالغ 128 كبير جدًا بحيث يصعب تفسيره بسهولة. وفي الملحق <a class="ltx_ref" href="#A1" title="Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">A</span></a> حاولنا خفض بعد فضاء السمات باستخدام تحليل المركبات الرئيسة (PCA). وفي عمل قادم، سنُدخل الندرة في فضاء سمات GANomaly ونشجع فضاء السمات على الانكماش تلقائيًا إلى حجم أمثل. وسيكون فضاء سمات sparse-GANomaly أكثر قابلية للتفسير، وستُدرس صلته بالمعاملات المورفولوجية دراسة شاملة، بما يتيح الاستغلال الكامل للصور الصورية مع تعظيم قابلية التفسير.</p>
+</div>
+<figure class="ltx_figure" id="S7.F12"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="354" id="S7.F12.g1" src="plot/imagebasedA.png" width="592"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 12: </span>معاملات مورفولوجية متنوعة مقارنة بدرجات الشذوذ لكل من SDSS (دائرة)، وNIHAO AGN (مربع)، وNIHAO NoAGN (مثلث). تُظهر قيمة y للنقاط اتجاه الوسيط للمعاملات المورفولوجية، وتشير المنطقة المظللة إلى النطاق المئوي من <math alttext="16^{\mathrm{th}}" class="ltx_Math" dir="ltr" display="inline" id="S7.F12.m4"><msup><mn>16</mn><mi>th</mi></msup></math> إلى <math alttext="84^{\mathrm{th}}" class="ltx_Math" dir="ltr" display="inline" id="S7.F12.m5"><msup><mn>84</mn><mi>th</mi></msup></math>. رُمّزت مجرات NIHAO لونيًا حسب متوسط درجة الشذوذ عبر 20 اتجاهات مختلفة. بوجه عام، تمتلك مجرات NIHAO درجة شذوذ أقل (لونًا أغمق) عندما يطابق المعامل المورفولوجي نظيره في SDSS على نحو أفضل، ويظهر ذلك بأوضح صورة في العمود الأيمن من إحصاءات MID. ومع ذلك، لا تتفق درجة الشذوذ والمعاملات المورفولوجية دائمًا، كما في اللاتناظر والنعومة و<math alttext="M_{20}" class="ltx_Math" dir="ltr" display="inline" id="S7.F12.m6"><msub><mi>M</mi><mn>20</mn></msub></math>.</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S8">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8 </span>الخلفية</h2>
+<div class="ltx_para" id="S8.p1">
+<p class="ltx_p">عند التمعن في أي «صورة مجرة» مشار إليها في هذا العمل (مثل الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5.1 نظرة عامة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">3</span></a>،<a class="ltx_ref" href="#S5.F9" title="Figure 9 ‣ 5.4 أثر الدقة ‣ 5 النتائج ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">9</span></a>)، قد يلاحظ المرء أن مساحة كبيرة من الصورة تشغلها الخلفية (فراغات سوداء وتوابع)، لا المجرة محل الاهتمام. أشار <cite class="ltx_cite ltx_citemacro_cite">Zanisi
+et al. (<a class="ltx_ref" href="#bib.bib111" title="">2021</a>)</cite> إلى أن الخلفية لها أثر غير مهمل في حكم الشذوذ عند استخدام PixelCNN مفردة. يعمل PixelCNN بطريقة مشابهة للخسارة السياقية في GANomaly، <math alttext="\mathcal{L}_{\textup{con}}" class="ltx_Math" dir="ltr" display="inline" id="S8.p1.m1"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>con</mtext></msub></math>، حيث تُقارن كل من الصورة الأصلية والمعاد بناؤها بكسلًا ببكسل. وينعكس أي اختلاف في أي بكسل في درجة الشذوذ، بغض النظر عما إذا كان البكسل ينتمي إلى المجرة أم إلى الخلفية. واضطر <cite class="ltx_cite ltx_citemacro_cite">Zanisi
+et al. (<a class="ltx_ref" href="#bib.bib111" title="">2021</a>)</cite> إلى معالجة هذه المسألة بتدريب شبكتين منفصلتين من PixelCNN. أما في GANomaly، فتُعرَّف درجة الشذوذ فقط بخسارة المُرمِّز <math alttext="\mathcal{L}_{\textup{enc}}" class="ltx_Math" dir="ltr" display="inline" id="S8.p1.m2"><msub><mi class="ltx_font_mathcaligraphic">ℒ</mi><mtext>enc</mtext></msub></math>، أي الفرق بين السمات الأصلية والمعاد بناؤها. وينبغي لأي ضجيج في الخلفية لا يكون سمة مشتركة بين مجموعة التدريب ألا يؤثر بدرجة ملحوظة في درجة الشذوذ. فعلى سبيل المثال، في الشكل <a class="ltx_ref" href="#S8.F13" title="Figure 13 ‣ 8 الخلفية ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">13</span></a>، أُزيل تابع خلفي يدويًا من مجرة SDSS مختارة عشوائيًا. ويؤدي هذا التغير في الخلفية بالفعل إلى فرق واضح في المتبقي على مستوى البكسل، كما تنبأ <cite class="ltx_cite ltx_citemacro_citep">(Zanisi
+et al., <a class="ltx_ref" href="#bib.bib111" title="">2021</a>)</cite>، لكن درجة الشذوذ تبقى مستقرة إلى حد بعيد.</p>
+</div>
+<figure class="ltx_figure" id="S8.F13">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="170" id="S8.F13.g1" src="plot/satellite.png" width="395"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="170" id="S8.F13.g2" src="plot/nosatellite.png" width="395"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 13: </span>يعرض الصف العلوي صورة مجرة SDSS لها بعض التوابع في خلفيتها، ويعرض الصف السفلي مجرة SDSS نفسها بعد إزالة التوابع يدويًا. تؤدي الخلفية المختلفة إلى متبق مختلف (اللوحة في أقصى اليمين، الخسارة السياقية)، لكنها تعطي درجة شذوذ شبه متماثلة (موسومة في الأعلى، خسارة المُرمِّز).</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S9">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">9 </span>الاستنتاجات</h2>
+<div class="ltx_para" id="S9.p1">
+<p class="ltx_p">في هذه الورقة، قدمنا خوارزمية كشف شذوذ هي GANomaly، تُدرَّب فقط على مجرات حقيقية بهدف تقييم محاكاة المجرات كميًا. واستنادًا إلى فكرة كشف الشذوذ بإعادة البناء، يجمع GANomaly بين GAN وشبكة مُرمِّز تلقائي، بحيث يلخص أولًا صورة الدخل في تمثيلها في فضاء السمات/الفضاء الكامن، ثم يعيد بناء الصورة نفسها. ويُدرَّب GANomaly بالكامل على مجموعة بيانات طبيعية، ولذلك، بعد التدريب، لن تُعاد بناء أي صور شاذة أو قيم خارجة في الصورة. ويُقاس الشذوذ كميًا بتعريف درجة الشذوذ بوصفها الفرق في فضاء السمات قبل إعادة البناء وبعدها. وعلاوة على ذلك، نهتم فقط بدرجات الشذوذ النسبية بين مجموعات المحاكاة المختلفة. لاحظ أن هذه الاستراتيجية تضمن كذلك ألا تدخل أي لااتساق في عملية توليد الصور الصورية في التقييم.</p>
+</div>
+<div class="ltx_para" id="S9.p2">
+<p class="ltx_p">ولتقييم محاكاة المجرات مقارنة بالأرصاد الحقيقية، نعامل صور SDSS في نطاقات <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S9.p2.m1"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S9.p2.m2"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S9.p2.m3"><mi>g</mi></math> بوصفها بيانات المجموعة الطبيعية لتدريب GANomaly، ثم نطبق النموذج المدرَّب لتقييم الأرصاد الصورية لمحاكاة مجرات NIHAO. ومن خلال مقارنة محاكاة NIHAO مع تطبيق AGN ومن دونه، نجد أن نموذج AGN الحالي في NIHAO لا يحسن ولا يضعف الجودة العامة لصور المجرات. وإضافة إلى ذلك، نجد أن الدقة الإضافية في المحاكاة لا تؤثر في جودة الصورة الصورية بعد الالتفاف.</p>
+</div>
+<div class="ltx_para" id="S9.p3">
+<p class="ltx_p">والأهم من ذلك أننا نرى أيضًا أن الالتزام بعلاقات قياس المجرات لا يرتبط مباشرة بدرجات الشذوذ. وهذا يشير إلى أن النجاح في إعادة إنتاج مجموعات معينة من خواص المجرات وعلاقات قياسها لا يعلن الانتصار النهائي في محاكاة كوننا، بل إن مجرة محاكاة تلائم علاقات القياس جيدًا يمكن أن تُظهر مع ذلك شذوذات عند النظر إلى صورة المجرة الكاملة. وبالمثل، فإن النظر إلى الصور وحدها قد يغفل بعض الرؤى الفيزيائية المهمة التي لا يمكن وصفها بالكامل بالصورة نفسها. ولتحقيق الهدف النهائي المتمثل في نمذجة كوننا، يجب على المحاكاة أن تعيد إنتاج كل من علاقات القياس المرصودة وصور المجرات الواقعية.</p>
+</div>
+<div class="ltx_para" id="S9.p4">
+<p class="ltx_p">ومن جهة أخرى، يكرس كل من المعاملات المورفولوجية وGANomaly جهده لفحص صور المجرات. تفحص المعاملات المورفولوجية الصورة بطريقة خاضعة للإشراف، بمعاملات معرفة بوضوح، ومن ثم فهي أكثر قابلية للتفسير. أما GANomaly فهو طريقة تعلم عميق غير خاضعة للإشراف تبني فضاء سمات من البيانات، بحيث يستطيع فضاء السمات تمثيل صورة مجرة واقعية تمثيلًا كاملًا. يملك النهجان كليهما مزاياهما بوضوح، وسيتيح الجمع بينهما لنا تسخير قوة التعلم العميق من دون فقدان قابلية التفسير، ومن ثم استغلال المعلومات الغنية التي تحملها صور المجرات استغلالًا كاملًا.</p>
+</div>
+<div class="ltx_para" id="S9.p5">
+<p class="ltx_p">يفحص نموذج GANomaly الموصوف في هذه الورقة صور المجرات المرصودة، أو المرصودة صوريًا، في نطاقات SDSS <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m1"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m2"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m3"><mi>g</mi></math>. ولا يقتصر النموذج مطلقًا على حزمة محاكاة بعينها مثل NIHAO، بل يمكن تطبيقه مباشرة على أي محاكاة مجرات أخرى متى صُنعت أرصاد صورية في نطاقات SDSS <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m4"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m5"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m6"><mi>g</mi></math>. كما أن الخوارزمية نفسها غير محدودة بتلسكوب أو مسح بعينه (SDSS)، ولا بمجموعة خرائط معينة (خريطة شدة النطاقات <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m7"><mi>i</mi></math>-<math alttext="r" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m8"><mi>r</mi></math>-<math alttext="g" class="ltx_Math" dir="ltr" display="inline" id="S9.p5.m9"><mi>g</mi></math>). ويمكن إعادة تدريب GANomaly على صور من تلسكوبات أخرى، وبأطوال موجية مختلفة، أو حتى على خرائط مختلفة، مثل خرائط السرعة وخرائط الكثافة، لكشف الشذوذ إما في البيانات المحاكاة أو القيم الخارجة في الأرصاد نفسها.</p>
+</div>
+<div class="ltx_para" id="S9.p6">
+<p class="ltx_p">ومع اتجاهنا نحو عصر من المحاكاة من الجيل التالي، بنماذج أكثر تطورًا، ودقة أعلى، وحجوم أكبر، وفيزياء أكثر شمولًا، وفي الوقت نفسه نحو مرحلة متدفقة من البعثات الرصدية الكبرى والمسوح الواسعة، تزداد الحاجة إلى تقنيات تحليل قادرة على الاستفادة المثلى من هذا التدفق الهائل من البيانات (بما يتجاوز الإحصاءات الملخصة الخالصة) الآتي من المحاكاة والأرصاد معًا. وستسهم تقنيات كشف الشذوذ، مثل GANomaly، إلى جانب الطرائق التقليدية مثل علاقات القياس والمعاملات المورفولوجية، في إلقاء ضوء جديد على فهمنا للكون.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">تستند هذه المادة إلى عمل مدعوم من Tamkeen ضمن منحة CASS التابعة لمعهد الأبحاث في جامعة نيويورك أبوظبي. أُجري هذا البحث على موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي. ونعرب عن امتناننا لـ Gauss Centre for Supercomputing e.V. (www.gauss-centre.eu) لتمويل هذا المشروع من خلال توفير وقت حوسبة على الحاسوب الفائق GCS SuperMUC في Leibniz Supercomputing Centre (www.lrz.de). وأتاح هذا البحث عدد كبير من حزم <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">Python</span> المتميزة، بما في ذلك <span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">Pynbody</span> <cite class="ltx_cite ltx_citemacro_citep">(Pontzen et al., <a class="ltx_ref" href="#bib.bib84" title="">2013</a>)</cite>، و<span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">PyTorch</span> <cite class="ltx_cite ltx_citemacro_citep">(Paszke et al., <a class="ltx_ref" href="#bib.bib78" title="">2019</a>)</cite>، و<span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">Astropy</span> <cite class="ltx_cite ltx_citemacro_citep">(Astropy
+Collaboration et al., <a class="ltx_ref" href="#bib.bib6" title="">2013</a>, <a class="ltx_ref" href="#bib.bib7" title="">2018</a>, <a class="ltx_ref" href="#bib.bib8" title="">2022</a>)</cite>، و<span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">NumPy</span> <cite class="ltx_cite ltx_citemacro_citep">(Harris
+et al., <a class="ltx_ref" href="#bib.bib57" title="">2020</a>)</cite>، و<span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">Matplotlib</span> <cite class="ltx_cite ltx_citemacro_citep">(Hunter, <a class="ltx_ref" href="#bib.bib59" title="">2007</a>)</cite>، و<span class="ltx_text ltx_font_smallcaps" style="font-size:90%;">seaborn</span> <cite class="ltx_cite ltx_citemacro_citep">(Waskom, <a class="ltx_ref" href="#bib.bib108" title="">2021</a>)</cite>. يقر MP بالدعم المالي من برنامج البحث والابتكار Horizon 2020 التابع للاتحاد الأوروبي بموجب اتفاقية منحة Marie Sklodowska-Curie رقم 896248. وقد أُتيح إسهام TB في هذا المشروع بفضل تمويل من Carl Zeiss Foundation.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx2">
+<h2 class="ltx_title ltx_title_section">توافر البيانات</h2>
+<div class="ltx_para" id="Sx2.p1">
+<p class="ltx_p">يقع نموذج GANomaly الجاهز للاستخدام لتقييم محاكاة المجرات، إلى جانب الشيفرة اللازمة لإنتاج كل الرسوم في هذه الورقة، في <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://github.com/ZehaoJin/Rate-galaxy-simulation-with-Anomaly-Detection" title="">https://github.com/ZehaoJin/Rate-galaxy-simulation-with-Anomaly-Detection</a>.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Agertz
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Agertz O., et al., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab322" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.503.5826A" title="">503, 5826</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Akcay
+et al. (2019)</span>
+<span class="ltx_bibblock">
+Akcay S., Atapour-Abarghouei A., Breckon T. P., 2019, in Jawahar C. V., Li
+H., Mori G., Schindler K., eds, Computer Vision – ACCV 2018. Springer
+International Publishing, Cham, pp 622–637
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Arjovsky
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Arjovsky M., Chintala S., Bottou L., 2017, in Precup D., Teh Y. W., eds,
+Proceedings of Machine Learning Research Vol. 70, Proceedings of the 34th
+International Conference on Machine Learning. PMLR, pp 214–223, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://proceedings.mlr.press/v70/arjovsky17a.html" title="">https://proceedings.mlr.press/v70/arjovsky17a.html</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Arora et al. (2021)</span>
+<span class="ltx_bibblock">
+Arora N., Stone C., Courteau S., Jarrett T. H., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab1430" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.505.3135A" title="">505, 3135</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Arora et al. (2023)</span>
+<span class="ltx_bibblock">
+Arora N., Courteau S., Stone C., Macciò A. V., 2023, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stad1023" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2023MNRAS.522.1208A" title="">522, 1208</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Astropy
+Collaboration et al. (2013)</span>
+<span class="ltx_bibblock">
+Astropy Collaboration et al., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/201322068" title="">A&amp;A</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013A%26A...558A..33A" title="">558, A33</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Astropy
+Collaboration et al. (2018)</span>
+<span class="ltx_bibblock">
+Astropy Collaboration et al., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/aabc4f" title="">AJ</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2018AJ....156..123A" title="">156, 123</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Astropy
+Collaboration et al. (2022)</span>
+<span class="ltx_bibblock">
+Astropy Collaboration et al., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/ac7c74" title="">apj</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2022ApJ...935..167A" title="">935, 167</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bignone et al. (2020)</span>
+<span class="ltx_bibblock">
+Bignone L. A., Pedrosa S. E., Trayford J. W., Tissera P. B.,
+Pellizza L. J., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz3014" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.491.3624B" title="">491, 3624</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Blank et al. (2019)</span>
+<span class="ltx_bibblock">
+Blank M., Macciò A. V., Dutton A. A., Obreja A., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz1688" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487.5476B" title="">487, 5476</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Blanton
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Blanton M. R., et al., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/aa7567" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017AJ....154...28B" title="">154, 28</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bondi (1952)</span>
+<span class="ltx_bibblock">
+Bondi H., 1952, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/112.2.195" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1952MNRAS.112..195B" title="">112, 195</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bottrell et al. (2017a)</span>
+<span class="ltx_bibblock">
+Bottrell C., Torrey P., Simard L., Ellison S. L., 2017a, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx017" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.467.1033B" title="">467, 1033</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bottrell et al. (2017b)</span>
+<span class="ltx_bibblock">
+Bottrell C., Torrey P., Simard L., Ellison S. L., 2017b, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx276" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.467.2879B" title="">467, 2879</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bottrell
+et al. (2019)</span>
+<span class="ltx_bibblock">
+Bottrell C., et al., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz2934" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.490.5390B" title="">490, 5390</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Brook &amp;
+Di Cintio (2015)</span>
+<span class="ltx_bibblock">
+Brook C. B., Di Cintio A., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1699" title="">Monthly Notices of the Royal
+Astronomical Society</a>, 453, 2133
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck (2019)</span>
+<span class="ltx_bibblock">
+Buck T., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz3289" title="">Monthly Notices of the Royal Astronomical Society</a>, 491, 5435
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck &amp;
+Wolf (2021)</span>
+<span class="ltx_bibblock">
+Buck T., Wolf S., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/arXiv.2111.01154" title="">arXiv e-prints</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021arXiv211101154B" title="">p. arXiv:2111.01154</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck et al. (2018)</span>
+<span class="ltx_bibblock">
+Buck T., Ness M. K., Macciò A. V., Obreja A., Dutton A. A.,
+2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/aac890" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...861...88B" title="">861, 88</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck et al. (2019a)</span>
+<span class="ltx_bibblock">
+Buck T., Macciò A. V., Dutton A. A., Obreja A., Frings J.,
+2019a, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty2913" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.483.1314B" title="">483, 1314</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck
+et al. (2019b)</span>
+<span class="ltx_bibblock">
+Buck T., Dutton A. A., Macciò A. V., 2019b, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz969" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.486.1481B" title="">486, 1481</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck et al. (2019c)</span>
+<span class="ltx_bibblock">
+Buck T., Ness M., Obreja A., Macciò A. V., Dutton A. A.,
+2019c, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/aaffd0" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019ApJ...874...67B" title="">874, 67</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck et al. (2020)</span>
+<span class="ltx_bibblock">
+Buck T., Obreja A., Macciò A. V., Minchev I., Dutton A. A.,
+Ostriker J. P., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz3241" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.491.3461B" title="">491, 3461</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buck
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Buck T., Rybizki J., Buder S., Obreja A., Macciò A. V.,
+Pfrommer C., Steinmetz M., Ness M., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab2736" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.508.3365B" title="">508, 3365</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Buder
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Buder S., et al., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab1242" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.506..150B" title="">506, 150</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bundy
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Bundy K., et al., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/798/1/7" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015ApJ...798....7B" title="">798, 7</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Camps &amp;
+Baes (2020)</span>
+<span class="ltx_bibblock">
+Camps P., Baes M., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1016/j.ascom.2020.100381" title="">Astronomy and Computing</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020A&amp;C....3100381C" title="">31, 100381</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chabrier (2003)</span>
+<span class="ltx_bibblock">
+Chabrier G., 2003, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/376392" title="">PASP</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2003PASP..115..763C" title="">115, 763</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cheng
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Cheng T.-Y., Huertas-Company M., Conselice C. J.,
+Aragón-Salamanca A., Robertson B. E., Ramachandra N., 2021,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab734" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.503.4446C" title="">503, 4446</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Choi et al. (2016)</span>
+<span class="ltx_bibblock">
+Choi J., Dotter A., Conroy C., Cantiello M., Paxton B.,
+Johnson B. D., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/0004-637X/823/2/102" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...823..102C" title="">823, 102</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Conroy
+et al. (2009)</span>
+<span class="ltx_bibblock">
+Conroy C., Gunn J. E., White M., 2009, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/699/1/486" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2009ApJ...699..486C" title="">699, 486</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Conroy et al. (2010)</span>
+<span class="ltx_bibblock">
+Conroy C., Schiminovich D., Blanton M. R., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/718/1/184" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2010ApJ...718..184C" title="">718, 184</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Conselice (2003)</span>
+<span class="ltx_bibblock">
+Conselice C. J., 2003, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/375001" title="">The Astrophysical Journal Supplement Series</a>, 147, 1
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Courteau
+et al. (2007)</span>
+<span class="ltx_bibblock">
+Courteau S., Dutton A. A., van den Bosch F. C., MacArthur L. A.,
+Dekel A., McIntosh D. H., Dale D. A., 2007, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/522193" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2007ApJ...671..203C" title="">671, 203</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Croton
+et al. (2006)</span>
+<span class="ltx_bibblock">
+Croton D. J., et al., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09675.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2006MNRAS.365...11C" title="">365, 11</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">DESI
+Collaboration et al. (2016)</span>
+<span class="ltx_bibblock">
+DESI Collaboration et al., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/arXiv.1611.00036" title="">arXiv e-prints</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016arXiv161100036D" title="">p. arXiv:1611.00036</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Di Mattia et al. (2019)</span>
+<span class="ltx_bibblock">
+Di Mattia F., Galeone P., De Simoni M., Ghelfi E., 2019, A Survey on GANs
+for Anomaly Detection, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1906.11632" title="">doi:10.48550/ARXIV.1906.11632</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1906.11632" title="">https://arxiv.org/abs/1906.11632</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dieleman
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Dieleman S., Willett K. W., Dambre J., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv632" title="">Monthly Notices of
+the Royal Astronomical Society</a>, 450, 1441
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Donahue
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Donahue J., Krähenbühl P., Darrell T., 2016, Adversarial Feature
+Learning, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1605.09782" title="">doi:10.48550/ARXIV.1605.09782</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1605.09782" title="">https://arxiv.org/abs/1605.09782</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dotter (2016)</span>
+<span class="ltx_bibblock">
+Dotter A., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/0067-0049/222/1/8" title="">ApJS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016ApJS..222....8D" title="">222, 8</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dubois
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Dubois Y., et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1227" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2014MNRAS.444.1453D" title="">444, 1453</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dubois et al. (2016)</span>
+<span class="ltx_bibblock">
+Dubois Y., Peirani S., Pichon C., Devriendt J., Gavazzi R., Welker C.,
+Volonteri M., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stw2265" title="">Monthly Notices of the Royal Astronomical
+Society</a>, 463, 3948
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton et al. (2015)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Macciò A. V., Stinson G. S., Gutcke T. A.,
+Penzo C., Buck T., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1755" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.453.2447D" title="">453, 2447</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Dutton A. A., et al., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx458" title="">Monthly Notices of the Royal Astronomical
+Society</a>, 467, 4937
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton et al. (2019)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Macciò A. V., Buck T., Dixon K. L., Blank M.,
+Obreja A., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz889" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.486..655D" title="">486, 655</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton et al. (2020)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Buck T., Macciò A. V., Dixon K. L., Blank M.,
+Obreja A., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa3028" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.499.2648D" title="">499, 2648</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib47">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Faucher
+et al. (2023)</span>
+<span class="ltx_bibblock">
+Faucher N., Blanton M. R., Macciò A. V., 2023, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/acf9f0" title="">The Astrophysical
+Journal</a>, 957, 7
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib48">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Foreman-Mackey et al. (2015)</span>
+<span class="ltx_bibblock">
+Foreman-Mackey D., Sick J., Johnson B., 2015, python-fsps: Python bindings
+to FSPS (v0.1.1), <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.5281/zenodo.12157" title="">doi:10.5281/zenodo.12157</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://doi.org/10.5281/zenodo.12157" title="">https://doi.org/10.5281/zenodo.12157</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib49">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Freeman et al. (2013)</span>
+<span class="ltx_bibblock">
+Freeman P. E., Izbicki R., Lee A. B., Newman J. A., Conselice C. J.,
+Koekemoer A. M., Lotz J. M., Mozena M., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stt1016" title="">Monthly Notices of
+the Royal Astronomical Society</a>, 434, 282
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib50">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Frosst et al. (2022)</span>
+<span class="ltx_bibblock">
+Frosst M., Courteau S., Arora N., Stone C., Macciò A. V.,
+Blank M., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stac1497" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.514.3510F" title="">514, 3510</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib51">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gallazzi et al. (2005)</span>
+<span class="ltx_bibblock">
+Gallazzi A., Charlot S., Brinchmann J., White S. D. M., Tremonti C. A.,
+2005, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09321.x" title="">Monthly Notices of the Royal Astronomical Society</a>, 362, 41
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib52">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Goodfellow
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Goodfellow I., Pouget-Abadie J., Mirza M., Xu B., Warde-Farley D., Ozair
+S., Courville A., Bengio Y., 2014, in Ghahramani Z., Welling M., Cortes
+C., Lawrence N., Weinberger K., eds,   Vol. 27, Advances in Neural
+Information Processing Systems. Curran Associates, Inc., <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf" title="">https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib53">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Governato
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Governato F., et al., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/nature08640" title="">Nature</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2010Natur.463..203G" title="">463, 203</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib54">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Grogin
+et al. (2011)</span>
+<span class="ltx_bibblock">
+Grogin N. A., et al., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/197/2/35" title="">ApJS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2011ApJS..197...35G" title="">197, 35</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib55">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Groves
+et al. (2008)</span>
+<span class="ltx_bibblock">
+Groves B., Dopita M. A., Sutherland R. S., Kewley L. J., Fischera
+J., Leitherer C., Brandl B., van Breugel W., 2008, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/528711" title="">ApJS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2008ApJS..176..438G" title="">176, 438</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib56">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Haardt &amp;
+Madau (2012)</span>
+<span class="ltx_bibblock">
+Haardt F., Madau P., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/746/2/125" title="">ApJ</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2012ApJ...746..125H" title="">746, 125</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib57">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Harris
+et al. (2020)</span>
+<span class="ltx_bibblock">
+Harris C. R., et al., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/s41586-020-2649-2" title="">Nature</a>, 585,
+357
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib58">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hayward &amp;
+Smith (2015)</span>
+<span class="ltx_bibblock">
+Hayward C. C., Smith D. J. B., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu2195" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.446.1512H" title="">446, 1512</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib59">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hunter (2007)</span>
+<span class="ltx_bibblock">
+Hunter J. D., 2007, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1109/MCSE.2007.55" title="">Computing in Science &amp; Engineering</a>, 9, 90
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib60">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Jonsson
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Jonsson P., Groves B. A., Cox T. J., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2009.16087.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2010MNRAS.403...17J" title="">403, 17</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib61">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kapoor
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Kapoor A. U., et al., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab2043" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.506.5703K" title="">506, 5703</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib62">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kirby
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Kirby E. N., Simon J. D., Cohen J. G., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/810/1/56" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015ApJ...810...56K" title="">810, 56</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib63">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Knollmann &amp;
+Knebe (2009)</span>
+<span class="ltx_bibblock">
+Knollmann S. R., Knebe A., 2009, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/182/2/608" title="">The Astrophysical Journal
+Supplement Series</a>, 182, 608
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib64">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Koekemoer
+et al. (2011)</span>
+<span class="ltx_bibblock">
+Koekemoer A. M., et al., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/197/2/36" title="">ApJS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2011ApJS..197...36K" title="">197, 36</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib65">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Lotz
+et al. (2004)</span>
+<span class="ltx_bibblock">
+Lotz J. M., Primack J., Madau P., 2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/421849" title="">The Astronomical Journal</a>, 128, 163
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib66">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Lupton et al. (2004)</span>
+<span class="ltx_bibblock">
+Lupton R., Blanton M. R., Fekete G., Hogg D. W., O’Mullane W., Szalay
+A., Wherry N., 2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/382245" title="">Publications of the Astronomical Society of
+the Pacific</a>, 116, 133
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib67">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Macciò  et al. (2022)</span>
+<span class="ltx_bibblock">
+Macciò  A. V., Ali-Dib M., Vulanovic P., Noori H. A., Walter F.,
+Krieger N., Buck T., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stac482" title="">Monthly Notices of the Royal
+Astronomical Society</a>, 512, 2135
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib68">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Macciò et al. (2016)</span>
+<span class="ltx_bibblock">
+Macciò A. V., Udrescu S. M., Dutton A. A., Obreja A., Wang L., Stinson
+G. R., Kang X., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnrasl/slw147" title="">Monthly Notices of the Royal Astronomical
+Society: Letters</a>, 463, L69
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib69">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Margalef-Bentabol et al. (2020)</span>
+<span class="ltx_bibblock">
+Margalef-Bentabol B., Huertas-Company M., Charnock T., Margalef-Bentabol C.,
+Bernardi M., Dubois Y., Storey-Fisher K., Zanisi L., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa1647" title="">Monthly Notices of the Royal Astronomical Society</a>,
+496, 2346
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib70">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">McKee &amp;
+Ostriker (2007)</span>
+<span class="ltx_bibblock">
+McKee C. F., Ostriker E. C., 2007, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1146/annurev.astro.45.051806.110602" title="">ARA&amp;A</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2007ARA&amp;A..45..565M" title="">45, 565</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib71">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Meert
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Meert A., Vikram V., Bernardi M., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu2333" title="">Monthly Notices of the
+Royal Astronomical Society</a>, 446, 3943
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib72">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Moster et al. (2010)</span>
+<span class="ltx_bibblock">
+Moster B. P., Somerville R. S., Maulbetsch C., van den Bosch F. C.,
+Macciò  A. V., Naab T., Oser L., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637x/710/2/903" title="">The Astrophysical
+Journal</a>, 710, 903
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib73">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Moster
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Moster B. P., Naab T., White S. D. M., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty655" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.477.1822M" title="">477, 1822</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib74">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nelson
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Nelson D., et al., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx3040" title="">Monthly Notices of the Royal Astronomical
+Society</a>, 475, 624
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib75">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Oñorbe et al. (2015)</span>
+<span class="ltx_bibblock">
+Oñorbe J., Boylan-Kolchin M., Bullock J. S., Hopkins P. F.,
+Kereš D., Faucher-Giguère C.-A., Quataert E., Murray
+N., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv2072" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.454.2092O" title="">454, 2092</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib76">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Obreja et al. (2018)</span>
+<span class="ltx_bibblock">
+Obreja A., Macciò A. V., Moster B., Dutton A. A., Buck T., Stinson G. S.,
+Wang L., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty1022" title="">Monthly Notices of the Royal Astronomical Society</a>, 477, 4915
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib77">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Oord
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Oord A. v. d., Kalchbrenner N., Kavukcuoglu K., 2016, Pixel Recurrent
+Neural Networks, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1601.06759" title="">doi:10.48550/ARXIV.1601.06759</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1601.06759" title="">https://arxiv.org/abs/1601.06759</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib78">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Paszke et al. (2019)</span>
+<span class="ltx_bibblock">
+Paszke A., et al., 2019, PyTorch: An Imperative Style, High-Performance Deep
+Learning Library, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1912.01703" title="">doi:10.48550/ARXIV.1912.01703</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1912.01703" title="">https://arxiv.org/abs/1912.01703</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib79">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Paxton et al. (2011)</span>
+<span class="ltx_bibblock">
+Paxton B., Bildsten L., Dotter A., Herwig F., Lesaffre P.,
+Timmes F., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/192/1/3" title="">ApJS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P" title="">192, 3</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib80">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Paxton
+et al. (2013)</span>
+<span class="ltx_bibblock">
+Paxton B., et al., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/208/1/4" title="">ApJS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2013ApJS..208....4P" title="">208, 4</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib81">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Paxton
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Paxton B., et al., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/220/1/15" title="">ApJS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015ApJS..220...15P" title="">220, 15</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib82">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pillepich
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Pillepich A., et al., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx2656" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.473.4077P" title="">473, 4077</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib83">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Planck
+Collaboration et al. (2014)</span>
+<span class="ltx_bibblock">
+Planck Collaboration et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/201321591" title="">A&amp;A</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2014A&amp;A...571A..16P" title="">571, A16</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib84">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pontzen et al. (2013)</span>
+<span class="ltx_bibblock">
+Pontzen A., Roškar R., Stinson G. S., Woods R., Reed D. M.,
+Coles J., Quinn T. R., 2013, pynbody: Astrophysics Simulation
+Analysis for Python
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib85">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Rodriguez-Gomez
+et al. (2019)</span>
+<span class="ltx_bibblock">
+Rodriguez-Gomez V., et al., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty3345" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.483.4140R" title="">483, 4140</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib86">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Santos-Santos
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Santos-Santos I. M., Di Cintio A., Brook C. B., Macciò A., Dutton A.,
+Domínguez-Tenreiro R., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx2660" title="">Monthly Notices of the Royal
+Astronomical Society</a>, 473, 4392
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib87">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schaye
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Schaye J., et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu2058" title="">Monthly Notices of the Royal Astronomical
+Society</a>, 446, 521
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib88">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schaye
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Schaye J., et al., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu2058" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.446..521S" title="">446, 521</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib89">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schlegl et al. (2017)</span>
+<span class="ltx_bibblock">
+Schlegl T., Seeböck P., Waldstein S. M., Schmidt-Erfurth U., Langs G.,
+2017, Unsupervised Anomaly Detection with Generative Adversarial Networks to
+Guide Marker Discovery, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1703.05921" title="">doi:10.48550/ARXIV.1703.05921</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1703.05921" title="">https://arxiv.org/abs/1703.05921</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib90">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sérsic (1963)</span>
+<span class="ltx_bibblock">
+Sérsic J. L., 1963, Boletin de la Asociacion Argentina de Astronomia La
+Plata Argentina, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1963BAAA....6...41S" title="">6, 41</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib91">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Smith et al. (2022)</span>
+<span class="ltx_bibblock">
+Smith M. J., Geach J. E., Jackson R. A., Arora N., Stone C.,
+Courteau S., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stac130" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.511.1808S" title="">511, 1808</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib92">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Snyder
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Snyder G. F., et al., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv2078" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.454.1886S" title="">454, 1886</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib93">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Springel &amp;
+Hernquist (2003)</span>
+<span class="ltx_bibblock">
+Springel V., Hernquist L., 2003, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1046/j.1365-8711.2003.06206.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2003MNRAS.339..289S" title="">339, 289</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib94">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Springel et al. (2005)</span>
+<span class="ltx_bibblock">
+Springel V., Di Matteo T., Hernquist L., 2005, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09238.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2005MNRAS.361..776S" title="">361, 776</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib95">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stinson et al. (2006)</span>
+<span class="ltx_bibblock">
+Stinson G., Seth A., Katz N., Wadsley J., Governato F., Quinn T., 2006,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2006.11097.x" title="">Monthly Notices of the Royal Astronomical Society</a>, 373, 1074
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib96">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stinson et al. (2012)</span>
+<span class="ltx_bibblock">
+Stinson G. S., Brook C., Macciò A. V., Wadsley J., Quinn T. R., Couchman
+H. M. P., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sts028" title="">Monthly Notices of the Royal Astronomical Society</a>, 428, 129
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib97">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Storey-Fisher
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Storey-Fisher K., Huertas-Company M., Ramachandra N., Lanusse F., Leauthaud
+A., Luo Y., Huang S., Prochaska J. X., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab2589" title="">Monthly Notices of
+the Royal Astronomical Society</a>, 508, 2946
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib98">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stoughton
+et al. (2002)</span>
+<span class="ltx_bibblock">
+Stoughton C., et al., 2002, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/324741" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2002AJ....123..485S" title="">123, 485</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib99">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tohill et al. (2023)</span>
+<span class="ltx_bibblock">
+Tohill C.-B., Bamford S., Conselice C., Ferreira L., Harvey T.,
+Adams N., Austin D., 2023, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/arXiv.2306.17225" title="">arXiv e-prints</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2023arXiv230617225T" title="">p. arXiv:2306.17225</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib100">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Trayford
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Trayford J. W., et al., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1051" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.470..771T" title="">470, 771</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib101">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tremmel
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Tremmel M., Karcher M., Governato F., Volonteri M., Quinn T. R., Pontzen
+A., Anderson L., Bellovary J., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1160" title="">Monthly Notices of the
+Royal Astronomical Society</a>, 470, 1121
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib102">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tremonti
+et al. (2004)</span>
+<span class="ltx_bibblock">
+Tremonti C. A., et al., 2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/423264" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2004ApJ...613..898T" title="">613, 898</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib103">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tully &amp;
+Fisher (1977)</span>
+<span class="ltx_bibblock">
+Tully R. B., Fisher J. R., 1977, A&amp;A, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1977A&amp;A....54..661T" title="">54, 661</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib104">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Vogelsberger
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Vogelsberger M., et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1536" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2014MNRAS.444.1518V" title="">444, 1518</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib105">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Vogelsberger et al. (2020)</span>
+<span class="ltx_bibblock">
+Vogelsberger M., Marinacci F., Torrey P., Puchwein E., 2020,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/s42254-019-0127-2" title="">Nature Reviews Physics</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020NatRP...2...42V" title="">2, 42</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib106">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wadsley
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Wadsley J. W., Keller B. W., Quinn T. R., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1643" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.2357W" title="">471, 2357</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib107">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wang et al. (2015)</span>
+<span class="ltx_bibblock">
+Wang L., Dutton A. A., Stinson G. S., Macciò  A. V., Penzo C., Kang
+X., Keller B. W., Wadsley J., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1937" title="">Monthly Notices of the Royal
+Astronomical Society</a>, 454, 83
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib108">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Waskom (2021)</span>
+<span class="ltx_bibblock">
+Waskom M. L., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.21105/joss.03021" title="">Journal of Open Source Software</a>, 6, 3021
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib109">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Waterval
+et al. (2022)</span>
+<span class="ltx_bibblock">
+Waterval S., et al., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stac1191" title="">Monthly Notices of the Royal Astronomical
+Society</a>, 514, 5307
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib110">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Xin et al. (2018)</span>
+<span class="ltx_bibblock">
+Xin B., Željko Ivezić Lupton R. H., Peterson J. R., Yoachim P., Jones
+R. L., Claver C. F., Angeli G., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-3881/aae316" title="">The Astronomical Journal</a>, 156, 222
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib111">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Zanisi
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Zanisi L., et al., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa3864" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.501.4359Z" title="">501, 4359</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib112">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Zenati
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Zenati H., Foo C. S., Lecouat B., Manek G., Chandrasekhar V. R., 2018,
+Efficient GAN-Based Anomaly Detection, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1802.06222" title="">doi:10.48550/ARXIV.1802.06222</a>,
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1802.06222" title="">https://arxiv.org/abs/1802.06222</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib113">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">de Graaff et al. (2022)</span>
+<span class="ltx_bibblock">
+de Graaff A., Trayford J., Franx M., Schaller M., Schaye J.,
+van der Wel A., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab3510" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.511.2544D" title="">511, 2544</a>
+</span>
+</li>
+</ul>
+</section>
+<section class="ltx_appendix" id="A1">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix A </span>استكشاف الفضاء الكامن لـ GANomaly</h2>
+<div class="ltx_para" id="A1.p1">
+<p class="ltx_p">للحصول على فهم أفضل للمتغيرات الكامنة التي يستخدمها GANomaly لترميز صور مجراتنا، نجري تحليل المركبات الرئيسة (PCA) على الفضاء الكامن ذي الأبعاد 128، <em class="ltx_emph ltx_font_italic">z</em>. لاحظ أن درجة الشذوذ تُعرَّف بالمسافة في الفضاء الكامن قبل إعادة البناء وبعدها، <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="A1.p1.m1"><mi>z</mi></math>-<math alttext="\hat{z}" class="ltx_Math" dir="ltr" display="inline" id="A1.p1.m2"><mover accent="true"><mi>z</mi><mo>^</mo></mover></math>. ومن ثم، فإن العثور هنا على مركبة رئيسة مهمة في <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="A1.p1.m3"><mi>z</mi></math> يعني فقط أن هذه المركبة الرئيسة ذات أهمية للصورة قبل إعادة البناء، لكنه لا يكشف شيئًا عن درجة الشذوذ، <math alttext="z" class="ltx_Math" dir="ltr" display="inline" id="A1.p1.m4"><mi>z</mi></math>-<math alttext="\hat{z}" class="ltx_Math" dir="ltr" display="inline" id="A1.p1.m5"><mover accent="true"><mi>z</mi><mo>^</mo></mover></math>. لذلك، لا نستكشف هنا ما تعنيه درجة الشذوذ ولا ما المعيار الذي يستخدمه GANomaly لتقييم صورة مجرة، بل نحاول فهم ما أهم الخواص لصورة المجرة.</p>
+</div>
+<div class="ltx_para" id="A1.p2">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#A1.F14" title="Figure 14 ‣ Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">14</span></a>، نعرض كسر التباين المفسَّر لأول اثنتي عشرة مركبة رئيسة (أعلى) ولكل المركبات الرئيسة بمقياس لوغاريتمي (أسفل). أُجري PCA بصورة منفصلة لمجرات SDSS ولكل مجموعة من محاكاة NIHAO. ويتضح من هذه الرسوم أن البعد الذاتي للفضاء الكامن مرتفع نسبيًا، لأن المركبة الرئيسة الأولى لعينات SDSS لا تفسر إلا نحو <math alttext="25" class="ltx_Math" dir="ltr" display="inline" id="A1.p2.m1"><mn>25</mn></math> في المئة من التباين الكلي. وعلى الرغم من أن السلوك العام لـ SDSS ومختلف عينات NIHAO متشابه، فإن هناك فرقًا يتمثل في أن المركبات الأقل أهمية تفسر تباينًا أكبر في SDSS مقارنة بـ NIHAO. ونخمن أن ذلك قد يرجع إلى ضجيج رصدي فعلي ناتج من التأثيرات الآلية وغيرها، وهو ضجيج يصعب ضغطه.</p>
+</div>
+<div class="ltx_para" id="A1.p3">
+<p class="ltx_p">وبصرف النظر عن ذلك، نجد أن عينات NIHAO تقع عمومًا ضمن النطاق الواقعي للفضاء الكامن الذي تمتد عليه مجرات SDSS، كما يبين الشكل <a class="ltx_ref" href="#A1.F15" title="Figure 15 ‣ Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">15</span></a>، حيث نرسمها في مستوى أول مركبتين رئيستين. لبعض مجرات NIHAO قيم PC1s أدنى قليلًا من قيم مجرات SDSS، ولبعض مجرات NIHAO قيم PC2s أعلى أو أدنى من قيم مجرات SDSS.</p>
+</div>
+<div class="ltx_para" id="A1.p4">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#A1.F16" title="Figure 16 ‣ Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">16</span></a> نعرض عينة من صور مجرات SDSS مرتبة حسب قيمة PC الأولى (اللوحة العلوية)، وعينة مرتبة حسب قيمة PC الثانية (اللوحة السفلية). ويبدو أن المركبة الرئيسة الأولى ترتبط بالحجم الظاهري للمجرة في الصورة، والثانية باللون. وفي ضوء هذا التفسير، يبين الشكل <a class="ltx_ref" href="#A1.F15" title="Figure 15 ‣ Appendix A استكشاف الفضاء الكامن لـ GANomaly ‣ تقييم محاكاة المجرات كميًا بالمقارنة مع الأرصاد الحقيقية باستخدام كشف الشذوذ"><span class="ltx_text ltx_ref_tag">15</span></a> أن بعض مجرات NIHAO لها أحجام ظاهرية صغيرة جدًا، ويمكن معالجة ذلك في أعمال مستقبلية. وتمتلك بعض مجرات NIHAO الأخرى ألوانًا مفرطة التطرف قد تعود إلى أسباب عدة، مثل اختلاف في SFR أو حدود نموذج الغبار، لكن المعنى الفيزيائي الدقيق لذلك يحتاج إلى استكشاف بمزيد من التفصيل، ونتركه لعمل مستقبلي.</p>
+</div>
+<figure class="ltx_figure" id="A1.F14">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="418" id="A1.F14.g1" src="plot/PCA_zspace.png" width="538"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="416" id="A1.F14.g2" src="plot/PCA_zspace_2.png" width="538"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 14: </span>كسر التباين المفسَّر بدلالة رتبة المركبة الرئيسة. تُعرض SDSS باللون البني، وتُعرض عينات NIHAO بدرجات مختلفة من الأزرق (NIHAO No AGN بالأزرق الفاتح، وNIHAO AGN بالأزرق الأرجواني، وNIHAO UHD بالأزرق الداكن، وNIHAO n80 بالأزرق المخضر). تعرض اللوحة العلوية أول اثنتي عشرة مركبة فقط مع المحور y بمقياس خطي، وتعرض اللوحة السفلية كل المركبات 128 مع المحور y بمقياس لوغاريتمي.</figcaption>
+</figure>
+<figure class="ltx_figure" id="A1.F15"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="419" id="A1.F15.g1" src="plot/PC1PC2.png" width="538"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 15: </span>رسم المركبة الرئيسة الأولى مقابل المركبة الرئيسة الثانية لمجرات SDSS (بالأخضر). أُسقطت عينات مجرات NIHAO على أول مركبتين رئيستين لـ SDSS، وتُعرض بدرجات مختلفة من الأزرق.</figcaption>
+</figure>
+<figure class="ltx_figure" id="A1.F16">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="431" id="A1.F16.g1" src="plot/PC1_SDSS_images.png" width="538"/></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="538" id="A1.F16.g2" src="plot/PC2_SDSS_images.png" width="538"/></td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 16: </span>صور لعينة من مجرات SDSS مرتبة حسب المركبة الرئيسة الأولى (اللوحات العلوية) وحسب المركبة الرئيسة الثانية (اللوحات السفلية).</figcaption>
+</figure>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue May 12 06:30:07 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

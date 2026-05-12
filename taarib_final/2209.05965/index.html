@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة</title>
+<!--Generated on Tue May 12 00:38:13 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on قُبل xxxx. استُلم xxxx؛ بصيغته الأصلية xxxx.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-ulem.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_pruned_first">
+<h1 class="ltx_title ltx_title_document">نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">J. Expósito-Márquez<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>, C. B. Brook<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup> , M. Huertas-Company<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,1,3</span></sup>, A. Di Cintio<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>,A.V. Macciò<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4,5,6</span></sup>, R. J. J. Grand<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,1</span></sup> and G. Battaglia<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,1</span></sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup>Universidad de La Laguna. Avda. Astrofísico Fco. Sánchez, La Laguna, Tenerife, Spain
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup>Instituto de Astrofísica de Canarias, Calle Via Láctea s/n, E-38206 La Laguna, Tenerife, Spain
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">3</span></sup> LERMA, Observatoire de Paris, CNRS, PSL, Université de Paris, France
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4</span></sup> New York University Abu Dhabi, PO Box 129188 Abu Dhabi, United Arab Emirates 
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">5</span></sup> Center for Astro, Particle and Planetary Physics (CAP<sup class="ltx_sup">3</sup>), New York University Abu Dhabi 
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">6</span></sup> Max Planck Institute für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany
+
+<br class="ltx_break"/>
+</span><span class="ltx_author_notes">E-mail: <a class="ltx_ref ltx_href" href="mailto:" title="">chbrook@ull.edu.es</a></span></span>
+</div>
+<div class="ltx_dates">(قُبل xxxx. استُلم xxxx؛ بصيغته الأصلية xxxx)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">تُكوّن المحاكاة العددية ضمن كوسمولوجيا المادة المظلمة الباردة (DM) هالاتٍ تمتلك ملفات كثافة ذات ميل داخلي حاد (‘حدبة’)، غير أن أرصاد المجرات غالبا ما تشير إلى ‘لب’ مركزي مسطح.
+نطوّر نموذجا لشبكة عصبية التفافية لكثافة المزائج لاشتقاق دالة كثافة احتمال (PDF) لميول الكثافة الداخلية في هالات المادة المظلمة. ندرّب الشبكة على مجرات قزمة محاكاة من مشروعي NIHAO و AURIGA، وهي تشمل كلا من حدبات المادة المظلمة ولبابها: إذ تُستخدم سرعات خط البصر والتوزيعات المكانية ثنائية الأبعاد 2 لنجومها مدخلاتٍ للحصول على دالة كثافة احتمال تمثل احتمال التنبؤ بميل داخلي محدد.
+يستعيد النموذج بدقة ملفات المادة المظلمة المتوقعة: تقع القيمة المشتقة للميل الداخلي في <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="m15"><mo>∼</mo></math>82<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="m16"><mo>%</mo></math> من المجرات ضمن <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="m17"><mo>±</mo></math>0.1 من قيمتها الحقيقية، بينما تقع <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="m18"><mo>∼</mo></math>98<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="m19"><mo>%</mo></math> منها ضمن <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="m20"><mo>±</mo></math>0.3. ونطبق نموذجنا على أربع مجرات كروانية قزمة في المجموعة المحلية، فنجد نتائج متسقة مع تلك المستخلصة باستعمال الشيفرة <span class="ltx_text ltx_font_smallcaps">GravSphere</span> القائمة على نمذجة جينز: إذ تُظهر مجرة Fornax dSph دليلا قويا على امتلاك لب مركزي من المادة المظلمة، وتمتلك Carina و Sextans حدبتين (مع لايقين كبير في الأخيرة)، في حين تُظهر Sculptor دالة كثافة احتمال ثنائية القمة تشير إلى تفضيل الحدبة، مع عدم إمكان استبعاد اللب. تبين نتائجنا أن الاستدلال القائم على المحاكاة باستعمال الشبكات العصبية يوفر طريقة مبتكرة ومكملة لتحديد ملفات كثافة المادة الداخلية في المجرات، وهو ما يمكن بدوره أن يساعد في تقييد خصائص المادة المظلمة المراوغة.</p>
+</div>
+<div class="ltx_classification">
+<h6 class="ltx_title ltx_title_classification">keywords: </h6>
+المجرات: قزمة - تطور - تشكل - هالات - مادة مظلمة
+
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_pagerange"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pagerange: </span><span class="ltx_ref ltx_ref_self"><span class="ltx_text ltx_ref_title">نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة</span></span>–<a class="ltx_ref" href="#Sx3.SSx4" title="تفاصيل البنية ‣ الملحق A: تفاصيل نموذج الشبكة العصبية ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_title">تفاصيل البنية</span></a></span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_pubyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pubyear: </span>2020</span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>المقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">تمتلك هالات المادة المظلمة (DM) التي تتشكل في المحاكاة ضمن سياق كوسمولوجي <math alttext="\Lambda\rm CDM" class="ltx_Math" dir="ltr" display="inline" id="S1.p1.m1"><mrow><mi mathvariant="normal">Λ</mi><mo>⁢</mo><mi>CDM</mi></mrow></math> ملف كثافة مميزا، له ميل داخلي لوغاريتمي قدره -1 <cite class="ltx_cite ltx_citemacro_cite">(Navarro
+et al., <a class="ltx_ref" href="#bib.bib41" title="">1996b</a>, the NFW profile)</cite>. وقد أُشير إلى ملف الكثافة الداخلي الحاد هذا باسم ‘حدبة’. ومع ذلك، أظهرت أرصاد المجرات القزمة التي تسكن هذه الهالات تعارضات مع تنبؤات النموذج، إذ تقدم أدلة مهمة على أن عددا من هذه المجرات يمتلك ملف كثافة داخليا مسطحا ذا ميل يقترب من الصفر، ويُشار إليه باسم ملف ‘لبي’ <cite class="ltx_cite ltx_citemacro_citep">(Moore, <a class="ltx_ref" href="#bib.bib39" title="">1994</a>)</cite>.
+وقد عُرف التباين بين النظرية والأرصاد باسم مشكلة ‘اللب-الحدبة’ <cite class="ltx_cite ltx_citemacro_cite">(e.g. Simon
+et al., <a class="ltx_ref" href="#bib.bib50" title="">2005</a>; de Blok et al., <a class="ltx_ref" href="#bib.bib58" title="">2008</a>; Bullock &amp;
+Boylan-Kolchin, <a class="ltx_ref" href="#bib.bib9" title="">2017</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">مع أن عدة نماذج بديلة للمادة المظلمة اقتُرحت على مر السنين لمعالجة هذه المسألة <cite class="ltx_cite ltx_citemacro_cite">(e.g. Spergel &amp;
+Steinhardt, <a class="ltx_ref" href="#bib.bib51" title="">2000</a>; Kaplinghat
+et al., <a class="ltx_ref" href="#bib.bib28" title="">2016</a>; Schneider et al., <a class="ltx_ref" href="#bib.bib47" title="">2017</a>)</cite>،
+فقد تبيّن أيضا أن اللباب يمكن تفسيرها ضمن <math alttext="\Lambda\rm CDM" class="ltx_Math" dir="ltr" display="inline" id="S1.p2.m1"><mrow><mi mathvariant="normal">Λ</mi><mo>⁢</mo><mi>CDM</mi></mrow></math> عند أخذ تأثير الباريونات في المادة المظلمة بالحسبان. فقد أظهر <cite class="ltx_cite ltx_citemacro_cite">Navarro
+et al. (<a class="ltx_ref" href="#bib.bib40" title="">1996a</a>)</cite> أنه إذا تراكم الغاز ببطء على مجرة قزمة ثم أُزيل فجأة عبر عمليات مثل الرياح النجمية أو تغذية المستعرات العظمى الراجعة، فإن توزيع المادة المظلمة يمكن أن يتمدد، مخفضا الكثافة المركزية للهالة. ويكون أثر تسخين المادة المظلمة هذا صغيرا في الظروف الواقعية <cite class="ltx_cite ltx_citemacro_citep">(Gnedin &amp;
+Zhao, <a class="ltx_ref" href="#bib.bib21" title="">2002</a>)</cite>، لكن <cite class="ltx_cite ltx_citemacro_cite">Read et al. (<a class="ltx_ref" href="#bib.bib44" title="">2006</a>)</cite> بيّنوا أنه إذا تكرر الأثر عبر عدة دورات من تشكل النجوم، فإنه يتراكم مؤديا إلى تكوّن لب كامل. ويمكن أن يكون هذا اللب دائما إذا كانت التدفقات الخارجة سريعة بما يكفي <cite class="ltx_cite ltx_citemacro_citep">(Pontzen &amp;
+Governato, <a class="ltx_ref" href="#bib.bib43" title="">2012</a>)</cite>. وقد نجحت بالفعل المحاكاة الهيدروديناميكية الحديثة للمجرات القزمة التي تراعي التغذية الراجعة الباريونية وتمتلك عتبة كثافة مرتفعة بما يكفي لتشكل النجوم في تكوين لباب للمادة المظلمة <cite class="ltx_cite ltx_citemacro_cite">(e.g. Governato
+et al., <a class="ltx_ref" href="#bib.bib23" title="">2010</a>; Di Cintio et al., <a class="ltx_ref" href="#bib.bib13" title="">2014a</a>; Tollet
+et al., <a class="ltx_ref" href="#bib.bib53" title="">2016</a>; Chan
+et al., <a class="ltx_ref" href="#bib.bib11" title="">2015</a>)</cite>.
+ومع ذلك، لا تزال مشكلة ‘الحدبة-اللب’ بعيدة عن الحل الكامل، نظرا إلى صعوبات الكشف عن توزيع المادة المظلمة الكامن في المجرات القزمة المرصودة، وقد بُذل جهد كبير في تطوير وتحسين طرائق استنتاج ملف كثافة المادة المظلمة الداخلي لهذه المجرات.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">إن تحليل سرعة دوران الغاز في المجرات منخفضة السطوع السطحي، على سبيل المثال، يتيح اشتقاق توزيع المادة المظلمة الكامن فيها وملاءمته،
+مشيرا إلى وجود لب من المادة المظلمة في مثل هذه الأنظمة <cite class="ltx_cite ltx_citemacro_citep">(مثلا Moore, <a class="ltx_ref" href="#bib.bib39" title="">1994</a>; Gentile et al., <a class="ltx_ref" href="#bib.bib19" title="">2004</a>; de Blok et al., <a class="ltx_ref" href="#bib.bib58" title="">2008</a>; Lelli
+et al., <a class="ltx_ref" href="#bib.bib35" title="">2016</a>)</cite>.
+ومن جهة أخرى، في المجرات المدعومة بالضغط والخالية من الغاز،
+مثل المجرات القزمة الكروانية (dSphs) الموجودة ضمن المجموعة المحلية،
+تأتي المعلومات الحركية التي تعتمد عليها النمذجة الديناميكية من توزيع سرعات خط البصر لمكونها النجمي.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">استُخدمت طرائق متنوعة على المجرات القزمة لاشتقاق كثافة المادة المظلمة المركزية فيها، مثل نمذجة جينز <cite class="ltx_cite ltx_citemacro_citep">(مثلا van der Marel, <a class="ltx_ref" href="#bib.bib60" title="">1994</a>; Kleyna et al., <a class="ltx_ref" href="#bib.bib30" title="">2001</a>; Battaglia et al., <a class="ltx_ref" href="#bib.bib2" title="">2008</a>; Read
+et al., <a class="ltx_ref" href="#bib.bib45" title="">2019</a>; Collins
+et al., <a class="ltx_ref" href="#bib.bib12" title="">2021</a>)</cite> أو نمذجة شفارتزشيلد <cite class="ltx_cite ltx_citemacro_citep">(مثلا Schwarzschild, <a class="ltx_ref" href="#bib.bib48" title="">1979</a>; Cappellari
+et al., <a class="ltx_ref" href="#bib.bib10" title="">2006</a>; van den Bosch
+&amp; de Zeeuw, <a class="ltx_ref" href="#bib.bib59" title="">2010</a>; Breddels et al., <a class="ltx_ref" href="#bib.bib7" title="">2013</a>; Breddels, Maarten A. &amp; Helmi, Amina, <a class="ltx_ref" href="#bib.bib6" title="">2013</a>)</cite>.
+وتبدو النتائج في الأدبيات مشيرة إلى أن ملفات المادة المظلمة اللبية مفضلة على الملفات الحدبية في مجرة Fornax dSph <cite class="ltx_cite ltx_citemacro_citep">(مثلا Geha
+et al., <a class="ltx_ref" href="#bib.bib18" title="">2006</a>; Walker &amp;
+Peñarrubia, <a class="ltx_ref" href="#bib.bib54" title="">2011</a>; Brook &amp; Di
+Cintio, <a class="ltx_ref" href="#bib.bib8" title="">2015</a>; Pascale et al., <a class="ltx_ref" href="#bib.bib42" title="">2018</a>)</cite>، في حين أن حالة Sculptor، وهي نظام آخر مدروس جدا، لا تزال موضع نقاش واسع بشأن ما إذا كانت هالة مادتها المظلمة لبية أم حدبية، وربما تشير إلى وجود حدبة خفيفة <cite class="ltx_cite ltx_citemacro_citep">(مثلا Breddels, Maarten A. &amp; Helmi, Amina, <a class="ltx_ref" href="#bib.bib6" title="">2013</a>; Zhu et al., <a class="ltx_ref" href="#bib.bib57" title="">2016</a>; Hayashi
+et al., <a class="ltx_ref" href="#bib.bib25" title="">2020</a>)</cite> (للاطلاع على مراجعة لهذه الموضوعات، انظر <cite class="ltx_cite ltx_citemacro_citet">Battaglia et al. <a class="ltx_ref" href="#bib.bib3" title="">2022</a></cite> والمراجع الواردة فيها).</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">غير أن أحد القيود المركزية للنماذج المذكورة سابقا ينشأ من عدم اليقين في تباين مدارات النجوم، في حالة نمذجة جينز، مما يسبب انحلالا مع ملف الكتلة الكامن <cite class="ltx_cite ltx_citemacro_citep">(Binney &amp;
+Mamon, <a class="ltx_ref" href="#bib.bib5" title="">1982</a>)</cite>؛
+أما نمذجة شفارتزشيلد، من جهة أخرى، فتعيقها حساسيتها للبيانات المتاحة <cite class="ltx_cite ltx_citemacro_citep">(Kowalczyk et al., <a class="ltx_ref" href="#bib.bib33" title="">2017</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">في هذا العمل نقدم طريقة بديلة ومبتكرة للتمييز بين الحدبات واللباب في المجرات القزمة اعتمادا على تقنيات تعلم الآلة. وعلى وجه التحديد، نستخدم شبكات عصبية التفافية لكثافة المزائج لتحديد توزيع لاحق للملف الداخلي لهالات المادة المظلمة. وقد طُبق هذا النهج العام بنجاح في قياس كتل العناقيد من ديناميكيات المجرات <cite class="ltx_cite ltx_citemacro_cite">(e.g. Ho et al., <a class="ltx_ref" href="#bib.bib26" title="">2019</a>; Kodi
+Ramanah et al., <a class="ltx_ref" href="#bib.bib32" title="">2021</a>; Kodi Ramanah et al., <a class="ltx_ref" href="#bib.bib31" title="">2020</a>)</cite>.
+تستخدم الشبكة العصبية، بوصفها مدخلات، خرائط فضاء الطور للتوزيعات الموضعية والديناميكية للنجوم داخل المجرات.</p>
+</div>
+<div class="ltx_para" id="S1.p7">
+<p class="ltx_p">نستخدم مجموعة من 171 مجرة قزمة من مشروع NIHAO ذات شروط ابتدائية ومعاملات مختلفة <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib56" title="">2015</a>; Dutton et al., <a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite> و 12 مجرة قزمة من مشروع AURIGA <cite class="ltx_cite ltx_citemacro_citep">(Grand et al., <a class="ltx_ref" href="#bib.bib24" title="">2017</a>)</cite> مجموعةَ تدريب للشبكة.
+ثم نطبق نموذجنا الجديد على أربع مجرات كروانية قزمة تابعة لدرب التبانة لاستنتاج الميل الداخلي لملفات كثافة مادتها المظلمة.</p>
+</div>
+<div class="ltx_para" id="S1.p8">
+<p class="ltx_p">تُنظم الورقة على النحو الآتي. في القسم 2 نقدم مجموعة بيانات المحاكاة وبنية تعلم الآلة.
+وفي القسم 3 نعرض نتائج النموذج المدرّب على مجموعة الاختبار، ثم نطبق النموذج على المجرات القزمة المرصودة في القسم 4. وتناقَش الاستنتاجات في القسم 5.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>الطرائق</h2>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>مجموعة التدريب</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">لتدريب نموذجنا نحتاج إلى مجموعة كبيرة من المجرات القزمة المحاكاة ذات ملفات كثافة معروفة جيدا. نستخدم محاكاة كوسمولوجية كاملة من مشروعي NIHAO <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib56" title="">2015</a>)</cite> و AURIGA <cite class="ltx_cite ltx_citemacro_citep">(Grand et al., <a class="ltx_ref" href="#bib.bib24" title="">2017</a>)</cite>، حيث تتطور المادة المظلمة والمادة الباريونية معا، مما يجعل مجموعة التدريب لدينا واقعية قدر الإمكان.</p>
+</div>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="430" id="S2.F1.g1" src="Draft/fig/gamma_M.png" width="598"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>العلاقة بين الميل الداخلي لملفات كثافة المادة المظلمة <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m3"><mi>γ</mi></math> (المعرّف بوصفه الميل اللوغاريتمي عند 150 فرسخ فلكي) والكتلة النجمية للمجرات المحاكاة في مجموعة بياناتنا. يحدد الخط الأفقي الأخضر قيمة <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m4"><mi>γ</mi></math> لملف NWF.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">ومن المهم أن ندرج محاكاة لمجرات ذات حدبات ولباب معا في مناطقها المركزية، وبكتل نجمية مختلفة، لتقليل أي اعتماد منهجي للحدبات واللباب على خصائص مثل الكتلة. ففي الواقع، تمتلك مجرات NIHAO القياسية ملف كثافة مترابطا بقوة مع الكتلة <cite class="ltx_cite ltx_citemacro_citep">(Di Cintio et al., <a class="ltx_ref" href="#bib.bib14" title="">2014b</a>; Macciò et al., <a class="ltx_ref" href="#bib.bib36" title="">2020</a>)</cite>، مما سيسمح لشيفرة تعلم الآلة بالتنبؤ بالحدبة أو اللب اعتمادا على أي مؤشر للكتلة الكلية، لا اعتمادا على تفاصيل سرعات النجوم ومواضعها. لذلك نستخدم محاكاة لها نطاق من المدخلات الفيزيائية و/أو المعلمية المختلفة، بما يعني أن مجموعتنا النهائية من المحاكاة تشمل نطاقا من الميول الداخلية عند كتل وأحجام مختلفة.
+ندرج أولا مجرات قزمة ضمن نموذج NIHAO القياسي، تتراوح كتلة هالاتها من <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m1"><mo>∼</mo></math> <math alttext="10^{9}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m2"><msup><mn>10</mn><mn>9</mn></msup></math> M<sub class="ltx_sub">⊙</sub> إلى <math alttext="10^{11.5}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m4"><msup><mn>10</mn><mn>11.5</mn></msup></math> M<sub class="ltx_sub">⊙</sub> وتتراوح كتلتها النجمية من رتبة <math alttext="10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m6"><msup><mn>10</mn><mn>5</mn></msup></math> M<sub class="ltx_sub">⊙</sub> إلى <math alttext="10^{9.5}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m8"><msup><mn>10</mn><mn>9.5</mn></msup></math> M<sub class="ltx_sub">⊙</sub>. يتضمن هذا النموذج تغذية راجعة طاقية من النجوم الضخمة والمستعرات العظمى <cite class="ltx_cite ltx_citemacro_citep">(Stinson et al., <a class="ltx_ref" href="#bib.bib52" title="">2006</a>)</cite>، وقد ثبت أنها قادرة على تعديل ملف الكثافة الداخلي وإنتاج اللباب، ولا سيما في المجرات المحاكاة ذات الكتلة النجمية بين <math alttext="10^{7}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m10"><msup><mn>10</mn><mn>7</mn></msup></math>M<sub class="ltx_sub">⊙</sub>و <math alttext="10^{9}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m12"><msup><mn>10</mn><mn>9</mn></msup></math>M<sub class="ltx_sub">⊙</sub> <cite class="ltx_cite ltx_citemacro_citep">(Di Cintio et al., <a class="ltx_ref" href="#bib.bib13" title="">2014a</a>)</cite>.
+نستخدم أيضا محاكاة لأقزام من <cite class="ltx_cite ltx_citemacro_cite">Dutton et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite>، توظف النموذج نفسه كما في محاكاة NIHAO القياسية، ولكن بعتبات مختلفة لتشكل النجوم تتراوح من <math alttext="\rho_{\text{thresh}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m14"><msub><mi>ρ</mi><mtext>thresh</mtext></msub></math> = 0.1 إلى 100 جسيم لكل سم<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">-3</span></sup>: وهذا يترجم إلى مجرات ذات كتل نجمية متشابهة تنتهي بملفات كثافة مختلفة، إذ ثبت أن عتبة كثافة تشكل النجوم من أهم المعاملات في تكوين اللب في المحاكاة الباريونية (انظر <cite class="ltx_cite ltx_citemacro_citet">Benítez-Llambay et al. <a class="ltx_ref" href="#bib.bib4" title="">2019</a>; Dutton et al. <a class="ltx_ref" href="#bib.bib15" title="">2020</a></cite>).
+ونضيف كذلك مجموعة محاكاة بلا تغذية راجعة نجمية، أُجريت من الشروط الابتدائية نفسها لمحاكاة NIHAO القياسية <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib56" title="">2015</a>)</cite>. وتؤدي طاقة التغذية الراجعة الكلية الأقل إلى ملفات كثافة داخلية مختلفة عن المحاكاة التي تتضمن التغذية الراجعة النجمية، للشروط الابتدائية نفسها، وبذلك تزيد أكثر التنوع المرغوب في ملفات المادة المظلمة المركزية عند كتلة مجرية معطاة.
+وأخيرا، ندرج 12 مجرة قزمة محاكاة من مشروع AURIGA <cite class="ltx_cite ltx_citemacro_citep">(Grand et al., <a class="ltx_ref" href="#bib.bib24" title="">2017</a>)</cite>، وجميعها ذات حدبة مركزية في المادة المظلمة.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p3">
+<p class="ltx_p">لدينا 183 مجرة قزمة محاكاة في المجموع: 60 محاكاة من مجموعة NIHAO القياسية <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib56" title="">2015</a>)</cite>، و 101 محاكاة من <cite class="ltx_cite ltx_citemacro_cite">Dutton et al. (<a class="ltx_ref" href="#bib.bib15" title="">2020</a>)</cite> ذات عتبات كثافة وملفات كثافة متغيرة، و 10 محاكاة من دون تغذية راجعة نجمية أيضا من <cite class="ltx_cite ltx_citemacro_cite">Wang et al. (<a class="ltx_ref" href="#bib.bib56" title="">2015</a>)</cite>، و 12 محاكاة من <cite class="ltx_cite ltx_citemacro_cite">Grand et al. (<a class="ltx_ref" href="#bib.bib24" title="">2017</a>)</cite>. وبمجملها تمتد كتل الهالات في هذه المحاكاة بين M<sub class="ltx_sub">halo</sub>=<math alttext="3\cdot 10^{9}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m2"><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mn>9</mn></msup></mrow></math> M<sub class="ltx_sub">⊙</sub>و M<sub class="ltx_sub">halo</sub>=<math alttext="4\cdot 10^{11}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m5"><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>10</mn><mn>11</mn></msup></mrow></math> M<sub class="ltx_sub">⊙</sub>. تحل محاكاة NIHAO ملف الكتلة للمجرات إلى ما دون 1 في المئة من نصف قطرها الفيروسي عند جميع الكتل، في حين صُممت محاكاة AURIGA بحيث يكون لها حد تليين فيزيائي أقصى قدره <math alttext="\sim 370" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p3.m7"><mrow><mi></mi><mo>∼</mo><mn>370</mn></mrow></math> فرسخا فلكيا.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p4">
+<p class="ltx_p">نعرّف قيمة الميل الداخلي للمادة المظلمة في المجرات المحاكاة بوصفها الميل عند 150 فرسخ فلكي من ملف كثافة المادة المظلمة لكل مجرة. وتُستقرَأ هذه القيمة من ملاءمة ملف الكثافة مع ملف قانون قوة مزدوج <cite class="ltx_cite ltx_citemacro_citep">(Di Cintio et al., <a class="ltx_ref" href="#bib.bib14" title="">2014b</a>)</cite>، بغية تجنب أثر الضجيج في ملف الكثافة المحسوب من المحاكاة في المناطق الداخلية القريبة جدا من طول التليين <span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+              
+            هذا الاستقراء معقول بالنظر إلى أن مجرات AURIGA، مع أنها غير محلولة عند r<math alttext="&lt;" class="ltx_Math" dir="ltr" display="inline" id="footnote1.m1"><mo>&lt;</mo></math>370 فرسخ فلكي، تُظهر باستمرار كثافة داخلية حدبية، أي لا توجد علامة على لب مركزي اصطناعي للمادة المظلمة.</span></span></span>.
+ونحصل في النهاية على مجموعة من الأقزام المحاكاة التي تُظهر نطاقا من ملفات الكثافة: ويمكن رؤية العلاقة بين الكتلة النجمية والميل الداخلي لهالة المادة المظلمة في مجموعة بياناتنا الكاملة في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 مجموعة التدريب ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">1</span></a>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F2"><img alt="Refer to caption" class="ltx_graphics ltx_img_portrait" height="765" id="S2.F2.g1" src="Draft/fig/render_gal.png" width="598"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>مثال لمجرات لبية وحدبية من مجموعة بيانات المحاكاة لدينا. هنا يمثل كل صف مجرة مختلفة. الأعمدة اليسرى: تصوير للنجوم بمنظر مواجه. الأعمدة الوسطى: تصوير للنجوم بتوجه من الحافة. الأعمدة اليمنى: ملفات كثافة المادة المظلمة وملاءمتها بنموذج قانون قوة مزدوج <cite class="ltx_cite ltx_citemacro_citep">(Jaffe, <a class="ltx_ref" href="#bib.bib27" title="">1983</a>; Merritt et al., <a class="ltx_ref" href="#bib.bib38" title="">2006</a>)</cite>.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS1.p5">
+<p class="ltx_p">لزيادة حجم مجموعة التدريب لدينا، نستخدم 3 خطوات زمنية مختلفة للمخرجات لكل مجرة: z=0، و z=0.112، و z=0.226. وتكون كل مجرة محاكاة قد وصلت إلى الاتزان الفيروسي بالفعل عند هذه الانزياحات الحمراء، ولذلك يمكن أخذ لقطات مختلفة للقزمة. ومع أن هذا الإجراء لا يغير كثيرا نطاق ملفات الكثافة الناتجة، فإنه يغير مواضع النجوم وسرعاتها داخل كل مجرة. ونحصل في النهاية على عينة من 549 لقطة مجرية سنستخدمها مجموعة تدريب لطريقتنا. نعرض في الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.1 مجموعة التدريب ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">2</span></a> أمثلة على التصويرات النجمية لمجرات محاكاة لبية وحدبية مع ملفات المادة المظلمة المقابلة لها.
+ثم نشرع في اختيار النجوم ضمن كل لقطة مجرية.
+وعادة ما يكون عدد النجوم التي تتوفر لها بيانات طيفية في مجرات المجموعة المحلية القزمة من رتبة المئات أو الآلاف، في حين يتراوح عدد الجسيمات النجمية المتاحة في مجراتنا المحاكاة من بضع مئات إلى عدة ملايين، بمتوسط يبلغ نحو <math alttext="10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p5.m1"><msup><mn>10</mn><mn>5</mn></msup></math> جسيم نجمي في كل مجرة.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p6">
+<p class="ltx_p">لذلك، ومن أجل محاكاة عينة رصدية من النجوم وتوسيع مجموعة التدريب أكثر، قسمنا العينة الكاملة من النجوم في كل مجرة محاكاة إلى حد أدنى قدره 20 مجموعات فرعية، تتكون كل منها من نجوم مختارة عشوائيا. ويعتمد عدد النجوم داخل كل مجموعة فرعية لمجرة معينة على العدد الكلي للجسيمات النجمية في المحاكاة، مع حد أعلى قدره <math alttext="10^{4}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m1"><msup><mn>10</mn><mn>4</mn></msup></math> نجم وحد أدنى قدره 200 نجم.
+ثم تُسقط نجوم كل مجموعة فرعية على مستويات سماء اعتباطية لمحاكاة مجرات مرصودة من زوايا رؤية مختلفة. وتُعرّف هذه النجوم المسقطة بمواضعها (<math alttext="x_{\rm proj}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m2"><msub><mi>x</mi><mi>proj</mi></msub></math>، <math alttext="y_{\rm proj}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m3"><msub><mi>y</mi><mi>proj</mi></msub></math>) وسرعة خط البصر الخاصة بها <math alttext="v_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m4"><msub><mi>v</mi><mi>LOS</mi></msub></math>. ونفرط في أخذ عينات لبعض المجرات بإجراء إسقاطات متعددة لكل مجموعة فرعية منها، ونقلل أخذ العينات لبعض المجرات، بهدف جعل مجموعة التدريب ذات توزيع منتظم للميول الداخلية: وهذا يجنب النموذج الانحيازات أثناء التدريب.
+ونحصل في النهاية على إجمالي 10273 مجموعة بيانات لتدريب نموذجنا، تتكون كل منها من نجوم مختارة عشوائيا ضمن مجرات محاكاة مختلفة وبزوايا رؤية مختلفة، وخزنا لها معلومات عن مواضعها (<math alttext="x_{\rm proj}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m5"><msub><mi>x</mi><mi>proj</mi></msub></math>، <math alttext="y_{\rm proj}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m6"><msub><mi>y</mi><mi>proj</mi></msub></math>) وسرعات خط البصر <math alttext="v_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p6.m7"><msub><mi>v</mi><mi>LOS</mi></msub></math>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>مدخلات المعلومات</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">مدخلات نموذج شبكتنا العصبية العميقة هي دوال كثافة احتمال (PDFs) مستمرة ثنائية الأبعاد 2 لتوزيع النجوم في فضاءات الطور المسقطة، مبنية باستعمال تقديرات كثافة النواة ثنائية المتغير (KDEs). وتتيح لنا الخريطة المولدة باستخدام KDEs احتواء سمات التوزيعات المتقطعة الأصلية بالشكل نفسه حتى لو كانت كل مجموعة فرعية مجرية ممثلة بعدد مختلف من النجوم.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS2.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.2.1 </span>تقدير كثافة النواة</h4>
+<div class="ltx_para" id="S2.SS2.SSS1.p1">
+<p class="ltx_p">لتكن <math alttext="\mathbf{X_{1}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m1"><msub><mi>𝐗</mi><mn>𝟏</mn></msub></math>، <math alttext="\mathbf{X_{2}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m2"><msub><mi>𝐗</mi><mn>𝟐</mn></msub></math>، …، <math alttext="\mathbf{X_{n}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m3"><msub><mi>𝐗</mi><mi>𝐧</mi></msub></math> عينة ذات حجم <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m4"><mi>n</mi></math> من متغير عشوائي ذي كثافة <math alttext="f" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m5"><mi>f</mi></math>، حيث يكون كل متغير متجها ثنائي الأبعاد في حالة KDE ثنائي المتغير. ويُعطى تقدير كثافة النواة لـ <math alttext="f" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m6"><mi>f</mi></math> عند النقطة <math alttext="\mathbf{x}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p1.m7"><mi>𝐱</mi></math> بالصيغة</p>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS1.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="f_{h}(\mathbf{x})=\frac{1}{n|\mathbf{H}|^{1/2}}\sum^{n}_{i=1}K\left[\mathbf{H}%
+^{-1/2}(\mathbf{x-X_{i}})\right]," class="ltx_Math" dir="ltr" display="block" id="S2.E1.m1"><mrow><mrow><mrow><msub><mi>f</mi><mi>h</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝐱</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mrow><mi>n</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">|</mo><mi>𝐇</mi><mo stretchy="false">|</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mi>K</mi><mo>⁢</mo><mrow><mo>[</mo><mrow><msup><mi>𝐇</mi><mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝐱</mi><mo>−</mo><msub><mi>𝐗</mi><mi>𝐢</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS2.SSS1.p3">
+<p class="ltx_p">حيث إن K دالة نواة و <math alttext="\mathbf{H}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p3.m1"><mi>𝐇</mi></math> مصفوفة عرض حزمة 2x2.</p>
+</div>
+<figure class="ltx_figure" id="S2.F3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="517" id="S2.F3.g1" src="Draft/fig/pdf_example.png" width="679"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>مدخلات النموذج لمجرة لبية وأخرى حدبية، وتمثل كل منهما بمنظر مواجه ومنظر من الحافة. الميل اللوغاريتمي عند 150 فرسخ فلكي هو <math alttext="\gamma=-0.20" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m4"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>0.20</mn></mrow></mrow></math> للمجرة اللبية و <math alttext="\gamma=-1.32" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m5"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>1.32</mn></mrow></mrow></math> للمجرة الحدبية. من الأعلى إلى الأسفل: صورة 3-لونية للنجوم في المجرة؛ ودالة كثافة الاحتمال في فضاء الطور {x,y}؛ ودالة كثافة الاحتمال في فضاء الطور {<math alttext="\hat{R}_{\rm proj},\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.F3.m6"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>,</mo><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></mrow></math>}.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS2.SSS1.p4">
+<p class="ltx_p">يجمع KDE إسهامات الكثافة من مجموعة نقاط البيانات عند نقطة التقييم <math alttext="\mathbf{x}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m1"><mi>𝐱</mi></math>، بحيث تسهم نقاط البيانات القريبة من <math alttext="\mathbf{x}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m2"><mi>𝐱</mi></math> إسهاما كبيرا في الكثافة الكلية، بينما تسهم نقاط البيانات الأبعد عن <math alttext="\mathbf{x}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m3"><mi>𝐱</mi></math> بقدر أقل. ويُحدد شكل تلك الإسهامات بواسطة K، أما أبعادها واتجاهها فيحددهما <math alttext="\mathbf{H}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p4.m4"><mi>𝐇</mi></math>.
+وعادة تُختار دالة النواة K لتكون كثافة احتمال متماثلة حول الصفر <cite class="ltx_cite ltx_citemacro_citep">(Sheather, <a class="ltx_ref" href="#bib.bib49" title="">2004</a>)</cite>. في هذا العمل نستخدم نواة غاوسية ثنائية الأبعاد 2:</p>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS1.p5">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="K(\mathbf{u})=(2\pi)^{-3/2}|\mathbf{H}|^{1/2}exp\left(-\frac{1}{2}\mathbf{u}^{%
+T}\mathbf{H}^{-1}\mathbf{u}\right)," class="ltx_Math" dir="ltr" display="block" id="S2.E2.m1"><mrow><mrow><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝐮</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></mrow></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">|</mo><mi>𝐇</mi><mo stretchy="false">|</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mo>−</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><msup><mi>𝐮</mi><mi>T</mi></msup><mo>⁢</mo><msup><mi>𝐇</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>𝐮</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS2.SSS1.p6">
+<p class="ltx_p">حيث <math alttext="\mathbf{u}=\mathbf{x-X_{i}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p6.m1"><mrow><mi>𝐮</mi><mo>=</mo><mrow><mi>𝐱</mi><mo>−</mo><msub><mi>𝐗</mi><mi>𝐢</mi></msub></mrow></mrow></math>. وبالنسبة إلى مصفوفة عرض الحزمة، يُضرب عامل قياس <math alttext="\kappa=n^{\frac{-1}{6}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p6.m2"><mrow><mi>κ</mi><mo>=</mo><msup><mi>n</mi><mfrac><mrow><mo>−</mo><mn>1</mn></mrow><mn>6</mn></mfrac></msup></mrow></math> في مصفوفة التغاير للبيانات، حيث <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS1.p6.m3"><mi>n</mi></math> هو عدد نقاط البيانات.</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS2.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.2.2 </span>مدخلات النموذج</h4>
+<div class="ltx_para" id="S2.SS2.SSS2.p1">
+<p class="ltx_p">من المعلومات المسقطة (المواضع في المستوى x-y و <math alttext="v_{LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.SSS2.p1.m1"><msub><mi>v</mi><mrow><mi>L</mi><mo>⁢</mo><mi>O</mi><mo>⁢</mo><mi>S</mi></mrow></msub></math>) لعينة النجوم التي تمثل كل مجرة صنعنا خريطتين:</p>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS2.p2">
+<ul class="ltx_itemize" id="S2.I1">
+<li class="ltx_item" id="S2.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I1.i1.p1">
+<p class="ltx_p">دالة كثافة احتمال مأخوذة العينات عند 64x64 نقطة، لتوزيع النجوم في فضاء الطور {x,y}، بين -2 كيلوفرسخ فلكي و 2 كيلوفرسخ فلكي في كل إحداثي، في النظام المرجعي حيث تكون (x,y) = (0,0) مركز المجرة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I1.i2.p1">
+<p class="ltx_p">دالة كثافة احتمال مأخوذة العينات عند 64x64 نقطة، لتوزيع النجوم في فضاء الطور {<math alttext="\hat{R}_{\rm proj},\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m1"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>,</mo><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></mrow></math>}، حيث <math alttext="\hat{R}_{\rm proj}=\sqrt{x^{2}+y^{2}}/R_{\text{hlr}}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m2"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>=</mo><mrow><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt><mo>/</mo><msub><mi>R</mi><mtext>hlr</mtext></msub></mrow></mrow></math> هو الموضع الشعاعي المُطبّع بنصف قطر نصف الضوء <math alttext="R_{\text{hlr}}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m3"><msub><mi>R</mi><mtext>hlr</mtext></msub></math>، و <math alttext="\hat{v}_{\rm LOS}=v_{\rm LOS}/P_{98\%}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m4"><mrow><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub><mo>=</mo><mrow><msub><mi>v</mi><mi>LOS</mi></msub><mo>/</mo><msub><mi>P</mi><mrow><mn>98</mn><mo>%</mo></mrow></msub></mrow></mrow></math> هي سرعة خط البصر المُطبّعة بالمئين 98% للقيمة المطلقة لـ <math alttext="v_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m5"><msub><mi>v</mi><mi>LOS</mi></msub></math> لجميع نجوم العينة. ويتراوح <math alttext="\hat{R}_{\rm proj}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m6"><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub></math> من 0 إلى 1، ويتراوح <math alttext="\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.I1.i2.p1.m7"><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></math> من -1 إلى 1.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ltx_para" id="S2.SS2.SSS2.p3">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.2.1 تقدير كثافة النواة ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">3</span></a> نعرض مدخلات نموذجنا، بوصفها دوال كثافة الاحتمال المقابلة للخريطتين، لمجرة لبية (يسارا) وأخرى حدبية (يمينا).</p>
+</div>
+<figure class="ltx_figure" id="S2.F4"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="319" id="S2.F4.g1" src="Draft/fig/architecture.png" width="648"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>تمثيل تخطيطي لبنية MDCNN ثنائية القناة التي نستخدمها لاستنتاج الميول الداخلية لملفات المادة المظلمة (الميل عند 150 فرسخ فلكي) في المجرات من خرائط فضاء الطور ثنائية الأبعاد 2 للتوزيعات الموضعية والديناميكية للنجوم. تستخرج MDCNN السمات المكانية من خرائط فضاء الطور وتضغطها تدريجيا إلى سمات عالية الرتبة حتى تصف المدخل بـ 6 معاملات فقط، تُستخدم معاملاتٍ لتوزيع غاوسي مزدوج يقابل توزيع كثافة الاحتمال لقيم الميول الداخلية.</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.3 </span>النموذج</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p">في هذا العمل، نستخدم شبكات عصبية التفافية لكثافة المزائج (MDCNNs) لربط بيانات المدخلات، المؤلفة من دالتي كثافة الاحتمال الموصوفتين في القسم <a class="ltx_ref" href="#S2.SS2.SSS1" title="2.2.1 تقدير كثافة النواة ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">2.2.1</span></a>، بالميول الداخلية لملفات المادة المظلمة في المجرة المرتبطة بهاتين الدالتين. ونقرب التوزيع اللاحق للميول بمجموع توزيعين غاوسيين أحاديي البعد، تقدّر الشبكة العصبية معاملاتهما. <span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+              
+              
+              
+            إن استخدام غاوسي مزدوج يعطي تنبؤات أدق من استخدام غاوسي مفرد. ومن جهة أخرى، لا يؤدي استخدام أكثر من غاوسيين إلى تنبؤات أدق للميل.</span></span></span> يأخذ نموذجنا مدخلا على هيئة صورة ذات قناتين تتكون من دالتي كثافة الاحتمال على فضاء الطور {<math alttext="\hat{R}_{\rm proj},\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m1"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>,</mo><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></mrow></math>} وفضاء الطور {x,y} كل على حدة. تمرر الصور عبر 2 طبقات التفافية متسلسلة. ثم تُدمج مخرجات الفرعين الالتفافيين وتُغذى إلى شبكة مكتملة الاتصال ذات 3 طبقة. ويتكون الخرج النهائي من 6 معاملات تعلّم التوزيع اللاحق الغاوسي المشترك أحادي البعد 2.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p2">
+<p class="ltx_p">يمكن رؤية منظر تخطيطي للبنية المستخدمة في هذا العمل في الشكل <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.2.2 مدخلات النموذج ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">4</span></a>، في حين توجد في الملحق A وصف أكثر تفصيلا للطبقات المختلفة وطرائق الشبكة العصبية.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS3.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.3.1 </span>التدريب والتقييم</h4>
+<div class="ltx_para" id="S2.SS3.SSS1.p1">
+<p class="ltx_p">يجري التدريب على مجموعة تدريب تتكون من 10273 مجموعة فرعية مجرية مع ميولها الداخلية المقابلة، التي تعمل بوصفها أهدافا. ودالة الخسارة المراد تقليلها أثناء التدريب هي الاحتمالية اللوغاريتمية السالبة لعينة التدريب، المعرفة كما يلي:</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="L=-\ln L*=-\sum^{N}_{i=1}\ln\left[p_{g}(t_{i}|\theta)\right]," class="ltx_math_unparsed" dir="ltr" display="block" id="S2.E3.m1"><mrow><mi>L</mi><mo rspace="0em">=</mo><mo lspace="0em">−</mo><mi>ln</mi><mi>L</mi><mo lspace="0.222em" rspace="0em">∗</mo><mo lspace="0em" rspace="0em">=</mo><mo lspace="0em" rspace="0.055em">−</mo><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mi>ln</mi><mrow><mo>[</mo><msub><mi>p</mi><mi>g</mi></msub><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><mo>]</mo></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS3.SSS1.p3">
+<p class="ltx_p">حيث <math alttext="t_{i}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m1"><msub><mi>t</mi><mi>i</mi></msub></math> هو الميل الداخلي للمجموعة الفرعية المجرية <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m2"><mi>i</mi></math>، و <math alttext="\theta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m3"><mi>θ</mi></math> مجموعة معاملات التوزيع <math alttext="p_{g}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m4"><msub><mi>p</mi><mi>g</mi></msub></math>. وبالنسبة إلى مجموعة فرعية مجرية معينة، تكون الاحتمالية هي قيمة دالة كثافة الاحتمال (المعرّفة بتوزيع غاوسي متعدد المتغيرات بوصفه خرج الطبقة الأخيرة) عند قيمة ميلها الداخلي الحقيقية؛ أي الاحتمال الذي يتنبأ به النموذج لأن يكون الميل الداخلي للمجرة هو قيمته الصحيحة:</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p4">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="p_{g}(x|\theta)=\sum^{2}_{j=1}\phi_{j}\mathbf{N}(x,\mu_{j},\sigma_{j})," class="ltx_Math" dir="ltr" display="block" id="S2.E4.m1"><mrow><mrow><mrow><msub><mi>p</mi><mi>g</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo fence="false">|</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>2</mn></munderover><mrow><msub><mi>ϕ</mi><mi>j</mi></msub><mo>⁢</mo><mi>𝐍</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>μ</mi><mi>j</mi></msub><mo>,</mo><msub><mi>σ</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS3.SSS1.p5">
+<p class="ltx_p">حيث <math alttext="\mathbf{N}(x,\mu_{j},\sigma_{j})" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m1"><mrow><mi>𝐍</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>μ</mi><mi>j</mi></msub><mo>,</mo><msub><mi>σ</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> هو الغاوسي <math alttext="j" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m2"><mi>j</mi></math> بمتوسط <math alttext="\mu_{j}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m3"><msub><mi>μ</mi><mi>j</mi></msub></math> وانحراف معياري <math alttext="\sigma_{j}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m4"><msub><mi>σ</mi><mi>j</mi></msub></math>، و <math alttext="\phi_{j}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m5"><msub><mi>ϕ</mi><mi>j</mi></msub></math> وزن الغاوسي <math alttext="j" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m6"><mi>j</mi></math>، بحيث <math alttext="\sum^{n_{g}}_{j=1}\phi_{j}=1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m7"><mrow><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>n</mi><mi>g</mi></msub></msubsup><msub><mi>ϕ</mi><mi>j</mi></msub></mrow><mo>=</mo><mn>1</mn></mrow></math>، ومن ثم يكون <math alttext="\theta" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m8"><mi>θ</mi></math> مجموعة من ستة معاملات (متوسط، وانحراف معياري، ووزن لكل من الغاوسيين).</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p6">
+<p class="ltx_p">يجري تقليل دالة الخسارة باستعمال محسّن تقدير العزوم التكيفي (<span class="ltx_text" style="font-size:90%;">ADAM</span>)، وهو خوارزمية تحسين تستخدم تقنية الانحدار التدرجي التكرارية. وقد ثبت أن <span class="ltx_text" style="font-size:90%;">ADAM</span>، بين خوارزميات طرائق التعلم الشائعة، يحقق أداء وتكلفة حاسوبية مفضلين <cite class="ltx_cite ltx_citemacro_citep">(Kingma &amp; Ba, <a class="ltx_ref" href="#bib.bib29" title="">2014</a>)</cite>.
+بعد التدريب، يخرج تقييم النموذج توزيعا غاوسيا متعدد المتغيرات يمكن فهمه بوصفه تقريبا للتوزيع اللاحق الحقيقي للميل الداخلي لمدخل معطى، في ضوء التوزيع القبلي للميول الداخلية في مجموعة التدريب. ويمثل هذا اللاحق، إذن، الاحتمال الذي يسنده النموذج إلى قيمة معينة للميل الداخلي في ضوء مجموعة المرصودات وتحت قبلية مجموعة التدريب.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p7">
+<p class="ltx_p">عادة تُبنى مجموعة بيانات الاختبار للتقييم النهائي للنموذج المتقارب بأخذ عدد كاف من العناصر عشوائيا من مجموعة البيانات الكاملة لتمثيل تنوع السمات كله في البيانات على نحو صحيح. في هذا العمل، وبسبب العدد المحدود من المجرات المتاحة، يُتوقع أن يؤدي حذف عدد كبير من المجرات ذات الخصائص المتنوعة من مجموعة بيانات التدريب إلى تدهور أداء النموذج، لأننا لا نملك أمثلة كثيرة مختلفة لمجرات ذات خصائص متشابهة بعضها مع بعض. ولتقييم النموذج على نحو سليم، أجرينا عدة عمليات تدريب كاملة مستخدمين 10 مجرات فقط بوصفها مجموعات بيانات تحقق واختبار في كل عملية، مع تغيير المجرات التي تُخرج من مجموعة بيانات التدريب في كل عملية تدريب لتقييم الشبكة في عدة إسقاطات لكل مجرة. يتيح لنا ذلك تحليل اتساق تدريب النموذج وأدائه في عدد كبير من المجرات من دون المساس بمجموعة بيانات التدريب.</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS3.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.3.2 </span>تمثيل اللايقينات</h4>
+<div class="ltx_para" id="S2.SS3.SSS2.p1">
+<p class="ltx_p">يمثل التوزيع اللاحق الخارج اللايقين العشوائي أو الألياطوري في تنبؤ الميل للنموذج النهائي، لكنه لا يمثل اللايقين الناتج من الطبيعة التصادفية لتحديد الأوزان أثناء تدريب الشبكة العصبية (اللايقين المعرفي)، الذي يمكن أن يؤدي إلى نماذج مختلفة لشروط التدريب نفسها عند التعامل مع بيانات محدودة.
+نستخدم طريقة إسقاط مونت كارلو (MC-Dropout) <cite class="ltx_cite ltx_citemacro_citep">(Gal &amp;
+Ghahramani, <a class="ltx_ref" href="#bib.bib17" title="">2015</a>)</cite> لتقريب اللايقين المعرفي، وهي تقوم على التقييم المتكرر للمدخل نفسه مع تعيين أوزان بعض الطبقات عشوائيا إلى 0 أثناء كل عملية استدلال، لبناء تقييم نهائي يتضمن معلومات إحصائية عن اللايقين المعرفي. وقد أظهر <cite class="ltx_cite ltx_citemacro_cite">Gal &amp;
+Ghahramani (<a class="ltx_ref" href="#bib.bib17" title="">2015</a>)</cite> أن تطبيق الإسقاط أثناء الاستدلال يكافئ تقريبا عملية غاوسية عميقة احتمالية. وهذا يعني أننا نستطيع قياس اللايقين المعرفي بتطبيق طبقة الإسقاط أثناء الاستدلال لعدد ذي دلالة إحصائية من المرات، والحصول على متوسط وتباين تنبؤيين لكل نقطة من التوزيع اللاحق. واللاحق النهائي المبني لكل إسقاط مجري هو المتوسط المطبع لـ 100 توزيعا لاحقا غاوسيا متعدد المتغيرات يستنتجه النموذج مع طبقات إسقاط نشطة.</p>
+</div>
+<figure class="ltx_figure" id="S2.F5"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="428" id="S2.F5.g1" src="Draft/fig/Pred_error_max.png" width="598"/>
+<br class="ltx_break"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>الفرق بين القيمة الحقيقية والقيمة المتنبأ بها للميول الداخلية لملفات المادة المظلمة (المعرّفة عند 150 فرسخ فلكي) مقابل الميل الداخلي الحقيقي، للمجرات المحاكاة المستخدمة في هذا العمل، مع تعريف القيمة المتنبأ بها بوصفها منوال التوزيع اللاحق. تمثل كل نقطة المتوسط <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}" class="ltx_Math" dir="ltr" display="inline" id="S2.F5.m2"><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow></math> لجميع إسقاطات كل مجرة منفردة، في حين تمتد أشرطة الخطأ على النطاق بين أصغر وأكبر انحراف بين كل إسقاطات كل مجرة الممكنة. وتمثل المناطق الملونة نطاقات انحراف متزايدة، من 0.05 إلى 0.4.</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>النتائج</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">هدف عملنا هو استنتاج الميل الداخلي اللوغاريتمي لملف كثافة الكتلة في المنطقة المركزية من مجرة (ومن الآن فصاعدا: الميل الداخلي) من بيانات طيفية لعينة عشوائية من نجومها. ولتحقيق ذلك، تُسقط جميع المجرات المحاكاة ومجموعاتها الفرعية من النجوم عشوائيا في عدة مستويات سماوية لمحاكاة عدة زوايا رؤية، وتُدرّب الشبكة العصبية على استنتاج الميل الداخلي للمجرة من مواضع نجومها وسرعات خط البصر الخاصة بها. ولكل مجرة تخرج الشبكة العصبية دالة كثافة احتمال تقرب الاحتمال اللاحق للحصول على ميل داخلي محدد في ضوء المدخلات.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>التنبؤ بالميول الداخلية للمادة المظلمة</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">نعرّف طريقتين مختلفتين لبناء قيمة الميل المتنبأ بها <math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m1"><mi>γ</mi></math> من التوزيعات اللاحقة:</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<ul class="ltx_itemize" id="S3.I1">
+<li class="ltx_item" id="S3.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S3.I1.i1.p1">
+<p class="ltx_p">باستخدام منوال التوزيع اللاحق (أي القيمة العظمى لدالة كثافة الاحتمال): <math alttext="\gamma_{\rm Pred,mode}" class="ltx_Math" dir="ltr" display="inline" id="S3.I1.i1.p1.m1"><msub><mi>γ</mi><mrow><mi>Pred</mi><mo>,</mo><mi>mode</mi></mrow></msub></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S3.I1.i2.p1">
+<p class="ltx_p">باستخدام متوسط التوزيع اللاحق المطبع: <math alttext="\gamma_{\rm Pred,mean}" class="ltx_Math" dir="ltr" display="inline" id="S3.I1.i2.p1.m1"><msub><mi>γ</mi><mrow><mi>Pred</mi><mo>,</mo><mi>mean</mi></mrow></msub></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ltx_para" id="S3.SS1.p3">
+<p class="ltx_p">يُعرّف انحراف <math alttext="\epsilon" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m1"><mi>ϵ</mi></math> لتنبؤ ما عن قيمته الحقيقية بأنه <math alttext="\epsilon_{i}=\gamma_{\rm Real}-\gamma_{\rm Pred,i}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m2"><mrow><msub><mi>ϵ</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mrow><mi>Pred</mi><mo>,</mo><mi mathvariant="normal">i</mi></mrow></msub></mrow></mrow></math>، حيث <math alttext="\gamma_{\rm Real}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m3"><msub><mi>γ</mi><mi>Real</mi></msub></math> هو الميل الحقيقي عند 150 فرسخ فلكي لملف المادة المظلمة في محاكاة مجرية.
+ويمكن رؤية نتائج طريقة المنوال في الشكل <a class="ltx_ref" href="#S2.F5" title="Figure 5 ‣ 2.3.2 تمثيل اللايقينات ‣ 2.3 النموذج ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">5</span></a>، الذي يبين الفرق بين الميول الحقيقية والمتنبأ بها في مجراتنا القزمة المحاكاة، <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m4"><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow></math>، بدلالة الميل الحقيقي.
+تمثل كل نقطة متوسط الانحراف لكل إسقاطات كل مجرة منفردة، في حين تشير أشرطة الانحراف إلى القيمة الدنيا والعظمى بين كل إسقاطات كل مجرة الممكنة. وتمثل المناطق الأفقية الملونة المظللة نطاقات لايقين متزايدة، من <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m5"><mo>±</mo></math>0.05 إلى <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p3.m6"><mo>±</mo></math>0.4.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p4">
+<p class="ltx_p">يبلغ متوسط الانحراف المطلق الكلي في الميل الداخلي المتنبأ به، لجميع المجرات في مجموعتنا، <math alttext="\mu_{\epsilon}=0.056" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p4.m1"><mrow><msub><mi>μ</mi><mi>ϵ</mi></msub><mo>=</mo><mn>0.056</mn></mrow></math> لطريقة المنوال و <math alttext="\mu_{\epsilon}=0.068" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p4.m2"><mrow><msub><mi>μ</mi><mi>ϵ</mi></msub><mo>=</mo><mn>0.068</mn></mrow></math> للطريقة الثانية.
+لاحظ أنه في حين تتناثر المجرات الحدبية والمجرات ‘البينية’ حول <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p4.m3"><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow></math> = 0، فإن المجرات اللبية المتجهة نحو <math alttext="\gamma=0" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p4.m4"><mrow><mi>γ</mi><mo>=</mo><mn>0</mn></mrow></math> لا يمكن، بحكم الضرورة، أن تتناثر إلا عند <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}\geq" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p4.m5"><mrow><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow><mo>≥</mo><mi></mi></mrow></math> 0، لأن أكبر ميل داخلي ممكن هو 0 بحكم البناء.</p>
+</div>
+<figure class="ltx_table" id="S3.T1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_tt">Deviation range (<math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S3.T1.m1"><mo>±</mo></math> X)</td>
+<td class="ltx_td ltx_align_center ltx_border_tt">% of projections with</td>
+<td class="ltx_td ltx_align_center ltx_border_tt">% of galaxies with</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td"></td>
+<td class="ltx_td ltx_align_center"><math alttext="|\epsilon|\leq X" class="ltx_Math" dir="ltr" display="inline" id="S3.T1.m2"><mrow><mrow><mo stretchy="false">|</mo><mi>ϵ</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mi>X</mi></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="|\epsilon|\leq X" class="ltx_Math" dir="ltr" display="inline" id="S3.T1.m3"><mrow><mrow><mo stretchy="false">|</mo><mi>ϵ</mi><mo stretchy="false">|</mo></mrow><mo>≤</mo><mi>X</mi></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">0.05</td>
+<td class="ltx_td ltx_align_center ltx_border_t">66.67</td>
+<td class="ltx_td ltx_align_center ltx_border_t">67.80</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">0.1</td>
+<td class="ltx_td ltx_align_center">80.79</td>
+<td class="ltx_td ltx_align_center">81.92</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">0.2</td>
+<td class="ltx_td ltx_align_center">94.35</td>
+<td class="ltx_td ltx_align_center">94.35</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">0.3</td>
+<td class="ltx_td ltx_align_center">98.31</td>
+<td class="ltx_td ltx_align_center">98.31</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_bb">0.4</td>
+<td class="ltx_td ltx_align_center ltx_border_bb">99.44</td>
+<td class="ltx_td ltx_align_center ltx_border_bb">98.87</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 1: </span>النسبة المئوية لجميع الإسقاطات (العمود المركزي) وللمجرات الفردية (العمود الأيمن) التي يقع ميلها الداخلي المتنبأ به ضمن نطاق انحراف معين X، أي <math alttext="|\epsilon|=|\gamma_{\rm Real}-\gamma_{\rm Pred,mode}|\leq X" class="ltx_Math" dir="ltr" display="inline" id="S3.T1.m5"><mrow><mrow><mo stretchy="false">|</mo><mi>ϵ</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mrow><mi>Pred</mi><mo>,</mo><mi>mode</mi></mrow></msub></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mi>X</mi></mrow></math>. هنا استخدمنا طريقة منوال التوزيعات اللاحقة لاشتقاق الميول الداخلية.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F6"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="539" id="S3.F6.g1" src="Draft/fig/error_hist.png" width="598"/>
+<br class="ltx_break"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>توزيع <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred,mode}" class="ltx_Math" dir="ltr" display="inline" id="S3.F6.m2"><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mrow><mi>Pred</mi><mo>,</mo><mi>mode</mi></mrow></msub></mrow></math> لكل إسقاط من إسقاطات كل مجرة في مجموعة التدريب لدينا.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS1.p5">
+<p class="ltx_p">في الجدول <a class="ltx_ref" href="#S3.T1" title="Table 1 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">1</span></a> يمكننا رؤية النسب المئوية للميول الداخلية المتنبأ بها على نحو صحيح، مع أخذ جميع إسقاطات كل مجرة (العمود الأوسط) وكل مجرة على حدة (العمود الأيمن) في الاعتبار، لمجموعة بيانات الاختبار الكاملة لدينا، ضمن عدة نطاقات لايقين.
+تستعيد نحو 82<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p5.m1"><mo>%</mo></math> من المجرات الميل الداخلي الحقيقي الصحيح ضمن <math alttext="\pm 0.1" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p5.m2"><mrow><mo>±</mo><mn>0.1</mn></mrow></math>، في حين تقع 98% منها ضمن <math alttext="|\gamma_{\rm Real}-\gamma_{\rm Pred}|\leq 0.3" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p5.m3"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mn>0.3</mn></mrow></math>.
+وهذه النطاقات صغيرة بوضوح بما يكفي لإلقاء الضوء على النقاش المتعلق بوجود اللباب في المجرات القزمة أو عدمه.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p6">
+<p class="ltx_p">وأخيرا، يمكن رؤية مدرج تكراري لتوزيع الانحراف لكل إسقاط من إسقاطات كل مجرة (أي 10273 في المجموع) في الشكل <a class="ltx_ref" href="#S3.F6" title="Figure 6 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">6</span></a>، مشيرا إلى أن قيم <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p6.m1"><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow></math> تبلغ ذروتها حول 0 وتتوزع حولها على نحو متماثل تقريبا، باستثناء المجرات شديدة اللبية التي لها بالتعريف <math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}\geq 0" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p6.m2"><mrow><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow><mo>≥</mo><mn>0</mn></mrow></math>، كما ذُكر سابقا، ولا تماثل صغير باتجاه التنبؤ بلباب أقوى في المجرات ضمن نطاق الانحرافات الصغيرة.
+لقد بينا أن طريقتنا تتنبأ بدقة بالميل الداخلي المتوقع للمجرات بغض النظر عن ميلها الحقيقي الفعلي، مع تشتت منتظم غالبا قدره <math alttext="\sigma_{\epsilon}=0.075" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p6.m3"><mrow><msub><mi>σ</mi><mi>ϵ</mi></msub><mo>=</mo><mn>0.075</mn></mrow></math>.</p>
+</div>
+<figure class="ltx_figure" id="S3.F7"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="436" id="S3.F7.g1" src="Draft/fig/sigmas.png" width="598"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>الانحراف المعياري <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.F7.m3"><msub><mi>σ</mi><mi>pos</mi></msub></math> لكل دالة كثافة احتمال لاحقة مقابل <math alttext="\gamma_{\rm Real}" class="ltx_Math" dir="ltr" display="inline" id="S3.F7.m4"><msub><mi>γ</mi><mi>Real</mi></msub></math>، للمجرات المحاكاة المستخدمة في هذا العمل. تمثل كل نقطة متوسط الانحراف المعياري لكل توزيع لاحق، لكل إسقاطات مجرة منفردة. وتمتد أشرطة الخطأ بين القيمة الدنيا والعظمى للانحراف المعياري لتوزيعات كل إسقاطات تلك المجرة اللاحقة.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>اللايقين في الاستدلال</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S3.F7" title="Figure 7 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">7</span></a> نعرض الانحراف المعياري <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m1"><msub><mi>σ</mi><mi>pos</mi></msub></math> لكل دالة كثافة احتمال لاحقة من كل مجرة في مجموعة بيانات الاختبار، معرفا بأنه الجذر التربيعي لتباين التوزيع اللاحق المطبع:</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\sigma^{2}_{\rm pos}=\int_{-\infty}^{\infty}(\gamma-\mu_{\rm pos})^{2}P(\gamma%
+)\ d\gamma," class="ltx_Math" dir="ltr" display="block" id="S3.E5.m1"><mrow><mrow><msubsup><mi>σ</mi><mi>pos</mi><mn>2</mn></msubsup><mo rspace="0.111em">=</mo><mrow><msubsup><mo rspace="0em">∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></msubsup><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>γ</mi><mo>−</mo><msub><mi>μ</mi><mi>pos</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.500em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>γ</mi></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="S3.SS2.p3">
+<p class="ltx_p">حيث <math alttext="P(\gamma)" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m1"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow></mrow></math> هو التوزيع اللاحق المطبع و <math alttext="\mu_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m2"><msub><mi>μ</mi><mi>pos</mi></msub></math> هو متوسط التوزيع:</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p4">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E6">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\mu_{\rm pos}=\int_{-\infty}^{\infty}\gamma P(\gamma)\ d\gamma." class="ltx_Math" dir="ltr" display="block" id="S3.E6.m1"><mrow><mrow><msub><mi>μ</mi><mi>pos</mi></msub><mo rspace="0.111em">=</mo><mrow><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></msubsup><mrow><mi>γ</mi><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.500em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>γ</mi></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<figure class="ltx_table" id="S3.T2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_tt">Region</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt">% of projections for which <math alttext="\gamma_{\rm Real}" class="ltx_Math" dir="ltr" display="inline" id="S3.T2.m1"><msub><mi>γ</mi><mi>Real</mi></msub></math>
+</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row"></th>
+<td class="ltx_td ltx_align_center">is within region</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t"><math alttext="1-\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.T2.m2"><mrow><mn>1</mn><mo>−</mo><msub><mi>σ</mi><mi>pos</mi></msub></mrow></math></th>
+<td class="ltx_td ltx_align_center ltx_border_t">86.29</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row"><math alttext="2-\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.T2.m3"><mrow><mn>2</mn><mo>−</mo><msub><mi>σ</mi><mi>pos</mi></msub></mrow></math></th>
+<td class="ltx_td ltx_align_center">97.57</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_bb"><math alttext="3-\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.T2.m4"><mrow><mn>3</mn><mo>−</mo><msub><mi>σ</mi><mi>pos</mi></msub></mrow></math></th>
+<td class="ltx_td ltx_align_center ltx_border_bb">99.73</td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 2: </span>النسبة المئوية للتنبؤات ضمن نطاقات <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.T2.m7"><msub><mi>σ</mi><mi>pos</mi></msub></math> متزايدة X، معرفة على أنها <math alttext="|\gamma_{\rm Real}-\gamma_{\rm Pred}|\leq X" class="ltx_Math" dir="ltr" display="inline" id="S3.T2.m8"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mi>X</mi></mrow></math>.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S3.SS2.p5">
+<p class="ltx_p">إن متوسط جميع قيم <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p5.m1"><msub><mi>σ</mi><mi>pos</mi></msub></math> في مجموعة البيانات، <math alttext="\mu_{\sigma_{\rm pos}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p5.m2"><msub><mi>μ</mi><msub><mi>σ</mi><mi>pos</mi></msub></msub></math>، يقارب 0.1، و 8.99% فقط من الإسقاطات لها قيم <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p5.m3"><msub><mi>σ</mi><mi>pos</mi></msub></math> أكبر من 0.2، وهي لايقينات صغيرة بما يكفي للتمييز بوضوح بين اللباب والحدبات في الغالبية العظمى من الحالات.
+ويبين الشكل <a class="ltx_ref" href="#S3.F7" title="Figure 7 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">7</span></a> أن الانحراف المعياري <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p5.m4"><msub><mi>σ</mi><mi>pos</mi></msub></math> لكل دالة كثافة احتمال لاحقة منتظم عبر قيم الميول الداخلية، أي إن عرض دوال كثافة الاحتمال لا يعتمد على الميل الداخلي للمجرات، بحيث لا ينحاز النموذج نحو استعادة الحدبات أو اللباب بدقة أعلى.
+وتظهر معظم المجرات تباينا مهما في حجم لايقيناتها تبعا للإسقاط، مما يشير إلى أن مطال اللايقين مترابط بقوة مع زاوية الرصد.</p>
+</div>
+<figure class="ltx_figure" id="S3.F8"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="527" id="S3.F8.g1" src="Draft/fig/angle_posterior_1.png" width="598"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>توزيعات كثافة الاحتمال التي تستخدمها الشبكة العصبية مدخلاتٍ في حالة مجموعة فرعية من مجرة محاكاة مرئية عند 0º (من الوجه)، و 45º و 90º (من الجانب)، إلى جانب التوزيعات اللاحقة البايزية التي يتنبأ بها النموذج. الأعمدة اليسرى: دوال كثافة الاحتمال في فضاء الطور {x,y}. الأعمدة الوسطى: دوال كثافة الاحتمال في فضاء الطور {<math alttext="\hat{R}_{\rm proj},\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S3.F8.m2"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>,</mo><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></mrow></math>}. الأعمدة اليمنى: التوزيع اللاحق البايزي المتنبأ به في فضاء الميل الداخلي لملف المادة المظلمة (الميل عند 150 فرسخ فلكي)؛ وتمثل المناطق المظللة الانحراف المعياري لقيم التوزيع اللاحق لاستدلالات MC-Dropout عند كل نقطة ميل، في حين يبين الخط العمودي الأزرق منوال (القيمة العظمى) التوزيع اللاحق ويبين الخط الأسود القيمة الحقيقية للميل الداخلي للمادة المظلمة.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F9"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="618" id="S3.F9.g1" src="Draft/fig/angle_posterior_2.png" width="693"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>توزيعات كثافة الاحتمال التي تستخدمها الشبكة العصبية مدخلاتٍ في حالة مجموعة فرعية من مجرة محاكاة مرئية عند 0º (من الوجه)، و 45º و 90º (من الجانب)، إلى جانب التوزيعات اللاحقة البايزية التي يتنبأ بها النموذج. الأعمدة اليسرى: دوال كثافة الاحتمال في فضاء الطور {x,y}. الأعمدة الوسطى: دوال كثافة الاحتمال في فضاء الطور {<math alttext="\hat{R}_{\rm proj},\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S3.F9.m2"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>,</mo><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></mrow></math>}. الأعمدة اليمنى: التوزيع اللاحق البايزي المتنبأ به في فضاء الميل الداخلي لملف المادة المظلمة (الميل عند 150 فرسخ فلكي)؛ وتمثل المناطق المظللة الانحراف المعياري لقيم التوزيع اللاحق لاستدلالات MC-Dropout عند كل نقطة ميل. يبين الخط العمودي الأحمر القيمة العظمى الأولية للتوزيع اللاحق (المنوال)، ويبين الخط الأخضر القيمة العظمى الثانوية، ويبين الخط الأسود القيمة الحقيقية للميل الداخلي للمادة المظلمة. ويُعرض، بخط أزرق، المتوسط بين القيمتين العظميين الأولية والثانوية عندما توجد قمتان (أما في اللوحة السفلى، فيمثل الخط الأزرق القيمة العظمى الوحيدة). يبين هذا المثال كيف يرتبط ظهور القمم المزدوجة في التوزيعات اللاحقة ارتباطا قويا بزاوية الرؤية.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p6">
+<p class="ltx_p">يبين الجدول <a class="ltx_ref" href="#S3.T2" title="Table 2 ‣ 3.2 اللايقين في الاستدلال ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">2</span></a> النسبة المئوية لإسقاطات مجموعة بيانات الاختبار التي تُستعاد فيها القيمة الحقيقية لميلها الداخلي ضمن مضاعفات مختلفة من <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p6.m1"><msub><mi>σ</mi><mi>pos</mi></msub></math>. وإذا قربنا التوزيعات اللاحقة إلى غاوسيات مفردة (وهو تقريب مناسب لنحو 90% من الإسقاطات)، فإن اللايقين المعاير جيدا ينبغي أن يعطي نحو 68% من المخرجات ضمن مستوى ثقة قدره <math alttext="1-\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p6.m2"><mrow><mn>1</mn><mo>−</mo><msub><mi>σ</mi><mi>pos</mi></msub></mrow></math>. وتشير نسبتنا الأكبر (<math alttext="\sim 86\%" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p6.m3"><mrow><mi></mi><mo>∼</mo><mrow><mn>86</mn><mo>%</mo></mrow></mrow></math>) من الإسقاطات ضمن مستوى الثقة <math alttext="1-\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p6.m4"><mrow><mn>1</mn><mo>−</mo><msub><mi>σ</mi><mi>pos</mi></msub></mrow></math> إلى أن النموذج يبالغ في التنبؤ باللايقينات <math alttext="\sigma_{\rm pos}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p6.m5"><msub><mi>σ</mi><mi>pos</mi></msub></math>، منتجا توزيعات لاحقة أعرض مما ينبغي. وقد يكون هذا أثرا لمعدل إسقاط مرتفع أكثر من اللازم (انظر <a class="ltx_ref" href="#Sx3" title="الملحق A: تفاصيل نموذج الشبكة العصبية ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_title">الملحق A: تفاصيل نموذج الشبكة العصبية</span></a>) أثناء التدريب، وهو ما ثبت أنه يحدث مثل هذه النتيجة في نماذج الشبكات العصبية الاحتمالية <cite class="ltx_cite ltx_citemacro_citep">(Ghosh et al., <a class="ltx_ref" href="#bib.bib20" title="">2022</a>)</cite>. وعلى حاله هذا، ينبغي تفسير نموذجنا بوصفه محافظا، إذ إن MDCNN مستقبلية أفضل معايرة ستقدم لايقينات أضيق في استعادة الميل الداخلي الحقيقي للمجرة.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.3 </span>أثر زاوية الرؤية في استدلال ميول المادة المظلمة</h3>
+<div class="ltx_para" id="S3.SS3.p1">
+<p class="ltx_p">لمعظم التوزيعات اللاحقة للإسقاطات المختلفة توزيع طبيعي تقريبا (إذ يختفي الغاوسي الثاني أو يشكل تصحيحا للالتواء في الغاوسي الرئيسي)، لكن لعدد منها قمتان متميزتان. وعلى وجه التحديد، لدى نحو 30% من المجرات قمم مزدوجة في أكثر من 10% من توزيعاتها اللاحقة. و 54<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p1.m1"><mo>%</mo></math> من هذه المجرات لبية، بينما 46% منها حدبية، مما يشير إلى أن ظهور القمم المزدوجة في دوال كثافة الاحتمال ينشأ في كلا السيناريوهين (هنا نعرّف المجرات اللبية بأنها تلك ذات الميل الداخلي <math alttext="-0.6&lt;\gamma&lt;0" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p1.m2"><mrow><mrow><mo>−</mo><mn>0.6</mn></mrow><mo>&lt;</mo><mi>γ</mi><mo>&lt;</mo><mn>0</mn></mrow></math>، وكل مجرة ذات <math alttext="\gamma&lt;-0.6" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p1.m3"><mrow><mi>γ</mi><mo>&lt;</mo><mrow><mo>−</mo><mn>0.6</mn></mrow></mrow></math> بأنها حدبية).
+في الشكلين <a class="ltx_ref" href="#S3.F8" title="Figure 8 ‣ 3.2 اللايقين في الاستدلال ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">8</span></a> و <a class="ltx_ref" href="#S3.F9" title="Figure 9 ‣ 3.2 اللايقين في الاستدلال ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">9</span></a> نعرض دوال كثافة الاحتمال والتوزيعات اللاحقة لمجرتين عند زوايا رصد مختلفة، تمتد بين منظور مواجه ومنظور من الحافة.
+وتبين هذه الصور على نحو لافت أن عرض دوال كثافة الاحتمال، وكذلك ظهور القمم المزدوجة، مرتبطان بقوة بزاوية رؤية المجرة.
+وهذا يشير إلى أن ظهور القمم المزدوجة هو نتيجة لكون بعض المعلومات عن ملفات المادة المظلمة الكامنة مخفية عند رؤية المجرة من زاوية معينة، في حين تنكشف وتُنقل بكفاءة إلى الشبكة عند النظر إلى المجرة من زوايا أخرى: ولهذه النتيجة تبعات عميقة في تفسير ‘الحدبة-اللب’ في الأقزام. فمثلا، في الشكل <a class="ltx_ref" href="#S3.F9" title="Figure 9 ‣ 3.2 اللايقين في الاستدلال ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">9</span></a> نلاحظ أن القمم المزدوجة في التوزيع اللاحق تختفي عندما تُرى المجرة من الحافة، في حين يوفر التكوين المواجه قمة ثانية تحاكي وجود حدبة.</p>
+</div>
+<figure class="ltx_figure" id="S3.F10">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_figure_panel ltx_img_square" height="289" id="S3.F10.g1" src="Draft/fig/carina.png" width="317"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_figure_panel ltx_img_square" height="289" id="S3.F10.g2" src="Draft/fig/sextans.png" width="289"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_figure_panel ltx_img_square" height="289" id="S3.F10.g3" src="Draft/fig/fornax.png" width="299"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_figure_panel ltx_img_square" height="289" id="S3.F10.g4" src="Draft/fig/sculptor.png" width="321"/></div>
+</div>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>التوزيعات اللاحقة البايزية في فضاء الميل الداخلي لملفات المادة المظلمة (الميل عند 150 فرسخ فلكي) التي يتنبأ بها نموذج شبكتنا العصبية للمجرات الكروانية القزمة المرصودة Carina و Sextans و Sculptor و Fornax. تمثل المناطق المظللة الانحراف المعياري لقيم التوزيع اللاحق لاستدلالات MC-Dropout عند كل نقطة ميل. وفي كل لوحة، تُبيّن القيمة العظمى العالمية للتوزيع اللاحق، وكذلك القيمة المتوسطة، إلى جانب القمم الأولية والثانوية عند وجودها. تمتلك Fornax أقوى بصمة للب مركزي في كثافة المادة المظلمة، في حين تمتلك Carina أقوى بصمة لملف NFW. أما Sextans فهي حدبية، وإن كان ذلك مع لايقين كبير، بينما Sculptor حدبية ذات قمة ثانوية تشير إلى لب خفيف.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS3.p2">
+<p class="ltx_p">غير أن هذا مجرد مثال، ولدينا عدة حالات لمجرات تظهر فيها القمم المزدوجة في منظر من الحافة وتختفي في منظر مواجه، بحيث لا يرتبط ظهور هذه القمم المتعددة بتكوين محدد من الحافة أو من الوجه: ففي الواقع، يكون توزيع الزوايا لتلك الدوال التي تُظهر قمما مزدوجة منتظما في كامل مجموعة البيانات. وسيُستكشف حدوث دوال كثافة الاحتمال ثنائية القمة ودلالتها وعروضها في أعمال مستقبلية، إذ يتجاوز ذلك نطاق هذه الورقة.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>التطبيق على المجرات المرصودة</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">ننتقل إلى اختبار نموذجنا مع مجرات حقيقية مرصودة، للتأكد من قابلية تطبيق النموذج والتحقق من أن الشبكة العصبية لا تكتشف سمات في المجرات المحاكاة لا تقابل أي نظام فيزيائي حقيقي.
+اخترنا أربع مجرات كروانية قزمة نُشرت لها عينات طيفية مفصلة من بيانات الحركة النجمية. وفي هذه المرحلة، نعتمد الفهارس التي قدمها <cite class="ltx_cite ltx_citemacro_cite">Walker
+et al. (<a class="ltx_ref" href="#bib.bib55" title="">2009</a>)</cite> لمقارنة نتائجنا مباشرة بتلك المستخلصة باستخدام الشيفرة <span class="ltx_text ltx_font_smallcaps">GravSphere</span>، كما في <cite class="ltx_cite ltx_citemacro_cite">Read
+et al. (<a class="ltx_ref" href="#bib.bib45" title="">2019</a>)</cite>. والمجرات المختارة هي
+Carina و Sextans و Fornax و Sculptor، ونستخدم لها كذلك موضع المركز والسرعة والإهليلجية ونصف قطر نصف الضوء كما جُمعت في <cite class="ltx_cite ltx_citemacro_cite">Battaglia et al. (<a class="ltx_ref" href="#bib.bib3" title="">2022</a>)</cite>.
+
+<br class="ltx_break"/>لبناء دوال كثافة الاحتمال المدخلة، أخذنا في الاعتبار فقط تلك النجوم التي تملك احتمالا قدره 90% أو أكثر لأن تكون جزءا من المجرة، وأخذنا القيمة المتوسطة لسرعة خط البصر للنجوم ذات القياسات المتعددة. وفي المجموع، أخذنا في الاعتبار 460 نجما لـ Carina، و 1353 لـ Fornax، و 809 لـ Sculptor، و 327 لـ Sextans، واستخدمنا مواضعها المسقطة x-y وسرعات خط البصر. وتُطبّع مواضع x-y باستخدام نصف قطر نصف الضوء المدور <math alttext="R^{\prime}_{\rm hlr}=R_{\rm hlr}\sqrt{1-\rm ell}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m1"><mrow><msubsup><mi>R</mi><mi>hlr</mi><mo>′</mo></msubsup><mo>=</mo><mrow><msub><mi>R</mi><mi>hlr</mi></msub><mo>⁢</mo><msqrt><mrow><mn>1</mn><mo>−</mo><mi>ell</mi></mrow></msqrt></mrow></mrow></math>، حيث <math alttext="R_{\rm hlr}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m2"><msub><mi>R</mi><mi>hlr</mi></msub></math> و ell هما نصف قطر نصف الضوء والإهليلجية من <cite class="ltx_cite ltx_citemacro_cite">Battaglia et al. (<a class="ltx_ref" href="#bib.bib3" title="">2022</a>)</cite>.</p>
+</div>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>اشتقاق ميول كثافة المادة المظلمة المركزية للمجرات الكروانية القزمة باستخدام CNNs</h3>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p">نستنتج الآن الميل الداخلي للأقزام المرصودة. يبين الشكل <a class="ltx_ref" href="#S3.F10" title="Figure 10 ‣ 3.3 أثر زاوية الرؤية في استدلال ميول المادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">10</span></a> التوزيعات اللاحقة التي يبنيها النموذج لكل مجرة مرصودة. وتُظهر Fornax قمة ضيقة جدا حول <math alttext="\gamma=-0.38" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p1.m1"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>0.38</mn></mrow></mrow></math>، مشيرة إلى أن هذه المجرة تمتلك لبا مركزيا قويا من المادة المظلمة، في حين أن قمة ثانوية ستعطي احتمالا قدره 12% بأن يكون الميل الداخلي حول <math alttext="\gamma=-0.81" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p1.m2"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>0.81</mn></mrow></mrow></math>. وهذا متسق مع عدة أعمال سابقة تتنبأ بملف لبي لـ Fornax <cite class="ltx_cite ltx_citemacro_cite">(see Goerdt
+et al., <a class="ltx_ref" href="#bib.bib22" title="">2006</a>; Walker &amp;
+Peñarrubia, <a class="ltx_ref" href="#bib.bib54" title="">2011</a>; Brook &amp; Di
+Cintio, <a class="ltx_ref" href="#bib.bib8" title="">2015</a>; Pascale et al., <a class="ltx_ref" href="#bib.bib42" title="">2018</a>, amongst others)</cite>. أما بالنسبة إلى المجرات الثلاث الأخرى، فيتنبأ النموذج بحدبة بدرجات متفاوتة من اليقين. فلدى النموذج قمة واضحة حول <math alttext="\gamma=-1.06" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p1.m3"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>1.06</mn></mrow></mrow></math> بالنسبة إلى Carina، وهي تقابل تقريبا ميل ملف NFW عند 150 فرسخ فلكي.</p>
+</div>
+<figure class="ltx_table" id="S4.T3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt"><math alttext="\gamma_{GS}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m1"><msub><mi>γ</mi><mrow><mi>G</mi><mo>⁢</mo><mi>S</mi></mrow></msub></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt"><math alttext="\gamma_{NN}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m2"><msub><mi>γ</mi><mrow><mi>N</mi><mo>⁢</mo><mi>N</mi></mrow></msub></math></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t">Carina</th>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="-1.23^{+0.39}_{-0.35}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m3"><mrow><mo>−</mo><msubsup><mn>1.23</mn><mrow><mo>−</mo><mn>0.35</mn></mrow><mrow><mo>+</mo><mn>0.39</mn></mrow></msubsup></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t"><math alttext="-1.06^{+0.05}_{-0.04}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m4"><mrow><mo>−</mo><msubsup><mn>1.06</mn><mrow><mo>−</mo><mn>0.04</mn></mrow><mrow><mo>+</mo><mn>0.05</mn></mrow></msubsup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Sextans</th>
+<td class="ltx_td ltx_align_center"><math alttext="-0.95^{+0.25}_{-0.25}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m5"><mrow><mo>−</mo><msubsup><mn>0.95</mn><mrow><mo>−</mo><mn>0.25</mn></mrow><mrow><mo>+</mo><mn>0.25</mn></mrow></msubsup></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="-1.25^{+0.25}_{-0.09}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m6"><mrow><mo>−</mo><msubsup><mn>1.25</mn><mrow><mo>−</mo><mn>0.09</mn></mrow><mrow><mo>+</mo><mn>0.25</mn></mrow></msubsup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">Fornax</th>
+<td class="ltx_td ltx_align_center"><math alttext="-0.30^{+0.21}_{-0.28}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m7"><mrow><mo>−</mo><msubsup><mn>0.30</mn><mrow><mo>−</mo><mn>0.28</mn></mrow><mrow><mo>+</mo><mn>0.21</mn></mrow></msubsup></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="-0.38^{+0.01}_{-0.02}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m8"><mrow><mo>−</mo><msubsup><mn>0.38</mn><mrow><mo>−</mo><mn>0.02</mn></mrow><mrow><mo>+</mo><mn>0.01</mn></mrow></msubsup></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb">Sculptor</th>
+<td class="ltx_td ltx_align_center ltx_border_bb"><math alttext="-0.83^{+0.30}_{-0.25}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m9"><mrow><mo>−</mo><msubsup><mn>0.83</mn><mrow><mo>−</mo><mn>0.25</mn></mrow><mrow><mo>+</mo><mn>0.30</mn></mrow></msubsup></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_bb"><math alttext="-1.08^{+0.08}_{-0.04}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m10"><mrow><mo>−</mo><msubsup><mn>1.08</mn><mrow><mo>−</mo><mn>0.04</mn></mrow><mrow><mo>+</mo><mn>0.08</mn></mrow></msubsup></mrow></math></td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 3: </span>الميل الداخلي لملف المادة المظلمة (عند 150 فرسخ فلكي) لمجرات Carina و Sextans و Sculptor و Fornax كما يتنبأ به <span class="ltx_text ltx_font_smallcaps">GravSphere</span> (<math alttext="\gamma_{GS}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m13"><msub><mi>γ</mi><mrow><mi>G</mi><mo>⁢</mo><mi>S</mi></mrow></msub></math>) وشبكتنا العصبية (<math alttext="\gamma_{NN}" class="ltx_Math" dir="ltr" display="inline" id="S4.T3.m14"><msub><mi>γ</mi><mrow><mi>N</mi><mo>⁢</mo><mi>N</mi></mrow></msub></math>)، مع فترات الثقة 68 في المئة الخاصة بها (بالنسبة إلى التوزيع اللاحق للشبكة العصبية، مع اتخاذ القيمة العظمى الأولية مرجعا). إن الاتفاق بين الطريقتين مشجع.</figcaption>
+</figure>
+<div class="ltx_para" id="S4.SS1.p2">
+<p class="ltx_p">تُظهر Sextans لايقينا كبيرا نسبيا في قيمة الميل الداخلي، كما توضحه دوال كثافة الاحتمال العريضة إلى حد ما، مع قمة عريضة حول <math alttext="\gamma=-1.25" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m1"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>1.25</mn></mrow></mrow></math> وجناح أيمن قوي لا ينخفض دون 10<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m2"><mo>%</mo></math> من قيمة القمة حتى يصل إلى <math alttext="\gamma=-0.68" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m3"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>0.68</mn></mrow></mrow></math>.
+وأخيرا، تبلغ Sculptor ذروتها عند <math alttext="\gamma=-1.08" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m4"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>1.08</mn></mrow></mrow></math>، لكنها تمتلك قمة ثانوية عريضة، متنبئة باحتمال قدره 18% لامتلاك لب خفيف مع <math alttext="\gamma=-0.75" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p2.m5"><mrow><mi>γ</mi><mo>=</mo><mrow><mo>−</mo><mn>0.75</mn></mrow></mrow></math>. وقد اشتُق لب صغير لـ Sculptor باستخدام بيانات حركية وملاءمة ملف معتمدة على الكتلة في <cite class="ltx_cite ltx_citemacro_citet">Brook &amp; Di
+Cintio (<a class="ltx_ref" href="#bib.bib8" title="">2015</a>)</cite>، بما يتفق مع طريقتي <cite class="ltx_cite ltx_citemacro_citet">Walker &amp;
+Peñarrubia (<a class="ltx_ref" href="#bib.bib54" title="">2011</a>)</cite> و <cite class="ltx_cite ltx_citemacro_citet">Agnello &amp;
+Evans (<a class="ltx_ref" href="#bib.bib1" title="">2012</a>)</cite> اللتين تنبأتا أيضا بلب في هذه القزمة، عبر توظيف تجمعات نجمية متعددة داخل مجرة (انظر أيضا <cite class="ltx_cite ltx_citemacro_citet">Zhu et al. <a class="ltx_ref" href="#bib.bib57" title="">2016</a>; Breddels et al. <a class="ltx_ref" href="#bib.bib7" title="">2013</a>; Hayashi
+et al. <a class="ltx_ref" href="#bib.bib25" title="">2020</a></cite>). ومع ذلك، تتنبأ دراسات أخرى، على نحو مفاجئ، بحدبة في Sculptor في نهاية المطاف <cite class="ltx_cite ltx_citemacro_citep">(Richardson &amp;
+Fairbairn, <a class="ltx_ref" href="#bib.bib46" title="">2014</a>)</cite>، مما يبرز أهمية اشتقاق كثافة المادة المظلمة في هذه المجرة الكروانية القزمة بطرائق مختلفة متعددة.
+وتوفر توزيعاتنا اللاحقة المشتقة مرونة كبيرة في تفسير النتائج، إذ تسمح بتحليل أكثر تعقيدا مقارنة بالنماذج التي لا تتيح إلا نطاقات لايقين حول القيمة المستنتجة.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p3">
+<p class="ltx_p">نقارن نتائج نموذجنا بالميول الداخلية المستنتجة لهذه المجرات نفسها عند 150 فرسخ فلكي باستخدام <span class="ltx_text ltx_font_smallcaps">GravSphere</span>، وهي شيفرة غير معلمية لتحليل جينز الكروي، تستفيد من البيانات الضوئية والحركية للمجرات <cite class="ltx_cite ltx_citemacro_citep">(Read
+et al., <a class="ltx_ref" href="#bib.bib45" title="">2019</a>)</cite>. وتُدرج القيم المستنتجة، مع فترات الثقة 68 في المئة الخاصة بها (وفي حالتنا مع اتخاذ القيمة العظمى الأولية مرجعا)، في الجدول <a class="ltx_ref" href="#S4.T3" title="Table 3 ‣ 4.1 اشتقاق ميول كثافة المادة المظلمة المركزية للمجرات الكروانية القزمة باستخدام CNNs ‣ 4 التطبيق على المجرات المرصودة ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">3</span></a>. القيم المشتقة متسقة بين النموذجين، ضمن نطاقات اللايقين الخاصة بكل منهما، مما يشير إلى أن نموذج شبكتنا العصبية يقدم تنبؤات شبيهة بتلك المستخلصة من تحليل جينز. علاوة على ذلك، فإن دقة شبكتنا العصبية أعلى، إذ إن الأخطاء أصغر بنحو رتبة مقدار من أخطاء <span class="ltx_text ltx_font_smallcaps">GravSphere</span>: وستُوسع هذه النتيجة الأولية وتُستكشف بمزيد من التفصيل في عمل مستقبلي.</p>
+</div>
+<figure class="ltx_figure" id="S4.F11"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="549" id="S4.F11.g1" src="Draft/fig/param_space.png" width="598"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 11: </span>تمثيل فضاء المعاملات لبيانات الاختبار من المجرات المحاكاة بعد اختزاله إلى 2-أبعاد باستخدام تقريب وإسقاط متعدد الشعب المنتظم (UMAP)، مع ترميز لوني بحسب الميل الداخلي الحقيقي المتوقع للمادة المظلمة. وتُرسم مواقع مجرات Carina و Sextans و Sculptor و Fornax في فضاء المعاملات المختزل على هيئة نجوم ملونة. لاحظ أن الميول الداخلية المختلفة تشغل مناطق مختلفة من الرسم، وأن المجرات القزمة المرصودة تقع، وهو الأهم، داخل منطقة المحاكاة بوضوح، مما يشير إلى أن نموذج الشبكة العصبية لا يرى فروقا ذات صلة بين بيانات المحاكاة التي غذيناه بها والبيانات الرصدية.</figcaption>
+</figure>
+<div class="ltx_para" id="S4.SS1.p4">
+<p class="ltx_p">بالمقارنة مع <span class="ltx_text ltx_font_smallcaps">GravSphere</span> والشيفرات المشابهة، يكون نهج الشبكة العصبية أسرع بكثير. ففي حاسوب محمول حديث، يحتاج <span class="ltx_text ltx_font_smallcaps">GravSphere</span> إلى نحو نصف يوم لإجراء تحليل لإحدى هذه المجرات، في حين يمكن تدريب الشبكة العصبية بكمية البيانات المستخدمة في هذا العمل في أقل من نصف ساعة على وحدة معالجة رسومية قياسية.
+علاوة على ذلك، فإن التدريب والتقييم عمليتا حساب مستقلتان في نموذج الشبكة العصبية، مما يعني أنه بعد تدريب النموذج، يكون تطبيقه على أي بيانات مدخلة لبناء التوزيع اللاحق شبه فوري. ولن تتغير هذه الخاصية مهما جرى توسيع النموذج وتعقيده لإجراء تحليلات أكمل للمجرة موضع الاهتمام.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>اختبار تشابه بيانات التدريب والبيانات الرصدية</h3>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">عند تدريب شبكة عصبية على المحاكاة ثم إجراء الاستدلال على بيانات حقيقية، يوجد دائما خطر أن تكتشف الشبكة وتتعلم سمات محددة لشيفرة المحاكاة لا تقابل الواقع، مما يسبب مشكلات عند تفسير البيانات الرصدية، لأنها تمتلك خصائص مختلفة عن تلك المستخدمة في مجموعة التدريب.
+ويمكننا اختبار الدرجة التي ترى بها شبكتنا البيانات الرصدية مكافئة للبيانات التي تدربت عليها من خلال رصد فضاء معاملات مجموعة بيانات الاختبار، المعرف بأنه مجموعة كل توليفات المعاملات الستة المقابلة لكل عنصر من عناصر تلك المجموعة.
+وبالتحديد، تُعرّف مخرجاتنا بمتوسط وانحراف معياري ووزن لغاوسيين: وسيكون لفضاء المعاملات سداسي الأبعاد 6 مناطق مأهولة بالنقاط ومناطق خالية تماما، تقابل توليفات المعاملات التي لا تعلّم خصائص أي نظام فيزيائي موجود في مجموعة البيانات.
+فإذا لم تر الشبكة العصبية اختلافات في المدخلات بالنسبة إلى البيانات التي تدربت عليها، فإن المعاملات الناتجة من تقييم البيانات الرصدية بنموذجنا ستقع ضمن المناطق المأهولة في فضاء معاملات مجموعة بيانات المحاكاة.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p2">
+<p class="ltx_p">ولكي نتمكن من تصور فضاء المعاملات سداسي الأبعاد 6 واختبار ما إذا كان الأمر كذلك، نستخدم تقنية تقريب وإسقاط متعدد الشعب المنتظم لاختزال الأبعاد (UMAP) من <cite class="ltx_cite ltx_citemacro_cite">McInnes
+et al. (<a class="ltx_ref" href="#bib.bib37" title="">2018</a>)</cite> لإجراء اختزال بعدي من 6D إلى 2D، بحيث تُرسم كل توليفة من المتوسطات والانحرافات المعيارية والأوزان إلى معاملين لابعديين فقط يمثلان ذلك ‘الانكماش’، مع الحفاظ على البنية العالمية لفضاء المعاملات الأصلي. وهذا يتيح تصور فضاء المعاملات في 2D. ويمكن رؤية نتيجة عملية الاختزال البعدي من عينة الاختبار الكاملة في الشكل <a class="ltx_ref" href="#S4.F11" title="Figure 11 ‣ 4.1 اشتقاق ميول كثافة المادة المظلمة المركزية للمجرات الكروانية القزمة باستخدام CNNs ‣ 4 التطبيق على المجرات المرصودة ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">11</span></a>، إلى جانب موضع المجرات القزمة المرصودة الأربع المبينة في فضاء المعاملات نفسه، مع الإشارة إلى كل منها بنجمة ملونة.
+وكما هو متوقع، يرتبط الموضع المكاني للنقاط في فضاء المعاملات بقوة بقيمة ميلها الداخلي: إذ تتجمع النقاط ذات الميل الداخلي المتشابه معا، مما يبين أن الشبكة تعلّم الميل الداخلي للمجرات بصورة سليمة أثناء التدريب.
+ومن اللافت أن المجرات المرصودة الأربع تقع في المناطق التي تشغلها المجرات المحاكاة، مما يشير إلى أن النموذج يعدها بيانات ذات طبيعة مكافئة لبيانات الاختبار. غير أن كون المجرات الأربع كلها قريبة من حواف معاملات مدخلات المحاكاة قد يشير إلى وجود بعض السمات التي لم يجدها النموذج في المحاكاة.
+وسيجري استكشاف الأسباب المحتملة لذلك في عمل مستقبلي يستخدم عينة رصدية أكبر.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>الاستنتاجات</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">نقدم نموذجا جديدا لتحديد ميل ملف الكثافة الداخلي لهالات المادة المظلمة (DM) مع تكميم متين للايقين باستخدام تقنيات تعلم الآلة. وهدف هذا العمل هو التمكن من استنتاج ميول الكثافة هذه (<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m1"><mi>γ</mi></math>) بمجرد استخدام مواضع النجوم وسرعاتها داخل المجرات.
+تستخدم طريقتنا شبكات عصبية التفافية لكثافة المزائج مع طبقة كثافة غاوسية خلفية لنمذجة البنية التحتية المجرية المعقدة. نستخدم سرعات خط البصر ومواضع النجوم المسقطة على السماء داخل مجرات قزمة محاكاة، مستعملين تقديرات كثافة النواة (KDEs) لبناء دوال كثافة احتمال (PDFs) مستمرة ثنائية الأبعاد 2 لتوزيع هذه النجوم في فضاء الطور {<math alttext="\hat{R}_{\rm proj},\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m2"><mrow><msub><mover accent="true"><mi>R</mi><mo>^</mo></mover><mi>proj</mi></msub><mo>,</mo><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></mrow></math>} وفضاء الطور {x,y}، وهي تعمل مدخلاتٍ لشبكتنا العصبية باستخدام بنية ثنائية القناة (الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.2.1 تقدير كثافة النواة ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">3</span></a> و <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.2.2 مدخلات النموذج ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">4</span></a>).</p>
+</div>
+<div class="ltx_para" id="S5.p2">
+<p class="ltx_p">ندرب نموذجنا ونقيّمه باستخدام مجموعة كبيرة من المحاكاة الكوسمولوجية الكاملة للمجرات القزمة ذات كتل هالات من <math alttext="10^{9}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m1"><msup><mn>10</mn><mn>9</mn></msup></math> إلى <math alttext="10^{11.5}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m2"><msup><mn>10</mn><mn>11.5</mn></msup></math> M<sub class="ltx_sub">⊙</sub>، وكتل نجمية من <math alttext="10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m4"><msup><mn>10</mn><mn>5</mn></msup></math> إلى <math alttext="10^{9.5}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m5"><msup><mn>10</mn><mn>9.5</mn></msup></math> M<sub class="ltx_sub">⊙</sub>، من مشروعي NIHAO و AURIGA <cite class="ltx_cite ltx_citemacro_citep">(Wang et al., <a class="ltx_ref" href="#bib.bib56" title="">2015</a>; Dutton et al., <a class="ltx_ref" href="#bib.bib15" title="">2020</a>; Grand et al., <a class="ltx_ref" href="#bib.bib24" title="">2017</a>)</cite>. ويتيح لنا استخدام نماذج فيزيائية مختلفة موظفة في هذه المحاكاة امتلاك نطاق من ملفات الكثافة عند كل كتلة مجرية بعينها، بما يشمل اللباب والحدبات معا (الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.1 مجموعة التدريب ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">1</span></a>). وتُسقط جميع المجرات المحاكاة ومجموعاتها الفرعية من النجوم عشوائيا في عدة مستويات سماوية لمحاكاة عدة زوايا رؤية.</p>
+</div>
+<div class="ltx_para" id="S5.p3">
+<p class="ltx_p">دالة الخسارة المراد تقليلها أثناء التدريب هي الاحتمالية اللوغاريتمية السالبة لعينة التدريب، المعرفة بوصفها توزيع احتمال غاوسيا متعدد المتغيرات، وهو خرج طبقة الكثافة الغاوسية الخلفية لدينا. وهذا يتيح تمثيلا احتماليا مرنا للنتائج، ينتج لايقينات دقيقة ومتسقة إحصائيا.
+ولكل مجرة تخرج الشبكة العصبية دالة كثافة احتمال تعطي الاحتمال اللاحق لأن يكون ميل معين هو الميل الداخلي للمجرة.</p>
+</div>
+<div class="ltx_para" id="S5.p4">
+<p class="ltx_p">تُدرج النتائج الرئيسية لهذا العمل هنا:</p>
+</div>
+<div class="ltx_para" id="S5.p5">
+<ul class="ltx_itemize" id="S5.I1">
+<li class="ltx_item" id="S5.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S5.I1.i1.p1">
+<p class="ltx_p">يُتنبأ بالميل الداخلي للمجرات المحاكاة بمتوسط انحراف مطلق قدره <math alttext="\mu_{\epsilon}=0.056" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i1.p1.m1"><mrow><msub><mi>μ</mi><mi>ϵ</mi></msub><mo>=</mo><mn>0.056</mn></mrow></math> (حيث يُعرّف الانحراف بأنه <math alttext="\epsilon" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i1.p1.m2"><mi>ϵ</mi></math>=<math alttext="\gamma_{\rm Real}-\gamma_{\rm Pred}" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i1.p1.m3"><mrow><msub><mi>γ</mi><mi>Real</mi></msub><mo>−</mo><msub><mi>γ</mi><mi>Pred</mi></msub></mrow></math>، ويُحصل على الميل الداخلي المتنبأ به، <math alttext="\gamma_{\rm Pred}" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i1.p1.m4"><msub><mi>γ</mi><mi>Pred</mi></msub></math>، من منوال دوال كثافة الاحتمال) وبانحراف معياري قدره <math alttext="\sigma_{\epsilon}=0.075" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i1.p1.m5"><mrow><msub><mi>σ</mi><mi>ϵ</mi></msub><mo>=</mo><mn>0.075</mn></mrow></math> للعينة كلها (الشكل <a class="ltx_ref" href="#S2.F5" title="Figure 5 ‣ 2.3.2 تمثيل اللايقينات ‣ 2.3 النموذج ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">5</span></a> و <a class="ltx_ref" href="#S3.F6" title="Figure 6 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">6</span></a>)؛</p>
+</div>
+</li>
+<li class="ltx_item" id="S5.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S5.I1.i2.p1">
+<p class="ltx_p">82<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i2.p1.m1"><mo>%</mo></math> (98<math alttext="\%" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i2.p1.m2"><mo>%</mo></math>) من المجرات يُحدد ميلها الداخلي على نحو صحيح ضمن <math alttext="\pm" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i2.p1.m3"><mo>±</mo></math> 0.1 (0.3) من قيمته الحقيقية (الجدول <a class="ltx_ref" href="#S3.T1" title="Table 1 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">1</span></a>)؛</p>
+</div>
+</li>
+<li class="ltx_item" id="S5.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S5.I1.i3.p1">
+<p class="ltx_p">تمتلك دوال كثافة الاحتمال اللاحقة متوسط انحراف معياري قدره <math alttext="\sigma_{\rm pos}=0.108" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i3.p1.m1"><mrow><msub><mi>σ</mi><mi>pos</mi></msub><mo>=</mo><mn>0.108</mn></mrow></math>، مما يظهر عدم وجود انحياز نحو دقة أكبر للمجرات الحدبية أو اللبية (الشكل <a class="ltx_ref" href="#S3.F7" title="Figure 7 ‣ 3.1 التنبؤ بالميول الداخلية للمادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">7</span></a>)؛</p>
+</div>
+</li>
+<li class="ltx_item" id="S5.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S5.I1.i4.p1">
+<p class="ltx_p">مع أن خرج النموذج في معظم الحالات هو دالة كثافة احتمال أحادية القمة، فإن بعض إسقاطات <math alttext="\sim 30\%" class="ltx_Math" dir="ltr" display="inline" id="S5.I1.i4.p1.m1"><mrow><mi></mi><mo>∼</mo><mrow><mn>30</mn><mo>%</mo></mrow></mrow></math> من المجرات تُظهر قمة مزدوجة: وقد بينا أن ذلك مرتبط ببعض زوايا الرؤية، مشيرا إلى أهمية تحديد ميل المجرات على نحو ملائم (الشكل <a class="ltx_ref" href="#S3.F8" title="Figure 8 ‣ 3.2 اللايقين في الاستدلال ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">8</span></a> و <a class="ltx_ref" href="#S3.F9" title="Figure 9 ‣ 3.2 اللايقين في الاستدلال ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">9</span></a>)؛</p>
+</div>
+</li>
+<li class="ltx_item" id="S5.I1.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S5.I1.i5.p1">
+<p class="ltx_p">عند تطبيق نموذجنا على مجموعة من أربع مجرات كروانية قزمة مرصودة، فإنه يستعيد ميولها الداخلية، منتجا قيما متسقة مع تلك التي حُصل عليها بالشيفرة القائمة على نمذجة جينز <span class="ltx_text ltx_font_smallcaps">GravSphere</span> كما في <cite class="ltx_cite ltx_citemacro_citet">Read
+et al. (<a class="ltx_ref" href="#bib.bib45" title="">2019</a>)</cite> (الجدول <a class="ltx_ref" href="#S4.T3" title="Table 3 ‣ 4.1 اشتقاق ميول كثافة المادة المظلمة المركزية للمجرات الكروانية القزمة باستخدام CNNs ‣ 4 التطبيق على المجرات المرصودة ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">3</span></a>)؛</p>
+</div>
+</li>
+<li class="ltx_item" id="S5.I1.i6" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S5.I1.i6.p1">
+<p class="ltx_p">وجدنا أن مجرة Fornax
+الكروانية القزمة تُظهر دلالة قوية على امتلاك لب مركزي من المادة المظلمة، وأن Carina و Sextans تمتلكان حدبتين
+(مع لايقين كبير في الأخيرة)، في حين تُظهر Sculptor دالة كثافة احتمال ثنائية القمة
+تشير إلى تفضيل الحدبة، لكن لا يمكن استبعاد اللب (الشكل <a class="ltx_ref" href="#S3.F10" title="Figure 10 ‣ 3.3 أثر زاوية الرؤية في استدلال ميول المادة المظلمة ‣ 3 النتائج ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">10</span></a>). وتتفق هذه النتائج مع عدة ميول داخلية مشتقة سابقا لهذه المجرات.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ltx_para" id="S5.p6">
+<p class="ltx_p">يمكن استخدام البنية الحالية أساسا لبناء نماذج توفر خرجا أكثر اكتمالا، مثل التنبؤ بملف الكثافة الكامل للمجرات. وتتيح طبيعة الشبكة العصبية تمديدها وتحسينها باستمرار. ومع أننا نفذنا شبكة ذات تعقيد منخفض نسبيا، فهناك سلسلة من الإمكانات المثيرة للاهتمام بمستوى إضافي من التطور تستحق الاستكشاف. فعلى سبيل المثال، قد يؤدي استخدام التدفقات المطَبِّعة إلى نتائج أكثر متانة <cite class="ltx_cite ltx_citemacro_citep">(Kodi Ramanah et al., <a class="ltx_ref" href="#bib.bib31" title="">2020</a>)</cite>، في حين أعطى استخدام شبكة التفافية ثلاثية الأبعاد 3D مطبقة على دوال كثافة احتمال معرفة في فضاء الطور {x,y,<math alttext="\hat{v}_{\rm LOS}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m1"><msub><mover accent="true"><mi>v</mi><mo>^</mo></mover><mi>LOS</mi></msub></math>} نتائج جيدة في استدلال كتل عناقيد المجرات <cite class="ltx_cite ltx_citemacro_citep">(Kodi
+Ramanah et al., <a class="ltx_ref" href="#bib.bib32" title="">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S5.p7">
+<p class="ltx_p">في المستقبل، يمكن توسيع بنية هذا النموذج بإدراج مزيد من بيانات المدخلات، مثل ملفات السطوع السطحي أو الحركة الخاصة للنجوم من بعثات مثل <span class="ltx_text ltx_font_italic">GAIA</span> <cite class="ltx_cite ltx_citemacro_citep">(Gaia
+Collaboration et al., <a class="ltx_ref" href="#bib.bib16" title="">2021</a>)</cite>. علاوة على ذلك، سيكون إدراج عينات طيفية أخرى موجودة في الأدبيات، وكذلك تلك التي ستُكتسب قريبا بالمرافق القادمة، مفيدا بالتأكيد لهذا التحليل.
+وقد يمكّن تكييف البنية وإدخال مزيد من المعلومات الشبكة من تحسين الدقة وتقليل نطاق تباين النتائج بالنسبة إلى زاوية الرصد، وهو مسار سيُستكشف في أعمال مستقبلية.</p>
+</div>
+<div class="ltx_para" id="S5.p8">
+<p class="ltx_p">لقد بينا أن تقنيات التعلم العميق توفر طريقة مبتكرة لتحديد ملفات المادة المظلمة الداخلية في المجرات القزمة، مكملة لاستخدام نمذجة جينز وشفارتزشيلد، مع تحقيق دقة كبيرة وتقديم تمثيل معقد للايقينات.</p>
+</div>
+<div class="ltx_para" id="S5.p9">
+<p class="ltx_p">إن طريقة الشبكة العصبية التي طورناها حديثا أداة واعدة لدراسة توزيع الكتلة داخل المجرات القزمة، وهو ما يمكن بدوره أن يساعد في التمييز بين النماذج المختلفة، ومن ثم في تقييد خصائص المادة المظلمة المراوغة.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">مساهمة المؤلفين:
+قاد C.B.B. المشروع.
+أجرى J.E.M. التحليل.
+كتب J.E.M. و A.D.C. المخطوطة.
+طور J.E.M. و M.H.C. بنية تعلم الآلة.
+أشرف C.B.B. و M.H.C. و A.D.C. على الطالب أثناء المشروع. وقدّم A.V.M. و R.J.J.G. بيانات المحاكاة.
+ساعد G.B. في اختيار مجموعة البيانات الرصدية. وقدّم جميع المؤلفين ملاحظات على المسودة.</p>
+</div>
+<div class="ltx_para" id="Sx1.p2">
+<p class="ltx_p">يتلقى CB دعما من وزارة العلوم والابتكار الإسبانية (MICIU/FEDER)
+من خلال منحة البحث PID2021-122603NB-C22. ويتلقى ADC دعما من <span class="ltx_text ltx_font_italic">زمالة Junior Leader</span> من مؤسسة ‘La Caixa’ (ID 100010434)، الرمز LCF/BQ/PR20/11770010. كما تقر بفضل جامعة Macquarie على الاستضافة أثناء إعداد هذا العمل بصفتها زميلة زائرة فخرية. يقر G.B. بالدعم من Agencia Estatal de Investigación del Ministerio de Ciencia en Innovación (AEI-MICIN) تحت مراجع المنح PID2020-118778GB-I00/10.13039/501100011033 ورقم المنحة CEX2019-000920-S. ويقر الزميل R.G. بالدعم المالي من وزارة العلوم والابتكار الإسبانية (MICINN) عبر وكالة البحث الحكومية الإسبانية، ضمن برنامج Severo Ochoa 2020-2023 (CEX2019-000920-S). أُنجز جزء من هذا البحث على موارد الحوسبة عالية الأداء في جامعة نيويورك أبوظبي (الإمارات العربية المتحدة).</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx2">
+<h2 class="ltx_title ltx_title_section">توافر البيانات</h2>
+<div class="ltx_para" id="Sx2.p1">
+<p class="ltx_p">البيانات المستخدمة في هذا العمل متاحة بناء على طلب معقول إلى المؤلف المراسل وإلى الباحثين الرئيسيين في مشروعي NIHAO و AURIGA.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Agnello &amp;
+Evans (2012)</span>
+<span class="ltx_bibblock">
+Agnello A., Evans N. W., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/2041-8205/754/2/L39" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2012ApJ...754L..39A" title="">754, L39</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Battaglia et al. (2008)</span>
+<span class="ltx_bibblock">
+Battaglia G., Helmi A., Tolstoy E., Irwin M., Hill V.,
+Jablonka P., 2008, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/590179" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2008ApJ...681L..13B" title="">681, L13</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Battaglia et al. (2022)</span>
+<span class="ltx_bibblock">
+Battaglia G., Taibi S., Thomas G. F., Fritz T. K., 2022, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/202141528" title="">A&amp;A</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2022A&amp;A...657A..54B" title="">657, A54</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Benítez-Llambay et al. (2019)</span>
+<span class="ltx_bibblock">
+Benítez-Llambay A., Frenk C. S., Ludlow A. D., Navarro J. F.,
+2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stz1890" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.488.2387B" title="">488, 2387</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Binney &amp;
+Mamon (1982)</span>
+<span class="ltx_bibblock">
+Binney J., Mamon G. A., 1982, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/200.2.361" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1982MNRAS.200..361B" title="">200, 361</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Breddels, Maarten A. &amp; Helmi, Amina (2013)</span>
+<span class="ltx_bibblock">
+Breddels, Maarten A. Helmi, Amina 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/201321606" title="">A&amp;A</a>, 558, A35
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Breddels et al. (2013)</span>
+<span class="ltx_bibblock">
+Breddels M. A., Helmi A., van den Bosch R. C. E., van de Ven G., Battaglia
+G., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stt956" title="">Monthly Notices of the Royal Astronomical Society</a>, 433, 3173
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Brook &amp; Di
+Cintio (2015)</span>
+<span class="ltx_bibblock">
+Brook C. B., Di Cintio A., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv864" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.450.3920B" title="">450, 3920</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bullock &amp;
+Boylan-Kolchin (2017)</span>
+<span class="ltx_bibblock">
+Bullock J. S., Boylan-Kolchin M., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1146/annurev-astro-091916-055313" title="">ARA&amp;A</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017ARA&amp;A..55..343B" title="">55, 343</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cappellari
+et al. (2006)</span>
+<span class="ltx_bibblock">
+Cappellari M., et al., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09981.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2006MNRAS.366.1126C" title="">366, 1126</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chan
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Chan T. K., Kereš D., Oñorbe J., Hopkins P. F., Muratov
+A. L., Faucher-Giguère C.-A., Quataert E., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv2165" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.454.2981C" title="">454, 2981</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Collins
+et al. (2021)</span>
+<span class="ltx_bibblock">
+Collins M. L. M., et al., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stab1624" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.505.5686C" title="">505, 5686</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Di Cintio et al. (2014a)</span>
+<span class="ltx_bibblock">
+Di Cintio A., Brook C. B., Macciò A. V., Stinson G. S., Knebe
+A., Dutton A. A., Wadsley J., 2014a, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stt1891" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.437..415D" title="">437, 415</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Di Cintio et al. (2014b)</span>
+<span class="ltx_bibblock">
+Di Cintio A., Brook C. B., Dutton A. A., Macciò A. V.,
+Stinson G. S., Knebe A., 2014b, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu729" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.441.2986D" title="">441, 2986</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton et al. (2020)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Buck T., Macciò A. V., Dixon K. L., Blank M.,
+Obreja A., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa3028" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.499.2648D" title="">499, 2648</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gaia
+Collaboration et al. (2021)</span>
+<span class="ltx_bibblock">
+Gaia Collaboration et al., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/202039657" title="">A&amp;A</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021A&amp;A...649A...1G" title="">649, A1</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gal &amp;
+Ghahramani (2015)</span>
+<span class="ltx_bibblock">
+Gal Y., Ghahramani Z., 2015, Proceedings of The 33rd International Conference
+on Machine Learning
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Geha
+et al. (2006)</span>
+<span class="ltx_bibblock">
+Geha M. C., Guhathakurta P., Rich R. M., Cooper M. C., 2006, The
+Astronomical Journal, 131, 332
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gentile et al. (2004)</span>
+<span class="ltx_bibblock">
+Gentile G., Salucci P., Klein U., Vergani D., Kalberla P.,
+2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2004.07836.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2004MNRAS.351..903G" title="">351, 903</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ghosh et al. (2022)</span>
+<span class="ltx_bibblock">
+Ghosh A., et al., 2022, GaMPEN: A Machine Learning Framework for Estimating
+Bayesian Posteriors of Galaxy Morphological Parameters,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.2207.05107" title="">doi:10.48550/ARXIV.2207.05107</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/2207.05107" title="">https://arxiv.org/abs/2207.05107</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gnedin &amp;
+Zhao (2002)</span>
+<span class="ltx_bibblock">
+Gnedin O. Y., Zhao H., 2002, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1046/j.1365-8711.2002.05361.x" title="">Monthly Notices of the Royal
+Astronomical Society</a>, 333, 299
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Goerdt
+et al. (2006)</span>
+<span class="ltx_bibblock">
+Goerdt T., Moore B., Read J. I., Stadel J., Zemp M., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2006.10182.x" title="">Monthly Notices of the Royal Astronomical Society</a>, 368, 1073
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Governato
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Governato F., et al., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/nature08640" title="">Nature</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2010Natur.463..203G" title="">463, 203</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Grand et al. (2017)</span>
+<span class="ltx_bibblock">
+Grand R. J. J., et al., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx071" title="">Monthly Notices of the Royal
+Astronomical Society</a>, 467, 179
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hayashi
+et al. (2020)</span>
+<span class="ltx_bibblock">
+Hayashi K., Chiba M., Ishiyama T., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/abbe0a" title="">The Astrophysical
+Journal</a>, 904, 45
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ho et al. (2019)</span>
+<span class="ltx_bibblock">
+Ho M., Rau M. M., Ntampaka M., Farahi A., Trac H., Póczos B.,
+2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/1538-4357/ab4f82" title="">The Astrophysical Journal</a>, 887, 25
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Jaffe (1983)</span>
+<span class="ltx_bibblock">
+Jaffe W., 1983, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/202.4.995" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1983MNRAS.202..995J" title="">202, 995</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kaplinghat
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Kaplinghat M., Tulin S., Yu H.-B., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1103/PhysRevLett.116.041302" title="">Phys. Rev. Lett.</a>, 116, 041302
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kingma &amp; Ba (2014)</span>
+<span class="ltx_bibblock">
+Kingma D. P., Ba J., 2014, Adam: A Method for Stochastic Optimization,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1412.6980" title="">doi:10.48550/ARXIV.1412.6980</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1412.6980" title="">https://arxiv.org/abs/1412.6980</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kleyna et al. (2001)</span>
+<span class="ltx_bibblock">
+Kleyna J. T., Wilkinson M. I., Evans N. W., Gilmore G., 2001,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/338603" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2001ApJ...563L.115K" title="">563, L115</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kodi Ramanah et al. (2020)</span>
+<span class="ltx_bibblock">
+Kodi Ramanah D., Wojtak R., Ansari Z., Gall C., Hjorth J.,
+2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa2886" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.499.1985K" title="">499, 1985</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kodi
+Ramanah et al. (2021)</span>
+<span class="ltx_bibblock">
+Kodi Ramanah D., Wojtak R., Arendse N., 2021, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/staa3922" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.501.4080K" title="">501, 4080</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kowalczyk et al. (2017)</span>
+<span class="ltx_bibblock">
+Kowalczyk K., Łokas E. L., Valluri M., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1520" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.470.3959K" title="">470, 3959</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">LeCun
+et al. (2015)</span>
+<span class="ltx_bibblock">
+LeCun Y., Bengio Y., Hinton G., 2015, nature, 521, 436
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Lelli
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Lelli F., McGaugh S. S., Schombert J. M., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.3847/0004-6256/152/6/157" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016AJ....152..157L" title="">152, 157</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Macciò et al. (2020)</span>
+<span class="ltx_bibblock">
+Macciò A. V., Crespi S., Blank M., Kang X., 2020, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnrasl/slaa058" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.495L..46M" title="">495, L46</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">McInnes
+et al. (2018)</span>
+<span class="ltx_bibblock">
+McInnes L., Healy J., Melville J., 2018, UMAP: Uniform Manifold
+Approximation and Projection for Dimension Reduction,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.48550/ARXIV.1802.03426" title="">doi:10.48550/ARXIV.1802.03426</a>, <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://arxiv.org/abs/1802.03426" title="">https://arxiv.org/abs/1802.03426</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Merritt et al. (2006)</span>
+<span class="ltx_bibblock">
+Merritt D., Graham A. W., Moore B., Diemand J., Terzić B.,
+2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/508988" title="">AJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2006AJ....132.2685M" title="">132, 2685</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Moore (1994)</span>
+<span class="ltx_bibblock">
+Moore B., 1994, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/370629a0" title="">Nature</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1994Natur.370..629M" title="">370, 629</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Navarro
+et al. (1996a)</span>
+<span class="ltx_bibblock">
+Navarro J. F., Eke V. R., Frenk C. S., 1996a, MNRAS, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1996MNRAS.283L..72N" title="">283, L72</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Navarro
+et al. (1996b)</span>
+<span class="ltx_bibblock">
+Navarro J. F., Frenk C. S., White S. D. M., 1996b, ApJ, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1996ApJ...462..563N&amp;db_key=AST" title="">462, 563</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pascale et al. (2018)</span>
+<span class="ltx_bibblock">
+Pascale R., Posti L., Nipoti C., Binney J., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty1860" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.480..927P" title="">480, 927</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pontzen &amp;
+Governato (2012)</span>
+<span class="ltx_bibblock">
+Pontzen A., Governato F., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2012.20571.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2012MNRAS.421.3464P" title="">421, 3464</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Read et al. (2006)</span>
+<span class="ltx_bibblock">
+Read J. I., Wilkinson M. I., Evans N. W., Gilmore G., Kleyna
+J. T., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09959.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2006MNRAS.367..387R" title="">367, 387</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Read
+et al. (2019)</span>
+<span class="ltx_bibblock">
+Read J. I., Walker M. G., Steger P., 2019, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty3404" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.484.1401R" title="">484, 1401</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Richardson &amp;
+Fairbairn (2014)</span>
+<span class="ltx_bibblock">
+Richardson T., Fairbairn M., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu691" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.441.1584R" title="">441, 1584</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib47">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schneider et al. (2017)</span>
+<span class="ltx_bibblock">
+Schneider A., Trujillo-Gomez S., Papastergis E., Reed D., Lake G., 2017,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1294" title="">Monthly Notices of the Royal Astronomical Society</a>, 470, 1542
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib48">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schwarzschild (1979)</span>
+<span class="ltx_bibblock">
+Schwarzschild M., 1979, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/157282" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/1979ApJ...232..236S" title="">232, 236</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib49">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sheather (2004)</span>
+<span class="ltx_bibblock">
+Sheather S. J., 2004, Statistical Science, 19, 588
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib50">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Simon
+et al. (2005)</span>
+<span class="ltx_bibblock">
+Simon J. D., Bolatto A. D., Leroy A., Blitz L., Gates E. L., 2005,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/427684" title="">The Astrophysical Journal</a>, 621, 757
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib51">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Spergel &amp;
+Steinhardt (2000)</span>
+<span class="ltx_bibblock">
+Spergel D. N., Steinhardt P. J., 2000, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1103/PhysRevLett.84.3760" title="">Phys. Rev. Lett.</a>, 84, 3760
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib52">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stinson et al. (2006)</span>
+<span class="ltx_bibblock">
+Stinson G., Seth A., Katz N., Wadsley J., Governato F., Quinn
+T., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2006.11097.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2006MNRAS.373.1074S" title="">373, 1074</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib53">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tollet
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Tollet E., et al., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv2856" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.456.3542T" title="">456, 3542</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib54">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Walker &amp;
+Peñarrubia (2011)</span>
+<span class="ltx_bibblock">
+Walker M. G., Peñarrubia J., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/742/1/20" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2011ApJ...742...20W" title="">742, 20</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib55">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Walker
+et al. (2009)</span>
+<span class="ltx_bibblock">
+Walker M. G., Mateo M., Olszewski E. W., 2009, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-6256/137/2/3100" title="">AJ</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2009AJ....137.3100W" title="">137, 3100</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib56">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wang et al. (2015)</span>
+<span class="ltx_bibblock">
+Wang L., Dutton A. A., Stinson G. S., Macciò A. V., Penzo C.,
+Kang X., Keller B. W., Wadsley J., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1937" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.454...83W" title="">454, 83</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib57">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Zhu et al. (2016)</span>
+<span class="ltx_bibblock">
+Zhu L., van de Ven G., Watkins L. L., Posti L., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stw2081" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.463.1117Z" title="">463, 1117</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib58">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">de Blok et al. (2008)</span>
+<span class="ltx_bibblock">
+de Blok W. J. G., Walter F., Brinks E., Trachternach C., Oh
+S.-H., Kennicutt Jr. R. C., 2008, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-6256/136/6/2648" title="">AJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2008AJ....136.2648D" title="">136, 2648</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib59">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">van den Bosch
+&amp; de Zeeuw (2010)</span>
+<span class="ltx_bibblock">
+van den Bosch R. C. E., de Zeeuw P. T., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2009.15832.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2010MNRAS.401.1770V" title="">401, 1770</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib60">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">van der Marel (1994)</span>
+<span class="ltx_bibblock">
+van der Marel R. P., 1994, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/270.2.271" title="">Monthly Notices of the Royal Astronomical
+Society</a>, 270, 271
+
+</span>
+</li>
+</ul>
+</section>
+<section class="ltx_section" id="Sx3">
+<h2 class="ltx_title ltx_title_section">الملحق A: تفاصيل نموذج الشبكة العصبية</h2>
+<div class="ltx_para" id="Sx3.p1">
+<p class="ltx_p">يمكن وصف الشبكة العصبية رسميا بأنها تقريب قابل للتدريب ومرن لنموذج <math alttext="\mathbb{M}:d\rightarrow t" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p1.m1"><mrow><mi>𝕄</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>d</mi><mo stretchy="false">→</mo><mi>t</mi></mrow></mrow></math>. وتربط الشبكات بيانات مدخلة <math alttext="d" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p1.m2"><mi>d</mi></math> بتنبؤ <math alttext="\bar{t}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p1.m3"><mover accent="true"><mi>t</mi><mo>¯</mo></mover></math> للهدف <math alttext="t" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p1.m4"><mi>t</mi></math>. وتُعلّم هذه الشبكة بمجموعة من الأوزان القابلة للتدريب ومجموعة من المعاملات الفائقة. وتُحسّن الأوزان تكراريا أثناء التدريب لتقليل دالة خسارة معينة، توفر قياسا لمدى قرب تنبؤ الشبكة <math alttext="\bar{t}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p1.m5"><mover accent="true"><mi>t</mi><mo>¯</mo></mover></math> من الهدف <math alttext="t" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p1.m6"><mi>t</mi></math>.</p>
+</div>
+<div class="ltx_para" id="Sx3.p2">
+<p class="ltx_p">في هذا العمل، نستخدم الشبكات العصبية الالتفافية (CNNs)، وهي صنف من الشبكات العصبية العميقة (DNNs)، لبناء شبكة عصبية تكون فيها بيانات المدخلات <math alttext="d" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p2.m1"><mi>d</mi></math> هي دالتا كثافة الاحتمال الموصوفتان في القسم <a class="ltx_ref" href="#S2.SS2.SSS2" title="2.2.2 مدخلات النموذج ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">2.2.2</span></a>، وتكون الأهداف <math alttext="t" class="ltx_Math" dir="ltr" display="inline" id="Sx3.p2.m2"><mi>t</mi></math> هي الميول الداخلية للمجموعات الفرعية المجرية المرتبطة بهاتين الدالتين. ثم نصنع شبكة عصبية التفافية لكثافة المزائج (MDCNN) بإدماج طبقة كثافة مزائج داخل CNN بوصفها الطبقة الأخيرة.</p>
+</div>
+<section class="ltx_subsection" id="Sx3.SSx1">
+<h3 class="ltx_title ltx_title_subsection">الشبكات العصبية العميقة</h3>
+<div class="ltx_para" id="Sx3.SSx1.p1">
+<p class="ltx_p">تتكون أي شبكة عصبية من مجموعة من طبقات العصبونات، المعرفة بالدالة التالية:</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx1.p2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="Sx3.E7">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="f(\mathbf{x})=g(\mathbf{W}\cdot\mathbf{x}+b)," class="ltx_Math" dir="ltr" display="block" id="Sx3.E7.m1"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝐱</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>𝐖</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝐱</mi></mrow><mo>+</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="Sx3.SSx1.p3">
+<p class="ltx_p">حيث <math alttext="\mathbf{x}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p3.m1"><mi>𝐱</mi></math> هو مدخل الطبقة، و <math alttext="\mathbf{W}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p3.m2"><mi>𝐖</mi></math> مصفوفة الأوزان (حيث يكون كل عنصر وزن كل عنصر من المتجه <math alttext="\mathbf{x}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p3.m3"><mi>𝐱</mi></math>)، و <math alttext="\mathbf{b}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p3.m4"><mi>𝐛</mi></math> متجه يسمى معامل الانحياز للطبقة. وتُعرف g(<math alttext="\mathbf{z}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p3.m5"><mi>𝐳</mi></math>) باسم دالة التنشيط، وغايتها كسر الخطية بين مدخل العصبون وخرجه.</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx1.p4">
+<p class="ltx_p">الشبكة العصبية العميقة DNN هي شبكة عصبية تتكون من أكثر من طبقة عصبونية واحدة. وتُسمى الطبقات الواقعة بين طبقة الإدخال (الطبقة التي تأخذ بيانات إدخال الشبكة العصبية مدخلاتٍ) وطبقة الإخراج (الطبقة التي تعطي مخرجات الشبكة العصبية) طبقات مخفية.</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx1.p5">
+<p class="ltx_p">والشبكة العصبية العميقة ذات التغذية الأمامية هي DNN تُقيّم فيها طبقات العصبونات على التوالي، مع تمرير المعلومات من طبقة إلى أخرى من دون عودة، مما يعني أننا نستطيع وصف خرج <math alttext="\mathbf{h}^{(l)}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p5.m1"><msup><mi>𝐡</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msup></math> للطبقة l-th كما يلي:</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx1.p6">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="Sx3.E8">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\mathbf{h}^{(l)}=g(\mathbf{W}^{(l)}\cdot\mathbf{h}^{(l-1)}+\mathbf{b}^{(l)})." class="ltx_Math" dir="ltr" display="block" id="Sx3.E8.m1"><mrow><mrow><msup><mi>𝐡</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msup><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>𝐖</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>𝐡</mi><mrow><mo stretchy="false">(</mo><mrow><mi>l</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></msup></mrow><mo>+</mo><msup><mi>𝐛</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="Sx3.SSx1.p7">
+<p class="ltx_p">يجري تدريب النموذج بتحسين مصفوفات الأوزان <math alttext="\mathbf{W}^{(l)}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p7.m1"><msup><mi>𝐖</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msup></math>. ويُدرّب نموذج على مجموعة من بيانات المدخلات <math alttext="d" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p7.m2"><mi>d</mi></math> التي تُعرف أهدافها <math alttext="t" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p7.m3"><mi>t</mi></math> تكراريا. وفي كل تكرار، يُقيّم أداء الشبكة (التشابه بين المخرجات <math alttext="\bar{t}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p7.m4"><mover accent="true"><mi>t</mi><mo>¯</mo></mover></math> والأهداف <math alttext="t" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx1.p7.m5"><mi>t</mi></math>) باستخدام دالة خسارة، وتُحدّث الأوزان لتقليل تلك الدالة بواسطة خوارزمية تحسين. وعندما تتوقف دالة الخسارة عن التناقص وتتقارب إلى قيمة معينة، يقال إن الشبكة قد حُسّنت. ثم يُجرى تقييم الأداء على مجموعة بيانات مستقلة لم يرها النموذج أثناء التدريب.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="Sx3.SSx2">
+<h3 class="ltx_title ltx_title_subsection">الشبكات العصبية الالتفافية</h3>
+<div class="ltx_para" id="Sx3.SSx2.p1">
+<p class="ltx_p">CNNs نوع خاص من DNNs ملائم على نحو خاص للمسائل التي تكون فيها المعلومات المترابطة مكانيا حاسمة. والسمة الرئيسية لـ CNN هي وجود طبقات التفاف، تُبنى بطريقة تقصر العصبونات في طبقة ما على تلقي المعلومات من جوار صغير فقط في الطبقة السابقة. وهذا يتيح للعصبونات استخراج سمات بسيطة من مجموعات فرعية من الطبقة السابقة، مُكوِّنة سمات أعلى رتبة في الطبقات اللاحقة.</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx2.p2">
+<p class="ltx_p">تُصمم طبقة الالتفاف كما يلي: تُطبق نواة التفاف، يشار إليها عادة بالمرشح، ذات حجم معين وتشفّر مجموعة من العصبونات، على كل بكسل (في حالة الصور ثنائية الأبعاد 2D مدخلاتٍ) من صورة المدخل وجواره أثناء مسحها للمنطقة كلها. ولا يكون بكسل معين في طبقة محددة إلا دالة للبكسلات في الطبقة السابقة التي تقع ضمن النافذة التي تحددها النواة، والمعروفة بالحقل الاستقبالي للطبقة. وينتج عن ذلك خريطة سمات تشفّر قيما مرتفعة في البكسلات التي تطابق النمط المشفر في أوزان وانحيازات العصبونات المقابلة في نواة الالتفاف، والتي تُحسّن أثناء التدريب <cite class="ltx_cite ltx_citemacro_citep">(Kodi
+Ramanah et al., <a class="ltx_ref" href="#bib.bib32" title="">2021</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx2.p3">
+<p class="ltx_p">يمكن وصف طبقة الالتفاف بأنها عملية خطية يُنفذ فيها الالتفاف المتقطع عبر ضرب المصفوفات. وبدلالة المعادلة <a class="ltx_ref" href="#Sx3.E8" title="In الشبكات العصبية العميقة ‣ الملحق A: تفاصيل نموذج الشبكة العصبية ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">8</span></a>:</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx2.p4">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="Sx3.E9">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\mathbf{h}^{(l)}_{j}=g\left(\sum_{i\in M_{j}}\mathbf{h}^{(l-1)}\times k^{(l)}_%
+{ij}+\mathbf{b}^{(l)}_{j}\right)," class="ltx_Math" dir="ltr" display="block" id="Sx3.E9.m1"><mrow><mrow><msubsup><mi>𝐡</mi><mi>j</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msubsup><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mrow><mi>i</mi><mo>∈</mo><msub><mi>M</mi><mi>j</mi></msub></mrow></munder><mrow><msup><mi>𝐡</mi><mrow><mo stretchy="false">(</mo><mrow><mi>l</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></msup><mo lspace="0.222em" rspace="0.222em">×</mo><msubsup><mi>k</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow></mrow><mo>+</mo><msubsup><mi>𝐛</mi><mi>j</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow><mo>)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para ltx_noindent" id="Sx3.SSx2.p5">
+<p class="ltx_p">حيث <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx2.p5.m1"><mi>k</mi></math> هي نواة الالتفاف (المرشح)، و <math alttext="M_{j}" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx2.p5.m2"><msub><mi>M</mi><mi>j</mi></msub></math> هو الحقل الاستقبالي للعصبون <math alttext="j" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx2.p5.m3"><mi>j</mi></math>. ويمكن أن تحتوي طبقة التفاف واحدة على عدة مرشحات، تكرر هذه العملية بنوى مختلفة، بانية خرائط سمات كثيرة لكل طبقة، تُعرف بالقنوات.</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx2.p6">
+<p class="ltx_p">يُعرّف الحقل الاستقبالي عادة بأبعاد المرشح، والخطوة، ووجود الحشو أو عدمه. ويمكن وصف تطبيق المرشح بأنه عملية إزلاقه فوق صورة المدخل لطبقة الالتفاف. ونسمي <span class="ltx_text ltx_font_italic">الخطوة</span> عدد البكسلات واتجاهها اللذين تحرك بهما المرشح في كل خطوة، و <span class="ltx_text ltx_font_italic">الحشو</span> إضافة بكسلات فارغة حول الحواف بغرض تخفيف فقدان المعلومات قرب الحواف.</p>
+</div>
+<div class="ltx_para" id="Sx3.SSx2.p7">
+<p class="ltx_p">عادة تكون CNN سلسلة من أزواج من طبقات التفاف تليها طبقة تجميع بوصفها خطوة أخذ عينات فرعية أو اختزال بعدي، وهي عملية ستخفض صورة المدخل الأولية إلى تمثيل مضغوط للسمات. ثم يُعاد تشكيل ذلك التمثيل بوصفه متجها، يُمرر لاحقا إلى سلسلة من الطبقات الكثيفة <cite class="ltx_cite ltx_citemacro_citep">(LeCun
+et al., <a class="ltx_ref" href="#bib.bib34" title="">2015</a>)</cite>. يتيح هذا التصميم للشبكة العصبية أن تستخرج ذاتيا سمات مكانية ذات معنى من صورة المدخل. وتبني كومة عدة طبقات التفاف تمثيلا هرميا داخليا للسمات يشفر المعلومات الأكثر صلة من صورة المدخل. ويقوي تكديس طبقات التفاف لاحقة بصورة طبيعية حساسية الطبقات الأكثر داخلية للسمات على مقاييس أكبر فأكبر، لأن حجم الحقل الاستقبالي يصبح أكبر كلما تعمقنا في CNN.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="Sx3.SSx3">
+<h3 class="ltx_title ltx_title_subsection">الشبكات العصبية لكثافة المزائج</h3>
+<div class="ltx_para" id="Sx3.SSx3.p1">
+<p class="ltx_p">MDNN هي شبكة ذات طبقات تتبع مخرجاتها توزيعا احتمالياً متعدد الأبعاد، وتسمى طبقات كثافة المزائج. وتأخذ هذه الطبقات، مدخلاتٍ لها، <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx3.p1.m1"><mi>n</mi></math> عقدة، حيث يكون <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="Sx3.SSx3.p1.m2"><mi>n</mi></math> عدد المعاملات في التوزيع المرغوب، وتحول قيمها بحيث تحترم قيود معاملات التوزيع وتفسرها بوصفها تلك المعاملات لبنائه. وعند استخدامها الطبقة الأخيرة في الشبكة، فإنها تتيح تحسينا مشتركا للسمات من DNN مع خلفية لاحقة بايزية، جامعة مزايا استخراج السمات العميق مع التمثيل الاحتمالي للنتائج.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="Sx3.SSx4">
+<h3 class="ltx_title ltx_title_subsection">تفاصيل البنية</h3>
+<div class="ltx_para" id="Sx3.SSx4.p1">
+<p class="ltx_p">يمكن رؤية المنظر التخطيطي للبنية المستخدمة في هذا العمل في الشكل <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.2.2 مدخلات النموذج ‣ 2.2 مدخلات المعلومات ‣ 2 الطرائق ‣ نموذج تعلم عميق احتمالي للتمييز بين الحدبات واللباب في المجرات القزمة"><span class="ltx_text ltx_ref_tag">4</span></a></p>
+</div>
+<div class="ltx_para" id="Sx3.SSx4.p2">
+<p class="ltx_p">تُبنى المتتاليات الالتفافية باستخدام أزواج من طبقات الالتفاف والتجميع، تليها طبقة إسقاط. وتخفض طبقات التجميع عينات مدخلاتها على امتداد بعدها المكاني باستخدام طريقة التجميع الأعظمي، التي تأخذ القيمة العظمى ضمن نافذة مدخلات معينة لكل قناة.
+وتعين طبقات الإسقاط وحدات المدخلات عشوائيا إلى 0 بتواتر معين يسمى معدل الإسقاط، وتقيس البقية بحيث يبقى المجموع على جميع المدخلات دون تغيير. ويتم ذلك لمنع فرط الملاءمة أثناء التدريب.
+وتبدأ المتتالية المشتركة للطبقات الكثيفة بطبقة تطبيع تطبق تطبيع الدفعات على العقد القادمة من المتتاليات الالتفافية السابقة. ويحافظ هذا التطبيع على متوسط الخرج قريبا من 0 وعلى انحرافه المعياري قريبا من 1.
+وتعطي طبقة كثافة المزائج النهائية توزيعا احتماليا معرفا في نطاق الميول الداخلية الممكنة لمجموعة فرعية مجرية معينة، وتحول CNN ثنائية القناة لدينا إلى MDCNN. ويُفهم هذا التوزيع الاحتمالي بوصفه توزيعا لاحقا تحت التوزيع القبلي للميول الداخلية الذي تدربت به الشبكة، مما يتيح لنا تقييم لايقين التنبؤات الفردية للنموذج.</p>
+</div>
+</section>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue May 12 00:38:13 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

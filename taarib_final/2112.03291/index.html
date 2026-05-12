@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" prefix="dcterms: http://purl.org/dc/terms/" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>أداة سريعة وتفاعلية قائمة على الويب لتصور بيانات المسوحات الطيفية البانورامية</title>
+<!--Generated on Sat May  2 15:17:37 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document">
+<h1 class="ltx_title ltx_title_document">أداة سريعة وتفاعلية قائمة على الويب لتصور بيانات المسوحات الطيفية البانورامية</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Ivan Katkov,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup> Damir Gasymov,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,3</span></sup> Joseph D. Gelfand,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup> Viktoria Toptun,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,3</span></sup> Kirill Grishin,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup> Igor Chilingarian<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4,2</span></sup> Anastasia Kasparova,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup> Vladislav Klochkov<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,3</span></sup> Evgenii Rubtsov,<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,3</span></sup> Vladimir Goradzhanov<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2,3</span></sup>
+</span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">تُعد مطيافية IFU البانورامية أداة محورية في علم الفلك الرصدي الحديث، وهي ذات أهمية خاصة لفيزياء المجرات. وقد أُصدرت مؤخرًا عدة مسوحات IFU ضخمة، مثل SDSS MaNGA (10k هدف)، وSAMI (3k هدف)، وCalifa (600 جرم)، وAtlas3D (260 جرم)، وأُتيحت علنًا للمجتمع الفلكي الواسع. إن تعقيد نواتج البيانات المشتقة من المكعبات الطيفية وضخامتها يجعلان تصور مجموعة البيانات كاملةً أمرًا صعبًا، لكنه مع ذلك بالغ الأهمية وحاسم للمخرجات العلمية.</p>
+<p class="ltx_p">استنادًا إلى خبرتنا السابقة في تصور البيانات الطيفية والتصويرية التي بُنيت في إطار مشروعات مبادرة VOxAstro، نعمل الآن على تطوير خدمة ويب إلكترونية للتصور التفاعلي لمجموعات بيانات IFU الطيفية (<a class="ltx_ref ltx_url ltx_font_typewriter" href="ifu.voxastro.org" title="">ifu.voxastro.org</a>). وستوفر خدمتنا أداة مريحة للوصول إلى المكعبات الطيفية من المسوحات المتاحة علنًا (MaNGA وSAMI وCalifa وAtlas3D) وتصورها، وكذلك نتائج نمذجتها وخرائط المعلمات المشتقة من المكعبات، مع تطبيق مفهوم العروض المترابطة. ونصف هنا المكونات الأساسية للخدمة ووظائفها، بما في ذلك تنفيذ REST API فوق خلفية Django+Postgres، فضلًا عن واجهة مستخدم سريعة وسريعة الاستجابة بُنيت باستخدام إطار Quasar الحديث المستند إلى Vue.js.</p>
+</div>
+<div class="ltx_para" id="p1">
+<span class="ltx_ERROR undefined">\aspSuppressVolSlug</span><span class="ltx_ERROR undefined">\resetcounters</span>
+</div>
+<div class="ltx_para" id="p2">
+<span class="ltx_ERROR undefined">\affil</span>
+<p class="ltx_p"><sup class="ltx_sup">1</sup>New York University Abu Dhabi, Abu Dhabi, United Arab Emirates; <span class="ltx_ERROR undefined">\email</span>ivan.katkov@nyu.edu
+<span class="ltx_ERROR undefined">\affil</span><sup class="ltx_sup">2</sup>Sternberg Astronomical Institute, M.V. Lomonosov Moscow State University, Moscow, Russia
+<span class="ltx_ERROR undefined">\affil</span><sup class="ltx_sup">3</sup>Department of Physics, M.V. Lomonosov Moscow State University, Moscow, Russia
+<span class="ltx_ERROR undefined">\affil</span><sup class="ltx_sup">4</sup>Smithsonian Astrophysical Observatory, Cambridge, MA, USA</p>
+</div>
+<div class="ltx_para" id="p3">
+<span class="ltx_ERROR undefined">\paperauthor</span>
+<p class="ltx_p">Ivan Katkovivan.katkov@nyu.edu0000-0002-6425-6879New York University Abu DhabiCenter for Astro, Particle, and Planetary PhysicsAbu DhabiAbu Dhabi129188United Arab Emirates
+<span class="ltx_ERROR undefined">\paperauthor</span>Damir Gasymovgasymov.df18@physics.msu.ru0000-0002-1750-2096M.V. Lomonosov Moscow State UniversitySternberg Astronomical InstituteMoscow119992Russia
+<span class="ltx_ERROR undefined">\paperauthor</span>Joseph Gelfandjoseph.gelfand@nyu.edu0000-0003-4679-1058New York University Abu DhabiCenter for Astro, Particle, and Planetary PhysicsAbu DhabiAbu Dhabi129188United Arab Emirates
+<span class="ltx_ERROR undefined">\paperauthor</span>Viktoria Toptunvictoria.toptun@voxastro.org0000-0003-3599-3877M.V. Lomonosov Moscow State UniversitySternberg Astronomical InstituteMoscow119992Russia
+<span class="ltx_ERROR undefined">\paperauthor</span>Kirill Grishinkirillg6@gmail.com0000-0003-3255-7340M.V. Lomonosov Moscow State UniversitySternberg Astronomical InstituteMoscow119992Russia
+<span class="ltx_ERROR undefined">\paperauthor</span>Igor Chilingarianigor.chilingarian@cfa.harvard.edu0000-0002-7924-3253Center for Astrophysics - Harvard and SmithsonianCambridge02138USA
+<span class="ltx_ERROR undefined">\paperauthor</span>Anastasia Kasparovaanastasya.kasparova@gmail.com0000-0002-1091-5146M.V. Lomonosov Moscow State UniversitySternberg Astronomical InstituteMoscow119992Russia
+<span class="ltx_ERROR undefined">\paperauthor</span>Vladislav Klochkovvladislavk4481@gmail.com0000-0003-3095-8933M.V. Lomonosov Moscow State UniversityDepartment of PhysicsMoscow119991Russia
+<span class="ltx_ERROR undefined">\paperauthor</span>Evgenii Rubtsovrubtsov602@gmail.com0000-0001-8427-0240Sternberg Astronomical Institute, Lomonosov Moscow State UniversityMoscow119234Russia
+<span class="ltx_ERROR undefined">\paperauthor</span>Vladimir Goradzhanovgoradzhanov.vs17@physics.msu.ru0000-0002-2550-2520Sternberg Astronomical Institute, Lomonosov Moscow State UniversityMoscow119234Russia</p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">توفر المسوحات الطيفية الضخمة للمجرات معلومات شديدة الأهمية لدراسة تطور المجرات، مثل حركيات النجوم والغاز المتأين، وتاريخ تشكل النجوم المنطبع في خصائص التجمعات النجمية.
+وتُعد مطيافية المجال المتكامل (IFS) تقنية رصدية قوية تتيح قياسات ذات دقة مكانية لخصائص المجرات.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">نقدم هنا خدمة ويب إلكترونية (يُشار إليها فيما يلي باسم IFU Visualiser) للتصور التفاعلي لمجموعات بيانات IFU الطيفية (<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://ifu.voxastro.org" title="">https://ifu.voxastro.org</a>)، موفرةً أداة مريحة للوصول إلى المكعبات الطيفية من المسوحات المتاحة علنًا (MaNGA وSAMI وCalifa وAtlas3D) وتصورها.
+وقد استُلهمت الخدمة من نموذجنا الأولي الأول <a class="ltx_ref ltx_url ltx_font_typewriter" href="http://manga.voxastro.org" title="">http://manga.voxastro.org</a> ومن تطبيق Marvin الرسمي على الويب الذي أصدره فريق MaNGA <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Cherinka et al.</span>, <a class="ltx_ref" href="#bib.bib3" title=""><span class="ltx_text" style="font-size:90%;">2019</span></a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>مجموعات البيانات ووظائف الخدمة</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">حتى تاريخه (نوفمبر 2021)، يضم IFU Visualiser بيانات واردة من مسح SDSS DR16 MaNGA <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Bundy et al.</span>, <a class="ltx_ref" href="#bib.bib1" title=""><span class="ltx_text" style="font-size:90%;">2015</span></a>)</cite>، وSAMI DR3 <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Croom et al.</span>, <a class="ltx_ref" href="#bib.bib6" title=""><span class="ltx_text" style="font-size:90%;">2012</span></a>)</cite>، وCalifa DR3 <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Sánchez et al.</span>, <a class="ltx_ref" href="#bib.bib11" title=""><span class="ltx_text" style="font-size:90%;">2012</span></a>)</cite>، وAtlas3D <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Cappellari et al.</span>, <a class="ltx_ref" href="#bib.bib2" title=""><span class="ltx_text" style="font-size:90%;">2011</span></a>)</cite>.
+يبين الجدول <a class="ltx_ref" href="#S2" title="2 مجموعات البيانات ووظائف الخدمة ‣ أداة سريعة وتفاعلية قائمة على الويب لتصور بيانات المسوحات الطيفية البانورامية"><span class="ltx_text ltx_ref_tag">2</span></a> حجم مجموعات البيانات المتاحة في خدمة IFU Visualiser والمطابقة التقاطعية بين المسوحات.</p>
+</div>
+<figure class="ltx_table" id="S2.tab1">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 1: </span>مجموعات بيانات IFU Visualiser</figcaption>
+<div class="ltx_block">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row"><span class="ltx_ERROR undefined">\tableline</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column"><span class="ltx_text" style="font-size:90%;">MaNGA DR17</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column"><span class="ltx_text" style="font-size:90%;">MaNGA DR16</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column"><span class="ltx_text" style="font-size:90%;">SAMI</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column"><span class="ltx_text" style="font-size:90%;">Califa</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column"><span class="ltx_text" style="font-size:90%;">Atlas3D</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row">
+<span class="ltx_ERROR undefined">\tableline</span><span class="ltx_text" style="font-size:90%;">
+MaNGA DR17</span>
+</th>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold" style="font-size:90%;">11236</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">4824</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">106</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">40</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">0</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">MaNGA DR16</span></th>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">4824</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold" style="font-size:90%;">4824</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">15</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">20</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">0</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">SAMI</span></th>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">106</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">15</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold" style="font-size:90%;">3426</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">Califa</span></th>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">40</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">20</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text ltx_font_bold" style="font-size:90%;">667</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">23</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">Atlas3D</span></th>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">0</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">0</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">23</span></td>
+<td class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">260</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_ERROR undefined">\tableline</span></th>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+</tr>
+</tbody>
+</table></div>
+<p class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">يرث IFU Visualiser إلى حد كبير البنية العامة والوظائف الخاصة بمشروع آخر من مشروعات VOxAstro، وهو RCSEDv2 <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Chilingarian et al.</span>, <a class="ltx_ref" href="#bib.bib5" title=""><span class="ltx_text" style="font-size:90%;">2017</span></a>; <span class="ltx_text" style="font-size:90%;">Toptun</span>, <a class="ltx_ref" href="#bib.bib12" title=""><span class="ltx_text" style="font-size:90%;">2021</span></a>; <span class="ltx_text" style="font-size:90%;">Klochkov</span>, <a class="ltx_ref" href="#bib.bib9" title=""><span class="ltx_text" style="font-size:90%;">2021</span></a>)</cite>.
+وباختصار، يوفر IFU Visualiser مكونين رئيسيين: أداة بحث عن المكعبات الطيفية وعارضًا تفاعليًا للمكعبات المنفردة وللخرائط ثنائية الأبعاد للمعلمات المستخرجة من الأطياف. ويُشرح بناء جملة لغة الاستعلام في صفحة التوثيق https://ifu.voxastro.org/docs حيث يمكن العثور على أمثلة عدة لاستعلامات البحث. ويوضح الشكل <span class="ltx_ref ltx_missing_label ltx_ref_self">LABEL:fig1_sp_viewer</span> لقطة شاشة لصفحة المكعب المنفرد.</span></p>
+<span class="ltx_ERROR ltx_centering undefined">\articlefigure</span>
+<p class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">O3-005_f1fig1_sp_viewer
+مثال لصفحة منفردة لمكعب MaNGA الطيفي (معرّف المكعب: 4295) تُظهر
+المجرة GMP 4188 منخفضة الكتلة ومرحلة ما بعد الانفجار النجمي في عنقود Coma، والتي ستتطور تطورًا خاملًا إلى مجرة فائقة الانتشار <cite class="ltx_cite ltx_citemacro_citep">(<span class="ltx_text" style="font-size:90%;">Grishin et al.</span>, <a class="ltx_ref" href="#bib.bib8" title=""><span class="ltx_text" style="font-size:90%;">2021</span></a>)</cite>.</span></p>
+<section class="ltx_section ltx_centering" id="S3">
+<h2 class="ltx_title ltx_title_section" style="font-size:90%;">
+<span class="ltx_tag ltx_tag_section">3 </span>التنفيذ</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">تتاح كل الشيفرة، بما في ذلك الخلفية والواجهة الأمامية والسكربتات اللازمة لتجميع جداول الإدخال لقاعدة البيانات، في مستودع GitHub.</span><span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://github.com/voxastro/ifu-visualiser" title="">https://github.com/voxastro/ifu-visualiser</a></span></span></span><span class="ltx_text" style="font-size:90%;"></span></p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection" style="font-size:90%;">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>الخلفية</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">تُستخدم PostgreSQL لإدارة الوصول إلى الجداول الرئيسية والجداول المرتبطة.
+ويحتوي جدول المكعبات الطيفية الرئيسي على معلومات أساسية مثل معرّف المكعب، والإحداثيات، وتغطية مجال الرؤية، ومعرّفات المسح اللازمة لربط الجداول ذات الصلة بأي مكعب معطى.
+وتؤخذ الجداول المرتبطة من المسح المقابل، وتحتوي على معلومات شديدة التنوع عن المكعبات وكذلك عن المجرات.
+اخترنا PostgreSQL قاعدةَ بيانات خلفية لسببين: i) دعم الاستعلامات الهندسية بفضل امتدادي q3c </span><cite class="ltx_cite ltx_citemacro_citep"><span class="ltx_text" style="font-size:90%;">(</span><span class="ltx_text" style="font-size:90%;">Koposov &amp; Bartunov</span><span class="ltx_text" style="font-size:90%;">, </span><a class="ltx_ref" href="#bib.bib10" title=""><span class="ltx_text" style="font-size:90%;">2006</span></a><span class="ltx_text" style="font-size:90%;">)</span></cite><span class="ltx_text" style="font-size:90%;"> وpgSphere </span><cite class="ltx_cite ltx_citemacro_citep"><span class="ltx_text" style="font-size:90%;">(</span><span class="ltx_text" style="font-size:90%;">Chilingarian et al.</span><span class="ltx_text" style="font-size:90%;">, </span><a class="ltx_ref" href="#bib.bib4" title=""><span class="ltx_text" style="font-size:90%;">2004</span></a><span class="ltx_text" style="font-size:90%;">)</span></cite><span class="ltx_text" style="font-size:90%;">؛ وii) التوافق الطبيعي مع خدمات VO (الوصول عبر TAP وSSAP) باستخدام GAVO DaCHS </span><cite class="ltx_cite ltx_citemacro_citep"><span class="ltx_text" style="font-size:90%;">(</span><span class="ltx_text" style="font-size:90%;">Demleitner</span><span class="ltx_text" style="font-size:90%;">, </span><a class="ltx_ref" href="#bib.bib7" title=""><span class="ltx_text" style="font-size:90%;">2018</span></a><span class="ltx_text" style="font-size:90%;">)</span></cite><span class="ltx_text" style="font-size:90%;">، وهو ما نخطط لإضافته قريبًا إلى IFU Visualiser.
+ويُستخدم إطار Django REST Framework (DRF) الشهير المستند إلى Python</span><span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://www.django-rest-framework.org/" title="">https://www.django-rest-framework.org/</a></span></span></span><span class="ltx_text" style="font-size:90%;"> فوق قاعدة بيانات PostgreSQL لتوفير نقاط نهاية API.
+وبالإضافة إلى الشعبية الكبيرة لـ Django، واتساع مجتمعه، وتميز توثيقه، فإن سببًا حاسمًا لاستخدام هذا الإطار يتمثل في وفرة المكونات الجاهزة.
+ومن بينها </span><code class="ltx_verbatim ltx_font_typewriter paper-arabizer-code-inline" dir="ltr" style="font-size:90%;">django-custom-query</code><span class="ltx_text" style="font-size:90%;">،</span><span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup>
+<span class="ltx_tag ltx_tag_note">3</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://github.com/ivan-katkov/django-custom-query" title="">https://github.com/ivan-katkov/django-custom-query</a></span></span></span><span class="ltx_text" style="font-size:90%;"> المصممة لإنشاء استعلامات مبسطة، لكنها مع ذلك قوية جدًا وشبيهة بـ SQL (مثل </span><code class="ltx_verbatim ltx_font_typewriter paper-arabizer-code-inline" dir="ltr" style="font-size:90%;">survey=sami OR atlas_name~4551</code><span class="ltx_text" style="font-size:90%;">). وقد عدلنا أيضًا المكتبة الأصلية ودمجنا استعلامات البحث المخروطي بالإحداثيات باستخدام دالة q3c ‏</span><code class="ltx_verbatim ltx_font_typewriter paper-arabizer-code-inline" dir="ltr" style="font-size:90%;">q3c_radial_query()</code><span class="ltx_text" style="font-size:90%;"> (مثل </span><code class="ltx_verbatim ltx_font_typewriter paper-arabizer-code-inline" dir="ltr" style="font-size:90%;">cone(195, 28, 0.5)</code><span class="ltx_text" style="font-size:90%;">).
+درسنا أيضًا استخدام نقطة نهاية GraphQL</span><span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup>
+<span class="ltx_tag ltx_tag_note">4</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://graphql.org/" title="">https://graphql.org/</a></span></span></span><span class="ltx_text" style="font-size:90%;"> لتوفير الوصول إلى البيانات، لكننا وجدنا، بعد اختبارات أداء بسيطة باستخدام مكتبة Graphene-Django</span><span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup>
+<span class="ltx_tag ltx_tag_note">5</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://docs.graphene-python.org/projects/django/en/latest/" title="">https://docs.graphene-python.org/projects/django/en/latest/</a></span></span></span><span class="ltx_text" style="font-size:90%;">، أن DRF يوفر زمن استجابة أسرع بعدة مرات إجمالًا.
+وتكمن مشكلة أخرى في استخدام GraphQL في جهة الواجهة الأمامية: فالبساطة الظاهرية لاستخدامه، مثلًا مع عميل Apollo</span><span class="ltx_note ltx_role_footnote" id="footnote6"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup>
+<span class="ltx_tag ltx_tag_note">6</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://apollo.vuejs.org/" title="">https://apollo.vuejs.org/</a></span></span></span><span class="ltx_text" style="font-size:90%;">، تُبقي مشكلات محتملة في إدارة الحالة العامة للتطبيق.
+ويمكن استخدام عميل Apollo مديرًا للحالة، لكننا نستخدم مدير الحالة القياسي Vuex لتطبيقات Vue.js.
+ويؤدي استخدام الخيارين معًا إلى مشكلة "مصدرين للحقيقة". أما الانتقال الكامل إلى Apollo فيتطلب كتابة مقاطع برمجية متكلفة والتخلي عن أدوات اختبار المتصفح غير المتاحة بعد لعميل Apollo.</span></p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection" style="font-size:90%;">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>الواجهة الأمامية</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">استخدمنا إطار الواجهة الأمامية Quasar</span><span class="ltx_note ltx_role_footnote" id="footnote7"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup>
+<span class="ltx_tag ltx_tag_note">7</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://quasar.dev/" title="">https://quasar.dev/</a></span></span></span><span class="ltx_text" style="font-size:90%;"> المستند إلى Vue.js، وهو يوفر بنية تحتية ممتازة ومجموعة كبيرة من مكونات Vue المبنية وفق إرشادات Material Design. ولدى Vue.js وإطار Quasar عتبة دخول منخفضة جدًا، ويتيحان إنشاء واجهات مستخدم عالية التفاعلية بمهارات محدودة جدًا في JavaScript.
+وبالإضافة إلى مكتبة مكونات Quasar، استخدمنا Aladin Lite للتصوير ومكتبة Plotly.js</span><span class="ltx_note ltx_role_footnote" id="footnote8"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup>
+<span class="ltx_tag ltx_tag_note">8</span>
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://plotly.com/javascript/" title="">https://plotly.com/javascript/</a></span></span></span><span class="ltx_text" style="font-size:90%;"> لإنشاء مخططات طيفية تفاعلية وخرائط للمعلمات.</span></p>
+</div>
+</section>
+</section>
+<section class="ltx_section ltx_centering" id="S4">
+<h2 class="ltx_title ltx_title_section" style="font-size:90%;">
+<span class="ltx_tag ltx_tag_section">4 </span>خطوات التطوير التالية</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">حتى تاريخه (نوفمبر 2021)، لم يُطوَّر إلا جزء صغير من الوظائف المخطط لها في IFU Visualiser.
+وستكون الخطوات الرئيسية التالية لمزيد من التطوير كما يلي:</span></p>
+<ol class="ltx_enumerate" id="S4.I1">
+<li class="ltx_item" id="S4.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S4.I1.i1.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">فيما يتعلق بتطوير واجهة المستخدم، سنحسن صفحة المكعب الطيفي وننفذ تفاعلًا أكثر مرونة مع الأطياف وخرائط المعلمات.
+وستكون الوظائف مشابهة لما بنيناه في إطار نموذجنا الأولي الأول لخدمة من هذا النوع </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="https://manga.voxastro.org/" style="font-size:90%;" title="">https://manga.voxastro.org/</a><span class="ltx_text" style="font-size:90%;">، والذي أُنشئ بتقنيات أخرى ولا يستخدم إلا بيانات MaNGA.</span></p>
+</div>
+</li>
+<li class="ltx_item" id="S4.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S4.I1.i2.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">نخطط أيضًا لإضافة معلمات أساسية موحدة للمجرات، مثل الكتل واللمعاني وأنصاف الأقطار الفعالة والألوان، لجميع المجرات المتاحة في IFU Visualiser.</span></p>
+</div>
+</li>
+<li class="ltx_item" id="S4.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S4.I1.i3.p1">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">وتتمثل مرحلة مهمة أخرى في تحليل المجموعة الكاملة من المكعبات الطيفية لضمان مجموعة متجانسة من نواتج البيانات المستخرجة من المكعبات باستخدام تقنية الملاءمة الطيفية الكاملة NBursts، على غرار ما نفعله في مشروع RCSED2 لكن لبيانات IFU.</span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold" style="font-size:90%;">شكر وتقدير.</span><span class="ltx_text" style="font-size:90%;">
+يحظى هذا المشروع بدعم من منحة مؤسسة العلوم الروسية 21-72-00036. كما يشكر المؤلفون المدرسة العلمية والتعليمية متعددة التخصصات في جامعة موسكو “أبحاث الفضاء الأساسية والتطبيقية”.
+ويعرب DG وKG وVT وEG أيضًا عن شكرهم للجنة المنظمة لـ ADASS XXXI على
+تقديم الدعم المالي.</span></p>
+</div>
+</section>
+<section class="ltx_bibliography ltx_centering" id="bib">
+<h2 class="ltx_title ltx_title_bibliography" style="font-size:90%;">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Bundy et al. (2015)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Bundy, K., et al. 2015, </span><span class="ltx_ERROR undefined">\apj</span><span class="ltx_text" style="font-size:90%;">, 798, 7. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1412.1482" style="font-size:90%;" title="">1412.1482</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Cappellari et al. (2011)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Cappellari, M., et al. 2011, </span><span class="ltx_ERROR undefined">\mnras</span><span class="ltx_text" style="font-size:90%;">, 413, 813. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1012.1551" style="font-size:90%;" title="">1012.1551</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Cherinka et al. (2019)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Cherinka, B., et al. 2019, </span><span class="ltx_ERROR undefined">\aj</span><span class="ltx_text" style="font-size:90%;">, 158, 74. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1812.03833" style="font-size:90%;" title="">1812.03833</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Chilingarian et al. (2004)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Chilingarian, I., et al. 2004, in Astronomical Data Analysis Software and
+Systems (ADASS) XIII, edited by F. Ochsenbein, M. G. Allen, &amp;
+D. Egret, vol. 314 of Astronomical Society of the Pacific Conference
+Series, 225
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Chilingarian et al. (2017)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Chilingarian, I. V., et al. 2017, </span><span class="ltx_ERROR undefined">\apjs</span><span class="ltx_text" style="font-size:90%;">, 228, 14. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1612.02047" style="font-size:90%;" title="">1612.02047</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Croom et al. (2012)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Croom, S. M., et al. 2012, </span><span class="ltx_ERROR undefined">\mnras</span><span class="ltx_text" style="font-size:90%;">, 421, 872. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1112.3367" style="font-size:90%;" title="">1112.3367</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Demleitner (2018)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Demleitner, M. 2018, DaCHS: Data Center Helper Suite. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1804.005" style="font-size:90%;" title="">1804.005</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Grishin et al. (2021)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Grishin, K. A., et al. 2021, Nature Astronomy. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="2111.01140" style="font-size:90%;" title="">2111.01140</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Klochkov (2021)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Klochkov, V. 2021, in ADASS XXX, edited by J.-E. Ruiz, &amp; F. Pierfederici
+(San Francisco: ASP), vol. TBD of ASP Conf. Ser., 999 TBD
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Koposov &amp; Bartunov (2006)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Koposov, S., &amp; Bartunov, O. 2006, in Astronomical Data Analysis Software
+and Systems XV, edited by C. Gabriel, C. Arviset, D. Ponz, &amp;
+S. Enrique, vol. 351 of Astronomical Society of the Pacific Conference
+Series, 735
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Sánchez et al. (2012)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Sánchez, S. F., et al. 2012, </span><span class="ltx_ERROR undefined">\aap</span><span class="ltx_text" style="font-size:90%;">, 538, A8. </span><a class="ltx_ref ltx_url ltx_font_typewriter" href="1111.0962" style="font-size:90%;" title="">1111.0962</a><span class="ltx_text" style="font-size:90%;">
+</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem"><span class="ltx_text" style="font-size:90%;">Toptun (2021)</span></span>
+<span class="ltx_bibblock"><span class="ltx_text" style="font-size:90%;">
+Toptun, V. 2021, in ADASS XXX, edited by J.-E. Ruiz, &amp; F. Pierfederici
+(San Francisco: ASP), vol. TBD of ASP Conf. Ser., 999 TBD
+</span>
+</span>
+</li>
+</ul>
+</section>
+</div>
+</figure>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Sat May  2 15:17:37 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>
