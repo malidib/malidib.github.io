@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>عرض توضيحي للنظام MADARi: واجهة ويب للتوسيم الصرفي العربي وتصحيح الإملاء بصورة مشتركة</title>
+<!--Generated on Wed May 13 09:27:49 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-listings.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document">
+<h1 class="ltx_title ltx_title_document">
+<span class="ltx_text ltx_font_italic">عرض توضيحي للنظام
+<br class="ltx_break"/></span><span class="ltx_text ltx_font_bold">MADARi: واجهة ويب للتوسيم الصرفي العربي 
+<br class="ltx_break"/>وتصحيح الإملاء بصورة مشتركة</span>
+</h1>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">نقدم MADARi، وهي واجهة للتوسيم الصرفي وتصحيح الإملاء بصورة مشتركة للنص العربي.
+يوفر إطارنا واجهات بديهية لتوسيم النصوص وإدارة عملية التوسيم.
+ونصف دوافع هذه الواجهة وتصميمها وتنفيذها؛ كما نعرض تفاصيل من دراسة مستخدمين عملوا بهذا النظام.
+
+<br class="ltx_break"/>
+<br class="ltx_break"/>العربية، الصرف، التصحيح الإملائي، التوسيم</p>
+</div>
+<div class="ltx_para" id="p1">
+<span class="ltx_ERROR undefined">\newcites</span>
+<p class="ltx_p">languageresourceموارد اللغة
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="ltx_ERROR undefined">\name</span>Ossama Obeid, Salam Khalifa, Nizar Habash, 
+<br class="ltx_break"/><span class="ltx_text ltx_font_bold">Houda Bouamor,<sup class="ltx_sup"><span class="ltx_text ltx_font_medium">†</span></sup> Wajdi Zaghouani,<sup class="ltx_sup"><span class="ltx_text ltx_font_medium">⋆</span></sup> Kemal Oflazer<sup class="ltx_sup"><span class="ltx_text ltx_font_medium">†</span></sup></span>
+<span class="ltx_ERROR undefined">\address</span>Computational Approaches to Modeling Language Lab, New York University Abu Dhabi, UAE 
+<br class="ltx_break"/><sup class="ltx_sup">†</sup> Carnegie Mellon University in Qatar, Qatar, <sup class="ltx_sup">⋆</sup> Hamad Bin Khalifa University, Qatar
+<br class="ltx_break"/>{oobeid, salamkhalifa, nizar.habash}@nyu.edu, 
+<br class="ltx_break"/>hbouamor@qatar.cmu.edu, wzaghouani@hbku.edu.qa, ko@andrew.cmu.edu</p>
+</div>
+<div class="ltx_para" id="p2">
+<span class="ltx_ERROR undefined">\maketitleabstract</span>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>المقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">كانت المدونات الموسومة أساسية للبحث في مجال معالجة اللغات الطبيعية (NLP). وتوفر هذه الموارد بيانات التدريب والتقييم اللازمة لبناء أنظمة وسم آلية وقياس أدائها.
+غير أن مهمة التوسيم اليدوي البشري صعبة ومضنية إلى حد بعيد؛ ولذلك أُنشئ عدد من أدوات واجهات التوسيم للمساعدة في هذا الجهد.
+وتميل هذه الأدوات إلى التخصص بغرض تحسين الأداء في مهام محددة مثل تصحيح الإملاء، ووسم نوع الكلمة (POS)، ووسم الكيانات المسماة، والتوسيم النحوي، وغير ذلك.
+وتفرض لغات معينة تحديات إضافية على مهمة التوسيم. فبالمقارنة مع الإنجليزية، يقتضي وسم العربية الحاجة إلى تشكيل نظام كتابة تكون فيه الحركات اختيارية، وإلى تقطيع متكرر للواصق، وإلى مجموعة أغنى من وسوم نوع الكلمة.
+وعلى الرغم من أن هدف الاستقلال عن اللغة أمر يضعه معظم الباحثين ومطوري الواجهات في الحسبان، فإن تحقيقه صعب إلى حد كبير من دون مقايضة مع المنفعة والكفاءة.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">نركز في هذه الورقة على أداة تستهدف التوسيم الصرفي للهجات العربية. وتضيف اللهجات العربية قدرا أكبر من التعقيد مقارنة بالعربية الفصحى، إذ إن نص الإدخال يتسم بكتابة مشوشة.
+فعلى سبيل المثال، تتضمن الكلمة الأخيرة في الجملة المستخدمة مثالا في الشكل <a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ التصميم والمعمارية ‣ 3 تصميم MADARi ‣ عرض توضيحي للنظام MADARi: واجهة ويب للتوسيم الصرفي العربي وتصحيح الإملاء بصورة مشتركة"><span class="ltx_text ltx_ref_tag">1</span></a>.(a)، &lt;wyaabuwhA-Al_hliyj&gt; <span class="ltx_text ltx_font_italic">wyAbwhAAlxlyj<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note"><span class="ltx_text ltx_font_upright">1</span></span>
+<span class="ltx_text ltx_font_upright">كل النقل الحرفي وارد وفق مخطط Buckwalter </span><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text ltx_font_upright">[</span><a class="ltx_ref" href="#bib.bibx9" title=""><span class="ltx_ERROR undefined">\citename</span>Habash et al.2007</a><span class="ltx_text ltx_font_upright">]</span></cite><span class="ltx_text ltx_font_upright">.</span></span></span></span></span> خطأين إملائيين (دمج كلمة واستبدال محرف)، ويمكن تصحيحها إلى &lt;wjaabuwhA Al_hliyj&gt; <span class="ltx_text ltx_font_italic">wjAbwhA Alxlyj</span> ‘وأحضروها إلى الخليج’. وعلاوة على ذلك، تتضمن أولى الكلمتين المصححتين لاصقتين تنتجان، عند تقطيعهما، الصيغة: &lt;hA&gt;+ &lt;jaabuwA&gt; +&lt;w&gt; <span class="ltx_text ltx_font_italic">w+ jAbwA +hA</span> ‘و+ أحضروا +ها’.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">ركزت الأعمال السابقة في واجهات التوسيم الصرفي للعربية إما على مشكلة التوسيم اليدوي لوسم نوع الكلمة، أو التشكيل، أو التوحيد الإملائي.
+وفي هذه الورقة نقدم أداة تتيح إنجاز هذه المهام كلها معا، مما يلغي احتمال انتقال الأخطاء من مستوى وسم إلى آخر.
+وقد أطلقنا على أداتنا اسم MADARi<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+            
+            
+          ¡madaary¿ <span class="ltx_text ltx_font_italic">madAriy</span> تعني ‘مداري’ في العربية.</span></span></span> نسبة إلى المشروع الذي أُنشئت في إطاره: توسيمات وموارد للهجات عربية متعددة (MADAR).</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">نعرض بعد ذلك الأعمال ذات الصلة بهذا الجهد. وفي القسم 3، نناقش وصف مهمة MADARi واعتبارات التصميم. وفي القسمين 4 و 5، نناقش واجهتي التوسيم والإدارة، على التوالي. ويعرض القسم 6 بعض التفاصيل عن دراسة مستخدمين للعمل باستخدام MADARi.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>الأعمال ذات الصلة</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">اقتُرحت عدة أدوات وواجهات للتوسيم في لغات كثيرة ولإنجاز مهام وسم متنوعة، مثل أداتي التوسيم العامتين BRAT <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx15" title=""><span class="ltx_ERROR undefined">\citename</span>Stenetorp et al.2012</a>]</cite> وWebAnno <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx17" title=""><span class="ltx_ERROR undefined">\citename</span>Yimam et al.2013</a>]</cite>.
+أما أدوات التوسيم الخاصة بمهام معينة، فيمكن أن نذكر أدوات التحرير اللاحق وتصحيح الأخطاء، مثل عمل <span class="ltx_ERROR undefined">\newcite</span>aziz+2012:pet، و<span class="ltx_ERROR undefined">\newcite</span>Stymne:2011:BTE:2002440.2002450، و<span class="ltx_ERROR undefined">\newcite</span>conflrec، و<span class="ltx_ERROR undefined">\newcite</span>dickinson.
+وبالنسبة إلى العربية، توجد عدة أدوات وسم قائمة،
+إلا أنها مصممة لمعالجة مهمة محددة في معالجة اللغات الطبيعية، وليس من السهل تكييفها مع مشروعنا.
+ويمكن أن نذكر أدوات للتوسيم الدلالي، مثل عمل <span class="ltx_ERROR undefined">\newcite</span>saleh2009aratation و<span class="ltx_ERROR undefined">\newcite</span>el2014proposed، والعمل المتعلق بوسم اللهجات لدى <span class="ltx_ERROR undefined">\newcite</span>benajiba2010web و<span class="ltx_ERROR undefined">\newcite</span>Diab10colaba:arabic.
+وقد بنى <span class="ltx_ERROR undefined">\newcite</span>AttiaRA09 أداة وسم صرفي، وحديثا صُممت MADAD <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx2" title=""><span class="ltx_ERROR undefined">\citename</span>Al-Twairesh et al.2016</a>]</cite>، وهي أداة وسم تعاونية عامة الغرض على الإنترنت للنص العربي، أثناء مشروع لتقييمات المقروئية.
+وفي مبادرة COLABA <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx6" title=""><span class="ltx_ERROR undefined">\citename</span>Diab et al.2010</a>]</cite>، بنى المؤلفون أدوات وموارد لمعالجة بيانات وسائل التواصل الاجتماعي العربية، مثل المدونات ومنتديات النقاش والمحادثات.
+وفوق ذلك كله، فإن معظم هذه الأدوات، إن لم يكن كلها، غير مصممة للتعامل مع خصوصيات العربية اللهجية، وهي مهمة ذات طابع شديد التخصص.
+إضافة إلى ذلك، لا توفر الأدوات القائمة تسهيلات لإدارة آلاف الوثائق، وغالبا لا تتيح توزيع المهام على عشرات الموسمين مع تقييم اتفاق الموسمين البيني (IAA).
+وتستعير واجهتنا أفكارا من ثلاث أدوات وسم أخرى هي: DIWAN وQAWI وMANDIAC.
+ونصف هنا كل أداة من هذه الأدوات وكيف أثرت في تصميم نظامنا.</p>
+</div>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">DIWAN</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px1.p1">
+<p class="ltx_p">DIWAN أداة وسم للنصوص العربية اللهجية <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx1" title=""><span class="ltx_ERROR undefined">\citename</span>Al-Shargi and Rambow2015</a>]</cite>.
+وتزود الموسمين بمجموعة من الأدوات لتقليل الجهد المكرر، بما في ذلك استخدام المحللات الصرفية لحساب التحليلات مسبقا، وإمكانية تطبيق التحليلات على مواضع متعددة في وقت واحد.
+إلا أنها تتطلب التثبيت على جهاز يعمل بنظام Windows، كما أن واجهة المستخدم ليست ميسرة كثيرا للمستخدمين الجدد.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">QAWI</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px2.p1">
+<p class="ltx_p">قدمت واجهة وسم QALB على الويب (QAWI) لأول مرة مفهوم تعديلات النص القائمة على الرموز لتوسيم المدونات المتوازية المستخدمة في مهام تصحيح النص <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx11" title=""><span class="ltx_ERROR undefined">\citename</span>Obeid et al.2013</a>, <a class="ltx_ref" href="#bib.bibx18" title=""><span class="ltx_ERROR undefined">\citename</span>Zaghouani et al.2014</a>]</cite>.
+وقد أتاحت التسجيل الدقيق لكل التعديلات التي يجريها الموسِّم، وهو ما لم تكن الأدوات السابقة تتيحه.
+وكما نوضح لاحقا، فإننا نستفيد من نظام التحرير القائم على الرموز هذا في التصحيحات النصية البسيطة التي تحول نص لهجة معينة إلى صيغة CODA الملائمة.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px3">
+<h3 class="ltx_title ltx_title_paragraph">MANDIAC</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px3.p1">
+<p class="ltx_p">استخدمت MANDIAC <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx12" title=""><span class="ltx_ERROR undefined">\citename</span>Obeid et al.2016</a>]</cite> المحرر القائم على الرموز المستخدم في QAWI لإنجاز مهام تشكيل النص.
+والأهم من ذلك أنها قدمت نظام تخزين بيانات هجينا ومرنا يتيح إضافة خصائص جديدة إلى الواجهة الأمامية للتوسيم مع تعديلات قليلة جدا، أو معدومة، في الواجهة الخلفية.
+ويستخدم نظام التوسيم لدينا هذا التصميم لتوفير المنفعة نفسها.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>تصميم MADARi</h2>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">وصف المهمة</h3>
+<div class="ltx_para" id="S3.SS0.SSS0.Px1.p1">
+<p class="ltx_p">ستُستخدم واجهة MADARi من قبل موسمين بشريين لإنشاء مدونة للنص العربي موسومة صرفيا. ويأتي النص الذي نعمل عليه من وسائل التواصل الاجتماعي، وهو نص لهجي بدرجة عالية، ولذلك يحتوي على كثير من الأخطاء الإملائية. وسيصحح الموسمون بعناية إملاء الكلمات في النص، كما سيضعون وسما صرفيا للكلمات. ويشمل التوسيم الصرفي ضمن السياق تقطيع الرموز، ووسم نوع الكلمة، والإرجاع إلى اللِّمّة، وإضافة مقابلات إنجليزية.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">المتطلبات</h3>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p1">
+<p class="ltx_p">لإدارة ومعالجة توسيم مدونة عربية لهجية واسعة النطاق، احتجنا إلى إنشاء أداة تنظّم
+عملية التوسيم وتيسرها.</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p2">
+<p class="ltx_p">وتشمل متطلبات تطوير أداة التوسيم MADARi ما يلي:</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p3">
+<ol class="ltx_enumerate" id="S3.I1">
+<li class="ltx_item" id="S3.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S3.I1.i1.p1">
+<p class="ltx_p">عدم الحاجة إلى وقت للتثبيت، وأن تكون المتطلبات المفروضة على الموسمين في حدها الأدنى.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S3.I1.i2.p1">
+<p class="ltx_p">يجب أن تتيح الأداة إدارة البيانات والوثائق عن بُعد، بما يسمح لقادة التوسيم بإسناد الوثائق وتقييمها من أي مكان في العالم، وبما يسمح بتوظيف موسمين في أي مكان في العالم.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S3.I1.i3.p1">
+<p class="ltx_p">يجب أن تتيح الأداة لقادة التوسيم تخصيص مجموعات وسوم نوع الكلمة بسهولة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S3.I1.i4.p1">
+<p class="ltx_p">يجب أن تتيح الأداة وصولا سهلا إلى توسيمات مستخدمين آخرين لنصوص مشابهة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span>
+<div class="ltx_para" id="S3.I1.i5.p1">
+<p class="ltx_p">يجب أن تتيح الأداة التنقل بسهولة بين تغييرات الإملاء وإزالة اللبس الصرفي.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px3">
+<h3 class="ltx_title ltx_title_paragraph">التصميم والمعمارية</h3>
+<div class="ltx_para" id="S3.SS0.SSS0.Px3.p1">
+<p class="ltx_p">يستعير تصميم واجهتنا كثيرا من تصميم MANDIAC <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bibx12" title=""><span class="ltx_ERROR undefined">\citename</span>Obeid et al.2016</a>]</cite>.
+وعلى وجه الخصوص، استخدمنا معمارية العميل والخادم، وكذلك نظام التخزين الهجين والمرن SQL/JSON الذي استخدمته MANDIAC.
+ويتيح لنا ذلك توسيع واجهة التوسيم بسهولة مع تغييرات طفيفة، إن وجدت، في الواجهة الخلفية.
+وكما في DIWAN وMANDIAC، نستخدم أيضا MADAMIRA <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">MADAMIRA:2014</span>]</cite>، وهو محلل صرفي حديث ومتقدم للعربية، لحساب التحليلات مسبقا.</p>
+</div>
+<figure class="ltx_figure" id="S3.F1">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S3.F1.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="309" id="S3.F1.sf1.g1" src="madari_full.png" width="449"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure"><span class="ltx_text" style="font-size:90%;">(a)</span> </span><span class="ltx_text" style="font-size:90%;">عرض كامل لواجهة التوسيم MADARi.</span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_1">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S3.F1.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="86" id="S3.F1.sf2.g1" src="madari_textedit.png" width="449"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure"><span class="ltx_text" style="font-size:90%;">(b)</span> </span><span class="ltx_text" style="font-size:90%;">وضع تحرير النص.</span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_1">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S3.F1.sf3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="162" id="S3.F1.sf3.g1" src="madari_analysis.png" width="449"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure"><span class="ltx_text" style="font-size:90%;">(c)</span> </span><span class="ltx_text" style="font-size:90%;">لوحة البحث عن التحليلات.</span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure"><span class="ltx_text" style="font-size:90%;">Figure 1</span>: </span><span class="ltx_text" style="font-size:90%;">واجهة التوسيم MADARi</span></figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>واجهة التوسيم</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">واجهة التوسيم (الشكل <a class="ltx_ref" href="#S3.F1.sf1" title="In Figure 1 ‣ التصميم والمعمارية ‣ 3 تصميم MADARi ‣ عرض توضيحي للنظام MADARi: واجهة ويب للتوسيم الصرفي العربي وتصحيح الإملاء بصورة مشتركة"><span class="ltx_text ltx_ref_tag">1(a)</span></a>) هي الموضع الذي ينجز فيه الموسمون مهام التوسيم المسندة إليهم.
+ونصف هنا المكونات والمرافق المختلفة التي توفرها هذه الواجهة.</p>
+</div>
+<section class="ltx_paragraph" id="S4.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">تحرير النص</h3>
+<div class="ltx_para" id="S4.SS0.SSS0.Px1.p1">
+<p class="ltx_p">يستطيع الموسمون تحرير الجملة في أي وقت أثناء عملية التوسيم.
+ويُستخدم ذلك أساسا للتأكد من أن كل النص مكتوب بصيغة CODA للهجة المختارة.
+وقد اعتمدنا نظام التحرير القائم على الرموز نفسه المستخدم في QAWI.
+ولا يتيح محررنا القائم على الرموز (الشكل <a class="ltx_ref" href="#S3.F1.sf2" title="In Figure 1 ‣ التصميم والمعمارية ‣ 3 تصميم MADARi ‣ عرض توضيحي للنظام MADARi: واجهة ويب للتوسيم الصرفي العربي وتصحيح الإملاء بصورة مشتركة"><span class="ltx_text ltx_ref_tag">1(b)</span></a>) إلا تعديل الرموز وتقسيمها ودمجها، في حين يتيح QAWI أيضا إضافة الرموز وحذفها، فضلا عن نقل الرموز من مواضعها.
+والعمليات التي نتيحها كافية للتهيئة وفق CODA من دون السماح بتغيير النص تغييرا جوهريا.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S4.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">وسم نوع الكلمة</h3>
+<div class="ltx_para" id="S4.SS0.SSS0.Px2.p1">
+<p class="ltx_p">المكوّن الأساسي في واجهتنا هو نظام وسم نوع الكلمة.
+فهنا تُوسم كل الكلمات في صورتها المقطعة إلى رموز، وهي صورة تقسم الكلمة إلى الكلمة الأساس واللواصق اللاحقة واللواصق السابقة.
+ويُسند إلى كل واحد من هذه العناصر وسم لنوع الكلمة، وكذلك خاصية صرفية حيثما ينطبق ذلك.
+كما يسند الموسمون المقابل الإنجليزي واللِّمّة لكل كلمة.
+وتيسيرا على الموسمين، نوفر قيما محسوبة مسبقا لكل حقل باستخدام محللات MADAMIRA الصرفية.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S4.SS0.SSS0.Px3">
+<h3 class="ltx_title ltx_title_paragraph">مرافق</h3>
+<div class="ltx_para" id="S4.SS0.SSS0.Px3.p1">
+<p class="ltx_p">أضفنا خصائص مساعدة لجعل عملية التوسيم أسهل وأكثر كفاءة للموسمين.
+وتشمل المرافق الأساسية أزرار التراجع والإعادة، والوصول إلى النص الأصلي للرجوع إليه، وترميز الرموز المحررة بالألوان لتيسير التنقل السريع كما هو موضح في الشكل <a class="ltx_ref" href="#S3.F1.sf1" title="In Figure 1 ‣ التصميم والمعمارية ‣ 3 تصميم MADARi ‣ عرض توضيحي للنظام MADARi: واجهة ويب للتوسيم الصرفي العربي وتصحيح الإملاء بصورة مشتركة"><span class="ltx_text ltx_ref_tag">1(a)</span></a>.
+كما نتيح للموسمين تحديث عدة رموز لها الإملاء نفسه فوريا.
+إضافة إلى ذلك، نوفر للموسمين أداة بحث للاطلاع على توسيمات سبق تقديمها للكلمة نفسها، وكذلك لاستعلام MADAMIRA عن تحليلات خارج السياق في لهجات مختلفة في الزمن الحقيقي (الشكل <a class="ltx_ref" href="#S3.F1.sf3" title="In Figure 1 ‣ التصميم والمعمارية ‣ 3 تصميم MADARi ‣ عرض توضيحي للنظام MADARi: واجهة ويب للتوسيم الصرفي العربي وتصحيح الإملاء بصورة مشتركة"><span class="ltx_text ltx_ref_tag">1(c)</span></a>).</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>واجهة الإدارة</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">تمكن واجهة إدارة التوسيم الموسِّم القائد من إدارة عملية التوسيم كلها وتنظيمها بسهولة عن بُعد وبصورة متزامنة. وتتضمن واجهة الإدارة: (a) أداة لإدارة المستخدمين من أجل إنشاء
+حسابات جديدة للموسمين وعرض تقدم الموسمين؛
+(b) أداة لإدارة الوثائق من أجل
+رفع وثائق جديدة، وإسنادها للتوسيم،
+وعرض التوسيمات المقدمة؛ و
+(c) أداة مراقبة لعرض تقدم التوسيم
+الإجمالي؛ و(d) أداة لتقييم اتفاق الموسمين البيني (IAA) لمقارنة التوسيمات التي ينتجها كل موسِّم بمرجع ذهبي بغرض مراقبة جودة التوسيمات؛ و(e) مستودع بيانات وخاصية لتصدير التوسيمات.</p>
+</div>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>دراسة المستخدمين</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">تُستخدم أداتنا في إطار مشروع توسيم جارٍ على العربية الخليجية (سيصدر لاحقا).
+وفي هذه الورقة نصف تجربة موسِّمة واحدة سبق لها أن أنجزت توسيمات في بيئات مختلفة.
+وقد أزالت الموسِّمة اللبس الصرفي عن 80 جملة، بلغ مجموعها 1,355 رمزا خاما من نص عربي خليجي.</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">لاحظنا أن الموسِّمة فضلت، بناء على خبرتها، تحويل كتابة النص إلى CODA أولا، مما جعل مهمة إزالة اللبس أكثر كفاءة.</p>
+</div>
+<div class="ltx_para" id="S6.p3">
+<p class="ltx_p">استغرق إكمال هذه المهمة نحو 52 دقيقة (بمعدل قدره 1,563 كلمة/ساعة). وأجرت الموسِّمة لاحقا بعض الإصلاحات الطفيفة، وهي ميزة في أداتنا تحد من انتقال الأخطاء.
+وبلغ العدد الإجمالي للكلمات التي غُيّرت من الرموز الخام إلى CODA مقدار 288 (21%).
+وكانت التغييرات في معظمها تعديلات إملائية، أما الباقي فكان تقسيما للكلمات (44 حالات أو 15% من جميع التغييرات)، ولم تحدث أي عمليات دمج. ويبلغ عدد الكلمات النهائي 1,398 كلمة.</p>
+</div>
+<div class="ltx_para" id="S6.p4">
+<p class="ltx_p">بعد التحويل إلى CODA، عملت الموسِّمة على تقطيع الرموز ووسم نوع الكلمة والإرجاع إلى اللِّمّة وإضافة المقابلات الإنجليزية.
+واستغرقت هذه المهمة الأكثر تعقيدا نحو 6 ساعات (بمعدل 277 كلمة/ساعة).
+وهذا يجعل الزمن التراكمي الذي صُرف لإنهاء مهمتي التعديل الإملائي وإزالة اللبس الكامل لهذه المجموعة من البيانات نحو 7 ساعات (بمعدل 200 كلمة/ساعة).</p>
+</div>
+<div class="ltx_para" id="S6.p5">
+<p class="ltx_p">وبما أن الأداة توفر تخمينات أولية لكل مكونات التوسيم، استطاعت الموسِّمة أن تستخدم كثيرا من القرارات الصحيحة كما هي، وأن تعدلها في حالات أخرى.
+وفي حالة تقسيم كلمة، تزيل الأداة حاليا تنبؤات الكلمة الخام، غير أن أداة البحث عن التحليلات تتيح وصولا سريعا إلى بدائل للاختيار منها.
+قارنّا الاختيارات النهائية لتقطيع الرموز ووسم نوع الكلمة واللِّمّة بالاختيارات التي اقترحتها الأداة على نسخة CODA من النص. ووجدنا أن الأداة قدمت اقتراحات صحيحة في 74% من الحالات في تقطيع الرموز، وفي 69% من الحالات في وسوم نوع الكلمة للكلمة الأساس، وفي 70% من الحالات في اللِّمات.</p>
+</div>
+<div class="ltx_para" id="S6.p6">
+<p class="ltx_p">وأشارت الموسِّمة إلى أن المرافق المفضلة لديها كانت القدرة على وسم عدة رموز من النوع نفسه في سياقات مختلفة في آن واحد،
+والقدرة على استخدام مربع ‘البحث عن التحليلات’ لتوسيم عدة حقول في وقت واحد.</p>
+</div>
+</section>
+<section class="ltx_section" id="S7">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7 </span>الخلاصة والآفاق</h2>
+<div class="ltx_para" id="S7.p1">
+<p class="ltx_p">قدمنا لمحة عامة عن إطار التوسيم القائم على الويب لدينا للتوسيم الصرفي وتصحيح الإملاء بصورة مشتركة للعربية. ونخطط لإصدار الأداة وإتاحتها مجانا لمجتمع البحث بحيث يمكن استخدامها في مهام وسم أخرى ذات صلة. وسنواصل مستقبلا توسيع الأداة لتعمل على لهجات وأنواع نصية مختلفة من العربية.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">أُتيح إنجاز هذا المنشور بفضل المنحة NPRP7-290-1-047 من الصندوق القطري لرعاية البحث العلمي (وهو عضو في مؤسسة قطر). وتقع المسؤولية عن التصريحات الواردة هنا على عاتق المؤلفين وحدهم.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx2">
+<h2 class="ltx_title ltx_title_section">المراجع الببليوغرافية</h2>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bibx1">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Al-Shargi and Rambow2015]</span>
+<span class="ltx_bibblock">
+Al-Shargi, F. and Rambow, O.
+
+</span>
+<span class="ltx_bibblock">(2015).
+
+</span>
+<span class="ltx_bibblock">Diwan: A dialectal word annotation tool for arabic.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">ANLP Workshop 2015</span>, page 49.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx2">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Al-Twairesh et al.2016]</span>
+<span class="ltx_bibblock">
+Al-Twairesh, N., Al-Dayel, A., Al-Khalifa, H., Al-Yahya, M., Alageel, S.,
+Abanmy, N., and Al-Shenaifi, N.
+
+</span>
+<span class="ltx_bibblock">(2016).
+
+</span>
+<span class="ltx_bibblock">Madad: A readability annotation tool for arabic text.
+
+</span>
+<span class="ltx_bibblock">In Nicoletta Calzolari (Conference Chair), et al., editors, <span class="ltx_text ltx_font_italic">Proceedings of the Tenth International Conference on Language Resources and
+Evaluation (LREC 2016)</span>, Paris, France, may. European Language Resources
+Association (ELRA).
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx3">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Attia et al.2009]</span>
+<span class="ltx_bibblock">
+Attia, M., Rashwan, M. A., and Al-Badrashiny, M. A.
+
+</span>
+<span class="ltx_bibblock">(2009).
+
+</span>
+<span class="ltx_bibblock">Fassieh, a semi-automatic visual interactive tool for morphological,
+pos-tags, phonetic, and semantic annotation of arabic text corpora.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">IEEE transactions on audio, speech, and language processing</span>,
+17(5):916–925.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx4">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Aziz et al.2012]</span>
+<span class="ltx_bibblock">
+Aziz, W., de Sousa, S. C. M., and Specia, L.
+
+</span>
+<span class="ltx_bibblock">(2012).
+
+</span>
+<span class="ltx_bibblock">PET: a tool for post-editing and assessing machine translation.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Proceedings of the LREC’2012</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx5">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Benajiba and Diab2010]</span>
+<span class="ltx_bibblock">
+Benajiba, Y. and Diab, M.
+
+</span>
+<span class="ltx_bibblock">(2010).
+
+</span>
+<span class="ltx_bibblock">A web application for dialectal arabic text annotation.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Proceedings of the lrec workshop for language resources (lrs)
+and human language technologies (hlt) for semitic languages: Status, updates,
+and prospects</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx6">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Diab et al.2010]</span>
+<span class="ltx_bibblock">
+Diab, M., Habash, N., Rambow, O., Altantawy, M., and Benajiba, Y.
+
+</span>
+<span class="ltx_bibblock">(2010).
+
+</span>
+<span class="ltx_bibblock">Colaba: Arabic dialect annotation and processing.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">LREC Workshop on Semitic Language Processing</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx7">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Dickinson and Ledbetter2012]</span>
+<span class="ltx_bibblock">
+Dickinson, M. and Ledbetter, S.
+
+</span>
+<span class="ltx_bibblock">(2012).
+
+</span>
+<span class="ltx_bibblock">Annotating errors in a Hungarian learner corpus.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Proceedings of the LREC’2012</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx8">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>El-ghobashy et al.2014]</span>
+<span class="ltx_bibblock">
+El-ghobashy, A. N., Attiya, G. M., and Kelash, H. M.
+
+</span>
+<span class="ltx_bibblock">(2014).
+
+</span>
+<span class="ltx_bibblock">A proposed framework for arabic semantic annotation tool<math alttext="\backslash" class="ltx_Math" dir="ltr" display="inline" id="bib.bibx8.m1"><mo>\</mo></math>
+international journal of computing and digital systems.-2014, vol. 3, no. 1.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx9">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Habash et al.2007]</span>
+<span class="ltx_bibblock">
+Habash, N., Soudi, A., and Buckwalter, T.
+
+</span>
+<span class="ltx_bibblock">(2007).
+
+</span>
+<span class="ltx_bibblock">On Arabic transliteration.
+
+</span>
+<span class="ltx_bibblock">In Abdelhadi Soudi, et al., editors, <span class="ltx_text ltx_font_italic">Arabic Computational
+Morphology</span>, volume 38 of <span class="ltx_text ltx_font_italic">Text, Speech and Language Technology</span>,
+chapter 2, pages 15–22. Springer.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx10">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Llitjós and Carbonell2004]</span>
+<span class="ltx_bibblock">
+Llitjós, A. F. and Carbonell, J. G.
+
+</span>
+<span class="ltx_bibblock">(2004).
+
+</span>
+<span class="ltx_bibblock">The translation correction tool: English-Spanish user studies.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Prceedings of the LREC’04</span>.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx11">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Obeid et al.2013]</span>
+<span class="ltx_bibblock">
+Obeid, O., Zaghouani, W., Mohit, B., Habash, N., Oflazer, K., and Tomeh, N.
+
+</span>
+<span class="ltx_bibblock">(2013).
+
+</span>
+<span class="ltx_bibblock">A Web-based Annotation Framework For Large-Scale Text Correction.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">The Companion Volume of the Proceedings of IJCNLP 2013:
+System Demonstrations</span>, pages 1–4, Nagoya, Japan.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx12">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Obeid et al.2016]</span>
+<span class="ltx_bibblock">
+Obeid, O., Bouamor, H., Zaghouani, W., Ghoneim, M., Hawwari, A., Alqahtani, S.,
+Diab, M., and Oflazer, K.
+
+</span>
+<span class="ltx_bibblock">(2016).
+
+</span>
+<span class="ltx_bibblock">Mandiac: A web-based annotation system for manual arabic
+diacritization.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">The 2nd Workshop on Arabic Corpora and Processing Tools 2016
+Theme: Social Media</span>, page 16.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx13">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Pasha et al.2014]</span>
+<span class="ltx_bibblock">
+Pasha, A., Al-Badrashiny, M., Diab, M. T., El Kholy, A., Eskander, R., Habash,
+N., Pooleery, M., Rambow, O., and Roth, R.
+
+</span>
+<span class="ltx_bibblock">(2014).
+
+</span>
+<span class="ltx_bibblock">Madamira: A fast, comprehensive tool for morphological analysis and
+disambiguation of arabic.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">LREC</span>, volume 14, pages 1094–1101.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx14">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Saleh and Al-Khalifa2009]</span>
+<span class="ltx_bibblock">
+Saleh, L. M. B. and Al-Khalifa, H. S.
+
+</span>
+<span class="ltx_bibblock">(2009).
+
+</span>
+<span class="ltx_bibblock">Aratation: an arabic semantic annotation tool.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Proceedings of the 11th International Conference on
+Information Integration and Web-based Applications &amp; Services</span>, pages
+447–451. ACM.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx15">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Stenetorp et al.2012]</span>
+<span class="ltx_bibblock">
+Stenetorp, P., Pyysalo, S., Topić, G., Ohta, T., Ananiadou, S., and Tsujii,
+J.
+
+</span>
+<span class="ltx_bibblock">(2012).
+
+</span>
+<span class="ltx_bibblock">Brat: A web-based tool for nlp-assisted text annotation.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Proceedings of the Demonstrations at the 13th Conference of
+the European Chapter of the Association for Computational Linguistics</span>, EACL
+’12, pages 102–107, Stroudsburg, PA, USA. Association for Computational
+Linguistics.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx16">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Stymne2011]</span>
+<span class="ltx_bibblock">
+Stymne, S.
+
+</span>
+<span class="ltx_bibblock">(2011).
+
+</span>
+<span class="ltx_bibblock">Blast: a tool for error analysis of machine translation output.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">Proceedings of the ACL’2011: Systems Demonstrations</span>, pages
+56–61.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx17">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Yimam et al.2013]</span>
+<span class="ltx_bibblock">
+Yimam, S. M., Gurevych, I., de Castilho, R. E., and Biemann, C.
+
+</span>
+<span class="ltx_bibblock">(2013).
+
+</span>
+<span class="ltx_bibblock">Webanno: A flexible, web-based and visually supported system for
+distributed annotations.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">ACL (Conference System Demonstrations)</span>, pages 1–6. The
+Association for Computer Linguistics.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bibx18">
+<span class="ltx_tag ltx_tag_bibitem">[<span class="ltx_ERROR undefined">\citename</span>Zaghouani et al.2014]</span>
+<span class="ltx_bibblock">
+Zaghouani, W., Mohit, B., Habash, N., Obeid, O., Tomeh, N., Rozovskaya, A.,
+Farra, N., Alkuhlani, S., and Oflazer, K.
+
+</span>
+<span class="ltx_bibblock">(2014).
+
+</span>
+<span class="ltx_bibblock">Large scale arabic error annotation: Guidelines and framework.
+
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_font_italic">LREC</span>, pages 2362–2369.
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 09:27:49 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

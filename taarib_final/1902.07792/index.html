@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث</title>
+<!--Generated on Wed May 13 14:04:07 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="
+مواد مضادّة للمغناطيسية،
+تأثيرات مغناطوكهربائية،
+ذاكرة غير متطايرة،
+ذاكرة محصّنة ضد العبث،
+ذاكرة مغناطيسية.
+" lang="ar" name="keywords"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<div class="ltx_para" id="p1">
+<span class="ltx_ERROR undefined">\history</span>
+<p class="ltx_p">تاريخ النشر xxxx 00، 0000، تاريخ النسخة الحالية xxxx 00، 0000.
+<a class="ltx_ref" href="https:/doi.org/10.1109/ACCESS.2020.2988889" title="">10.1109/ACCESS.2020.2988889</a></p>
+</div>
+<div class="ltx_para" id="p2">
+<span class="ltx_ERROR undefined">\tfootnote</span>
+<p class="ltx_p">دُعم هذا العمل من Semiconductor
+Research Corporation (SRC) وNational Science Foundation
+(NSF) من خلال ECCS 1740136.
+كما دُعم عمل Satwik Patnaik جزئياً من زمالة Global Ph.D. Fellowship في NYU/NYU AD.</p>
+</div>
+<div class="ltx_para" id="p3">
+<span class="ltx_ERROR undefined">\corresp</span>
+<p class="ltx_p">المؤلفون المراسلون: Nikhil Rangarajan وSatwik Patnaik وShaloo Rakheja (البريد الإلكتروني: nikhil.rangarajan@nyu.edu، sp4012@nyu.edu، وrakheja@illinois.edu).</p>
+</div>
+<h1 class="ltx_title ltx_title_document">SMART: ذاكرة غير متطايرة <span class="ltx_text ltx_framed ltx_framed_underline">S</span>آمنة <span class="ltx_text ltx_framed ltx_framed_underline">M</span>مغناطوكهربائية قائمة على مضادّات <span class="ltx_text ltx_framed ltx_framed_underline">A</span>المغناطيسية <span class="ltx_text ltx_framed ltx_framed_underline">R</span>ومحصّنة ضد <span class="ltx_text ltx_framed ltx_framed_underline">T</span>العبث</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">NIKHIL RANGARAJAN1
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+SATWIK PATNAIK2
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+JOHANN KNECHTEL1
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+OZGUR SINANOGLU1
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+and
+SHALOO RAKHEJA3
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_address">Division of Engineering, New York University Abu
+Dhabi (NYU AD), Abu Dhabi, 129188, UAE (e-mails: {nikhil.rangarajan, johann, ozgursin}@nyu.edu)
+</span>
+<span class="ltx_contact ltx_role_address">Department of Electrical and
+Computer Engineering,
+New York University (NYU), Brooklyn, NY, 11201, USA (e-mail: sp4012@nyu.edu)
+</span>
+<span class="ltx_contact ltx_role_address">Holonyak Micro and Nanotechnology Laboratory, University of Illinois at Urbana-Champaign (UIUC), Urbana, IL, 61801, USA (e-mail: rakheja@illinois.edu)
+</span></span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">تتجه صناعة التخزين نحو ذواكر غير متطايرة ناشئة (NVMs)، تشمل ذاكرة الوصول العشوائي المغناطومقاومية بعزم نقل اللف المغزلي (STT-MRAM) وذاكرة تغيير الطور (PCM)، وذلك بفضل كثافتها العالية وتشغيلها منخفض الاستطاعة.
+نبرهن في هذه الورقة، وللمرة الأولى، نماذج دوائرية ومقاييس أداء معيارية لذاكرة الوصول العشوائي المغناطوكهربائية المضادّة للمغناطيسية (ME-AFMRAM) القائمة على انعكاس جدار المجال (DW)، وذلك على مستوى الخلية وعلى مستوى المصفوفة.
+كما نقدّم رؤى بشأن تبديل الذاكرة القائم على الدوران المتماسك مع قراءة بتأثير هول الشاذ مدفوعة بعازل طوبولوجي.
+في نظام الدوران المتماسك، يؤدي التبديل المغناطوكهربائي فائق الانخفاض في الاستطاعة، مقترناً بديناميكيات مضادّات المغناطيسية الواقعة في مجال التيراهرتز، إلى خفض جوهري في طاقة كل بت وزمن الكمون في ME-AFMRAM مقارنةً بذواكر NVMs أخرى، بما فيها STT-MRAM وPCM.
+بعد توصيف ME-AFMRAM الجديدة، نستثمر خصائصها الفريدة لبناء منصة ذاكرة غير متطايرة آمنة وكثيفة ومتكاملة على الرقاقة، تسمى <span class="ltx_text ltx_font_italic">SMART: ذاكرة غير متطايرة آمنة ومحصّنة ضد العبث قائمة على مضادّات المغناطيسية المغناطوكهربائية</span>.
+تفتح تقنيات NVM الجديدة تحديات وفرصاً من منظور أمن البيانات.
+فعلى سبيل المثال، تجعل حساسيتها للحقول المغناطيسية وتقلبات درجة الحرارة، إضافة إلى بقاء بياناتها بعد انقطاع الطاقة، ذواكر NVMs عرضةً لسرقة البيانات وهجمات العبث.
+ولا تتميز ذاكرة SMART المقترحة بالمتانة في مواجهة هجمات سرية البيانات التي تسعى إلى تسريب المعلومات الحساسة فحسب، بل تضمن أيضاً سلامة البيانات وتمنع هجمات حجب الخدمة (DoS) على الذاكرة.
+وهي منيعة أمام هجمات معيّنة عبر قناة الاستطاعة الجانبية (PSC) تستغل بصمات القراءة/الكتابة غير المتماثلة للمستويين المنطقيين ‘0’ و‘1’، وكذلك أمام هجمات القناة الجانبية الفوتونية التي تراقب بصمات الانبعاث الضوئي من الجهة الخلفية للرقاقة.</p>
+</div>
+<div class="ltx_keywords">
+<h6 class="ltx_title ltx_title_keywords">Index Terms: </h6>
+مواد مضادّة للمغناطيسية،
+تأثيرات مغناطوكهربائية،
+ذاكرة غير متطايرة،
+ذاكرة محصّنة ضد العبث،
+ذاكرة مغناطيسية.
+
+</div>
+<div class="ltx_para" id="p4">
+<span class="ltx_ERROR undefined">\titlepgskip</span>
+<p class="ltx_p">=-25pt</p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">I </span><span class="ltx_text ltx_font_smallcaps">المقدمة والخلفية</span>
+</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">بلغ تحجيم ذاكرة الوصول العشوائي الديناميكية التقليدية (DRAM)
+نقطة تحول حرجة، إذ إن تصغير خلية DRAM وصل إلى حالة شبه ثبات في السنوات الأخيرة. ويواجه تحجيم حجم الميزة إلى ما دون عقدة التقنية 20 <span class="ltx_text ltx_markedasmath">nm</span> تحديات عديدة مثل أزمنة احتفاظ أقصر، وتيارات تسرب أعلى، ومعدلات أعطال أكبر <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">park2015technology</span>]</cite>.
+وتشمل الحلول المطروحة لمعالجة هذه المخاوف تحسين كشف أعطال DRAM واستعادتها <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">wang2017improving</span>]</cite>، إضافةً إلى تقنيات معمارية لتعزيز قابلية تحجيم DRAM <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kim2015architectural</span>]</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">يتمثل أحد الحلول الواعدة لمشكلة تحجيم الذاكرة في تحقيق نظام الذاكرة الرئيسة باستخدام تقنيات غير متطايرة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">mutlu2015main</span>]</cite>.
+وتشمل أمثلة الذواكر غير المتطايرة الناشئة (NVMs) ذاكرة الوصول العشوائي المغناطومقاومية بعزم نقل اللف المغزلي (STT-MRAM)، وذاكرة الوصول العشوائي الفيروكهربائية (FeRAM)، وذاكرة الوصول العشوائي المقاومية (ReRAM)، وذاكرة تغيير الطور (PCM).
+وقد ازداد الاهتمام بالتطبيق التجاري لهذه الذواكر NVMs ازدياداً كبيراً. فعلى سبيل المثال، تستعمل السلسلة الحالية من أنظمة ذاكرة 3D XPoint لدى Intel تقنية NVM قائمة على PCM <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">wyrwas2017proton</span>]</cite>، كما يأتي قرص الحالة الصلبة من IBM وEverspin مزوداً بذاكرات تخزين مؤقت للكتابة من نوع STT-MRAM <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">everspin</span>]</cite>. وعلى الرغم من أن ذواكر NVMs تقدم خصائص جذابة، مثل الكثافة العالية، والتسرب المنخفض، والاحتفاظ غير المتطاير بالبيانات، فإنها تعاني أيضاً من ضعف التحمل وارتفاع كمون الوصول في تنفيذها الحالي.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">خضع أمن الذاكرة لمزيد من التدقيق على مر السنين.
+ويرجع ذلك إلى أن هجمات مثل <span class="ltx_text ltx_font_italic">Spectre</span> <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kocher2019spectre</span>]</cite> و<span class="ltx_text ltx_font_italic">Meltdown</span> <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">lipp2018meltdown</span>]</cite>، التي تستهدف القنوات الجانبية المرتبطة بالتنفيذ التخميني والتنفيذ خارج الترتيب، على التوالي، كشفت ثغرات خطيرة في طيف واسع من المعالجات المنشورة حالياً ومعماريات الذاكرة الخاصة بها.
+وفي حالة ذواكر NVMs، يشكل بقاء البيانات بعد انقطاع الطاقة
+تهديداً شديداً لسرية البيانات، إذ يستطيع المهاجمون الساعون إلى سرقة البيانات الخاصة فعل ذلك بسهولة عبر شن هجمات الإقلاع البارد <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">halderman2009lest</span>]</cite> أو هجمات إزالة أخرى مثل سرقة وحدة الذاكرة (DIMM) <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">young2015deuce</span>]</cite>.
+وفضلاً عن ذلك، فإن الذواكر المغناطيسية مثل STT-MRAM شديدة الحساسية للحقول المغناطيسية الشاردة.
+وعلى هذا الأساس، يمكن استخدام هجمات قائمة على المجال المغناطيسي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite> لإفساد البيانات المخزنة أو المساس بالسلامة الوظيفية للذاكرة، مما يؤدي إلى هجوم حجب خدمة (DoS).
+ومن ثم فإن مثل هذه الثغرات الأمنية تضع عائقاً كبيراً أمام انتشار NVMs على نطاق واسع وبصورة شاملة في صناعة الذاكرة.</p>
+</div>
+<section class="ltx_subsection" id="S1.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">I-A </span><span class="ltx_text ltx_font_italic">الأعمال ذات الصلة في أمن الذاكرة</span>
+</h3>
+<div class="ltx_para" id="S1.SS1.p1">
+<p class="ltx_p">ركزت الأعمال السابقة المتعلقة بتأمين ذواكر NVMs أساساً على مخططات تشفير الذاكرة، وهي ضرورية لمنع المهاجمين من استغلال بقاء البيانات في حالة إيقاف التشغيل.
+اقترح Chhabra <span class="ltx_text ltx_font_italic">وآخرون</span> مخطط تشفير تزايدي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">chhabra2011nvmm</span>]</cite> لذواكر NVMs تُشفَّر فيه انتقائياً صفحات الذاكرة الخاملة فقط، أي الصفحات التي لم يُنفذ عليها وصول لعدة دورات ساعة.
+أما مجموعة العمل في الذاكرة (المستخدمة حالياً) فتبقى بنص صريح، ومن ثم لا تتحمل أي كلفة تشفير عند الوصول. ويضمن هذا التشفير الانتقائي أن غالبية محتوى الذاكرة الرئيسة (وليس كله) تبقى مشفرة في جميع الأوقات، من دون الإضرار المفرط بالأداء.
+إلا أنه يتطلب عتاداً مخصصاً، وتنبؤاً بالصفحات الخاملة، وجدولةً لتنفيذه.
+وقد عُرض مخطط تشفير المسار الخفي (SPE) لذواكر NVMs القائمة على الممريستورات في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kannan2014secure</span>]</cite>، حيث تُستغل المسارات الخفية في مصفوفة ممريستورات متصالبة لتطبيق نبضات تشفير تغيّر مقاومات خلايا الذاكرة، ومن ثم تشفّر البيانات المخزنة.</p>
+</div>
+<div class="ltx_para" id="S1.SS1.p2">
+<p class="ltx_p">في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">young2015deuce</span>]</cite>، اقترح المؤلفون DEUCE، وهو تشفير بعدّاد مزدوج لذاكرات PCM، يخفض بدرجة كبيرة عدد البتات المعدلة في كل عملية كتابة راجعة، وذلك لتحسين الأداء وعمر الذاكرة.
+ويهدف هذا المخطط إلى تخفيف أثر الانهيار الجليدي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">mandal2012performance</span>]</cite> الذي يحدث أثناء تشفير الذاكرة، بإعادة تشفير الكلمات المعدلة فقط وكتابتها راجعاً في أثناء أي عملية كتابة. وقد طوّر Swami <span class="ltx_text ltx_font_italic">وآخرون</span> هذه الفكرة واقترحوا SECRET <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">swami2016secret</span>]</cite>، وهو مخطط تشفير ذكي لذواكر NVMs يدمج إعادة التشفير على مستوى الكلمة مع الكتابات الجزئية المعتمدة على الصفر لتقليل عمليات الكتابة في الذاكرة. كما يبرهنون تحسين الكتابة عبر استخدام
+“أقنعة الطاقة” (أي قوالب بتات تُجرى لها عملية XOR مع النص المعمى للحصول على تبديد طاقة أدنى)
+في منطق XOR الخاص بالتشفير، مما يقلل انقلابات البتات في عملية التشفير، ومن ثم يخفض إجمالي طاقة الكتابة.
+وقد عُرض تشفير نمط العدّاد المتقدم (ACME) في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">swami2018acme</span>]</cite>، وهو يستفيد من معمارية تسوية الكتابة الكامنة في ذاكرات PCM لتنفيذ تسوية كتابة العدّادات.
+يساعد ACME على تجنب هجمات من نمط <span class="ltx_text ltx_font_italic">Rowhammer</span> بمنع العداد المرتبط بأي سطر مفرد من الذاكرة المخبئية من الفيضان.</p>
+</div>
+<div class="ltx_para" id="S1.SS1.p3">
+<p class="ltx_p">سُلّط الضوء في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite> على أثر العبث غير التلامسي في STT-MRAMs باستخدام حقول مغناطيسية خارجية.
+وباستخدام محاكاة ميكرومغناطيسية، بيّن مؤلفو <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite>
+كيف يمكن للهجمات القائمة على المجال المغناطيسي أن تفسد محتويات خلايا STT-MRAM. وشملت تقنيات الحماية من الهجمات غير التلامسية المقترحة في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite>: (i) مستشعراً مدمجاً على الرقاقة لكشف الاقتحامات القائمة على المجال المغناطيسي، و(ii) وحدات تصحيح أخطاء لتعويض أعطال الخلايا الناشئة عن هجمات المجال المغناطيسي. غير أن هذه التقنيات تفرض عقوبات كبيرة في الطاقة والمساحة بسبب العتاد الإضافي الذي يفرضه مستشعر المجال المغناطيسي ومخطط تصحيح الأخطاء.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S1.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">I-B </span><span class="ltx_text ltx_font_italic">المساهمات</span>
+</h3>
+<div class="ltx_para" id="S1.SS2.p1">
+<p class="ltx_p">نقدم في هذه الورقة بديلاً لذواكر NVMs التقليدية مثل STT-MRAM وPCM، يتمثل في <span class="ltx_text ltx_font_italic">SMART: ذاكرة غير متطايرة آمنة ومحصّنة ضد العبث قائمة على مضادّات المغناطيسية المغناطوكهربائية</span>.
+تستفيد ذاكرة SMART من التأثير المغناطوكهربائي الخطي (ME) عند درجة حرارة الغرفة في مضادّات المغناطيسية (AFMs) مثل الكروميا <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">rado1961observation</span>]</cite>، الذي يمكن تبديله باستخدام نبضات جهد فقط، من دون استخدام تيارات كهربائية، مما يؤدي إلى تشغيل فائق الانخفاض في الطاقة (<math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S1.SS2.p1.m1"><mo>∼</mo></math> بيكو جول).
+وفضلاً عن ذلك، تقع الديناميكيات الذاتية لمضادّات المغناطيسية عادةً في نظام التيراهرتز (<math alttext="\sim 10^{12}" class="ltx_Math" dir="ltr" display="inline" id="S1.SS2.p1.m2"><mrow><mi></mi><mo>∼</mo><msup><mn>10</mn><mn>12</mn></msup></mrow></math> Hz) <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">khymyn2017antiferromagnetic</span>]</cite>، الأمر الذي قد يمكّن من انعكاس مجال AFM على مقياس زمني بالبيكوثانية.
+وإضافة إلى مزاياها في الطاقة والكمون، تقدم ذاكرة SMART تقدماً كبيراً من حيث التخزين الآمن والمحصّن ضد العبث للبيانات.
+فعلى سبيل المثال، لا تبدي AFMs بصمة مغناطيسية لأنها لا تملك عزماً مغناطيسياً خارجياً صافياً، خلافاً للمواد الفيرومغناطيسية (FM).
+ومن ثم لا يمكن سبر ذاكرة SMART أو تبديلها بحقول مغناطيسية خارجية، خلافاً لما يمكن فعله في STT-MRAMs.
+وهذا بدوره يلغي احتمال أن تقوض هجمات المجال المغناطيسي سلامة البيانات أو تسعى إلى إحداث DoS.
+ولمعالجة بقاء البيانات في ذاكرة SMART بعد إيقاف التشغيل، نبرهن مخطط تشفير داخل الذاكرة يستخدم منطق controlled-NOT (CNOT) القائم على ترانزستورات ME-AFM.
+ونناقش متانة ذاكرة SMART في مواجهة الهجمات التي تهدف إلى تقويض سرية البيانات وموثوقيتها، في حالتي التشغيل وإيقاف التشغيل.
+ويمكن تلخيص المساهمات الرئيسة لهذا العمل على النحو الآتي:</p>
+</div>
+<div class="ltx_para" id="S1.SS2.p2">
+<ol class="ltx_enumerate" id="S1.I1">
+<li class="ltx_item" id="S1.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S1.I1.i1.p1">
+<p class="ltx_p">نناقش تصميم SMART، وهي ذاكرة NVM آمنة قائمة على ME-AFM، وننفذ نموذجها الدائري في SPICE لمحاكاة أداء الذاكرة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S1.I1.i2.p1">
+<p class="ltx_p">نبرهن متانة ذاكرة SMART في مواجهة هجمات المجال المغناطيسي ودرجة الحرارة، التي يمكن أن تؤثر في ذواكر NVMs أخرى مثل STT-MRAM. كما نستكشف تبعات الهجمات المختلفة عبر القنوات الجانبية على ذاكرة SMART.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S1.I1.i3.p1">
+<p class="ltx_p">نقدم مخطط تشفير داخل الذاكرة باستخدام بوابات CNOT قائمة على ترانزستورات ME-AFM، يسمى <span class="ltx_text ltx_font_italic">Memcryption</span>، لحماية البيانات المخزنة في ذاكرة SMART من هجمات الإقلاع البارد وسرقة وحدات DIMM، مع تحمل أعباء كمون تشفير منخفضة.
+ونود أن نذكر هنا أن <span class="ltx_text ltx_font_italic">Memcryption</span> مصمم تحديداً من أجل ME-AFMRAM، وليس من أجل NVM عام. كما أنه لا يؤمّن نظام الذاكرة ضد هجمات <span class="ltx_text ltx_font_italic">التنصت على الناقل</span>؛ فهذه الهجمات تقع خارج نطاق هذا العمل.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S1.SS2.p3">
+<p class="ltx_p">في القسم التالي، نصف نمذجة ذاكرة ME-AFM المقترحة وتنفيذها وقياس أدائها معيارياً على مستويي الخلية والمصفوفة، قبل الانتقال إلى تقييم خصائصها الأمنية في القسم <a class="ltx_ref" href="#S3" title="III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">III</span></a>.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">II </span><span class="ltx_text ltx_font_smallcaps">نموذج الجهاز ووظيفته</span>
+</h2>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">II-A </span><span class="ltx_text ltx_font_italic">التأثير المغناطوكهربائي</span>
+</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">يمثل التأثير ME الخطي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">agyei1990linear</span>]</cite> الاقتران بين المجال المغناطيسي المطبق والاستقطاب المستحث، أو بين المجال الكهربائي المطبق والمغنطة المستحثة، في البلورات غير المركزية التناظر مثل الكروميا (<math alttext="\text{Cr}_{2}\text{O}_{3}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m1"><mrow><msub><mtext>Cr</mtext><mn>2</mn></msub><mo>⁢</mo><msub><mtext>O</mtext><mn>3</mn></msub></mrow></math>). وبالمقارنة مع انعكاس مغنطة FM القائم على STT، الذي يتطلب تيارات كهربائية من رتبة <math alttext="\sim 10^{6}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m2"><mrow><mi></mi><mo>∼</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></math> A/cm<sup class="ltx_sup">2</sup> ويتسبب بتسخين جول مرافق، يوفر التأثير ME تبديلاً كهربائياً بالكامل وفعالاً طاقياً لمغنطة الحد السطحي في الكروميا غير الحساسة للخشونة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">echtenkamp2013electric</span>]</cite>. وإضافة إلى ذلك، فالكروميا AFM؛ ولذلك فإن العزم المغناطيسي الحجمي الصافي
+(أي فرق متجهات مغنطة الشبكات الفرعية) ينعدم ويصبح غير محسوس خارجياً.
+ومع ذلك، فإن مغنطة الحد السطحي مقترنة بقوة بمعلمة ترتيب AFM. أي إن التبديل الكهربائي لترتيب AFM يؤدي إلى انعكاس مغنطة الحد السطحي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">wu2011imaging</span>]</cite>، وهو ما يُستخدم لترميز المعلومات في ذواكر ME-AFM.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">تؤدي العزوم السطحية غير المتكافئة عند سطح (0001) في الكروميا إلى مغنطة حدية توازنية، يمكن أن تكون في إحدى حالتي مجال متعاكستين في الاصطفاف ومتناظرتين في الطاقة.
+ويُرفع التناظر بين المجالين عبر التخمير ME، الذي يسمح بالاختيار التفضيلي لإحدى الحالتين <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">he2010robust</span>]</cite>. أي إن التخمير ME يستقطب السطح وينتج
+عزماً سطحياً وحيد المجال.
+وقد بُرهن تجريبياً التبديل المتساوي الحرارة بين حالتي المجال الوحيد هاتين باستخدام مجال كهربائي <math alttext="E" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m1"><mi>E</mi></math> ومجال مغناطيسي مستمر صغير كاسر للتناظر <math alttext="H" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m2"><mi>H</mi></math> <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">he2010robust</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">fallarino2015magnetic</span>]</cite>.
+والشرط الحرج لهذا التبديل ME هو أن يتجاوز مقدار حاصل الضرب <math alttext="E\cdot H" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m3"><mrow><mi>E</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>H</mi></mrow></math> حاجز طاقة العتبة ME، الذي ثبت تجريبياً أنه يمكن أن ينخفض إلى <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m4"><mo>≈</mo></math> 1 J/m<sup class="ltx_sup">3</sup> <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">brown1969domain</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">martin1966antiferromagnetic</span>]</cite>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">II-B </span><span class="ltx_text ltx_font_italic">ME-AFMRAM: مبدأ العمل</span>
+</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">تظهر ME-AFMRAM القائمة على الكروميا، التي تقع في صميم ذاكرة SMART لدينا، في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ II-B ME-AFMRAM: مبدأ العمل ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">1</span></a>. وقد بُرهن ME-AFMRAM تجريبياً بواسطة Kosub <span class="ltx_text ltx_font_italic">وآخرون</span> <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kosub2017purely</span>]</cite>، وهي تملك قطب بوابة سفلياً (بوابة بلاتين في الشكل) لتطبيق جهد البوابة <math alttext="V_{G}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m1"><msub><mi>V</mi><mi>G</mi></msub></math> وتوفير المجال الكهربائي اللازم لكتابة البيانات في الذاكرة. ويوفر المجال الشارد لمغناطيس دائم مجالاً مغناطيسياً صغيراً كاسراً للتناظر (<math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m2"><mo>≈</mo></math> 30 mT). وسيوجه الجهد الموجب <math alttext="V_{G}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m3"><msub><mi>V</mi><mi>G</mi></msub></math> الترتيب الحجمي، ومن ثم يضع مغنطة السطح في مجال واحد (مع عزوم سطحية متجهة إلى الأعلى)، بينما يؤدي الجهد السالب إلى ارتخاء مغنطة السطح نحو المجال المعاكس (مع عزوم سطحية متجهة إلى الأسفل). وتتوافق هاتان الحالتان مع المستويين الثنائيين ‘1’ (<math alttext="V_{G}&gt;0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m4"><mrow><msub><mi>V</mi><mi>G</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></math>) و‘0’ (<math alttext="V_{G}&lt;0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m5"><mrow><msub><mi>V</mi><mi>G</mi></msub><mo>&lt;</mo><mn>0</mn></mrow></math>)، على التوالي. ويقابل جهد بوابة مقداره 0 V نمط ‘الاحتفاظ’ في خلية الذاكرة. ويُلاحظ أن الخلية تعمل كذاكرة غير متطايرة في جميع مجالات جهد البوابة، وليس فقط عند <math alttext="V_{G}=0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p1.m6"><mrow><msub><mi>V</mi><mi>G</mi></msub><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="238" id="S2.F1.g1" src="x1.png" width="308"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>ذاكرة وصول عشوائي مغناطوكهربائية مضادّة للمغناطيسية قائمة على الكروميا. تُكتب البيانات (1/0) بتطبيق جهد (<math alttext="+/-" class="ltx_Math" dir="ltr" display="inline" id="S2.F1.m2"><mrow><mo>+</mo><mo lspace="0em">⁣</mo><mo>/</mo><mo lspace="0em">⁣</mo><mo>−</mo></mrow></math>) على قطب البوابة السفلي. وتتحقق القراءة باستخدام قطب قضيب هول شاذ موضوع في الأعلى، عبر تطبيق انحياز هول.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">تتحقق القراءة باستخدام إعداد قطب على شكل قضيب هول شاذ (AH)، يميّز مغنطة الحد السطحي للكروميا باستشعار المغنطة المستحثة بتأثير القرب في قطب البلاتين (Pt) القريب، منتجاً بذلك
+جهد هول متناسباً <math alttext="V_{\text{xy}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p2.m1"><msub><mi>V</mi><mtext>xy</mtext></msub></math> (أو <math alttext="V_{\text{AHE}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS2.p2.m2"><msub><mi>V</mi><mtext>AHE</mtext></msub></math>) <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kosub2015all</span>]</cite>. وتقليدياً، تُقرأ معلمة ترتيب AFMs عبر ترتيب انحياز تبادلي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">toyoki2015magnetoelectric</span>]</cite> في FM أخرى ملحقة مباشرة بسطح AFM. غير أن الانحياز التبادلي وتباطؤ FM يزيدان الجهد القسري المطلوب لتجاوز حاجز ME، ومن ثم يؤثران سلباً في طاقة الكتابة. ولتجنب هذا الأثر، اقترح Kosub <span class="ltx_text ltx_font_italic">وآخرون</span> <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kosub2017purely</span>]</cite> استخدام إعداد ME-AFM حصراً مع قراءة AH لمغنطة السطح، مما يلغي الحاجة إلى FM.
+وفي وقت كتابة هذه الورقة، لا يزال الفهم الفيزيائي الكامل لآلية قراءة مغنطة الحد السطحي في الكروميا غير متوافر. وبينما نظر المؤلفون في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kosub2017purely</span>]</cite> إلى قراءة قائمة على AH في جهازهم، كشفت تجارب حديثة أجرتها مجموعة C. Binek في University of Nebraska-Lincoln عن مساهمة المقاومة المغناطيسية لهول اللف المغزلي (SMR) في إشارة القراءة، وهي مساهمة قيد البحث حالياً.
+ومع ذلك، تجدر ملاحظة أن مقدار مستويات الإشارة متماثل في الحالتين (AH مقابل SMR)، وأن نماذج الدوائر المطورة ستبقى هي نفسها أيضاً، وإن اختلفت معاملات الدخل.
+ولأغراض هذه الورقة، نعدّ أن إشارة القراءة تعود إلى تأثير AH في المعدن الثقيل القريب، كما نوقش أيضاً في الأعمال التجريبية السابقة.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">II-C </span><span class="ltx_text ltx_font_italic">نمذجة الأداء</span>
+</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p">يمكن تصنيف آلية الانعكاس ME في الكروميا عموماً إلى فئتين، تبعاً لحجم الغشاء مقارنةً بعرض جدار المجال (DW) المميز. وبالنسبة إلى الكروميا، يكون عرض DW النموذجي <math alttext="\lambda=\sqrt{A/\mathcal{K}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m1"><mrow><mi>λ</mi><mo>=</mo><msqrt><mrow><mi>A</mi><mo>/</mo><mi class="ltx_font_mathcaligraphic">𝒦</mi></mrow></msqrt><mo>∼</mo><mi></mi></mrow></math> 50-100 nm، حيث إن <math alttext="A" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m2"><mi>A</mi></math> هو ثابت صلابة التبادل و<math alttext="\mathcal{K}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m3"><mi class="ltx_font_mathcaligraphic">𝒦</mi></math> هي طاقة التباين وحيد المحور <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">belashchenko2016magnetoelectric</span>]</cite>.
+إذا كانت العينة أصغر بكثير من عرض DW، فإنها تنعكس بالدوران المتماسك عند تطبيق ضغط ME. أما في أبعاد عينة مقاربة لعرض DW، فيحدث الانعكاس ME عبر تنوية DW وانتشاره، وهي عملية تبديل غير متماسكة.
+وفي كل من الدوران المتماسك وانتشار DW، يمكن أن يكون الانعكاس منشطاً حرارياً عندما يكون ضغط ME المطبق أدنى من حاجز الطاقة بين حالتي المجال المستقرتين. وبخلاف ذلك، يتقدم انعكاس المجال في نظام ‘الجريان’ <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">parthasarathy2019dynamics</span>]</cite>.
+وتقع أبعاد أجهزة ME-AFMRAM المصنعة حالياً في مجال <math alttext="\mu" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m4"><mi>μ</mi></math>m، مما يجعل انتشار DW آلية الانعكاس ME المفضلة. ولتوصيف وظيفة ME-AFMRAM المعتمدة على الكروميا وأدائها، نطور نماذج دوائرية تمثل الانعكاس القائم على DW في كل من النظام المنشط حرارياً ونظام الجريان. كما نقدم رؤى وإمكانات مستقبلية
+بشأن التحجيم البعدي للجهاز، الذي قد يتيح انعكاساً فائق السرعة ومتّسقاً قائماً على الدوران.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS3.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">II-C1 </span>انعكاس DW في ME-AFMRAM المعتمدة على الكروميا</h4>
+<div class="ltx_para" id="S2.SS3.SSS1.p1">
+<p class="ltx_p">لننظر في عينة كروميا ينشئ فيها ضغط ME المطبق فرق ضغط مقداره <math alttext="\mathcal{F}=|2\alpha_{\text{ME}}EH|" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p1.m1"><mrow><mi class="ltx_font_mathcaligraphic">ℱ</mi><mo>=</mo><mrow><mo stretchy="false">|</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>α</mi><mtext>ME</mtext></msub><mo>⁢</mo><mi>E</mi><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">|</mo></mrow></mrow></math> بين المجالين. وهنا، تمثل <math alttext="\alpha_{\mathrm{ME}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p1.m2"><msub><mi>α</mi><mi>ME</mi></msub></math> معامل ME الخطي.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p2">
+<p class="ltx_p">إذا كان <math alttext="\mathcal{F}&gt;\mathcal{F}_{d}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m1"><mrow><mi class="ltx_font_mathcaligraphic">ℱ</mi><mo>&gt;</mo><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mi>d</mi></msub></mrow></math> (أي بالنسبة إلى ضغط إزالة تثبيت DW)، فإن DW ينتشر كجريان لزج بسرعة تعطى بالعلاقة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">parthasarathy2019dynamics</span>]</cite></p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\nu_{\text{flow}}=\frac{\alpha_{\text{G}}\gamma\lambda}{\alpha_{+}\xi^{2}}\Big%
+{(}\frac{\mathcal{F}-\mathcal{F}_{\text{d}}}{M_{\text{s}}}\Big{)}," class="ltx_Math" dir="ltr" display="block" id="S2.Ex1.m1"><mrow><mrow><msub><mi>ν</mi><mtext>flow</mtext></msub><mo>=</mo><mrow><mfrac><mrow><msub><mi>α</mi><mtext>G</mtext></msub><mo>⁢</mo><mi>γ</mi><mo>⁢</mo><mi>λ</mi></mrow><mrow><msub><mi>α</mi><mo>+</mo></msub><mo>⁢</mo><msup><mi>ξ</mi><mn>2</mn></msup></mrow></mfrac><mo>⁢</mo><mrow><mo maxsize="160%" minsize="160%">(</mo><mfrac><mrow><mi class="ltx_font_mathcaligraphic">ℱ</mi><mo>−</mo><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mtext>d</mtext></msub></mrow><msub><mi>M</mi><mtext>s</mtext></msub></mfrac><mo maxsize="160%" minsize="160%">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="\alpha_{\text{G}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m2"><msub><mi>α</mi><mtext>G</mtext></msub></math> هو ثابت تخميد Gilbert، و<math alttext="\gamma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m3"><mi>γ</mi></math> هي النسبة الجيرومغناطيسية للإلكترون، و<math alttext="M_{\text{s}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m4"><msub><mi>M</mi><mtext>s</mtext></msub></math> هي مغنطة الإشباع للشبكة الفرعية، و<math alttext="\xi=\frac{\alpha_{\text{ME}}E}{\mu_{0}M_{\text{s}}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m5"><mrow><mi>ξ</mi><mo>=</mo><mfrac><mrow><msub><mi>α</mi><mtext>ME</mtext></msub><mo>⁢</mo><mi>E</mi></mrow><mrow><msub><mi>μ</mi><mn>0</mn></msub><mo>⁢</mo><msub><mi>M</mi><mtext>s</mtext></msub></mrow></mfrac></mrow></math>.
+ولمسار حر متوسط مقداره <math alttext="l" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m6"><mi>l</mi></math> لجدار DW، يكون المقياس الزمني للانعكاس ME الناجم عن الانتشار اللزج لجدار DW هو <math alttext="\tau_{\text{flow}}=l/\nu_{\text{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p2.m7"><mrow><msub><mi>τ</mi><mtext>flow</mtext></msub><mo>=</mo><mrow><mi>l</mi><mo>/</mo><msub><mi>ν</mi><mtext>flow</mtext></msub></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p3">
+<p class="ltx_p">إذا كان <math alttext="\mathcal{F}&lt;\mathcal{F}_{\text{d}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m1"><mrow><mi class="ltx_font_mathcaligraphic">ℱ</mi><mo>&lt;</mo><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mtext>d</mtext></msub></mrow></math>، فإن DW يخضع لزحف حراري لتجاوز حاجز إزالة التثبيت، بمقياس زمني <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">parthasarathy2019dynamics</span>]</cite></p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\tau_{\text{creep}}=\sqrt{\frac{\sigma\mathcal{S}^{3}}{kT}}\Big{(}\frac{%
+\mathcal{F}_{\text{d}}-\mathcal{F}}{2\pi\epsilon}\Big{)}\exp\Big{[}{\frac{%
+\mathcal{S}^{2}(\mathcal{F}_{\text{d}}-\mathcal{F})^{2}}{4\pi kT\epsilon}\Big{%
+]}}," class="ltx_Math" dir="ltr" display="block" id="S2.Ex2.m1"><mrow><mrow><msub><mi>τ</mi><mtext>creep</mtext></msub><mo>=</mo><mrow><msqrt><mfrac><mrow><mi>σ</mi><mo>⁢</mo><msup><mi class="ltx_font_mathcaligraphic">𝒮</mi><mn>3</mn></msup></mrow><mrow><mi>k</mi><mo>⁢</mo><mi>T</mi></mrow></mfrac></msqrt><mo>⁢</mo><mrow><mo maxsize="160%" minsize="160%">(</mo><mfrac><mrow><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mtext>d</mtext></msub><mo>−</mo><mi class="ltx_font_mathcaligraphic">ℱ</mi></mrow><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>ϵ</mi></mrow></mfrac><mo maxsize="160%" minsize="160%">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo maxsize="160%" minsize="160%">[</mo><mfrac><mrow><msup><mi class="ltx_font_mathcaligraphic">𝒮</mi><mn>2</mn></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mtext>d</mtext></msub><mo>−</mo><mi class="ltx_font_mathcaligraphic">ℱ</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mrow><mn>4</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>k</mi><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>ϵ</mi></mrow></mfrac><mo maxsize="160%" minsize="160%">]</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="kT" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m2"><mrow><mi>k</mi><mo>⁢</mo><mi>T</mi></mrow></math> هي الطاقة الحرارية (25 meV عند 300 K)، و<math alttext="\epsilon" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m3"><mi>ϵ</mi></math> و<math alttext="\sigma" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m4"><mi>σ</mi></math> و<math alttext="\mathcal{S}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p3.m5"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>
+هي، على التوالي، طاقة DW وكثافته السطحية ومساحته السطحية. ويتحدد ضغط إزالة تثبيت DW بطاقة DW ومساحته السطحية ونصف قطر مركز إزالة التثبيت غير المغناطيسي.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS1.p4">
+<p class="ltx_p">لكتابة ‘1’ (‘0’) في خلية الذاكرة، يلزم مجال كهربائي موجب (سالب)، <math alttext="E_{\mathrm{app}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m1"><msub><mi>E</mi><mi>app</mi></msub></math>، بمقدار أكبر من المجال الكهربائي الحرج، <math alttext="E_{\mathrm{crit}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m2"><msub><mi>E</mi><mi>crit</mi></msub></math>، وذلك لتلبية معايير انتشار DW <math alttext="\mathcal{F}&gt;\mathcal{F}_{d}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m3"><mrow><mi class="ltx_font_mathcaligraphic">ℱ</mi><mo>&gt;</mo><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mi>d</mi></msub></mrow></math>. وفي هذه الحالة، يساوي زمن كتابة البيانات في الذاكرة <math alttext="\tau_{\mathrm{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m4"><msub><mi>τ</mi><mi>flow</mi></msub></math>. وعندما يكون <math alttext="E_{\mathrm{app}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m5"><msub><mi>E</mi><mi>app</mi></msub></math> أصغر من <math alttext="E_{\mathrm{crit}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m6"><msub><mi>E</mi><mi>crit</mi></msub></math> (أي <math alttext="\mathcal{F}&lt;\mathcal{F}_{d}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m7"><mrow><mi class="ltx_font_mathcaligraphic">ℱ</mi><mo>&lt;</mo><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mi>d</mi></msub></mrow></math>)، تكون خلية الذاكرة في نمط الاحتفاظ، ويُحدد زمن الاحتفاظ بواسطة <math alttext="\tau_{\mathrm{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m8"><msub><mi>τ</mi><mi>creep</mi></msub></math>. وبالنسبة إلى معاملات نموذجية للكروميا، نجد أن <math alttext="\tau_{\mathrm{creep}}\gg\tau_{\mathrm{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m9"><mrow><msub><mi>τ</mi><mi>creep</mi></msub><mo>≫</mo><msub><mi>τ</mi><mi>flow</mi></msub></mrow></math>، مما يضمن أن خلية الذاكرة مستقرة حرارياً عندما لا يجري الوصول إليها. وهنا، تتحدد استقرارية الخلية بواسطة <math alttext="\tau_{\text{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p4.m10"><msub><mi>τ</mi><mtext>creep</mtext></msub></math>، لأن الاحتفاظ الأطول بالبيانات يتطلب أن يكون ثابت الزمن في نمط الاحتفاظ أكبر. ويمكن تحسين زمن الاحتفاظ في الخلية أكثر بزيادة أبعادها.</p>
+</div>
+<figure class="ltx_figure" id="S2.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="153" id="S2.F2.g1" src="x2.png" width="611"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>الدائرة المكافئة لخلية ME-AFMRAM المعتمدة على الكروميا. يكتب <math alttext="I_{\text{int}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m6"><msub><mi>I</mi><mtext>int</mtext></msub></math>، المشتق من خط البت، البيانات على العقدة <math alttext="V_{\text{ME}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m7"><msub><mi>V</mi><mtext>ME</mtext></msub></math>. ويكون ثابت الزمن لعملية الكتابة <math alttext="\tau_{\text{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m8"><msub><mi>τ</mi><mtext>flow</mtext></msub></math> (<math alttext="\tau_{\text{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m9"><msub><mi>τ</mi><mtext>creep</mtext></msub></math>) إذا كان الجهد المطبق أكبر (أصغر) من الجهد الحرج. وتتحقق القراءة عبر إعداد AH، نمذجناه بمصدر جهد متحكم فيه بالجهد. وتمثل <math alttext="\text{C}_{\text{EL}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m10"><msub><mtext>C</mtext><mtext>EL</mtext></msub></math> السعة الكهروستاتيكية لعازل الكروميا.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="269" id="S2.F3.g1" src="x3.png" width="343"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>محاكاة عابرة تُظهر عمليات الكتابة على خلية ME-AFMRAM المعتمدة على الكروميا. يُلاحظ أنه عند كتابة ‘1’ تكون نبضة الكتابة موجبة، وعند كتابة ‘0’ تكون نبضة الكتابة سالبة. وفي هذه المحاكاة تُكتب في الخلية سلسلة من قيم ‘1’ (0.3 V) وقيم ‘0’ (-0.3 V)، ثم تُحتفظ أخيراً بالقيمة ‘0’ بعد إيقاف تمكين الكتابة.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS3.SSS1.p5">
+<p class="ltx_p">نبني نموذج دائرة SPICE لالتقاط ديناميكيات الانعكاس ME في الكروميا وظيفياً. ويمثل ثابت الزمن لانعكاس مغنطة الكروميا بسبب ضغط ME مطبق بالرمز <math alttext="R_{\text{eq}}\times C_{\text{eq}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m1"><mrow><msub><mi>R</mi><mtext>eq</mtext></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>C</mi><mtext>eq</mtext></msub></mrow></math>. ومن دون فقدان العمومية، يستخدم نموذج الدائرة <math alttext="R_{\text{eq}}=1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m2"><mrow><msub><mi>R</mi><mtext>eq</mtext></msub><mo>=</mo><mn>1</mn></mrow></math> <math alttext="\Omega" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m3"><mi mathvariant="normal">Ω</mi></math>، في حين يكون <math alttext="C_{\text{eq}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m4"><msub><mi>C</mi><mtext>eq</mtext></msub></math> إما <math alttext="\tau_{\text{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m5"><msub><mi>τ</mi><mtext>flow</mtext></msub></math> أو <math alttext="\tau_{\text{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m6"><msub><mi>τ</mi><mtext>creep</mtext></msub></math>.
+ولبناء خلية ME-AFMRAM الكاملة، نجمع نموذج RC لاستجابة ME في الكروميا مع دوائر القراءة/الكتابة الطرفية في <span class="ltx_text ltx_font_italic">Cadence Virtuoso</span> باستخدام تقنية CMOS FreePDK ذات العقدة 15-nm. ويعرض الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ II-C1 انعكاس DW في ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">2</span></a> الدائرة المكافئة لخلية ME-AFMRAM.
+وتُوفَّر نبضة الكتابة، المستخدمة لشحن عازل الكروميا وتبديل
+مغنطته <math alttext="M" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m7"><mi>M</mi></math>، عبر مصدر التيار <math alttext="I_{\text{int}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m8"><msub><mi>I</mi><mtext>int</mtext></msub></math> (المشتق من خط البت) في إعداد الكتابة.
+وبالنسبة إلى معاملات الكروميا المدرجة في الجدول <a class="ltx_ref" href="#S2.T1" title="TABLE I ‣ II-C4 المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">I</span></a>،
+<math alttext="C_{\text{flow}}=\tau_{\text{flow}}\sim 0.223" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m9"><mrow><msub><mi>C</mi><mtext>flow</mtext></msub><mo>=</mo><msub><mi>τ</mi><mtext>flow</mtext></msub><mo>∼</mo><mn>0.223</mn></mrow></math> nF، و<math alttext="C_{\text{creep}}=\tau_{\text{creep}}\sim 1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m10"><mrow><msub><mi>C</mi><mtext>creep</mtext></msub><mo>=</mo><msub><mi>τ</mi><mtext>creep</mtext></msub><mo>∼</mo><mn>1</mn></mrow></math> mF، و<math alttext="V_{\text{crit}}=0.2" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m11"><mrow><msub><mi>V</mi><mtext>crit</mtext></msub><mo>=</mo><mn>0.2</mn></mrow></math> V. عند <math alttext="|V_{G}|&gt;0.2" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m12"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>V</mi><mi>G</mi></msub><mo stretchy="false">|</mo></mrow><mo>&gt;</mo><mn>0.2</mn></mrow></math> V، يتتبع <math alttext="V_{\text{ME}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m13"><msub><mi>V</mi><mtext>ME</mtext></msub></math> القيمة <math alttext="V_{G}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m14"><msub><mi>V</mi><mi>G</mi></msub></math> وتُكتب البيانات في الخلية بعد كمون وصول كتابة مقداره <math alttext="\tau_{\mathrm{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m15"><msub><mi>τ</mi><mi>flow</mi></msub></math>.
+وعندما يكون <math alttext="|V_{G}|=0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m16"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>V</mi><mi>G</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>0</mn></mrow></math> V، تُحتفظ البيانات لمدة زمنية مقدارها <math alttext="\tau_{\text{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m17"><msub><mi>τ</mi><mtext>creep</mtext></msub></math>. ونظراً إلى أن <math alttext="\tau_{\text{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m18"><msub><mi>τ</mi><mtext>creep</mtext></msub></math> كبير جداً، فإن الاستجابة في نمط الاحتفاظ/الزحف بطيئة للغاية مقارنةً بنمط الكتابة/الجريان. وتُعرض الاستجابة العابرة لخلية ME-AFMRAM في الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ II-C1 انعكاس DW في ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">3</span></a> لإبراز عملية الكتابة. ويُستحصل كمون الكتابة لخلية ME-AFMRAM بقيمة <math alttext="\sim 0.63" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m19"><mrow><mi></mi><mo>∼</mo><mn>0.63</mn></mrow></math> ns، وتبلغ طاقة كل بت في عملية كتابة واحدة <math alttext="\sim 0.063" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m20"><mrow><mi></mi><mo>∼</mo><mn>0.063</mn></mrow></math> pJ، بما في ذلك الطاقة المطلوبة لشحن السعة الكهروستاتيكية للكروميا.
+وبالنظر إلى السماحية العازلة النسبية 11 والأبعاد المذكورة في الجدول <a class="ltx_ref" href="#S2.T1" title="TABLE I ‣ II-C4 المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">I</span></a>، تُحسب السعة الكهروستاتيكية للكروميا على أنها <math alttext="5.8" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS1.p5.m21"><mn>5.8</mn></math> aF.</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS3.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">II-C2 </span>القراءة بتأثير هول الشاذ</h4>
+<div class="ltx_para" id="S2.SS3.SSS2.p1">
+<p class="ltx_p">لتقييم دورة القراءة، نضبط الإشارتين WE على 0 وRE على 1 في الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ II-C1 انعكاس DW في ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">2</span></a>. صُمم إعداد القراءة لاستشعار مغنطة الحد السطحي للكروميا عبر ترتيب AH يحوّل المغنطة إلى إشارة جهدية. وتُنمذج عملية التحويل هذه باستخدام مصدر جهد متحكم فيه بالجهد
+(VCVS). وعادةً ما يُستخدم معدن ثقيل مثل Pt لاستشعار العزم المستحث بتأثير القرب من طبقة الكروميا المقترنة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kosub2017purely</span>]</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS2.p2">
+<p class="ltx_p">يُعطى جهد AH المستشعر من ترتيب قضيب هول بالعلاقة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">griffiths2017anomalous</span>]</cite></p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="V_{\text{AHE}}=\Big{(}\frac{\mu_{0}R_{\text{s}}}{t_{\text{Hall}}}I_{\text{Hall%
+}}\Big{)}M_{\text{z}}," class="ltx_Math" dir="ltr" display="block" id="S2.Ex3.m1"><mrow><mrow><msub><mi>V</mi><mtext>AHE</mtext></msub><mo>=</mo><mrow><mrow><mo maxsize="160%" minsize="160%">(</mo><mrow><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mo>⁢</mo><msub><mi>R</mi><mtext>s</mtext></msub></mrow><msub><mi>t</mi><mtext>Hall</mtext></msub></mfrac><mo>⁢</mo><msub><mi>I</mi><mtext>Hall</mtext></msub></mrow><mo maxsize="160%" minsize="160%">)</mo></mrow><mo>⁢</mo><msub><mi>M</mi><mtext>z</mtext></msub></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="\mu_{0}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m1"><msub><mi>μ</mi><mn>0</mn></msub></math> هي نفاذية الفراغ، و<math alttext="R_{\text{s}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m2"><msub><mi>R</mi><mtext>s</mtext></msub></math> هو معامل AH، و<math alttext="I_{\text{Hall}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m3"><msub><mi>I</mi><mtext>Hall</mtext></msub></math> هو تيار انحياز هول، و<math alttext="t_{\text{Hall}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m4"><msub><mi>t</mi><mtext>Hall</mtext></msub></math> هو سمك طبقة هول، و<math alttext="M_{\text{z}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m5"><msub><mi>M</mi><mtext>z</mtext></msub></math> هي المغنطة المستحثة بتأثير القرب. وفي حالة Pt/Cr<sub class="ltx_sub">2</sub>O<sub class="ltx_sub">3</sub>، لا يزيد <math alttext="R_{\text{s}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m8"><msub><mi>R</mi><mtext>s</mtext></msub></math> إلا على نحو <math alttext="\sim 5" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m9"><mrow><mi></mi><mo>∼</mo><mn>5</mn></mrow></math> p<math alttext="\Omega" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m10"><mi mathvariant="normal">Ω</mi></math>m/T عند <math alttext="t_{\text{Pt}}=10" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m11"><mrow><msub><mi>t</mi><mtext>Pt</mtext></msub><mo>=</mo><mn>10</mn></mrow></math> nm و<math alttext="T=300" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m12"><mrow><mi>T</mi><mo>=</mo><mn>300</mn></mrow></math> K <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">meyer2015anomalous</span>]</cite>. وينتج عن ذلك إشارة AH مقدارها <math alttext="V_{\text{AHE}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m13"><mrow><msub><mi>V</mi><mtext>AHE</mtext></msub><mo>∼</mo><mi></mi></mrow></math> 0.3 <math alttext="\mu" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m14"><mi>μ</mi></math>V، عند اعتبار انحياز هول مقداره 2 mA وجهد عقدة مغناطوكهربائية <math alttext="V_{\text{ME}}=0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m15"><mrow><msub><mi>V</mi><mtext>ME</mtext></msub><mo>=</mo><mn>0.3</mn></mrow></math> V. ويمكن رفع إشارة هول إلى <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m16"><mo>∼</mo></math> 1 <math alttext="\mu" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m17"><mi>μ</mi></math>V بزيادة <math alttext="V_{\text{app}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m18"><msub><mi>V</mi><mtext>app</mtext></msub></math> إلى 1 V، كما يمكن تعزيزها أكثر بتطبيق انحياز هول أكبر. إلا أن ذلك سيؤثر سلباً في الطاقة المستهلكة في عملية القراءة. وسيتطلب استشعار إشارة AH منخفضة كهذه ضمن مجال <math alttext="\mu" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m19"><mi>μ</mi></math>V مضخمات استشعار قياسية متقدمة ذات كلفة عالية في المساحة والاستطاعة
+(مثلاً مساحة 2.5 mm<sup class="ltx_sup">2</sup> واستطاعة ضمن مجال <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p2.m21"><mo>∼</mo></math>mW <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">witte2008current</span>]</cite>).</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS2.p3">
+<p class="ltx_p">يمكن معالجة هذه المشكلة باستكشاف أنظمة مواد أخرى ذات اقتران لف مغزلي-مداري (SOC) بيني أعلى بكثير، مما ينتج معاملات AH أكبر.
+في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">zhang2014effective</span>]</cite>، ثبت أن ثلاثية الطبقات Pt/Co/Pt تبدي <math alttext="R_{\text{s}}\sim 7.3\times 10^{-10}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m1"><mrow><msub><mi>R</mi><mtext>s</mtext></msub><mo>∼</mo><mrow><mn>7.3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>10</mn></mrow></msup></mrow></mrow></math> <math alttext="\Omega" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m2"><mi mathvariant="normal">Ω</mi></math>m/T عند 300 K من أجل <math alttext="t_{\text{Co}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m3"><mrow><msub><mi>t</mi><mtext>Co</mtext></msub><mo>∼</mo><mi></mi></mrow></math> 10 nm، مما يؤدي إلى <math alttext="V_{\text{AHE}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m4"><mrow><msub><mi>V</mi><mtext>AHE</mtext></msub><mo>∼</mo><mi></mi></mrow></math> 43.8 <math alttext="\mu" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m5"><mi>μ</mi></math>V عند انحياز هول مقداره 2 mA و<math alttext="V_{\text{ME}}=0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m6"><mrow><msub><mi>V</mi><mtext>ME</mtext></msub><mo>=</mo><mn>0.3</mn></mrow></math> V.
+وتملك أشباه الموصلات المغناطيسية مثل EuTiO<sub class="ltx_sub">3</sub> قيماً أعلى لـ<math alttext="R_{\text{s}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m8"><mrow><msub><mi>R</mi><mtext>s</mtext></msub><mo>∼</mo><mi></mi></mrow></math> مقدارها <math alttext="8\times 10^{-9}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m9"><mrow><mn>8</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>9</mn></mrow></msup></mrow></math> <math alttext="\Omega" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m10"><mi mathvariant="normal">Ω</mi></math>m/T من أجل <math alttext="t_{\text{EuTiO}_{3}}=" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p3.m11"><mrow><msub><mi>t</mi><msub><mtext>EuTiO</mtext><mn>3</mn></msub></msub><mo>=</mo><mi></mi></mrow></math> 25 nm <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">takahashi2018anomalous</span>]</cite>. غير أن إشارات AH في مثل هذه العينات لم تُكشف إلا عند درجات حرارة منخفضة جداً، قدرها 2K، وهي درجات يختفي عندها التأثير ME في Cr<sub class="ltx_sub">2</sub>O<sub class="ltx_sub">3</sub>.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS2.p4">
+<p class="ltx_p">يمكن تحسين إشارة هول في العوازل الطوبولوجية (TI) بسبب وجود حالات سطحية معززة بـSOC عالٍ.
+فعلى سبيل المثال، يبرهن مكدس Bi<sub class="ltx_sub">2</sub>Se<sub class="ltx_sub">3</sub>/LaCoO<sub class="ltx_sub">3</sub> المدروس في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">zhu2018proximity</span>]</cite> قيمة <math alttext="R_{\text{s}}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m4"><msub><mi>R</mi><mtext>s</mtext></msub></math> تصل إلى <math alttext="\sim 1.59" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m5"><mrow><mi></mi><mo>∼</mo><mn>1.59</mn></mrow></math> <math alttext="\mu\Omega" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m6"><mrow><mi>μ</mi><mo>⁢</mo><mi mathvariant="normal">Ω</mi></mrow></math>m/T عند 100 K من أجل <math alttext="t_{\text{Bi}_{2}\text{Se}_{3}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m7"><mrow><msub><mi>t</mi><mrow><msub><mtext>Bi</mtext><mn>2</mn></msub><mo>⁢</mo><msub><mtext>Se</mtext><mn>3</mn></msub></mrow></msub><mo>∼</mo><mi></mi></mrow></math> 20 nm.
+وينتج عن ذلك تحسن جوهري في إشارة AH المتولدة (أي <math alttext="\sim 47.7" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m8"><mrow><mi></mi><mo>∼</mo><mn>47.7</mn></mrow></math> mV).
+ويُعزى تأثير AH في واجهة Bi<sub class="ltx_sub">2</sub>Se<sub class="ltx_sub">3</sub>/LaCoO<sub class="ltx_sub">3</sub> إلى الاقتران التبادلي بين طبقة Bi<sub class="ltx_sub">2</sub>Se<sub class="ltx_sub">3</sub> وطبقة LaCoO<sub class="ltx_sub">3</sub> الفيرومغناطيسية عبر تأثير القرب، ويعززه SOC البيني العالي.
+وبالمثل، يحقق نظام (BiSb)<sub class="ltx_sub">2</sub>Te<sub class="ltx_sub">3</sub>/TIG المدروس في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">tang2017above</span>]</cite> إشارة AH ضمن مجال mV، وإن كانت أقرب بكثير إلى درجة حرارة الغرفة.
+وتُوضح مقارنة <math alttext="R_{\text{s}}/t" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m17"><mrow><msub><mi>R</mi><mtext>s</mtext></msub><mo>/</mo><mi>t</mi></mrow></math> في أنظمة مواد مختلفة في الشكل <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ II-C2 القراءة بتأثير هول الشاذ ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">4</span></a>.
+وكما يمكن استنتاجه، فإن TIs مرشحة مثالية كمادة لتنفيذ طبقة قراءة AH مع Cr<sub class="ltx_sub">2</sub>O<sub class="ltx_sub">3</sub>، بسبب إمكانية الحصول على إشارة AH ضمن مجال <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS2.p4.m20"><mo>∼</mo></math>mV، يمكن قراءتها بسهولة باستخدام مضخم استشعار عادي بمزلاج تياري <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kobayashi1993current</span>]</cite>، أي من دون الحاجة إلى معدات استشعار متقدمة.</p>
+</div>
+<figure class="ltx_figure" id="S2.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="244" id="S2.F4.g1" src="x4.png" width="341"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>مقارنة معامل AH لكل وحدة سمك ومقدار إشارة AH في أنظمة مواد مختلفة. تُحسب إشارة AH <math alttext="V_{\text{AHE}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F4.m3"><msub><mi>V</mi><mtext>AHE</mtext></msub></math> لانحياز هول مقداره 2 mA وجهد عقدة مغناطوكهربائية <math alttext="V_{\text{ME}}\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.F4.m4"><mrow><msub><mi>V</mi><mtext>ME</mtext></msub><mo>∼</mo><mi></mi></mrow></math> 0.3 V. وتبدي TIs ذات SOC بيني عالٍ معاملات AH أكبر، ويمكنها توليد إشارات AH كبيرة قابلة للكشف بواسطة مضخمات استشعار تيارية تقليدية.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="258" id="S2.F5.g1" src="x5.png" width="338"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>قياس أداء خلية ME-AFMRAM المدروسة في هذا العمل معيارياً مقابل أحدث تقنيات ME-AFMRAM الحالية، واتجاهات أجهزة التخزين غير المتطايرة الناشئة الأخرى من <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">wong2016stanford</span>]</cite>. وتشمل بعض نقاط البيانات المهمة في هذا المخطط، التي تمثل التقدم في ذواكر NVMs مختلفة، كلاً من <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jan2012high</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">gajek2012spin</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">liu2010ultrafast</span>]</cite> من أجل STT-MRAM، و<cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">aratani2007novel</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">lin2010novel</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">vianello2012sb</span>]</cite> من أجل CBRAM، و<cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">zhao2014ultrathin</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">sekar2014technology</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">goux2014role</span>]</cite> من أجل RRAM، و <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">matsui2006ta2o5</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">kim2010high</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">xiong2013self</span>]</cite> من أجل PCM، على التوالي.
+وتكمن الإمكانات المستقبلية لـME-AFMRAM في تحقيق انعكاس فائق السرعة قائم على الدوران المتماسك (تأخير كتابة sub-100 ps وطاقة كتابة fJ) عبر الجمع بين التحجيم البعدي وتعزيز الإجهاد.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsubsection" id="S2.SS3.SSS3">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">II-C3 </span>الانعكاس القائم على الدوران المتماسك</h4>
+<div class="ltx_para" id="S2.SS3.SSS3.p1">
+<p class="ltx_p">يمكن تحسين كمون الكتابة ضمن مجال <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p1.m1"><mo>∼</mo></math>ns لخلية ME-AFMRAM تحسناً جذرياً إذا أمكن تبديل ترتيب الكروميا عبر الدوران المتماسك. ففي هذه الحالة، تخضع عينة الكروميا بأكملها للانعكاس بصورة متجانسة بدلاً من اتباع انتشار DW غير المتماسك. وعند <math alttext="\mathcal{F}_{d}&gt;4\mathcal{K}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p1.m2"><mrow><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mi>d</mi></msub><mo>&gt;</mo><mrow><mn>4</mn><mo>⁢</mo><mi class="ltx_font_mathcaligraphic">𝒦</mi></mrow></mrow></math>، تتبدل معلمة الترتيب عبر تخميد المبادرات الجيرومغناطيسية <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">parthasarathy2019dynamics</span>]</cite>. أما إذا كان <math alttext="\mathcal{F}_{d}&lt;4\mathcal{K}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p1.m3"><mrow><msub><mi class="ltx_font_mathcaligraphic">ℱ</mi><mi>d</mi></msub><mo>&lt;</mo><mrow><mn>4</mn><mo>⁢</mo><mi class="ltx_font_mathcaligraphic">𝒦</mi></mrow></mrow></math>، فقد تتبدل المغنطة بسبب التنشيط الحراري.
+وهنا يعتمد زمن التبديل اعتماداً أسياً على حاجز طاقة العينة.
+وفي جميع الأحوال،
+فإن التنشيط الحراري هو الذي يؤدي إلى أخطاء الاحتفاظ.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.SSS3.p2">
+<p class="ltx_p">لتحقيق الدوران المتماسك في الكروميا، يجب أن يتجاوز ضغط ME المطبق <math alttext="4\mathcal{K}=2.92\times 10^{4}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p2.m1"><mrow><mrow><mn>4</mn><mo>⁢</mo><mi class="ltx_font_mathcaligraphic">𝒦</mi></mrow><mo>=</mo><mrow><mn>2.92</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>4</mn></msup></mrow></mrow></math> J/m<sup class="ltx_sup">3</sup>. وبالنسبة إلى مجال مغناطيسي مقداره 0.5 T و<math alttext="\alpha_{\mathrm{ME}}=3.1" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p2.m3"><mrow><msub><mi>α</mi><mi>ME</mi></msub><mo>=</mo><mn>3.1</mn></mrow></math> ps/m، يكون المجال الكهربائي المطلوب للدوران المتماسك <math alttext="1.18\times 10^{10}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p2.m4"><mrow><mn>1.18</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></math> V/m. ولسوء الحظ، قد يؤدي مثل هذا المجال الكهربائي العالي إلى انهيار عازل الكروميا، نظراً إلى أن شدة انهيار الكروميا تبلغ <math alttext="\sim 2\times 10^{8}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.SSS3.p2.m5"><mrow><mi></mi><mo>∼</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>8</mn></msup></mrow></mrow></math> V/m <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">sun2017local</span>]</cite>.
+ويتمثل حل محتمل لهذا التحدي في تقليل التباين الفعال للعينة بحيث ينخفض مجال العتبة الكهربائي المطلوب. ويمكن تحقيق ذلك عبر تقنيات متعددة، تشمل السبك الاستبدالي وتطبيق إجهاد ميكانيكي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">mu2019influence</span>]</cite>. ويُقدّر أن كمون الكتابة في خلية ME-AFMRAM المعززة بالإجهاد يمكن أن ينخفض إلى بضع 10ات من ps. وتُعرض مقارنة بين أحدث ما وصلت إليه تقنية ME-AFMRAM حالياً وإمكاناتها المستقبلية مقابل اتجاهات أجهزة التخزين الناشئة الأخرى في الشكل <a class="ltx_ref" href="#S2.F5" title="Figure 5 ‣ II-C2 القراءة بتأثير هول الشاذ ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">5</span></a>.</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS3.SSS4">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">II-C4 </span>المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا</h4>
+<div class="ltx_para" id="S2.SS3.SSS4.p1">
+<p class="ltx_p">تُدرج معاملات المحاكاة المستخدمة في نماذج SPICE الخاصة بنا لـME-AFMRAM المعتمدة على الكروميا في الجدول التالي <a class="ltx_ref" href="#S2.T1" title="TABLE I ‣ II-C4 المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">I</span></a>.</p>
+</div>
+<figure class="ltx_table" id="S2.T1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" style="padding:1.2pt 2.8pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Parameter</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" style="padding:1.2pt 2.8pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Value</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" style="padding:1.2pt 2.8pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Ref.</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Saturation magnetization of Cr</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">2</span></sub><span class="ltx_text" style="font-size:80%;">O</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">3</span></sub><span class="ltx_text" style="font-size:80%;">, </span><math alttext="M_{\text{s}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m3"><msub><mi mathsize="80%">M</mi><mtext mathsize="80%">s</mtext></msub></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="2.6\times 10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m4"><mrow><mn mathsize="80%">2.6</mn><mo lspace="0.222em" mathsize="80%" rspace="0.222em">×</mo><msup><mn mathsize="80%">10</mn><mn mathsize="80%">5</mn></msup></mrow></math><span class="ltx_text" style="font-size:80%;"> A/m</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;"><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text" style="font-size:80%;">[</span><span class="ltx_ref ltx_missing_citation ltx_ref_self">artman1965magnetic</span><span class="ltx_text" style="font-size:80%;">]</span></cite></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Magnetoelectric coefficient of Cr</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">2</span></sub><span class="ltx_text" style="font-size:80%;">O</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">3</span></sub><span class="ltx_text" style="font-size:80%;">, </span><math alttext="\alpha_{\text{ME}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m7"><msub><mi mathsize="80%">α</mi><mtext mathsize="80%">ME</mtext></msub></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="3.1\times 10^{-12}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m8"><mrow><mn mathsize="80%">3.1</mn><mo lspace="0.222em" mathsize="80%" rspace="0.222em">×</mo><msup><mn mathsize="80%">10</mn><mrow><mo mathsize="80%">−</mo><mn mathsize="80%">12</mn></mrow></msup></mrow></math><span class="ltx_text" style="font-size:80%;"> s/m</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;"><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text" style="font-size:80%;">[</span><span class="ltx_ref ltx_missing_citation ltx_ref_self">hehl2008relativistic</span><span class="ltx_text" style="font-size:80%;">]</span></cite></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Uniaxial anisotropy energy of Cr</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">2</span></sub><span class="ltx_text" style="font-size:80%;">O</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">3</span></sub><span class="ltx_text" style="font-size:80%;">, </span><math alttext="\mathcal{K}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m11"><mi class="ltx_font_mathcaligraphic" mathsize="80%">𝒦</mi></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="7300" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m12"><mn mathsize="80%">7300</mn></math><span class="ltx_text" style="font-size:80%;"> J/m</span><sup class="ltx_sup"><span class="ltx_text" style="font-size:80%;">3</span></sup>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;"><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text" style="font-size:80%;">[</span><span class="ltx_ref ltx_missing_citation ltx_ref_self">foner1963high</span><span class="ltx_text" style="font-size:80%;">]</span></cite></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Gilbert damping constant of Cr</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">2</span></sub><span class="ltx_text" style="font-size:80%;">O</span><sub class="ltx_sub"><span class="ltx_text" style="font-size:80%;">3</span></sub><span class="ltx_text" style="font-size:80%;">, </span><math alttext="\alpha_{\text{G}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m16"><msub><mi mathsize="80%">α</mi><mtext mathsize="80%">G</mtext></msub></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;"><math alttext="2\times 10^{-4}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m17"><mrow><mn mathsize="80%">2</mn><mo lspace="0.222em" mathsize="80%" rspace="0.222em">×</mo><msup><mn mathsize="80%">10</mn><mrow><mo mathsize="80%">−</mo><mn mathsize="80%">4</mn></mrow></msup></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;"><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text" style="font-size:80%;">[</span><span class="ltx_ref ltx_missing_citation ltx_ref_self">belashchenko2016magnetoelectric</span><span class="ltx_text" style="font-size:80%;">]</span></cite></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Threshold ME pressure to depin DW, </span><math alttext="\mathcal{F}_{\text{d}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m18"><msub><mi class="ltx_font_mathcaligraphic" mathsize="80%">ℱ</mi><mtext mathsize="80%">d</mtext></msub></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="25" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m19"><mn mathsize="80%">25</mn></math><span class="ltx_text" style="font-size:80%;"> J/m</span><sup class="ltx_sup"><span class="ltx_text" style="font-size:80%;">3</span></sup>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;"><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text" style="font-size:80%;">[</span><span class="ltx_ref ltx_missing_citation ltx_ref_self">parthasarathy2019dynamics</span><span class="ltx_text" style="font-size:80%;">]</span></cite></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Applied magnetic field, </span><math alttext="H_{\text{app}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m21"><msub><mi mathsize="80%">H</mi><mtext mathsize="80%">app</mtext></msub></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="0.5" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m22"><mn mathsize="80%">0.5</mn></math><span class="ltx_text" style="font-size:80%;"> T</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Applied voltage, </span><math alttext="V_{\text{G}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m23"><msub><mi mathsize="80%">V</mi><mtext mathsize="80%">G</mtext></msub></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="0.3" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m24"><mn mathsize="80%">0.3</mn></math><span class="ltx_text" style="font-size:80%;"> V</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Length of cell, </span><math alttext="l" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m25"><mi mathsize="80%">l</mi></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="60" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m26"><mn mathsize="80%">60</mn></math><span class="ltx_text" style="font-size:80%;"> nm</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Width of cell, </span><math alttext="w" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m27"><mi mathsize="80%">w</mi></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="60" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m28"><mn mathsize="80%">60</mn></math><span class="ltx_text" style="font-size:80%;"> nm</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Thickness of cell, </span><math alttext="t" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m29"><mi mathsize="80%">t</mi></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="10" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m30"><mn mathsize="80%">10</mn></math><span class="ltx_text" style="font-size:80%;"> nm</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<span class="ltx_text" style="font-size:80%;">Temperature, </span><math alttext="T" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m31"><mi mathsize="80%">T</mi></math>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="292" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m32"><mn mathsize="80%">292</mn></math><span class="ltx_text" style="font-size:80%;"> K</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="\tau_{\mathrm{creep}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m33"><msub><mi mathsize="80%">τ</mi><mi mathsize="80%">creep</mi></msub></math><span class="ltx_text" style="font-size:80%;"> (@ </span><math alttext="\mathcal{F}=0" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m34"><mrow><mi class="ltx_font_mathcaligraphic" mathsize="80%">ℱ</mi><mo mathsize="80%">=</mo><mn mathsize="80%">0</mn></mrow></math><span class="ltx_text" style="font-size:80%;">)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="\sim 1" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m35"><mrow><mi></mi><mo mathsize="80%">∼</mo><mn mathsize="80%">1</mn></mrow></math><span class="ltx_text" style="font-size:80%;"> ms</span>
+</td>
+<td class="ltx_td ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="\tau_{\mathrm{flow}}" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m36"><msub><mi mathsize="80%">τ</mi><mi mathsize="80%">flow</mi></msub></math><span class="ltx_text" style="font-size:80%;"> (@ </span><math alttext="\mathcal{F}=74.2" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m37"><mrow><mi class="ltx_font_mathcaligraphic" mathsize="80%">ℱ</mi><mo mathsize="80%">=</mo><mn mathsize="80%">74.2</mn></mrow></math><span class="ltx_text" style="font-size:80%;"> J/m</span><sup class="ltx_sup"><span class="ltx_text" style="font-size:80%;">3</span></sup><span class="ltx_text" style="font-size:80%;">)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_t" style="padding:1.2pt 2.8pt;">
+<math alttext="\sim 0.22" class="ltx_Math" dir="ltr" display="inline" id="S2.T1.m39"><mrow><mi></mi><mo mathsize="80%">∼</mo><mn mathsize="80%">0.22</mn></mrow></math><span class="ltx_text" style="font-size:80%;"> ns</span>
+</td>
+<td class="ltx_td ltx_border_b ltx_border_t" style="padding:1.2pt 2.8pt;"></td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">TABLE I: </span>معاملات المحاكاة المعتمدة لخلية ME-AFMRAM.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="143" id="S2.F6.g1" src="x6.png" width="692"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>تنظيم ME-AFMRAM بسعة 64KB مع 4<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S2.F6.m5"><mo>×</mo></math>1 مصارف، و2<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S2.F6.m6"><mo>×</mo></math>1 حصائر، و4<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S2.F6.m7"><mo>×</mo></math>2 مصفوفات فرعية، و128<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S2.F6.m8"><mo>×</mo></math>64 مصفوفات خلايا بت. وهنا، يبلغ طول الكلمة 128 bit. وقد استُفيد في تنظيم الذاكرة من <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dong2012nvsim</span>]</cite>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="470" id="S2.F7.g1" src="x7.png" width="830"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>بناء مصفوفة خلايا ME-AFMRAM المستخدمة في معمارية الذاكرة.
+تعمل الإشارات BL<math alttext="{}_{\text{i,in}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F7.m3"><msub><mi></mi><mtext>i,in</mtext></msub></math> على كتابة البيانات في الخلايا عندما يكون تمكين الكتابة (WE) مفعلاً، وتعمل الإشارات BL<math alttext="{}_{\text{i,out}}" class="ltx_Math" dir="ltr" display="inline" id="S2.F7.m4"><msub><mi></mi><mtext>i,out</mtext></msub></math> على قراءة البيانات من الخلايا عندما يكون تمكين القراءة (RE) مفعلاً.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.SS3.SSS4.fig1">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_figure_panel ltx_img_landscape" height="228" id="S2.SS3.SSS4.g1" src="x8.png" width="327"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_table ltx_figure_panel ltx_align_center" id="S2.T2">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">TABLE II: </span>مقارنة أداء تقنيات ذاكرة مختلفة، من <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">yang2013memristive</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">micron_nandflash</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">everspin_feram</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">chang2016resistance</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">kent2015new</span>]</cite>.
+تُورد كمونات الكتابة والقراءة لـME-AFMRAM (نموذج DW) من أجل ذاكرة بسعة 64KB ذات خط كلمة بعرض 128-bit، محاكاة باستخدام NVSim <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dong2012nvsim</span>]</cite>.
+ويمثل مقياس طاقة كل بت عملية كتابة بت واحد على خلية.</figcaption>
+</figure>
+</div>
+</div>
+</figure>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">II-D </span><span class="ltx_text ltx_font_italic">مصفوفة ME-AFMRAM</span>
+</h3>
+<div class="ltx_para" id="S2.SS4.p1">
+<p class="ltx_p">لتقييم أداء ME-AFMRAM على مستوى النظام في سياق تقنيات الذاكرة القائمة، نحاكي رقاقة ME-AFMRAM بسعة 64KB وقائمة على DW باستخدام NVSim، وهي أداة معيارية لتقدير مقاييس أداء ذواكر NVMs الناشئة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dong2012nvsim</span>]</cite>.
+ويظهر تنظيم هذه الذاكرة بسعة 64KB، كما استُفيد من <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dong2012nvsim</span>]</cite>، في الشكل <a class="ltx_ref" href="#S2.F6" title="Figure 6 ‣ II-C4 المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">6</span></a>.
+وتُبرز البنية الداخلية لمصفوفة خلايا ME-AFMRAM، إلى جانب مفككات الترميز والمشغلات ومضخمات الاستشعار الطرفية، المبنية عند عقدة CMOS ذات 15-nm، في الشكل <a class="ltx_ref" href="#S2.F7" title="Figure 7 ‣ II-C4 المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">7</span></a>.
+ويُستحصل كمون الكتابة الكلي لذاكرة ME-AFMRAM بسعة 64KB، بما في ذلك الطفيليات والكمون الطرفي (133.9 ps) وزمن تبديل الخلية المهيمن (<math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m1"><mo>∼</mo></math>630 ps)، على أنه 763.9 ps من NVSim <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dong2012nvsim</span>]</cite>.
+ويمكن تحسين كمون الكتابة بمقدار رتبة واحدة عبر الدوران المتماسك لمعلمة الترتيب.
+أما كمون القراءة الكلي للرقاقة، المستحصل من NVSim <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dong2012nvsim</span>]</cite>، فيبلغ <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m2"><mo>∼</mo></math>2.3 ns.
+ويشمل ذلك مساهمات من مضخم الاستشعار (1.45 ns)، وطفيليات خط البت (3.5 ps)، ومفككات الترميز والطرفيات الأخرى (<math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m3"><mo>∼</mo></math>150 ps)، وتأخير قياس AH المهيمن في طبقة Bi<sub class="ltx_sub">2</sub>Se<sub class="ltx_sub">3</sub> (<math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S2.SS4.p1.m6"><mo>∼</mo></math>0.7 ns) <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kikuchi2016anomalous</span>]</cite>.
+وتستطيع مخططات قياس AH النبضية المتقدمة مثل <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kikuchi2016anomalous</span>]</cite> العمل في نظام GHz.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p2">
+<p class="ltx_p">يمكن تحقيق استشعار خط البت الخرج باستخدام مضخم مزلاج تياري تقليدي إذا استُخدمت مادة ذات SOC كبير مثل TI لتوليد إشارة AH ضمن مجال عشرات mV.
+ومن المتوقع أن يكون تحمل القراءة/الكتابة في ME-AFMRAM مماثلاً لتحمل STT-MRAM. وتُعرض مقارنة مقاييس أداء ME-AFMRAM مع تقنيات ذاكرة أخرى على مستوى الرقاقة في الجدول <a class="ltx_ref" href="#S2.T2" title="TABLE II ‣ II-C4 المعاملات المادية والهندسية لخلية ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">II</span></a>. ويمكن ملاحظة أن ME-AFMRAM توفر بعض المزايا التنافسية على ذواكر NVMs أخرى، وكذلك على أنظمة الذاكرة التقليدية.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">III </span><span class="ltx_text ltx_font_smallcaps">التطبيق كذاكرة آمنة</span>
+</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">بعد إجراء النمذجة وقياس الأداء معيارياً على مستويي الخلية والمصفوفة لـME-AFMRAM المعتمدة على الكروميا، نتابع تنفيذ ذاكرة SMART المقترحة باستخدام ME-AFMRAM.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">III-A </span><span class="ltx_text ltx_font_italic">نموذج التهديد</span>
+</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">نناقش أولاً نموذج التهديد، محددين قوى المهاجمين وقدراتهم، وكذلك أهداف الهجوم الناجح وتبعاته. ومعظم سيناريوهات الهجوم المعروضة هنا، وليس كلها،
+خاصة بذواكر NVMs.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<ul class="ltx_itemize" id="S3.I1">
+<li class="ltx_item" id="S3.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S3.I1.i1.p1">
+<p class="ltx_p">يمكن للمهاجمين شن هجمات إقلاع بارد <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">halderman2009lest</span>]</cite>.
+في أثناء إيقاف التشغيل، توجد فترة كمون بعد بدء تسلسل إيقاف التشغيل وحتى اللحظة التي تُؤمَّن فيها محتويات الذاكرة تماماً. وقد يستغل مهاجم هذه الفجوة لقراءة محتويات الذاكرة. وللالتفاف على مثل هذه الهجمات، يُستخدم تشفير الذاكرة عادةً <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">chhabra2011nvmm</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">swami2018acme</span>]</cite>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S3.I1.i2.p1">
+<p class="ltx_p">يمكن للمهاجمين استغلال خصائص مثل الحساسية للحقول المغناطيسية وتقلبات درجة الحرارة لإفساد البيانات أو إحداث DoS <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite>.
+وقد يكتبون قسراً أنماط بيانات محددة
+في الذاكرة، مما يسرّع التقادم
+ويسبب أعطالاً في الذاكرة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S3.I1.i3.p1">
+<p class="ltx_p">بامتلاك معدات تحليل الأعطال، يستطيع المهاجمون أيضاً اللجوء إلى هجمات اقتحامية متقدمة.
+وتستهدف غالبية هذه الهجمات
+نهاية خط التصنيع الخلفية (BEOL)، مقتربة من الطبقة المعدنية العليا، وهو ما يشار إليه أيضاً بهجمات الواجهة الأمامية.
+وقد اقتُرحت تدابير مضادة متعددة لحماية الواجهة الأمامية، تشمل شبكات واقية ودروعاً ومستشعرات <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">lee19_shield</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">weiner18</span>]</cite>.
+وفي كل الأحوال، تُعد هجمات <span class="ltx_text ltx_font_italic">التنصت على الناقل</span> خارج نطاق هذا العمل.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S3.I1.i4.p1">
+<p class="ltx_p">يمكن استغلال بصمات تبديد الاستطاعة عند قراءة/كتابة ‘0’ و‘1’ داخل NVM في هجمات القنوات الجانبية لاستنتاج البيانات، عبر تقنيات مثل تحليل الاستطاعة التفاضلي (DPA) <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kocher1999differential</span>]</cite> وتحليل الاستطاعة بالارتباط (CPA) <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">brier2004correlation</span>]</cite>.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">III-B </span><span class="ltx_text ltx_font_italic">هجمات المجال المغناطيسي ودرجة الحرارة</span>
+</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">تملك STT-MRAMs وصلات نفق مغناطيسية (MTJs) قائمة على FM بوصفها لبنات البناء الأساسية. وتمتلك FMs مغنطة عيانية (أو بصمة مغناطيسية) يمكن سبرها أو استنتاجها باستخدام مجال مغناطيسي خارجي.
+ومن ثم يمكن استخدام الحقول المغناطيسية لاستنتاج البيانات المخزنة أو العبث بها، أو حتى التسبب بأعطال في STT-MRAMs <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite>.
+وقد تسبب حقول مغناطيسية شاردة صغيرة لا تتجاوز 10 mT انقلاب بت غير مقصود في خلايا STT-MRAM. ويعرض الشكل <a class="ltx_ref" href="#S3.F8" title="Figure 8 ‣ III-B هجمات المجال المغناطيسي ودرجة الحرارة ‣ III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">8</span></a> انقلاب البت المستحث بالمجال المغناطيسي في FM تمثيلية، المستحصل بحل معادلة Landau-Lifshitz-Gilbert لديناميكيات FM <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ament2016solving</span>]</cite>.</p>
+</div>
+<figure class="ltx_figure" id="S3.F8">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S3.F8.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="138" id="S3.F8.sf1.g1" src="x9.png" width="147"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure"><span class="ltx_text" style="font-size:80%;">(a)</span> </span><span class="ltx_text" style="font-size:80%;">مسار التبديل المستحث بالمجال المغناطيسي في FM.</span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S3.F8.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="131" id="S3.F8.sf2.g1" src="x10.png" width="170"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure"><span class="ltx_text" style="font-size:80%;">(b)</span> </span><span class="ltx_text" style="font-size:80%;">مكونات التبديل المستحث بالمجال المغناطيسي في FM.</span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>يمكن تبديل FMs في STT-MRAM بسهولة باستخدام حقول مغناطيسية خارجية.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p2">
+<p class="ltx_p">أما AFMs، فلا تبدي بصمة مغناطيسية خارجية لأن عزوم شبكاتها الفرعية المتساوية والمتعاكسة تلغي بعضها بعضاً.
+ومن ثم لا يمكن أن تتأثر معلمة الترتيب الحجمية بالحقول المغناطيسية الخارجية.
+ولتبديل الترتيب الحجمي، يجب تطبيق حقول متدرجة (ذات إشارات متعاكسة على الشبكات الفرعية المتقابلة) على عزوم الشبكتين الفرعيتين، كما يوضح الشكل <a class="ltx_ref" href="#S3.F9" title="Figure 9 ‣ III-B هجمات المجال المغناطيسي ودرجة الحرارة ‣ III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">9</span></a> في الشكل الداخلي.
+غير أن مجالاً مغناطيسياً خارجياً متجانساً لا يستطيع توفير ترتيب حقول متدرجة كهذا، ومن ثم ينتهي به الأمر إلى إمالة عزوم الشبكات الفرعية بطريقة يتوازن فيها العزم الناتج عن المجال الخارجي تماماً مع عزم التبادل الذي يمارسه عزم إحدى الشبكات الفرعية على الأخرى <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">baltz2018antiferromagnetic</span>]</cite>.
+وبما أن الحقول المغناطيسية الخارجية غير قادرة على إعادة توجيه معلمة ترتيب AFM، فمن المتوقع أن تقاوم SMART ME-AFMRAM هجمات المجال المغناطيسي الموصوفة في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">jang2015self</span>]</cite>.
+ونلاحظ أن تبديل حالة مغنطة سطح ME-AFM باستخدام توليفة من حقلي <math alttext="E" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p2.m1"><mi>E</mi></math> و<math alttext="H" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p2.m2"><mi>H</mi></math> يتطلب معرفة دقيقة بدورات الكتابة والحالة السابقة للسطح، إضافة إلى
+وسائل للتحكم صراحةً في المجال الكهربائي، وهي وسائل ينبغي حجبها عن المهاجم.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p3">
+<p class="ltx_p">وفيما يتعلق بالهجمات القائمة على تقلب درجة الحرارة، قد يزيد الخصم درجة الحرارة المحيطة بـME-AFMRAM في محاولة لتغيير البيانات المخزنة.
+تجدر ملاحظة أن درجة حرارة Néel للكروميا النقية هي 308 K <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">shi2009magnetism</span>]</cite>، وفوقها يتلاشى ترتيب AFM. ومن ثم يمكن للمهاجم إفساد الذاكرة بتسخينها فوق درجة حرارة Néel.
+ولمواجهة ذلك، نأخذ في الاعتبار كروميا مطعمة بالبورون، ثبت تجريبياً أن درجة حرارة Néel فيها تبلغ <math alttext="\sim 400" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m1"><mrow><mi></mi><mo>∼</mo><mn>400</mn></mrow></math> K <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">street2014increasing</span>]</cite>.
+ومن ثم تستطيع الكروميا المطعمة بالبورون زيادة متانة ذاكرة SMART في مواجهة تقلبات درجة الحرارة.
+وذلك لأن مثل هذه التقلبات الأكبر في درجة الحرارة (فوق 400 K) أسهل كشفاً، كما تصبح التدابير المضادة مثل اعتراض هذه الهجمات أكثر قابلية للتنفيذ.</p>
+</div>
+<figure class="ltx_figure" id="S3.F9"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="216" id="S3.F9.g1" src="x11.png" width="268"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>لا يستطيع تطبيق مجال مغناطيسي تبديل معلمة ترتيب AFM، حتى عند زيادة مقدار المجال.
+الشكل الداخلي: (a) قد يميل مجال مغناطيسي خارجي متجانس عزوم الشبكات الفرعية، لكنه عاجز عن تدوير ترتيب AFM؛
+(b) تنتج الحقول المتدرجة على عزوم الشبكات الفرعية عزوماً مماسية متدرجة يمكنها إعادة توجيه ترتيب AFM.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S3.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">III-C </span><span class="ltx_text ltx_font_italic">هجمات سرية البيانات</span>
+</h3>
+<div class="ltx_para" id="S3.SS3.p1">
+<p class="ltx_p">كما في جميع ذواكر NVMs، يمكن للمهاجمين استغلال بقاء البيانات في ذاكرة SMART لسرقة معلومات حساسة. وأكثر التدابير المضادة فعالية ضد هجمات سرية البيانات هذه، بما فيها هجمات الإقلاع البارد وسرقة وحدات الذاكرة، هو تشفير البيانات باستخدام مخطط تشفير آمن قبل تخزينها في الذاكرة. وتستخدم تقنيات تشفير ذاكرة متقدمة مثل تشفير نمط العدّاد (CME) شفرات كتلية مثل Advanced Encryption Standard (AES) لتشفير بذرة باستخدام مفتاح سري، بغية توليد قناع لمرة واحدة (OTP).
+وتتكون البذرة لكل كتابة على خط ذاكرة من مفتاح سري وعنوان الخط وقيمة عدّاد مرتبطة بذلك الخط، وتزاد مع كل كتابة لاحقة إلى العنوان نفسه. ومن ثم يكون OTP المولد فريداً لكل عنوان خط، وكذلك لكل عملية كتابة إلى العنوان نفسه.
+ثم تُجرى عملية XOR بين OTP والنص الصريح للحصول على النص المعمى، الذي يُخزن في الذاكرة الرئيسة غير المتطايرة.
+وتجدر ملاحظة أن المفتاح السري المستخدم في نواة AES يُعد غير متاح للمهاجم.</p>
+</div>
+<div class="ltx_para" id="S3.SS3.p2">
+<p class="ltx_p">إن تطبيق مخطط CME القائم على XOR مباشرة على ذاكرة SMART سيؤدي إلى أعباء تشفير كبيرة. ويعود ذلك إلى أن مخطط CME مخصص لذواكر NVMs مثل PCM وSTT-MRAM، التي يكون زمن كتابتها من رتبة <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p2.m1"><mo>∼</mo></math>ns. أما كمون الوصول في ME-AFMRAM فهو دون النانوثانية عند الانتشار القائم على DW، وبضعة 10ات من ps عند الدوران المتماسك. ويجب أن يكون مخطط التشفير العام لذاكرة SMART، سواء بدّلت عبر انتشار DW أو الدوران المتماسك، بحيث لا يتأثر كمون الوصول الكلي إلى الذاكرة سلباً. وتغدو حلول التشفير القائمة على بوابات CMOS XOR ذات تأخير من رتبة 10ات من ps غير فعالة، إذ إن زمن تشفيرها مقارن بزمن كتابة الذاكرة، مما يؤدي إلى دورات ساعة خاملة.</p>
+</div>
+<figure class="ltx_figure" id="S3.F10"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="166" id="S3.F10.g1" src="x12.png" width="301"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>(a) يستخدم CME نواة AES لتوليد OTP، مستعملاً عنوان خط الذاكرة وعدّاداً ومفتاحاً سرياً. ويُنفذ التشفير وفك التشفير خارج الذاكرة الرئيسة غير المتطايرة (NVMM).
+(b) يستخدم <span class="ltx_text ltx_font_italic">Memcryption</span> مفتاحاً سرياً وعنوان الخط كبذرة لـAES، لتوليد نبضة تشفير.
+وتُستخدم تلك النبضة للتحكم في العملية البتية لبوابات CNOT، وتُدمج في مسار البيانات داخل NVMM.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F11"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="187" id="S3.F11.g1" src="x13.png" width="450"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 11: </span>معمارية ذاكرة SMART مع <span class="ltx_text ltx_font_italic">Memcryption</span>.
+لا تُعرض طبقة CNOT الخاصة بفك التشفير للتبسيط.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS3.p3">
+<p class="ltx_p">نقترح هنا استخدام التشفير داخل الذاكرة، أو <span class="ltx_text ltx_font_italic">Memcryption</span>، باستخدام بوابات CNOT بتية (أي controlled-NOT) مبنية من منطق قائم على ME-AFM.
+ومن خلال ربط نبضة التشفير بإشارات التحكم في بوابات CNOT، يمكن تحقيق هذا النمط من <span class="ltx_text ltx_font_italic">Memcryption</span>.
+وتستطيع أجهزة اللف المغزلي مثل ترانزستور ME-AFM <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">dowben2018towards</span>]</cite> تنفيذ بوابات منطق متعددة الأشكال، يمكنها تقديم وظيفة عاكسة أو غير عاكسة اعتماداً على إشارة تحكم <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">patnaik2018advancing</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">patnaik2019spin</span>]</cite>.
+ومن ثم يُستخدم ترانزستور ME-AFM لتحقيق بوابة CNOT. كما ثبت أن ترانزستور ME-AFM يبدي تأخيرات صغيرة تصل إلى <math alttext="\sim 10" class="ltx_Math" dir="ltr" display="inline" id="S3.SS3.p3.m1"><mrow><mi></mi><mo>∼</mo><mn>10</mn></mrow></math> ps، وهي أسرع بكثير من بوابات CMOS XOR ومتوافقة مع أزمنة الكتابة في ذاكرة SMART.
+ومن شأن هذا التجانس في التقنية والمواد، باستخدام ME-AFM فقط لكل من خلايا الذاكرة وبوابات CNOT، أن يسهّل التصنيع.
+في <span class="ltx_text ltx_font_italic">Memcryption</span>، ندمج بوابات CNOT القائمة على ترانزستورات ME-AFM مباشرة في مسار البيانات المتصل بمصفوفة الذاكرة؛ ومن ثم يكون التشفير داخل الذاكرة، خلافاً للأعمال السابقة التي تستخدم كتلة تشفير منفصلة.
+ولا يضر هذا التكامل بين التشفير ومصفوفة الذاكرة بكثافة الذاكرة، لأن ترانزستورات ME-AFM تملك بصمة مساحية أصغر بكثير من بصمة بوابات CMOS XOR.
+ويقارن الشكل <a class="ltx_ref" href="#S3.F10" title="Figure 10 ‣ III-C هجمات سرية البيانات ‣ III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">10</span></a> مخطط <span class="ltx_text ltx_font_italic">Memcryption</span> لدينا بتقنيات CME السابقة.</p>
+</div>
+<div class="ltx_para" id="S3.SS3.p4">
+<p class="ltx_p">تظهر معمارية ذاكرة SMART مع <span class="ltx_text ltx_font_italic">Memcryption</span> في الشكل <a class="ltx_ref" href="#S3.F11" title="Figure 11 ‣ III-C هجمات سرية البيانات ‣ III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">11</span></a>.
+ويُسلسَل مفتاح موثوق بطول 128-bit، يُقدَّم ويُخزَّن داخل وحدة معالجة آمنة (SPM) إلى جانب المعالج، مع عنوان الذاكرة ويُستخدم كبذرة لـAES.
+ومن ثم تنتج نواة AES، المزمع دمجها على رقاقة NVM،<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+              
+            ليس التكامل غير المتجانس بين اللف المغزلي وCMOS مانعاً للتنفيذ، لأن تقنية AFM الأساسية متوافقة مع
+عمليات CMOS في BEOL.
+وبوجه عام، دُرست التصاميم الهجينة بين اللف المغزلي وCMOS في أعمال سابقة <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">yogendra2015domain</span>]</cite>.</span></span></span> نبضة تشفير تُستخدم بتاتها كبتات تحكم لبوابات CNOT في طبقة التشفير داخل الذاكرة.
+وتبعاً لبتات التحكم، تقلب طبقة التشفير بتات مختارة في النص الصريح قبل تنفيذ كتابة في الذاكرة.
+وفي أثناء فك التشفير، تُولَّد نبضة التشفير نفسها مرة أخرى وتُستخدم لتنفيذ عمليات CNOT بتية على النص المعمى (المقروء من الذاكرة)، للحصول على النص الصريح.</p>
+</div>
+<div class="ltx_para" id="S3.SS3.p5">
+<p class="ltx_p">تُعرض مقارنة بين مخطط <span class="ltx_text ltx_font_italic">Memcryption</span> وCME (عند تطبيقه أيضاً على ME-AFMRAM) في الجدول <a class="ltx_ref" href="#S3.T3" title="TABLE III ‣ III-C هجمات سرية البيانات ‣ III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">III</span></a>.
+والمصفوفة المدروسة هي ME-AFMRAM بعرض 128-bit، في حين صُممت نواة AES والطرفيات CMOS اصطناعياً باستخدام تقنية 15nm من <span class="ltx_text ltx_font_italic">NanGate</span>.
+ونلاحظ أن Memcryption مع ذاكرة SMART
+يحقق كمون تشفير أفضل من CME، الذي يستخدم بوابات XOR عادية من CMOS.
+كما نلاحظ أن <span class="ltx_text ltx_font_italic">Memcryption</span> يساعد على خفض كمون التشفير، لكنه مشابه لـCME من حيث أعباء الطاقة.
+ويرجع ذلك إلى أن تبديد الطاقة تهيمن عليه نواة AES في كل الأحوال.
+ونؤكد أيضاً أن <span class="ltx_text ltx_font_italic">Memcryption</span> مصمم خصوصاً كمخطط من جهة الذاكرة
+لـME-AFMRAM، بغية تحقيق كمون تشفير منخفض، بفضل تجانس تأخيرات مصفوفة الذاكرة وطبقة التشفير.
+إلا أنه قد لا يكون تنفيذاً فعالاً لأي NVM عام.</p>
+</div>
+<div class="ltx_para" id="S3.SS3.p6">
+<p class="ltx_p">وفيما يتعلق بموثوقية ME-AFMRAM المستخدمة لبناء ذاكرة SMART وعمرها، فإن تحملها مقارن بتحمل STT-MRAM.
+ومع ذلك، فهي تعاني أيضاً من الأخطاء نفسها التي تصيب STT-MRAM، أي أعطال في دوائر CMOS الطرفية بما فيها ترانزستورات الوصول <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">chintaluri2016analysis</span>]</cite>.
+ولمعالجة هذه الأعطال وضمان صحة البيانات المخزنة، يمكن تنفيذ تقنيات تصحيح الأخطاء القياسية لذواكر NVMs <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">swami2017reliable</span>]</cite>، مثل مؤشر تصحيح الأخطاء (ECP) ومخططات متقدمة أخرى قائمة على ECP، بما في ذلك “Pay-As-You-Go” <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">qureshi2011pay</span>]</cite> و“Zombie memory” <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">azevedo2013zombie</span>]</cite>، من جهة الذاكرة ودمجها على مصفوفة ME-AFMRAM.
+ويمكن تحقيق ذاكرة ECP باستخدام تقنية لف مغزلي متجانسة، بما في ذلك STT-MRAM أو ME-AFMRAM نفسها، أو بالاستفادة من تكامل غير متجانس بين اللف المغزلي وCMOS.</p>
+</div>
+<figure class="ltx_table" id="S3.T3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Encryption technique</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Latency</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Energy</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;">
+<span class="ltx_text" style="font-size:80%;">CME </span><cite class="ltx_cite ltx_citemacro_cite"><span class="ltx_text" style="font-size:80%;">[</span><span class="ltx_ref ltx_missing_citation ltx_ref_self">chhabra2009making</span><span class="ltx_text" style="font-size:80%;">]</span></cite>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;">
+<span class="ltx_text" style="font-size:80%;">299.23 ps (2.99</span><math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S3.T3.m1"><mo mathsize="80%">×</mo></math><span class="ltx_text" style="font-size:80%;">)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;"><span class="ltx_text" style="font-size:80%;">17.371 pJ</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;"><span class="ltx_text" style="font-size:80%;">Memcryption</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;">
+<span class="ltx_text" style="font-size:80%;">273.46 ps (2.73</span><math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S3.T3.m2"><mo mathsize="80%">×</mo></math><span class="ltx_text" style="font-size:80%;">)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_t" style="padding-top:1.2pt;padding-bottom:1.2pt;"><span class="ltx_text" style="font-size:80%;">17.370 pJ</span></td>
+</tr>
+</tbody>
+</table></div>
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">TABLE III: </span>مقارنة للكمون والطاقة عند تطبيق مخططي CME و<span class="ltx_text ltx_font_italic">Memcryption</span> على مصفوفة ME-AFMRAM بعرض 128-bit. ويبلغ الكمون المرجعي للمصفوفة غير المشفرة <math alttext="\sim 100" class="ltx_Math" dir="ltr" display="inline" id="S3.T3.m4"><mrow><mi></mi><mo>∼</mo><mn>100</mn></mrow></math> ps.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S3.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">III-D </span><span class="ltx_text ltx_font_italic">هجمات قناة الاستطاعة الجانبية</span>
+</h3>
+<div class="ltx_para" id="S3.SS4.p1">
+<p class="ltx_p">إن خصائص القراءة/الكتابة غير المتماثلة في ذواكر NVMs مثل STT-MRAM تجعلها عرضة لهجمات القنوات الجانبية التي تستغل البصمات المختلفة المتكبدة عند قراءة/كتابة بتات ‘1’
+وبتات ‘0’. تستخدم STT-MRAMs وصلات MTJ ذات طبقة مرجعية ثابتة من FM،
+مع طبقة حرة أخرى موجهة إما بالتوازي أو على نحو مضاد للتوازي مع تلك الطبقة المرجعية. وتبعاً للتوجيه النسبي لهاتين الطبقتين،
+تقع MTJ في حالة مقاومة منخفضة أو عالية؛ وتقابل الحالة المنخفضة أو العالية حالة المنطق ‘0’ أو حالة المنطق ‘1’، على التوالي. ومن ثم تختلف التيارات المسحوبة لعمليات القراءة/الكتابة تبعاً لقراءة/كتابة ‘0’ أو ‘1’.
+وبذلك يستطيع مهاجم وصل مقاومة في تشكيل مقسم جهد مع
+خلية MTJ، ومراقبة هبوطات الجهد عبر تلك المقاومة، وتنفيذ DPA لاستعادة البيانات التي تُكتب في الخلية أو تُقرأ منها. وفي الواقع، عُرض هجوم كهذا على ذاكرة مخبئية قائمة على STT-MRAM في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">khan2017side</span>]</cite>.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p2">
+<p class="ltx_p">بالنسبة إلى ذاكرة SMART، نتذكر أن الكتابة تتحقق باستخدام مجالات كهربائية لا تيارات. وفضلاً عن ذلك، فإن مقدار المجال الكهربائي المطلوب لكتابة قيم ‘0’ وقيم ‘1’ متكافئ؛ انظر آثار جهد الكتابة وجهد الاستقطاب في الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ II-C1 انعكاس DW في ME-AFMRAM المعتمدة على الكروميا ‣ II-C نمذجة الأداء ‣ II نموذج الجهاز ووظيفته ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">3</span></a>. ويعود ذلك إلى عدم وجود طبقة مرجعية أو مقاومة نفقية مغناطيسية في ME-AFMRAM، مما كان سيسبب عدم تماثل. أما في عملية القراءة، فإن العزم المستحث بتأثير القرب في قطب Pt يختلف قليلاً عند قراءة ‘0’ أو ‘1’.
+غير أنه يمكن تعويض هذا الاختلال في إشارات هول بإدخال إزاحات مناسبة في إعداد قياس هول، كما بُرهن في <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">kosub2017purely</span>]</cite>. ومن ثم تستطيع ذاكرة SMART تحقيق بصمات متماثلة لكل من القراءة والكتابة، ولكل من انتقالات ‘0<math alttext="\rightarrow" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p2.m1"><mo stretchy="false">→</mo></math>1’ و‘1<math alttext="\rightarrow" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p2.m2"><mo stretchy="false">→</mo></math>0’،
+وبذلك تحبط أي هجمات قناة جانبية للقدرة قائمة على DPA.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS5">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">III-E </span><span class="ltx_text ltx_font_italic">القناة الجانبية الفوتونية والهجمات من الجهة الخلفية</span>
+</h3>
+<div class="ltx_para" id="S3.SS5.p1">
+<p class="ltx_p">بُرهن حديثاً استغلال القناة الجانبية الفوتونية (PSC) للالتفاف على الضمانات الأمنية التي تقدمها خوارزميات التعمية مثل AES وRSA <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ferrigno2008aes</span>, <span class="ltx_ref ltx_missing_citation ltx_ref_self">schlosser2013simple</span>]</cite>. ويمكن إجراء تحليل الانبعاث الفوتوني البسيط (SPEA) أو تحليل الانبعاث الفوتوني التفاضلي (DPEA) باستخدام معدات انبعاث ضوئي متاحة بتكلفة مماثلة لمعدات تحليل الاستطاعة. ويتمثل جوهر PSC في رصد الانبعاثات الضوئية الناشئة عن تبديل ترانزستورات CMOS.
+وبالنسبة إلى الذواكر القائمة على SRAM أو DRAM، يمكن بعد ذلك ربط هذا الانبعاث بالبيانات التي تُبرمج في الذاكرة. وفي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ferrigno2008aes</span>]</cite>، وُجد أن PSC تنشأ عندما تنتقل الطاقة الحركية التي تكتسبها حوامل الشحنة في قناة الترانزستور إلى فوتونات، يمكن رؤيتها عبر كواشف ضوئية. وفي <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">schlosser2013simple</span>]</cite>، استغل المؤلفون هذه
+المعلومة لتنفيذ هجوم قناة جانبية، وانتهوا إلى استعادة مفتاح AES كاملاً. وتستخدم الرقائق المعاصرة طبقات معدنية متعددة، تتداخل مع انبعاث الفوتونات من الجهة الأمامية لأي دائرة متكاملة (IC)؛ ولذلك فإن اتجاهاً طبيعياً هو رصد انبعاث الفوتونات من الجهة الخلفية للدوائر المتكاملة.</p>
+</div>
+<div class="ltx_para" id="S3.SS5.p2">
+<p class="ltx_p">في حين أن تقنيات الذاكرة القائمة على CMOS مثل SRAM وDRAM عرضة لمثل هذه هجمات PSC، فإن ذاكرة SMART قائمة على AFM ولا تتضمن انبعاثات فوتونية صادرة من قنوات الترانزستورات. ولا يمكن إنجاز قراءة البيانات في ذاكرة SMART إلا عبر إعداد قياس AH. وفضلاً عن ذلك، حتى لو تمكن مهاجم متقدم من عزل خلية ذاكرة SMART والوصول إلى إعداد AH من الجهة الأمامية، فلن يتمكن إلا من استعادة النص المعمى المشفر (كما وُصف في القسم <a class="ltx_ref" href="#S3.SS3" title="III-C هجمات سرية البيانات ‣ III التطبيق كذاكرة آمنة ‣ SMART: ذاكرة غير متطايرة Sآمنة Mمغناطوكهربائية قائمة على مضادّات Aالمغناطيسية Rومحصّنة ضد Tالعبث"><span class="ltx_text ltx_ref_tag">III-C</span></a>).</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">IV </span><span class="ltx_text ltx_font_smallcaps">الخلاصة</span>
+</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">نقدم في هذه الورقة <span class="ltx_text ltx_font_italic">SMART: ذاكرة غير متطايرة آمنة ومحصّنة ضد العبث قائمة  على مضادّات المغناطيسية المغناطوكهربائية</span>، وذلك باستثمار الخصائص الفريدة لـME-AFMs.
+وتملك ME-AFMRAM، التي تقع في لب ذاكرة SMART، كمون وصول مقداره sub-1 ns (للتبديل القائم على DW) ينخفض إلى بضعة 10ات من ps فقط (للتبديل بالدوران المتماسك)، مع طاقة لكل بت مقدارها <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m2"><mo>∼</mo></math> 0.13 pJ.
+وبالإضافة إلى أدائها المتفوق مقارنةً بذواكر NVMs السابقة مثل STT-MRAM وPCM، لا تبدي ذاكرة SMART أي حساسية للحقول المغناطيسية الخارجية، مما يجعلها متينة أمام العبث بالبيانات القائم على المجال المغناطيسي وهجمات حجب خدمة الذاكرة التي كثيراً ما تعاني منها ذواكر NVMs الأخرى القائمة على المواد الفيرومغناطيسية.
+ولحل ثغرة بقاء البيانات الأمنية (بعد انقطاع الطاقة) في ذاكرة SMART، نبرهن تقنية تشفير جديدة تسمى <span class="ltx_text ltx_font_italic">Memcryption</span>.
+ويستخدم هذا المخطط منطقاً ناشئاً قائماً على ME-AFM لتنفيذ تشفير داخل الذاكرة متمركز حول CNOT، وهو مصمم خصوصاً لتقليل كمون التشفير وفك التشفير في ذاكرة SMART.
+وفضلاً عن ذلك، فإن بصمات القراءة والكتابة المتماثلة لبتات ‘0’ و‘1’ تجعل هجمات القنوات الجانبية البارزة، مثل هجوم الاستطاعة التفاضلي، عديمة الجدوى ضد ذاكرة SMART.
+كما أن هجمات القناة الجانبية الفوتونية المتقدمة، وهي تهديدات قوية ضد أي دائرة CMOS متكاملة عبر رصد كل نشاط داخلي للترانزستورات من الجهة الأمامية أو الخلفية، غير فعالة ضد ذاكرة SMART بسبب آلية التبديل المختلفة جوهرياً، وكذلك بفضل الحماية المقترحة <span class="ltx_text ltx_font_italic">Memcryption</span>.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+</ul>
+</section>
+<figure class="ltx_float biography" id="tab1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular" dir="ltr">
+<tr class="ltx_tr">
+<td class="ltx_td"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_img_portrait" height="125" id="g1" src="photos/rangarajan.jpg" width="100"/></td>
+<td class="ltx_td">
+<span class="ltx_inline-block">
+<span class="ltx_p"><span class="ltx_text ltx_font_bold">Nikhil Rangarajan</span>  (S’15–M’20)
+هو زميل ما بعد الدكتوراه في Division of Engineering، New York University Abu Dhabi، UAE.
+يحمل درجتي Ph.D. وM.S. في الهندسة الكهربائية من New York University، NY، USA.
+وتشمل اهتماماته البحثية اللف المغزلي الإلكتروني، والإلكترونيات النانوية، وفيزياء الأجهزة، وأمن العتاد.
+وهو عضو في IEEE.</span>
+</span>
+</td>
+</tr>
+</table></div>
+</figure>
+<figure class="ltx_float biography" id="tab2">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular" dir="ltr">
+<tr class="ltx_tr">
+<td class="ltx_td"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_img_portrait" height="125" id="g2" src="photos/satwik.jpg" width="96"/></td>
+<td class="ltx_td">
+<span class="ltx_inline-block">
+<span class="ltx_p"><span class="ltx_text ltx_font_bold">Satwik Patnaik</span>  (S’16)
+حصل على B.E. في الإلكترونيات والاتصالات من University of Pune، India، وعلى M.Tech. في علوم وهندسة الحاسوب مع تخصص في تصميم VLSI من Indian Institute of Information Technology and
+Management، Gwalior، India.
+وهو مرشح Ph.D. في سنته الأخيرة في Department of Electrical and Computer Engineering في
+Tandon School of Engineering ضمن New York University، Brooklyn،
+NY، USA.
+كما أنه
+Global Ph.D. Fellow في New York University Abu Dhabi، U.A.E.
+حصل على الميدالية البرونزية في فئة الدراسات العليا في ACM/SIGDA Student Research Competition (SRC) المنعقدة في ICCAD 2018، وعلى جائزة أفضل ورقة في Applied Research Competition (ARC) المنعقدة بالتزامن مع Cyber Security Awareness Week (CSAW)، 2017.
+وتشمل اهتماماته البحثية الحالية
+أمن العتاد، وقضايا الثقة والموثوقية في CMOS والأجهزة الناشئة،
+مع تركيز خاص على تصميم VLSI منخفض الاستطاعة.
+وهو عضو طالب في IEEE وACM.</span>
+</span>
+</td>
+</tr>
+</table></div>
+</figure>
+<figure class="ltx_float biography" id="tab3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular" dir="ltr">
+<tr class="ltx_tr">
+<td class="ltx_td"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_img_portrait" height="125" id="g3" src="photos/knechtel.jpg" width="100"/></td>
+<td class="ltx_td">
+<span class="ltx_inline-block">
+<span class="ltx_p"><span class="ltx_text ltx_font_bold">Johann Knechtel</span> 
+(M’11)
+حصل على M.Sc. في هندسة نظم المعلومات (Dipl.-Ing.) في 2010 وعلى Ph.D. في هندسة الحاسوب
+(Dr.-Ing., summa cum laude) في 2014، وكلاهما من TU Dresden، Germany.
+وهو عالم أبحاث
+في New York University، Abu Dhabi، UAE. وكان الدكتور Knechtel باحث ما بعد الدكتوراه في 2015–16 في Masdar Institute of Science and Technology، Abu Dhabi.
+ومن 2010 إلى 2014، كان Ph.D. Scholar في DFG Graduate School حول “Nano- and Biotechnologies for Packaging of Electronic
+Systems” المستضافة في TU Dresden.
+وفي 2012، كان مساعداً بحثياً في Dept. of Computer Science and Engineering، Chinese University of Hong Kong، China.
+وفي 2010، كان طالب أبحاث زائراً في Dept. of Electrical Engineering and Computer Science، University of Michigan، USA.
+وتغطي اهتماماته البحثية أتمتة التصميم الفيزيائي لـVLSI، مع تركيز خاص على التقنيات الناشئة وأمن العتاد.</span>
+</span>
+</td>
+</tr>
+</table></div>
+</figure>
+<figure class="ltx_float biography" id="tab4">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular" dir="ltr">
+<tr class="ltx_tr">
+<td class="ltx_td"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_img_portrait" height="125" id="g4" src="photos/sinanoglu.jpg" width="100"/></td>
+<td class="ltx_td">
+<span class="ltx_inline-block">
+<span class="ltx_p"><span class="ltx_text ltx_font_bold">Ozgur Sinanoglu</span>  (M’11–SM’15)
+هو أستاذ في الهندسة الكهربائية وهندسة الحاسوب في New York University Abu Dhabi. حصل على درجتي B.S.، إحداهما في
+الهندسة الكهربائية والإلكترونية والأخرى في هندسة الحاسوب، وكلتاهما من Bogazici University، Turkey في 1999. وحصل على درجتي MS
+وPhD في علوم وهندسة الحاسوب من University of California San Diego في 2001 و2004، على التوالي. ولديه خبرة صناعية في TI وIBM وQualcomm، وهو في NYU Abu Dhabi منذ 2010. وخلال PhD، فاز بمنحة IBM PhD Fellowship مرتين.
+كما أنه حصل على جوائز أفضل ورقة في IEEE VLSI Test Symposium 2011 وACM Conference on Computer and Communication Security 2013.</span>
+<span class="ltx_p">تشمل اهتمامات الأستاذ Sinanoglu البحثية التصميم من أجل الاختبار، والتصميم من أجل الأمن، والتصميم من أجل الثقة في دارات VLSI، وله أكثر من 180 ورقة مؤتمر ومجلة، و20 براءات اختراع أمريكية ممنوحة وقيد النظر.
+وقد قدم الأستاذ Sinanoglu أكثر من اثني عشر درساً تعليمياً عن أمن العتاد والثقة في مؤتمرات CAD والاختبار الرائدة، مثل DAC وDATE وITC وVTS وETS وICCD وISQED وغيرها.
+وهو يعمل رئيساً لمسار/موضوع
+أو عضواً في لجنة البرنامج التقني في نحو 15 مؤتمراً، كما يعمل محرراً مشاركاً (ضيفاً) في مجلات IEEE TIFS وIEEE TCAD وACM JETC
+وIEEE TETC وElsevier MEJ وJETTA وIET CDT.</span>
+<span class="ltx_p">الأستاذ Sinanoglu هو مدير Design-for-Excellence Lab في NYU Abu Dhabi.
+وتُموَّل أبحاثه الحديثة في أمن العتاد والثقة من US National Science Foundation، وUS Department of Defense، وSemiconductor Research Corporation، وIntel Corp، وMubadala Technology.</span>
+</span>
+</td>
+</tr>
+</table></div>
+</figure>
+<figure class="ltx_float biography" id="tab5">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular" dir="ltr">
+<tr class="ltx_tr">
+<td class="ltx_td"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_img_square" height="111" id="g5" src="photos/rakheja.jpg" width="100"/></td>
+<td class="ltx_td">
+<span class="ltx_inline-block">
+<span class="ltx_p"><span class="ltx_text ltx_font_bold">Shaloo Rakheja</span>  (M’13)
+هي أستاذة مساعدة في الهندسة الكهربائية وهندسة الحاسوب في Holonyak Micro and Nanotechnology Laboratory، University of Illinois at Urbana-Champaign، Urbana، IL، USA، حيث تعمل على
+الأجهزة والدوائر النانوية الإلكترونية. وكانت سابقاً
+أستاذة مساعدة في الهندسة الكهربائية وهندسة الحاسوب في New York University، Brooklyn، NY، USA.
+وقبل انضمامها إلى NYU، كانت باحثة ما بعد الدكتوراه في Microsystems Technology
+Laboratories، Massachusetts Institute of Technology، Cambridge، USA. حصلت على درجتي M.S. وPh.D. في الهندسة الكهربائية وهندسة الحاسوب
+من Georgia Institute of Technology، Atlanta، GA، USA.</span>
+</span>
+</td>
+</tr>
+</table></div>
+</figure>
+<div class="ltx_para" id="p5">
+<span class="ltx_ERROR undefined">\EOD</span>
+</div>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 14:04:07 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

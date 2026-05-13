@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>الملخص</title>
+<!--Generated on Wed May 13 04:52:54 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document">
+<div class="ltx_logical-block">
+<div class="ltx_para" id="p1">
+<br class="ltx_break ltx_align_left"/>
+<p class="ltx_p ltx_align_left"><span class="ltx_text" style="font-size:144%;">التحيز الخوارزمي يضخم استقطاب الآراء: نموذج ثقة محدودة </span>
+<br class="ltx_break"/></p>
+<p class="ltx_p ltx_align_left">Alina Sîrbu<sup class="ltx_sup">1,2</sup>,
+Dino Pedreschi<sup class="ltx_sup">1</sup>,
+Fosca Giannotti<sup class="ltx_sup">3</sup>,
+János Kertész<sup class="ltx_sup">4,5</sup>,</p>
+<br class="ltx_break ltx_align_left"/>
+<p class="ltx_p ltx_align_left"><span class="ltx_text ltx_font_bold">1</span> Department of Computer Science, University of Pisa, Pisa, Italy</p>
+<p class="ltx_p ltx_align_left"><span class="ltx_text ltx_font_bold">2</span> Science Division, New York University Abu Dhabi, Abu Dhabi, United Arab Emirates</p>
+<p class="ltx_p ltx_align_left"><span class="ltx_text ltx_font_bold">3</span> Istituto di Scienza e Tecnologie dell’Informazione “A. Faedo” - CNR, Pisa, Italy</p>
+<p class="ltx_p ltx_align_left"><span class="ltx_text ltx_font_bold">4</span> Center for Network Science, Central European University, Budapest H-1051, Hungary</p>
+<p class="ltx_p ltx_align_left"><span class="ltx_text ltx_font_bold">5</span> Department of Theoretical Physics, Budapest University of Technology and Economics, Budapest H-1111, Hungary
+
+<br class="ltx_break"/></p>
+<p class="ltx_p ltx_align_left">* alina.sirbu@unipi.it</p>
+</div>
+</div>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الملخص</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">إن تدفق المعلومات التي تصل إلينا عبر منصات الإعلام على الإنترنت لا يجري تحسينه وفقا لمحتوى المعلومات أو صلتها بالموضوع، بل وفقا للشعبية والقرب من الهدف. ويجري ذلك عادة بغرض تعظيم استخدام المنصة. وكنتيجة جانبية، يفضي هذا إلى تحيز خوارزمي يعتقد أنه يعزز استقطاب النقاش المجتمعي. ولدراسة هذه الظاهرة، نعدل النموذج المعروف لديناميات الرأي المستمرة ذي الثقة المحدودة لكي يأخذ التحيز الخوارزمي في الحسبان ونبحث آثاره. في أبسط نسخة من النموذج الأصلي، تختار أزواج المشاركين في النقاش عشوائيا وتقترب آراؤهم بعضها من بعض إذا كانت ضمن مستوى تحمل ثابت. ونعدل قاعدة اختيار شركاء النقاش: إذ توجد احتمالية معززة لاختيار الأفراد الذين تكون آراؤهم متقاربة أصلا، وبذلك نحاكي سلوك وسائل الإعلام على الإنترنت التي تقترح التفاعل مع أقران مشابهين. ونتيجة لذلك نلاحظ: أ) ميلا متزايدا إلى الاستقطاب، يظهر أيضا في شروط كان النموذج الأصلي سيتنبأ فيها بالتقارب، وب) تباطؤا شديدا في السرعة التي يبلغ بها التقارب الحالة التقاربية، مما يجعل النظام شديد عدم الاستقرار. ويزداد الاستقطاب بفعل تجزؤ السكان الابتدائي.</p>
+</div>
+</section>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>المقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">يمثل الاستقطاب السياسي اتجاها سلبيا عاما ومتعاظما في المجتمعات الغربية الحديثة <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib1" title="">1</a>, <a class="ltx_ref" href="#bib.bib2" title="">2</a>, <a class="ltx_ref" href="#bib.bib21" title="">21</a>, <a class="ltx_ref" href="#bib.bib22" title="">22</a>]</cite>، تقترن به ظواهر مثل “الوقائع البديلة” و“فقاعات الترشيح” و“غرف الصدى” و“الأخبار الزائفة”. وقد حددت عدة أسباب لذلك (انظر، على سبيل المثال، <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib3" title="">3</a>]</cite>)، غير أن هناك أدلة متزايدة على أن الإعلام الجديد على الإنترنت واحد منها <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib4" title="">4</a>, <a class="ltx_ref" href="#bib.bib5" title="">5</a>, <a class="ltx_ref" href="#bib.bib6" title="">6</a>]</cite>. وكان يفترض سابقا أن وسائل الإعلام الجماهيري التقليدية تؤثر في الغالب في النخبة السياسية النشطة في المجتمع، وأنها لا تؤثر في استقطاب السكان ككل إلا بصورة غير مباشرة. أما التحولات الدرامية الأخيرة مع ظهور الإعلام على الإنترنت، وانتشار الإنترنت في كل مكان بما يتيحه من معلومات في متناول نقرات قليلة، والاستخدام العام للشبكات الاجتماعية على الإنترنت، فقد زادت عدد قنوات الاتصال التي يمكن أن تصل عبرها المعلومات السياسية إلى المواطنين. وعلى نحو غير بديهي إلى حد ما، لم يؤد ذلك إلى اكتساب أكثر توازنا للمعلومات ولا إلى ميل أقوى نحو التوافق، كما نوقش في <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib7" title="">7</a>]</cite>؛ بل حدث العكس. وقد يكون أحد الأسباب أن الإعلام الجديد عزز قابلية الوصول إلى الناس، وهو ما يمكن استخدامه لنقل إجابات سياسية مبسطة عن أسئلة معقدة، ومن ثم يعمل باتجاه الاستقطاب <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib8" title="">8</a>]</cite>. علاوة على ذلك، لا ينظم تدفق الأخبار في الإعلام الجديد بطريقة متوازنة، بل تنظمه خوارزميات مبنية لتعظيم استخدام المنصة. ويفترض أن هذا يولد “تحيزا خوارزميا” يعزز اصطناعيا استقطاب الآراء. وهذا من مصنوعات المنصات الإلكترونية، ويسمى أيضا ”العزل الخوارزمي” <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib9" title="">9</a>]</cite>. ولم تثبت حتى الآن الصلة بين استقطاب الآراء والتحيز الخوارزمي الصادر عن المنصات الإلكترونية، لذلك يهدف هذا البحث إلى دراسة هذا الأثر بواسطة نموذج بسيط لديناميات الرأي من نوع الثقة المحدودة.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">إن جزءا كبيرا ومتزايدا بسرعة من السكان لا يستخدم وسائل الإعلام التقليدية (الصحافة المطبوعة أو الراديو أو التلفاز أو حتى المجلات الإلكترونية) للحصول على الأخبار <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib10" title="">10</a>, <a class="ltx_ref" href="#bib.bib11" title="">11</a>, <a class="ltx_ref" href="#bib.bib12" title="">12</a>]</cite>، بل يتجه إلى الإعلام الجديد مثل الشبكات الاجتماعية على الإنترنت أو المدونات. غير أن تدفق الأخبار في الإعلام الجديد لا ينتقى على أساس القيمة المعلوماتية، بل بالأحرى على أساس الشعبية، وبواسطة ”الإعجابات” <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib13" title="">13</a>]</cite>. ولما كان الناس يميلون إلى تعريف أنفسهم بآراء تشبه آراءهم، ويرجح أن يعجبوا بالأخبار الموافقة لها بدرجة أعلى، فإن من مصلحة مزودي الخدمة أن يوجهوا المعلومات سلفا بطريقة مستهدفة. وهذا يعني أن المستخدمين لا يواجهون حتى سرديات مختلفة عن سردياتهم المفضلة. وتبذل جهود كبيرة لتطوير خوارزميات فعالة للتوجيه الملائم للأخبار من أجل توفير التدفق الأرجح لجمع أكبر عدد ممكن من الإعجابات.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">وثمة عامل مهم آخر يسير في الاتجاه نفسه يتعلق بوظيفة ”المشاركة”، المسؤولة بدرجة كبيرة عن الانتشار السريع للأخبار ومن ثم تعزيز شعبيتها. ويحدث هذا الانتشار على الشبكة الاجتماعية، حيث تتشكل الروابط غالبا نتيجة للتجانس في الميول؛ أي إن تبادل المعلومات يقع بين أشخاص ذوي آراء متشابهة. وقد يسهم تنوع تفاعلات الشخص (العائلة، المدرسة، العمل، الهواية، إلخ) في تنويع مصادر المعلومات <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib14" title="">14</a>]</cite>، ومع ذلك يبدو أن التجانس في ما يخص الآراء السياسية قوي على نحو خاص <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib15" title="">15</a>]</cite>.
+وقد تبين أيضا أن المشاركة بين مستخدمين ذوي معتقدات متشابهة صحيحة في سياق انتشار المعلومات المضللة على Facebook، مما يؤدي إلى أثر غرفة الصدى <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib20" title="">20</a>]</cite>،   وكذلك على Twitter، حيث ثبت أن للمستخدمين الحزبيين دورا مهما في الاستقطاب <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib24" title="">24</a>]</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">من الواضح أن آثار الشبكات مهمة جدا في انتشار الأخبار والآراء، إلا أننا في دراستنا الحالية سنتجاهل بنية الشبكة في النظام وسنركز حصرا على تبعات التحيز الخوارزمي في اختيار المحتوى المعروض على المستخدمين. وهذا يقابل مقاربة المجال المتوسط، وهي مستخدمة على نطاق واسع بوصفها تقريبا أوليا لمسائل الانتشار <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib16" title="">16</a>]</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">لذلك تتمثل المهمة في نمذجة تطور موقف المجتمع، بفرض وجود تحيز في اختيار الشركاء الذين تتواجه آراؤهم.
+شهدت السنوات الأخيرة إدخال عدة نماذج لديناميات الرأي <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib19" title="">19</a>]</cite>، غير أن أيا منها لا يتضمن التحيز الخوارزمي بالمعنى الموصوف هنا. ومن ثم نقدم امتدادا لأحد النماذج القائمة لدراسة هذا الأثر.
+ولغرض التبسيط نستخدم نموذج ديناميات رأي ذا ثقة محدودة <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib17" title="">17</a>]</cite>، وهو معروف بقدرته على وصف كل من توافق الآراء واستقطابها تبعا لمستوى تحمل الوكلاء. في نسخة المجال المتوسط، يختار وكيلان عشوائيا وتقترب آراؤهما، الممثلة بأعداد حقيقية، إذا كانا ضمن مستوى التحمل. ويدخل التحيز بحيث تؤخذ آراؤهما في الاعتبار منذ مرحلة اختيار الشركاء، فتختار الوكلاء ذوو الآراء الأقرب باحتمال أعلى. وبهذا التعديل البسيط نرى أثرين. أولا، يعاق الميل نحو التوافق، أي يلزم مستوى تحمل أكبر لتحقيق التوافق؛ وثانيا، يتباطأ الاقتراب من الحالة التقاربية تباطؤا هائلا. لذلك يؤثر تحيز الاختيار في عملية تشكل الرأي بطريقتين عميقتين: أ) بتفاقم الاستقطاب، الذي يظهر أيضا في شروط كان النموذج الأصلي سيتنبأ فيها بالتوافق، وب) بإبطاء عملية الانتشار، مما يجعل النظام شديد عدم الاستقرار.</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">تنظم الورقة على النحو الآتي. في القسم التالي نقدم النموذج بالتفصيل. ويتضمن قسم النتائج نتائج المحاكاة. ونختتم الورقة بمناقشة وعرض للبحث اللاحق.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>النموذج</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">ينظر نموذج الثقة المحدودة الأصلي <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib17" title="">17</a>]</cite> في جماعة مكونة من <img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0001.svg"/> أفراد، حيث يحمل كل فرد <img alt="$i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0002.svg"/> رأيا مستمرا <img alt="$x_i \in [0,1]$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_i \in [0,1]$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0003.svg"/>. ويمكن اعتبار هذا الرأي الدرجة التي يوافق بها الفرد أو لا يوافق على موقف معين. ويرتبط الأفراد بشبكة اجتماعية كاملة، ويتفاعلون ثنائيا في خطوات زمنية متقطعة. ويختار الزوج المتفاعل <img alt="$(i,j)$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$(i,j)$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0004.svg"/> <em class="ltx_emph ltx_font_italic">عشوائيا</em> من السكان عند كل نقطة زمنية <img alt="$t$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$t$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0005.svg"/>. وبعد التفاعل قد يتغير الرأيان، <img alt="$x_i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0006.svg"/> و<img alt="$x_j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0007.svg"/>، تبعا لما يسمى <em class="ltx_emph ltx_font_italic">معامل الثقة المحدودة</em> <img alt="$\varepsilon \in [0,1]$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon \in [0,1]$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0008.svg"/>. ويمكن أن ينظر إلى ذلك بوصفه مقياسا لانفتاح الأفراد الذهني في جماعة سكانية. فهو يعرف عتبة على المسافة بين رأيي الفردين، لا يكون التواصل بين الأفراد بعدها ممكنا بسبب تعارض وجهات النظر.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">إذا عرفنا المسافة بين رأيين <img alt="$x_i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0009.svg"/> و<img alt="$x_j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0010.svg"/> على أنها
+<img alt="$ d_{ij}=|x_i-x_j| $" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$ d_{ij}=|x_i-x_j| $" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0011.svg"/>، فإن المعلومات لا تتبادل بين الفردين إلا إذا كان <img alt="$d_{ij} \leq \varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ij} \leq \varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0012.svg"/>، وإلا فلا يحدث شيء. وينتج تبادل المعلومات في اقتراب الرأيين أحدهما من الآخر، منظما بمعامل تقارب <img alt="$\mu \in (0,0.5]$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu \in (0,0.5]$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0013.svg"/></p>
+</div>
+<div class="ltx_para" id="S2.p3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S2.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation*}
+x_i(t+1)=x_i(t)+\mu(x_j(t)-x_i(t))  
+\end{equation*}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-latex="\begin{equation*}
+x_i(t+1)=x_i(t)+\mu(x_j(t)-x_i(t))  
+\end{equation*}" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0014.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S2.Ex2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation*}
+x_j(t+1)=x_j(t)+\mu(x_i(t)-x_j(t)) 
+\end{equation*}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-latex="\begin{equation*}
+x_j(t+1)=x_j(t)+\mu(x_i(t)-x_j(t)) 
+\end{equation*}" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0015.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">في ما يلي لا ننظر إلا في حالة <img alt="$\mu=0.5$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\mu=0.5$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0016.svg"/>، أي عندما يأخذ كلا الفردين الرأي المتوسط.</p>
+</div>
+<div class="ltx_para" id="S2.p4">
+<p class="ltx_p">لإدخال التحيز الخوارزمي في التفاعل بين الأفراد، نعدل الإجراء الذي يختار به الزوج <img alt="$i,j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$i,j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0017.svg"/>. في النموذج الأصلي، يختار <img alt="$i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0018.svg"/> و<img alt="$j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0019.svg"/> عشوائيا وبانتظام من السكان. وبدلا من ذلك، يجعل التحيز الخوارزمي لقاءات الأفراد المتشابهين أكثر احتمالا. ولأخذ ذلك في الحسبان، نختار أولا <img alt="$i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0020.svg"/>، ثم يجرى اختيار <img alt="$j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0021.svg"/> باحتمال يعتمد على <img alt="$d_{ij}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ij}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0022.svg"/>:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation}\label{eq_prob}
+p_i(j)=\frac{d_{ij}^{-\gamma}}{\sum_{k \neq i}{d_{ik}^{-\gamma}}}
+\end{equation}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-equation-number="1" data-latex="\begin{equation}\label{eq_prob}
+p_i(j)=\frac{d_{ij}^{-\gamma}}{\sum_{k \neq i}{d_{ik}^{-\gamma}}}
+\end{equation}" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0023.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">وبهذه الطريقة، يكون احتمال اختيار <img alt="$j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0024.svg"/> بعد اختيار <img alt="$i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0025.svg"/> أكبر إذا كان <img alt="$d_{ij}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ij}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0026.svg"/> أصغر، أي إن الأفراد المتشابهين يتفاعلون أكثر. وتمثل المعلمة <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0027.svg"/> شدة التحيز الخوارزمي: فكلما كبرت <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0028.svg"/>، أصبحت اللقاءات بين أفراد ذوي آراء متباعدة أندر. وعند <img alt="$\gamma=0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma=0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0029.svg"/> نحصل على نموذج الثقة المحدودة الأصلي، <img alt="$p_i(j)=\frac{1}{N-1}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$p_i(j)=\frac{1}{N-1}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0030.svg"/>.</p>
+</div>
+<div class="ltx_para" id="S2.p5">
+<p class="ltx_p">في ما يلي سنحلل النموذج الجديد عدديا، من خلال محاكاة عملية تشكل الرأي. ولتجنب عمليات غير معرفة في المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2 النموذج"><span class="ltx_text ltx_ref_tag">1</span></a>، عندما يكون <img alt="$d_{ik}=0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ik}=0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0031.svg"/> (<img alt="$k \neq i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$k \neq i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0032.svg"/>)، نستخدم حدا أدنى لـ<img alt="$d_{ik}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ik}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0033.svg"/>، هو <img alt="$d_\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0034.svg"/>. لذلك إذا كان <img alt="$d_{ik} &lt;d_\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ik} &lt;d_\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0035.svg"/> فإن <img alt="$d_{ik}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ik}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0036.svg"/> يستبدل بـ<img alt="$d_\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0037.svg"/> في المعادلة <a class="ltx_ref" href="#S2.E1" title="In 2 النموذج"><span class="ltx_text ltx_ref_tag">1</span></a>. ونستخدم <img alt="$d_\varepsilon=0.0001$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_\varepsilon=0.0001$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0038.svg"/> في ما يلي.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>النتائج</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">من أجل فهم كيف يؤثر إدخال التحيز الخوارزمي في أداء النموذج، ندرس النموذج وفق معايير متعددة لتوليفات مختلفة من المعلمتين <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0039.svg"/> و<img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0040.svg"/>. ونهتم بما إذا كانت الجماعة السكانية تتقارب إلى توافق أم إلى عناقيد رأي متعددة (القسم <a class="ltx_ref" href="#S3.SS1" title="3.1 التوافق مقابل تجزؤ الآراء ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">3.1</span></a>)، وبمدى سرعة ظهور التقارب (القسم <a class="ltx_ref" href="#S3.SS2" title="3.2 زمن التقارب ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">3.2</span></a>). ولهذا نركز على الانتقال بين عنقود واحد وعنقودين. وننظر أيضا في تأثير حجم السكان في السلوك المرصود، سواء في النموذج الأصلي أم في النموذج الموسع (القسم <a class="ltx_ref" href="#S3.SS3" title="3.3 آثار الحجم المحدود ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">3.3</span></a>). وعلاوة على ذلك، يدرس أثر جماعة ابتدائية مفروزة (القسم <a class="ltx_ref" href="#S3.SS4" title="3.4 أثر الشرط الابتدائي ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">3.4</span></a>). وفي كل تحليل نكرر المحاكاة مرات متعددة لأخذ الطبيعة العشوائية للنموذج في الحسبان، ونعرض القيم المتوسطة التي حصلنا عليها لكل معيار من المعايير أعلاه.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>التوافق مقابل تجزؤ الآراء</h3>
+<figure class="ltx_figure" id="S3.F1">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="483" id="S3.F1.g1" src="x1.png" width="664"/></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="474" id="S3.F1.g2" src="x2.png" width="665"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span><span class="ltx_text ltx_font_bold">عدد العناقيد المحصلة لقيم مختلفة من <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0041.svg"/> و<img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0042.svg"/>.</span> تعرض اللوحة العلوية الفضاء من أجل <img alt="$0.2\leq\varepsilon \leq1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.2\leq\varepsilon \leq1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0043.svg"/>، في حين تكبر اللوحة السفلية المنطقة التي يكون فيها <img alt="$0.2\leq\varepsilon \leq0.4$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.2\leq\varepsilon \leq0.4$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0044.svg"/>. وقد حسبت القيم متوسطا على 85 تشغيلات. </figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">يتحدد سلوك نموذج الثقة المحدودة الأصلي بالمعلمة <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0045.svg"/> <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib17" title="">17</a>]</cite>. وعندما تكون هذه المعلمة كبيرة بما يكفي، تتقارب جماعة ابتدائية عشوائية منتظمة إلى توافق، في حين تظهر عناقيد في السكان مع انخفاض <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0046.svg"/>. وقد تبين أن عدد العناقيد الرئيسة يمكن تقريبه بـ<img alt="$\lfloor \frac{1}{2\varepsilon} \rfloor$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\lfloor \frac{1}{2\varepsilon} \rfloor$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0047.svg"/>. ويتجاهل هذا التقريب العناقيد الثانوية التي قد تظهر في بعض الحالات <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib18" title="">18</a>]</cite>.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<p class="ltx_p">في ما يلي نحلل عدد العناقيد المحصلة في نموذجنا الموسع، ابتداء من توزيع ابتدائي منتظم للآراء، لجماعة سكانية حجمها <img alt="$N=500$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N=500$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0048.svg"/>. ونركز على المنطقة في فضاء <img alt="$(\varepsilon, \gamma)$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$(\varepsilon, \gamma)$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0049.svg"/> التي يكون فيها، في النموذج الأصلي، عدد العناقيد أصغر من أو يساوي 2، أي <img alt="$\varepsilon \geq 0.2$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon \geq 0.2$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0050.svg"/>. ولقياس عدد العناقيد كميا، مع وجود عناقيد رئيسة وثانوية، نستخدم <em class="ltx_emph ltx_font_italic">نسبة مشاركة العناقيد</em> معيارا. ولا يأخذ هذا المعيار في الحسبان عدد العناقيد فحسب، بل أيضا كسر السكان في كل عنقود، وبذلك يقيس <em class="ltx_emph ltx_font_italic">العدد الفعال للعناقيد</em>. ومن ثم فإن عنقودين متساويين تماما سيؤديان إلى نسبة مشاركة عناقيد قدرها <img alt="$2$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$2$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0051.svg"/>، أما إذا كان أحد العناقيد أكبر فستأخذ القيمة قياسا في <img alt="$(1,2)$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$(1,2)$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0052.svg"/>. ولذلك يحسب العدد الفعال للعناقيد المقيس في هذا القسم على النحو الآتي:</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p3">
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table paper-arabizer-equation-image-table" dir="ltr" id="S3.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><img alt="\begin{equation}
+C=\frac{(\sum_i c_i)^2}{\sum_i c_i^2}
+\end{equation}" class="paper-arabizer-equation-image paper-arabizer-equation-display" data-equation-number="2" data-latex="\begin{equation}
+C=\frac{(\sum_i c_i)^2}{\sum_i c_i^2}
+\end{equation}" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0053.svg"/></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <img alt="$c_i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$c_i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0054.svg"/> هو حجم العنقود <img alt="$i$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$i$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0055.svg"/>.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p4">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ 3.1 التوافق مقابل تجزؤ الآراء ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">1</span></a> العدد الفعال للعناقيد لقيم مختلفة من <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0056.svg"/> و<img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0057.svg"/>، باستخدام متوسطات على تشغيلات متعددة. وتعرض اللوحة العلوية النتائج لـ<img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0058.svg"/> بين <img alt="$0.2$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.2$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0059.svg"/> و<img alt="$1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0060.svg"/>، في حين تكبر اللوحة السفلية المنطقة التي تقع فيها <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0061.svg"/> بين <img alt="$0.2$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.2$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0062.svg"/> و<img alt="$0.4$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.4$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0063.svg"/>. لاحظ أنه في هذه المحاكاة تتقارب الجماعة إلى عنقود رئيس واحد أو عنقودين أو ثلاثة عناقيد رئيسة ذات كتل متشابهة، إضافة إلى بعض العناقيد الثانوية المهملة. وبالنسبة إلى إعداد المعلمات نفسه، قد تتقارب الجماعة إلى عنقود واحد في بعض المحاكاة، أو إلى عنقودين في محاكاة أخرى. ونعرض القيم المتوسطة كما حصلنا عليها من 85 تشغيلات مستقلة.</p>
+</div>
+<figure class="ltx_figure" id="S3.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="424" id="S3.F2.g1" src="x3.png" width="581"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>إجمالي عدد التفاعلات اللازمة للتقارب، مطبعا بعدد الأفراد، ومتوسطا على 85 تشغيلات.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS1.p5">
+<p class="ltx_p">يبين الرسم أن محاكاتنا تعيد إنتاج سلوك النموذج الأصلي تماما (<img alt="$\gamma=0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma=0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0064.svg"/>)، حيث يحدث انتقال بين عنقود 2 وعناقيد 1
+عند <img alt="$\varepsilon \in [0.25,0.3]$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon \in [0.25,0.3]$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0065.svg"/>. ومن الواضح أن إدخال
+<img alt="$\gamma&gt;0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma&gt;0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0066.svg"/> يسبب زيادة في العدد الفعال للعناقيد، مقارنة بالنموذج الأصلي. فعلى سبيل المثال، عند <img alt="$\varepsilon=0.35$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.35$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0067.svg"/>، يؤدي النموذج الأصلي إلى عنقود واحد، في حين تبدأ عناقيد جديدة في نموذجنا بالظهور عند <img alt="$\gamma \geq 1.3 $" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma \geq 1.3 $" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0068.svg"/>. وعند <img alt="$\varepsilon=0.32$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.32$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0069.svg"/>، يبدأ الانتقال حتى في وقت أبكر قبل <img alt="$\gamma = 1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma = 1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0070.svg"/>، مع عدد متوسط للعناقيد قريب جدا من 2 عند <img alt="$\gamma = 1.6$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma = 1.6$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0071.svg"/>. أما في حالة <img alt="$\varepsilon=0.2$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.2$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0072.svg"/>، حين كان عدد العناقيد الأصلي بالفعل 2، فإن <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0073.svg"/> يزيد
+<img alt="$C$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$C$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0074.svg"/> باتجاه 3 عناقيد رأي. ومن ثم يبدو من محاكاتنا أن التحيز الخوارزمي يسبب التجزؤ في نموذج الثقة المحدودة، من خلال زيادة عدد العناقيد
+مع ازدياد التحيز.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>زمن التقارب</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">في حين أن عدد عناقيد الرأي التقاربي مهم جدا، فإن الزمن اللازم للحصول على هذه العناقيد لا يقل أهمية. ففي سياق واقعي، يكون الزمن المتاح محدودا، ولذلك إذا لم يتشكل التوافق إلا
+بعد فترة زمنية طويلة جدا، فقد لا يظهر فعليا في الجماعة الحقيقية. ولذلك نقيس الزمن اللازم للتقارب
+(إلى عنقود رأي واحد أو أكثر)
+في نموذجنا الموسع. ويمكن عده إجمالي عدد التفاعلات الثنائية اللازمة للحصول على تشكيل مستقر، مقسوما على <img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0075.svg"/>، وهو حجم السكان.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p2">
+<p class="ltx_p">يوضح الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3.1 التوافق مقابل تجزؤ الآراء ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">2</span></a> كيف يعتمد إجمالي عدد التفاعلات اللازمة على كل من <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0076.svg"/> و<img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0077.svg"/>. ومن الواضح أن زمن التقارب ينمو بسرعة كبيرة مع <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0078.svg"/>، وذلك لكل قيم <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0079.svg"/>، بما في ذلك الحالة التي تتقارب فيها الجماعة إلى توافق. ويشير ذلك إلى أنه، في سياق واقعي بزمن رصد محدود، قد لا يظهر هذا التوافق
+على الإطلاق. ومن ثم يكون لـ<img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0080.svg"/> أثر تجزيئي مزدوج: فلا ينمو عدد العناقيد فحسب، بل يصبح التوافق بطيئا للغاية أيضا.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p3">
+<p class="ltx_p">ولدعم هذه الملاحظة، نعرض في الشكل <a class="ltx_ref" href="#S3.F3" title="Figure 3 ‣ 3.2 زمن التقارب ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">3</span></a> تطور السكان لقيم مختلفة من <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0081.svg"/>، عندما يكون <img alt="$\varepsilon=1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0082.svg"/> و<img alt="$\varepsilon=0.32$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.32$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0083.svg"/>. في الحالة الأولى (<img alt="$\varepsilon=1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0084.svg"/>)، تتقارب الجماعة دائما إلى عنقود واحد، غير أننا نستطيع ملاحظة الزيادة في عدد التكرارات المطلوبة، مع تعايش عناقيد كثيرة لفترة طويلة قبل التقارب. وعندما يكون <img alt="$\varepsilon=0.32$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.32$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0085.svg"/>، يؤدي نموذج Deffuant الأصلي إلى عنقود واحد، مع تقارب سريع. ومع نمو <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0086.svg"/>، يتباطأ التقارب أولا، وعندما تبلغ <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0087.svg"/> عتبة معينة يظهر عنقودان. والحالة التي تكون فيها <img alt="$\gamma=1.1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma=1.1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0088.svg"/> قريبة من الانتقال. وهي مثيرة للاهتمام على نحو خاص، لأننا نستطيع ملاحظة أن عنقودين يتعايشان في البداية لبعض الوقت، لكنهما يندمجان في النهاية في عنقود واحد. وفي حالات محاكاة أخرى بالقيم نفسها للمعلمات، لا يندمج العنقودان أبدا. </p>
+</div>
+<figure class="ltx_figure" id="S3.F3">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="202" id="S3.F3.g1" src="x4.png" width="200"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="205" id="S3.F3.g2" src="x5.png" width="200"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="205" id="S3.F3.g3" src="x6.png" width="200"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="203" id="S3.F3.g4" src="x7.png" width="199"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="204" id="S3.F3.g5" src="x8.png" width="199"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="205" id="S3.F3.g6" src="x9.png" width="199"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="205" id="S3.F3.g7" src="x10.png" width="200"/></div>
+<div class="ltx_flex_cell ltx_flex_size_4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_square" height="201" id="S3.F3.g8" src="x11.png" width="200"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span><span class="ltx_text ltx_font_bold">تطور جماعة الآراء لقيم مختلفة من <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0089.svg"/> و<img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0090.svg"/>.</span> يقابل الصف الأول الحالة التي يكون فيها <img alt="$\varepsilon=1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0091.svg"/>، في حين يقابل الصف الثاني <img alt="$\varepsilon=0.32$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.32$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0092.svg"/>. وفي كلتا الحالتين <img alt="$\gamma \in \{0,1,1.1,1.6\}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma \in \{0,1,1.1,1.6\}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0093.svg"/> (من اليسار إلى اليمين).
+</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p4">
+<p class="ltx_p">ثمة ملاحظة أخرى تظهر من الشكل <a class="ltx_ref" href="#S3.F2" title="Figure 2 ‣ 3.1 التوافق مقابل تجزؤ الآراء ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">2</span></a>، وهي أنه إضافة إلى النمو السريع العام في زمن التقارب، نلاحظ أيضا قمة أصغر في زمن التقارب من أجل قيمة <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0094.svg"/> بين 0.25 و0.35، وذلك لكل قيم <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0095.svg"/>. ويقابل هذا تباطؤا في التقارب حول الانتقال الطوري (من عنقود واحد إلى عنقودين)، وهو ظاهرة فيزيائية معروفة.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p5">
+<p class="ltx_p">قد يحتج المرء، مع ذلك، بأن قياس الزمن بوصفه إجمالي عدد التفاعلات قد يضخم الأرقام. ويمكن أن يكون لكل تفاعل 3 نواتج: (1) لا يحدث شيء لأن زوجا من الأفراد ذوي آراء متطابقة (<img alt="$x_i=x_j$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$x_i=x_j$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0096.svg"/>) قد اختير، (2) لا يحدث شيء بسبب الثقة المحدودة <img alt="$d_{ij}&gt;\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$d_{ij}&gt;\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0097.svg"/>، أو (3) يتغير الرأيان فعلا. وفي ما يلي نسمي النوع الثالث من التفاعل تفاعلات ‘نشطة’.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p6">
+<p class="ltx_p">يفصل الشكل <a class="ltx_ref" href="#S3.F4" title="Figure 4 ‣ 3.3 آثار الحجم المحدود ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">4</span></a> العدد الكلي والعدد النشط من التفاعلات لحالة المثال <img alt="$\varepsilon=0.4$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.4$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0098.svg"/>. وينمو كلا المقياسين مثل <img alt="$\exp(\gamma^\sigma)$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\exp(\gamma^\sigma)$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0099.svg"/> حيث <img alt="$\sigma \sim 3.4$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\sigma \sim 3.4$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0100.svg"/>، مع فرق صغير ظاهر بين التفاعلات النشطة والتفاعلات الكلية. ويعني هذا النمو بالغ السرعة في زمن التقارب أن التوافق، عمليا، تعوقه حتى درجة ضعيفة من التحيز الخوارزمي، إذ إن التوافق يتشكل ببطء، ومن ثم تبقى الجماعة في حالة غير منتظمة زمنا طويلا.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.3 </span>آثار الحجم المحدود</h3>
+<figure class="ltx_figure" id="S3.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="482" id="S3.F4.g1" src="x12.png" width="582"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span><span class="ltx_text ltx_font_bold">زمن التقارب. </span> الأعداد المطبعة للتفاعلات الكلية، وتفاعلات الفرق غير الصفري، والتفاعلات النشطة اللازمة للتقارب عند <img alt="$\varepsilon=0.4$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.4$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0101.svg"/>. ولا يعرض المرجع <img alt="$35\exp(\gamma^{3.4})$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$35\exp(\gamma^{3.4})$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0102.svg"/> إلا بوصفه عونا بصريا.
+</figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="407" id="S3.F5.g1" src="x13.png" width="582"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span><span class="ltx_text ltx_font_bold">عدد العناقيد من دون تحيز خوارزمي.</span> العدد الفعال للعناقيد المحصلة لقيم مختلفة من <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0103.svg"/> و<img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0104.svg"/>، عندما يكون <img alt="$\gamma=0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma=0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0105.svg"/>.   حسبت القيم متوسطا على 200 و125 و85 و45 و45 تشغيلات من أجل <img alt="$N \in \{100,250,500,750,1000\}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N \in \{100,250,500,750,1000\}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0106.svg"/>، على الترتيب. وتعرض أشرطة الخطأ انحرافا معياريا واحدا عن المتوسط.</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS3.p1">
+<p class="ltx_p">كان الهدف من تحليل ثالث أجريناه فهم ما إذا كان حجم السكان يؤدي دورا في أثر التحيز الخوارزمي. وهذا مهم أيضا للسيناريوهات الواقعية، لأن تشكل الرأي قد يحدث على نطاق صغير أو كبير. ومن ثم ننظر إلى الانتقال بين التوافق والتجزؤ لأحجام سكانية متغيرة، في كل من النموذج الأصلي والنموذج الموسع.</p>
+</div>
+<figure class="ltx_figure" id="S3.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="574" id="S3.F6.g1" src="x14.png" width="581"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span><span class="ltx_text ltx_font_bold">عدد العناقيد مع التحيز الخوارزمي.</span> العدد الفعال للعناقيد المحصلة لقيم مختلفة من <img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0107.svg"/> و<img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0108.svg"/> و<img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0109.svg"/>.    حسبت القيم متوسطا على 200 و125 و85 و45 و45 تشغيلات من أجل <img alt="$N \in \{100,250,500,750,1000\}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N \in \{100,250,500,750,1000\}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0110.svg"/>، على الترتيب. وتعرض أشرطة الخطأ انحرافا معياريا واحدا عن المتوسط. </figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS3.p2">
+<p class="ltx_p">في النموذج الأصلي، يتبين أن الانتقال بين <img alt="$c$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$c$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0111.svg"/> و<img alt="$c+1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$c+1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0112.svg"/> عناقيد انتقال مستمر، مع مجال لـ<img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0113.svg"/> يمكن أن تظهر فيه الحالتان كلتاهما في حالات محاكاة مختلفة (انظر الشكل 4 في <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib17" title="">17</a>]</cite>). وعلى وجه الخصوص، يحدث الانتقال بين عنقود واحد وعنقودين عند <img alt="$\epsilon \in (0.25,0.3)$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\epsilon \in (0.25,0.3)$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0114.svg"/>. وقد أجرينا محاكاة عددية لاختبار ما إذا كان هذا المجال يتغير مع <img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0115.svg"/>، إذ لا توجد، بحسب علم المؤلفين، دراسة مفصلة في هذا الاتجاه لنموذج الثقة المحدودة.
+يعرض الشكل <a class="ltx_ref" href="#S3.F5" title="Figure 5 ‣ 3.3 آثار الحجم المحدود ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">5</span></a> العدد الفعال   المتوسط للعناقيد عبر تشغيلات متعددة حصلنا عليها عند <img alt="$N\in\{100,250,500,750,1000\}$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N\in\{100,250,500,750,1000\}$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0116.svg"/>.   تمثل أشرطة الخطأ انحرافا معياريا واحدا عن المتوسط. ومن الواضح أنه مع ازدياد <img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0117.svg"/> يصبح الانتقال أكثر فجائية، أي إن طول مجال الانتقال يتناقص ويقترب من <img alt="$\varepsilon=0.25$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=0.25$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0118.svg"/>.
+وبالنسبة إلى السكان الصغار جدا على وجه الخصوص،   يكون عدد العناقيد في منطقة الانتقال أكبر، ويرجح أن ذلك عائد إلى انخفاض كثافة الآراء في الجماعة الابتدائية، مما يسهل تشكل العناقيد حتى عندما كانت الجماعات الأكبر ستتقارب إلى توافق. ومن ثم يمكننا أن نستنتج أن صغر <img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0119.svg"/> قد يفضل التجزؤ أيضا.    تكاد أشرطة الخطأ تكون غير مرئية خارج مجال الانتقال الطوري، لكنها كبيرة جدا داخل هذا المجال. ويرجع ذلك إلى أنه داخل مجال الانتقال تتقارب بعض المحاكاة إلى عنقود واحد، في حين تتقارب محاكاة أخرى إلى عنقودين، مما يؤدي إلى انحرافات معيارية كبيرة عن المتوسط.
+ولتحليل أثر حجم السكان عندما يكون <img alt="$\gamma &gt;0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma &gt;0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0120.svg"/>، ننظر في قيمتين مختلفتين لـ<img alt="$\varepsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0121.svg"/> (0.3 و0.32). وقد اختيرتا لأنهما عند <img alt="$\gamma=0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma=0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0122.svg"/> تؤديان إلى عنقود واحد، في حين يظهر التجزؤ مع نمو <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0123.svg"/>. يعرض الشكل <a class="ltx_ref" href="#S3.F6" title="Figure 6 ‣ 3.3 آثار الحجم المحدود ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">6</span></a> العدد الفعال للعناقيد المحصلة لأحجام سكانية مختلفة. ومرة أخرى، يكون الانتقال من عنقود واحد إلى عنقودين أشد انحدارا في <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0124.svg"/> مع ازدياد <img alt="$N$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$N$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0125.svg"/>، مع ميل الأحجام السكانية الصغيرة إلى تفضيل التجزؤ. وفي هذه الشروط، يبدو أن التحيز الخوارزمي يمكن أن يكون في الواقع أكثر فعالية في إعاقة التوافق داخل المجموعات الأصغر.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.4 </span>أثر الشرط الابتدائي</h3>
+<figure class="ltx_figure" id="S3.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_portrait" height="811" id="S3.F7.g1" src="x15.png" width="581"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span><span class="ltx_text ltx_font_bold">الشرط الابتدائي.</span> أثر الشرط الابتدائي في العدد الفعال للعناقيد (متوسطات على 10 تشغيلات). </figcaption>
+</figure>
+<figure class="ltx_figure" id="S3.F8"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_portrait" height="812" id="S3.F8.g1" src="x16.png" width="581"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>أثر الشرط الابتدائي في زمن التقارب المقيس بعدد التفاعلات النشطة (متوسطات على 10 تشغيلات). </figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS4.p1">
+<p class="ltx_p">حصلنا على النتائج السابقة في الحالة التي افترضت فيها المحاكاة العددية آراء ابتدائية عشوائية منتظمة في الجماعة السكانية. غير أن تشكل الرأي في الواقع قد يبدأ من شروط ابتدائية مجزأة قليلا. ولمحاكاة ذلك، أدخلنا اصطناعيا فجوة متناظرة حول قيمة الرأي <img alt="$0.5$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$0.5$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0126.svg"/>، لمحاكاة جماعة بدأت الآراء فيها بالتشكل بالفعل. وقد غيرنا عرض الفجوة لفهم أثر مستويات مختلفة من التجزؤ في كل من نموذج الثقة المحدودة الأصلي (<img alt="$\gamma=0$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma=0$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0127.svg"/>) وامتدادنا.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p2">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S3.F7" title="Figure 7 ‣ 3.4 أثر الشرط الابتدائي ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">7</span></a> العدد الفعال   المتوسط للعناقيد المحصلة لأحجام فجوة مختلفة،   مع أشرطة خطأ تبين انحرافا معياريا واحدا عن المتوسط. وبالنسبة إلى النموذج الأصلي، تزحزح الفجوة الانتقال من عنقودين إلى عنقود واحد نحو قيم أكبر من <img alt="$\epsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\epsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0128.svg"/>. ومن ثم فإن الشرط الابتدائي المجزأ يفضل التجزؤ حتى في مرحلة لاحقة من تطور الآراء. غير أنه مع نمو <img alt="$\epsilon$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\epsilon$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0129.svg"/> يختفي التجزؤ، وبالتالي يمكن لمستوى تحمل أعلى
+أن يتغلب على شرط ابتدائي مجزأ. ونلاحظ أيضا أنه مع نمو <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0130.svg"/>، يتضافر الأثران، أثر التحيز الخوارزمي وأثر التجزؤ الابتدائي، لدفع الانتقال إلى التوافق أقرب فأقرب إلى <img alt="$\epsilon=1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\epsilon=1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0131.svg"/>.   وتبين أشرطة الخطأ مرة أخرى كيف تتقارب الجماعة في مجال الانتقال إلى عنقود واحد في بعض المحاكاة وإلى عنقودين في محاكاة أخرى، مما يؤدي إلى انحرافات كبيرة نسبيا عن المتوسط. أما خارج مجال الانتقال فتكاد أشرطة الخطأ تكون غير مرئية، ومن ثم يكون عدد العناقيد مستقرا جدا من محاكاة إلى أخرى.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p3">
+<p class="ltx_p">أما من حيث زمن التقارب، فيرسم الشكل <a class="ltx_ref" href="#S3.F8" title="Figure 8 ‣ 3.4 أثر الشرط الابتدائي ‣ 3 النتائج"><span class="ltx_text ltx_ref_tag">8</span></a> عدد <em class="ltx_emph ltx_font_italic">التفاعلات النشطة</em> في حالة شرط ابتدائي مجزأ. ويبدو أن التجزؤ الابتدائي يسرع التقارب عندما تكون الجماعة النهائية مجزأة أيضا. غير أنه عندما تبلغ الجماعة النهائية توافقا (عنقودا واحدا)، ينعكس الأثر، أي إن التجزؤ الابتدائي يبطئ التقارب. ويستمر زمن التقارب في النمو بسرعة كبيرة جدا مع <img alt="$\gamma$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\gamma$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0132.svg"/>، كما رأينا سابقا في حالة شرط ابتدائي منتظم.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p4">
+<p class="ltx_p">ومن ثم، مرة أخرى، يبدو أن الأثرين يعملان معا ضد بلوغ التوافق، إما بتفضيل ظهور عناقيد إضافية أو بإبطاء التوافق عندما يكون من الممكن، من حيث المبدأ، أن يظهر.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>المناقشة والاستنتاجات</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">قدمنا نموذجا للتحيز الخوارزمي ضمن إطار الثقة المحدودة، وحللنا سلوكه. والتحيز الخوارزمي آلية تشجع التفاعل بين الأفراد المتشابهين في التفكير، على نحو يشبه الأنماط المرصودة في بيانات الشبكات الاجتماعية الحقيقية. ووجدنا أن التحيز الخوارزمي في هذا النموذج يعيق التوافق ويفضل تجزؤ الآراء عبر آليتين مختلفتين. فمن جهة، يعاق التوافق بسبب تباطؤ شديد جدا في التقارب، بحيث إنه حتى عندما يحصل، تقاربيا، على عنقود واحد، يكون الزمن اللازم للوصول إليه طويلا إلى درجة أن التوافق لن يظهر عمليا. وبالإضافة إلى ذلك، لاحظنا تجزؤ الجماعة مع ازدياد قوة التحيز، إذ يزداد عدد العناقيد المحصلة مقارنة بالنموذج الأصلي. كما يعزز الشرط الابتدائي المجزأ التجزؤ، مضخما أثر التحيز الخوارزمي. وبالإضافة إلى ذلك، لاحظنا أن الجماعات الصغيرة قد تكون أقل قدرة على مقاومة التجزؤ، بسبب آثار الحجم المحدود.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">تستند النتائج المعروضة هنا إلى افتراض وجود الثقة المحدودة، أي إن الأفراد ذوي الآراء المتباينة جدا لا يتبادلون المعلومات ومن ثم لا يؤثر بعضهم في بعض. غير أن استنتاجاتنا المتعلقة بأن التحيز الخوارزمي يعيق التوافق تظل قائمة حتى عند إزالة الثقة المحدودة (أي <img alt="$\varepsilon=1$" class="paper-arabizer-equation-image paper-arabizer-equation-inline" data-latex="$\varepsilon=1$" data-paper-arabizer-equation-image="true" data-source-file="arxiv.tex" dir="ltr" src="equations/eq_0133.svg"/>). ففي هذه الحالة، يظل التوافق يصبح بطيئا للغاية مع ازدياد التحيز، ومن ثم لا يتحقق عمليا أبدا، وهي نتيجة نعتقد أنها ستنطبق على أي نموذج آخر من نماذج ديناميات الرأي. وسيكون من المثير للاهتمام أيضا معرفة كيف يمكن لأخذ بنية شبكة اجتماعية أكثر واقعية بين الأفراد في الحسبان، بدلا من رسم كامل يمكن فيه لأي شخص أن يتفاعل مع أي شخص آخر، أن يؤثر في عملية تشكل الرأي، وربما يفاقم الآثار المرصودة في هذه الدراسة.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">على الرغم من وجود أدلة على أن أنواعا كثيرة من التفاعلات الاجتماعية تخضع للتحيز الخوارزمي، لا يزال الجدل مستمرا بشأن ما إذا كان ذلك يولد تجزؤا في الآراء على المدى الطويل أم لا. وتدعم نتائجنا العددية الخيار الأول، الذي نخطط لتحليله بمزيد من التفصيل مستقبلا من خلال تطبيق نموذجنا على بيانات حقيقية من عمليات الشبكات الاجتماعية. ونود أيضا أن نفهم كيف يمكن للمعلومات الخارجية أن تؤثر في السلوك المرصود، ولا سيما عندما تختار مصادر المعلومات أيضا بناء على تحيز مشابه.   وقد ظهر أيضا عمل حديث حول كيفية مواجهة استقطاب الآراء على الشبكات الاجتماعية <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="#bib.bib23" title="">23</a>]</cite>، وتشير النتائج الأولية إلى أن تيسير التفاعل بين أفراد مختارين في مجتمعات مستقطبة يمكن أن يخفف المشكلة. وسنبحث ذلك أيضا باستخدام نموذجنا. </p>
+</div>
+</section>
+<section class="ltx_section" id="Sx2">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx2.p1">
+<p class="ltx_p">نشكر مركز تقنية المعلومات في جامعة بيزا (Centro Interdipartimentale di Servizi e Ricerca) على إتاحة الوصول إلى موارد الحوسبة اللازمة للمحاكاة. وقد دعم هذا العمل برنامج H2020 التابع للجماعة الأوروبية
+ضمن مخطط التمويل “FETPROACT-1-2014:
+علم النظم العالمية (GSS)”، اتفاقية المنحة # 641191
+CIMPLEX “جمع المواطنين والنماذج والبيانات معا
+في مختبرات استكشافية اجتماعية تشاركية وتفاعلية”.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock">
+Pew Research Center:
+<em class="ltx_emph ltx_font_italic">Political Polarization in the American Public</em>, June 12, 2014, <span class="ltx_ref ltx_nolink ltx_url ltx_font_typewriter ltx_ref_self">http://www.people-press.org/2014/06/12/political-polarization-in-the-american-public/</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock">
+Quartz Media: <em class="ltx_emph ltx_font_italic">European politics is more polarized than ever, and these numbers prove it</em>, March 30, 2016, <span class="ltx_ref ltx_nolink ltx_url ltx_font_typewriter ltx_ref_self">https://qz.com/645649/european-politics-is-more-polarized-than-ever-and-these-numbers-prove-it/</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock">
+J. Campbell: <em class="ltx_emph ltx_font_italic">Polrized: Making Sense of a Divided America</em> (Princeton UP, 2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock">
+M. Prior: <em class="ltx_emph ltx_font_italic">Post-Broadcast Democracy: How Media Choice Increases Inequality in
+Political Involvement and Polarizes Elections</em> (Cambridge UP, 2007)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock">
+M.A. Baum and T. Groeling: New Media and the Polarization of American Political Discourse, Political Communication, 25, 345-365 (2008)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock">
+J.A. Graber and T. Dunaway: <em class="ltx_emph ltx_font_italic">Mass Media and American Politics</em> (9th edition, Sage, 2012)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock">
+S. Messing, S. J. Westwood: Selective Exposure in the Age of Social Media: Endorsements Trump Partisan Source Affiliation,
+When Selecting News OnlineCommunic. Res. 41, 1042-1063 (2012)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock">
+A. Charles: Media and/or Democracy, in: <em class="ltx_emph ltx_font_italic">Media/Democracy: A Comparative Study</em>, ed: A. Charles (Cambridge Scholars, 2012)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock">
+M. Ignatieff: <em class="ltx_emph ltx_font_italic">Media Pluralism and Democracy</em>, Annual Colloquium on Fundamental Rights, Brussels, November 17, 2016,
+<span class="ltx_ref ltx_nolink ltx_url ltx_font_typewriter ltx_ref_self">http://ec.europa.eu/information\_society/newsroom/image/document/2016-47/media\_pluralism\_and\_democracy\_speech\_en\_19783.pdf</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock">
+K. Purcell, L. Rainie, A. Mitchell, T. Rosenstiel and L. Olmstead:
+<em class="ltx_emph ltx_font_italic">Understanding the Participatory News Consumer</em>, Pew Internet and American Life
+375 Project, 1 March, <span class="ltx_ref ltx_nolink ltx_url ltx_font_typewriter ltx_ref_self">http://www.pewinternet.org/Reports/2010/Online-News.aspx</span>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_tag_bibitem">[11]</span>
+<span class="ltx_bibblock">
+A. Hermida, F. Fletcher, D. Korell, and D. Logan: <em class="ltx_emph ltx_font_italic">Share, like, recommend: Decoding the social media news consumer</em>, Journalism Studies, 0, 1-10 (2012)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_tag_bibitem">[12]</span>
+<span class="ltx_bibblock">
+M. Villi, J. Matikainen and I. Khaldarova:
+<em class="ltx_emph ltx_font_italic">Recommend, Tweet, Share: User-Distributed Content (UDC)
+and the Convergence of News Media and Social Networks</em>. In:
+Media Convergence Handbook Vol. 1. Journalism, Broadcasting,
+and Social Media Aspects of Convergence, edited by Artur
+Lugmayr and Cinzia Dal Zotto, pp289-306 (Springer, Heidelberg, 2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_tag_bibitem">[13]</span>
+<span class="ltx_bibblock">
+E. Pariser: <em class="ltx_emph ltx_font_italic">The filter bubble: What the internet is hiding from you</em> (Penguin, London, 2011)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_tag_bibitem">[14]</span>
+<span class="ltx_bibblock">
+E. Bakshy, S. Messing, L.A. Adamic: Exposure to ideologically diverse news and opinion on Facebook,
+Science, 348, 6239 (2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_tag_bibitem">[15]</span>
+<span class="ltx_bibblock">
+E. Colleoni, A. Rozza, A. Arvidsson: Echo Chamber or Public Sphere? PredictingPolitical Orientation and Measuring PoliticalHomophily in Twitter Using Big Data,
+Journal of Communication 64, 317-332 (2014)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_tag_bibitem">[16]</span>
+<span class="ltx_bibblock">
+R. Pastor-Satorras, C. Castellano, P. Van Mieghem, and A. Vespignani: Epidemic processes in complex networks,
+Rev. Mod. Phys. 87, 925 (2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_tag_bibitem">[17]</span>
+<span class="ltx_bibblock">
+G Deffuant, D Neau, F Amblard, G Weisbuch: Mixing beliefs among interacting agents,
+Advances in Complex Systems 3, 87-98 (2000)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_tag_bibitem">[18]</span>
+<span class="ltx_bibblock">
+J. Lorenz.
+
+</span>
+<span class="ltx_bibblock">Continuous opinion dynamics under bounded confidence: A survey.
+
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_font_italic">International Journal of Modern Physics C</span>, 18(12):1819–1838,
+2007.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_tag_bibitem">[19]</span>
+<span class="ltx_bibblock">
+Sîrbu, A., Loreto, V., Servedio, V. D., and Tria, F, . Opinion dynamics: models, extensions and external effects. In Participatory Sensing, Opinions and Collective Awareness (pp. 363-401), 2017. Springer International Publishing.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_tag_bibitem">[20]</span>
+<span class="ltx_bibblock">
+Del Vicario, M., Bessi, A., Zollo, F., Petroni, F., Scala, A., Caldarelli, G., Stanley, H.E. and Quattrociocchi, W., 2016. The spreading of misinformation online. Proceedings of the National Academy of Sciences, 113(3), pp.554-559.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_tag_bibitem">[21]</span>
+<span class="ltx_bibblock"> Clio Andris, David Lee, Marcus J. Hamilton, Mauro Martino, Christian E. Gunning, John Armistead Selden. The Rise of Partisanship and Super-Cooperators in the U.S. House of Representatives. PlosONE
+Published: April 21, 2015
+https://doi.org/10.1371/journal.pone.0123507
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_tag_bibitem">[22]</span>
+<span class="ltx_bibblock"> Michela Del Vicario, Sabrina Gaito, Walter Quattrociocchi, Matteo Zignani and Fabiana Zollo. News Consumption during the Italian Referendum: A Cross-platform Analysis on Facebook and Twitter. Proc. DSAA2017 - The 4th IEEE International Conference on Data Science and Advanced Analytics (2017).
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_tag_bibitem">[23]</span>
+<span class="ltx_bibblock"> Garimella, K., De Francisci Morales, G., Gionis, A. and Mathioudakis, M., 2017, February. Reducing controversy by connecting opposing views. In Proceedings of the Tenth ACM International Conference on Web Search and Data Mining (pp. 81-90). ACM.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_tag_bibitem">[24]</span>
+<span class="ltx_bibblock"> Garimella, K., Morales, G.D.F., Gionis, A. and Mathioudakis, M., 2018. Political Discourse on Social Media: Echo Chambers, Gatekeepers, and the Price of Bipartisanship. WWW 2018, arXiv preprint arXiv:1801.01665.
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 04:52:54 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

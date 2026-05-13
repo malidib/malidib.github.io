@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO</title>
+<!--Generated on Wed May 13 15:34:01 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on May 13, 2026.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_fleqn">
+<h1 class="ltx_title ltx_title_document">NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Marvin Blank<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,2</span></sup>, Andrea V. Macciò<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1,3</span></sup>, Aaron A. Dutton<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup> and Aura Obreja<sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4,1</span></sup>
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">1</span></sup>New York University Abu Dhabi, PO Box 129188, Saadiyat Island, Abu Dhabi, United Arab Emirates
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">2</span></sup>Institut für Theoretische Physik und Astrophysik, Christian-Albrechts-Universität zu Kiel, Leibnizstr. 15, D-24118 Kiel, Germany
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">3</span></sup>Max Planck Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany
+<br class="ltx_break"/><sup class="ltx_sup"><span class="ltx_text ltx_font_italic">4</span></sup>Universitäts-Sternwarte, Ludwig-Maximilians-Universität München, Scheinerstr. 1, D-81679 Munich, Germany
+</span><span class="ltx_author_notes">marvin.blank@nyu.edu</span></span>
+</div>
+<div class="ltx_dates">(May 13, 2026)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">نقدم خوارزميات لفيزياء الثقوب السوداء، أي لتشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة،
+ضمن مشروع NIHAO (التحقيق العددي في مئة جرم فيزيائي فلكي) لمحاكاة المجرات.
+ويتيح لنا ذلك دراسة المجرات الإهليلجية عالية الكتلة، حيث يعتقد عموما أن التغذية الراجعة من
+الثقب الأسود المركزي تؤثر تأثيرا مهما في تطورها.
+كما نوسع مجموعة NIHAO بإضافة 45 محاكاة تشمل <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="m9"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> كتلا للهالات من <math alttext="1\times 10^{12}" class="ltx_Math" dir="ltr" display="inline" id="m10"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow></math> إلى <math alttext="4\times 10^{13}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="m11"><mrow><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>13</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>،
+ونعيد محاكاة خمس مجرات من عينة NIHAO الأصلية مع فيزياء الثقوب السوداء،
+لها كتل هالات <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="m12"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> من <math alttext="8\times 10^{11}" class="ltx_Math" dir="ltr" display="inline" id="m13"><mrow><mn>8</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>11</mn></msup></mrow></math> إلى <math alttext="3\times 10^{12}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="m14"><mrow><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>.
+تحتوي NIHAO الآن على 144 مجرة مختلفة، وبذلك تمتلك أكبر عينة من محاكيات التكبير الموجه للمجرات،
+ممتدة عبر <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="m15"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> كتلا للهالات من <math alttext="9\times 10^{8}" class="ltx_Math" dir="ltr" display="inline" id="m16"><mrow><mn>9</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>8</mn></msup></mrow></math> إلى <math alttext="4\times 10^{13}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="m17"><mrow><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>13</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>.
+نركز في هذه الورقة على اختبار الخوارزميات ومعايرة معاملاتها الحرة بمقارنة علاقة الكتلة
+النجمية بكتلة الهالة وعلاقة كتلة الثقب الأسود بالكتلة النجمية.
+ونبحث أيضا تشتت هاتين العلاقتين، ونجد أنه دالة متناقصة مع الزمن
+وبذلك يتفق مع الرصد.
+بالنسبة إلى اختيارنا المرجعي للمعاملات ننجح في إخماد تشكل النجوم في الأجسام التي تتجاوز كتلة هالة <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="m18"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> قدرها <math alttext="10^{12}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="m19"><mrow><msup><mn>10</mn><mn>12</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>،
+محولين إياها إلى مجرات حمراء وميتة.</p>
+</div>
+<div class="ltx_classification">
+<h6 class="ltx_title ltx_title_classification">keywords: </h6>
+الطرائق: عددية – المجرات: نشطة – المجرات: التطور
+– المجرات: التشكل – المجرات: النوى – الكوازارات: عامة.
+
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_pubyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pubyear: </span>2019</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_pagerange"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">pagerange: </span><span class="ltx_ref ltx_ref_self"><span class="ltx_text ltx_ref_title">NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO</span></span>–<a class="ltx_ref" href="#Sx1.T1" title="Table 1 ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">1</span></a></span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">أصبح من الراسخ الآن أن الثقوب السوداء توجد في مراكز معظم المجرات تقريبا <cite class="ltx_cite ltx_citemacro_citep">(مثلا، Kormendy &amp;
+Richstone, <a class="ltx_ref" href="#bib.bib43" title="">1995</a>; Magorrian
+et al., <a class="ltx_ref" href="#bib.bib45" title="">1998</a>)</cite>، وأنها مرتبطة بمجراتها المضيفة.
+وتتمثل الفكرة العامة التي عرضها <cite class="ltx_cite ltx_citemacro_citet">Di
+Matteo et al. (<a class="ltx_ref" href="#bib.bib16" title="">2005</a>)</cite> في أن التغذية الراجعة التي يوفرها الثقب الأسود المركزي تسخن غاز المجرة ثم تخمد تشكل النجوم وتراكم الثقب الأسود اللاحق، فتحولها إلى مجرة إهليلجية ‘حمراء وميتة’.
+وفي هذا الإطار يؤدي هذا التطور المشترك إلى أن ترتبط المجرة، أي تشتت سرعتها <cite class="ltx_cite ltx_citemacro_citep">(مثلا، Ferrarese &amp;
+Merritt, <a class="ltx_ref" href="#bib.bib26" title="">2000</a>; Gebhardt
+et al., <a class="ltx_ref" href="#bib.bib27" title="">2000</a>)</cite> أو كتلة انتفاخها <cite class="ltx_cite ltx_citemacro_citep">(مثلا، Kormendy &amp;
+Richstone, <a class="ltx_ref" href="#bib.bib43" title="">1995</a>; Häring &amp;
+Rix, <a class="ltx_ref" href="#bib.bib32" title="">2004</a>)</cite>، بكتلة الثقب الأسود.
+غير أن بعض الأعمال <cite class="ltx_cite ltx_citemacro_citep">(مثلا، Jahnke &amp;
+Macciò, <a class="ltx_ref" href="#bib.bib37" title="">2011</a>)</cite> تجادل بأن الترابطات بين المجرة وثقبها الأسود المركزي
+لا تعني بالضرورة وجود صلة فيزيائية بينهما.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">أثبتت المحاكيات العددية نجاحا كبيرا في دراسة تشكل المجرات وتطورها، مما أدى إلى تطوير عدد من المشاريع خلال السنوات الأخيرة.
+فعلى سبيل المثال، تعد Illustris <cite class="ltx_cite ltx_citemacro_citep">(Vogelsberger
+et al., <a class="ltx_ref" href="#bib.bib68" title="">2014</a>)</cite> وIllustrisTNG <cite class="ltx_cite ltx_citemacro_citep">(Pillepich
+et al., <a class="ltx_ref" href="#bib.bib50" title="">2018</a>)</cite> وMagneticum Pathfinder <cite class="ltx_cite ltx_citemacro_citep">(Dolag
+et al., <a class="ltx_ref" href="#bib.bib18" title="">2016</a>)</cite> وMassiveBlack-II <cite class="ltx_cite ltx_citemacro_citep">(Khandai
+et al., <a class="ltx_ref" href="#bib.bib40" title="">2015</a>)</cite> وEAGLE <cite class="ltx_cite ltx_citemacro_citep">(Schaye
+et al., <a class="ltx_ref" href="#bib.bib58" title="">2015</a>)</cite> محاكيات هيدروديناميكية لحجوم كونية، في حين تتكون FIRE <cite class="ltx_cite ltx_citemacro_citep">(Hopkins
+et al., <a class="ltx_ref" href="#bib.bib35" title="">2014</a>)</cite> وAuriga <cite class="ltx_cite ltx_citemacro_citep">(Grand
+et al., <a class="ltx_ref" href="#bib.bib30" title="">2016</a>)</cite> من محاكيات تكبير موجه لمجرات منفردة.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">مشروع NIHAO <cite class="ltx_cite ltx_citemacro_citep">(Wang
+et al., <a class="ltx_ref" href="#bib.bib71" title="">2015</a>)</cite> هو مجموعة من محاكيات تكبير موجه كونية هيدروديناميكية للمجرات، ويمتاز بأنه يجمع بين
+(i) دقة عالية تبلغ <math alttext="\sim 10^{6}" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m1"><mrow><mi></mi><mo>∼</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></math> جسيم لكل هالة،
+(ii) مجال واسع من كتل الهالات يمتد من الأقزام إلى كتل مماثلة لدرب التبانة (<math alttext="\sim 5\times 10^{9}" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m2"><mrow><mi></mi><mo>∼</mo><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow></mrow></math> إلى <math alttext="\sim 2\times 10^{12}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m3"><mrow><mi></mi><mo>∼</mo><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>)، و
+(iii) حجم عينة كبير يبلغ <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m4"><mo>∼</mo></math> 100 مجرة.
+ينجح NIHAO في إعادة إنتاج علاقة الكتلة النجمية بكتلة الهالة، وهي من أكثر القيود الأساسية في تشكل المجرات وتطورها، من الانزياح الأحمر <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m5"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> حتى الانزياح الأحمر <math alttext="z=4" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m6"><mrow><mi>z</mi><mo>=</mo><mn>4</mn></mrow></math>، كما يطابق علاقة معدل تشكل النجوم بالكتلة النجمية.
+لكن مجموعة NIHAO لم تكن، حتى الآن، تتضمن مجرات إهليلجية عالية الكتلة، لأن التغذية الراجعة النجمية المنفذة في NIHAO غير كافية لتنظيم تشكل النجوم في المجرات الإهليلجية <cite class="ltx_cite ltx_citemacro_citep">(Dutton et al., <a class="ltx_ref" href="#bib.bib23" title="">2015</a>)</cite>.
+ومن المقبول عموما الآن <cite class="ltx_cite ltx_citemacro_citep">(Croton
+et al., <a class="ltx_ref" href="#bib.bib13" title="">2006</a>)</cite> أن تغذية الثقوب السوداء الراجعة مطلوبة عند الكتل الأعلى لإعادة إنتاج الانخفاض الحاد في دالة الكتلة النجمية ولتكوين مجرات حمراء وميتة.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">هدف هذه الورقة هو إدخال خوارزميات لتشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مشروع NIHAO، وتوسيع مجموعة NIHAO لتشمل مجرات إهليلجية عالية الكتلة.
+ونركز على اختبار الخوارزميات ومعايرة المعاملات الحرة اعتمادا على
+العلاقتين المرصودتين، الكتلة النجمية مقابل كتلة الهالة وكتلة الثقب الأسود مقابل الكتلة النجمية، كما نبحث كيفية تطور تشتت هاتين العلاقتين مع الزمن ونقارنه بالرصد.
+في القسم <a class="ltx_ref" href="#S2" title="2 مشروع NIHAO ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">2</span></a> نستعرض خصائص مشروع NIHAO.
+نقدم الخوارزميات المستخدمة لتشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في القسم <a class="ltx_ref" href="#S3" title="3 الطرائق الحاسوبية لفيزياء الثقوب السوداء ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">3</span></a>، والشروط الابتدائية في القسم <a class="ltx_ref" href="#S4" title="4 الشروط الابتدائية وخصائص المجرات والمعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">4</span></a>.
+في القسم <a class="ltx_ref" href="#S5" title="5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">5</span></a> نعرض نتائجنا، وفي القسم <a class="ltx_ref" href="#S6" title="6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">6</span></a> ندرس تأثير المعاملات الحرة للخوارزميات في المحاكيات.
+وفي القسم <a class="ltx_ref" href="#S7" title="7 الخلاصة ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">7</span></a> نلخص نتائجنا.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>مشروع NIHAO</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">يستخدم NIHAO نسخة محدثة <cite class="ltx_cite ltx_citemacro_citep">(Keller et al., <a class="ltx_ref" href="#bib.bib39" title="">2014</a>)</cite> من شيفرة TreeSPH المسماة <span class="ltx_text ltx_font_smallcaps">Gasoline2</span> <cite class="ltx_cite ltx_citemacro_citep">(Wadsley
+et al., <a class="ltx_ref" href="#bib.bib69" title="">2004</a>, <a class="ltx_ref" href="#bib.bib70" title="">2017</a>)</cite>.
+تستخدم المحاكيات كونية LCDM مسطحة بمعاملات مأخوذة من <cite class="ltx_cite ltx_citemacro_citet">Planck
+Collaboration et al. (<a class="ltx_ref" href="#bib.bib51" title="">2014</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">يتكون العمود الفقري لمشروع NIHAO من محاكيات كونية للمادة المظلمة فقط بأحجام صناديق تبلغ 60 و20 Mpc/h من <cite class="ltx_cite ltx_citemacro_citet">Dutton &amp;
+Macciò (<a class="ltx_ref" href="#bib.bib20" title="">2014</a>)</cite>، ومن صندوق جديد حجمه 15 Mpc/h يحوي <math alttext="400^{3}" class="ltx_Math" dir="ltr" display="inline" id="S2.p2.m1"><msup><mn>400</mn><mn>3</mn></msup></math> جسيم.
+تطور هذه المحاكيات حتى <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S2.p2.m2"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>، ثم تختار الهالات من هذه الصناديق وتعاد محاكاتها منفردة بدقة أعلى وبوجود جسيمات غازية.</p>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">لجميع المجرات الدقة النسبية نفسها عبر مجال الكتلة كله، أي <math alttext="\sim 10^{6}" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m1"><mrow><mi></mi><mo>∼</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></math> جسيمات مادة مظلمة داخل نصف القطر الفيريالي عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m2"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>.
+وتختار كتل الجسيمات وأطوال تليين القوة بحيث تحل هيئة الكتلة عند <math alttext="\leq" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m3"><mo>≤</mo></math> 1 في المئة من نصف القطر الفيريالي.
+وتساوي النسبة الابتدائية بين كتلتي جسيمات المادة المظلمة والغاز النسبة الكونية بين كتلتي المادة المظلمة والباريونات، وهي <math alttext="\Omega_{\mathrm{DM}}/\Omega_{\mathrm{b}}=5.48" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m4"><mrow><mrow><msub><mi mathvariant="normal">Ω</mi><mi>DM</mi></msub><mo>/</mo><msub><mi mathvariant="normal">Ω</mi><mi mathvariant="normal">b</mi></msub></mrow><mo>=</mo><mn>5.48</mn></mrow></math>.
+ويكون طول التليين لجسيمات الغاز والنجوم أصغر بمقدار <math alttext="(\Omega_{\mathrm{DM}}/\Omega_{\mathrm{b}})^{1/2}=2.34" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m5"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi mathvariant="normal">Ω</mi><mi>DM</mi></msub><mo>/</mo><msub><mi mathvariant="normal">Ω</mi><mi mathvariant="normal">b</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>=</mo><mn>2.34</mn></mrow></math> مرة من طول التليين لجسيمات المادة المظلمة.
+اختيرت المعاملات الحرة لنموذج التغذية الراجعة النجمية وتغذية المستعرات العظمى لتطابق علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m6"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m7"><msub><mi>M</mi><mn>200</mn></msub></math> لمجرة واحدة شبيهة بدرب التبانة عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S2.p3.m8"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S2.p4">
+<p class="ltx_p">يوفر التبريد عبر الهيدروجين والهيليوم وخطوط فلزية متعددة ضمن خلفية فوق بنفسجية مؤينة منتظمة <cite class="ltx_cite ltx_citemacro_citep">(Shen
+et al., <a class="ltx_ref" href="#bib.bib60" title="">2010</a>)</cite>، ويشمل ذلك التأين الضوئي وتسخين الخلفية فوق البنفسجية <cite class="ltx_cite ltx_citemacro_citep">(Haardt &amp;
+Madau, <a class="ltx_ref" href="#bib.bib31" title="">2012</a>)</cite> وتبريد كومبتون.</p>
+</div>
+<div class="ltx_para" id="S2.p5">
+<p class="ltx_p">تتشكل النجوم من جسيمات غازية تتجاوز عتبة كثافة وحرارة (<math alttext="T&lt;15000\,\mathrm{K}" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m1"><mrow><mi>T</mi><mo>&lt;</mo><mrow><mn>15000</mn><mo lspace="0.170em">⁢</mo><mi mathvariant="normal">K</mi></mrow></mrow></math>، <math alttext="n&gt;10.3\,\mathrm{cm}^{-3}" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m2"><mrow><mi>n</mi><mo>&gt;</mo><mrow><mn>10.3</mn><mo lspace="0.170em">⁢</mo><msup><mi>cm</mi><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math>) بمعدل <math alttext="\dot{M_{\star}}=c_{\star}M_{\mathrm{gas}}t_{\mathrm{dyn}}^{-1}" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m3"><mrow><mover accent="true"><msub><mi>M</mi><mo>⋆</mo></msub><mo>˙</mo></mover><mo>=</mo><mrow><msub><mi>c</mi><mo>⋆</mo></msub><mo>⁢</mo><msub><mi>M</mi><mi>gas</mi></msub><mo>⁢</mo><msubsup><mi>t</mi><mi>dyn</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></mrow></math>، حيث إن <math alttext="t_{\mathrm{dyn}}=(4\uppi G\rho)^{-1/2}" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m4"><mrow><msub><mi>t</mi><mi>dyn</mi></msub><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>4</mn><mo>⁢</mo><merror class="ltx_ERROR undefined undefined"><mtext>\uppi</mtext></merror><mo>⁢</mo><mi>G</mi><mo>⁢</mo><mi>ρ</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></msup></mrow></math> هو الزمن الديناميكي لجسيم الغاز، و<math alttext="\rho" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m5"><mi>ρ</mi></math> كثافته، و<math alttext="M_{\mathrm{gas}}" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m6"><msub><mi>M</mi><mi>gas</mi></msub></math> كتلته، و<math alttext="c_{\star}=0.1" class="ltx_Math" dir="ltr" display="inline" id="S2.p5.m7"><mrow><msub><mi>c</mi><mo>⋆</mo></msub><mo>=</mo><mn>0.1</mn></mrow></math> كفاءة تشكل النجوم.</p>
+</div>
+<div class="ltx_para" id="S2.p6">
+<p class="ltx_p">تنمذج تغذية المستعرات العظمى الراجعة بصياغة الموجة الانفجارية لـ <cite class="ltx_cite ltx_citemacro_citet">Stinson et al. (<a class="ltx_ref" href="#bib.bib64" title="">2006</a>)</cite>.
+وتقذف النجوم ذات الكتلة <math alttext="8&lt;M_{\star}/M_{\sun}&lt;40" class="ltx_Math" dir="ltr" display="inline" id="S2.p6.m1"><mrow><mn>8</mn><mo>&lt;</mo><mrow><msub><mi>M</mi><mo>⋆</mo></msub><mo>/</mo><msub><mi>M</mi><mi mathvariant="normal">☉</mi></msub></mrow><mo>&lt;</mo><mn>40</mn></mrow></math> الفلزات والطاقة إلى جسيمات الغاز المحيطة بعد 4 Myr من تشكلها.
+ويؤخر تبريد هذه الجسيمات الغازية لمدة <math alttext="\sim 30\,\mathrm{Myr}" class="ltx_Math" dir="ltr" display="inline" id="S2.p6.m2"><mrow><mi></mi><mo>∼</mo><mrow><mn>30</mn><mo lspace="0.170em">⁢</mo><mi>Myr</mi></mrow></mrow></math>.
+وقبل أن تنتج النجوم الضخمة مستعرا أعظم، فإنها توفر ‘تغذية راجعة نجمية مبكرة’  <cite class="ltx_cite ltx_citemacro_citep">(Stinson et al., <a class="ltx_ref" href="#bib.bib65" title="">2013</a>)</cite>، أي إن 13 في المئة من التدفق النجمي الكلي <math alttext="2\times 10^{50}\,\mathrm{erg}\,\mathrm{M}_{\sun}^{-1}" class="ltx_Math" dir="ltr" display="inline" id="S2.p6.m3"><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>50</mn></msup></mrow><mo>⁢</mo><mi>erg</mi><mo lspace="0.170em">⁢</mo><msubsup><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></math> يحقن في الغاز المحيط على هيئة طاقة حرارية.
+ولا يطبق أي تأخير للتبريد في هذه الحالة.
+ونحيل إلى <cite class="ltx_cite ltx_citemacro_citet">Wang
+et al. (<a class="ltx_ref" href="#bib.bib71" title="">2015</a>)</cite> لمزيد من التفاصيل عن مشروع NIHAO.</p>
+</div>
+<div class="ltx_para" id="S2.p7">
+<p class="ltx_p">كان NIHAO ناجحا جدا في إعادة إنتاج خصائص المجرات لكتل هالات قدرها <math alttext="M_{200}\leq 2\times 10^{12}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S2.p7.m1"><mrow><msub><mi>M</mi><mn>200</mn></msub><mo>≤</mo><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>، مثل علاقة الكتلة النجمية بكتلة الهالة <cite class="ltx_cite ltx_citemacro_citep">(Wang
+et al., <a class="ltx_ref" href="#bib.bib71" title="">2015</a>)</cite>، ودالة سرعة المجرات <cite class="ltx_cite ltx_citemacro_citep">(Macciò
+et al., <a class="ltx_ref" href="#bib.bib44" title="">2016</a>)</cite>، وعلاقة Tully-Fisher <cite class="ltx_cite ltx_citemacro_citep">(Dutton
+et al., <a class="ltx_ref" href="#bib.bib24" title="">2017</a>)</cite>، ومنحنيات دوران المجرات القزمة <cite class="ltx_cite ltx_citemacro_citep">(Santos-Santos
+et al., <a class="ltx_ref" href="#bib.bib56" title="">2018</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>الطرائق الحاسوبية لفيزياء الثقوب السوداء</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">تنمذج الثقوب السوداء على أنها جسيمات بالعة <cite class="ltx_cite ltx_citemacro_citep">(Bate
+et al., <a class="ltx_ref" href="#bib.bib2" title="">1995</a>)</cite> لا تتفاعل مع بيئتها إلا عبر القوى الثقالية، ويمكنها تراكم المادة من جسيمات الغاز المجاورة.
+بالنسبة إلى تراكم الثقوب السوداء وتغذيتها الراجعة، نختار النماذج التي قدمها <cite class="ltx_cite ltx_citemacro_citet">Springel et al. (<a class="ltx_ref" href="#bib.bib63" title="">2005</a>)</cite>، لأنها الأكثر استخداما ومن ثم اختبارا، ولأنها معروفة بقدرتها على إنتاج العلاقة الصحيحة بين كتلة الثقب الأسود والمكون النجمي <cite class="ltx_cite ltx_citemacro_citep">(Di
+Matteo et al., <a class="ltx_ref" href="#bib.bib16" title="">2005</a>)</cite>.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>تشكل الثقوب السوداء</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">نتبع نهجا شائعا لنمذجة تشكل الثقوب السوداء: عندما تتجاوز هالة مركزية<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+              
+            لا نضع بذورا في الهالات الفرعية.</span></span></span>
+كتلة عتبة <math alttext="M_{\mathrm{h,t}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m1"><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub></math>، نحول جسيم الغاز (أو جزءا منه) ذا الجهد الثقالي الأدنى إلى ثقب أسود بكتلة بذرة <math alttext="M_{\mathrm{BH,s}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m2"><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub></math>.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+              
+              
+              
+            على سبيل المثال، يستخدم <cite class="ltx_cite ltx_citemacro_citet">Sijacki et al. (<a class="ltx_ref" href="#bib.bib61" title="">2007</a>)</cite> القيمتين <math alttext="M_{\mathrm{BH,s}}=1\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m1"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math> و<math alttext="M_{\mathrm{h,t}}=5\times 10^{10}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m2"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></mrow></math> M<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">☉</span></sub>، ويستخدم <cite class="ltx_cite ltx_citemacro_citet">Di Matteo
+et al. (<a class="ltx_ref" href="#bib.bib17" title="">2008</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Schaye
+et al. (<a class="ltx_ref" href="#bib.bib58" title="">2015</a>)</cite> القيمتين <math alttext="M_{\mathrm{BH,s}}=1\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m4"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math> و<math alttext="M_{\mathrm{h,t}}=1\times 10^{10}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m5"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></mrow></math> M<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">☉</span></sub>، ويستخدم <cite class="ltx_cite ltx_citemacro_citet">Schaye
+et al. (<a class="ltx_ref" href="#bib.bib57" title="">2010</a>)</cite> القيمتين <math alttext="M_{\mathrm{BH,s}}=9\times 10^{4}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m7"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>9</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>4</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math> و<math alttext="M_{\mathrm{h,t}}=4\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m8"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>، ويستخدم <cite class="ltx_cite ltx_citemacro_citet">Sijacki
+et al. (<a class="ltx_ref" href="#bib.bib62" title="">2015</a>)</cite> القيمتين <math alttext="M_{\mathrm{BH,s}}=1.4\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m9"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>1.4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math> و<math alttext="M_{\mathrm{h,t}}=7.1\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m10"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>7.1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>.</span></span></span>
+تعثر أداة AMIGA Halo Finder <cite class="ltx_cite ltx_citemacro_citep">(AHF, Gill
+et al., <a class="ltx_ref" href="#bib.bib29" title="">2004</a>; Knollmann &amp;
+Knebe, <a class="ltx_ref" href="#bib.bib41" title="">2009</a>)</cite> على الهالات وكتلها؛ انظر القسم <a class="ltx_ref" href="#S4" title="4 الشروط الابتدائية وخصائص المجرات والمعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">4</span></a> لمزيد من التفاصيل.
+نتبع <cite class="ltx_cite ltx_citemacro_citet">Sijacki et al. (<a class="ltx_ref" href="#bib.bib61" title="">2007</a>)</cite> ونستخدم القيم <math alttext="M_{\mathrm{BH,s}}=1\times 10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m3"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow></mrow></math> M<sub class="ltx_sub"><span class="ltx_text ltx_font_italic">☉</span></sub> و<math alttext="M_{\mathrm{h,t}}=5\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS1.p1.m5"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>.
+ويستخدم نموذج بديل لتشكل الثقوب السوداء في محاكيات <span class="ltx_text ltx_font_smallcaps">Romulus</span> <cite class="ltx_cite ltx_citemacro_citep">(Tremmel
+et al., <a class="ltx_ref" href="#bib.bib67" title="">2017</a>)</cite>، حيث يحدث تشكل الثقوب السوداء عندما يحقق الغاز عتبات محددة للفلزية والكثافة والحرارة.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>إعادة تموضع الثقوب السوداء</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">في المحاكيات على مقياس المجرات، يمكن لتأثيرين أن يجعلا موضع الثقب الأسود غير مطابق لمركز الهالة:
+(i) تؤدي النسبة الصغيرة بين كتلة الثقب الأسود وكتلة جسيمات الغاز/النجوم/المادة المظلمة إلى حركات عشوائية لجسيم الثقب الأسود بسبب زخم الغاز المتراكم والتفاعلات الثقالية مع الجسيمات القريبة.
+(ii) في حالة اندماج هالتين، يؤدي الاحتكاك الديناميكي إلى غوص الثقب الأسود نحو مركز الهالة المتشكلة حديثا. غير أن المحاكيات على مقياس المجرات تستخف عموما بالاحتكاك الديناميكي على المقاييس الصغيرة بسبب عدم كفاية الدقة.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p2">
+<p class="ltx_p">للتعويض عن هذه التأثيرات طورت عدة نماذج في السنوات الأخيرة:
+يسند <cite class="ltx_cite ltx_citemacro_citet">Debuhr
+et al. (<a class="ltx_ref" href="#bib.bib14" title="">2011</a>, <a class="ltx_ref" href="#bib.bib15" title="">2012</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Anglés-Alcázar
+et al. (<a class="ltx_ref" href="#bib.bib1" title="">2017</a>)</cite> إلى الثقب الأسود ‘كتلة ديناميكية’  أو ‘كتلة متتبعة’، تكون أكبر من كتلة الثقب الأسود الفعلية بعدة رتب مقدار، لمنع الثقب الأسود من الابتعاد كثيرا عن مركز الهالة.
+يعيد <cite class="ltx_cite ltx_citemacro_citet">Johansson
+et al. (<a class="ltx_ref" href="#bib.bib38" title="">2009</a>)</cite> تموضع الثقب الأسود إلى جسيم الغاز الواقع ضمن طول تمليس SPH للثقب الأسود والذي يملك أدنى جهد ثقالي.
+ويعيد <cite class="ltx_cite ltx_citemacro_citet">Booth &amp;
+Schaye (<a class="ltx_ref" href="#bib.bib6" title="">2009</a>)</cite> أيضا تموضع الثقب الأسود إلى جسيم الغاز المجاور ذي أدنى جهد ثقالي، لكن فقط إذا كانت السرعة النسبية بين الثقب الأسود وجسيم الغاز الأشد ارتباطا ثقاليا أصغر من 25 في المئة من سرعة الصوت المحلية، وإذا كانت كتلة الثقب الأسود أصغر من عشرة أضعاف كتلة جسيم الغاز الابتدائية.
+تجبر محاكيات IllustrisTNG <cite class="ltx_cite ltx_citemacro_citep">(Sijacki
+et al., <a class="ltx_ref" href="#bib.bib62" title="">2015</a>)</cite> جسيم الثقب الأسود على أن يقع عند حد الجهد الأدنى في هالته المضيفة.
+وتجبر محاكيات EAGLE <cite class="ltx_cite ltx_citemacro_citep">(Schaye
+et al., <a class="ltx_ref" href="#bib.bib58" title="">2015</a>)</cite> الثقوب السوداء ذات الكتلة الأصغر من 100 ضعف كتلة جسيم الغاز على الهجرة نحو حد الجهد الثقالي الأدنى في هالتها المضيفة.
+وتتضمن محاكيات Magneticum Pathfinder <cite class="ltx_cite ltx_citemacro_citep">(Hirschmann
+et al., <a class="ltx_ref" href="#bib.bib33" title="">2014</a>)</cite> ومحاكيات <span class="ltx_text ltx_font_smallcaps">Romulus</span> <cite class="ltx_cite ltx_citemacro_citep">(Tremmel
+et al., <a class="ltx_ref" href="#bib.bib67" title="">2017</a>; Tremmel et al., <a class="ltx_ref" href="#bib.bib66" title="">2015</a>)</cite> نموذجا دون شبكي لحساب قوة الاحتكاك الديناميكي المؤثرة في الثقب الأسود.</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p3">
+<p class="ltx_p">غير أن نقل الثقب الأسود إلى حد الجهد الأدنى في هالته المضيفة يمكن أن يجعله يتحرك مسافات كبيرة جدا (مجموع نصفي القطر الفيرياليين للهالتين، أي عدة <math alttext="100\,\mathrm{kpc}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p3.m1"><mrow><mn>100</mn><mo lspace="0.170em">⁢</mo><mi>kpc</mi></mrow></math>) في حالة اندماج هالتين.
+وفضلا عن ذلك، إذا انفصلت هاتان الهالتان، اللتان اندمج ثقباهما الأسودان للتو، مرة أخرى، فإن الهالة التي فقدت ثقبها الأسود ستزرع فيها بذرة جديدة.
+ولتجنب هذه المشكلات، نضبط في كل خطوة زمنية كبرى<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup>
+<span class="ltx_tag ltx_tag_note">3</span>
+              
+              
+              
+            يقسم زمن المحاكاة البالغ 13.8 Gyr إلى 1024 خطوة زمنية كبرى مقدار كل منها 13.4 Myr.</span></span></span> موضع الثقب الأسود وسرعته على قيم جسيم المادة المظلمة الواقع ضمن عشرة أطوال تليين والذي يملك أدنى جهد ثقالي.
+قد يكون استخدام جسيم النجم ذي أدنى جهد ثقالي إشكاليا عند الانزياحات الحمراء العالية، عندما لا يوجد إلا عدد قليل من جسيمات النجوم أو لا توجد أصلا.
+كما أن وضع الثقب الأسود عند جسيم الغاز ذي أدنى جهد ثقالي سيزيد وزنه في النواة اصطناعيا، ومن ثم كثافته ومن ثم معدل تراكم الثقب الأسود. وفضلا عن ذلك، فإن استخدام جسيم غازي تلقى مؤخرا تغذية راجعة ويتدفق إلى الخارج قد يؤدي إلى سرعات غير ملائمة للثقب الأسود و/أو قفزات كبيرة في موضعه. <cite class="ltx_cite ltx_citemacro_citep">(انظر Wurster &amp;
+Thacker, <a class="ltx_ref" href="#bib.bib74" title="">2013</a>, لمناقشة مشكلة مشابهة.)</cite>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.3 </span>اندماج الثقوب السوداء</h3>
+<div class="ltx_para" id="S3.SS3.p1">
+<p class="ltx_p">يندمج ثقبان أسودان عندما تصبح المسافة بينهما أصغر من مجموع طولي التليين لهما. ويرث الثقب الأسود الناتج موضع وسرعة وتسارع مركز الكتلة الباريوني لسلفيه، وتكون كتلته مجموع كتلتي السلفين، ويحسب معدل تراكمه في الخطوة الزمنية التالية.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.4 </span>تراكم الثقوب السوداء</h3>
+<div class="ltx_para" id="S3.SS4.p1">
+<p class="ltx_p">نحسب معدل تراكم الثقب الأسود باستخدام صياغة Bondi-Hoyle-Lyttleton الشائعة الاستخدام<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup>
+<span class="ltx_tag ltx_tag_note">4</span>
+              
+              
+              
+            مثلا في <cite class="ltx_cite ltx_citemacro_citet">Di
+Matteo et al. (<a class="ltx_ref" href="#bib.bib16" title="">2005</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Springel et al. (<a class="ltx_ref" href="#bib.bib63" title="">2005</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Colberg &amp; Di
+Matteo (<a class="ltx_ref" href="#bib.bib10" title="">2008</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Di Matteo
+et al. (<a class="ltx_ref" href="#bib.bib17" title="">2008</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Booth &amp;
+Schaye (<a class="ltx_ref" href="#bib.bib6" title="">2009</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Croft et al. (<a class="ltx_ref" href="#bib.bib12" title="">2009</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Johansson
+et al. (<a class="ltx_ref" href="#bib.bib38" title="">2009</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Choi et al. (<a class="ltx_ref" href="#bib.bib9" title="">2012</a>)</cite>.</span></span></span> <cite class="ltx_cite ltx_citemacro_citep">(Hoyle &amp;
+Lyttleton, <a class="ltx_ref" href="#bib.bib36" title="">1939</a>; Bondi &amp;
+Hoyle, <a class="ltx_ref" href="#bib.bib5" title="">1944</a>; Bondi, <a class="ltx_ref" href="#bib.bib4" title="">1952</a>)</cite></p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\dot{M}_{\mathrm{BHL}}=\frac{4\uppi\alpha G^{2}M_{\mathrm{BH}}^{2}\rho}{(c_{%
+\mathrm{s}}^{2}+v^{2})^{3/2}}\,," class="ltx_Math" dir="ltr" display="block" id="S3.E1.m1"><mrow><mrow><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>BHL</mi></msub><mo>=</mo><mfrac><mrow><mn>4</mn><mo>⁢</mo><merror class="ltx_ERROR undefined undefined"><mtext>\uppi</mtext></merror><mo>⁢</mo><mi>α</mi><mo>⁢</mo><msup><mi>G</mi><mn>2</mn></msup><mo>⁢</mo><msubsup><mi>M</mi><mi>BH</mi><mn>2</mn></msubsup><mo>⁢</mo><mi>ρ</mi></mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>c</mi><mi mathvariant="normal">s</mi><mn>2</mn></msubsup><mo>+</mo><msup><mi>v</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mfrac></mrow><mo lspace="0.170em">,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">حيث إن <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m1"><msub><mi>M</mi><mi>BH</mi></msub></math> هي كتلة الثقب الأسود، و<math alttext="\rho" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m2"><mi>ρ</mi></math> و<math alttext="c_{\mathrm{s}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m3"><msub><mi>c</mi><mi mathvariant="normal">s</mi></msub></math> و<math alttext="v" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m4"><mi>v</mi></math> هي كثافة الغاز المحيط بالثقب الأسود وسرعة الصوت فيه وسرعته.
+أدخل <cite class="ltx_cite ltx_citemacro_citet">Springel et al. (<a class="ltx_ref" href="#bib.bib63" title="">2005</a>)</cite> المعامل <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m5"><mi>α</mi></math> أول مرة لمراعاة الدقة المحدودة لهذه المحاكيات، وعادة ما يضبط على <math alttext="\alpha=100" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m6"><mrow><mi>α</mi><mo>=</mo><mn>100</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(انظر مثلا الجدول 2 في Booth &amp;
+Schaye, <a class="ltx_ref" href="#bib.bib6" title="">2009</a>)</cite>.
+غير أن دقتنا أعلى مما في الأعمال السابقة التي تستخدم صياغة Bondi-Hoyle-Lyttleton، ولذلك نستخدم معامل تراكم مقداره <math alttext="\alpha=70" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p1.m7"><mrow><mi>α</mi><mo>=</mo><mn>70</mn></mrow></math> ونبرر هذا الاختيار بدراسة للمعاملات في القسم <a class="ltx_ref" href="#S6" title="6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">6</span></a>.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p2">
+<p class="ltx_p">يحد معدل تراكم الثقب الأسود بمعدل Eddington <cite class="ltx_cite ltx_citemacro_citep">(Eddington, <a class="ltx_ref" href="#bib.bib25" title="">1921</a>)</cite></p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\dot{M}_{\mathrm{Edd}}=\frac{M_{\mathrm{BH}}}{\epsilon_{\mathrm{r}}\tau_{%
+\mathrm{S}}}" class="ltx_Math" dir="ltr" display="block" id="S3.E2.m1"><mrow><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>Edd</mi></msub><mo>=</mo><mfrac><msub><mi>M</mi><mi>BH</mi></msub><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">r</mi></msub><mo>⁢</mo><msub><mi>τ</mi><mi mathvariant="normal">S</mi></msub></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">مع مقياس الزمن Salpeter <math alttext="\tau_{\mathrm{S}}=4.5\times 10^{8}\,\mathrm{yr}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p2.m1"><mrow><msub><mi>τ</mi><mi mathvariant="normal">S</mi></msub><mo>=</mo><mrow><mrow><mn>4.5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>8</mn></msup></mrow><mo>⁢</mo><mi>yr</mi></mrow></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Salpeter, <a class="ltx_ref" href="#bib.bib54" title="">1964</a>)</cite> والكفاءة الإشعاعية <math alttext="\epsilon_{\mathrm{r}}=0.1" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p2.m2"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">r</mi></msub><mo>=</mo><mn>0.1</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Shakura &amp;
+Sunyaev, <a class="ltx_ref" href="#bib.bib59" title="">1973</a>)</cite>.
+وعندئذ يكون معدل تراكم الثقب الأسود</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\dot{M}_{\mathrm{BH}}=\min(\dot{M}_{\mathrm{BHL}},\dot{M}_{\mathrm{Edd}})\,." class="ltx_Math" dir="ltr" display="block" id="S3.E3.m1"><mrow><mrow><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>BH</mi></msub><mo>=</mo><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>BHL</mi></msub><mo>,</mo><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>Edd</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0.170em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="ltx_para" id="S3.SS4.p3">
+<p class="ltx_p">في كل خطوة زمنية <math alttext="\Delta t" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p3.m1"><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>t</mi></mrow></math>، يراكم الثقب الأسود الكتلة <math alttext="\Delta t\,\dot{M}_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p3.m2"><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>t</mi><mo lspace="0.170em">⁢</mo><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>BH</mi></msub></mrow></math> من جسيم أو جسيمات الغاز الأكثر ارتباطا ثقاليا بالثقب الأسود. ويضاف زخم الكتلة المتراكمة إلى زخم الثقب الأسود.
+يمكن للثقب الأسود أن يراكم كسورا من جسيم غازي، مما قد يؤدي إلى جسيمات غازية ذات كتل صغيرة جدا.
+إذا هبطت كتلة جسيم غازي إلى أقل من 20 في المئة من كتلته الابتدائية فإنه يحذف وتوزع كتلته وزخمه على جسيمات الغاز المحيطة موزونة بنواة SPH.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p4">
+<p class="ltx_p">لتجنب التسارعات الكبيرة جدا، ومن ثم الخطوات الزمنية الصغيرة جدا للجسيمات القريبة من الثقب الأسود، وكذلك تجنب استرخاء جسمين، نزيد طول تليين الثقب الأسود مع نموه.
+وبما أن طول تليين الجسيمات عديمة التصادم في محاكياتنا يتناسب مع الجذر التربيعي لكتلتها، فإننا نضرب طول تليين الثقب الأسود في <math alttext="(1+\Delta m/m_{\mathrm{BH}})^{1/2}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p4.m1"><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mrow><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>m</mi></mrow><mo>/</mo><msub><mi>m</mi><mi>BH</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></math> عندما تزداد كتلته بمقدار <math alttext="\Delta m" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p4.m2"><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>m</mi></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p5">
+<p class="ltx_p">لا يؤثر ازدياد طول تليين الثقب الأسود تأثيرا مهما في محيطه، إذ تكون قوته الثقالية عادة أصغر بكثير من القوة الثقالية للنجوم المحيطة بالمركز. فعلى سبيل المثال، في المجرة g7.92e12 التي نستخدمها لدراسة المعاملات في القسم <a class="ltx_ref" href="#S6" title="6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">6</span></a>، تكون كتلة النجوم ضمن <math alttext="1\,\mathrm{kpc}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p5.m1"><mrow><mn>1</mn><mo lspace="0.170em">⁢</mo><mi>kpc</mi></mrow></math> من الثقب الأسود أكبر من كتلة الثقب الأسود بما لا يقل عن 25 مرة في جميع الأوقات.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p6">
+<p class="ltx_p">لا نفرض حدا على المسافة التي يمكن أن تبعدها الجسيمات كي يجري تراكمها. غير أنه في كل خطوة زمنية عادة لا يراكم أكثر من جسيم واحد، وهذا الجسيم هو الأشد ارتباطا، ولذلك يكون عادة الأقرب إلى الثقب الأسود.</p>
+</div>
+<div class="ltx_para" id="S3.SS4.p7">
+<p class="ltx_p">طورت طرائق بديلة لنمذجة تراكم الغاز على الثقوب السوداء:
+يفترض <cite class="ltx_cite ltx_citemacro_citet">Booth &amp;
+Schaye (<a class="ltx_ref" href="#bib.bib6" title="">2009</a>, <a class="ltx_ref" href="#bib.bib7" title="">2010</a>)</cite> أن معامل التراكم <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p7.m1"><mi>α</mi></math> ليس ثابتا، بل هو دالة في كثافة الغاز، في حين أن <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S3.SS4.p7.m2"><mi>α</mi></math> في محاكيات EAGLE <cite class="ltx_cite ltx_citemacro_citep">(Schaye
+et al., <a class="ltx_ref" href="#bib.bib58" title="">2015</a>)</cite> وعند <cite class="ltx_cite ltx_citemacro_citet">Rosas-Guevara
+et al. (<a class="ltx_ref" href="#bib.bib53" title="">2015</a>)</cite> هو نسبة مقياس زمن Bondi إلى مقياس الزمن اللزج.
+يعدل <cite class="ltx_cite ltx_citemacro_citet">Tremmel
+et al. (<a class="ltx_ref" href="#bib.bib67" title="">2017</a>)</cite> صياغة Bondi-Hoyle-Lyttleton لأخذ الزخم الزاوي للغاز في الحسبان.
+ويحسب <cite class="ltx_cite ltx_citemacro_citet">Debuhr
+et al. (<a class="ltx_ref" href="#bib.bib14" title="">2011</a>, <a class="ltx_ref" href="#bib.bib15" title="">2012</a>)</cite> معدل تراكم الثقب الأسود اعتمادا على التطور اللزج لقرص تراكم يحيط بالثقب الأسود.
+ويحسب <cite class="ltx_cite ltx_citemacro_citet">Hopkins &amp;
+Quataert (<a class="ltx_ref" href="#bib.bib34" title="">2011</a>)</cite> ومحاكيات FIRE <cite class="ltx_cite ltx_citemacro_citep">(Anglés-Alcázar
+et al., <a class="ltx_ref" href="#bib.bib1" title="">2017</a>)</cite> معدل تراكم الثقب الأسود اعتمادا على الزخم الزاوي وعزوم الثقالة حول الثقب الأسود.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS5">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.5 </span>التغذية الراجعة للثقوب السوداء</h3>
+<div class="ltx_para" id="S3.SS5.p1">
+<p class="ltx_p">ينتج تراكم الثقب الأسود لمعانا قدره</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="L=\epsilon_{\mathrm{r}}\dot{M}_{\mathrm{BH}}c^{2}" class="ltx_Math" dir="ltr" display="block" id="S3.E4.m1"><mrow><mi>L</mi><mo>=</mo><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">r</mi></msub><mo>⁢</mo><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>BH</mi></msub><mo>⁢</mo><msup><mi>c</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">مع سرعة الضوء <math alttext="c" class="ltx_Math" dir="ltr" display="inline" id="S3.SS5.p1.m1"><mi>c</mi></math>، ونفترض أن كسرا<span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup>
+<span class="ltx_tag ltx_tag_note">5</span>
+              
+              
+              
+            القيم الشائعة لكفاءة التغذية الراجعة هي <math alttext="\epsilon_{\mathrm{f}}=0.05" class="ltx_Math" dir="ltr" display="inline" id="footnote5.m1"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.05</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Di
+Matteo et al., <a class="ltx_ref" href="#bib.bib16" title="">2005</a>; Springel et al., <a class="ltx_ref" href="#bib.bib63" title="">2005</a>; Sijacki et al., <a class="ltx_ref" href="#bib.bib61" title="">2007</a>; Di Matteo
+et al., <a class="ltx_ref" href="#bib.bib17" title="">2008</a>; Johansson
+et al., <a class="ltx_ref" href="#bib.bib38" title="">2009</a>)</cite>، و<math alttext="\epsilon_{\mathrm{f}}=0.15" class="ltx_Math" dir="ltr" display="inline" id="footnote5.m2"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.15</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Booth &amp;
+Schaye, <a class="ltx_ref" href="#bib.bib6" title="">2009</a>, <a class="ltx_ref" href="#bib.bib7" title="">2010</a>; Schaye
+et al., <a class="ltx_ref" href="#bib.bib58" title="">2015</a>)</cite>، و<math alttext="\epsilon_{\mathrm{f}}=0.02" class="ltx_Math" dir="ltr" display="inline" id="footnote5.m3"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.02</mn></mrow></math> <cite class="ltx_cite ltx_citemacro_citep">(Tremmel
+et al., <a class="ltx_ref" href="#bib.bib67" title="">2017</a>)</cite>.</span></span></span> مقداره <math alttext="\epsilon_{\mathrm{f}}=0.05" class="ltx_Math" dir="ltr" display="inline" id="S3.SS5.p1.m2"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.05</mn></mrow></math> من هذا اللمعان متاح على هيئة طاقة حرارية للغاز المحيط بالثقب الأسود.
+ومن ثم يتلقى الغاز طاقة لكل وحدة زمن مقدارها</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S3.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\dot{E}=\epsilon_{\mathrm{f}}\epsilon_{\mathrm{r}}\dot{M}_{\mathrm{BH}}c^{2}" class="ltx_Math" dir="ltr" display="block" id="S3.E5.m1"><mrow><mover accent="true"><mi>E</mi><mo>˙</mo></mover><mo>=</mo><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>⁢</mo><msub><mi>ϵ</mi><mi mathvariant="normal">r</mi></msub><mo>⁢</mo><msub><mover accent="true"><mi>M</mi><mo>˙</mo></mover><mi>BH</mi></msub><mo>⁢</mo><msup><mi>c</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">توزع موزونة بالنواة بين أقرب 50 جسيم غازي.
+ولتجنب سرعات صوت كبيرة جدا، ومن ثم خطوات زمنية صغيرة جدا، نحد الطاقة النوعية لجسيم غازي واحد عند <math alttext="(0.1c)^{2}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS5.p1.m3"><msup><mrow><mo stretchy="false">(</mo><mrow><mn>0.1</mn><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></math>.</p>
+</div>
+<div class="ltx_para" id="S3.SS5.p2">
+<p class="ltx_p">هناك عدد من النماذج البديلة للتغذية الراجعة للثقوب السوداء.
+يستخدم <cite class="ltx_cite ltx_citemacro_citet">Sijacki et al. (<a class="ltx_ref" href="#bib.bib61" title="">2007</a>)</cite> نمطا إضافيا من التغذية الراجعة يعمل عند معدلات تراكم منخفضة للثقب الأسود، وينمذج بحقن ‘فقاعات’  في المجرة المضيفة.
+ويستخدم <cite class="ltx_cite ltx_citemacro_citet">Debuhr
+et al. (<a class="ltx_ref" href="#bib.bib14" title="">2011</a>, <a class="ltx_ref" href="#bib.bib15" title="">2012</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Choi et al. (<a class="ltx_ref" href="#bib.bib9" title="">2012</a>)</cite> ‘تغذية راجعة حركية’  تضيف زخما وكتلة إلى الغاز المحيط بالثقب الأسود.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>الشروط الابتدائية وخصائص المجرات والمعاملات</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">ترد مجراتنا وخصائصها في الجدول <a class="ltx_ref" href="#Sx1.T1" title="Table 1 ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">1</span></a> في نهاية هذه الورقة.
+نأخذ خمس مجرات من مجموعة NIHAO الأصلية لها كتلة جسيم مادة مظلمة مقدارها <math alttext="1.74\times 10^{6}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m1"><mrow><mrow><mn>1.74</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>، وكتلة جسيم غازي مقدارها <math alttext="3.17\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m2"><mrow><mrow><mn>3.17</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>، وطول تليين للمادة المظلمة مقداره <math alttext="931\,\mathrm{pc}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m3"><mrow><mn>931</mn><mo lspace="0.170em">⁢</mo><mi>pc</mi></mrow></math>، وطول تليين لجسيم الغاز مقداره <math alttext="398\,\mathrm{pc}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m4"><mrow><mn>398</mn><mo lspace="0.170em">⁢</mo><mi>pc</mi></mrow></math>.
+وتنشأ هذه من محاكاة كونية للمادة المظلمة فقط بحجم صندوق قدره 60 Mpc و600<sup class="ltx_sup">3</sup> جسيم.
+ومن الصندوق نفسه نأخذ بالإضافة إلى ذلك سبع مجرات جديدة بالدقة نفسها تصل كتل هالاتها عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m6"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> إلى <math alttext="1-4\times 10^{12}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m7"><mrow><mn>1</mn><mo>−</mo><mrow><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>.
+ثم نأخذ 38 مجرة جديدة لها كتلة جسيم مادة مظلمة مقدارها <math alttext="1.38\times 10^{7}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m8"><mrow><mrow><mn>1.38</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>7</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>، وكتلة جسيم غازي مقدارها <math alttext="2.52\times 10^{6}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m9"><mrow><mrow><mn>2.52</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>، وطول تليين للمادة المظلمة مقداره <math alttext="1863\,\mathrm{pc}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m10"><mrow><mn>1863</mn><mo lspace="0.170em">⁢</mo><mi>pc</mi></mrow></math>، وطول تليين لجسيم الغاز مقداره <math alttext="782\,\mathrm{pc}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m11"><mrow><mn>782</mn><mo lspace="0.170em">⁢</mo><mi>pc</mi></mrow></math>.
+وتبلغ كتل هالاتها عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m12"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> من <math alttext="4\times 10^{12}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m13"><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>12</mn></msup></mrow></math> إلى <math alttext="4\times 10^{13}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m14"><mrow><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>13</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>، وتنشأ من محاكاة كونية للمادة المظلمة فقط بحجم صندوق قدره 90 Mpc و450<sup class="ltx_sup">3</sup> جسيم.
+أعيدت محاكاة بضع مجرات من دون تغذية راجعة للثقوب السوداء، وهذه لا تحتوي على مدخل لكتلة الثقب الأسود في الجدول <a class="ltx_ref" href="#Sx1.T1" title="Table 1 ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">1</span></a>.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">يشير اسم المجرة إلى كتلة هالتها عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m1"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> في المحاكيات الكونية للمادة المظلمة فقط، أي إن كتلة هالتها في المحاكيات المعروضة في هذه الورقة قد تكون مختلفة قليلا.
+نستخدم أداة AMIGA Halo Finder <cite class="ltx_cite ltx_citemacro_citep">(AHF, Gill
+et al., <a class="ltx_ref" href="#bib.bib29" title="">2004</a>; Knollmann &amp;
+Knebe, <a class="ltx_ref" href="#bib.bib41" title="">2009</a>)</cite> لتحديد الهالات وخصائصها.
+تحدد AHF فرط الكثافات على شبكة مصقولة تكيفيا بوصفها مراكز هالات محتملة.
+ثم تعرف هذه الهالات على أنها كرة نصف قطرها <math alttext="R_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m2"><msub><mi>R</mi><mn>200</mn></msub></math> وكتلتها <math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m3"><msub><mi>M</mi><mn>200</mn></msub></math> بحيث تساوي كثافتها 200 ضعفا من كثافة المادة الحرجة الكونية.
+تعرف الكتلة النجمية <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m4"><msub><mi>M</mi><mo>⋆</mo></msub></math> لمجرة ما بأنها الكتلة المجمعة لكل الجسيمات النجمية ضمن نصف قطر <math alttext="r_{\mathrm{gal}}=0.2\,R_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m5"><mrow><msub><mi>r</mi><mi>gal</mi></msub><mo>=</mo><mrow><mn>0.2</mn><mo lspace="0.170em">⁢</mo><msub><mi>R</mi><mn>200</mn></msub></mrow></mrow></math>
+<cite class="ltx_cite ltx_citemacro_citep">(انظر Munshi
+et al., <a class="ltx_ref" href="#bib.bib49" title="">2013</a>, لنهج مختلف في تعريف الكتلة النجمية لمجرة ما)</cite>.
+بسبب الاندماجات قد تحتوي بعض المجرات على أكثر من ثقب أسود واحد، ونعرف الثقب الأسود المركزي بأنه الأقرب إلى مركز المجرة.
+لا تحتوي أي من هالاتنا على متطفل ضمن 20 في المئة من نصف قطرها الفيريالي، وتحتوي على أقل من 20 متطفلين في المجموع، حيث إن المتطفل هو جسيم ينشأ من خارج منطقة التكبير الموجه.
+لدينا في المجموع 50 مجرة مع تغذية راجعة للثقوب السوداء و11 مجرة من دون تغذية راجعة للثقوب السوداء في هذه الورقة.</p>
+</div>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>النتائج</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">يتحدد مقدار تغذية الثقوب السوداء الراجعة بمعدل تراكم الثقب الأسود، الذي يحدد بدوره كتلة الثقب الأسود.
+وبما أن تغذية الثقوب السوداء الراجعة تخمد تشكل النجوم، فإن من أقوى آثارها تقليل الكتلة النجمية للمجرة.
+لذلك نستخدم الكتلة النجمية للمجرة وكتلة الثقب الأسود لمعايرة نموذجنا، ومن ثم نستخدم علاقة الكتلة النجمية مقابل كتلة الهالة (<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m2"><msub><mi>M</mi><mn>200</mn></msub></math>) وعلاقة كتلة الثقب الأسود مقابل الكتلة النجمية (<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m3"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m4"><msub><mi>M</mi><mo>⋆</mo></msub></math>) للمعايرة.
+ونحلل أيضا تواريخ تشكل النجوم لثلاث من مجراتنا الجديدة للتأكد من أن تغذية الثقوب السوداء الراجعة تحدث أثرا مخمدا فيها.
+في هذا القسم نستخدم المعاملات المرجعية لنموذجنا، وهي معامل التراكم <math alttext="\alpha=70" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m5"><mrow><mi>α</mi><mo>=</mo><mn>70</mn></mrow></math>، وكفاءة التغذية الراجعة <math alttext="\epsilon_{\mathrm{f}}=0.05" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m6"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.05</mn></mrow></math>، وكتلة بذرة الثقب الأسود <math alttext="M_{\mathrm{BH,s}}=1\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m7"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>، وكتلة عتبة الهالة <math alttext="M_{\mathrm{h,t}}=5\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p1.m8"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S5.p2">
+<p class="ltx_p">نقارن علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m2"><msub><mi>M</mi><mn>200</mn></msub></math> لدينا بنتائج مطابقة وفرة الهالات عند
+<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>.
+وتستند هذه إلى IMF لـ <cite class="ltx_cite ltx_citemacro_citet">Chabrier (<a class="ltx_ref" href="#bib.bib8" title="">2003</a>)</cite>، غير أن هناك أدلة على IMF ‘أثقل’  (غني بالنجوم منخفضة الكتلة، أي يحوي مزيدا من النجوم منخفضة الكتلة) في المجرات الضخمة <cite class="ltx_cite ltx_citemacro_citep">(مثلا، Conroy &amp; van
+Dokkum, <a class="ltx_ref" href="#bib.bib11" title="">2012</a>; Dutton
+et al., <a class="ltx_ref" href="#bib.bib21" title="">2013a</a>; Dutton et al., <a class="ltx_ref" href="#bib.bib22" title="">2013b</a>)</cite>.
+لذلك، اتباعا لـ <cite class="ltx_cite ltx_citemacro_citet">Dutton et al. (<a class="ltx_ref" href="#bib.bib22" title="">2013b</a>)</cite>، نضيف تصحيحا</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S5.E6">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_left_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_left"><math alttext="\Delta_{\mathrm{IMF}}=\min\left(0.28+\left(0.14m-11\right),0.3\right)" class="ltx_Math" dir="ltr" display="block" id="S5.E6.m1"><mrow><msub><mi mathvariant="normal">Δ</mi><mi>IMF</mi></msub><mo>=</mo><mrow><mi>min</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mn>0.28</mn><mo>+</mo><mrow><mo>(</mo><mrow><mrow><mn>0.14</mn><mo>⁢</mo><mi>m</mi></mrow><mo>−</mo><mn>11</mn></mrow><mo>)</mo></mrow></mrow><mo>,</mo><mn>0.3</mn><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_left_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">لـ <math alttext="m&gt;9" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m3"><mrow><mi>m</mi><mo>&gt;</mo><mn>9</mn></mrow></math> و<math alttext="m=\log\left(M_{\star}/\mathrm{M}_{\sun}\right)" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m4"><mrow><mi>m</mi><mo>=</mo><mrow><mi>log</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><msub><mi>M</mi><mo>⋆</mo></msub><mo>/</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow><mo>)</mo></mrow></mrow></mrow></math> إلى <math alttext="\log M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m5"><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><msub><mi>M</mi><mo>⋆</mo></msub></mrow></math> من علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m6"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m7"><msub><mi>M</mi><mn>200</mn></msub></math>،
+مما يزيد الكتلة النجمية للمجرات عالية الكتلة بعامل <math alttext="\sim" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m8"><mo>∼</mo></math>2.
+وتعد علاقات <cite class="ltx_cite ltx_citemacro_cite">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> دالة في الكتلة الفيريالية للهالة، ونحولها إلى <math alttext="M_{200}" class="ltx_Math" dir="ltr" display="inline" id="S5.p2.m9"><msub><mi>M</mi><mn>200</mn></msub></math> بتطبيق التصحيحات التي اقترحها <cite class="ltx_cite ltx_citemacro_citet">Dutton &amp;
+Macciò (<a class="ltx_ref" href="#bib.bib20" title="">2014</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S5.p3">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S5.F1" title="Figure 1 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">1</span></a> علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m2"><msub><mi>M</mi><mn>200</mn></msub></math> لمجراتنا مقارنة بنتائج مطابقة الوفرة،
+وتوفر محاكياتنا التي تتضمن تغذية راجعة للثقوب السوداء مطابقة جيدة.
+ولا تنحرف مجراتنا قليلا عن العلاقات المرصودة إلا عند كتل الهالات العالية جدا والمنخفضة جدا،
+لكن معظمها يبقى ضمن تشتت 1-سيغما للرصد.
+يبين الشكل <a class="ltx_ref" href="#S5.F2" title="Figure 2 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">2</span></a> علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m3"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m4"><msub><mi>M</mi><mn>200</mn></msub></math> لمجراتنا التي حوكيت
+من دون ثقوب سوداء، مقارنة بنظيراتها ذات الثقوب السوداء.
+ولا تقدم مطابقة جيدة للعلاقات المرصودة إلا المحاكيات التي تتضمن ثقوبا سوداء،
+مما يبين أهمية تغذية الثقوب السوداء الراجعة لتطور المجرات عالية الكتلة.
+يبين الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">3</span></a> علاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m5"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m6"><msub><mi>M</mi><mo>⋆</mo></msub></math> لمجراتنا عند انزياحات حمراء مختلفة مقارنة برصود <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m7"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> من <cite class="ltx_cite ltx_citemacro_citet">Kormendy &amp;
+Ho (<a class="ltx_ref" href="#bib.bib42" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Sani et al. (<a class="ltx_ref" href="#bib.bib55" title="">2011</a>)</cite>.
+وعند كل انزياح أحمر نلائم علاقة خطية لمحاكياتنا ونحسب تشتت 1-سيغما.
+ونطبق قصا عند 5-سيغما على بياناتنا لإزالة الشاذ عالي الكتلة، الظاهر في اللوحة الفرعية <math alttext="z=4" class="ltx_Math" dir="ltr" display="inline" id="S5.p3.m8"><mrow><mi>z</mi><mo>=</mo><mn>4</mn></mrow></math>، من حساب التشتت.
+تطابق نتائجنا علاقة <cite class="ltx_cite ltx_citemacro_citet">Kormendy &amp;
+Ho (<a class="ltx_ref" href="#bib.bib42" title="">2013</a>)</cite> جيدا،
+ولا تقلل تقدير كتل الثقوب السوداء لبعض المجرات إلا عند الطرف الأدنى.
+ونعرض أيضا علاقة بين كتلة الهالة وكتلة الثقب الأسود في الشكل <a class="ltx_ref" href="#S5.F4" title="Figure 4 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">4</span></a>.</p>
+</div>
+<figure class="ltx_figure" id="S5.F1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="718" id="S5.F1.g1" src="x1.png" width="926"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>علاقة الكتلة النجمية بكتلة الهالة لمحاكياتنا (دوائر) عند انزياحات حمراء مختلفة.
+تبين الخطوط المتصلة نتائج من مطابقة وفرة الهالات لدى <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite> مع تصحيحات IMF وكتلة الهالة،
+وملاءمة لمجرات NIHAO الخاصة بنا وفق المعادلة 3 من <cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite>. وتمثل المناطق المظللة تشتت 1-سيغما.
+والخطوط المتقطعة هي علاقة <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite> غير المصححة وعلاقتا <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> مع تصحيحات لكتلة الهالة فقط.
+والخط المنقط هو الكسر الباريوني الكوني.
+</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="355" id="S5.F2.g1" src="x2.png" width="458"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>علاقة الكتلة النجمية بكتلة الهالة لمحاكياتنا عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.F2.m2"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>،
+حيث تمثل الدوائر مجرات ذات ثقوب سوداء، والمربعات مجرات بلا ثقوب سوداء.
+تبين الخطوط المتصلة نتائج من مطابقة وفرة الهالات لدى <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite> مع تصحيحات IMF وكتلة الهالة. وتمثل المناطق المظللة تشتت 1-سيغما.
+والخطوط المتقطعة هي علاقة <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite> غير المصححة وعلاقتا <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> مع تصحيحات لكتلة الهالة فقط.
+والخط المنقط هو الكسر الباريوني الكوني.
+</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="718" id="S5.F3.g1" src="x3.png" width="926"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>علاقة كتلة الثقب الأسود بالكتلة النجمية لمحاكياتنا (دوائر) عند انزياحات حمراء مختلفة. تبين الخطوط المتصلة
+علاقات <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.F3.m2"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> المرصودة من <cite class="ltx_cite ltx_citemacro_citet">Sani et al. (<a class="ltx_ref" href="#bib.bib55" title="">2011</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Kormendy &amp;
+Ho (<a class="ltx_ref" href="#bib.bib42" title="">2013</a>)</cite>،
+وملاءمة خطية لمجرات NIHAO لدينا. وتمثل المناطق المظللة تشتت 1-سيغما.
+</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F4"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="349" id="S5.F4.g1" src="x4.png" width="458"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>علاقة كتلة الثقب الأسود بكتلة الهالة لمحاكياتنا (دوائر). الخط المتصل هو مزيج من ملاءمات <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.F4.m6"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> لدينا
+لعلاقتي <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.F4.m7"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.F4.m8"><msub><mi>M</mi><mn>200</mn></msub></math> و<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.F4.m9"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.F4.m10"><msub><mi>M</mi><mo>⋆</mo></msub></math>.
+وتمثل المنطقة المظللة تشتت 1-سيغما.
+</figcaption>
+</figure>
+<div class="ltx_para" id="S5.p4">
+<p class="ltx_p">تشمل النجاحات الحديثة في إعادة إنتاج الكتل النجمية وكتل الثقوب السوداء الصحيحة في محاكيات المجرات مشروع EAGLE <cite class="ltx_cite ltx_citemacro_citep">(Schaye
+et al., <a class="ltx_ref" href="#bib.bib58" title="">2015</a>)</cite>، الذي يتكون من محاكيات كونية تعيد إنتاج علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{200}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m2"><msub><mi>M</mi><mn>200</mn></msub></math> في <math alttext="\mathrm{log}\,M_{200}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m3"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mn>200</mn></msub></mrow></math> من 10.5 إلى 14.5 وعلاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m4"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m5"><msub><mi>M</mi><mo>⋆</mo></msub></math> في <math alttext="\mathrm{log}\,M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m6"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mo>⋆</mo></msub></mrow></math> من 8 إلى 12.
+وتتفق علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m7"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{200}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m8"><msub><mi>M</mi><mn>200</mn></msub></math> لمشروع Illustris <cite class="ltx_cite ltx_citemacro_citep">(Genel
+et al., <a class="ltx_ref" href="#bib.bib28" title="">2014</a>; Vogelsberger
+et al., <a class="ltx_ref" href="#bib.bib68" title="">2014</a>)</cite> نوعيا على نحو جيد مع الرصد في <math alttext="\mathrm{log}\,M_{200}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m9"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mn>200</mn></msub></mrow></math> من 10 إلى 14، كما أن علاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m10"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\mathrm{bulge}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m11"><msub><mi>M</mi><mi>bulge</mi></msub></math> لديهم (في <math alttext="\mathrm{log}\,M_{\mathrm{bulge}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m12"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mi>bulge</mi></msub></mrow></math> من 8 إلى 12) تتفق جيدا مع الرصد <cite class="ltx_cite ltx_citemacro_citep">(Sijacki
+et al., <a class="ltx_ref" href="#bib.bib62" title="">2015</a>)</cite>.
+وتعيد محاكيات IllustrisTNG <cite class="ltx_cite ltx_citemacro_citep">(Weinberger
+et al., <a class="ltx_ref" href="#bib.bib73" title="">2018</a>)</cite> إنتاج علاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m13"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m14"><msub><mi>M</mi><mo>⋆</mo></msub></math> في <math alttext="\mathrm{log}\,M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m15"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mo>⋆</mo></msub></mrow></math> من 8 إلى 12.
+كذلك تطابق محاكيات ROMULUS الكونية <cite class="ltx_cite ltx_citemacro_citep">(Tremmel
+et al., <a class="ltx_ref" href="#bib.bib67" title="">2017</a>)</cite>
+علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m16"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{\mathrm{vir}}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m17"><msub><mi>M</mi><mi>vir</mi></msub></math> في <math alttext="\mathrm{log}\,M_{\mathrm{vir}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m18"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mi>vir</mi></msub></mrow></math> من 10 إلى 13
+وعلاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m19"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\mathrm{\star}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m20"><msub><mi>M</mi><mo>⋆</mo></msub></math> في <math alttext="\mathrm{log}\,M_{\mathrm{\star}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m21"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mo>⋆</mo></msub></mrow></math> من 9 إلى 11.5.
+وتطابق محاكيات Magneticum Pathfinder <cite class="ltx_cite ltx_citemacro_citep">(Hirschmann
+et al., <a class="ltx_ref" href="#bib.bib33" title="">2014</a>)</cite> علاقة
+<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m22"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\mathrm{stellar}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m23"><msub><mi>M</mi><mi>stellar</mi></msub></math> في <math alttext="\mathrm{log}\,M_{\mathrm{stellar}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p4.m24"><mrow><mi>log</mi><mo lspace="0.170em">⁢</mo><msub><mi>M</mi><mi>stellar</mi></msub></mrow></math> من 10.5 إلى 13.</p>
+</div>
+<div class="ltx_para" id="S5.p5">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">5</span></a> تشتت علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p5.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p5.m2"><msub><mi>M</mi><mn>200</mn></msub></math> مقابل الزمن
+لمحاكياتنا ولعلاقات <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>.
+يعتمد تشتت علاقات Moster على الكتلة النجمية،
+لذلك نحسب التشتت لمجال الكتل النجمية
+الذي تغطيه محاكياتنا عند كل انزياح أحمر، ويعرض متوسطه وانحرافه المعياري في الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">5</span></a>.
+نحرص على أن توجد عند كل انزياح أحمر 12 مجرات على الأقل في العينة وفق معيارنا الذي يشترط حدا أدنى قدره <math alttext="10^{4}" class="ltx_Math" dir="ltr" display="inline" id="S5.p5.m3"><msup><mn>10</mn><mn>4</mn></msup></math> جسيم لكل مجرة.
+يتناقص تشتت جميع العلاقات عموما مع الزمن.
+ولا يرتفع تشتت علاقتنا إلا عند الانزياحات الحمراء الأعلى،
+وقد يكون ذلك ناجما عن إحصاءات العدد الصغير.
+يبقى تشتت علاقتنا دائما دون تشتت <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>،
+ودون تشتت <cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> من أجل z&lt;1.5.
+ويتفق تشتت <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> جيدا مع محاكياتنا،
+إذ يكون أدنى من تشتتنا بقليل فقط من أجل z&gt;1 وأعلى منه من أجل z&lt;0.5.</p>
+</div>
+<div class="ltx_para" id="S5.p6">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">6</span></a> تشتت علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m2"><msub><mi>M</mi><mn>200</mn></msub></math> مقابل كتلة الهالة
+عند <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m3"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> لعلاقات <cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>،
+ولمجرات NIHAO ذات الثقوب السوداء المعروضة في هذه الورقة (50 مجرة مقسمة إلى 3 حاويات)، ولـ 78 من مجرات NIHAO
+(مقسمة إلى 4 حاويات) التي لا تحتوي على ثقوب سوداء والمعروضة في <cite class="ltx_cite ltx_citemacro_citet">Wang
+et al. (<a class="ltx_ref" href="#bib.bib71" title="">2015</a>)</cite> لأربعة انزياحات حمراء مختلفة.
+ومن أجل <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m4"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> يكون تشتتنا دون تشتت <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>،
+باستثناء كتل الهالات حول <math alttext="10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m5"><mrow><msup><mn>10</mn><mn>10</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>، ودون تشتت <cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite>
+لكتل الهالات فوق <math alttext="5\times 10^{11}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m6"><mrow><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>11</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>.
+يزداد التشتت عموما مع تناقص كتلة الهالة.
+ولا يظهر اتجاه واضح بوصفه دالة في الانزياح الأحمر.
+تتفق نتائجنا مع الدراسات السابقة للتشتت لدى <cite class="ltx_cite ltx_citemacro_citet">Wechsler &amp;
+Tinker (<a class="ltx_ref" href="#bib.bib72" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Matthee et al. (<a class="ltx_ref" href="#bib.bib46" title="">2017</a>)</cite>.
+وحتى الآن لا تستطيع إلا محاكيات NIHAO عرض التشتت لكتل هالات تغطي خمس رتب مقدار، أي تمتد من <math alttext="5\times 10^{8}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m7"><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>8</mn></msup></mrow></math> إلى <math alttext="4\times 10^{13}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p6.m8"><mrow><mrow><mn>4</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>13</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S5.p7">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S5.F7" title="Figure 7 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">7</span></a> تشتت علاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S5.p7.m1"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S5.p7.m2"><msub><mi>M</mi><mo>⋆</mo></msub></math> مقابل الزمن
+لمحاكياتنا ومع تشتت <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.p7.m3"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> لعلاقتي <cite class="ltx_cite ltx_citemacro_citet">Sani et al. (<a class="ltx_ref" href="#bib.bib55" title="">2011</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Kormendy &amp;
+Ho (<a class="ltx_ref" href="#bib.bib42" title="">2013</a>)</cite>.
+نحسب التشتت فقط للانزياحات الحمراء التي تتضمن ما لا يقل عن 12 مجرات في عينتنا.
+عند الانزياحات الحمراء العالية يهيمن على التشتت مقدار كتلة بذرة الثقب الأسود وربما إحصاءات العدد الصغير.
+ثم يزداد التشتت بشدة، قبل أن يتناقص خلال بقية التطور.
+وعند الانزياح الأحمر صفر يكون تشتت المحاكيات دون التشتت المرصود.
+وهذا متوقع لأننا نعرض هنا التشتت الداخلي في المحاكيات، وهو لا يأخذ في الحسبان الانحيازات والأخطاء الرصدية.</p>
+</div>
+<figure class="ltx_figure" id="S5.F5"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="394" id="S5.F5.g1" src="x5.png" width="458"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>تشتت علاقة الكتلة النجمية بكتلة الهالة مقابل الزمن لدوال الكتلة النجمية وكتلة الهالة لدى <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>
+ولمجرات NIHAO الخاصة بنا.
+وتمثل الدوائر السوداء الانزياحات الحمراء المعروضة في الشكل <a class="ltx_ref" href="#S5.F1" title="Figure 1 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">1</span></a>.
+</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F6"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="358" id="S5.F6.g1" src="x6.png" width="458"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>تشتت علاقة الكتلة النجمية بكتلة الهالة بوصفه دالة في كتلة الهالة لدوال الكتلة النجمية وكتلة الهالة <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.F6.m2"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>
+لدى <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite>،
+وكذلك، عند أربعة انزياحات حمراء مختلفة، لمجرات NIHAO ذات الثقوب السوداء البالغ عددها 50 والمعروضة في هذه الورقة (خطوط متصلة)
+ولعدد 78 من مجرات NIHAO بلا ثقوب سوداء المعروضة في <cite class="ltx_cite ltx_citemacro_citet">Wang
+et al. (<a class="ltx_ref" href="#bib.bib71" title="">2015</a>)</cite> (خطوط منقطة).</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F7"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="394" id="S5.F7.g1" src="x7.png" width="458"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>تشتت علاقة كتلة الثقب الأسود بالكتلة النجمية مقابل الزمن لعلاقات <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.F7.m2"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> المرصودة من <cite class="ltx_cite ltx_citemacro_citet">Sani et al. (<a class="ltx_ref" href="#bib.bib55" title="">2011</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Kormendy &amp;
+Ho (<a class="ltx_ref" href="#bib.bib42" title="">2013</a>)</cite> ولمجرات NIHAO الخاصة بنا.
+وتمثل الدوائر السوداء الانزياحات الحمراء المعروضة في الشكل <a class="ltx_ref" href="#S5.F3" title="Figure 3 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">3</span></a>.
+</figcaption>
+</figure>
+<div class="ltx_para" id="S5.p8">
+<p class="ltx_p">في الشكل <a class="ltx_ref" href="#S5.F8" title="Figure 8 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">8</span></a> نعرض تاريخ تشكل النجوم، مع تغذية راجعة للثقوب السوداء ومن دونها، ومعدل تراكم الثقب الأسود لثلاث من مجراتنا.
+من دون التغذية الراجعة تظهر المجرات تشكلا مستمرا للنجوم حتى <math alttext="z=0" class="ltx_Math" dir="ltr" display="inline" id="S5.p8.m1"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>، منتجة مجرات ضخمة زرقاء غير واقعية وغير مرصودة.
+ومع التغذية الراجعة تظهر المجرات طورا ابتدائيا من تشكل النجوم العالي، ثم تخمد لبقية تطورها.
+ويبلغ معدل تراكم الثقب الأسود ذروته قبل وقت قصير من بدء معدل تشكل النجوم في الانخفاض، مما يدل على أن تشكل النجوم يخمد بفعل تغذية الثقب الأسود الراجعة.</p>
+</div>
+<div class="ltx_para" id="S5.p9">
+<p class="ltx_p">تظهر المجرات الثلاث كلها في الشكل <a class="ltx_ref" href="#S5.F8" title="Figure 8 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">8</span></a> أن الثقب الأسود يصبح نشطا عند نحو 2 إلى 4 جيغاسنة.
+ولتحديد سبب هذه الزيادة ننظر إلى الشكل <a class="ltx_ref" href="#S5.F9" title="Figure 9 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">9</span></a>، الذي يبين معدل تراكم الثقب الأسود،
+وكتلة الثقب الأسود وكثافة الغاز عند موضع الثقب الأسود.
+يعطى معدل تراكم الثقب الأسود بصيغة Bondi في المعادلة <a class="ltx_ref" href="#S3.E1" title="In 3.4 تراكم الثقوب السوداء ‣ 3 الطرائق الحاسوبية لفيزياء الثقوب السوداء ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">1</span></a>، ويتحدد أساسا بكتلة الثقب الأسود وكثافة الغاز.
+في الخطوات الزمنية القليلة الأولى تؤدي الكميتان إلى معدل نمو منخفض للمجرات الثلاث كلها، وهو ما كان، لو استمر حتى الانزياح الأحمر صفر،
+سيؤدي إلى كتل نهائية للثقوب السوداء أقل من <math alttext="10^{7}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p9.m1"><mrow><msup><mn>10</mn><mn>7</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S5.p10">
+<p class="ltx_p">لكن بعد الخطوات الزمنية القليلة الأولى
+(9 خطوات أو 2.8 Gyr لـ g1.12e12، و18 خطوات أو 4.3 Gyr لـ g7.92e12، و5 خطوات أو 1.5 Gyr لـ g1.05e13)
+يشهد الثقب الأسود المركزي حدث اندماج واحدا أو أكثر مع ثقوب سوداء أخرى. ومن ثم تتضاعف كتلة الثقب الأسود تقريبا، مما يضاعف معدل تراكم الثقب الأسود أربع مرات تقريبا. ويصبح معدل تراكم الثقب الأسود الآن كبيرا بما يكفي لإحداث نمو مهم للثقب الأسود، وتؤدي كتلة الثقب الأسود المتزايدة باستمرار إلى معدل تراكم متزايد باستمرار، مما ينتج نوعا من ‘النمو المنفلت’.
+ويكتسب الثقب الأسود معظم كتلته بسبب تراكم الغاز، ولا تعمل اندماجات الثقوب السوداء إلا محفزا لمعدلات تراكم أعلى.
+فعلى سبيل المثال، تتكون الكتلة النهائية للثقب الأسود المركزي في المجرة g7.92e12 بنسبة 5 في المئة من ثقوب سوداء مندمجة وبنسبة 95 في المئة من غاز متراكم.</p>
+</div>
+<div class="ltx_para" id="S5.p11">
+<p class="ltx_p">عندما يكون معدل تراكم الثقب الأسود، ومن ثم التغذية الراجعة، عاليا بما فيه الكفاية، فإنه يكون قادرا على إزالة كميات مهمة من الغاز من جوار الثقب الأسود، كما يدل عليه هبوط كثافة الغاز في الشكل <a class="ltx_ref" href="#S5.F9" title="Figure 9 ‣ 5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">9</span></a>. وتؤدي كتلة ثقب أسود متزايدة وكثافة غاز متناقصة إلى استقرار معدل تراكم الثقب الأسود عند قيمة ثابتة تقريبا، على الأقل خلال الجيغاسنوات القليلة التالية.</p>
+</div>
+<div class="ltx_para" id="S5.p12">
+<p class="ltx_p">يشير عمل سابق <cite class="ltx_cite ltx_citemacro_citep">(Anglés-Alcázar
+et al., <a class="ltx_ref" href="#bib.bib1" title="">2017</a>; Dubois et al., <a class="ltx_ref" href="#bib.bib19" title="">2015</a>)</cite> إلى أن نمو الثقوب السوداء ينظم بتدفق الغاز من المجرة المضيفة، وأن نمو الثقب الأسود لا يكون فعالا إلا بعد أن تصل المجرة إلى كتلة معينة.
+غير أن كثافة الغاز في عملنا لا تتغير تغيرا مهما في المراحل الأولى من نمو الثقب الأسود؛
+بل إن اندماجات الثقوب السوداء حاسمة في تحفيز نمو مهم للثقب الأسود.
+وهذا يعني وجود كتلة حرجة للثقب الأسود لبداية تراكم الثقب الأسود من رتبة <math alttext="10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S5.p12.m1"><mrow><msup><mn>10</mn><mn>5</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>.
+وفضلا عن ذلك، يبرز أهمية تحفيز نمو فعال للثقب الأسود في المقام الأول، إلى جانب نمو الثقب الأسود ذاتي التنظيم في المراحل اللاحقة من تطور المجرات.
+غير أننا نشير إلى أن هذه التأثيرات ليست سوى نتيجة لصيغة Bondi
+التي تتناسب طرديا مع مربع كتلة الثقب الأسود، وقد تتغير إذا استخدمت مخططات تراكم أخرى.</p>
+</div>
+<figure class="ltx_figure" id="S5.F8"><img alt="Refer to caption" class="ltx_graphics ltx_img_portrait" height="1205" id="S5.F8.g1" src="x8.png" width="964"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>تاريخ تشكل النجوم، مع ثقوب سوداء (BH) ومن دونها، ومعدل تراكم الثقب الأسود
+للمجرات الإهليلجية g1.12e12 وg7.92e12 وg1.05e13.
+التقسيم الزمني ثابت ويساوي 216 Myr.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S5.F9"><img alt="Refer to caption" class="ltx_graphics ltx_img_portrait" height="1236" id="S5.F9.g1" src="x9.png" width="883"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>كتلة الثقب الأسود ومعدل تراكم الثقب الأسود وكثافة SPH حول الثقب الأسود
+للمجرات الإهليلجية g1.12e12 وg7.92e12 وg1.05e13.
+التقسيم الزمني ثابت ويساوي 216 Myr.</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>دراسة المعاملات</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">المعاملات المرجعية لنموذجنا هي معامل التراكم <math alttext="\alpha=70" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m1"><mrow><mi>α</mi><mo>=</mo><mn>70</mn></mrow></math>، وكفاءة التغذية الراجعة <math alttext="\epsilon_{\mathrm{f}}=0.05" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m2"><mrow><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.05</mn></mrow></math>، وكتلة بذرة الثقب الأسود <math alttext="M_{\mathrm{BH,s}}=1\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m3"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>، وكتلة عتبة الهالة <math alttext="M_{\mathrm{h,t}}=5\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m4"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math>.
+في هذا القسم نستكشف كيف يؤثر تغير هذه المعاملات في النموذج في علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m5"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m6"><msub><mi>M</mi><mn>200</mn></msub></math> و<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m7"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.p1.m8"><msub><mi>M</mi><mo>⋆</mo></msub></math>، ونبين أن معاملاتنا المرجعية اختيار معقول. ونقصر دراسة المعاملات على المجرتين g8.26e11 وg7.92e12،
+الأولى هي المجرة نفسها التي استخدمت في ورقة NIHAO الأولى <cite class="ltx_cite ltx_citemacro_citet">Wang
+et al. (<a class="ltx_ref" href="#bib.bib71" title="">2015</a>)</cite> لمعايرة التغذية الراجعة النجمية، أما الثانية فقد اختيرت لأنها أكبر بمرتبة مقدار واحدة في كتلة الهالة.</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">في دراسة المعاملات هذه نغير معاملا واحدا فقط في كل مرة، ومن ثم فمن الممكن أن يؤدي تغيير معاملات متعددة في الوقت نفسه إلى مطابقة أفضل لعلاقات التحجيم المرصودة.
+ويمكن تحقيق مزيد من التحسين بتغيير معاملات غير مرتبطة بتغذية الثقوب السوداء الراجعة، مثل المعاملات المتعلقة بالتغذية الراجعة النجمية، أو بتغيير نماذج تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة كما ورد في القسم <a class="ltx_ref" href="#S3" title="3 الطرائق الحاسوبية لفيزياء الثقوب السوداء ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">3</span></a>.</p>
+</div>
+<figure class="ltx_figure" id="S6.F10"><img alt="Refer to caption" class="ltx_graphics ltx_img_portrait" height="1117" id="S6.F10.g1" src="x10.png" width="883"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>دراسة معاملات للمجرتين g7.92e12 (دوائر) وg8.26e11 (مثلثات)
+لتغيرات معامل التراكم <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S6.F10.m5"><mi>α</mi></math> (الصف الأول)، وكفاءة التغذية الراجعة
+<math alttext="\epsilon_{\mathrm{f}}" class="ltx_Math" dir="ltr" display="inline" id="S6.F10.m6"><msub><mi>ϵ</mi><mi mathvariant="normal">f</mi></msub></math> (الصف الثاني)، وكتلة بذرة الثقب الأسود <math alttext="M_{\mathrm{BH,s}}" class="ltx_Math" dir="ltr" display="inline" id="S6.F10.m7"><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub></math> (الصف الثالث)
+وكتلة عتبة الهالة <math alttext="M_{\mathrm{h,t}}" class="ltx_Math" dir="ltr" display="inline" id="S6.F10.m8"><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub></math> (الصف الرابع).
+العمود الأيسر: علاقة الكتلة النجمية بكتلة الهالة.
+تبين الخطوط المتصلة نتائج من مطابقة وفرة الهالات لدى <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite> مع تصحيحات IMF وكتلة الهالة،
+وملاءمة لمجرات NIHAO الخاصة بنا وفق المعادلة 3 من <cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite>. وتمثل المناطق المظللة تشتت 1-سيغما.
+والخطوط المتقطعة هي علاقة <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib47" title="">2013</a>)</cite> غير المصححة وعلاقتا <cite class="ltx_cite ltx_citemacro_citet">Moster
+et al. (<a class="ltx_ref" href="#bib.bib48" title="">2018</a>)</cite>
+و<cite class="ltx_cite ltx_citemacro_citet">Behroozi et al. (<a class="ltx_ref" href="#bib.bib3" title="">2013</a>)</cite> مع تصحيحات لكتلة الهالة فقط.
+والخط المنقط هو الكسر الباريوني الكوني.
+العمود الأيمن: علاقة كتلة الثقب الأسود بالكتلة النجمية.
+الخطوط المتصلة والمناطق المظللة هي علاقات مرصودة من <cite class="ltx_cite ltx_citemacro_citet">Sani et al. (<a class="ltx_ref" href="#bib.bib55" title="">2011</a>)</cite> و<cite class="ltx_cite ltx_citemacro_citet">Kormendy &amp;
+Ho (<a class="ltx_ref" href="#bib.bib42" title="">2013</a>)</cite>.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S6.F11"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="354" id="S6.F11.g1" src="x11.png" width="458"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 11: </span>كتلة الثقب الأسود (الخطوط المتقطعة السفلية) والكتلة النجمية (الخطوط المتصلة العلوية) مقابل الزمن للمجرة g7.92e12
+لكتل بذور ثقوب سوداء مختلفة.</figcaption>
+</figure>
+<section class="ltx_subsection" id="S6.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.1 </span>معامل التراكم <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.m1"><mi>α</mi></math>
+</h3>
+<div class="ltx_para" id="S6.SS1.p1">
+<p class="ltx_p">بالنسبة إلى المجرة g7.92e12، يبدو أن معامل التراكم <math alttext="\alpha" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m1"><mi>α</mi></math> له قيمة عتبة تبلغ نحو <math alttext="\alpha=60" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m2"><mrow><mi>α</mi><mo>=</mo><mn>60</mn></mrow></math>.
+ومن أجل <math alttext="\alpha&gt;60" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m3"><mrow><mi>α</mi><mo>&gt;</mo><mn>60</mn></mrow></math> لا يظهر التغير في الكتلة النجمية (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>a) اتجاها واضحا، لكنه قد يكون ذا طبيعة عشوائية. ولا تتغير كتلة الثقب الأسود تغيرا مهما (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>b)، مما يبين الطبيعة ذاتية التنظيم لتغذية الثقوب السوداء الراجعة.
+غير أنه من أجل <math alttext="\alpha&lt;60" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m4"><mrow><mi>α</mi><mo>&lt;</mo><mn>60</mn></mrow></math> تكون تغذية الثقب الأسود الراجعة غير كافية لخفض الكتلة النجمية كي تطابق علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m5"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m6"><msub><mi>M</mi><mn>200</mn></msub></math> المرصودة (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>a)، وتهبط كتلة الثقب الأسود سريعا دون علاقات <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m7"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m8"><msub><mi>M</mi><mo>⋆</mo></msub></math> المرصودة (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>b).
+أما بالنسبة إلى المجرة g8.26e11 فيبدو أن قيمة العتبة هذه أصغر، وربما يعود ذلك إلى الدقة الأعلى، إذ لا تبدي المحاكيات كلها إلا تغيرات صغيرة في علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m9"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m10"><msub><mi>M</mi><mn>200</mn></msub></math> و<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m11"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m12"><msub><mi>M</mi><mo>⋆</mo></msub></math> قد تكون ذات طبيعة عشوائية.
+لذلك يبدو أن معامل تراكم قدره <math alttext="\alpha=70" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m13"><mrow><mi>α</mi><mo>=</mo><mn>70</mn></mrow></math> اختيار معقول.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S6.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.2 </span>كفاءة التغذية الراجعة <math alttext="e_{\mathrm{f}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.m1"><msub><mi>e</mi><mi mathvariant="normal">f</mi></msub></math>
+</h3>
+<div class="ltx_para" id="S6.SS2.p1">
+<p class="ltx_p">تؤدي كفاءة التغذية الراجعة الأعلى إلى إخماد تراكم الغاز بواسطة الثقب الأسود، ومن ثم إلى كتلة ثقب أسود أقل (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>d).
+وتكون الكمية الكلية لطاقة التغذية الراجعة المحقونة في الغاز للمجرة g7.92e12 هي
+<math alttext="E=e_{\mathrm{f}}e_{\mathrm{r}}c^{2}M_{\mathrm{BH}}=(8.9,9.6,9.3,9.1,7.6)\times
+1%
+0^{53}\mathrm{J}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m1"><mrow><mi>E</mi><mo>=</mo><mrow><msub><mi>e</mi><mi mathvariant="normal">f</mi></msub><mo>⁢</mo><msub><mi>e</mi><mi mathvariant="normal">r</mi></msub><mo>⁢</mo><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msub><mi>M</mi><mi>BH</mi></msub></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mn>8.9</mn><mo>,</mo><mn>9.6</mn><mo>,</mo><mn>9.3</mn><mo>,</mo><mn>9.1</mn><mo>,</mo><mn>7.6</mn><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">×</mo><msup><mn>10</mn><mn>53</mn></msup></mrow><mo>⁢</mo><mi mathvariant="normal">J</mi></mrow></mrow></math> لقيم <math alttext="e_{\mathrm{f}}=(0.01,0.03,0.05,0.10,0.15)" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m2"><mrow><msub><mi>e</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0.01</mn><mo>,</mo><mn>0.03</mn><mo>,</mo><mn>0.05</mn><mo>,</mo><mn>0.10</mn><mo>,</mo><mn>0.15</mn><mo stretchy="false">)</mo></mrow></mrow></math>، أي إن تغيير كفاءة التغذية الراجعة حتى بعامل 15 لا يغير طاقة التغذية الراجعة الكلية إلا بأقل من 20 في المئة.
+لذلك تعوض كفاءة التغذية الراجعة الأعلى بكتلة ثقب أسود أقل، مما يؤدي إلى طاقة تغذية راجعة كلية متقاربة، وهذا يبين مرة أخرى الطبيعة ذاتية التنظيم لتغذية الثقوب السوداء الراجعة.
+وتنخفض الكتلة النجمية انخفاضا طفيفا مع تناقص كفاءة التغذية الراجعة (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>c)، غير أن هذا الأثر صغير وقد يكون أيضا ذا طبيعة عشوائية.
+وتبالغ كفاءتا التغذية الراجعة 0.10 و0.15 كثيرا في توقع علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m3"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m4"><msub><mi>M</mi><mn>200</mn></msub></math> للمجرة g7.92e12 (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>c)، في حين تقلل كفاءتا التغذية الراجعة 0.01 و0.03 كثيرا من توقع علاقة <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m5"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m6"><msub><mi>M</mi><mo>⋆</mo></msub></math> للمجرة g8.26e11 (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>d)، مما يجعل كفاءة تغذية راجعة مقدارها <math alttext="e_{\mathrm{f}}=0.05" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p1.m7"><mrow><msub><mi>e</mi><mi mathvariant="normal">f</mi></msub><mo>=</mo><mn>0.05</mn></mrow></math> اختيارا أمثل.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S6.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.3 </span>كتلة بذرة الثقب الأسود <math alttext="M_{\mathrm{BH,s}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.m1"><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub></math>
+</h3>
+<div class="ltx_para" id="S6.SS3.p1">
+<p class="ltx_p">توفر كتل البذور الصغيرة <math alttext="5\times 10^{4}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m1"><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>4</mn></msup></mrow></math> و<math alttext="7\times 10^{4}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m2"><mrow><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>4</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> تغذية راجعة غير كافية، مما يجعل المجرة g7.92e12 تتجاوز بشدة علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m3"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m4"><msub><mi>M</mi><mn>200</mn></msub></math> المرصودة (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>e).
+أما كتل البذور العالية <math alttext="3\times 10^{5}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m5"><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow></math> و<math alttext="5\times 10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m6"><mrow><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> فتجلب المجرة g7.92e12 إلى حواف علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m7"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m8"><msub><mi>M</mi><mn>200</mn></msub></math> و<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m9"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m10"><msub><mi>M</mi><mo>⋆</mo></msub></math> المرصودة (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>e,f)، تاركة كتلة بذرة <math alttext="M_{\mathrm{BH,s}}=1\times 10^{5}\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p1.m11"><mrow><msub><mi>M</mi><mrow><mi>BH</mi><mo>,</mo><mi mathvariant="normal">s</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math> بوصفها الاختيار الأمثل.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p2">
+<p class="ltx_p">وفقا للشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>e,f لا تعتمد كتلة الثقب الأسود النهائية على كتلة بذرة الثقب الأسود (باستثناء أصغر كتلة بذرة)، بينما تعتمد عليها الكتلة النجمية النهائية. ويمكن تفسير ذلك بالشكل <a class="ltx_ref" href="#S6.F11" title="Figure 11 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">11</span></a>، الذي يبين كتلة الثقب الأسود والكتلة النجمية بوصفهما دالتين في الزمن للمجرة g7.92e12 ولكتل بذور ثقوب سوداء مختلفة.
+تبدي كتل بذور الثقوب السوداء الثلاث الأدنى تطور كتلة الثقب الأسود كما عرض في القسم <a class="ltx_ref" href="#S5" title="5 النتائج ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">5</span></a>: يكون معدل النمو منخفضا في البداية، ثم تحفز اندماجات الثقوب السوداء ‘نموا منفلتاً’  توقفه التغذية الراجعة بعد ذلك، ويؤدي في النهاية إلى كتل ثقوب سوداء متوافقة مع الرصد.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p3">
+<p class="ltx_p">وتبدي كتلتا بذور الثقوب السوداء الأعلى تطورا مختلفا تماما: ليست اندماجات الثقوب السوداء مطلوبة، إذ إن كتلة البذرة عالية بما يكفي سلفا لتحفيز ‘النمو المنفلت’.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p4">
+<p class="ltx_p">على الرغم من أن تطور كتل الثقوب السوداء في السيناريوهين مختلف تماما في الأزمنة المبكرة، فإنهما ينتجان كتل الثقوب السوداء النهائية نفسها (باستثناء أصغر كتلة بذرة)، ويمكن أن يعزى ذلك إلى الطبيعة ذاتية التنظيم لتغذية الثقوب السوداء الراجعة: فالثقوب السوداء الكبيرة تمارس تغذية راجعة قوية وتسمح بمعدل تراكم منخفض، بينما تمارس الثقوب السوداء الصغيرة تغذية راجعة ضعيفة وتسمح بمعدل تراكم مرتفع.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p5">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S6.F11" title="Figure 11 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">11</span></a> أيضا الكتلة النجمية بوصفها دالة في الزمن لكتل بذور ثقوب سوداء ابتدائية مختلفة. وحتى 2.5 جيغاسنة تتطور الكتل النجمية على نحو شبه متطابق، ثم تبدأ في التباعد: كلما ارتفعت كتلة بذرة الثقب الأسود بلغت ذروة معدل تراكم الثقب الأسود في وقت أبكر، ومن ثم يخمد تشكل النجوم في وقت أبكر، مما يثبت الكتل النجمية عند قيم أدنى فأدنى. والقفزات المفاجئة في الكتلة النجمية عند نحو 4-5 جيغاسنة ناتجة عن حدث اندماج.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p6">
+<p class="ltx_p">تؤدي كتل بذور الثقوب السوداء المختلفة إلى كتلة الثقب الأسود نفسها، لكنها تؤدي إلى كتل نجمية مختلفة عند الانزياح الأحمر صفر. ومع ذلك يمكن استخدام المعايرة على علاقات التحجيم لتحديد الاختيار الأمثل لكتلة بذرة الثقب الأسود.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S6.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.4 </span>كتلة عتبة الهالة <math alttext="M_{\mathrm{h,t}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.m1"><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub></math>
+</h3>
+<div class="ltx_para" id="S6.SS4.p1">
+<p class="ltx_p">تؤدي كتل عتبة الهالة العالية <math alttext="7\times 10^{10}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m1"><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></math> أو <math alttext="7\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m2"><mrow><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math>
+إلى مبالغة في توقع علاقة <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m3"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m4"><msub><mi>M</mi><mn>200</mn></msub></math> (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>g)
+للمجرة g7.92e12،
+بينما يؤدي خفض كتلة عتبة الهالة إلى <math alttext="1\times 10^{10}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m5"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow></math> أو <math alttext="3\times 10^{10}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m6"><mrow><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> إلى نقل المجرة إلى حافة علاقات <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m7"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m8"><msub><mi>M</mi><mo>⋆</mo></msub></math> المرصودة (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>h).
+لذلك فإن كتلة عتبة هالة مقدارها <math alttext="M_{\mathrm{h,t}}=5\times 10^{10}\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p1.m9"><mrow><msub><mi>M</mi><mrow><mi mathvariant="normal">h</mi><mo>,</mo><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mrow><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>10</mn></msup></mrow><mo>⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></mrow></math> هي الاختيار الأكثر معقولية.</p>
+</div>
+<div class="ltx_para" id="S6.SS4.p2">
+<p class="ltx_p">تشبه النتائج في الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>g,h النتائج في الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6 دراسة المعاملات ‣ NIHAO XXII: إدخال تشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مجموعة محاكاة NIHAO"><span class="ltx_text ltx_ref_tag">10</span></a>e,f:
+فزيادة كتلة عتبة الهالة تكافئ خفض كتلة بذرة الثقب الأسود،
+ومن ثم ينتج المعدل نفسه بين كتلة عتبة الهالة وكتلة بذرة الثقب الأسود النتائج نفسها.
+ويمكن تفسير ذلك كما يأتي: تحدد كتلة عتبة الهالة أساسا زمن زرع بذرة الثقب الأسود.
+فإذا، مع معاملاتنا القياسية، زرع ثقب أسود بكتلة <math alttext="10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p2.m1"><mrow><msup><mn>10</mn><mn>5</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> عند الزمن t،
+فإن زيادة كتلة عتبة الهالة تعني أن الثقب الأسود بكتلة <math alttext="10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p2.m2"><mrow><msup><mn>10</mn><mn>5</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> يزرع عند الزمن t+dt،
+وخفض كتلة بذرة الثقب الأسود يعني أن ثقبا أسود بكتلة <math alttext="10^{4}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p2.m3"><mrow><msup><mn>10</mn><mn>4</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> يزرع عند الزمن t.
+والحالة الأولى تكافئ الثانية، لأن الثقب الأسود بكتلة <math alttext="10^{4}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p2.m4"><mrow><msup><mn>10</mn><mn>4</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> المزروع عند الزمن t
+سيكون قد نما إلى <math alttext="10^{5}\,\mathrm{M}_{\sun}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS4.p2.m5"><mrow><msup><mn>10</mn><mn>5</mn></msup><mo lspace="0.170em">⁢</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub></mrow></math> عند الزمن t+dt.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S7">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7 </span>الخلاصة</h2>
+<div class="ltx_para" id="S7.p1">
+<p class="ltx_p">نقدم ونختبر خوارزميات لتشكل الثقوب السوداء وتراكمها وتغذيتها الراجعة في مشروع NIHAO.
+بالنسبة إلى تشكل الثقوب السوداء نضع ثقبا أسود في مركز الهالة فور تجاوزها كتلة عتبة، وبالنسبة إلى تراكم الثقوب السوداء نستخدم صياغة Bondi-Hoyle-Lyttleton، وبالنسبة إلى تغذية الثقوب السوداء الراجعة نودع طاقة حرارية، متناسبة مع معدل تراكم الثقب الأسود، في الغاز المحيط بالثقب الأسود.
+وتسمح لنا هذه الإضافة إلى مشروع NIHAO بتوسيع مجموعة مجرات NIHAO إلى كتل أعلى.</p>
+</div>
+<div class="ltx_para" id="S7.p2">
+<p class="ltx_p">تبدي مجراتنا اتفاقا جيدا مع علاقات <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m1"><msub><mi>M</mi><mo>⋆</mo></msub></math>-<math alttext="M_{{200}}" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m2"><msub><mi>M</mi><mn>200</mn></msub></math> و<math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m3"><msub><mi>M</mi><mi>BH</mi></msub></math>-<math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m4"><msub><mi>M</mi><mo>⋆</mo></msub></math> المرصودة التي نستخدمها لمعايرة المعاملات الحرة لنموذجنا.
+ونبحث أيضا تشتت هذه العلاقات وتطورها الزمني. يتناقص تشتت كلتا العلاقتين مع الزمن من أجل <math alttext="z&lt;1" class="ltx_Math" dir="ltr" display="inline" id="S7.p2.m5"><mrow><mi>z</mi><mo>&lt;</mo><mn>1</mn></mrow></math> (قد تعاني الانزياحات الحمراء الأعلى من إحصاءات العدد الصغير وآثار زرع البذور)، كما أنه أدنى من التشتت المرصود، وربما لأننا نقيس التشتت الداخلي لهذه العلاقات من دون أي لايقينات رصدية.</p>
+</div>
+<div class="ltx_para" id="S7.p3">
+<p class="ltx_p">في المجرات الإهليلجية عالية الكتلة يحدث إخماد تشكل النجوم بعد زيادة في معدل تراكم الثقب الأسود، مما يؤكد أن تشكل النجوم يخمد بفعل تغذية الثقب الأسود الراجعة. وتؤكد دراسة للمعاملات أننا اخترنا المعاملات المثلى ضمن إطار نموذجنا.
+وتوفر محاكياتنا أداة قيمة لدراسة أثر تغذية الثقوب السوداء الراجعة في تشكل المجرات وتطورها.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">يعرب المؤلفون عن امتنانهم لمركز Gauss Centre for Supercomputing e.V. (www.gauss-centre.eu) لتمويل هذا المشروع بتوفير وقت حوسبة على الحاسوب الفائق GCS Supercomputer SuperMUC في Leibniz Supercomputing Centre (www.lrz.de).
+أجري جزء من هذا البحث على موارد الحوسبة عالية الأداء في New York University Abu Dhabi.
+استخدمنا حزمة البرمجيات <span class="ltx_text ltx_font_smallcaps">pynbody</span> <cite class="ltx_cite ltx_citemacro_citet">Pontzen et al. (<a class="ltx_ref" href="#bib.bib52" title="">2013</a>)</cite> في تحليلاتنا.
+يمول AO من Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) - MO 2979/1-1.
+نشكر Tobias Buck على توفير الشروط الابتدائية لـ g7.92e12، وg1.05e13، وg1.44e13.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Anglés-Alcázar
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Anglés-Alcázar D., Faucher-Giguère C.-A., Quataert E.,
+Hopkins P. F., Feldmann R., Torrey P., Wetzel A., Kereš
+D., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnrasl/slx161" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2017MNRAS.472L.109A" title="">472, L109</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bate
+et al. (1995)</span>
+<span class="ltx_bibblock">
+Bate M. R., Bonnell I. A., Price N. M., 1995, MNRAS, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1995MNRAS.277..362B" title="">277, 362</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Behroozi et al. (2013)</span>
+<span class="ltx_bibblock">
+Behroozi P. S., Wechsler R. H., Conroy C., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/770/1/57" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013ApJ...770...57B" title="">770, 57</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bondi (1952)</span>
+<span class="ltx_bibblock">
+Bondi H., 1952, MNRAS, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1952MNRAS.112..195B" title="">112, 195</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Bondi &amp;
+Hoyle (1944)</span>
+<span class="ltx_bibblock">
+Bondi H., Hoyle F., 1944, MNRAS, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1944MNRAS.104..273B" title="">104, 273</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Booth &amp;
+Schaye (2009)</span>
+<span class="ltx_bibblock">
+Booth C. M., Schaye J., 2009, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2009.15043.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2009MNRAS.398...53B" title="">398, 53</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Booth &amp;
+Schaye (2010)</span>
+<span class="ltx_bibblock">
+Booth C. M., Schaye J., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1745-3933.2010.00832.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2010MNRAS.405L...1B" title="">405, L1</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Chabrier (2003)</span>
+<span class="ltx_bibblock">
+Chabrier G., 2003, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/376392" title="">PASP</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2003PASP..115..763C" title="">115, 763</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Choi et al. (2012)</span>
+<span class="ltx_bibblock">
+Choi E., Ostriker J. P., Naab T., Johansson P. H., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/754/2/125" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2012ApJ...754..125C" title="">754, 125</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Colberg &amp; Di
+Matteo (2008)</span>
+<span class="ltx_bibblock">
+Colberg J. M., Di Matteo T., 2008, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2008.13316.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2008MNRAS.387.1163C" title="">387, 1163</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Conroy &amp; van
+Dokkum (2012)</span>
+<span class="ltx_bibblock">
+Conroy C., van Dokkum P. G., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/760/1/71" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2012ApJ...760...71C" title="">760, 71</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Croft et al. (2009)</span>
+<span class="ltx_bibblock">
+Croft R. A. C., Di Matteo T., Springel V., Hernquist L., 2009,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2009.15446.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2009MNRAS.400...43C" title="">400, 43</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Croton
+et al. (2006)</span>
+<span class="ltx_bibblock">
+Croton D. J., et al., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09675.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2006MNRAS.365...11C" title="">365, 11</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Debuhr
+et al. (2011)</span>
+<span class="ltx_bibblock">
+Debuhr J., Quataert E., Ma C.-P., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2010.17992.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2011MNRAS.412.1341D" title="">412, 1341</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Debuhr
+et al. (2012)</span>
+<span class="ltx_bibblock">
+Debuhr J., Quataert E., Ma C.-P., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2011.20187.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2012MNRAS.420.2221D" title="">420, 2221</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Di
+Matteo et al. (2005)</span>
+<span class="ltx_bibblock">
+Di Matteo T., Springel V., Hernquist L., 2005, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1038/nature03335" title="">Nature</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2005Natur.433..604D" title="">433, 604</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Di Matteo
+et al. (2008)</span>
+<span class="ltx_bibblock">
+Di Matteo T., Colberg J., Springel V., Hernquist L., Sijacki D.,
+2008, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/524921" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2008ApJ...676...33D" title="">676, 33</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dolag
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Dolag K., Komatsu E., Sunyaev R., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stw2035" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2016MNRAS.463.1797D" title="">463, 1797</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dubois et al. (2015)</span>
+<span class="ltx_bibblock">
+Dubois Y., Volonteri M., Silk J., Devriendt J., Slyz A.,
+Teyssier R., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1416" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="https://ui.adsabs.harvard.edu/abs/2015MNRAS.452.1502D" title="">452, 1502</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton &amp;
+Macciò (2014)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Macciò A. V., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu742" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.441.3359D" title="">441, 3359</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton
+et al. (2013a)</span>
+<span class="ltx_bibblock">
+Dutton A. A., et al., 2013a, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sts262" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013MNRAS.428.3183D" title="">428, 3183</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton et al. (2013b)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Macciò A. V., Mendel J. T., Simard L., 2013b,
+<a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stt608" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013MNRAS.432.2496D" title="">432, 2496</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton et al. (2015)</span>
+<span class="ltx_bibblock">
+Dutton A. A., Macciò A. V., Stinson G. S., Gutcke T. A.,
+Penzo C., Buck T., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1755" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.453.2447D" title="">453, 2447</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dutton
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Dutton A. A., et al., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx458" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2017MNRAS.467.4937D" title="">467, 4937</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Eddington (1921)</span>
+<span class="ltx_bibblock">
+Eddington A. S., 1921, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1007/BF01332806" title="">Z. Phys.</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1921ZPhy....7..351E" title="">7, 351</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ferrarese &amp;
+Merritt (2000)</span>
+<span class="ltx_bibblock">
+Ferrarese L., Merritt D., 2000, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/312838" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2000ApJ...539L...9F" title="">539, L9</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gebhardt
+et al. (2000)</span>
+<span class="ltx_bibblock">
+Gebhardt K., et al., 2000, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/312840" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2000ApJ...539L..13G" title="">539, L13</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Genel
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Genel S., et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1654" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.445..175G" title="">445, 175</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Gill
+et al. (2004)</span>
+<span class="ltx_bibblock">
+Gill S. P. D., Knebe A., Gibson B. K., 2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2004.07786.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2004MNRAS.351..399G" title="">351, 399</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Grand
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Grand R. J. J., Springel V., Gómez F. A., Marinacci F.,
+Pakmor R., Campbell D. J. R., Jenkins A., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stw601" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2016MNRAS.459..199G" title="">459, 199</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Haardt &amp;
+Madau (2012)</span>
+<span class="ltx_bibblock">
+Haardt F., Madau P., 2012, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/746/2/125" title="">ApJ</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2012ApJ...746..125H" title="">746, 125</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Häring &amp;
+Rix (2004)</span>
+<span class="ltx_bibblock">
+Häring N., Rix H.-W., 2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/383567" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2004ApJ...604L..89H" title="">604, L89</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hirschmann
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Hirschmann M., Dolag K., Saro A., Bachmann L., Borgani S.,
+Burkert A., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1023" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.442.2304H" title="">442, 2304</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hopkins &amp;
+Quataert (2011)</span>
+<span class="ltx_bibblock">
+Hopkins P. F., Quataert E., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2011.18542.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2011MNRAS.415.1027H" title="">415, 1027</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hopkins
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Hopkins P. F., Kereš D., Oñorbe J., Faucher-Giguère
+C.-A., Quataert E., Murray N., Bullock J. S., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1738" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.445..581H" title="">445, 581</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Hoyle &amp;
+Lyttleton (1939)</span>
+<span class="ltx_bibblock">
+Hoyle F., Lyttleton R. A., 1939, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1017/S0305004100021150" title="">Proceedings of the Cambridge
+Philosophical Society</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1939PCPS...35..405H" title="">35, 405</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Jahnke &amp;
+Macciò (2011)</span>
+<span class="ltx_bibblock">
+Jahnke K., Macciò A. V., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/734/2/92" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2011ApJ...734...92J" title="">734, 92</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Johansson
+et al. (2009)</span>
+<span class="ltx_bibblock">
+Johansson P. H., Naab T., Burkert A., 2009, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/690/1/802" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2009ApJ...690..802J" title="">690, 802</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Keller et al. (2014)</span>
+<span class="ltx_bibblock">
+Keller B. W., Wadsley J., Benincasa S. M., Couchman H. M. P.,
+2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1058" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.442.3013K" title="">442, 3013</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Khandai
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Khandai N., Di Matteo T., Croft R., Wilkins S., Feng Y.,
+Tucker E., DeGraf C., Liu M.-S., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv627" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.450.1349K" title="">450, 1349</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Knollmann &amp;
+Knebe (2009)</span>
+<span class="ltx_bibblock">
+Knollmann S. R., Knebe A., 2009, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0067-0049/182/2/608" title="">ApJS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2009ApJS..182..608K" title="">182, 608</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kormendy &amp;
+Ho (2013)</span>
+<span class="ltx_bibblock">
+Kormendy J., Ho L. C., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1146/annurev-astro-082708-101811" title="">ARA&amp;A</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013ARA%26A..51..511K" title="">51, 511</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Kormendy &amp;
+Richstone (1995)</span>
+<span class="ltx_bibblock">
+Kormendy J., Richstone D., 1995, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1146/annurev.aa.33.090195.003053" title="">ARA&amp;A</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1995ARA%26A..33..581K" title="">33, 581</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Macciò
+et al. (2016)</span>
+<span class="ltx_bibblock">
+Macciò A. V., Udrescu S. M., Dutton A. A., Obreja A., Wang
+L., Stinson G. R., Kang X., 2016, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnrasl/slw147" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2016MNRAS.463L..69M" title="">463, L69</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Magorrian
+et al. (1998)</span>
+<span class="ltx_bibblock">
+Magorrian J., et al., 1998, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/300353" title="">AJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1998AJ....115.2285M" title="">115, 2285</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Matthee et al. (2017)</span>
+<span class="ltx_bibblock">
+Matthee J., Schaye J., Crain R. A., Schaller M., Bower R.,
+Theuns T., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stw2884" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2017MNRAS.465.2381M" title="">465, 2381</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib47">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Moster
+et al. (2013)</span>
+<span class="ltx_bibblock">
+Moster B. P., Naab T., White S. D. M., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sts261" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013MNRAS.428.3121M" title="">428, 3121</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib48">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Moster
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Moster B. P., Naab T., White S. D. M., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty655" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2018MNRAS.477.1822M" title="">477, 1822</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib49">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Munshi
+et al. (2013)</span>
+<span class="ltx_bibblock">
+Munshi F., et al., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1088/0004-637X/766/1/56" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013ApJ...766...56M" title="">766, 56</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib50">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pillepich
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Pillepich A., et al., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx2656" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2018MNRAS.473.4077P" title="">473, 4077</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib51">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Planck
+Collaboration et al. (2014)</span>
+<span class="ltx_bibblock">
+Planck Collaboration et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1051/0004-6361/201321591" title="">A&amp;A</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014A%26A...571A..16P" title="">571, A16</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib52">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Pontzen et al. (2013)</span>
+<span class="ltx_bibblock">
+Pontzen A., Roškar R., Stinson G. S., Woods R., Reed D. M.,
+Coles J., Quinn T. R., 2013, pynbody: Astrophysics Simulation
+Analysis for Python
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib53">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Rosas-Guevara
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Rosas-Guevara Y. M., et al., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv2056" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.454.1038R" title="">454, 1038</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib54">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Salpeter (1964)</span>
+<span class="ltx_bibblock">
+Salpeter E. E., 1964, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1086/147973" title="">ApJ</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1964ApJ...140..796S" title="">140, 796</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib55">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sani et al. (2011)</span>
+<span class="ltx_bibblock">
+Sani E., Marconi A., Hunt L. K., Risaliti G., 2011, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2011.18229.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2011MNRAS.413.1479S" title="">413, 1479</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib56">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Santos-Santos
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Santos-Santos I. M., Di Cintio A., Brook C. B., Macciò A.,
+Dutton A., Domínguez-Tenreiro R., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx2660" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2018MNRAS.473.4392S" title="">473, 4392</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib57">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schaye
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Schaye J., et al., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2009.16029.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2010MNRAS.402.1536S" title="">402, 1536</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib58">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schaye
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Schaye J., et al., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu2058" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.446..521S" title="">446, 521</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib59">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Shakura &amp;
+Sunyaev (1973)</span>
+<span class="ltx_bibblock">
+Shakura N. I., Sunyaev R. A., 1973, A&amp;A, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/1973A%26A....24..337S" title="">24, 337</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib60">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Shen
+et al. (2010)</span>
+<span class="ltx_bibblock">
+Shen S., Wadsley J., Stinson G., 2010, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2010.17047.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2010MNRAS.407.1581S" title="">407, 1581</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib61">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sijacki et al. (2007)</span>
+<span class="ltx_bibblock">
+Sijacki D., Springel V., Di Matteo T., Hernquist L., 2007, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2007.12153.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2007MNRAS.380..877S" title="">380, 877</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib62">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Sijacki
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Sijacki D., Vogelsberger M., Genel S., Springel V., Torrey P.,
+Snyder G. F., Nelson D., Hernquist L., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1340" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.452..575S" title="">452, 575</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib63">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Springel et al. (2005)</span>
+<span class="ltx_bibblock">
+Springel V., Di Matteo T., Hernquist L., 2005, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2005.09238.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2005MNRAS.361..776S" title="">361, 776</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib64">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stinson et al. (2006)</span>
+<span class="ltx_bibblock">
+Stinson G., Seth A., Katz N., Wadsley J., Governato F., Quinn
+T., 2006, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1111/j.1365-2966.2006.11097.x" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2006MNRAS.373.1074S" title="">373, 1074</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib65">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Stinson et al. (2013)</span>
+<span class="ltx_bibblock">
+Stinson G. S., Brook C., Macciò A. V., Wadsley J., Quinn
+T. R., Couchman H. M. P., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sts028" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013MNRAS.428..129S" title="">428, 129</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib66">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tremmel et al. (2015)</span>
+<span class="ltx_bibblock">
+Tremmel M., Governato F., Volonteri M., Quinn T. R., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1060" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.451.1868T" title="">451, 1868</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib67">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tremmel
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Tremmel M., Karcher M., Governato F., Volonteri M., Quinn T. R.,
+Pontzen A., Anderson L., Bellovary J., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1160" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2017MNRAS.470.1121T" title="">470, 1121</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib68">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Vogelsberger
+et al. (2014)</span>
+<span class="ltx_bibblock">
+Vogelsberger M., et al., 2014, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stu1536" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2014MNRAS.444.1518V" title="">444, 1518</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib69">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wadsley
+et al. (2004)</span>
+<span class="ltx_bibblock">
+Wadsley J. W., Stadel J., Quinn T., 2004, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1016/j.newast.2003.08.004" title="">New Astron.</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2004NewA....9..137W" title="">9, 137</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib70">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wadsley
+et al. (2017)</span>
+<span class="ltx_bibblock">
+Wadsley J. W., Keller B. W., Quinn T. R., 2017, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stx1643" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2017MNRAS.471.2357W" title="">471, 2357</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib71">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wang
+et al. (2015)</span>
+<span class="ltx_bibblock">
+Wang L., Dutton A. A., Stinson G. S., Macciò A. V., Penzo C.,
+Kang X., Keller B. W., Wadsley J., 2015, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stv1937" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2015MNRAS.454...83W" title="">454, 83</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib72">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wechsler &amp;
+Tinker (2018)</span>
+<span class="ltx_bibblock">
+Wechsler R. H., Tinker J. L., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1146/annurev-astro-081817-051756" title="">ARA&amp;A</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2018ARA%26A..56..435W" title="">56, 435</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib73">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Weinberger
+et al. (2018)</span>
+<span class="ltx_bibblock">
+Weinberger R., et al., 2018, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/sty1733" title="">MNRAS</a>, <a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2018MNRAS.479.4056W" title="">479, 4056</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib74">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wurster &amp;
+Thacker (2013)</span>
+<span class="ltx_bibblock">
+Wurster J., Thacker R. J., 2013, <a class="ltx_ref ltx_href" href="http://dx.doi.org/10.1093/mnras/stt346" title="">MNRAS</a>,
+<a class="ltx_ref ltx_href" href="http://adsabs.harvard.edu/abs/2013MNRAS.431.2513W" title="">431, 2513</a>
+</span>
+</li>
+</ul>
+</section>
+<figure class="ltx_table" id="Sx1.T1">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 1: </span>المجرات وخصائصها: عدد الجسيمات <math alttext="N" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m7"><mi>N</mi></math>، وعدد جسيمات المادة المظلمة <math alttext="N_{\mathrm{DM}}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m8"><msub><mi>N</mi><mi>DM</mi></msub></math>،
+وعدد جسيمات النجوم <math alttext="N_{\star}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m9"><msub><mi>N</mi><mo>⋆</mo></msub></math>، وكتلة الهالة <math alttext="M_{200}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m10"><msub><mi>M</mi><mn>200</mn></msub></math>، والكتلة النجمية <math alttext="M_{\star}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m11"><msub><mi>M</mi><mo>⋆</mo></msub></math>
+وكتلة الثقب الأسود <math alttext="M_{\mathrm{BH}}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m12"><msub><mi>M</mi><mi>BH</mi></msub></math>.
+القسم الأول: مجرات من عينة NIHAO الأصلية من صندوق 60 Mpc،
+والقسم الثاني: مجرات جديدة من صندوق 60 Mpc،
+والقسم الثالث: مجرات جديدة من صندوق 90 Mpc.
+أما المجرات التي لا تتضمن كتلة ثقب أسود فهي إعادة محاكاة من دون ثقوب سوداء.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">galaxy</td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="N" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m13"><mi>N</mi></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="N_{\mathrm{DM}}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m14"><msub><mi>N</mi><mi>DM</mi></msub></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="N_{\star}" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m15"><msub><mi>N</mi><mo>⋆</mo></msub></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="\log\left(M_{200}[\mathrm{M}_{\sun}]\right)" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m16"><mrow><mi>log</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><msub><mi>M</mi><mn>200</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math alttext="\log\left(M_{\star}[\mathrm{M}_{\sun}]\right)" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m17"><mrow><mi>log</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><msub><mi>M</mi><mo>⋆</mo></msub><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_center"><math alttext="\log\left(M_{\mathrm{BH}}[\mathrm{M}_{\mathrm{\sun}}]\right)" class="ltx_Math" dir="ltr" display="inline" id="Sx1.T1.m18"><mrow><mi>log</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><msub><mi>M</mi><mi>BH</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi mathvariant="normal">M</mi><mi mathvariant="normal">☉</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">g7.55e11</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">932961</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">431968</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">327418</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">11.92</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10.31</td>
+<td class="ltx_td ltx_align_center ltx_border_t">7.41</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g8.26e11</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1070666</td>
+<td class="ltx_td ltx_align_center ltx_border_r">496667</td>
+<td class="ltx_td ltx_align_center ltx_border_r">424753</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.97</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.42</td>
+<td class="ltx_td ltx_align_center">7.80</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.12e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1062175</td>
+<td class="ltx_td ltx_align_center ltx_border_r">516394</td>
+<td class="ltx_td ltx_align_center ltx_border_r">430205</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.98</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.42</td>
+<td class="ltx_td ltx_align_center">7.78</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.92e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1960845</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1035887</td>
+<td class="ltx_td ltx_align_center ltx_border_r">736102</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.28</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.66</td>
+<td class="ltx_td ltx_align_center">8.25</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.79e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">3383907</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1663073</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1395558</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.93</td>
+<td class="ltx_td ltx_align_center">8.39</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">g7.55e11</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1185149</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">455930</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">483752</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">11.95</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10.49</td>
+<td class="ltx_td ltx_align_center ltx_border_t">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g8.26e11</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1513265</td>
+<td class="ltx_td ltx_align_center ltx_border_r">518236</td>
+<td class="ltx_td ltx_align_center ltx_border_r">739749</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.01</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.67</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.12e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1977112</td>
+<td class="ltx_td ltx_align_center ltx_border_r">564785</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1222359</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.05</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.90</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.92e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">4018048</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1200667</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2467821</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.37</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.20</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.79e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">5598386</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1800095</td>
+<td class="ltx_td ltx_align_center ltx_border_r">3099962</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.29</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">g1.26e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1253780</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">563159</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">462669</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">12.03</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10.46</td>
+<td class="ltx_td ltx_align_center ltx_border_t">7.55</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.27e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1150753</td>
+<td class="ltx_td ltx_align_center ltx_border_r">471966</td>
+<td class="ltx_td ltx_align_center ltx_border_r">605247</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.94</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.57</td>
+<td class="ltx_td ltx_align_center">7.84</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.55e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1469159</td>
+<td class="ltx_td ltx_align_center ltx_border_r">600775</td>
+<td class="ltx_td ltx_align_center ltx_border_r">679269</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.06</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.61</td>
+<td class="ltx_td ltx_align_center">7.86</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.62e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1063633</td>
+<td class="ltx_td ltx_align_center ltx_border_r">533023</td>
+<td class="ltx_td ltx_align_center ltx_border_r">327877</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.00</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.31</td>
+<td class="ltx_td ltx_align_center">7.61</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.37e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2159202</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1098881</td>
+<td class="ltx_td ltx_align_center ltx_border_r">881920</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.30</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.73</td>
+<td class="ltx_td ltx_align_center">8.30</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.71e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2164500</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1195318</td>
+<td class="ltx_td ltx_align_center ltx_border_r">596766</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.35</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.55</td>
+<td class="ltx_td ltx_align_center">8.19</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g3.74e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">3397933</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1715201</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1182008</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.83</td>
+<td class="ltx_td ltx_align_center">8.47</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">g4.41e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">463537</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">250487</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">204647</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">12.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10.83</td>
+<td class="ltx_td ltx_align_center ltx_border_t">8.84</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g4.55e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">503192</td>
+<td class="ltx_td ltx_align_center ltx_border_r">270807</td>
+<td class="ltx_td ltx_align_center ltx_border_r">164411</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.60</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.88</td>
+<td class="ltx_td ltx_align_center">8.69</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g4.81e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">594745</td>
+<td class="ltx_td ltx_align_center ltx_border_r">306880</td>
+<td class="ltx_td ltx_align_center ltx_border_r">211336</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.66</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.01</td>
+<td class="ltx_td ltx_align_center">8.70</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g4.84e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">523621</td>
+<td class="ltx_td ltx_align_center ltx_border_r">267346</td>
+<td class="ltx_td ltx_align_center ltx_border_r">185147</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.60</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.93</td>
+<td class="ltx_td ltx_align_center">8.66</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g5.22e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">592556</td>
+<td class="ltx_td ltx_align_center ltx_border_r">313138</td>
+<td class="ltx_td ltx_align_center ltx_border_r">187130</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.67</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.96</td>
+<td class="ltx_td ltx_align_center">8.58</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g5.41e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">644421</td>
+<td class="ltx_td ltx_align_center ltx_border_r">290846</td>
+<td class="ltx_td ltx_align_center ltx_border_r">352249</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.62</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.23</td>
+<td class="ltx_td ltx_align_center">9.14</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g5.53e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">547812</td>
+<td class="ltx_td ltx_align_center ltx_border_r">306764</td>
+<td class="ltx_td ltx_align_center ltx_border_r">183274</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.65</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.83</td>
+<td class="ltx_td ltx_align_center">8.69</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g6.53e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">591850</td>
+<td class="ltx_td ltx_align_center ltx_border_r">276231</td>
+<td class="ltx_td ltx_align_center ltx_border_r">266355</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.61</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.10</td>
+<td class="ltx_td ltx_align_center">8.73</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g6.57e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">763439</td>
+<td class="ltx_td ltx_align_center ltx_border_r">356974</td>
+<td class="ltx_td ltx_align_center ltx_border_r">303556</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.73</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.15</td>
+<td class="ltx_td ltx_align_center">8.75</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g6.86e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">838063</td>
+<td class="ltx_td ltx_align_center ltx_border_r">430471</td>
+<td class="ltx_td ltx_align_center ltx_border_r">303160</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.80</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.03</td>
+<td class="ltx_td ltx_align_center">8.90</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g6.70e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1290678</td>
+<td class="ltx_td ltx_align_center ltx_border_r">431794</td>
+<td class="ltx_td ltx_align_center ltx_border_r">693967</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.83</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.54</td>
+<td class="ltx_td ltx_align_center">8.83</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g7.50e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">648889</td>
+<td class="ltx_td ltx_align_center ltx_border_r">387253</td>
+<td class="ltx_td ltx_align_center ltx_border_r">259728</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.74</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.08</td>
+<td class="ltx_td ltx_align_center">9.32</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g7.55e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">860302</td>
+<td class="ltx_td ltx_align_center ltx_border_r">433196</td>
+<td class="ltx_td ltx_align_center ltx_border_r">262410</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.81</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.95</td>
+<td class="ltx_td ltx_align_center">8.79</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g7.71e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">823620</td>
+<td class="ltx_td ltx_align_center ltx_border_r">415601</td>
+<td class="ltx_td ltx_align_center ltx_border_r">312032</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.79</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.17</td>
+<td class="ltx_td ltx_align_center">8.94</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g7.92e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1323285</td>
+<td class="ltx_td ltx_align_center ltx_border_r">446337</td>
+<td class="ltx_td ltx_align_center ltx_border_r">731566</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.84</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.55</td>
+<td class="ltx_td ltx_align_center">9.06</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g8.08e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1003594</td>
+<td class="ltx_td ltx_align_center ltx_border_r">486702</td>
+<td class="ltx_td ltx_align_center ltx_border_r">364796</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.86</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.22</td>
+<td class="ltx_td ltx_align_center">9.00</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g8.45e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">779820</td>
+<td class="ltx_td ltx_align_center ltx_border_r">368069</td>
+<td class="ltx_td ltx_align_center ltx_border_r">308291</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.74</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.17</td>
+<td class="ltx_td ltx_align_center">8.80</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.05e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1146928</td>
+<td class="ltx_td ltx_align_center ltx_border_r">573974</td>
+<td class="ltx_td ltx_align_center ltx_border_r">489758</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.92</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.34</td>
+<td class="ltx_td ltx_align_center">9.18</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.14e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1354041</td>
+<td class="ltx_td ltx_align_center ltx_border_r">646068</td>
+<td class="ltx_td ltx_align_center ltx_border_r">532474</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.98</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.41</td>
+<td class="ltx_td ltx_align_center">9.16</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.17e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2085075</td>
+<td class="ltx_td ltx_align_center ltx_border_r">889400</td>
+<td class="ltx_td ltx_align_center ltx_border_r">782176</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.14</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.32</td>
+<td class="ltx_td ltx_align_center">8.92</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.25e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1217182</td>
+<td class="ltx_td ltx_align_center ltx_border_r">673068</td>
+<td class="ltx_td ltx_align_center ltx_border_r">367429</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.00</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.18</td>
+<td class="ltx_td ltx_align_center">9.18</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.33e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1918776</td>
+<td class="ltx_td ltx_align_center ltx_border_r">809672</td>
+<td class="ltx_td ltx_align_center ltx_border_r">751999</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.09</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.58</td>
+<td class="ltx_td ltx_align_center">9.24</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.44e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2836084</td>
+<td class="ltx_td ltx_align_center ltx_border_r">876310</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1474963</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.14</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.86</td>
+<td class="ltx_td ltx_align_center">8.94</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.54e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1456656</td>
+<td class="ltx_td ltx_align_center ltx_border_r">722348</td>
+<td class="ltx_td ltx_align_center ltx_border_r">500173</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.03</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.36</td>
+<td class="ltx_td ltx_align_center">9.17</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.57e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">889955</td>
+<td class="ltx_td ltx_align_center ltx_border_r">436443</td>
+<td class="ltx_td ltx_align_center ltx_border_r">310259</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.81</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.16</td>
+<td class="ltx_td ltx_align_center">8.85</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.63e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2089314</td>
+<td class="ltx_td ltx_align_center ltx_border_r">953300</td>
+<td class="ltx_td ltx_align_center ltx_border_r">684168</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.16</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.43</td>
+<td class="ltx_td ltx_align_center">9.25</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.87e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2278215</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1101553</td>
+<td class="ltx_td ltx_align_center ltx_border_r">636663</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.23</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.39</td>
+<td class="ltx_td ltx_align_center">9.29</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.02e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1947099</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1056092</td>
+<td class="ltx_td ltx_align_center ltx_border_r">840843</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.18</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.59</td>
+<td class="ltx_td ltx_align_center">9.59</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.07e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">3177787</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1497578</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1020594</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.36</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.47</td>
+<td class="ltx_td ltx_align_center">9.45</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.10e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2972176</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1249734</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1072224</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.29</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.68</td>
+<td class="ltx_td ltx_align_center">9.33</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.11e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2434943</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1250655</td>
+<td class="ltx_td ltx_align_center ltx_border_r">955862</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.26</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.63</td>
+<td class="ltx_td ltx_align_center">9.45</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.20e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1437878</td>
+<td class="ltx_td ltx_align_center ltx_border_r">847511</td>
+<td class="ltx_td ltx_align_center ltx_border_r">578127</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.08</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.41</td>
+<td class="ltx_td ltx_align_center">9.46</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.37e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2872994</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1497621</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1030754</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.34</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.59</td>
+<td class="ltx_td ltx_align_center">9.54</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g2.58e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">3951084</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1782390</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1347000</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.44</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.66</td>
+<td class="ltx_td ltx_align_center">9.47</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g3.26e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">4333704</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2100752</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1118595</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.45</td>
+<td class="ltx_td ltx_align_center">9.52</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g3.42e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2620934</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1068134</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1313357</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.30</td>
+<td class="ltx_td ltx_align_center ltx_border_r">10.91</td>
+<td class="ltx_td ltx_align_center">8.12</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g3.78e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">3462973</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1607283</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1074439</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.39</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.51</td>
+<td class="ltx_td ltx_align_center">9.45</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g3.89e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">5426667</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2281160</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1751607</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.81</td>
+<td class="ltx_td ltx_align_center">9.70</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">g5.41e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1265524</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">337582</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">778618</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">12.73</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">11.59</td>
+<td class="ltx_td ltx_align_center ltx_border_t">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g6.86e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1656812</td>
+<td class="ltx_td ltx_align_center ltx_border_r">453120</td>
+<td class="ltx_td ltx_align_center ltx_border_r">975692</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.86</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.69</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g7.50e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1478432</td>
+<td class="ltx_td ltx_align_center ltx_border_r">443431</td>
+<td class="ltx_td ltx_align_center ltx_border_r">834490</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.85</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.62</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g7.92e12</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1546499</td>
+<td class="ltx_td ltx_align_center ltx_border_r">455160</td>
+<td class="ltx_td ltx_align_center ltx_border_r">925496</td>
+<td class="ltx_td ltx_align_center ltx_border_r">12.85</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.65</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.05e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2286298</td>
+<td class="ltx_td ltx_align_center ltx_border_r">658752</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1301680</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.02</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.75</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r">g1.44e13</td>
+<td class="ltx_td ltx_align_center ltx_border_r">2738604</td>
+<td class="ltx_td ltx_align_center ltx_border_r">878724</td>
+<td class="ltx_td ltx_align_center ltx_border_r">1374316</td>
+<td class="ltx_td ltx_align_center ltx_border_r">13.14</td>
+<td class="ltx_td ltx_align_center ltx_border_r">11.83</td>
+<td class="ltx_td ltx_align_center">-</td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 15:34:01 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

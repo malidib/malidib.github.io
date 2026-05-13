@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D</title>
+<!--Generated on Wed May 13 11:17:15 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-amsart.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_leqno">
+<h1 class="ltx_title ltx_title_document">أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Satwik Patnaik, Mohammed Ashraf, Ozgur Sinanoglu, and Johann Knechtel
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation"><span class="ltx_text ltx_affiliation_institution">Tandon School of Engineering, New York University, New York, USA</span><span class="ltx_text ltx_affiliation_institution">Division of Engineering, New York University Abu Dhabi, United Arab Emirates</span>
+</span>
+<span class="ltx_contact ltx_role_email"><a href="mailto:sp4012,%20ma199,%20ozgursin,%20johann%20@nyu.edu">sp4012, ma199, ozgursin, johann @nyu.edu</a>
+</span></span></span>
+</div>
+<div class="ltx_dates">(2018)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">مع عولمة التصنيع وسلاسل الإمداد، أصبح ضمان أمن الدوائر المتكاملة وموثوقيتها تحديا ملحا.
+ويمثل كل من التصنيع المقسّم (SM) وتمويه المخطط الفيزيائي (LC) تقنيتين واعدتين لحماية الملكية الفكرية (IP)
+للدوائر المتكاملة من الكيانات الخبيثة أثناء التصنيع وبعده (أي من المسابك غير الموثوقة ومن الهندسة العكسية التي يجريها المستخدمون النهائيون).
+في هذه الورقة، نسعى إلى تحقيق “أفضل ما في العالمين”، أي أفضل ما في SM وLC.
+ولتحقيق ذلك، نمدد التقنيتين كلتيهما نحو التكامل 3D، وهو نموذج تصميم وتصنيع صاعد يقوم على تكديس
+شرائح/قوالب/طبقات متعددة وربطها بينيا.</p>
+<p class="ltx_p">في البداية، نستعرض الأعمال السابقة
+وقيودها.
+ونطرح أيضا نموذجا جديدا وعمليا للتهديد في قرصنة IP ينسجم مع نماذج أعمال
+دور التصميم الراهنة.
+بعد ذلك، نناقش كيف يكون التكامل 3D ملائما بقوة وبصورة طبيعية
+لجمع SM وLC.
+ونقترح تدفق CAD وتصنيعا موجها بالأمن للدوائر المتكاملة 3D ذات التكديس وجها لوجه (F2F)، إلى جانب تمويه الوصلات البينية.
+واستنادا إلى تدفق CAD هذا، نجري تجارب شاملة على مخططات فيزيائية خالية من مخالفات DRC. وبدعم من تحليل أمني موسع (قائم أيضا
+على هجوم جديد لاستعادة وصلات F2F البينية المموهة)، نرى أن دخول البعد الثالث التالي
+أمر بارز لحماية IP بفعالية وكفاءة.</p>
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_journalyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">journalyear: </span>2018</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_copyright"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">copyright: </span>acmcopyright</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_conference"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">conference: </span>المؤتمر الدولي IEEE/ACM للتصميم بمساعدة الحاسوب; نوفمبر 5–8، 2018; سان دييغو، كاليفورنيا، الولايات المتحدة الأمريكية</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_booktitle"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">booktitle: </span>المؤتمر الدولي IEEE/ACM للتصميم بمساعدة الحاسوب (ICCAD ’18)، نوفمبر 5–8، 2018، سان دييغو، كاليفورنيا، الولايات المتحدة الأمريكية</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_price"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">price: </span>15.00</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_doi"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">doi: </span>10.1145/3240765.3240784</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_isbn"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">isbn: </span>978-1-4503-5950-4/18/11</span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1. </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">من جهة، تولي ممارسات التصميم في الصناعة أهمية كبيرة للتحسين من حيث القدرة والأداء والمساحة
+(PPA) على مستوى التصميم الفيزيائي أو
+معمارية التصميم (مثل هرمية الذاكرة المخبئية والتنفيذ التخميني).
+ومن جهة أخرى، أظهر الباحثون هجمات قوية (مثل <em class="ltx_emph ltx_font_italic">Spectre</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib1" title="">Kocher2018spectre, </a>)</cite>
+أو تسرب القنوات الجانبية <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib2" title="">lerman18, </a>)</cite>)
+تستغل هذه الممارسات وخطوات التحسين ذاتها.
+وبصرف النظر عن هذه المخاوف المتعلقة بأمن العتاد وموثوقيته أثناء التشغيل، فإن حماية العتاد نفسه من
+تهديدات مثل قرصنة الملكية الفكرية (IP)، أو فرط الإنتاج غير القانوني، أو إدخال أحصنة طروادة عتادية، تمثل
+تحديا آخر <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">BRS17, </a>)</cite>.
+وقد طُرحت خلال العقد الماضي مخططات متعددة للتصميم والتصنيع، على سبيل المثال، بدءا من قفل المنطق <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib4" title="">yasin17_CCS, </a>; <a class="ltx_ref" href="#bib.bib5" title="">shamsi18_TIFS, </a>)</cite>، وتمويه المخططات
+الفيزيائية <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">rajendran13_camouflage, </a>; <a class="ltx_ref" href="#bib.bib7" title="">wang16_MUX, </a>; <a class="ltx_ref" href="#bib.bib8" title="">collantes16, </a>; <a class="ltx_ref" href="#bib.bib9" title="">nirmala16, </a>; <a class="ltx_ref" href="#bib.bib10" title="">Akkaya2018, </a>; <a class="ltx_ref" href="#bib.bib11" title="">chen15, </a>; <a class="ltx_ref" href="#bib.bib12" title="">patnaik17_Camo_BEOL_ICCAD, </a>; <a class="ltx_ref" href="#bib.bib13" title="">patnaik18_GSHE_DATE, </a>)</cite>، وصولا إلى التصنيع
+المقسّم <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib14" title="">rajendran13_split, </a>; <a class="ltx_ref" href="#bib.bib15" title="">wang17, </a>; <a class="ltx_ref" href="#bib.bib16" title="">patnaik_ASPDAC18, </a>; <a class="ltx_ref" href="#bib.bib17" title="">patnaik18_SM_DAC, </a>; <a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>; <a class="ltx_ref" href="#bib.bib19" title="">magana17, </a>; <a class="ltx_ref" href="#bib.bib20" title="">sengupta17_SM_ICCAD, </a>)</cite>.
+والقاسم المشترك بين هذه التقنيات هو أنها
+تدرج الأمن بوصفه معاملا تصميميا حاسما إلى جانب مقاييس PPA التقليدية.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">وبصرف النظر عن أمن العتاد، حقق التكامل 3D تقدما ملحوظا في السنوات الأخيرة. ويتمثل التكامل 3D في
+تكديس شرائح/قوالب/طبقات متعددة وربطها بينيا، بما يعد
+بتجاوز عنق زجاجة قابلية التوسع (“More-Moore”)، الذي تفاقمه أكثر
+تحديات تصغير خطوة المسارات، وازدحام التوجيه، وتغيرات العملية، وما إلى ذلك <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib21" title="">knechtel16_Challenges_ISPD, </a>; <a class="ltx_ref" href="#bib.bib22" title="">EF16, </a>)</cite>.
+وتبين الدراسات والنماذج الأولية الحديثة أن التكامل 3D يستطيع فعلا أن يقدم فوائد كبيرة مقارنة بالشرائح
+التقليدية 2D <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib23" title="">peng17, </a>; <a class="ltx_ref" href="#bib.bib24" title="">jung14, </a>; <a class="ltx_ref" href="#bib.bib25" title="">kim12_3dmaps, </a>)</cite>.
+وفضلا عن ذلك، يعزز التكامل 3D قدرات التصنيع بوسائل متعددة، مثل المعالجة المتوازية للرقائق، والمردود الأعلى الناتج من صغر
+حدود الشرائح الفردية، والتكامل غير المتجانس (“More-than-Moore”) <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib26" title="">radojcic17, </a>)</cite>.</p>
+</div>
+<figure class="ltx_figure" id="S1.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="330" id="S1.F1.g1" src="x1.png" width="731"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1. </span>مخططنا الموجَّه بالأمن للتكامل 3D، مع التركيز على الدوائر المتكاملة 3D ذات التكديس وجها لوجه (F2F).
+تستخدم المنافذ عبر السيليكون (TSVs) للوصلات الخارجية، وتستخدم طبقات إعادة التوزيع (RDLs)
+للوصلات الداخلية.
+ونطوّر التصنيع المقسّم من أجل
+تصنيع FEOL غير الموثوق
+مع تمويه موثوق
+لطبقات RDLs؛ فكلتا التقنيتين تلائمان طبيعيا نقل حماية IP إلى البعد الثالث التالي.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">في هذه الورقة، نقترح ونقيّم تدفق CAD موجها بالأمن للدوائر المتكاملة 3D. ونرى أن التكامل 3D مرشح ممتاز لحماية IP،
+ونبرهن ذلك بجمع تمويه المخطط الفيزيائي (LC) والتصنيع المقسّم (SM)
+على نحو طبيعي في مخطط واحد
+(الشكل <a class="ltx_ref" href="#S1.F1" title="Figure 1 ‣ 1. مقدمة ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">1</span></a>).
+ويمكن تلخيص هذه الورقة على النحو الآتي:</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<ul class="ltx_itemize" id="S1.I1">
+<li class="ltx_item" id="S1.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i1.p1">
+<p class="ltx_p">في البداية، نستعرض أحدث المقاربات في LC وSM.
+ونقارن هذه المخططات ونقابل بينها من حيث ضماناتها الأمنية، ونقائصها، وأثرها في PPA.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i2.p1">
+<p class="ltx_p">بعد ذلك، نطرح نموذجا عمليا للتهديد ينسجم مع نماذج الأعمال الراهنة لدور التصميم.
+ويتطلب هذا النموذج استخدام LC وSM معا.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i3.p1">
+<p class="ltx_p">والأهم من ذلك، نبرهن كيف يمكن للتكامل 3D أن يساعد على تحقيق “أفضل ما في العالمين”، وذلك بجمع خصائص LC
+وSM.
+لذلك، يتيح مخططنا
+الحماية المتأصلة من قرصنة IP التي تجريها كيانات خبيثة أثناء التصنيع (المسابك غير الموثوقة) وبعد
+التصنيع (المستخدمون النهائيون غير الموثوقين).
+وتتمثل الفكرة المحورية في “تقسيم 3D” للتصميم إلى طبقتين وتمويه الوصلات البينية بين هاتين الطبقتين.
+ولهذه الغاية،
+نقترح تدفق CAD وتصنيعا موجها بالأمن للدوائر المتكاملة 3D ذات التكديس وجها لوجه (F2F).</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i4.p1">
+<p class="ltx_p">ننفذ تدفق CAD لدينا باستخدام <em class="ltx_emph ltx_font_italic">Cadence Innovus</em>. ونجري تحليلا شاملا لمخططات فيزيائية خالية من مخالفات DRC ومصممة للتكامل F2F 3D،
+ونقارنها بالحالة الفنية السابقة في LC أو SM (المستهدفة للدوائر المتكاملة 2D/3D) حيثما أمكن.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i5.p1">
+<p class="ltx_p">نقدم تحليلا أمنيا موسعا، مدعوما بهجوم جديد مرتكز على القرب ضد مخططنا للتكامل 3D
+الموجَّه بالأمن. ونوفر بيانات تحليلية وتجريبية لإظهار متانة مخططاتنا المقترحة.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2. </span>خلفية</h2>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1. </span>تمويه المخطط الفيزيائي</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">يعد التمويه (LC) تقنية على مستوى المخطط الفيزيائي لإحباط جهود الخصم في الاستدلال الصحيح على وظيفة التصميم أثناء
+الهندسة العكسية لشريحة ما. وينجز LC أثناء التصنيع عبر (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m1"><mi>i</mi></math>) إزالة السمات القابلة للتمييز بصريا في الخلايا القياسية،
+مثلا باستخدام بوابات متشابهة المظهر <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">rajendran13_camouflage, </a>)</cite> أو مبدلات MUX مهيأة سرا <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib7" title="">wang16_MUX, </a>)</cite>، أو (<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) استخدام
+غرس تطعيم انتقائي للتمويه المعتمد على جهد العتبة <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">collantes16, </a>; <a class="ltx_ref" href="#bib.bib9" title="">nirmala16, </a>; <a class="ltx_ref" href="#bib.bib10" title="">Akkaya2018, </a>)</cite>، أو (<math alttext="iii" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p1.m3"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) جعل
+أسلاك و/أو منافذ BEOL أكثر مقاومة للهندسة العكسية <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">chen15, </a>; <a class="ltx_ref" href="#bib.bib12" title="">patnaik17_Camo_BEOL_ICCAD, </a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p">يمكن للمخططات القائمة أن تتسبب في أعباء PPA كبيرة عند تطبيق LC على أجزاء واسعة من التصميم.
+فعلى سبيل المثال في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">rajendran13_camouflage, </a>)</cite>،
+يؤدي تمويه 50% من التصميم إلى أعباء قدرها <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S2.SS1.p2.m1"><mo>≈</mo></math>150% للقدرة والمساحة، على التوالي
+(الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.1. تمويه المخطط الفيزيائي ‣ 2. خلفية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">2</span></a>).
+وقد تعاني مخططات ناشئة أخرى، مثل LC المعتمد على جهد العتبة، من أعباء PPA هائلة أيضا؛ انظر القسم <a class="ltx_ref" href="#S6" title="6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6</span></a> لمزيد من النتائج المقارنة.
+وتجدر الإشارة أيضا إلى أن معظم المخططات تتطلب تعديلات في عملية تصنيع FEOL، وهو ما قد يكون مكلفا.
+وهناك، بما أن التمويه يبني السر اللازم لحماية IP، يجب أن تكون منشأة تصنيع FEOL المتعاقد معها <em class="ltx_emph ltx_font_italic">موثوقة</em>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F2">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S2.F2.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="260" id="S2.F2.sf1.g1" src="x2.png" width="399"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S2.F2.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="266" id="S2.F2.sf2.g1" src="x3.png" width="399"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2. </span>كلفة PPA بالنسبة المئوية % للتمويه متشابه المظهر <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">rajendran13_camouflage, </a>)</cite> (يسارا) ولرفع الأسلاك المختارة عشوائيا صراحة إلى
+M8 (يمينا). النتائج محسوبة متوسطا عبر
+<em class="ltx_emph ltx_font_italic">ITC-99</em> معيارا اختباريا. بالنسبة إلى LC (يسارا)،
+يكون الأثر في القدرة والمساحة كبيرا، نظرا إلى أن بنية NAND-NOR-XOR في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib14" title="">rajendran13_split, </a>)</cite> تستهلك 4<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m4"><mo>×</mo></math> و
+5.5<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m5"><mo>×</mo></math> مساحة وقدرة أكبر مقارنة ببوابة NAND عادية ذات 2 مداخل.
+أما بالنسبة إلى SM (يمينا)، فكلفة
+المساحة شديدة؛ وذلك لأن موارد التوجيه نادرة نسبيا في M8 (الخطوة = 0.84<math alttext="\mu m" class="ltx_Math" dir="ltr" display="inline" id="S2.F2.m6"><mrow><mi>μ</mi><mo>⁢</mo><mi>m</mi></mrow></math>)، كما أن
+رفع الأسلاك يشغل موارد إضافية لا يمكن الحصول عليها إلا بتوسيع حدود الشريحة.
+
+
+</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2. </span>التصنيع المقسّم</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">يقدم التصنيع المقسّم (SM) حلا لافتا لحماية IP الخاصة بالتصميم أثناء التصنيع.
+وفي الغالب، يعني SM أن
+طبقة الجهاز وعددا قليلا من الطبقات المعدنية الدنيا (الطرف الأمامي من خط التصنيع، FEOL) تُصنّع باستخدام مسبك متقدم
+قد يكون <em class="ltx_emph ltx_font_italic">غير موثوق</em>، في حين تُنشأ الوصلات البينية المتبقية (الطرف الخلفي من خط التصنيع، BEOL)
+فوق رقاقة FEOL بواسطة منشأة <em class="ltx_emph ltx_font_italic">موثوقة</em>.
+ويكمن الوعد الأمني في أن
+المسبك <em class="ltx_emph ltx_font_italic">غير الموثوق</em> لا يملك إلا جزءا من التصميم الكلي، مما يصعّب استنتاج وظيفة التصميم كاملة، ومن ثم
+يعيق الخصم عن قرصنة IP أو الإدخال الهادف لأحصنة طروادة عتادية.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">غير أن أدوات CAD القائمة، بسبب تركيزها على إغلاق التصميم (ورؤيتها المحايدة أمنيا حتى الآن)، تميل إلى ترك
+مؤشرات يمكن لخصم قائم على FEOL استغلالها. فالتزاما بمقاييس PPA مثلا، توضع الخلايا المراد وصلها عادة بالقرب بعضها من بعض.
+ومن ثم،
+اقترح Rajendran <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib14" title="">rajendran13_split, </a>)</cite> ما يسمى هجوم القرب، الذي ينمذج
+هذا المبدأ لاستنتاج وصلات BEOL المفقودة.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p3">
+<p class="ltx_p">وقد اقتُرحت مؤخرا مخططات متعددة متمحورة حول الموضع <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>; <a class="ltx_ref" href="#bib.bib20" title="">sengupta17_SM_ICCAD, </a>; <a class="ltx_ref" href="#bib.bib17" title="">patnaik18_SM_DAC, </a>)</cite> و/أو
+التوجيه <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib15" title="">wang17, </a>; <a class="ltx_ref" href="#bib.bib16" title="">patnaik_ASPDAC18, </a>; <a class="ltx_ref" href="#bib.bib17" title="">patnaik18_SM_DAC, </a>)</cite>، وتهدف جميعها إلى مواجهة جهود
+تكرارات متعددة من هجمات القرب <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>; <a class="ltx_ref" href="#bib.bib19" title="">magana17, </a>)</cite>.
+ومن بين مخططات الدفاع تلك، يعد رفع الأسلاك فوق طبقة التقسيم
+طريقة حدسية لتمويه IP.
+أي إن الأسلاك الكاشفة أو الحرجة
+(كما يختارها المصمم)
+تُرفع، مثلا بمساعدة
+دبابيس توجيه في طبقات أعلى.
+وفي تجاربنا الاستكشافية
+على الرفع العشوائي للشبكات (الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.1. تمويه المخطط الفيزيائي ‣ 2. خلفية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">2</span></a>)، نلاحظ زيادات مطردة في كلفة PPA. وكما في LC،
+ترد نتائج مقارنة إضافية في القسم <a class="ltx_ref" href="#S6" title="6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6</span></a>.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.3. </span>التكامل 3D وتدفقات CAD</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p">يمكن تصنيف التكامل 3D إلى أربعة أنماط:
+(1) دوائر متكاملة 3D قائمة على المنافذ عبر السيليكون (TSV)، حيث تُصنّع الشرائح منفصلة ثم تُكدّس، وتُنجز الوصلات بين الشرائح
+بواسطة TSVs متصلة بالطبقات المعدنية؛
+(2) التكديس وجها لوجه (F2F)، حيث تُصنّع طبقتان منفصلتين ثم تُربطان معا عند وجهيهما المعدنيين؛
+(3) الدوائر المتكاملة المتجانسة 3D، حيث تُصنّع طبقات متعددة
+تتابعيا، وتستند وصلات ما بين الطبقات إلى منافذ معدنية عادية؛
+(4) التكامل 2.5D، حيث تُصنّع الشرائح منفصلة ثم تُربط بحامل وصلات بينية على مستوى النظام
+هو المِعترِض. ولكل خيار نطاقه وفوائده وعيوبه ومتطلباته الخاصة لعمليات CAD والتصنيع <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib21" title="">knechtel16_Challenges_ISPD, </a>; <a class="ltx_ref" href="#bib.bib27" title="">knechtel17_TSLDM, </a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p2">
+<p class="ltx_p">ويبدو أن التكديس F2F قد برز بوصفه الأكثر وعدا (إلى جانب الدوائر المتكاملة المتجانسة 3D)؛
+إذ تعمل دراسات متعددة بنشاط على تنسيق الجهود لتبنيه تجاريا <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib28" title="">chang16, </a>; <a class="ltx_ref" href="#bib.bib29" title="">ku18, </a>; <a class="ltx_ref" href="#bib.bib23" title="">peng17, </a>; <a class="ltx_ref" href="#bib.bib30" title="">peng15_F2F, </a>)</cite>.
+والهدف الرئيس لهذه الدراسات هو التحسين من أجل PPA والمعمارية الميكروية، لا أمن العتاد.
+وبشكل أكثر تحديدا، توازن تدفقات CAD السابقة بعناية بين التوصيل داخل الطبقة والوصلات البينية العمودية عبر الطبقات.
+ومع أن الأخيرة هي السمة الأساسية للتكامل 3D، فإن عددا مفرطا من العبور/القطوع يؤثر أيضا تأثيرا كبيرا في PPA.
+ومع ذلك، كما سنوضح بمزيد من التفصيل في القسم <a class="ltx_ref" href="#S6.SS3" title="6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6.3</span></a>، فإن عددا كبيرا من القطوع ضروري لتحقيق متانة قوية ضد قرصنة
+IP.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3. </span>نموذج تهديد عملي</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">نطرح هنا نموذجا جديدا وعمليا للتهديد في قرصنة IP، ينسجم مع نماذج أعمال دور التصميم الراهنة.
+لننظر في
+السيناريو الآتي.
+تكلّف دار تصميم مسبكا غير موثوق بتصنيع أحدث إصدار من شريحة ما.
+وغالبا ما يكون هذا الإصدار الجديد ممتدا
+من إصدارات سابقة للشريحة (الشكل <a class="ltx_ref" href="#S3.F3" title="Figure 3 ‣ 3. نموذج تهديد عملي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">3</span></a>)؛ فإعادة استخدام وحدات IP وإعادة توظيف
+المعماريات المثبتة مبادئ معروفة.
+ومن ثم، يمكن الحصول على الإصدارات السابقة
+من الشريحة من السوق.
+على سبيل المثال، لنفكر في هاتف iPhone<sup class="ltx_sup">®</sup> الرائد من Apple<sup class="ltx_sup">®</sup>. فقد طُرح iPhone
+7،
+المعتمد على شريحة A10،
+في سبتمبر 2016، وطُرح
+iPhone X، المعتمد على الشريحة اللاحقة A11،
+في سبتمبر 2017؛ وكلتا الشريحتين متاحتان في السوق.
+وفي هذا السيناريو، من الحدسي أن تصبح استعادة IP الجديدة أقل صعوبة بكثير للمصنع الذي قد لا يكون موثوقا.
+فإذا كان المسبك نفسه قد كُلّف بالفعل بالإصدار السابق، فإنه يمتلك ذلك المخطط السابق مباشرة؛ وإلا فيمكنه إجراء هندسة
+عكسية للمخطط من شرائح تُشترى من السوق. وفي كل الأحوال، يستطيع الخصوم مقارنة ذلك المخطط السابق
+بالمخطط الجديد، لتحديد الأجزاء المختلفة والفريدة والتركيز عليها.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">والخلاصة من هذه التجربة الفكرية هي أن <em class="ltx_emph ltx_font_italic">كلا من SM وLC مطلوبان لتصنيع جميع إصدارات الشرائح المختلفة</em>.
+فـ LC مطلوب لمنع الهندسة العكسية للمخطط الحالي من أي مسبك آخر يُكلّف بإصدارات لاحقة من
+الشريحة؛ أما SM فضروري لمنع المسبك الذي يصنّع الإصدار الحالي (والمكلف
+أيضا بتنفيذ LC) من استنتاج المخطط الكامل للإصدار الحالي بسهولة.
+ولا تستطيع الأعمال السابقة التعامل مع نموذج التهديد العملي هذا إلا بتطبيق كل من SM <em class="ltx_emph ltx_font_italic">و</em> LC، وهو ما يمكن أن يفاقم
+الأعباء والنقائص كما نوقش في القسم <a class="ltx_ref" href="#S2" title="2. خلفية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">2</span></a>.
+بعد ذلك، نعرض مخططنا للجمع بين SM وLC على نحو طبيعي مع الاستفادة من التكامل 3D.</p>
+</div>
+<figure class="ltx_figure" id="S3.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="255" id="S3.F3.g1" src="x4.png" width="706"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3. </span>(أ) إصدار الشريحة الحالي (أعلى) مقابل إصدار الشريحة الجديد (أسفل).
+في الإصدار الجديد، تكون وحدتا IP <em class="ltx_emph ltx_font_italic">E</em> و<em class="ltx_emph ltx_font_italic">F</em> جديدتين بالكامل، في حين
+تُراجع الوحدات الأخرى و/أو يعاد تشكيلها.
+(ب) سيناريوهات المسابك لمخططنا للتكامل 3D الموجَّه بالأمن.
+عند تصنيع كلتا الطبقتين بواسطة مسبك غير موثوق (يمين)، يمكن تقسيم وحدات IP.
+
+</figcaption>
+</figure>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4. </span>التكامل 3D: مفهومنا لحماية IP في البعد التالي</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">التقدم الأساسي الذي نقترحه في SM هو “تقسيم 3D” للتصميم إلى طبقات متعددة. أي إنه، بخلاف SM المعتاد في 2D حيث
+يُقسّم المخطط كله إلى FEOL وBEOL، نقسّم هنا المخطط نفسه إلى جزأين.
+ويُصنّع هذان الجزءان بوصفهما
+شريحتين منفصلتين ثم يُكدّسان ويوصلان بينيا، وفي هذه الورقة يتم ذلك اعتمادا على تدفق F2F.
+وعملنا هو <em class="ltx_emph ltx_font_italic">الأول</em> الذي يبرهن هذا الامتداد الطبيعي لـ SM.<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+            
+            
+            
+          نقر بأن فكرة SM 3D
+تُصوّرت في 2008 بواسطة Tezzaron <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib31" title="">tezzaron08, </a>)</cite>.
+كذلك، توجد دراسات تشير إلى فوائد التكامل 3D لـ SM <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib32" title="">dofe17, </a>; <a class="ltx_ref" href="#bib.bib33" title="">gu16, </a>; <a class="ltx_ref" href="#bib.bib34" title="">imeson13, </a>; <a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>; <a class="ltx_ref" href="#bib.bib36" title="">valamehr13, </a>)</cite>، لكنها جميعا
+تنطوي على قصور أو تغطي سيناريوهات مختلفة: يبقى Dofe <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib32" title="">dofe17, </a>)</cite> وGu <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib33" title="">gu16, </a>)</cite> عند
+المستوى المفاهيمي؛ أما Xie <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>)</cite> وImeson <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib34" title="">imeson13, </a>)</cite>
+فينظرون في التكامل 2.5D حيث لا تُخفى عن المسبك غير الموثوق إلا الأسلاك؛
+ويقترح Valamehr <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib36" title="">valamehr13, </a>)</cite> تكديس دارات مراقبة مخصصة فوق
+شرائح غير موثوقة، أي إنهم يستفيدون من التكامل 3D للمراقبة أثناء التشغيل لا لحماية IP.</span></span></span>
+ونقترح أن SM 3D يمكن تنفيذه إما بواسطة مسابك مختلفة أو بواسطة مسبك واحد
+(الشكل <a class="ltx_ref" href="#S3.F3" title="Figure 3 ‣ 3. نموذج تهديد عملي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">3</span></a>):</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<ol class="ltx_enumerate" id="S4.I1">
+<li class="ltx_item" id="S4.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(1)</span>
+<div class="ltx_para" id="S4.I1.i1.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">مسابك موثوقة وغير موثوقة مختلفة:</em>
+هنا نسند التصنيع إلى مسبك منخفض التقنية لكنه موثوق وإلى مسبك متقدم لكنه
+غير موثوق، وكلاهما يمتلك قدرات FEOL/BEOL. وقد تتاح لشركة شرائح خيارات أكثر بكثير لتكليف مسبك موثوق (أو حتى التصنيع داخليا) إذا كانت
+العقدة التقنية المطلوبة قديمة لكنها ما تزال متاحة على نطاق واسع، مثل 180nm.
+ومع أن إبقاء جزء واحد من التصميم حصرا لدى مسبك موثوق واعد من الناحية الأمنية، فإن عملية هذا الخيار تبدو محدودة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S4.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(2)</span>
+<div class="ltx_para" id="S4.I1.i2.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">مسابك/مسبك غير موثوق:</em> هنا نكلف فقط مسابك متقدمة لكنها غير موثوقة لكلا الجزأين/الشريحتين.
+وبهذه الطريقة، قد نستفيد من أحدث عقدة تقنية، لكننا بطبيعة الحال نحتاج إلى تقسيم التصميم بطريقة
+لا تستطيع معها المسابك استنتاج المخطط الكامل بسهولة، حتى إذا تواطأت.
+وبمجرد توفير هذه الحماية القوية،
+يصبح من المعقول اقتصاديا تكليف مسبك واحد فقط.</p>
+</div>
+</li>
+</ol>
+</div>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1. </span>مسابك موثوقة وغير موثوقة مختلفة</h3>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p">ينطوي تكليف عدة مسابك ذات تقنيات ومستويات ثقة مختلفة
+على تبعات حاسمة كما يأتي.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p2">
+<p class="ltx_p">أولا، بخصوص نموذج التهديد العملي، من المباشر إسناد IP الجديدة حصرا إلى الشريحة التي يصنعها
+المسبك الموثوق.
+أما من حيث متانة مخطط SM 3D الآمن بطبيعته، فلا يوجد حتى الآن نموذج هجوم عام في الأدبيات يستطيع
+تغطية هذا السيناريو، أي: عند توفر جزء واحد فقط من المخطط، كيف يمكن استنتاج الوصلات <em class="ltx_emph ltx_font_italic">والبوابات</em> المفقودة. ونحن
+نعتقد أن هجوما مناظرا بنمط “الصندوق الأسود” سيكون بالغ الصعوبة، لكننا نقترح أن ينظر المجتمع البحثي فيه.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p3">
+<p class="ltx_p">ثانيا، بسبب اختلاف الخطوات في التقنيات المختلفة،
+لا يمكن إسناد إلا جزء من التصميم إلى الشريحة منخفضة التقنية. ويصح ذلك على الأقل ما دامت
+(أ) الشريحة المتقدمة ينبغي أن تتمتع باستغلال معقول من أجل كفاءة الكلفة و(ب) حدود كلتا
+الشريحتين
+ينبغي أن تبقى متماثلة، وهو مطلب شائع في التكديس 3D.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p4">
+<p class="ltx_p">ثالثا، تهيمن الشريحة منخفضة التقنية على القدرة والأداء الكليين، وقد تزيد عوامل أخرى مثل الطفيليات من تفاقم
+الأعباء عمليا <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib23" title="">peng17, </a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p5">
+<p class="ltx_p">في تجاربنا الاستكشافية، نقيس إمكانات مثل هذا SM 3D،
+بافتراض مسبك موثوق عند 180nm ومسبك غير موثوق عند 45nm.
+وبشكل أكثر تحديدا، نستفيد من
+مكتبات <em class="ltx_emph ltx_font_italic">OSU</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib37" title="">OSU_PDK, </a>)</cite>.
+وتحتوي مكتباتها العدد والنوع والقوى نفسها من الخلايا؛ وهذا يضمن مقارنة عادلة لأن أدوات CAD لا تستطيع الاستفادة من
+إصدارات مختلفة من الخلايا.
+استُخدم <em class="ltx_emph ltx_font_italic">Synopsys DC</em> للتوليف، وأُنجز التموضع
+والتوجيه باستخدام <em class="ltx_emph ltx_font_italic">Cadence Innovus 17.1</em>.
+وترد نتائج PPA لإغلاق توقيت عدواني في إعداد خط الأساس 2D في
+الجدول <a class="ltx_ref" href="#S4.T1" title="Table 1 ‣ 4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">1</span></a>.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+              
+              
+              
+            
+تبتعد العقدة 45nm أربعة أجيال عن 180nm، وتتحسن التأخيرات بنسبة <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m1"><mo>≈</mo></math>30% لكل جيل <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib38" title="">borkar1999design, </a>)</cite>؛
+ومن المفاجئ أن تدهورات التأخير في مكتبة <em class="ltx_emph ltx_font_italic">OSU</em> عند 180nm أدنى بوضوح من هذه التوقعات.
+ونعتقد أن ذلك يعود إلى الطبيعة الأكاديمية
+للمكتبة. وقت الكتابة، لم تكن لدينا إمكانية الوصول إلى مكتبات تجارية مختلفة.
+وعلى أي حال، تبقى النتائج الرئيسة لتجاربنا صالحة.
+ذلك لأنه إذا عُدلت أرقام التأخير في المكتبة،
+ومع استمرار افتراض استخدام الأنواع نفسها من الخلايا، فإن التأخير الكلي لن يفعل سوى أن يتدرج خطيا.</span></span></span>
+بالنسبة إلى إعداد F2F 3D غير المتجانس (الشكل <a class="ltx_ref" href="#S4.F4" title="Figure 4 ‣ 4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">4</span></a>)،
+نلاحظ بعض التدهور في الأداء مع رفع مزيد من البوابات إلى الطبقة منخفضة التقنية.
+كذلك، لاحظ من الجدول <a class="ltx_ref" href="#S4.T1" title="Table 1 ‣ 4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">1</span></a> أن
+كلفة المساحة (والقدرة) تبلغ <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p5.m1"><mo>≈</mo></math>12X (و9X) عند مقارنة 180nm بـ 45nm.
+وللحفاظ على استغلال متوازن في كلتا الطبقتين، تعني هذه الارتباطات أنه ينبغي عدم رفع أكثر من <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p5.m2"><mo>≈</mo></math>8% من البوابات إلى
+الطبقة منخفضة التقنية.
+ومع أن هذا الرفع محدود النطاق يوفر مكسب أداء معقولا، ولا سيما من
+منظور تكليف مسبك 180nm فقط، فقد لا يكفي لتغطية كل IP الحساسة.</p>
+</div>
+<div class="ltx_para" id="S4.SS1.p6">
+<p class="ltx_p">وخلاصة القول إننا نجد
+أن الاستفادة من مسابك مختلفة لها حدود عملية.
+فإسناد أكثر من <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S4.SS1.p6.m1"><mo>≈</mo></math>8% من البوابات
+إلى المسبك منخفض التقنية
+غير فعال، خاصة عند مراعاة أن
+هذا المسبك يجب أن ينفذ LC أيضا، وهو ما يفرض كلفة إضافية.</p>
+</div>
+<figure class="ltx_table" id="S4.T1">
+<figcaption class="ltx_caption ltx_centering" style="font-size:70%;"><span class="ltx_tag ltx_tag_table">Table 1. </span>خطوط أساس 2D ذات توقيت عدواني، مبنية على مكتبات <em class="ltx_emph ltx_font_italic">OSU</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib37" title="">OSU_PDK, </a>)</cite>.
+جميع المخططات خالية من مخالفات DRC. المساحة بوحدة <math alttext="\mu m^{2}" class="ltx_Math" dir="ltr" display="inline" id="S4.T1.m4"><mrow><mi>μ</mi><mo>⁢</mo><msup><mi>m</mi><mn>2</mn></msup></mrow></math>، والقدرة بوحدة <math alttext="mW" class="ltx_Math" dir="ltr" display="inline" id="S4.T1.m5"><mrow><mi>m</mi><mo>⁢</mo><mi>W</mi></mrow></math>، والتأخير بوحدة <math alttext="ns" class="ltx_Math" dir="ltr" display="inline" id="S4.T1.m6"><mrow><mi>n</mi><mo>⁢</mo><mi>s</mi></mrow></math>.
+انظر أيضا الحاشية <a class="ltx_ref" href="#footnote2" title="footnote 2 ‣ 4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">2</span></a>.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="2" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Benchmark</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_l ltx_border_r ltx_border_t" colspan="4" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">45nm</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_l ltx_border_r ltx_border_t" colspan="4" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">180nm</span></th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;"># Instances</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Area</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Power</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Delay</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;"># Instances</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Area</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Power</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Delay</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b17_1</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">14,850</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">32,770.28</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">8.85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">2.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">14,711</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">417,416</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">71.54</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">3.59</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b20</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">6,959</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">15,549.31</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">8.12</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">2.87</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">7,521</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">216,168</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">97.94</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">3.6</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b21</em></th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">7,327</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">16,096.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">8.79</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">2.88</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">7,060</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">203,216</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">85.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 2.3pt;"><span class="ltx_text" style="font-size:70%;">3.89</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_figure" id="S4.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="304" id="S4.F4.g1" src="x5.png" width="665"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4. </span>تدهور الأداء عند رفع البوابات في 3D من طبقة 45nm إلى طبقة 180nm.
+تشير الخطوط المنقطة إلى تأخيرات المسار الحرج لإعداد خط الأساس 180nm 2D.
+انظر أيضا الجدول <a class="ltx_ref" href="#S4.T1" title="Table 1 ‣ 4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">1</span></a> والحاشية <a class="ltx_ref" href="#footnote2" title="footnote 2 ‣ 4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">2</span></a>.
+
+</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2. </span>مسابك غير موثوقة</h3>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">ينطوي التعامل مع عدة مسابك غير موثوقة تقدم التقنية نفسها (أو مع مسبك واحد غير موثوق) على تبعات رئيسة أيضا.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p2">
+<p class="ltx_p">أولا، يمكن توقع أن تتفوق قدرة وأداء مثل هذه “الدوائر المتكاملة 3D التقليدية” على سيناريو التقنيات المختلفة أعلاه.
+وفي الواقع، أُثبت منذ مدة نجاح طي (أو تقسيم) وحدات IP 2D داخل الدوائر المتكاملة 3D <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib39" title="">lin16, </a>; <a class="ltx_ref" href="#bib.bib24" title="">jung14, </a>; <a class="ltx_ref" href="#bib.bib40" title="">jung17, </a>; <a class="ltx_ref" href="#bib.bib30" title="">peng15_F2F, </a>)</cite>، وإن
+لم يكن ذلك مع مراعاة قرصنة IP.
+ومن ثم، قد توفر الوفورات الناتجة من طي وحدات IP هامشا لمخطط دفاعي، لكننا نبيّن في بقية هذا العمل أن
+هذا الهامش يعتمد طبيعيا على التصميم والتدابير المطبقة للحماية.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p3">
+<p class="ltx_p">ثانيا، على الرغم من أن
+وحدات IP يمكن طيها/تقسيمها عبر الطبقات، وهو ما قد يضلل مهاجم الهندسة العكسية، فإن كلتا
+الطبقتين ما تزالان تصنعان بواسطة مسابك غير موثوقة.
+وتعني هذه الحقيقة أن مخططات LC التي تستهدف مستوى الجهاز
+<em class="ltx_emph ltx_font_italic">لا تستطيع</em> أن تساعد في حماية IP من الخصوم في تلك المسابك.
+ومن اللافت أن هناك نمطا آخر من LC آخذ في الظهور،
+وهو تمويه
+الوصلات البينية <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib41" title="">cocchi14, </a>; <a class="ltx_ref" href="#bib.bib11" title="">chen15, </a>; <a class="ltx_ref" href="#bib.bib42" title="">vijayakumar16, </a>; <a class="ltx_ref" href="#bib.bib12" title="">patnaik17_Camo_BEOL_ICCAD, </a>)</cite>.
+ينظر Chen <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">chen15, </a>)</cite> في منافذ حقيقية ووهمية باستخدام المغنيسيوم Mg وأكسيد المغنيسيوم MgO، على التوالي.
+ويبرهنون أن منافذ Mg الحقيقية تتأكسد بسرعة إلى MgO، ومن ثم يمكن أن تصبح غير قابلة للتمييز عن منافذ MgO الوهمية الأخرى أثناء
+الهندسة العكسية.
+وقد أظهر Hwang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib43" title="">hwang12_transient_electronics, </a>)</cite> أن Mg وMgO يذوبان بسرعة عند
+إحاطتهما بسوائل، وهو أمر لا مفر منه في إجراءات الحفر المستخدمة في الهندسة العكسية.
+لذلك، ومن دون فقدان العمومية، نفترض أن تمويه الوصلات البينية لدينا قائم على استخدام منافذ Mg/MgO.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p4">
+<p class="ltx_p">ونرى أن تمويه الوصلات البينية يلائم طبيعيا الدوائر المتكاملة F2F 3D؛ إذ يمكن بين الطبقات
+تصنيع طبقات إعادة توزيع (RDLs) إضافية قصدا للتمويه.
+ولا يتطلب ذلك إلا منشأة BEOL موثوقة، وهو افتراض عملي نظرا إلى أن تصنيع BEOL
+أقل تطلبا بكثير من تصنيع FEOL، ولا سيما في الطبقات المعدنية العليا (تقع RDLs بين روابط F2F التي تكون هي نفسها في
+طبقات أعلى).</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5. </span>المنهجية</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">نشرح هنا تدفق CAD والتصنيع لمفهومنا عن التكديس F2F الموجَّه بالأمن.
+ويستلهم تدفق CAD جزئيا من Chang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib28" title="">chang16, </a>)</cite>، لكننا نصوغ تدفقنا بتركيز خاص
+على حماية IP (الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5. المنهجية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">5</span></a>).
+ويتيح تدفقنا للمصمم المعني استكشاف المفاضلات بين PPA و<em class="ltx_emph ltx_font_italic">القطوع</em>، أي عدد وصلات F2F بين الطبقات.
+والقطوع مقياس حاسم للتحليل الأمني، وتناقش بمزيد من التفصيل في القسم <a class="ltx_ref" href="#S6.SS3" title="6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6.3</span></a>.
+ومن المهم أيضا أن نلاحظ أننا نتبع الدعوة إلى <em class="ltx_emph ltx_font_italic">إخفاء هوية المخطط الفيزيائي</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib34" title="">imeson13, </a>)</cite>؛ فنحن نتجنب عمدا خطوات التحسين عبر الطبقات، لتخفيف المؤشرات على مستوى المخطط
+حول BEOL/RDLs المموهة.</p>
+</div>
+<figure class="ltx_figure" id="S5.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="736" id="S5.F5.g1" src="x6.png" width="789"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5. </span>تدفق CAD لدينا للدوائر المتكاملة F2F 3D، والمنفذ في <em class="ltx_emph ltx_font_italic">Cadence Innovus</em>. تُبرز الخطوات الموجَّهة بالأمن بخط عريض.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S5.p2">
+<p class="ltx_p">أما بالنسبة إلى عملية F2F، فنقترح التعديل التالي الموجَّه بالأمن.
+تُصنّع رقائق الطبقتين بواسطة مسبك واحد غير موثوق (أو مسبكين غير موثوقين)، ثم تُشحن إلى منشأة BEOL وتكديس موثوقة. وتنشئ هذه المنشأة الموثوقة طبقات RDLs المموهة
+فوق إحدى الرقاقتين، وتواصل تدفق F2F المعتاد (أي قلب الرقاقة الثانية وربطها فوقها).</p>
+</div>
+<section class="ltx_subsection" id="S5.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.1. </span>تقسيم التصميم</h3>
+<div class="ltx_para" id="S5.SS1.p1">
+<p class="ltx_p">بعد الحصول على التصميم 2D بعد التوجيه، نقسم قائمة الشبكات إلى مجموعتي <em class="ltx_emph ltx_font_italic">العليا</em> و<em class="ltx_emph ltx_font_italic">السفلى</em>، اللتين تمثلان
+طبقتي الدائرة المتكاملة F2F.
+وتُنشأ منافذ I/O لكل الوصلات البينية بين المجموعتين، لتمثل منافذ F2F.
+وإلى جانب منافذ F2F هذه، نضع منافذ I/O الأولية عند حد الشريحة، كما في التصاميم التقليدية 2D. (وهذا عملي أيضا للتكامل F2F
+حيث تُصنّع TSVs عند حد الشريحة لمنافذ I/O الأولية وشبكة P/G.)</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">التقسيم العشوائي:</span>
+طريقة ساذجة للتقسيم الموجَّه بالأمن هي إسناد البوابات إلى مجموعتي الأعلى/الأسفل عشوائيا. وعند فعل ذلك،
+سيملي عدد القطوع عدد البوابات ونوعها وترابطها البيني المحلي
+التي تُسند إلى مجموعة واحدة.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">تعظيم حجم القطع:</span>
+كما أُشير سابقا (وسيُستكشف أكثر في القسم <a class="ltx_ref" href="#S6.SS3" title="6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6.3</span></a>)، كلما كبر حجم القطع ازدادت صعوبة قرصنة IP. لذلك،
+نسعى هنا إلى زيادة حجم القطع إلى أقصى حد معقول ممكن.
+أولا، تُستخرج تقارير التوقيت لخط الأساس 2D. بعد ذلك، تُناوب البوابات عشوائيا على طول مسارات توقيتها بين مجموعتي الأعلى/الأسفل.
+وفي أفضل حالة أمنية (وهي أيضا أسوأ حالة من حيث القدرة والأداء)، تُسند كل بوابة أخرى
+إلى مجموعة الأعلى والأسفل، على التوالي؛ وبالنسبة إلى مسار يحوي <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p3.m1"><mi>n</mi></math> بوابات، تنشأ <math alttext="2n" class="ltx_Math" dir="ltr" display="inline" id="S5.SS1.p3.m2"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math> قطوع.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">تقسيم واع بالتوقيت:</span>
+نسعى هنا إلى خفض كلفة المخطط الفيزيائي مع الحفاظ على حماية قوية.
+أولا، يحدد هامش التوقيت المتاح لكل بوابة.
+ثم، استنادا إلى عتبة يحددها المستخدم، تبقى البوابات الحرجة في الطبقة السفلى، في حين تُنقل كل البوابات الأخرى إلى الطبقة العليا.
+وتكرر هذه العملية بعتبات توقيت معدلة إلى أن يتحقق استغلال متساو للطبقتين.
+لاحظ أنه ليس من السهل على مهاجم أن يفهم هل أي مسار في
+مجموعة الأسفل/الأعلى حرج أم لا (أو كاملا في هذا الصدد).
+وبعبارة أخرى، يجب على المهاجم معالجة المجموعتين معا، والأهم من ذلك، حل منافذ F2F العشوائية والوصلات البينية المموهة (انظر أدناه).</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S5.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.2. </span>تخطيط وصلات F2F البينية</h3>
+<div class="ltx_para" id="S5.SS2.p1">
+<p class="ltx_p">بعد وضع الطبقة السفلى، تُحدد المواقع الأولية لمنافذ F2F بالقرب من المشغلات/المصارف. ثم يُجرى
+وضع موجَّه بالأمن، أي عشوائي، لمنافذ F2F، إلى جانب تقنين مخصص على المسارات.
+بعد ذلك، توضع <em class="ltx_emph ltx_font_italic">صناديق تبديل مموهة</em>، وتُطابق
+منافذ F2F مع الطبقة العليا.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">العشوائية:</span> من السهل ملاحظة أن التخطيط المعتاد لوصلات F2F البينية لا يمكن أن يكون آمنا،
+لأن ذلك يصفّ منافذ الطبقة السفلى والطبقة العليا مباشرة.
+لذلك، نعشوئ ترتيب منافذ F2F كما يأتي.
+(الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5.2. تخطيط وصلات F2F البينية ‣ 5. المنهجية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6</span></a>). نضع منافذ F2F إضافية عشوائيا (لكن
+بمساعدة التقنين
+على المسارات) في RDL العليا.
+ثم توجه هذه المنافذ العشوائية عبر RDLs نحو منافذ F2F الأصلية
+المتصلة بالطبقة السفلى، وهي مدمجة أيضا في صناديق تبديل مخصصة (انظر لاحقا).</p>
+</div>
+<figure class="ltx_figure" id="S5.F6">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="269" id="S5.F6.g1" src="x7.png" width="432"/></div>
+<div class="ltx_flex_cell ltx_flex_size_2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_figure_panel ltx_img_landscape" height="245" id="S5.F6.g2" src="x8.png" width="374"/></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6. </span>(يسار) عشوائية RDL لصناديق التبديل ومنافذ F2F.
+(يمين) المسافات المطَبّعة بين منافذ F2F المراد وصلها بعد العشوائية، للمعيار الاختباري <em class="ltx_emph ltx_font_italic">b17_1</em>.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S5.SS2.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">صناديق تبديل مموهة:</span>
+للحماية من الهندسة العكسية، نموّه
+الاتصالية في RDLs
+باستخدام
+صندوق تبديل مخصص (الشكل <a class="ltx_ref" href="#S5.F7" title="Figure 7 ‣ 5.3. إغلاق التصميم ‣ 5. المنهجية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">7</span></a>). ويتيح صندوق التبديل هذا
+مطابقة خفية واحد إلى واحد لأربعة مشغلات مع أربعة مصارف.
+وجوهر صندوق التبديل هو منافذ Mg/MgO <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">chen15, </a>)</cite>، لإخفاء أي مشغل
+يتصل بأي مصرف.
+وتمثل دبابيس صندوق التبديل منافذ F2F.
+ولتمكين الاستخدام السليم لموارد
+التوجيه، تُحاذى الدبابيس مع مسارات التوجيه.
+وللعشوائية، تستخدم المنافذ الإضافية
+المتصلة بالطبقة العليا لإعادة التوجيه أثناء إغلاق التصميم.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">التقنين على المسارات:</span>
+يُنقل كل منفذ F2F داخل حد النواة، باتجاه نقطة المركز التي تحددها كل النسخ المتصلة بهذا المنفذ.
+بعد ذلك، نحصل على أقرب مواقع على المسار ما تزال غير مشغولة للوضع الفعلي.
+وعند الحاجة، نزيد نصف قطر البحث تدريجيا مع مراعاة عتبة يحددها المستخدم.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S5.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.3. </span>إغلاق التصميم</h3>
+<div class="ltx_para" id="S5.SS3.p1">
+<p class="ltx_p">بعد مرحلة تخطيط منافذ F2F، توضع الطبقتان وتوجهان منفصلتين.
+هنا لا نستخدم أي تحسين عبر الطبقات، لإخفاء هوية كل طبقة
+عن الأخرى، لكننا نطبق التحسين داخل الطبقة.
+وأثناء توجيه الطبقة السفلى، نوجه أيضا RDL العشوائية
+والمموهة مع صناديق التبديل الخاصة بها.
+بعد ذلك، نغلف
+قسمي الأعلى والأسفل في <em class="ltx_emph ltx_font_italic">قائمة شبكات غلافية</em>، ونركب التصميم وننفذه، ثم ننشئ ملف SPEF
+يلتقط طفيليات RC
+لمنافذ F2F.
+أخيرا، نجري فحوص DRC، ونقيّم PPA، ونصدر ملفات DEF منفصلة للطبقة العليا/السفلى وRDL.</p>
+</div>
+<figure class="ltx_figure" id="S5.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="358" id="S5.F7.g1" src="x9.png" width="764"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7. </span>صندوق تبديل مموه، على سبيل المثال للمشغلات من الأسفل إلى الأعلى.
+يمكن لكل دبوس مشغل (مثلث متجه إلى أسفل) الاتصال بأي دبوس مصرف (مثلث متجه إلى أعلى).
+تُحاذى جميع منافذ F2F هنا مع دبابيس صندوق التبديل للتبسيط،
+في حين تكون منافذ الطبقة العليا عشوائية في الواقع.
+
+</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6. </span>النتائج</h2>
+<section class="ltx_subsection" id="S6.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.1. </span>الإعداد التجريبي</h3>
+<div class="ltx_para" id="S6.SS1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">التنفيذ وتقييم المخطط الفيزيائي:</span>
+يعتمد تدفق CAD لدينا على <em class="ltx_emph ltx_font_italic">Cadence Innovus 17.1</em>، باستخدام نصوص <em class="ltx_emph ltx_font_italic">Tcl</em> و<em class="ltx_emph ltx_font_italic">Python</em> مخصصة، تفرض أعباء زمن تشغيل
+ضئيلة.
+ونستخدم مكتبة <em class="ltx_emph ltx_font_italic">Nangate 45nm</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib44" title="">nangate11, </a>)</cite> في تجاربنا، مع ست طبقات معدنية في
+إعداد خط الأساس 2D وست طبقات لكل من الطبقة العليا والسفلى في إعداد F2F.
+وتتكون RDL من أربع طبقات مكررة من M6، وتُنمذج منافذ F2F بوصفها منافذ M6.
+(ومع أن هذا افتراض متفائل في الوقت الراهن،
+يمكن توقع أن يبلغ تصغير F2F هذه الأبعاد.)
+ويُجرى تحليل PPA عند زاوية العملية البطيئة بجهد 0.95V وV<math alttext="{}_{\textrm{DD}}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS1.p1.m1"><msub><mi></mi><mtext>DD</mtext></msub></math>.
+وبالنسبة إلى تحليل القدرة، نفترض نشاط تبديل مقداره 0.2
+لكل المدخلات الأولية.
+ونضمن خلو المخططات من أي ازدحام باختيار معدلات استغلال مناسبة.
+وتُجرى جميع التجارب على
+Intel Xeon E5-4660 @ 2.2 GHz مع <em class="ltx_emph ltx_font_italic">CentOS 6.9</em>. وبالنسبة إلى <em class="ltx_emph ltx_font_italic">Cadence Innovus</em>، خُصص ما يصل إلى 16 نواة.</p>
+</div>
+<div class="ltx_para" id="S6.SS1.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">إعداد التقييم الأمني:</span>
+لأننا نروّج لـ SM 3D، لا يمكن تطبيق هجمات القرب الاعتيادية مثل <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>; <a class="ltx_ref" href="#bib.bib19" title="">magana17, </a>)</cite>.
+لذلك، نقترح (ونصدر علنا <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib45" title="">webinterface, </a>)</cite>) هجوما جديدا ضد SM 3D،
+آخذا في الحسبان أيضا تمويه RDL الكامن في مخططنا؛
+انظر أيضا القسم <a class="ltx_ref" href="#S6.SS3" title="6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6.3</span></a>.
+وتُقيّم قوة هجومنا بمقاييس شائعة الاستخدام، أي <em class="ltx_emph ltx_font_italic">معدل الاتصال الصحيح (CCR)</em> و<em class="ltx_emph ltx_font_italic">مسافة هامنغ (HD)</em>.
+وتُحسب HD باستخدام <em class="ltx_emph ltx_font_italic">Synopsys VCS</em> مع 1,000,000 أنماط اختبار.
+أما بالنسبة إلى
+هجمات الهندسة العكسية المعتمدة على SAT، فنستفيد من <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib46" title="">subramanyan15, </a>)</cite>.
+ويُضبط حد المهلة المرتبط بها على 72 ساعات.</p>
+</div>
+<div class="ltx_para" id="S6.SS1.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">التصاميم:</span>
+تُستخدم معايير اختبار من مجموعتي <em class="ltx_emph ltx_font_italic">ISCAS-85</em> و<em class="ltx_emph ltx_font_italic">ITC-99</em> لتحليل المخطط الفيزيائي والأمن.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S6.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.2. </span>تقييم المخطط الفيزيائي الموجَّه بالأمن</h3>
+<div class="ltx_para" id="S6.SS2.p1">
+<p class="ltx_p">يتيح تدفقنا المفاضلة بين PPA والقطوع؛ وتملي الأخيرة المتانة ضد قرصنة IP أثناء
+التصنيع وبعده.
+يعرض الشكل <a class="ltx_ref" href="#S6.F8" title="Figure 8 ‣ 6.2. تقييم المخطط الفيزيائي الموجَّه بالأمن ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">8</span></a> صور المخطط الفيزيائي
+للمعيار الاختباري <em class="ltx_emph ltx_font_italic">b22</em>.</p>
+</div>
+<figure class="ltx_figure" id="S6.F8"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="300" id="S6.F8.g1" src="incl/two_dies.png" width="592"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8. </span>لقطات للمخطط الفيزيائي للطبقة السفلى/العليا (يسار/يمين) للمعيار <em class="ltx_emph ltx_font_italic">b22</em>. تُظهر المدخلات المصغرة منافذ F2F المقابلة.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S6.SS2.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">تعظيم حجم القطع:</span>
+هنا ننقل البوابات
+من مجموعة الأسفل إلى مجموعة الأعلى
+بخطوات مقدارها 10%، وصولا إلى 50%.
+وبما أن الاستراتيجية عشوائية، نجري عشر تشغيلات لكل معيار اختباري ولكل نسبة معطاة من البوابات المراد نقلها.
+وتُوضح توزيعات القدرة والأداء الناتجة
+في الشكل <a class="ltx_ref" href="#S6.F9" title="Figure 9 ‣ 6.2. تقييم المخطط الفيزيائي الموجَّه بالأمن ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">9</span></a>.
+ومن اللافت أنه حتى في أفضل حالة أمنية، أي نقل 50% من البوابات عشوائيا،
+تظل بعض التشغيلات تقدم قدرة و/أو أداء أفضل من خط الأساس 2D.
+وتبرهن هذه النتيجة إمكانات مخططنا.
+لاحظ أننا نمتنع في هذه التجارب الأولية عن عشوائية منافذ F2F
+وعن استخدام صناديق التبديل المموهة.</p>
+</div>
+<figure class="ltx_figure" id="S6.F9">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S6.F9.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="185" id="S6.F9.sf1.g1" src="x10.png" width="822"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_1">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S6.F9.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="169" id="S6.F9.sf2.g1" src="x11.png" width="822"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9. </span>أثر تعظيم القطوع أو منافذ F2F، عبر نقل البوابات، في الأداء (أعلى) والقدرة (أسفل). يمثل كل مخطط صندوقي عشر
+تشغيلات.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S6.SS2.p3">
+<p class="ltx_p">بمجرد تعشوئ منافذ F2F واستخدام صناديق التبديل، قد تتكبد المعايير الأكبر مثل <em class="ltx_emph ltx_font_italic">b18_1</em> أعباء تصل إلى
+60% (الشكل <a class="ltx_ref" href="#S6.F10" title="Figure 10 ‣ 6.2. تقييم المخطط الفيزيائي الموجَّه بالأمن ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">10</span></a>). ومن ثم، رغم أن هذه الاستراتيجية تقدم متانة قوية،
+قد تكون هناك رغبة في مفاضلة أكثر عدوانية بين PPA والأمن.</p>
+</div>
+<figure class="ltx_figure" id="S6.F10"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="266" id="S6.F10.g1" src="x12.png" width="822"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 10. </span>كلفة المخطط الفيزيائي عند تعظيم القطوع، مع نقل 35–50% من البوابات، وصناديق تبديل مموهة، وعشوائية F2F. يمثل كل مخطط صندوقي عشر
+تشغيلات.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S6.SS2.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">تقسيم واع بالتوقيت مع عشوائية F2F وصناديق تبديل مموهة:</span>
+يعالج هذا الإعداد الحاجة المبينة أعلاه.
+وفي الواقع، نلاحظ أنه حتى للمعايير الاختبارية الأكبر (الشكل <a class="ltx_ref" href="#S6.F11" title="Figure 11 ‣ 6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">11</span></a>)، يمكن أن توجد
+بعض
+الفوائد التخطيطية عند مقارنة هذه التصاميم 3D بخط أساسها 2D.
+ولإظهار
+الأثر الأمني لهذا الإعداد، نرسم المسافات المطَبّعة بين منافذ F2F المراد وصلها في
+الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5.2. تخطيط وصلات F2F البينية ‣ 5. المنهجية ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6</span></a>. ويُظهر هذا الشكل تباينا واسعا عبر شبكات ما بين الطبقات، في حين أن المسافات في التكديس F2F المنتظم/غير المحمي
+ستكون كلها صفرا.
+ولتحليل أمني أكثر تفصيلا، انظر القسم <a class="ltx_ref" href="#S6.SS3" title="6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">6.3</span></a>. بعد ذلك،
+نقارن عملنا بالأعمال السابقة.</p>
+</div>
+<div class="ltx_para" id="S6.SS2.p5">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">مقارنة مع مخططات LC:</span>
+يكتسب LC المعتمد على العتبة زخما في الآونة الأخيرة. ورغم أنه واعد من حيث المتانة (حتى أثناء التصنيع في بعض المخططات)، فإن
+أعباء PPA كبيرة. فعلى سبيل المثال، يذكر Akkaya <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib10" title="">Akkaya2018, </a>)</cite> أعباء قدرها 9.2<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p5.m1"><mo>×</mo></math>،
+و6.6<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p5.m2"><mo>×</mo></math>، و3.3<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p5.m3"><mo>×</mo></math> لـ PPA، على التوالي، مقارنة ببوابة NAND تقليدية ذات 2 مداخل.
+ويذكر Nirmala <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib9" title="">nirmala16, </a>)</cite> كلفة قدرها 11.2<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p5.m4"><mo>×</mo></math> و10.5<math alttext="\times" class="ltx_Math" dir="ltr" display="inline" id="S6.SS2.p5.m5"><mo>×</mo></math> للقدرة والمساحة، على التوالي.
+ويذكر Collantes <em class="ltx_emph ltx_font_italic">et
+al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">collantes16, </a>)</cite> كلفة قدرة وأداء قدرها 72% و31%، على التوالي، لتمويه بنسبة 40%.
+وفي <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib47" title="">DBLP:journals/corr/JangG17, </a>)</cite>، تُستغل جهود العتبة لتمويه الوصلات البينية، مما يؤدي إلى أعباء PPA قدرها 29%،
+و44%، و33%، وذلك عند تمويه 15% من الشبكات.
+وفي <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib12" title="">patnaik17_Camo_BEOL_ICCAD, </a>)</cite>، تذكر أعباء PPA قدرها 4.9%، و31.2%، و25%
+لـ <em class="ltx_emph ltx_font_italic">b17</em> عند LC بنسبة 60% (عبر تمويه الوصلات البينية).
+وحتى بالمقارنة مع هذه المخططات الأخيرة الأكثر وعدا، نستطيع تقديم
+PPA أفضل بكثير (باستثناء <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib12" title="">patnaik17_Camo_BEOL_ICCAD, </a>)</cite> فيما يخص القدرة).</p>
+</div>
+<div class="ltx_para" id="S6.SS2.p6">
+<p class="ltx_p">اقترح Dofe وYan و<em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib48" title="">dofe16_mono3D, </a>; <a class="ltx_ref" href="#bib.bib49" title="">yan17_camo, </a>)</cite> مؤخرا LC للدوائر المتكاملة المتجانسة 3D. وفي وقت الكتابة، لم تكن مكتباتهم
+متاحة لنا لإجراء مقارنة تفصيلية. والأهم من ذلك، أن تصنيع مثل هذه الدوائر المتكاملة 3D المموهة يتطلب الثقة في
+مسبك متقدم. ولا يمكن تطبيق مفهوم SM 3D كما في مخططنا على الدوائر المتكاملة المتجانسة 3D (بسبب عملية التصنيع التتابعية)
+ومن ثم، فإن مخططهم <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib48" title="">dofe16_mono3D, </a>; <a class="ltx_ref" href="#bib.bib49" title="">yan17_camo, </a>)</cite> <em class="ltx_emph ltx_font_italic">لا يستطيع</em> حماية IP وقت
+التصنيع.</p>
+</div>
+<div class="ltx_para" id="S6.SS2.p7">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">مقارنة مع مخططات SM:</span>
+في الجدول <a class="ltx_ref" href="#S6.T2" title="Table 2 ‣ 6.2. تقييم المخطط الفيزيائي الموجَّه بالأمن ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">2</span></a>، نقارن مع بعض الدراسات حول SM 2D.
+وبشكل عام، فإن التقنيات المتمحورة حول الموضع لدى Wang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>)</cite>
+تنافسية
+فيما يتعلق
+بالقدرة والأداء. لكن، كما هو الحال دائما في SM المعتاد،
+لا يستطيع Wang <em class="ltx_emph ltx_font_italic">et al.</em> إلا ردع الخصوم القائمين على المسبك،
+<em class="ltx_emph ltx_font_italic">وليس المستخدمين النهائيين الخبيثين</em>.</p>
+</div>
+<figure class="ltx_table" id="S6.T2">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 2. </span>
+مقارنة كلفة PPA مع مخططات حماية SM 2D. الأرقام بالنسبة المئوية % ومقتبسة من المنشورات المعنية.
+</figcaption><div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_figure_panel ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="2" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">BEOL+Physical <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Logic+Physical <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Logic+Logic <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib18" title="">wang18_SM, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Concerted Lifting <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib16" title="">patnaik_ASPDAC18, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Proposed with Random Partitioning</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Area</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Delay</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Area</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Delay</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Area</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Delay</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Area</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Delay</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Area<sup class="ltx_sup"><span class="ltx_text ltx_font_medium">∗</span></sup></span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Delay</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c432</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.17</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.49</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.44</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.24</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.17</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.21</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">7.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">13.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">11.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-2.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.31</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c880</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.25</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.35</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.03</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.09</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">12.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">19.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.97</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.6</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c1355</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.52</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.57</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.75</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.42</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.03</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.01</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">12.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">21.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.83</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.38</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c1908</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.23</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.45</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.39</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">7.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">14.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">18.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.11</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.69</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c2670</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.27</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.27</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.03</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">7.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">10</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">12</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-2.18</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">3.32</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c3540</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.53</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.28</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.36</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.02</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.14</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.02</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">7.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">2.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.59</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">4.32</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c5315</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.19</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.01</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.67</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.08</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.01</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">7.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">7.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">16.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-1.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">4.73</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c6288</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.19</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.67</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">27.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">12.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">15.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">10.43</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">10.21</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">c7552</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.28</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.36</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.35</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-0.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.56</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">1.77</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">16.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">9.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">15.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">10.57</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">8.21</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Average</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.31</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.48</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.14</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.19</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">0.33</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">9.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">10.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">15</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">-50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-top:-0.25pt;padding-bottom:-0.25pt;"><span class="ltx_text" style="font-size:80%;">3.86</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_1">
+<p class="ltx_p ltx_figure_panel ltx_align_center"><sup class="ltx_sup"><span class="ltx_text" style="font-size:80%;">∗</span></sup><span class="ltx_text" style="font-size:80%;">اتباعا للممارسة القياسية في دراسات 3D، نبلغ عن المساحة بالنظر إلى حدود القوالب الفردية.
+في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib16" title="">patnaik_ASPDAC18, </a>)</cite>، تذكر المساحة أيضا من حيث حدود القالب.</span></p>
+</div>
+</div>
+</figure>
+<div class="ltx_para" id="S6.SS2.p8">
+<p class="ltx_p">في الجدول <a class="ltx_ref" href="#S6.T3" title="Table 3 ‣ 6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">3</span></a>، نقارن مع مخطط التكامل 2.5D الموجَّه بالأمن لدى Xie <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>)</cite>.
+ويعد عملهم ذا صلة لأنهم
+يقترحون مفهوما أمنيا مشابها قائما على أحجام القطع. وبالنسبة إلى المعايير الاختبارية التي
+نظر فيها المؤلفون، نحصل في المتوسط على قطوع أكثر بنسبة 53% في مخططنا. (لأحجام القطع لدينا في المعايير الأكبر، ارجع إلى
+الجدول <a class="ltx_ref" href="#S6.T4" title="Table 4 ‣ 6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">4</span></a>).
+وبالنسبة إلى
+PPA، نلاحظ كلفا أقل بكثير من <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>)</cite>.<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup>
+<span class="ltx_tag ltx_tag_note">3</span>
+              
+              
+              
+            
+فيما يتعلق بالمساحة، لاحظ أننا نبلغ عن حدود القالب، وهو
+إجراء قياسي في دراسات 3D.
+وبناء على ذلك، وبالنسبة إلى أرقامنا البالغة -50%، تتطلب الدائرة المتكاملة F2F 3D وخط الأساس 2D المساحة السيليكونية الكلية نفسها، أي إننا نتكبد كلفة مساحة
+مطلقة قدرها 0%.
+ومع أن Xie <em class="ltx_emph ltx_font_italic">et al.</em> يذكرون كلفة مشابهة،
+فإنهم يغفلون أن مخططهم يتطلب
+مِعترِضا يكون، بصفته على الأقل بحجم الشرائح المكدسة عليه، مسببا لكلفة قدرها <math alttext="\geq" class="ltx_Math" dir="ltr" display="inline" id="footnote3.m1"><mo>≥</mo></math>100%.
+ومع ذلك، وبما أنه يتكون أساسا من طبقات معدنية، نقر بأن المعترض أقل كلفة من الشرائح العادية.</span></span></span>
+وفضلا عن ذلك، كما هو الحال في SM المعتاد، فإن مخططهم 2.5D
+<em class="ltx_emph ltx_font_italic">ليس</em> متينا بطبيعته
+ضد المستخدمين النهائيين الخبيثين، بينما مخططنا 3D كذلك.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S6.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">6.3. </span>التحليل الأمني والهجمات</h3>
+<div class="ltx_para" id="S6.SS3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">هجوم القرب لـ SM 3D:</span>
+على حد علمنا، لا يوجد بعد في الأدبيات هجوم يستطيع التعامل مع SM 3D.
+لذلك، نقترح وننفذ مثل هذا الهجوم، مع التركيز على مسبك واحد غير موثوق (أو مسبكين متواطئين) وعلى تمويه RDL لدينا. ونحن
+نوفر هذا الهجوم بوصفه إصدارا عاما في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib45" title="">webinterface, </a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p2">
+<p class="ltx_p">نفترض أن المهاجم يمتلك ملفات المخطط الفيزيائي للطبقتين العليا والسفلى،
+لكنه <em class="ltx_emph ltx_font_italic">مبدئيا</em> لا يملك وصولا إلى RDL الموثوقة
+(نناقش أدناه تبعات الحصول على RDL).
+وعلى الرغم من أنها تعرف عدد المشغلات المتصلة من الطبقة السفلى إلى العليا وبالعكس،
+فإنه لا يعرف أي مشغل يتصل بأي مصرف، نظرا إلى منافذ F2F العشوائية.
+تذكر أننا لا نجري تحسينا عبر الطبقات، لتخفيف أي مؤشرات على مستوى المخطط الفيزيائي.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup>
+<span class="ltx_tag ltx_tag_note">4</span>
+              
+              
+              
+            تذكر أيضا
+سيناريو المسابك المختلفة في القسم <a class="ltx_ref" href="#S4.SS1" title="4.1. مسابك موثوقة وغير موثوقة مختلفة ‣ 4. التكامل 3D: مفهومنا لحماية IP في البعد التالي ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">4.1</span></a>، وهو أكثر صعوبة بدرجة كبيرة. فهناك لا يحتاج المهاجم فقط إلى
+معالجة مطابقات المشغل-المصرف، بل يحتاج فوق ذلك إلى تخمين مجموعة البوابات التي يحجبها المسبك الموثوق.</span></span></span>
+لنفترض وجود <math alttext="d_{bot}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p2.m1"><msub><mi>d</mi><mrow><mi>b</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>t</mi></mrow></msub></math> مشغلات في الأسفل و<math alttext="d_{top}" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p2.m2"><msub><mi>d</mi><mrow><mi>t</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>p</mi></mrow></msub></math> مشغلات في الطبقة العليا.
+وبما أننا لا نسمح بتفرعات داخل RDL (لأن هذا سيشغل منافذ F2F أكثر من اللازم)، فلا توجد إلا
+مطابقات واحد إلى واحد؛ وهذا ينتج عنه <math alttext="d_{bot}!\times d_{top}!" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p2.m3"><mrow><mrow><msub><mi>d</mi><mrow><mi>b</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>t</mi></mrow></msub><mo rspace="0.055em">!</mo></mrow><mo rspace="0.222em">×</mo><mrow><msub><mi>d</mi><mrow><mi>t</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>p</mi></mrow></msub><mo>!</mo></mrow></mrow></math> قائمة شبكات ممكنة.
+لكن عند استخدام صناديق التبديل،
+يستطيع المهاجم معالجة مجموعات من أربعة مشغلات/مصارف دفعة واحدة.
+ومع ذلك، عليه حل (أ) أي أربعة مشغلات في الطبقة العليا متصلة بأي أربعة مصارف في الطبقة السفلى وبالعكس، و(ب)
+الاتصالية داخل صناديق التبديل المموهة.
+وفي هذه الحالات، تبقى
+<math alttext="4!\times\left(\left(1/4\times d_{bot}\right)!\times\left(1/4\times d_{top}%
+\right)!\right)" class="ltx_Math" dir="ltr" display="inline" id="S6.SS3.p2.m4"><mrow><mrow><mn>4</mn><mo rspace="0.055em">!</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo>(</mo><mrow><mrow><mrow><mo>(</mo><mrow><mrow><mn>1</mn><mo>/</mo><mn>4</mn></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>d</mi><mrow><mi>b</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>t</mi></mrow></msub></mrow><mo>)</mo></mrow><mo rspace="0.055em">!</mo></mrow><mo rspace="0.222em">×</mo><mrow><mrow><mo>(</mo><mrow><mrow><mn>1</mn><mo>/</mo><mn>4</mn></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>d</mi><mrow><mi>t</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>p</mi></mrow></msub></mrow><mo>)</mo></mrow><mo>!</mo></mrow></mrow><mo>)</mo></mrow></mrow></math> قائمة شبكات ممكنة.
+بعد ذلك، نعرض الاستدلالات المقابلة الواقعة في صميم هجومنا.</p>
+</div>
+<div class="ltx_para" id="S6.SS3.p3">
+<ol class="ltx_enumerate" id="S6.I1">
+<li class="ltx_item" id="S6.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(1)</span>
+<div class="ltx_para" id="S6.I1.i1.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">مطابقات فريدة:</em> يغذي أي مشغل في الطبقة السفلى/العليا مصرفا واحدا فقط في الطبقة العليا/السفلى.
+لذلك سيعيد المهاجم وصل المشغلات والمصارف كل على حدة.
+وعلاوة على ذلك، يمكنه التعرف إلى جميع منافذ I/O الأولية لأنها
+تُنفذ باستخدام روابط سلكية أو TSVs، لا بمنافذ F2F عشوائية.</p>
+</div>
+</li>
+<li class="ltx_item" id="S6.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(2)</span>
+<div class="ltx_para" id="S6.I1.i2.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">مؤشرات المخطط الفيزيائي:</em> على الرغم من أن منافذ F2F عشوائية، قد يحاول المهاجم ربط قرب
+واتجاه منافذ F2F باتصاليتها المقابلة في RDL المحجوبة.
+ولهذه الغاية، يمكنه أيضا الاستفادة من التوجيه نحو
+منافذ صندوق التبديل.
+وفضلا عن ذلك، واستحضارا لنموذج التهديد العملي، قد يستطيع المهاجم تحديد بعض IP المعروفة ومن ثم حصر مجموعات
+وصلات F2F البينية المرشحة ذات الصلة.
+وهجومنا عام ويمكنه التعامل مع هذه السيناريوهات، عبر تتبع أزواج F2F المرشحة التي ينظر فيها المهاجم.</p>
+</div>
+</li>
+<li class="ltx_item" id="S6.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(3)</span>
+<div class="ltx_para" id="S6.I1.i3.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">الحلقات التوافقية:</em> بما أن كلتا الطبقتين، وبالتالي كل المكونات الفعالة، متاحتان للمهاجم، يستطيع بسهولة استبعاد
+وصلات F2F التي تولد حلقات توافقية.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S6.SS3.p4">
+<p class="ltx_p">نقدم نتائج هجوم تجريبية في الجدول <a class="ltx_ref" href="#S6.T4" title="Table 4 ‣ 6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">4</span></a>.
+نفترض هنا أن المهاجم استطاع استنتاج جميع أزواج المشغل-المصرف عبر
+صناديق التبديل استنتاجا صحيحا، وأن ما يبقى للهجوم هو التمويه داخل صناديق التبديل نفسها فقط.
+وهذا افتراض <em class="ltx_emph ltx_font_italic">قوي</em> يجعل تقييمنا محافظا.
+وفي الواقع، يمكن اعتبار هذا السيناريو هجوم قرب أمثل، إذ
+إن الاتصال الصحيح يكون دائما ضمن المرشحين المدروسين لكل وصلات F2F.
+وتشير النتائج في الجدول <a class="ltx_ref" href="#S6.T4" title="Table 4 ‣ 6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">4</span></a> إلى الكفاءة الحسابية لهجومنا في التصاميم الأصغر، لكنها تشير أيضا إلى التحديات عندما ينبغي التعامل مع تصاميم أكبر ذات
+فضاءات حلول واسعة.
+وبالنظر إلى CCR وHD لقوائم الشبكات المستعادة بنجاح، يمكن اعتبار مخطط الحماية لدينا آمنا بدرجة معقولة.</p>
+</div>
+<figure class="ltx_table" id="S6.T3">
+<figcaption class="ltx_caption ltx_centering" style="font-size:70%;"><span class="ltx_tag ltx_tag_table">Table 3. </span>مقارنة مع <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>)</cite>. تقارن PPA مع خط أساس 2D، والأرقام بالنسبة المئوية %.
+انظر أيضا الحاشية <a class="ltx_ref" href="#footnote3" title="footnote 3 ‣ 6.2. تقييم المخطط الفيزيائي الموجَّه بالأمن ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">3</span></a> حول المساحة.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="2" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Benchmark</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="4" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Xie <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>)</cite> (SC+SP)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="4" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Proposed with Random Partitioning</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Cut Size</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Area</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Delay</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Cut Size</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Area</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Power</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Delay</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c432</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">130</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">17.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">5.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">134</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-2.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0.31</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c880</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">141</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">29.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">10</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">138</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0.97</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1.6</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c1355</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">130</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">17.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">17.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">91</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1.83</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0.38</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c1908</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">132</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">11.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">29.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">149</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0.11</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1.69</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c2670</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">152</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">11.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">5.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">154</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-2.18</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">3.32</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c3540</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">133</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">5.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">5.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">349</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0.59</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">4.32</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">c7552</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">157</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">5.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">477</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">10.57</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">8.21</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Average</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">139</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">0.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">13.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">11.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">213</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">-50 (0)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">1.32</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 3.9pt;"><span class="ltx_text" style="font-size:70%;">2.83</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_table" id="S6.T4">
+<figcaption class="ltx_caption ltx_centering" style="font-size:70%;"><span class="ltx_tag ltx_tag_table">Table 4. </span>نتائج الهجوم في المتوسط. حد المهلة ‘t-o’ هو 72 ساعات.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="2" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Benchmark</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="2" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Cut Sizes</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">SAT Attack <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib46" title="">subramanyan15, </a>)</cite></span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Proposed 3D-SM Proximity Attack</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Random</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Timing-Aware</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Runtime (Min.)</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">CCR (%)</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">HD (%)</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text ltx_font_bold" style="font-size:70%;">Runtime (Sec.)</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">c432</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">134</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">56</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">624</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">30.4</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">45.2</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_tt" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">10</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">c880</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">138</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">53</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">642</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">27.8</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">39.4</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">23</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">c1355</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">91</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">37</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">492</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">31.1</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">43.8</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">53</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">c3540</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">349</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">97</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">948</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">22.6</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">41.3</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">3,729 (62 Minutes)</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b17_1</em></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">6,650</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">2,482</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b18</em></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">15,974</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">6,906</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b18_1</em></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">16,706</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">6,616</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><em class="ltx_emph ltx_font_italic" style="font-size:70%;">b19</em></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">33,417</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">13,142</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">N/A</span></td>
+<td class="ltx_td ltx_nopad_l ltx_nopad_r ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding:-0.2pt 1.2pt;"><span class="ltx_text" style="font-size:70%;">t-o</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_figure" id="S6.F11"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="268" id="S6.F11.g1" src="x13.png" width="822"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 11. </span>كلفة الأداء والقدرة لإعداد 3D واع بالتوقيت مع صناديق تبديل مموهة وعشوائية F2F. يمثل كل مخطط صندوقي عشر
+تشغيلات.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S6.SS3.p5">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">هجوم معتمد على SAT:</span>
+بعد التصنيع، يستطيع المهاجم بسهولة معرفة أي أربعة مشغلات/مصارف متصلة عبر صناديق التبديل، لكنه ما يزال يحتاج
+إلى حل التمويه داخل صناديق التبديل نفسها.
+وقد يستفيد المهاجم الآن من نسخة عاملة بوصفها وحيا ويطلق هجوم SAT.
+ولهذه الغاية، نستخدم الهجوم المقترح في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib46" title="">subramanyan15, </a>)</cite>، ونمذج المشكلة باستخدام مبدلات multiplexers كما هو موضح في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib50" title="">massad15, </a>; <a class="ltx_ref" href="#bib.bib51" title="">yu17, </a>)</cite>.
+وترد النتائج التجريبية في الجدول <a class="ltx_ref" href="#S6.T4" title="Table 4 ‣ 6.3. التحليل الأمني والهجمات ‣ 6. النتائج ‣ أفضل ما في العالمين: دمج التصنيع المقسّم والتمويه ضمن تدفق CAD موجَّه بالأمن للدوائر المتكاملة 3D"><span class="ltx_text ltx_ref_tag">4</span></a>. وكما هو متوقع، ينجح هجوم SAT في التصاميم الأصغر لكنه يصل
+إلى حد المهلة في التصاميم الأكبر. وهذه النتيجة منسجمة أيضا مع ما ذكره Xie <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib35" title="">xie17, </a>)</cite> لمخططهم
+2.5D الموجَّه بالأمن، الذي يمتلك مفهوما أمنيا مشابها لعملنا.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S7">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7. </span>الخلاصة والتطلعات</h2>
+<div class="ltx_para" id="S7.p1">
+<p class="ltx_p">في البداية، نستعرض الأعمال السابقة
+وقيودها.
+ونطرح أيضا نموذجا جديدا وعمليا للتهديد في قرصنة IP ينسجم مع نماذج أعمال شركات الشرائح الراهنة.
+بعد ذلك، نشرح بالتفصيل كيف يكون التكامل 3D ملائما بقوة وبصورة طبيعية
+لجمع SM وLC. (وهذا يتيح لنا أيضا توسيع نطاق دفاع SM إلى التطبيقات التجارية العملية.)
+ولهذه الغاية، نقترح تدفق CAD وتصنيعا موجها بالأمن للدوائر المتكاملة ذات التكديس وجها لوجه (F2F)، وهو خيار صاعد للتكامل 3D.
+ونجري تجارب شاملة على مخططات فيزيائية خالية من مخالفات DRC، ونستند إلى تحليل أمني موسع
+لنرى أن دخول البعد الثالث واعد
+لحماية IP.</p>
+</div>
+<div class="ltx_para" id="S7.p2">
+<p class="ltx_p">أما في العمل المستقبلي،
+فنهدف إلى طريقة أكثر صورية لتقسيم البوابات عبر الطبقات،
+وذلك أيضا للحماية من تهديدات أخرى مثل أحصنة طروادة العتادية.
+وبمعنى أوسع،
+نخطط لاستكشاف ما إذا كان التكامل 3D يستطيع توفير متانة ضد الهجمات الفيزيائية، مثل السبر التداخلي أو
+استغلال تسرب القنوات الجانبية، وكيف يمكن ذلك.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">شكر وتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">حظي هذا العمل بدعم جزئي من مركز الأمن السيبراني (CCS) في NYU New York/Abu Dhabi (NYU/NYUAD).
+ونشكر أيضا Dr. Anja Henning-Knechtel على إعداد رسوم توضيحية مختارة.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(1)</span>
+<span class="ltx_bibblock">
+P. Kocher <em class="ltx_emph ltx_font_italic">et al.</em>, “Spectre attacks: Exploiting speculative execution,”
+in <em class="ltx_emph ltx_font_italic">Proc. S&amp;P</em>, 2019.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(2)</span>
+<span class="ltx_bibblock">
+L. Lerman <em class="ltx_emph ltx_font_italic">et al.</em>, “Start simple and then refine: Bias-variance
+decomposition as a diagnosis tool for leakage profiling,” <em class="ltx_emph ltx_font_italic">Trans.
+Comp.</em>, vol. 67, no. 2, pp. 268–283, 2018.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(3)</span>
+<span class="ltx_bibblock">
+S. Bhunia, S. Ray, and S. Sur-Kolay, Eds., <em class="ltx_emph ltx_font_italic">Fundamentals of IP and SoC
+Security</em>.   Springer, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(4)</span>
+<span class="ltx_bibblock">
+M. Yasin <em class="ltx_emph ltx_font_italic">et al.</em>, “Provably-secure logic locking: From theory to
+practice,” in <em class="ltx_emph ltx_font_italic">Proc. CCS</em>, 2017, pp. 1601–1618.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(5)</span>
+<span class="ltx_bibblock">
+K. Shamsi <em class="ltx_emph ltx_font_italic">et al.</em>, “On the approximation resiliency of logic locking and
+IC camouflaging schemes,” <em class="ltx_emph ltx_font_italic">Trans. IFS</em>, 2018.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(6)</span>
+<span class="ltx_bibblock">
+J. Rajendran <em class="ltx_emph ltx_font_italic">et al.</em>, “Security analysis of integrated circuit
+camouflaging,” in <em class="ltx_emph ltx_font_italic">Proc. CCS</em>, 2013, pp. 709–720.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(7)</span>
+<span class="ltx_bibblock">
+X. Wang <em class="ltx_emph ltx_font_italic">et al.</em>, “Secure and low-overhead circuit obfuscation technique
+with multiplexers,” in <em class="ltx_emph ltx_font_italic">Proc. GLSVLSI</em>, 2016, pp. 133–136.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(8)</span>
+<span class="ltx_bibblock">
+M. I. M. Collantes, M. E. Massad, and S. Garg, “Threshold-dependent
+camouflaged cells to secure circuits against reverse engineering attacks,”
+in <em class="ltx_emph ltx_font_italic">Proc. ISVLSI</em>, 2016, pp. 443–448.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(9)</span>
+<span class="ltx_bibblock">
+I. R. Nirmala <em class="ltx_emph ltx_font_italic">et al.</em>, “A novel threshold voltage defined switch for
+circuit camouflaging,” in <em class="ltx_emph ltx_font_italic">Proc. ETS</em>, 2016, pp. 1–2.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(10)</span>
+<span class="ltx_bibblock">
+N. E. C. Akkaya, B. Erbagci, and K. Mai, “A secure camouflaged logic family
+using post-manufacturing programming with a 3.6GHz adder prototype in 65nm
+CMOS at 1V nominal VDD,” in <em class="ltx_emph ltx_font_italic">Proc. ISSCC</em>, 2018, pp. 128–130.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(11)</span>
+<span class="ltx_bibblock">
+S. Chen <em class="ltx_emph ltx_font_italic">et al.</em>, “Chip-level anti-reverse engineering using
+transformable interconnects,” in <em class="ltx_emph ltx_font_italic">Proc. DFT</em>, 2015, pp. 109–114.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(12)</span>
+<span class="ltx_bibblock">
+S. Patnaik <em class="ltx_emph ltx_font_italic">et al.</em>, “Obfuscating the interconnects: Low-cost and
+resilient full-chip layout camouflaging,” in <em class="ltx_emph ltx_font_italic">Proc. ICCAD</em>, 2017, pp.
+41–48.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(13)</span>
+<span class="ltx_bibblock">
+S. Patnaik <em class="ltx_emph ltx_font_italic">et al.</em>, “Advancing hardware security using polymorphic and
+stochastic spin-hall effect devices,” in <em class="ltx_emph ltx_font_italic">Proc. DATE</em>, 2018, pp.
+97–102.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(14)</span>
+<span class="ltx_bibblock">
+J. Rajendran, O. Sinanoglu, and R. Karri, “Is split manufacturing secure?” in
+<em class="ltx_emph ltx_font_italic">Proc. DATE</em>, 2013, pp. 1259–1264.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(15)</span>
+<span class="ltx_bibblock">
+Y. Wang <em class="ltx_emph ltx_font_italic">et al.</em>, “Routing perturbation for enhanced security in split
+manufacturing,” in <em class="ltx_emph ltx_font_italic">Proc. ASPDAC</em>, 2017, pp. 605–610.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(16)</span>
+<span class="ltx_bibblock">
+S. Patnaik <em class="ltx_emph ltx_font_italic">et al.</em>, “Concerted wire lifting: Enabling secure and
+cost-effective split manufacturing,” in <em class="ltx_emph ltx_font_italic">Proc. ASPDAC</em>, 2018, pp.
+251–258.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(17)</span>
+<span class="ltx_bibblock">
+S. Patnaik <em class="ltx_emph ltx_font_italic">et al.</em>, “Raise your game for split manufacturing: Restoring
+the true functionality through BEOL,” in <em class="ltx_emph ltx_font_italic">Proc. DAC</em>, 2018, pp.
+140:1–140:6.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(18)</span>
+<span class="ltx_bibblock">
+Y. Wang <em class="ltx_emph ltx_font_italic">et al.</em>, “The cat and mouse in split manufacturing,”
+<em class="ltx_emph ltx_font_italic">Trans. VLSI</em>, vol. 26, no. 5, pp. 805–817, 2018.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(19)</span>
+<span class="ltx_bibblock">
+J. Magaña <em class="ltx_emph ltx_font_italic">et al.</em>, “Are proximity attacks a threat to the security
+of split manufacturing of integrated circuits?” <em class="ltx_emph ltx_font_italic">Trans. VLSI</em>, vol. 25,
+no. 12, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(20)</span>
+<span class="ltx_bibblock">
+A. Sengupta <em class="ltx_emph ltx_font_italic">et al.</em>, “Rethinking split manufacturing: An
+information-theoretic approach with secure layout techniques,” in
+<em class="ltx_emph ltx_font_italic">Proc. ICCAD</em>, 2017, pp. 329–336.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(21)</span>
+<span class="ltx_bibblock">
+J. Knechtel and J. Lienig, “Physical design automation for 3D chip stacks –
+challenges and solutions,” in <em class="ltx_emph ltx_font_italic">Proc. ISPD</em>, 2016, pp. 3–10.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(22)</span>
+<span class="ltx_bibblock">
+I. A. M. Elfadel and G. Fettweis, Eds., <em class="ltx_emph ltx_font_italic">3D Stacked Chips – From
+Emerging Processes to Heterogeneous Systems</em>.   Springer, 2016.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(23)</span>
+<span class="ltx_bibblock">
+Y. Peng <em class="ltx_emph ltx_font_italic">et al.</em>, “Parasitic extraction for heterogeneous face-to-face
+bonded 3-D ICs,” <em class="ltx_emph ltx_font_italic">Trans. CPMT</em>, vol. 7, no. 6, pp. 912–924, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(24)</span>
+<span class="ltx_bibblock">
+M. Jung <em class="ltx_emph ltx_font_italic">et al.</em>, “On enhancing power benefits in 3D ICs: Block
+folding and bonding styles perspective,” in <em class="ltx_emph ltx_font_italic">Proc. DAC</em>, 2014, pp.
+1–6.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(25)</span>
+<span class="ltx_bibblock">
+D. H. Kim <em class="ltx_emph ltx_font_italic">et al.</em>, “3D-MAPS: 3D massively parallel processor with
+stacked memory,” in <em class="ltx_emph ltx_font_italic">Proc. ISSCC</em>, 2012, pp. 188–190.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(26)</span>
+<span class="ltx_bibblock">
+R. Radojcic, <em class="ltx_emph ltx_font_italic">More-than-Moore 2.5D and 3D SiP Integration</em>.   Springer, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(27)</span>
+<span class="ltx_bibblock">
+J. Knechtel <em class="ltx_emph ltx_font_italic">et al.</em>, “Large-scale 3D chips: Challenges and solutions
+for design automation, testing, and trustworthy integration,” <em class="ltx_emph ltx_font_italic">Trans.
+SLDM</em>, vol. 10, pp. 45–62, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(28)</span>
+<span class="ltx_bibblock">
+K. Chang <em class="ltx_emph ltx_font_italic">et al.</em>, “Cascade2D: A design-aware partitioning approach to
+monolithic 3D IC with 2D commercial tools,” in <em class="ltx_emph ltx_font_italic">Proc. ICCAD</em>, 2016,
+pp. 130:1–130:8.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(29)</span>
+<span class="ltx_bibblock">
+B. W. Ku, K. Chang, and S. K. Lim, “Compact-2D: A physical design
+methodology to build commercial-quality face-to-face-bonded 3D ICs,” in
+<em class="ltx_emph ltx_font_italic">Proc. ISPD</em>, 2018, pp. 90–97.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(30)</span>
+<span class="ltx_bibblock">
+Y. Peng <em class="ltx_emph ltx_font_italic">et al.</em>, “Thermal impact study of block folding and face-to-face
+bonding in 3D IC,” in <em class="ltx_emph ltx_font_italic">Proc. IITC</em>, 2015, pp. 331–334.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(31)</span>
+<span class="ltx_bibblock">
+Tezzaron Semiconductor, “3D-ICs and integrated circuit security,”
+Tezzaron Semiconductor, Tech. Rep., 2008. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="http://tezzaron.com/media/3D-ICs_and_Integrated_Circuit_Security.pdf" title="">http://tezzaron.com/media/3D-ICs_and_Integrated_Circuit_Security.pdf</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(32)</span>
+<span class="ltx_bibblock">
+J. Dofe <em class="ltx_emph ltx_font_italic">et al.</em>, “Security threats and countermeasures in
+three-dimensional integrated circuits,” in <em class="ltx_emph ltx_font_italic">Proc. GLSVLSI</em>, 2017, pp.
+321–326.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(33)</span>
+<span class="ltx_bibblock">
+P. Gu <em class="ltx_emph ltx_font_italic">et al.</em>, “Leveraging 3D technologies for hardware security:
+Opportunities and challenges,” in <em class="ltx_emph ltx_font_italic">Proc. GLSVLSI</em>, 2016, pp. 347–352.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(34)</span>
+<span class="ltx_bibblock">
+F. Imeson <em class="ltx_emph ltx_font_italic">et al.</em>, “Securing computer hardware using 3D integrated
+circuit (IC) technology and split manufacturing for obfuscation,” in
+<em class="ltx_emph ltx_font_italic">Proc. USENIX</em>, 2013, pp. 495–510.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(35)</span>
+<span class="ltx_bibblock">
+Y. Xie, C. Bao, and A. Srivastava, “Security-aware 2.5D integrated circuit
+design flow against hardware IP piracy,” <em class="ltx_emph ltx_font_italic">Computer</em>, vol. 50, no. 5,
+pp. 62–71, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(36)</span>
+<span class="ltx_bibblock">
+J. Valamehr <em class="ltx_emph ltx_font_italic">et al.</em>, “A 3-D split manufacturing approach to
+trustworthy system development,” <em class="ltx_emph ltx_font_italic">Trans. CAD</em>, vol. 32, no. 4, pp.
+611–615, 2013.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(37)</span>
+<span class="ltx_bibblock">
+(2017) FreePDK: Unleashing VLSI to the Masses. Oklahoma State University.
+[Online]. Available: <a class="ltx_ref ltx_url ltx_font_typewriter" href="https://vlsiarch.ecen.okstate.edu/flows/" title="">https://vlsiarch.ecen.okstate.edu/flows/</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(38)</span>
+<span class="ltx_bibblock">
+S. Borkar, “Design challenges of technology scaling,” <em class="ltx_emph ltx_font_italic">Micro</em>, vol. 19,
+no. 4, pp. 23–29, 1999.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(39)</span>
+<span class="ltx_bibblock">
+J.-M. Lin, P.-Y. Chiu, and Y.-F. Chang, “SAINT: Handling module folding and
+alignment in fixed-outline floorplans for 3D ICs,” in <em class="ltx_emph ltx_font_italic">Proc. ICCAD</em>,
+2016.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(40)</span>
+<span class="ltx_bibblock">
+M. Jung <em class="ltx_emph ltx_font_italic">et al.</em>, “Design methodologies for low-power 3-D ICs with
+advanced tier partitioning,” <em class="ltx_emph ltx_font_italic">Trans. VLSI</em>, vol. 25, no. 7, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib41">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(41)</span>
+<span class="ltx_bibblock">
+R. P. Cocchi <em class="ltx_emph ltx_font_italic">et al.</em>, “Circuit camouflage integration for hardware IP
+protection,” in <em class="ltx_emph ltx_font_italic">Proc. DAC</em>, 2014, pp. 1–5.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib42">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(42)</span>
+<span class="ltx_bibblock">
+A. Vijayakumar <em class="ltx_emph ltx_font_italic">et al.</em>, “Physical design obfuscation of hardware: A
+comprehensive investigation of device- and logic-level techniques,”
+<em class="ltx_emph ltx_font_italic">Trans. IFS</em>, vol. 12, pp. 64–77, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib43">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(43)</span>
+<span class="ltx_bibblock">
+S.-W. Hwang <em class="ltx_emph ltx_font_italic">et al.</em>, “A physically transient form of silicon
+electronics,” <em class="ltx_emph ltx_font_italic">Science</em>, vol. 337, no. 6102, pp. 1640–1644, 2012.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib44">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(44)</span>
+<span class="ltx_bibblock">
+(2011) NanGate FreePDK45 Open Cell Library. Nangate Inc. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="http://www.nangate.com/?page_id=2325" title="">http://www.nangate.com/?page_id=2325</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib45">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(45)</span>
+<span class="ltx_bibblock">
+(2018) DfX Lab, NYUAD. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="http://sites.nyuad.nyu.edu/dfx/research-topics/design-for-trust-split-manufacturing/" title="">http://sites.nyuad.nyu.edu/dfx/research-topics/design-for-trust-split-manufacturing/</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib46">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(46)</span>
+<span class="ltx_bibblock">
+P. Subramanyan, S. Ray, and S. Malik, “Evaluating the security of logic
+encryption algorithms,” in <em class="ltx_emph ltx_font_italic">Proc. HOST</em>, 2015, pp. 137–143.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib47">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(47)</span>
+<span class="ltx_bibblock">
+J. Jang and S. Ghosh, “A novel interconnect camouflaging technique using
+transistor threshold voltage,” <em class="ltx_emph ltx_font_italic">arXiv</em>, vol. abs/1705.02707, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib48">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(48)</span>
+<span class="ltx_bibblock">
+J. Dofe <em class="ltx_emph ltx_font_italic">et al.</em>, “Transistor-level camouflaged logic locking method for
+monolithic 3D IC security,” in <em class="ltx_emph ltx_font_italic">Proc. AHOST</em>, 2016, pp. 1–6.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib49">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(49)</span>
+<span class="ltx_bibblock">
+C. Yan <em class="ltx_emph ltx_font_italic">et al.</em>, “Hardware-efficient logic camouflaging for monolithic
+3D ICs,” <em class="ltx_emph ltx_font_italic">Trans. CS</em>, vol. 65, no. 6, pp. 799–803, 2018.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib50">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(50)</span>
+<span class="ltx_bibblock">
+M. E. Massad, S. Garg, and M. V. Tripunitara, “Integrated circuit (IC)
+decamouflaging: Reverse engineering camouflaged ICs within minutes,” in
+<em class="ltx_emph ltx_font_italic">Proc. NDSS</em>, 2015, pp. 1–14.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib51">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(51)</span>
+<span class="ltx_bibblock">
+C. Yu <em class="ltx_emph ltx_font_italic">et al.</em>, “Incremental SAT-based reverse engineering of
+camouflaged logic circuits,” <em class="ltx_emph ltx_font_italic">Trans. CAD</em>, vol. 36, no. 10, pp.
+1647–1659, 2017.
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 11:17:15 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

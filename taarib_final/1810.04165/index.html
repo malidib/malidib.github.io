@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><title> ł ł  Ł</title>
+<meta charset="utf-8"/>
+<meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="source.css" rel="stylesheet" type="text/css"/>
+<meta content="source.tex" name="src"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head><body dir="rtl"><main class="paper-arabizer-article">
+<div class="maketitle">
+<a id="likesection.1"></a><a id="x1-2x"></a><a id="x1-3r1"></a>
+<h2 class="titleHead">حول إحصاءات شبكات الشوارع الحضرية</h2>
+<div class="author">Jérôme Benoit and Saif Eddin Jabari </div>
+<div class="institute"><span class="ptmr7t-x-x-90">New York University Abu Dhabi, Abu Dhabi, United Arab Emirates</span><br/>
+<span class="email"><span class="pcrr7t-x-x-90">jerome.benoit@nyu.edu</span></span><br/>
+</div>
+<a id="Q1-1-1"></a>
+<a id="Q1-1-2"></a>
+</div>
+<h3 class="sectionHead"><span class="titlemark">1    </span> <a id="x1-10001"></a>مقدمة</h3>
+<!-- l. 3391 --><p class="noindent">نسعى إلى فهم إحصاءات شبكات الشوارع الحضرية. ومن شأن هذا الفهم أن يحسن السياسات الحضرية عموماً والنقل الحضري خصوصاً. نبحث في هذا العمل شبكات الشوارع الحضرية بوصفها كلاً واحداً ضمن إطاري فيزياء المعلومات <span class="cite">[<a href="#XKHKnuth2011">9</a>]</span> والفيزياء الإحصائية <span class="cite">[<a href="#XETJaynes1957I">7</a>]</span>.
+</p><!-- l. 3397 --><p class="indent">   على الرغم من أن عدد المرات التي يتقاطع فيها طريق طبيعي مع طريق آخر قد لوحظ على نطاق واسع أنه يتبع توزيع باريتو احتمالياً متقطعاً <span class="cite">[<a href="#XAClausetCRShaliziMEJNewman2009">3</a>]</span> بين المدن ذاتية التنظيم <span class="cite">[<a href="#XCAlexanderACINAT1965">1</a>, <a href="#XCrucittiCMSNUS2006">4</a>, <a href="#XBJiangTSUSNPDC2014">8</a>]</span>، فإن جهوداً قليلة جداً ركزت على اشتقاق إحصاءات شبكات الشوارع الحضرية من مبادئ أساسية. ويشير الطريق الطبيعي (أو الطريق) هنا إلى بديل معتمد للشارع ذي “الاسم” <span class="cite">[<a href="#XBJiangTSUSNPDC2014">8</a>]</span>.
+</p><!-- l. 3408 --><p class="indent">   يشدد نهجنا صراحةً على هرمية الطرق والتقاطعات في شبكة الشوارع الحضرية الأصلية بدلاً من تقسيمها ضمنياً وفقاً لذلك إلى شبكتين ثنائيتين لكن متمايزتين. فمعظم الدراسات تسعى بالفعل إلى تحويل شبكة الشوارع الحضرية الأصلية إلى شبكة طريق-طريق <span class="cite">[<a href="#XBJiangTSUSNPDC2014">8</a>]</span> ووصف توزيع احتمال درجاتها.
+</p><!-- l. 3417 --><p class="indent">   وتنسجم هذه النظرة الكلية التي اعتمدها مجتمع الدراسات الحضرية <span class="cite">[<a href="#XCAlexanderACINAT1965">1</a>, <a href="#XRHAtkin1974">2</a>]</span> أيضاً مع طريقة التفكير في فيزياء المعلومات <span class="cite">[<a href="#XKHKnuth2011">9</a>]</span>، التي تقوم على علاقات الترتيب الجزئي <span class="cite">[<a href="#XBADaveyHAPriestleyILO">5</a>, <a href="#XKHKnuth2011">9</a>]</span>. وهنا تنبثق علاقة الترتيب الجزئي من علاقة وقوع الطرق على التقاطعات. ومن ثم فإن تطبيق فيزياء المعلومات يمكّننا من تصور شبكات الشوارع الحضرية بوصفها أنظمة اجتماعية متطورة خاضعة لتوازن إنتروبي يشبه التوازن الباريتوي الملحوظ فعلياً بين مدن البلد الواحد <span class="cite">[<a href="#XYDover2004">6</a>]</span>.
+</p><!-- l. 3429 -->
+<h3 class="sectionHead"><span class="titlemark">2    </span> <a id="x1-20002"></a>المنهج</h3>
+<!-- l. 3431 --><p class="noindent">تُختزل العلاقة التي تربط الطرق الطبيعية والتقاطعات اختزالاً تقابلياً إلى بنية جبرية تعرف باسم شبكة غالوا <span class="cite">[<a href="#XBADaveyHAPriestleyILO">5</a>]</span>. ثم، بفرض قيود اتساق طبيعية، تمكّننا فيزياء المعلومات <span class="cite">[<a href="#XKHKnuth2011">9</a>]</span> ليس فقط من تقييم شبكات الشوارع الحضرية بل كذلك من تعيين توزيع احتمالي، وفي نهاية المطاف، مقياس معلومات. ويتضح أن شبكات الشوارع الحضرية تختزل بسلاسة إلى شبكات غالوا ذات طبقتين غير تافهتين: فالطرق الطبيعية تشكل الطبقة السفلى والتقاطعات تشكل الطبقة العليا، بينما تكون علاقة الترتيب الجزئي علاقة “مرور عبر”. وهذا يجعل شبكات الشوارع الحضرية تصبح نموذجاً مبسطاً للبراديغم الناشئ.
+</p><!-- l. 3449 --><p class="indent">   ثم يتحقق الانتقال من الهرمية الغالواية إلى الاتساق الباريتوي باستدعاء مبدأ الإنتروبيا العظمى لجينز <span class="cite">[<a href="#XETJaynes1957I">7</a>]</span> مع اتخاذ العزم اللوغاريتمي الأول قيداً وحيداً واصفاً ومع اعتماد جهلنا الكامل معرفةً ابتدائية. ويعبّر التوزيع الاحتمالي الأكثر معقولية المقابل لكل طريق طبيعي أو تقاطع، دون تمييز، عن احتمال امتلاك عدد معين من الحالات المتساوية الاحتمال؛ وهو توزيع باريتو احتمالي متقطع تكون إنتروبيته هي العزم اللوغاريتمي الأول المفروض، كما هو مطلوب. ويجب في النهاية تفكيك هذا التوزيع الاحتمالي بالنظر إلى بنية شبكة غالوا والقواعد الجبرية التي تفرضها نظرية فيزياء المعلومات. وبعبارة أخرى، لا يزال ينبغي إسناد معنى فيزيائي إلى هذا التقييم.
+</p><!-- l. 3466 --><p class="indent">   ويتيح لنا افتراض نموذج ثنائي الحدين تقريبي ولاحق لعملاء مقترنين بروح نموذج المدينة <span class="cite">[<a href="#XYDover2004">6</a>]</span> أن نتنبأ أخيراً بإحصاءات شبكات الشوارع الحضرية. إذ يُتصور كل طريق طبيعي أو تقاطع هنا بوصفه شبكة داخلية يعتمد بقاؤها نفسه على قدرة كل واحد من عملائها على حفظ عدد حاسم من الاتصالات الداخلية. وبذلك تصبح كل شبكة شوارع حضرية موصوفة بعددين معممَين من أعداد التوافيق الثنائية الحدية، يظهران حدياً بوصفهما أسين واصفين إلى جانب الأس الباريتوي <span class="zptmcm7m-">λ</span>: وهما أعداد الاتصالات الحيوية للطرق الطبيعية وللتقاطعات، على التوالي <span class="zptmcm7m-">υ</span><sub><span class="zptmcm7m-x-x-74">r</span></sub> و<span class="zptmcm7m-">υ</span><sub><span class="zptmcm7m-x-x-74">j</span></sub>.
+</p>
+<figure class="figure">
+<a id="x1-20011"></a>
+<div class="center">
+<!-- l. 3481 --><!-- l. 3482 --><p class="noindent"><img alt="PIC" class="graphics paper-arabizer-tex4ht-math-image" dir="ltr" height="859" src="source0x.png" width="1229"/><!-- tex4ht:graphics  
+name="source0x.png" src="osusn_xabs-figure-01.mps"  
+ --></p></div>
+<figcaption class="caption"><span class="id">Fig. 1: </span><span class="content">توزيعات التواتر النسبي (<span class="ptmrc7t-">RFD</span>) لشبكة الشوارع الحضرية في لندن: تمثل الدوائر التواترات النسبية لدرجات شبكة الطريق-الطريق الطوبولوجية؛ وتمثل الصلبان التواترات النسبية لدرجات شبكة التقاطع-التقاطع الطوبولوجية. ويصف المنحنى الأحمر الملائم لإحصاءات الطرق الطبيعية تقدير الإمكان الأعظم (<span class="ptmrc7t-">MLE</span>) لتوزيع باريتو الاحتمالي المتقطع (<a href="#x1-3002r1">1a<!-- tex4ht:ref: OSUSN/eq/USN/PDF/NaturalRoads  --></a>) المقدر وفق أحدث المنهجيات المعتمدة <span class="cite">[<a href="#XAClausetCRShaliziMEJNewman2009">3</a>]</span> (<span class="underline"><span class="zptmcm7m-">n</span></span><sub><span class="zptmcm7m-x-x-74">r</span></sub> <span class="zptmcm7t-">= 4</span>، <span class="zptmcm7t-">2</span><span class="zptmcm7m-">λυ</span><sub><span class="zptmcm7m-x-x-74">r</span></sub> <span class="zptmcm7t-">= 2</span><span class="zptmcm7m-">.</span><span class="zptmcm7t-">610(0</span><span class="zptmcm7m-">.</span><span class="zptmcm7t-">065)</span>،
+<span class="zptmcm7m-">n </span><span class="zptmcm7t-">= 5000 </span>عينة، <span class="zptmcm7m-">p</span>-value <span class="zptmcm7t-">= 0</span><span class="zptmcm7m-">.</span><span class="zptmcm7t-">929</span>). أما المنحنى الأخضر الملائم لإحصاءات التقاطعات فيبين أفضل ملاءمة لاخطية بالمربعات الصغرى (<span class="ptmrc7t-">NLSF</span>) للتوزيع الاحتمالي المتقطع غير القياسي (<a href="#x1-3003r2">1b<!-- tex4ht:ref: OSUSN/eq/USN/PDF/Junctions  --></a>) مع تثبيت <span class="underline"><span class="zptmcm7m-">n</span></span><sub><span class="zptmcm7m-x-x-74">r</span></sub> و<span class="zptmcm7t-">2</span><span class="zptmcm7m-">λυ</span><sub><span class="zptmcm7m-x-x-74">r</span></sub> عند قيمتيهما الخاصتين وفق <span class="ptmrc7t-">MLE </span>(<span class="zptmcm7t-">2</span><span class="zptmcm7m-">λυ</span><sub><span class="zptmcm7m-x-x-74">j</span></sub> <span class="zptmcm7t-">= </span><span class="zptmcm7y-">−</span><span class="zptmcm7t-">1</span><span class="zptmcm7m-">.</span><span class="zptmcm7t-">3</span>)؛
+ونظراً إلى أن التقييم السريع لدالة التطبيع <span class="zptmcm7y-">𝒲</span> لميُعثرعليهبعد،فلايمكنحالياًاستخدامأينهج<span class="ptmrc7t-">MLE</span>. وإن كون عدد الاتصالات الحيوية <span class="zptmcm7m-">υ</span><sub><span class="zptmcm7m-x-x-74">j</span></sub> سالباً يعني أن عدد التوافيق الثنائية الحدية المعمم المقترن به أصغر من واحد، أي، أن عدد الاتصالات الداخلية بين العملاء في التقاطعات أصغر نسبياً بكثير من نظيره في الطرق الطبيعية.</span></figcaption><!-- tex4ht:label?: x1-20011  -->
+</figure>
+<h3 class="sectionHead"><span class="titlemark">3    </span> <a id="x1-30003"></a>النتائج والمناقشة</h3>
+<!-- l. 3519 --><p class="noindent">يستعيد نهجنا توزيع باريتو الاحتمالي المتقطع الملحوظ على نطاق واسع للطرق الطبيعية المتطورة في المدن ذاتية التنظيم، ويتنبأ بتوزيع غير قياسي ذي شكل جرسي وذيل باريتوي للتقاطعات التي تصل بينها. واحتمال أن يتقاطع طريق طبيعي مع <span class="zptmcm7m-">n</span><sub><span class="zptmcm7m-x-x-74">r</span></sub> طرق طبيعية هو </p><div class="subequations"><a id="x1-30010"></a>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td>
+<div class="math-display">
+<img alt="           −2λυr
+Pr(nr)= --nr------
+        ζ(2λυr;nr)
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="source1x.png"/><a id="x1-3002r1"></a></div>
+</td><td class="equation-label">(1a)</td></tr></table></div>
+<!-- l. 3529 --><p class="nopar">حيث إن <span class="zptmcm7m-">ζ</span> <img align="middle" alt="(α;n)" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="source2x.png"/> <span class="zptmcm7t-">= </span><span class="zptmcm7v-">∑</span><sub><span class="zptmcm7m-x-x-74">n</span><span class="zptmcm7t-x-x-74">=</span><span class="zptmcm7m-x-x-74">n</span><sub><span class="zptmcm7m-x-x-60">r</span></sub></sub><sup><span class="zptmcm7y-x-x-74">∞</span></sup><span class="zptmcm7m-">n</span><sup><span class="zptmcm7y-x-x-74">−</span><span class="zptmcm7m-x-x-74">α</span></sup> هي دالة زيتا المعممة، كما أن احتمال أن يرى تقاطع ما <span class="zptmcm7m-">n</span><sub><span class="zptmcm7m-x-x-74">j</span></sub> تقاطعات عبر الطرق الطبيعية الواصلة به يكتب على الصورة
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td>
+<div class="math-display">
+<img alt="        ∑nnj−=nnrr [n(nj− n)]−2λυr n−j2λυj
+Pr(nj) = --𝒲-(2λυ-,2λ-υ,2λυ-;n-)--
+                r    r   j -r
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="source3x.png"/><a id="x1-3003r2"></a></div>
+</td><td class="equation-label">(1b)</td></tr></table></div>
+<!-- l. 3549 --><p class="nopar">حيث إن <span class="zptmcm7y-">𝒲</span> <img align="middle" alt="(α, β,γ;n)" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="source4x.png"/> <span class="zptmcm7t-">= </span><span class="zptmcm7v-">∑</span><sub><span class="zptmcm7m-x-x-74">m,n</span><span class="msam-10x-x-74">≥</span><span class="underline"><span class="zptmcm7m-x-x-74">n</span></span></sub><span class="zptmcm7m-">m</span><sup><span class="zptmcm7y-x-x-74">−</span><span class="zptmcm7m-x-x-74">α</span></sup><span class="zptmcm7m-">n</span><sup><span class="zptmcm7y-x-x-74">−</span><span class="zptmcm7m-x-x-74">β</span></sup><img align="middle" alt="(m + n)" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="source5x.png"/><sup><span class="zptmcm7y-x-x-74">−</span><span class="zptmcm7m-x-x-74">γ</span></sup> هي دالة زيتا موردل-تورنهايم-ويتن المعممة ثنائية الأبعاد؛ </p></div>
+<!-- l. 3560 --><p class="indent">   ويفترض أن عدد التقاطعات لكل طريق طبيعي <span class="zptmcm7m-">n</span><sub><span class="zptmcm7m-x-x-74">r</span></sub> يمتد ابتداءً من قيمة صغرى معينة <span class="underline"><span class="zptmcm7m-">n</span></span><sub><span class="zptmcm7m-x-x-74">r</span></sub> لأسباب عملية <span class="cite">[<a href="#XAClausetCRShaliziMEJNewman2009">3</a>]</span>.
+</p><!-- l. 3564 --><p class="indent">   يعرض الشكل <a href="#x1-20011">1<!-- tex4ht:ref: OSUSN/fig/USN/London  --></a> شبكة الشوارع الحضرية في لندن بوصفها دراسة حالة. أما التوزيع الاحتمالي للطرق الطبيعية <span class="zptmcm7t-">Pr</span><img align="middle" alt="(nr)" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="source6x.png"/> (<a href="#x1-3002r1">1a<!-- tex4ht:ref: OSUSN/eq/USN/PDF/NaturalRoads  --></a>) فهو ذو معقولية عالية، كما هو متوقع لأي مدينة معروفة ذاتية التنظيم <span class="cite">[<a href="#XCAlexanderACINAT1965">1</a>, <a href="#XBJiangTSUSNPDC2014">8</a>]</span>. وتبدو عملية التحقق من التوزيع الاحتمالي للتقاطعات <span class="zptmcm7t-">Pr</span><img align="middle" alt="(nj)" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="source7x.png"/> (<a href="#x1-3003r2">1b<!-- tex4ht:ref: OSUSN/eq/USN/PDF/Junctions  --></a>) أدق في الوقت الراهن. وفي هذه الأثناء لا يكفي تحليل بيانات أولي ليكون حاسماً. ومن اللافت أن دراسة الحالة هذه تكشف أن عدد الاتصالات الداخلية للتقاطعات قد يكون أصغر نسبياً بكثير من نظيره للطرق الطبيعية في المدن ذاتية
+التنظيم.
+</p><!-- l. 3578 --><p class="indent">   ومن ثم فإن النموذج الإحصائي لشبكات الشوارع الحضرية (<a href="#x1-30010">1<!-- tex4ht:ref: OSUSN/eq/USN/PDF  --></a>) يبدو دقيقاً بما يكفي لدراسة السلوكيات الحضرية الكلية مع الأسس <span class="zptmcm7m-">λ </span>و<span class="zptmcm7m-">υ</span><sub><span class="zptmcm7m-x-x-74">r</span></sub> و<span class="zptmcm7m-">υ</span><sub><span class="zptmcm7m-x-x-74">j</span></sub> بوصفها معلمات للتعقيد. وتشمل الأعمال المستقبلية (i) إيجاد أنماط باستخدام النسبة <span class="zptmcm7m-">υ</span><sub><span class="zptmcm7m-x-x-74">r</span></sub><span class="zptmcm7m-">∕υ</span><sub><span class="zptmcm7m-x-x-74">j</span></sub> بين المدن ذاتية التنظيم، (ii) توسيع النموذج ليشمل المدن المخططة، (iii) تطبيق البراديغم على أنظمة أكثر تعقيداً، و (iv) إجراء دراسة كاملة للفيزياء الإحصائية الباريتوية الناتجة.
+                                                                  
+
+                                                                  
+</p><!-- l. 3605 -->
+<h3 class="likesectionHead"><a id="x1-4000"></a>References</h3>
+<!-- l. 3605 --><div class="thebibliography">
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">1. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XCAlexanderACINAT1965"></a><span class="ptmr7t-x-x-90">Alexander, C.: A city is not a tree. Arch. Forum 122(1+2), 58–62 (1965)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">2. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XRHAtkin1974"></a><span class="ptmr7t-x-x-90">Atkin, R.H.: Mathematical Structure in Human Affairs. Heinemann Educational Books,
+  London (1974)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">3. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XAClausetCRShaliziMEJNewman2009"></a><span class="ptmr7t-x-x-90">Clauset, A., Shalizi, C.R., Newman, M.E.J.: Power-law distributions in empirical data.
+  SIAM Rev. 51(4), 661–703 (2009)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">4. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XCrucittiCMSNUS2006"></a><span class="ptmr7t-x-x-90">Crucitti, P., Latora, V., Porta, S.: Centrality measures in spatial networks of urban streets.
+  Phys. Rev. E 73(3), 036125 (2006)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">5. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XBADaveyHAPriestleyILO"></a><span class="ptmr7t-x-x-90">Davey, B.A., Priestley, H.A.: Introduction to Lattices and Order. Cambridge University
+  Press, Cambridge, second edn. (2002)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">6. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XYDover2004"></a><span class="ptmr7t-x-x-90">Dover,  Y.:  A  short  account  of  a  connection  of  power  laws  to  the  information  entropy.
+  Physica A 334(3-4), 591–599 (2004)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">7. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XETJaynes1957I"></a><span class="ptmr7t-x-x-90">Jaynes, E.T.: Information theory and statistical mechanics. Phys. Rev. 106(4), 620–630
+  (1957)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">8. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XBJiangTSUSNPDC2014"></a><span class="ptmr7t-x-x-90">Jiang,  B.,  Duan,  Y.,  Lu,  F.,  Yang,  T.,  Zhao,  J.:  Topological  structure  of  urban  street
+  networks from the perspective of degree correlations. Environ. Plan. B 41(5), 813–828 (2014)</span>
+</p>
+<p class="bibitem"><span class="biblabel">
+<span class="ptmr7t-x-x-90">9. </span><span class="bibsp"><span class="ptmr7t-x-x-90">   </span></span></span><a id="XKHKnuth2011"></a><span class="ptmr7t-x-x-90">Knuth, K.H.: Information physics: The new frontier. AIP Conf. Proc. 1305(1), 3–19 (2011)</span>
+</p>
+</div>
+</main></body>
+</html>

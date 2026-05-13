@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء</title>
+<!--Generated on Wed May 13 10:50:44 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on   %“date–تاريخ الاستلام: تاريخ / تاريخ القبول: تاريخ˝ .-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-svjour.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="" lang="ar" name="keywords"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<div class="ltx_para" id="p1">
+<p class="ltx_p">∎
+
+
+
+
+
+
+
+
+
+
+<span class="ltx_text" lang="en"></span></p>
+</div>
+<span class="ltx_note ltx_role_institutetext" lang="en"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_note_type">institutetext: </span>
+New York University Abu Dhabi, UAE, P.O Box: 129188
+</span></span></span><span class="ltx_note ltx_role_institutetext" lang="en"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_note_type">institutetext: </span>
+<br class="ltx_break"/>Tel.: +971-26284649<sup class="ltx_sup">1</sup>,+971-26284823<sup class="ltx_sup">2</sup>
+<br class="ltx_break"/>Fax: +971-26284000 
+<br class="ltx_break"/><span class="ltx_note ltx_role_email"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_note_type">email: </span>afd8@nyu.edu</span></span></span><sup class="ltx_sup">1</sup>, <span class="ltx_note ltx_role_email"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_note_type">email: </span>nf47@nyu.edu</span></span></span><sup class="ltx_sup">2</sup>
+</span></span></span>
+<h1 class="ltx_title ltx_title_document" lang="en">بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname" lang="en">Ala’ Darabseh<sup class="ltx_sup">1</sup>
+</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname" lang="en">Nikolaos M. Freris<sup class="ltx_sup">2</sup>
+</span></span>
+</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p"><span class="ltx_text" lang="en">استناداً إلى مبادئ النظم المعرفة برمجياً، نقترح بنية شمولية لتطبيقات <em class="ltx_emph ltx_font_italic">النظم السيبرانية الفيزيائية</em> (CPS) و<em class="ltx_emph ltx_font_italic">إنترنت الأشياء</em> (IoT)، ونبرز مزاياها المتعلقة بقابلية التوسع والمرونة والمتانة وقابلية التشغيل البيني والأمن السيبراني. ويستثمر تصميمنا على نحو خاص الوحدات الحاسوبية التي تملكها الوكلاء الأذكياء، والتي يمكن توظيفها للتحكم اللامركزي ولمعالجة البيانات داخل الشبكة.
+نوصّف تدفق البيانات وتدفق الاتصال وتدفق التحكم التي
+تستوعب مجموعة من المكونات، مثل الحساسات والمشغلات والمتحكمات والمنسقات، على نحو نظامي قابل للبرمجة. ونستهدف تحديداً اتخاذ القرار الموزع واللامركزي عبر نشر التحكم على عدة طبقات هرمية. إضافة إلى ذلك، نقترح طبقة وسيطة لتغليف الوحدات والخدمات الخاصة بالعمليات الحرجة زمنياً في البيئات عالية الديناميكية.
+كما نورد طيفاً واسعاً من قابلية التعرض للهجمات السيبرانية، وندمج حلولاً معرفة برمجياً لتمكين الصمود والكشف والتعافي. ومن هذا المنظور، تتعاون عدة متحكمات لتحديد التهديدات الأمنية والحالات غير الطبيعية والاستجابة لها بطريقة
+ذاتية التعديل. وأخيراً، نعرض محاكاة عددية دعماً لمزايا التصميم المعرف برمجياً في CPS وIoT. </span></p>
+</div>
+<div class="ltx_keywords">
+<h6 class="ltx_title ltx_title_keywords">الكلمات المفتاحية: </h6>
+<span class="ltx_text" lang="en">النظم المعرفة برمجياً (SDSys) إنترنت الأشياء (IoT) النظم السيبرانية الفيزيائية (CPS) النظم الموزعة التحكم اللامركزي الأمن السيبراني البرمجيات الوسيطة</span>
+</div>
+<section class="ltx_section" id="Sx1" lang="en">
+<h2 class="ltx_title ltx_title_section">شكر وتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">دُعم هذا العمل جزئياً من مركز الأمن السيبراني في جامعة نيويورك أبوظبي.</p>
+</div>
+</section>
+<section class="ltx_section" id="S1" lang="en">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>مقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">يربط إنترنت الأشياء (IoT) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib18" title="">gubbi2013internet </a></cite> عدداً ضخماً من الأجهزة «الذكية» (مثل الهواتف المحمولة والحساسات والموجهات والمتحكمات الدقيقة) جنباً إلى جنب مع مراكز بيانات كبيرة، ويوفر آليات لجمع البيانات الضخمة ومعالجتها، وللاتصال، وكذلك للخدمات السحابية. ويوجد إطار وثيق الصلة يتمثل في
+<em class="ltx_emph ltx_font_italic">النظم السيبرانية الفيزيائية</em> (CPS) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib31" title="">rajkumar2010cyber </a>; <a class="ltx_ref" href="#bib.bib26" title="">kim2012cyber </a></cite>، حيث تُشبك الوكلاء الأذكياء، التي تمتلك قدرات الاستشعار والحوسبة والاتصال والتحكم، للتحكم في الكيانات والعمليات الفيزيائية. وتضم التطبيقات البارزة نظم النقل الذكية (ITS)، والشبكات الكهربائية الذكية، وشبكات الحساسات اللاسلكية <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib14" title="">WSN </a></cite>، والمباني الذكية، والرعاية الصحية المتنقلة (mHealth).</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">وعلى هذا النطاق الواسع، تتجاوز بنى التحكم القائمة قدرتها بكثير على إدارة اقتران الفضاء الفيزيائي بالفضاء السيبراني بكفاءة.
+وتتضمن التحديات البارزة التي يجب أخذها في الحسبان في تطبيقات IoT وCPS الحاجة الملحة إلى قابلية التكيف وقابلية التوسع والأمن والسلامة والمتانة إزاء التغيرات المفاجئة في طريقة عمل الشبكة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib31" title="">rajkumar2010cyber </a>; <a class="ltx_ref" href="#bib.bib28" title="">lee2008cyber </a></cite>. ويتمثل مسار رئيس في تصميم <em class="ltx_emph ltx_font_italic">نظم هجينة</em> <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib2" title="">hybrid </a></cite>، تفصل فيها وظائف التحكم البرمجية عن المكونات المضمنة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib29" title="">lee2011introduction </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">تقدم النظم المعرفة برمجياً (SDSys) نموذجاً منهجياً لتصميم مثل هذه النظم عبر تجريد قوانين التحكم من الأجهزة العتادية في الطبقة الفيزيائية ووضعها في طبقة تحكم معرفة برمجياً. ويُقصد بهذا الفصل توفير حلول تحكم موثوقة وفعالة الكلفة وفي الزمن الحقيقي لـ CPS وIoT. ويمدد هذا المفهوم ويوسع التطوير المنظم للبرمجيات واسعة النطاق، وقد
+طُرح أولاً في سياق الراديوهات المعرفية <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib30" title="">mitola2000cognitive </a></cite>. وبعد ذلك، استُخدم لتطوير الشبكات المعرفة برمجياً (SDN) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib22" title="">jain2013network </a></cite>، وكذلك في أوجه وجوانب عدة من IoT <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib24" title="">SDIoTAla </a>; <a class="ltx_ref" href="#bib.bib1" title="">al2016novel </a>; <a class="ltx_ref" href="#bib.bib23" title="">SDCloud </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">في هذه الورقة، نستخدم مبادئ التعريف البرمجي لاقتراح تصميم معماري شامل لنظم CPS وIoT.
+وتستهدف البنية المقترحة تحديداً اتخاذ القرار اللامركزي داخل IoT عبر الاستفادة من الموارد الحاسوبية المنتشرة في الكيانات الكثيرة التي يتألف منها. ونبين كيف يخفض النموذج المقترح تعقيد التحكم ويتيح تكاملاً وتكيفاً مرنين في الفضاء السيبراني.
+وتتضمن بنيتنا ثلاثة نطاقات رئيسة:
+الفضاء الفيزيائي، والفضاء السيبراني، وفضاء التحكم المنظم، وكلها موصوفة وفق SDSys. وقد صممت البنية الهرمية واللامركزية لفضاء التحكم بعناية بطريقة تسند مسؤوليات كل وكيل داخل نطاق تقنية IoT. وتجرد خدمات طبقة البرمجيات الوسيطة  <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib27" title="">kim2013real </a></cite> في النموذج المقترح وتعزز لتتعهد بزيادة السلامة والموثوقية والأداء في بيئة عالية الديناميكية، ويرجع ذلك أساساً إلى تغيرات طوبولوجيا الشبكة (الناتجة غالباً من حركة الوكلاء واستنزاف البطارية في الأجهزة المحمولة). علاوة على ذلك، نحدد المتطلبات الرئيسة والحلول المعرفة برمجياً لتحقيق جودة خدمة (QoS) عالية إلى جانب الأمن السيبراني. وتحقيقاً لذلك، نوائم بين سير عمل من أسفل إلى أعلى ومن أعلى إلى أسفل لنشر المعلومات والأوامر التشغيلية في الشبكة. إضافة إلى ذلك، نحدد عدة أصناف من الهجمات السيبرانية ومواطن الضعف المحتملة عبر المستويات المتعددة، ونقترح حلول كشف وتعاف فعالة.
+وأخيراً، بنينا محاكياً كائني التوجه بلغة Python باستخدام ميزات ومبادئ من محاكيات SDSys عامة الغرض مثل Mininet وMaxinet وMininet-WiFi، ونستخدمه لاختبار وتقييم عدة مؤشرات أداء لوحداتنا المقترحة.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">توسع هذه الورقة دراساتنا الأولية في <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib6" title="">SDCPSconf </a></cite> وتمددها في اتجاهات عدة: (أ) نقدم وصفاً أكثر تفصيلاً لعدة سمات مهمة في البنية ونرسخ الصلات مع تقنية IoT وتطبيقاتها الناشئة؛ (ب) نناقش صراحة تصميماً معرفاً برمجياً للأمن السيبراني في تطبيقات CPS وIoT؛ (ج) نصمم محاكياً كائني التوجه ونتحقق من مزايا نهجنا عبر دراسات محاكاة متنوعة.</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">تنظم بقية الورقة على النحو الآتي.
+نناقش تحديات التصميم الرئيسة ذات الصلة بـ CPS في القسم <a class="ltx_ref" href="#S1.SS1" title="1.1 تحديات التصميم في CPS ‣ 1 مقدمة ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">1.1</span></a>، ونلخص المفاهيم الرئيسة للنظم المعرفة برمجياً (SDSys) في القسم <a class="ltx_ref" href="#S1.SS2" title="1.2 النظم المعرفة برمجياً (SDSys) ‣ 1 مقدمة ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">1.2</span></a>. ويخصص القسم <a class="ltx_ref" href="#S2" title="2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2</span></a> لبنية CPS المقترحة المعرفة برمجياً (SDCPS): حيث نعرض متطلبات النموذج (القسم <a class="ltx_ref" href="#S2.SS1" title="2.1 متطلبات النموذج ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.1</span></a>)، والنظرة المعمارية العامة (القسم <a class="ltx_ref" href="#S2.SS2" title="2.2 SDCPS: “نظرة عالية المستوى” ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.2</span></a>)، والعناصر الرئيسة (القسم <a class="ltx_ref" href="#S2.SS3" title="2.3 العناصر المعمارية ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.3</span></a>)، وبنية التحكم (القسم <a class="ltx_ref" href="#S2.SS4" title="2.4 بنية التحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.4</span></a>)، وطبقة البرمجيات الوسيطة (القسم <a class="ltx_ref" href="#S2.SS5" title="2.5 بنية طبقة البرمجيات الوسيطة ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.5</span></a>)، وسير العمل (القسم <a class="ltx_ref" href="#S2.SS6" title="2.6 مستويا الاتصال والتحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.6</span></a>)، وسمات مهمة أخرى (القسم <a class="ltx_ref" href="#S2.SS7" title="2.7 سمات النموذج المقترح ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.7</span></a>). ونختبر جوانب من حلنا المقترح في القسم <a class="ltx_ref" href="#S3" title="3 النتائج التجريبية ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">3</span></a>. ويختتم القسم <a class="ltx_ref" href="#S4" title="4 الاستنتاجات ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">4</span></a> الورقة.</p>
+</div>
+<section class="ltx_subsection" id="S1.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">1.1 </span>تحديات التصميم في CPS</h3>
+<div class="ltx_para" id="S1.SS1.p1">
+<p class="ltx_p">لكي تبرز CPS فعلاً بوصفها الثورة الصناعية الرابعة المتصورة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib31" title="">rajkumar2010cyber </a></cite>، يجب الاعتناء بسمات متعددة في النمذجة والاتصال والاستشعار والتحكم والأمن السيبراني.
+نقدم عرضاً موجزاً للتحديات الرئيسة ومتطلبات التصميم في هذا المجال اللافت <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib19" title="">gungor2009industrial </a></cite>:</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S1.SS1.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">أحجام كبيرة من البيانات:</span> تشكل الحساسات جسراً فعالاً بين الفضاء السيبراني والفضاء الفيزيائي. ففي CPS واسعة النطاق، مثل شبكات النقل والحساسات <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib14" title="">WSN </a></cite>، ينتج الاستشعار في الزمن الحقيقي <em class="ltx_emph ltx_font_italic">بيانات ضخمة</em> حقاً. ولا غنى عن توفير خوارزميات لترشيح البيانات الضخمة والتنقيب فيها بكفاءة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib35" title="">distances </a>; <a class="ltx_ref" href="#bib.bib38" title="">watermarking </a></cite> في الزمن الحقيقي <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib15" title="">RCS </a>; <a class="ltx_ref" href="#bib.bib33" title="">EUSIPCO </a></cite>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S1.SS1.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">قابلية التوسع:</span> إن العدد الكبير من الأجهزة في CPS، المجهزة بعتاد وبرمجيات غير متجانسة، جانب أولي ينبغي التصدي له في CPS  <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib31" title="">rajkumar2010cyber </a></cite>. ومن الضروري إدارة واجهات API المناسبة من أجل تكامل جاهز للاستخدام وتكوين ذاتي، مصحوباً بنظريات جديدة للاستدلال والتحكم القابلين للتوسع <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib39" title="">rksimax1 </a></cite>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S1.SS1.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">قرارات الزمن الحقيقي:</span> تعمل CPS في ظل قيود صارمة للزمن الحقيقي
+في الاتصال والحوسبة والتحكم. ولذلك فمن الحاسم مراعاة المواعيد النهائية عند تخصيص الموارد واتخاذ القرارات <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib21" title="">hou2009theory </a></cite>، وتطوير خوارزميات للحوسبة على الخط <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib15" title="">RCS </a>; <a class="ltx_ref" href="#bib.bib33" title="">EUSIPCO </a></cite>، وكذلك برمجيات يمكنها تيسير تشغيل سلس في الزمن الحقيقي <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib27" title="">kim2013real </a></cite>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S1.SS1.p5">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الأمن وتحمل الأعطال:</span> إن الاقتران بين الفضاءين السيبراني والفيزيائي يفتح الباب أمام كثير من مواطن التعرض للهجمات وإخفاقات المكونات. وفي نطاق CPS، تبرز حاجة إلى خوارزميات جديدة تخفف الافتراض الضمني بسلامة الوكلاء وخلو التشغيل من الأعطال، ويمكنها أيضاً تقديم ضمانات نظرية في وجود مستخدمين خبيثين أو بيزنطيين <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib3" title="">cardenas2008secure </a>; <a class="ltx_ref" href="#bib.bib9" title="">SATS </a>; <a class="ltx_ref" href="#bib.bib16" title="">DSC </a></cite>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S1.SS1.p6">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">نظريات جديدة:</span> في ضوء التقدم التقني الكاسح، تبرز الحاجة إلى نظريات جديدة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib20" title="">gupta2000capacity </a>; <a class="ltx_ref" href="#bib.bib13" title="">freris2011fundamental </a>; <a class="ltx_ref" href="#bib.bib14" title="">WSN </a>; <a class="ltx_ref" href="#bib.bib26" title="">kim2012cyber </a></cite> تتناول CPS من منظور نظري أساسي وتنتج خوارزميات كفؤة ومنخفضة التعقيد ذات ضمانات أداء قابلة للإثبات <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib35" title="">distances </a>; <a class="ltx_ref" href="#bib.bib39" title="">rksimax1 </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S1.SS1.p7">
+<p class="ltx_p">وخلاصة القول إن أدوات النمذجة والخوارزميات من نظرية النظم وهندسة البرمجيات، المرتبطة بالتجريد والشبكات اللاسلكية والتحقق من النظم والتحكم وتحمل الأعطال، ينبغي استدعاؤها، ولكن ينبغي في الوقت نفسه إعادة النظر فيها. وتحقيقاً لهذه الغاية، يمكن للحلول الموزعة واللامركزية والمعرفة برمجياً أن تمهد الطريق لبناء نظم هندسية للمستقبل غير البعيد كثيراً.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S1.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">1.2 </span>النظم المعرفة برمجياً (SDSys)</h3>
+<div class="ltx_para" id="S1.SS2.p1">
+<p class="ltx_p">تهدف النظم المعرفة برمجياً (SDSys) إلى فصل الفضاء الفيزيائي عن الفضاء السيبراني عبر سحب وظائف التحكم من العتاد المضمن وتجريدها في طبقة برمجية. وقد أنجز عمل واسع في سياقات عدة: الراديو (SDR) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib30" title="">mitola2000cognitive </a></cite>، والشبكات (SDN) <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib22" title="">jain2013network </a></cite>، والأمن <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib4" title="">sdsec2 </a></cite>، والتخزين <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib5" title="">sdstor2 </a>; <a class="ltx_ref" href="#bib.bib7" title="">SDCache </a></cite>، والسحابة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib23" title="">SDCloud </a></cite>.
+تعرف الشبكات المعرفة برمجياً (SDN) طريقة جديدة للتحكم في عملية تمرير الرزم في الشبكة. وفي هذا السياق، تتاح محاكيات مفتوحة المصدر مبنية على Python لتقييم أداء البروتوكولات القائمة على SDN، مثل
+Mininet <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib8" title="">Mininet </a></cite> وMininet-WiFi <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib11" title="">fontes2015mininet </a></cite> وMaxinet <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib36" title="">Maxinet </a></cite>.
+اقتُرح في <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib23" title="">SDCloud </a></cite> نموذج معرف برمجياً لإدارة السحابة يمكنه أن يخفف بفعالية عدة تهديدات سيبرانية.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S2" lang="en">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>SDCPS: البنية المقترحة لـ CPS</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">في هذا القسم، نوضح بنيتنا المقترحة للنظم السيبرانية الفيزيائية وتطبيقات إنترنت الأشياء، وهي بنية
+تستند إلى مبادئ النظم المعرفة برمجياً.
+وتُستغل القدرة الوفيرة والمنتشرة على الاتصال والحوسبة في الأجهزة الذكية لتقديم حل تحكم نظامي خفيف الوزن وآمن وموثوق لإدارة نظم إنترنت الأشياء في الزمن الحقيقي.
+</p>
+</div>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.1 </span>متطلبات النموذج</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p">نعرّف مجموعة من المتطلبات ونصنفها في فئتين رئيستين: 1) متطلبات جودة الخدمة (QoS)، و2) المتطلبات الأمنية.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS1.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">متطلبات جودة الخدمة:</span></p>
+</div>
+<div class="ltx_para" id="S2.SS1.p3">
+<ol class="ltx_enumerate" id="S2.I1">
+<li class="ltx_item" id="S2.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I1.i1.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">استغلال الموارد:</em> الموارد وفيرة في CPS. وآلية الإدارة الفعالة هي التي تعظم الفوائد الناجمة عن استغلال أكبر قدر ممكن من إمكانات الحوسبة والاتصال والاستشعار والتشغيل المتاحة على نحو متماسك ومتزامن.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I1.i2.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">موازنة الحمل:</em> من المهم استثمار الموارد بطريقة <em class="ltx_emph ltx_font_italic">عادلة</em>. وينبغي معالجة طلبات الخدمة في الوقت الملائم مع الحفاظ على موازنة الحمل بين متحكمات النظام المختلفة. ويتمثل هدف رئيس للمجدولات في توزيع عبء العمل بأكبر قدر ممكن من التساوي لتخفيف ازدحام الشبكة وتقليل التأخيرات وتجنب الاختناقات (بمعنى فرط استخدام الاتصال أو الحوسبة)، وهي اختناقات قد تستنزف بطاريات الأجهزة الذكية البعيدة ومن ثم تضر بتشغيل النظام إضراراً شديداً.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I1.i3.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">الزمن الحقيقي:</em> يفرض التحكم في الكيانات الفيزيائية مثل السيارات والحساسات والشبكات الذكية وعمليات الرعاية الطبية قيوداً صارمة للزمن الحقيقي. ومن ثم فمن المهم تحديد مواعيد نهائية لإنجاز المهام الحرجة زمنياً وتصميم مجدولات في الزمن الحقيقي <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib21" title="">hou2009theory </a>; <a class="ltx_ref" href="#bib.bib27" title="">kim2013real </a></cite> تفي بها على نحو قابل للإثبات.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS1.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المتطلبات الأمنية:</span></p>
+</div>
+<div class="ltx_para" id="S2.SS1.p5">
+<p class="ltx_p">يشكل الأمن السيبراني هاجساً رئيساً في نظم التحكم الشبكية الحديثة، حيث تكتسب أهمية حيوية لتصميم آليات فعالة وتنفيذها بغية منع طيف من الهجمات السيبرانية وكشفها والتعافي منها. ويمكن استيعاب هذا الهدف بطرائق متعددة ومتكاملة، مثل: (أ) <em class="ltx_emph ltx_font_italic">التشفير</em>، الذي يحقق خصوصية البيانات وكذلك الأمن في الاتصال القائم على الرزم <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib16" title="">DSC </a></cite>، (ب) النهج القائمة على التحكم <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib10" title="">tabuada </a>; <a class="ltx_ref" href="#bib.bib9" title="">SATS </a>; <a class="ltx_ref" href="#bib.bib32" title="">satchidanandan2017dynamic </a></cite> التي تسعى إلى تحديد الهجمات وكذلك التعامل مع الهجمات «الخفيّة» (عبر ضمان ألا تضر الهجمات غير القابلة للكشف بتشغيل النظام)، (ج) الحلول القائمة على البرمجيات، حيث
+تُمنح المهام والكيانات المختلفة امتيازات ديناميكياً بواسطة وحدة أمنية مخصصة في النظام.</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p6">
+<p class="ltx_p">في CPS، تتطور استراتيجيات الهجوم باستمرار. وتبعاً لذلك، ينبغي تحديث الأدوات المختلفة الخاصة بمسح التهديدات وعزلها وحلها باستمرار كي تفي بمهمتها الحاسمة. وتنطبق نماذج هجوم عدة في نطاق CPS ونظم IoT (انظر أيضاً <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib37" title="">yampolskiy2013taxonomy </a></cite>):</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p7">
+<ul class="ltx_itemize" id="S2.I2">
+<li class="ltx_item" id="S2.I2.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I2.i1.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">أحصنة طروادة:</em> أحصنة طروادة هي ملفات برامج قابلة للتنفيذ يحقنها مستخدمون خبيثون في الإنترنت. وتُفعّل آثار حصان طروادة عندما ينزله المستخدم وينفذه. ولها أنواع عدة: أحصنة طروادة الإرسالية، وأحصنة طروادة ذات الوصول البعيد، وأحصنة طروادة الوكيلة، وأحصنة طروادة حجب الخدمة (DoS)، وأنواع كثيرة أخرى.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I2.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I2.i2.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجوم DoS/DDoS:</em> يشير حجب الخدمة (DoS) إلى فعل
+منع المستخدم من الوصول إلى موارد النظام. أما حجب الخدمة الموزع (DDoS) فهو نوع من هجمات DoS تُستخدم فيه عدة نظم مخترقة لاستهداف نظام واحد عبر جعل مجموعة فرعية من الموارد غير متاحة له.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I2.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I2.i3.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجوم تزوير الرزم:</em> يعرف هذا أيضاً باسم «حقن الرزم»،
+وينطوي على إنشاء رزم تبدو طبيعية لتعطيل الاتصال المباشر بين المستخدمين. ونتيجة لذلك، يمكن إطلاق هجمات «الرجل في الوسط»، حيث يمرر المهاجم الرسائل سراً وربما يعدلها بين طرفين يظنان أنهما يتواصلان مباشرة. وهناك أدوات عدة يستطيع المهاجم استخدامها لتوليد مثل هذه الهجمات، مثل TCPinject وpackETH.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I2.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I2.i4.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجوم أخذ البصمة:</em> يتنصت المهاجم على المحادثة (حتى إن كانت مشفرة) بين مستخدمين ويحصل على بعض السمات الحرجة للمرسل/المستقبل بهدف تحديد حالة الشبكة وتحليل أنماط حركة المرور بقصد تنفيذ أفعال ضارة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I2.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I2.i5.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجوم طبقة التطبيقات:</em>
+يصنف هذا النوع إلى أربعة أصناف: يستخدم الأول طلبات بروتوكول HTTP لإغراق موقع ما، ويعكس الثاني تهديدات لبروتوكول SMTP، ويتعلق الثالث ببروتوكول FTP، أما الأخير فيخص هجمات SNMP الهادفة إلى مراقبة النظام وإعادة تكوينه.
+وعادة ما يكون كشف مثل هذه الهجمات أصعب بكثير من كشف الهجمات على طبقة الشبكة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I2.i6" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I2.i6.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجمات المستخدمين:</em> في هذا النوع من الهجمات، يسعى مستخدم خبيث إلى
+خداع المشرف للحصول على الامتيازات نفسها التي يملكها مستخدم مشروع، مثلاً عبر استغلال ثغرات في آلة محلية لإنشاء حساب داخلها. ولهذا الهجوم أشكال مختلفة، مثل هجومي U2R وR2L.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ltx_para" id="S2.SS1.p8">
+<p class="ltx_p">يستغل المستخدمون الخبيثون عدم تجانس CPS لإطلاق هجمات على جميع مكونات النظام؛ ويؤدي ذلك إلى تصنيف إضافي للهجمات إلى:</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p9">
+<ol class="ltx_enumerate" id="S2.I3">
+<li class="ltx_item" id="S2.I3.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I3.i1.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجمات مرتبطة بالحساسات:</em> يحاول المهاجم التنصت على البيانات المستشعرة أو تغييرها من أجل تقويض تشغيل النظام.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I3.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I3.i2.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجمات مرتبطة بالمشغلات:</em> يسعى المهاجم إلى تغيير أوامر التحكم الخاصة بمشغل ما.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I3.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I3.i3.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجمات مرتبطة بالمتحكمات:</em> هجمات على عمليات اتخاذ القرار عالية المستوى، مثل المجدولات والمرسلات وخدمات البرمجيات الوسيطة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I3.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S2.I3.i4.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">هجمات مرتبطة بالاتصال:</em> قنوات الاتصال أهداف رئيسة للمهاجمين. وتوجد طرائق كثيرة للدفاع عن القنوات، تقوم أساساً على التشفير والترميز.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.2 </span>SDCPS: “نظرة عالية المستوى”</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p">في هذا القسم، نقدم بنية نظام SDCPS ونوضح كيف تُنظم فضاءاته وعناصره داخل نظم IoT. تظهر في الشكل <a class="ltx_ref" href="#S2.F1" title="Figure 1 ‣ 2.2 SDCPS: “نظرة عالية المستوى” ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">1</span></a> نظرة عامة، «عالية المستوى»، إلى النموذج المقترح المعرف برمجياً لـ CPS (SDCPS).</p>
+</div>
+<figure class="ltx_figure" id="S2.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="239" id="S2.F1.g1" src="Figures/Fig1.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>نظرة «عالية المستوى» إلى الحل المقترح.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p">تمتد الجوانب الرئيسة للبنية المقترحة عبر ثلاث طبقات.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p3">
+<ol class="ltx_enumerate" id="S2.I4">
+<li class="ltx_item" id="S2.I4.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">A.</span>
+<div class="ltx_para" id="S2.I4.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الفضاء الفيزيائي:</span></p>
+</div>
+<div class="ltx_para" id="S2.I4.i1.p2">
+<p class="ltx_p">تُضمّن في هذا الفضاء الكيانات الفيزيائية التي تحتاج نظم IoT إلى إدارتها والتحكم فيها. خذ مثالاً على ذلك <em class="ltx_emph ltx_font_italic">المنزل الذكي</em>، الذي يضم عدة أجهزة مثل أجهزة التلفاز والتدفئة والتكييف والأفران والغسالات والأبواب، وكثيراً من الكيانات الأخرى التي تحتاج إلى التحكم فيها محلياً أو عن بعد بطريقة مترابطة. ومثال آخر هو نظم النقل الذكية (ITS)، حيث يضم الفضاء الفيزيائي السيارات وإشارات المرور والحساسات وما إلى ذلك. وينظم الفضاء الفيزيائي في نطاقات ونطاقات فرعية يمكنها التفاعل مع الفضاء السيبراني عبر الحساسات والمشغلات والمرسلات.
+</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I4.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">B.</span>
+<div class="ltx_para" id="S2.I4.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الفضاء السيبراني:</span> يغلف هذا الفضاء العتاد والبرمجيات المخصصة للاتصال والاستشعار وجمع المعلومات ومعالجتها. ويشمل حساسـات ومشغلات ونقاط وصول غير متجانسة. وتعتمد كمية هذه الأجهزة وجودتها على تطبيق IoT قيد النظر. فعلى سبيل المثال، قد تتطلب نظم النقل الذكية وحدات معالجة أقوى مقارنة بالمنازل الذكية. ومن السمات المهمة للتجريد في SDCPS أنه، بصرف النظر عن نوع الأجهزة أو عددها أو التطبيق القائم، يمكن تثبيت فضاء التحكم ذاته وتنظيمه فوق الفضاء السيبراني لإدارة الفضاء الفيزيائي.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I4.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">C.</span>
+<div class="ltx_para" id="S2.I4.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">فضاء التحكم:</span> هذا هو قلب البنية المقترحة، حيث تهيأ جميع عمليات اتخاذ القرار وتتخذ. ويشمل هذا الفضاء المرسلات والمجدولات ومتحكمات الأمن والمنسقات.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S2.SS2.p4">
+<p class="ltx_p">تعد طبقة التحكم الموزعة النقطة المحورية في نموذجنا المقترح، كما هو موضح في الشكل <a class="ltx_ref" href="#S2.F2" title="Figure 2 ‣ 2.2 SDCPS: “نظرة عالية المستوى” ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2</span></a>. يهيكل الفضاء الفيزيائي في عدة مناطق ونطاقات فرعية، يتحكم في كل منها متحكم محلي مناظر ويديرها. وتتواصل المتحكمات المحلية بعضها مع بعض لتبادل المعلومات بغية اتخاذ قرارات تعاونية. ففي نظم النقل، على سبيل المثال، يمكن تقسيم مدينة معينة إلى مناطق مختلفة، يتحكم في كل منها مركز محلي للتحكم المروري، حيث تتبادل المتحكمات المحلية في المناطق المختلفة المعلومات وإجراءات التحكم لتحسين ظروف المرور المجربة في كامل المنطقة الحضرية.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p5">
+<p class="ltx_p">يعرض الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.2 SDCPS: “نظرة عالية المستوى” ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">3</span></a> لبنة البناء لتركيب متعدد الطبقات يمكن فيه دمج نطاقات فرعية مختلفة بطريقة رأسية (أي هرمية) أو أفقية (أي لامركزية).</p>
+</div>
+<figure class="ltx_figure" id="S2.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="165" id="S2.F2.g1" src="Figures/Fig2.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>طبقة التحكم الموزعة المعرفة برمجياً.</figcaption>
+</figure>
+<figure class="ltx_figure" id="S2.F3"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="314" id="S2.F3.g1" src="Figures/Fig3.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>نطاق فرعي جزئي ومكوناته الرئيسة. الشكل السفلي مستعار من مختبر WiSE في JAIST.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.3 </span>العناصر المعمارية</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p">نقدم المكونات والعناصر المعمارية الرئيسة في SDCPS مع أدوارها ومسؤولياتها وتفاعلها داخل تطبيقات IoT. ولإقامة قياس مع نظم التحكم، نستخدم لغة النظم الديناميكية الخطية<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+              
+              
+            نستخدم نظم خطية حتمية ثابتة زمنياً دون فقدان للعمومية، وذلك تبسيطاً للعرض. وللسبب نفسه، نفترض رسماً بيانياً اتصالياً غير موجه.</span></span></span>:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equationgroup ltx_eqn_table" dir="ltr" id="S2.E1">
+<tbody>
+<tr class="ltx_eqn_row" id="S4.EGx1"><td class="ltx_eqn_cell" colspan="6"></td></tr>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline" id="S2.E1.1">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\mathbf{x}^{(i)}(k+1)=" class="ltx_Math" dir="ltr" display="inline" id="S2.E1.1.m1"><mrow><mrow><msup><mi>𝐱</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_eqn_cell"><math alttext="\displaystyle A_{i}\mathbf{x}^{(i)}(k)+B_{i}\mathbf{u}_{i}(k)" class="ltx_Math" dir="ltr" display="inline" id="S2.E1.1.m2"><mrow><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>⁢</mo><msup><mi>𝐱</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>B</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>𝐮</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1a)</span></td>
+</tr>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline" id="S2.E1.2">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\mathbf{y}^{(i)}(k)=" class="ltx_Math" dir="ltr" display="inline" id="S2.E1.2.m1"><mrow><mrow><msup><mi>𝐲</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_eqn_cell"><math alttext="\displaystyle C_{i}\mathbf{x}^{(i)}(k)+D_{i}\mathbf{u}_{i}(k)," class="ltx_Math" dir="ltr" display="inline" id="S2.E1.2.m2"><mrow><mrow><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>⁢</mo><msup><mi>𝐱</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>D</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>𝐮</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1b)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p class="ltx_p">حيث يدل <math alttext="\mathbf{x}^{(i)}(k),\mathbf{u}^{(i)}(k),\mathbf{y}^{(i)}(k)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m1"><mrow><mrow><msup><mi>𝐱</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msup><mi>𝐮</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msup><mi>𝐲</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> على الحالة والقياس ودخل التحكم للنبتة <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m2"><mi>i</mi></math> عند الزمن <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m3"><mi>k</mi></math>. نرمز إلى تقديرات الحالة (مثلاً، كما تُستحصل بترشيح كالمان) بـ <math alttext="\hat{\mathbf{x}}^{(i)}(k)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m4"><mrow><msup><mover accent="true"><mi>𝐱</mi><mo>^</mo></mover><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+كما نمثل طوبولوجيا شبكة الاتصال برسم بياني غير موجه<span class="ltx_ERROR undefined">\@footnotemark</span> <math alttext="G(k):=(V(k),E(k))" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m5"><mrow><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>، حيث يمكن لنظامين فرعيين <math alttext="i,j" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m6"><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></math> أن يتواصلا عند الزمن <math alttext="k" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m7"><mi>k</mi></math> إذا وفقط إذا كان <math alttext="(i,j)\in E(k)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m8"><mrow><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>؛ ويكون الرسم البياني متغيراً زمنياً عموماً بسبب حركة الوكلاء، وكذلك بسبب خصائص الوسط اللاسلكي. وبالنسبة إلى عقدة <math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m9"><mi>i</mi></math>، نعرّف جوارها <math alttext="\mathbf{\mathcal{N}}_{i}(k):=\{j:(i,j)\in E(k)\}" class="ltx_Math" dir="ltr" display="inline" id="S2.SS3.p1.m10"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒩</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:=</mo><mrow><mo stretchy="false">{</mo><mi>j</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS3.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">العقد الفيزيائية</span></p>
+<ol class="ltx_enumerate" id="S2.I5">
+<li class="ltx_item" id="S2.I5.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I5.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">العقدة المتنقلة:</span> كيان ذو موقع متغير زمنياً بسبب الحركة (خذ مثلاً المركبات في شبكة نقل).</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I5.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I5.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">العنقود:</span> يمكن تقسيم النظام إلى عدة عناقيد تتكون من ذرات متعددة (عقد متنقلة). وتتغير علاقة انتماء كل عقدة إلى عنقود عبر الزمن، إذ قد تشارك العقد المتنقلة في عناقيد مختلفة، وذلك أساساً بناءً على موقعها.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS3.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">العقد السيبرانية</span></p>
+<ol class="ltx_enumerate" id="S2.I6">
+<li class="ltx_item" id="S2.I6.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I6.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الحساس:</span> يجمع الحساس معلومات من محيطه
+كما تحدده دائرة استشعاره. وتُرشح البيانات الناتجة محلياً ثم تُمرر إلى الحساس التجميعي المناظر. وقد تملك كل عقدة متنقلة عدة حساسـات. وهذا يناظر مُدخلاً (أو مجموعة فرعية من المُدخلات) من المتجه <math alttext="\mathbf{y}" class="ltx_Math" dir="ltr" display="inline" id="S2.I6.i1.p1.m1"><mi>𝐲</mi></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I6.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I6.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الحساس التجميعي:</span> لكل عقدة متنقلة حساس تجميعي واحد يلخص معلومات الاستشعار المجمعة من الحساسات الموجودة على متنها. وهذا هو بالضبط ما رمزنا إليه بمتجه القياس <math alttext="\mathbf{y}" class="ltx_Math" dir="ltr" display="inline" id="S2.I6.i2.p1.m1"><mi>𝐲</mi></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I6.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I6.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المشغل:</span>
+تستخدم المعلومات المجمعة بواسطة النظام (عبر طبقات تحكم علوية خارجية) والمتحكم المحلي لتركيب دخل التحكم للمشغل، أي <math alttext="\mathbf{u}" class="ltx_Math" dir="ltr" display="inline" id="S2.I6.i3.p1.m1"><mi>𝐮</mi></math>. وتتمثل الأفعال اللامركزية في تحديد مدخلات منفردة من <math alttext="\mathbf{u}^{(i)}" class="ltx_Math" dir="ltr" display="inline" id="S2.I6.i3.p1.m2"><msup><mi>𝐮</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup></math>، في حين تصف قوانين التحكم الموزعة استراتيجيات لتركيب <math alttext="\mathbf{u}^{(i)}" class="ltx_Math" dir="ltr" display="inline" id="S2.I6.i3.p1.m3"><msup><mi>𝐮</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup></math> من <math alttext="\{\hat{\mathbf{x}}^{(j)}(k),\mathbf{u}^{(j)}(k)\}_{j\in\mathbf{\mathcal{N}}_{i}}" class="ltx_Math" dir="ltr" display="inline" id="S2.I6.i3.p1.m4"><msub><mrow><mo stretchy="false">{</mo><mrow><msup><mover accent="true"><mi>𝐱</mi><mo>^</mo></mover><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msup><mi>𝐮</mi><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">}</mo></mrow><mrow><mi>j</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒩</mi><mi>i</mi></msub></mrow></msub></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I6.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S2.I6.i4.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">نقطة الوصول:</span> ترتبط عدة حساسـات بالنظام عبر نقاط وصول للاتصال اللاسلكي.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS3.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المنسقات</span></p>
+<ol class="ltx_enumerate" id="S2.I7">
+<li class="ltx_item" id="S2.I7.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I7.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المنسق المحلي:</span> هذا المتحكم مسؤول عن اتخاذ إجراءات لمجموعة فرعية من العقد المتجاورة عبر جمع البيانات من الوكلاء المناظرين. وفي مثال المنزل الذكي، يمكننا تنظيم المنزل في عدة مناطق محلية، أي غرف، يدير كل واحدة منها منسق محلي. وفي هذه الحالة، لا تتطلب قرارات عدة، مثل تشغيل/إطفاء الضوء في غرفة، أي معلومات من حساسـات في غرفة أخرى.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I7.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I7.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">منسق العنقود:</span> يسند كل عنقود إلى منسق يطبق الأدوار والإجراءات على العقد المرتبطة ضمن مجال تأثيره. وتشكل الأدوار الرئيسة لإدارة العقد والتحكم فيها، ونقل المعلومات من/إلى منسقي العناقيد الآخرين، وتحديث البرمجيات الوسيطة (راجع القسم <a class="ltx_ref" href="#S2.SS5" title="2.5 بنية طبقة البرمجيات الوسيطة ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.5</span></a>) بحالة العقد المرتبطة به، والحصول على القواعد والتعليمات من الطبقات العليا عبر البرمجيات الوسيطة وتنفيذها. وكمثال في تطبيق المنزل الذكي، تُدار عدة غرف ويُتحكم فيها بواسطة متحكم عنقود للحفاظ على توازن إمداد الطاقة بينها جميعاً.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I7.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I7.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">منسق المنطقة:</span> في تطبيق المنزل الذكي يمكن أن يكون هذا هو منسق الطابق، حيث تُدار عدة عناقيد ويُتحكم فيها بواسطة هذا المنسق. وهذا الكيان متحكم فوقي يحدد قواعد الاستراتيجيات الموزعة واللامركزية، مثل الاختيار من مجموعة فرعية من القواعد والامتيازات في كل لحظة قرار (أي كيفية تصميم مصفوفات التغذية الراجعة <math alttext="\{K_{i}" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.I7.i3.p1.m1"><mrow><mo stretchy="false">{</mo><msub><mi>K</mi><mi>i</mi></msub></mrow></math>} في مثالنا المعياري).</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S2.SS3.p5">
+<p class="ltx_p">يمكن للمنسقات اتخاذ إجراءات بناءً على معلومات مكتسبة من موارد عدة كما هو مبين في الشكل <a class="ltx_ref" href="#S2.F4" title="Figure 4 ‣ 2.3 العناصر المعمارية ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">4</span></a>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F4"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="180" id="S2.F4.g1" src="Figures/Fig4.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>تدفق الاتصال (المعلومات والتشغيل) عبر منسق؛ AP: نقطة وصول.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S2.SS3.p6">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المتحكمات</span></p>
+<ol class="ltx_enumerate" id="S2.I8">
+<li class="ltx_item" id="S2.I8.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I8.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المتحكم الذاتي:</span>
+لكل عقدة متنقلة، مثل مركبة في نظام النقل، متحكم مستقل يسمى المتحكم الذاتي. ويأخذ معلومات من الحساسات التجميعية كدخل، أو في بعض الحالات قد يأخذ أوامر أعلى من المنسق المحلي والمتحكمات لإطلاق قرار تحكم ذاتي.</p>
+</div>
+<div class="ltx_para" id="S2.I8.i1.p2">
+<p class="ltx_p">في مثالنا الجاري، قد يكون المتحكم الذاتي قانون تحكم تغذية راجعة مستقلاً، أي</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\mathbf{u}^{(i)}(k)=K_{i}(k)\hat{\mathbf{x}}^{(i)}(k)," class="ltx_Math" dir="ltr" display="block" id="S2.Ex1.m1"><mrow><mrow><mrow><msup><mi>𝐮</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>K</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mover accent="true"><mi>𝐱</mi><mo>^</mo></mover><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">كما في الحفاظ على سرعة ثابتة لمركبة معينة، وفق ما تحدده منسقات ومتحكمات أخرى.</p>
+</div>
+<figure class="ltx_figure" id="S2.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="189" id="S2.F5.g1" src="Figures/Fig5.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>تدفق الاتصال (المعلومات والتشغيل) عبر المتحكم الذاتي؛ AP: نقطة وصول.</figcaption>
+</figure>
+</li>
+<li class="ltx_item" id="S2.I8.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I8.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المتحكم المحلي:</span> تتخذ القرارات المحلية التي لا تتطلب أذونات من متحكمات الطبقة العليا بواسطة المتحكم المحلي. وتُكتسب المعلومات اللازمة لاتخاذ هذه القرارات من الحساسات التجميعية في العقدة المتنقلة ذاتها أو من تلك الموجودة في الوكلاء المجاورين.</p>
+</div>
+<div class="ltx_para" id="S2.I8.i2.p2">
+<p class="ltx_p">يكمن الفرق بين المنسق المحلي والمتحكم المحلي في أن المنسق قد يتخذ قراراً متعلقاً بأكثر من عقدة واحدة (فالمنسق يعرّف سياسات التحكم التي يكون المتحكم مسؤولاً عن إنفاذها).</p>
+</div>
+<div class="ltx_para" id="S2.I8.i2.p3">
+<p class="ltx_p">وبمصطلحات التحكم، يكون المتحكم المحلي تحكماً محلياً بالتغذية الراجعة على الصورة:</p>
+<div class="paper-arabizer-table-wrap"><table class="ltx_equation ltx_eqn_table" dir="ltr" id="S2.Ex2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\mathbf{u}^{(i)}(k)=\sum_{j\in\mathbf{\mathcal{N}}_{i}\cup i}K_{j}(k)\hat{%
+\mathbf{x}}^{(j)}(k)." class="ltx_Math" dir="ltr" display="block" id="S2.Ex2.m1"><mrow><mrow><mrow><msup><mi>𝐮</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>∈</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒩</mi><mi>i</mi></msub><mo>∪</mo><mi>i</mi></mrow></mrow></munder><mrow><msub><mi>K</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mover accent="true"><mi>𝐱</mi><mo>^</mo></mover><mrow><mo stretchy="false">(</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li class="ltx_item" id="S2.I8.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I8.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المتحكم الأعلى:</span> علاقته بالمتحكم المحلي كعلاقة المتحكم المحلي بالمتحكم الذاتي. فهو يمكّن ويدعم عملية اتخاذ القرار الهرمية من أعلى إلى أسفل، بينما تتدفق المعلومات من أسفل إلى أعلى.</p>
+</div>
+<div class="ltx_para" id="S2.I8.i3.p2">
+<p class="ltx_p">في مثالنا، يصمم المتحكم الأعلى مكاسب التغذية الراجعة وفق اعتماد شجري.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I8.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S2.I8.i4.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المتحكم العام:</span> يمثل هذا المحرك في النموذج المقترح، ويقع في جذر النموذج الهرمي. وتنشأ كل القرارات الحرجة وعالية المستوى عند هذا المتحكم. وله رؤية شمولية لجميع العقد البعيدة.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S2.SS3.p7">
+<p class="ltx_p">في مثال نظام النقل، يمكن أن نقول إن لأجزاء مختلفة من السيارة متحكمها الخاص، مثل التوجيه والمحرك والأضواء، حيث تُدار كل هذه الأجزاء ويُتحكم فيها بواسطة متحكم محلي. وتدار المتحكمات المحلية لجميع السيارات داخل منطقة محددة ويُتحكم فيها بواسطة متحكم أعلى عندما تكون هناك حاجة إلى إنفاذ قرار في تلك المنطقة، مثل أغراض تجنب التصادم.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p8">
+<p class="ltx_p">يمكن استنتاج مجموعة من خيارات التصميم لتقرير عدد الطبقات وعمق مستويات المتحكمات بناءً على خصوصيات التطبيق قيد النظر. وفي هذا الجانب، تكون المفاضلات حاضرة في كل مكان: سرعة الاستجابة مقابل موازنة الحمل مقابل الأمن مقابل التعقيد، وهكذا. وكمثال، يعني تقسيم الشبكة إلى عدة عناقيد أن المتحكم الأعلى مسؤول عن التحكم في عدد أقل من العقد ذات المستوى الأدنى. وقد يسرّع ذلك نقل القرارات وموازنة الحمل، لكنه من جهة أخرى قد يزيد تعقيد تركيب التحكم وقابلية التعرض لعدد من الهجمات السيبرانية. وقد توجد سيناريوهات مختلفة؛ فلا توجد خيارات مطلقة أو واضحة في CPS، ويجب دراسة كل شيء بوصفه جزءاً من كل مشترك.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS3.p9">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الواجهة: البرمجيات الوسيطة</span></p>
+</div>
+<div class="ltx_para" id="S2.SS3.p10">
+<p class="ltx_p">تتصل المنسقات والمتحكمات العليا والدنيا عبر جسر يسمى البرمجيات الوسيطة. وهي المقر البرمجي للمجدولات والخدمات والمرسلات وعدة متحكمات معرفة برمجياً.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p11">
+<p class="ltx_p">يكمن التحدي الرئيس في تصميم البرمجيات الوسيطة في تعظيم قابلية التوسع وقابلية التكيف والموثوقية. وتستعير بنيتنا المقترحة مبادئ من <em class="ltx_emph ltx_font_italic">Etherware</em> <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib25" title="">kim2008architecture </a></cite>، الموجهة للتحكم الشبكي بفضل قدراتها في الزمن الحقيقي <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib27" title="">kim2013real </a></cite>.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p12">
+<p class="ltx_p">تتكون البرمجيات الوسيطة من نوعين من <em class="ltx_emph ltx_font_italic">المكونات</em>: متحكمات وخدمات. فالأولى مجموعة من متحكمات SD مطورة للتحكم والتنسيق بين السيبراني والفيزيائي، أما الثانية فمسؤولة عن إدارة الاتصال بين المتحكمات وتبسيط التثبيت والتطوير والتنفيذ.
+وبالنسبة إلى خدمات الزمن الحقيقي، يعد <em class="ltx_emph ltx_font_italic">مجدول الزمن الحقيقي</em> مكوناً رئيساً في البرمجيات الوسيطة:
+تُسند إلى الرزم والأوامر أولويات ومواعيد تنفيذ نهائية مختلفة يجب استيعابها بوساطة الجدولة مع ضمانات QoS <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib21" title="">hou2009theory </a></cite>.
+وسيقدم وصف أكثر تفصيلاً لطبقة البرمجيات الوسيطة في القسم <a class="ltx_ref" href="#S2.SS5" title="2.5 بنية طبقة البرمجيات الوسيطة ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">2.5</span></a>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="211" id="S2.F6.g1" src="Figures/Fig6.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>مكونات التحكم المعرف برمجياً وتدفق الاتصال/التشغيل بينها؛ H: مضيف.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS3.p13">
+<p class="ltx_p">يلخص الشكل <a class="ltx_ref" href="#S2.F6" title="Figure 6 ‣ 2.3 العناصر المعمارية ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">6</span></a> التفاعلات والترابطات بين مكونات النظام.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS4">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.4 </span>بنية التحكم</h3>
+<div class="ltx_para" id="S2.SS4.p1">
+<p class="ltx_p">في هذا القسم، نقترب أكثر لمناقشة وحدات ومكونات النموذج المقترح بمزيد من التفصيل؛ انظر الشكل <a class="ltx_ref" href="#S2.F7" title="Figure 7 ‣ 2.4 بنية التحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">7</span></a>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">البنية الفيزيائية</span></p>
+</div>
+<div class="ltx_para" id="S2.SS4.p3">
+<p class="ltx_p">تتكون البنية الفيزيائية لكل متحكم من عدة معالجات، ويُطابق كل معالج مع وحدات معالجة متعددة. ويمكن للمتحكم تشغيل عدة عمليات في وقت واحد بطريقة متعددة الخيوط. علاوة على ذلك، يمكن الاستفادة من وحدات CPU وGPU، ويستخدم متحكم أحادي المرور لأنه عادة أسرع وأبسط من نظيره متعدد المرور، ويساعد في تحسين موثوقية النظام وأمنه وأدائه. وتستخدم الأنابيب بين خيوط المنتج/المستهلك كقنوات اتصال احتياطية لأغراض أمنية.</p>
+</div>
+<figure class="ltx_figure" id="S2.F7"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="179" id="S2.F7.g1" src="Figures/Fig7.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>بنية التحكم ووحداتها الرئيسة.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">البنية المنطقية</span></p>
+</div>
+<div class="ltx_para" id="S2.SS4.p5">
+<p class="ltx_p">تثبت مجموعة من المتحكمات (الفرعية) المخصصة المعرفة برمجياً في كل متحكم، وتتواصل هذه المتحكمات وتتعاون بعضها مع بعض للحفاظ على سير عمل سلس.
+يوضح الشكل <a class="ltx_ref" href="#S2.F8" title="Figure 8 ‣ 2.4 بنية التحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">8</span></a> المنظور المنطقي.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p6">
+<p class="ltx_p">كل واحد منها مجهز بعدة وحدات نقدمها ونعرّفها فيما يلي. وبالتحديد، نعرض كيف تعمل هذه الوحدات، إلى جانب مسؤولياتها الرئيسة، معاً للتحكم في تطبيقات IoT وإدارتها بطريقة معرفة برمجياً.</p>
+</div>
+<figure class="ltx_figure" id="S2.F8"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="187" id="S2.F8.g1" src="Figures/Fig8.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>المتحكمات الرئيسة داخل SDCPS_Controller.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p7">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">SDN_Controller:</span>
+هذا المتحكم مسؤول عن التحكم في الجزء الشبكي من النظام وإدارته. فهو يحتفظ بمعلومات الشبكة لجميع العقد ضمن مجاله، وتستخدم هذه المعلومات في توليد جداول التمرير. وتُمرر هذه الجداول إلى المفاتيح المتصلة بهذا المتحكم لأغراض الاتصال متعدد القفزات. ويمكن اتباع خوارزميات مختلفة لتوليد هذه الجداول مثل الشجرة الممتدة الدنيا، والمسار الأقصر، وما إلى ذلك)، بحسب هدف كل تطبيق IoT. فعلى سبيل المثال، في نظم النقل، يجب اتخاذ قرارات في الزمن الحقيقي، وفي مثل هذا الوضع تكون الخوارزميات التي تستهدف تحديداً الجدولة في الزمن الحقيقي مفيدة.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p8">
+<p class="ltx_p">الوحدات الرئيسة داخل SDN Controller هي:</p>
+<ol class="ltx_enumerate" id="S2.I9">
+<li class="ltx_item" id="S2.I9.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I9.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة حساب المسار:</span> حساب المسار من المصدر إلى الوجهة هو مسؤولية هذه الوحدة. ويختار مثل هذا المسار بناءً على عدة معايير.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I9.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I9.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة توليد جدول التمرير:</span> تولد جميع جداول التمرير داخل هذه الوحدة بناءً على مخرج وحدة حساب المسار. وتولد هذه الجداول وتخزن بواسطة هذه الوحدة. كما تحصل على تغذية راجعة من وحدة تتبع حالة الشبكة لتعديل المسار المحسوب عند الحاجة، كما يوضح لاحقاً.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I9.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I9.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تتبع حالة الشبكة:</span> تتعقب هذه الوحدة أي تغير (اختناقات، أو تدهور القناة، أو روابط مقطوعة) في حالة الشبكة. فعلى سبيل المثال، في شبكة نقل، عندما يُبنى طريق جديد في منطقة محددة، تستقبل هذه الوحدة إشعاراً بهذا التحديث لاتخاذ إجراءات إضافية.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S2.SS4.p9">
+<p class="ltx_p">تتوفر أيضاً وحدات أخرى لتمكين انضمام العقد واستخراجها.
+
+<br class="ltx_break"/><span class="ltx_text ltx_font_bold">SDIoT_Controller:</span></p>
+</div>
+<div class="ltx_para" id="S2.SS4.p10">
+<p class="ltx_p">تُحفظ هنا جميع المعلومات المتعلقة بالأجهزة الذكية في تطبيق IoT. وتستخدم معلومات مثل الحالة المنطقية والموقع الفيزيائي في عملية التنسيق والإدارة.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p11">
+<ol class="ltx_enumerate" id="S2.I10">
+<li class="ltx_item" id="S2.I10.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I10.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تتبع معلومات الجهاز الذكي:</span> يتمثل دور هذه الوحدة في مسح الأجهزة الذكية وتعقبها بحثاً عن الطلبات التي يجب إيصالها إلى المتحكمات المختلفة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I10.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I10.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تتبع حالة الجهاز الذكي:</span> هذه الوحدة مسؤولة عن تتبع حالة الجهاز الذكي ذات الصلة بالاتصال والتشغيل (مثلاً: مشغول، يرسل، يستقبل، «نائم» في تدوير الواجب، بطارية منخفضة، وما إلى ذلك).</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I10.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I10.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تتبع موقع الجهاز الذكي:</span> بما أن العقد المتنقلة تتحرك، فإن الموقع الفيزيائي للأجهزة الذكية يتغير أيضاً. ومن الحاسم تتبع الموقع باستمرار وبدقة لتمكين الخدمات وعناصر التحكم الواعية بالموقع (مثل الانتماء المجموعي في منسقات المناطق، والاتصال والحوسبة والتحكم الموزعة).</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">كما أن عمليتي انضمام الأجهزة الذكية واستخراجها تقعان ضمن مسؤولية هذا المتحكم.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p12">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">SDSecurity_Controller:</span></p>
+</div>
+<div class="ltx_para" id="S2.SS4.p13">
+<p class="ltx_p">تُسند مسؤولية الحفاظ على نظام آمن إلى هذا المتحكم. ولديه مجموعة من الوحدات ذات آليات وأدوات محددة مترابطة بعضها مع بعض لكشف عدة أنواع من الهجمات السيبرانية ومنعها وحلها.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p14">
+<ol class="ltx_enumerate" id="S2.I11">
+<li class="ltx_item" id="S2.I11.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I11.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة التدقيق والرسم:</span> من المهم الاحتفاظ بمعلومات عن المفاتيح والموجهات ونقاط الوصول وعقد الشبكة الأخرى لأغراض الأمن والسلامة. وتتولى هذه الوحدة مسؤولية تدقيق جميع المعلومات ذات الصلة بعقد البنية التحتية للشبكة مثل المورد والموقع والنوع، وذلك لاكتشاف كل السلوكيات غير الطبيعية.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I11.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الوحدة القائمة على المعرفة:</span> هذه الوحدة مسؤولة عن تخزين جميع الهجمات المكتشفة في النظام والاحتفاظ بها. وفي حال اكتشاف هجوم جديد، تستخدم الآليات والأدوات المضمنة لتحديد الحل المطلوب، بينما يخزن هذا الهجوم في الوحدة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I11.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة المسح والفرز:</span> تستخدم عدة آليات وأدوات لمسح حركة المرور وكشف ما إذا كان هناك تهديد لتفعيل وحدة الحل. وتتوفر أدوات مسح كثيرة، كل واحدة منها مسؤولة عن مسح نوع محدد من المعلومات.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S2.I11.i4.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة المراقبة:</span> تساعد الأدوات في هذه الوحدة المدافعين عن الشبكة على اكتشاف النشاطات الشاذة في الشبكة وتحليلها. ولهذا الغرض، توجد أدوات تصور كثيرة، وحاجة مستمرة إلى تطوير طرائق مراقبة في الزمن الحقيقي.
+</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span>
+<div class="ltx_para" id="S2.I11.i5.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة الكشف:</span> تعمل هذه الوحدة مع وحدات المتحكم الأخرى لكشف أي نوع من الهجمات السيبرانية. وتوجد أدوات كثيرة قائمة لهذا الغرض، ومن أمثلتها البارزة MINDS وADAM وNIDS.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i6" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">6.</span>
+<div class="ltx_para" id="S2.I11.i6.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة المنع:</span> هذه الأداة مسؤولة عن منع الهجمات من إحداث أي أفعال شاذة ونشرها عبر نطاقات CPS الأخرى.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i7" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">7.</span>
+<div class="ltx_para" id="S2.I11.i7.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة المعالجة:</span> أدوات هذه الوحدة مسؤولة عن حل الهجمات ومعالجتها في حال تعذر منعها، أو عندما يكون الكشف متأخراً جداً. وهي تحاول إزالة آثارها وحلها ثم إشعار الوحدة القائمة على المعرفة بهذا النوع من الهجمات.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i8" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">8.</span>
+<div class="ltx_para" id="S2.I11.i8.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة السياسات:</span> تُحفظ داخل هذه الوحدة مجموعة من السياسات الأمنية المرتبطة بـ CPS. وتُعرّف وتطبق سياسات مخصصة لكل تطبيق IoT. فعلى سبيل المثال، في المنزل الذكي، يمكن للمستخدم ضبط سياسات لإبقاء درجة حرارة الغرفة دون عتبة معينة وزيادتها فقط في حالات محددة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i9" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">9.</span>
+<div class="ltx_para" id="S2.I11.i9.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تتبع الحالة الأمنية:</span> تلخص هذه الوحدة حالة النظام المتعلقة بالأمن.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i10" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">10.</span>
+<div class="ltx_para" id="S2.I11.i10.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة التشفير/فك التشفير:</span> يعد تشفير حركة المرور طريقة فعالة لحماية الاتصال القائم على الرزم من المتطفلين. وهذه الوحدة مسؤولة عن التحقق من خصوصية البيانات عبر تطبيق طرائق التشفير/فك التشفير على البيانات.
+ومع ذلك، نشير إلى أن التشفير يضيف أعباء تخزين وزمن (إرسال ومعالجة) ولا يمكن استخدامه حلاً عاماً لكل الحالات، ولا سيما في التطبيقات الحرجة زمنياً.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i11" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">11.</span>
+<div class="ltx_para" id="S2.I11.i11.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة النسخ الاحتياطي:</span> إن الاحتفاظ بنسخ احتياطية من حالة النظام يسهل حمايته بفعالية. وتحتفظ هذه الوحدة بنسخ احتياطية متكررة لاستعادة النظام عندما يتعذر حل آثار هجوم ما بطريقة أخرى.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I11.i12" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">12.</span>
+<div class="ltx_para" id="S2.I11.i12.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة التحديث المستمر:</span> لديها مجموعة من الإجراءات لتحديث البرمجيات القائمة من أجل معالجة الهجمات الجديدة بحلول جديدة.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">SDCompute_Controller:</span></p>
+</div>
+<div class="ltx_para" id="S2.SS4.p15">
+<p class="ltx_p">يتحكم هذا المتحكم في موارد الحوسبة الشبكية مثل CPU وGPU وRAM ويديرها. وتثبت أدوات مخصصة لإدارة GPU وCPU والذاكرة.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p16">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">SDS_Controller:</span>
+يدير هذا المتحكم أجهزة التخزين وعملياته.</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p17">
+<ol class="ltx_enumerate" id="S2.I12">
+<li class="ltx_item" id="S2.I12.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I12.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تخزين البيانات:</span> تتولى هذه الوحدة مسؤولية التحكم في عملية تخزين البيانات في مصفوفات التخزين.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I12.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I12.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة تخزين البيانات مؤقتاً:</span> في CPS واسعة النطاق، حيث يتوزع المضيفون على مساحة كبيرة، من المهم تخزين أجزاء من المعلومات الأكثر طلباً/استخداماً محلياً <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib7" title="">SDCache </a></cite>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I12.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I12.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة إزالة تكرار البيانات:</span> في نظم قواعد البيانات الموزعة، من المهم الحفاظ على تزامن المعلومات؛ وتعنى هذه الوحدة بإزالة القيم المكررة بحيث يحصل أي مستخدم على أحدث المعلومات المتاحة.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p18">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدات مشتركة بين جميع الأنواع:</span>
+تشمل بعض الوحدات الشائعة المتاحة تقريباً في أي نوع من المتحكمات ما يلي:</p>
+</div>
+<div class="ltx_para" id="S2.SS4.p19">
+<ol class="ltx_enumerate" id="S2.I13">
+<li class="ltx_item" id="S2.I13.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I13.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة I/O:</span> وحدة الإدخال/الإخراج
+ترسل الرزم وتستقبلها وتمررها من الوحدات الأخرى وإليها.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I13.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I13.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة التنظيم:</span> تسند هذه الوحدة أولويات إلى الرزم بناءً على معايير QoS محددة مسبقاً.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I13.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I13.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة الجدولة:</span> تجدول هذه الوحدة إرسال الرزم مع أخذ الأولوية المسندة في الحسبان؛ وتوجد خوارزميات جدولة كثيرة جداً يمكن استخدامها لهذا الغرض، انظر مثلاً <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib21" title="">hou2009theory </a></cite>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I13.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S2.I13.i4.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">وحدة التجميع:</span> هذه الوحدة مسؤولة عن تجميع رزم تدفق معين قبل تمريرها إلى وحدة المعالجة التالية.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS4.p20">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">SDCPS_Controller:</span>
+يشكل هذا المتحكم المحرك الرئيس للنظام. وهو مسؤول عن إنجاز جميع الوظائف الموصوفة آنفاً وتنظيم التفاعل بين الفضاءين الفيزيائي والسيبراني عبر الإشراف على جميع المتحكمات الأخرى في النظام وتنسيقها، سواء مباشرة أو غير مباشرة.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS5">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.5 </span>بنية طبقة البرمجيات الوسيطة</h3>
+<div class="ltx_para" id="S2.SS5.p1">
+<p class="ltx_p">تُهيأ طبقة البرمجيات الوسيطة لتسريع اتخاذ القرار في الزمن الحقيقي وتيسير الاتصال والتفاعلات بين طبقات التحكم في النظام.
+وجميع الخدمات والكيانات معرفة برمجياً، وهو ما يمكّن عمليات تعديل المكونات وترحيلها أثناء التشغيل. ويبين الشكل <a class="ltx_ref" href="#S2.F9" title="Figure 9 ‣ 2.5 بنية طبقة البرمجيات الوسيطة ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">9</span></a> بنية طبقة البرمجيات الوسيطة وفضاءاتها الثلاثة: فضاء المتحكم، وفضاء النواة، وفضاء الخدمات.</p>
+</div>
+<figure class="ltx_figure" id="S2.F9"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="180" id="S2.F9.g1" src="Figures/Fig9.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>طبقة البرمجيات الوسيطة ومكوناتها الرئيسة.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S2.SS5.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">فضاء المتحكم:</span> ينفذ كل متحكم بوصفه مكوناً قائماً بذاته، وتتفاعل جميع المكونات بعضها مع بعض كما أوضحنا سابقاً. 
+<br class="ltx_break"/></p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS5.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">فضاء النواة:</span> هذا الفضاء مسؤول عن جدولة الرزم بناءً على أولويتها وحساسيتها الزمنية، كما تسندها أدوات متحكم الزمن الحقيقي. فعلى سبيل المثال، ينبغي خدمة إشارة قادمة من سيارة إسعاف أو عربة إطفاء أولاً.
+يمكن تنفيذ طيف واسع من خوارزميات الجدولة  <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib21" title="">hou2009theory </a></cite>. ولكل تطبيق IoT متطلبات QoS مختلفة، وبناءً على هذه المتطلبات ستختار خوارزمية الجدولة المناسبة.</p>
+</div>
+<div class="ltx_para" id="S2.SS5.p4">
+<p class="ltx_p">بعد قرارات الجدولة، تسند الرزمة إلى طابور محدد بناءً على أولويتها، وكذلك بناءً على المواقع الفيزيائية للمرسل/المستقبل المتنقلين. ولذلك فمن الضروري توفير خدمة تتبع الموقع للجدولة الواعية بالموقع في الزمن الحقيقي. وجدولة الطوابير في الشبكات مدروسة جيداً <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib34" title="">srikant2013communication </a></cite>، ويمكن توسيعها للجدولة المثلى الخاضعة للمواعيد النهائية والأولويات <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib21" title="">hou2009theory </a></cite>.</p>
+</div>
+<div class="ltx_para ltx_noindent" id="S2.SS5.p5">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">فضاء الخدمات:</span> تُغلف خدمات متنوعة داخل هذا الفضاء لتمكين اتخاذ القرار في الزمن الحقيقي وتحسين الاتصال الشبكي:</p>
+</div>
+<div class="ltx_para" id="S2.SS5.p6">
+<ol class="ltx_enumerate" id="S2.I14">
+<li class="ltx_item" id="S2.I14.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I14.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة المراسلة:</span> تحافظ هذه الخدمة على اتصال سلس بين جميع المتحكمات في الطبقة نفسها عبر واجهات API الغربية/الشرقية في الشكل <a class="ltx_ref" href="#S2.F3" title="Figure 3 ‣ 2.2 SDCPS: “نظرة عالية المستوى” ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">3</span></a>؛ خذ مثلاً المتحكمات داخل الطابق نفسه في مبنى ذكي. وبالإضافة إلى ذلك، تعالج الاتصال بين طبقات التحكم الموجودة في طوابق مختلفة عبر SDN.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I14.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة تتبع الموقع:</span> تتعقب هذه الخدمة مواقع العقد المتنقلة عبر الزمن. ولاحظ أن موقع العقدة قد يتغير نتيجة قرار تحكم (مثلاً، في نظام نقل يوجه متحكم محلي سيارة عند تقاطع).</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I14.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة وسم السرعة:</span> يعد تقدير سرعة العقد المتنقلة وحسابها مفيداً للتنبؤ بموقعها عبر الزمن (مثلاً، باستخدام أدوات تتبع مثل ترشيح كالمان)، كما في التنبؤ بموعد وصول سيارة إلى مسار محدد لتجنب التصادم أو الجمود.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S2.I14.i4.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة تحمل الأعطال:</span> يعد تحمل الأعطال حاسماً في نظم IoT واسعة النطاق. وتنفذ مجموعة من الحلول والسياسات داخل هذه الخدمة للتعافي من إخفاقات العتاد/البرمجيات (أي كيفية الانتقال إلى متحكم قريب في حال فشل المتحكم المحلي).</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span>
+<div class="ltx_para" id="S2.I14.i5.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة تسجيل المتحكم:</span> هذه الخدمة مسؤولة عن إدراج متحكم جديد مع معلوماته ذات الصلة للحفاظ على تحديث النظام.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i6" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">6.</span>
+<div class="ltx_para" id="S2.I14.i6.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة وسم الزمن:</span> تنفذ وحدة مخصصة داخل طبقة البرمجيات الوسيطة لتسجيل أزمنة الأحداث الماضية والحاضرة والمستقبلية، مثل المعلومات المستشعرة وإجراءات التحكم.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i7" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">7.</span>
+<div class="ltx_para" id="S2.I14.i7.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة ترجمة الزمن:</span> في CPS واسعة النطاق، لا تتفق الساعات <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib13" title="">freris2011fundamental </a></cite>، ومن الأساسي تحويل زمن الرزمة إلى زمن المتحكم، والعكس بالعكس.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i8" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">8.</span>
+<div class="ltx_para" id="S2.I14.i8.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة تزامن الزمن:</span> يعد تزامن الساعات الدقيق أداة أساسية للتنسيق الموزع في CPS. فهو يؤثر في الأداء وكذلك السلامة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib13" title="">freris2011fundamental </a></cite>، مع أمثلة تشمل بروتوكولات لاسلكية مثل MAC، وتدوير الواجب، والتحكم بالتشكيل، والتزامن في قواعد البيانات، وغير ذلك. وتحقيقاً لهذه الغاية، تكتسب الخوارزميات ذات قابلية التوسع العالية وأعباء الاتصال والحوسبة المنخفضة أهمية خاصة للتنفيذ في البرمجيات الوسيطة <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib17" title="">RK </a>; <a class="ltx_ref" href="#bib.bib40" title="">RK2 </a>; <a class="ltx_ref" href="#bib.bib12" title="">nfrer_algocdc </a></cite>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i9" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">9.</span>
+<div class="ltx_para" id="S2.I14.i9.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمة تتبع الموارد:</span> تستهدف هذه الخدمة تتبع الموارد في النظام كله بقصد توفير موازنة الحمل والإنصاف بين المستخدمين.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I14.i10" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">10.</span>
+<div class="ltx_para" id="S2.I14.i10.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">خدمات الطوارئ:</span> تتعقب هذه المجموعة من الخدمات المكونات وتتخذ إجراءات عندما تصبح غير متاحة أو تفشل.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS6">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.6 </span>مستويا الاتصال والتحكم</h3>
+<div class="ltx_para" id="S2.SS6.p1">
+<p class="ltx_p">تتميز البنية المقترحة بتفاعل بين مستويين للاتصال والتشغيل، هما <em class="ltx_emph ltx_font_italic">الأفقي</em> و<em class="ltx_emph ltx_font_italic">الرأسي</em>. يوضح الشكل <a class="ltx_ref" href="#S2.F10" title="Figure 10 ‣ 2.6 مستويا الاتصال والتحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">10</span></a> منظراً عاماً لهذين المستويين، مع تفصيل إضافي فيما يلي (لاحظ أننا نستخدم تطبيق النقل لأغراض التوضيح، وهو ما يفسر وجود السيارات في الشكل <a class="ltx_ref" href="#S2.F10" title="Figure 10 ‣ 2.6 مستويا الاتصال والتحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">10</span></a>).</p>
+</div>
+<div class="ltx_para" id="S2.SS6.p2">
+<ol class="ltx_enumerate" id="S2.I15">
+<li class="ltx_item" id="S2.I15.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I15.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المستوى الرأسي (تدفق التحكم):</span> كما أوضحنا أعلاه، يتدفق التحكم في الشبكة بطريقة هرمية.
+في أعلى مستوى تماماً يوجد متحكم الجذر، بينما تقع جميع العقد المتنقلة (مثل المركبات في نظام النقل) في المستوى الأدنى. وتملك الطبقة العليا قدرة تنسيقية على طبقتها الدنيا المباشرة، وامتيازات أعلى في حل النزاعات. وتكون طبقة البرمجيات الوسيطة مسؤولة عن دمج المتحكمات في الطبقة نفسها وتنسيقها وإدارة الاتصال عبر طبقات مختلفة. ويرتبط عدد الطبقات في المستوى الرأسي ارتباطاً وثيقاً
+بحجم الشبكة في المستوى الأفقي (مثلاً، يعتمد على أحجام عناقيد المناطق مثل مرسلي المناطق في النقل الحضري).
+</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I15.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I15.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المستوى الأفقي (تدفق البيانات):</span> يعكس هذا المستوى الاتصال بين الوكلاء المتنقلين والمتحكمات داخل الطبقة نفسها (مثل الاتصال المباشر بين المركبات القريبة، وبين المرسلات في الطبقة نفسها).
+استحضر المفاضلة بين أحجام التقسيم وعمق المستوى الرأسي: فعندما تُعنقد العقد أفقياً في مجموعات أصغر (مناطق)، يلزم عدد أكبر من منسقي العناقيد ومنسقي المناطق؛ ويؤثر ذلك في دقة النظام كله واستجابته وأدائه وأمنه، وكذلك في تكاليف البنية التحتية، وهي أمور ينبغي لمصممي النظام أخذها جميعاً في الحسبان.</p>
+</div>
+</li>
+</ol>
+</div>
+<figure class="ltx_figure" id="S2.F10"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_portrait" height="335" id="S2.F10.g1" src="Figures/Fig10.jpg" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>مستويا التحكم الأفقي والرأسي.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S2.SS6.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">عملية اتخاذ القرار</span></p>
+</div>
+<div class="ltx_para" id="S2.SS6.p4">
+<p class="ltx_p">تنجز عملية اتخاذ القرار بطريقة نظامية بواسطة النظام المقترح. ويعزز هذا التصور الجديد عملية اتخاذ القرار في الزمن الحقيقي، وموثوقية النظام، وأمنه، وقابليته للتوسع. وفيما يلي نقاش موجز لتدفق رزم التحكم.</p>
+</div>
+<section class="ltx_subsubsection" id="S2.SS6.SSS1">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.6.1 </span>المركزي مقابل اللامركزي / الموزع</h4>
+<div class="ltx_para" id="S2.SS6.SSS1.p1">
+<p class="ltx_p">يمثل مستوى التحكم والإدارة الفعال مفتاحاً لانتشار النظام. ويعد التحكم الموزع جزءاً لا يتجزأ من التعامل مع أحجام هائلة من حركة مرور الشبكة عبر استقلالية لامركزية تحقق تشغيلاً نظامياً قابلاً للتوسع ومستداماً ومتيناً وقابلاً للتكيف في بيئة عالية الديناميكية (خذ مثلاً فشل إشارة مرور أو إغلاق مسار بسبب حادث أو كارثة طبيعية). ومع ذلك، فإن السؤال: “هل نوزع أم لا نوزع؟” لا تكون إجابته سهلة دائماً: فقد تسبب الاتصالات والتفاعلات المحلية نزاعاً عبر عدة مستويات نظامية، مما يتطلب تحكماً إشرافياً لحله، وتزداد تعقيداته مع نمو حجم الشبكة. وتهدف البنية المقترحة إلى توظيف فوائد العالمين (المركزي واللامركزي / الموزع) بطريقة منهجية متماسكة.</p>
+</div>
+</section>
+<section class="ltx_subsubsection" id="S2.SS6.SSS2">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">2.6.2 </span>تدفق رزم التحكم</h4>
+<div class="ltx_para" id="S2.SS6.SSS2.p1">
+<p class="ltx_p">تؤثر الطريقة المنهجية المقترحة لعملية اتخاذ القرار تأثيراً أساسياً في تدفق رزم التحكم. تُحصد المعلومات من طبقات التحكم الواقعة تحتها وتُوصل إلى المتحكمات في الطبقات الأعلى التي تتخذ قرارات وإجراءات تحكم أعلى مستوى. وفي الوقت نفسه، تحتاج المتحكمات في الطبقات الواقعة تحتها إلى التعاون والتواصل بعضها مع بعض، وهي مسؤولة عن التحكم في جميع كيانات النظام المسندة إليها باتخاذ الإجراءات المناسبة وتمرير المعلومات إلى المتحكمات العليا في طبقة أعلى. وإجمالاً، يعالج هذا على نحو متنوع في سياقات مختلفة: فعلى سبيل المثال، تُثبت وتنفذ وحدة التدقيق والفرز الأمنية داخل متحكم SDSecurity، الموصوفة سابقاً، على جميع المتحكمات المعرفة برمجياً، لكنها لا تنفذ العمليات نفسها تماماً في كل مكون. وبالخلاصة، يمكن تصنيف اتخاذ القرار (من بين أمور أخرى
+) إلى:</p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p2">
+<ul class="ltx_itemize" id="S2.I16">
+<li class="ltx_item" id="S2.I16.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I16.i1.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">قرارات ذاتية</em>: يمكن لعقدة معينة أن تتخذ قراراً بنفسها دون التوافق مع متحكمات أو منسقات أخرى في المستويات نفسها أو الأعلى.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I16.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S2.I16.i2.p1">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">قرارات منسقة</em>: لا تكون العقد مستقلة بالكامل في اتخاذ قرار معين محلياً، وتكون هناك حاجة إلى التنسيق مع الطبقات الأعلى لاتخاذ إجراءات إضافية.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p3">
+<p class="ltx_p">ينطبق هذا التصنيف بالاستقراء على جميع مستويات هرمية اتخاذ القرار؛ ويمثل الشكل <a class="ltx_ref" href="#S2.F11" title="Figure 11 ‣ 2.6.2 تدفق رزم التحكم ‣ 2.6 مستويا الاتصال والتحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">11</span></a> سير العمل في النظام.</p>
+</div>
+<figure class="ltx_figure" id="S2.F11"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="400" id="S2.F11.g1" src="Figures/Fig11.jpg" width="574"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 11: </span>مخطط سير العمل لمعالجة طلبات التحكم في إطار SDCPS.</figcaption>
+</figure>
+<div class="ltx_para ltx_noindent" id="S2.SS6.SSS2.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">بنية الرزمة:</span>
+لدعم البنية المقترحة، من المهم أيضاً تعريف سمات الرزم المطلوبة للتحكم والاتصال والجدولة؛ مثل معلومات الموضع والتوقيت الخاصة بالوكيل، وأولوية الرزمة، وأمور كثيرة أخرى؛ راجع الشكل <a class="ltx_ref" href="#S2.F12" title="Figure 12 ‣ 2.6.2 تدفق رزم التحكم ‣ 2.6 مستويا الاتصال والتحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">12</span></a>.</p>
+</div>
+<figure class="ltx_figure" id="S2.F12"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_square" height="240" id="S2.F12.g1" src="Figures/Fig12.jpg" width="240"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 12: </span>محتويات رزمة في SDCPS.</figcaption>
+</figure>
+<div class="ltx_para" id="S2.SS6.SSS2.p5">
+<p class="ltx_p">يعرض إعداد النظام في الخوارزمية <a class="ltx_ref" href="#S2.F12" title="Figure 12 ‣ 2.6.2 تدفق رزم التحكم ‣ 2.6 مستويا الاتصال والتحكم ‣ 2 SDCPS: البنية المقترحة لـ CPS ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">12</span></a>.</p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p6">
+<span class="ltx_ERROR undefined">{algorithm}</span>
+<p class="ltx_p">[h]
+<span class="ltx_text ltx_caption">خوارزمية إعداد النموذج المقترح</span>
+<span class="ltx_ERROR undefined">{algorithmic}</span>[1]
+<span class="ltx_ERROR undefined">\Procedure</span>Setup
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">ابدأ</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">STEP1:</span> شغّل المتحكم العام وهيئه.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">ControllerLIST[]= None</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">SuperConLIST[]= None</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">LocalConLIST[]= None</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">AreaConLIST[]= None</span></p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p7">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">STEP2:</span> أنشئ كائنات المتحكمات وهيئها.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">ControllerLIST[]</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p7.m1"><mo stretchy="false">←</mo></math> أنشئ وهيئ قائمة المتحكمات.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">أنشئ نسخاً من SD Controller وأسند معرفاً لكل واحدة</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">لكل <math alttext="i=0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p7.m2"><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></math>، <math alttext="i{+}{+}" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS6.SSS2.p7.m3"><mrow><mi>i</mi><mo rspace="0em">+</mo><mo lspace="0em">+</mo></mrow></math>، طالما <math alttext="i&lt;length(instants)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p7.m4"><mrow><mi>i</mi><mo>&lt;</mo><mrow><mi>l</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>i</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>s</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></span> <span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">  Controller LIST[i]</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p7.m5"><mo stretchy="false">←</mo></math> instant(i)_ID</p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p8">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">STEP3:</span> أسند الأنواع لكل متحكم وأنشئ مجموعات فرعية.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">SuperConLIST[] <math alttext="\subseteq" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p8.m1"><mo>⊆</mo></math> ControllerLIST[]</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">LocalConLIST[] <math alttext="\subseteq" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p8.m2"><mo>⊆</mo></math> ControllerLIST[]</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">AreaConLIST[] <math alttext="\subseteq" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p8.m3"><mo>⊆</mo></math> ControllerLIST[]</span></p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p9">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">STEP4:</span> يقسم المتحكم العام بيئة النظام إلى نطاقات فرعية ويسند جميع المتحكمات.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">PartitionLIST[]</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p9.m1"><mo stretchy="false">←</mo></math> أنشئ وهيئ قائمة التقسيمات.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">أسند متحكم منطقة لكل تقسيم</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">لكل <math alttext="i=0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p9.m2"><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></math>، <math alttext="i{+}{+}" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS6.SSS2.p9.m3"><mrow><mi>i</mi><mo rspace="0em">+</mo><mo lspace="0em">+</mo></mrow></math>، طالما <math alttext="i&lt;length(ContollerLIST)" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p9.m4"><mrow><mi>i</mi><mo>&lt;</mo><mrow><mi>l</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>C</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>L</mi><mo>⁢</mo><mi>I</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></span> <span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">  PartitionLIST[i]</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p9.m5"><mo stretchy="false">←</mo></math> AreaConLIST[i].
+<span class="ltx_ERROR undefined">\State</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">أسند <span class="ltx_text ltx_font_italic">“متحكمات المناطق”</span> إلى المتحكمات المحلية المرتبطة</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">أسند <span class="ltx_text ltx_font_italic">“المتحكمات المحلية”</span> إلى المتحكمات العليا المرتبطة</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">أسند <span class="ltx_text ltx_font_italic">“المتحكمات العليا”</span> إلى المتحكم العام</span></p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p10">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">STEP5:</span> هيئ جميع الوحدات المعرفة برمجياً داخل كل متحكم.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">لكل <math alttext="i=0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p10.m1"><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></math>، <math alttext="i{+}{+}" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS6.SSS2.p10.m2"><mrow><mi>i</mi><mo rspace="0em">+</mo><mo lspace="0em">+</mo></mrow></math>، طالما <math alttext="i&lt;length(ContollerLIST" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS6.SSS2.p10.m3"><mrow><mi>i</mi><mo>&lt;</mo><mi>l</mi><mi>e</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>h</mi><mrow><mo stretchy="false">(</mo><mi>C</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>r</mi><mi>L</mi><mi>I</mi><mi>S</mi><mi>T</mi></mrow></mrow></math>)</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">  <span class="ltx_ERROR undefined">\While</span><math alttext="ContollerLIST[i].units\not=Established" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p10.m4"><mrow><mrow><mi>C</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>L</mi><mo>⁢</mo><mi>I</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow><mo lspace="0em" rspace="0.167em">.</mo><mrow><mrow><mi>u</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>s</mi></mrow><mo>≠</mo><mrow><mi>E</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>d</mi></mrow></mrow></mrow></math></span></p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p11">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">SDN_Unit</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p11.m1"><mo stretchy="false">←</mo></math> Forwarding_Table
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">          SDIoT_Unit</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p11.m2"><mo stretchy="false">←</mo></math> Sensors_Table
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">          SDSecurity_Unit</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p11.m3"><mo stretchy="false">←</mo></math> Policies_Table
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">          SDStorage_Unit</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p11.m4"><mo stretchy="false">←</mo></math> Storage_Table
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">          SDC_Unit</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p11.m5"><mo stretchy="false">←</mo></math> Compute_Table</p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p12">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">نهاية الحلقة</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">STEP6:</span> شغّل المتحكمات.</p>
+</div>
+<div class="ltx_para" id="S2.SS6.SSS2.p13">
+<span class="ltx_ERROR undefined">\State</span>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">STEP7:</span> يلتقط متحكم الجذر صوراً من جميع المتحكمات ويحتفظ بحالة كل واحد.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">لكل <math alttext="i=0" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p13.m1"><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow></math>، <math alttext="i{+}{+}" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS6.SSS2.p13.m2"><mrow><mi>i</mi><mo rspace="0em">+</mo><mo lspace="0em">+</mo></mrow></math>، طالما <math alttext="i&lt;length(ContollerLIST" class="ltx_math_unparsed" dir="ltr" display="inline" id="S2.SS6.SSS2.p13.m3"><mrow><mi>i</mi><mo>&lt;</mo><mi>l</mi><mi>e</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>h</mi><mrow><mo stretchy="false">(</mo><mi>C</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>r</mi><mi>L</mi><mi>I</mi><mi>S</mi><mi>T</mi></mrow></mrow></math>)</span>
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">          Image</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p13.m4"><mo stretchy="false">←</mo></math> ContollerLIST[i].captureState
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">          Root.Receive()</span> <math alttext="\leftarrow" class="ltx_Math" dir="ltr" display="inline" id="S2.SS6.SSS2.p13.m5"><mo stretchy="false">←</mo></math> Image
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">STEP8:</span> يمرر متحكم الجذر جميع صور المتحكمات إلى المتحكمات الواقعة تحته.
+<span class="ltx_ERROR undefined">\State</span><span class="ltx_text ltx_font_bold">انتهى</span>
+<span class="ltx_ERROR undefined">\EndProcedure</span></p>
+</div>
+</section>
+</section>
+<section class="ltx_subsection" id="S2.SS7">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">2.7 </span>سمات النموذج المقترح</h3>
+<div class="ltx_para" id="S2.SS7.p1">
+<p class="ltx_p">تلخص السمات الرئيسة للبنية المقترحة بإيجاز فيما يلي:</p>
+</div>
+<div class="ltx_para" id="S2.SS7.p2">
+<ol class="ltx_enumerate" id="S2.I17">
+<li class="ltx_item" id="S2.I17.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S2.I17.i1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الزمن الحقيقي:</span> تعزز بنية النظام المقترحة اتخاذ القرار في الزمن الحقيقي بثلاث طرائق: (أ) إضافة طبقة برمجيات وسيطة لتيسير الاتصال والتفاعل بين طبقات النظام المختلفة وتوسيعهما، (ب) تنفيذ الخدمات والمتحكمات كمكونات ذاتية في البرمجيات الوسيطة، (ج) تطبيق جدولة رزم قائمة على QoS عبر مستويات متعددة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I17.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S2.I17.i2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الموثوقية والأمن:</span>
+يمكن ضمان إتاحة الخدمة، في وجود مستخدمين خبيثين، عبر وصف طرائق اتخاذ إجراءات التحكم والوصول إلى البيانات. ويمكن تحقيق ذلك بدوره عبر تقاسم المسؤوليات وتوزيعها على عدة وحدات نظامية، وتوظيف التكرارات التي تحسن الصمود أمام نقاط الفشل أو الهجوم المفردة.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I17.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S2.I17.i3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المرونة وقابلية التوسع:</span>
+في CPS واسعة النطاق والمتقلبة، يلزم تحكم وإدارة عالي التردد لأن بعض العقد قد تتعرض للفشل أو لهجوم سيبراني. ويمكن لحلنا المقترح تلبية هذه الاعتبارات بطريقة قابلة للبرمجة، سريعة وبسيطة وذاتية التكوين. وعلاوة على ذلك، يجمع تصميمنا بين الاستشعار الموزع اللامركزي، واسترجاع المعلومات، والتحكم لضمان قابلية التوسع حتى لملايين العقد المتنقلة.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3" lang="en">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>النتائج التجريبية</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">في هذا القسم، نصف منصة الاختبار بالمحاكاة ونعرض عدة نتائج تجريبية لإبراز مزايا اعتماد إجراءات تحكم معرفة برمجياً لتطبيقات إنترنت الأشياء من حيث الكفاءة وقابلية التكيف.</p>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>بيئة المحاكاة</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">نُفذت بيئة منصة الاختبار لدينا عبر تثبيت Mininet 2.2.0rc1 VM <cite class="ltx_cite ltx_citemacro_cite"><a class="ltx_ref" href="#bib.bib8" title="">Mininet </a></cite> على Oracle Virtual Box وربطها عن بعد بنظام التشغيل Ubuntu. واستخدمنا Python لغة للبرمجة ووسعنا متحكم POX الخاص بـ Mininet (أي User_Switch) مع أصنافه الرئيسة للمضيف كي نلتقط عدة عناصر من البنية المقترحة.
+</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>سيناريوهات الاختبار والتجارب</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">اختبرنا مجموعة من السيناريوهات لأحجام وطوبولوجيات شبكية متغيرة.
+تلتقط طوبولوجيا الشبكة بواسطة رسم بياني <math alttext="G=(V,E)" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m1"><mrow><mi>G</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math> يتكون من <math alttext="n" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m2"><mi>n</mi></math> رؤوس (متحكمات ومستخدمين نهائيين)، <math alttext="V=\{v_{1},v_{2},\ldots,v_{n}\}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m3"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="false">}</mo></mrow></mrow></math>، مع <math alttext="m" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m4"><mi>m</mi></math> حواف تحدد الاتصال الممكن بين كيانات النظام. واعتمدنا في تجاربنا شجرة بعمق 3: يقع رأس المتحكم العام <math alttext="v_{1}" class="ltx_Math" dir="ltr" display="inline" id="S3.SS2.p1.m5"><msub><mi>v</mi><mn>1</mn></msub></math> عند الجذر، وتقع المتحكمات المحلية في المستوى الأول، وتقع المفاتيح (2 مفاتيح لكل متحكم محلي) في المستوى الثاني، أما المضيفون (المستخدمون) فيقعون في المستوى الثالث؛ ويؤخذ عدد المستخدمين متغيراً. وفي جميع حالات الاختبار، اخترنا تدفقات رزم تُسحب فيها عقدتا المصدر والوجهة عشوائياً وفق توزيع منتظم.
+</p>
+</div>
+<div class="ltx_para" id="S3.SS2.p2">
+<p class="ltx_p">درسنا أربعة سيناريوهات عبر تغيير مجموعة فرعية من المعلمات في نموذجنا مع تثبيت غيرها، كما هو موضح في الجدول <a class="ltx_ref" href="#S3.T1" title="Table 1 ‣ 3.2 سيناريوهات الاختبار والتجارب ‣ 3 النتائج التجريبية ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">1</span></a>: يمثل عمود الطلبات العدد الكلي للطلبات المخدومة، ويشير عمود المتحكمات إلى عدد المتحكمات المحلية في طوبولوجيتنا، وعمود المستخدمين إلى عدد المستخدمين لكل مفتاح، أما عمود الزمن فيدل على مجموع زمن التهيئة وزمن الاختبار.</p>
+</div>
+<figure class="ltx_table" id="S3.T1">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 1: </span>السيناريوهات التجريبية.</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" style="background-color:#BBDAFF;">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">NO</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_align_middle" dir="ltr" style="background-color:#BBDAFF;">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"><span class="ltx_text ltx_font_bold">Requests</span></td>
+</tr>
+</table></div>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Controllers</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Users</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Time</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="background-color:#BBDAFF;"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Sc.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10,000</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Changed</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">8</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Tested</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="background-color:#BBDAFF;"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Sc.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10,000</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">8</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Changed</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Tested</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="background-color:#BBDAFF;"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Sc.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Tested</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">8</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">8</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Changed</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="background-color:#BBDAFF;"><span class="ltx_text ltx_font_bold" style="background-color:#BBDAFF;">Sc.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">Tested</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">Changed</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">Changed</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">Tested</td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<div class="ltx_para" id="S3.SS2.p3">
+<p class="ltx_p">يوضح الشكل <a class="ltx_ref" href="#S3.F13" title="Figure 13 ‣ 3.2 سيناريوهات الاختبار والتجارب ‣ 3 النتائج التجريبية ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">13</span></a> أثر تغيير عدد المتحكمات المحلية والمستخدمين في زمن التهيئة للسيناريوهين الأولين. نستخدم الأعمدة الزرقاء لإظهار الزمن المطلوب لعدد متغير من المتحكمات مع تثبيت عدد المضيفين لكل مفتاح عند 8 (السيناريو 1).
+ونستخدم الأعمدة الحمراء لتوضيح الزمن اللازم لعدد متغير من المضيفين لكل مفتاح مع عدد ثابت قدره 8 من المتحكمات المحلية (السيناريو 2).
+لوحظ أن زيادة عدد المتحكمات تتطلب زمناً أكبر للتهيئة مقارنة بزيادة عدد المستخدمين في النظام عند الأعداد الأكبر،
+بينما لوحظ العكس عند الأعداد الأصغر. بالإضافة إلى ذلك، سُجل زمن متوازن عندما يساوي عدد المتحكمات عدد المضيفين لكل مفتاح (وكلاهما يساوي 8).
+</p>
+</div>
+<figure class="ltx_figure" id="S3.F13"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="158" id="S3.F13.g1" src="Figures/Sc1and2.png" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 13: </span>زمن التهيئة لحجم شبكة متغير (السيناريوهان 1 و2).</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p4">
+<p class="ltx_p">يبين الشكل <a class="ltx_ref" href="#S3.F14" title="Figure 14 ‣ 3.2 سيناريوهات الاختبار والتجارب ‣ 3 النتائج التجريبية ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">14</span></a> العدد الكلي للطلبات التي خدمها نظامنا لعدد 8 من المتحكمات المحلية و8 من المضيفين لكل مفتاح على امتداد عدة فترات زمنية. ويلاحظ أن النظام، بحكم التصميم، يمنح كل رزمة زمناً تنفيذياً متساوي الاحتمال على مدى عدة فترات زمنية بحيث يزداد عدد الطلبات المخدومة خطياً مع الزمن.</p>
+</div>
+<figure class="ltx_figure" id="S3.F14"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="152" id="S3.F14.g1" src="Figures/Sc3.png" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 14: </span>عدد الطلبات المخدومة على امتداد زمن المحاكاة (السيناريو 3).</figcaption>
+</figure>
+<div class="ltx_para" id="S3.SS2.p5">
+<p class="ltx_p">يوضح الشكل <a class="ltx_ref" href="#S3.F15" title="Figure 15 ‣ 3.2 سيناريوهات الاختبار والتجارب ‣ 3 النتائج التجريبية ‣ بنية معرفة برمجياً للتحكم في النظم السيبرانية الفيزيائية لإنترنت الأشياء"><span class="ltx_text ltx_ref_tag">15</span></a> العدد الكلي للطلبات المخدومة وزمن اختبار المحاكاة عبر ثلاثة تكوينات شبكية مختلفة لعدد كلي ثابت من المستخدمين (يساوي حاصل ضرب عدد المتحكمات المحلية * عدد المفاتيح لكل متحكم محلي * عدد المضيفين لكل مفتاح). لاحظ أن 8 من المتحكمات المحلية مع 8 مضيفين/مفتاح تخدم عدداً يزيد قليلاً على 16 متحكمات و4 مضيفين بزمن أقل. ويكشف ذلك فائدة الحصول على أداء أمثل
+بأدنى كلفة تهيئة للطوبولوجيات المتوازنة.</p>
+</div>
+<figure class="ltx_figure" id="S3.F15"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="150" id="S3.F15.g1" src="Figures/Sc4.png" width="269"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 15: </span>عدد الطلبات المخدومة وزمن مدة الاختبار عبر تكوينات شبكية متغيرة (السيناريو 4).</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S4" lang="en">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>الاستنتاجات</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">اقترحنا بنية معرفة برمجياً للنظم السيبرانية الفيزيائية وتطبيقات إنترنت الأشياء. وحددنا المتطلبات الرئيسة لمختلف تطبيقات إنترنت الأشياء من حيث الأداء والأمن وجودة الخدمة والتشغيل في الزمن الحقيقي. كما بينا كيف يستغل النموذج المقترح القدرة الحاسوبية لعدد كبير من مكونات النظام (المنسقات والمتحكمات والحساسات والأجهزة المحمولة) للتحكم في النظم بطريقة قابلة للتوسع ومرنة مع إعطاء الأولوية للأمن السيبراني. وتنفذ جميع المكونات كعقد معرفة برمجياً داخل طبقة البرمجيات الوسيطة، ويتدفق التحكم والمعلومات على نحوين، من أعلى إلى أسفل ومن أسفل إلى أعلى. وأخيراً، بنينا أداة منصة اختبار للمحاكاة بلغة Python لقياس أداء النموذج المقترح، وأجرينا تجارب موسعة تكشف الفوائد الرئيسة للنموذج المقترح.</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib" lang="en">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(1)</span>
+<span class="ltx_bibblock">
+Al-Ayyoub, M., Jararweh, Y., Benkhelifa, E., Vouk, M., Rindos, A., et al.: A
+novel framework for software defined based secure storage systems.
+
+</span>
+<span class="ltx_bibblock">Simulation Modelling Practice and Theory (2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(2)</span>
+<span class="ltx_bibblock">
+Alur, R., Courcoubetis, C., Halbwachs, N., Henzinger, T.A., Ho, P.H., Nicollin,
+X., Olivero, A., Sifakis, J., Yovine, S.: The algorithmic analysis of hybrid
+systems.
+
+</span>
+<span class="ltx_bibblock">Theoretical Computer Science <span class="ltx_text ltx_font_bold">138</span>(1), 3–34 (1995)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(3)</span>
+<span class="ltx_bibblock">
+Cardenas, A.A., Amin, S., Sastry, S.: Secure control: Towards survivable
+cyber-physical systems.
+
+</span>
+<span class="ltx_bibblock">In: 28th IEEE International Conference on Distributed Computing
+Systems Workshops (ICDCS), pp. 495–500 (2008)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(4)</span>
+<span class="ltx_bibblock">
+Darabseh, A., Al-Ayyoub, M., Jararweh, Y., Benkhelifa, E., Vouk, M., Rindos,
+A.: SDSecurity: A software defined security experimental framework.
+
+</span>
+<span class="ltx_bibblock">In: IEEE International Conference on Communication Workshop (ICCW),
+pp. 1871–1876 (2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(5)</span>
+<span class="ltx_bibblock">
+Darabseh, A., Al-Ayyoub, M., Jararweh, Y., Benkhelifa, E., Vouk, M., Rindos,
+A.: SDStorage: A software defined storage experimental framework.
+
+</span>
+<span class="ltx_bibblock">In: IEEE International Conference on Cloud Engineering (IC2E), pp.
+341–346 (2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(6)</span>
+<span class="ltx_bibblock">
+Darabseh, A., Freris, N.: A software defined architecture for cyberphysical
+systems.
+
+</span>
+<span class="ltx_bibblock">In: 4th IEEE International Conference on Software Defined Systems
+(SDS), pp. 54–60 (2017)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(7)</span>
+<span class="ltx_bibblock">
+Darabseh, A., Freris, N., Jararweh, Y., Al-Ayyoub, M.: SDCache: Software
+defined data caching control for cloud services.
+
+</span>
+<span class="ltx_bibblock">In: 4th IEEE International Conference on Future Internet of Things
+and Cloud (FiCloud) (2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(8)</span>
+<span class="ltx_bibblock">
+De Oliveira, R., Shinoda, A., Schweitzer, C., Rodrigues Prete, L.: Using
+Mininet for emulation and prototyping software-defined networks.
+
+</span>
+<span class="ltx_bibblock">In: IEEE Colombian Conference on Communications and Computing
+(COLCOM), pp. 1–6 (2014)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(9)</span>
+<span class="ltx_bibblock">
+Duan, X., Freris, N., Cheng, P.: Secure clock synchronization under collusion
+attacks.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 54th Allerton Conference on Communication,
+Control and Computing, pp. 1142–1148 (2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(10)</span>
+<span class="ltx_bibblock">
+Fawzi, H., Tabuada, P., Diggavi, S.: Secure estimation and control for
+cyber-physical systems under adversarial attacks.
+
+</span>
+<span class="ltx_bibblock">IEEE Transactions on Automatic Control <span class="ltx_text ltx_font_bold">59</span>(6), 1454–1467
+(2014)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(11)</span>
+<span class="ltx_bibblock">
+Fontes, R.R., Afzal, S., Brito, S.H., Santos, M.A., Rothenberg, C.E.:
+Mininet-WiFi: Emulating software-defined wireless networks.
+
+</span>
+<span class="ltx_bibblock">In: 11th International Conference on Network and Service Management
+(CNSM), pp. 384–389 (2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(12)</span>
+<span class="ltx_bibblock">
+Freris, N., Borkar, V., Kumar, P.R.: A model-based approach to clock
+synchronization.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 48th IEEE Conference on Decision and Control
+(CDC), pp. 5744–5749 (2009)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(13)</span>
+<span class="ltx_bibblock">
+Freris, N., Graham, S., Kumar, P.R.: Fundamental limits on synchronizing clocks
+over networks.
+
+</span>
+<span class="ltx_bibblock">IEEE Transactions on Automatic Control <span class="ltx_text ltx_font_bold">56(6)</span>, 1352–1364
+(2011)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(14)</span>
+<span class="ltx_bibblock">
+Freris, N., Kowshik, H., Kumar, P.R.: Fundamentals of Large Sensor Networks:
+Connectivity, Capacity, Clocks, and Computation.
+
+</span>
+<span class="ltx_bibblock">Proceedings of the IEEE <span class="ltx_text ltx_font_bold">98</span>(11), 1828–1846 (2010)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(15)</span>
+<span class="ltx_bibblock">
+Freris, N., Öçal, O., Vetterli, M.: Compressed Sensing of Streaming
+data.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 51st Allerton Conference on Communication,
+Control and Computing, pp. 1242–1249 (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(16)</span>
+<span class="ltx_bibblock">
+Freris, N., Patrinos, P.: Distributed computing over encrypted data.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 54th Allerton Conference on Communication,
+Control and Computing, pp. 1116–1122 (2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(17)</span>
+<span class="ltx_bibblock">
+Freris, N., Zouzias, A.: Fast distributed smoothing of relative measurements.
+
+</span>
+<span class="ltx_bibblock">In: 51st IEEE Conference on Decision and Control (CDC), pp.
+1411–1416 (2012)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(18)</span>
+<span class="ltx_bibblock">
+Gubbi, J., Buyya, R., Marusic, S., Palaniswami, M.: Internet of Things (IoT):
+A vision, architectural elements, and future directions.
+
+</span>
+<span class="ltx_bibblock">Future Generation Computer Systems <span class="ltx_text ltx_font_bold">29</span>(7), 1645–1660 (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(19)</span>
+<span class="ltx_bibblock">
+Gungor, V.C., Hancke, G.P.: Industrial wireless sensor networks: Challenges,
+design principles, and technical approaches.
+
+</span>
+<span class="ltx_bibblock">IEEE Transactions on Industrial Electronics <span class="ltx_text ltx_font_bold">56</span>(10),
+4258–4265 (2009)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(20)</span>
+<span class="ltx_bibblock">
+Gupta, P., Kumar, P.R.: The capacity of wireless networks.
+
+</span>
+<span class="ltx_bibblock">IEEE Transactions on information theory <span class="ltx_text ltx_font_bold">46</span>(2), 388–404
+(2000)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib21">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(21)</span>
+<span class="ltx_bibblock">
+Hou, I.H., Borkar, V., Kumar, P.R.: A theory of QoS for wireless.
+
+</span>
+<span class="ltx_bibblock">In: IEEE INFOCOM, pp. 486–494 (2009)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib22">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(22)</span>
+<span class="ltx_bibblock">
+Jain, R., Paul, S.: Network virtualization and software defined networking for
+cloud computing: a survey.
+
+</span>
+<span class="ltx_bibblock">IEEE Communications Magazine <span class="ltx_text ltx_font_bold">51</span>(11), 24–31 (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib23">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(23)</span>
+<span class="ltx_bibblock">
+Jararweh, Y., Al-Ayyoub, M., Darabseh, A., Benkhelifa, E., Rindos, A.: Software
+defined cloud: Survey, system and evaluation.
+
+</span>
+<span class="ltx_bibblock">Future Generation Computer Systems <span class="ltx_text ltx_font_bold">58</span>, 56–74 (2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib24">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(24)</span>
+<span class="ltx_bibblock">
+Jararweh, Y., Al-Ayyoub, M., Darabseh, A., Benkhelifa, E., Vouk, M., Rindos,
+A.: SDIoT: a software defined based internet of things framework.
+
+</span>
+<span class="ltx_bibblock">Journal of Ambient Intelligence and Humanized Computing
+<span class="ltx_text ltx_font_bold">6</span>(4), 453–461 (2015)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib25">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(25)</span>
+<span class="ltx_bibblock">
+Kim, K.D., Kumar, P.R.: Architecture and mechanism design for real-time and
+fault-tolerant etherware for networked control.
+
+</span>
+<span class="ltx_bibblock">In: Proceeding of the 17th IFAC World Congress, pp. 9421–9426 (2008)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib26">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(26)</span>
+<span class="ltx_bibblock">
+Kim, K.D., Kumar, P.R.: Cyber–physical systems: A perspective at the
+centennial.
+
+</span>
+<span class="ltx_bibblock">Proceedings of the IEEE <span class="ltx_text ltx_font_bold">100</span>(Special Centennial Issue),
+1287–1308 (2012)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib27">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(27)</span>
+<span class="ltx_bibblock">
+Kim, K.D., Kumar, P.R.: Real-time middleware for networked control systems and
+application to an unstable system.
+
+</span>
+<span class="ltx_bibblock">IEEE Transactions on Control Systems Technology <span class="ltx_text ltx_font_bold">21</span>(5),
+1898–1906 (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib28">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(28)</span>
+<span class="ltx_bibblock">
+Lee, E.A.: Cyber physical systems: Design challenges.
+
+</span>
+<span class="ltx_bibblock">In: 11th IEEE International Symposium on Object and
+Component-Oriented Real-Time Distributed Computing (ISORC), pp. 363–369
+(2008)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib29">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(29)</span>
+<span class="ltx_bibblock">
+Lee, E.A., Seshia, S.A.: Introduction to embedded systems: A cyber-physical
+systems approach.
+
+</span>
+<span class="ltx_bibblock">MIT Press (2011)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib30">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(30)</span>
+<span class="ltx_bibblock">
+Mitola, J.: Cognitive radio—an integrated agent architecture for software
+defined radio.
+
+</span>
+<span class="ltx_bibblock">Ph.D. thesis, Royal Institute of Technology (KTH) (2000)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib31">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(31)</span>
+<span class="ltx_bibblock">
+Rajkumar, R.R., Lee, I., Sha, L., Stankovic, J.: Cyber-physical systems: the
+next computing revolution.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 47th Design Automation Conference, pp.
+731–736 (2010)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib32">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(32)</span>
+<span class="ltx_bibblock">
+Satchidanandan, B., Kumar, P.R.: Dynamic watermarking: Active defense of
+networked cyber–physical systems.
+
+</span>
+<span class="ltx_bibblock">Proceedings of the IEEE <span class="ltx_text ltx_font_bold">105</span>(2), 219–240 (2017)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib33">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(33)</span>
+<span class="ltx_bibblock">
+Sopasakis, P., Freris, N., Patrinos, P.: Accelerated reconstruction of a
+compressively sampled data stream.
+
+</span>
+<span class="ltx_bibblock">In: 24th European Signal Processing Conference (EUSIPCO) (2016)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib34">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(34)</span>
+<span class="ltx_bibblock">
+Srikant, R., Ying, L.: Communication networks: an optimization, control, and
+stochastic networks perspective.
+
+</span>
+<span class="ltx_bibblock">Cambridge University Press (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib35">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(35)</span>
+<span class="ltx_bibblock">
+Vlachos, M., Freris, N., Kyrillidis, A.: Compressive mining: fast and optimal
+data mining in the compressed domain.
+
+</span>
+<span class="ltx_bibblock">The VLDB Journal <span class="ltx_text ltx_font_bold">24</span>(1), 1–24 (2014)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib36">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(36)</span>
+<span class="ltx_bibblock">
+Wette, P., Draxler, M., Schwabe, A., Wallaschek, F., Zahraee, M., Karl, H.:
+Maxinet: Distributed emulation of software-defined networks.
+
+</span>
+<span class="ltx_bibblock">In: IFIP Networking Conference, pp. 1–9 (2014)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib37">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(37)</span>
+<span class="ltx_bibblock">
+Yampolskiy, M., Horvath, P., Koutsoukos, X.D., Xue, Y., Sztipanovits, J.:
+Taxonomy for description of cross-domain attacks on CPS.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 2nd ACM International Conference on high
+confidence networked systems, pp. 135–142 (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib38">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(38)</span>
+<span class="ltx_bibblock">
+Zoumpoulis, S., Vlachos, M., Freris, N., Lucchese, C.: Right-protected data
+publishing with provable distance-based mining.
+
+</span>
+<span class="ltx_bibblock">IEEE Transactions on Knowledge and Data Engineering <span class="ltx_text ltx_font_bold">26</span>(8),
+2014–2028 (2014)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib39">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(39)</span>
+<span class="ltx_bibblock">
+Zouzias, A., Freris, N.: Randomized Extended Kaczmarz for solving least
+squares.
+
+</span>
+<span class="ltx_bibblock">SIAM Journal on Matrix Analysis and Applications <span class="ltx_text ltx_font_bold">34</span>(2),
+773–793 (2013)
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib40">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(40)</span>
+<span class="ltx_bibblock">
+Zouzias, A., Freris, N.: Randomized gossip algorithms for solving Laplacian
+systems.
+
+</span>
+<span class="ltx_bibblock">In: Proceedings of the 14th European Control Conference (ECC), pp.
+1920–1925 (2015)
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 10:50:44 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

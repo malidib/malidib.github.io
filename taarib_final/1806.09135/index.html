@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL</title>
+<!--Generated on Wed May 13 08:15:55 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<link href="LaTeXML.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-article.css" rel="stylesheet" type="text/css"/>
+<link href="ltx-amsart.css" rel="stylesheet" type="text/css"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head>
+<body dir="rtl"><main class="paper-arabizer-article">
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line ltx_leqno">
+<h1 class="ltx_title ltx_title_document">ارفع مستوى التصنيع المجزأ:
+<br class="ltx_break"/>استعادة الوظيفة الحقيقية عبر BEOL
+</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Satwik Patnaik, Mohammed Ashraf, Johann Knechtel, and Ozgur Sinanoglu
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation"><span class="ltx_text ltx_affiliation_institution">Tandon School of Engineering, New York University, New York, USA</span><span class="ltx_text ltx_affiliation_institution">Division of Engineering, New York University Abu Dhabi, United Arab Emirates</span>
+</span>
+<span class="ltx_contact ltx_role_email"><a href="mailto:sp4012,%20ma199,%20johann,%20ozgursin%20@nyu.edu">sp4012, ma199, johann, ozgursin @nyu.edu</a>
+</span></span></span>
+</div>
+<div class="ltx_dates">(2018)</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract paper-arabizer-abstract-title">الملخص</h6>
+<p class="ltx_p">يسعى التصنيع المجزأ (SM) إلى
+الحماية من قرصنة الملكية الفكرية (IP) في تصاميم الشرائح.
+ونقترح هنا مخططاً للتلاعب بكل من التموضع والتوجيه على نحو متشابك، مما يزيد متانة تخطيطات SM.
+وتتمثل المراحل الرئيسة لمخططنا في عشوأة التصميم (جزئياً)، ووضع وتوجيه قائمة التوصيلات الخاطئة،
+واستعادة التصميم الأصلي بإعادة توجيه BEOL.
+واستناداً إلى
+أحدث هجمات القرب،
+نبرهن أن مخططنا يتفوق بوضوح على الأعمال السابقة (أي بمعدلات وصل صحيحة مقدارها 0%).
+ويُحدث مخططنا زيادات PPA قابلة للتحكم ويخفض الكلفة التجارية (ويتحقق الأخير بالتقسيم عند طبقات أعلى).</p>
+</div>
+<span class="ltx_note ltx_note_frontmatter ltx_role_journalyear"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">journalyear: </span>2018</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_copyright"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">copyright: </span>acmcopyright</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_conference"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">conference: </span>DAC ’18: المؤتمر السنوي 55 لأتمتة التصميم 2018; 24–29 يونيو، 2018; سان فرانسيسكو، كاليفورنيا، الولايات المتحدة الأمريكية</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_booktitle"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">booktitle: </span>DAC ’18: DAC ’18: المؤتمر السنوي 55 لأتمتة التصميم 2018، 24–29 يونيو، 2018، سان فرانسيسكو، كاليفورنيا، الولايات المتحدة الأمريكية</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_price"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">price: </span>15.00</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_doi"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">doi: </span>10.1145/3195970.3196100</span></span></span><span class="ltx_note ltx_note_frontmatter ltx_role_isbn"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">isbn: </span>978-1-4503-5700-5/18/06</span></span></span>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1. </span>المقدمة</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">طُرح 2011 من قبل وكالة IARPA،
+ويسعى <em class="ltx_emph ltx_font_italic">التصنيع المجزأ (SM)</em>
+إلى حماية شركات تصميم الشرائح من قرصنة ملكيتها الفكرية (IP) على يد مرافق تصنيع خارجية <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib1" title="">mccants11, </a>)</cite>. ويمكن أن يساعد SM أيضاً في التخفيف من تهديدات مرتبطة، مثل إدخال أحصنة طروادة العتادية أو
+فرط التصنيع غير المصرح به <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib2" title="">HW_Obfuscation-FBT17, </a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">في نموذج التهديد الأكثر شيوعاً <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>; <a class="ltx_ref" href="#bib.bib4" title="">hill13, </a>; <a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>; <a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>; <a class="ltx_ref" href="#bib.bib9" title="">feng17, </a>)</cite>،
+يتولى مصنع تصنيع خارجي متقدم التعامل مع الجزء الأمامي من خط التصنيع (FEOL)،
+ويُعد منافساً لكنه <em class="ltx_emph ltx_font_italic">غير موثوق به</em>، في حين يُصنَّع الجزء الخلفي من خط التصنيع (BEOL) لاحقاً (فوق
+FEOL) في مرفق تكامل
+<em class="ltx_emph ltx_font_italic">موثوق</em>.
+إضافة إلى ذلك، تناول Wang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib10" title="">wang17_FEOL, </a>)</cite>
+نموذج تهديد آخر تكون فيه منشأة BEOL غير موثوقة؛ وفيه يسعى الخصوم إلى استنتاج البوابات
+من كامل مكدس BEOL (أي إن جميع الأسلاك/الفتحات متاحة، باستثناء التوصيل داخل الخلية في M1).</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">تستند وعود SM الأمنية إلى افتراضين: (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m1"><mi>i</mi></math>) أن مصنّعي الطرف الثالث لا يملكون وصولاً إلى التصميم الكامل، بل إلى
+FEOL أو BEOL فقط،
+و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S1.p3.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) أن هذه الأطراف الثالثة لا تتواطأ.
+وبالنسبة إلى
+نموذج التهديد التقليدي (مصنع FEOL غير الموثوق)، يوجد
+خطر إضافي: إذ يستطيع الخصوم في المصنع استغلال تفاصيل التنفيذ الفيزيائي لتخطيط FEOL.
+وبصورة أكثر تحديداً، لأن أدوات أتمتة التصميم تُحسّن
+القدرة والأداء والمساحة (PPA)، فإن جزء FEOL نفسه
+يحتوي على دلائل متنوعة حول
+وصلات BEOL البينية المفقودة. والأهم أن البوابات المراد وصلها توضع عادةً قريبةً
+بعضها من بعض.
+وتستغل
+هجمات <em class="ltx_emph ltx_font_italic">القرب</em> المختلفة <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>; <a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>; <a class="ltx_ref" href="#bib.bib9" title="">feng17, </a>)</cite> هذا الدليل المتعلق بالقرب (إلى جانب دلائل أخرى مثل قيود التأخير أو مسارات التوجيه)، مما يثير مخاوف بشأن الوعد الأمني
+الذي يقدمه SM.</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">في هذا العمل، نرفع «مستوى اللعبة» في SM للحماية من خصوم مصانع التصنيع الخبيثة. وتتمثل الفكرة الأساسية في التلاعب بكل من التموضع والتوجيه بطريقة
+متشابكة وشمولية ومضللة، بما يزيد متانة تخطيطات FEOL.
+وبصورة أكثر تحديداً، نعشوئ التصميم على مستوى قائمة التوصيلات،
+ثم نضع ونوجّه قائمة التوصيلات الخاطئة الناتجة، ونستعيد الوظيفة الحقيقية في BEOL فقط. ويمكن
+تلخيص هذه الورقة كما يأتي:</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<ul class="ltx_itemize" id="S1.I1">
+<li class="ltx_item" id="S1.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i1.p1">
+<p class="ltx_p">نستعرض أولاً أحدث هجمات القرب، والمقاييس ذات الصلة، ومخططات الحماية السابقة، وأوجه القصور المرتبطة بها (القسم <a class="ltx_ref" href="#S2" title="2. الخلفية والدافع ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">2</span></a>). كما نوضح كيف يمكن
+لمفهومنا أن
+يضلل هجمات القرب من البداية، حتى بالنسبة إلى الهجمات
+التي يُفترض أنها تحقق درجات مثالية (القسم <a class="ltx_ref" href="#S3" title="3. مفهومنا (تحت الهجوم) ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">3</span></a>).</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i2.p1">
+<p class="ltx_p">نقترح وننفذ (في <em class="ltx_emph ltx_font_italic">Cadence Innovus</em>) مخطط حماية لـ SM (القسم <a class="ltx_ref" href="#S4" title="4. المنهجية ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">4</span></a>).
+ويستند مخططنا إلى إرباك شامل للتموضع والتوجيه في FEOL، ثم
+تصحيح لاحق في BEOL. ويتيح المخطط أثراً قابلاً للتحكم
+في PPA.
+علاوة على ذلك، يمكننا الحد من الكلفة التجارية لـ SM،
+عن طريق التقسيم بعد طبقات أعلى (مثلاً، بعد M6).</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i3.p1">
+<p class="ltx_p">نصمم <em class="ltx_emph ltx_font_italic">خلايا تصحيح</em> مخصصة لمخططنا.
+وتتيح لنا هذه الخلايا التعامل مع التفافات الأسلاك بطريقة محكومة جيداً، وهو أمر أساسي من أجل (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S1.I1.i3.p1.m1"><mi>i</mi></math>) إحداث تموضع
+وتوجيه مضللين في FEOL و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S1.I1.i3.p1.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) استعادة الوظيفة الحقيقية لاحقاً بإعادة التوجيه في BEOL.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span>
+<div class="ltx_para" id="S1.I1.i4.p1">
+<p class="ltx_p">نقيّم مخططنا من حيث كلفة PPA والأمن (القسم <a class="ltx_ref" href="#S5" title="5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5</span></a>).
+وننظر في معايير قياس مختلفة، بما في ذلك معايير القياس الصناعية <em class="ltx_emph ltx_font_italic">IBM superblue</em>.
+ونقارن بدقة
+مع الأعمال السابقة. كما نجعل
+تخطيطاتنا المحمية الخالية من مخالفات DRC ونصوص SM البرمجية متاحة للمجتمع، إلى جانب
+تعريفات المكتبة الخاصة بخلايا التصحيح <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">webinterface, </a>)</cite>.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2. </span>الخلفية والدافع</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">اقترح Wang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite> هجوماً متقدماً قائماً على القرب يستخدم دلائل متعددة من تخطيطات FEOL: (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m1"><mi>i</mi></math>) القرب الفيزيائي بين البوابات، (<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) تجنب
+الحلقات التوافقية، (<math alttext="iii" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m3"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) القيود على
+سعات الحمل، (<math alttext="iv" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m4"><mrow><mi>i</mi><mo>⁢</mo><mi>v</mi></mrow></math>) اتجاه «الأسلاك المتدلية»<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+            
+            
+            
+          توجد مقاطع معدنية تُترك مفتوحة/غير موصولة في أعلى طبقة FEOL،
+وتحديداً حيث يُفترض وضع الفتحات التي تتصل صعوداً
+بـ BEOL. ويُشار إلى هذه المقاطع المعدنية باسم «الأسلاك المتدلية».
+كذلك نشير إلى مواضع تلك الفتحات المتصلة بـ BEOL باسم <em class="ltx_emph ltx_font_italic">الدبابيس الافتراضية (vpins)</em>، كما في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite>.</span></span></span>، و(<math alttext="v" class="ltx_Math" dir="ltr" display="inline" id="S2.p1.m5"><mi>v</mi></math>) قيود التوقيت.
+واقترح Magaña <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite>
+مخططات هجوم مختلفة، ثم لاحظوا تجريبياً أن الهجمات التي تراعي مسارات/استغلال التوجيه أكثر فاعلية من الهجمات المتمحورة حول التموضع.
+كما لاحظوا أن
+مجموعة <em class="ltx_emph ltx_font_italic">IBM superblue</em> أصعب بكثير على الهجوم من معايير القياس «التقليدية» صغيرة النطاق.
+وتجدر الإشارة إلى أن هجماتهم
+لا تستعيد قوائم التوصيلات الفعلية،
+بل تسرد فقط
+مرشحين محتملين لكل شبكة لإعادة وصلها.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">تتمثل مقاييس الهجوم الرئيسة، كما نوقشت في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>; <a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>)</cite>، في <em class="ltx_emph ltx_font_italic">مسافة هامنغ (HD)</em>، و<em class="ltx_emph ltx_font_italic">معدل الوصل الصحيح (CCR)</em>، و<em class="ltx_emph ltx_font_italic">معدل أخطاء الخرج (OER)</em>.
+تقيس HD عدم التطابق بين مخرجات قائمة توصيلات أصلية ومخرجات قائمة توصيلات مستعادة/مسروقة أثناء التحفيز الاختباري.
+وتدل HD مقدارها 0% (أو 100%)
+على نجاح الهجوم.
+أما CCR فهو نسبة الشبكات المستعادة بنجاح إلى جميع الشبكات المحمية.
+ومن ثم، كلما ارتفع CCR كان الهجوم أكثر فاعلية.
+ويعكس OER احتمال أن تكون بعض بتات الخرج غير صحيحة عند تحفيز قائمة التوصيلات المستعادة/المسروقة بأنماط اختبارية.
+وتقيس المقاييس المتمحورة حول التوجيه المقترحة في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite>
+فضاء حلول SM.
+فـ <em class="ltx_emph ltx_font_italic">عدد الدبابيس الافتراضية</em> يحصي إجمالي الفتحات/الدبابيس في أعلى طبقة FEOL (المطلوب إعادة وصلها)؛
+و<em class="ltx_emph ltx_font_italic">حجم قائمة المرشحين</em> هو متوسط عدد الشبكات التي ينبغي النظر فيها لكل دبوس افتراضي؛
+أما <em class="ltx_emph ltx_font_italic">المطابقة ضمن القائمة</em> فيبين عدد الدبابيس الافتراضية التي تكون الشبكة الصحيحة فيها بين عناصر قائمة المرشحين.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup>
+<span class="ltx_tag ltx_tag_note">2</span>
+            
+            
+            
+          
+انظر المثال الآتي، حيث يلاحظ المهاجم
+1,000 دبوساً افتراضياً. ووفقاً لـ <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>)</cite>، لنفترض أيضاً أن الشبكات ذات الدبوسين فقط
+متاحة في التصميم، أي إن 500 شبكة ذات دبوسين يلزم إعادة وصلها.
+إن حجم فضاء الحلول الذي يغطي جميع قوائم التوصيلات الممكنة
+هو عدد المطابقات التامة في رسم بياني ثنائي كامل
+(يمثل 500 مشغلاً و500 مصباً)، وهو ببساطة
+<math alttext="500!=1.22\times 10^{1143}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m1"><mrow><mrow><mn>500</mn><mo>!</mo></mrow><mo>=</mo><mrow><mn>1.22</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>1143</mn></msup></mrow></mrow></math>.
+وبعد إجراء الهجمات المتمحورة حول التوجيه،
+وبافتراض أفضل <em class="ltx_emph ltx_font_italic">مطابقة ضمن القائمة</em> ممكنة (أي 100%) و<em class="ltx_emph ltx_font_italic">حجم قائمة مرشحين</em> مقداره 1.4 في المتوسط، لا يبقى
+سوى <math alttext="\approx 1.4^{500}=1.16\times 10^{73}" class="ltx_Math" dir="ltr" display="inline" id="footnote2.m2"><mrow><mi></mi><mo>≈</mo><msup><mn>1.4</mn><mn>500</mn></msup><mo>=</mo><mrow><mn>1.16</mn><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mn>10</mn><mn>73</mn></msup></mrow></mrow></math> قائمة توصيلات ممكنة على الأكثر. (وهذا العدد يقترب مصادفةً من العدد المقدر للذرات في الكون.)
+ومن المهم ملاحظة أنه لأي مطابقة ضمن القائمة دون 100%،
+لا تكون قائمة التوصيلات الحقيقية مشمولة حتى ضمن ذلك العدد الهائل.</span></span></span>
+ومن ثم، فمع أن الهجمات ذات الصلة
+تساعد على حصر فضاء حلول SM
+بعناية، فلا يمكن النظر إليها إلا بوصفها مرحلة مكملة لهجمات أخرى.</p>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">تقترح الأعمال السابقة <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>; <a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>; <a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>; <a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>; <a class="ltx_ref" href="#bib.bib9" title="">feng17, </a>; <a class="ltx_ref" href="#bib.bib10" title="">wang17_FEOL, </a>)</cite> تدابير مختلفة لجعل تخطيطات FEOL متينة في مواجهة هجمات القرب.
+فعلى سبيل المثال، يربك Wang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite> وكذلك Sengupta <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite> تموضع
+البوابات.
+إلا أنه تبيّن في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite> أن التقسيم بعد طبقات أعلى—وهو أمر أساسي للحد من الكلفة التجارية لـ SM <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib13" title="">xiao15, </a>)</cite>—يمكن
+أن يقوّض الحماية.
+ومن اللافت أن
+هذا يظل صحيحاً إلى حد ما حتى عند تطبيق عشوأة التخطيط <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite>.
+ويرجع هذا القيد في المخططات المتمحورة حول التموضع إلى أن أي إرباك في التموضع تُسوّيه عملية التوجيه في نهاية المطاف.</p>
+</div>
+<div class="ltx_para" id="S2.p4">
+<p class="ltx_p">أما مخططات الحماية المتمحورة حول التوجيه، مثل تلك الواردة في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>; <a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>; <a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib9" title="">feng17, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite>، فتعالج التخطيطات الأصلية عادةً معالجة لاحقة، ومن ثم تخضع لقيود موارد التوجيه وميزانيات PPA.
+لذلك، قد تقتصر هذه المخططات على التفافات توصيلية قليلة نسبياً و/أو قصيرة، وهو ما قد يسهل مهاجمته.
+فعلى سبيل المثال،
+يقترح Rajendran <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>)</cite> تبديل دبابيس وحدات IP وإعادة توجيهها لتضليل المهاجم.
+ولأن الإرباكات ذات الصلة لا تغطي إلا التوصيلات البينية على مستوى النظام، فإن هذا المخطط (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S2.p4.m1"><mi>i</mi></math>) لا يستطيع الحماية من قرصنة IP على مستوى البوابات و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S2.p4.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) يفرض فضاء حلول صغيراً نسبياً
+على المهاجم.
+وكما ورد في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>)</cite> نفسها، يمكن في المتوسط استعادة 87% من الوصلات.
+إضافة إلى ذلك، يتطلب فرض التفافات التوجيه في BEOL تخصيص تدفق التصميم، وهو ما قد يكون تحدياً بحد ذاته. فعلى سبيل المثال، لا تسمح المخططات في
+<cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> إلا
+بالتفافات ضمنية، أي بإدراج عوائق توجيه.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3. </span>مفهومنا (تحت الهجوم)</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">على خلاف معظم الأعمال السابقة التي تتلاعب بالتموضع و/أو التوجيه على مستوى التخطيط وبأسلوب معالجة لاحقة، يستهدف مفهومنا
+قائمة التوصيلات نفسها—وتحديداً من خلال عشوئتها جزئياً.
+ويساعدنا ذلك على الإبقاء على التعديلات المضللة عبر أي تدفق تصميم اعتيادي، ومن ثم
+الحصول على تخطيطات FEOL أكثر متانة.
+ولا تُصحح هذه التخطيطات إلا في BEOL
+(الشكل <a class="ltx_ref" href="#S3.F1" title="Figure 1 ‣ 3. مفهومنا (تحت الهجوم) ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">1</span></a>).
+بعد ذلك، نوضح كيف يضلل مفهومنا مخططات الهجوم الحديثة.
+ونؤكد حدسنا في القسم <a class="ltx_ref" href="#S5.SS2" title="5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5.2</span></a>، حيث نعرض قيماً متفوقة للمقاييس الأمنية الرئيسة.</p>
+</div>
+<figure class="ltx_figure" id="S3.F1"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="484" id="S3.F1.g1" src="x1.png" width="680"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1. </span>
+تُعشوَأ قائمة التوصيلات الأصلية إلى N1 (حيث يقود D1 كلاً من S1 وS1’)، وN2، وهكذا. نضع ونوجّه التصميم الخاطئ، مما ينتج
+تخطيط FEOL مضللاً من حيث التموضع والتوجيه معاً. بعد ذلك، نستعيد الوظيفة الحقيقية عبر
+BEOL بإعادة التوجيه؛ والآن يقود D1 المصب S2، ويقود D2 المصب S1’، وهكذا. (لا يُعرض مشغل المصبين S1 وS3 في هذا
+الشكل المفهومي.)
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">أي هجوم—حتى مع افتراض معدلات استعادة مثالية—سيكون ملزماً بملاحظة مسارات المنطق والتوقيت في قائمة التوصيلات الخاطئة.
+وبالنسبة إلى الهجوم الذي اقترحه Wang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite>، فإن القرب الفيزيائي بين البوابات، وقيود الحمل والتوقيت، وكذلك اتجاه الأسلاك المتدلية،
+كلها تلتقط قائمة التوصيلات الخاطئة، لا الأصلية.
+فعلى سبيل المثال، يشير مخزن كبير مثل <em class="ltx_emph ltx_font_italic">BUFX8</em> عادةً أن مصبه/مصباته بعيدة نسبياً.
+أما في قائمة التوصيلات الأصلية، فقد يقود هذا المخزن في الواقع مصباً/مصبات قريبة.
+وبالنسبة إلى الهجوم المتمحور حول التوجيه في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>)</cite>،
+نلاحظ أن
+عشوأة قائمة التوصيلات تساعد على توسيع فضاء الحلول بدرجة كبيرة
+عند مقارنتها بالتخطيطات الأصلية (وحتى عند مقارنتها بـ <em class="ltx_emph ltx_font_italic">الرفع الساذج</em>،
+القسم <a class="ltx_ref" href="#S5.SS2" title="5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5.2</span></a>).
+وسيعيق ذلك بطبيعة الحال أي هجمات لاحقة (وهي، مرة أخرى، لم تُبرهن بعد).</p>
+</div>
+<div class="ltx_para" id="S3.p3">
+<p class="ltx_p">سنفترض أن المهاجم يعرف مبدأ مخطط الحماية لدينا؛
+ومن ثم فإنه يتوقع تخطيطات FEOL مضللة.
+غير أن المهاجم الساذج، من دون
+كشف BEOL له، لا يستطيع على الأرجح إلا اللجوء إلى
+القوة الغاشمة، أي تعداد جميع قوائم التوصيلات الممكنة، وهو أمر غير عملي حسابياً (القسم <a class="ltx_ref" href="#S2" title="2. الخلفية والدافع ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">2</span></a>).
+وقد يسعى مهاجم أكثر تطوراً إلى استبعاد مسارات المنطق والتوقيت «غير المعقولة» الناشئة عن العشوأة.
+لكن القيام بذلك يخضع لـ (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S3.p3.m1"><mi>i</mi></math>) خبرة كبيرة في تصميم التخطيطات، و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S3.p3.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) حجم قائمة التوصيلات الأصلية ونطاقها (غير المعروف بعد)،
+و(<math alttext="iii" class="ltx_Math" dir="ltr" display="inline" id="S3.p3.m3"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) «درجة عدم المعقولية» في المسارات، وهي درجة عشوائية.
+ونعتقد أن مثل هذه الهجمات تمثل تحدياً مفتوحاً ومثيراً للاهتمام.</p>
+</div>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4. </span>المنهجية</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">تُنفذ منهجيتنا بوصفها امتداداً لـ <em class="ltx_emph ltx_font_italic">Cadence Innovus</em> باستخدام نصوص برمجية داخلية مخصصة وتخصيص للمكتبة.
+ويمكن تلخيص الخطوات كما يأتي: نقوم بـ (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m1"><mi>i</mi></math>) عشوأة قائمة التوصيلات، و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) وضع وتوجيه قائمة التوصيلات الخاطئة والمضللة، و(<math alttext="iii" class="ltx_Math" dir="ltr" display="inline" id="S4.p1.m3"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) استعادة الوظيفة الحقيقية
+بإعادة التوجيه في BEOL (الشكل <a class="ltx_ref" href="#S4.F2" title="Figure 2 ‣ 4. المنهجية ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">2</span></a>).</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">فيما يأتي نقدم بعض التفاصيل.
+بالنسبة إلى (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m1"><mi>i</mi></math>)، نعشوئ قائمة التوصيلات تكرارياً بتبديل الاتصال بين أزواج مختارة عشوائياً من المشغلات ومصباتها.<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup>
+<span class="ltx_tag ltx_tag_note">3</span>
+            
+            
+            
+          في حال
+فرضت قائمة التوصيلات بعض قيود المحاذاة، مثلاً لمسارات البيانات، فيجب استبعاد البوابات ذات الصلة من العشوأة.</span></span></span>
+وأثناء ذلك، نضمن عدم نشوء حلقات توافقية في قائمة التوصيلات المعدلة نتيجة أي من التبديلات العشوائية—إذ إن الحلقات قد تساعد
+المهاجم على تحديد هذه التعديلات <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite>.
+وننفذ التبديل إلى أن يقترب OER من 100%، مما يعني أن قائمة التوصيلات المعدلة ستُحدث بعض الأخطاء لأي دخل.
+كما نتتبع الاتصال الأصلي والمشغلات/المصبات التي تم تبديلها.
+وبالنسبة إلى (<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>)، تُحمّل قائمة التوصيلات المعشوأة في <em class="ltx_emph ltx_font_italic">Cadence Innovus</em>. في البداية، تُوسم المشغلات/المصبات المبدلة بأنها <em class="ltx_emph ltx_font_italic">do not touch</em> لتجنب إعادة هيكلة المنطق
+أو إزالة الشبكات ذات الصلة.
+ثم توضع قائمة التوصيلات وتُحسّن للتوقيت والقدرة والازدحام.
+وقبل التوجيه، تُحضّر الشبكات التي تصل المشغلات/المصبات المبدلة للرفع إلى M6 (أو M8) بمساعدة <em class="ltx_emph ltx_font_italic">خلايا تصحيح</em> مخصصة.
+وتجدر الإشارة إلى أن خلايا التصحيح هذه لا تؤثر في تخطيط FEOL؛ إذ يقتصر نطاقها على رفع الشبكات وتصحيحها في BEOL (انظر أيضاً أدناه).
+بعد ذلك، يوضع التصميم ويوجه مرة أخرى في نمط <em class="ltx_emph ltx_font_italic">ECO</em> لتنفيذ رفع الشبكات المبدلة.
+وبالنسبة إلى (<math alttext="iii" class="ltx_Math" dir="ltr" display="inline" id="S4.p2.m3"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>)، تُستعاد الاتصالية الحقيقية في BEOL بمساعدة خلايا التصحيح والاتصالية الأصلية المتتبعة.
+ويعاد توجيه التصميم ويمر عبر تحسين <em class="ltx_emph ltx_font_italic">postRoute</em> لتحسين التوقيت وحل مشكلات DRC.
+وفي حال لم تُستنفد ميزانية PPA بعد، نكرر الخطوات لإدخال مزيد من العشوأة. وإلا
+فإننا نزيل خلايا التصحيح، ونصدّر ملفات DEF/Verilog لمزيد من تحليل التخطيط/الأمن.</p>
+</div>
+<figure class="ltx_figure" id="S4.F2"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="350" id="S4.F2.g1" src="x2.png" width="747"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2. </span>تدفق مخطط الحماية لدينا.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">فيما يأتي تُعرض النقاط الرئيسة للتصميم الفيزيائي لـ <em class="ltx_emph ltx_font_italic">خلايا التصحيح</em>.
+نقدم تنفيذ خلايانا فوق مكتبة <em class="ltx_emph ltx_font_italic">Nangate 45nm</em> في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">webinterface, </a>)</cite>.
+ويوضح الشكل <a class="ltx_ref" href="#S4.F3" title="Figure 3 ‣ 4. المنهجية ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">3</span></a>
+خلايانا.</p>
+</div>
+<div class="ltx_para" id="S4.p4">
+<span class="ltx_ERROR undefined">{itemize*}</span>
+</div>
+<div class="ltx_para" id="S4.p5">
+<p class="ltx_p">تُنمذج خلايا التصحيح بوصفها بوابات OR ذات 2 دخل و2 خرج؛ وC وD هما دبابيس دخل، أما Y وZ فهما دبابيس خرج.</p>
+</div>
+<div class="ltx_para" id="S4.p6">
+<p class="ltx_p">توجد أربعة <em class="ltx_emph ltx_font_italic">أقواس</em> ممكنة (من C إلى Y، ومن C إلى Z، ومن D إلى Y، ومن D إلى Z).
+ويُستخدم القوس من C إلى Z لتنفيذ قائمة التوصيلات الخاطئة أثناء الوضع والتوجيه الأوليين. وعند استعادة الوظيفة الحقيقية، تُعطّل القوسان من C إلى Z ومن D إلى Y
+(<em class="ltx_emph ltx_font_italic">set_disable_timing</em>) بحيث لا تُراعى إلا المسارات الحقيقية من أجل تحسين وتقييم صحيحين للتوقيت والقدرة.</p>
+</div>
+<div class="ltx_para" id="S4.p7">
+<p class="ltx_p">تُعد جميع الدبابيس في طبقة معدنية أعلى (هنا M6 أو M8) لتمكين رفع الأسلاك وتوجيهها في
+BEOL.
+وتُختار أبعاد الدبابيس وإزاحاتها بحيث يمكن وضعها على مسارات الطبقات المعدنية المعنية—ويساعد ذلك على تقليل ازدحام التوجيه.</p>
+</div>
+<div class="ltx_para" id="S4.p8">
+<p class="ltx_p">يمكن لخلايا التصحيح أن تتراكب بحرية مع الخلايا القياسية.
+ويرجع ذلك إلى أن الخلايا القياسية تملك دبابيسها حصراً في طبقات معدنية أدنى،
+في حين لا تؤثر خلايا التصحيح لا في تلك الطبقات ولا في طبقة الأجهزة.
+وننفذ وفقاً لذلك نصوص تقنين مخصصة.
+وتمنع هذه النصوص أيضاً
+خلايا التصحيح المختلفة من التراكب بعضها مع بعض.</p>
+</div>
+<div class="ltx_para" id="S4.p9">
+<p class="ltx_p">تُستعمل خلية المخزن <em class="ltx_emph ltx_font_italic">BUFX2</em> لخصائص القدرة والتوقيت الخاصة بخلايا التصحيح.
+ويمكننا الامتناع عن التوصيف التفصيلي للمكتبة لأن خلايا التصحيح لا تنفذ سوى بعض أسلاك BEOL.</p>
+</div>
+<div class="ltx_para" id="S4.p10">
+<p class="ltx_p">لتمكين تحسين ECO بصورة سليمة، تُعد خلايا التصحيح لوسم الأحمال في وقت التصميم.
+وهذا مطلوب لالتقاط الأحمال السعوية لـ (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S4.p10.m1"><mi>i</mi></math>) الأسلاك الممتدة من
+خلايا التصحيح إلى المصبات و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S4.p10.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) المصبات نفسها.</p>
+</div>
+<figure class="ltx_figure" id="S4.F3">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F3.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_square" height="370" id="S4.F3.sf1.g1" src="x3.png" width="324"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S4.F3.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_portrait" height="271" id="S4.F3.sf2.g1" src="incl/correction_cell.png" width="207"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3. </span>خلايا التصحيح لدينا، في عرض مفهومي (a) وعرض تخطيطي (b).
+بالنسبة إلى (a)، تشير الأسهم المتقطعة إلى الأقواس المضللة للوضع والتوجيه الأوليين،
+بينما تمثل الأسهم العادية المسارات الحقيقية المنفذة لاحقاً بإعادة التوجيه.
+ومن المهم ملاحظة أن إعادة التوجيه تتم دائماً بين أزواج من خلايا التصحيح.
+وفي (b)، تُرى خلية تصحيح ذات دبابيس في M6 متراكبة مع عاكس (دبابيس في M1).
+</figcaption>
+</figure>
+<div class="ltx_para" id="S4.p11">
+<p class="ltx_p">من المهم ملاحظة أن إعادة التوجيه (لاستعادة قائمة التوصيلات الأصلية) تتم دائماً بين أزواج من خلايا التصحيح، لا داخل خلية واحدة فقط.
+وهذا يعني أن المهاجم قد يعرف مخطط خلايا التصحيح (أي إن المسارات الحقيقية تقع بين C وY وبين D وZ)، لكنه لا يستطيع
+اشتقاق قائمة التوصيلات الأصلية من تلك المعرفة وحدها. وبدلاً من ذلك، عليه تحديد الأزواج الصحيحة من الخلايا، وهو ما
+تعيقه حقيقتان: (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S4.p11.m1"><mi>i</mi></math>) أن تتبع خلايا التصحيح المتمحورة حول BEOL في FEOL أمر صعب، وحتى عندما
+ينجح المهاجم، فإن (<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S4.p11.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) المسافات بين أزواج الخلايا الصحيحة تكون معشوأة، استناداً إلى قائمة التوصيلات الخاطئة التي وُضعت
+ووُجهت.
+بالنسبة إلى (<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S4.p11.m3"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>)، تذكر أن ذلك يضلل أي هجوم قرب من أحدث الهجمات منذ البداية (القسم <a class="ltx_ref" href="#S3" title="3. مفهومنا (تحت الهجوم) ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">3</span></a>).
+وبالنسبة إلى (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S4.p11.m4"><mi>i</mi></math>)، لاحظ أن دبابيس خلايا التصحيح تقع في طبقات أعلى (M6 أو M8)، في حين يُقسم التخطيط
+بعد طبقات أدنى، مما يستلزم وجود بعض مسارات التوصيل بينها.
+ومن ثم، فمن غير المرجح أن تكون الأسلاك المتدلية المرتبطة بخلايا التصحيح مميزة كما في الشكل <a class="ltx_ref" href="#S4.F3" title="Figure 3 ‣ 4. المنهجية ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">3</span></a>(b)، بل إنها تكون
+موزعة.</p>
+</div>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5. </span>النتائج</h2>
+<section class="ltx_subsection" id="S5.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.1. </span>الإعداد التجريبي</h3>
+<div class="ltx_para" id="S5.SS1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">حالات الاختبار:</span>
+نقيّم الدفاع المقترح لدينا على 12 معيار قياس، سبعة من مجموعة <em class="ltx_emph ltx_font_italic">ISCAS-85</em> وخمسة من مجموعة <em class="ltx_emph ltx_font_italic">IBM superblue</em> الصناعية <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib14" title="">viswanathan11, </a>)</cite>.
+ونحوّل معايير <em class="ltx_emph ltx_font_italic">superblue</em>
+(المعرّفة في الأصل بصيغة <em class="ltx_emph ltx_font_italic">Bookshelf</em>)
+إلى ملفات <em class="ltx_emph ltx_font_italic">Verilog</em>
+باستخدام نصوص من <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib15" title="">kahng14, </a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">إعداد تقييم التخطيط:</span>
+تُنفذ تقنياتنا في <em class="ltx_emph ltx_font_italic">Cadence Innovus 16.15</em> باستخدام نصوص <em class="ltx_emph ltx_font_italic">TCL</em> داخلية مخصصة، وتفرض زيادات زمن تشغيل
+ضئيلة.
+ونستفيد من <em class="ltx_emph ltx_font_italic">Nangate 45nm Open Cell Library</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib16" title="">nangate11, </a>)</cite> ذات عشر طبقات معدنية.
+تُعد خلايا التصحيح في M6 لمعايير <em class="ltx_emph ltx_font_italic">ISCAS-85</em> وفي M8 لمعايير <em class="ltx_emph ltx_font_italic">superblue</em>.
+ويُجرى تحليل PPA محافظ لزاوية العملية البطيئة وجهد تغذية قدره 0.95V.
+ونضمن خلو جميع التخطيطات من الازدحام باختيار معدلات استغلال مناسبة.
+ونسمح بميزانيات PPA مقدارها 20% لمعايير <em class="ltx_emph ltx_font_italic">ISCAS-85</em> و5% لمعايير <em class="ltx_emph ltx_font_italic">superblue</em>.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p3">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">إعداد تقييم الأمن:</span>
+تماشياً مع الأعمال السابقة،
+نفترض أن المهاجم يملك وصولاً إلى تخطيط FEOL ومكتبات التقنية، لكنه
+لا يستطيع الوصول إلى شرائح عاملة لم تُصنّع بعد.
+ونستخدم هجوم تدفق الشبكة <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite> لمعايير <em class="ltx_emph ltx_font_italic">ISCAS-85</em>، وهجوم <em class="ltx_emph ltx_font_italic">crouting</em> القائم على التوجيه <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>)</cite> لمعايير <em class="ltx_emph ltx_font_italic">superblue</em>
+.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup>
+<span class="ltx_tag ltx_tag_note">4</span>
+              
+              
+              
+            
+وبالنسبة إلى الأخير، نلاحظ أن
+الهجوم المتقدم كما اقترحه Magaña <em class="ltx_emph ltx_font_italic">et al.</em> في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> لم يكن متاحاً لنا وقت الكتابة.
+كما نلاحظ أنه يتعين علينا تقسيم ملفات DEF التي نحصل عليها من <em class="ltx_emph ltx_font_italic">Cadence Innovus</em> وتحويلها إلى ملفات <em class="ltx_emph ltx_font_italic">.rt/.out</em> باستخدام نصوص
+مخصصة <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">webinterface, </a>)</cite>، لأن النصوص التي قدمها Magaña <em class="ltx_emph ltx_font_italic">et al.</em>
+مصممة للموجهات الأكاديمية.</span></span></span>
+ويُحسب كل من OER وHD باستخدام
+<em class="ltx_emph ltx_font_italic">Synopsys VCS</em> بعد تطبيق 1,000,000 نمط اختبار لكل قائمة توصيلات؛ ويُثبت التكافؤ الوظيفي باستخدام <em class="ltx_emph ltx_font_italic">Synopsys Formality</em>.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">الدراسة المقارنة:</span>
+إلى جانب <em class="ltx_emph ltx_font_italic">خلايا التصحيح</em>، ننفذ أيضاً مجموعة أخرى من الخلايا المخصصة تسمى <em class="ltx_emph ltx_font_italic">خلايا الرفع الساذج</em>. وتنفذ هذه الخلايا مبدأ رفع
+الأسلاك نفسه،
+لكن من دون إحداث وصلات خاطئة. ونطبق هذه الخلايا باستخدام تدفقنا على التخطيطات الأصلية للحصول على خط أساس يسمى <em class="ltx_emph ltx_font_italic">الرفع الساذج</em>.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p5">
+<p class="ltx_p">وقد أُتيحت لنا التخطيطات المحمية في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>)</cite> بصيغة ملفات DEF.
+وبما أنه لا توجد مؤشرات حاسمة على طبقة التقسيم في المنشورات المعنية،
+فإننا نأخذ متوسط مقاييس الأمن (CCR وOER وHD) للتقسيم بعد الطبقات M3 وM4 وM5 على التوالي.</p>
+</div>
+<div class="ltx_para" id="S5.SS1.p6">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المصدر المفتوح:</span>
+نجعل <em class="ltx_emph ltx_font_italic">خلايا التصحيح</em> و<em class="ltx_emph ltx_font_italic">خلايا الرفع الساذج</em>
+متاحة
+للمجتمع، إلى جانب التخطيطات المحمية، في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib11" title="">webinterface, </a>)</cite>.
+كما نوفر نص تقسيم DEF وتحويله.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S5.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.2. </span>تقييم الأمن</h3>
+<div class="ltx_para" id="S5.SS2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">حماية التموضع</span>: تذكر أن مخططنا يستند إلى قوائم توصيلات معدلة عشوائياً، مما يؤدي إلى تخطيطات FEOL خاطئة
+لا تُصحح إلا في BEOL.
+ومن البديهي أن
+مسافات البوابات المتصلة <em class="ltx_emph ltx_font_italic">فعلياً</em> ستكون موزعة عشوائياً، مما يضلل هجمات القرب.
+وفي الواقع،
+نحقق زيادة كبيرة في المسافات مع توزيع واسع التباين
+(الشكل <a class="ltx_ref" href="#S5.F4" title="Figure 4 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">4</span></a> والجدول <a class="ltx_ref" href="#S5.T1" title="Table 1 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">1</span></a>).
+ويؤيد هذه النتيجة
+الصمود المتفوق
+لمعايير <em class="ltx_emph ltx_font_italic">ISCAS-85</em>
+(الجدولان <a class="ltx_ref" href="#S5.T4" title="Table 4 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">4</span></a> و<a class="ltx_ref" href="#S5.T5" title="Table 5 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5</span></a>)؛
+انظر أدناه لمزيد من الدراسة المقارنة حول حماية التموضع.</p>
+</div>
+<figure class="ltx_figure" id="S5.F4">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S5.F4.sf1"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="176" id="S5.F4.sf1.g1" src="x4.png" width="258"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(a) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S5.F4.sf2"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="180" id="S5.F4.sf2.g1" src="x5.png" width="258"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(b) </span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_3">
+<figure class="ltx_figure ltx_figure_panel ltx_align_center" id="S5.F4.sf3"><img alt="Refer to caption" class="ltx_graphics ltx_img_landscape" height="177" id="S5.F4.sf3.g1" src="x6.png" width="258"/>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">(c) </span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4. </span>
+المسافات بين المشغلات/المصبات للتخطيطات الأصلية (a)، والمرفوعة ساذجاً (b)، وتخطيطاتنا (c)، لمعيار
+<em class="ltx_emph ltx_font_italic">superblue18</em>.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S5.SS2.p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">حماية التوجيه</span>:
+تذكر أن مخططات الحماية المتمحورة حول التموضع تُعاد موازنتها بالتوجيه، ولا سيما عندما يُجرى التقسيم بعد طبقات معدنية أعلى
+(القسم <a class="ltx_ref" href="#S2" title="2. الخلفية والدافع ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">2</span></a>)،
+مما يجعل المخططات المتمحورة حول التوجيه أكثر وعداً في هذا السياق.
+ويقارن الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5</span></a> مساهمة كل طبقة معدنية في طول الأسلاك
+لمعايير <em class="ltx_emph ltx_font_italic">superblue</em>.
+في التخطيطات الأصلية، توجد غالبية الأسلاك في الطبقات المعدنية الأدنى، وهو ما يمنح المهاجم قدرة استغلال كبيرة.
+أما في التخطيطات المرفوعة ساذجاً، فتكون الأسلاك موزعة على نحو أكثر انتظاماً عبر الطبقات المعدنية، وهو ما <em class="ltx_emph ltx_font_italic">قد</em> يساعد على حماية التخطيطات.
+ومع ذلك، من المهم ملاحظة أن الرفع الساذج
+لا يساعد على إذابة المسافات بين البوابات المتصلة (الشكل <a class="ltx_ref" href="#S5.F4" title="Figure 4 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">4</span></a>).
+وفي المقابل، يبقي مخططنا غالبية الأسلاك في الطبقات الأعلى <em class="ltx_emph ltx_font_italic">و</em> يذيب الاتصالية الحقيقية في FEOL، مما يتيح قدرة استغلال أقل
+للمهاجم <em class="ltx_emph ltx_font_italic">و</em> يمكّن من التقسيم بعد طبقات أعلى.</p>
+</div>
+<figure class="ltx_table" id="S5.T1">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 1. </span>
+المسافات بين البوابات المتصلة (بالميكرونات).
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Layout</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Mean</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Median</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Std. Dev.</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue1</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.31</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">54.84</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.37</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.92</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">54.83</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">198.46</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">48.41</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">318.88</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue5</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.38</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">49.16</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.39</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">49.17</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">244.73</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">96.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">328.84</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue10</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.73</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">49.59</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.71</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">49.58</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">254.06</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">71.03</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">372.07</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue12</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">19.06</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3.18</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">75.37</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">19.08</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3.23</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">75.37</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">263.21</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">81.28</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">395.26</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue18</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.91</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.54</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">41.74</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.93</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.54</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">41.74</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">208.47</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">119.51</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">244.81</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_figure" id="S5.F5"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="336" id="S5.F5.g1" src="incl/metal_sb.png" width="598"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5. </span>مساهمة الطبقات المعدنية في طول الأسلاك للشبكات المعشوأة في معايير <em class="ltx_emph ltx_font_italic">superblue</em>.
+
+</figcaption>
+</figure>
+<div class="ltx_para" id="S5.SS2.p3">
+<p class="ltx_p">نلاحظ أن مخططنا أكثر فاعلية بكثير من الرفع الساذج من حيث زيادة الفتحات/الدبابيس الافتراضية في الطبقات الأعلى
+(الجدول <a class="ltx_ref" href="#S5.T2" title="Table 2 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">2</span></a>). وتؤدي الفتحات/الدبابيس الافتراضية الإضافية
+إلى مزيد من الشبكات في BEOL، مما يجعل
+الهجمات المتمحورة حول التوجيه أكثر صعوبة.
+فعلى سبيل المثال، عند اتخاذ M5 طبقةً للتقسيم، يزيد مخططنا الفتحات V56 بمقدار 30.65% في المتوسط مقارنة بالرفع الساذج.
+ونلاحظ تبعاً لذلك أن هجوم <em class="ltx_emph ltx_font_italic">crouting</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>)</cite> يتضرر من قوائم المرشحين الأكبر ومن عدد الدبابيس الافتراضية الأكبر (الجدول <a class="ltx_ref" href="#S5.T3" title="Table 3 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">3</span></a>).
+وتذكر أن حتى الزيادات التي تبدو صغيرة في هذه المقاييس تعني زيادة واسعة النطاق ومتعددة الحدود
+في التعقيد—إذ يزيد مخططنا كلا المقياسين مقارنةً بالتخطيطات الأصلية وكذلك المرفوعة.</p>
+</div>
+<figure class="ltx_table" id="S5.T2">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 2. </span>
+مقارنة الفتحات الإضافية للتخطيطات المرفوعة ساذجاً ولمخططنا المقترح فوق تخطيطات <em class="ltx_emph ltx_font_italic">IBM superblue</em> الأصلية. ولإجراء مقارنة عادلة، نعشوئ المجموعة نفسها من
+الشبكات. ونضمن انعدام زيادة مساحة القالب وأن جميع التخطيطات خالية من مخالفات DRC.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Nets</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">I/O Pins</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Util.</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Layout</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V12</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V23</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V34</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V45</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V56</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V67</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V78</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V89</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">V910</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Total Vias</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue1</em></span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">873,712</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">8,320/13,025</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">69</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3,016,748</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2,334,923</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">664,292</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">239,550</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">170,423</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">82,762</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">56,170</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">34,164</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">16,249</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">6,615,281</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.10</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.56</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2.44</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.45</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.28</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.69</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.68</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.37</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.61</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">4.13</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">10.82</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">18.38</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">29.86</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">31.79</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">34.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">27.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">40.93</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5.87</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue5</em></span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">754,907</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">11,661/9,617</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">77</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2,430,541</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1,866,252</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">553,843</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">217,394</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">157,046</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">75,306</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">50,970</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">30,714</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">15,227</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5,397,293</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">4.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.9</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">7.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">12.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">23.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">40.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">55.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">59.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">51.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">67.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">9.2</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue10</em></span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1,147,401</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">10,454/23,663</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">75</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3,871,474</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3,048,375</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">875,305</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">329,549</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">238,533</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">111,507</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">76,885</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">45,408</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">22,721</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">8,619,757</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.04</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.49</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.11</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2.11</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.02</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.18</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.49</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.53</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.24</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.52</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2.06</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">6.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">12.43</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">22.92</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">32.27</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">55.22</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">57.16</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">59.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">69.74</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">7.90</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue12</em></span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1,520,046</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1,936/4,629</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">56</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5,368,332</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3,995,438</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1,130,079</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">445,635</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">316,038</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">141,141</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">100,358</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">55,097</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">31,301</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">11,583,419</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.03</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.16</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.42</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.87</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.33</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.37</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.58</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.31</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.2</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.59</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">6.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">19.09</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">30.56</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">30.19</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">34.67</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">22.92</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">30.93</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">-1.19</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">7.78</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue18</em></span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">670,323</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3,921/7,465</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" rowspan="3" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">67</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">2,298,823</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1,686,525</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">480,099</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">179,088</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">121,277</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">51,187</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">28,950</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">18,345</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">4,319</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">4,868,613</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.55</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.56</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.69</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5.62</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5.82</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">3.10</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.72</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.09</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">0.73</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed (%)</em></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">1.73</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">5.98</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">10.50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">20.03</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">39.24</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">61.11</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">90.08</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">71.08</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">287.84</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t" style="padding-left:4.3pt;padding-right:4.3pt;"><span class="ltx_text" style="font-size:80%;">7.34</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_table" id="S5.T3">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 3. </span>نتائج هجوم <em class="ltx_emph ltx_font_italic">crouting</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>)</cite>.
+مقارنة الدبابيس الافتراضية وحجم قائمة المرشحين (E[LS]) بوصفهما دالة في الصندوق المحيط.
+يرمز N/A إلى إخفاقات الهجوم.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_bold ltx_font_italic">Layout</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">#VPins</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">E[LS] for Bounding Box</span></th>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">15</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">30</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">45</span></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue1</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">73,110</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.63</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.25</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">23.46</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">73,810</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.65</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.27</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">23.47</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">75,754</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.69</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.46</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">23.83</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue5</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">67,194</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.86</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.87</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">67,676</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.73</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue10</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">155,180</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">5.05</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.54</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">25.75</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">157,106</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.88</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">25.07</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue12</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">127,112</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.84</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.45</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">127,610</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.83</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">13.79</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.35</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">165,106</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">6.29</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">17.95</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">32.04</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text" style="font-size:80%;"><em class="ltx_emph ltx_font_italic">superblue18</em></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Original</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">50,026</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3.76</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">10.86</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">19.17</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Lifted</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">51,970</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3.87</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">11.09</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">19.54</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_bold ltx_font_italic" style="font-size:80%;">Proposed</em></th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">54,154</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.26</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.22</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">21.74</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<div class="ltx_para" id="S5.SS2.p4">
+<p class="ltx_p">وباختصار، فإن مخططنا (<math alttext="i" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p4.m1"><mi>i</mi></math>) يُبقي الحصة الكبرى من طول الأسلاك
+في BEOL
+(الشكل <a class="ltx_ref" href="#S5.F5" title="Figure 5 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5</span></a>)
+و(<math alttext="ii" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p4.m2"><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></math>) يزيد عدد الفتحات زيادة كبيرة (الجدول <a class="ltx_ref" href="#S5.T2" title="Table 2 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">2</span></a>)، مع إحداث توجيه مضلل في FEOL.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p5">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">المقارنة مع الأعمال السابقة:</span>
+نقارن صمود مخططنا مع أعمال سابقة متنوعة في الجدولين <a class="ltx_ref" href="#S5.T4" title="Table 4 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">4</span></a> و<a class="ltx_ref" href="#S5.T5" title="Table 5 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5</span></a>.
+وكما هو متوقع، فإن التخطيطات الأصلية هي الأكثر عرضة لهجمات القرب:
+ففي المتوسط يمكن تحقيق 94% CCR و7% HD عند تشغيل الهجوم الوارد في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite>.
+ولا يقدم إرباك التموضع الانتقائي على مستوى البوابات كما اقترح في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite> إلا تحسناً هامشياً مقارنة بالتخطيطات غير المحمية، إذ يحقق المهاجم 92% من الوصلات
+الصحيحة ويواجه 15% HD.
+واقترح Sengupta <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite> أربع استراتيجيات حماية مختلفة،
+ومع أن CCR ينخفض إلى 63% في المتوسط، ينبغي ملاحظة أن هذه التقنيات قد تصبح غير عملية لحماية التصاميم الأكبر (من حيث زيادات PPA المفرطة).
+كما أن تبديل دبابيس الكتل كما اقترح في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>)</cite>
+محدود أيضاً؛ إذ لا يزال بإمكان المهاجم أن يستنتج بصورة صحيحة 87% من التوصيلات البينية المفقودة على مستوى النظام.
+ويخفض
+المخطط الذي اقترحه Wang <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>)</cite> قيمة CCR إلى نحو 72%.
+وفي الآونة الأخيرة، اقترح Feng <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib9" title="">feng17, </a>)</cite> مخططاً قائماً على التوجيه
+يمكنه خفض CCR
+بدرجة كبيرة إلى نحو 21%.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p6">
+<p class="ltx_p">ويقدم مخططنا أفضل حماية، إذ يمكنه خفض CCR إلى القيمة المثالية 0%—فلا يستنتج المهاجم بصورة صحيحة أياً من الشبكات المعشوأة في FEOL.
+ونعزو هذه النتيجة المتفوقة إلى التخفيف الشامل لدلائل التموضع <em class="ltx_emph ltx_font_italic">و</em> التوجيه.
+وإلى جانب CCR، يحقق مخططنا أيضاً OER مقدارها <math alttext="\approx" class="ltx_Math" dir="ltr" display="inline" id="S5.SS2.p6.m1"><mo>≈</mo></math>100% (ولا يورد أرقاماً مشابهة سوى <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>)</cite>).
+وأخيراً، يبلغ متوسط HD لدينا 40.4%، وهو تحسن مهم آخر مقارنةً بالأعمال السابقة.</p>
+</div>
+<div class="ltx_para" id="S5.SS2.p7">
+<p class="ltx_p">وإلى جانب هجوم <em class="ltx_emph ltx_font_italic">crouting</em>، اقترح Magaña <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> أيضاً مخططات حماية متمحورة حول التوجيه.
+وكما نوقش، يتمثل مقياس رئيس في تقييمهم في عدد الفتحات/الدبابيس الافتراضية.
+وفي الجدول <a class="ltx_ref" href="#S5.T6" title="Table 6 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">6</span></a>، نقارن أحدث نتائجهم <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> بنتائجنا، في حين نعد <em class="ltx_emph ltx_font_italic">خلايا التصحيح</em> لرفع الأسلاك إلى M8.
+وبما أن مخططنا يزيد عدد الفتحات في تلك الطبقات الأعلى بدرجة أكبر بكثير، فإننا نعتقد أنه أكثر صموداً من مخطط
+Magaña <em class="ltx_emph ltx_font_italic">et al.</em><span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup>
+<span class="ltx_tag ltx_tag_note">5</span>
+              
+              
+              
+            تذكر أن الهجمات في <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib6" title="">magana16, </a>; <a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> لا توفر قوائم توصيلات فعلية، ومن ثم لا نستطيع المقارنة وفق مقاييس ذات صلة مثل CCR وOER وHD.
+إضافة إلى ذلك، لاحظ أن Magaña <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> حذروا من رفع الأسلاك، لأن الموجهات قد تُضلل بفعل الرفع، وهو ما قد يؤثر بدوره في PPA. أما مخططنا
+فيُظهر كلفة PPA معقولة رغم الرفع (القسم <a class="ltx_ref" href="#S5.SS3" title="5.3. تقييم التخطيط ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">5.3</span></a>).</span></span></span></p>
+</div>
+<figure class="ltx_table" id="S5.T4">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 4. </span>
+مقارنة مع مخططات إرباك التموضع.
+تُحسب مقاييس مخططنا كمتوسط للتقسيم بعد M3 وM4 وM5؛ أما مقاييس الأعمال السابقة فمقتبسة.
+جميع القيم بالنسب المئوية. وتستند الهجمات إلى <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite>.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Original Layout</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Placement Perturbation <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="4"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Placement Perturbation <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Proposed</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Random</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">G-Color</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">G-Type1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">G-Type2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c432</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">92.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">75.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">23.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">90.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">98.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">41.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">68.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">84.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">89.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">78.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">48.4</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c880</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">96.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">15.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">1.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">56.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">84.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">81.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">78.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">43.4</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c1355</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">95.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">59.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">93.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">94.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40.1</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c1908</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">52.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">91</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">17.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">70.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">83.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">81.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">79.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">46.2</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c2670</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">86.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">86.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">7.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">52.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">66.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">66.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">56.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">39.8</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c3540</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">88.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">95.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">18.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">82.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">98.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">27.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">44.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">41.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">42.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">47.9</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c5315</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">93.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">98.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">91.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">98.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">49.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">54.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">50.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">56.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">38.3</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c6288</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">36.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">74.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">16.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">31.6</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c7552</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">69.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">1.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">81.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">56.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">48.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">53.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">48.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">27.8</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Average</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">94.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">65.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">7.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">91.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">84.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">15.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">57.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">66.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">66.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">62.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40.4</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_table" id="S5.T5">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 5. </span>
+مقارنة مع مخططات إرباك التوجيه. الإعداد هو نفسه الوارد في الجدول <a class="ltx_ref" href="#S5.T4" title="Table 4 ‣ 5.2. تقييم الأمن ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">4</span></a>.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Original Layout</span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Pin Swapping <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib3" title="">rajendran13_split, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Routing Perturbation <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Synergistic SM <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib9" title="">feng17, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="3"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Proposed</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">CCR</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">OER</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">HD</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c432</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">92.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">75.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">23.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">92.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">39.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">78.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">46.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">48.4</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c880</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">26</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">47.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">18</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">43.4</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c1355</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">95.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">59.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">2.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">86</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">77.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">26.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40.1</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c1908</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">52.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">86.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">25</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">83.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">38.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">46.2</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c2670</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">86.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">58.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">33.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">20.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">39.8</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c3540</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">88.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">95.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">18.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">83.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">77</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">36.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">11.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">35</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">47.9</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c5315</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">93.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">98.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">4.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">92.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">41</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">74.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">18.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">14.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">23.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">38.3</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c6288</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">36.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">80.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">42.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">33.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">31.6</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">c7552</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">97.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">69.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">1.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">91</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">48</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">73.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">100</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">20.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">21.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">27.8</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Average</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">94.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">65.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">7.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">88.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">33.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">72.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">28.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">20.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">N/A</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">28.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">99.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">40.4</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+<figure class="ltx_table" id="S5.T6">
+<figcaption class="ltx_caption ltx_centering" style="font-size:80%;"><span class="ltx_tag ltx_tag_table">Table 6. </span>مقارنة مع <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite> من حيث عدد الفتحات الإضافية. تُقسم التخطيطات بعد M6 وتُستعاد الاتصالية الحقيقية في M8.
+</figcaption>
+<div class="paper-arabizer-table-wrap"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" dir="ltr">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t" rowspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Benchmark</span></th>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Routing Blockage <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib7" title="">magana17, </a>)</cite></span></td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t" colspan="2"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Proposed Scheme</span></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">
+<math alttext="\Delta_{+}" class="ltx_Math" dir="ltr" display="inline" id="S5.T6.m1"><msub><mi mathsize="80%" mathvariant="normal">Δ</mi><mo mathsize="80%">+</mo></msub></math><span class="ltx_text ltx_font_bold" style="font-size:80%;">V67 (%)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">
+<math alttext="\Delta_{+}" class="ltx_Math" dir="ltr" display="inline" id="S5.T6.m2"><msub><mi mathsize="80%" mathvariant="normal">Δ</mi><mo mathsize="80%">+</mo></msub></math><span class="ltx_text ltx_font_bold" style="font-size:80%;">V78 (%)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">
+<math alttext="\Delta_{+}" class="ltx_Math" dir="ltr" display="inline" id="S5.T6.m3"><msub><mi mathsize="80%" mathvariant="normal">Δ</mi><mo mathsize="80%">+</mo></msub></math><span class="ltx_text ltx_font_bold" style="font-size:80%;">V67 (%)</span>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">
+<math alttext="\Delta_{+}" class="ltx_Math" dir="ltr" display="inline" id="S5.T6.m4"><msub><mi mathsize="80%" mathvariant="normal">Δ</mi><mo mathsize="80%">+</mo></msub></math><span class="ltx_text ltx_font_bold" style="font-size:80%;">V78 (%)</span>
+</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_tt"><em class="ltx_emph ltx_font_italic" style="font-size:80%;">superblue1</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">23.28</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">65.07</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">36.32</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">49.22</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_italic" style="font-size:80%;">superblue5</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">12.74</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.01</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">55.12</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">59.47</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_italic" style="font-size:80%;">superblue10</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">64.85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">84.09</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">62.09</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">73.12</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_italic" style="font-size:80%;">superblue12</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">16.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">35.59</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">79.34</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">70.59</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><em class="ltx_emph ltx_font_italic" style="font-size:80%;">superblue18</em></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">24.73</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">58.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">61.87</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><span class="ltx_text" style="font-size:80%;">124.16</span></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_tt"><span class="ltx_text ltx_font_bold" style="font-size:80%;">Average</span></th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">28.52</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">53.48</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">58.95</span></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_tt"><span class="ltx_text" style="font-size:80%;">75.31</span></td>
+</tr>
+</tbody>
+</table></div>
+</figure>
+</section>
+<section class="ltx_subsection" id="S5.SS3">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.3. </span>تقييم التخطيط</h3>
+<div class="ltx_para" id="S5.SS3.p1">
+<p class="ltx_p">نقدر كلفة المساحة بالنسبة إلى حدود القالب.
+وذلك لأن خلايا التصحيح لدينا لا تؤثر في طبقة الأجهزة، لكنها تفرض إعادة توجيه قد تتطلب حدوداً أكبر
+للحفاظ على تخطيطات خالية من مخالفات DRC. أما عملياً، فلا نحصل على أي كلفة مساحة على الإطلاق (الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5.3. تقييم التخطيط ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">6</span></a>).</p>
+</div>
+<div class="ltx_para" id="S5.SS3.p2">
+<p class="ltx_p">وبما أن الشبكات تُرفع إلى طبقات BEOL (M6/M8) ويعاد توجيهها،
+فإننا نلاحظ بطبيعة الحال بعض الزيادات في طول الأسلاك. غير أن هذه الزيادات لا تتحول إلا بدرجة محدودة إلى كلفة في القدرة والتأخير.
+وفي المتوسط،
+تنشأ كلفتا قدرة وتأخير مقداراهما 11.5% و10% لمعايير <em class="ltx_emph ltx_font_italic">ISCAS-85</em>.
+أما بالنسبة إلى معايير <em class="ltx_emph ltx_font_italic">superblue</em>، فتبلغ الزيادات المتوسطة 3.5% و2.7% للقدرة والتأخير على التوالي. ووجدنا أن هذه الزيادات أعلى بمقدار 3.4% و2.6%
+من تلك الناتجة عن <em class="ltx_emph ltx_font_italic">الرفع الساذج</em>.
+وفي هذا السياق، تذكر أن مخططنا يتفوق على الرفع الساذج وكذلك على مخططات الحماية السابقة من حيث الأمن.</p>
+</div>
+<div class="ltx_para" id="S5.SS3.p3">
+<p class="ltx_p">وتجدر الإشارة إلى أن معظم الدراسات السابقة لا تقدم تقييماً تفصيلياً للتخطيط ولا نتائج PPA.
+غير أن المؤلفين في دراسة حديثة لـ Sengupta <em class="ltx_emph ltx_font_italic">et al.</em> <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite> يقدمون نتائج PPA لمخطط الحماية لديهم. ونقارن نتائجهم بنتائجنا
+في الشكل <a class="ltx_ref" href="#S5.F6" title="Figure 6 ‣ 5.3. تقييم التخطيط ‣ 5. النتائج ‣ ارفع مستوى التصنيع المجزأ: استعادة الوظيفة الحقيقية عبر BEOL"><span class="ltx_text ltx_ref_tag">6</span></a>؛ إذ يحدث مخططنا في المتوسط زيادات أقل في المساحة والقدرة والتأخير جميعاً.</p>
+</div>
+<figure class="ltx_figure" id="S5.F6"><img alt="Refer to caption" class="ltx_graphics ltx_centering ltx_img_landscape" height="319" id="S5.F6.g1" src="incl/PPA_small.png" width="568"/>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6. </span>مقارنة مع <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib8" title="">sengupta17_SM_ICCAD, </a>)</cite> على معايير <em class="ltx_emph ltx_font_italic">ISCAS-85</em>.
+
+</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6. </span>الخلاصة</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p">شككت دراسات متعددة مؤخراً في أمن التصنيع المجزأ.
+وفي هذا العمل، نرفع مستوى المصمم للحماية من أطراف FEOL الخبيثة.
+وتتمثل فكرتنا في عشوأة الوظيفة والاتصالية في قائمة التوصيلات، ثم وضع ذلك التصميم المضلل وتوجيهه، واستعادة الوظيفة الحقيقية عبر BEOL فقط.</p>
+</div>
+<div class="ltx_para" id="S6.p2">
+<p class="ltx_p">نقارن مخططنا بتقنيات دفاع حديثة من أحدث ما وصل إليه المجال، مع الاستفادة من هجمات متمحورة حول التموضع وأخرى متمحورة حول التوجيه. ونلاحظ أن تخطيطاتنا المحمية
+أكثر صموداً بدرجة كبيرة، مع إظهار كلفة PPA معقولة حتى على معايير قياس صناعية واسعة النطاق.
+وتتمثل مساهمة أخرى في مخططنا في أننا ندعم بسهولة التقسيم بعد طبقات أعلى (مثلاً، بعد M6)، مما يحد من الكلفة التجارية.
+وفي العمل المستقبلي، نسعى إلى الحماية من تهديدات إضافية مثل إدخال أحصنة طروادة العتادية
+وإلى صياغة استراتيجيات باتجاه «SM آمن قابل للإثبات».</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">الشكر والتقدير</h2>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">يشكر المؤلفون Jeyavijayan (JV) Rajendran (Texas A&amp;M)
+على تزويدهم بهجوم تدفق الشبكة والتخطيطات المحمية الخاصة بـ <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="#bib.bib5" title="">wang16_sm, </a>; <a class="ltx_ref" href="#bib.bib12" title="">wang17, </a>)</cite>.
+وقد دُعم هذا العمل جزئياً من قبل
+Center for Cyber Security (CCS) في
+NYU New York/Abu Dhabi
+(NYU/NYUAD).</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(1)</span>
+<span class="ltx_bibblock">
+C. McCants, “Trusted integrated chips (TIC),” Intelligence Advanced
+Research Projects Activity (IARPA), 2011. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="https://www.iarpa.gov/index.php/research-programs/tic" title="">https://www.iarpa.gov/index.php/research-programs/tic</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(2)</span>
+<span class="ltx_bibblock">
+D. Forte, S. Bhunia, and M. M. Tehranipoor, Eds., <em class="ltx_emph ltx_font_italic">Hardware Protection
+through Obfuscation</em>.   Springer, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(3)</span>
+<span class="ltx_bibblock">
+J. Rajendran, O. Sinanoglu, and R. Karri, “Is split manufacturing secure?” in
+<em class="ltx_emph ltx_font_italic">Proc. Des. Autom. Test Europe</em>, 2013, pp. 1259–1264.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(4)</span>
+<span class="ltx_bibblock">
+B. Hill <em class="ltx_emph ltx_font_italic">et al.</em>, “A split-foundry asynchronous FPGA,” in <em class="ltx_emph ltx_font_italic">Proc.
+Cust. Integ. Circ. Conf.</em>, 2013, pp. 1–4.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(5)</span>
+<span class="ltx_bibblock">
+Y. Wang, P. Chen, J. Hu, and J. J. Rajendran, “The cat and mouse in split
+manufacturing,” in <em class="ltx_emph ltx_font_italic">Proc. Des. Autom. Conf.</em>, 2016, pp. 165:1–165:6.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(6)</span>
+<span class="ltx_bibblock">
+J. Magaña, D. Shi, and A. Davoodi, “Are proximity attacks a threat to the
+security of split manufacturing of integrated circuits?” in <em class="ltx_emph ltx_font_italic">Proc. Int.
+Conf. Comp.-Aided Des.</em>, 2016, pp. 90:1–90:7.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(7)</span>
+<span class="ltx_bibblock">
+J. Magaña, D. Shi, J. Melchert, and A. Davoodi, “Are proximity attacks a
+threat to the security of split manufacturing of integrated circuits?”
+<em class="ltx_emph ltx_font_italic">Trans. VLSI Syst.</em>, vol. 25, no. 12, pp. 3406–3419, 2017.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(8)</span>
+<span class="ltx_bibblock">
+A. Sengupta <em class="ltx_emph ltx_font_italic">et al.</em>, “Rethinking split manufacturing: An
+information-theoretic approach with secure layout techniques,” in
+<em class="ltx_emph ltx_font_italic">Proc. Int. Conf. Comp.-Aided Des.</em>, 2017, pp. 329–336.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(9)</span>
+<span class="ltx_bibblock">
+L. Feng <em class="ltx_emph ltx_font_italic">et al.</em>, “Making split fabrication synergistically secure and
+manufacturable,” in <em class="ltx_emph ltx_font_italic">Proc. Int. Conf. Comp.-Aided Des.</em>, 2017, pp.
+313–320.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(10)</span>
+<span class="ltx_bibblock">
+Y. Wang, T. Cao, J. Hu, and J. J. Rajendran, “Front-end-of-line attacks in
+split manufacturing,” in <em class="ltx_emph ltx_font_italic">Proc. Int. Conf. Comp.-Aided Des.</em>, 2017, pp.
+321–328.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(11)</span>
+<span class="ltx_bibblock">
+(2018) DfX Lab, NYUAD. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="http://sites.nyuad.nyu.edu/dfx/research-topics/design-for-trust-split-manufacturing/" title="">http://sites.nyuad.nyu.edu/dfx/research-topics/design-for-trust-split-manufacturing/</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(12)</span>
+<span class="ltx_bibblock">
+Y. Wang, P. Chen, J. Hu, and J. Rajendran, “Routing perturbation for enhanced
+security in split manufacturing,” in <em class="ltx_emph ltx_font_italic">Proc. Asia South Pac. Des. Autom.
+Conf.</em>, 2017, pp. 605–610.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(13)</span>
+<span class="ltx_bibblock">
+K. Xiao, D. Forte, and M. M. Tehranipoor, “Efficient and secure split
+manufacturing via obfuscated built-in self-authentication,” in <em class="ltx_emph ltx_font_italic">Proc.
+Int. Symp. Hardw.-Orient. Sec. Trust</em>, 2015, pp. 14–19.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(14)</span>
+<span class="ltx_bibblock">
+N. Viswanathan <em class="ltx_emph ltx_font_italic">et al.</em>, “The ISPD-2011 routability-driven placement
+contest and benchmark suite,” in <em class="ltx_emph ltx_font_italic">Proc. Int. Symp. Phys. Des.</em>, 2011,
+pp. 141–146.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(15)</span>
+<span class="ltx_bibblock">
+A. B. Kahng, H. Lee, and J. Li, “Horizontal benchmark extension for improved
+assessment of physical CAD research,” in <em class="ltx_emph ltx_font_italic">Proc. Great Lakes Symp.
+VLSI</em>, 2014, pp. 27–32. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="http://vlsicad.ucsd.edu/A2A/" title="">http://vlsicad.ucsd.edu/A2A/</a>
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">(16)</span>
+<span class="ltx_bibblock">
+(2011) NanGate FreePDK45 Open Cell Library. Nangate Inc. [Online]. Available:
+<a class="ltx_ref ltx_url ltx_font_typewriter" href="http://www.nangate.com/?page_id=2325" title="">http://www.nangate.com/?page_id=2325</a>
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Wed May 13 08:15:55 2026 by <a class="ltx_LaTeXML_logo" href="http://dlmf.nist.gov/LaTeXML/"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img alt="Mascot Sammy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="/></a>
+</div></footer>
+</div>
+</main></body>
+</html>

@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><title></title>
+<meta charset="utf-8"/>
+<meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="main.css" rel="stylesheet" type="text/css"/>
+<meta content="main.tex" name="src"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head><body dir="rtl"><main class="paper-arabizer-article">
+<div class="minipage"><span class="rtxptmr-x-x-120">SACHIN S. BHARADWAJ</span><sup class="textsuperscript"><span class="rtxptmr-">1</span></sup> <span class="rtxptmr-x-x-120">and KATEPALLI R. SREENIVASAN</span><sup class="textsuperscript"><span class="rtxptmr-">1,2,3,4*</span></sup><br class="newline"/> <sup class="textsuperscript"><span class="rtxptmr-">1</span></sup> <span class="rtxptmr-">Department of Mechanical and Aerospace Engineering, New York University, New York 11201 USA</span><br class="newline"/><sup class="textsuperscript"><span class="rtxptmr-">2</span></sup> <span class="rtxptmr-">Department of Physics, New York University, New York 10012 USA</span><br class="newline"/><sup class="textsuperscript"><span class="rtxptmr-">3</span></sup> <span class="rtxptmr-">Courant Institute of Mathematical Sciences, New York University, New York 10012 USA</span><br class="newline"/><sup class="textsuperscript"><span class="rtxptmr-">4</span></sup> <span class="rtxptmr-">New York University, Abu Dhabi 129188, UAE</span><br class="newline"/> </div><div class="minipage"><sup class="textsuperscript"><span class="rtxptmr-">*</span></sup><span class="rtxptmr-">Corresponding author. E-mail: katepalli.sreenivasan@nyu.edu</span> </div><div class="minipage"><span class="rtxptmr-">MS received 15  2020; revised 15  2020; accepted 15  2020</span> </div>
+<div class="minipage"><span class="rtxptmb-">Abstract.             </span><span class="rtxptmr-">.                  .                            .</span> </div><div class="minipage"><span class="rtxptmb-">Keywords.           </span><span class="rtxptmr-">.</span> </div><div class="minipage"><span class="rtxptmb-x-x-110">PACS Nos    12.60.Jv; 12.10.Dm; 98.80.Cq; 11.30.Hv</span> </div>
+<!-- l. 102 --><p class="noindent"><span class="rtxptmb-x-x-110">1.</span>
+<a id="Q1-1-0"></a>
+</p><!-- l. 104 --><p class="indent">            .                              .          .            (HPC)
+(DNS)                .                                   .                  .        .
+!
+</p><!-- l. 106 --><p class="indent">       .        “”.      Richard Feynman <span class="cite"> [<a href="#Xfeynman1999simulating">1</a>]</span>        .     NISQ
+(Noisy Intermediate Scale Quantum) <span class="cite"> [<a href="#Xpreskill2018quantum">2</a>]</span>        50     . (
+.)   “”                .      (QC)                  .                      .
+(CFD).
+</p><!-- l. 108 --><p class="indent">      CFD          (QCFD).                    .   2     QC    .     3
+QC.        ( 4)      ( 5).   5            .   6        QC             .      7
+QCFD   7.
+</p><!-- l. 110 --><!-- l. 110 --><p class="noindent"><span class="rtxptmb-x-x-110">2.</span>
+<a id="Q1-1-0"></a>
+</p><!-- l. 112 --><p class="indent">          QC    .                 <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span>.
+</p><!-- l. 114 --><!-- l. 114 --><p class="noindent">2.1
+<a id="Q1-1-0"></a>
+</p><!-- l. 114 --><p class="indent">             “”   “ ”   “  ”         .               “”.        .
+</p><hr class="figure"/><div class="figure">
+<!-- l. 117 --><p class="noindent"><img alt="PNLD_Bloch.jpeg" class="paper-arabizer-source-image" src="PNLD_Bloch.jpeg"/> <a id="x1-5r1"></a>
+<span class="rtxptmb-x-x-90">Figure 1.</span><span class="rtxptmr-x-x-90">  .   </span><span class="rtxmi-x-x-90">α   β    γ</span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 121 --><p class="noindent">2.2
+<a id="Q1-1-1"></a>
+</p><!-- l. 121 --><p class="indent">     .                     .              .       <span class="rtxr-x-x-110">Ψ          </span>.          .
+(QED)     Rydberg     ( Majorana)       (NMR) .           .
+Hilbert <span class="txsyb-x-x-110">ℍ</span>.   bra-ket  Dirac      “ket” <span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩ </span><span class="txsyb-x-x-110">ℍ</span>
+(<span class="txsy-x-x-110">∈ </span><span class="txsyb-x-x-110">ℂ</span><sup><span class="rtxptmri-x-x-77">n</span></sup>)
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-7r1"></a>
+<div class="math-display">
+<img alt="     ⌊  ⌋
+     ||||c1||||
+|ψ⟩ =|||||c2|||||;c ∈ ℂ
+     ||||| ...|||||  i
+     ⌈cn⌉
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main0x.svg"/></div>
+</td><td class="equation-label">(1)</td></tr></table></div>
+<!-- l. 129 --><p class="nopar">  “bra”   <span class="txsy-x-x-110">⟨</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">|  </span><span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩</span><sup><span class="txsy-x-x-77">†</span></sup>.         .                     Hilbert     :
+<span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span>(<span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">⟩⊗</span><span class="rtxmi-x-x-110">... </span><span class="txsy-x-x-110">⊗|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">⟩</span>) <span class="txsy-x-x-110">∈ </span><span class="txsyb-x-x-110">ℍ</span><sup><span class="txsy-x-x-77">⊗</span><span class="rtxptmri-x-x-77">n</span></sup>.           (   <span class="txsy-x-x-110">↑  ↓</span>)    <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩|</span>1<span class="txsy-x-x-110">⟩ </span>.
+<span class="txsyb-x-x-110">ℍ </span><span class="txsy-x-x-110">∈ </span><span class="txsyb-x-x-110">ℂ</span><sup><span class="txsy-x-x-77">⊗</span><span class="rtxptmr-x-x-77">2</span></sup>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-8r2"></a>
+<div class="math-display">
+<img alt="|Ψ ⟩ = c1|0⟩+ c2|1 ⟩,
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main1x.svg"/></div>
+</td><td class="equation-label">(2)</td></tr></table></div>
+<!-- l. 133 -->
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-9r3"></a>
+<div class="math-display">
+<img alt="    [ ]         [ ]
+     1           0
+|0⟩ = 0  and |1⟩ = 1 .
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main2x.svg"/></div>
+</td><td class="equation-label">(3)</td></tr></table></div>
+<!-- l. 138 --><hr class="figure"/><div class="figure">
+<!-- l. 141 --><p class="noindent"><img alt="NOT.png" class="paper-arabizer-source-image" src="NOT.png"/> <a id="x1-10r2"></a>
+<span class="rtxptmb-x-x-90">Figure 2.</span><span class="rtxptmr-x-x-90">   NOT</span>
+</p>
+</div><hr class="endfigure"/>
+<hr class="figure"/><div class="figure">
+<!-- l. 147 --><p class="noindent"><img alt="NOT1.png" class="paper-arabizer-source-image" src="NOT1.png"/> <a id="x1-11r3"></a>
+<span class="rtxptmb-x-x-90">Figure 3.</span><span class="rtxptmr-x-x-90">    NOT</span>
+</p>
+</div><hr class="endfigure"/>
+<hr class="figure"/><div class="figure">
+<!-- l. 154 --><p class="noindent"><img alt="NOT2.png" class="paper-arabizer-source-image" src="NOT2.png"/> <a id="x1-12r4"></a>
+<span class="rtxptmb-x-x-90">Figure 4.</span><span class="rtxptmr-x-x-90">    NOT</span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 160 --><p class="indent"> <span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup>     Born        <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ |</span>1<span class="txsy-x-x-110">⟩</span>.
+. (         .)         :                                 .
+.     Hilbert           Bloch    1.         (2)
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-13r4"></a>
+<div class="math-display">
+<img alt="        [   (β)          (β)  ]
+|Ψ⟩ = eiα cos--|0⟩ + eiγsin  --|1⟩ ,
+             2            2
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main3x.svg"/></div>
+</td><td class="equation-label">(4)</td></tr></table></div>
+<!-- l. 163 --><p class="nopar"> <span class="rtxmi-x-x-110">α  γ  </span>( ) <span class="rtxmi-x-x-110">β </span>.       “ ”         Bloch.                    
+                                                                                               
+                                                                                               
+</p><!-- l. 194 --><hr class="float"/><div class="float">
+<a id="x1-14r1"></a>
+<span class="rtxptmb-x-x-90">Table 1.</span><span class="rtxptmr-x-x-90"> </span>
+<div class="tabular"> <div class="paper-arabizer-table-wrap"><table class="tabular" dir="ltr" id="TBL-1"><colgroup id="TBL-1-1g"><col id="TBL-1-1"/><col id="TBL-1-2"/><col id="TBL-1-3"/></colgroup><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-1-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-1-1" style="white-space:nowrap; text-align:center;"> <span class="rtxptmb-x-x-110">Quantum Logic Gate  </span></td>
+<td class="td11" id="TBL-1-1-2" style="white-space:nowrap; text-align:center;"> <span class="rtxptmb-x-x-110">Circuit Symbol                                    </span></td>
+<td class="td11" id="TBL-1-1-3" style="white-space:nowrap; text-align:center;"> <span class="rtxptmb-x-x-110">Operation                    </span> </td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr class="hline"><td></td><td></td><td></td></tr><tr class="vspace" style="font-size:2.47499pt"><td> </td><td> </td><td> </td></tr><tr id="TBL-1-2-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-2-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">X</span>(Pauli X)            </td>
+<td class="td11" id="TBL-1-2-2" style="white-space:nowrap; text-align:center;"> <img alt="X  " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main4x.svg"/> </td>
+<td class="td11" id="TBL-1-2-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ → |</span>1<span class="txsy-x-x-110">⟩</span>             <span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩ → |</span>0<span class="txsy-x-x-110">⟩   </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-3-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-3-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">Y</span>(Pauli Y)            </td>
+<td class="td11" id="TBL-1-3-2" style="white-space:nowrap; text-align:center;"> <img alt="Y  " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main5x.svg"/> </td>
+<td class="td11" id="TBL-1-3-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ → </span><span class="rtxptmri-x-x-110">i</span><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩</span>            <span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩ → −</span><span class="rtxptmri-x-x-110">i</span><span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩  </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-4-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-4-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">Z</span>(Pauli Z)            </td>
+<td class="td11" id="TBL-1-4-2" style="white-space:nowrap; text-align:center;"> <img alt="Z  " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main6x.svg"/> </td>
+<td class="td11" id="TBL-1-4-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ → |</span>0<span class="txsy-x-x-110">⟩</span>             <span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩ → −|</span>1<span class="txsy-x-x-110">⟩  </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-5-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-5-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">H</span>(Hadamard)          </td>
+<td class="td11" id="TBL-1-5-2" style="white-space:nowrap; text-align:center;"> <img alt="H  " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main7x.svg"/> </td>
+<td class="td11" id="TBL-1-5-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ →</span> <img align="middle" alt="|0⟩+√|1⟩-
+  2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main12x.svg"/>              <span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩ →</span> <img align="middle" alt="     |0⟩−√|1⟩
+        2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main13x.svg"/>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-6-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-6-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">R</span><sub><span class="rtxmi-x-x-77">ϕ</span></sub>(Phase Shift)        </td>
+<td class="td11" id="TBL-1-6-2" style="white-space:nowrap; text-align:center;"> <img alt="T  " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main8x.svg"/> </td>
+<td class="td11" id="TBL-1-6-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ → |</span>0<span class="txsy-x-x-110">⟩</span>             <span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩ → </span><span class="rtxptmri-x-x-110">e</span><sup><span class="rtxptmri-x-x-77">i</span><span class="rtxmi-x-x-77">ϕ</span></sup><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩  </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr class="vspace" style="font-size:4.95pt"><td> </td><td> </td><td> </td></tr><tr id="TBL-1-7-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-7-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">CNOT               </span></td><td class="td11" id="TBL-1-7-2" style="white-space:nowrap; text-align:center;"> <img alt="|q|q12⟩⟩ " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main9x.svg"/> </td><td class="td11" id="TBL-1-7-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub>
+<span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩ → |</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txsy-x-x-110">⊕</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">⟩     </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-8-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-8-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">SWAP               </span></td>
+<td class="td11" id="TBL-1-8-2" style="white-space:nowrap; text-align:center;"> <img alt="||qq1⟩2⟩ " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main10x.svg"/> </td>
+<td class="td11" id="TBL-1-8-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩ → |</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">⟩       </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr><tr id="TBL-1-9-" style="vertical-align:baseline;"><td class="td11" id="TBL-1-9-1" style="white-space:nowrap; text-align:center;">
+<span class="rtxptmb-x-x-110">To</span><span class="rtxb-x-x-110">↑</span><span class="rtxptmb-x-x-110">oli               </span></td>
+<td class="td11" id="TBL-1-9-2" style="white-space:nowrap; text-align:center;"> <img alt="|q|q|q ⟩⟩⟩
+ 123 " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main11x.svg"/> </td>
+<td class="td11" id="TBL-1-9-3" style="white-space:nowrap; text-align:center;"> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">3</span></sub><span class="txsy-x-x-110">⟩ → |</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">3</span></sub> <span class="txsy-x-x-110">⊕</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="txsy-x-x-110">⋅</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩ </span>
+</td>
+</tr><tr class="hline"><td></td><td></td><td></td></tr></table></div> </div>
+</div><hr class="endfloat"/>
+<!-- l. 222 --><p class="noindent">2.3
+<a id="Q1-1-5"></a>
+</p><!-- l. 223 --><p class="indent">            AND NOT OR NAND To<span class="rtxr-x-x-110">↑</span>oli
+.
+</p><!-- l. 225 --><p class="indent">       U (UU<sup><span class="txsy-x-x-77">†</span></sup> <span class="rtxr-x-x-110">= </span><span class="txsyb-x-x-110">𝕀</span>)      .       (    NOT)    .                     1.
+<span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span>.
+</p><!-- l. 227 --><p class="indent">       .           NOT     .    X   <span class="rtxmi-x-x-110">σ</span><sub><span class="rtxptmri-x-x-77">x</span></sub>     Pauli.       (q0)
+<span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span><img alt="√---
+ 0.6" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main14x.svg"/><span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><img alt="√---
+ 0.4" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main15x.svg"/><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩ </span><br class="newline"/> X <span class="rtxr-x-x-110">= </span><span class="rtxmi-x-x-110">σ</span><sub><span class="rtxptmri-x-x-77">x</span></sub> <span class="rtxr-x-x-110">= </span><img align="middle" alt="[   ]
+0  1
+1  0" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main16x.svg"/>.
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-16r5"></a>
+<div class="math-display">
+<img alt="[0  1][1]  [0]     [0 1 ][0]   [1 ]
+          =    and          =    .
+ 1  0  0    1       1 0  1    0
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main17x.svg"/></div>
+</td><td class="equation-label">(5)</td></tr></table></div>
+<!-- l. 231 --><p class="nopar"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩ → |</span>1<span class="txsy-x-x-110">⟩|</span>1<span class="txsy-x-x-110">⟩ → |</span>0<span class="txsy-x-x-110">⟩</span>.       (<span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup>)        (c0)    2.
+.             X   NOT .
+</p><!-- l. 234 --><p class="indent">       IBMQ Qiskit      3 4     .      NOT   <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩|</span>1<span class="txsy-x-x-110">⟩
+|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">′⟩ </span><span class="rtxr-x-x-110">= </span><img alt="√0.4-" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main18x.svg"/><span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><img alt="√0.6-" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main19x.svg"/><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩</span>.                                              .
+.
+</p><!-- l. 236 --><!-- l. 236 --><p class="noindent">2.4
+<a id="Q1-1-5"></a>
+</p><!-- l. 237 --><p class="indent">          .
+</p>
+<hr class="figure"/><div class="figure">
+<!-- l. 241 --><p class="noindent"><img alt="PNLD_Parallel.png" class="paper-arabizer-source-image" src="PNLD_Parallel.png"/> <a id="x1-18r5"></a>
+<span class="rtxptmb-x-x-90">Figure 5.</span><span class="rtxptmr-x-x-90"> </span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 246 --><p class="indent">     B<sub class="textsubscript"><span class="rtxptmr-">f</span></sub>: {0,1} <img alt="↦→" class="mapsto paper-arabizer-tex4ht-math-image" dir="ltr" src="main20x.svg"/>{0,1}.        0 1   .      2  <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">in</span></sub><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩
+</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txsy-x-x-110">∈ {</span>0<span class="rtxmi-x-x-110">,</span>1<span class="txsy-x-x-110">}</span>.        ( ) <span class="rtxptmri-x-x-110">F</span><sub><span class="rtxptmri-x-x-77">f</span> </sub> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span><span class="rtxmi-x-x-77">,</span></sub><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩</span><img alt="Ff
+−−→" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main21x.svg"/><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txex-x-x-110">⊕</span>
+   B<sub><span class="rtxptmri-x-x-77">f</span> </sub>(<span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub>)<span class="txsy-x-x-110">⟩ </span><span class="txex-x-x-110">⊕</span>
+2 ( <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span>   ).    B<sub class="textsubscript"><span class="rtxptmr-">f</span></sub>(0) B<sub class="textsubscript"><span class="rtxptmr-">f</span></sub>(1)      .        5    :    Hadamard   :
+<span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩⊗|</span>0<span class="txsy-x-x-110">⟩</span><img alt="H−−−⊗→𝕀" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main22x.svg"/><img align="middle" alt="|0⟩+√|1⟩-
+  2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main23x.svg"/> <span class="txsy-x-x-110">⊗|</span>0<span class="txsy-x-x-110">⟩</span>.               <span class="rtxptmri-x-x-110">F</span><sub><span class="rtxptmri-x-x-77">f</span> </sub>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-19r6"></a>
+<div class="math-display">
+<img alt="       |0,B f(0)⟩+ |1,Bf(1)⟩
+|Ψ ⟩out =--------√---------.
+                 2
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main24x.svg"/></div>
+</td><td class="equation-label">(6)</td></tr></table></div>
+<!-- l. 249 --><!-- l. 251 --><hr class="float"/><div class="float">
+<img alt="Classification_PNLD.jpeg" class="paper-arabizer-source-image" src="Classification_PNLD.jpeg"/> <a id="x1-20r6"></a>
+<span class="rtxptmb-x-x-90">Figure 6.</span><span class="rtxptmr-x-x-90">      QC</span>
+</div><hr class="endfloat"/>
+<!-- l. 255 --><p class="indent">        B<sub class="textsubscript"><span class="rtxptmr-">f</span></sub>(0) B<sub class="textsubscript"><span class="rtxptmr-">f</span></sub>(1).    .                     B<sub class="textsubscript"><span class="rtxptmr-">f</span></sub>
+Deustch-Josza  Simon     <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span>.      QC            QC   .
+.
+<a id="x1-21r3"></a>
+</p><!-- l. 257 --><p class="noindent"><span class="rtxptmb-x-x-110">3.   :</span>
+<a id="Q1-1-7"></a>
+</p><!-- l. 258 --><p class="indent">     :              .          QC    6      .            QC: (1)   (2)   (3)
+.    .
+</p><!-- l. 260 --><!-- l. 260 --><p class="noindent">3.1
+<a id="Q1-1-7"></a>
+</p><!-- l. 261 --><p class="indent">      QC.                    : <br class="newline"/>
+</p><!-- l. 263 --><p class="noindent">(a)    :           Hubbard       .     Hamiltonian              .
+<br class="newline"/>
+</p><!-- l. 265 --><p class="noindent">(b)   :             Schrödinger        .            Gross Pitaevski (   )
+Monte Carlo   .
+</p><!-- l. 267 --><!-- l. 267 --><p class="noindent">3.2
+<a id="Q1-1-7"></a>
+</p><!-- l. 268 --><p class="indent">          .           .      .             Boltzmann             ODE
+Navier-Stokes.
+</p><!-- l. 270 --><!-- l. 270 --><p class="noindent">3.3
+<a id="Q1-1-7"></a>
+</p><!-- l. 271 --><p class="indent">              .                    ODE<span class="rtxr-x-x-110">/</span>PDE          .
+</p><!-- l. 273 --><p class="indent">           .           : (1)     (2)       .
+</p><!-- l. 275 --><!-- l. 275 --><p class="noindent"><span class="rtxptmb-x-x-110">4.</span>
+<a id="Q1-1-7"></a>
+</p><!-- l. 276 --><p class="indent">      (DNS) <span class="cite"> [<a href="#Xorszag1972numerical">4</a>, <a href="#Xrogallo1981numerical">5</a>, <a href="#Xpope2001turbulent">6</a>, <a href="#Xyeung2005high">7</a>, <a href="#Xiyer2020classical">8</a>]</span>    (LES) <span class="cite"> [<a href="#Xsmagorinsky1993large">9</a>, <a href="#Xmeneveau2000scale">10</a>, <a href="#Xpope2001turbulent">6</a>]</span>
+Navier-Stokes   Reynolds (RANS) <span class="cite"> [<a href="#Xpope2001turbulent">6</a>, <a href="#Xdavidson2015turbulence">11</a>]</span>        Boltzmann
+(LBM) <span class="cite"> [<a href="#Xsucci1991lattice">12</a>, <a href="#Xsucci2001lattice">13</a>]</span>    .      LBM       Boltzmann
+“ ”     .                     -           7.                      .  LBM
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-26r7"></a>
+<div class="math-display">
+<img alt="(∂t + vα.∇)ρα(r,t) = Sαβ(ρeq(r,t)− ρβ(r,t)).
+◟-----------------◝◜ -----------------◞   ◟----------β-------------◝◜-----------------------◞
+    Advection          Scattering-Relaxation
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main25x.svg"/></div>
+</td><td class="equation-label">(7)</td></tr></table></div>
+<!-- l. 279 --><p class="nopar"> <span class="rtxptmb-x-x-110">v   </span><span class="rtxmi-x-x-110">ρ   </span><span class="rtxptmri-x-x-110">S     </span><span class="rtxmi-x-x-110">ρ</span><sup><span class="rtxptmri-x-x-77">eq</span></sup>       (   <span class="cite"> [<a href="#Xsucci2001lattice">13</a>]</span>).              “”         (   )     QC
+   .
+   </p>
+<hr class="figure"/><div class="figure">
+<!-- l. 284 --><p class="noindent"><img alt="LBM.jpeg" class="paper-arabizer-source-image" src="LBM.jpeg"/> <a id="x1-27r7"></a>
+<span class="rtxptmb-x-x-90">Figure 7.</span><span class="rtxptmr-x-x-90">    LBM</span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 289 --><p class="noindent">4.1 <span class="rtxptmri-x-x-110">LQC 1:</span>
+<a id="Q1-1-8"></a>
+</p><!-- l. 290 --><p class="indent">           QC.                       QC (  QC  )      QCs     .
+(QLGA) <span class="cite"> [<a href="#Xmeyer1996quantum">14</a>, <a href="#Xmeyer2002quantum">15</a>]</span>       .
+</p><!-- l. 292 --><p class="indent">      1D.          (<span class="rtxptmb-x-x-110">x</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmb-x-x-110">v</span>)<sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxptmb-x-x-110">v</span><sub><span class="rtxptmri-x-x-77">i</span></sub>              .         1D     .    LBM   7
+.
+</p><!-- l. 294 --><p class="indent">     QLGA     .    1D    N        2    (q)     (l)  (r)   .
+2  <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxr-x-x-110">= </span><span class="rtxmi-x-x-110">α</span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">β</span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txsy-x-x-110">∈ {</span><span class="rtxptmri-x-x-110">l</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">r</span><span class="txsy-x-x-110">}
+{|</span><span class="rtxptmri-x-x-110">lr</span><span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">ll</span><span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">rr</span><span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">rl</span><span class="txsy-x-x-110">⟩}</span>.        <span class="rtxptmri-x-x-110">Ŝ         Â</span>.   L R       (            )        ( p)
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-29r8"></a>
+<div class="math-display">
+<img alt="     (    )   (           )
+S  =  L  R  =  cos p isin p
+  1   R  L     isin p  cos p
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main26x.svg"/></div>
+</td><td class="equation-label">(8)</td></tr></table></div>
+<!-- l. 303 -->
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-30r9"></a>
+<div class="math-display">
+<img alt="     (          )  (                  )
+     ||||1  0  0  0||||  ||||1    0      0    0||||
+S2 = ||||0  L  R  0||||= ||||0  cos p  isin p  0||||,
+     |||(0  R  L  0|||)  |||(0  isin p  cos p  0|||)
+      0  0  0  𝜃    0    0      0    𝜃
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main27x.svg"/></div>
+</td><td class="equation-label">(9)</td></tr></table></div>
+<!-- l. 318 --><!-- l. 320 --><p class="noindent"> <span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">L</span><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">R</span><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="rtxr-x-x-110">= </span>1 <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">𝜃</span><span class="txsy-x-x-110">|</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="rtxmi-x-x-110">𝜃       </span>.                   :            
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t </span><span class="rtxr-x-x-110">+ </span>1; <span class="txsy-x-x-110">→</span>)</td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">L</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r </span><span class="txsy-x-x-110">−</span>1<span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>; <span class="txsy-x-x-110">→</span>) <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">R</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r </span><span class="rtxr-x-x-110">+ </span>1<span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>; <span class="txsy-x-x-110">←</span>)</td>
+<td class="align-label">
+<a id="x1-31r10"></a>
+(10)
+</td></tr><tr><td class="align-odd"><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t </span><span class="rtxr-x-x-110">+ </span>1; <span class="txsy-x-x-110">←</span>)</td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">L</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r </span><span class="rtxr-x-x-110">+ </span>1<span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>; <span class="txsy-x-x-110">←</span>) <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">R</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r </span><span class="txsy-x-x-110">−</span>1<span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>; <span class="txsy-x-x-110">→</span>)<span class="rtxmi-x-x-110">.</span></td>
+<td class="align-label">
+<a id="x1-32r11"></a>
+(11)      </td></tr></table></div>
+<!-- l. 325 --><p class="indent">        L R  p         .       Schrödinger.          Dirac Schrödinger
+    <span class="rtxmi-x-x-110">δ</span><span class="rtxptmb-x-x-110">r </span><span class="txsy-x-x-110">→ </span>0 <span class="rtxmi-x-x-110">δ</span><span class="rtxptmb-x-x-110">r</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="txsy-x-x-110">→ </span>0  <span class="rtxmi-x-x-110">δ</span><span class="rtxptmri-x-x-110">t </span><span class="txsy-x-x-110">→ </span>0     Chapman-Enskog
+   <span class="cite"> [<a href="#Xmeyer1996quantum">14</a>, <a href="#Xboghosian1997quantum">16</a>, <a href="#Xboghosian1998quantum">17</a>]</span>.
+   </p>
+<!-- l. 327 --><p class="indent">                                  .    QLGA         <span class="cite"> [<a href="#Xboghosian1997quantum">16</a>, <a href="#Xboghosian1998quantum">17</a>, <a href="#Xboghosian1998simulating">18</a>, <a href="#Xlloyd1996universal">19</a>, <a href="#Xabrams1997simulation">20</a>]</span>
+                     Burgers   <span class="cite"> [<a href="#Xyepez1998lattice">21</a>, <a href="#Xyepez2001quantum">22</a>, <a href="#Xyepez2001quantuma">23</a>, <a href="#Xyepez2002quantum">24</a>]</span>.
+   </p>
+<!-- l. 329 --><p class="indent">                         .                        LBM .       4         4     2<sup><span class="rtxptmr-x-x-77">4</span></sup>     .
+        QC   4        QCs       .    <span class="rtxptmri-x-x-110">N   N</span><sub class="textsubscript"><span class="rtxptmr-">q</span></sub>    (    )   QC     <span class="rtxptmri-x-x-110">N</span><sub class="textsubscript"><span class="rtxptmr-">T</span></sub> <span class="rtxr-x-x-110">=
+   </span><span class="rtxptmri-x-x-110">N </span><span class="txsy-x-x-110">∗</span><span class="rtxptmri-x-x-110">N</span><sub class="textsubscript"><span class="rtxptmr-">q</span></sub> .     Hilbert  2<sup><span class="rtxptmri-x-x-77">N</span><sub><span class="rtxptmri-x-x-55">T</span> </sub></sup>              2<sup><span class="rtxptmri-x-x-77">N</span><sub><span class="rtxptmri-x-x-55">q</span></sub></sup>        Hilbert      <span class="rtxptmb-x-x-110">C    </span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmri-x-x-77">i</span></sub>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">r</span><sub><span class="rtxptmb-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,..,</span><span class="rtxptmb-x-x-110">r</span><sub><span class="rtxptmb-x-x-77">N</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)</td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span>
+<sub><span class="rtxmi-x-x-77">ψ</span><span class="rtxptmr-x-x-77">(</span><span class="rtxptmb-x-x-77">r</span><sub><span class="rtxptmb-x-x-55">i</span></sub><span class="rtxmi-x-x-77">,</span><span class="rtxptmri-x-x-77">t</span><span class="rtxptmr-x-x-77">)</span></sub><span class="rtxptmb-x-x-110">C </span><span class="txsy-x-x-110">×</span>(<span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">r</span><sub><span class="rtxptmb-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>) <span class="txsy-x-x-110">⊗</span><span class="rtxmi-x-x-110">.... </span><span class="txsy-x-x-110">⊗</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">r</span><sub><span class="rtxptmb-x-x-77">N</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>))</td>
+<td class="align-label">
+<a id="x1-33r12"></a>
+(12)
+</td></tr><tr><td class="align-odd"></td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span>
+<sub><span class="rtxmi-x-x-77">ψ</span><sub><span class="rtxptmri-x-x-55">q</span><sub>
+<span class="rtxptmri-x-x-55">i</span></sub></sub></sub><img alt="˜
+C" class="tilde paper-arabizer-tex4ht-math-image" dir="ltr" src="main28x.svg"/> <span class="txsy-x-x-110">×</span>(<span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">q</span><sub><span class="rtxptmr-x-x-55">1</span></sub></sub> <span class="txsy-x-x-110">⊗</span><span class="rtxmi-x-x-110">.... </span><span class="txsy-x-x-110">⊗</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">q</span><sub><span class="rtxptmri-x-x-55">N</span><sub>
+<span class="rtxptmri-x-x-55">T</span> </sub></sub></sub>)<span class="rtxmi-x-x-110">.</span></td>
+<td class="align-label"><a id="x1-34r13"></a>(13)   </td></tr></table></div>
+<!-- l. 335 --><p class="indent">                Schrödinger                (<span class="rtxptmri-x-x-110">Â</span>)  (<span class="rtxptmri-x-x-110">Ŝ</span>)
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-35r14"></a>
+<div class="math-display">
+<img alt="Ψ(r,t + Δt) = eiHˆΔt∕ℏΨ(r,t) = AˆSˆΨ(r,t).
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main29x.svg"/></div>
+</td><td class="equation-label">(14)</td></tr></table></div>
+<!-- l. 338 --><!-- l. 340 --><p class="indent">    :              Bravais      <span class="rtxptmb-x-x-110">R       r    </span>Bloch      (
+<span class="rtxptmri-x-x-110">k</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="txsy-x-x-110">≤ </span><span class="rtxptmri-x-x-110">N </span><span class="txsy-x-x-110">∗</span>(<span class="rtxptmri-x-x-110">period</span>)).                 <span class="cite"> [<a href="#Xyepez2001quantum">22</a>]</span>  .
+</p><!-- l. 342 --><p class="indent">   (a)             <img alt="nˆ" class="hat paper-arabizer-tex4ht-math-image" dir="ltr" src="main30x.svg"/><sub><span class="rtxptmb-x-x-77">R</span></sub> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">ĉ</span><sub><span class="rtxptmb-x-x-77">R</span></sub><sup><span class="txsy-x-x-77">†</span></sup><span class="rtxptmri-x-x-110">ĉ</span><sub><span class="rtxptmb-x-x-77">R</span></sub>.      QCs   NMR-QC (  )     (    ).
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-36r15"></a>
+<div class="math-display">
+<img alt="PR,t = Tr[(|Ψ(R, t)⟩⟨Ψ(R, t)|)nˆR] = Tr[ρ(t)ˆnR].
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main31x.svg"/></div>
+</td><td class="equation-label">(15)</td></tr></table></div>
+<!-- l. 345 --><!-- l. 347 --><p class="indent">   (b)   <span class="rtxptmri-x-x-110">d          </span>(<span class="rtxmi-x-x-110">ξ ξ</span><span class="rtxptmb-x-x-110">v</span>)
+</p><div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"><span class="rtxmi-x-x-110">ξ</span>(<span class="rtxptmb-x-x-110">r</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)</td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> lim <sub><span class="rtxptmri-x-x-77">d</span><span class="txsy-x-x-77">→</span><span class="rtxptmr-x-x-77">0</span></sub> <span class="txex-x-x-110">∑</span>
+<sub><span class="rtxptmri-x-x-77">k</span><sub><span class="rtxptmri-x-x-55">i</span></sub><span class="rtxmi-x-x-77">,</span><span class="rtxptmb-x-x-77">R</span><sub><span class="rtxptmb-x-x-55">1</span></sub></sub><sup><span class="rtxptmb-x-x-77">R</span><sub><span class="rtxptmb-x-x-55">N</span></sub>
+</sup><span class="rtxptmri-x-x-110">m</span>Tr[<span class="rtxmi-x-x-110">ρ</span>(<span class="rtxptmri-x-x-110">t</span>)<img alt="nˆ" class="hat paper-arabizer-tex4ht-math-image" dir="ltr" src="main32x.svg"/><sub><span class="rtxptmb-x-x-77">R</span><sub><span class="rtxptmri-x-x-55">k</span><sub>
+<span class="rtxptmri-x-x-55">i</span></sub></sub></sub>]<span class="rtxmi-x-x-110">,</span></td>
+<td class="align-label"><a id="x1-37r16"></a>(16)
+</td></tr><tr><td class="align-odd"><span class="rtxmi-x-x-110">ξ</span>(<span class="rtxptmb-x-x-110">r</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)<span class="rtxptmb-x-x-110">v</span>(<span class="rtxptmb-x-x-110">r</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)</td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> lim <sub><span class="rtxptmri-x-x-77">d</span><span class="txsy-x-x-77">→</span><span class="rtxptmr-x-x-77">0</span></sub> <span class="txex-x-x-110">∑</span>
+<sub><span class="rtxptmri-x-x-77">k</span><sub><span class="rtxptmri-x-x-55">i</span></sub><span class="rtxmi-x-x-77">,</span><span class="rtxptmb-x-x-77">R</span><sub><span class="rtxptmb-x-x-55">1</span></sub></sub><sup><span class="rtxptmb-x-x-77">R</span><sub><span class="rtxptmb-x-x-55">N</span></sub>
+</sup><span class="rtxptmri-x-x-110">mv</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="rtxptmb-x-x-110">r</span><sub>
+<span class="rtxptmr-x-x-77">(</span><span class="rtxptmb-x-x-77">R</span><span class="rtxptmri-x-x-77">modN</span><sub><span class="rtxptmri-x-x-55">q</span></sub><span class="rtxptmr-x-x-77">)</span></sub>Tr[<span class="rtxmi-x-x-110">ρ</span>(<span class="rtxptmri-x-x-110">t</span>)<img alt="ˆn" class="hat paper-arabizer-tex4ht-math-image" dir="ltr" src="main33x.svg"/><sub><span class="rtxptmb-x-x-77">R</span><sub><span class="rtxptmri-x-x-55">k</span><sub><span class="rtxptmri-x-x-55">i</span></sub></sub></sub>]<span class="rtxmi-x-x-110">.</span></td>
+<td class="align-label"><a id="x1-38r17"></a>(17)</td></tr></table></div>
+<!-- l. 352 --><p class="indent">       (    )           .
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-39r18"></a>
+<div class="math-display">
+<img alt="PR+dr,t+Δt = PR,t + ⟨Ψ(R,t)|ˆS†nˆR ˆS − ˆnR |Ψ(R, t)⟩,
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main34x.svg"/></div>
+</td><td class="equation-label">(18)</td></tr></table></div>
+<!-- l. 355 -->
+<div class="math-display">
+<img alt="⟨Ψ(R, t)|ˆS†ˆn Aˆ†|Ψ(R,t+Δt)⟩ = ⟨Ψ(R, t)|Sˆ†ˆn ˆA|Ψ(R,t)⟩.
+          R                          R
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main35x.svg"/></div>
+<!-- l. 361 --><p class="indent"> <span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmr-x-x-77">3</span></sub>   (IBMQ)     3   Euler <span class="cite"> [<a href="#Xyepez2001quantum">22</a>, <a href="#XIBM">25</a>]</span>:
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-40r19"></a>
+<div class="math-display">
+<img alt="     (                    )
+U  =   cos(𝜃2)    e−iλ sin(𝜃2)  .
+ 3    eiϕsin(𝜃2)  ei(ϕ+λ)cos(𝜃2)
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main36x.svg"/></div>
+</td><td class="equation-label">(19)</td></tr></table></div>
+<!-- l. 367 --><p class="nopar"> 0 <span class="txsy-x-x-110">≤ </span>(<span class="rtxmi-x-x-110">ϕ,λ</span>) <span class="rtxmi-x-x-110">&lt; </span>2<span class="rtxmi-x-x-110">π </span>0 <span class="txsy-x-x-110">≤ </span><span class="rtxmi-x-x-110">𝜃 </span><span class="txsy-x-x-110">≤ </span><span class="rtxmi-x-x-110">π</span>.        : (1)      LBM           QC
+   (2)             (3)           LBM             LBM                    .
+            .
+   </p>
+<!-- l. 370 -->
+<!-- l. 370 --><p class="noindent">4.2  <span class="rtxptmri-x-x-110">LQC 2:  Dirac</span>
+<a id="Q1-1-8"></a>
+</p><!-- l. 372 --><hr class="float"/><div class="float">
+<img alt="circuit_amp_load.png" class="paper-arabizer-source-image" src="circuit_amp_load.png"/> <a id="x1-42r8"></a>
+<span class="rtxptmb-x-x-90">Figure 8.</span><span class="rtxptmr-x-x-90">     4</span>
+</div><hr class="endfloat"/>
+<!-- l. 377 --><p class="indent">      LBM    Dirac <span class="cite"> [<a href="#Xsucci1991lattice">12</a>, <a href="#Xbenzi1992lattice">26</a>, <a href="#Xmezzacapo2015quantum">27</a>]</span>.             .                 QC
+QC  .       (7)  “ Dirac   Majorana”  <span class="cite"> [<a href="#Xfillion2013formal">28</a>]</span>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-43r20"></a>
+<div class="math-display">
+<img alt=" ∂Ψ
+i-∂t + iˆApb∇pbΨ = M Ψ,
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main37x.svg"/></div>
+</td><td class="equation-label">(20)</td></tr></table></div>
+<!-- l. 380 --><p class="nopar"> <img alt="Aˆ" class="hat paper-arabizer-tex4ht-math-image" dir="ltr" src="main38x.svg"/>   (  Cli<span class="rtxr-x-x-110">↑</span>ord    Pauli)    <span class="rtxptmb-x-x-110">M      </span>Hermitian.      Cli<span class="rtxr-x-x-110">↑</span>ord (
+<span class="txsyb-x-x-110">ℝ</span><sup><span class="rtxptmr-x-x-77">3</span></sup>    Pauli)               .                “ Fock”    .      1D
+<span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmri-x-x-110">x</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)<span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∫
+  </span><span class="rtxptmri-x-x-110">dx</span>P(<span class="rtxptmri-x-x-110">x</span>)<span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">x</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub>     P(x)   . (  Fock    2     2D
+<span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">x</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)<span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∫
+  </span><span class="rtxptmri-x-x-110">dx</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxptmri-x-x-110">dx</span><sub><span class="rtxptmr-x-x-77">2</span></sub>P(<span class="rtxptmri-x-x-110">x</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">x</span><sub><span class="rtxptmr-x-x-77">2</span></sub>)<span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">x</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">⟩|</span><span class="rtxptmri-x-x-110">x</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩</span>.)                .
+“ ”       <span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span><sub>
+<span class="rtxptmri-x-x-77">i</span></sub><span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">s</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="txsy-x-x-110">⊗|</span><span class="rtxr-x-x-110">Ψ</span>(<span class="rtxptmb-x-x-110">x</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">t</span>)<span class="txsy-x-x-110">⟩</span>.          Dirac
+<span class="cite"> [<a href="#Xmezzacapo2015quantum">27</a>]</span>:
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-44r21"></a>
+<div class="math-display">
+<img alt="            (  iΔt  π  (               ))
+e−iˆAΔt∕ℏ = exp −-----√--Z1 ⊗ I2 +X1 ⊗ σpb2  .
+                ℏ 2  2
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main39x.svg"/></div>
+</td><td class="equation-label">(21)</td></tr></table></div>
+<!-- l. 384 --><p class="nopar"> Z<sub><span class="rtxptmri-x-x-77">i</span></sub> X<sub><span class="rtxptmri-x-x-77">i</span></sub> Pauli    i<sup class="textsuperscript"><span class="rtxptmr-">th</span></sup> <span class="rtxmi-x-x-110">σ</span><sup class="textsuperscript"><span class="rtxptmr-">pb</span></sup>   .       <span class="rtxptmri-x-x-110">Ŝ</span>           “ ”          ( <span class="cite"> [<a href="#Xmezzacapo2015quantum">27</a>]</span>  )     <span class="rtxptmri-x-x-110">Ŝ
+e</span><sup><span class="txsy-x-x-77">−</span><span class="rtxptmri-x-x-77">iŜ</span><span class="rtxr-x-x-77">Δ</span><span class="rtxptmri-x-x-77">t</span><span class="rtxmi-x-x-77">∕</span><span class="txsyb-x-x-77">ℏ</span></sup> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">e</span><sup><span class="rtxptmri-x-x-77">Û</span><sub><span class="rtxptmr-x-x-55">1</span></sub><span class="rtxr-x-x-77">+</span><span class="rtxmi-x-x-77">α</span><span class="rtxptmri-x-x-77">Û</span><sub><span class="rtxptmr-x-x-55">2</span></sub></sup>.                    Lie-Trotter-Suzuki
+<span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmr-x-x-77">3</span></sub>.                .        .      -   <span class="cite"> [<a href="#Xmezzacapo2015quantum">27</a>]</span>.                               QC
+QCs .
+<a id="x1-45r3"></a>
+</p><!-- l. 387 --><p class="noindent">4.3 <span class="rtxptmri-x-x-110">LQC 3:</span>
+<a id="Q1-1-9"></a>
+</p><!-- l. 389 --><p class="indent">            d-      (d<span class="rtxr-x-x-110">+</span>1)-  .                Monte-Carlo
+<span class="cite"> [<a href="#Xsondhi1997continuous">29</a>, <a href="#Xhsieh2016d">30</a>]</span>         -  <span class="cite"> [<a href="#Xaharony2000large">31</a>, <a href="#Xpolyakov1987gauge">32</a>]</span>  .                LQC 1  LQC2
+.
+</p><!-- l. 391 --><p class="indent">        Tr(<span class="rtxptmri-x-x-110">e</span><sup><span class="txsy-x-x-77">−</span><span class="rtxptmri-x-x-77">H</span><span class="rtxmi-x-x-77">β</span></sup>)    Feynman
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-46r22"></a>
+<div class="math-display">
+<img alt="   ∑
+Z =   ⟨r|e−HΔβ∕N|r1⟩⟨r1|...|rN⟩⟨rN|e−HΔβ∕N|r⟩,
+    r,ri
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main40x.svg"/></div>
+</td><td class="equation-label">(22)</td></tr></table></div>
+<!-- l. 393 --><p class="nopar">      (d<span class="rtxr-x-x-110">+</span>1)-                  .           2D       1D  . (    d  <span class="txsy-x-x-110">→</span>d
+   <span class="cite"> [<a href="#Xsomma2007quantum">33</a>]</span>.)              .                  .
+   </p>
+<!-- l. 395 -->
+<!-- l. 395 --><p class="noindent"><span class="rtxptmb-x-x-110">5.</span>
+<a id="Q1-1-9"></a>
+</p>
+<!-- l. 396 --><p class="indent">             (    )                    .                   .
+   </p>
+<!-- l. 398 --><p class="indent">                           .            : (1)      (2)     (3)      .             QC.
+      .
+   </p>
+<!-- l. 401 -->
+<!-- l. 401 --><p class="noindent">5.1
+   <a id="Q1-1-9"></a>
+</p>
+<!-- l. 403 --><p class="indent">                  ODE<span class="rtxr-x-x-110">/</span>PDE  .       C<span class="rtxr-x-x-110">++   </span><span class="rtxptmb-x-x-110">int a </span><span class="rtxb-x-x-110">= </span><span class="rtxptmb-x-x-110">10;   a  </span>10.
+     .          QC    10  <span class="rtxptmb-x-x-110">a</span>.             .                     .           :
+   <br class="newline"/>
+</p>
+<!-- l. 405 --><p class="noindent">(1) <span class="underline"> </span>:          <span class="cite"> [<a href="#Xplesch2011quantum">34</a>, <a href="#Xnielsen2002quantum">3</a>]</span>            .            .   1 <span class="cite"> [<a href="#Xshende2006synthesis">35</a>]</span>        QCs  (
+   IBMQ)           .                   0             0.          (<span class="rtxptmri-x-x-110">i</span>) (2 <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">i</span>) <img alt="√ --
+  2" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main41x.svg"/><span class="rtxptmri-x-x-110">i </span>1
+   ( ).      N  log <sub><span class="rtxptmr-x-x-77">2</span></sub><span class="rtxptmri-x-x-110">N      </span>2    :
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-49r23"></a>
+<div class="math-display">
+<img alt="      1(                 √--          )
+|Ψ⟩ = --i|00⟩+ (2 + i)|01⟩ +  2i|10⟩ +1 |11⟩ .
+      3
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main42x.svg"/></div>
+</td><td class="equation-label">(23)</td></tr></table></div>
+<!-- l. 409 --><p class="nopar">        1 <span class="cite"> [<a href="#Xshende2006synthesis">35</a>]</span>       8.            ( <img align="middle" alt="19" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main43x.svg"/><span class="rtxmi-x-x-110">,</span><img align="middle" alt="59" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main44x.svg"/><span class="rtxmi-x-x-110">,</span><img align="middle" alt="29" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main45x.svg"/> and <img align="middle" alt="19" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main46x.svg"/>).      ( )      Qiskit—
+   IBM Quantum Experience—  9      .
+   </p>
+<hr class="figure"/><div class="figure">
+<div class="minipage"><a id="x1-50r9"></a>
+<span class="rtxptmb-x-x-90">Figure 9.</span><span class="rtxptmr-x-x-90">  :</span>
+<!-- l. 418 --><p class="noindent"><span class="rtxptmb-x-x-110">: </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">,</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><img alt="⋅⋅⋅" class="@cdots paper-arabizer-tex4ht-math-image" dir="ltr" src="main47x.svg"/><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmri-x-x-77">n</span></sub>
+</p><!-- l. 419 --><p class="noindent"><span class="rtxptmb-x-x-110">:  </span><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">load</span></sub> , <span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">f inal</span></sub> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">...</span><span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">|</span>11<span class="rtxmi-x-x-110">...</span>1<span class="txsy-x-x-110">⟩</span>
+</p><!-- l. 439 --><p class="noindent">(<span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">zy</span></sub>)<sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="txsy-x-x-110">← </span><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">y</span></sub> <span class="txsy-x-x-110">⊗</span><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">z</span></sub>
+</p><!-- l. 440 --><p class="noindent"><span class="rtxptmri-x-x-110">U </span><span class="txsy-x-x-110">← </span>(<span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">zy</span></sub>)<sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="txsy-x-x-110">⊗</span><span class="rtxptmri-x-x-110">U</span>
+</p><!-- l. 445 --><p class="noindent"> <span class="rtxptmri-x-x-110">U </span><span class="rtxr-x-x-110">= </span>(<span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">zy</span></sub>)<sub><span class="rtxptmri-x-x-77">n</span></sub> <span class="txsy-x-x-110">⊗</span><img alt="⋅⋅⋅" class="@cdots paper-arabizer-tex4ht-math-image" dir="ltr" src="main48x.svg"/><span class="txsy-x-x-110">⊗</span>(<span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">zy</span></sub>)<sub><span class="rtxptmr-x-x-77">1</span></sub>
+</p><!-- l. 446 --><p class="noindent"><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">load</span></sub> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">U</span><sup><span class="txsy-x-x-77">†</span></sup>
+</p><!-- l. 447 --><p class="noindent"><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">f inal</span></sub><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">=  </span><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">load</span></sub><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">f inal</span></sub><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">=  </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">... </span><span class="rtxr-x-x-110">+
+</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">|</span>11<span class="rtxmi-x-x-110">...</span>1<span class="txsy-x-x-110">⟩</span>
+</p><!-- l. 448 --><p class="noindent"><span class="rtxptmb-x-x-110">return </span><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">load</span></sub>, <span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">f inal</span></sub><span class="txsy-x-x-110">⟩</span>
+</p><!-- l. 470 --><p class="noindent"> DISENTANGLE(<span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">temp</span></sub>):
+</p>
+<!-- l. 470 --><p class="noindent"><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">local</span></sub> <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">temp</span></sub> <span class="txsy-x-x-110">← </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">... </span><span class="rtxr-x-x-110">+
+</span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">|</span>11<span class="rtxmi-x-x-110">...</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">⟩</span>
+</p>
+<!-- l. 470 --><p class="noindent"><span class="rtxptmb-x-x-110">return </span><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">local</span></sub> <span class="txsy-x-x-110">← </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span><span class="txsy-x-x-110">⟩⊗|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">|</span>00<span class="rtxmi-x-x-110">...</span><span class="txsy-x-x-110">⟩⊗|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmr-x-x-77">2</span></sub><span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+
+</span><span class="rtxmi-x-x-110">... </span><span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">c</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">|</span>11<span class="rtxmi-x-x-110">...</span><span class="txsy-x-x-110">⟩⊗|</span><span class="rtxptmri-x-x-110">q</span><sub><span class="rtxptmri-x-x-77">n</span></sub><span class="txsy-x-x-110">⟩</span> </p></div>
+</div><hr class="endfigure"/>
+<hr class="figure"/><div class="figure">
+<!-- l. 474 --><p class="noindent"><img alt="hist_amp_load.png" class="paper-arabizer-source-image" src="hist_amp_load.png"/> <a id="x1-51r10"></a>
+<span class="rtxptmb-x-x-90">Figure 10.</span><span class="rtxptmr-x-x-90">     IBMQ</span>
+</p>
+</div><hr class="endfigure"/>
+<hr class="figure"/><div class="figure">
+<!-- l. 483 --><p class="noindent"><img alt="circuit_load_4.png" class="paper-arabizer-source-image" src="circuit_load_4.png"/> <a id="x1-52r11"></a>
+<span class="rtxptmb-x-x-90">Figure 11.</span><span class="rtxptmr-x-x-90">     4</span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 488 --><hr class="float"/><div class="float">
+<img alt="density_load_4.png" class="paper-arabizer-source-image" src="density_load_4.png"/> <a id="x1-53r12"></a>
+<span class="rtxptmb-x-x-90">Figure 12.</span><span class="rtxptmr-x-x-90">     3</span>
+</div><hr class="endfloat"/>
+<!-- l. 495 --><p class="noindent">(2) <span class="underline"> </span>:           ket .      10     1010.        <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ϕ</span><span class="txsy-x-x-110">⟩⊗</span>(<span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩</span>).
+4      <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span>(<span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩|</span>0<span class="txsy-x-x-110">⟩⊗|</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩|</span>1<span class="txsy-x-x-110">⟩⊗|</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩|</span>0<span class="txsy-x-x-110">⟩⊗|</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxr-x-x-110">+ </span><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩|</span>1<span class="txsy-x-x-110">⟩⊗|</span>0<span class="txsy-x-x-110">⟩</span>)
+1010.         Controlled-SWAP X H To<span class="rtxr-x-x-110">↑</span>oli    10. (
+<span class="cite"> [<a href="#Xcortese2018loading">36</a>]</span>.)
+</p><!-- l. 497 --><p class="indent">    11   <span class="rtxmi-x-x-110">ρ </span><span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span><sub>
+<span class="rtxptmri-x-x-77">i</span></sub><span class="rtxptmri-x-x-110">p</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">⟨</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">|</span><sub><span class="rtxptmri-x-x-77">i</span></sub>   .       11   1010            .       6
+4                       .       (N)         log <sub><span class="rtxptmr-x-x-77">2</span></sub>(<span class="rtxptmri-x-x-110">N</span>) .
+.
+<a id="x1-54r2"></a>
+</p><!-- l. 499 --><p class="noindent">5.2
+<a id="Q1-1-13"></a>
+</p><!-- l. 501 --><p class="indent">               .             .               <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>, <a href="#Xvogel1989determination">37</a>, <a href="#Xleonhardt1997measuring">38</a>, <a href="#Xnawrocki2015introduction">39</a>]</span>.
+</p><!-- l. 503 --><p class="indent">              .                   .           von Neumann      z
+<span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩|</span>1<span class="txsy-x-x-110">⟩</span>.                        .             .
+</p><!-- l. 505 --><p class="indent">                    (     ).       .
+</p><!-- l. 507 --><p class="indent">    QM:   <span class="rtxptmri-x-x-110">A       </span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="rtxptmri-x-x-110">“a”     :</span>
+</p>
+<ol class="enumerate1">
+<li class="enumerate" id="x1-56x1">
+<!-- l. 509 --><p class="noindent">    “a”
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-57r24"></a>
+<div class="math-display">
+<img alt="P(a) = ⟨ψi|A†aAa|ψi⟩.
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main49x.svg"/></div>
+</td><td class="equation-label">(24)</td></tr></table></div>
+<!-- l. 512 -->
+</li>
+<li class="enumerate" id="x1-59x2">
+<!-- l. 513 -->
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-60r25"></a>
+<div class="math-display">
+<img alt="      ---Aa-|ψi⟩----
+|ψ f⟩ = ∘ ----†------.
+        ⟨ψi|AaAa|ψi⟩
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main50x.svg"/></div>
+</td><td class="equation-label">(25)</td></tr></table></div>
+<!-- l. 516 --></li></ol>
+<!-- l. 518 --><p class="noindent">      “a”    <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩</span>.    “”                                  .             .
+   {<span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">⟩</span>}.
+   </p>
+<!-- l. 520 --><p class="indent">                    .                          .                     .   <span class="rtxptmri-x-x-110">p</span><sub><span class="rtxmi-x-x-77">α</span></sub>      {<span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxmi-x-x-77">α</span></sub><span class="txsy-x-x-110">⟩</span>}
+      <span class="rtxmi-x-x-110">ρ </span><span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span><sub>
+<span class="rtxmi-x-x-77">α</span></sub><span class="rtxptmri-x-x-110">p</span><sub><span class="rtxmi-x-x-77">α</span></sub><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxmi-x-x-77">α</span></sub><span class="txsy-x-x-110">⟩⟨</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxmi-x-x-77">α</span></sub><span class="txsy-x-x-110">|</span>.        <span class="rtxmi-x-x-110">ρ</span>
+</p>
+<ol class="enumerate1">
+<li class="enumerate" id="x1-62x1">
+<!-- l. 522 --><p class="noindent">   “a”
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-63r26"></a>
+<div class="math-display">
+<img alt="P(a) = Tr(A†aAaρ).
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main51x.svg"/></div>
+</td><td class="equation-label">(26)</td></tr></table></div>
+<!-- l. 525 -->
+</li>
+<li class="enumerate" id="x1-65x2">
+<!-- l. 526 -->
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-66r27"></a>
+<div class="math-display">
+<img alt="     ---AaρA†a---
+ρ f = ∘----†----.
+       Tr(AaAaρ)
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main52x.svg"/></div>
+</td><td class="equation-label">(27)</td></tr></table></div>
+<!-- l. 529 --></li></ol>
+<!-- l. 532 --><p class="indent">     Tr(<span class="rtxmi-x-x-110">ρ</span>) <span class="rtxr-x-x-110">= </span>1    (   )   .             :                        POVM
+(Positive Operator Valued Measure).   POVM    {<span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">a</span></sup>} <span class="txsy-x-x-110">≡</span>
+{<span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub><sup><span class="txsy-x-x-77">†</span></sup><span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub>}       <span class="txsy-x-x-110">⟨</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">a</span></sup><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">⟨</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">|</span><span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub><sup><span class="txsy-x-x-77">†</span></sup><span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">P</span>(<span class="rtxptmri-x-x-110">a</span>) <span class="txsy-x-x-110">≥ </span>0
+<span class="txex-x-x-110">∑</span>
+<sub><span class="rtxptmri-x-x-77">a</span></sub>
+<span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">a</span></sup> <span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span><sub>
+<span class="rtxptmri-x-x-77">a</span></sub><span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub><sup><span class="txsy-x-x-77">†</span></sup><span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub> <span class="rtxr-x-x-110">= </span><span class="txsyb-x-x-110">𝕀</span>.               POVM   <img alt="∘Pa--
+  VM" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main53x.svg"/> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">A</span><sub><span class="rtxptmri-x-x-77">a</span></sub>.
+</p><!-- l. 534 --><p class="indent">        .   POVM           .                          POVM
+<span class="txsy-x-x-110">{</span><span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">a</span></sup><span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">b</span></sup> and (<span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">c</span></sup> <span class="rtxr-x-x-110">= </span><span class="txsyb-x-x-110">𝕀</span><span class="txsy-x-x-110">−</span>(<span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">a</span></sup> <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">P</span><sub><span class="rtxptmri-x-x-77">V M</span></sub><sup><span class="rtxptmri-x-x-77">b</span></sup>))<span class="txsy-x-x-110">}  </span>.           .
+.                                .                           .
+.
+</p><!-- l. 536 --><!-- l. 536 --><p class="noindent">5.3
+<a id="Q1-1-13"></a>
+</p><!-- l. 538 --><p class="indent">       .           .            .      POVM     .     {<span class="txsyb-x-x-110">𝕀</span><span class="rtxmi-x-x-110">∕</span>2 X<span class="rtxr-x-x-110">/</span>2  Y<span class="rtxr-x-x-110">/</span>2
+Z<span class="rtxr-x-x-110">/</span>2 }
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-68r28"></a>
+<div class="math-display">
+<img alt="ρ = 1(Tr(ρ)𝕀+ Tr(Xρ)X +Tr(Yρ)Y + Tr(Z ρ)Z ).
+    2
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main54x.svg"/></div>
+</td><td class="equation-label">(28)</td></tr></table></div>
+<!-- l. 541 --><p class="nopar">    Tr(<span class="rtxptmri-x-x-110">X</span><span class="rtxmi-x-x-110">ρ</span>).          .                     .     1<span class="rtxmi-x-x-110">∕</span><img alt="√ --
+  N" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main55x.svg"/>  N        Gaussian
+<span class="rtxptmri-x-x-110">N </span>.        .         .          <span class="cite"> [<a href="#Xcoles2018quantum">40</a>]</span>
+</p>
+<ol class="enumerate1">
+<li class="enumerate" id="x1-70x1">
+</li>
+<li class="enumerate" id="x1-72x2">
+</li>
+<li class="enumerate" id="x1-74x3">
+</li>
+<li class="enumerate" id="x1-76x4"> <span class="rtxptmri-x-x-110">Bayesian.</span></li></ol>
+<!-- l. 549 --><hr class="float"/><div class="float">
+<a id="x1-77r2"></a>
+<span class="rtxptmb-x-x-90">Table 2.</span><span class="rtxptmr-x-x-90"> </span>
+<div class="tabular"> <div class="paper-arabizer-table-wrap"><table class="tabular" dir="ltr" id="TBL-2"><colgroup id="TBL-2-1g"><col id="TBL-2-1"/></colgroup><colgroup id="TBL-2-2g"><col id="TBL-2-2"/><col id="TBL-2-3"/></colgroup><colgroup id="TBL-2-4g"><col id="TBL-2-4"/></colgroup><tr class="hline"><td></td><td></td><td></td><td></td></tr><tr id="TBL-2-1-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-1-1" style="white-space:nowrap; text-align:left;"> #   </td>
+<td class="td11" id="TBL-2-1-2" style="white-space:nowrap; text-align:center;">            Algorithm                         </td>
+<td class="td11" id="TBL-2-1-3" style="white-space:nowrap; text-align:center;">            Description<span class="rtxr-x-x-110">/</span>Used in                        </td>
+<td class="td11" id="TBL-2-1-4" style="white-space:nowrap; text-align:right;">   Complexity<span class="rtxr-x-x-110">/</span>Speed-up  </td>
+</tr><tr class="hline"><td></td><td></td><td></td><td></td></tr><tr id="TBL-2-2-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-2-1" style="white-space:nowrap; text-align:left;"> 1    </td>
+<td class="td11" id="TBL-2-2-2" style="white-space:nowrap; text-align:center;">      Quantum Teleportation &amp;             </td>
+<td class="td11" id="TBL-2-2-3" style="white-space:nowrap; text-align:center;">      Inter-circuit data communication &amp;            </td>
+<td class="td11" id="TBL-2-2-4" style="white-space:nowrap; text-align:right;">                   -  </td>
+</tr><tr id="TBL-2-3-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-3-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-3-2" style="white-space:nowrap; text-align:center;">         Entanglement <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span> </td>
+<td class="td11" id="TBL-2-3-3" style="white-space:nowrap; text-align:center;">    a fundamental block of many algorithms        </td>
+<td class="td11" id="TBL-2-3-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-4-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-4-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-4-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-4-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-4-4" style="white-space:nowrap; text-align:right;"> </td></tr><tr id="TBL-2-5-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-5-1" style="white-space:nowrap; text-align:left;">
+ 2    </td>
+<td class="td11" id="TBL-2-5-2" style="white-space:nowrap; text-align:center;">       Superdense Coding <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span> </td>
+<td class="td11" id="TBL-2-5-3" style="white-space:nowrap; text-align:center;">     Data compression &amp; communication           </td>
+<td class="td11" id="TBL-2-5-4" style="white-space:nowrap; text-align:right;">  Compression Ratio 2:1  </td>
+</tr><tr id="TBL-2-6-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-6-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-6-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-6-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-6-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-7-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-7-1" style="white-space:nowrap; text-align:left;"> 3    </td>
+<td class="td11" id="TBL-2-7-2" style="white-space:nowrap; text-align:center;">     Quantum Fourier Transform           </td>
+<td class="td11" id="TBL-2-7-3" style="white-space:nowrap; text-align:center;">    DFT, Phase Estimation, Period Finding,        </td>
+<td class="td11" id="TBL-2-7-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmb-x-x-110">Q</span>: [<span class="rtxr-x-x-110">Θ</span>(<span class="rtxptmri-x-x-110">n</span><sup><span class="rtxptmr-x-x-77">2</span></sup>)<span class="rtxmi-x-x-110">,</span><span class="rtxr-x-x-110">Θ</span>(<span class="rtxptmri-x-x-110">n</span> log <span class="rtxptmri-x-x-110">n</span>)]  </td>
+</tr><tr id="TBL-2-8-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-8-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-8-2" style="white-space:nowrap; text-align:center;">            (QFT) <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span> </td>
+<td class="td11" id="TBL-2-8-3" style="white-space:nowrap; text-align:center;">  Arithmetic, Discrete log &amp; spectral methods     </td>
+<td class="td11" id="TBL-2-8-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmb-x-x-110">C</span>: <span class="rtxr-x-x-110">Θ</span>(<span class="rtxptmri-x-x-110">n</span>2<sup><span class="rtxptmri-x-x-77">n</span></sup>) <span class="rtxptmr-">(n</span><span class="rtxr-">=</span><span class="rtxptmr-">#gates)  </span></td>
+</tr><tr id="TBL-2-9-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-9-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-9-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-9-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-9-4" style="white-space:nowrap; text-align:right;"> </td></tr><tr id="TBL-2-10-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-10-1" style="white-space:nowrap; text-align:left;">
+ 4    </td>
+<td class="td11" id="TBL-2-10-2" style="white-space:nowrap; text-align:center;">    Quantum Phase Estimation <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span> </td>
+<td class="td11" id="TBL-2-10-3" style="white-space:nowrap; text-align:center;">    Quantum phases, Order Finding, Shor’s        </td>
+<td class="td11" id="TBL-2-10-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">O</span>(t<sup class="textsuperscript"><span class="rtxptmr-">2</span></sup>) operations**  </td>
+</tr><tr id="TBL-2-11-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-11-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-11-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-11-3" style="white-space:nowrap; text-align:center;">   Algorithm, HHL, Amplitude Amplification      </td>
+<td class="td11" id="TBL-2-11-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">t </span><span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">n </span><span class="rtxr-x-x-110">+ </span><img align="middle" alt=" ⌈   (   1-)⌉
+  log  2+ 2𝜖" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main56x.svg"/> </td>
+</tr><tr id="TBL-2-12-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-12-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-12-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-12-3" style="white-space:nowrap; text-align:center;">         &amp; Quantum Counting <span class="cite"> [<a href="#Xbrassard1998quantum">41</a>]</span> </td>
+<td class="td11" id="TBL-2-12-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-13-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-13-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-13-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-13-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-13-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-14-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-14-1" style="white-space:nowrap; text-align:left;"> 5    </td>
+<td class="td11" id="TBL-2-14-2" style="white-space:nowrap; text-align:center;">     Grover’s Search <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>, <a href="#Xgrover1997quantum">42</a>]</span> &amp;           </td>
+<td class="td11" id="TBL-2-14-3" style="white-space:nowrap; text-align:center;">  Data search, Amplitude Estimation, Function    </td>
+<td class="td11" id="TBL-2-14-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmb-x-x-110">Q</span>: <span class="rtxptmri-x-x-110">O</span>(<img alt="          --
+        √ N" class="mathpalette paper-arabizer-tex4ht-math-image" dir="ltr" src="main57x.svg"/>)  </td>
+</tr><tr id="TBL-2-15-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-15-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-15-2" style="white-space:nowrap; text-align:center;">    Amplitude Amplification <span class="cite"> [<a href="#Xbrassard2002quantum">43</a>]</span> </td>
+<td class="td11" id="TBL-2-15-3" style="white-space:nowrap; text-align:center;">     minima, approx. &amp; Quantum counting         </td>
+<td class="td11" id="TBL-2-15-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmb-x-x-110">C</span>: <span class="rtxptmri-x-x-110">O</span>(N) <span class="rtxptmr-">(N</span><span class="rtxr-">=</span><span class="rtxptmr-">#ops)  </span></td>
+</tr><tr id="TBL-2-16-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-16-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-16-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-16-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-16-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-17-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-17-1" style="white-space:nowrap; text-align:left;"> 6    </td>
+<td class="td11" id="TBL-2-17-2" style="white-space:nowrap; text-align:center;">   Matrix Product Verification <span class="cite"> [<a href="#XBuhrman">44</a>]</span> </td>
+<td class="td11" id="TBL-2-17-3" style="white-space:nowrap; text-align:center;">       Verifies AB<span class="rtxr-x-x-110">=</span>C? (n<span class="txsy-x-x-110">×</span>n matrices)               </td>
+<td class="td11" id="TBL-2-17-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmb-x-x-110">Q</span>: <span class="txsy-x-x-110">≤</span><span class="rtxptmri-x-x-110">O</span>(<span class="rtxptmri-x-x-110">n</span><sup><span class="rtxptmr-x-x-77">5</span><span class="rtxmi-x-x-77">∕</span><span class="rtxptmr-x-x-77">3</span></sup>)); <span class="rtxptmb-x-x-110">C</span>: <span class="rtxptmri-x-x-110">O</span>(<span class="rtxptmri-x-x-110">n</span><sup><span class="rtxptmr-x-x-77">2</span></sup>)  </td>
+</tr><tr id="TBL-2-18-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-18-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-18-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-18-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-18-4" style="white-space:nowrap; text-align:right;"> </td></tr><tr id="TBL-2-19-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-19-1" style="white-space:nowrap; text-align:left;">
+ 7    </td>
+<td class="td11" id="TBL-2-19-2" style="white-space:nowrap; text-align:center;">    Quantum Simulation <span class="cite"> [<a href="#Xlloyd1996universal">19</a>, <a href="#Xnielsen2002quantum">3</a>]</span> </td>
+<td class="td11" id="TBL-2-19-3" style="white-space:nowrap; text-align:center;">    Integrates Schrödinger equation, HHL,         </td>
+<td class="td11" id="TBL-2-19-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">superpoly  </span></td>
+</tr><tr id="TBL-2-20-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-20-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-20-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-20-3" style="white-space:nowrap; text-align:center;">  All Hamiltonian system simulations <span class="bbig"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main58x.svg"/></span><span class="rtxptmri-x-x-110">e</span><sup><span class="txsy-x-x-77">−</span><span class="rtxptmri-x-x-77">iHt</span><span class="rtxmi-x-x-77">∕</span><span class="txsyb-x-x-77">ℏ</span></sup><span class="bbig"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main59x.svg"/></span> </td>
+<td class="td11" id="TBL-2-20-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">poly</span>(n,t): n<span class="rtxr-x-x-110">=</span>dof, t<span class="rtxr-x-x-110">= </span>time  </td>
+</tr><tr id="TBL-2-21-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-21-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-21-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-21-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-21-4" style="white-space:nowrap; text-align:right;"> </td></tr><tr id="TBL-2-22-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-22-1" style="white-space:nowrap; text-align:left;">
+ 8    </td><td class="td11" id="TBL-2-22-2" style="white-space:nowrap; text-align:center;">        Gradients <span class="cite"> [<a href="#Xjordan2005fast">45</a>, <a href="#Xzoo">46</a>]</span> </td><td class="td11" id="TBL-2-22-3" style="white-space:nowrap; text-align:center;">   Computes gradients, convex optimisation       </td><td class="td11" id="TBL-2-22-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">quadratic - superpoly  </span></td>
+</tr><tr id="TBL-2-23-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-23-1" style="white-space:nowrap; text-align:left;"> </td><td class="td11" id="TBL-2-23-2" style="white-space:nowrap; text-align:center;"> </td><td class="td11" id="TBL-2-23-3" style="white-space:nowrap; text-align:center;"> volume estimation, minimising quadratic forms  </td><td class="td11" id="TBL-2-23-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-24-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-24-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-24-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-24-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-24-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-25-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-25-1" style="white-space:nowrap; text-align:left;"> 9    </td>
+<td class="td11" id="TBL-2-25-2" style="white-space:nowrap; text-align:center;">      Partition Function <span class="cite"> [<a href="#Xzoo">46</a>]</span> &amp;            </td>
+<td class="td11" id="TBL-2-25-3" style="white-space:nowrap; text-align:center;">      Evaluate<span class="rtxr-x-x-110">/</span>approx partition functions            </td>
+<td class="td11" id="TBL-2-25-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">quadratic - superpoly  </span></td>
+</tr><tr id="TBL-2-26-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-26-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-26-2" style="white-space:nowrap; text-align:center;">            Sampling                          </td>
+<td class="td11" id="TBL-2-26-3" style="white-space:nowrap; text-align:center;">    Pott’s, Ising Models &amp; Gibbs sampling         </td>
+<td class="td11" id="TBL-2-26-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-27-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-27-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-27-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-27-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-27-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-28-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-28-1" style="white-space:nowrap; text-align:left;"> 10  </td>
+<td class="td11" id="TBL-2-28-2" style="white-space:nowrap; text-align:center;">         Linear Systems &amp;                   </td>
+<td class="td11" id="TBL-2-28-3" style="white-space:nowrap; text-align:center;">    Solves A<span class="rtxptmb-x-x-110">X</span><span class="rtxr-x-x-110">=</span><span class="rtxptmb-x-x-110">b </span>for eigen values &amp; vectors        </td>
+<td class="td11" id="TBL-2-28-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">superpoly - exponential  </span></td>
+</tr><tr id="TBL-2-29-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-29-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-29-2" style="white-space:nowrap; text-align:center;">      HHL Algorithm <span class="cite"> [<a href="#Xharrow2009quantum">47</a>, <a href="#Xzoo">46</a>]</span> </td>
+<td class="td11" id="TBL-2-29-3" style="white-space:nowrap; text-align:center;">      ODEs, PDEs, simultaneous eqns.             </td>
+<td class="td11" id="TBL-2-29-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-30-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-30-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-30-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-30-3" style="white-space:nowrap; text-align:center;">   Optimisation, Finite Element Methods etc       </td>
+<td class="td11" id="TBL-2-30-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-31-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-31-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-31-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-31-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-31-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-32-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-32-1" style="white-space:nowrap; text-align:left;"> 11  </td>
+<td class="td11" id="TBL-2-32-2" style="white-space:nowrap; text-align:center;">          ODE <span class="cite"> [<a href="#Xberry2014high">48</a>, <a href="#Xzoo">46</a>]</span> </td>
+<td class="td11" id="TBL-2-32-3" style="white-space:nowrap; text-align:center;">  Integrates <img alt="˙x" class="dot paper-arabizer-tex4ht-math-image" dir="ltr" src="main60x.svg"/> <span class="rtxr-x-x-110">= </span><span class="rtxmi-x-x-110">α</span>(<span class="rtxptmri-x-x-110">t</span>)(<span class="rtxptmb-x-x-110">x</span>) <span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">β</span>(<span class="rtxptmri-x-x-110">t</span>) &amp; similar forms     </td>
+<td class="td11" id="TBL-2-32-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">superpoly - exponential  </span></td>
+</tr><tr id="TBL-2-33-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-33-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-33-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-33-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-33-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-34-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-34-1" style="white-space:nowrap; text-align:left;"> 12  </td>
+<td class="td11" id="TBL-2-34-2" style="white-space:nowrap; text-align:center;">        Wave Equation <span class="cite"> [<a href="#Xcosta2019quantum">49</a>]</span> </td>
+<td class="td11" id="TBL-2-34-3" style="white-space:nowrap; text-align:center;">     Integrates <img alt="¨ϕ" class="uml paper-arabizer-tex4ht-math-image" dir="ltr" src="main61x.svg"/> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">c</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="txsy-x-x-110">∇</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="rtxmi-x-x-110">ϕ </span>&amp; similar forms          </td>
+<td class="td11" id="TBL-2-34-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">superpoly - exponential  </span></td>
+</tr><tr id="TBL-2-35-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-35-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-35-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-35-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-35-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-36-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-36-1" style="white-space:nowrap; text-align:left;"> 13  </td>
+<td class="td11" id="TBL-2-36-2" style="white-space:nowrap; text-align:center;"> PDE <span class="rtxr-x-x-110">/ </span>Poisson Equation <span class="cite"> [<a href="#Xcao2013quantum">50</a>, <a href="#Xarrazola2019quantum">51</a>, <a href="#Xzoo">46</a>]</span> </td>
+<td class="td11" id="TBL-2-36-3" style="white-space:nowrap; text-align:center;">        Integrates <span class="txsy-x-x-110">−∇</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="rtxmi-x-x-110">ϕ</span>(<span class="rtxptmb-x-x-110">x</span>) <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">b</span>(<span class="rtxptmb-x-x-110">x</span>) and                </td>
+<td class="td11" id="TBL-2-36-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">superpoly - exponential  </span></td>
+</tr><tr id="TBL-2-37-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-37-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-37-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-37-3" style="white-space:nowrap; text-align:center;">     PDEs of similar forms: <span class="rtxptmb-x-x-110">D</span><span class="rtxmi-x-x-110">ϕ</span>(<span class="rtxptmb-x-x-110">x</span>) <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">b</span>(<span class="rtxptmb-x-x-110">x</span>)           </td>
+<td class="td11" id="TBL-2-37-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-38-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-38-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-38-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-38-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-38-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-39-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-39-1" style="white-space:nowrap; text-align:left;"> 14  </td>
+<td class="td11" id="TBL-2-39-2" style="white-space:nowrap; text-align:center;">       QFT Arithmetic <span class="cite"> [<a href="#Xruiz2017quantum">52</a>]</span> </td>
+<td class="td11" id="TBL-2-39-3" style="white-space:nowrap; text-align:center;">   QFT based: <span class="rtxr-x-x-110">+ </span>, - , * , mean , weighted sum      </td>
+<td class="td11" id="TBL-2-39-4" style="white-space:nowrap; text-align:right;"> <span class="rtxptmri-x-x-110">superpoly - exponential  </span></td>
+</tr><tr id="TBL-2-40-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-40-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-40-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-40-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-40-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-41-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-41-1" style="white-space:nowrap; text-align:left;"> 15  </td>
+<td class="td11" id="TBL-2-41-2" style="white-space:nowrap; text-align:center;">      Function Evaluation <span class="cite"> [<a href="#Xhadfield2018quantum">53</a>]</span> </td>
+<td class="td11" id="TBL-2-41-3" style="white-space:nowrap; text-align:center;">       (Ex) inverse, exponentiation.. etc              </td>
+<td class="td11" id="TBL-2-41-4" style="white-space:nowrap; text-align:right;">               varies  </td>
+</tr><tr id="TBL-2-42-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-42-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-42-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-42-3" style="white-space:nowrap; text-align:center;">           for State Loaded data                       </td>
+<td class="td11" id="TBL-2-42-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-43-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-43-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-43-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-43-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-43-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-44-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-44-1" style="white-space:nowrap; text-align:left;"> 16  </td>
+<td class="td11" id="TBL-2-44-2" style="white-space:nowrap; text-align:center;">       VQE and QAOA <span class="cite"> [<a href="#XIBM">25</a>]</span> </td>
+<td class="td11" id="TBL-2-44-3" style="white-space:nowrap; text-align:center;">     Computes optimisation type problems          </td>
+<td class="td11" id="TBL-2-44-4" style="white-space:nowrap; text-align:right;">               varies  </td>
+</tr><tr id="TBL-2-45-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-45-1" style="white-space:nowrap; text-align:left;"> </td>
+<td class="td11" id="TBL-2-45-2" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-45-3" style="white-space:nowrap; text-align:center;"> </td>
+<td class="td11" id="TBL-2-45-4" style="white-space:nowrap; text-align:right;"> </td>
+</tr><tr id="TBL-2-46-" style="vertical-align:baseline;"><td class="td11" id="TBL-2-46-1" style="white-space:nowrap; text-align:left;"> 17  </td>
+<td class="td11" id="TBL-2-46-2" style="white-space:nowrap; text-align:center;">      Quantum Annealing <span class="cite"> [<a href="#XDWave">54</a>]</span> </td>
+<td class="td11" id="TBL-2-46-3" style="white-space:nowrap; text-align:center;">     Computes optimization type problems          </td>
+<td class="td11" id="TBL-2-46-4" style="white-space:nowrap; text-align:right;">               varies  </td>
+</tr><tr class="hline"><td></td><td></td><td></td><td></td></tr></table></div> </div>
+<!-- l. 630 --><p class="noindent"><span class="rtxptmr-x-x-90">Q</span><span class="rtxr-x-x-90">/</span><span class="rtxptmr-x-x-90">C-</span><span class="rtxr-x-x-90">/ </span><span class="rtxptmr-x-x-90">VQE-     QAOA-   </span><br/>
+<span class="rtxptmr-x-x-90">** t </span><span class="rtxr-x-x-90">=       </span><span class="rtxptmr-x-x-90">n   </span><span class="rtxmi-x-x-90">𝜖</span><span class="rtxptmr-x-x-90">.</span>
+</p><!-- l. 631 --><p class="noindent"> <span class="cite"><span class="rtxptmr-x-x-90"> [</span><a href="#Xzoo"><span class="rtxptmr-x-x-90">46</span></a><span class="rtxptmr-x-x-90">, </span><a href="#XIBM"><span class="rtxptmr-x-x-90">25</span></a><span class="rtxptmr-x-x-90">, </span><a href="#Xcoles2018quantum"><span class="rtxptmr-x-x-90">40</span></a><span class="rtxptmr-x-x-90">, </span><a href="#Xmontanaro2016quantum"><span class="rtxptmr-x-x-90">55</span></a><span class="rtxptmr-x-x-90">]</span></span>
+</p>
+</div><hr class="endfloat"/>
+<!-- l. 633 --><p class="noindent"> <span class="cite"> [<a href="#Xcoles2018quantum">40</a>]</span>.                      <span class="cite"> [<a href="#Xxu2018turbulent">56</a>]</span>.           .      Bell
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-78r29"></a>
+<div class="math-display">
+<img alt="      1
+|ψ⟩ =-√--(|00⟩+ |11⟩).
+       2
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main62x.svg"/></div>
+</td><td class="equation-label">(29)</td></tr></table></div>
+<!-- l. 636 --><p class="nopar">  (   12)       IBMQ.          1<span class="rtxr-x-x-110">/</span>2      .      13           (<span class="txsy-x-x-110">≈ </span>0<span class="rtxmi-x-x-110">.</span>5)
+<span class="txsy-x-x-110">|</span>00<span class="txsy-x-x-110">⟩|</span>11<span class="txsy-x-x-110">⟩</span>.               .       . </p><hr class="figure"/><div class="figure"> <img alt="ent.png" class="paper-arabizer-source-image" src="ent.png"/> <a id="x1-79r13"></a>
+<span class="rtxptmb-x-x-90">Figure 13.</span><span class="rtxptmr-x-x-90"> </span>
+</div><hr class="endfigure"/>
+<hr class="figure"/><div class="figure">
+<!-- l. 645 --><p class="noindent"><img alt="ent2.png" class="paper-arabizer-source-image" src="ent2.png"/> <a id="x1-80r14"></a>
+<span class="rtxptmb-x-x-90">Figure 14.</span><span class="rtxptmr-x-x-90"> </span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 650 --><p class="noindent">5.4
+<a id="Q1-1-16"></a>
+</p><!-- l. 652 --><p class="indent">              .             <span class="cite"> [<a href="#Xzoo">46</a>, <a href="#Xcoles2018quantum">40</a>, <a href="#Xnielsen2002quantum">3</a>, <a href="#XIBM">25</a>, <a href="#Xmontanaro2016quantum">55</a>]</span>.       2         .
+Stokes  1D ( )
+</p><div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"></td><td class="align-even"><span class="txsy-x-x-110">∇</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="rtxptmri-x-x-110">u</span>(<span class="rtxptmri-x-x-110">x</span>) <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">∇</span><span class="rtxptmri-x-x-110">p</span>(<span class="rtxptmri-x-x-110">x</span>)</td>
+<td class="align-label"><a id="x1-82r30"></a>(30)
+</td></tr><tr><td class="align-odd"></td><td class="align-even"><span class="txsy-x-x-110">∇⋅</span><span class="rtxptmri-x-x-110">u</span>(<span class="rtxptmri-x-x-110">x</span>) <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">,</span></td>
+<td class="align-label"><a id="x1-83r31"></a>(31)                                 </td></tr></table></div>
+<!-- l. 658 --><p class="noindent">    :<br class="newline"/>
+</p><!-- l. 660 --><p class="noindent"><span class="underline"> A -  </span>:     <span class="rtxptmri-x-x-110">u</span>(<span class="rtxptmri-x-x-110">x</span>)       .        . <br class="newline"/>
+</p><!-- l. 662 --><p class="noindent"><span class="underline"> B -  </span>:          :
+</p>
+<ol class="enumerate1">
+<li class="enumerate" id="x1-85x1">  :    FEM   .             .        Poisson.        #13    .
+FEM           #10 (HHL) <span class="rtxr-x-x-110">= </span>Alg #3 <span class="rtxr-x-x-110">+ </span>Alg #4 <span class="rtxr-x-x-110">+ </span>Alg
+#7.            .     <span class="cite"> [<a href="#Xcao2013quantum">50</a>]</span>.
+</li>
+<li class="enumerate" id="x1-87x2">  :    #3 (QFT)                   HHL .        .
+</li>
+<li class="enumerate" id="x1-89x3"> :       # 5              . <br class="newline"/></li></ol>
+<!-- l. 669 --><p class="noindent"><span class="underline">C -  </span>:                   .
+</p><!-- l. 671 --><p class="indent">           .        Navier-Stokes.      DNS          FFTW     .
+-    FFTW   QFT    .      QFT   .
+</p><!-- l. 673 -->
+<!-- l. 673 --><p class="noindent">5.5   <span class="rtxptmri-x-x-110">Fourier</span>
+<a id="Q1-1-16"></a>
+</p>
+<!-- l. 674 --><p class="indent">        Fourier  <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span>    Fourier     FFTW  .                 .    DFT
+   <span class="rtxptmri-x-x-110">f</span>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-91r32"></a>
+<div class="math-display">
+<img alt="       j=∑N−1
+F[k] =      f[j]exp(2πi jk-).
+        j=0            N
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main63x.svg"/></div>
+</td><td class="equation-label">(32)</td></tr></table></div>
+<!-- l. 677 --><p class="nopar"> <span class="rtxptmri-x-x-110">f </span>[ <span class="rtxptmri-x-x-110">j</span>]  <span class="rtxr-x-x-110">=  </span><span class="bbig"><img align="middle" alt="{" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main64x.svg"/></span><span class="rtxptmri-x-x-110">f </span>[0]<span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">f </span>[1]<span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">f </span>[2]<span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">f </span>[3]<span class="bbig"><img align="middle" alt="}" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main65x.svg"/></span> Fourier
+   <span class="rtxptmri-x-x-110">F</span>[<span class="rtxptmri-x-x-110">k</span>] <span class="rtxr-x-x-110">= </span><span class="bbig"><img align="middle" alt="{" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main66x.svg"/></span><span class="rtxptmri-x-x-110">F</span>[0]<span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">F</span>[1]<span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">F</span>[2]<span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">F</span>[3]<span class="bbig"><img align="middle" alt="}" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main67x.svg"/></span>.      Fourier  (QFT)
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-92r33"></a>
+<div class="math-display">
+<img alt="i=N−1       i=N−1
+ ∑          ∑
+    αi|i⟩ ↦→     βi|i⟩,
+ i=0         i=0
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main68x.svg"/></div>
+</td><td class="equation-label">(33)</td></tr></table></div>
+<!-- l. 681 -->
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-93r34"></a>
+<div class="math-display">
+<img alt="      1  j=∑N−1     (   jk)
+βk =-√--     α jexp 2πi-- .
+      N   j=0          N
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main69x.svg"/></div>
+</td><td class="equation-label">(34)</td></tr></table></div>
+<!-- l. 685 --><p class="nopar"> <span class="rtxmi-x-x-110">ω</span><sup><span class="rtxptmri-x-x-77">jk</span></sup> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">exp</span><span class="bbig"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main70x.svg"/></span>2<span class="rtxmi-x-x-110">π</span><span class="rtxptmri-x-x-110">i</span><img align="middle" alt="jk
+N" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main71x.svg"/><span class="bbig"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main72x.svg"/></span>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-94r35"></a>
+<div class="math-display">
+<img alt="          β=∑N−1
+|α⟩ ↦→  √1--    ω jk|β⟩.
+       N   β=0
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main73x.svg"/></div>
+</td><td class="equation-label">(35)</td></tr></table></div>
+<!-- l. 689 --><p class="nopar"> <span class="txsy-x-x-110">|</span>0<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span>1<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span>2<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span>3<span class="txsy-x-x-110">⟩    |</span>00<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span>01<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span>10<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span>11<span class="txsy-x-x-110">⟩</span>.
+</p><div class="paper-arabizer-table-wrap"><table class="align-star" dir="ltr">
+<tr><td class="align-odd"><span class="rtxmi-x-x-110">β</span><sub><span class="rtxptmr-x-x-77">0</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> <img align="middle" alt="1-
+2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main74x.svg"/>[<span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">0</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">3</span></sub>]</td>
+<td class="align-label"></td>
+<td class="align-label">
+</td></tr><tr><td class="align-odd"><span class="rtxmi-x-x-110">β</span><sub><span class="rtxptmr-x-x-77">1</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> <img align="middle" alt="1-
+2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main75x.svg"/>[<span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">0</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">i</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="txsy-x-x-110">−</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txsy-x-x-110">−</span><span class="rtxptmri-x-x-110">i</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">3</span></sub>]</td>
+<td class="align-label"></td>
+<td class="align-label">
+</td></tr><tr><td class="align-odd"><span class="rtxmi-x-x-110">β</span><sub><span class="rtxptmr-x-x-77">2</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> <img align="middle" alt="1
+2-" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main76x.svg"/>[<span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">0</span></sub> <span class="txsy-x-x-110">−</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="txsy-x-x-110">−</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">3</span></sub>]</td>
+<td class="align-label"></td>
+<td class="align-label">
+</td></tr><tr><td class="align-odd"><span class="rtxmi-x-x-110">β</span><sub><span class="rtxptmr-x-x-77">3</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> <img align="middle" alt="1
+--
+2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main77x.svg"/>[<span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">0</span></sub> <span class="txsy-x-x-110">−</span><span class="rtxptmri-x-x-110">i</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="txsy-x-x-110">−</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">i</span><span class="rtxmi-x-x-110">α</span><sub><span class="rtxptmr-x-x-77">3</span></sub>]<span class="rtxmi-x-x-110">,</span></td>
+<td class="align-label"></td>
+<td class="align-label"> </td></tr></table></div>
+<!-- l. 697 --><p class="indent"> <span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">QFT</span> </sub>.   <span class="rtxmi-x-x-110">ω </span><span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">e</span><sup><span class="rtxptmri-x-x-77">i</span><span class="rtxmi-x-x-77">π∕</span><span class="rtxptmr-x-x-77">2</span></sup>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-95r36"></a>
+<div class="math-display">
+<img alt="                             (             )
+         (||1   1   1   1 )||    ||1  1    1   1||
+         |||||1   i  − 1  −i|||||    |||||1  ω   ω2  ω3|||||
+UQFT = 1-||||1  −1   1  − 1||||= 1-|||||1  ω2   1  ω2||||| .
+       2 |||||1  −i  − 1  i |||||  2 |||||1  ω3  ω2   ω|||||
+         (              )    (             )
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main78x.svg"/></div>
+</td><td class="equation-label">(36)</td></tr></table></div>
+<!-- l. 712 --><p class="nopar">      QFT   2    14. </p><hr class="figure"/><div class="figure">
+<!-- l. 716 --><p class="noindent"><img alt="QFT.png" class="paper-arabizer-source-image" src="QFT.png"/> <a id="x1-96r15"></a>
+<span class="rtxptmb-x-x-90">Figure 15.</span><span class="rtxptmr-x-x-90">    QFT  2</span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 720 --><p class="indent">         9        QFT .    Fourier
+<span class="rtxmi-x-x-110">β</span><sub><span class="rtxptmr-x-x-77">0</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>574<span class="rtxmi-x-x-110">,β</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>037<span class="rtxmi-x-x-110">,β</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>306<span class="rtxmi-x-x-110">,β</span><sub><span class="rtxptmr-x-x-77">3</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>138       QFT
+15. </p><hr class="figure"/><div class="figure">
+<!-- l. 723 --><p class="noindent"><img alt="QFT_out2.png" class="paper-arabizer-source-image" src="QFT_out2.png"/> <a id="x1-97r16"></a>
+<span class="rtxptmb-x-x-90">Figure 16.</span><span class="rtxptmr-x-x-90">  QFT</span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 727 --><p class="indent">    QFT  <span class="rtxmi-x-x-110">β</span><sub><span class="rtxptmr-x-x-77">0</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>569<span class="rtxmi-x-x-110">,β</span><sub><span class="rtxptmr-x-x-77">1</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>037<span class="rtxmi-x-x-110">,β</span><sub><span class="rtxptmr-x-x-77">2</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>311<span class="rtxmi-x-x-110">,β</span><sub><span class="rtxptmr-x-x-77">3</span></sub> <span class="rtxr-x-x-110">= </span>0<span class="rtxmi-x-x-110">.</span>083.
+QFT    DFT.
+<a id="x1-98r6"></a>
+</p><!-- l. 729 --><p class="noindent">5.6
+<a id="Q1-1-18"></a>
+</p><!-- l. 731 --><p class="indent">        .           Hamiltonian         Schrödinger  (
+<span class="cite"> [<a href="#Xbarenghi2014introduction">57</a>, <a href="#Xbarenghi2014experimental">58</a>]</span>.             .    <span class="txsy-x-x-110">≈ </span>10<sup><span class="rtxptmr-x-x-77">23</span></sup>                             .                       .
+.    QC     .
+</p><!-- l. 733 --><!-- l. 735 --><p class="indent">      Hamiltonian.      Hamiltonian  Bose-Einstein
+Schrödinger  :
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-100r37"></a>
+<div class="math-display">
+<img alt="         ℏ2- 2                  ′
+ℋBEC = − 2m ∇ + Vext(r)+ Uint(r− r ),
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main79x.svg"/></div>
+</td><td class="equation-label">(37)</td></tr></table></div>
+<!-- l. 738 --><div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"><img align="middle" alt="-∂
+∂t" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main80x.svg"/><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">BEC</span></sub><span class="txsy-x-x-110">⟩</span></td>
+<td class="align-even"> <span class="rtxr-x-x-110">=</span> <img align="middle" alt="1-
+iℏ" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main81x.svg"/><span class="bbig"><img align="middle" alt="[" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main82x.svg"/></span><span class="txsy-x-x-110">−</span><img align="middle" alt="-ℏ2
+2m" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main83x.svg"/><span class="txsy-x-x-110">∇</span><sup><span class="rtxptmr-x-x-77">2</span></sup> <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">V</span><sub>
+<span class="rtxptmri-x-x-77">ext</span></sub>(<span class="rtxptmb-x-x-110">r</span>) <span class="rtxr-x-x-110">+ </span><span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">int</span></sub>(<span class="rtxptmb-x-x-110">r </span><span class="txsy-x-x-110">−</span><span class="rtxptmb-x-x-110">r</span><span class="txsy-x-x-110">′</span>)<span class="bbig"><img align="middle" alt="]" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main84x.svg"/></span><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">BEC</span></sub><span class="txsy-x-x-110">⟩</span></td>
+<td class="align-label">
+<a id="x1-101r38"></a>
+(38)
+</td></tr><tr><td class="align-odd"><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">BEC</span></sub><span class="txsy-x-x-110">⟩</span></td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">e</span><sup><span class="txsy-x-x-77">−</span><span class="rtxptmri-x-x-77">i</span><span class="txsy-x-x-77">ℋ</span><sub><span class="rtxptmri-x-x-55">BEC</span> </sub><span class="rtxptmri-x-x-77">t</span><span class="rtxmi-x-x-77">∕</span><span class="txsyb-x-x-77">ℏ</span></sup><span class="txsy-x-x-110">|</span><span class="rtxr-x-x-110">Ψ</span><sub>
+<span class="rtxptmri-x-x-77">BEC</span><span class="rtxptmr-x-x-77">0</span></sub><span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">.</span></td>
+<td class="align-label"><a id="x1-102r39"></a>(39)</td></tr></table></div>
+<!-- l. 743 --><p class="indent">      .      QC          ( #7) <span class="cite"> [<a href="#Xnielsen2002quantum">3</a>]</span>   .           Trotter (      
+   Lie-Trotter-Suzuki).   P Q  Hermitian (   )  t
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-103r40"></a>
+<div class="math-display">
+<img alt=" lim (eiPt∕NeiQt∕N)N = ei(P+Q)t.
+N →∞
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main85x.svg"/></div>
+</td><td class="equation-label">(40)</td></tr></table></div>
+<!-- l. 746 --><p class="nopar">           : </p><div class="paper-arabizer-table-wrap"><table class="multline" dir="ltr"><tr><td><img alt="ei(P+Q)δt = (eiPδteiQδt) +𝒪(δt2)
+                      iPδt∕2iQδt iPδt∕2       3
+                   = (e   e   e    )+ 𝒪(δt).
+  " class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main86x.svg"/></td><td class="equation-label"><br/>(41)<br/></td></tr></table></div> <p><span class="txsy-x-x-110">ℋ</span><sub><span class="rtxptmri-x-x-77">BEC</span></sub> <span class="txsy-x-x-110">ℋ</span><sub><span class="rtxptmri-x-x-77">BEC</span></sub> <span class="rtxr-x-x-110">= </span><span class="txex-x-x-110">∑</span><sub>
+<span class="rtxptmri-x-x-77">i</span><span class="rtxr-x-x-77">=</span><span class="rtxptmr-x-x-77">1</span></sub><sup><span class="rtxptmri-x-x-77">n</span></sup><span class="txsy-x-x-110">ℋ</span><sub><span class="rtxptmri-x-x-77">i</span></sub>   Hamiltonian
+   Hilbert .   [<span class="txsy-x-x-110">ℋ</span><sub><span class="rtxptmri-x-x-77">i</span></sub><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">ℋ</span><sub><span class="rtxptmri-x-x-77">j</span></sub>] <span class="rtxr-x-x-110">= </span>0<span class="txsy-x-x-110">∀</span><span class="rtxptmri-x-x-110">i</span><span class="rtxmi-x-x-110">, </span><span class="rtxptmri-x-x-110">j </span><span class="txsyb-x-x-110">ℏ </span><span class="rtxr-x-x-110">= </span>1
+         </p><div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-105r42"></a>
+<div class="math-display">
+<img alt="e−iℋBECt = e−iℋ1te−iℋ2t...e−iℋnt.
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main87x.svg"/></div>
+</td><td class="equation-label">(42)</td></tr></table></div>
+<!-- l. 754 --><p class="nopar">       :
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-106r43"></a>
+<div class="math-display">
+<img alt="e−iℋBECt = e−iℋ1t∕2e−iℋ2te−iℋ1t∕2 + 𝒪(δt3).
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main88x.svg"/></div>
+</td><td class="equation-label">(43)</td></tr></table></div>
+<!-- l. 758 --><p class="nopar">                 .          QC.
+   </p><!-- l. 761 --><!-- l. 763 --><p class="indent">     Landau                           .              ODEs PDEs
+:
+</p><div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"><img align="middle" alt="∂u1
+----
+ ∂t" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main89x.svg"/> <span class="rtxr-x-x-110">+ </span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">1</span></sub> <span class="txsy-x-x-110">⋅∇</span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">1</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">−∇</span><span class="bbig"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main90x.svg"/></span><img align="middle" alt=" p1
+---
+ρ1" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main91x.svg"/><span class="bbig"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main92x.svg"/></span><span class="rtxmi-x-x-110">,</span></td>
+<td class="align-label"><a id="x1-108r44"></a>(44)
+</td></tr><tr><td class="align-odd"><img align="middle" alt="∂u2-
+ ∂t" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main93x.svg"/> <span class="rtxr-x-x-110">+ </span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">2</span></sub> <span class="txsy-x-x-110">⋅∇</span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">2</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">−∇</span><span class="bbig"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main94x.svg"/></span><img align="middle" alt="-p2
+ρ2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main95x.svg"/><span class="bbig"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main96x.svg"/></span><span class="rtxr-x-x-110">+</span> <img align="middle" alt="-ν
+ρ2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main97x.svg"/><span class="txsy-x-x-110">∇</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="rtxptmb-x-x-110">u</span><sub>
+<span class="rtxptmb-x-x-77">2</span></sub><span class="rtxmi-x-x-110">.</span></td>
+<td class="align-label"><a id="x1-109r45"></a>(45)              </td></tr></table></div>
+<!-- l. 768 --><p class="indent">     1 2      .        .
+</p><!-- l. 770 --><!-- l. 772 --><p class="indent">        Madelung     BEC       .    Gross-Pitaevskii
+</p><div class="paper-arabizer-table-wrap"><table class="multline" dir="ltr"><tr><td><img alt="∂          1[   ℏ2  2
+∂t|Ψcond⟩ = iℏ − 2m-∇ + Vext(r)+
+                                     ]
+                    + Uint|⟨Ψcond|Ψcond⟩||Ψcond⟩.
+" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="main98x.svg"/></td><td class="equation-label"><br/>(46)<br/></td></tr></table></div><p> : (a)      BEC            <span class="rtxptmri-x-x-110">T  </span><span class="txsy-x-x-110">∼ </span>0  <span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">BEC</span></sub> <span class="txsy-x-x-110">≈ </span><span class="rtxr-x-x-110">Ψ</span><sub><span class="rtxptmri-x-x-77">cond</span></sub>. (b)      . (c)
+<span class="rtxptmri-x-x-110">U</span><sub><span class="rtxptmri-x-x-77">int</span></sub> <span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">U</span><span class="rtxmi-x-x-110">δ</span>(<span class="rtxptmb-x-x-110">r </span><span class="txsy-x-x-110">−</span><span class="rtxptmb-x-x-110">r</span><span class="txsy-x-x-110">′</span>).           .       <span class="cite"> [<a href="#Xbarenghi2014introduction">57</a>, <a href="#Xbarenghi2014experimental">58</a>]</span>.
+</p><!-- l. 778 --><!-- l. 780 --><p class="indent">        .              <span class="rtxptmb-x-x-110">l     </span>.
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-113r47"></a>
+<div class="math-display">
+<img alt="dl
+dt = usa + uf,
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main99x.svg"/></div>
+</td><td class="equation-label">(47)</td></tr></table></div>
+<!-- l. 783 --><p class="nopar"> <span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">sa</span></sub> <span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">f</span></sub>          .        QC    Biot-Savart
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-114r48"></a>
+<div class="math-display">
+<img alt="        ∮      ′
+ui = Γ--  -(l−-l) × dl,
+     4π   |l− l′|3
+  " class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main100x.svg"/></div>
+</td><td class="equation-label">(48)</td></tr></table></div>
+<!-- l. 787 --><p class="nopar"> <span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">sa</span></sub> <span class="rtxr-x-x-110">Γ   </span>.
+   <a id="x1-115r5"></a>
+</p>
+<!-- l. 791 --><p class="indent">              Landau         .       <span class="rtxptmb-x-x-110">f</span><sub><span class="rtxptmb-x-x-77">mf</span></sub> <span class="rtxptmb-x-x-110">f</span><sub><span class="rtxptmb-x-x-77">T</span></sub>.          .   ( <span class="rtxptmb-x-x-110">F </span><span class="rtxr-x-x-110">= </span><span class="rtxptmb-x-x-110">f</span><sub><span class="rtxptmb-x-x-77">mf</span></sub> <span class="rtxr-x-x-110">+ </span><span class="rtxptmb-x-x-110">f</span><sub><span class="rtxptmb-x-x-77">T</span></sub>:
+   </p>
+<div class="paper-arabizer-table-wrap"><table class="align" dir="ltr">
+<tr><td class="align-odd"><img align="middle" alt="∂u1-
+ ∂t" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main101x.svg"/> <span class="rtxr-x-x-110">+ </span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">1</span></sub> <span class="txsy-x-x-110">⋅∇</span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">1</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">−∇</span><span class="bbig"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main102x.svg"/></span><img align="middle" alt="p1-
+ρ1" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main103x.svg"/><span class="bbig"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main104x.svg"/></span><span class="txsy-x-x-110">−</span><span class="rtxptmb-x-x-110">F</span><span class="rtxmi-x-x-110">,</span></td>
+<td class="align-label"><a id="x1-116r49"></a>(49)
+</td></tr><tr><td class="align-odd"><img align="middle" alt="∂u2-
+ ∂t" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main105x.svg"/> <span class="rtxr-x-x-110">+ </span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">2</span></sub> <span class="txsy-x-x-110">⋅∇</span><span class="rtxptmb-x-x-110">u</span><sub><span class="rtxptmb-x-x-77">2</span></sub></td>
+<td class="align-even"> <span class="rtxr-x-x-110">= </span><span class="txsy-x-x-110">−∇</span><span class="bbig"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main106x.svg"/></span><img align="middle" alt="p2-
+ρ2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main107x.svg"/><span class="bbig"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="main108x.svg"/></span><span class="rtxr-x-x-110">+</span> <img align="middle" alt="-ν
+ρ2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main109x.svg"/><span class="txsy-x-x-110">∇</span><sup><span class="rtxptmr-x-x-77">2</span></sup><span class="rtxptmb-x-x-110">u</span><sub>
+<span class="rtxptmb-x-x-77">2</span></sub> <span class="rtxr-x-x-110">+</span> <img align="middle" alt="ρ1
+ρ2" class="frac paper-arabizer-tex4ht-math-image" dir="ltr" src="main110x.svg"/><span class="rtxptmb-x-x-110">F</span><span class="rtxmi-x-x-110">.</span></td>
+<td class="align-label"><a id="x1-117r50"></a>(50)                </td></tr></table></div>
+<!-- l. 797 -->
+<!-- l. 797 --><p class="noindent"><span class="rtxptmb-x-x-110">6.</span>
+<a id="Q1-1-18"></a>
+</p>
+<!-- l. 799 --><p class="indent">             .      CFD      Stokes     Gauss-Seidel  Jacobi.
+   <span class="rtxptmri-x-x-110">A</span><span class="rtxptmb-x-x-110">x </span><span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">B   </span>HHL.      .                   <span class="rtxptmb-x-x-110">x     </span>0.              .       QC .
+   <br class="newline"/>
+</p><!-- l. 801 --><p class="noindent"><span class="underline">A.      (VQE)</span>.            .        .    VQE               .      .
+<span class="cite"> [<a href="#XIBM">25</a>, <a href="#Xcoles2018quantum">40</a>, <a href="#Xperuzzo2014variational">59</a>]</span>.
+</p><!-- l. 803 -->
+<ol class="enumerate1">
+<li class="enumerate" id="x1-120x1">    P       <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">p</span></sub><span class="txsy-x-x-110">⟩</span>.      <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">p</span></sub><span class="txsy-x-x-110">⟩  </span><span class="rtxptmri-x-x-110">P</span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">p</span></sub><span class="txsy-x-x-110">⟩ </span><span class="rtxr-x-x-110">=  </span><span class="rtxptmri-x-x-110">p</span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span><sub><span class="rtxptmri-x-x-77">p</span></sub><span class="txsy-x-x-110">⟩  </span><span class="rtxptmri-x-x-110">p    </span>.   P
+Hamiltonian    Hermitian         .       Hamiltonian
+<span class="txsy-x-x-110">⟨</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">|ℋ|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩ ≥ </span>0.     <span class="rtxptmri-x-x-110">p</span><sub><span class="rtxptmri-x-x-77">min</span></sub> <span class="txsy-x-x-110">≤ ⟨</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">|ℋ|</span><span class="rtxmi-x-x-110">ψ</span><span class="txsy-x-x-110">⟩  </span>(<span class="txsy-x-x-110">≥ </span>0)    2.
+</li>
+<li class="enumerate" id="x1-122x2">   QPU    CPU           .</li></ol>
+<!-- l. 814 --><p class="noindent"><span class="underline">B.     (QAOA)</span>:            .             QAOA .             <span class="rtxptmb-x-x-110">x </span><span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">x</span><sub><span class="rtxptmr-x-x-77">1</span></sub><span class="rtxmi-x-x-110">...</span><span class="rtxptmri-x-x-110">x</span><sub><span class="rtxptmri-x-x-77">n</span></sub>
+<span class="rtxptmb-x-x-110">x</span><sub><span class="rtxptmri-x-x-77">i</span></sub> <span class="txsy-x-x-110">∈ {</span>0<span class="rtxmi-x-x-110">,</span>1<span class="txsy-x-x-110">} </span>E(<span class="rtxptmb-x-x-110">x</span>)  .        <span class="rtxptmri-x-x-110">E</span>(<span class="rtxptmb-x-x-110">x</span>) : <span class="txsy-x-x-110">{</span>0<span class="rtxmi-x-x-110">,</span>1<span class="txsy-x-x-110">}</span><sup><span class="rtxptmri-x-x-77">n</span></sup><img alt="↦→" class="mapsto paper-arabizer-tex4ht-math-image" dir="ltr" src="main111x.svg"/><span class="txsyb-x-x-110">ℝ</span>.   QAOA
+<span class="cite"> [<a href="#Xfarhi2014quantum">60</a>, <a href="#Xcoles2018quantum">40</a>, <a href="#XIBM">25</a>]</span> <span class="rtxmi-x-x-110">α</span>
+</p>
+<div class="paper-arabizer-table-wrap"><table class="equation" dir="ltr"><tr><td><a id="x1-123r51"></a>
+<div class="math-display">
+<img alt="α =-E(x)≥ α   .
+    Emax   opt
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="main112x.svg"/></div>
+</td><td class="equation-label">(51)</td></tr></table></div>
+<!-- l. 817 -->
+<hr class="figure"/><div class="figure">
+<div class="minipage"><a id="x1-124r17"></a>
+<span class="rtxptmb-x-x-90">Figure 17.</span><span class="rtxptmr-x-x-90"> </span>
+<!-- l. 825 --><p class="noindent"><span class="rtxptmb-x-x-110">: </span><span class="txsy-x-x-110">ℋ</span><span class="rtxmi-x-x-110">,</span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">k</span>)<span class="txsy-x-x-110">⟩</span><span class="rtxmi-x-x-110">,</span><span class="rtxptmb-x-x-110">k</span>(parameter)<span class="rtxmi-x-x-110">,𝜖</span>(tolerance)
+</p><!-- l. 826 --><p class="noindent"><span class="rtxptmb-x-x-110">: </span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">k</span>)<span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">opt</span></sub>,<span class="rtxptmri-x-x-110">E</span><sub><span class="rtxptmri-x-x-77">opt</span></sub>
+</p><!-- l. 845 --><p class="noindent"><span class="rtxptmb-x-x-110">return </span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">k</span>)<span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">opt</span></sub>,<span class="rtxptmri-x-x-110">E</span><sub><span class="rtxptmri-x-x-77">opt</span></sub>
+</p><!-- l. 852 --><p class="noindent"> CLASSICAL<span class="rtxsc-x-x-110">_</span>OPTIMISER(<span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">k</span>)<span class="txsy-x-x-110">⟩</span>):
+</p>
+<!-- l. 852 --><p class="noindent"> <span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">k</span>)<span class="txsy-x-x-110">⟩  </span><span class="rtxptmb-x-x-110">k  </span>CPU
+</p>
+<!-- l. 852 --><p class="noindent"><span class="rtxptmb-x-x-110">return </span><span class="txsy-x-x-110">|</span><span class="rtxmi-x-x-110">ψ</span>(<span class="rtxptmb-x-x-110">k</span>)<span class="txsy-x-x-110">⟩</span><sub><span class="rtxptmri-x-x-77">opt</span></sub> </p></div>
+</div><hr class="endfigure"/>
+<!-- l. 855 --><p class="noindent"><span class="underline">C.  </span>:                (     )       DWave.                             .
+.  Monte Carlo                                     “”
+16.
+</p><!-- l. 857 --><p class="indent">    DWave   .               <span class="cite"> [<a href="#Xbattaglia2005optimization">61</a>, <a href="#XDWave">54</a>]</span>     .        Navier-Stokes
+<span class="cite"> [<a href="#Xray2019towards">62</a>]</span>.       NS          <span class="rtxptmri-x-x-110">A</span><span class="rtxptmb-x-x-110">x </span><span class="rtxr-x-x-110">= </span><span class="rtxptmri-x-x-110">B </span>.                 (QUBO)    DWave.
+</p><hr class="figure"/><div class="figure">
+<!-- l. 860 --><p class="noindent"><img alt="PNLD_Anneal.jpeg" class="paper-arabizer-source-image" src="PNLD_Anneal.jpeg"/> <a id="x1-125r18"></a>
+<span class="rtxptmb-x-x-90">Figure 18.</span><span class="rtxptmr-x-x-90"> </span>
+</p>
+</div><hr class="endfigure"/>
+<!-- l. 865 --><p class="indent">               DWave   5000 .
+.                                               
+                                                                                               
+                                                                                               
+</p><!-- l. 867 --><hr class="float"/><div class="float">
+<img alt="PNLD_QCs.jpeg" class="paper-arabizer-source-image" src="PNLD_QCs.jpeg"/>
+</div><hr class="endfloat"/>
+<!-- l. 870 --><hr class="float"/><div class="float">
+<img alt="PNLD_QCs2.jpeg" class="paper-arabizer-source-image" src="PNLD_QCs2.jpeg"/> <a id="x1-126r19"></a>
+<span class="rtxptmb-x-x-90">Figure 19.</span><span class="rtxptmr-x-x-90">    QCs</span>
+</div><hr class="endfloat"/>
+<!-- l. 875 --><p class="noindent"><span class="rtxptmb-x-x-110">7.</span>
+<a id="Q1-1-21"></a>
+</p><!-- l. 877 --><p class="indent">         (a)         (b)         QCs  .             .     QCs
+(QPU)   .   QPU                    .
+</p><!-- l. 879 --><p class="indent">           QC.   QC      .                 .           17.
+.              Qiskit  IBMQ        transmon.
+cbit.                    .
+</p><!-- l. 881 --><p class="indent">     IBMQ  54    .
+</p>
+<ol class="enumerate1">
+<li class="enumerate" id="x1-129x1">QFT:    DNS   FFT    .  54     FFT  2<sup><span class="rtxptmr-x-x-77">54</span></sup> <span class="txsy-x-x-110">≈ </span>10<sup><span class="rtxptmr-x-x-77">16</span></sup>
+.            DNS  .
+</li>
+<li class="enumerate" id="x1-131x2">
+<!-- l. 884 --><p class="noindent">  DNS:    54
+</p>
+<ol class="enumerate2">
+<li class="enumerate" id="x1-133x1">1D: <span class="txsy-x-x-110">≤ </span>10<sup><span class="rtxptmr-x-x-77">16</span></sup>
+</li>
+<li class="enumerate" id="x1-135x2">2D: <span class="txsy-x-x-110">≤ </span>10<sup><span class="rtxptmr-x-x-77">8</span></sup> <span class="txsy-x-x-110">×</span>10<sup><span class="rtxptmr-x-x-77">8</span></sup>
+</li>
+<li class="enumerate" id="x1-137x3">3D: <span class="txsy-x-x-110">≤ </span>10<sup><span class="rtxptmr-x-x-77">5</span></sup> <span class="txsy-x-x-110">×</span>10<sup><span class="rtxptmr-x-x-77">5</span></sup> <span class="txsy-x-x-110">×</span>10<sup><span class="rtxptmr-x-x-77">5</span></sup> </li></ol>
+<!-- l. 890 --><p class="noindent">      DNS  .</p></li></ol>
+<!-- l. 893 --><p class="indent">               DNS.
+</p><!-- l. 952 --><!-- l. 952 --><p class="noindent"><span class="rtxptmb-x-x-110">8.</span>
+<a id="Q1-1-21"></a>
+</p><!-- l. 953 --><p class="indent">        QCFD.                 .       QCFD.    QCs    IBMQ      .
+QC   .          QC         .
+QCFD .                    QPU   CPU  GPU.
+.
+</p><!-- l. 972 -->
+<!-- l. 972 -->
+<!-- l. 973 --><p class="indent">         IBM Q IBM Q Experience   .              IBM   IBM
+   Q.  Jörg Schumacher Dhawal Buaria Kartik P Iyer
+   .
+   </p>
+<!-- l. 983 -->
+<!-- l. 983 --><p class="noindent"><span class="rtxptmb-">References</span>
+</p>
+<!-- l. 983 --><p class="indent">
+<span class="rtxptmr-x-x-90">[1]</span>
+<a id="Xfeynman1999simulating"></a><span class="rtxptmr-x-x-90">R.P. Feynman, </span><span class="rtxptmri-x-x-90">Int. J. Theor. Phys. </span><span class="rtxptmb-x-x-90">21</span><span class="rtxptmr-x-x-90">, 467 (1999).
+     [2]</span>
+<a id="Xpreskill2018quantum"></a><span class="rtxptmr-x-x-90">J. Preskill , </span><span class="rtxptmri-x-x-90">Quantum </span><span class="rtxptmb-x-x-90">2</span><span class="rtxptmr-x-x-90">, 79 (2018).
+     [3]</span>
+<a id="Xnielsen2002quantum"></a><span class="rtxptmr-x-x-90">M.A.  Nielsen  and  I.L.  Chuang,  </span><span class="rtxptmri-x-x-90">Quantum  Computation  and
+            Quantum Information</span><span class="rtxptmr-x-x-90">, 10th Anniversary Edition, (Cambridge
+            University Press, 2002).
+     [4]</span>
+<a id="Xorszag1972numerical"></a><span class="rtxptmr-x-x-90">S.A.  Orszag  and  G.S.  Patterson,  Jr,  </span><span class="rtxptmri-x-x-90">Phys.  Rev.  Lett.  </span><span class="rtxptmb-x-x-90">28</span><span class="rtxptmr-x-x-90">,  76
+            (1972).
+     [5]</span>
+<a id="Xrogallo1981numerical"></a><span class="rtxptmr-x-x-90">R.S.      Rogallo,      </span><span class="rtxptmri-x-x-90">National      Aeronautics      and      Space
+            Administration</span><span class="rtxptmr-x-x-90">, </span><span class="rtxptmb-x-x-90">81315 </span><span class="rtxptmr-x-x-90">(1981).
+     [6]</span>
+<a id="Xpope2001turbulent"></a><span class="rtxptmr-x-x-90">S.B.  Pope,  </span><span class="rtxptmri-x-x-90">Turbulent  Flows  </span><span class="rtxptmr-x-x-90">(Cambridge  University  Press,
+            2001).
+     [7]</span>
+<a id="Xyeung2005high"></a><span class="rtxptmr-x-x-90">P.K. Yeung, D.A. Donzis and K.R. Sreenivasan, </span><span class="rtxptmri-x-x-90">Phys. Fluids</span><span class="rtxptmr-x-x-90">,
+            </span><span class="rtxptmb-x-x-90">17</span><span class="rtxptmr-x-x-90">, 081703 (2005).
+     [8]</span>
+<a id="Xiyer2020classical"></a><span class="rtxptmr-x-x-90">K.P. Iyer, J.D. Scheel, J. Schumacher and K.R. Sreenivasan,
+            </span><span class="rtxptmri-x-x-90">Proc. Natl. Acad. Sci. </span><span class="rtxptmr-x-x-90">117, 7594 (2020).
+     [9]</span>
+<a id="Xsmagorinsky1993large"></a><span class="rtxptmr-x-x-90">J.  Smagorinsky,  B.  Galperin  and  S.  Orszag,  </span><span class="rtxptmri-x-x-90">Evolution  of
+            Physical Oceanography </span><span class="rtxptmr-x-x-90">(Cambridge University Press, 1993).
+   [10]</span>
+<a id="Xmeneveau2000scale"></a><span class="rtxptmr-x-x-90">C.  Meneveau  and  J.  Katz,  </span><span class="rtxptmri-x-x-90">Annu.  Rev.  Fluid  Mech.  </span><span class="rtxptmb-x-x-90">32</span><span class="rtxptmr-x-x-90">,  1
+            (2000).
+   [11]</span>
+<a id="Xdavidson2015turbulence"></a><span class="rtxptmr-x-x-90">P.A. Davidson, </span><span class="rtxptmri-x-x-90">Turbulence: An Introduction for Scientists and
+            Engineers</span><span class="rtxptmr-x-x-90">, 2nd Edition (Oxford University Press, 2015).
+   [12]</span>
+<a id="Xsucci1991lattice"></a><span class="rtxptmr-x-x-90">S. Succi, R. Benzi and F. Higuera, </span><span class="rtxptmri-x-x-90">Physica D </span><span class="rtxptmb-x-x-90">47</span><span class="rtxptmr-x-x-90">, 219 (1991).
+   [13]</span>
+<a id="Xsucci2001lattice"></a><span class="rtxptmr-x-x-90">S. Succi, </span><span class="rtxptmri-x-x-90">The Lattice Boltzmann Equation for Fluid Dynamics
+            and Beyond </span><span class="rtxptmr-x-x-90">(Oxford University Press, 2001).
+   [14]</span>
+<a id="Xmeyer1996quantum"></a><span class="rtxptmr-x-x-90">D.A. Meyer, </span><span class="rtxptmri-x-x-90">J. Stat. Phys. </span><span class="rtxptmb-x-x-90">85</span><span class="rtxptmr-x-x-90">, 551 (1996).
+   [15]</span>
+<a id="Xmeyer2002quantum"></a><span class="rtxptmr-x-x-90">D.A. Meyer, </span><span class="rtxptmri-x-x-90">Phil. T. Roy. Soc. A </span><span class="rtxptmb-x-x-90">360</span><span class="rtxptmr-x-x-90">, 395 (2002).
+   [16]</span>
+<a id="Xboghosian1997quantum"></a><span class="rtxptmr-x-x-90">B.M. Boghosian and W. Taylor IV, </span><span class="rtxptmri-x-x-90">Int. J. Mod. Phys. C </span><span class="rtxptmb-x-x-90">8</span><span class="rtxptmr-x-x-90">, 705
+            (1997).
+   [17]</span>
+<a id="Xboghosian1998quantum"></a><span class="rtxptmr-x-x-90">B.M. Boghosian and W. Taylor IV, </span><span class="rtxptmri-x-x-90">Phys. Rev. E </span><span class="rtxptmb-x-x-90">57</span><span class="rtxptmr-x-x-90">, 54 (1998).
+   [18]</span>
+<a id="Xboghosian1998simulating"></a><span class="rtxptmr-x-x-90">B.M. Boghosian and W. Taylor IV, </span><span class="rtxptmri-x-x-90">Physica D </span><span class="rtxptmb-x-x-90">120</span><span class="rtxptmr-x-x-90">, 30 (1998).
+   [19]</span> <a id="Xlloyd1996universal"></a><span class="rtxptmr-x-x-90">S. Lloyd, </span><span class="rtxptmri-x-x-90">Science </span><span class="rtxptmb-x-x-90">273</span><span class="rtxptmr-x-x-90">, 1073 (1996).
+                                                                                               
+
+                                                                                               
+[20]</span>
+<a id="Xabrams1997simulation"></a><span class="rtxptmr-x-x-90">D.S. Abrams and S. Lloyd, </span><span class="rtxptmri-x-x-90">Phys. Rev. Lett. </span><span class="rtxptmb-x-x-90">79</span><span class="rtxptmr-x-x-90">, 2586 (1997).
+[21]</span>
+<a id="Xyepez1998lattice"></a><span class="rtxptmr-x-x-90">J. Yepez, </span><span class="rtxptmri-x-x-90">Int. J. Mod. Phys. C </span><span class="rtxptmb-x-x-90">9</span><span class="rtxptmr-x-x-90">, 1587 (1998).
+[22]</span>
+<a id="Xyepez2001quantum"></a><span class="rtxptmr-x-x-90">J. Yepez, </span><span class="rtxptmri-x-x-90">Phys. Rev. E </span><span class="rtxptmb-x-x-90">63</span><span class="rtxptmr-x-x-90">, 046702 (2001).
+[23]</span>
+<a id="Xyepez2001quantuma"></a><span class="rtxptmr-x-x-90">J. Yepez, </span><span class="rtxptmri-x-x-90">Int. J. Mod. Phys. C </span><span class="rtxptmb-x-x-90">12</span><span class="rtxptmr-x-x-90">, 1285 (2001).
+[24]</span>
+<a id="Xyepez2002quantum"></a><span class="rtxptmr-x-x-90">J. Yepez, </span><span class="rtxptmri-x-x-90">J. Stat. Phys. </span><span class="rtxptmb-x-x-90">107</span><span class="rtxptmr-x-x-90">, 203 (2002).
+[25]</span>
+<a id="XIBM"></a><span class="rtxptmr-x-x-90">IBM, IBMQ Qiskit Textbook, </span><br class="newline"/><span class="t1xtt-x-x-90">https:qiskit.org/textbook/preface.html
+</span><span class="rtxptmr-x-x-90">[26]</span>
+<a id="Xbenzi1992lattice"></a><span class="rtxptmr-x-x-90">R. Benzi, S. Succi and M. Vergassola, </span><span class="rtxptmri-x-x-90">Phys. Rep. </span><span class="rtxptmb-x-x-90">222</span><span class="rtxptmr-x-x-90">, 145
+(1992).
+[27]</span>
+<a id="Xmezzacapo2015quantum"></a><span class="rtxptmr-x-x-90">A Mezzacapo, M. Sanz, L. Lamata, I.L. Egusquiza, S. Succi
+and E. Solano, </span><span class="rtxptmri-x-x-90">Sci. Rep. </span><span class="rtxptmb-x-x-90">5</span><span class="rtxptmr-x-x-90">, 13153 (2015).
+[28]</span>
+<a id="Xfillion2013formal"></a><span class="rtxptmr-x-x-90">F.   Fillion-Gourdeau,   H.J.   Herrmann,   M.   Mendoza,   S.
+Palpacelli and S. Succi, </span><span class="rtxptmri-x-x-90">Phys. Rev. Lett. </span><span class="rtxptmb-x-x-90">111</span><span class="rtxptmr-x-x-90">, 160602 (2013).
+[29]</span>
+<a id="Xsondhi1997continuous"></a><span class="rtxptmr-x-x-90">S.L. Sondhi, S.M. Girvin, J.P. Carini and D. Shahar, </span><span class="rtxptmri-x-x-90">Rev. Mod.
+Phys. </span><span class="rtxptmb-x-x-90">69</span><span class="rtxptmr-x-x-90">, 315 (1997).
+[30]</span>
+<a id="Xhsieh2016d"></a><span class="rtxptmr-x-x-90">T.H. Hsieh, </span><span class="rtxptmri-x-x-90">Student Review (2) </span><span class="rtxptmb-x-x-90">1</span><span class="rtxptmr-x-x-90">, (2016).
+[31]</span>
+<a id="Xaharony2000large"></a><span class="rtxptmr-x-x-90">O. Aharony, S.S. Gubser, J. Maldacena, H. Ooguri and Y. Oz,
+</span><span class="rtxptmri-x-x-90">Phys. Rep. </span><span class="rtxptmb-x-x-90">323</span><span class="rtxptmr-x-x-90">, 183 (2000).
+[32]</span>
+<a id="Xpolyakov1987gauge"></a><span class="rtxptmr-x-x-90">A.M. Polyakov, </span><span class="rtxptmri-x-x-90">Contemp. Concepts Phys. </span><span class="rtxptmb-x-x-90">3</span><span class="rtxptmr-x-x-90">, 1 (1987).
+[33]</span>
+<a id="Xsomma2007quantum"></a><span class="rtxptmr-x-x-90">R.D. Somma, C.D. Batista and G. Ortiz, </span><span class="rtxptmri-x-x-90">Phys. Rev. Lett. </span><span class="rtxptmb-x-x-90">99</span><span class="rtxptmr-x-x-90">,
+030603 (2007).
+[34]</span>
+<a id="Xplesch2011quantum"></a><span class="rtxptmr-x-x-90">M. Plesch and Č. Brukner, </span><span class="rtxptmri-x-x-90">Phys. Rev. A </span><span class="rtxptmb-x-x-90">83</span><span class="rtxptmr-x-x-90">, 032302 (2011).
+[35]</span>
+<a id="Xshende2006synthesis"></a><span class="rtxptmr-x-x-90">V.V. Shende, S.S. Bullock and I.L. Markov, </span><span class="rtxptmri-x-x-90">IEEE TCAD </span><span class="rtxptmb-x-x-90">25</span><span class="rtxptmr-x-x-90">,
+1000 (2006).
+[36]</span>
+<a id="Xcortese2018loading"></a><span class="rtxptmr-x-x-90">J.A.      Cortese      and      T.M.      Braje,      </span><span class="rtxptmri-x-x-90">arXiv      preprint</span><span class="rtxptmr-x-x-90">,
+arXiv:1803.01958, (2018).
+[37]</span>
+<a id="Xvogel1989determination"></a><span class="rtxptmr-x-x-90">K. Vogel and H. Risken, </span><span class="rtxptmri-x-x-90">Phys. Rev. A </span><span class="rtxptmb-x-x-90">40</span><span class="rtxptmr-x-x-90">, 2847 (1989).
+[38]</span>
+<a id="Xleonhardt1997measuring"></a><span class="rtxptmr-x-x-90">U.  Leonhardt,  </span><span class="rtxptmri-x-x-90">Measuring  the  quantum  state  of  light  </span><span class="rtxptmb-x-x-90">22</span><span class="rtxptmr-x-x-90">,
+(Cambridge University Press, 1997).
+[39]</span>
+<a id="Xnawrocki2015introduction"></a><span class="rtxptmr-x-x-90">W.   Nawrocki,   </span><span class="rtxptmri-x-x-90">Quantum   standards   and   instrumentation
+</span><span class="rtxptmr-x-x-90">(Springer, Heidelberg, 2015).
+[40]</span>
+<a id="Xcoles2018quantum"></a><span class="rtxptmr-x-x-90">P.J. Coles et al., </span><span class="rtxptmri-x-x-90">arXiv preprint</span><span class="rtxptmr-x-x-90">, arXiv:1804.03719, (2018).
+[41]</span>
+<a id="Xbrassard1998quantum"></a><span class="rtxptmr-x-x-90">G. Brassard, P. Hoyer, M. Mosca and A. Tapp, </span><span class="rtxptmri-x-x-90">International
+Colloquium on Automata, Languages, and Programming </span><span class="rtxptmr-x-x-90">820,
+(Springer, 1998).
+[42]</span>
+<a id="Xgrover1997quantum"></a><span class="rtxptmr-x-x-90">L.K. Grover, </span><span class="rtxptmri-x-x-90">Phys. Rev. Lett. </span><span class="rtxptmb-x-x-90">79</span><span class="rtxptmr-x-x-90">, 325 (1997).
+[43]</span>
+<a id="Xbrassard2002quantum"></a><span class="rtxptmr-x-x-90">G.  Brassard,  P.  Hoyer,  M.  Mosca  and  A.  Tapp,  </span><span class="rtxptmri-x-x-90">Contemp.
+Math. </span><span class="rtxptmb-x-x-90">305</span><span class="rtxptmr-x-x-90">, 53 (2002).                            
+   [44]</span>
+<a id="XBuhrman"></a><span class="rtxptmr-x-x-90">H.  Buhrman  and  R.  palek,  </span><span class="rtxptmri-x-x-90">Proc.  17th  Annual  ACM-SIAM
+            Symp.  on  Discrete  Algorithm  </span><span class="rtxptmr-x-x-90">(Society  for  Industrial  and
+            Applied Mathematics, 2006).
+   [45]</span>
+<a id="Xjordan2005fast"></a><span class="rtxptmr-x-x-90">S.P. Jordan, </span><span class="rtxptmri-x-x-90">Phys. Rev. Lett. </span><span class="rtxptmb-x-x-90">95</span><span class="rtxptmr-x-x-90">, 050501 (2005).
+   [46]</span>
+<a id="Xzoo"></a><span class="rtxptmr-x-x-90">S. Jordan, Quantum Algorithm Zoo, </span><br class="newline"/><span class="t1xtt-x-x-90">https://quantumalgorithmzoo.org/</span><span class="rtxptmr-x-x-90">.
+   [47]</span>
+<a id="Xharrow2009quantum"></a><span class="rtxptmr-x-x-90">A.W. Harrow, A. Hassidim and S.Lloyd, </span><span class="rtxptmri-x-x-90">Phys. Rev. Lett. </span><span class="rtxptmb-x-x-90">103</span><span class="rtxptmr-x-x-90">,
+            150502 (2009).
+   [48]</span>
+<a id="Xberry2014high"></a><span class="rtxptmr-x-x-90">D.W. Berry, </span><span class="rtxptmri-x-x-90">J. Phys. A-Math. Theor. </span><span class="rtxptmb-x-x-90">47</span><span class="rtxptmr-x-x-90">, 105301 (2014).
+   [49]</span>
+<a id="Xcosta2019quantum"></a><span class="rtxptmr-x-x-90">P.C.S.  Costa,  S.  Jordan  and  A.  Ostrander,  </span><span class="rtxptmri-x-x-90">Phys.  Rev.  A  </span><span class="rtxptmb-x-x-90">99</span><span class="rtxptmr-x-x-90">,
+            012323 (2019).
+   [50]</span>
+<a id="Xcao2013quantum"></a><span class="rtxptmr-x-x-90">Y. Cao, A. Papageorgiou, I. Petras, J. Traub and S. Kais,</span><span class="rtxptmri-x-x-90">New
+            J. Phys. </span><span class="rtxptmb-x-x-90">15</span><span class="rtxptmr-x-x-90">, 013021 (2013).
+   [51]</span>
+<a id="Xarrazola2019quantum"></a><span class="rtxptmr-x-x-90">J.M. Arrazola, T. Kalajdzievski, C. Weedbrook and S. Lloyd,
+            </span><span class="rtxptmri-x-x-90">Phys. Rev. A </span><span class="rtxptmb-x-x-90">100</span><span class="rtxptmr-x-x-90">, 032306 (2019).
+   [52]</span>
+<a id="Xruiz2017quantum"></a><span class="rtxptmr-x-x-90">L.   Ruiz-Perez   and   J.C.   Garcia-Escartin,   </span><span class="rtxptmri-x-x-90">Quantum   Inf.
+            Process. </span><span class="rtxptmb-x-x-90">16</span><span class="rtxptmr-x-x-90">, 152 (2017).
+   [53]</span>
+<a id="Xhadfield2018quantum"></a><span class="rtxptmr-x-x-90">S. Hadfield, </span><span class="rtxptmri-x-x-90">arXiv preprint</span><span class="rtxptmr-x-x-90">, arXiv:1805.03265, (2018).
+   [54]</span>
+<a id="XDWave"></a><span class="rtxptmr-x-x-90">DWave, </span><br class="newline"/><span class="t1xtt-x-x-90">https://docs.dwavesys.com/docs/latest/c_gs_2.htmll</span><span class="rtxptmr-x-x-90">.
+   [55]</span>
+<a id="Xmontanaro2016quantum"></a><span class="rtxptmr-x-x-90">A. Montanaro, </span><span class="rtxptmri-x-x-90">NPJ Quantum Inf. </span><span class="rtxptmb-x-x-90">2</span><span class="rtxptmr-x-x-90">, 1 (2016).
+   [56]</span>
+<a id="Xxu2018turbulent"></a><span class="rtxptmr-x-x-90">G. Xu, A.J. Daley, P. Givi and R.D. Somma, </span><span class="rtxptmri-x-x-90">AIAA J. </span><span class="rtxptmb-x-x-90">56 </span><span class="rtxptmr-x-x-90">687,
+            (2018).
+   [57]</span>
+<a id="Xbarenghi2014introduction"></a><span class="rtxptmr-x-x-90">C.F. Barenghi, L. Skrbek and K.R. Sreenivasan, </span><span class="rtxptmri-x-x-90">Proc. Natl.
+            Acad. Sci. </span><span class="rtxptmb-x-x-90">111</span><span class="rtxptmr-x-x-90">, 4647 (2014).
+   [58]</span>
+<a id="Xbarenghi2014experimental"></a><span class="rtxptmr-x-x-90">C.F. Barenghi, V.S. Lvov and P. E. Roche, </span><span class="rtxptmri-x-x-90">Proc. Natl. Acad.
+            Sci. </span><span class="rtxptmb-x-x-90">111</span><span class="rtxptmr-x-x-90">, 4683 (2014).
+   [59]</span>
+<a id="Xperuzzo2014variational"></a><span class="rtxptmr-x-x-90">A. Peruzzo, et al., </span><span class="rtxptmri-x-x-90">Nat. Commun. </span><span class="rtxptmb-x-x-90">5</span><span class="rtxptmr-x-x-90">, 4213 (2014).
+   [60]</span>
+<a id="Xfarhi2014quantum"></a><span class="rtxptmr-x-x-90">E.  Farhi,  J.  Goldstone  and  S.  Gutmann,  </span><span class="rtxptmri-x-x-90">arXiv  preprint</span><span class="rtxptmr-x-x-90">,
+            arXiv:1411.4028, (2014).
+   [61]</span>
+<a id="Xbattaglia2005optimization"></a><span class="rtxptmr-x-x-90">D.A. Battaglia, G.E. Santoro and E. Tosatti, </span><span class="rtxptmri-x-x-90">Phys. Rev. E </span><span class="rtxptmb-x-x-90">71</span><span class="rtxptmr-x-x-90">,
+            066707 (2005).
+   [62]</span>
+<a id="Xray2019towards"></a><span class="rtxptmr-x-x-90">N. Ray, T. Banerjee, B. Nadiga and S. Karra, </span><span class="rtxptmri-x-x-90">arXiv preprint</span><span class="rtxptmr-x-x-90">,
+            arXiv:1904.09033, (2019).</span>
+</p>
+</main></body>
+</html>

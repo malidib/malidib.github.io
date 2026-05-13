@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" xml:lang="ar">
+<head><title> </title>
+<meta charset="utf-8"/>
+<meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="strategic-diffusion.css" rel="stylesheet" type="text/css"/>
+<meta content="strategic-diffusion.tex" name="src"/>
+<link href="paper_arabizer.css" rel="stylesheet"/></head><body dir="rtl"><main class="paper-arabizer-article">
+<div class="maketitle">
+<h2 class="titleHead">الجوانب الحسابية  للانتشار  الأمثل  للشبكة  الإستراتيجية</h2>
+<div class="author"><span class="cmr-12">Marcin Waniek</span><sup class="textsuperscript"><span class="cmr-9">a,b,*</span></sup><span class="cmr-12">, Khaled Elbassioni</span><sup class="textsuperscript"><span class="cmr-9">b</span></sup><span class="cmr-12">, Flávio L. Pinheiro</span><sup class="textsuperscript"><span class="cmr-9">c,d</span></sup><span class="cmr-12">,</span><br/>
+<span class="cmr-12">César A. Hidalgo</span><sup class="textsuperscript"><span class="cmr-9">d</span></sup><span class="cmr-12">, and Aamena Alshamsi</span><sup class="textsuperscript"><span class="cmr-9">b</span></sup><br/><br/>
+<sup class="textsuperscript"><span class="cmr-9">a</span></sup>Compute Science, New York University Abu Dhabi, Abu Dhabi, UAE<br/>
+<sup class="textsuperscript"><span class="cmr-9">b</span></sup>Masdar Institute, Khalifa University of Science and Technology, Abu Dhabi, UAE<br/>
+<sup class="textsuperscript"><span class="cmr-9">c</span></sup>Nova Information Management School (NOVA IMS), Universidade Nova de Lisboa, Lisboa, Portugal<br/>
+<sup class="textsuperscript"><span class="cmr-9">d</span></sup>MIT Media Lab, Massachusetts Institute of Technology, Cambridge, USA<br/>
+<sup class="textsuperscript"><span class="cmr-9">*</span></sup>To whom correspondence should be addressed: mjwaniek@gmail.com</div>
+</div>
+<section class="abstract" role="doc-abstract">
+<h3 class="abstracttitle">
+<span class="cmbx-9">Abstract</span>
+</h3>
+<!-- l. 75 --><p class="noindent">غالبًا ما يتم تصميم الانتشار على الشبكات المعقدة على أنه عملية عشوائية<span class="cmr-9">. </span>ومع ذلك، فإن العمل الأخير حول الانتشار الاستراتيجي يؤكد على قوة اتخاذ القرار للوكلاء <span class="cite"><span class="cmr-9">[</span><a href="#Xalshamsi2018optimal"><span class="cmr-9">1</span></a><span class="cmr-9">]</span></span> ويتعامل مع الانتشار باعتباره مشكلة استراتيجية<span class="cmr-9">. </span>نحن هنا ندرس الجوانب الحسابية للنشر الاستراتيجي، أي، وإيجاد التسلسل الأمثل للعقد لتنشيط الشبكة في أقل وقت ممكن<span class="cmr-9">. </span>لقد أثبتنا أن إيجاد الحل الأمثل لهذه المشكلة هو مكتملة <span class="cmr-9">NP </span>في حالة عامة<span class="cmr-9">. </span>للتغلب على هذه الصعوبة الحسابية، نقدم خوارزمية لحساب الحل الأمثل بناءً على تقنية البرمجة الديناميكية<span class="cmr-9">. </span>نوضح أيضًا أن المشكلة ثابتة ويمكن تتبعها عند تحديد معلماتها بواسطة منتج عرض الشجرة والحد الأقصى للدرجة<span class="cmr-9">. </span>نحن نحلل إمكانية تطوير خوارزمية تقريبية فعالة ونظهر أن الخوارزميتين الإرشاديتين المقترحتين حتى الآن لا يمكن أن تتمتعا بأفضل من ضمان التقريب اللوغاريتمي<span class="cmr-9">. </span>وأخيرا، نثبت أن المشكلة لا تقبل أفضل من التقريب اللوغاريتمي، إلا
+     إذا كانت <span class="cmr-9">P=NP.</span>
+</p>
+</section>
+<h3 class="sectionHead"><span class="titlemark">1   </span> <a id="x1-10001"></a>مقدمة</h3>
+<!-- l. 90 --><p class="noindent">لقد كان الانتشار في الشبكات الاجتماعية تطبيقًا تمت دراسته على نطاق واسع في مشاكل مثل تفشي الأوبئة واعتماد السلوكيات والابتكارات <span class="cite">[<a href="#Xvalente1995network">2</a>, <a href="#Xrogers2010diffusion">3</a>, <a href="#Xbailey1975mathematical">4</a>, <a href="#Xpastor2001epidemic">5</a>, <a href="#Xaral2017exercise">6</a>, <a href="#Xvasconcelos2019consensus">7</a>]</span>. يمكن تقسيم النهج المتبع في نشر النماذج تقريبًا بين عمليات العدوى البسيطة والمعقدة. في ظل العدوى البسيطة يتطلب انتقال العدوى الاتصال بفرد واحد بمعدل ثابت مثل انتقال الأمراض المعدية <span class="cite">[<a href="#Xkermack1927contribution">8</a>]</span>. مثال على عملية العدوى البسيطة هو النموذج التتالي المستقل <span class="cite">[<a href="#Xkempe2003maximizing">9</a>]</span>. وفي المقابل، تتطلب العدوى المعقدة التعزيز من مصادر متعددة. مثال على عملية العدوى المعقدة هو نموذج العتبة الخطية <span class="cite">[<a href="#Xkempe2003maximizing">9</a>]</span>. تمت دراسة العدوى المعقدة على نطاق واسع في سياق الظواهر المتتالية، مع تطبيقات خاصة لحملات التسويق الفيروسي <span class="cite">[<a href="#Xgoldenberg2001using">10</a>, <a href="#Xleskovec2007dynamics">11</a>, <a href="#Xdomingos2001mining">12</a>]</span>. وفي هذا السياق، فإن المشكلة قيد التحليل
+هي العثور على المجموعة الأولية من البذور التي من شأنها أن تزيد من انتشارها. تتضمن الطرق المختلفة لحل مشكلة اختيار البذور استخدام مقاييس المركزية <span class="cite">[<a href="#Xkiss2008identification">13</a>]</span>، وترشيح الشبكة <span class="cite">[<a href="#Xmorone2015influence">14</a>]</span>، وآثار الانتشار <span class="cite">[<a href="#Xgoyal2011data">15</a>]</span>، من بين أشياء أخرى كثيرة <span class="cite">[<a href="#Xchen2009efficient">16</a>, <a href="#Xhinz2011seeding">17</a>, <a href="#Xlibai2013decomposing">18</a>]</span>. تتخذ بعض الأعمال في الأدبيات نهجًا تكيفيًا تجاه الموضوع، بناءً على اختيار البذور على المعرفة الإضافية التي تم جمعها أثناء العملية، سواء كان ذلك إما الحالة الحالية لطوبولوجيا الشبكة الديناميكية  <span class="cite">[<a href="#Xtong2017adaptive">19</a>]</span>، أو مجموعة موسعة من البذور المحتملة  <span class="cite">[<a href="#Xseeman2013adaptive">20</a>, <a href="#Xhorel2015scalable">21</a>]</span>. هناك طريقة بديلة لزيادة تغطية الانتشار وهي نشر البذور المتاحة مع مرور الوقت <span class="cite">[<a href="#Xjankowski2017balancing">22</a>, <a href="#Xjankowski2018strategic">23</a>]</span>. على الرغم من الجوانب الإستراتيجية للطرق
+المختلفة لاختيار البذور، فإن عملية الانتشار نفسها هي عملية عشوائية بحتة.
+</p><!-- l. 100 --><p class="indent">   ومع ذلك، توجد حالات يحدث فيها الانتشار وفق قواعد العدوى المعقدة نفسها، لكنها ليست عشوائية بحتة (أي، إذ تتضمن مكوّنًا استراتيجيًا)، ولا تكون فيها الشبكة نفسها بالضرورة شبكة اجتماعية. خذ مثلًا كيف تطور المناطق أنشطة اقتصادية جديدة <span class="cite">[<a href="#Xhidalgo2007product">24</a>]</span> أو تبدأ الإنتاج في مجالات بحثية جديدة <span class="cite">[<a href="#Xguevara2016research">25</a>]</span>. في هذه الحالات لا يكون الوكلاء مضمّنين في الشبكة، بل يتخذون إجراءات على نظام شبكي يلتقط الترابط بين الأنشطة الاقتصادية أو الأكاديمية. والأهم أن اختيار الحالة الابتدائية ليس وحده استراتيجيًا، بل إن عملية الانتشار بأكملها استراتيجية أيضًا. العشوائية في هذا السياق ليست في التفاعلات الزوجية بين الوكلاء، ولكن في معدل نجاح الوكلاء في الدخول في أنشطة جديدة. وفي حالة التنمية الاقتصادية، فإن احتمالية النجاح أثناء الدخول في نشاط جديد (ممثلة بعقدة في شبكة الأنشطة الاقتصادية المرتبطة) تزداد مع زيادة عدد الأنشطة الأخرى التي تم تطويرها بالفعل والمرتبطة بها. وبالتالي، يمكن للوكلاء أن
+يفشلوا أو ينجحوا اعتمادًا على السياق المحدد لكل إجراء استراتيجي.
+</p><!-- l. 103 --><p class="indent">   اقترح Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span> دراسة تنويع الأنشطة الاقتصادية من منظور نموذج للانتشار الاستراتيجي. في هذا النموذج يوجَّه كامل مسار الانتشار بواسطة وكيل استراتيجي. وتتعلق أفعال الوكيل باختيار عقدة في الشبكة لاستهدافها في كل خطوة زمنية. ومن ثم قد تصبح العقدة مفعّلة في الخطوة التالية من تسلسل أفعال الوكيل، أو لا تصبح كذلك. وباتباع النتائج التجريبية القائمة <span class="cite">[<a href="#Xhidalgo2007product">24</a>, <a href="#Xpinheiro2018shooting">26</a>]</span>، يفترض النموذج أن احتمال التنشيط (أي، احتمال نجاح فعل الوكيل) تلتقطه عملية عدوى معقدة. والهدف هو تنشيط الشبكة بأكملها، بدءًا من عقدة نشطة واحدة، في أقل زمن ممكن. ومع أن Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span> أظهروا، لطيف واسع من طوبولوجيات الشبكات، أن تنشيط الشبكة على نحو أمثل يتطلب توازنًا بين
+استراتيجيات الاستغلال والاستكشاف، فقد ظلت أسئلة كثيرة بشأن الجدوى الحسابية لإيجاد الاستراتيجيات المثلى مفتوحة. هنا نستكشف عدة اعتبارات حسابية نظرية لعمليات الانتشار الاستراتيجي.
+                                                                                         
+                                                                                         
+</p><!-- l. 106 -->
+<h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a id="x1-20001.1"></a>النتائج والأساليب</h4>
+<!-- l. 108 --><p class="noindent">نبدأ باستكشاف الجدوى الحسابية لإيجاد استراتيجية مثالية تقلل من إجمالي وقت الانتشار، أي، والإجابة على سؤال ما هو أفضل تسلسل لتنشيط عدد معين من العقد في الشبكة (بدءًا من العقدة الأولية) في أقصر وقت متوقع، مع الأخذ في الاعتبار أن الوقت اللازم لتنشيط كل عقدة يتناسب مع عدد الجيران النشطين.
+</p><!-- l. 110 --><p class="indent">   نوضح أن إصدار القرار للمشكلة هو مكتملة NP (النظرية <a href="#x1-9001r3">3<!-- tex4ht:ref: thrm:npc  --></a>). لقد أثبتنا ذلك باستخدام التخفيض من مشكلة تغطية المجموعات. تشير هذه الملاحظة إلى أن تطوير خوارزمية متعددة الحدود لإيجاد التسلسل الأمثل للانتشار الاستراتيجي ليس واقعيًا، إلا إذا كانت P = NP.
+</p><!-- l. 112 --><p class="indent">   نظرًا لهذه الصعوبة، نقترح خوارزمية لحساب الطريقة المثلى لتنشيط عدد معين من العقد في أقصر وقت ممكن (الخوارزمية <a href="#x1-10013r1">1<!-- tex4ht:ref: alg:dynamic-programming  --></a>). في حين أن الخوارزمية تستغرق وقتًا هائلاً للعثور على الحل، إلا أنها لا تزال تتفوق على البحث الشامل البسيط ويمكن استخدامها لحساب الحل الأمثل للشبكات ذات الحجم المتوسط. تستخدم الخوارزمية تقنية البرمجة الديناميكية للعثور على أسرع طريقة للوصول إلى كل حالة ممكنة لتنشيط الشبكة.
+</p><!-- l. 114 --><p class="indent">   نقدم أيضًا خوارزميتين لإيجاد الحل الأمثل لفئة أكثر تقييدًا من الشبكات، أي، الشبكات ذات عرض الشجرة المحدود والدرجة القصوى المحددة. إنهم يجتازون تحليلًا شجريًا للشبكة ويجدون طريقة مثالية لتنشيط إما شبكة كاملة أو عدد معين من العقد، على التوالي. ونتيجة لذلك، نظهر أن المشكلة ثابتة ويمكن حلها عند تحديد معلماتها بمجموع عرض الشجرة والحد الأقصى للدرجة.
+</p><!-- l. 116 --><p class="indent">   نظرًا لأن العثور على الحل الأمثل يتطلب الكثير من العمليات الحسابية، فإننا نوجه اهتمامنا إلى تقييم إمكانية الحصول على خوارزمية تقريبية فعالة. نحن نتحقق أولاً مما إذا كانت الخوارزميات الإرشادية الفعالة التي اقترحها Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span> لها نسب تقريبية ثابتة. إحداها هي الخوارزمية الجشعة، أي، التي تستهدف دائمًا العقدة ذات احتمالية التنشيط الأعلى. أما الآخر فهو خوارزمية الأغلبية، أي، التي تستهدف العقدة ذات أكبر عدد من الجيران النشطين. نوضح أن نسبة التقريب لكل من هذه الخوارزميات هي Ω(log <span class="cmmi-10">n</span>) (النظريات <a href="#x1-15001r7">7<!-- tex4ht:ref: thrm:greedy  --></a> و <a href="#x1-15003r8">8<!-- tex4ht:ref: thrm:majority  --></a>). تعتمد البراهين على إنشاء سلسلة من الشبكات حيث تصل النسبة بين إجمالي الوقت المتوقع لتنشيط الحل الذي تم الحصول عليه باستخدام الخوارزمية الإرشادية والوقت الأمثل المتوقع للتنشيط إلى ما لا
+نهاية.
+</p><!-- l. 119 --><p class="indent">   أخيرًا، نوضح أنه ما لم تكن P = NP، لا توجد طريقة لتقريب المشكلة ضمن نسبة أفضل من ln<span class="cmmi-10">n</span>، وعلى وجه الخصوص، من المستحيل إنشاء خوارزمية تقريب <span class="cmmi-10">r </span>للثابت <span class="cmmi-10">r </span>(النظرية <a href="#x1-16001r9">9<!-- tex4ht:ref: thrm:logn  --></a>). نحن نثبت هذا الادعاء من خلال إظهار التخفيض من مشكلة الحد الأدنى للتغطية المحددة واستخدام حقيقة أن الحد الأدنى للتغطية المحددة لا يمكن تقريبه ضمن نسبة (1 <span class="cmsy-10">− </span><span class="cmmi-10">𝜖</span>)ln<span class="cmmi-10">n </span>لأي <span class="cmmi-10">𝜖 &gt; </span>0، ما لم تكن P=NP <span class="cite">[<a href="#Xdinur2014analytical">27</a>]</span>.
+</p>
+<!-- l. 123 --><p class="indent"> <span class="likesubparagraphHead"><a id="x1-3000"></a>تنظيم المخطوطة</span>
+   يتم تنظيم بقية المقالة على النحو التالي. يصف القسم <a href="#x1-40002">2<!-- tex4ht:ref: sec:preliminaries  --></a> الرموز والمشكلات الحسابية المستخدمة في تخفيضاتنا. يقدم القسم <a href="#x1-70003">3<!-- tex4ht:ref: sec:problem-definition  --></a> تعريفًا رسميًا لعملية الانتشار الاستراتيجي والمشكلة الرئيسية التي تناولتها دراستنا. في القسم <a href="#x1-80004">4<!-- tex4ht:ref: sec:optimal-solution  --></a> نقدم نتيجة الصلابة الخاصة بنا لإصدار القرار للمشكلة ونصف خوارزمية برمجة ديناميكية لإيجاد الطريقة المثلى للنشر الاستراتيجي. يقدم القسم <a href="#x1-120004.4">4.4<!-- tex4ht:ref: sec:treewidth  --></a> خوارزميات الحوسبة الحل الأمثل للشبكات ذات عرض الشجرة المحدود والدرجة القصوى. يصف القسم   <a href="#x1-14034r4.4.2">4.4.2<!-- tex4ht:ref: sec:approximation  --></a> نتائجنا فيما يتعلق بتقريب الحل الأمثل. يعرض القسم <a href="#x1-170005">5<!-- tex4ht:ref: sec:conclusions  --></a> الاستنتاجات والأفكار المحتملة للعمل المستقبلي.
+</p><!-- l. 127 -->
+<h3 class="sectionHead"><span class="titlemark">2   </span> <a id="x1-40002"></a>المقدمات &amp; التدوين</h3>
+<!-- l. 130 --><p class="noindent">في هذا القسم، نقدم الرموز والمفاهيم التي سيتم استخدامها في جميع أنحاء الورقة.
+</p><!-- l. 132 -->
+<h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a id="x1-50002.1"></a>ترميز الشبكة الأساسي</h4>
+<!-- l. 134 --><p class="noindent">لنفترض أن <span class="cmmi-10">G </span>= (<span class="cmmi-10">V,E,W</span>) تشير إلى شبكة ذات حواف مرجحة، حيث يشير <span class="cmmi-10">V </span>= <span class="cmsy-10">{</span>1<span class="cmmi-10">,…,n</span><span class="cmsy-10">}</span>إلىمجموعةالعقد <span class="cmmi-10">n</span>، ويشير <span class="cmmi-10">E </span><span class="cmsy-10">⊆ </span><span class="cmmi-10">V </span><span class="cmsy-10">×</span><span class="cmmi-10">V </span>إلى مجموعة الحواف و<span class="cmmi-10">W </span><span class="cmsy-10">∈ </span><span class="msbm-10">ℝ</span><sup><span class="cmmi-7">n</span><span class="cmsy-7">×</span><span class="cmmi-7">n</span></sup> إلى المصفوفة ذات أوزان الحواف. نشير إلى الحافة بين العقدتين <span class="cmmi-10">i </span>و<span class="cmmi-10">j </span>بواسطة <span class="cmmi-10">ij</span>. في هذا العمل نعتبر الشبكات التي تكون غير موجهة، أي، ولا نميز بين الحواف <span class="cmmi-10">ij </span>و<span class="cmmi-10">ji</span>. ونفترض أيضًا أن الشبكات لا تحتوي على حلقات ذاتية، أي، <span class="cmsy-10">∀</span><sub><span class="cmmi-7">i</span><span class="cmsy-7">∈</span><span class="cmmi-7">V</span> </sub><span class="cmmi-10">ii</span><img alt="∈∕" class="notin paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion0x.svg"/><span class="cmmi-10">E</span>. نشير
+بواسطة <span class="cmmi-10">N</span><sub><span class="cmmi-7">G</span></sub>(<span class="cmmi-10">i</span>) إلى مجموعة الجيران لـ <span class="cmmi-10">i </span>في <span class="cmmi-10">G</span>، أي، <span class="cmmi-10">N</span><sub><span class="cmmi-7">G</span></sub>(<span class="cmmi-10">i</span>) = <span class="cmsy-10">{</span><span class="cmmi-10">j </span><span class="cmsy-10">∈ </span><span class="cmmi-10">V </span>: <span class="cmmi-10">ij </span><span class="cmsy-10">∈ </span><span class="cmmi-10">E</span><span class="cmsy-10">}</span>. نشير بواسطة <span class="cmmi-10">d</span><sub><span class="cmmi-7">G</span></sub>(<span class="cmmi-10">i</span>) إلى درجة من <span class="cmmi-10">i </span>في <span class="cmmi-10">G</span>، أي، <span class="cmmi-10">d</span><sub><span class="cmmi-7">G</span></sub>(<span class="cmmi-10">i</span>) = <span class="cmsy-10">|</span><span class="cmmi-10">N</span><sub><span class="cmmi-7">G</span></sub>(<span class="cmmi-10">i</span>)<span class="cmsy-10">|</span>.
+</p><!-- l. 141 --><p class="indent">   نحن نعتبر الشبكات ذات الحواف المرجحة. نشير بـ <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> <span class="cmsy-10">∈ </span><span class="msbm-10">ℝ </span>إلى وزن الاتصال من <span class="cmmi-10">i </span>إلى <span class="cmmi-10">j</span>، وسنسمي هذه القيمة التأثير التي يمتلكها <span class="cmmi-10">i </span>على <span class="cmmi-10">j</span>. نحن لا نفترض أن علاقة التأثير متماثلة، أي، فمن الممكن أنه بالنسبة لـ <span class="cmmi-10">ij </span><span class="cmsy-10">∈ </span><span class="cmmi-10">E </span>لدينا <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub><span class="cmmi-10">≠w</span><sub><span class="cmmi-7">ji</span></sub>. ما لم يُنص على خلاف ذلك، سنفترض أن <span class="cmsy-10">∀</span><sub><span class="cmmi-7">i,j</span><span class="cmsy-7">∈</span><span class="cmmi-7">V</span> </sub><span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> <span class="cmsy-10">≥ </span>0. ونفترض أيضًا أنه إذا كان <span class="cmmi-10">ij</span><img alt="∕∈" class="notin paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion1x.svg"/><span class="cmmi-10">E </span>فإن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> = 0. نشير بواسطة <span class="cmmi-10">w</span><sub><span class="cmmi-7">i</span></sub> إلى مجموع التأثير على العقدة <span class="cmmi-10">i</span>، أي،
+<span class="cmmi-10">w</span><sub><span class="cmmi-7">i</span></sub> = <span class="cmex-10">∑</span>
+<sub><span class="cmmi-7">j</span><span class="cmsy-7">∈</span><span class="cmmi-7">N</span><span class="cmr-7">(</span><span class="cmmi-7">i</span><span class="cmr-7">)</span></sub><span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub>. سنفترض عادةً أن <span class="cmsy-10">∀</span><sub><span class="cmmi-7">i</span><span class="cmsy-7">∈</span><span class="cmmi-7">V</span> </sub><span class="cmmi-10">w</span><sub><span class="cmmi-7">i</span></sub> <span class="cmmi-10">&gt; </span>0.
+</p><!-- l. 149 --><p class="indent">   دع Γ(<span class="cmmi-10">V </span>) يشير إلى مجموعة كل التسلسلات المرتبة للعناصر من <span class="cmmi-10">V </span>بدون تكرار. دع <span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub> يشير إلى العنصر (العقدة) <span class="cmmi-10">i </span>للتسلسل <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>)، و<span class="cmsy-10">|</span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span>يشيرإلىعددالعناصرفي <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>). أخيرًا، نطلق على <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>) تسلسل كامل إذا كان <span class="cmsy-10">|</span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span>= <span class="cmsy-10">|</span><span class="cmmi-10">V </span><span class="cmsy-10">|</span>ونشيرإلىمجموعةالتسلسلاتالكاملةبواسطة Γ<sup><span class="cmsy-7">∗</span></sup>(<span class="cmmi-10">V </span>).
+</p><!-- l. 153 --><p class="indent">   لجعل الترميز أكثر قابلية للقراءة، غالبًا ما نقوم بحذف الشبكة نفسها من الترميز عندما تكون واضحة من السياق، مثلًا، وذلك بكتابة <span class="cmmi-10">N</span>(<span class="cmmi-10">i</span>) بدلاً من <span class="cmmi-10">N</span><sub><span class="cmmi-7">G</span></sub>(<span class="cmmi-10">i</span>). نتعامل أحيانًا مع التسلسلات كمجموعات، عندما لا يكون الترتيب مهمًا. نستخدم <span class="cmsy-10">⊕</span>للدلالةعلىعمليةالتسلسلعبرالتسلسلات.
+</p><!-- l. 156 -->
+<h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a id="x1-60002.2"></a>مشاكل حسابية</h4>
+<!-- l. 158 --><p class="noindent">في تخفيضاتنا، سوف نستخدم نسختين قياسيتين من مشكلة تغطية المجموعات، القرار والتحسين التوافقي.
+</p>
+<div class="newtheorem">
+<!-- l. 160 --><p class="noindent"><span class="head">
+<a id="x1-6001r1"></a>
+تعريف<span class="cmbx-10">1 </span>(تغطية المجموعات <span class="cite">[<a href="#Xkarp1972reducibility">28</a>]</span>)<span class="cmbx-10">.</span> </span>يتم تعريف مثال لمشكلة تغطية المجموعات بواسطة الكون <span class="cmmi-10">U </span>= <span class="cmsy-10">{</span><span class="cmmi-10">u</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,u</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">U</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">}</span>،ومجموعةمنالمجموعات<span class="cmsy-10">𝒮 </span>= <span class="cmsy-10">{</span><span class="cmmi-10">S</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,S</span><sub><span class="cmsy-7">|𝒮|</span></sub><span class="cmsy-10">}</span>مثل<span class="cmsy-10">∀</span><sub><span class="cmmi-7">j</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> <span class="cmsy-10">⊂ </span><span class="cmmi-10">U</span>، وعدد صحيح <span class="cmmi-10">k </span><span class="cmsy-10">≤|𝒮|</span><span class="cmti-10">. </span>الهدف هو تحديد ما إذا كان هناك عناصر <span class="cmmi-10">k </span>موجودة في <span class="cmsy-10">𝒮 </span>والتييساوياتحادها <span class="cmmi-10">U</span><span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 163 --><!-- l. 165 --><p class="indent">   تعد تغطية المجموعات واحدة من مشكلات مكتملة NP الكلاسيكية لـ 21 Karp.
+                                                                                         
+                                                                                         
+</p>
+<div class="newtheorem">
+<!-- l. 167 --><p class="noindent"><span class="head">
+<a id="x1-6002r1"></a>
+نظرية<span class="cmbx-10">1 </span>(<span class="cite">[<a href="#Xkarp1972reducibility">28</a>]</span>)<span class="cmbx-10">.</span> </span> مشكلة تغطية المجموعات هي مكتملة <span class="cmti-10">NP.</span>
+</p>
+</div>
+<!-- l. 170 --><!-- l. 172 --><p class="indent">   لإثبات صلابة التقريب سوف نستخدم النسخة المصغرة للمشكلة.
+</p>
+<div class="newtheorem">
+<!-- l. 174 --><p class="noindent"><span class="head">
+<a id="x1-6003r2"></a>
+تعريف<span class="cmbx-10">2 </span>(التغطية الدنيا للمجموعات)<span class="cmbx-10">.</span> </span>يتم تعريف مثيل لمشكلة الحد الأدنى لتغطية المجموعات بواسطة الكون <span class="cmmi-10">U </span>= <span class="cmsy-10">{</span><span class="cmmi-10">u</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,u</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">U</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">}</span>ومجموعةمنالمجموعات <span class="cmmi-10">S </span>= <span class="cmsy-10">{</span><span class="cmmi-10">S</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,S</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">S</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">}</span>مثل<span class="cmsy-10">∀</span><sub><span class="cmmi-7">j</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> <span class="cmsy-10">⊂ </span><span class="cmmi-10">U</span><span class="cmti-10">. </span>الهدف هو العثور على المجموعة الفرعية <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">⊆ </span><span class="cmmi-10">S </span>بحيث يكون اتحاد <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> يساوي <span class="cmmi-10">U </span>وحجم <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> في حده الأدنى<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 177 --><!-- l. 179 --><p class="indent">   بالنسبة إلى <span class="cmmi-10">α </span><span class="cmsy-10">≥ </span>1، فإن التقريب <span class="cmmi-10">α </span>لمثيل معين لمشكلة التقليل هو حل ممكن يكون هدفه ضمن عامل <span class="cmmi-10">α </span>لأي حل أمثل. سوف نستخدم حقيقة أن مشكلة الحد الأدنى لمجموعة التغطية يصعب تقريبها.
+</p>
+<div class="newtheorem">
+<!-- l. 181 --><p class="noindent"><span class="head">
+<a id="x1-6004r2"></a>
+نظرية<span class="cmbx-10">2 </span>(<span class="cite">[<a href="#Xdinur2014analytical">27</a>]</span>)<span class="cmbx-10">.</span> </span> بالنسبة لأي <span class="cmmi-10">𝜖 &gt; </span>0، لا يمكن تقريب الحد الأدنى لمجموعة التغطية الثابتة إلى (1 <span class="cmsy-10">− </span><span class="cmmi-10">𝜖</span>)ln<span class="cmmi-10">n</span>، ما لم يكن <span class="cmti-10">P=NP.</span>
+</p>
+</div>
+<!-- l. 184 --><!-- l. 186 --><p class="indent">   ننتقل الآن إلى تحديد نموذج الانتشار الاستراتيجي ومشكلة التحسين الرئيسية في دراستنا.
+</p><!-- l. 189 -->
+<h3 class="sectionHead"><span class="titlemark">3   </span> <a id="x1-70003"></a>تعريف المشكلة</h3>
+<!-- l. 192 --><p class="noindent">في هذا القسم نصف عملية نشر الشبكة الإستراتيجية، والتي هي المحور الرئيسي لدراستنا، بالإضافة إلى المشكلة الحسابية المتعلقة بها.
+</p><!-- l. 194 --><p class="indent">   معظم نماذج الانتشار هي نماذج عشوائية بحتة <span class="cite">[<a href="#Xgoldenberg2001using">10</a>, <a href="#Xkempe2003maximizing">9</a>]</span>. ومع ذلك، فإننا نركز في هذا العمل على النموذج الاستراتيجي للانتشار لمراعاة الحالات التي يؤثر فيها الترابط بين الأهداف على وقت التنشيط، وبالتالي يتم التخطيط بشكل استراتيجي لاختيار الترتيب الذي سيتم به استهداف العقد للتنشيط.
+</p><!-- l. 197 --><p class="indent">   في هذا النموذج، تكون عملية الانتشار مدفوعة بعامل استراتيجي. في بداية العملية، تكون عقدة واحدة فقط مختارة من الشبكة، العقدة الأولية <span class="cmmi-10">i</span><span class="cmmi-7">S</span>، نشطة. بعد ذلك، يختار الوكيل التسلسل <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>) الذي يوفر الترتيب الذي سيتم به تنشيط العقد. يتم إعطاء احتمال التنشيط الناجح للعقدة <span class="cmmi-10">i </span>في محاولة واحدة بواسطة:
+</p>
+<div class="math-display">
+<img alt="       (∑            )α
+p(i) = β --j∈N-(i)∩A-wji
+              wi
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion2x.svg"/></div>
+<!-- l. 204 --><p class="indent">   حيث <span class="cmmi-10">A </span>هي مجموعة العقد النشطة حاليًا (في بداية العملية تتكون فقط من البذرة)، و<span class="cmmi-10">α,β </span><span class="cmsy-10">∈ </span>[0<span class="cmmi-10">,</span>1] هي ثوابت. ما لم يُنص على خلاف ذلك، سنفترض أن <span class="cmmi-10">α </span>= <span class="cmmi-10">β </span>= 1. لاحظ أن الوقت المتوقع لتنشيط العقدة <span class="cmmi-10">i </span>مع احتمال التنشيط غير الصفر هو <span class="cmmi-10">τ</span>(<span class="cmmi-10">i</span>) = <img alt="p1(i)" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion3x.svg"/>. بواسطة <span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span>) سنشير إلى الوقت المتوقع لتنشيط جميع العقد في التسلسل <span class="cmmi-10">γ</span>.
+</p><!-- l. 209 --><p class="indent">   تم اقتراح هذا النموذج من قبل Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span> للشبكات غير الموجهة ذات الحواف غير الموزونة. فإذا افترضنا أن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> = 1 <span class="cmmi-10">⟺ ij </span><span class="cmsy-10">∈ </span><span class="cmmi-10">E </span>فإن نموذجنا يكافئ تماما النموذج الذي اقترحه Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span>.
+</p><!-- l. 212 --><p class="indent">   نحدد الآن المشكلة الحسابية الرئيسية لدراستنا.
+</p>
+<div class="newtheorem">
+<!-- l. 214 --><p class="noindent"><span class="head">
+<a id="x1-7001r3"></a>
+تعريف<span class="cmbx-10">3 </span>(تسلسل الانتشار الجزئي الأمثل)<span class="cmbx-10">.</span> </span>يتم تعريف هذه المشكلة من خلال صف (<span class="cmmi-10">G,i</span><span class="cmmi-7">S</span><span class="cmmi-10">,z</span>)، حيث <span class="cmmi-10">G </span>= (<span class="cmmi-10">V,E,W</span>) هي شبكة معينة ذات حواف مرجحة، و<span class="cmmi-10">i</span><span class="cmmi-7">S </span><span class="cmsy-10">∈ </span><span class="cmmi-10">V  </span>هي العقدة الأولية و<span class="cmmi-10">z </span><span class="cmsy-10">≤ </span><span class="cmmi-10">n </span>في عدد العقد المطلوب تنشيطها<span class="cmti-10">. </span>الهدف هو تحديد <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>) بحيث تكون <span class="cmmi-10">γ</span><sub><span class="cmr-7">1</span></sub><sup><span class="cmsy-7">∗</span></sup> = <span class="cmmi-10">i</span><span class="cmmi-7">S</span> و<span class="cmsy-10">|</span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">|</span>= <span class="cmmi-10">z </span>و<span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>) في حدها
+الأدنى<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 217 --><p class="indent">   بمعنى آخر، نعتزم إيجاد أسرع طريقة لتنشيط العقد <span class="cmmi-10">z </span>في الشبكة. عندما يكون <span class="cmmi-10">z </span>= <span class="cmsy-10">|</span><span class="cmmi-10">V </span><span class="cmsy-10">|</span>فيالتعريفأعلاه،تسمىالمشكلةببساطةتسلسلالانتشارالأمثل (الكامل).
+</p>
+<div class="newtheorem">
+<!-- l. 225 --><p class="noindent"><span class="head">
+<a id="x1-7002r1"></a>
+ملاحظة<span class="cmbx-10">1.</span> </span> في حالة الأوزان الصحيحة ذات طول متعدد الحدود، لأي مثيل لمشكلة تسلسل الانتشار الأمثل، يوجد مثيل مكافئ متعدد الحدود بأوزان ثنائية<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 227 -->
+<div class="proof">
+<!-- l. 230 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>دع (<span class="cmmi-10">G,i</span><span class="cmmi-7">S</span><span class="cmmi-10">,</span><span class="cmsy-10">|</span><span class="cmmi-10">V </span><span class="cmsy-10">|</span>) يكون مثالًا محددًا لتسلسل الانتشار الأمثل. من أجل إنشاء نسخة مكافئة بأوزان 0<span class="cmmi-10">∕</span>1، نستبدل كل حافة <span class="cmmi-10">ij </span>بمجموعة من <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> المتوازية 2-مسارات <span class="cmsy-10">{⟨</span><span class="cmmi-10">i,k</span><sub><span class="cmmi-7">i,j,</span><span class="cmr-7">1</span></sub><span class="cmmi-10">,j</span><span class="cmsy-10">⟩</span><span class="cmmi-10">,…, </span><span class="cmsy-10">⟨</span><span class="cmmi-10">i,k</span><sub><span class="cmmi-7">i,j,w</span><sub><span class="cmmi-5">ij</span></sub></sub><span class="cmmi-10">,j</span><span class="cmsy-10">⟩}</span>، وقمنا بتعيين أوزان الحواف الجديدة إلى <span class="cmmi-10">w</span><sub><span class="cmmi-7">ik</span><sub><span class="cmmi-5">i,j,r</span></sub></sub> = <span class="cmmi-10">w</span><sub><span class="cmmi-7">k</span><sub><span class="cmmi-5">i,j,r</span></sub><span class="cmmi-7">j</span></sub> = 1،
+<span class="cmmi-10">w</span><sub><span class="cmmi-7">k</span><sub><span class="cmmi-5">i,j,r</span></sub><span class="cmmi-7">i</span></sub> = <span class="cmmi-10">w</span><sub><span class="cmmi-7">jk</span><sub><span class="cmmi-5">i,j,r</span></sub></sub> = 0، لـ <span class="cmmi-10">r </span>= 1<span class="cmmi-10">,…,w</span><sub><span class="cmmi-7">ij</span></sub>.
+</p><!-- l. 233 --><p class="indent">   بالنظر إلى حل ممكن <span class="cmmi-10">γ </span>للمثيل الأصلي، نحصل على حل ممكن <span class="cmmi-10">γ</span><span class="cmsy-10">′</span>للمثيلالمنشأعنطريقتنشيطجميعالعقد <span class="cmmi-10">k</span><sub><span class="cmmi-7">i,j,r</span></sub> مباشرة بعد تنشيط العقدة <span class="cmmi-10">i </span>في التسلسل الأصلي (لاحظ أن الوقت المتوقع لتنشيط كل عقدة <span class="cmmi-10">k</span><sub><span class="cmmi-7">i,j,r</span></sub> هو 1). وبالتالي، إذا كانت قيمة الحل <span class="cmmi-10">γ </span>هي <span class="cmmi-10">t</span>، فإن قيمة <span class="cmmi-10">γ</span><span class="cmsy-10">′</span>هي <span class="cmmi-10">t </span>+ <span class="cmex-10">∑</span>
+<sub><span class="cmmi-7">ij</span><span class="cmsy-7">∈</span><span class="cmmi-7">E</span></sub><span class="big"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion4x.svg"/></span><span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> + <span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub><span class="big"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion5x.svg"/></span>.
+</p><!-- l. 236 --><p class="indent">   بالنظر إلى حل ممكن <span class="cmmi-10">γ</span><span class="cmsy-10">′</span>للمثيلالمبنيللنسخةالثنائيةللمشكلة،يمكنناالحصولعلىحلبقيمةأقلأومتساويةعنطريقتنشيطجميعالعقد <span class="cmmi-10">k</span><sub><span class="cmmi-7">i,j,r</span></sub> في كتلة واحدة مباشرة بعد تنشيط العقدة <span class="cmmi-10">i </span>(مرة أخرى، الوقت المتوقع لتنشيط العقدة <span class="cmmi-10">k</span><sub><span class="cmmi-7">i,j,r</span></sub> هو دائمًا 1، بينما يساهم في وقت تنشيط العقدة <span class="cmmi-10">j</span>). لمثل هذا التسلسل، يمكننا الحصول على الحل المقابل <span class="cmmi-10">γ </span>للمثيل الأصلي للمشكلة عن طريق إزالة جميع العقد <span class="cmmi-10">k</span><sub><span class="cmmi-7">i,j,r</span></sub> منه. إذا كانت قيمة الحل <span class="cmmi-10">γ</span><span class="cmsy-10">′</span>هي <span class="cmmi-10">t</span>، فإن قيمة <span class="cmmi-10">γ </span>هي <span class="cmmi-10">t</span><span class="cmsy-10">−</span><span class="cmex-10">∑</span>
+<sub><span class="cmmi-7">ij</span><span class="cmsy-7">∈</span><span class="cmmi-7">E</span></sub><span class="big"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion6x.svg"/></span><span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub>+<span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub><span class="big"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion7x.svg"/></span>.
+</p><!-- l. 240 --><p class="indent">   لاحظ أن هذا التخفيض لا يعمل بشكل عام بالنسبة لتسلسل الانتشار الجزئي الأمثل إذا كان <span class="cmmi-10">z &lt; </span><span class="cmsy-10">|</span><span class="cmmi-10">V </span><span class="cmsy-10">|</span>.                                                                                                             □
+</p>
+</div>
+<!-- l. 245 -->
+<h3 class="sectionHead"><span class="titlemark">4   </span> <a id="x1-80004"></a>حساب الحل الأمثل</h3>
+<!-- l. 248 --><p class="noindent">نحن الآن نصف نتائجنا بشأن إيجاد طريقة فعالة لحساب الحل الدقيق لمشكلة تسلسل الانتشار الأمثل.
+                                                                                         
+                                                                                         
+</p><!-- l. 251 -->
+<h4 class="subsectionHead"><span class="titlemark">4.1   </span> <a id="x1-90004.1"></a>صعوبة إيجاد الحل الأمثل</h4>
+<!-- l. 253 --><p class="noindent">أولاً، نوضح أن إصدار القرار لمشكلة تسلسل الانتشار الجزئي الأمثل هو NP-كامل في حالة عامة.
+</p>
+<div class="newtheorem">
+<!-- l. 255 --><p class="noindent"><span class="head">
+<a id="x1-9001r3"></a>
+نظرية<span class="cmbx-10">3.</span> </span> مشكلة تسلسل الانتشار الجزئي الأمثل هي <span class="cmti-10">NP </span>كاملة، حتى لو كانت جميع الأوزان في <span class="cmsy-10">{</span>0<span class="cmmi-10">,</span>1<span class="cmsy-10">}</span><span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 258 -->
+<div class="proof">
+<!-- l. 261 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>إصدار القرار لمشكلة تسلسل الانتشار الجزئي الأمثل هو كما يلي: بالنظر إلى الشبكة <span class="cmmi-10">G </span>= (<span class="cmmi-10">V,E,W</span>)، والعقدة الأولية <span class="cmmi-10">i</span><span class="cmmi-7">S</span>، وعدد العقد المطلوب تنشيطها <span class="cmmi-10">z</span>، والقيمة <span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∈ </span><span class="msbm-10">ℝ</span><sup><span class="cmr-7">+</span></sup>، هل يوجد تسلسل من العقد <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>) يبدأ بـ <span class="cmmi-10">i</span><span class="cmmi-7">S</span> مثل <span class="cmsy-10">|</span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">|</span>= <span class="cmmi-10">z </span>و<span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>) <span class="cmsy-10">≤ </span><span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup>؟
+</p><!-- l. 263 --><p class="indent">   من الواضح أن هذه المشكلة موجودة في NP، كما هو موضح في الحل، أي، سلسلة من العقد <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>)، يمكننا حساب الوقت المتوقع للتنشيط في وقت متعدد الحدود.
+</p><!-- l. 265 --><p class="indent">   لإثبات صلابة NP للمشكلة، سنعرض تخفيضًا من مشكلة تغطية المجموعات الكاملة NP.
+</p>
+<figure class="figure">
+<a id="x1-90021"></a> <img alt="PIC" height="328" src="figures/nph-.png" width="328"/>
+<figcaption class="caption"><span class="id">Figure 1: </span><span class="content">شبكة <span class="cmmi-10">G </span>تم إنشاؤها لإثبات النظرية <a href="#x1-9001r3">3<!-- tex4ht:ref: thrm:npc  --></a>. الأرقام الزرقاء الموجودة بجانب الحواف تعبر عن أوزانها. إذا لم تكن هناك أسهم بجوار الحافة <span class="cmmi-10">ij</span>، فعندئذٍ <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> = <span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub>. بخلاف ذلك، يُشار إلى الوزن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> بجوار السهم الذي يشير إلى العقدة <span class="cmmi-10">j</span>، ويُشار إلى الوزن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub> بجوار السهم الذي يشير إلى العقدة <span class="cmmi-10">i</span>.</span></figcaption><!-- tex4ht:label?: x1-90021  -->
+</figure>
+<!-- l. 277 --><p class="indent">   دع (<span class="cmmi-10">U,</span><span class="cmsy-10">𝒮</span><span class="cmmi-10">,k</span>) يكون مثالًا لمشكلة تغطية المجموعات. نحدد الشبكة <span class="cmmi-10">G </span>على النحو التالي (يرد مثال على هذه الشبكة في الشكل <a href="#x1-90021">1<!-- tex4ht:ref: fig:nph  --></a>): </p>
+<ul class="itemize1">
+<li class="itemize">مجموعة العقد<span class="cmbx-10">: </span>لكل <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈𝒮</span>،نقومبإنشاءثلاثعقد،يُشارإليهابـ <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> و<span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> و<span class="cmmi-10">q</span><span class="cmsy-10">′</span><sub><span class="cmmi-7">i</span></sub>. لكل <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">U</span>، نقوم بإنشاء عقدة واحدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub>. بالإضافة إلى ذلك، قمنا بإنشاء عقدة واحدة <span class="cmmi-10">i</span><span class="cmmi-7">S</span>.
+     </li>
+<li class="itemize">مجموعة الحواف<span class="cmbx-10">: </span>لكل عقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub>، نقوم بإنشاء حافة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">i</span><span class="cmmi-7">S</span>. لكل عقدة <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub>، نقوم بإنشاء الحواف <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> و<span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">q</span><span class="cmsy-10">′</span><sub><span class="cmmi-7">i</span></sub>. أخيرًا، لكل عقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> وكل <span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> بحيث <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> نقوم بإنشاء حافة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub>.
+     </li>
+<li class="itemize">مصفوفة الوزن<span class="cmbx-10">: </span>لكل حافة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> قمنا بتعيين الأوزان على <span class="cmmi-10">w</span><sub><span class="cmmi-7">u</span><sub><span class="cmmi-5">i</span></sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">j</span></sub></sub> = 0 و<span class="cmmi-10">w</span><sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">j</span></sub><span class="cmmi-7">u</span><sub><span class="cmmi-5">i</span></sub></sub> = 1. لكل حافة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> قمنا بتعيين الأوزان على <span class="cmmi-10">w</span><sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">i</span></sub><span class="cmmi-7">q</span><sub><span class="cmmi-5">i</span></sub></sub> = 0 و<span class="cmmi-10">w</span><sub><span class="cmmi-7">q</span><sub><span class="cmmi-5">i</span></sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">i</span></sub></sub> = <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>. بالنسبة لجميع أزواج العقد الأخرى المتصلة بحافة، قمنا بتعيين الأوزان على 1.</li></ul>
+<!-- l. 294 --><p class="indent">   دع <span class="cmmi-10">z </span>= <span class="cmmi-10">k </span>+ <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">|</span>+1 (نعتزم أن تسلسل الحل سوف ينشط العقدة <span class="cmmi-10">i</span><span class="cmmi-7">S</span>، <span class="cmmi-10">k </span>العقد في <span class="cmsy-10">𝒮 </span>وجميعالعقدفي <span class="cmmi-10">U</span>)، والقيمة <span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup> = <span class="cmmi-10">k</span>(<span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>+1) + <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>. الآن، فكر في مثال لمشكلة تسلسل الانتشار الجزئي الأمثل (<span class="cmmi-10">G,i</span><span class="cmmi-7">S</span><span class="cmmi-10">,z</span>). سنبين الآن أن حل هذا المثيل ذو القيمة <span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup> على الأكثر يتوافق مع حل المثيل المحدد لمشكلة تغطية
+المجموعات.
+</p><!-- l. 298 --><p class="indent">   لاحظ أن الوقت المتوقع لتنشيط كل عقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> هو دائمًا <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>+1، بينما بالنسبة للوقت المتوقع لتنشيط العقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> لدينا <span class="cmmi-10">τ</span>(<span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub>) <span class="cmsy-10">≤|{</span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> : <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub><span class="cmsy-10">}|≤|𝒮|</span>. لاحظ أيضًا أنه لا يمكن تنشيط أي من العقد <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> أو أي من العقد <span class="cmmi-10">q</span><span class="cmsy-10">′</span><sub><span class="cmmi-7">i</span></sub> عندما تكون <span class="cmmi-10">i</span><span class="cmmi-7">S</span> هي العقدة الأولية، حيث أن تأثير <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> على <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> يساوي صفرًا.
+</p><!-- l. 301 --><p class="indent">   أولاً، سوف نوضح أنه إذا كان هناك حل <span class="cmsy-10">𝒮</span><sup><span class="cmsy-7">∗</span></sup> للمثيل المحدد لمشكلة تغطية المجموعات، فهناك أيضًا حل للمثيل المنشأ لمشكلة تسلسل الانتشار الجزئي الأمثل بقيمة <span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup> على الأكثر. يمكننا إنشاء مثل هذا الحل عن طريق تنشيط كل عقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈𝒮</span><sup><span class="cmsy-7">∗</span></sup> أولاً (<span class="cmmi-10">k </span>عقد مفعلة في الوقت المتوقع <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>+1 لكل منها) ثم تنشيط جميع العقد <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> (<span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">|</span>عقدمفعلةفيوقتمتوقعلايتجاوز<span class="cmsy-10">|𝒮|</span>لكلمنها). مثل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> ينشط <span class="cmmi-10">k </span>+ <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">|</span>العقدفيالوقتالمتوقعالذيلايتجاوز
+<span class="cmmi-10">k</span>(<span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>+1) + <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>،وبالتاليفهوحلللمثيلالمنشألمشكلةتسلسلالانتشارالجزئيالأمثلذاتالقيمةعلىالأكثر <span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup>.
+</p><!-- l. 305 --><p class="indent">   ثانيًا، لإكمال إثبات صلابة NP، علينا أن نبين أنه إذا كان هناك حل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> للمثيل المنشأ لمشكلة تسلسل الانتشار الجزئي الأمثل بقيمة <span class="cmmi-10">t</span><sup><span class="cmsy-7">∗</span></sup> على الأكثر، فعندئذ يوجد أيضًا حل للمثيل المحدد لمشكلة تغطية المجموعات. مثل هذا الحل هو <span class="cmsy-10">𝒮</span><sup><span class="cmsy-7">∗</span></sup> = <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∩𝒮</span>،أي،واختيارالمجموعات <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> المقابلة للعقد <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> التي تحدث في التسلسل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>. لاحظ أنه لا يمكن أن يكون هناك أكثر من <span class="cmmi-10">k </span>من هذه العقد، حيث أن تنشيط <span class="cmmi-10">k </span>+ 1 العقد <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> توقع الوقت (<span class="cmmi-10">k </span>+ 1)(<span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">||𝒮|</span>+1) <span class="cmmi-10">&gt; t</span><sup><span class="cmsy-7">∗</span></sup>. وبما أن هذه
+هي الحالة، فمن أجل تنشيط <span class="cmmi-10">k </span>+ <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">|</span>العقدبخلاف <span class="cmmi-10">i</span><span class="cmmi-7">S</span>، يجب على التسلسل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> تنشيط جميع العقد في <span class="cmmi-10">U</span>. ومع ذلك، لتنشيط العقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub>، علينا أولاً تنشيط عقدة واحدة على الأقل من العقد المجاورة لها، أي، العقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> مثل <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub>. لذلك، لكل عقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> يجب أن توجد عقدة واحدة على الأقل <span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∩ </span><span class="cmmi-10">S </span>مثل <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub>. ومن ثم، يعد <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> = <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∩𝒮 </span>حلاًصالحًاللمثيلالمحددلمشكلةتغطية
+المجموعات.
+</p><!-- l. 313 --><p class="indent">   أخيرًا، يمكننا استخدام البناء في الملاحظة <a href="#x1-7002r1">1<!-- tex4ht:ref: r1  --></a> لاستبدال كل حافة <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> بمجموعة من المسارات المتوازية مع أوزان الحواف في <span class="cmsy-10">{</span>0<span class="cmmi-10">,</span>1<span class="cmsy-10">}</span>. لاحظ أن مثل هذا الاستبدال لا يغير قيمة الهدف حيث أن العقد <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub>، وبالتالي العقد الوسيطة المضافة على المسارات المتوازية، لا يتم تنشيطها أبدًا. وبهذا ينتهي الدليل.                                                                     □
+                                                                                         
+                                                                                         
+</p>
+</div>
+<!-- l. 317 --><p class="indent">   ولذلك، لا توجد خوارزمية متعددة الحدود لإيجاد الطريقة المثلى لتنشيط عدد معين من العقد في عملية الانتشار الاستراتيجي، إلا إذا كان P = NP. ومع ذلك، نقترح الآن خوارزمية أسية تعتمد على تقنية البرمجة الديناميكية.
+</p><!-- l. 321 -->
+<h4 class="subsectionHead"><span class="titlemark">4.2   </span> <a id="x1-100004.2"></a>خوارزمية البرمجة الديناميكية</h4>
+<!-- l. 323 --><p class="noindent">نقدم خوارزمية لحساب الحل الأمثل للمشكلة باستخدام تقنية البرمجة الديناميكية <span class="cite">[<a href="#Xbellman1954theory">29</a>]</span>. الفكرة الرئيسية وراء البرمجة الديناميكية هي تقسيم المشكلة الرئيسية إلى عدد من المشاكل الفرعية الأصغر والأسهل في حلها بطريقة متكررة. ومع ذلك، على عكس العودية القياسية حيث غالبًا ما يتم تكرار نفس الحساب عدة مرات، في البرمجة الديناميكية يتم حساب الحل لكل مشكلة فرعية مرة واحدة فقط ويتم تخزينه في الذاكرة لاستخدامه في المستقبل. على مر السنين، تم تطوير تقنيات البرمجة الديناميكية في اتجاهات مختلفة  <span class="cite">[<a href="#Xbertsekas1995dynamic">30</a>, <a href="#Xbertsekas1996neuro">31</a>, <a href="#Xrust2016dynamic">32</a>, <a href="#Xbellman2015applied">33</a>]</span>، ومع ذلك فإن خوارزميتنا تعتمد على الإصدار الأصلي من التقنية.
+</p><!-- l. 328 --><p class="indent">   لاحظ أنه في إعداداتنا، يعتمد احتمال التنشيط لأي عقدة معينة على مجموعة العقد النشطة في الشبكة، ولكنه لا يعتمد على الترتيب الذي تم به تنشيط هذه العقد. وبالتالي، يجب حساب الحل لكل مجموعة من العقد النشطة مرة واحدة فقط. علاوة على ذلك، فإن حل المشكلة الفرعية المتمثلة في إيجاد الطريقة المثلى لتفعيل عقد <span class="cmmi-10">k </span>في الشبكة يسمح بإيجاد الحل بكفاءة لعقد <span class="cmmi-10">k </span>+ 1، حيث يمكن التعبير عن إجمالي وقت التنشيط المتوقع بطريقة عودية كمجموع وقت تفعيل العقد <span class="cmmi-10">k </span>الأولية ووقت تنشيط العقدة الأخيرة. إن فكرة استخدام حلول للمسائل الفرعية الأصغر لحل مشكلة أكبر هي المفهوم الأساسي وراء البرمجة الديناميكية، ومن ثم نجدها طريقة تحسين مناسبة لحل مشكلة تسلسل الانتشار الجزئي
+الأمثل.
+</p><!-- l. 333 --><p class="indent">   تعتمد الخوارزمية على علاقة التكرار التالية، حيث <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>(<span class="cmmi-10">C</span>) هو الحد الأدنى من الوقت المتوقع لتنشيط مجموعة من العقد <span class="cmmi-10">C</span>:
+</p><!-- l. 335 -->
+<div class="math-display">
+<img alt="        (
+        ||{0                           if C = {iS}
+τ∗(C) =  min τ∗(C ∖ {i}) + ∑---wi----- if |C |&gt; 1
+        ||( i∈C              j∈N(i)∩C wji
+         ∞                           otherwise
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion8x.svg"/></div>
+<!-- l. 343 --><p class="indent">   حيث نفترض أن الجمع على المجموعة الفارغة ينتج عنه صفر والقسمة على صفر ينتج عنها <span class="cmsy-10">∞</span>.
+</p><!-- l. 345 --><p class="indent">   من بين المجموعات ذات الحجم الأول، فقط المجموعة التي تتكون من العقدة الأولية لديها وقت محدد للتنشيط. بالنسبة للمجموعات الأكبر من واحدة، نقسم المشكلة إلى حساب الوقت الأمثل لتنشيط جميع العقد باستثناء العقدة الأخيرة، ثم حساب وقت تنشيط العقدة الأخيرة. نظرًا لأنه يتم تنشيط العقد في عملية النشر الاستراتيجي بشكل تسلسلي، فيجب تنشيط إحدى العقد <span class="cmmi-10">i </span>من المجموعة <span class="cmmi-10">C </span>أخيرًا، ونحن قادرون على حساب وقت التنشيط بناءً على المعلومات الخاصة بالعقد الأخرى في الشبكة النشطة بالفعل. لاحظ أن محاولة تنشيط عقدة بدون أي جيران نشطين (أو بمجموع التأثيرات من هؤلاء الجيران يساوي الصفر) سيؤدي إلى قيمة الصيغة تساوي <span class="cmsy-10">∞</span>.
+</p><!-- l. 350 --><p class="indent">   يتم تقديم الكود الكاذب لخوارزمية البرمجة الديناميكية كخوارزمية <a href="#x1-10013r1">1<!-- tex4ht:ref: alg:dynamic-programming  --></a>، بينما يعرض الشكل <a href="#x1-100142">2<!-- tex4ht:ref: fig:dynpr-small  --></a> الحدس وراء الخوارزمية من خلال إظهار كيفية عملها على بنية رسم بياني محددة.
+</p><!-- l. 352 --><p class="noindent">_________________________________________________________________________________________
+</p><!-- l. 358 --><p class="noindent">مدخل<span class="cmbx-10">: </span>شبكة مرجحة (<span class="cmmi-10">V,E,W</span>)، وعقدة أولية <span class="cmmi-10">i</span><span class="cmmi-7">S </span><span class="cmsy-10">∈ </span><span class="cmmi-10">V </span>، وعدد العقد المطلوب تنشيطها <span class="cmmi-10">z</span>.
+</p><!-- l. 359 --><p class="noindent">مخرج<span class="cmbx-10">: </span>تسلسل تفعيل العقد <span class="cmmi-10">z </span>بدءًا من <span class="cmmi-10">i</span><span class="cmmi-7">S</span> مع أقل وقت متوقع للتنشيط.
+<a id="x1-10001r1"></a>
+</p><!-- l. 362 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">C </span><span class="cmsy-10">⊆ </span><span class="cmmi-10">V</span>
+</p><!-- l. 362 --><p class="indent"> <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] <span class="cmsy-10">←∞</span><a id="x1-10002r2"></a>
+</p><!-- l. 363 --><p class="indent"> <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmsy-10">{</span><span class="cmmi-10">i</span><span class="cmmi-7">S</span><span class="cmsy-10">}</span>] <span class="cmsy-10">← </span>0<a id="x1-10003r3"></a>
+</p><!-- l. 364 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmsy-10">{</span><span class="cmmi-10">i</span><span class="cmmi-7">S</span><span class="cmsy-10">}</span>] <span class="cmsy-10">←⟨</span><span class="cmmi-10">i</span><span class="cmmi-7">S</span><span class="cmsy-10">⟩</span><a id="x1-10004r4"></a>
+<a id="x1-10005r5"></a>
+</p><!-- l. 375 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">k </span>= 1<span class="cmmi-10">,…,z </span><span class="cmsy-10">− </span>1
+<a id="x1-10006r6"></a>
+</p><!-- l. 375 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">C </span><span class="cmsy-10">⊂ </span><span class="cmmi-10">V </span>: (<span class="cmsy-10">|</span><span class="cmmi-10">C</span><span class="cmsy-10">|</span>= <span class="cmmi-10">k</span>) <span class="cmsy-10">∧ </span>(<span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] <span class="cmmi-10">&lt; </span><span class="cmsy-10">∞</span>)
+<a id="x1-10007r7"></a>
+</p><!-- l. 375 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">i </span><span class="cmsy-10">∈ </span><span class="cmmi-10">V </span>: (<span class="cmmi-10">i</span><img alt="∈∕" class="notin paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion9x.svg"/><span class="cmmi-10">C</span>) <span class="cmsy-10">∧ </span>(<span class="cmmi-10">N</span>(<span class="cmmi-10">i</span>) <span class="cmsy-10">∩ </span><span class="cmmi-10">C≠</span><span class="cmsy-10">∅</span>)
+    </p><!-- l. 375 --><p class="indent">    Δ<span class="cmmi-10">τ </span><span class="cmsy-10">←</span><img alt="∑---wi-----
+ j∈N(i)∩C wji" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion10x.svg"/><a id="x1-10008r8"></a>
+<a id="x1-10009r9"></a>
+</p><!-- l. 375 --><p class="noindent"><span class="cmbx-10">if </span><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] + Δ<span class="cmmi-10">τ &lt; τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C </span><span class="cmsy-10">∪{</span><span class="cmmi-10">i</span><span class="cmsy-10">}</span>]
+   </p><!-- l. 375 --><p class="indent"> <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C </span><span class="cmsy-10">∪{</span><span class="cmmi-10">i</span><span class="cmsy-10">}</span>] <span class="cmsy-10">← </span><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] + Δ<span class="cmmi-10">τ</span><a id="x1-10010r10"></a>
+</p><!-- l. 375 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C </span><span class="cmsy-10">∪{</span><span class="cmmi-10">i</span><span class="cmsy-10">}</span>] <span class="cmsy-10">← </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] <span class="cmsy-10">⊕⟨</span><span class="cmmi-10">i</span><span class="cmsy-10">⟩</span><a id="x1-10011r11"></a>
+</p><!-- l. 376 --><p class="noindent"><span class="cmbx-10">return </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>[arg min<sub><span class="cmmi-7">C</span><span class="cmsy-7">⊆</span><span class="cmmi-7">V </span><span class="cmr-7">:</span><span class="cmsy-7">|</span><span class="cmmi-7">C</span><span class="cmsy-7">|</span><span class="cmr-7">=</span><span class="cmmi-7">z</span></sub><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>]]<a id="x1-10012r12"></a>
+<a id="x1-10013r1"></a>
+</p><!-- l. 377 --><p class="noindent">خوارزمية<span class="cmbx-10"> 1: </span>خوارزمية البرمجة الديناميكية للانتشار الاستراتيجي
+___________________________________________________________________________________</p>
+<figure class="figure">
+<a id="x1-100142"></a>
+<!-- l. 383 --><p class="noindent"> <img alt="PIC" height="469" src="figures/dynpr-small-.png" width="469"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 2: </span><span class="content">مثال على استخدام البرمجة الديناميكية. تمثل كل حالة برتقالية كبيرة حالة محتملة لتنشيط الشبكة، حيث تمثل العقد السوداء العقد النشطة، والعقد البيضاء تمثل العقد غير النشطة. تشير قيمة <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> إلى الحد الأدنى من الوقت المتوقع المطلوب للوصول إلى حالة التنشيط هذه. تمثل القيمة الموجودة في كل سهم تكلفة تنشيط عقدة واحدة مطلوبة للتنقل بين الحالات. تمثل الأسهم الحمراء التسلسل الأمثل للتنشيط، والذي يتوافق مع المسار الأقل تكلفة من الحالة الأولية إلى الحالة التي يتم فيها تنشيط الشبكة بالكامل.</span></figcaption><!-- tex4ht:label?: x1-100142  -->
+</figure>
+<!-- l. 392 --><p class="indent">   في الإدخال <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] نحسب الحد الأدنى من الوقت المتوقع اللازم لتنشيط جميع العقد في المجموعة <span class="cmmi-10">C</span>، بينما في الإدخال <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] نحتفظ بتسلسل التنشيط مما يسمح لنا بتحقيق هذا الوقت المتوقع الأمثل. في تنفيذ رقم <span class="cmmi-10">k </span>للحلقة في السطر 5 نقوم بحساب قيم الإدخالات في <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> و<span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> للمجموعات <span class="cmmi-10">C </span>مثل <span class="cmsy-10">|</span><span class="cmmi-10">C</span><span class="cmsy-10">|</span>= <span class="cmmi-10">k </span>+ 1. نقوم بذلك عن طريق التكرار (في حلقة في السطر   6) على جميع مجموعات العقد ذات الحجم <span class="cmmi-10">k </span>التي يمكن تنشيطها عندما نبدأ العملية من العقدة الأولية <span class="cmmi-10">i</span><span class="cmmi-7">S</span> ثم التكرار (في حلقة في السطر   7) على جميع العقد المحتملة التي يمكن استهدافها، أي، العقد
+ذات احتمال التنشيط غير الصفر، عندما تكون مجموعة العقد النشطة <span class="cmmi-10">C</span>. في السطور 8-11 نقوم بتحديث أفضل طريقة لتنشيط العقد في المجموعة <span class="cmmi-10">C </span><span class="cmsy-10">∪{</span><span class="cmmi-10">i</span><span class="cmsy-10">}</span>عندتنشيطالعقدفي <span class="cmmi-10">C </span>أولاً وتنشيط العقدة <span class="cmmi-10">i </span>بعد ذلك يكون له وقت متوقع أقل من أسرع طريقة معروفة حاليًا لتنشيط العقد في <span class="cmmi-10">C </span><span class="cmsy-10">∪{</span><span class="cmmi-10">i</span><span class="cmsy-10">}</span>.
+</p><!-- l. 398 --><p class="indent">   أما بالنسبة لتفاصيل التنفيذ، فيمكن تنفيذ <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> و<span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> كجداول تجزئة. في هذه الحالة، التحقق مما إذا كان <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">C</span>] <span class="cmmi-10">&lt; </span><span class="cmsy-10">∞</span>يعادلالتحققمماإذاكان <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> يحتوي على إدخال <span class="cmmi-10">C </span>وبالتالي يمكن حذف الأسطر 1-2.
+</p><!-- l. 401 --><p class="indent">   لاحظ أيضًا أنه أثناء تنفيذ رقم <span class="cmmi-10">k </span>للحلقة في السطر 5 نحتاج فقط إلى إدخالات في الجدولين <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> و<span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> للمجموعات <span class="cmmi-10">C </span>مثل <span class="cmsy-10">|</span><span class="cmmi-10">C</span><span class="cmsy-10">|</span>= <span class="cmmi-10">k</span>. ومن ثم، لتقليل متطلبات الذاكرة، يمكننا فقط الاحتفاظ بإدخالات الذاكرة من الجدولين <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> و<span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> لحجمين من المجموعات: تلك الخاصة بالحجم <span class="cmmi-10">k</span>، المحسوبة في التنفيذ السابق للحلقة (أو التي تمت تهيئتها في أسطر   3-4 في حالة التنفيذ الأول) وتلك الخاصة بالحجم <span class="cmmi-10">k </span>+ 1، التي يتم حسابها في التنفيذ الحالي للحلقة.
+</p><!-- l. 404 --><p class="indent">   على الرغم من إمكانيات التحسين هذه، تظل خوارزمية البرمجة الديناميكية أسية، حيث إنها تعتبر جميع المجموعات الفرعية من العقد الممكن تنشيطها. إذا كان عدد العقد المراد تنشيطها ثابتًا، فإن الخوارزمية متعددة الحدود.
+</p>
+<div class="newtheorem">
+<!-- l. 406 --><p class="noindent"><span class="head">
+<a id="x1-10015r4"></a>
+نظرية<span class="cmbx-10">4.</span> </span>الخوارزمية<span class="cmti-10"> </span><a href="#x1-10013r1"><span class="cmti-10">1</span><!-- tex4ht:ref: alg:dynamic-programming  --></a> تحل مشكلة تسلسل الانتشار الجزئي الأمثل في الوقت المناسب <span class="cmsy-10">𝒪</span>(<span class="cmsy-10">|</span><span class="cmmi-10">V </span><span class="cmsy-10">|</span><sup><span class="cmmi-7">z</span><span class="cmr-7">+1</span></sup><span class="cmsy-10">|</span><span class="cmmi-10">E</span><span class="cmsy-10">|</span>)<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 408 --><!-- l. 410 --><p class="indent">   في القسم <a href="#x1-120004.4">4.4<!-- tex4ht:ref: sec:treewidth  --></a>، نقدم برنامجًا ديناميكيًا يعمل بشكل أكثر كفاءة عندما تكون الشبكة ذات درجة محدودة وعرض شجرة محدود. لاحظ أنه من الشائع استخدام البرمجة الديناميكية لحل مشكلات التحسين على الرسوم البيانية ذات عرض الشجرة المحدود، انظر، مثلًا، <span class="cite">[<a href="#XBodlaender88">34</a>]</span>.
+</p><!-- l. 412 --><p class="indent">   هناك طريقة بديلة لتطوير خوارزمية لإيجاد طريقة فعالة لتنشيط الشبكة وهي استخدام تقنيات التعلم المعزز <span class="cite">[<a href="#Xkaelbling1996reinforcement">35</a>]</span>. يعتمد التعلم المعزز على فكرة اتخاذ سلسلة من القرارات من خلال إيجاد توازن بين الاستغلال (القيام بأفضل إجراء حاليًا للحصول على أرباح قصيرة الأجل) والاستكشاف (التحقيق في إجراءات أخرى على أمل تحقيق مكاسب طويلة المدى). في حالة الانتشار الاستراتيجي، سيكون الاستغلال هو تنشيط العقدة ذات احتمالية التنشيط الأعلى، بينما سيؤدي الاستكشاف إلى تنشيط العقدة ذات احتمالية التنشيط الأقل من أجل تسهيل تنشيط العقد المجاورة لها. ومع ذلك، فإن الخوارزمية القائمة على التعلم المعزز لن تضمن أن تسلسل التنشيط المحدد هو الحل الأمثل، على عكس خوارزمية البرمجة الديناميكية المقدمة، والتي توفر مثل هذا اليقين. ومن ثم، فإننا نترك تطوير خوارزمية تعتمد على التعلم المعزز كعمل مستقبلي
+محتمل.
+</p><!-- l. 418 --><p class="indent">   نناقش الآن طرقًا أخرى لتحسين هياكل الشبكة الأكثر تقييدًا.
+</p>
+<h4 class="subsectionHead"><span class="titlemark">4.3   </span> <a id="x1-110004.3"></a>التفكيك إلى مكونات متصلة ببعضها البعض</h4>
+<!-- l. 424 --><p class="noindent">سنبين الآن أن البحث عن الطريقة المثلى لتنشيط جميع عقد الشبكة يمكن أن يكون أسهل باستخدام التحلل إلى مكونات متصلة ثنائيًا.
+</p><!-- l. 426 --><p class="indent">   العقدة المقطوعة في الشبكة (وتسمى أيضًا نقطة المفصل) هي عقدة تؤدي إزالتها إلى تقسيم الشبكة إلى مكونين متصلين أو أكثر. ومن خلال فصل الشبكة إلى عقد مقطوعة نحصل على تحلل إلى مكونات متصلة بشكل ثنائي. المكون المتصل ثنائيًا هو شبكة فرعية قصوى (من حيث التضمين) بحيث أن إزالة أي عقدة منها لن يؤدي إلى فصلها. يظهر في الشكل <a href="#x1-110013">3<!-- tex4ht:ref: fig:decomposition  --></a> مثال على التحلل إلى مكونات متصلة ثنائيًا. لاحظ ظهور نسخة من العقدة المقطوعة في كل مكون متصل ثنائيًا تنتمي إليه.
+</p>
+<figure class="figure">
+<a id="x1-110013"></a>
+<!-- l. 434 --><p class="noindent"> <img alt="PIC" height="375" src="figures/decomposition-.png" width="375"/>
+</p>
+<figcaption class="caption"><span class="id">Figure 3: </span><span class="content">تحليل الرسم البياني إلى مكونات مترابطة. يتم تمييز كل مكون متصل ثنائي اللون بلون مختلف، مع تحديد العقد المقطوعة باللون الأبيض وتمييز العقد البذرة باللون الأسود. تمت إضافة علامة العقد الرمادية إلى بذرة لتوفير مجموع التأثير المناسب للعقد المقطوعة الأصلية.</span></figcaption><!-- tex4ht:label?: x1-110013  -->
+</figure>
+<!-- l. 441 --><p class="indent">   ويمكن النظر في عملية الانتشار الاستراتيجي في كل مكون مترابط بشكل منفصل. وذلك لأن كل مكون متصل ثنائيًا لديه نقطة بداية واحدة محتملة فقط للانتشار (سواء كانت إما العقدة الأولية في حالة المكون المتصل ثنائيًا الذي يحتوي عليها أو العقدة المقطوعة الأقرب إلى العقدة الأولية في حالة جميع المكونات الأخرى). تتم الإشارة إلى ذلك باللون الأسود للعقدة في الشكل <a href="#x1-110013">3<!-- tex4ht:ref: fig:decomposition  --></a>. بمجرد تنشيط نقطة البداية لمكون معين <span class="cmmi-10">C</span>، فإن حالة التنشيط في المكونات الأخرى المتصلة بالشبكة لا تؤثر على التنشيط هي <span class="cmmi-10">C</span>.
+</p><!-- l. 446 --><p class="indent">   وذلك لأن احتمالية تنشيط العقدة تتأثر فقط بحالة تنشيط العقد المجاورة لها وقيمة <span class="cmmi-10">w</span><sub><span class="cmmi-7">i</span></sub> (لتذكير القارئ، <span class="cmmi-10">w</span><sub><span class="cmmi-7">i</span></sub> = <span class="cmex-10">∑</span>
+<sub><span class="cmmi-7">j</span><span class="cmsy-7">∈</span><span class="cmmi-7">N</span><span class="cmr-7">(</span><span class="cmmi-7">i</span><span class="cmr-7">)</span></sub><span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub>). فقط العقد المقطوعة لها جيران في المكونات الأخرى المتصلة ثنائيًا، وبالتالي بالنسبة لجميع العقد غير المقطوعة، تكون هذه الملاحظة تافهة. أما بالنسبة لأي عقدة مقطوعة <span class="cmmi-10">i</span>، لاحظ أنه لا يمكن تنشيط جيرانها في المكونات الأخرى المتصلة ثنائيًا إلا بعد تنشيط <span class="cmmi-10">i </span>(حيث أن جميع المسارات بينها وبين العقدة الأولية تمر عبر العقدة المقطوعة). وبالتالي، فإن الطريقة الوحيدة التي يؤثر بها جيران العقدة المقطوعة <span class="cmmi-10">i </span>في المكونات الأخرى المتصلة ثنائيًا على احتمالية تنشيط <span class="cmmi-10">i </span>هي إضافة قيمة <span class="cmmi-10">w</span><sub><span class="cmmi-7">i</span></sub>. لمراعاة هذه الحقيقة، نقوم بإنشاء بذرة إضافية متصلة بنسخ من <span class="cmmi-10">i </span>لا تمثل نقاط بداية للتنشيط أثناء تحلل المكون
+المتصل ثنائيًا (تم وضع علامة باللون الرمادي على الشكل <a href="#x1-110013">3<!-- tex4ht:ref: fig:decomposition  --></a>).
+</p><!-- l. 452 --><p class="indent">   لتذكير القارئ، في هذا العمل نعتبر الشبكات غير الموجهة (لاحظ أن تعريف المكونات المتصلة ثنائيًا يختلف بالنسبة للشبكات الموجهة). ومع ذلك، فإننا لا نفترض أن علاقة التأثير متماثلة، أي، فمن الممكن أنه بالنسبة لـ <span class="cmmi-10">ij </span><span class="cmsy-10">∈ </span><span class="cmmi-10">E </span>لدينا <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub><span class="cmmi-10">≠w</span><sub><span class="cmmi-7">ji</span></sub>. نظرًا لأننا نعتبر التحلل إلى مكونات منفصلة في سياق عقدة أولية معينة، فلا يوجد أبدًا توضيح من حيث أوزان الحواف التي يجب استخدامها في حالة العقد المقطوعة. لحساب احتمال التنشيط لعقدة القطع <span class="cmmi-10">i</span>، لكل جار <span class="cmmi-10">j </span>فقط الوزن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub> يؤخذ بعين الاعتبار. علاوة على ذلك، يمكن فقط لجيران <span class="cmmi-10">i </span>الأقرب إلى العقدة الأولية من <span class="cmmi-10">i </span>أن يكون لديهم مساهمة إيجابية في احتمالية التنشيط، حيث لا يمكن تنشيط جيران <span class="cmmi-10">i </span>البعيدين عن العقدة الأولية إلا بعد تنشيط <span class="cmmi-10">i</span>. في الوقت نفسه، يؤثر
+<span class="cmmi-10">i </span>على وقت تنشيط جارته <span class="cmmi-10">j </span>من خلال الوزن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub>، ويمكن أن يكون له مساهمة إيجابية عندما يكون <span class="cmmi-10">j </span>أقرب وعندما يكون بعيدًا عن العقدة المصدر أكثر من <span class="cmmi-10">i</span>.
+</p>
+<h4 class="subsectionHead"><span class="titlemark">4.4   </span> <a id="x1-120004.4"></a>الحل الأمثل للشبكات ذات عرض الشجرة المحدود</h4>
+<!-- l. 464 --><p class="noindent">سنعرض الآن خوارزمية متعددة الحدود تجد الطريقة المثلى لتنشيط شبكة ذات عرض شجرة ودرجة محددة بالثوابت.
+</p><!-- l. 466 --><p class="indent">   دع <span class="cmmi-10">G </span>= (<span class="cmmi-10">V,E,W</span>) تكون شبكة عشوائية. اجعل (<span class="cmmi-10">T,F</span>) عبارة عن شبكة حيث تحتوي كل عقدة على مجموعة فرعية من العقد من <span class="cmmi-10">V </span>، أي، <span class="cmsy-10">∀</span><sub><span class="cmmi-7">t</span><span class="cmsy-7">∈</span><span class="cmmi-7">T</span></sub><span class="cmmi-10">t </span><span class="cmsy-10">⊆ </span><span class="cmmi-10">V </span>(سنسمي كل مجموعة فرعية بـ حقيبة). مثل (<span class="cmmi-10">T,F</span>) هو تحليل شجرة لـ <span class="cmmi-10">G </span>(انظر مثلًا، <span class="cite">[<a href="#XRS84">36</a>]</span>) إذا وفقط إذا تم استيفاء الشروط التالية: </p>
+<ul class="itemize1">
+<li class="itemize">كل عقدة من <span class="cmmi-10">V </span>موجودة في حقيبة واحدة على الأقل، أي، <span class="cmex-10">⋃</span>
+<sub><span class="cmmi-7">t</span><span class="cmsy-7">∈</span><span class="cmmi-7">T</span></sub><span class="cmmi-10">t </span>= <span class="cmmi-10">V </span>.
+     </li>
+<li class="itemize">لكل حافة <span class="cmmi-10">e </span><span class="cmsy-10">∈ </span><span class="cmmi-10">E </span>يوجد كيس يحتوي على طرفي <span class="cmmi-10">e</span>، أي، <span class="cmsy-10">∀</span><sub><span class="cmmi-7">ij</span><span class="cmsy-7">∈</span><span class="cmmi-7">E</span></sub><span class="cmsy-10">∃</span><sub><span class="cmmi-7">t</span><span class="cmsy-7">∈</span><span class="cmmi-7">T</span></sub><span class="cmsy-10">{</span><span class="cmmi-10">i,j</span><span class="cmsy-10">}⊆ </span><span class="cmmi-10">T</span>.
+     </li>
+<li class="itemize">لكل عقدة <span class="cmmi-10">v </span><span class="cmsy-10">∈ </span><span class="cmmi-10">V </span>شبكة فرعية من (<span class="cmmi-10">T,F</span>) ناتجة عن أكياس تحتوي على <span class="cmmi-10">v </span>متصلة.</li></ul>
+<!-- l. 475 --><p class="indent">   عرض الشجرة <span class="cmmi-10">𝜃 </span>للتحلل هو حجم أكبر كيس فيها ناقص واحد، أي، <span class="cmmi-10">𝜃 </span>= max<sub><span class="cmmi-7">t</span><span class="cmsy-7">∈</span><span class="cmmi-7">T</span></sub><span class="cmsy-10">|</span><span class="cmmi-10">t</span><span class="cmsy-10">|−</span>1. عرض الشجرة للشبكة هو الحد الأدنى من عرض الشجرة لجميع تحللها الشجري. يُقال إن المشكلة قابلة للتتبع ذات معلمة ثابتة <span class="cite">[<a href="#Xr1999parameterized">37</a>]</span>، فيما يتعلق بالمعلمة <span class="cmmi-10">k, </span>إذا كان من الممكن حل أي مثيل لمشكلة الحجم <span class="cmmi-10">N </span>في الوقت المناسب <span class="cmmi-10">f</span>(<span class="cmmi-10">k</span>) <span class="cmsy-10">⋅ </span><span class="cmmi-10">N</span><sup><span class="cmmi-7">O</span><span class="cmr-7">(1)</span></sup>، لبعض الوظائف القابلة للحساب <span class="cmmi-10">f</span>(<span class="cmsy-10">⋅</span>). لقد أظهرنا أن مشكلة الانتشار الاستراتيجي الأمثل هي مشكلة ذات معلمة ثابتة قابلة للتتبع فيما يتعلق بمجموع عرض الشجرة والحد الأقصى
+للدرجة.
+</p><!-- l. 481 -->
+<h5 class="subsubsectionHead"><span class="titlemark">4.4.1   </span> <a id="x1-130004.4.1"></a>الانتشار الكامل</h5>
+<!-- l. 483 --><p class="noindent">لشرح الفكرة بشكل أفضل، نقدم أولاً خوارزمية لحالة الانتشار الكاملة.
+</p>
+<div class="newtheorem">
+<!-- l. 485 --><p class="noindent"><span class="head">
+<a id="x1-13001r5"></a>
+نظرية<span class="cmbx-10">5.</span> </span>اجعل <span class="cmmi-10">G </span>= (<span class="cmmi-10">V,E,W</span>) شبكة ذات درجة قصوى <span class="cmmi-10">δ</span><span class="cmti-10">. </span>توجد خوارزمية، بالنظر إلى تحليل الشجرة لعرض الشجرة <span class="cmmi-10">𝜃</span>، تجد الطريقة المثلى لتنشيط العقد في <span class="cmmi-10">V </span>في الوقت المناسب <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">𝜃δ</span>(<span class="cmmi-10">𝜃δ</span>)!<sup><span class="cmr-7">2</span></sup><span class="cmmi-10">n</span>)<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 488 --><!-- l. 490 --><p class="indent">   فيما يلي، نفترض أن تحليل الشجرة متجذر في بعض العقد <span class="cmmi-10">t</span><sub><span class="cmmi-7">R</span></sub>، وهو نفس الشيء بالنسبة للترتيب من أسفل إلى أعلى ومن أعلى إلى أسفل. نستخدم الترميز التالي: </p>
+<ul class="itemize1">
+<li class="itemize"><span class="cmmi-10">c</span>(<span class="cmmi-10">t</span>) يشير إلى تسلسل أبناء <span class="cmmi-10">t</span>؛
+     </li>
+<li class="itemize"><span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">X</span></sub> يشير إلى تسلسل <span class="cmmi-10">γ </span>الذي يتكون فقط من العقد الموجودة في المجموعة <span class="cmmi-10">X</span>؛
+                                                                                         
+                                                                                         
+     </li>
+<li class="itemize"><span class="cmmi-10">γ</span><sub><span class="cmmi-7">⊲x</span></sub> يشير إلى تسلسل <span class="cmmi-10">γ </span>الذي يتكون من جميع العناصر التي تسبق <span class="cmmi-10">x</span>؛
+     </li>
+<li class="itemize"><span class="cmmi-10">γ</span><sub><span class="msam-7">▸</span><span class="cmmi-7">x</span></sub> يشير إلى تسلسل <span class="cmmi-10">γ </span>الذي يتكون من <span class="cmmi-10">x </span>بالإضافة إلى جميع العناصر التالية <span class="cmmi-10">x</span>؛
+     </li>
+<li class="itemize"><span class="cmmi-10">T</span><sub><span class="cmmi-7">topdown</span></sub> يشير إلى تسلسل العقد في <span class="cmmi-10">T </span>بترتيب من أعلى إلى أسفل.</li></ul>
+<!-- l. 500 --><p class="indent">   فيما يلي سوف نطلق على التباديلين <span class="cmmi-10">γ </span>و<span class="cmmi-10">γ</span><span class="cmsy-10">′</span>للعقدمن <span class="cmmi-10">G </span>متوافق، ويشار إليهما بـ <span class="cmmi-10">γ </span><span class="cmsy-10">∼ </span><span class="cmmi-10">γ</span><span class="cmsy-10">′</span>،إذاوفقطإذاقاموابتنشيطالعقدالمشتركةبينهمبنفسالترتيب،أي، <span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">γ</span><span class="cmsy-7">′</span></sub> = <span class="cmmi-10">γ</span><span class="cmsy-10">′|</span><sub><span class="cmmi-7">γ</span></sub>.
+</p><!-- l. 502 --><p class="indent">   لكل عقدة من <span class="cmmi-10">t </span>تحليل الشجرة <span class="cmmi-10">T </span>نقوم بحساب سجل يتكون من الحقول التالية: </p>
+<ul class="itemize1">
+<li class="itemize">ϒ[<span class="cmmi-10">t</span>] يخزن جميع تبديلات العقد في الحقيبة <span class="cmmi-10">t </span>والعقد المجاورة لها والتي يمكن أن تكون جزءًا من حل صالح للمشكلة؛
+     </li>
+<li class="itemize"><span class="cmmi-10">τ</span>[<span class="cmmi-10">t,γ,i</span>] يخزن الوقت المتوقع لتنشيط كل عقدة في <span class="cmmi-10">i </span><span class="cmsy-10">∈ </span><span class="cmmi-10">t </span>عند التنشيط بالترتيب المعطى بواسطة <span class="cmmi-10">γ</span>؛
+     </li>
+<li class="itemize"><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ</span>] يخزن أصغر وقت متوقع لتنشيط جميع العقد في الشبكة الفرعية <span class="cmmi-10">G </span>الناتجة عن العقد الموجودة في الشجرة الفرعية <span class="cmmi-10">T </span>المتجذرة في <span class="cmmi-10">t</span>، عندما يتم تنشيط العقد في <span class="cmmi-10">t </span>والعقد المجاورة لها بالترتيب المعطى بواسطة <span class="cmmi-10">γ</span>.</li></ul>
+<!-- l. 509 --><p class="indent">   لحساب السجلات، نقوم باجتياز تحليل الشجرة بترتيب تصاعدي (بالنظر إلى الجذر <span class="cmmi-10">t</span><sub><span class="cmmi-7">R</span></sub>) ولكل عقدة <span class="cmmi-10">t </span>نقوم بالخطوات التالية:
+     </p><ol class="enumerate1">
+<li class="enumerate" id="x1-13003x1">
+<!-- l. 511 --><p class="noindent"> حساب:
+     </p>
+<div class="math-display">
+<img alt="           ∗    ⋃                        (                  )   (             ′   )
+ϒ [t] = {γ ∈ Γ (t∪ N (i)) : (iS∈∕t∨ γ1 = iS)∧ ∀ γγii∈⁄=ti:S∃j&lt;iγj ∈ N (γi) ∧ ∀t′∈c(t)∃γ′∈ϒ[t′]γ ∼ &amp;#x03
+                i∈t
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion11x.svg"/></div>
+</li>
+<li class="enumerate" id="x1-13005x2">
+<!-- l. 521 --><p class="noindent"> لكل <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>ϒ[<span class="cmmi-10">t</span>] وكل <span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">t</span></sub> حساب:
+                                                                                         
+                                                                                         
+     </p>
+<div class="math-display">
+<img alt="          ---wγi----
+τ[t,γ,γi] = ∑j&lt;iw γjγi.
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion12x.svg"/></div>
+</li>
+<li class="enumerate" id="x1-13007x3">
+<!-- l. 527 --><p class="noindent"> لكل حساب <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>ϒ[<span class="cmmi-10">t</span>]:
+     </p>
+<div class="math-display">
+<img alt="                                     (                     )
+ ∗       ∑             ∑             | ∗  ′ ′  ∑     ′ ′  ′|
+τ [t,γ] =     τ[t,γ,γi]+  ′   γ′∈ϒmi[tn′]:γ′∼ γ(τ [t,γ ]−′   ′τ [t,γ ,γi]) .
+        γi∈γ|t         t∈c(t)                  γi ∈ γ |t
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion13x.svg"/></div>
+</li></ol>
+<!-- l. 537 --><p class="indent">   بعد اجتياز الشجرة بهذه الطريقة، يمكن تحديد الحد الأدنى من الوقت المطلوب لتنشيط الشبكة بالكامل <span class="cmmi-10">G </span>بدءًا من <span class="cmmi-10">i</span><span class="cmmi-7">S</span> على أنه min<sub><span class="cmmi-7">γ</span><span class="cmsy-7">∈</span><span class="cmr-7">ϒ[</span><span class="cmmi-7">t</span><sub><span class="cmmi-5">R</span></sub><span class="cmr-7">]</span></sub><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t</span><sub><span class="cmmi-7">R</span></sub><span class="cmmi-10">,γ</span>]. من أجل إعادة بناء التسلسل الذي يسمح بتنشيط الشبكة بأكملها في الوقت الأمثل، يمكننا تشغيل الخوارزمية <a href="#x1-13020r2">2<!-- tex4ht:ref: alg:reconstruct-full  --></a>.
+</p><!-- l. 541 --><p class="noindent">_________________________________________________________________________________________
+</p><!-- l. 546 --><p class="noindent">مدخل<span class="cmbx-10">: </span>تحليل الشجرة (<span class="cmmi-10">T,F</span>) للشبكة الموزونة (<span class="cmmi-10">V,E,W</span>)، مع القيم المحسوبة لـ <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>.
+</p><!-- l. 547 --><p class="noindent">مخرج<span class="cmbx-10">: </span>تسلسل تفعيل العقد في <span class="cmmi-10">V </span>بدءًا من <span class="cmmi-10">i</span><span class="cmmi-7">S</span> مع الحد الأدنى من وقت التنشيط المتوقع.
+</p><!-- l. 548 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">←⟨⟩</span><a id="x1-13008r1"></a>
+<a id="x1-13009r2"></a>
+</p><!-- l. 561 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">t </span><span class="cmsy-10">∈ </span><span class="cmmi-10">T</span><sub><span class="cmmi-7">topdown</span></sub>
+</p><!-- l. 561 --><p class="indent"> <span class="cmmi-10">γ </span><span class="cmsy-10">←</span> arg min<sub><span class="cmmi-7">γ</span><span class="cmsy-7">′∈</span><span class="cmr-7">ϒ[</span><span class="cmmi-7">t</span><span class="cmr-7">]:</span><span class="cmmi-7">γ</span><span class="cmsy-7">′∼</span><span class="cmmi-7">γ</span><sup><span class="cmsy-5">∗</span></sup></sub><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ</span><span class="cmsy-10">′</span>]<a id="x1-13010r3"></a>
+</p><!-- l. 561 --><p class="indent"> <span class="cmmi-10">γ</span><span class="cmsy-10">′←⟨⟩</span><a id="x1-13011r4"></a>
+<a id="x1-13012r5"></a>
+</p><!-- l. 561 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">γ</span>
+<a id="x1-13013r6"></a>
+</p><!-- l. 561 --><p class="noindent"><span class="cmbx-10">if </span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub><img alt="∈∕" class="notin paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion14x.svg"/><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>
+</p><!-- l. 561 --><p class="indent"> <span class="cmmi-10">γ</span><span class="cmsy-10">′← </span><span class="cmmi-10">γ</span><span class="cmsy-10">′⊕⟨</span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub><span class="cmsy-10">⟩</span><a id="x1-13014r7"></a>
+<a id="x1-13015r8"></a>
+</p><!-- l. 561 --><p class="noindent"><span class="cmbx-10">else</span>
+</p><!-- l. 561 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">← </span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">⊲γ</span><sub><span class="cmmi-5">i</span></sub><sup><span class="cmsy-5">∗</span></sup></sub><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">⊕ </span><span class="cmmi-10">γ</span><span class="cmsy-10">′⊕ </span><span class="cmmi-10">γ</span><sub><span class="msam-7">▸</span><span class="cmmi-7">γ</span><sub><span class="cmmi-5">i</span></sub><sup><span class="cmsy-5">∗</span></sup></sub><sup><span class="cmsy-7">∗</span></sup><a id="x1-13016r9"></a>
+</p><!-- l. 561 --><p class="indent"> <span class="cmmi-10">γ</span><span class="cmsy-10">′←⟨⟩</span><a id="x1-13017r10"></a>
+</p><!-- l. 561 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">← </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">⊕ </span><span class="cmmi-10">γ</span><span class="cmsy-10">′</span><a id="x1-13018r11"></a>
+</p><!-- l. 562 --><p class="noindent"><span class="cmbx-10">return </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><a id="x1-13019r12"></a>
+<a id="x1-13020r2"></a>
+</p><!-- l. 563 --><p class="noindent">خوارزمية<span class="cmbx-10"> 2: </span>خوارزمية تعيد بناء الطريقة المثلى لتنشيط جميع عقد الشبكة ذات عرض الشجرة المحدد ودرجتها.
+_____________________________________________________________________________</p><!-- l. 568 --><p class="indent"> دعونا الآن نعلق على إجراءات ملء السجلات.
+</p><!-- l. 570 --><p class="indent">    في الخطوة <a href="#x1-13003x1">1<!-- tex4ht:ref: proc1-step1  --></a>، نقوم بجمع كل التباديل للعقد الموجودة في الحقيبة <span class="cmmi-10">t </span>وجيرانها والتي يمكن أن تكون جزءًا من حل صالح للمشكلة، وفقًا لثلاثة شروط. يؤكد الشرط الأول أنه إذا كان التقليب يحتوي على العقدة الأولية، فسيتم تنشيطه باعتباره العقدة الأولى. الشرط الثاني يضمن أن كل عقدة في الحقيبة <span class="cmmi-10">t </span>بخلاف العقدة المصدر لديها جار نشط واحد على الأقل في لحظة التنشيط (لاحظ أنه لكل عقدة في <span class="cmmi-10">t </span>جميع جيرانها موجودون في التقليب). ينص الشرط الثالث على أن التقليب <span class="cmmi-10">γ </span>يسمح بتنشيط جميع العقد في الشجرة الفرعية <span class="cmmi-10">t</span>، أي، وأنه لكل فرع من <span class="cmmi-10">t </span>في تحليل الشجرة يوجد تبديل صالح واحد على الأقل <span class="cmmi-10">γ</span><span class="cmsy-10">′</span>ينشطالعقدمن <span class="cmmi-10">γ </span>بنفس ترتيب
+<span class="cmmi-10">γ</span>.
+</p><!-- l. 575 --><p class="indent">    في الخطوة <a href="#x1-13005x2">2<!-- tex4ht:ref: proc1-step2  --></a>، نقوم ببساطة بحساب وقت تنشيط كل عقدة في الحقيبة <span class="cmmi-10">t</span>، وفقًا للتعريف الوارد في القسم <a href="#x1-70003">3<!-- tex4ht:ref: sec:problem-definition  --></a>، وتخزينه في الجدول <span class="cmmi-10">τ</span>. مرة أخرى، لاحظ أنه بالنسبة لكل عقدة في <span class="cmmi-10">t</span>، فإن جميع العقد المجاورة لها موجودة في التقليب، وبالتالي لدينا معلومات كافية لحساب الوقت المتوقع للتنشيط.
+</p><!-- l. 578 --><p class="indent">    أخيرًا، في الخطوة <a href="#x1-13007x3">3<!-- tex4ht:ref: proc1-step3  --></a>، نحسب الوقت الأمثل لتنشيط جميع العقد في الشجرة الفرعية <span class="cmmi-10">t </span>أثناء استخدام التقليب <span class="cmmi-10">γ </span>ونخزنه في الجدول <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>. يتكون التعبير من مجموع وقت تنشيط العقد في الحقيبة <span class="cmmi-10">t </span>ومجموع جميع أبناء <span class="cmmi-10">t</span>، حيث نحسب لكل منهم الحد الأدنى على جميع التباديل المتوافقة ونطرح وقت تنشيط العقد في <span class="cmmi-10">t</span>. لاحظ أنه بما أن (<span class="cmmi-10">T,F</span>) هو تحليل الشجرة، فإن التداخل الوحيد المحتمل بين العقد في الأشجار الفرعية لمختلف أبناء <span class="cmmi-10">t </span>هو العقد الموجودة في الحقيبة <span class="cmmi-10">t</span>. وإلا فلن يتم ربط الرسم البياني الناتج عن الأكياس التي تحتوي على مثل هذه العقد المتداخلة، وبالتالي لن يتم استيفاء أحد شروط كونها تحلل الشجرة لـ
+(<span class="cmmi-10">T,F</span>).
+</p><!-- l. 583 --><p class="indent">    بعد ملء الجداول ϒ، <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> و<span class="cmmi-10">τ</span>، نجتاز تحليل الشجرة مرة أخرى، هذه المرة بترتيب من أعلى إلى أسفل باستخدام الخوارزمية <a href="#x1-13020r2">2<!-- tex4ht:ref: alg:reconstruct-full  --></a>. قمنا ببناء الحل الأمثل للمشكلة على المتغير <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>. في السطر <a href="#x1-13010r3">3<!-- tex4ht:ref: alg1-ln14  --></a>، نختار <span class="cmmi-10">γ </span>التقليب مع أقل وقت ممكن لتنشيط جميع العقد في الشجرة الفرعية لـ <span class="cmmi-10">t</span>، المتوافق مع الحل الذي تم إنشاؤه حتى الآن. في السطور <a href="#x1-13011r4">4<!-- tex4ht:ref: alg1-ln15  --></a>-<a href="#x1-13018r11">11<!-- tex4ht:ref: alg1-ln22  --></a> نقوم بدمج <span class="cmmi-10">γ </span>في التسلسل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> باستخدام المتغير المساعد <span class="cmmi-10">γ</span><span class="cmsy-10">′</span>.
+</p><!-- l. 588 --><p class="indent">    أما بالنسبة للتعقيد الزمني للخوارزمية، فإن العمليات الأكثر تكلفة (وكلاهما متساوية التكلفة) هي التحقق من وجود تسلسل متوافق لكل طفل من <span class="cmmi-10">t </span>في الشرط الثالث في الخطوة <a href="#x1-13003x1">1<!-- tex4ht:ref: proc1-step1  --></a> وحساب الوقت اللازم لتنشيط العقد في الأشجار الفرعية لجميع أبناء <span class="cmmi-10">t </span>في المجموع الثاني في الخطوة <a href="#x1-13007x3">3<!-- tex4ht:ref: proc1-step3  --></a>. لتقييم التعقيد الزمني للخوارزمية، سنركز على التكلفة في الخطوة  <a href="#x1-13007x3">3<!-- tex4ht:ref: proc1-step3  --></a>. نظرًا لأن كل عقدة <span class="cmmi-10">t</span><span class="cmsy-10">′</span>هيعقدةفرعيةلعقدةأخرىعلىالأكثرفيتحليلالشجرة،لكل <span class="cmmi-10">t</span><span class="cmsy-10">′∈ </span><span class="cmmi-10">T </span>يتم تنفيذ حساب الحد الأدنى <span class="cmsy-10">𝒪</span>((<span class="cmmi-10">𝜃δ</span>)!) مرة (عدد التباديل المختلفة <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>ϒ[<span class="cmmi-10">t</span>]). نظرًا لوجود <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">n</span>) عقد في تحليل الشجرة، يتم تنفيذ حساب الحد الأدنى
+<span class="cmsy-10">𝒪</span>((<span class="cmmi-10">𝜃δ</span>)!<span class="cmmi-10">n</span>) مرة. تكلفة تنفيذها مرة واحدة هي <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">𝜃δ</span>(<span class="cmmi-10">𝜃δ</span>)!)، حيث يتعين علينا التحقق من <span class="cmsy-10">𝒪</span>((<span class="cmmi-10">𝜃δ</span>)!) العديد من التباديل في ϒ[<span class="cmmi-10">t</span><span class="cmsy-10">′</span>] ولكل منها التحقق مما إذا كان <span class="cmmi-10">γ</span><span class="cmsy-10">′|</span><sub><span class="cmmi-7">γ</span></sub> = <span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">γ</span><span class="cmsy-7">′</span></sub> في الوقت المناسب <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">𝜃δ</span>). ومن ثم، فإن إجمالي التعقيد الزمني للخوارزمية هو <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">𝜃δ</span>(<span class="cmmi-10">𝜃δ</span>)!<sup><span class="cmr-7">2</span></sup><span class="cmmi-10">n</span>).
+</p><!-- l. 597 -->
+<h5 class="subsubsectionHead"><span class="titlemark">4.4.2   </span> <a id="x1-140004.4.2"></a>الانتشار الجزئي</h5>
+<!-- l. 599 --><p class="noindent">نقدم بعد ذلك خوارزمية للانتشار الجزئي في الشبكات ذات عرض الشجرة المحدود والدرجة المحددة.
+</p>
+<div class="newtheorem">
+<!-- l. 600 --><p class="noindent"><span class="head">
+<a id="x1-14001r6"></a>
+نظرية <span class="cmbx-10">6.</span> </span>اجعل <span class="cmmi-10">G </span>= (<span class="cmmi-10">V,E,W</span>) شبكة ذات درجة قصوى <span class="cmmi-10">δ</span><span class="cmti-10">. </span>توجد خوارزمية، بالنظر إلى تحليل شجرة عرض الشجرة <span class="cmmi-10">𝜃</span>، تجد طريقة مثالية لتنشيط العقد <span class="cmmi-10">z </span>في <span class="cmmi-10">V </span>في الوقت المناسب <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">𝜃δ</span>(<span class="cmmi-10">𝜃δ</span>)!<sup><span class="cmr-7">2</span></sup><span class="cmmi-10">z</span><sup><span class="cmr-7">2</span></sup><span class="cmmi-10">n</span>)<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 603 --><!-- l. 605 --><p class="indent">    نحن نستخدم بشكل أساسي نفس التدوين كما في القسم السابق. ومع ذلك، فيما يلي سوف نطلق على التباديلين <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">X</span>) و <span class="cmmi-10">γ</span><span class="cmsy-10">′∈ </span>Γ(<span class="cmmi-10">X</span><span class="cmsy-10">′</span>) للعقد من <span class="cmmi-10">G </span>متوافق، يُشار إليهما بـ <span class="cmmi-10">γ </span><span class="cmsy-10">∼ </span><span class="cmmi-10">γ</span><span class="cmsy-10">′</span>،إذاوفقطإذاقاموابتنشيطالعقدالمشتركةبينهمبنفسالترتيب،أي، <span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">γ</span><span class="cmsy-7">′</span></sub> = <span class="cmmi-10">γ</span><span class="cmsy-10">′|</span><sub><span class="cmmi-7">γ</span></sub>، واتفقوا على العقد غير النشطة، أي، <span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">X</span><span class="cmsy-7">′∖</span><span class="cmmi-7">γ</span><span class="cmsy-7">′</span></sub> = <span class="cmmi-10">γ</span><span class="cmsy-10">′|</span><sub><span class="cmmi-7">X</span><span class="cmsy-7">∖</span><span class="cmmi-7">γ</span></sub> = <span class="cmsy-10">⟨⟩ </span>(هذا الاختلاف هو نتيجة النظر أيضًا التباديل غير الكاملة، أي، التباديل <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">X</span>)
+مثل <span class="cmmi-10">γ &lt; </span><span class="cmsy-10">|</span><span class="cmmi-10">X</span><span class="cmsy-10">|</span>).
+</p><!-- l. 608 --><p class="indent">    السجل الذي نحسبه لكل عقدة من <span class="cmmi-10">t </span>تحلل الشجرة <span class="cmmi-10">T </span>يتكون الآن من الحقول التالية: </p>
+<ul class="itemize1">
+<li class="itemize">ϒ[<span class="cmmi-10">t</span>] يخزن جميع تبديلات العقد في الحقيبة <span class="cmmi-10">t </span>والعقد المجاورة لها والتي يمكن أن تكون جزءًا من حل صالح للمشكلة؛
+      </li>
+<li class="itemize"><span class="cmmi-10">τ</span>[<span class="cmmi-10">t,γ,i</span>] يخزن الوقت المتوقع لتنشيط كل عقدة في <span class="cmmi-10">i </span><span class="cmsy-10">∈ </span><span class="cmmi-10">t </span>عند التنشيط بالترتيب المعطى بواسطة <span class="cmmi-10">γ</span>؛
+      </li>
+<li class="itemize"><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ,k</span>] يشير إلى أصغر وقت متوقع لتنشيط العقد <span class="cmmi-10">k </span>في الشبكة الفرعية لـ <span class="cmmi-10">G </span>الناتجة عن العقد الموجودة في الشجرة الفرعية لـ <span class="cmmi-10">T </span>المتجذرة في <span class="cmmi-10">t</span>، عندما يتم تنشيط العقد في <span class="cmmi-10">t </span>والعقد المجاورة لها بالترتيب المعطى بواسطة <span class="cmmi-10">γ</span>.</li></ul>
+<!-- l. 614 --><p class="noindent">ومن ثم، فإن الاختلاف الوحيدمقارنة بإصدار النشر الكامل هو أن الجدول <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> مفهرس أيضًا بعدد العقد المطلوب تنشيطها.
+</p><!-- l. 616 --><p class="indent">    لحساب السجلات، نقوم باجتياز تحليل الشجرة بترتيب تصاعدي (بالنظر إلى الجذر <span class="cmmi-10">t</span><sub><span class="cmmi-7">R</span></sub>) ولكل عقدة <span class="cmmi-10">t </span>نقوم بالخطوات التالية:
+                                                                                         
+                                                                                         
+     </p><ol class="enumerate1">
+<li class="enumerate" id="x1-14003x1">
+<!-- l. 618 --><p class="noindent"> حساب:
+     </p>
+<div class="math-display">
+<img alt="                                         (                  )
+               ⋃                                               (              ′   )
+ϒ [t] = {γ ∈ Γ (t∪ N (i)) : (iS ∕∈ t∨ γ1 = iS)∧ ∀γγii∈⁄=t:iS∃j&lt;iγj ∈ N (γi) ∧ ∀t′∈c(t)∃γ′∈ϒ [t′]γ ∼ &amp;#x03
+               i∈t
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion15x.svg"/></div>
+</li>
+<li class="enumerate" id="x1-14005x2">
+<!-- l. 628 --><p class="noindent"> لكل <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>ϒ[<span class="cmmi-10">t</span>] وكل <span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">t</span></sub> حساب:
+     </p>
+<div class="math-display">
+<img alt="             w
+τ[t,γ,γi] = ∑---γi---.
+            j&lt;iw γjγi
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion16x.svg"/></div>
+</li>
+<li class="enumerate" id="x1-14007x3"> لكل <span class="cmmi-10">γ </span><span class="cmsy-10">∈ </span>ϒ[<span class="cmmi-10">t</span>] و<span class="cmmi-10">k </span>= <span class="cmsy-10">|</span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">t</span></sub><span class="cmsy-10">|</span><span class="cmmi-10">,…,z </span>احسب قيمة <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ,k</span>] باستخدام الخوارزمية <a href="#x1-14016r3">3<!-- tex4ht:ref: alg:treewidth-partial-sub  --></a>.</li></ol>
+<!-- l. 638 --><p class="noindent">_________________________________________________________________________________________
+</p><!-- l. 643 --><p class="noindent">مدخل<span class="cmbx-10">: </span>تحليل الشجرة (<span class="cmmi-10">T,F</span>) للشبكة الموزونة (<span class="cmmi-10">V,E,W</span>)، مع قيم <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> المحسوبة حتى الآن، العقدة <span class="cmmi-10">t </span>مع تسلسل الأطفال <span class="cmmi-10">c</span>(<span class="cmmi-10">t</span>) = <span class="cmsy-10">⟨</span><span class="cmmi-10">t</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">c</span><span class="cmr-7">(</span><span class="cmmi-7">t</span><span class="cmr-7">)</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">⟩</span>.
+</p><!-- l. 644 --><p class="noindent">مخرج<span class="cmbx-10">: </span>قيمة <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ,k</span>].
+<a id="x1-14008r1"></a>
+</p><!-- l. 654 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">t</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈⟨</span><span class="cmmi-10">t</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">c</span><span class="cmr-7">(</span><span class="cmmi-7">t</span><span class="cmr-7">)</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">⟩</span>
+<a id="x1-14009r2"></a>
+</p><!-- l. 654 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">m </span>= 0<span class="cmmi-10">,…,k </span><span class="cmsy-10">−</span><img align="middle" alt="|γ|t|" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion17x.svg"/>
+<a id="x1-14010r3"></a>
+</p><!-- l. 654 --><p class="noindent"><span class="cmbx-10">if </span><span class="cmmi-10">i </span>= 1
+                                                                                         
+                                                                                         
+   </p><!-- l. 654 --><p class="indent"> <span class="cmmi-10">τ</span><span class="cmsy-10">′</span>[<span class="cmmi-10">t,</span>1<span class="cmmi-10">,γ,m</span>] <span class="cmsy-10">←</span> min<sub><img alt="γ′∈ϒ [t1]:
+ γ′∼γ" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion18x.svg"/></sub><img align="middle" alt="(                  ∑               )
+ τ∗[t1,γ′,m + |γ′|t|]−   γ′i∈γ′|t τ[t1,γ′,γ′i]" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion19x.svg"/><a id="x1-14011r4"></a>
+<a id="x1-14012r5"></a>
+</p><!-- l. 654 --><p class="noindent"><span class="cmbx-10">else</span>
+</p><!-- l. 654 --><p class="indent"> <span class="cmmi-10">τ</span><span class="cmsy-10">′</span>[<span class="cmmi-10">t,i,γ,m</span>] <span class="cmsy-10">←</span> min<sub><span class="cmmi-7">m</span><span class="cmsy-7">′∈{</span><span class="cmr-7">0</span><span class="cmmi-7">,…,m</span><span class="cmsy-7">}</span></sub><span class="bigg"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion20x.svg"/></span><span class="cmmi-10">τ</span><span class="cmsy-10">′</span>[<span class="cmmi-10">t,i </span><span class="cmsy-10">− </span>1<span class="cmmi-10">,γ,m</span><span class="cmsy-10">′</span>]<a id="x1-14013r6"></a>
+</p><!-- l. 654 --><p class="indent">                                           +min<sub><img alt="′
+γ∈γϒ′∼[γti]:" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion21x.svg"/></sub><img align="middle" alt="(τ∗[t,γ′,m − m ′ + |γ′||]− ∑ ′   τ[t ,γ′,γ′])
+    i               t     γi∈γ′|t  i    i" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion22x.svg"/><span class="bigg"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion23x.svg"/></span><a id="x1-14014r7"></a>
+</p><!-- l. 655 --><p class="noindent"><span class="cmbx-10">return </span><span class="cmex-10">∑</span>
+<sub><span class="cmmi-7">γ</span><sub><span class="cmmi-5">i</span></sub><span class="cmsy-7">∈</span><span class="cmmi-7">γ</span><span class="cmsy-7">|</span><sub><span class="cmmi-5">t</span></sub></sub><span class="cmmi-10">τ</span>[<span class="cmmi-10">t,γ,γ</span><sub><span class="cmmi-7">i</span></sub>] + <span class="cmmi-10">τ</span><span class="cmsy-10">′</span><img align="middle" alt="[t,|c(t)|,γ,k − |γ|t|]" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion24x.svg"/><a id="x1-14015r8"></a>
+<a id="x1-14016r3"></a>
+</p><!-- l. 656 --><p class="noindent">خوارزمية<span class="cmbx-10"> 3: </span>خوارزمية حساب قيمة <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ,k</span>].
+____________________________________________________________________________
+</p><!-- l. 660 --><p class="indent">    بعد اجتياز الشجرة بهذه الطريقة، يمكن تحديد الحد الأدنى من الوقت المطلوب لتنشيط عقد <span class="cmmi-10">z </span>في الشبكة <span class="cmmi-10">G </span>بدءًا من <span class="cmmi-10">i</span><span class="cmmi-7">S</span> على أنه min<sub><span class="cmmi-7">γ</span><span class="cmsy-7">∈</span><span class="cmr-7">ϒ[</span><span class="cmmi-7">t</span><sub><span class="cmmi-5">R</span></sub><span class="cmr-7">]</span></sub><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t</span><sub><span class="cmmi-7">R</span></sub><span class="cmmi-10">,γ,z</span>]. من أجل إعادة بناء التسلسل الذي يسمح بتنشيط عقد <span class="cmmi-10">z </span>في الوقت الأمثل، يمكننا تشغيل الخوارزمية <a href="#x1-14034r4">4<!-- tex4ht:ref: alg:reconstruct-partial  --></a>.
+</p><!-- l. 663 --><p class="noindent">_____________________________________________________________________________________________________________________________________________
+</p><!-- l. 668 --><p class="noindent">مدخل<span class="cmbx-10">: </span>تحليل الشجرة (<span class="cmmi-10">T,F</span>) للشبكة الموزونة (<span class="cmmi-10">V,E,W</span>)، مع القيم المحسوبة <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> و<span class="cmmi-10">τ</span><span class="cmsy-10">′</span>،وكيس <span class="cmmi-10">t</span>، والتسلسل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">∈ </span>Γ(<span class="cmmi-10">V </span>) وعدد صحيح <span class="cmmi-10">k </span><span class="cmsy-10">≤ </span><span class="cmmi-10">n</span>.
+</p><!-- l. 669 --><p class="noindent">مخرج<span class="cmbx-10">: </span>تسلسل تنشيط العقد <span class="cmmi-10">z </span>في <span class="cmmi-10">V </span>بدءًا من <span class="cmmi-10">i</span><span class="cmmi-7">S</span> مع الحد الأدنى من وقت التنشيط المتوقع.
+<a id="x1-14017r1"></a>
+</p><!-- l. 689 --><p class="noindent"><span class="cmbx-10">if </span><span class="cmmi-10">k &gt; </span>0
+    </p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ </span><span class="cmsy-10">←</span> arg min<sub><span class="cmmi-7">γ</span><span class="cmsy-7">′∈</span><span class="cmr-7">ϒ[</span><span class="cmmi-7">t</span><span class="cmr-7">]:</span><span class="cmmi-7">γ</span><span class="cmsy-7">′∼</span><span class="cmmi-7">γ</span><sup><span class="cmsy-5">∗</span></sup></sub><span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ</span><span class="cmsy-10">′</span><span class="cmmi-10">,k</span>]<a id="x1-14018r2"></a>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ</span><span class="cmsy-10">′←⟨⟩</span><a id="x1-14019r3"></a>
+<a id="x1-14020r4"></a>
+</p><!-- l. 689 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">γ</span>
+<a id="x1-14021r5"></a>
+</p><!-- l. 689 --><p class="noindent"><span class="cmbx-10">if </span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub><img alt="∈∕" class="notin paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion25x.svg"/><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ</span><span class="cmsy-10">′← </span><span class="cmmi-10">γ</span><span class="cmsy-10">′⊕⟨</span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">i</span></sub><span class="cmsy-10">⟩</span><a id="x1-14022r6"></a>
+<a id="x1-14023r7"></a>
+</p><!-- l. 689 --><p class="noindent"><span class="cmbx-10">else</span>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">← </span><span class="cmmi-10">γ</span><sub><span class="cmmi-7">⊲γ</span><sub><span class="cmmi-5">i</span></sub><sup><span class="cmsy-5">∗</span></sup></sub><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">⊕ </span><span class="cmmi-10">γ</span><span class="cmsy-10">′⊕ </span><span class="cmmi-10">γ</span><sub><span class="msam-7">▸</span><span class="cmmi-7">γ</span><sub><span class="cmmi-5">i</span></sub><sup><span class="cmsy-5">∗</span></sup></sub><sup><span class="cmsy-7">∗</span></sup><a id="x1-14024r8"></a>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ</span><span class="cmsy-10">′←⟨⟩</span><a id="x1-14025r9"></a>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">← </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">⊕ </span><span class="cmmi-10">γ</span><span class="cmsy-10">′</span><a id="x1-14026r10"></a>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">k</span><span class="cmsy-10">′← </span><span class="cmmi-10">k </span><span class="cmsy-10">−|</span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">t</span></sub><span class="cmsy-10">|</span><a id="x1-14027r11"></a>
+<a id="x1-14028r12"></a>
+</p><!-- l. 689 --><p class="noindent"><span class="cmbx-10">for </span><span class="cmmi-10">t</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈⟨</span><span class="cmmi-10">t</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">c</span><span class="cmr-7">(</span><span class="cmmi-7">t</span><span class="cmr-7">)</span><span class="cmsy-7">|</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmr-7">1</span></sub><span class="cmsy-10">⟩</span>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">m </span><span class="cmsy-10">←</span> arg min<sub><span class="cmmi-7">m</span><span class="cmsy-7">′∈{</span><span class="cmr-7">0</span><span class="cmmi-7">,…,k</span><span class="cmsy-7">′}</span></sub><span class="bigg"><img align="middle" alt="(" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion26x.svg"/></span><span class="cmmi-10">τ</span><span class="cmsy-10">′</span>[<span class="cmmi-10">t,i </span><span class="cmsy-10">− </span>1<span class="cmmi-10">,γ,m</span><span class="cmsy-10">′</span>]<a id="x1-14029r13"></a>
+</p><!-- l. 689 --><p class="indent">                                            +min<sub><img alt="γ′∈ϒ′[ti]:
+ γ∼γ" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion27x.svg"/></sub><img align="middle" alt="( ∗    ′ ′    ′   ′    ∑            ′ ′)
+ τ [ti,γ,k − m  + |γ |t|]−   γ′i∈γ′|t τ[ti,γ,γi]" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion28x.svg"/><span class="bigg"><img align="middle" alt=")" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion29x.svg"/></span><a id="x1-14030r14"></a>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">←</span> ReconstructPartial(<span class="cmmi-10">t</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">,γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmmi-10">,k</span><span class="cmsy-10">′− </span><span class="cmmi-10">m </span>+ <span class="cmsy-10">|</span><span class="cmmi-10">γ</span><span class="cmsy-10">′|</span><sub><span class="cmmi-7">t</span></sub><span class="cmsy-10">|</span>)<a id="x1-14031r15"></a>
+</p><!-- l. 689 --><p class="indent"> <span class="cmmi-10">k</span><span class="cmsy-10">′← </span><span class="cmmi-10">m</span><a id="x1-14032r16"></a>
+</p><!-- l. 690 --><p class="noindent"><span class="cmbx-10">return </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup><a id="x1-14033r17"></a>
+<a id="x1-14034r4"></a>
+</p><!-- l. 691 --><p class="noindent">خوارزمية<span class="cmbx-10"> 4: </span>ReconstructPartial(<span class="cmmi-10">t,γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmmi-10">,k</span>): خوارزمية تعيد بناء الطريقة المثلى لتنشيط عقد <span class="cmmi-10">k </span>في شبكة ذات عرض شجرة محدد ودرجة._________________________________________________________________________________
+</p><!-- l. 695 --><p class="indent">    دعونا الآن نعلق على إجراءات ملء السجلات.
+</p><!-- l. 697 --><p class="indent">    الخطوات <a href="#x1-14003x1">1<!-- tex4ht:ref: proc2-step1  --></a> و <a href="#x1-14005x2">2<!-- tex4ht:ref: proc2-step2  --></a> متطابقة تقريبًا مع خطوات خوارزمية النشر الكامل، مع وجود اختلاف ملحوظ وهو أننا هذه المرة نعتبر تسلسلات ليست بالضرورة كاملة.
+</p><!-- l. 699 --><p class="indent">    في الخطوة <a href="#x1-14007x3">3<!-- tex4ht:ref: proc2-step3  --></a>، نسمي الخوارزمية <a href="#x1-14016r3">3<!-- tex4ht:ref: alg:treewidth-partial-sub  --></a> لحساب قيمة <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup>[<span class="cmmi-10">t,γ,k</span>]، أي، الوقت الأمثل لتنشيط العقد <span class="cmmi-10">k </span>في الشجرة الفرعية لـ <span class="cmmi-10">t </span>أثناء استخدام التقليب <span class="cmmi-10">γ</span>. ولتحقيق هذه الغاية، نقوم بزيارة جميع أطفال <span class="cmmi-10">t</span>، بالترتيب <span class="cmmi-10">t</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">c</span><span class="cmr-7">(</span><span class="cmmi-7">t</span><span class="cmr-7">)</span><span class="cmsy-7">|</span></sub>. بالنسبة إلى <span class="cmmi-10">m </span><span class="cmsy-10">∈{</span>0<span class="cmmi-10">,…,k </span><span class="cmsy-10">−|</span><span class="cmmi-10">γ</span><span class="cmsy-10">|</span><sub><span class="cmmi-7">t</span></sub><span class="cmsy-10">|}</span>،نحسب <span class="cmmi-10">τ</span><span class="cmsy-10">′</span>[<span class="cmmi-10">t,i,γ,m</span>]، الحد الأدنى من الوقت المتوقع المطلوب لتنشيط <span class="cmmi-10">m </span>العقد بخلاف تلك التي تم تنشيطها في <span class="cmmi-10">t</span>، في الشبكة الفرعية الناتجة عن اتحاد الأشجار الفرعية المتجذرة في
+<span class="cmmi-10">t</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmmi-7">i</span></sub>. نقوم بذلك باستخدام قيم <span class="cmmi-10">τ</span><span class="cmsy-10">′</span>المحسوبةلأبناء <span class="cmmi-10">t </span>التي تسبق <span class="cmmi-10">t</span><sub><span class="cmmi-7">i</span></sub>، أي، لـ <span class="cmmi-10">t</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmmi-7">i</span><span class="cmsy-7">−</span><span class="cmr-7">1</span></sub>، بالإضافة إلى قيم <span class="cmmi-10">τ</span><sup><span class="cmsy-7">∗</span></sup> المحسوبة لـ <span class="cmmi-10">t</span><sub><span class="cmmi-7">i</span></sub>. في عملية الاختيار، يشير <span class="cmmi-10">m</span><span class="cmsy-10">′</span>إلىعددالعقدالمنشطةفيالشبكةالفرعيةالناتجةعناتحاد <span class="cmmi-10">t</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,t</span><sub><span class="cmmi-7">i</span><span class="cmsy-7">−</span><span class="cmr-7">1</span></sub>، بينما يتم تنشيط بقية العقد <span class="cmmi-10">m </span>في الشجرة الفرعية المتجذرة في <span class="cmmi-10">t</span><sub><span class="cmmi-7">i</span></sub>. يتم حساب القيمة التي تم إرجاعها للحد الأدنى من وقت تنشيط العقد <span class="cmmi-10">k </span>في الشجرة الفرعية لـ <span class="cmmi-10">t </span>أثناء استخدام التقليب <span class="cmmi-10">γ </span>كمجموع وقت تنشيط العقد من <span class="cmmi-10">t </span>والوقت الأمثل لتنشيط العقد <span class="cmmi-10">k </span><span class="cmsy-10">−</span><img align="middle" alt="|γ |t|" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion30x.svg"/>المتبقيةفيجميعالعقدالتابعة
+<span class="cmsy-10">|</span><span class="cmmi-10">c</span>(<span class="cmmi-10">k</span>)<span class="cmsy-10">|</span>لـ <span class="cmmi-10">t</span>.
+</p><!-- l. 706 --><p class="indent">    يشبه التعقيد الزمني للخوارزمية حالة الانتشار الكامل، باستثناء أن لدينا الآن حلقتين إضافيتين، واحدة فوق <span class="cmmi-10">k </span>في الخطوة <a href="#x1-14007x3">3<!-- tex4ht:ref: proc2-step3  --></a> والأخرى فوق <span class="cmmi-10">m </span>في السطر <a href="#x1-14013r6">6<!-- tex4ht:ref: alg2-line6  --></a> من الخوارزمية <a href="#x1-14016r3">3<!-- tex4ht:ref: alg:treewidth-partial-sub  --></a>، والتي تساهم بعامل إضافي قدره <span class="cmsy-10">𝒪</span>(<span class="cmmi-10">z</span><sup><span class="cmr-7">2</span></sup>) في وقت التشغيل.
+</p><!-- l. 708 --><p class="indent">    نحن غير قادرين على حساب الحل الأمثل في زمن كثير الحدود في الحالة العامة. ومع ذلك، نأمل أن نجد خوارزمية تقريبية متعددة الحدود. ننتقل الآن إلى تحليل الطرق الممكنة لتقريب الحل الأمثل.
+</p><!-- l. 716 --><p class="indent">    ننتقل الآن إلى تقييم إمكانية تقريب الحل الأمثل لمشكلة تسلسل الانتشار الأمثل.
+                                                                                         
+                                                                                         
+</p><!-- l. 719 -->
+<h4 class="subsectionHead"><span class="titlemark">4.5   </span> <a id="x1-150004.5"></a>الحدود الدنيا للخوارزميات الإرشادية</h4>
+<!-- l. 721 --><p class="noindent">يقترح Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span> استراتيجيتين إرشاديتين لتنشيط الشبكة في عملية الانتشار الاستراتيجي: الإستراتيجية الجشعة (دائما استهدف العقدة ذات أعلى احتمال للتنشيط) واستراتيجية الأغلبية (دائما استهدف العقدة ذات أكبر عدد من الجيران النشطين).
+</p><!-- l. 723 --><p class="indent">   نظهر الآن أن أياً من هذه الاستراتيجيات لا يقترب من الحل الأمثل ضمن نسبة ثابتة.
+</p>
+<div class="newtheorem">
+<!-- l. 725 --><p class="noindent"><span class="head">
+<a id="x1-15001r7"></a>
+نظرية<span class="cmbx-10">7.</span> </span> لا يوجد ثابت <span class="cmmi-10">r &gt; </span>1 بحيث يكون اختيار تسلسل التنشيط باستخدام الإستراتيجية الجشعة هو خوارزمية تقريبية <span class="cmmi-10">r</span><span class="cmti-10">. </span>على وجه الخصوص، نسبة التقريب للاستراتيجية الجشعة هي Ω(log <span class="cmmi-10">n</span>)<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 728 -->
+<div class="proof">
+<!-- l. 731 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>سنعرض الآن سلسلة من الشبكات حيث تصل نسبة التقريب للخوارزمية الجشعة إلى ما لا نهاية.
+</p><!-- l. 733 --><p class="indent">   بالنسبة لـ <span class="cmmi-10">k </span><span class="cmsy-10">∈ </span><span class="msbm-10">ℕ </span>معين، نقوم ببناء شبكة <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>)، حيث تكون مجموعة العقد <span class="cmmi-10">V </span>= <span class="cmsy-10">{</span><span class="cmmi-10">i</span><span class="cmmi-7">S</span><span class="cmmi-10">,a</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,a</span><sub><span class="cmmi-7">k</span><sup><span class="cmr-5">2</span></sup></sub><span class="cmmi-10">,b</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,b</span><sub><span class="cmmi-7">k</span><span class="cmsy-7">−</span><span class="cmr-7">1</span></sub><span class="cmsy-10">}</span>وحيثتكونمجموعةالحواف:
+</p>
+<div class="math-display">
+<img alt="     2         2
+    k⋃         k⋃  k−⋃ 1
+E =   {iSai}∪      {aibj}.
+    i=1       i=1 j=1
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion31x.svg"/></div>
+<!-- l. 737 --><p class="indent">   نحن نفترض أن وزن كل حافة هو 1. يتم عرض هيكل الشبكة <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>) في الشكل <a href="#x1-150024">4<!-- tex4ht:ref: fig:greedy-majority  --></a>.
+</p>
+<figure class="figure">
+<a id="x1-150024"></a> <img alt="PIC" height="234" src="figures/appr-proof-greedy-.png" width="234"/>
+<figcaption class="caption"><span class="id">Figure 4: </span><span class="content">شبكة <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>) تم إنشاؤها لإثباتات النظريات <a href="#x1-15001r7">7<!-- tex4ht:ref: thrm:greedy  --></a> و <a href="#x1-15003r8">8<!-- tex4ht:ref: thrm:majority  --></a>.</span></figcaption><!-- tex4ht:label?: x1-150024  -->
+</figure>
+<!-- l. 747 --><p class="indent">   اجعل <span class="cmmi-10">x </span>هو عدد العقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> النشطة حاليًا ودع <span class="cmmi-10">y </span>هو عدد العقد <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> النشطة حاليًا. لدينا ذلك <span class="cmmi-10">τ</span>(<span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>) = <img alt="-k-
+y+1" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion32x.svg"/> ولدينا ذلك <span class="cmmi-10">τ</span>(<span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>) = <img alt="k2
+x" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion33x.svg"/>.
+</p><!-- l. 750 --><p class="indent">   سنقوم الآن بتحليل طريقتين مختلفتين لتفعيل جميع العقد في الشبكة <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>). أولاً، دعونا نفكر في الخوارزمية الجشعة. دع مؤشرات العقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>، وكذلك مؤشرات العقد <span class="cmmi-10">b</span><sub><span class="cmmi-7">j</span></sub>، يتم ترتيبها وفقًا لترتيب التنشيط، أي، العقدة <span class="cmmi-10">a</span><sub><span class="cmr-7">1</span></sub> هي أول عقدة مفعلة <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>، بينما العقدة <span class="cmmi-10">b</span><sub><span class="cmr-7">1</span></sub> هي أول عقدة نشطة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>. لاحظ أنه يجب تنشيط <span class="cmmi-10">ik </span>العقد <span class="cmmi-10">a </span>على الأقل قبل تنشيط العقدة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>. وسنثبت هذا الادعاء بالتناقض. افترض أن <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> يمكن أن يكون لديه <span class="cmmi-10">j &lt; ik </span>جيران نشطين في لحظة التنشيط. خذ العقدة <span class="cmmi-10">a</span><sub><span class="cmmi-7">j</span><span class="cmr-7">+1</span></sub> (العقدة الأولى <span class="cmmi-10">a </span>تم تنشيطها بعد <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>). في لحظة تفعيل <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> يكون احتمال التنشيط
+<img alt="-j
+k2" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion34x.svg"/>، في حين أن احتمال تفعيل <span class="cmmi-10">a</span><sub><span class="cmmi-7">j</span><span class="cmr-7">+1</span></sub> هو <img alt="i
+k" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion35x.svg"/>. وبما أننا نستخدم خوارزمية جشعة وتم تنشيط <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> قبل <span class="cmmi-10">a</span><sub><span class="cmmi-7">j</span><span class="cmr-7">+1</span></sub>، فيجب أن يكون لدينا <img alt="j-
+k2" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion36x.svg"/> <span class="cmsy-10">≥</span><img alt="-i
+k" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion37x.svg"/>. ومع ذلك، هذا غير صحيح منذ <span class="cmmi-10">j &lt; ik</span>. لدينا تناقض، لذلك يجب تفعيل <span class="cmmi-10">ik </span>العقد <span class="cmmi-10">a </span>على الأقل قبل تفعيل العقدة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>.
+</p><!-- l. 762 --><p class="indent">   وبسبب هذا، يجب تنشيط <span class="cmmi-10">k </span>عقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> على الأقل مع وجود جار واحد نشط فقط، ثم يجب تنشيط <span class="cmmi-10">k </span>عقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> على الأقل مع جارتين نشطتين فقط، وهكذا. بالتركيز فقط على وقت تفعيل العقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> نجد أن إجمالي وقت التنشيط المتوقع للخوارزمية الجشعة هو:
+                                                                                         
+                                                                                         
+</p>
+<div class="math-display">
+<img alt="          ∑k2       ∑k   k
+τG(G (k)) ≥   τ (ai) ≥   k -= k2Hk
+           i=1       j=1  j
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion38x.svg"/></div>
+<!-- l. 767 --><p class="indent">   حيث <span class="cmmi-10">H</span><sub><span class="cmmi-7">k</span></sub> هو الرقم التوافقي <span class="cmmi-10">k</span>.
+</p><!-- l. 769 --><p class="indent">   الآن، دعونا نفكر في خوارزمية <span class="cmmi-10">A</span>، حيث نقوم أولاً بتنشيط <span class="cmmi-10">k </span>العقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>، ثم جميع العقد <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> وأخيرًا العقد المتبقية <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>. وقت تفعيل الشبكة بالكامل هو:
+</p>
+<div class="math-display">
+<img alt="            2             2        2
+τA (G (k)) = k + (k− 1)k+ (k − k) = 3k − 2k
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion39x.svg"/></div>
+<!-- l. 774 --><p class="indent">   نظرًا لأن كل عقدة من العقد <span class="cmmi-10">k </span>الأولى <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> يتم تنشيطها في الوقت المتوقع <span class="cmmi-10">k </span>(حيث أنها تحتوي على جار نشط واحد فقط، وهو <span class="cmmi-10">i</span><span class="cmmi-7">S</span>)، يتم تنشيط كل عقدة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> في الوقت المتوقع <span class="cmmi-10">k </span>(حيث أن لها درجة <span class="cmmi-10">k</span><sup><span class="cmr-7">2</span></sup> و <span class="cmmi-10">k </span>مجاورة نشطة في لحظة التنشيط) ويتم تنشيط كل عقدة من العقد <span class="cmmi-10">k</span><sup><span class="cmr-7">2</span></sup> <span class="cmsy-10">− </span><span class="cmmi-10">k </span>المتبقية <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> في الوقت المتوقع 1.
+</p><!-- l. 776 --><p class="indent">   النظر في تسلسل الشبكات <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>). لهذا التسلسل لدينا
+</p>
+<div class="math-display">
+<img alt="    τG(G(k))       τG(G(k))       Hk
+lk→im∞ τ∗(G(k)) ≥ kl→im∞ τ-(G(k)) ≥ kli→m∞ 3-= ∞.
+                    A
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion40x.svg"/></div>
+<!-- l. 781 --><p class="indent">   ولذلك، فإن الحل الذي توفره الخوارزمية الجشعة يمكن أن يكون أسوأ بشكل تعسفي من الحل الأمثل.                                                                                                                       □
+</p>
+</div>
+<!-- l. 784 --><p class="indent">   نعرض أيضًا نتيجة مماثلة لاستراتيجية الأغلبية.
+</p>
+<div class="newtheorem">
+<!-- l. 786 --><p class="noindent"><span class="head">
+<a id="x1-15003r8"></a>
+نظرية<span class="cmbx-10">8.</span> </span> لا يوجد ثابت <span class="cmmi-10">r &gt; </span>1 بحيث يكون اختيار تسلسل التنشيط باستخدام استراتيجية الأغلبية هو خوارزمية تقريبية <span class="cmmi-10">r</span><span class="cmti-10">. </span>وعلى وجه الخصوص، فإن نسبة التقريب لاستراتيجية الأغلبية هي Ω(log <span class="cmmi-10">n</span>)<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 789 -->
+<div class="proof">
+<!-- l. 792 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>سنبين الآن أنه بالنسبة لسلسلة الشبكات التي تم إنشاؤها في إثبات النظرية <a href="#x1-15001r7">7<!-- tex4ht:ref: thrm:greedy  --></a>، فإن نسبة التقريب لخوارزمية الأغلبية تذهب أيضًا إلى ما لا نهاية.
+</p><!-- l. 794 --><p class="indent">   اجعل <span class="cmmi-10">x </span>هو عدد العقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub> النشطة حاليًا ودع <span class="cmmi-10">y </span>هو عدد العقد <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> النشطة حاليًا. لدينا ذلك <span class="cmmi-10">τ</span>(<span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>) = <img alt="-k-
+y+1" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion41x.svg"/> ولدينا ذلك <span class="cmmi-10">τ</span>(<span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>) = <img alt="k2
+x" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion42x.svg"/>.
+</p><!-- l. 797 --><p class="indent">   دعونا نفكر في وقت التنشيط المتوقع للشبكة بأكملها <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>) باستخدام خوارزمية الأغلبية. دع مؤشرات العقد <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>، وكذلك مؤشرات العقد <span class="cmmi-10">b</span><sub><span class="cmmi-7">j</span></sub>، يتم ترتيبها وفقًا لترتيب التنشيط، أي، العقدة <span class="cmmi-10">a</span><sub><span class="cmr-7">1</span></sub> هي أول عقدة مفعلة <span class="cmmi-10">a</span><sub><span class="cmmi-7">i</span></sub>، بينما العقدة <span class="cmmi-10">b</span><sub><span class="cmr-7">1</span></sub> هي أول عقدة نشطة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>. لاحظ أن العقدة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> في لحظة التنشيط تحتوي على <span class="cmmi-10">i </span>+ 1 على الأكثر من الجيران النشطين. وسنثبت هذا الادعاء بالتناقض. افترض أن <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> يمكن أن يكون لديه <span class="cmmi-10">j &gt; i </span>+ 1 جيران نشطين في لحظة التنشيط. خذ بعين الاعتبار عدد الجيران النشطين في لحظة تنشيط العقدة <span class="cmmi-10">a</span><sub><span class="cmmi-7">j</span></sub> (آخر عقدة <span class="cmmi-10">a </span>تم
+تنشيطها قبل <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>). نظرًا لأننا نستخدم خوارزمية الأغلبية، فيجب أن يكون لديها على الأقل <span class="cmmi-10">j </span><span class="cmsy-10">− </span>1 جيران نشطين (وإلا لكان سيتم اختيار العقدة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub>، التي لديها في الوقت الحالي <span class="cmmi-10">j </span><span class="cmsy-10">− </span>1 جيران نشطون، قبل العقدة <span class="cmmi-10">a</span><sub><span class="cmmi-7">j</span></sub>). ومع ذلك، يمكن للعقدة <span class="cmmi-10">a</span><sub><span class="cmmi-7">j</span></sub> أن تحتوي على <span class="cmmi-10">i &lt; j </span><span class="cmsy-10">− </span>1 على الأكثر من الجيران النشطين، أي العقدتين <span class="cmmi-10">b</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,b</span><sub><span class="cmmi-7">i</span><span class="cmsy-7">−</span><span class="cmr-7">1</span></sub> والعقدة <span class="cmmi-10">i</span><span class="cmmi-7">S</span> (حيث أن العقدة <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> ليست نشطة بعد). لدينا تناقض، وبالتالي فإن <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> في لحظة التنشيط لديها على الأكثر <span class="cmmi-10">i </span>+ 1 جيران
+نشطين.
+</p><!-- l. 807 --><p class="indent">   بالتركيز فقط على وقت تنشيط العقد <span class="cmmi-10">b</span><sub><span class="cmmi-7">i</span></sub> نجد أن إجمالي وقت التنشيط المتوقع لخوارزمية الأغلبية هو:
+</p>
+<div class="math-display">
+<img alt="          k∑−1       k∑−1  2
+τC(G(k)) ≥   τ(bi) ≥   -k-- = k2(Hk − 1)
+          i=1       i=1i+ 1
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion43x.svg"/></div>
+<!-- l. 811 --><p class="indent">   حيث <span class="cmmi-10">H</span><sub><span class="cmmi-7">k</span></sub> هو الرقم التوافقي <span class="cmmi-10">k</span>.
+</p><!-- l. 813 --><p class="indent">   دع <span class="cmmi-10">A </span>تكون الخوارزمية البديلة الموضحة في إثبات النظرية <a href="#x1-15001r7">7<!-- tex4ht:ref: thrm:greedy  --></a>. النظر في تسلسل الشبكات <span class="cmmi-10">G</span>(<span class="cmmi-10">k</span>). لهذا التسلسل لدينا
+</p>
+<div class="math-display">
+<img alt=" lim τC∗(G-(k)) ≥ lim  τC(G(k)) ≥ lim  Hk-= ∞
+k→∞ τ (G (k))   k→∞ τA(G(k))   k→ ∞  3
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion44x.svg"/></div>
+<!-- l. 819 --><p class="indent">   ولذلك،فإنالحلالذيتوفرهخوارزميةالأغلبيةيمكنأنيكونأسوأبشكلتعسفيمنالحلالأمثل.                                                                                                                       □
+</p>
+</div>
+<!-- l. 823 -->
+<h4 class="subsectionHead"><span class="titlemark">4.6   </span> <a id="x1-160004.6"></a>عدم التقريب</h4>
+<!-- l. 825 --><p class="noindent">وأخيرًا، نوضح أنه في الواقع لا يمكن تقريب المشكلة ضمن نسبة (1 <span class="cmsy-10">− </span><span class="cmmi-10">𝜖</span>)ln<span class="cmmi-10">n </span>لأي <span class="cmmi-10">𝜖 &gt; </span>0، ما لم تكن <span class="cmmi-10">P </span>= <span class="cmmi-10">NP</span>.
+</p>
+<div class="newtheorem">
+<!-- l. 827 --><p class="noindent"><span class="head">
+<a id="x1-16001r9"></a>
+نظرية<span class="cmbx-10">9.</span> </span> لا يمكن تقريب مشكلة تسلسل الانتشار الجزئي الأمثل ضمن نسبة (1 <span class="cmsy-10">− </span><span class="cmmi-10">𝜖</span>)ln<span class="cmmi-10">n </span>لأي <span class="cmmi-10">𝜖 &gt; </span>0، إلا في حالة <span class="cmmi-10">P </span>= <span class="cmmi-10">NP</span><span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 830 -->
+<div class="proof">
+<!-- l. 833 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>من أجل إثبات النظرية، سوف نستخدم النتيجة التي توصل إليها Dinur وSteurer <span class="cite">[<a href="#Xdinur2014analytical">27</a>]</span> والتي تفيد بأن مشكلة التغطية الدنيا للمجموعات لا يمكن تقريبها ضمن نسبة (1 <span class="cmsy-10">− </span><span class="cmmi-10">𝜖</span>)ln<span class="cmmi-10">n </span>لأي <span class="cmmi-10">𝜖 &gt; </span>0، ما لم يكن <span class="cmmi-10">P </span>= <span class="cmmi-10">NP</span>.
+</p><!-- l. 835 --><p class="indent">   دع <span class="cmmi-10">X </span>= (<span class="cmmi-10">U,S</span>) يكون مثالًا لمشكلة الحد الأدنى لمجموعة الغطاء. لتذكير القارئ، <span class="cmmi-10">U </span>هو الكون <span class="cmsy-10">{</span><span class="cmmi-10">u</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,u</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">U</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">}</span>،بينما <span class="cmmi-10">S </span>عبارة عن مجموعة <span class="cmsy-10">{</span><span class="cmmi-10">S</span><sub><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,S</span><sub><span class="cmsy-7">|</span><span class="cmmi-7">S</span><span class="cmsy-7">|</span></sub><span class="cmsy-10">}</span>منمجموعاتفرعيةمن <span class="cmmi-10">U</span>. الهدف هنا هو العثور على المجموعة الفرعية <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup><span class="cmsy-10">⊆ </span><span class="cmmi-10">S </span>بحيث يكون اتحاد <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> يساوي <span class="cmmi-10">U </span>وحجم <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> هو الحد الأدنى.
+</p><!-- l. 839 --><p class="indent">   أولاً، سوف نعرض دالة <span class="cmmi-10">f</span>(<span class="cmmi-10">X</span>) التي بناءً على مثيل لمشكلة غطاء مجموعة الحد الأدنى <span class="cmmi-10">X </span>تقوم بإنشاء مثيل لمشكلة تسلسل الانتشار الجزئي الأمثل.
+</p><!-- l. 841 --><p class="indent">   دع الشبكة <span class="cmmi-10">G</span>(<span class="cmmi-10">X</span>) يتم تعريفها على النحو التالي (يرد مثال على هذه الشبكة في الشكل <a href="#x1-160025">5<!-- tex4ht:ref: fig:logn  --></a>): </p>
+<ul class="itemize1">
+<li class="itemize">مجموعة العقد<span class="cmbx-10">: </span>لكل <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span>، نقوم بإنشاء ثلاث عقد، يُشار إليها بـ <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> و<span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> و<span class="cmmi-10">q</span><span class="cmsy-10">′</span><sub><span class="cmmi-7">i</span></sub>. لكل <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">U</span>، نقوم بإنشاء عقد <span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span>+1، يُشار إليها بـ <span class="cmmi-10">u</span><sub><span class="cmmi-7">i,</span><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,u</span><sub><span class="cmmi-7">i,</span><span class="cmsy-7">|</span><span class="cmmi-7">S</span><span class="cmsy-7">|</span><span class="cmr-7">+1</span></sub>. بالإضافة إلى ذلك، قمنا بإنشاء عقدة واحدة <span class="cmmi-10">i</span><span class="cmmi-7">S</span>.
+     </li>
+<li class="itemize">مجموعة الحواف<span class="cmbx-10">: </span>لكل عقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub>، نقوم بإنشاء حافة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">i</span><span class="cmmi-7">S</span>. لكل عقدة <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub>، نقوم بإنشاء الحواف <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> و<span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">q</span><span class="cmsy-10">′</span><sub><span class="cmmi-7">i</span></sub>. أخيرًا، لكل عقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i,i</span><span class="cmsy-7">′</span></sub> وكل <span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> بحيث <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> نقوم بإنشاء حافة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i,i</span><span class="cmsy-7">′</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub>.
+     </li>
+<li class="itemize">مصفوفة الوزن<span class="cmbx-10">: </span>لكل حافة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub><span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> قمنا بتعيين أوزانها على <span class="cmmi-10">w</span><sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">i</span></sub><span class="cmmi-7">q</span><sub><span class="cmmi-5">i</span></sub></sub> = 0 و<span class="cmmi-10">w</span><sub><span class="cmmi-7">q</span><sub><span class="cmmi-5">i</span></sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">i</span></sub></sub> = <span class="cmmi-10">α </span><span class="cmsy-10">− </span>1، حيث <span class="cmmi-10">α </span>= <span class="cmmi-10">z</span><span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span><sup><span class="cmmi-7">λ</span><span class="cmr-7">+1</span></sup> لبعض <span class="cmmi-10">λ &gt; </span>0. لكل حافة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i,i</span><span class="cmsy-7">′</span></sub><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> قمنا بتعيين أوزانها على <span class="cmmi-10">w</span><sub><span class="cmmi-7">u</span><sub><span class="cmmi-5">i,i</span><span class="cmsy-5">′</span></sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">j</span></sub></sub> = 0 و<span class="cmmi-10">w</span><sub><span class="cmmi-7">S</span><sub><span class="cmmi-5">j</span></sub><span class="cmmi-7">u</span><sub><span class="cmmi-5">i,i</span><span class="cmsy-5">′</span></sub></sub> = 1. بالنسبة لجميع أزواج العقد الأخرى المتصلة بحافة، قمنا بتعيين أوزانها على
+     1.</li></ul>
+<figure class="figure">
+<a id="x1-160025"></a> <img alt="PIC" height="281" src="figures/ptas-.png" width="281"/>
+<figcaption class="caption"><span class="id">Figure 5: </span><span class="content">شبكة <span class="cmmi-10">G</span>(<span class="cmmi-10">X,r</span>) تم إنشاؤها لإثبات النظرية <a href="#x1-16001r9">9<!-- tex4ht:ref: thrm:logn  --></a>. الأرقام الزرقاء الموجودة بجانب الحواف تعبر عن أوزانها. إذا لم تكن هناك أسهم بجوار الحافة <span class="cmmi-10">ij</span>، فعندئذٍ <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> = <span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub>. بخلاف ذلك، يُشار إلى الوزن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ij</span></sub> بجوار السهم الذي يشير إلى العقدة <span class="cmmi-10">j</span>، ويُشار إلى الوزن <span class="cmmi-10">w</span><sub><span class="cmmi-7">ji</span></sub> بجوار السهم الذي يشير إلى العقدة <span class="cmmi-10">i</span>.</span></figcaption><!-- tex4ht:label?: x1-160025  -->
+</figure>
+<!-- l. 867 --><p class="indent">   لإكمال المثيل المُنشأ لمشكلة تسلسل الانتشار الجزئي الأمثل، قمنا بتعيين العقدة الأولية لتكون <span class="cmmi-10">i</span><span class="cmmi-7">S</span> وقمنا بتعيين عدد العقد التي سيتم تنشيطها على <span class="cmmi-10">z </span>= <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">|</span>(<span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span>+1) + 1. ومن ثم، فإن صيغة الدالة <span class="cmmi-10">f </span>هي <span class="cmmi-10">f</span>(<span class="cmmi-10">X</span>) = (<span class="cmmi-10">G</span>(<span class="cmmi-10">X</span>)<span class="cmmi-10">,i</span><span class="cmmi-7">S</span><span class="cmmi-10">,z</span>).
+</p><!-- l. 870 --><p class="indent">   دع <span class="cmmi-10">γ </span>يكون الحل للمثيل المنشأ لمشكلة تسلسل الانتشار الجزئي الأمثل. إن الدالة <span class="cmmi-10">g </span>التي تقوم بحساب الحل المقابل للمثيل <span class="cmmi-10">X </span>لمشكلة غطاء مجموعة الحد الأدنى هي الآن <span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span><sup><span class="cmsy-7">∗</span></sup>) = <span class="cmmi-10">S </span><span class="cmsy-10">∩ </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>، أي، <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> هي مجموعة كل المجموعات <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> بحيث تظهر العقد المقابلة لها <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> بالتسلسل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup>.
+</p><!-- l. 873 --><p class="indent">   الآن، سنبين أن <span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span><sup><span class="cmsy-7">∗</span></sup><span class="cmmi-10">,r</span>) هو بالفعل الحل الصحيح لـ <span class="cmmi-10">X</span>، أي، وأنه يغطي الكون بأكمله. لاحظ أنه لا يمكن تنشيط أي من العقد <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> أو <span class="cmmi-10">q</span><span class="cmsy-10">′</span><sub><span class="cmmi-7">i</span></sub> بينما <span class="cmmi-10">i</span><span class="cmmi-7">S</span> هي العقدة الأولية، نظرًا لأن تأثير <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> على <span class="cmmi-10">q</span><sub><span class="cmmi-7">i</span></sub> هو 0. وبالتالي، يمكن أن يتكون التسلسل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> فقط من <span class="cmmi-10">i</span><span class="cmmi-7">S</span> والعقد في <span class="cmmi-10">S </span><span class="cmsy-10">∪ </span><span class="cmmi-10">U</span>. علاوة على ذلك، بما أنه يتعين علينا تنشيط <span class="cmsy-10">|</span><span class="cmmi-10">U</span><span class="cmsy-10">|</span>(<span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span>+1) من العقد <span class="cmmi-10">S </span><span class="cmsy-10">∪ </span><span class="cmmi-10">U</span>، فيجب تنشيط عقدة واحدة على الأقل من كل مجموعة
+<span class="cmmi-10">u</span><sub><span class="cmmi-7">i,</span><span class="cmr-7">1</span></sub><span class="cmmi-10">,…,u</span><sub><span class="cmmi-7">i,</span><span class="cmsy-7">|</span><span class="cmmi-7">S</span><span class="cmsy-7">|</span><span class="cmr-7">+1</span></sub>. الطريقة الوحيدة للقيام بذلك هي تنشيط العقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> بحيث تكون <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub>. لذلك، لكل <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">U </span>توجد عقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> بحيث يجب أن يكون <span class="cmmi-10">u</span><sub><span class="cmmi-7">i</span></sub> <span class="cmsy-10">∈ </span><span class="cmmi-10">S</span><sub><span class="cmmi-7">j</span></sub> و<span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>) بمثابة غلاف محدد لـ <span class="cmmi-10">U</span>.
+</p><!-- l. 880 --><p class="indent">   سنقوم الآن بإثبات ثلاث قواعد تتعلق بالوظائف <span class="cmmi-10">f </span>و<span class="cmmi-10">g</span>.
+</p>
+<div class="newtheorem">
+<!-- l. 882 --><p class="noindent"><span class="head">
+<a id="x1-16003r1"></a>
+                                                                                         
+                                                                                         
+لمّة<span class="cmbx-10">1.</span> </span> حجم الحل للمثيل المحدد لمشكلة التغطية الدنيا للمجموعات التي يتم إرجاعها بواسطة الدالة <span class="cmmi-10">g </span>أقل أو يساوي الوقت المتوقع لتنشيط الحل المقابل للمثيل المنشأ لمشكلة تسلسل الانتشار الجزئي الأمثل <span class="cmmi-10">γ </span>مقسومًا على <span class="cmmi-10">α</span>، أي، <span class="cmsy-10">|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|≤</span><img alt="τ(γ)
+-α-" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion45x.svg"/><span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 884 -->
+<div class="proof">
+<!-- l. 886 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>دع <span class="cmmi-10">κ </span>هو عدد العقد <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> في التسلسل <span class="cmmi-10">γ</span>. نظرًا لأن الوقت المتوقع لتنشيط العقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> هو دائمًا <span class="cmmi-10">α</span>، فلدينا <span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span>) <span class="cmsy-10">≥ </span><span class="cmmi-10">κα</span>. من تعريف <span class="cmmi-10">g </span>لدينا <span class="cmsy-10">|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|</span>= <span class="cmmi-10">κ</span>، وبالتالي لدينا <span class="cmsy-10">|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|≤</span><img alt="τ(γ)
+-α-" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion46x.svg"/>.                                     □
+</p>
+</div>
+<div class="newtheorem">
+<!-- l. 891 --><p class="noindent"><span class="head">
+<a id="x1-16004r2"></a>
+لمّة<span class="cmbx-10">2.</span> </span> بالنسبة للتسلسل <span class="cmmi-10">γ </span>وحل <span class="cmmi-10">f</span>(<span class="cmmi-10">X</span>) والحل المقابل لـ <span class="cmmi-10">X </span>الذي يتم إرجاعه بواسطة الدالة <span class="cmmi-10">g </span>لدينا <span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span>) <span class="cmsy-10">≤|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|</span><span class="cmmi-10">α</span><img align="middle" alt="(       )
+ 1 + |S1|λ" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion47x.svg"/><span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 893 -->
+<div class="proof">
+<!-- l. 895 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>دع <span class="cmmi-10">κ </span>هو عدد العقد <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> في التسلسل <span class="cmmi-10">γ</span>. نظرًا لأن الوقت المتوقع لتنشيط العقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> هو دائمًا <span class="cmmi-10">α </span>والوقت المتوقع لتنشيط العقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i,j</span></sub> أصغر أو يساوي <span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span>،فلدينا <span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span>) <span class="cmsy-10">≤ </span><span class="cmmi-10">κα </span>+ (<span class="cmmi-10">z </span><span class="cmsy-10">−</span><span class="cmmi-10">κ</span><span class="cmsy-10">− </span>1)<span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|≤ </span><span class="cmmi-10">κα </span>+ <span class="cmmi-10">z</span><span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|≤ </span><span class="cmmi-10">κα </span>+ <span class="cmmi-10">κz</span><span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span>= <span class="cmmi-10">κα </span>+ <span class="cmmi-10">κ</span><img alt="|αS|λ" class="paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion48x.svg"/>.
+من تعريف <span class="cmmi-10">g </span>لدينا <span class="cmsy-10">|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|</span>= <span class="cmmi-10">κ</span>، وبالتالي لدينا <span class="cmmi-10">τ</span>(<span class="cmmi-10">γ</span>) <span class="cmsy-10">≤|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|</span><span class="cmmi-10">α</span><img align="middle" alt="(   -1-)
+ 1+ |S|λ" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion49x.svg"/>.                                                                             □
+</p>
+</div>
+<div class="newtheorem">
+<!-- l. 900 --><p class="noindent"><span class="head">
+<a id="x1-16005r3"></a>
+لمّة<span class="cmbx-10">3.</span> </span> الحل الأمثل للمثيل الذي تم إنشاؤه لمشكلة تسلسل الانتشار الجزئي الأمثل <span class="cmmi-10">γ</span><sup><span class="cmsy-7">∗</span></sup> يتوافق مع الحل الأمثل للمثيل المحدد لمشكلة الحد الأدنى لتغطية المجموعات <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup>، أي، <span class="cmmi-10">S</span><sup><span class="cmsy-7">∗</span></sup> = <span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span><sup><span class="cmsy-7">∗</span></sup>)<span class="cmti-10">.</span>
+</p>
+</div>
+<!-- l. 902 -->
+<div class="proof">
+<!-- l. 904 --><p class="indent"> <span class="head">
+<span class="cmti-10">Proof.</span> </span>كما هو مذكور أعلاه، إذا كان <span class="cmmi-10">γ </span>هو الحل لـ <span class="cmmi-10">f</span>(<span class="cmmi-10">X</span>)، فإن <span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>) هو أيضًا الحل الصحيح لـ <span class="cmmi-10">X</span>، أي، <span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>) يغطي الكون بأكمله. بما أن الوقت المتوقع لتنشيط كل عقدة <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> هو <span class="cmmi-10">α</span>، فإن الوقت المتوقع لتنشيط كل عقدة <span class="cmmi-10">u</span><sub><span class="cmmi-7">i,j</span></sub> أصغر أو يساوي <span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span>،و<span class="cmsy-10">|</span><span class="cmmi-10">S</span><span class="cmsy-10">|</span><span class="cmmi-10">&lt; α</span>، فإن الحل الأمثل لـ <span class="cmmi-10">f</span>(<span class="cmmi-10">X</span>) هو الذي يقلل عدد العقد <span class="cmmi-10">S</span><sub><span class="cmmi-7">i</span></sub> هو <span class="cmmi-10">γ</span>، وبالتالي، الحل الذي يقلل
+<span class="cmsy-10">|</span><span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>)<span class="cmsy-10">|</span>.                                                                                                                               □
+                                                                                         
+                                                                                         
+</p>
+</div>
+<!-- l. 908 --><p class="indent">   الآن، افترض أن هناك خوارزمية تقريبية <span class="cmmi-10">r </span>لمشكلة تسلسل الانتشار الجزئي الأمثل حيث <span class="cmmi-10">r </span>= (1 <span class="cmsy-10">− </span><span class="cmmi-10">𝜖</span>)ln<span class="cmmi-10">n </span>لبعض <span class="cmmi-10">𝜖 &gt; </span>0. دعونا نستخدم هذه الخوارزمية لحل المثيل الذي تم إنشاؤه <span class="cmmi-10">f</span>(<span class="cmmi-10">X</span>) والنظر في الحل <span class="cmmi-10">g</span>(<span class="cmmi-10">X,γ</span>) للمثيل المحدد لمشكلة الحد الأدنى لتغطية المجموعات.
+</p><!-- l. 911 --><p class="indent">   لدينا بعد ذلك:
+</p>
+<div class="math-display">
+<img alt="                    ∗     (       )            (       )
+|g(X, γ)|≤  τ(γ)-≤ rτ(γ-)≤ r  1+ --1λ  |g(X,γ ∗)|= r 1 + -1λ- |S∗|,
+           α      α           |S|                   |S |
+" class="math-display paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion50x.svg"/></div>
+<!-- l. 915 --><p class="indent">   حيث تأتي المتباينة الأولى من اللمّة <a href="#x1-16003r1">1<!-- tex4ht:ref: lem:logn1  --></a>، وتأتي المتباينة الثانية من حقيقة أننا نعتبر خوارزمية تقريب <span class="cmmi-10">r</span>، وتأتي المتباينة الثالثة من اللمّة <a href="#x1-16004r2">2<!-- tex4ht:ref: lem:logn2  --></a>، وتأتي المساواة النهائية من اللمّة <a href="#x1-16005r3">3<!-- tex4ht:ref: lem:logn3  --></a>. وبالتالي، حصلنا على خوارزمية تقريبية <span class="cmmi-10">r</span><img align="middle" alt="(    -1-)
+ 1 + |S|λ" class="left paper-arabizer-tex4ht-math-image" dir="ltr" src="strategic-diffusion51x.svg"/>لمشكلةالحدالأدنىلتغطيةالمجموعات،ونسبةهذهالخوارزميةأقلمن ln(<span class="cmmi-10">n</span>) بالنسبة للحجم الكبير بدرجة كافية <span class="cmmi-10">λ</span>. ومع ذلك، كما هو موضح من قبل Dinur وSteurer <span class="cite">[<a href="#Xdinur2014analytical">27</a>]</span>، فإنه غير ممكن إلا <span class="cmmi-10">P </span>= <span class="cmmi-10">NP</span>. ولذلك، لا يمكن أن توجد مثل هذه الخوارزمية التقريبية <span class="cmmi-10">r </span>لمشكلة تسلسل الانتشار الجزئي الأمثل. بهذا
+ننتهي من إثبات النظرية <a href="#x1-16001r9">9<!-- tex4ht:ref: thrm:logn  --></a>.                                                                                                                                    □
+</p>
+</div>
+<!-- l. 922 --><p class="indent">   ننتقل الآن إلى وصف الاستنتاجات والأفكار المحتملة للعمل في المستقبل.
+</p><!-- l. 926 -->
+<h3 class="sectionHead"><span class="titlemark">5   </span> <a id="x1-170005"></a>الاستنتاجات &amp; العمل المستقبلي</h3>
+<!-- l. 929 --><p class="noindent">في هذه المقالة ندرس الجوانب الحسابية لمشكلة الانتشار الاستراتيجي التي قدمها Alshamsi وآخرون <span class="cite">[<a href="#Xalshamsi2018optimal">1</a>]</span> سابقًا. لقد أظهرنا أن مشكلة الانتشار الجزئي هي NP-كاملة في الحالة العامة، وبالتالي فإن العثور على خوارزمية متعددة الحدود أمر مستحيل، إلا إذا كانت P=NP. نظرًا لهذه الصعوبة، فقد نظرنا في المشكلة من وجهة نظر التعقيد ذات المعلمات وأظهرنا أن المشكلة ثابتة ويمكن حلها عند تحديد معلماتها بواسطة مجموع عرض الشجرة والحد الأقصى للدرجة. على الجانب السلبي، أظهرنا أن خوارزميتين إرشاديتين مقترحتين سابقًا لحل المشكلة، أي، الجشع وحلول الأغلبية، لا يمكن أن يكون لديهما أفضل من ضمان التقريب اللوغاريتمي، حتى في حالة الانتشار الكامل. وأخيرا، أثبتنا أن مشكلة الانتشار الجزئي لا تقبل أفضل من التقريب اللوغاريتمي، إلا إذا كانت P =
+NP.
+</p><!-- l. 931 --><p class="indent">   أما بالنسبة للأفكار المحتملة للعمل المستقبلي، فإن تحديد مدى تعقيد مشكلة الانتشار الكامل هو سؤال مفتوح مثير للاهتمام. علاوة على ذلك، فإن نتائجنا فيما يتعلق بخوارزميات التقريب سلبية. إن تطوير خوارزمية متعددة الحدود ذات نسبة تقريب صغيرة من شأنه أن يجعل مهمة إيجاد طريقة فعالة لنشر الانتشار الاستراتيجي أسهل بكثير. هناك طريقة أخرى محتملة لتوسيع عملنا وهي إظهار خوارزميات فعالة لإيجاد الحل الأمثل في فئات الشبكات الأكثر تقييدًا، مثلًا، والشبكات ذات عرض الشجرة المحدود أو عرض المسار المحدود (بدون تقييد الدرجة).
+</p><!-- l. 933 --><p class="indent">   يعتمد نموذج الانتشار الاستراتيجي المقدم في هذا العمل على عملية عدوى معقدة، أي، حيث تزيد مصادر التعرض المتعددة للعملية بشكل كبير من احتمالية التنشيط لعقدة معينة. سيكون من الممكن ابتكار نموذج مشابه، ولكن يعتمد على عملية عدوى بسيطة، مثلًا، مستوحاة من النموذج التعاقبي المستقل <span class="cite">[<a href="#Xkempe2003maximizing">9</a>]</span>. وبما أن العدوى البسيطة لا تأخذ في الاعتبار التعرضات المتعددة، فإن العقد التي تم تنشيطها مبكرًا في التسلسل لن تؤثر على احتمالية التنشيط في لحظة معينة. وهذا يمكن أن يؤدي إلى استراتيجيات مثالية تختلف بشكل كبير عن الانتشار الاستراتيجي القائم على العدوى المعقدة.
+</p><!-- l. 940 -->
+<h3 class="likesectionHead"><a id="x1-18000"></a>شكر وتقدير</h3>
+<!-- l. 942 --><p class="noindent">تم تمويل هذا العمل من خلال الاتفاقية التعاونية بين Masdar Institute of Science and Technology (Masdar Institute), Abu Dhabi, UAE and the Massachusetts
+Institute of Technology (MIT), Cambridge, MA, USA — المرجع 02/MI/MIT/CP/11/07633/GEN/G/00. تعترف CAH وFLP بالدعم المقدم من اتحادات
+MIT Media Lab.
+</p><!-- l. 1 -->
+<h3 class="likesectionHead"><a id="x1-19000"></a>References</h3>
+<!-- l. 1 --><div class="thebibliography">
+<p class="bibitem"><span class="biblabel">
+  [1]<span class="bibsp">   </span></span><a id="Xalshamsi2018optimal"></a>A. Alshamsi, F. L. Pinheiro, C. A. Hidalgo, Optimal diversification strategies in the networks of
+    related products and of related research areas, Nature communications 9 (1) (2018) 1328.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [2]<span class="bibsp">   </span></span><a id="Xvalente1995network"></a>T. W. Valente, Network models of the diffusion of innovations., Cresskill New Jersey Hampton
+    Press, 1995.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [3]<span class="bibsp">   </span></span><a id="Xrogers2010diffusion"></a>E. M. Rogers, Diffusion of innovations, Simon and Schuster, 2010.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [4]<span class="bibsp">   </span></span><a id="Xbailey1975mathematical"></a>N. T. Bailey, et al., The mathematical theory of infectious diseases and its applications, Charles
+    Griffin &amp; Company Ltd, 5a Crendon Street, High Wycombe, Bucks HP13 6LE., 1975.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [5]<span class="bibsp">   </span></span><a id="Xpastor2001epidemic"></a>R. Pastor-Satorras,  A. Vespignani,  Epidemic  spreading  in  scale-free  networks,  Physical  review
+    letters 86 (14) (2001) 3200.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [6]<span class="bibsp">   </span></span><a id="Xaral2017exercise"></a>S. Aral, C. Nicolaides, Exercise contagion in a global social network, Nature communications 8
+    (2017) 14753.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [7]<span class="bibsp">   </span></span><a id="Xvasconcelos2019consensus"></a>V. V. Vasconcelos, S. A. Levin, F. L. Pinheiro, Consensus and polarization in competing complex
+    contagion processes, Journal of the Royal Society Interface 16 (155) (2019) 20190196.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [8]<span class="bibsp">   </span></span><a id="Xkermack1927contribution"></a>W. O.  Kermack,  A. G.  McKendrick,  A  contribution  to  the  mathematical  theory  of  epidemics,
+    Proceedings of the royal society of london. Series A, Containing papers of a mathematical and physical
+    character 115 (772) (1927) 700–721.
+    </p>
+<p class="bibitem"><span class="biblabel">
+  [9]<span class="bibsp">   </span></span><a id="Xkempe2003maximizing"></a>D. Kempe, J. Kleinberg, É. Tardos, Maximizing the spread of influence through a social network,
+    in: Proceedings of the ninth ACM SIGKDD international conference on Knowledge discovery and data
+    mining, ACM, 2003, pp. 137–146.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [10]<span class="bibsp">   </span></span><a id="Xgoldenberg2001using"></a>J. Goldenberg, B. Libai, E. Muller, Using complex systems analysis to advance marketing theory
+    development:  Modeling  heterogeneity  effects  on  new  product  growth  through  stochastic  cellular
+    automata, Academy of Marketing Science Review 2001 (2001) 1.
+                                                                                         
+                                                                                         
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [11]<span class="bibsp">   </span></span><a id="Xleskovec2007dynamics"></a>J. Leskovec, L. A. Adamic, B. A. Huberman, The dynamics of viral marketing, ACM Transactions
+    on the Web (TWEB) 1 (1) (2007) 5.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [12]<span class="bibsp">   </span></span><a id="Xdomingos2001mining"></a>P. Domingos, M. Richardson, Mining the network value of customers, in: Proceedings of the seventh
+    ACM SIGKDD international conference on Knowledge discovery and data mining, ACM, 2001, pp.
+    57–66.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [13]<span class="bibsp">   </span></span><a id="Xkiss2008identification"></a>C. Kiss, M. Bichler, Identification of influencers—measuring influence in customer networks, Decision
+    Support Systems 46 (1) (2008) 233–253.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [14]<span class="bibsp">   </span></span><a id="Xmorone2015influence"></a>F. Morone, H. A. Makse, Influence maximization in complex networks through optimal percolation,
+    Nature 524 (7563) (2015) 65.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [15]<span class="bibsp">   </span></span><a id="Xgoyal2011data"></a>A. Goyal, F. Bonchi, L. V. Lakshmanan, A data-based approach to social influence maximization,
+    Proceedings of the VLDB Endowment 5 (1) (2011) 73–84.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [16]<span class="bibsp">   </span></span><a id="Xchen2009efficient"></a>W. Chen, Y. Wang, S. Yang, Efficient influence maximization in social networks, in: Proceedings
+    of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining, ACM,
+    2009, pp. 199–208.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [17]<span class="bibsp">   </span></span><a id="Xhinz2011seeding"></a>O. Hinz, B. Skiera, C. Barrot, J. U. Becker, Seeding strategies for viral marketing: An empirical
+    comparison, Journal of Marketing 75 (6) (2011) 55–71.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [18]<span class="bibsp">   </span></span><a id="Xlibai2013decomposing"></a>B. Libai,  E. Muller,  R. Peres,  Decomposing  the  value  of  word-of-mouth  seeding  programs:
+    Acceleration versus expansion, Journal of marketing research 50 (2) (2013) 161–176.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [19]<span class="bibsp">   </span></span><a id="Xtong2017adaptive"></a>G. Tong, W. Wu, S. Tang, D.-Z. Du, Adaptive influence maximization in dynamic social networks,
+    IEEE/ACM Transactions on Networking (TON) 25 (1) (2017) 112–125.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [20]<span class="bibsp">   </span></span><a id="Xseeman2013adaptive"></a>L. Seeman, Y. Singer, Adaptive seeding in social networks, in: 2013 IEEE 54th Annual Symposium
+    on Foundations of Computer Science, IEEE, 2013, pp. 459–468.
+                                                                                         
+                                                                                         
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [21]<span class="bibsp">   </span></span><a id="Xhorel2015scalable"></a>T. Horel, Y. Singer, Scalable methods for adaptively seeding a social network, in: Proceedings of
+    the 24th International Conference on World Wide Web, International World Wide Web Conferences
+    Steering Committee, 2015, pp. 441–451.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [22]<span class="bibsp">   </span></span><a id="Xjankowski2017balancing"></a>J. Jankowski, P. Bródka, P. Kazienko, B. K. Szymanski, R. Michalski, T. Kajdanowicz, Balancing
+    speed and coverage by sequential seeding in complex networks, Scientific reports 7 (1) (2017) 891.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [23]<span class="bibsp">   </span></span><a id="Xjankowski2018strategic"></a>J. Jankowski, M. Waniek, A. Alshamsi, P. Bródka, R. Michalski, Strategic distribution of seeds
+    to support diffusion in complex networks, PloS one 13 (10) (2018) e0205130.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [24]<span class="bibsp">   </span></span><a id="Xhidalgo2007product"></a>C. A.  Hidalgo,  B. Klinger,  A.-L.  Barabási,  R. Hausmann,  The  product  space  conditions  the
+    development of nations, Science 317 (5837) (2007) 482–487.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [25]<span class="bibsp">   </span></span><a id="Xguevara2016research"></a>M. R. Guevara, D. Hartmann, M. Aristarán, M. Mendoza, C. A. Hidalgo, The research space:
+    using career paths to predict the evolution of the research output of individuals, institutions, and nations,
+    Scientometrics 109 (3) (2016) 1695–1709.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [26]<span class="bibsp">   </span></span><a id="Xpinheiro2018shooting"></a>F. L. Pinheiro, A. Alshamsi, D. Hartmann, R. Boschma, C. Hidalgo, Shooting low or high: Do
+    countries benefit from entering unrelated activities?, arXiv preprint arXiv:1801.05352 (2018).
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [27]<span class="bibsp">   </span></span><a id="Xdinur2014analytical"></a>I. Dinur, D. Steurer, Analytical approach to parallel repetition, in: Proceedings of the forty-sixth
+    annual ACM symposium on Theory of computing, ACM, 2014, pp. 624–633.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [28]<span class="bibsp">   </span></span><a id="Xkarp1972reducibility"></a>R. M. Karp, Reducibility among combinatorial problems, in: Complexity of computer computations,
+    Springer, 1972, pp. 85–103.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [29]<span class="bibsp">   </span></span><a id="Xbellman1954theory"></a>R. Bellman, et al., The theory of dynamic programming, Bulletin of the American Mathematical
+    Society 60 (6) (1954) 503–515.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [30]<span class="bibsp">   </span></span><a id="Xbertsekas1995dynamic"></a>D. P. Bertsekas, Dynamic programming and optimal control, Vol. 1, Athena scientific Belmont,
+    MA, 1995.
+                                                                                         
+                                                                                         
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [31]<span class="bibsp">   </span></span><a id="Xbertsekas1996neuro"></a>D. P. Bertsekas, J. N. Tsitsiklis, Neuro-dynamic programming, Vol. 5, Athena Scientific Belmont,
+    MA, 1996.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [32]<span class="bibsp">   </span></span><a id="Xrust2016dynamic"></a>J. Rust, Dynamic programming, The New Palgrave Dictionary of Economics (2016) 1–26.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [33]<span class="bibsp">   </span></span><a id="Xbellman2015applied"></a>R. E. Bellman, S. E. Dreyfus, Applied dynamic programming, Vol. 2050, Princeton university press,
+    2015.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [34]<span class="bibsp">   </span></span><a id="XBodlaender88"></a>H. L.  Bodlaender,  Dynamic  programming  on  graphs  with  bounded  treewidth,  in:  Automata,
+    Languages and Programming, Proceedings of the 15th International Colloquium, ICALP88, Tampere,
+    Finland, July 11-15, 1988, 1988, pp. 105–118.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [35]<span class="bibsp">   </span></span><a id="Xkaelbling1996reinforcement"></a>L. P.  Kaelbling,  M. L.  Littman,  A. W.  Moore,  Reinforcement  learning:  A  survey,  Journal  of
+    artificial intelligence research 4 (1996) 237–285.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [36]<span class="bibsp">   </span></span><a id="XRS84"></a>N. Robertson, P. Seymour, Graph minors. iii. planar tree-width, Journal of Combinatorial Theory,
+    Series B 36 (1) (1984) 49 – 64.
+    </p>
+<p class="bibitem"><span class="biblabel">
+ [37]<span class="bibsp">   </span></span><a id="Xr1999parameterized"></a>R. R. G.  Downey,  M. Fellows,   <a href="https://books.google.co.jp/books?id=pt5QAAAAMAAJ">Parameterized  Complexity</a>,  Monographs  in  Computer  Science,
+    Springer Verlag, 1999. <br class="newline"/>URL <a class="url" href="https://books.google.co.jp/books?id=pt5QAAAAMAAJ"><span class="cmtt-10">https://books.google.co.jp/books?id=pt5QAAAAMAAJ</span></a>
+</p>
+</div>
+</main></body>
+</html>

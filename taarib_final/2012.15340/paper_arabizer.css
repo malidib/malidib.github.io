@@ -1,0 +1,280 @@
+:root {
+  color-scheme: light;
+  --paper-bg: #f7f3ea;
+  --paper-ink: #1f1a14;
+  --paper-muted: #5b5248;
+  --paper-accent: #006c67;
+  --paper-rule: #d8cdbb;
+  --paper-card: #fffdf8;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(0, 108, 103, 0.08), transparent 35rem),
+    linear-gradient(180deg, var(--paper-bg), #fffaf0 55%, var(--paper-bg));
+  color: var(--paper-ink);
+  font-family: "Amiri", "Noto Naskh Arabic", "Noto Sans Arabic", "Scheherazade New", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+  text-align: start;
+}
+
+main.paper-arabizer-article {
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  background: var(--paper-card);
+  border: 1px solid var(--paper-rule);
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(55, 44, 31, 0.10);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #153d3a;
+  line-height: 1.45;
+  margin-block: 1.6em 0.65em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  text-align: center;
+  margin-top: 0;
+}
+
+p {
+  margin-block: 0.75em;
+}
+
+a {
+  color: var(--paper-accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+figure {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+figcaption, .caption {
+  color: var(--paper-muted);
+  font-size: 0.95em;
+  margin-top: 0.75rem;
+}
+
+.paper-arabizer-abstract-title,
+.ltx_title_abstract {
+  display: block !important;
+  width: 100%;
+  clear: both;
+  margin-block: 1.4em 0.55em;
+}
+
+.ltx_abstract > .paper-arabizer-abstract-title,
+.ltx_abstract > .ltx_title_abstract {
+  margin-inline: 0;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* TeX4ht may emit dark-mode rules that invert generated math SVGs. The page is
+   intentionally light, so force math images to render with their original ink. */
+img.paper-arabizer-tex4ht-math-image,
+main.paper-arabizer-article img.math,
+main.paper-arabizer-article img.math-display,
+main.paper-arabizer-article img[src$="x.svg"] {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  background: #fffefa;
+  color: #111;
+  border-radius: 6px;
+}
+
+img.paper-arabizer-tex4ht-math-image.math-display,
+main.paper-arabizer-article div.math-display > img.paper-arabizer-tex4ht-math-image,
+main.paper-arabizer-article div.math-display > img[src$="x.svg"] {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid rgba(31, 26, 20, 0.10);
+}
+
+.MathJax, math, .equation, .ltx_equation, mjx-container {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: center;
+}
+
+.paper-arabizer-equation-image {
+  display: inline-block;
+  direction: ltr;
+  unicode-bidi: isolate;
+  vertical-align: middle;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  background: #fffefa !important;
+  color: #111;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  border-radius: 10px;
+}
+
+.paper-arabizer-equation-display {
+  display: block;
+  box-sizing: border-box;
+  width: auto !important;
+  height: auto !important;
+  max-height: none;
+  min-width: 2rem;
+  min-height: 1.4rem;
+  margin: 1rem auto;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(31, 26, 20, 0.12);
+  box-shadow: 0 2px 10px rgba(55, 44, 31, 0.06);
+}
+
+table.paper-arabizer-equation-image-table {
+  table-layout: auto !important;
+  width: 100% !important;
+}
+
+table.paper-arabizer-equation-image-table .ltx_eqn_center_padleft,
+table.paper-arabizer-equation-image-table .ltx_eqn_center_padright {
+  width: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+table.paper-arabizer-equation-image-table .ltx_align_center {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+table.paper-arabizer-equation-image-table .paper-arabizer-equation-display {
+  display: inline-block !important;
+  max-width: calc(100% - 2rem);
+}
+
+.paper-arabizer-equation-inline {
+  display: inline-block;
+  width: auto !important;
+  height: auto !important;
+  max-width: none;
+  max-height: 1.45em;
+  min-width: 0.35em;
+  padding: 0.03em 0.18em;
+  margin-inline: 0.1em;
+  line-height: 1;
+}
+
+.paper-arabizer-equation-text {
+  background: transparent !important;
+  color: #111;
+  border-radius: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-family: "Times New Roman", "STIX Two Math", serif;
+}
+
+pre, code, samp, kbd,
+.paper-arabizer-code-block,
+.paper-arabizer-code-inline,
+.lstlisting, .lstinline, .listings, .verbatim, .minted,
+[class*="lstlisting"], [class*="lstinline"], [class*="minted"], [class*="verbatim"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+}
+
+pre,
+.paper-arabizer-code-block,
+.lstlisting, .listings, .verbatim, .minted,
+[class*="lstlisting"], [class*="minted"], [class*="verbatim"] {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f1ece2;
+  border: 1px solid #ded2bf;
+  color: #211a13;
+  font-size: 0.88em;
+  line-height: 1.55;
+  tab-size: 4;
+  text-align: left;
+  white-space: pre;
+}
+
+.paper-arabizer-code-inline,
+.lstinline,
+[class*="lstinline"] {
+  padding: 0.05em 0.35em;
+  border-radius: 0.35em;
+  background: #f1ece2;
+  font-size: 0.92em;
+  white-space: nowrap;
+}
+
+table {
+  direction: ltr;
+  unicode-bidi: isolate;
+  border-collapse: collapse;
+  margin: 1.5rem auto;
+}
+
+th, td {
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid var(--paper-rule);
+}
+
+.paper-arabizer-table-wrap {
+  overflow-x: auto;
+  margin-block: 1.5rem;
+}
+
+.bibliography, .references, [role="doc-bibliography"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-size: 0.95em;
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 16px;
+  }
+
+  main.paper-arabizer-article {
+    margin: 0;
+    border-radius: 0;
+    border-inline: 0;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  main.paper-arabizer-article {
+    box-shadow: none;
+    border: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
