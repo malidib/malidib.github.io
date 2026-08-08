@@ -38,8 +38,22 @@ main { min-height: 0; display: grid; grid-template-columns: 330px 1fr; }
 .layer { display: grid; grid-template-columns: auto 1fr; gap: 8px; padding: 8px; background: #131b26; border-radius: 5px; border-left: 3px solid var(--exact); }
 .layer.superseded { border-left-color: #8c7f72; opacity: .79; }
 .layer input { margin-top: 3px; accent-color: var(--accent); }
+.layer > span { min-width: 0; }
 .layer-title { display: block; font-size: .82rem; line-height: 1.25; }
 .layer-meta { display: block; color: var(--muted); font-size: .69rem; margin-top: 3px; }
+.layer-actions { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 6px 8px; margin-top: 8px; }
+.layer-download {
+  display: inline-block; padding: 4px 7px; border: 1px solid #7f5a29; border-radius: 4px;
+  background: #2f251a; color: #ffd699; font-size: .66rem; font-weight: 650;
+  line-height: 1.2; text-decoration: none; white-space: nowrap;
+}
+.layer-download:hover, .layer-download:focus-visible { border-color: var(--accent); background: #43311d; outline: none; }
+.layer-download.unavailable { cursor: not-allowed; opacity: .55; }
+.layer-reference {
+  min-width: 0; color: #b9c9da; font-size: .64rem; line-height: 1.35;
+  overflow-wrap: anywhere; text-decoration-color: #66788d; text-underline-offset: 2px;
+}
+a.layer-reference:hover, a.layer-reference:focus-visible { color: #eef4fb; outline: none; text-decoration-color: var(--accent); }
 .badge { display: inline-block; margin-left: 4px; padding: 1px 4px; border-radius: 3px; background: #40382d; color: #ffd699; text-transform: uppercase; font-size: .58rem; }
 #legend-section p { color: var(--muted); font-size: .76rem; line-height: 1.4; }
 .swatch { display: inline-block; width: 12px; height: 12px; vertical-align: -2px; margin-right: 5px; border-radius: 2px; }
