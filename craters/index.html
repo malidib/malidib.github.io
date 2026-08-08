@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="crater-api-base" content="">
+  <title>Crater Catalogue Atlas</title>
+  <link rel="stylesheet" href="./ol.css">
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">Planetary research atlas</p>
+      <h1>Crater catalogues</h1>
+    </div>
+    <label class="target-label">Object
+      <select id="target-select" aria-label="Select planetary object"></select>
+    </label>
+  </header>
+  <main>
+    <aside id="sidebar">
+      <section>
+        <h2 id="object-title">Loading archive…</h2>
+        <p id="object-summary" class="muted"></p>
+      </section>
+      <section>
+        <h3>Basemap</h3>
+        <p id="basemap-status" class="muted" aria-live="polite">Loading local basemap status…</p>
+      </section>
+      <section>
+        <div class="section-heading">
+          <h3>Catalogue layers</h3>
+          <button id="clear-layers" type="button">Clear</button>
+        </div>
+        <div id="layers" class="layers" aria-live="polite"></div>
+      </section>
+      <section id="legend-section">
+        <h3>Rendering</h3>
+        <p><span class="swatch density"></span> Density: every record is accumulated at broad scales.</p>
+        <p><span class="swatch exact"></span> Exact: record locations replace density when a tile contains at most 10,000 features.</p>
+      </section>
+      <section id="record-panel" hidden>
+        <h3>Selected record</h3>
+        <pre id="record-detail"></pre>
+      </section>
+      <section id="non-spatial" hidden></section>
+    </aside>
+    <section id="map-shell" aria-label="Equirectangular crater map">
+      <div id="map" tabindex="0"></div>
+      <div id="map-message" role="status"></div>
+      <div class="map-controls" aria-label="Map controls">
+        <button id="zoom-in" type="button" title="Zoom in">+</button>
+        <button id="zoom-out" type="button" title="Zoom out">−</button>
+        <button id="reset-view" type="button">Global</button>
+      </div>
+      <div id="coordinates">0.00°E, 0.00°N · z1</div>
+      <div class="projection-note">East-positive longitude · 2:1 planetary equirectangular grid</div>
+    </section>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
