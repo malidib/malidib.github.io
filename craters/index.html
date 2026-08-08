@@ -15,9 +15,12 @@
       <p class="eyebrow">Planetary research atlas</p>
       <h1>Crater catalogues</h1>
     </div>
-    <label class="target-label">Object
-      <select id="target-select" aria-label="Select planetary object"></select>
-    </label>
+    <div class="target-actions">
+      <label class="target-label">Object
+        <select id="target-select" aria-label="Select planetary object"></select>
+      </label>
+      <button id="open-csfd" class="primary-action" type="button">Analyze CSFD</button>
+    </div>
   </header>
   <main>
     <aside id="sidebar">
@@ -59,6 +62,78 @@
       <div class="projection-note">East-positive longitude · 2:1 planetary equirectangular grid</div>
     </section>
   </main>
+  <section id="csfd-drawer" class="csfd-drawer" aria-labelledby="csfd-title" hidden>
+    <div class="drawer-handle" aria-hidden="true"></div>
+    <header class="drawer-header">
+      <div>
+        <p class="eyebrow">Research workspace</p>
+        <h2 id="csfd-title">Crater size-frequency distributions</h2>
+      </div>
+      <button id="close-csfd" type="button" aria-label="Close CSFD analysis">Close</button>
+    </header>
+    <div class="csfd-layout">
+      <form id="csfd-controls" class="csfd-controls">
+        <fieldset>
+          <legend>Counting region</legend>
+          <label><input type="radio" name="csfd-region" value="full" checked> Full catalogue</label>
+          <label><input type="radio" name="csfd-region" value="polygon"> Drawn polygon</label>
+          <div class="button-row">
+            <button id="draw-region" type="button" disabled>Draw polygon</button>
+            <button id="clear-region" type="button" disabled>Clear</button>
+          </div>
+          <p id="region-status" class="field-note" aria-live="polite">All records in each selected population.</p>
+        </fieldset>
+        <fieldset>
+          <legend>Catalogue populations <span id="population-count">0/4</span></legend>
+          <div id="csfd-populations" class="population-list"></div>
+        </fieldset>
+        <fieldset class="mode-options">
+          <legend>Statistics</legend>
+          <label><input id="modern-mode" type="checkbox" checked> Modern KDE/EDF + bootstrap</label>
+          <label><input id="classic-mode" type="checkbox" checked> Classic √2 bins + Garwood intervals</label>
+          <p class="field-note">Modern mode uses σ = 0.1D when measured uncertainty is unavailable, 5,000 deterministic resamples, 95% bands, and 68.3% boundary lines.</p>
+        </fieldset>
+        <div id="csfd-science-warning" class="science-warning" role="note"></div>
+        <button id="run-csfd" class="run-analysis" type="submit">Run analysis</button>
+        <p id="csfd-progress" class="field-note" aria-live="polite"></p>
+      </form>
+      <div class="csfd-results">
+        <div class="result-toolbar" aria-label="CSFD export controls">
+          <button id="export-svg" type="button" disabled>SVG</button>
+          <button id="export-png" type="button" disabled>PNG 2×</button>
+          <button id="export-csv" type="button" disabled>Curve CSV</button>
+          <button id="export-json" type="button" disabled>Analysis JSON</button>
+          <button id="load-analysis" type="button">Reload JSON</button>
+          <input id="analysis-file" type="file" accept="application/json,.json" hidden>
+        </div>
+        <div id="analysis-summary" class="analysis-summary">
+          Select up to four populations, state coverage assumptions, and run the analysis. No absolute ages are inferred.
+        </div>
+        <div id="csfd-charts" class="chart-grid" aria-live="polite">
+          <figure class="chart-card" data-metric="cumulative">
+            <figcaption>Cumulative frequency <span>N(≥D)</span></figcaption>
+            <svg id="chart-cumulative" role="img" aria-label="Cumulative crater size-frequency chart"></svg>
+          </figure>
+          <figure class="chart-card" data-metric="differential">
+            <figcaption>Differential frequency <span>dN/dD</span></figcaption>
+            <svg id="chart-differential" role="img" aria-label="Differential crater size-frequency chart"></svg>
+          </figure>
+          <figure class="chart-card" data-metric="rPlot">
+            <figcaption>Relative plot <span>R = D³/A · dN/dD</span></figcaption>
+            <svg id="chart-r" role="img" aria-label="R-plot crater size-frequency chart"></svg>
+          </figure>
+        </div>
+        <details id="curve-table-panel" class="curve-table-panel">
+          <summary>Accessible curve data</summary>
+          <div class="table-scroll"><table id="curve-table">
+            <caption>CSFD curve values for the current analysis</caption>
+            <thead><tr><th>Population</th><th>Method</th><th>Diameter (km)</th><th>Cumulative</th><th>Differential</th><th>R</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </details>
+      </div>
+    </div>
+  </section>
   <script src="./app.js" defer></script>
 </body>
 </html>
