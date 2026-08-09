@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 concurrency:
@@ -62,6 +62,22 @@ jobs:
             body="Automated public checks failed at $(date -u +'%Y-%m-%dT%H:%M:%SZ').\n\n$error\n\nStatic maps remain independent of the optional live-analysis endpoint unless the message identifies a static or CDN failure."
             if [[ -z "$issue_number" ]]; then
               gh issue create --title "$issue_title" --label atlas-availability --body "$body" >/dev/null
+            fi
+            if [[ -z "$static_error" && -n "$endpoint" ]]; then
+              api_path="repos/${GH_REPO}/contents/craters/config.json"
+              metadata="$(gh api "$api_path?ref=crater-api-live")"
+              sha="$(jq -r '.sha' <<<"$metadata")"
+              current="$(jq -r '.content' <<<"$metadata" | tr -d '\n' | base64 -d)"
+              current_endpoint="$(jq -r '.apiBases[0] // .apiBase // empty' <<<"$current")"
+              if [[ "$current_endpoint" == "$endpoint" ]]; then
+                now="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+                payload="$(jq -cn --arg endpoint "$endpoint" --arg now "$now" --arg error "$api_error" \
+                  '{schemaVersion:2,status:"offline",apiBases:[],apiBase:"",candidateApiBase:$endpoint,candidateId:"availability-monitor",validation:"failed",validationError:$error,validatedAt:null,updatedAt:$now}')"
+                content="$(printf '%s\n' "$payload" | base64 -w0)"
+                gh api --method PUT "$api_path" \
+                  --raw-field 'message=chore: mark crater analysis endpoint unavailable' \
+                  --raw-field "content=$content" --raw-field 'branch=crater-api-live' --raw-field "sha=$sha" >/dev/null || true
+              fi
             fi
             [[ -z "$static_error" ]] || exit 1
             echo "::warning::$api_error"
