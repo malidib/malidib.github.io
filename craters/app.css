@@ -25,6 +25,18 @@ h3 { font-size: .88rem; letter-spacing: .055em; text-transform: uppercase; }
 .eyebrow { color: var(--accent); margin-bottom: 2px; text-transform: uppercase; letter-spacing: .14em; font-size: .68rem; }
 .target-label { display: grid; grid-template-columns: auto minmax(170px, 260px); align-items: center; gap: 10px; color: var(--muted); }
 .target-actions { display: flex; align-items: center; gap: 10px; }
+.connectivity-status {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px;
+  border: 1px solid #38566b; border-radius: 999px; background: #10202b;
+  color: #c9e8f7; font-size: .67rem; line-height: 1.2; white-space: nowrap;
+}
+.connectivity-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #56b4e9; }
+.connectivity-status.live { border-color: #316b58; background: #10251f; color: #bcebd9; }
+.connectivity-status.live::before { background: #42c991; }
+.connectivity-status.reconnecting { border-color: #79612c; background: #292112; color: #f2d493; }
+.connectivity-status.reconnecting::before { background: #e6ad45; }
+.connectivity-status.offline { border-color: #69414a; background: #26171b; color: #efc5cc; }
+.connectivity-status.offline::before { background: #d66b7d; }
 .primary-action, .run-analysis { background: #173f59; border-color: #2d789d; color: #e8f7ff; font-weight: 680; }
 .primary-action:hover, .run-analysis:hover { background: #205573; border-color: #56b4e9; }
 select, button { font: inherit; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; }
@@ -169,6 +181,7 @@ a.layer-reference:hover, a.layer-reference:focus-visible { color: #eef4fb; outli
   header { align-items: stretch; flex-direction: column; gap: 8px; }
   .target-label { grid-template-columns: auto 1fr; }
   .target-actions { align-items: stretch; flex-direction: column; }
+  .connectivity-status { align-self: flex-start; }
   .csfd-drawer { inset: 0; width: 100%; height: 100%; min-height: 100%; max-height: none; resize: none; border: 0; }
   .csfd-layout { display: block; height: calc(100% - 69px); overflow-y: auto; }
   .csfd-controls { min-height: auto; overflow: visible; border-right: 0; border-bottom: 1px solid var(--line); }

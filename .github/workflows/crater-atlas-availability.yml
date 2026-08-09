@@ -1,0 +1,71 @@
+name: Crater atlas availability
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: crater-atlas-availability
+  cancel-in-progress: true
+
+jobs:
+  public-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check static atlas, CDN, and optional analysis API
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          page_url="https://malidib.github.io/craters/"
+          bootstrap_url="https://malidib.github.io/craters/catalogue-bootstrap.json"
+          webp_url="https://d3t9ha3ks9hdmd.cloudfront.net/tiles/_basemaps/ariel/ariel_schenk_voyager_global_10ppd/0/0/0.webp"
+          mvt_url="https://d3t9ha3ks9hdmd.cloudfront.net/tiles/_static/empty.mvt"
+          config_url="https://raw.githubusercontent.com/malidib/malidib.github.io/crater-api-live/craters/config.json?monitor=${GITHUB_RUN_ID}"
+          issue_title="Crater atlas availability warning"
+
+          static_error=""
+          curl -fsS --max-time 20 "$page_url" | grep -q "Crater catalogues" || static_error="GitHub Pages viewer failed"
+          curl -fsS --max-time 20 "$bootstrap_url" | jq -e '.targets | length > 0' >/dev/null || static_error="Static catalogue bootstrap failed"
+          [[ "$(curl -fsSI --max-time 20 "$webp_url" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}')" == "image/webp" ]] || static_error="CloudFront WebP failed"
+          [[ "$(curl -fsSI --max-time 20 "$mvt_url" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}')" == "application/vnd.mapbox-vector-tile" ]] || static_error="CloudFront MVT failed"
+
+          config="$(curl -fsS --max-time 20 -H 'Cache-Control: no-cache' "$config_url" || true)"
+          endpoint="$(printf '%s' "$config" | jq -r '.apiBases[0] // .apiBase // empty' 2>/dev/null || true)"
+          api_error=""
+          if [[ -z "$endpoint" ]]; then
+            api_error="The runtime configuration reports live analysis offline"
+          else
+            healthy=false
+            for attempt in 1 2 3; do
+              if curl -fsS --max-time 15 -H 'Origin: https://malidib.github.io' "$endpoint/api/health" | jq -e '.status == "ok" and .service == "crater-maps" and .ready == true' >/dev/null; then
+                healthy=true
+                break
+              fi
+              sleep 5
+            done
+            $healthy || api_error="The published live-analysis endpoint failed three probes: $endpoint"
+          fi
+
+          gh label create atlas-availability --color C23B53 --description "Automated crater atlas availability monitor" --force >/dev/null
+          issue_number="$(gh issue list --state open --label atlas-availability --search "$issue_title in:title" --json number --jq '.[0].number // empty')"
+          error="${static_error:-$api_error}"
+          if [[ -n "$error" ]]; then
+            body="Automated public checks failed at $(date -u +'%Y-%m-%dT%H:%M:%SZ').\n\n$error\n\nStatic maps remain independent of the optional live-analysis endpoint unless the message identifies a static or CDN failure."
+            if [[ -z "$issue_number" ]]; then
+              gh issue create --title "$issue_title" --label atlas-availability --body "$body" >/dev/null
+            fi
+            [[ -z "$static_error" ]] || exit 1
+            echo "::warning::$api_error"
+          elif [[ -n "$issue_number" ]]; then
+            gh issue comment "$issue_number" --body "All automated checks recovered at $(date -u +'%Y-%m-%dT%H:%M:%SZ')." >/dev/null
+            gh issue close "$issue_number" --reason completed >/dev/null
+          fi
