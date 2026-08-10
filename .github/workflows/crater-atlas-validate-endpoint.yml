@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       endpoint:
-        description: Rotating localhost.run HTTPS endpoint
+        description: Validated public HTTPS endpoint (normally the stable CloudFront edge)
         required: true
         type: string
       candidate_id:
@@ -34,7 +34,7 @@ jobs:
           set -Eeuo pipefail
           result=failed
           detail="candidate did not pass public validation"
-          if [[ "$ENDPOINT" =~ ^https://[a-z0-9][a-z0-9.-]*\.(lhr\.life|localhost\.run)$ ]] \
+          if [[ "$ENDPOINT" =~ ^https://([a-z0-9][a-z0-9.-]*\.(lhr\.life|localhost\.run)|[a-z0-9]+\.cloudfront\.net)$ ]] \
              && [[ "$CANDIDATE_ID" =~ ^[A-Za-z0-9._-]+$ ]]; then
             for attempt in 1 2 3; do
               work="$(mktemp -d)"
