@@ -31,14 +31,29 @@ jobs:
           mvt_url="https://d3t9ha3ks9hdmd.cloudfront.net/tiles/_static/empty.mvt"
           config_url="https://raw.githubusercontent.com/malidib/malidib.github.io/crater-api-live/craters/config.json?monitor=${GITHUB_RUN_ID}"
           issue_title="Crater atlas availability warning"
+          curl_common=(-fsS --retry 2 --retry-all-errors --retry-delay 2 --connect-timeout 10 --max-time 30)
 
           static_error=""
-          curl -fsS --max-time 20 "$page_url" | grep -q "Crater catalogues" || static_error="GitHub Pages viewer failed"
-          curl -fsS --max-time 20 "$bootstrap_url" | jq -e '.targets | length > 0' >/dev/null || static_error="Static catalogue bootstrap failed"
-          [[ "$(curl -fsSI --max-time 20 "$webp_url" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}')" == "image/webp" ]] || static_error="CloudFront WebP failed"
-          [[ "$(curl -fsSI --max-time 20 "$mvt_url" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}')" == "application/vnd.mapbox-vector-tile" ]] || static_error="CloudFront MVT failed"
+          append_static_error() {
+            if [[ -n "$static_error" ]]; then
+              static_error="${static_error}; $1"
+            else
+              static_error="$1"
+            fi
+          }
+          page_html="$(curl "${curl_common[@]}" "$page_url" || true)"
+          if [[ "$page_html" != *"Crater catalogues"* ]]; then
+            append_static_error "GitHub Pages viewer failed"
+          fi
+          if ! curl "${curl_common[@]}" "$bootstrap_url" | jq -e '.targets | length > 0' >/dev/null; then
+            append_static_error "Static catalogue bootstrap failed"
+          fi
+          webp_type="$(curl "${curl_common[@]}" -I "$webp_url" 2>/dev/null | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}' || true)"
+          [[ "$webp_type" == "image/webp" ]] || append_static_error "CloudFront WebP failed"
+          mvt_type="$(curl "${curl_common[@]}" -I "$mvt_url" 2>/dev/null | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}' || true)"
+          [[ "$mvt_type" == "application/vnd.mapbox-vector-tile" ]] || append_static_error "CloudFront MVT failed"
 
-          config="$(curl -fsS --max-time 20 -H 'Cache-Control: no-cache' "$config_url" || true)"
+          config="$(curl "${curl_common[@]}" -H 'Cache-Control: no-cache' "$config_url" || true)"
           endpoint="$(printf '%s' "$config" | jq -r '.apiBases[0] // .apiBase // empty' 2>/dev/null || true)"
           api_error=""
           if [[ -z "$endpoint" ]]; then
@@ -57,13 +72,20 @@ jobs:
 
           gh label create atlas-availability --color C23B53 --description "Automated crater atlas availability monitor" --force >/dev/null
           issue_number="$(gh issue list --state open --label atlas-availability --search "$issue_title in:title" --json number --jq '.[0].number // empty')"
-          error="${static_error:-$api_error}"
+          error="$static_error"
+          if [[ -n "$api_error" ]]; then
+            [[ -z "$error" ]] || error+=$'\n'
+            error+="$api_error"
+          fi
           if [[ -n "$error" ]]; then
-            body="Automated public checks failed at $(date -u +'%Y-%m-%dT%H:%M:%SZ').\n\n$error\n\nStatic maps remain independent of the optional live-analysis endpoint unless the message identifies a static or CDN failure."
+            printf -v body 'Automated public checks failed at %s.\n\n%s\n\nStatic maps remain independent of the optional live-analysis endpoint unless the message identifies a static or CDN failure.' \
+              "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$error"
             if [[ -z "$issue_number" ]]; then
               gh issue create --title "$issue_title" --label atlas-availability --body "$body" >/dev/null
+            else
+              gh issue edit "$issue_number" --body "$body" >/dev/null
             fi
-            if [[ -z "$static_error" && -n "$endpoint" ]]; then
+            if [[ -n "$api_error" && -n "$endpoint" ]]; then
               api_path="repos/${GH_REPO}/contents/craters/config.json"
               metadata="$(gh api "$api_path?ref=crater-api-live")"
               sha="$(jq -r '.sha' <<<"$metadata")"
@@ -79,7 +101,10 @@ jobs:
                   --raw-field "content=$content" --raw-field 'branch=crater-api-live' --raw-field "sha=$sha" >/dev/null || true
               fi
             fi
-            [[ -z "$static_error" ]] || exit 1
+            if [[ -n "$static_error" ]]; then
+              echo "::error::$static_error"
+              exit 1
+            fi
             echo "::warning::$api_error"
           elif [[ -n "$issue_number" ]]; then
             gh issue comment "$issue_number" --body "All automated checks recovered at $(date -u +'%Y-%m-%dT%H:%M:%SZ')." >/dev/null
