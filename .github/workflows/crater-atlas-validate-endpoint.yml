@@ -88,14 +88,6 @@ jobs:
           set -Eeuo pipefail
           api_path="repos/${GH_REPO}/contents/craters/config.json"
           now="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          if [[ "$RESULT" == passed ]]; then
-            payload="$(jq -cn --arg endpoint "$ENDPOINT" --arg candidate "$CANDIDATE_ID" --arg now "$now" \
-              '{schemaVersion:2,status:"online",apiBases:[$endpoint],apiBase:$endpoint,candidateApiBase:$endpoint,candidateId:$candidate,validation:"passed",validatedAt:$now,updatedAt:$now}')"
-          else
-            payload="$(jq -cn --arg endpoint "$ENDPOINT" --arg candidate "$CANDIDATE_ID" --arg detail "$DETAIL" --arg now "$now" \
-              '{schemaVersion:2,status:"offline",apiBases:[],apiBase:"",candidateApiBase:$endpoint,candidateId:$candidate,validation:"failed",validationError:$detail,validatedAt:null,updatedAt:$now}')"
-          fi
-          content="$(printf '%s\n' "$payload" | base64 -w0)"
           for attempt in 1 2 3 4 5; do
             metadata="$(gh api "$api_path?ref=crater-api-live")"
             sha="$(jq -r '.sha' <<<"$metadata")"
@@ -105,6 +97,26 @@ jobs:
               printf 'Candidate was superseded before validation completed; no state was changed.\n' >>"$GITHUB_STEP_SUMMARY"
               exit 0
             fi
+            active_candidate="$(jq -r '.activeCandidateId // .candidateId // empty' <<<"$current")"
+            active_validation="$(jq -r '.activeValidation // .validation // empty' <<<"$current")"
+            active_validated_at="$(jq -r '.activeValidatedAt // .validatedAt // empty' <<<"$current")"
+            active_bases="$(jq -c '.apiBases // []' <<<"$current")"
+            if [[ "$RESULT" == passed ]]; then
+              payload="$(jq -cn --arg endpoint "$ENDPOINT" --arg candidate "$CANDIDATE_ID" --arg now "$now" \
+                '{schemaVersion:2,status:"online",apiBases:[$endpoint],apiBase:$endpoint,candidateApiBase:$endpoint,candidateId:$candidate,validation:"passed",validatedAt:$now,activeCandidateId:$candidate,activeValidation:"passed",activeValidatedAt:$now,updatedAt:$now}')"
+            elif [[ "$(jq -r 'length' <<<"$active_bases")" -gt 0 ]] \
+                 && [[ "$active_validation" == passed ]] \
+                 && [[ -n "$active_validated_at" ]] \
+                 && [[ "$active_candidate" != "$CANDIDATE_ID" ]]; then
+              payload="$(jq -cn --argjson bases "$active_bases" --arg endpoint "$ENDPOINT" \
+                --arg candidate "$CANDIDATE_ID" --arg detail "$DETAIL" --arg active_candidate "$active_candidate" \
+                --arg active_validated_at "$active_validated_at" --arg now "$now" \
+                '{schemaVersion:2,status:"online",apiBases:$bases,apiBase:$bases[0],candidateApiBase:$endpoint,candidateId:$candidate,validation:"failed",validationError:$detail,validatedAt:$active_validated_at,activeCandidateId:$active_candidate,activeValidation:"passed",activeValidatedAt:$active_validated_at,updatedAt:$now}')"
+            else
+              payload="$(jq -cn --arg endpoint "$ENDPOINT" --arg candidate "$CANDIDATE_ID" --arg detail "$DETAIL" --arg now "$now" \
+                '{schemaVersion:2,status:"offline",apiBases:[],apiBase:"",candidateApiBase:$endpoint,candidateId:$candidate,validation:"failed",validationError:$detail,validatedAt:null,updatedAt:$now}')"
+            fi
+            content="$(printf '%s\n' "$payload" | base64 -w0)"
             if gh api --method PUT "$api_path" \
               --raw-field 'message=chore: publish externally validated crater API state' \
               --raw-field "content=$content" --raw-field 'branch=crater-api-live' --raw-field "sha=$sha" >/dev/null; then
