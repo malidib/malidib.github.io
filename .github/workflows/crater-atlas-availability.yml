@@ -29,7 +29,6 @@ jobs:
           bootstrap_url="https://malidib.github.io/craters/catalogue-bootstrap.json"
           webp_url="https://d3t9ha3ks9hdmd.cloudfront.net/tiles/_basemaps/ariel/ariel_schenk_voyager_global_10ppd/0/0/0.webp"
           mvt_url="https://d3t9ha3ks9hdmd.cloudfront.net/tiles/_static/empty.mvt"
-          config_url="https://raw.githubusercontent.com/malidib/malidib.github.io/crater-api-live/craters/config.json?monitor=${GITHUB_RUN_ID}"
           issue_title="Crater atlas availability warning"
           curl_common=(-fsS --retry 2 --retry-all-errors --retry-delay 2 --connect-timeout 10 --max-time 30)
 
@@ -53,7 +52,8 @@ jobs:
           mvt_type="$(curl "${curl_common[@]}" -I "$mvt_url" 2>/dev/null | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print tolower($2); exit}' || true)"
           [[ "$mvt_type" == "application/vnd.mapbox-vector-tile" ]] || append_static_error "CloudFront MVT failed"
 
-          config="$(curl "${curl_common[@]}" -H 'Cache-Control: no-cache' "$config_url" || true)"
+          config="$(gh api "repos/${GH_REPO}/contents/craters/config.json?ref=crater-api-live" \
+            --jq .content 2>/dev/null | tr -d '\n' | base64 -d 2>/dev/null || true)"
           endpoint="$(printf '%s' "$config" | jq -r '.apiBases[0] // .apiBase // empty' 2>/dev/null || true)"
           api_error=""
           if [[ -z "$endpoint" ]]; then
