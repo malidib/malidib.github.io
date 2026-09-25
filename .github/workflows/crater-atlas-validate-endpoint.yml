@@ -34,6 +34,10 @@ jobs:
           set -Eeuo pipefail
           result=failed
           detail="candidate did not pass public validation"
+          # A freshly connected tunnel may briefly time out while the edge
+          # changes origin. Retry transport/HTTP failures, but still require
+          # valid JSON, exact CORS, and all three successful validation rounds.
+          curl_checks=(--retry 2 --retry-all-errors --retry-delay 2 --retry-max-time 45)
           if [[ "$ENDPOINT" =~ ^https://([a-z0-9][a-z0-9.-]*\.(lhr\.life|localhost\.run)|[a-z0-9]+\.cloudfront\.net)$ ]] \
              && [[ "$CANDIDATE_ID" =~ ^[A-Za-z0-9._-]+$ ]]; then
             for attempt in 1 2 3; do
@@ -41,17 +45,17 @@ jobs:
               gateway_ok=false
               api_ok=false
               targets_ok=false
-              if curl -fsS --max-time 20 "$ENDPOINT/gateway-health" -o "$work/gateway.json" \
+              if curl -fsS "${curl_checks[@]}" --max-time 20 "$ENDPOINT/gateway-health" -o "$work/gateway.json" \
                  && jq -e '.status == "ok" and .service == "crater-tile-gateway"' "$work/gateway.json" >/dev/null; then
                 gateway_ok=true
               fi
-              if curl -fsS --max-time 20 -D "$work/api.headers" \
+              if curl -fsS "${curl_checks[@]}" --max-time 20 -D "$work/api.headers" \
                    -H 'Origin: https://malidib.github.io' "$ENDPOINT/api/health" -o "$work/api.json" \
                  && jq -e '.status == "ok" and .service == "crater-maps" and .ready == true' "$work/api.json" >/dev/null \
                  && tr -d '\r' <"$work/api.headers" | grep -Eiq '^access-control-allow-origin: https://malidib\.github\.io$'; then
                 api_ok=true
               fi
-              if curl -fsS --max-time 30 -H 'Origin: https://malidib.github.io' \
+              if curl -fsS "${curl_checks[@]}" --max-time 30 -H 'Origin: https://malidib.github.io' \
                    "$ENDPOINT/api/targets" -o "$work/targets.json" \
                  && jq -e '.targets | type == "array" and length > 0' "$work/targets.json" >/dev/null; then
                 targets_ok=true
